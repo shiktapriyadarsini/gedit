@@ -2162,33 +2162,33 @@ void gedit_mdi_update_languages_menu (BonoboMDI *mdi)
 static void
 update_ui_according_to_state (GeditMDI *mdi)
 {
+	GList *l;
 	GList *views;
 	GdkCursor *cursor;
 	GList *windows;
 
 	gedit_debug (DEBUG_MDI, "");
-	
+
 	/* Upate menus and toolbars */
 	gedit_mdi_set_active_window_verbs_sensitivity (BONOBO_MDI (gedit_mdi));
 
 	/* Update views editability */
 	views = bonobo_mdi_get_views (BONOBO_MDI (mdi));
-	while (views != NULL)
+
+	l = views;
+	while (l != NULL)
 	{
 		GeditView *view;
 		GeditDocument *doc;
 
-		view = GEDIT_VIEW (views->data);
+		view = GEDIT_VIEW (l->data);
 		doc = gedit_view_get_document (view);
-		
+
 		switch (gedit_mdi_get_state (mdi))
 		{
 			case GEDIT_STATE_NORMAL:
 				if (!gedit_document_is_readonly (doc))
-				{
 					gedit_view_set_editable (view, TRUE);
-				}
-
 				break;
 
 			case GEDIT_STATE_LOADING:
@@ -2199,7 +2199,7 @@ update_ui_according_to_state (GeditMDI *mdi)
 				break;
 		}
 
-		views = g_list_next (views);
+		l = g_list_next (l);
 	}
 
 	g_list_free (views);
