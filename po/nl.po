@@ -1,44 +1,45 @@
 # This translation is made by
 # Dennis Smit <synap@area101.penguin.nl>, 2000
+# Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>, 2001.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
-"PO-Revision-Date: 2000-10-09 23:03+0200\n"
-"Last-Translator: Dennis Smit <synap@area101.penguin.nl>\n"
+"Project-Id-Version: gedit 1.0\n"
+"POT-Creation-Date: 2001-12-09 06:16-0500\n"
+"PO-Revision-Date: 2001-12-10 01:42+0100\n"
+"Last-Translator: Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: gedit.desktop.in.h:1
 msgid "Text editor"
-msgstr ""
+msgstr "Tekst editor"
 
 #: gedit.desktop.in.h:2
 msgid "gedit"
-msgstr ""
+msgstr "gedit"
 
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
-msgstr ""
+msgstr "ASCII tabel"
 
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
-msgstr ""
+msgstr "Deze plugin geeft een dialoogvenster weer met een ASCII tabel."
 
 #: plugins/ASCII/asciitable.glade.h:1
-#, fuzzy
 msgid "Char"
-msgstr "Verander"
+msgstr "Symbool"
 
 #: plugins/ASCII/asciitable.glade.h:2
 msgid "Dec#"
-msgstr ""
+msgstr "Dec#"
 
 #: plugins/ASCII/asciitable.glade.h:3
 msgid "Hex#"
-msgstr ""
+msgstr "Hex#"
 
 #: plugins/ASCII/asciitable.glade.h:4
 msgid ""
@@ -46,50 +47,47 @@ msgid ""
 "document, select the character and click the \"Insert Char\" \n"
 "button or double click the character in the table."
 msgstr ""
+"Als u een van de symbolen wenst in te voeren, kunt u het symbool selecteren "
+"en klikken op \"Symbool invoegen\", of dubbelklik op het symbool."
 
 #: plugins/ASCII/asciitable.glade.h:7
-#, fuzzy
 msgid "Insert char"
-msgstr "Tijd Invoegen"
+msgstr "Symbool invoegen"
 
 #: plugins/ASCII/asciitable.glade.h:8
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: plugins/ASCII/asciitable.glade.h:9
 msgid "gedit: ASCII table"
-msgstr ""
+msgstr "gedit: ASCII tabel"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
 #: plugins/browse/browse.c:38 plugins/browse/browse.c:250
 msgid "Browse"
-msgstr "Browse"
+msgstr "Surfen"
 
 #: plugins/browse/browse.c:251 plugins/browse/browse.c:252
 msgid "Web browse plugin"
-msgstr "Web browse plugin"
+msgstr "Web surf plugin"
 
 #: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
 #: plugins/email/email.glade.h:1
-#, fuzzy
 msgid " _Change... "
-msgstr "Verander..."
+msgstr "_Verander..."
 
 #: plugins/browse/browse.glade.h:2
-#, fuzzy
 msgid "Enter the _URL to browse for:"
-msgstr "Geef Url om te bekijken :"
+msgstr "Geef _URL om te bekijken :"
 
 #: plugins/browse/browse.glade.h:3
-#, fuzzy
 msgid "Lynx found at: "
-msgstr "lynx gevonden op :"
+msgstr "lynx gevonden op:"
 
 #: plugins/browse/browse.glade.h:4
-#, fuzzy
 msgid "gedit: Web Browse plugin"
-msgstr "gedit web browse plugin"
+msgstr "gedit Websurf plugin"
 
 #: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
 #: plugins/email/email.glade.h:14
@@ -102,81 +100,69 @@ msgstr "Converteer"
 
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
-msgstr "Nummer Conversie"
+msgstr "Nummerconversie"
 
 #: plugins/convert/convert.glade.h:1
-#, fuzzy
 msgid " Decimal to _Hex "
-msgstr "Decimaal naar Hex"
+msgstr "Decimaal naar _Hex"
 
 #: plugins/convert/convert.glade.h:2
-#, fuzzy
 msgid " Decimal to _Octal "
-msgstr "Decimaal naar Octaal"
+msgstr "Decimaal naar _Octaal"
 
 #: plugins/convert/convert.glade.h:3
-#, fuzzy
 msgid " Hex to Decima_l "
-msgstr "Hex naar Decimaal"
+msgstr "Hex naar Decimaa_l"
 
 #: plugins/convert/convert.glade.h:4
-#, fuzzy
 msgid "_Converted value:"
-msgstr "Geconverteerde waarde:"
+msgstr "Ge_converteerde waarde:"
 
 #: plugins/convert/convert.glade.h:5
-#, fuzzy
 msgid "_Value to be converted:"
-msgstr "Waardes om te converteren:"
+msgstr "_Waarde om te converteren:"
 
 #: plugins/convert/convert.glade.h:6
-#, fuzzy
 msgid "gedit: Number Converter plugin"
-msgstr "Nummer Conversie"
+msgstr "gedit: Nummerconversie plugin"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
 #: plugins/diff/diff.c:36
-#, fuzzy
 msgid "diff"
-msgstr "Diff"
+msgstr "diff"
 
 #: plugins/diff/diff.c:126
-#, fuzzy
 msgid "The two documents you selected are the same."
-msgstr "De twee geselecteerde documenten zijn het zelfde"
+msgstr "De twee geselecteerde documenten zijn hetzelfde"
 
 #: plugins/diff/diff.c:132
-#, fuzzy
 msgid ""
 "The \"first\" file you selected does not exist.\n"
 "\n"
 "Please provide a valid file."
 msgstr ""
-"Het geselecteerde bestand bestaad niet\n"
+"Het eerste geselecteerde bestand bestaat niet.\n"
 "\n"
 "Geef alstublieft een geldig bestand"
 
 #: plugins/diff/diff.c:139
-#, fuzzy
 msgid ""
 "The \"second\" file you selected does not exist.\n"
 "\n"
 "Please provide a valid file."
 msgstr ""
-"Het geselecteerde bestand bestaad niet\n"
+"Het tweede geselecteerde bestand bestaat niet.\n"
 "\n"
 "Geef alstublieft een geldig bestand"
 
 #: plugins/diff/diff.c:150
-#, fuzzy
 msgid "The \"first\" document contains no text."
-msgstr "Het document bevat geen text"
+msgstr "Het eerste document bevat geen tekst."
 
 #: plugins/diff/diff.c:162
-#, fuzzy
 msgid "The \"second\" document contains no text."
-msgstr "Het document bevat geen text"
+msgstr "Het tweede document bevat geen tekst."
 
 #. FIXME: do better error reporting ... . Chema
 #: plugins/diff/diff.c:171
@@ -197,32 +183,28 @@ msgid "Diff"
 msgstr "Diff"
 
 #: plugins/diff/diff.c:497
-#, fuzzy
 msgid "Makes a diff file from two documents or files"
-msgstr "Maakt een diff bestand van 2 documenten of bestanden"
+msgstr "Maakt een diff bestand van twee documenten of bestanden"
 
 #: plugins/diff/diff.c:498
-#, fuzzy
 msgid ""
 "Makes a diff file from two documents or files on disk\n"
 "For more info on diff, type \"man diff\" in a shell prompt\n"
 msgstr ""
-"Maakt een diff bestand van 2 documenten of bestanden op de hardeschijf\n"
-"Voor meer info over diff, tiep \"man dff\" in een shell prompt\n"
+"Maakt een diff bestand van twee documenten of bestanden op de hardeschijf\n"
+"Voor meer info over diff, tik \"man diff\" in een shell prompt\n"
 
 #: plugins/diff/diff.glade.h:2
-#, fuzzy
 msgid "Choose the files to compare"
-msgstr "Kies bestanden om te diffen"
+msgstr "Kies bestanden om te vergelijken"
 
 #: plugins/diff/diff.glade.h:3
-#, fuzzy
 msgid "Diff found at: "
-msgstr "diff gevonden op :"
+msgstr "Diff gevonden op:"
 
 #: plugins/diff/diff.glade.h:4
 msgid "First"
-msgstr ""
+msgstr "Eerste "
 
 #: plugins/diff/diff.glade.h:5
 msgid "From a file on disk"
@@ -234,106 +216,102 @@ msgstr "Uit document"
 
 #: plugins/diff/diff.glade.h:7
 msgid "Second"
-msgstr ""
+msgstr "Tweede"
 
 #: plugins/diff/diff.glade.h:8
-#, fuzzy
 msgid "Select the \"first\" file..."
-msgstr "Selecteer plugins om te instaleren"
+msgstr "Selecteer het eerste bestand..."
 
 #: plugins/diff/diff.glade.h:9
 msgid "Select the \"second\" file..."
-msgstr ""
+msgstr "Selecteer het \"tweede\" bestand..."
 
 #: plugins/diff/diff.glade.h:10
 msgid "Use the _unified output format (-u option)"
-msgstr ""
+msgstr "Gebruik het _universele uitvoerformaat (-u optie)"
 
 #: plugins/diff/diff.glade.h:11
-#, fuzzy
 msgid "gedit: Diff plugin"
-msgstr "gedit: e-mail plugin"
+msgstr "gedit: Diff plugin"
 
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
 "The Document Info plugin is going be closed."
 msgstr ""
+"Er is geen document.\n"
+"De plugin Documentinfo wordt nu afgesloten."
 
 #: plugins/docinfo/docinfo.c:369
-#, fuzzy
 msgid "Document info"
-msgstr "Documenten"
+msgstr "Documentinfo"
 
 #: plugins/docinfo/docinfo.c:370
-#, fuzzy
 msgid "Get info on current document."
-msgstr "Email het huidige document"
+msgstr "Bekijk gedetailleerde documentinfo."
 
 #: plugins/docinfo/docinfo.c:371
 msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr ""
+"Deze plugin geeft een dialoogvenster weer met daarin basis "
+"bestandsinformatie."
 
 #: plugins/docinfo/docinfo.glade.h:1
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: plugins/docinfo/docinfo.glade.h:2
 msgid "Characters (no spaces)"
-msgstr ""
+msgstr "Symbolen (geen spaties)"
 
 #: plugins/docinfo/docinfo.glade.h:3
 msgid "Characters (with spaces)"
-msgstr ""
+msgstr "Symbolen (met spaties)"
 
 #: plugins/docinfo/docinfo.glade.h:4
 msgid "Current column"
-msgstr ""
+msgstr "Huidige kolom"
 
 #: plugins/docinfo/docinfo.glade.h:5
 msgid "Current line"
-msgstr ""
+msgstr "Huidige regel"
 
 #: plugins/docinfo/docinfo.glade.h:6
-#, fuzzy
 msgid "File Name"
 msgstr "Bestandsnaam"
 
 #: plugins/docinfo/docinfo.glade.h:7
-#, fuzzy
 msgid "Lines"
-msgstr "Regel"
+msgstr "Regels"
 
 #: plugins/docinfo/docinfo.glade.h:8
 msgid "Paragraphs"
-msgstr ""
+msgstr "Paragrafen"
 
 #: plugins/docinfo/docinfo.glade.h:9
 msgid "Update"
-msgstr ""
+msgstr "Ververs"
 
 #: plugins/docinfo/docinfo.glade.h:10
 msgid "Words"
-msgstr ""
+msgstr "Woorden"
 
 #: plugins/docinfo/docinfo.glade.h:11
-#, fuzzy
 msgid "gedit: Document Info plugin"
-msgstr "gedit: e-mail plugin"
+msgstr "gedit: Documentinfo plugin"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
 #: plugins/email/email.c:22
-#, fuzzy
 msgid "email"
-msgstr "Email"
+msgstr "e-mail"
 
 #: plugins/email/email.c:75
-#, fuzzy, c-format
+#, c-format
 msgid "Executing command: %s"
-msgstr "%s Aan het uivoeren"
+msgstr "%s wordt uitgevoerd"
 
 #: plugins/email/email.c:275
 msgid "Email"
@@ -356,23 +334,20 @@ msgid "Change..."
 msgstr "Verander..."
 
 #: plugins/email/email.glade.h:3
-#, fuzzy
 msgid "F_rom:"
-msgstr "Van:"
+msgstr "_Van:"
 
 #: plugins/email/email.glade.h:4
-#, fuzzy
 msgid "File to use as body of message: "
-msgstr "Bestand te gebruiken als body in bericht :"
+msgstr "Bestand om te gebruiken als berichtinhoud:"
 
 #: plugins/email/email.glade.h:5
 msgid "From:"
 msgstr "Van:"
 
 #: plugins/email/email.glade.h:6
-#, fuzzy
 msgid "Sendmail found at:"
-msgstr "Sendmail gevonden op :"
+msgstr "Sendmail gevonden op:"
 
 #: plugins/email/email.glade.h:7
 msgid "Subject:"
@@ -383,22 +358,18 @@ msgid "To:"
 msgstr "Naar:"
 
 #: plugins/email/email.glade.h:9
-#, fuzzy
 msgid "_Subject:"
-msgstr "Ondewerp:"
+msgstr "_Onderwerp:"
 
 #: plugins/email/email.glade.h:10
-#, fuzzy
 msgid "_To:"
-msgstr "Naar:"
+msgstr "_Naar:"
 
 #: plugins/email/email.glade.h:11
-#, fuzzy
 msgid "filename"
 msgstr "Bestandsnaam"
 
 #: plugins/email/email.glade.h:12
-#, fuzzy
 msgid "gedit: E-mail plugin"
 msgstr "gedit: e-mail plugin"
 
@@ -414,11 +385,11 @@ msgstr "Draaiterug"
 msgid "Reverse text"
 msgstr "Draai text terug"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Hello World"
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr "Voorbeeld 'hello world' plugin"
 
@@ -428,6 +399,9 @@ msgid ""
 "\n"
 "Please, insert a valid shell command."
 msgstr ""
+"De shell opdrachtregel is leeg.\n"
+"\n"
+"Geef alstublieft een geldige opdrachtregel."
 
 #: plugins/shell_output/shell_output.c:213
 msgid "Shell Output"
@@ -440,58 +414,51 @@ msgstr "Voeg de shell output toe aan het docoument"
 
 #: plugins/shell_output/shell_output.glade.h:1
 msgid "Select the working directory..."
-msgstr ""
+msgstr "Selecteer de werkmap..."
 
 #: plugins/shell_output/shell_output.glade.h:2
-#, fuzzy
 msgid "Shell _command:"
-msgstr "Geef shell commando "
+msgstr "Shell opdra_cht:"
 
 #: plugins/shell_output/shell_output.glade.h:3
 msgid "Specify the working directory and the command you want to run."
-msgstr ""
+msgstr "Selecteer de werkmap en de uit te voeren opdracht."
 
 #: plugins/shell_output/shell_output.glade.h:4
 msgid "_Working directory:"
-msgstr ""
+msgstr "_Werkmap:"
 
 #: plugins/shell_output/shell_output.glade.h:5
-#, fuzzy
 msgid "gedit: Shell Output plugin"
-msgstr "Shell Output plugin"
+msgstr "gedit: Shell uitvoer plugin"
 
 #: plugins/sort/sort.c:192
 msgid "Sort"
-msgstr ""
+msgstr "Sorteer"
 
 #: plugins/sort/sort.c:193
-#, fuzzy
 msgid "Sort a document."
-msgstr "Maak een nieuw document"
+msgstr "Sorteer een document."
 
 #: plugins/sort/sort.c:194
-#, fuzzy
 msgid "Sort a document or selected text."
-msgstr "De twee geselecteerde documenten zijn het zelfde"
+msgstr "Sorteer een document of de geselecteerde tekst."
 
 #: plugins/sort/sort.glade.h:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/sort/sort.glade.h:2
-#, fuzzy
 msgid "Case Sensitive"
 msgstr "Hoofdlettergevoelig"
 
 #: plugins/sort/sort.glade.h:3
-#, fuzzy
 msgid "Sort starting at column:"
-msgstr "Text niet gevonden"
+msgstr "Sorteren start bij kolom:"
 
 #: plugins/sort/sort.glade.h:4
-#, fuzzy
 msgid "gedit: Sort plugin"
-msgstr "gedit: e-mail plugin"
+msgstr "gedit: Sorteerplugin"
 
 #: plugins/time/time.c:83
 msgid "Insert Time"
@@ -510,11 +477,9 @@ msgid "gedit is a small and lightweight text editor for GNOME."
 msgstr "gedit is een kleine en lichtgewicht text editor voor GNOME/Gtk"
 
 #: src/dialogs/dialog-plugins.c:87
-#, fuzzy, c-format
+#, c-format
 msgid "To use the %s plugin, you need to specify a location for \"%s\"."
-msgstr ""
-"%sU kan plugin %s niet gebruiken zonder %s. \n"
-" Wil je een nieuwelocatie voor %s specificeren?"
+msgstr "Om de %s plugin te gebruiken, moet je de lokatie van \"%s\" opgeven."
 
 #. glade won't let me set the title of the propertybox
 #: src/dialogs/dialog-prefs.c:578
@@ -530,22 +495,19 @@ msgid "Find"
 msgstr "Vinden"
 
 #: src/dialogs/dialog-replace.c:332
-#, fuzzy
 msgid "Search string not found"
-msgstr "Text niet gevonden"
+msgstr "Tekst niet gevonden"
 
 #: src/dialogs/dialog-replace.c:337
-#, fuzzy
 msgid "Search string not found."
-msgstr "Text niet gevonden."
+msgstr "Tekst niet gevonden."
 
 #: src/dialogs/dialog-replace.c:362
-#, fuzzy, c-format
+#, c-format
 msgid "Found and replaced %i occurrences."
-msgstr "heeft %i gevonden en vervangen."
+msgstr "%i stuks gevonden en vervangen."
 
 #: src/dialogs/dialog-replace.c:373 src/dialogs/dialog-replace.c:376
-#, fuzzy
 msgid "Could not allocate the memory for the Replace all request."
 msgstr "Kon de benodigde geheugenruimte niet reserveren."
 
@@ -564,268 +526,243 @@ msgstr "Regel nummer:"
 
 #: src/dialogs/plugin-manager.glade.h:1
 msgid "Author(s):"
-msgstr ""
+msgstr "Auteur(s):"
 
 #: src/dialogs/plugin-manager.glade.h:2
-#, fuzzy
 msgid "De_scription"
-msgstr "Plugin beschrijving"
+msgstr "Be_schrijving"
 
 #: src/dialogs/plugin-manager.glade.h:3
 msgid "De_tails"
-msgstr ""
+msgstr "De_tails"
 
 #: src/dialogs/plugin-manager.glade.h:4
-#, fuzzy
 msgid "File name:"
-msgstr "Bestandsnaam"
+msgstr "Bestandsnaam:"
 
 #: src/dialogs/plugin-manager.glade.h:5
-#, fuzzy
 msgid "Plugins manager..."
-msgstr "gedit Plugin manager"
+msgstr "gedit Pluginbeheer..."
 
 #: src/dialogs/plugin-manager.glade.h:6
-#, fuzzy
 msgid "Select the plugins to activate:"
-msgstr "Selecteer plugins om te instaleren"
+msgstr "Selecteer plugins om te gebruiken:"
 
 #: src/dialogs/plugin-manager.glade.h:7
 msgid "_Activate all"
-msgstr ""
+msgstr "_Activeer alles"
 
 #: src/dialogs/plugin-manager.glade.h:8
-#, fuzzy
 msgid "_Deactivate all"
-msgstr "Alles vervangen"
+msgstr "_Niets gebruiken"
 
 #: src/dialogs/prefs.glade.h:1
+msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+
+#: src/dialogs/prefs.glade.h:2
 msgid "Add _header"
 msgstr "Koptekst toevoegen"
 
-#: src/dialogs/prefs.glade.h:2
+#: src/dialogs/prefs.glade.h:3
 msgid "Appearance"
 msgstr "Uiterlijk"
 
-#: src/dialogs/prefs.glade.h:3
-msgid "Bottom"
-msgstr ""
-
 #: src/dialogs/prefs.glade.h:4
+msgid "Bottom"
+msgstr "Onder"
+
+#: src/dialogs/prefs.glade.h:5
 msgid "Colors"
 msgstr "Kleuren"
 
-#: src/dialogs/prefs.glade.h:5
-#, fuzzy
-msgid "Default"
-msgstr "Standaard Lettertype: "
-
 #: src/dialogs/prefs.glade.h:6
+msgid "Default"
+msgstr "Standaard"
+
+#: src/dialogs/prefs.glade.h:7
 msgid "Documents"
 msgstr "Documenten"
 
-#: src/dialogs/prefs.glade.h:7
+#: src/dialogs/prefs.glade.h:8
 msgid "Editor Behavior"
 msgstr "Editor Gedrag"
 
-#: src/dialogs/prefs.glade.h:8
-#, fuzzy
-msgid "Enable _Auto-indent"
-msgstr "Automatisch inspringen aanzetten"
-
 #: src/dialogs/prefs.glade.h:9
+msgid "Enable _Auto-indent"
+msgstr "_Automatisch inspringen"
+
+#: src/dialogs/prefs.glade.h:10
 msgid "Enable word _wrapping"
 msgstr "Woord wrap gebruiken"
 
-#: src/dialogs/prefs.glade.h:10
+#: src/dialogs/prefs.glade.h:11
 msgid "Fonts"
 msgstr "Lettertypen"
 
-#: src/dialogs/prefs.glade.h:11
+#: src/dialogs/prefs.glade.h:12
 msgid "Fonts/Colors"
 msgstr "Lettertypen/Kleuren"
 
-#: src/dialogs/prefs.glade.h:12
+#: src/dialogs/prefs.glade.h:13
 msgid "General"
 msgstr "Algemeen"
 
-#: src/dialogs/prefs.glade.h:13
-msgid "Left"
-msgstr ""
-
 #: src/dialogs/prefs.glade.h:14
+msgid "Left"
+msgstr "Links"
+
+#: src/dialogs/prefs.glade.h:15
 msgid "MDI (Multiple Document Interface)"
 msgstr "MDI (Meerdere Document Interface)"
 
-#: src/dialogs/prefs.glade.h:15
-msgid "Modal"
-msgstr ""
-
 #: src/dialogs/prefs.glade.h:16
-msgid "Notebook"
-msgstr ""
+msgid "Modal"
+msgstr "In een venster (MDI)"
 
 #: src/dialogs/prefs.glade.h:17
-#, fuzzy
-msgid "Notebook _tab position: "
-msgstr "Notebook Tab Positie:"
+msgid "Notebook"
+msgstr "Tabbladen"
 
 #: src/dialogs/prefs.glade.h:18
-#, fuzzy
-msgid "Orientation"
-msgstr "Aan het afdrukken"
+msgid "Notebook _tab position: "
+msgstr "_Tabbladpositie:"
 
 #: src/dialogs/prefs.glade.h:19
+msgid "Orientation"
+msgstr "Oriëntatie"
+
+#: src/dialogs/prefs.glade.h:20
 msgid "Paper"
 msgstr "Papier"
 
-#: src/dialogs/prefs.glade.h:20
+#: src/dialogs/prefs.glade.h:21
 msgid "Pick a Font"
 msgstr "Kies een lettertype"
 
-#: src/dialogs/prefs.glade.h:21
+#: src/dialogs/prefs.glade.h:22
 msgid "Pick a color"
 msgstr "Kies een kleur"
 
-#: src/dialogs/prefs.glade.h:22
-#, fuzzy
-msgid "Preferences"
-msgstr "gedit: Instellingen"
-
 #: src/dialogs/prefs.glade.h:23
-#, fuzzy
-msgid "Print line _numbers every:"
-msgstr "Print regelnummers elke:"
+msgid "Preferences"
+msgstr "Voorkeuren"
 
 #: src/dialogs/prefs.glade.h:24
+msgid "Print line _numbers every:"
+msgstr "Regel_nummers afdrukken elke:"
+
+#: src/dialogs/prefs.glade.h:25
 msgid "Printing"
 msgstr "Aan het afdrukken"
 
-#: src/dialogs/prefs.glade.h:25
-msgid "Right"
-msgstr ""
-
 #: src/dialogs/prefs.glade.h:26
-#, fuzzy
-msgid "S_how statusbar"
-msgstr "Statusbalk tonen"
+msgid "Right"
+msgstr "Rechts"
 
 #: src/dialogs/prefs.glade.h:27
-#, fuzzy
-msgid "Set limit on _undo levels to:"
-msgstr "Stel limit van undo levels in op :"
+msgid "S_how statusbar"
+msgstr "S_tatusbalk tonen"
 
 #: src/dialogs/prefs.glade.h:28
-#, fuzzy
-msgid "Set toolbar according to _system settings"
-msgstr "Stel toolbar in naar de systeem instellingen"
+msgid "Set limit on _undo levels to:"
+msgstr "Stel maximum aantal herstel-niveau's in op :"
 
 #: src/dialogs/prefs.glade.h:29
-#, fuzzy
-msgid "Set toolbar to _icons only"
-msgstr "Stel toolbar in als alleen icons"
+msgid "Set toolbar according to _system settings"
+msgstr "Stel knoppenbalk in naar de _systeeminstellingen"
 
 #: src/dialogs/prefs.glade.h:30
-#, fuzzy
-msgid "Set toolbar to icons with _text"
-msgstr "stel toolbar in als icons met text"
+msgid "Set toolbar to _icons only"
+msgstr "Stel knoppenbalk _in als alleen afbeeldingen"
 
 #: src/dialogs/prefs.glade.h:31
-#, fuzzy
-msgid "Tab _width: "
-msgstr "Vervangen met: "
+msgid "Set toolbar to icons with _text"
+msgstr "Stel knoppenbalk in met zowel afbeeldingen als tekst"
 
 #: src/dialogs/prefs.glade.h:32
-#, fuzzy
-msgid "Top"
-msgstr "Naar:"
+msgid "Tab _width: "
+msgstr "Tabb_reedte:"
 
 #: src/dialogs/prefs.glade.h:33
+msgid "Top"
+msgstr "Boven"
+
+#: src/dialogs/prefs.glade.h:34
 msgid "Toplevel"
-msgstr ""
+msgstr "Eigen venster"
 
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
+#: src/dialogs/prefs.glade.h:35 src/menus.c:276
 msgid "Undo"
-msgstr "Ongedaan maken"
-
-#: src/dialogs/prefs.glade.h:35
-#, fuzzy
-msgid "_Background: "
-msgstr "Achtergrond:"
+msgstr "Herstellen"
 
 #: src/dialogs/prefs.glade.h:36
-#, fuzzy
-msgid "_Default font: "
-msgstr "Standaard Lettertype: "
+msgid "_Background: "
+msgstr "_Achtergrond:"
 
 #: src/dialogs/prefs.glade.h:37
-#, fuzzy
-msgid "_Foreground: "
-msgstr "Voorgrond: "
+msgid "_Default font: "
+msgstr "_Standaard Lettertype:"
 
 #: src/dialogs/prefs.glade.h:38
+msgid "_Foreground: "
+msgstr "_Voorgrond:"
+
+#: src/dialogs/prefs.glade.h:39
 msgid "_Landscape"
 msgstr "_Landschap"
 
-#: src/dialogs/prefs.glade.h:39
-#, fuzzy
-msgid "_Mode: "
-msgstr "Modus:"
-
 #: src/dialogs/prefs.glade.h:40
+msgid "_Mode: "
+msgstr "_Modus:"
+
+#: src/dialogs/prefs.glade.h:41
 msgid "_Portrait"
 msgstr "_Portrait"
 
-#: src/dialogs/prefs.glade.h:41
-#, fuzzy
-msgid "_level(s)"
-msgstr "level(s)"
-
 #: src/dialogs/prefs.glade.h:42
-#, fuzzy
+msgid "_level(s)"
+msgstr "_niveau('s)"
+
+#: src/dialogs/prefs.glade.h:43
 msgid "l_ine(s)"
-msgstr "regel(s)"
+msgstr "_regel(s)"
 
 #: src/dialogs/program.glade.h:1
 msgid "_Location to search for:"
-msgstr ""
+msgstr "_Lokatie om naar te zoeken:"
 
 #: src/dialogs/program.glade.h:2
 msgid "gedit: Browse for program location..."
-msgstr ""
+msgstr "gedit: Bladeren voor programmalokatie..."
 
 #: src/dialogs/program.glade.h:3
 msgid "gedit: Set program location..."
-msgstr ""
+msgstr "gedit: Geef programmalokatie..."
 
 #: src/dialogs/program.glade.h:4
-#, fuzzy
 msgid "label"
-msgstr "label12"
+msgstr "label"
 
 #: src/dialogs/replace.glade.h:1
-#, fuzzy
 msgid "Case _sensitive"
-msgstr "Hoofdlettergevoelig"
+msgstr "Hoofdletter_gevoelig"
 
 #: src/dialogs/replace.glade.h:2
-#, fuzzy
 msgid "Find Next"
-msgstr "Vinden"
+msgstr "Volgende"
 
 #: src/dialogs/replace.glade.h:4
 msgid "Replace All"
 msgstr "Alles vervangen"
 
 #: src/dialogs/replace.glade.h:5
-#, fuzzy
 msgid "Search from the _beginning of the document"
-msgstr "Zoek vanaf einde document"
+msgstr "Zoek vanaf het _begin van het document"
 
 #: src/dialogs/replace.glade.h:6
-#, fuzzy
 msgid "Search from the _cursor position"
-msgstr "Zoek vanaf cursor"
+msgstr "Zoek vanaf _cursorpositie"
 
 #: src/dialogs/replace.glade.h:7
 msgid "_Replace with: "
@@ -837,16 +774,15 @@ msgstr "Zoeken naar: "
 
 #: src/dialogs/uri.glade.h:1
 msgid "Enter the location (URI) of the file you would like to open:"
-msgstr ""
+msgstr "Geef de lokatie (URI) van het bestand dat u wilt openen:"
 
 #: src/dialogs/uri.glade.h:2 src/menus.c:259
 msgid "Open"
 msgstr "Open"
 
 #: src/dialogs/uri.glade.h:3
-#, fuzzy
 msgid "Open from URI"
-msgstr "Bestand Openen..."
+msgstr "Open URI"
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -855,7 +791,7 @@ msgstr "RO -"
 #: src/document.c:295
 #, c-format
 msgid "%s %d"
-msgstr ""
+msgstr "%s %d"
 
 #: src/document.c:295 src/document.c:299
 msgid "Untitled"
@@ -864,12 +800,12 @@ msgstr "Naamloos"
 #: src/document.c:299
 #, c-format
 msgid "%s %d*"
-msgstr ""
+msgstr "%s %d*"
 
 #: src/document.c:477
-#, fuzzy, c-format
+#, c-format
 msgid "``%s'' has been modified.  Do you want to save the changes?"
-msgstr "``%s'' is veranderd. Wil je het opslaan?"
+msgstr "``%s'' is veranderd. Wilt u de veranderingen opslaan?"
 
 #: src/document.c:679 src/document.c:687
 msgid "(modified)"
@@ -898,16 +834,16 @@ msgstr ""
 "Let erop dat het bestand bestaat."
 
 #: src/file.c:245
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error was encountered while opening the file \"%s\".\n"
 "Could not allocate the required memory."
 msgstr ""
 "Fout bij het openen van bestand \"%s\".\n"
-"Let erop dat het bestand bestaat."
+"Kon niet genoeg geheugen reserveren."
 
 #: src/file.c:257
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error was encountered while reading the file: \n"
 "\n"
@@ -915,24 +851,25 @@ msgid ""
 "\n"
 "Make sure that you have permissions for opening the file. "
 msgstr ""
-"gedit kon dit bestand niet openen:\n"
+"gedit kon niet lezen uit dit bestand:\n"
 "\n"
 "%s\n"
 "\n"
 "Let erop dat u voldoende rechten heeft om dit te doen."
 
 #: src/file.c:277
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error was encountered while reading the file: \n"
 "\n"
 "%s"
 msgstr ""
-"Fout bij het openen van bestand \"%s\".\n"
-"Let erop dat het bestand bestaat."
+"Fout bij het lezen uit het bestand:\n"
+"\n"
+"%s"
 
 #: src/file.c:298
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Internal error reading the file: \n"
 "\n"
@@ -940,22 +877,22 @@ msgid ""
 "\n"
 "Please, report this error to submit@bugs.gnome.org."
 msgstr ""
-"gedit kon dit bestand niet opslaan:\n"
+"Interne fout bij het lezen van het bestand: \n"
 "\n"
-" %s \n"
+"%s\n"
 "\n"
-"Vanwege een onbekend probleem (1). Rapporteer dit probleem alstublieft\n"
-"bij submit@bugs.gnome.org"
+"Rapporteer deze fout alstublieft via submit@bugs.gnome.org."
 
 #: src/file.c:314
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error was encountered while closing the file: \n"
 "\n"
 "%s"
 msgstr ""
-"Fout bij het openen van bestand \"%s\".\n"
-"Let erop dat het bestand bestaat."
+"Fout bij het sluiten van bestand:\n"
+"\n"
+"%s"
 
 #: src/file.c:477
 msgid "Save As..."
@@ -972,8 +909,8 @@ msgid ""
 "\n"
 " %s \n"
 "\n"
-"Make sure that the path you provided exists,and that you have the "
-"appropriate write permissions."
+"Make sure that the path you provided exists,and that you have the appropriate "
+"write permissions."
 msgstr ""
 "gedit kon dit bestand niet opslaan:\n"
 "\n"
@@ -983,14 +920,14 @@ msgstr ""
 "hebt om te schrijven."
 
 #: src/file.c:572
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "gedit was unable to save the file:\n"
 "\n"
 " %s \n"
 "\n"
-"Because of an unknown reason (1). Please report this Problem to submit@bugs."
-"gnome.org"
+"Because of an unknown reason (1). Please report this Problem to "
+"submit@bugs.gnome.org"
 msgstr ""
 "gedit kon dit bestand niet opslaan:\n"
 "\n"
@@ -1000,14 +937,14 @@ msgstr ""
 "bij submit@bugs.gnome.org"
 
 #: src/file.c:590
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "gedit was unable to save the file:\n"
 "\n"
 " %s \n"
 "\n"
-"Because of an unknown reason (2). Please report this Problem to submit@bugs."
-"gnome.org"
+"Because of an unknown reason (2). Please report this Problem to "
+"submit@bugs.gnome.org"
 msgstr ""
 "gedit kon dit bestand niet opslaan:\n"
 "\n"
@@ -1021,14 +958,13 @@ msgid "Could not allocate the required memory."
 msgstr "Kon de benodigde geheugenruimte niet reserveren."
 
 #: src/file.c:712
-#, fuzzy
 msgid "Error in the pipe."
-msgstr "Fout in de pipe ."
+msgstr "Fout in de pijplijn."
 
 #: src/file.c:837
-#, fuzzy, c-format
+#, c-format
 msgid "Loaded %i files"
-msgstr "Bestand %s geladen"
+msgstr "%i bestanden geladen"
 
 #: src/file.c:903
 msgid "Open File ..."
@@ -1052,7 +988,7 @@ msgid "You can't revert an Untitled document\n"
 msgstr "Je kan niet getitelde documenten niet reverten\n"
 
 #: src/file.c:1200
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to revert all changes?\n"
 "(%s)"
@@ -1115,7 +1051,7 @@ msgstr "Zet alle debug berichten aan."
 
 #: src/gedit.c:159
 msgid "Cannot initialize gnome-vfs."
-msgstr ""
+msgstr "Kan gnome-vfs niet inschakelen."
 
 #: src/menus.c:54
 msgid "Open (swap) .c/.h file"
@@ -1130,27 +1066,24 @@ msgid "Create a new document"
 msgstr "Maak een nieuw document"
 
 #: src/menus.c:68
-#, fuzzy
 msgid "Sav_e All"
-msgstr "Alles Bewaren"
+msgstr "Alles B_ewaren"
 
 #: src/menus.c:69
 msgid "Save All Open Files"
-msgstr "Alle geopende bestanden bewaren"
+msgstr "Alle geopende bestanden opslaan"
 
 #: src/menus.c:74
-#, fuzzy
 msgid "_Revert"
-msgstr "Revert"
+msgstr "He_rstellen"
 
 #: src/menus.c:83
-#, fuzzy
 msgid "Open from _URI..."
-msgstr "Bestand Openen..."
+msgstr "Open _URI..."
 
 #: src/menus.c:84
 msgid "Open a file from a specified URI"
-msgstr ""
+msgstr "Open een bestand van een bepaalde URI"
 
 #: src/menus.c:98
 msgid "Print pre_view"
@@ -1161,18 +1094,16 @@ msgid "Print preview"
 msgstr "Afdrukvoorbeeld..."
 
 #: src/menus.c:102
-#, fuzzy
 msgid "Print pre_view..."
-msgstr "Afdrukvoorbeeld..."
+msgstr "Afdruk_voorbeeld..."
 
 #: src/menus.c:103
 msgid "Preview data to be printed"
 msgstr "Voorbeeld van de data die wordt geprint"
 
 #: src/menus.c:110
-#, fuzzy
 msgid "C_lose All"
-msgstr "Alles sluiten"
+msgstr "A_lles sluiten"
 
 #: src/menus.c:111
 msgid "Close All Open Files"
@@ -1203,9 +1134,8 @@ msgid "Remove view of the document"
 msgstr "Verwijdert het venster"
 
 #: src/menus.c:220
-#, fuzzy
 msgid "Se_arch"
-msgstr "Zoeken"
+msgstr "Z_oeken"
 
 #: src/menus.c:229 src/plugin.c:90 src/plugin.c:402 src/window.c:499
 #: src/window.c:676
@@ -1226,7 +1156,7 @@ msgstr "Open een bestand"
 
 #: src/menus.c:263
 msgid "Save"
-msgstr "Bewaren"
+msgstr "Opslaan"
 
 #: src/menus.c:263
 msgid "Save the current file"
@@ -1270,7 +1200,7 @@ msgstr "Knipt de selectie"
 
 #: src/menus.c:289
 msgid "Copy"
-msgstr "Copiëren"
+msgstr "Kopiëren"
 
 #: src/menus.c:289
 msgid "Copy the selection"
@@ -1297,14 +1227,12 @@ msgid "Exit the program"
 msgstr "Programma verlaten"
 
 #: src/plugin.c:107
-#, fuzzy
 msgid "_Manager ..."
-msgstr "Manager ..."
+msgstr "_Beheer ..."
 
 #: src/plugin.c:108
-#, fuzzy
 msgid "Manage available plugin modules"
-msgstr "Aanwezige Plugins"
+msgstr "Beheer aanwezige pluginsmodules"
 
 #: src/plugin.c:195
 #, c-format
@@ -1372,21 +1300,19 @@ msgstr "Fout, plugin is nog in gebruik"
 
 #: src/prefs.c:42
 msgid "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
-msgstr ""
+msgstr "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
 
 #: src/print.c:230
-#, fuzzy
 msgid "Print Document"
-msgstr "Documenten"
+msgstr "Document afdrukken"
 
 #: src/print.c:238
 msgid "Pages"
 msgstr "Pagina's"
 
 #: src/print.c:286
-#, fuzzy
 msgid "gedit: Print Preview\n"
-msgstr "gedit (%s): Afdrukvoorbeeld"
+msgstr "gedit: Afdrukvoorbeeld \n"
 
 #: src/print-doc.c:505
 #, c-format
@@ -1403,14 +1329,12 @@ msgstr ""
 "gedit kan niet printer zonder dit lettertype geinstaleerd te hebben."
 
 #: src/print-util.c:278
-#, fuzzy
 msgid "Printing .."
-msgstr "Aan het afdrukken"
+msgstr "Bezig met afdrukken .."
 
 #: src/print-util.c:289
-#, fuzzy
 msgid "Printing ..."
-msgstr "Aan het afdrukken"
+msgstr "Bezig met afdrukken ..."
 
 #. xgettext translators: Use the name of the stock
 #. * Menu item for "File"	if it is not the same, we are going to
@@ -1426,7 +1350,7 @@ msgid "_File"
 msgstr "_Bestand"
 
 #: src/recent.c:580
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to open recent file: %s"
 msgstr "Kan recent bestand %s niet openen."
 
@@ -1467,208 +1391,3 @@ msgstr ""
 msgid "You can't remove the last view of a document."
 msgstr "Je kan de laatste view van een document niet verwijderen."
 
-#~ msgid "label12"
-#~ msgstr "label12"
-
-#~ msgid "label13"
-#~ msgstr "label13"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Right\n"
-#~ "Top\n"
-#~ "Bottom\n"
-#~ msgstr ""
-#~ "Links\n"
-#~ "Rechts\n"
-#~ "Bovenaan\n"
-#~ "Onderaan\n"
-
-#~ msgid ""
-#~ "Notebook\n"
-#~ "Toplevel\n"
-#~ "Modal\n"
-#~ "Default\n"
-#~ msgstr ""
-#~ "Notebook\n"
-#~ "Top-niveau\n"
-#~ "Modaal\n"
-#~ "Standaard\n"
-
-#~ msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-#~ msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-
-#, fuzzy
-#~ msgid ""
-#~ "Plugin Name: %s\n"
-#~ "Author: %s\n"
-#~ "Description: %s\n"
-#~ msgstr ""
-#~ "Plugin Naam : %s\n"
-#~ "Auteur : %s\n"
-#~ "Beschrijving : %s\n"
-
-#~ msgid "Add >"
-#~ msgstr "Voeg toe >"
-
-#~ msgid "< Remove"
-#~ msgstr "< Verwijder"
-
-#~ msgid "Add All >>"
-#~ msgstr "Voeg alles toe >>"
-
-#~ msgid "<< Remove All"
-#~ msgstr "<< Verwijder alles"
-
-#~ msgid "Installed Plugins"
-#~ msgstr "Geinstaleerde Plugins"
-
-#, fuzzy
-#~ msgid ""
-#~ "An error was encountered while opening the file: \n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Please make sure the file exists."
-#~ msgstr ""
-#~ "Fout bij het openen van bestand \"%s\".\n"
-#~ "Let erop dat het bestand bestaat."
-
-#~ msgid "Add/Remove installed plugins"
-#~ msgstr "Voegtoe/Verwijder geinstaleerde plugins"
-
-#~ msgid "File to use as body of message : "
-#~ msgstr "Bestand te gebruiken als body in bericht :"
-
-#~ msgid "Sendmail found at :"
-#~ msgstr "Sendmail gevonden op :"
-
-#~ msgid "browse"
-#~ msgstr "browse"
-
-#~ msgid "don't translate this\n"
-#~ msgstr "don't translate this\n"
-
-#~ msgid "Directory  "
-#~ msgstr "Directory"
-
-#~ msgid "Text found at line :%i"
-#~ msgstr "Text gevonden op lijn :%i"
-
-#~ msgid "Enter the line number you wish to go to."
-#~ msgstr "Geef het regelnummer waar je naartoe wilt gaan."
-
-#~ msgid "b_eginning of document"
-#~ msgstr "begin van document"
-
-#~ msgid "_cursor position"
-#~ msgstr "_cursor positie"
-
-#~ msgid ""
-#~ "An error was encountered while opening the file:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "\n"
-#~ "Please make sure the file is not being used by another application\n"
-#~ "and that the file is not empty."
-#~ msgstr ""
-#~ "Fout bij het bestand openen:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Let er alstublieft op dat het bestand niet al in gebruik is en\n"
-#~ "dat het bestand niet leeg is."
-
-#~ msgid "Get file info like characters, lines, words & paragraphs count."
-#~ msgstr ""
-#~ "Verkrijg bestands info: Karakters, Regels, woorden en paragrafen teller."
-
-#~ msgid "Can't find again. There is not a text string to search for."
-#~ msgstr ""
-#~ "Kan niet nog een keer zoeken. Er is geen text string om naar te zoeken."
-
-#~ msgid "Diff plugin."
-#~ msgstr "Diff plugin."
-
-#~ msgid "With special thanks to:"
-#~ msgstr "Speciale dank naar:"
-
-#~ msgid "(C) 1998, 1999 Alex Roberts and Evan Lawrence"
-#~ msgstr "(C) 1998, 1999 Alex Roberts en Evan Lawrence"
-
-#~ msgid "gedit is a small and lightweight text editor for GNOME/Gtk+"
-#~ msgstr "gedit is een kleine en lichtgewicht text editor voor GNOME/Gtk"
-
-#~ msgid "Show splitscreen"
-#~ msgstr "Toon Scherm doormidden"
-
-#~ msgid "Enable Wordwrap"
-#~ msgstr "Woord wrap gebruiken"
-
-#, fuzzy
-#~ msgid "Find _In Files..."
-#~ msgstr "Zoek In Bestanden"
-
-#~ msgid ""
-#~ "Enable or disable the statusbar at the bottom of this application window."
-#~ msgstr "Statusbalk onderaan venster aan of uitschakelen"
-
-#~ msgid "Get the current and total lines"
-#~ msgstr "Geeft het huidige regelnummer en het totaal"
-
-#~ msgid ""
-#~ "Filename: %s\n"
-#~ "\n"
-#~ "Total Lines: %i\n"
-#~ "Current Line: %i"
-#~ msgstr ""
-#~ "Bestandsnaam: %s\\n\n"
-#~ "\\n\n"
-#~ "Aantal regels: %i\\n\n"
-#~ "Huidige regel: %i"
-
-#~ msgid "Contents"
-#~ msgstr "Inhoud"
-
-#~ msgid "Go to line"
-#~ msgstr "Ga naar regel"
-
-#~ msgid "Line number: "
-#~ msgstr "Regel nummer:"
-
-#~ msgid "Replace?"
-#~ msgstr "Vervangen?"
-
-#~ msgid "Search for:"
-#~ msgstr "Zoek naar:"
-
-#~ msgid "Replace with:"
-#~ msgstr "Vervang met:"
-
-#~ msgid "Ask before replacing"
-#~ msgstr "Bevestigen voor vervangen"
-
-#~ msgid "Wrap long lines at the page width"
-#~ msgstr "Lange regels 'wrappen' op paginabreedte"
-
-#~ msgid "Search from: "
-#~ msgstr "Zoek vanaf: "
-
-#~ msgid ""
-#~ "Cursor\n"
-#~ "Beginning of document\n"
-#~ "End of document\n"
-#~ msgstr ""
-#~ "Cursor\n"
-#~ "Begin van document\n"
-#~ "Eind van document\n"
-
-#~ msgid ""
-#~ "Cursor\n"
-#~ "Beginning of Document\n"
-#~ "End of Document\n"
-#~ msgstr ""
-#~ "Cursor\n"
-#~ "Begin van document\n"
-#~ "Eind van document\n"
