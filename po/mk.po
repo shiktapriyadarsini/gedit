@@ -1,3 +1,5 @@
+# translation of mk.po to Macedonian
+# translation of mk.po to
 # translation of gedit.gnome-2-2.mk.po to Macedonian
 # translation of gedit.HEAD.mk.po to Macedonian
 # Copyright (C) 2002,2003 Free Software Foundation, Inc.
@@ -6,9 +8,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.gnome-2-2.mk\n"
+"Project-Id-Version: mk\n"
 "POT-Creation-Date: 2002-12-13 05:47+0100\n"
-"PO-Revision-Date: 2003-04-14 16:22+0200\n"
+"PO-Revision-Date: 2003-04-16 15:02+0200\n"
 "Last-Translator: Ivan Stojmirov <stojmir@linux.net.mk>\n"
 "Language-Team: Macedonian <gnomk-main@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -883,7 +885,7 @@ msgstr ""
 
 #: plugins/spell/gedit-spell-checker-dialog.c:285
 msgid "Check Spelling"
-msgstr ""
+msgstr "Провери Правопис"
 
 #: plugins/spell/gedit-spell-checker-dialog.c:296
 msgid "Suggestions"
@@ -903,7 +905,7 @@ msgstr ""
 
 #: plugins/spell/gedit-spell-checker.c:74
 msgid "Catalan"
-msgstr ""
+msgstr "Каталонски"
 
 #: plugins/spell/gedit-spell-checker.c:75
 msgid "Czech"
@@ -915,7 +917,7 @@ msgstr "Данска"
 
 #: plugins/spell/gedit-spell-checker.c:77
 msgid "German (Germany)"
-msgstr ""
+msgstr "Германски (Германија)"
 
 #: plugins/spell/gedit-spell-checker.c:78
 msgid "German (Swiss)"
@@ -947,7 +949,7 @@ msgstr ""
 
 #: plugins/spell/gedit-spell-checker.c:85
 msgid "French (France)"
-msgstr ""
+msgstr "Француски (Франција)"
 
 #: plugins/spell/gedit-spell-checker.c:86
 msgid "French (Swiss)"
@@ -971,7 +973,7 @@ msgstr "Полска"
 
 #: plugins/spell/gedit-spell-checker.c:91
 msgid "Portuguese (Portugal)"
-msgstr ""
+msgstr "Португалски (Португалија)"
 
 #: plugins/spell/gedit-spell-checker.c:92
 msgid "Portuguese (Brazilian)"
@@ -999,7 +1001,7 @@ msgstr ""
 
 #: plugins/spell/gedit-spell-language-dialog.c:249
 msgid "Languages"
-msgstr ""
+msgstr "Јазици"
 
 #: plugins/spell/languages-dialog.glade2.h:1
 msgid "Select the _language of the current document."
@@ -1163,7 +1165,7 @@ msgstr ""
 
 #: src/dialogs/gedit-plugin-manager.c:54
 msgid "Load"
-msgstr ""
+msgstr "Вчитај"
 
 #: src/dialogs/gedit-plugin-manager.c:320
 msgid "Module file name"
@@ -1171,7 +1173,7 @@ msgstr ""
 
 #: src/dialogs/gedit-plugin-manager.c:321
 msgid "Author(s)"
-msgstr ""
+msgstr "Автори(и)"
 
 #: src/dialogs/gedit-plugin-manager.c:488
 msgid "Could not find plugin-manager.glade2, reinstall gedit.\n"
@@ -1206,7 +1208,7 @@ msgstr ""
 #: src/dialogs/gedit-preferences-dialog.c:234
 #: src/dialogs/gedit-preferences.glade2.h:47
 msgid "Tabs"
-msgstr ""
+msgstr "Табови"
 
 #: src/dialogs/gedit-preferences-dialog.c:235
 msgid "Wrap Mode"
@@ -1747,7 +1749,7 @@ msgstr "Неименувано"
 
 #: src/gedit-document.c:551 src/gedit-document.c:598
 msgid "Invalid file name"
-msgstr ""
+msgstr "Неважечко име на датотеката"
 
 #: src/gedit-document.c:710 src/gedit-document.c:794
 msgid "Invalid UTF-8 data"
@@ -2065,7 +2067,7 @@ msgstr ""
 
 #: src/gedit-ui.xml.h:14
 msgid "Customize"
-msgstr ""
+msgstr "Персонализирај"
 
 #: src/gedit-ui.xml.h:15
 msgid "Customize toolbars"
@@ -2297,7 +2299,7 @@ msgstr "_Содржина"
 
 #: src/gedit-ui.xml.h:78
 msgid "_Copy"
-msgstr ""
+msgstr "_Копирај"
 
 #: src/gedit-ui.xml.h:79
 msgid "_Customize Toolbar"
@@ -2894,7 +2896,7 @@ msgstr "Хинди"
 
 #: src/gedit-encodings.c:245
 msgid "Farsi"
-msgstr ""
+msgstr "Farsi"
 
 #: src/gedit-encodings.c:249
 msgid "Gujarati"
