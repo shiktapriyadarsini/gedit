@@ -70,6 +70,11 @@ void gedit_cmd_documents_move_to_new_window	(GtkAction *action, GeditWindow *win
 void gedit_cmd_help_contents		(GtkAction *action, GeditWindow *window);
 void gedit_cmd_help_about		(GtkAction *action, GeditWindow *window);
 
+/*
+ * Non-exported function
+ */
+gboolean _gedit_cmd_file_can_close 	(GeditTab *tab, GtkWindow *window);
+
 G_END_DECLS
 
 #endif /* __GEDIT_COMMANDS_H__ */ 

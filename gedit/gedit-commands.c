@@ -183,20 +183,15 @@ gedit_cmd_file_print (GtkAction *action, GeditWindow *window)
 	gedit_print (GTK_WINDOW (window), doc);
 }
 
-void
-gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
+gboolean
+_gedit_cmd_file_can_close (GeditTab *tab, GtkWindow *window)
 {
-	GeditTab      *active_tab;
 	GeditDocument *doc;
 	gboolean       close = TRUE;
 	
 	gedit_debug (DEBUG_COMMANDS, "");
 	
-	active_tab = gedit_window_get_active_tab (window);
-	if (active_tab == NULL)
-		return;	
-		
-	doc = gedit_tab_get_document (active_tab);
+	doc = gedit_tab_get_document (tab);
 	
 	if (gedit_document_get_modified (doc) || 
 	    gedit_document_get_deleted (doc))
@@ -204,7 +199,7 @@ gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 		GtkWidget *dlg;
 		
 		dlg = gedit_close_confirmation_dialog_new_single (
-					GTK_WINDOW (window), 
+					window, 
 					doc);
 				 
 		close = gedit_close_confirmation_dialog_run (
@@ -216,7 +211,21 @@ gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 		gtk_widget_destroy (dlg);		
 	}
 	
-	if (close)
+	return close;
+}
+
+void
+gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
+{
+	GeditTab      *active_tab;
+	
+	gedit_debug (DEBUG_COMMANDS, "");
+	
+	active_tab = gedit_window_get_active_tab (window);
+	if (active_tab == NULL)
+		return;	
+			
+	if (_gedit_cmd_file_can_close (active_tab, GTK_WINDOW (window)))
 		gedit_window_close_tab (window, active_tab);
 }
 

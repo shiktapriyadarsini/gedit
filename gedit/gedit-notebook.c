@@ -894,43 +894,14 @@ static void
 close_button_clicked_cb (GtkWidget *widget, GtkWidget *tab)
 {
 	GeditNotebook *notebook;
-	gboolean inhibited = FALSE;
+	gboolean can_close = TRUE;
 
 	notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (tab));
-	g_signal_emit (G_OBJECT (notebook), signals[TAB_DELETE], 0, tab, &inhibited);
+	g_signal_emit (G_OBJECT (notebook), signals[TAB_DELETE], 0, tab, &can_close);
 
-	if (inhibited == FALSE)
-	{
+	if (can_close)
 		gedit_notebook_remove_tab (notebook, GEDIT_TAB (tab));
-	}
 }
-
-/*
-static void
-tab_label_style_set_cb (GtkWidget *label,
-			GtkStyle  *previous_style,
-			GtkWidget *hbox)
-{
-	PangoFontMetrics *metrics;
-	PangoContext *context;
-	int char_width, h, w;
-
-	context = gtk_widget_get_pango_context (label);
-	metrics = pango_context_get_metrics (context,
-			                     label->style->font_desc,
-					     pango_context_get_language (context));
-
-	char_width = pango_font_metrics_get_approximate_digit_width (metrics);
-	pango_font_metrics_unref (metrics);
-
-	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (label),
-					   GTK_ICON_SIZE_MENU, &w, &h);
-
-	gtk_widget_set_size_request (hbox, 
-				     TAB_WIDTH_N_CHARS * PANGO_PIXELS(char_width) + 2 * w, -1);
-}
-*/
-
 
 static GtkWidget *
 build_tab_label (GeditNotebook *nb, 

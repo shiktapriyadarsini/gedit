@@ -36,6 +36,8 @@
 
 #include "gedit-app.h"
 #include "gedit-prefs-manager-app.h"
+#include "gedit-commands.h"
+#include "gedit-notebook.h"
 
 #define GEDIT_APP_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_APP, GeditAppPrivate))
 
@@ -118,24 +120,36 @@ window_destroy (GeditWindow *window,
 {
 	app->priv->windows = g_slist_remove (app->priv->windows,
 					     window);
-					     
+
+/* CHECK: I don't think we have to disconnect this function, since windows
+   is being destroyed */
+/*					     
 	g_signal_handlers_disconnect_by_func (window, 
 					      G_CALLBACK (window_focus_in_event),
 					      app);
 	g_signal_handlers_disconnect_by_func (window, 
 					      G_CALLBACK (window_destroy),
 					      app);
-					      
+*/					      
 	if (app->priv->windows == NULL)
 	{
 		g_object_unref (app);
 	}
 }
 
+static gboolean 
+notebook_tab_delete (GeditNotebook *notebook,
+		     GeditTab      *tab,
+		     GtkWindow     *window)
+{
+	return _gedit_cmd_file_can_close (tab, window);
+}
+	     
 GeditWindow *
 gedit_app_create_window	(GeditApp *app)
 {
 	GtkWindow *window;
+	GtkWidget *notebook;
 	
 	window = GTK_WINDOW (g_object_new (GEDIT_TYPE_WINDOW, NULL));
 	
@@ -180,6 +194,13 @@ gedit_app_create_window	(GeditApp *app)
 			  "destroy",
 			  G_CALLBACK (window_destroy),
 			  app);
+			  
+	notebook = _gedit_window_get_notebook (GEDIT_WINDOW (window));
+	
+	g_signal_connect (notebook,
+			  "tab_delete",
+			  G_CALLBACK (notebook_tab_delete),
+			  window);
 			  
 	return GEDIT_WINDOW (window);
 }
