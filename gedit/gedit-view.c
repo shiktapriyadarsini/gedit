@@ -356,7 +356,6 @@ gedit_view_new (GeditDocument *doc)
 	
 	view = GTK_WIDGET (g_object_new (GEDIT_TYPE_VIEW, 
 					 "buffer", doc,
-					 "pippo", doc,
 					 NULL));
 
 	g_signal_connect (G_OBJECT (doc),

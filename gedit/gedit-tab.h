@@ -58,7 +58,7 @@ typedef struct _GeditTab GeditTab;
 struct _GeditTab 
 {
 	/* FIXME: do we really need to extends GtkBin - Paolo */
-	GtkBin vbox;
+	GtkVBox vbox;
 
 	/*< private > */
 	GeditTabPrivate *priv;
@@ -71,7 +71,7 @@ typedef struct _GeditTabClass GeditTabClass;
 
 struct _GeditTabClass 
 {
-	GtkBinClass parent_class;
+	GtkVBoxClass parent_class;
 };
 
 /*

@@ -35,7 +35,7 @@ struct _GeditTabPrivate
 	GtkWidget *view;
 };
 
-G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_BIN)
+G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
 
 
 static void
@@ -75,12 +75,13 @@ gedit_tab_init (GeditTab *tab)
 	/* Create the view */
 	doc = gedit_document_new ();
 	tab->priv->view = gedit_view_new (doc);
-
-	gtk_container_add (GTK_CONTAINER (tab), sw);
+	gtk_widget_show (tab->priv->view);
+	
+	gtk_box_pack_start (GTK_BOX (tab), sw, TRUE, TRUE, 0);
 	gtk_container_add (GTK_CONTAINER (sw), tab->priv->view);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
                                              GTK_SHADOW_IN);	
-	gtk_widget_show_all (sw);                                             
+	gtk_widget_show (sw);                                             
 }
 
 GtkWidget *

@@ -116,6 +116,8 @@ libgedit_la_SOURCES = 			\
 	gedit-prefs-manager.c		\
 	gedit-prefs-manager-private.h	\
 	gedit-metadata-manager.c	\
+	gedit-encodings.c		\
+	gedit-convert.c			\
 	$(LIB_H_FILES)
 
 gedit-marshal.h: gedit-marshal.list $(GLIB_GENMARSHAL)
