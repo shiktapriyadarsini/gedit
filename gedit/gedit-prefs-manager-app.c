@@ -40,12 +40,10 @@
 #include "gedit-prefs-manager.h"
 #include "gedit-prefs-manager-private.h"
 #include "gedit-prefs-manager-app.h"
+#include "gedit-app.h"
 #include "gedit-debug.h"
 #include "gedit-view.h"
-#include "gedit-mdi.h"
 #include "gedit-recent.h"
-#include "gedit2.h"
-#include "gedit-app.h"
 
 static void gedit_prefs_manager_editor_font_changed	(GConfClient *client,
 		   				 	 guint        cnxn_id,
@@ -106,12 +104,11 @@ static void gedit_prefs_manager_max_recents_changed 	(GConfClient *client,
 							 guint        cnxn_id, 
 							 GConfEntry  *entry, 
 							 gpointer     user_data);
-#if 0							 
+
 static void gedit_prefs_manager_auto_save_changed	(GConfClient *client,
 							 guint        cnxn_id,
 							 GConfEntry  *entry,
 							 gpointer     user_data);
-#endif							       
 
 static gint window_state = -1;
 static gint window_height = -1;
@@ -195,12 +192,11 @@ gedit_prefs_manager_app_init (void)
 				GPM_MAX_RECENTS,
 				gedit_prefs_manager_max_recents_changed,
 				NULL, NULL, NULL);
-#if 0
+
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_SAVE_DIR,
 				gedit_prefs_manager_auto_save_changed,
 				NULL, NULL, NULL);
-#endif				
 	}
 
 	return gedit_prefs_manager != NULL;	
@@ -218,7 +214,8 @@ gedit_prefs_manager_app_shutdown ()
 }
 
 /* Window state */
-gint gedit_prefs_manager_get_window_state (void)
+gint
+gedit_prefs_manager_get_window_state (void)
 {
 	if (window_state == -1)
 		window_state = gnome_config_get_int (GPM_WINDOW_STATE "=" GPM_DEFAULT_WINDOW_STATE_STR);
@@ -257,7 +254,8 @@ gedit_prefs_manager_get_default_window_height (void)
 	return GPM_DEFAULT_WINDOW_HEIGHT;
 }
 
-void gedit_prefs_manager_set_window_height (gint wh)
+void
+gedit_prefs_manager_set_window_height (gint wh)
 {
 	g_return_if_fail (wh > -1);
 
@@ -996,7 +994,7 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 				bonobo_ui_component_set_prop (ui_component, "/menu/View/HighlightMode",
 						      "sensitive", "0", NULL);
 
-			l = g_list_next (l);
+			l = l->next;
 		}
 #endif
 	}
@@ -1033,10 +1031,12 @@ gedit_prefs_manager_max_recents_changed (GConfClient *client,
 		egg_recent_model_set_limit (model, max);
 	}
 }
-#if 0
+
 static void
 gedit_prefs_manager_auto_save_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+				       guint        cnxn_id,
+				       GConfEntry  *entry,
+				       gpointer     user_data)
 {
 	GList *docs;
 	GList *l;
@@ -1055,7 +1055,7 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 		else
 			auto_save = GPM_DEFAULT_AUTO_SAVE;
 
-		docs = gedit_get_open_documents ();
+		docs = gedit_app_get_documents (gedit_app_get_default ());
 		l = docs;
 
 		while (l != NULL)
@@ -1064,7 +1064,7 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 
 			gedit_document_enable_auto_save (doc, auto_save);
 
-			l = g_list_next (l);
+			l = l->next;
 		}
 
 		g_list_free (docs);
@@ -1083,19 +1083,19 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 		else
 			auto_save_interval = GPM_DEFAULT_AUTO_SAVE_INTERVAL;
 
-		docs = gedit_get_open_documents ();
+		docs = gedit_app_get_documents (gedit_app_get_default ());
 		l = docs;
-		
+
 		while (l != NULL)
 		{
 			GeditDocument *doc = GEDIT_DOCUMENT (l->data);
 
 			gedit_document_set_auto_save_interval (doc, auto_save_interval);
 
-			l = g_list_next (l);
+			l = l->next;
 		}
 
 		g_list_free (docs);
 	}
 }
-#endif
+
