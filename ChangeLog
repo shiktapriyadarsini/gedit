@@ -1,3 +1,8 @@
+2002-10-15  Sander Vesik <sander.vesik@sun.com>
+	*  help/C/gedit-C.omf
+
+	update title in OMF file
+
 2002-09-05  Paolo Maggi  <maggi@athena.polito.it>
 
 	* configure.in:
