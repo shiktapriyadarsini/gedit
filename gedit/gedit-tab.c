@@ -32,6 +32,7 @@
 
 #include <glib/gi18n.h>
 
+#include <libgnomeui/libgnomeui.h>
 #include <libgnomevfs/gnome-vfs-mime-handlers.h>
 
 #include "gedit-tab.h"
@@ -299,3 +300,86 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 	return tip;
 }
 
+static GdkPixbuf *
+get_icon (GtkIconTheme *theme, 
+	  const gchar  *uri,
+	  const gchar  *mime_type, 
+	  gint          size)
+{
+	gchar *icon;
+	GdkPixbuf *pixbuf;
+	guint width, height;
+	
+	icon = gnome_icon_lookup (theme, NULL, uri, NULL, NULL,
+				  mime_type, 0, NULL);
+	
+
+	g_return_val_if_fail (icon != NULL, NULL);
+
+	pixbuf = gtk_icon_theme_load_icon (theme, icon, size, 0, NULL);
+	g_free (icon);
+	if (pixbuf == NULL)
+		return NULL;
+		
+	width = gdk_pixbuf_get_width (pixbuf); 
+	height = gdk_pixbuf_get_height (pixbuf);
+	/* if the icon is larger than the nominal size, scale down */
+	if (MAX (width, height) > size) 
+	{
+		GdkPixbuf *scaled_pixbuf;
+		
+		if (width > height) 
+		{
+			height = height * size / width;
+			width = size;
+		} 
+		else 
+		{
+			width = width * size / height;
+			height = size;
+		}
+		
+		scaled_pixbuf = gdk_pixbuf_scale_simple	(pixbuf, 
+							 width, 
+							 height, 
+							 GDK_INTERP_BILINEAR);
+		g_object_unref (pixbuf);
+		pixbuf = scaled_pixbuf;
+	}
+	
+	return pixbuf;
+}
+
+/* FIXME: add support for theme changed. I think it should be as easy as
+   call g_object_notify (tab, "name") when the icon theme changes */
+GdkPixbuf *
+_gedit_tab_get_icon (GeditTab *tab)
+{
+	GtkIconTheme *theme;
+	GdkScreen *screen;
+	GdkPixbuf *pixbuf;
+	gchar *raw_uri;
+	const gchar *mime_type;
+	gint icon_size;
+	GeditDocument *doc;
+
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
+
+	doc = gedit_tab_get_document (tab);
+	
+	screen = gtk_widget_get_screen (GTK_WIDGET (tab));
+	
+	theme = gtk_icon_theme_get_for_screen (screen);
+	g_return_val_if_fail (theme != NULL, NULL);
+
+	raw_uri = gedit_document_get_raw_uri (doc);
+	mime_type = gedit_document_get_mime_type (doc);
+
+	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (GTK_WIDGET (tab)),
+					   GTK_ICON_SIZE_MENU, 
+					   NULL,
+					   &icon_size);
+	pixbuf = get_icon (theme, raw_uri, mime_type, icon_size);
+
+	return pixbuf;	
+}

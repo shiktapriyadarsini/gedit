@@ -97,7 +97,7 @@ GeditDocument	*gedit_tab_get_document		(GeditTab    *tab);
  */
 gchar 		*_gedit_tab_get_name		(GeditTab    *tab);
 gchar 		*_gedit_tab_get_tooltips	(GeditTab    *tab);
-
+GdkPixbuf 	*_gedit_tab_get_icon		(GeditTab    *tab);
 
 G_END_DECLS
 

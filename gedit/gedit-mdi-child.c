@@ -851,7 +851,7 @@ gedit_mdi_child_set_label (BonoboMDIChild *child, GtkWidget *view,  GtkWidget *o
 
 		/* pack the elements */
 		gtk_box_pack_start (GTK_BOX (event_hbox), image, FALSE, FALSE, 0);
-		gtk_box_pack_start (GTK_BOX (event_hbox), label, TRUE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (event_hbox), label, TRUE, TRUE, 0);
 		gtk_container_add (GTK_CONTAINER (event_box), event_hbox);
 
 		/* setup the data hierarchy */

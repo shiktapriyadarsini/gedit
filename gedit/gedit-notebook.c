@@ -859,10 +859,13 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	GtkWidget *ebox;
 	GeditTooltips *tips;	
 	gchar *str;
-
+	GtkImage *icon;
+	GdkPixbuf *pixbuf;
+	
 	tips = GEDIT_TOOLTIPS (g_object_get_data (G_OBJECT (hbox), "tooltips"));
 	label = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label"));
 	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label-ebox"));
+	icon = GTK_IMAGE (g_object_get_data (G_OBJECT (hbox), "icon"));
 	
 	g_return_if_fail ((tips != NULL) && (label != NULL) && (ebox != NULL));
 
@@ -877,6 +880,14 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	
 	gedit_tooltips_set_tip (tips, ebox, str, NULL);
 	g_free (str);
+	
+	g_return_if_fail (icon != NULL);
+	
+	pixbuf = _gedit_tab_get_icon (tab);
+	gtk_image_set_from_pixbuf (icon, pixbuf);
+
+	if (pixbuf)
+		g_object_unref (pixbuf);
 }
 
 static void
@@ -926,14 +937,13 @@ build_tab_label (GeditNotebook *nb,
 		 GeditTab      *tab)
 {
 	GtkWidget *hbox, *label_hbox, *label_ebox;
-	GtkWidget *label;
+	GtkWidget *label, *dummy_label;
 	GtkWidget *close_button;
 	GtkSettings *settings;
 	gint w, h;
 	GtkWidget *image;
 	// GtkWidget *spinner;
-	// GtkWidget *icon;
-	// GtkIconSize close_icon_size;
+	GtkWidget *icon;
 
 	/* set hbox spacing and label padding (see below) so that there's an
 	 * equal amount of space around the label */
@@ -974,28 +984,33 @@ build_tab_label (GeditNotebook *nb,
 	spinner = ephy_spinner_new ();
 	ephy_spinner_set_size (EPHY_SPINNER (spinner), GTK_ICON_SIZE_MENU);
 	gtk_box_pack_start (GTK_BOX (label_hbox), spinner, FALSE, FALSE, 0);
-
+#endif
 	/* setup site icon, empty by default */
 	icon = gtk_image_new ();
 	gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
-#endif
+	
 	/* setup label */
         label = gtk_label_new ("");
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
         gtk_misc_set_padding (GTK_MISC (label), 4, 0);
-	gtk_box_pack_start (GTK_BOX (label_hbox), label, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (label_hbox), label, FALSE, FALSE, 0);
 
+	dummy_label = gtk_label_new ("");
+	gtk_box_pack_start (GTK_BOX (label_hbox), dummy_label, TRUE, TRUE, 0);
+	
 	gtk_widget_show (hbox);
 	gtk_widget_show (label_ebox);
 	gtk_widget_show (label_hbox);
 	gtk_widget_show (label);
+	gtk_widget_show (dummy_label);	
 	gtk_widget_show (image);
 	gtk_widget_show (close_button);
+	gtk_widget_show (icon);
 	
 	g_object_set_data (G_OBJECT (hbox), "label", label);
 	g_object_set_data (G_OBJECT (hbox), "label-ebox", label_ebox);
 //	g_object_set_data (G_OBJECT (hbox), "spinner", spinner);
-//	g_object_set_data (G_OBJECT (hbox), "icon", icon);
+	g_object_set_data (G_OBJECT (hbox), "icon", icon);
 	g_object_set_data (G_OBJECT (hbox), "close-button", close_button);
 	g_object_set_data (G_OBJECT (hbox), "tooltips", nb->priv->title_tips);
 
