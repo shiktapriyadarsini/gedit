@@ -30,15 +30,15 @@
 #include <config.h>
 #endif
 
+#include <time.h>
+#include <sys/types.h>
+#include <unistd.h>
+
 #include <glib/gi18n.h>
  
 #include "gedit-window.h"
 #include "gedit-notebook.h"
 #include "gedit-statusbar.h"
-
-#include <time.h>
-#include <sys/types.h>
-#include <unistd.h>
  
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
 
@@ -53,7 +53,7 @@ struct _GeditWindowPrivate
 
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
-        GtkActionGroup *action_group;
+	GtkActionGroup *action_group;
 };
 
 G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
@@ -118,6 +118,38 @@ static GtkActionEntry gedit_menu_entries[] =
 	  N_("Undo the last action"), /* G_CALLBACK (window_cmd_edit_undo) */ NULL},
 	{ "EditRedo", GTK_STOCK_REDO, N_("_Redo"), "<shift><control>Z",
 	  N_("Redo the last undone action"), /* G_CALLBACK (window_cmd_edit_redo) */ NULL},
+	{ "EditCut", GTK_STOCK_CUT, N_("Cu_t"), "<control>X",
+	  N_("Cut the selection"), NULL},
+	{ "EditCopy", GTK_STOCK_COPY, N_("_Copy"), "<control>C",
+	  N_("Copy the selection"), NULL},
+	{ "EditPaste", GTK_STOCK_PASTE, N_("_Paste"), "<control>V",
+	  N_("Paste the clipboard"), NULL},
+	{ "EditDelete", GTK_STOCK_DELETE, N_("_Delete"), NULL,
+	  N_("Delete the selected text"), NULL},
+	{ "EditSelectAll", NULL, N_("Select _All"), "<control>A",
+	  N_("Select the entire document"), NULL},
+	{ "EditPreferences", GTK_STOCK_PREFERENCES, N_("Pr_eferences"), NULL,
+	  N_("Configure the application"), NULL},
+
+	/* View menu */
+	{ "ViewToolbar", NULL, N_("_Toolbar"), NULL,
+	  N_("Show or hide the toolbar in the current window"), NULL},
+	{ "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
+	  N_("Show or hide the statusbar in the current window"), NULL},
+	{ "ViewOutputWindow", NULL, N_("_OutputWindow"), "<control><alt>O",
+	  N_("Show or hide the output window in the current window"), NULL},
+
+	/* Search menu */
+	{ "SearchFind", GTK_STOCK_FIND, N_("_Find..."), "<control>F",
+	  N_("Search for text"), NULL},
+	{ "SearchFindNext", NULL, N_("Find Ne_xt"), "<control>G",
+	  N_("Search forwards for the same text"), NULL},
+	{ "SearchFindPrevious", NULL, N_("Find Pre_vious"), "<shift><control>G",
+	  N_("Search backwards for the same text"), NULL},
+	{ "SearchReplace", GTK_STOCK_FIND_AND_REPLACE, N_("_Replace..."), "<control>R",
+	  N_("Search for and replace text"), NULL},
+	{ "SearchGoToLine", GTK_STOCK_JUMP_TO, N_("Go to _Line..."), "<control>I",
+	  N_("Go to a specific line"), NULL},
 
 	/* Help menu */
 	{"HelpContents", GTK_STOCK_HELP, N_("_Contents"), "F1",

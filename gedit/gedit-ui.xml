@@ -10,11 +10,37 @@
       <menuitem name="FileSaveAsMenu" action="FileSaveAs"/>
       <menuitem name="FileRevertMenu" action="FileRevert"/>
       <separator name="FileSep2"/>
+      <menuitem name="FileCloseMenu" action="FileClose"/>
+      <menuitem name="FileQuitMenu" action="FileQuit"/>
     </menu>
 
     <menu name="EditMenu" action="Edit">
       <menuitem name="EditUndoMenu" action="EditUndo"/>
       <menuitem name="EditRedoMenu" action="EditRedo"/>
+      <separator name="EditSep1"/>
+      <menuitem name="EditCutMenu" action="EditCut"/>
+      <menuitem name="EditCopyMenu" action="EditCopy"/>
+      <menuitem name="EditPasteMenu" action="EditPaste"/>
+      <menuitem name="EditDeleteMenu" action="EditDelete"/>
+      <separator name="EditSep2"/>
+      <menuitem name="EditSelectAllMenu" action="EditSelectAll"/>
+      <separator name="EditSep3"/>
+      <menuitem name="EditPreferencesMenu" action="EditPreferences"/>
+    </menu>
+
+    <menu name="ViewMenu" action="View">
+      <menuitem name="ViewToolbarMenu" action="ViewToolbar"/>
+      <menuitem name="ViewStatusbarMenu" action="ViewStatusbar"/>
+      <menuitem name="ViewOutputWindowMenu" action="ViewOutputWindow"/>
+    </menu>
+
+    <menu name="SearchMenu" action="Search">
+      <menuitem name="SearchFindMenu" action="SearchFind"/>
+      <menuitem name="SearchFindNextMenu" action="SearchFindNext"/>
+      <menuitem name="SearchFindPreviousMenu" action="SearchFindPrevious"/>
+      <menuitem name="SearchReplaceMenu" action="SearchReplace"/>
+      <separator name="SearchSep1"/>
+      <menuitem name="SearchGoToLineMenu" action="SearchGoToLine"/>
     </menu>
 
     <menu name="HelpMenu" action="Help">
@@ -24,7 +50,7 @@
   </menubar>
 
   <toolbar name='ToolBar'>
-      <toolitem action='FileNew'/>
+    <toolitem action='FileNew'/>
   </toolbar>
 
 </ui>

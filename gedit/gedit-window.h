@@ -30,7 +30,6 @@
 #define __GEDIT_WINDOW_H__
 
 #include <gtk/gtk.h>
-
 #include <gedit/gedit-view.h>
 
 G_BEGIN_DECLS
@@ -56,7 +55,6 @@ typedef struct _GeditWindow GeditWindow;
 
 struct _GeditWindow 
 {
-	/* FIXME: do we really need to extends GtkBin - Paolo */
 	GtkWindow window;
 
 	/*< private > */
@@ -76,7 +74,7 @@ struct _GeditWindowClass
 /*
  * Public methods
  */
-GType 		 gedit_window_get_type 		(void);
+GType 		 gedit_window_get_type 		(void) G_GNUC_CONST;
 
 GtkWidget 	*gedit_window_new 		(void);
 
