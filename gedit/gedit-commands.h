@@ -19,13 +19,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. * *
+ * Boston, MA 02111-1307, USA. 
  */
  
 /*
  * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifndef __GEDIT_COMMANDS_H__
@@ -59,6 +61,7 @@ void gedit_cmd_edit_delete		(GtkAction *action, GeditWindow *window);
 void gedit_cmd_edit_select_all		(GtkAction *action, GeditWindow *window);
 void gedit_cmd_edit_preferences		(GtkAction *action, GeditWindow *window);
 
+void gedit_cmd_view_show_toolbar	(GtkAction *action, GeditWindow *window);
 void gedit_cmd_view_show_statusbar	(GtkAction *action, GeditWindow *window);
 
 void gedit_cmd_search_find		(GtkAction *action, GeditWindow *window);

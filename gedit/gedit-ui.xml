@@ -35,7 +35,8 @@
     <menu name="ViewMenu" action="View">
       <menuitem name="ViewToolbarMenu" action="ViewToolbar"/>
       <menuitem name="ViewStatusbarMenu" action="ViewStatusbar"/>
-      <menuitem name="ViewOutputWindowMenu" action="ViewOutputWindow"/>
+      <menuitem name="ViewSidePaneMenu" action="ViewSidePane"/>
+      <menuitem name="ViewBottomPanelMenu" action="ViewBottomPanel"/>      
     </menu>
 
     <menu name="SearchMenu" action="Search">

@@ -130,13 +130,16 @@ static const GtkToggleActionEntry gedit_toggle_menu_entries[] =
 {
 	{ "ViewToolbar", NULL, N_("_Toolbar"), NULL,
 	  N_("Show or hide the toolbar in the current window"),
-	  NULL, TRUE },
+	  G_CALLBACK (gedit_cmd_view_show_toolbar), TRUE },
 	{ "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
 	  N_("Show or hide the statusbar in the current window"),
 	  G_CALLBACK (gedit_cmd_view_show_statusbar), TRUE },
-	{ "ViewOutputWindow", NULL, N_("_Output Window"), "<control><alt>O",
-	  N_("Show or hide the output window in the current window"),
-	  NULL, FALSE }
+	{ "ViewSidePane", NULL, N_("Side _Pane"), "F9",
+	  N_("Show or hide the side pane in the current window"),
+	  NULL, FALSE },
+	{ "ViewBottomPanel", NULL, N_("_Bottom Panel"), "<control>F9",
+	  N_("Show or hide the bottom panel in the current window"),
+	  NULL, FALSE }	  
 };
 
 static const guint gedit_n_toggle_menu_entries = G_N_ELEMENTS (gedit_toggle_menu_entries);

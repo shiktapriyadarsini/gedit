@@ -102,6 +102,8 @@ GtkWidget	*_gedit_window_get_notebook		(GeditWindow *window);
 
 void		 _gedit_window_set_statusbar_visible	(GeditWindow *window,
 							 gboolean     visible);
+void		 _gedit_window_set_toolbar_visible	(GeditWindow *window,
+							 gboolean     visible);							 
 G_END_DECLS
 
 #endif  /* __GEDIT_WINDOW_H__  */

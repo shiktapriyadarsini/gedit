@@ -73,7 +73,8 @@ struct _GeditWindowPrivate
 	GtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
 	GtkWidget      *toolbar;
-
+	GeditToolbarSetting toolbar_style;
+	
 	GeditTab       *active_tab;
 	gint            num_tabs;
 	
@@ -191,6 +192,75 @@ disconnect_proxy_cb (GtkUIManager *manager,
 	}
 }
 
+/* Returns TRUE if toolbar is visible */
+static gboolean
+set_toolbar_style (GeditWindow *window,
+		   GeditWindow *origin)
+{
+	gboolean visible;
+	GeditToolbarSetting style;
+	GtkAction *action;
+	
+	if (origin == NULL)
+		visible = gedit_prefs_manager_get_toolbar_visible ();
+	else
+		visible = GTK_WIDGET_VISIBLE (origin->priv->toolbar);
+	
+	/* Set visibility */
+	if (visible)
+		gtk_widget_show (window->priv->toolbar);
+	else
+	{
+		gtk_widget_hide (window->priv->toolbar);
+	}
+	
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewToolbar");
+					      
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	
+	/* Set style */
+	if (origin == NULL)
+		style = gedit_prefs_manager_get_toolbar_buttons_style ();
+	else
+		style = origin->priv->toolbar_style;
+		
+	window->priv->toolbar_style = style;
+		
+	switch (style)
+	{
+		case GEDIT_TOOLBAR_SYSTEM:
+			gedit_debug (DEBUG_MDI, "GEDIT: SYSTEM");
+			gtk_toolbar_unset_style (
+					GTK_TOOLBAR (window->priv->toolbar));
+			break;
+			
+		case GEDIT_TOOLBAR_ICONS:
+			gedit_debug (DEBUG_MDI, "GEDIT: ICONS");
+			gtk_toolbar_set_style (
+					GTK_TOOLBAR (window->priv->toolbar),
+					GTK_TOOLBAR_ICONS);
+			break;
+			
+		case GEDIT_TOOLBAR_ICONS_AND_TEXT:
+			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_AND_TEXT");
+			gtk_toolbar_set_style (
+					GTK_TOOLBAR (window->priv->toolbar),
+					GTK_TOOLBAR_BOTH);			
+			break;
+			
+		case GEDIT_TOOLBAR_ICONS_BOTH_HORIZ:
+			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_BOTH_HORIZ");
+			gtk_toolbar_set_style (
+					GTK_TOOLBAR (window->priv->toolbar),
+					GTK_TOOLBAR_BOTH_HORIZ);	
+			break;       
+	}
+	
+	return visible;
+}
+
 static void
 create_menu_bar_and_toolbar (GeditWindow *window, 
 			     GtkWidget   *main_box)
@@ -266,6 +336,8 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 			    FALSE, 
 			    FALSE, 
 			    0);	
+			    
+	set_toolbar_style (window, NULL);			 
 }
 
 static void
@@ -468,11 +540,7 @@ clone_window (GeditWindow *origin)
 		gtk_widget_hide (GEDIT_WINDOW (window)->priv->bottom_panel);
 		
 	set_statusbar_style (GEDIT_WINDOW (window), origin);
-
-	if (GTK_WIDGET_VISIBLE (origin->priv->toolbar))
-		gtk_widget_show (GEDIT_WINDOW (window)->priv->toolbar);
-	else		
-		gtk_widget_hide (GEDIT_WINDOW (window)->priv->toolbar);				
+	set_toolbar_style (GEDIT_WINDOW (window), origin);
 
 	return GEDIT_WINDOW (window);
 }
@@ -944,62 +1012,6 @@ window_state_event_handler (GeditWindow *window, GdkEventWindowState *event)
 	return FALSE;
 }
 
-
-
-/* Returns TRUE if toolbar is visible */
-static gboolean
-set_toolbar_style (GeditWindow *window)
-{
-	gboolean visible;
-	GeditToolbarSetting style;
-	
-	visible = gedit_prefs_manager_get_toolbar_visible ();
-	
-	/* Set visibility */
-	if (visible)
-		gtk_widget_show (window->priv->toolbar);
-	else
-	{
-		gtk_widget_hide (window->priv->toolbar);
-	
-		return FALSE;
-	}
-	
-	/* Set style */
-	style = gedit_prefs_manager_get_toolbar_buttons_style ();
-	switch (style)
-	{
-		case GEDIT_TOOLBAR_SYSTEM:
-			gedit_debug (DEBUG_MDI, "GEDIT: SYSTEM");
-			gtk_toolbar_unset_style (
-					GTK_TOOLBAR (window->priv->toolbar));
-			break;
-			
-		case GEDIT_TOOLBAR_ICONS:
-			gedit_debug (DEBUG_MDI, "GEDIT: ICONS");
-			gtk_toolbar_set_style (
-					GTK_TOOLBAR (window->priv->toolbar),
-					GTK_TOOLBAR_ICONS);
-			break;
-			
-		case GEDIT_TOOLBAR_ICONS_AND_TEXT:
-			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_AND_TEXT");
-			gtk_toolbar_set_style (
-					GTK_TOOLBAR (window->priv->toolbar),
-					GTK_TOOLBAR_BOTH);			
-			break;
-			
-		case GEDIT_TOOLBAR_ICONS_BOTH_HORIZ:
-			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_BOTH_HORIZ");
-			gtk_toolbar_set_style (
-					GTK_TOOLBAR (window->priv->toolbar),
-					GTK_TOOLBAR_BOTH_HORIZ);	
-			break;       
-	}
-	
-	return visible;
-}
-
 static void
 side_panel_size_allocate (GtkWidget     *widget,
 			  GtkAllocation *allocation,
@@ -1131,9 +1143,6 @@ gedit_window_init (GeditWindow *window)
 	
 	/* Add status bar */
 	create_statusbar (window, main_box);
-
-	/* Set the toolbar style according to prefs */
-	set_toolbar_style (window);
 	
 	/* Set visibility of panels */
 	// TODO
@@ -1326,5 +1335,20 @@ _gedit_window_set_statusbar_visible (GeditWindow *window,
 
 	if (gedit_prefs_manager_statusbar_visible_can_set ())
 		gedit_prefs_manager_set_statusbar_visible (visible);
+}
+
+void
+_gedit_window_set_toolbar_visible (GeditWindow *window,
+				   gboolean     visible)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	
+	if (visible)
+		gtk_widget_show (window->priv->toolbar);
+	else
+		gtk_widget_hide (window->priv->toolbar);
+
+	if (gedit_prefs_manager_toolbar_visible_can_set ())
+		gedit_prefs_manager_set_toolbar_visible (visible);
 }
 

@@ -361,6 +361,18 @@ gedit_cmd_edit_preferences (GtkAction *action, GeditWindow *window)
 }
 
 void
+gedit_cmd_view_show_toolbar (GtkAction *action, GeditWindow *window)
+{
+	gboolean visible;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+	_gedit_window_set_toolbar_visible (window, visible);
+}
+
+void
 gedit_cmd_view_show_statusbar (GtkAction *action, GeditWindow *window)
 {
 	gboolean visible;
