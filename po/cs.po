@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.0.2\n"
-"POT-Creation-Date: 2002-08-27 15:18+0200\n"
+"POT-Creation-Date: 2002-11-16 09:12+0100\n"
 "PO-Revision-Date: 2002-08-26 23:27GMT\n"
 "Last-Translator: Michal Bukovjan <bukm@centrum.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -904,7 +904,7 @@ msgstr "Vloží aktuální datum a čas na pozici kurzoru"
 msgid "Select the format to use when inserting date/time."
 msgstr "Vyberte formát, který se při vložení data a času použije."
 
-#: src/bonobo-mdi.c:532 src/bonobo-mdi.c:622 src/bonobo-mdi.c:1858
+#: src/bonobo-mdi.c:534 src/bonobo-mdi.c:1857
 #, c-format
 msgid "Activate %s"
 msgstr "Aktivovat %s"
@@ -1582,20 +1582,20 @@ msgstr "Nelze načíst informace o symbolickém odkazu pro %s"
 msgid "The file has too many symbolic links."
 msgstr "Soubor má příliš mnoho symbolických odkazů."
 
-#: src/gedit-document.c:1249
+#: src/gedit-document.c:1251
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr "GEdit nemůže zpracovat %s: umístění v režimu zápisu."
 
-#: src/gedit-document.c:1256
+#: src/gedit-document.c:1258
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr "GEdit nemůže zpracovat tento typ umístění v režimu zápisu."
 
-#: src/gedit-document.c:1269
+#: src/gedit-document.c:1271
 msgid "Invalid filename."
 msgstr "Chybný název souboru."
 
-#: src/gedit-document.c:1382
+#: src/gedit-document.c:1411
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1603,7 +1603,7 @@ msgstr ""
 "Pro uložení souboru není dostatek místa na disku.\n"
 "Uvolněte prosím nějaké místo a zkuste to znovu."
 
-#: src/gedit-document.c:1387
+#: src/gedit-document.c:1416
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1613,11 +1613,11 @@ msgstr ""
 "souboru.  Zkuste prosím uložit menší soubor, nebo uložit tento soubor na "
 "disk, který nemá toto omezení."
 
-#: src/gedit-document.c:1426
+#: src/gedit-document.c:1455
 msgid "Could not create a backup file."
 msgstr "Nelze vytvořit záložní soubor."
 
-#: src/gedit-document.c:1574
+#: src/gedit-document.c:1603
 msgid "It is not possible to revert an Untitled document"
 msgstr "Není možné vrátit Nenazvaný dokument."
 
@@ -1738,52 +1738,52 @@ msgstr "(změněný)"
 msgid "(readonly)"
 msgstr "(pouze pro čtení)"
 
-#: src/gedit-plugins-engine.c:159
+#: src/gedit-plugins-engine.c:162
 #, c-format
 msgid "Error, unable to open module file '%s'\n"
 msgstr "Chyba, není možné otevřít soubor s modulem '%s'\n"
 
-#: src/gedit-plugins-engine.c:174
+#: src/gedit-plugins-engine.c:177
 #, c-format
 msgid "Error, plugin '%s' does not contain init function."
 msgstr "Chyba, plugin '%s' neobsahuje inicializační funkci."
 
-#: src/gedit-plugins-engine.c:184
+#: src/gedit-plugins-engine.c:187
 #, c-format
 msgid "Error, plugin '%s' does not contain activate function."
 msgstr "Chyba, plugin '%s' neobsahuje aktivační funkci."
 
-#: src/gedit-plugins-engine.c:194
+#: src/gedit-plugins-engine.c:197
 #, c-format
 msgid "Error, plugin '%s' does not contain deactivate function."
 msgstr "Chyba, plugin '%s' neobsahuje deaktivační funkci."
 
-#: src/gedit-plugins-engine.c:224
+#: src/gedit-plugins-engine.c:227
 #, c-format
 msgid "Error, impossible to initialize plugin '%s'"
 msgstr "Chyba, není možné inicializovat plugin '%s'."
 
-#: src/gedit-plugins-engine.c:232
+#: src/gedit-plugins-engine.c:235
 #, c-format
 msgid "Error, the plugin '%s' did not specified a name"
 msgstr "Chyba, plugin '%s' neuvedl název."
 
-#: src/gedit-plugins-engine.c:312
+#: src/gedit-plugins-engine.c:315
 #, c-format
 msgid "Error, impossible to save settings of the plugin '%s'"
 msgstr "Chyba, nelze uložit nastavení pro plugin '%s'."
 
-#: src/gedit-plugins-engine.c:384 src/gedit-plugins-engine.c:442
+#: src/gedit-plugins-engine.c:387 src/gedit-plugins-engine.c:445
 #, c-format
 msgid "Error, impossible to activate plugin '%s'"
 msgstr "Chyba, nelze aktivovat plugin '%s'."
 
-#: src/gedit-plugins-engine.c:411
+#: src/gedit-plugins-engine.c:414
 #, c-format
 msgid "Error, impossible to deactivate plugin '%s'"
 msgstr "Chyba, nelze deaktivovat plugin '%s'."
 
-#: src/gedit-plugins-engine.c:486
+#: src/gedit-plugins-engine.c:489
 #, c-format
 msgid "Error, impossible to update ui of the plugin '%s'"
 msgstr "Chyba, nelze aktualizovat UI pro plugin '%s'."
