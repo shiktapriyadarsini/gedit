@@ -9,10 +9,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 1.2.0\n"
-"POT-Creation-Date: 2002-08-21 04:59+0200\n"
-"PO-Revision-Date: 2002-08-21 14:43GMT-03:00\n"
-"Last-Translator: Pablo del Campo <pablodc@bigfoot.com>\n"
-"Language-Team: Español <traductores@es.gnome.org>\n"
+"POT-Creation-Date: 2002-11-15 05:34+0100\n"
+"PO-Revision-Date: 2002-11-15 15:15-0300\n"
+"Last-Translator: Pablo Gonzalo del Campo <pablodc@bigfoot.com>\n"
+"Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1033,27 +1033,27 @@ msgid "Font & Colors"
 msgstr "Tipografías y colores"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
-#: src/dialogs/gedit-preferences.glade2.h:30
+#: src/dialogs/gedit-preferences.glade2.h:34
 msgid "Tabs"
 msgstr "Pestañas"
 
 #: src/dialogs/gedit-preferences-dialog.c:210
-#: src/dialogs/gedit-preferences.glade2.h:51
+#: src/dialogs/gedit-preferences.glade2.h:59
 msgid "Wrap mode"
 msgstr "Ajuste de línea"
 
 #: src/dialogs/gedit-preferences-dialog.c:211
-#: src/dialogs/gedit-preferences.glade2.h:15
+#: src/dialogs/gedit-preferences.glade2.h:19
 msgid "Line numbers"
 msgstr "Números de línea"
 
 #: src/dialogs/gedit-preferences-dialog.c:213
-#: src/dialogs/gedit-preferences.glade2.h:25 src/gedit-ui.xml.h:58
+#: src/dialogs/gedit-preferences.glade2.h:29 src/gedit-ui.xml.h:58
 msgid "Save"
 msgstr "Guardar"
 
 #: src/dialogs/gedit-preferences-dialog.c:214
-#: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:76
+#: src/dialogs/gedit-preferences.glade2.h:46 src/gedit-ui.xml.h:76
 msgid "Undo"
 msgstr "Deshacer"
 
@@ -1074,7 +1074,7 @@ msgid "Editor"
 msgstr "Editor"
 
 #: src/dialogs/gedit-preferences-dialog.c:240
-#: src/dialogs/gedit-preferences.glade2.h:21 src/gedit-print.c:309
+#: src/dialogs/gedit-preferences.glade2.h:25 src/gedit-print.c:309
 #: src/gedit-ui.xml.h:42
 msgid "Print"
 msgstr "Imprimir"
@@ -1169,99 +1169,105 @@ msgid " line(s)"
 msgstr " línea(s)"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
-msgid "Always use UTF-8 encoding (faster) when creating a new file"
-msgstr "Siempre usar codificación U_TF-8 (mas rápido) al crear un archivo nuevo"
+msgid ""
+"Always use UTF-8 encoding (faster) when creating a new file\n"
+"\n"
+msgstr "Siempre usar codificación U_TF-8 (mas rápido) al crear un archivo nuevo\n"
 
-#: src/dialogs/gedit-preferences.glade2.h:5
-msgid "Always use UTF-8 encoding (faster) when saving"
-msgstr "Usar siempre codificación _UTF-8 (mas rápido) al guardar"
+#: src/dialogs/gedit-preferences.glade2.h:7
+msgid ""
+"Always use UTF-8 encoding (faster) when saving\n"
+"\n"
+msgstr ""
+"Usar siempre codificación _UTF-8 (mas rápido) al guardar\n"
+"\n"
 
-#: src/dialogs/gedit-preferences.glade2.h:6
+#: src/dialogs/gedit-preferences.glade2.h:10
 msgid "Always use U_TF-8 encoding (faster)"
 msgstr "Siempre usar codificación U_TF-8 (mas rápido)"
 
-#: src/dialogs/gedit-preferences.glade2.h:7
+#: src/dialogs/gedit-preferences.glade2.h:11
 msgid "Always use _UTF-8 encoding (faster)"
 msgstr "Usar siempre codificación _UTF-8 (mas rápido)"
 
-#: src/dialogs/gedit-preferences.glade2.h:8
+#: src/dialogs/gedit-preferences.glade2.h:12
 msgid "Colors"
 msgstr "Colores"
 
-#: src/dialogs/gedit-preferences.glade2.h:9
+#: src/dialogs/gedit-preferences.glade2.h:13
 msgid "Create a _backup copy of files before saving"
 msgstr "Crear una copia de _seguridad de los archivos antes de guardarlos"
 
-#: src/dialogs/gedit-preferences.glade2.h:10
+#: src/dialogs/gedit-preferences.glade2.h:14
 #: src/dialogs/gnome-print-font-picker.c:1014
 msgid "Font"
 msgstr "Tipografía"
 
-#: src/dialogs/gedit-preferences.glade2.h:11
+#: src/dialogs/gedit-preferences.glade2.h:15
 msgid "Font used to print line _numbers:"
 msgstr "Tipografía usada para imprimir los _números de línea:"
 
-#: src/dialogs/gedit-preferences.glade2.h:12
+#: src/dialogs/gedit-preferences.glade2.h:16
 msgid "Font used to print the _body:"
 msgstr "Tipografía usada para imprimir el _cuerpo:"
 
-#: src/dialogs/gedit-preferences.glade2.h:13
+#: src/dialogs/gedit-preferences.glade2.h:17
 msgid "Fonts & Colors"
 msgstr "Tipografías y colores"
 
-#: src/dialogs/gedit-preferences.glade2.h:14
+#: src/dialogs/gedit-preferences.glade2.h:18
 msgid "LOGO"
 msgstr "LOGO"
 
-#: src/dialogs/gedit-preferences.glade2.h:16
+#: src/dialogs/gedit-preferences.glade2.h:20
 msgid "Pick the background color"
 msgstr "Seleccione un color de fondo"
 
-#: src/dialogs/gedit-preferences.glade2.h:17
+#: src/dialogs/gedit-preferences.glade2.h:21
 msgid "Pick the selected text color"
 msgstr "Elija el color del texto seleccionado"
 
-#: src/dialogs/gedit-preferences.glade2.h:18
+#: src/dialogs/gedit-preferences.glade2.h:22
 msgid "Pick the selection color"
 msgstr "Elija el el color del texto seleccionado"
 
-#: src/dialogs/gedit-preferences.glade2.h:19
+#: src/dialogs/gedit-preferences.glade2.h:23
 msgid "Pick the text color"
 msgstr "Elija el color del texto"
 
-#: src/dialogs/gedit-preferences.glade2.h:20
+#: src/dialogs/gedit-preferences.glade2.h:24
 msgid "Plugin manager"
 msgstr "Administrador de extensiones"
 
-#: src/dialogs/gedit-preferences.glade2.h:22
+#: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Print _line numbers every"
 msgstr "Imprimir números de _línea cada"
 
-#: src/dialogs/gedit-preferences.glade2.h:23
+#: src/dialogs/gedit-preferences.glade2.h:27
 msgid "Print _page headers"
 msgstr "Imprimir cabeceras de _página"
 
-#: src/dialogs/gedit-preferences.glade2.h:24
+#: src/dialogs/gedit-preferences.glade2.h:28
 msgid "Print fonts"
 msgstr "Tipografías de impresión"
 
-#: src/dialogs/gedit-preferences.glade2.h:26
+#: src/dialogs/gedit-preferences.glade2.h:30
 msgid "Se_lection color:"
 msgstr "Color de la se_lección."
 
-#: src/dialogs/gedit-preferences.glade2.h:27
+#: src/dialogs/gedit-preferences.glade2.h:31
 msgid "Selecte_d text color:"
 msgstr "Color del texto s_eleccionado:"
 
-#: src/dialogs/gedit-preferences.glade2.h:28
+#: src/dialogs/gedit-preferences.glade2.h:32
 msgid "Set _tabs width equivalent to  "
 msgstr "Configurar el ancho de las _pestañas a  "
 
-#: src/dialogs/gedit-preferences.glade2.h:29
+#: src/dialogs/gedit-preferences.glade2.h:33
 msgid "Set limit on _undo actions to"
 msgstr "Configurar el límite de acciones deshacer a"
 
-#: src/dialogs/gedit-preferences.glade2.h:31
+#: src/dialogs/gedit-preferences.glade2.h:35
 msgid ""
 "The font & colors settings let you choose the font and the colors to be used "
 "in the editor windows."
@@ -1269,7 +1275,7 @@ msgstr ""
 "La configuración de tipografías y colores le permite elegir la tipografía y "
 "los colores que serán utilizados en las ventanas del editor."
 
-#: src/dialogs/gedit-preferences.glade2.h:32
+#: src/dialogs/gedit-preferences.glade2.h:36
 msgid ""
 "The line numbers setting lets you choose to display the line numbers on the "
 "left hand side of the window."
@@ -1277,7 +1283,7 @@ msgstr ""
 "La configuración de números de línea le permite mostrar o no los números de "
 "línea en la parte izquierda de la ventana."
 
-#: src/dialogs/gedit-preferences.glade2.h:33
+#: src/dialogs/gedit-preferences.glade2.h:37
 msgid ""
 "The plugin manager settings let you choose which plugins you want to have "
 "loaded."
@@ -1285,7 +1291,7 @@ msgstr ""
 "La configuración del administrador de extensiones le permite seleccionar que "
 "extensiones desea tener cargadas."
 
-#: src/dialogs/gedit-preferences.glade2.h:34
+#: src/dialogs/gedit-preferences.glade2.h:38
 msgid ""
 "The print fonts settings let you choose the fonts to be used to print "
 "documents."
@@ -1293,25 +1299,25 @@ msgstr ""
 "La configuración de impresión le permite elegir las tipografías que se "
 "usarán para imprimir documentos."
 
-#: src/dialogs/gedit-preferences.glade2.h:35
+#: src/dialogs/gedit-preferences.glade2.h:39
 msgid "The print page settings let you customize how gedit prints documents."
 msgstr ""
 "Las configuración de página de impresión le permiten personalizar como "
 "imprime documentos gedit."
 
-#: src/dialogs/gedit-preferences.glade2.h:36
+#: src/dialogs/gedit-preferences.glade2.h:40
 msgid "The save settings let you customize how gedit saves files."
 msgstr ""
 "La configuración de guardar le permite personalizar como gedit debe guardar "
 "los archivos."
 
-#: src/dialogs/gedit-preferences.glade2.h:37
+#: src/dialogs/gedit-preferences.glade2.h:41
 msgid "The tabs settings let you customize the tabs width."
 msgstr ""
 "La configuración de pestañas le permite personalizar el ancho de las "
 "pestañas."
 
-#: src/dialogs/gedit-preferences.glade2.h:38
+#: src/dialogs/gedit-preferences.glade2.h:42
 msgid ""
 "The undo settings let you set the maximum number of actions that gedit can "
 "undo."
@@ -1319,93 +1325,99 @@ msgstr ""
 "La configuración de deshacer le permite elegir el número máximo de acciones "
 "que gedit podrá deshacer."
 
-#: src/dialogs/gedit-preferences.glade2.h:39
+#: src/dialogs/gedit-preferences.glade2.h:43
 msgid "The wrap mode settings let you customize how lines have to be wrapped."
 msgstr ""
 "La configuración de modo de ajuste le permite personalizar como deberán ser "
 "ajustadas las líneas."
 
-#: src/dialogs/gedit-preferences.glade2.h:40
+#: src/dialogs/gedit-preferences.glade2.h:44
 msgid "U_se default theme colors"
 msgstr "U_sar los colores predeterminados del tema"
 
-#: src/dialogs/gedit-preferences.glade2.h:41
+#: src/dialogs/gedit-preferences.glade2.h:45
 msgid "U_se original file encoding if possible"
 msgstr "Usar la codificación original del archivo _si es posible"
 
-#: src/dialogs/gedit-preferences.glade2.h:43
+#: src/dialogs/gedit-preferences.glade2.h:47
 msgid "Use cu_rrent locale's encoding if possible"
 msgstr "Usa_r la localización actual si es posible"
 
-#: src/dialogs/gedit-preferences.glade2.h:44
+#: src/dialogs/gedit-preferences.glade2.h:48
 msgid "Use current _locale's encoding if possible"
 msgstr "Usar la _localización actual si es posible"
 
-#: src/dialogs/gedit-preferences.glade2.h:45
-msgid "Use current locale's encoding if possible when creating a new file"
-msgstr "Usa_r la localización actual si es posible al crear un archivo nuevo"
+#: src/dialogs/gedit-preferences.glade2.h:49
+msgid ""
+"Use current locale's encoding if possible when creating a new file\n"
+"\n"
+msgstr ""
+"Usa_r la localización actual si es posible al crear un archivo nuevo\n"
+"\n"
 
-#: src/dialogs/gedit-preferences.glade2.h:46
-msgid "Use current locale's encoding if possible when saving"
-msgstr "Usa_r la localización actual si es posible al guardar"
+#: src/dialogs/gedit-preferences.glade2.h:52
+msgid ""
+"Use current locale's encoding if possible when saving\n"
+"\n"
+msgstr "Usa_r la localización actual si es posible al guardar\n"
 
-#: src/dialogs/gedit-preferences.glade2.h:47
+#: src/dialogs/gedit-preferences.glade2.h:55
 msgid "When creating a new file..."
 msgstr "Al crear un archivo nuevo..."
 
-#: src/dialogs/gedit-preferences.glade2.h:48
+#: src/dialogs/gedit-preferences.glade2.h:56
 msgid "When saving..."
 msgstr "Al guardar..."
 
-#: src/dialogs/gedit-preferences.glade2.h:49
+#: src/dialogs/gedit-preferences.glade2.h:57
 msgid "Wrap lines at _word boundaries"
 msgstr "Ajustar líneas a los límites de la _palabra"
 
-#: src/dialogs/gedit-preferences.glade2.h:50
+#: src/dialogs/gedit-preferences.glade2.h:58
 msgid "Wrap lines at ch_aracter boundaries"
 msgstr "Ajustar líneas a los límites del c_aracter"
 
-#: src/dialogs/gedit-preferences.glade2.h:52
+#: src/dialogs/gedit-preferences.glade2.h:60
 msgid "_Autosave current file every"
 msgstr "_Auto-guardar el archivo actual cada"
 
-#: src/dialogs/gedit-preferences.glade2.h:53
+#: src/dialogs/gedit-preferences.glade2.h:61
 msgid "_Background color:"
 msgstr "_Color del fondo:"
 
-#: src/dialogs/gedit-preferences.glade2.h:54
+#: src/dialogs/gedit-preferences.glade2.h:62
 msgid "_Display line numbers"
 msgstr "_Mostrar números de línea"
 
-#: src/dialogs/gedit-preferences.glade2.h:55
+#: src/dialogs/gedit-preferences.glade2.h:63
 msgid "_Font used by the editor: "
 msgstr "Tipogra_fía utilizada por el editor: "
 
-#: src/dialogs/gedit-preferences.glade2.h:56
+#: src/dialogs/gedit-preferences.glade2.h:64
 msgid "_Font used to print headers:"
 msgstr "Tipogra_fía utilizada para imprimir encabezados:"
 
-#: src/dialogs/gedit-preferences.glade2.h:57
+#: src/dialogs/gedit-preferences.glade2.h:65
 msgid "_Never wrap lines"
 msgstr "_Nunca ajustar líneas"
 
-#: src/dialogs/gedit-preferences.glade2.h:58
+#: src/dialogs/gedit-preferences.glade2.h:66
 msgid "_Restore default fonts"
 msgstr "_Restaurar tipografías predeterminadas"
 
-#: src/dialogs/gedit-preferences.glade2.h:59
+#: src/dialogs/gedit-preferences.glade2.h:67
 msgid "_Text color:"
 msgstr "Color del _texto:"
 
-#: src/dialogs/gedit-preferences.glade2.h:60
+#: src/dialogs/gedit-preferences.glade2.h:68
 msgid "_Use default theme font"
 msgstr "_Usar tipografía predeterminada del tema"
 
-#: src/dialogs/gedit-preferences.glade2.h:61
+#: src/dialogs/gedit-preferences.glade2.h:69
 msgid "action(s)"
 msgstr "acción(es)"
 
-#: src/dialogs/gedit-preferences.glade2.h:62
+#: src/dialogs/gedit-preferences.glade2.h:70
 msgid "minutes"
 msgstr "minutos"
 
@@ -1628,7 +1640,7 @@ msgstr "gedit no puede manejar este tipo de dirección en el modo escritura."
 msgid "Invalid filename."
 msgstr "Nombre de archivo inválido."
 
-#: src/gedit-document.c:1382
+#: src/gedit-document.c:1397
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1636,7 +1648,7 @@ msgstr ""
 "No hay suficiente espacio en el disco para guardar el archivo.\n"
 "Por favor libere un poco de espacio en el disco e intente nuevamente."
 
-#: src/gedit-document.c:1387
+#: src/gedit-document.c:1402
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1646,11 +1658,11 @@ msgstr ""
 "los tamaños de archivo. Por favor intente guardar un archivo más pequeño o "
 "guardarlo en un disco que no posea estas limitaciones."
 
-#: src/gedit-document.c:1426
+#: src/gedit-document.c:1441
 msgid "Could not create a backup file."
 msgstr "No se ha podido crear un archivo de respaldo."
 
-#: src/gedit-document.c:1574
+#: src/gedit-document.c:1589
 msgid "It is not possible to revert an Untitled document"
 msgstr "No es posible recuperar un documento Sin Título"
 
