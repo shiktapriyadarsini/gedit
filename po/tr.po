@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.tr\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-09-06 02:05+0300\n"
 "Last-Translator: RIDVAN CAN <ridvan@geleceklinux.org>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -47,7 +47,7 @@ msgstr "gedit otomasyon yeri"
 msgid "Edit text files"
 msgstr "Metin dosyalarını düzenle"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Metin Düzenleyici"
 
@@ -456,7 +456,7 @@ msgid "_Go to Line"
 msgstr "_Satıra Git"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -592,12 +592,12 @@ msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
 "Eklenti yöneticisinin glade dosyası geçersiz -- parçaların tamamı yok.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Program konumunu belirt..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -610,7 +610,7 @@ msgstr ""
 "\n"
 "Lütfen <tt>%s</tt> programının konumunu belirtiniz."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "Seçili dosya çalıştırılamaz."
 
@@ -2362,75 +2362,75 @@ msgstr "  ÜZR"
 msgid "  INS"
 msgstr "  ÜYZ"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "Yazılım hata ayıklama iletilerini gösterir."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "Görünüm hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "Görünüm hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Komut hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Belge hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Dosya hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Eklenti hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Tercihler hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Yazdırma hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Arama hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Geri alma hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Görünüm hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "En son hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "Oturum yöntetimi hata ayıklama iletilerini göster."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Tüm hata ayıklama iletilerini aç."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "Gedit'in mevcut durumundan çık"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Gedit'in mevcut durumunda yeni bir en üst düzey pencere yarat"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Mevcut durumda yeni bir belge yarat"
 
@@ -2545,7 +2545,7 @@ msgid "Run a command"
 msgstr "Bir komut çalıştır"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "Durdu"
 
@@ -2561,15 +2561,15 @@ msgstr "Komut çalıştır"
 msgid "_Run"
 msgstr "Çalış_tır"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "Yapıldı"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "Hata"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2579,7 +2579,7 @@ msgstr ""
 "\n"
 "Lütfen geçerli bir komut girin."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2589,7 +2589,7 @@ msgstr ""
 "\n"
 "Lütfen geçerli bir komut girin."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "Komut çalıştırılıyor"
 
@@ -2954,19 +2954,19 @@ msgstr ""
 "Etiket listesi eklentisi, sıklıkla kullandığınız etiketlerin/dizgelerin "
 "tekrar yazılmaksızın belgeye kolaylıkla eklenmesi için bir yöntem sağlar."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "Tari_h/Zaman Ekle..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "İmlecin bulunduğu yere şimdiki tarihi ve saati ekler."
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Kullanılabilir biçemler"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "Tarih/Zaman Ekleme eklentisini yapılandır..."
 

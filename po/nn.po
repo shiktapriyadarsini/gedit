@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 1.0\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2001-06-25 18:55+02:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian (Nynorsk)\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Edit text files"
 msgstr ""
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 #, fuzzy
 msgid "Text Editor"
 msgstr "Avslutt"
@@ -397,7 +397,7 @@ msgid "_Go to Line"
 msgstr "Gå til linje"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -530,13 +530,13 @@ msgstr ""
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 #, fuzzy
 msgid "Set program location..."
 msgstr "Programplasseringar"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -545,7 +545,7 @@ msgid ""
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr ""
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr ""
 
@@ -2340,90 +2340,90 @@ msgstr ""
 msgid "  INS"
 msgstr ""
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 #, fuzzy
 msgid "Show utility debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 #, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 #, fuzzy
 msgid "Show mdi debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 #, fuzzy
 msgid "Show commands debugging messages."
 msgstr "Sen&d ventande meldingar"
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 #, fuzzy
 msgid "Show document debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 #, fuzzy
 msgid "Show file debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 #, fuzzy
 msgid "Show plugin debugging messages."
 msgstr "Sen&d ventande meldingar"
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 #, fuzzy
 msgid "Show prefs debugging messages."
 msgstr "Sen&d ventande meldingar"
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 #, fuzzy
 msgid "Show printing debugging messages."
 msgstr "Sen&d ventande meldingar"
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 #, fuzzy
 msgid "Show search debugging messages."
 msgstr "Søk i &meldingar ..."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 #, fuzzy
 msgid "Show undo debugging messages."
 msgstr "Sen&d ventande meldingar"
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 #, fuzzy
 msgid "Show view debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 #, fuzzy
 msgid "Show recent debugging messages."
 msgstr "Lag ny adresse"
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 #, fuzzy
 msgid "Show session management debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 #, fuzzy
 msgid "Turn on all debugging messages."
 msgstr "Signer melding"
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr ""
 
@@ -2549,7 +2549,7 @@ msgid "Run a command"
 msgstr ""
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr ""
 
@@ -2566,30 +2566,30 @@ msgstr ""
 msgid "_Run"
 msgstr ""
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr ""
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 #, fuzzy
 msgid "Failed"
 msgstr "Fil"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
 "Please, insert a valid shell command."
 msgstr ""
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
 "Please, insert a valid shell command."
 msgstr ""
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 #, fuzzy
 msgid "Executing command"
 msgstr "Kunne ikkje køyra førkommando: %1"
@@ -2983,21 +2983,21 @@ msgid ""
 "commonly used tags/strings without having to type them."
 msgstr ""
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 #, fuzzy
 msgid "In_sert Date and Time..."
 msgstr "Set inn fil"
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 #, fuzzy
 msgid "Insert current date and time at the cursor position"
 msgstr "Snur om på merkinga"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr ""
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 #, fuzzy
 msgid "Configure insert date/time plugin..."
 msgstr "Klipper ut utval ..."

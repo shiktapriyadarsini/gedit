@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AC_PACKAGE_NAME AC_PACKAGE_VERSION\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-08-27 22:56+0900\n"
 "Last-Translator: Young-Ho, Cha <ganadist@chollian.net>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
@@ -42,7 +42,7 @@ msgstr "gedit 자동화 팩토리"
 msgid "Edit text files"
 msgstr "텍스트 파일을 편집합니다"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "텍스트 편집기"
 
@@ -436,7 +436,7 @@ msgid "_Go to Line"
 msgstr "줄 바로가기(_G)"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -570,12 +570,12 @@ msgstr ""
 "플러그인 관리자용 glade 파일이 잘못되었습니다 -- 모든 위젯을 찾을 수 없습니"
 "다.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "프로그램위치를 설정..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -588,7 +588,7 @@ msgstr ""
 "\n"
 "프로그램 <tt>%s</tt>의 위치를 지정해 주십시오."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "선택한 파일을 실행할 수 없습니다."
 
@@ -2327,75 +2327,75 @@ msgstr " 바꿈"
 msgid "  INS"
 msgstr " 삽입"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "도구 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "metadata 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "mdi 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "명령 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "문서 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "파일 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "플러그인 디버깅 메세지를 봅니다"
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "기본 설정 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "인쇄 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "찾기 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "실행 취소 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "보기 디버깅 메세지를 봅니다"
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "최근 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "세션 관리 디버깅 메세지를 봅니다."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "모든 디버깅 메세지를 켭니다."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "실행 중인 gedit의 인스턴스를 마칩니다"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "실행 중인 gedit의 인스턴스에서 새로운 최상위 창을 만듭니다"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "실행 중인 gedit의 인스턴스에서 새로운 문서를 만듭니다"
 
@@ -2510,7 +2510,7 @@ msgid "Run a command"
 msgstr "명령을 실행합니다"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "멈춤"
 
@@ -2526,15 +2526,15 @@ msgstr "명령 실행"
 msgid "_Run"
 msgstr "실행(_R)"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "완료"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "실패"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2544,7 +2544,7 @@ msgstr ""
 "\n"
 "올바른 쉘 명령어를 입력하세요."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2554,7 +2554,7 @@ msgstr ""
 "\n"
 "올바른 쉘 명령어를 입력하세요."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "명령 실행"
 
@@ -2919,19 +2919,19 @@ msgstr ""
 "태그 목록 플러그인은 자주 쓰이는 태그/문장를 직접 입력하지 않고 쉽게 넣을수 "
 "있도록 합니다."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "날짜/시간을 입력(_S)..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "커서 위치에 현재의 날짜와 시간을 끼워넣습니다"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "쓸 수 있는 형식"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "날짜/시간 입력 플러그인 설정..."
 

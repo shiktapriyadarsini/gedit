@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.3.3\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-08-07 00:20+0200\n"
 "Last-Translator: Andras Timar <timar@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -44,7 +44,7 @@ msgstr "gedit automation factory"
 msgid "Edit text files"
 msgstr "Szövegszerkesztő"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Szövegszerkesztő"
 
@@ -449,7 +449,7 @@ msgid "_Go to Line"
 msgstr "_Ugrás sorra"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -587,12 +587,12 @@ msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
 "Érvénytelen glade fájl a bővítménykezelőhöz -- nincs meg minden widget.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Program helyének megadása..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -604,7 +604,7 @@ msgstr ""
 "\n"
 "Add meg a <tt>%s</tt> program pontos helyét."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "A kiválasztott fájl nem futtatható."
 
@@ -2359,76 +2359,76 @@ msgstr "  ÁTÍR"
 msgid "  INS"
 msgstr "  BESZÚR"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "Mutasd a segédprogram hibakereső üzeneteit."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 #, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "Mutasd az mdi hibakereső üzeneteit."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "Mutasd az mdi hibakereső üzeneteit."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Mutasd a parancsok hibakereső üzeneteit."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Mutasd a dokumentumok hibakereső üzeneteit."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Mutasd a fájl hibakereső üzeneteit."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Mutasd a plugin-ok hibakereső üzeneteit."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Mutasd a beállítások hibakereső üzeneteit."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Mutasd a nyomtatás hibakereső üzeneteit."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Mutasd a keresés hibakereső üzeneteit."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Mutasd a visszavonás hibakereső üzeneteit."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Mutasd a nézet hibakereső üzeneteit."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "Mutasd a beállítások hibakereső üzeneteit."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "Mutasd a munkamenet-kezelő hibakereső üzeneteit."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Mutass minden hibakereső üzenetet"
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "Egy létező gedit példány bezárása"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Új felső szintű ablak létrehozása a gedit egy már futó példányában"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Új dokumentum létrehozása egy már megnyitott gedit példányban"
 
@@ -2544,7 +2544,7 @@ msgid "Run a command"
 msgstr "Parancs futtatása"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "Leállítva"
 
@@ -2560,15 +2560,15 @@ msgstr "Parancs futtatása"
 msgid "_Run"
 msgstr "_Futtatás"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "Kész"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "Sikertelen"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2578,7 +2578,7 @@ msgstr ""
 "\n"
 "Adj meg egy létező parancsot."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2588,7 +2588,7 @@ msgstr ""
 "\n"
 "Adj meg egy létező parancsot."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "Parancs végrehajtása"
 
@@ -2954,19 +2954,19 @@ msgstr ""
 "Az elemlista bővítmény a gyakran használt elemek egyszerű beillesztésének "
 "lehetőségét kínálja, anélkül hogy be kellene írni őket."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "Dátum és idő beszúrása..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "Beszúrja a jelenlegi időt és dátumot"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Elérhető formátumok"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "A dátum/idő bővítmény beállítása..."
 

@@ -11,14 +11,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 1.118.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-09 20:32+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-09-10 02:40+0200\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.2\n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
@@ -49,7 +49,7 @@ msgstr "oujhene d' otomatijhaedje gedit"
 msgid "Edit text files"
 msgstr "Asspougnî des fitchîs tecses"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Aspougneu di tecse"
 
@@ -255,7 +255,8 @@ msgid ""
 msgstr ""
 
 #: data/gedit.schemas.in.h:37
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr ""
 
 #: data/gedit.schemas.in.h:38
@@ -373,7 +374,8 @@ msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 
 #: data/gedit.schemas.in.h:59
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 
 #: data/gedit.schemas.in.h:60
@@ -410,7 +412,7 @@ msgid "_Go to Line"
 msgstr "_Potchî al roye"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -494,7 +496,8 @@ msgid "Page headers font picker"
 msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:493
-msgid "Push this button to select the font to be used to print the page headers"
+msgid ""
+"Push this button to select the font to be used to print the page headers"
 msgstr ""
 "Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po-z eprimî les "
 "tiestires"
@@ -524,7 +527,8 @@ msgstr ""
 #: gedit/dialogs/gedit-page-setup-dialog.c:628
 #, fuzzy
 msgid "Could not find the required widgets inside '"
-msgstr "Dji n' a savou trover dins goto-line.glade2 les ahesses k' i gn a mezåjhe.\n"
+msgstr ""
+"Dji n' a savou trover dins goto-line.glade2 les ahesses k' i gn a mezåjhe.\n"
 
 #: gedit/dialogs/gedit-plugin-manager.c:53
 msgid "Plugin"
@@ -545,12 +549,12 @@ msgstr ""
 "Fitchî glade nén valide pol manaedjeu di tchoûke-didins -- totes les ahesses "
 "n' ont nén stî trovêyes.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Defini l' eplaeçmint do programe..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -563,7 +567,7 @@ msgstr ""
 "\n"
 "Dinez l' eplaeçmint do programe <tt>%s</tt> s' i vs plait."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "Li fitchî tchoezi n' est nén enondåve."
 
@@ -627,7 +631,8 @@ msgstr "Categoreyes"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:787
 msgid "Push this button to select the font to be used by the editor"
-msgstr "Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po l' aspougneu."
+msgstr ""
+"Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po l' aspougneu."
 
 #: gedit/dialogs/gedit-preferences-dialog.c:790
 msgid "Push this button to configure text color"
@@ -845,7 +850,8 @@ msgstr ""
 
 #: gedit/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "Mi trûte a les balzins, co pés ki l' grijhe cawe di m' pôve fayé vexhåd!"
+msgstr ""
+"Mi trûte a les balzins, co pés ki l' grijhe cawe di m' pôve fayé vexhåd!"
 
 #: gedit/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
@@ -1114,7 +1120,8 @@ msgstr "gedit èn pout nén manaedjî les eplaeçmints «%s:» e môde sicrijhae
 
 #: gedit/gedit-document.c:1319
 msgid "gedit cannot handle this kind of location in write mode."
-msgstr "gedit èn pout nén manaedjî cisse sôre d' eplaeçmints e môde sicrijhaedje."
+msgstr ""
+"gedit èn pout nén manaedjî cisse sôre d' eplaeçmints e môde sicrijhaedje."
 
 #: gedit/gedit-document.c:1332
 msgid "Invalid filename."
@@ -1514,7 +1521,8 @@ msgstr ""
 #: gedit/gedit-plugins-engine.c:392
 #, c-format
 msgid "Error, plugin '%s' does not contain deactivate function."
-msgstr "Aroke, li tchoûke-didins «%s» n' a nole fonccion d' essoctaedje (deactivate)."
+msgstr ""
+"Aroke, li tchoûke-didins «%s» n' a nole fonccion d' essoctaedje (deactivate)."
 
 #: gedit/gedit-plugins-engine.c:417
 #, c-format
@@ -1817,7 +1825,8 @@ msgstr "Tchoezi tot l' documint en etir"
 
 #: gedit/gedit-ui.xml.h:62
 #, fuzzy
-msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid ""
+"Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr ""
 "Defini li stîle del bår ås usteyes sorlon les prémetowès valixhance do "
 "scribanne"
@@ -2001,11 +2010,13 @@ msgstr ""
 #: gedit/gedit-utils.c:420
 #, c-format
 msgid "Could not open the file \"%s\" because it contains corrupted data."
-msgstr "Dji n' a savou drovi l' fitchî «%s» ca il a å dvins des crombès dnêyes."
+msgstr ""
+"Dji n' a savou drovi l' fitchî «%s» ca il a å dvins des crombès dnêyes."
 
 #: gedit/gedit-utils.c:431
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Dji n' a savou drovi l' fitchî «%s» cåze ki gedit èn sait nén manaedjî les "
 "eplaeçmints «%s:»."
@@ -2017,7 +2028,8 @@ msgstr "Dji n' pout drovi l' fitchî «%s»"
 
 #: gedit/gedit-utils.c:447
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 "Dji n' a savou drovi l' fitchî «%s» ca i contént des dnêyes dins ene cogne "
 "nén valide."
@@ -2204,7 +2216,8 @@ msgstr ""
 
 #: gedit/gedit-utils.c:793
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 
 #: gedit/gedit-utils.c:799 gedit/gedit-utils.c:939
@@ -2356,77 +2369,77 @@ msgstr "  SIPOTCHÎ"
 msgid "  INS"
 msgstr "  SITITCHÎ"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 #, fuzzy
 msgid "Show utility debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje des fitchîs."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 #, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje MDI."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje MDI."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje des comandes."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje des documints."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje des fitchîs."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje des tchoûke-didins."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje des preferinces."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje di l' eprimaedje."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje des cweraedjes."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje del fonccion «disfé»."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje del fonccion «vey»."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "Mostrer les dierins messaedjes di disbugaedje."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "Mostrer les messaedjes di disbugaedje do manaedjmint del session."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Mostrer tos les messaedjes di disbugaedje."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr ""
 
@@ -2548,7 +2561,7 @@ msgid "Run a command"
 msgstr ""
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "Aresté"
 
@@ -2564,15 +2577,15 @@ msgstr "Enonder ene comande"
 msgid "_Run"
 msgstr "_Enonder"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "Fwait"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "Berwete!"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2582,7 +2595,7 @@ msgstr ""
 "\n"
 "Tapez ene comande valide s' i vs plait."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2592,7 +2605,7 @@ msgstr ""
 "\n"
 "Dinez ene comande valide, s' i vs plait."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr ""
 
@@ -2958,19 +2971,19 @@ msgstr ""
 "åjheymint dins on documint des etiketes ou tchinnes corantes, sins dveur les "
 "taper en etir."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "_Sititchî li date et l' eure..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "Sititche l' eure et l' date do moumint a l' eplaeçmint do cursoe"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Cognes k' i gn a"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "Apontyî li tchôke-divins di stitchaedje del date et l' eure..."
 
@@ -3585,4 +3598,3 @@ msgstr "_Copyî tecse"
 
 #~ msgid "About..."
 #~ msgstr "Å dfait..."
-

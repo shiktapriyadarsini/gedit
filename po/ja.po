@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit HEAD\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-09-05 00:45+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -47,7 +47,7 @@ msgstr "gedit オートメーション・ファクトリ"
 msgid "Edit text files"
 msgstr "テキスト・ファイルを編集します"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "GNOME テキスト・エディタ"
 
@@ -451,7 +451,7 @@ msgid "_Go to Line"
 msgstr "指定行へジャンプ(_G)"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -590,12 +590,12 @@ msgstr ""
 "プラグイン・マネージャの glade ファイルが無効です。一部のウィジットが見つかり"
 "ませんでした。\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "プログラムの格納場所の設定..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -607,7 +607,7 @@ msgstr ""
 "\n"
 "プログラム <tt>%s</tt> の格納場所を指定して下さい。"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "選択したファイルは実行可能ではありません。"
 
@@ -2356,75 +2356,75 @@ msgstr " [上書き]"
 msgid "  INS"
 msgstr " [挿入]"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "ユーティリティのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "メタデータのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "MDI のデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "コマンドのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "ドキュメントのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "ファイルのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "プラグインのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "設定のデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "印刷のデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "検索のデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "元に戻すのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "表示のデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "最近使ったファイルのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "セッション管理のデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "全てのデバッグ・メッセージを表示する"
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "既に実行中の gedit を終了させる"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "既に実行中の gedit に新しいトップレベル・ウィンドウを作成する"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "既に実行中の gedit に新しいドキュメントを作成する"
 
@@ -2539,7 +2539,7 @@ msgid "Run a command"
 msgstr "コマンドを実行します"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "停止中"
 
@@ -2555,15 +2555,15 @@ msgstr "コマンドの実行"
 msgid "_Run"
 msgstr "実行(_R)"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "完了"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "失敗しました"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2573,7 +2573,7 @@ msgstr ""
 "\n"
 "正しい SHELL コマンドを入力して下さい。"
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2583,7 +2583,7 @@ msgstr ""
 "\n"
 "正しい SHELL コマンドを挿入して下さい。"
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "コマンドの実行中"
 
@@ -2948,19 +2948,19 @@ msgstr ""
 "タグ一覧のプラグインを使用すると、頻繁に使用するタグまたは文字列を (キーボー"
 "ドから) 入力せずに簡単にドキュメントに挿入できます。"
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "日付/時間の挿入(_S)"
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "カーソル位置に現在の日付と時間を挿入します"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "利用可能なフォーマット"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "日付/時間挿入プラグインの設定..."
 

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.0\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-02-03 10:16+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Edit text files"
 msgstr "የጽሑፍ ፋይሎች ያስተካክሉ"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "የጽሑፍ ማቀናጃ"
 
@@ -384,7 +384,7 @@ msgid "_Go to Line"
 msgstr "ወደ መስመር _ሂድ"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -515,12 +515,12 @@ msgstr "geditን እንደገና ለመጨመር የplugin manager glade2, ሊ�
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr "የማይሰራ የግሌድ ፋይል ለፕላግኢን ማናጀር ሁሉም ዊድጌትስ አልተገኙም\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr ""
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -529,7 +529,7 @@ msgid ""
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr ""
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr ""
 
@@ -2196,76 +2196,76 @@ msgstr "  በላዩ ላይ ፃፍ"
 msgid "  INS"
 msgstr "  አስገባ"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "የተስተካከሉ የመልዕክቶች መገልገያን አሳይ።"
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 #, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "የተስተካከሉ የmdi መልዕክቶችን አሳይ።"
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "የተስተካከሉ የmdi መልዕክቶችን አሳይ።"
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "ትእዛዞቹ መልእክቶቹን ሲያስተካክሉአቸው አሳይ።"
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "የተስተካከሉ መልዕክቶችን ሰነድ አሳይ።"
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "የተስተካከሉ የመልዕክቶች ፋይልን አሳይ።"
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "የረዳት ፕሮግራሙ የተስተካከሉ መልዕክቶች አሳይ።"
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "የተስተካከሉ መልእክቶችን ምርጫዎች አሳይ።"
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "የተስተካከሉት መልዕክቶች ሲታተሙ አሳይ።"
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "የተስተካከሉትን መልዕክቶች ሲፈልግ አሳይ።"
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "ተስተካክለው የተተውትን መልዕክቶች አሳይ።"
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "የተስተካከሉ መልዕክቶችን ማሳያ አሳይ።"
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "በቅርቡ የተስተካከሉትን መልዕክቶች አሳይ።"
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "ሁሉንም የተስተካከሉ መልዕክቶችን ክፈት።"
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr ""
 
@@ -2379,7 +2379,7 @@ msgid "Run a command"
 msgstr ""
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr ""
 
@@ -2395,15 +2395,15 @@ msgstr ""
 msgid "_Run"
 msgstr "_አስኪድ"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "ጨርሷል"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr ""
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2413,7 +2413,7 @@ msgstr ""
 "\n"
 "የሼሉ ትእዛዝ መስጫ ባዶ ነው እባክዎ ትክክለኛውን የሼሉን ትእዛዝ ያስገቡ።"
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2423,7 +2423,7 @@ msgstr ""
 "\n"
 "እባክዎ ትክክለኛውን የሼሉን ትእዛዝ ያስገቡ።"
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr ""
 
@@ -2786,19 +2786,19 @@ msgid ""
 "commonly used tags/strings without having to type them."
 msgstr ""
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "ቀን እና ሰዓት _አስገባ..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "ጠቋሚው ባለበት ቦታ ላይ የዕለቱ ቀንና ሰዓት አስገባ"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "የሚገኙ ፎርማቶች"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "የቀን/ሰዓት ተጨማሪ ፕሮግራም ተስተካክሎ ይግባ..."
 

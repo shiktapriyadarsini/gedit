@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2002-12-30 22:30+0200\n"
 "Last-Translator: Artis Trops <hornet@navigator.lv>\n"
 "Language-Team: Latvian <ll10nt@inbox.lv>\n"
@@ -43,7 +43,7 @@ msgstr "gedit automatizācijas ražotne"
 msgid "Edit text files"
 msgstr "Rediģēt teksta failus"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Teksta Redaktors"
 
@@ -448,7 +448,7 @@ msgid "_Go to Line"
 msgstr "_Iet uz Rindu"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -587,12 +587,12 @@ msgstr ""
 "Nederīgs glade fails iespraudņu pārvaldniekam -- ne visas logdaļas "
 "atrastas.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Uzstādīt programmas lokāciju..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -605,7 +605,7 @@ msgstr ""
 "\n"
 "Lūdzu norādiet programmas <tt>%s</tt> lokāciju."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "Izvēlētais fails nav izpildāms."
 
@@ -2368,76 +2368,76 @@ msgstr "  OVR"
 msgid "  INS"
 msgstr "  INS"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "Parādīt utilīta atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 #, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "Parādīt mdi atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "Parādīt mdi atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Parādīt komandu atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Parādīt dokumentu atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Parādīt failu atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Parādīt iespradumu atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Parādīt prefs atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Parādīt drukāšanas atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Parādīt meklēšanas atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Parādīt atsaukšanas atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Parādīt skatu atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "Parādīt viezbiežākos atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "Parādīt sesijas pārvāldījuma atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Ieslēgt visus atkļūdošanas ziņojumus."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "Iziet no esošās gedit instances"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Izveidot jaunu virslīmeņa logu eksistējošajā gedit instancē"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Izveidot jaunu dokumentu eksistējošajā gedit instancē"
 
@@ -2554,7 +2554,7 @@ msgid "Run a command"
 msgstr "Palaist komandu"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "Apturēts"
 
@@ -2570,15 +2570,15 @@ msgstr "Palaist Komandu"
 msgid "_Run"
 msgstr "_Palaist"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "Darīts"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "Neizdevās"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2588,7 +2588,7 @@ msgstr ""
 "\n"
 "Lūdzu ievadiet derīgu čaulas komandu."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2598,7 +2598,7 @@ msgstr ""
 "\n"
 "Lūdzu ievadiet derīgu čaulas komandu."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "Izpildu komandu"
 
@@ -2963,19 +2963,19 @@ msgstr ""
 "Tagu saraksta iespraudnis piedāvā veidu, kā ērti ievietot dokumentā plaši "
 "lietotos tagus/virknes bez vajadzības tās rakstīt."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "Ie_vietot Datumu un Laiku..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "Ievietot pašreizējo datumu un laiku kursora pozīcijā"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Pieejamie formāti"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "Konfigurēt datuma/laika iespraudni..."
 

@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.gnome-2-4.az\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-18 19:43+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-09-19 11:30+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azərbaycan <gnome@azitt.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.1\n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
@@ -45,7 +45,7 @@ msgstr "gedit avtomatikləşdirmə e'malatxanası"
 msgid "Edit text files"
 msgstr "Mətn fayllarını redaktə edin"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Mətn Editoru"
 
@@ -256,7 +256,8 @@ msgstr ""
 "\"GTK_WRAP_CHAR\" istifadə edin."
 
 #: data/gedit.schemas.in.h:37
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr "Sənədin əsas hissəsinin çap ediləcəyi yazı növünü müəyyən edir."
 
 #: data/gedit.schemas.in.h:38
@@ -399,7 +400,8 @@ msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Sənədlər çap edilirkən sintaksis işıqlandırılmasının da çap edilməsi."
 
 #: data/gedit.schemas.in.h:59
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Alttakı vəziyyət çubuğunun göstərilməsi."
 
 #: data/gedit.schemas.in.h:60
@@ -412,7 +414,8 @@ msgid ""
 "option is turned off, then the colors of the editing area will be those "
 "specified in the \"Background Color\", \"Text Color\", \"Selected Text Color"
 "\", and \"Selection Color\" options."
-msgstr "Yazma sahəsində sistemin əsas rənglərinin işlədilməsi. Əgər bu fəal deyilsə, "
+msgstr ""
+"Yazma sahəsində sistemin əsas rənglərinin işlədilməsi. Əgər bu fəal deyilsə, "
 
 #: data/gedit.schemas.in.h:62
 msgid ""
@@ -439,7 +442,7 @@ msgid "_Go to Line"
 msgstr "Sətirə _Get"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -521,7 +524,8 @@ msgid "Page headers font picker"
 msgstr "Səhifənin başlığı üçün yazı növü seçicisi"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:493
-msgid "Push this button to select the font to be used to print the page headers"
+msgid ""
+"Push this button to select the font to be used to print the page headers"
 msgstr "Sənədin başlıqları üçün yazı növünü seçmək üçün bu düyməyə basın"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:494
@@ -569,12 +573,12 @@ msgstr ""
 "Əlavə idarəçisi üçün səhv glade faylı -- widget'lərin hamısı tapıla "
 "bilmədi.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Proqramın yerini tə'yin et...."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -585,7 +589,7 @@ msgstr ""
 " %s əlavəsi <tt>%s</tt> adında xarici proqram işlədir. \n"
 "Xahiş edirik, <tt>%s</tt> proqramının yerini müəyyən edin."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "Seçili fayl icra edilə bilən deyil."
 
@@ -1767,7 +1771,8 @@ msgid "Select the entire document"
 msgstr "Bütün sənədi seç"
 
 #: gedit/gedit-ui.xml.h:62
-msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid ""
+"Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr ""
 "Vasitə çubuğunun düymə tərzini Masa Üstü Menyusu və Vasitə Çubuğu "
 "Qurğularına görə seç"
@@ -1946,7 +1951,8 @@ msgstr "\"%s\" faylı açıla bilmədi, çünki xəsərli mə'lumat daxil edir."
 
 #: gedit/gedit-utils.c:431
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "\"%s\" faylı açıla bilmədi, çünki gedit %s: mövqelərini aça bilmir."
 
 #: gedit/gedit-utils.c:437
@@ -1956,8 +1962,10 @@ msgstr "\"%s\" faylı açıla bilmədi"
 
 #: gedit/gedit-utils.c:447
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
-msgstr "\"%s\" faylı açıla bilmədi, çünki o mə'lumatı hökmsüz şəkildə daxil edir."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
+msgstr ""
+"\"%s\" faylı açıla bilmədi, çünki o mə'lumatı hökmsüz şəkildə daxil edir."
 
 #: gedit/gedit-utils.c:454
 #, c-format
@@ -2148,7 +2156,8 @@ msgstr "\"%s\" faylı çevrilə bilmir çünki o xəsərli mə'lumat daxil edir.
 
 #: gedit/gedit-utils.c:793
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "\"%s\" faylı çevrilə bilmir çünki gedit %s: mövqelərini aça bilmir."
 
 #: gedit/gedit-utils.c:799 gedit/gedit-utils.c:939
@@ -2161,7 +2170,8 @@ msgstr "\"%s\" faylı çevrilə bilmədi."
 msgid ""
 "Could not revert the file \"%s\" because it contains data in an invalid "
 "format."
-msgstr "\"%s\" faylı çevrilə bilmədi çünki o mə'lumatı hökmsüz şəkildə daxil edir."
+msgstr ""
+"\"%s\" faylı çevrilə bilmədi çünki o mə'lumatı hökmsüz şəkildə daxil edir."
 
 #: gedit/gedit-utils.c:816
 #, c-format
@@ -2322,75 +2332,75 @@ msgstr "  OVR"
 msgid "  INS"
 msgstr "  INS"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "Tə'minat xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "Metadata xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "Mdi xəta ayırmaı ismarışlarını göstər."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Əmr xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Sənəd xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Fayl xəta ayırmaı ismarışlarını göstər."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Əlavə xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Qurğu xəta ayırmaı ismarışlarını göstər."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Çap etmə xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Axtarma xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Geri alma xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Görünüş xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "Son xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "İclas idarəsi xəta ayırma ismarışlarını göstər."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Bütün xəta ayırma ismarışlarını fəallaşdır."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "Mövcud Gedit proqramından çıx"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Mövcud Gedit pəncərəsində yeni bir üst səviyyə pəncərə yarat"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Mövcud Gedit pəncərəsində yeni bir sənəd yarat"
 
@@ -2506,7 +2516,7 @@ msgid "Run a command"
 msgstr "Əmri icra et"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "Dayandırılıb"
 
@@ -2522,15 +2532,15 @@ msgstr "Əmri İcra Et"
 msgid "_Run"
 msgstr "_İcra Et"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "Oldu"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "Bacarılmadı"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2540,7 +2550,7 @@ msgstr ""
 "\n"
 "Xahiş edirik, hökmlü bir qabığ əmri daxil edin."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2550,7 +2560,7 @@ msgstr ""
 "\n"
 "Xahiş edirik, hökmlü bir qabığ əmri daxil edin."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "Əmr icra edilir"
 
@@ -2558,7 +2568,8 @@ msgstr "Əmr icra edilir"
 msgid ""
 "Execute an external program and eventually grabs its output in the output "
 "window."
-msgstr "Xarici bir proqramı icra et və onun çıxışını çıxış pəncərəsində göstər."
+msgstr ""
+"Xarici bir proqramı icra et və onun çıxışını çıxış pəncərəsində göstər."
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:2
 msgid "Shell command"
@@ -2915,19 +2926,19 @@ msgstr ""
 "Taq siyahısı əlavəsi sizə tez tez işlədilən taqları yazmadan birbaşa sənədin "
 "içinə daxil etmə imkanı verir."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "Tarix və Zaman _Daxil Et..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "Hazırkı tarixi kursorun mövqeyinə daxil et"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Mövcud şəkillər"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "Tarix/Zaman daxil etmə əlavəsini quraşdır..."
 
@@ -2982,4 +2993,3 @@ msgstr "Seçili mətni ara yaddaşa köçür"
 #: viewer/gedit-viewer-ui.xml.h:2
 msgid "_Copy Text"
 msgstr "Mətni _Köçür"
-

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2002-06-16 16:07+0200\n"
 "Last-Translator: Arafat Medini <lumina@silverpen.de>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Edit text files"
 msgstr "حرّر ملفات نصية"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "محرر نصوص Gnome"
 
@@ -399,7 +399,7 @@ msgid "_Go to Line"
 msgstr "اذهب الى السطر"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, fuzzy, c-format
 msgid "Could not find the required widgets inside %s."
@@ -539,13 +539,13 @@ msgstr "ملحق gedit"
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr "غير صحيح ملف ملحق الكل"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 #, fuzzy
 msgid "Set program location..."
 msgstr "برنامج."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, fuzzy, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -554,7 +554,7 @@ msgid ""
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr "ث ملحق برنامج<tt> ث</tt> الى ل ال من ال<tt> ث</tt> برنامج."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 #, fuzzy
 msgid "The selected file is not executable."
 msgstr "الملف المختار ليس ملف تنفيذي"
@@ -2420,78 +2420,78 @@ msgstr ""
 msgid "  INS"
 msgstr ""
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 #, fuzzy
 msgid "Show utility debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للملفات."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 #, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للواجهة المتعددة"
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للواجهة المتعددة"
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للأوامر."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للمستند."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للملفات."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للملحقات."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للمفضلات."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للطباعة."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للبحث."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للإبطال."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للعرض."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل الحديثة."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 #, fuzzy
 msgid "Show session management debugging messages."
 msgstr "أظهر رسائل ازالة المشاكل للمستند."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "إعمال كل رسائل ازالة المشاكل"
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr ""
 
@@ -2623,7 +2623,7 @@ msgid "Run a command"
 msgstr ""
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr ""
 
@@ -2644,16 +2644,16 @@ msgstr ""
 msgid "_Run"
 msgstr "تشغيل"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr ""
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 #, fuzzy
 msgid "Failed"
 msgstr "_ملف"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 #, fuzzy
 msgid ""
 "The shell command entry is empty.\n"
@@ -2661,7 +2661,7 @@ msgid ""
 "Please, insert a valid shell command."
 msgstr "فارغ ل."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 #, fuzzy
 msgid ""
 "Error parsing the shell command.\n"
@@ -2669,7 +2669,7 @@ msgid ""
 "Please, insert a valid shell command."
 msgstr "خطأ ال ل."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr ""
 
@@ -3062,21 +3062,21 @@ msgid ""
 "commonly used tags/strings without having to type them."
 msgstr "ملحق يوفر الى الى نوع."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 #, fuzzy
 msgid "In_sert Date and Time..."
 msgstr "أدخل التاريخ"
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 #, fuzzy
 msgid "Insert current date and time at the cursor position"
 msgstr "أدخل و وقت ال مؤشر"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr ""
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 #, fuzzy
 msgid "Configure insert date/time plugin..."
 msgstr "عرّف وقت"

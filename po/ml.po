@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:gedit.HEAD\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-07-05 10:29+0530\n"
 "Last-Translator: FSF-India <locale@gnu.org.in>\n"
 "Language-Team: Malayalam <locale@gnu.org.in>\n"
@@ -42,7 +42,7 @@ msgstr "ജി-എഡിറ്റ് സ്വയം നിയന്ത്രി
 msgid "Edit text files"
 msgstr "വാചക രചനകള് തിരുത്തുക"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "രചന ചിട്ടപ്പെടുത്തല്‌ ഉപാധി"
 
@@ -439,7 +439,7 @@ msgid "_Go to Line"
 msgstr "വരിയിലേക്ക് പോകുക"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -570,12 +570,12 @@ msgstr "glade2  സംയോജക പാലകനെ കണ്ടെത്ത�
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr "സംയോജക പാലനത്തിനായുള്ള glade രചന അസാധു -- എല്ലാ ഉപായങ്ങളുംകണ്ടെത്താനായില്ല. \n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "പ്രക്രമസ്ഥാനം സജ്ജീകരിക്കുക"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -586,7 +586,7 @@ msgstr ""
 "%s സംയോജനി അതിന്‌റെ കൃത്യനിര്‌വ്വഹണത്തിന്  <tt>%s</tt> എന്ന ബാഹ്യപ്രയോഗം "
 "ഉപയോഗിക്കുന്നുദയവായി <tt>%s</tt> പ്രക്രമത്തിന്‌റെ സ്ഥാനം നിര്‌ദ്ദേശിക്കൂ‍"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "തെരഞ്ഞെടുത്ത രചന നിറ്‌വഹിക്കാനാകില്ല"
 
@@ -2298,75 +2298,75 @@ msgstr " OVR"
 msgid "  INS"
 msgstr " INS"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "ഉപയുക്തത തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "mdi തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "നിര്‌ദ്ദേശ തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "പ്രസ്താവ തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "രചന തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "സംയോജനി തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "താല്പര്യ തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "അച്ചടി തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "തെരച്ചില്‌ തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "റദ്ദാക്കല്‌ തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "കാഴ്ച തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "പ്രവ‍ര്‌ത്തനകാല പാലനം തിരുത്തല്‌ സന്ദേശങ്ങള്‌ ദൃശ്യമാക്കുക"
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "എല്ലാ തിരുത്തല്‌ സന്ദേശങ്ങളും പ്രവ‍ര്‌ത്തനക്ഷമമാക്കുക"
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "ജിഎഡിറ്റിന്റെ നിലവിലുള്ള ഘട്ടത്തില്‌നിന്ന്‌ ഒഴിയുക"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "ജിഎഡിറ്റിന്റെ നിലവിലുള്ള ഘട്ടത്തില്‌ പുതിയ ഒരു മേല്‌ത്തട്ട് ജാലകം ഉണ്ടാക്കുക"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "ജിഎഡിറ്റിന്റെ നിലവിലുള്ള ഘട്ടത്തില്‌ ഒരു പുതിയ രചന ഉണ്ടാക്കുക"
 
@@ -2479,7 +2479,7 @@ msgid "Run a command"
 msgstr "ഒരു നിര്‌ദ്ദേശം പ്രവ‍ര്ത്തിക്കുക"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "നിര്‍ത്തി"
 
@@ -2495,15 +2495,15 @@ msgstr "നിര്‍ദ്ദേശം പ്രവ‍ര്ത്തിക�
 msgid "_Run"
 msgstr "നടപ്പിലാക്കുക"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "ചെയ്യ‍ുക"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "പരാജയപ്പെട്ടു"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2511,7 +2511,7 @@ msgid ""
 msgstr ""
 "ഉപയോക്തൃസഹായി നിര്‍ദ്ദേശ സ്ഥാനം ശൂന്യമാണ്.  ദയവായി സാധുവായ ഒരു ഉപയോക്തൃ സഹായി നിര്‍ദ്ദേശം നല്കൂ"
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2519,7 +2519,7 @@ msgid ""
 msgstr ""
 "ഉപയോക്തൃ സഹായി ഖണഡനത്തില് തെറ്റുണ്ട്.  ദയവായി സാധുവായ ഒരു ഉപയോക്തൃ സഹായി നിര്‍ദ്ദേശം നല്കൂ "
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "നിര്‌ദ്ദേശം നിര്‍വ്വഹിക്കുക"
 
@@ -2882,19 +2882,19 @@ msgid ""
 "commonly used tags/strings without having to type them."
 msgstr ""
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "തീയതിയും സമയും ചേറ്‌ക്കുക"
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "ഇപ്പോഴത്തെ സമയവും തീയതിയും സൂചികാ സ്ഥാനത്ത് ചേറ്‌ക്കുക"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "ലഭ്യമായ ഘടന"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "സമയം/തിയതി ചേറ്‌ക്കുന്ന  സംയോജനി വിന്യസിക്കുക"
 

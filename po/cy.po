@@ -15,7 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-08-14 20:41+0100\n"
 "Last-Translator: Dafydd Harries <daf@parnassus.ath.cx>\n"
 "Language-Team:  Cymraeg <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -52,7 +52,7 @@ msgstr "ffatri awtomeiddio gedit"
 msgid "Edit text files"
 msgstr "Golygu ffeiliau testun"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Golygydd Testyn"
 
@@ -468,7 +468,7 @@ msgid "_Go to Line"
 msgstr "_Mynd i Linell"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -604,12 +604,12 @@ msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
 "Ffeil glade annilys ar gyfer y rheolwr ategion -- ni chanfodwyd pob teclyn.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Gosod lleoliad y rhaglen..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -622,7 +622,7 @@ msgstr ""
 "\n"
 "Os gwelwch yn dda, penodwch leoliad y rhaglen <tt>%s</tt>."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "Nid yw'r ffeil a ddewiswyd yn weithredadwy."
 
@@ -2383,75 +2383,75 @@ msgstr "  TRS"
 msgid "  INS"
 msgstr "  MEW"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "Dangos negeseuon datnamu cyfleusterau."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "Dangos negeseuon datnamu metadata."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "Dangos negeseuon datnamu MDI."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Dangos negeseuon datnamu gorchmynion."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Dangos negeseuon datnamu dogfen."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Dangos negeseuon datnamu ffeiliau."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Dangos negeseuon datnamu ategynnau."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Dangos negeseuon datnamu hoffterau."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Dangos negeseuon datnamu argraffu."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Dangos negeseuon datnamu chwilio."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Dangos negeseuon datnamu datwneud."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Dangos negeseuon datnamu golwg."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "Dagnos negeseuon datnamu ffeiliau diweddar."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "Dangos negeseuon datnamu rheolaeth sesiwn."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Troi ymlaen pob neges datnamu."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "Gadael achos o gedit sy'n bodoli"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Creu ffenest lefel dop newydd mewn achos o gedit sy'n bodoli"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Creu dogfen newydd mewn achos o gedit sy'n bodoli"
 
@@ -2567,7 +2567,7 @@ msgid "Run a command"
 msgstr "Gweithredu gorchymyn"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "Wedi ei aros"
 
@@ -2584,15 +2584,15 @@ msgstr "Gweithredu'r gorchymyn"
 msgid "_Run"
 msgstr "_Gweithredu"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "Wedi gorffen"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "Methwyd"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2602,7 +2602,7 @@ msgstr ""
 "\n"
 "Os gwelwch yn dda, gosodwch orchymyn cragen dilys."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2612,7 +2612,7 @@ msgstr ""
 "\n"
 "Os gwelwch yn dda, gosodwch orchymyn cragen dilys."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "Gweithredu'r gorchymyn"
 
@@ -2980,19 +2980,19 @@ msgstr ""
 "Mae'r ategyn rhestr tafiau yn darparu dull er mwyn mewnosod tagiau/llinynau "
 "a ddefnyddir yn aml i fewn i ddogfen yn hawdd heb orfod eu teipio."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "_Mewnosod Dyddiad ac Amser..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "Mewnosod y dyddiar a'r amser cyfredol wrth safle'r cyrchydd"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Fformatau ar gael"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "Cyflunio'r ategyn dyddiad/amser..."
 

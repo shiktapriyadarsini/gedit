@@ -9,14 +9,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-it\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-25 03:56+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-08-31 16:33+0200\n"
 "Last-Translator: Roberto Rosselli Del Turco <rosselli@ling.unipi.it>\n"
 "Language-Team: italiano <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.1\n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
@@ -47,7 +47,7 @@ msgstr "Fabbrica per l'automazione di gedit"
 msgid "Edit text files"
 msgstr "Modifica file di testo"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Editor di testo"
 
@@ -180,7 +180,8 @@ msgid ""
 "Only recognized encodings are used."
 msgstr ""
 "Elenco delle codifiche mostrate nel menu «Codifica caratteri» nella finestra "
-"di apertura/salvataggio file. Sono mostrate soltanto le codifiche riconosciute."
+"di apertura/salvataggio file. Sono mostrate soltanto le codifiche "
+"riconosciute."
 
 #: data/gedit.schemas.in.h:25
 msgid "Maximum Recent Files"
@@ -245,8 +246,9 @@ msgstr ""
 "stampa. Usa \"GTK_WRAP_NONE\" per evitare l'a capo automatico, "
 "\"GTK_WRAP_WORD\" per effettuarlo in base alle singole parole e "
 "\"GTK_WRAP_CHAR\" per effettuarlo in base ai singoli caratteri. Si faccia "
-"attenzione al fatto che i valori sono sensibili all'uso di maiuscolo/minuscolo, "
-"per cui è necessario digitarli esattamente come appaiono scritti qui sopra."
+"attenzione al fatto che i valori sono sensibili all'uso di maiuscolo/"
+"minuscolo, per cui è necessario digitarli esattamente come appaiono scritti "
+"qui sopra."
 
 #: data/gedit.schemas.in.h:36
 msgid ""
@@ -256,15 +258,17 @@ msgid ""
 "the values are case-sensitive, so make sure they appear exactly as mentioned "
 "here."
 msgstr ""
-"Specifica come effettuare l'a capo automatico di righe troppo lunghe nell'area "
-"di editing. Usa \"GTK_WRAP_NONE\" per evitare l'a capo automatico, "
+"Specifica come effettuare l'a capo automatico di righe troppo lunghe "
+"nell'area di editing. Usa \"GTK_WRAP_NONE\" per evitare l'a capo automatico, "
 "\"GTK_WRAP_WORD\" per effettuarlo in base alle singole parole e "
 "\"GTK_WRAP_CHAR\" per effettuarlo in base ai singoli caratteri. Si faccia "
-"attenzione al fatto che i valori sono sensibili all'uso di maiuscolo/minuscolo, "
-"per cui è necessario digitarli esattamente come appaiono scritti qui sopra."
+"attenzione al fatto che i valori sono sensibili all'uso di maiuscolo/"
+"minuscolo, per cui è necessario digitarli esattamente come appaiono scritti "
+"qui sopra."
 
 #: data/gedit.schemas.in.h:37
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Specifica il font usato per il corpo del testo di un documento al momento "
 "della stampa."
@@ -318,12 +322,12 @@ msgid ""
 msgstr ""
 "Stile dei pulsanti della barra degli strumenti. I valori consentiti sono "
 "\"GEDIT_TOOLBAR_SYSTEM\" per utilizzare lo stile predefinito del sistema, "
-"\"GEDIT_TOOLBAR_ICONS\" per visualizzare soltanto le icone, "
-" \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" per visualizzare le icone e le "
-"relative didascalie allo stesso tempo, \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" "
-"per mostrare le didascalie accanto alle icone. Si faccia attenzione al fatto"
-"che i valori sono sensibili all'uso di maiuscolo/minuscolo, per cui è"
-"necessario digitarli esattamente come appaiono scritti qui sopra."
+"\"GEDIT_TOOLBAR_ICONS\" per visualizzare soltanto le icone,  "
+"\"GEDIT_TOOLBAR_ICONS_AND_TEXT\" per visualizzare le icone e le relative "
+"didascalie allo stesso tempo, \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" per "
+"mostrare le didascalie accanto alle icone. Si faccia attenzione al fattoche "
+"i valori sono sensibili all'uso di maiuscolo/minuscolo, per cui ènecessario "
+"digitarli esattamente come appaiono scritti qui sopra."
 
 #: data/gedit.schemas.in.h:44
 msgid "Tab Size"
@@ -349,15 +353,15 @@ msgid ""
 msgstr ""
 "Il metodo di codifica utilizzato per salvare i file. I valori ammessi sono "
 "\"GEDIT_SAVE_ALWAYS_UTF8\" per salvare obbligatoriamente in UTF-8, "
-"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" se si desidera che "
-"gedit converta il documento che sta salvando nella codifica utilizzata dalla "
-"vostra lingua locale, \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\""
-"se si desidera che gedit tenti di utilizzare la codifica originale del file (i "
-"nuovi file verranno salvati in UTF8. Se la conversione ha successo, verrà "
-"utilizzata automaticamente; in caso contrario, verrà utilizzata la codifica "
-"UTF-8. Si faccia attenzione al fatto che i valori sono sensibili all'uso di "
-"maiuscolo/minuscolo, per cui è necessario digitarli esattamente come "
-"appaiono scritti qui sopra."
+"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" se si desidera che gedit converta "
+"il documento che sta salvando nella codifica utilizzata dalla vostra lingua "
+"locale, \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\"se si desidera che "
+"gedit tenti di utilizzare la codifica originale del file (i nuovi file "
+"verranno salvati in UTF8. Se la conversione ha successo, verrà utilizzata "
+"automaticamente; in caso contrario, verrà utilizzata la codifica UTF-8. Si "
+"faccia attenzione al fatto che i valori sono sensibili all'uso di maiuscolo/"
+"minuscolo, per cui è necessario digitarli esattamente come appaiono scritti "
+"qui sopra."
 
 #: data/gedit.schemas.in.h:47
 msgid "Toolbar Buttons Style"
@@ -418,16 +422,19 @@ msgstr "Abilita l'inserimento di spazi al posto dei tab."
 #: data/gedit.schemas.in.h:58
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
-"Attiva la stampa dell'evidenziazione della sintassi per i documenti che verranno "
-"stampati."
+"Attiva la stampa dell'evidenziazione della sintassi per i documenti che "
+"verranno stampati."
 
 #: data/gedit.schemas.in.h:59
-msgid "Whether the status bar at the bottom of editing windows should be visible."
-msgstr "Rende visibile o meno la barra di stato in fondo alle finestre di editing."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
+msgstr ""
+"Rende visibile o meno la barra di stato in fondo alle finestre di editing."
 
 #: data/gedit.schemas.in.h:60
 msgid "Whether the toolbar should be visible in editing windows."
-msgstr "Rende visibile o meno la barra degli strumenti nelle finestre di editing."
+msgstr ""
+"Rende visibile o meno la barra degli strumenti nelle finestre di editing."
 
 #: data/gedit.schemas.in.h:61
 msgid ""
@@ -467,7 +474,7 @@ msgid "_Go to Line"
 msgstr "Vai alla ri_ga"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -551,7 +558,8 @@ msgid "Page headers font picker"
 msgstr "Selettore del font per le intestazioni di pagina"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:493
-msgid "Push this button to select the font to be used to print the page headers"
+msgid ""
+"Push this button to select the font to be used to print the page headers"
 msgstr ""
 "Cliccare su questo pulsante per selezionare il font che verrà utilizzato per "
 "stampare le intestazioni di pagina"
@@ -603,12 +611,12 @@ msgstr ""
 "File glade per il gestore di plugin non valido -- impossibile trovare tutti "
 "i widget.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Configurazione del percorso del programma..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -621,7 +629,7 @@ msgstr ""
 "\n"
 "Indicare il percorso corretto del programma <tt>%s</tt>."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "Il file selezionato non è eseguibile."
 
@@ -635,7 +643,7 @@ msgid "Tabs"
 msgstr "Tab"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:200
-msgid "Text Wrapping"
+msgid "Wrap Mode"
 msgstr "A capo automatico"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:201
@@ -698,7 +706,8 @@ msgstr "Cliccare su questo pulsante per selezionare il colore di sfondo"
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
-msgstr "Cliccare su questo pulsante per scegliere il colore del testo selezionato"
+msgstr ""
+"Cliccare su questo pulsante per scegliere il colore del testo selezionato"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:797
 msgid ""
@@ -748,7 +757,8 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Annulla</span>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:10
 msgid "<span weight=\"bold\" size=\"x-large\">Wrap Mode</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Modalità a capo automatico</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Modalità a capo automatico</span>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:11
 msgid "<span weight=\"bold\">Colors</span>"
@@ -1596,7 +1606,8 @@ msgstr "Cambia la visibilità della barra di stato nella finestra corrente"
 
 #: gedit/gedit-ui.xml.h:4
 msgid "Change the visibility of the toolbar in the current window"
-msgstr "Cambia la visibilità della barra degli strumenti nella finestra corrente"
+msgstr ""
+"Cambia la visibilità della barra degli strumenti nella finestra corrente"
 
 #: gedit/gedit-ui.xml.h:5
 msgid "Close"
@@ -1803,7 +1814,8 @@ msgid "Select the entire document"
 msgstr "Seleziona tutto il documento"
 
 #: gedit/gedit-ui.xml.h:62
-msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid ""
+"Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr ""
 "Configura lo stile dei pulsanti della barra degli strumenti in base alle "
 "corrispondenti impostazioni del desktop"
@@ -1822,7 +1834,9 @@ msgstr "Mostra il testo sotto ogni icona nella barra degli strumenti"
 
 #: gedit/gedit-ui.xml.h:66
 msgid "Show text only beside important icons in the toolbar"
-msgstr "Mostra il testo soltanto accanto alle icone importanti nella barra degli strumenti"
+msgstr ""
+"Mostra il testo soltanto accanto alle icone importanti nella barra degli "
+"strumenti"
 
 #: gedit/gedit-ui.xml.h:67
 msgid "T_ext for Important Icons"
@@ -1981,8 +1995,10 @@ msgstr "Impossibile aprire il file «%s» perché contiene dati corrotti."
 
 #: gedit/gedit-utils.c:431
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
-msgstr "Impossibile aprire il file «%s» perché gedit non può gestire posizioni «%s:»."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgstr ""
+"Impossibile aprire il file «%s» perché gedit non può gestire posizioni «%s:»."
 
 #: gedit/gedit-utils.c:437
 #, c-format
@@ -1991,7 +2007,8 @@ msgstr "Impossibile aprire il file «%s»"
 
 #: gedit/gedit-utils.c:447
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 "Impossibile aprire il file «%s» perché contiene dati in un formato non "
 "valido."
@@ -2119,8 +2136,9 @@ msgstr ""
 "Impossibile aprire il file «%s» perché gedit non è riuscito a identificare "
 "automaticamente la codifica dei caratteri.\n"
 "\n"
-"Controllare che non si tratti di un file binario e riprovare selezionando una "
-"codifica di caratteri nella finestra di dialogo «Apri file...» (o «Apri posizione...»)."
+"Controllare che non si tratti di un file binario e riprovare selezionando "
+"una codifica di caratteri nella finestra di dialogo «Apri file...» (o «Apri "
+"posizione...»)."
 
 #: gedit/gedit-utils.c:616 gedit/gedit-utils.c:646
 #, c-format
@@ -2134,8 +2152,8 @@ msgstr ""
 "Impossibile aprire il file «%s» utilizzando la codifica dei caratteri «%s».\n"
 "\n"
 "Controllare che non si tratti di un file binario e di aver selezionato la "
-"codifica di caratteri corretta nella finestra di dialogo «Apri file...» (o «Apri "
-"posizione...»), quindi riprovare."
+"codifica di caratteri corretta nella finestra di dialogo «Apri file...» (o "
+"«Apri posizione...»), quindi riprovare."
 
 #: gedit/gedit-utils.c:662
 #, c-format
@@ -2187,7 +2205,8 @@ msgstr "Impossibile ripristinare il file «%s» perché contiene dati corrotti."
 
 #: gedit/gedit-utils.c:793
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Impossibile ripristinare il file «%s» perché gedit non gestisce le posizioni "
 "«%s:»."
@@ -2370,75 +2389,75 @@ msgstr "  SSC"
 msgid "  INS"
 msgstr "  INS"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "Mostra i messaggi di debug delle utility."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "Mostra i messaggi di debug dei metadata."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "Mostra i messaggi di debug della mdi."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Mostra i messaggi di debug dei comandi."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Mostra i messaggi di debug del documento."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Mostra i messaggi di debug del file."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Mostra i messaggi di debug del plugin."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Mostra i messaggi di debug delle preferenze."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Mostra i messaggi di debug della stampa."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Mostra i messaggi di debug della ricerca."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Mostra i messaggi di debug delle operazioni annullate."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Mostra i messaggi di debug della vista"
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "Mostra i messaggi di debug recenti."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "Mostra i messaggi di debug della gestione della sessione."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Abilita tutti i messaggi di debug."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "Esci da un'istanza esistente di gedit"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Crea una nuova finestra toplevel in un'istanza esistente di gedit"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Crea un nuovo documento in un'istanza esistente di gedit"
 
@@ -2554,7 +2573,7 @@ msgid "Run a command"
 msgstr "Esegue un comando"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "Interrotto"
 
@@ -2570,15 +2589,15 @@ msgstr "Esegui comando"
 msgid "_Run"
 msgstr "_Esegui"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "Fatto"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "Errore"
 
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2588,7 +2607,7 @@ msgstr ""
 "\n"
 "Inserire un comando shell valido."
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2598,7 +2617,7 @@ msgstr ""
 "\n"
 "Inserire un comando shell valido."
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "Sto eseguendo il comando"
 
@@ -2966,19 +2985,19 @@ msgstr ""
 "all'interno di un documento i tag o le stringhe più utilizzati senza doverli "
 "digitare per intero."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "In_serisci data e ora..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "Inserisce la data e l'ora attuale nella posizione corrente"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Formati disponibili"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "Configura il plugin «Inserisci data e ora»..."
 
@@ -3033,6 +3052,9 @@ msgstr "Copia il testo selezionato negli appunti"
 #: viewer/gedit-viewer-ui.xml.h:2
 msgid "_Copy Text"
 msgstr "_Copia testo"
+
+#~ msgid "Text Wrapping"
+#~ msgstr "A capo automatico"
 
 #~ msgid "Show Cursor Position"
 #~ msgstr "Mostra la posizione del cursore"
@@ -3265,9 +3287,6 @@ msgstr "_Copia testo"
 
 #~ msgid "Author(s)"
 #~ msgstr "Autore/i"
-
-#~ msgid "Wrap Mode"
-#~ msgstr "A capo automatico"
 
 #~ msgid "Page"
 #~ msgstr "Pagina"
@@ -3942,4 +3961,3 @@ msgstr "_Copia testo"
 
 #~ msgid "_Scrollbar"
 #~ msgstr "Barra di _Scrolling"
-

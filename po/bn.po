@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gedit\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
+"POT-Creation-Date: 2003-10-16 18:20+0200\n"
 "PO-Revision-Date: 2003-09-05 00:44-0400\n"
 "Last-Translator: Santanu Chatterjee\n"
 "Language-Team: Bengali <gnome-translation@bengalinux.org>\n"
@@ -43,7 +43,7 @@ msgstr "জিএডিট অটোমেশন ফ্যাক্টরি"
 msgid "Edit text files"
 msgstr "টেক্স্ট ফাইল এডিট করুন"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "টেক্স্ট এডিটর"
 
@@ -445,7 +445,7 @@ msgid "_Go to Line"
 msgstr "এই লাইনে _যাও"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -573,12 +573,12 @@ msgstr "প্লাগ্-ইন ম্যানেজার পাওয়া �
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr "প্লাগ্-ইন ম্যানেজারের গ্লেড ফাইল অবৈধ -- সব উইজেট পাওয়া গেল না।\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "প্রোগ্রামের অবস্থান সেট করুন..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -590,7 +590,7 @@ msgstr ""
 "\n"
 "অনুগ্রহ করে <tt>%s</tt> -এর অবস্থান নির্দেশ করুন।"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "বেছে নেওয়া ফাইল এক্সেকিউটেবল নয়।"
 
@@ -2321,76 +2321,76 @@ msgstr "  OVR"
 msgid "  INS"
 msgstr "  INS"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 #, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "সেশান ম্যানেজমেন্ট সংক্রান্ত ডিবাগিং বার্তা দেখাও।"
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "সেশান ম্যানেজমেন্ট সংক্রান্ত ডিবাগিং বার্তা দেখাও।"
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "সমস্ত ডিবাগিং বার্তা চালু করো।"
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr ""
 
@@ -2507,7 +2507,7 @@ msgid "Run a command"
 msgstr "কোনো কমান্ড রান করুন"
 
 #: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:516
+#: plugins/shell_output/shell_output.c:523
 msgid "Stopped"
 msgstr "থামানো হয়েছে"
 
@@ -2523,16 +2523,16 @@ msgstr "কমান্ড রান করুন"
 msgid "_Run"
 msgstr "_রান"
 
-#: plugins/shell_output/shell_output.c:522
+#: plugins/shell_output/shell_output.c:529
 msgid "Done"
 msgstr "করা হয়েছে"
 
-#: plugins/shell_output/shell_output.c:524
+#: plugins/shell_output/shell_output.c:531
 msgid "Failed"
 msgstr "অকৃতকার্য হলাম"
 
 # seems weird to me
-#: plugins/shell_output/shell_output.c:696
+#: plugins/shell_output/shell_output.c:703
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2542,7 +2542,7 @@ msgstr ""
 "\n"
 "অনুগ্রহ করে কোনো বৈধ শেল কমান্ড দিন।"
 
-#: plugins/shell_output/shell_output.c:729
+#: plugins/shell_output/shell_output.c:736
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2551,7 +2551,7 @@ msgstr ""
 "শেল কমান্ড পার্স করাকালীন ত্রূটি।\n"
 "অনুগ্রহ করে কোনো বৈধ শেল কমান্ড দিন।"
 
-#: plugins/shell_output/shell_output.c:815
+#: plugins/shell_output/shell_output.c:822
 msgid "Executing command"
 msgstr "কমান্ড এক্সেকিউট করা হচ্ছে"
 
@@ -2919,19 +2919,19 @@ msgstr ""
 "ট্যাগ তালিকা প্লাগ্-ইন কোনো ডকুমেন্টে সাধারনতঃ ব্যাবহ্রিত ট্যাগ/স্ট্রিং টাইপ না করে "
 "ঢোকানোরএকটি সহজ পদ্ধতি প্রদান করে।"
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "তারিখ এবং সময় _ইনসার্ট করুন ..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "কার্সারের অবস্থানে বর্তমান তারিখ এবং সময় _ইনসার্ট করুন"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "প্রাপ্য ফরম্যাট"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "ইনসার্ট ডেট/টাইম প্লাগ্-ইন কনফিগার করুন..."
 
