@@ -1,0 +1,905 @@
+# This is the Bulgarian translation of the gedit interface.
+# Copyright (C) 2001,2002 Free Software Foundation, Inc.
+#
+# Alexander Shopov <al_shopov@web.bg>, 2001
+# Borislav Alexandrov <B.Alexandrov@Cnsys.bg>, 2001
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.9.4\n"
+"POT-Creation-Date: 2000-11-24 02:02-0600\n"
+"PO-Revision-Date: 2000-11-25 20:39+0200\n"
+"Last-Translator: Alexander Shopov <al_shopov@web.bg>\n"
+"Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CP1251\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: plugins/browse/browse.c:189
+msgid "browse"
+msgstr "Браузване"
+
+#: plugins/browse/browse.c:246
+msgid "Browse"
+msgstr "Браузване"
+
+#: plugins/browse/browse.c:247
+#: plugins/browse/browse.c:248
+msgid "Web browse plugin"
+msgstr "Плъгин за браузване на мрежата"
+
+#: plugins/browse/browse.glade.h:7
+msgid "gedit web browse plugin"
+msgstr "gedit плъгин за браузване на мрежата"
+
+#: plugins/browse/browse.glade.h:8
+msgid "Enter the Url to browse for :"
+msgstr "Въведете URL за браузване:"
+
+#: plugins/browse/browse.glade.h:9
+msgid "lynx was found at : "
+msgstr "Местоположение на lynx:"
+
+#: plugins/browse/browse.glade.h:10
+#: plugins/diff/diff.glade.h:17
+msgid "location"
+msgstr "местоположение"
+
+#: plugins/browse/browse.glade.h:11
+#: plugins/diff/diff.glade.h:18
+msgid "Change"
+msgstr "Промени"
+
+#: plugins/convert/convert.c:150
+msgid "Convert"
+msgstr "Прехвърляне"
+
+#: plugins/convert/convert.c:151
+#: plugins/convert/convert.c:152
+#: plugins/convert/convert.glade.h:7
+msgid "Number Converter"
+msgstr "Прехвъляне от/в система"
+
+#: plugins/convert/convert.glade.h:8
+msgid "Converted Value:"
+msgstr "Резултат:"
+
+#: plugins/convert/convert.glade.h:9
+msgid "Value to be converted:"
+msgstr "Число за прехвърляне:"
+
+#: plugins/convert/convert.glade.h:10
+msgid "Decimal to Hex"
+msgstr "Десетична към шестнайсетична"
+
+#: plugins/convert/convert.glade.h:11
+msgid "Decimal to Octal"
+msgstr "Десетична към осмична"
+
+#: plugins/convert/convert.glade.h:12
+msgid "Hex to Decimal"
+msgstr "Шестнайсетична към десетична"
+
+#: plugins/diff/diff.c:109
+msgid "The two documents selected are the same"
+msgstr "Двата избрани документа съвпадат"
+
+#: plugins/diff/diff.c:116
+msgid "The file selected does not exists\n\nPlease provide a valid file"
+msgstr "Избраният файл не съществува\n\nИзберете валиден файл"
+
+#: plugins/diff/diff.c:127
+#: plugins/diff/diff.c:139
+msgid "The document contains no text"
+msgstr "Документът не съдържа текст"
+
+#: plugins/diff/diff.c:148
+msgid "gedit could not create a temp file.\n\n"
+msgstr "gedit не може да създаде временен файл.\n\n"
+
+#: plugins/diff/diff.c:262
+#: plugins/email/email.c:224
+#: plugins/email/email.c:230
+#: src/document.c:269
+#: src/print.c:703
+msgid "Untitled"
+msgstr "Неименован"
+
+#: plugins/diff/diff.c:423
+msgid "Diff"
+msgstr "Diff"
+
+#: plugins/diff/diff.c:424
+msgid "Makes a diff file from 2 documents or files"
+msgstr "Създава diff файл от 2 документа/файла"
+
+#: plugins/diff/diff.c:425
+msgid "Makes a diff file from 2 documents or files on disk\nFor more info on diff, type \"man diff\" in a shell prompt\n"
+msgstr "Създава diff файл от 2 документа/файлове на диска\nЗа повече информация за diff, въведете \"man diff\" в команден прозорец\n"
+
+#: plugins/diff/diff.glade.h:7
+msgid "Choose the files to diff"
+msgstr "Изберете файловете за сравнение"
+
+#: plugins/diff/diff.glade.h:8
+#: plugins/diff/diff.glade.h:9
+msgid "From document"
+msgstr "Документ"
+
+#: plugins/diff/diff.glade.h:10
+#: plugins/diff/diff.glade.h:11
+msgid "From a file on disk"
+msgstr "Файл на диска"
+
+#: plugins/diff/diff.glade.h:12
+#: plugins/diff/diff.glade.h:14
+msgid "don't translate this\n"
+msgstr ""
+
+#: plugins/diff/diff.glade.h:16
+msgid "diff found at : "
+msgstr "Местоположение на diff:"
+
+#: plugins/email/email.c:64
+#, c-format
+msgid "Executing command : %s"
+msgstr "Изпълнва се командата: %s"
+
+#: plugins/email/email.c:267
+msgid "Email"
+msgstr "Ел. поща"
+
+#: plugins/email/email.c:268
+msgid "Email the current document"
+msgstr "Изпраща текущия документ по ел. поща"
+
+#: plugins/email/email.c:269
+msgid "Email the current document to a specified email address\ngedit searches for sendmail to use this plugin."
+msgstr "Изпращане на текущия документ по електронната поща.\ngedit се нуждае от sendmail за този плъгин."
+
+#: plugins/email/email.glade.h:7
+#: src/dialogs/program.glade.h:7
+msgid "gedit: e-mail plugin"
+msgstr "gedit: плъгин за електронна поща"
+
+#: plugins/email/email.glade.h:8
+#: src/dialogs/program.glade.h:8
+msgid "From:"
+msgstr "От:"
+
+#: plugins/email/email.glade.h:9
+#: src/dialogs/program.glade.h:9
+msgid "To:"
+msgstr "За:"
+
+#: plugins/email/email.glade.h:10
+#: src/dialogs/program.glade.h:10
+msgid "Subject:"
+msgstr "Тема:"
+
+#: plugins/email/email.glade.h:11
+msgid "Change..."
+msgstr "Промени"
+
+#: plugins/email/email.glade.h:12
+msgid "label12"
+msgstr ""
+
+#: plugins/email/email.glade.h:13
+msgid "File to use as body of message : "
+msgstr "Файл за изпращане:"
+
+#: plugins/email/email.glade.h:14
+msgid "Sendmail found at :"
+msgstr "Местоположение на sendmail:"
+
+#: plugins/email/email.glade.h:15
+msgid "label13"
+msgstr ""
+
+#: plugins/reverse/reverse.c:70
+msgid "Reverse"
+msgstr "Наопаки"
+
+#: plugins/reverse/reverse.c:71
+#: plugins/reverse/reverse.c:72
+msgid "Reverse text"
+msgstr "Обръща текста наопаки"
+
+#: plugins/sample/sample.c:55
+msgid "Hello World"
+msgstr "Здрасти"
+
+#: plugins/sample/sample.c:56
+#: plugins/sample/sample.c:57
+msgid "Sample 'hello world' plugin."
+msgstr "Примерен плъгин. Изписва 'hello world'."
+
+#: plugins/shell_output/shell_output.c:191
+msgid "Shell Output"
+msgstr "Команда >"
+
+#: plugins/shell_output/shell_output.c:192
+#: plugins/shell_output/shell_output.c:193
+msgid "Insert the shell output in the document"
+msgstr "Вмъква стандартния изход на команда в документа"
+
+#: plugins/shell_output/shell_output.glade.h:7
+msgid "Shell Output plugin"
+msgstr "Плъгин за стандартния изход на команда"
+
+#: plugins/shell_output/shell_output.glade.h:8
+msgid "Directory  "
+msgstr "Директория"
+
+#: plugins/shell_output/shell_output.glade.h:9
+msgid "Enter shell command "
+msgstr "Въведете комндата"
+
+#: plugins/time/time.c:84
+msgid "Insert Time"
+msgstr "Време"
+
+#: plugins/time/time.c:85
+#: plugins/time/time.c:86
+msgid "Inserts the current date and time"
+msgstr "Въвежда датата и времето в момента"
+
+#: src/dialogs/about.glade.h:7
+msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+msgstr "(C) 1998, 1999, 2000 Алекс Робъртс и Ивън Лорънс"
+
+#: src/dialogs/about.glade.h:8
+msgid "gedit is a small and lightweight text editor for GNOME."
+msgstr "gedit е малък и лек текстов редактор за GNOME."
+
+#: src/dialogs/dialog-plugins.c:442
+#, c-format
+msgid "Plugin Name : %s\nAuthor : %s\nDescription : %s\n"
+msgstr "Име на плъгина: %s\nАвтор: %s\nОписание: %s\n"
+
+#: src/dialogs/dialog-prefs.c:560
+msgid "gedit: Preferences"
+msgstr "gedit: Конфигуриране"
+
+#: src/dialogs/dialog-replace.c:130
+#: src/dialogs/replace.glade.h:7
+#: src/dialogs/replace.glade.h:9
+msgid "Replace"
+msgstr "Замени"
+
+#: src/dialogs/dialog-replace.c:135
+#: src/menus.c:266
+msgid "Find"
+msgstr "Търси"
+
+#: src/dialogs/dialog-replace.c:332
+msgid "Text not found"
+msgstr "Текстът не е открит"
+
+#: src/dialogs/dialog-replace.c:337
+msgid "Text not found."
+msgstr "Текстът не е открит"
+
+#: src/dialogs/dialog-replace.c:362
+#, c-format
+msgid "found and replaced %i occurrences."
+msgstr "намерен и заместен %i пъти"
+
+#: src/dialogs/dialog-replace.c:373
+#: src/dialogs/dialog-replace.c:376
+msgid "Could not allocate the memory for the Replace all request."
+msgstr "Няма достатъчно памет за замяната на всички случаи."
+
+#: src/dialogs/goto-line.glade.h:7
+msgid "Goto Line"
+msgstr "Иди на"
+
+#: src/dialogs/goto-line.glade.h:8
+msgid "Line number:"
+msgstr "Номер на реда:"
+
+#: src/dialogs/prefs.glade.h:7
+msgid "Appearance"
+msgstr "Външен вид"
+
+#: src/dialogs/prefs.glade.h:8
+msgid "Show Statusbar"
+msgstr "Показване на лентата на състоянието"
+
+#: src/dialogs/prefs.glade.h:9
+msgid "Set toolbar according to system settings"
+msgstr "Лентата за инструменти да наследи системния избор"
+
+#: src/dialogs/prefs.glade.h:10
+msgid "Set toolbar to Icons only"
+msgstr "Лентата за инструменти да съдържа само икони"
+
+#: src/dialogs/prefs.glade.h:11
+msgid "Set toolbar to Icons with text"
+msgstr "Лентата за инструменти да съдържа икони с текст"
+
+#: src/dialogs/prefs.glade.h:12
+msgid "Editor Behavior"
+msgstr "Поведение на gedit"
+
+#: src/dialogs/prefs.glade.h:13
+msgid "Enable Auto-indent"
+msgstr "Автоматичен отстъп"
+
+#: src/dialogs/prefs.glade.h:14
+msgid "General"
+msgstr "Общи"
+
+#: src/dialogs/prefs.glade.h:15
+msgid "MDI (Multiple Document Interface)"
+msgstr "MDI (многодокументен интерфейс)"
+
+#: src/dialogs/prefs.glade.h:16
+msgid "Left\nRight\nTop\nBottom\n"
+msgstr "Вляво\nВдясно\nОтгоре\nОтдолу\n"
+
+#: src/dialogs/prefs.glade.h:21
+msgid "Notebook\nToplevel\nModal\nDefault\n"
+msgstr "Бележник\nГлавен\nМодален\nПо подразбиране\n"
+
+#: src/dialogs/prefs.glade.h:26
+msgid "Mode: "
+msgstr "Вид:"
+
+#: src/dialogs/prefs.glade.h:27
+msgid "Notebook Tab Position: "
+msgstr "Положение на перцето на бележника:"
+
+#: src/dialogs/prefs.glade.h:28
+#: src/menus.c:245
+msgid "Undo"
+msgstr "Назад"
+
+#: src/dialogs/prefs.glade.h:29
+msgid "Set limit on undo levels to :"
+msgstr "Нива на отмяна"
+
+#: src/dialogs/prefs.glade.h:30
+msgid "level(s)"
+msgstr "нива"
+
+#: src/dialogs/prefs.glade.h:31
+msgid "Documents"
+msgstr "Документи"
+
+#: src/dialogs/prefs.glade.h:32
+msgid "Fonts"
+msgstr "Шрифтове"
+
+#: src/dialogs/prefs.glade.h:33
+msgid "Pick a Font"
+msgstr "Изберете шрифт"
+
+#: src/dialogs/prefs.glade.h:34
+msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+msgstr "АаБбВвГгДдЕеЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЬьЮюЯя"
+
+#: src/dialogs/prefs.glade.h:35
+msgid "Default Font: "
+msgstr "Шрифт по подразбиране: "
+
+#: src/dialogs/prefs.glade.h:36
+msgid "Colors"
+msgstr "Цветове"
+
+#: src/dialogs/prefs.glade.h:37
+#: src/dialogs/prefs.glade.h:38
+msgid "Pick a color"
+msgstr "Изберете цвят"
+
+#: src/dialogs/prefs.glade.h:39
+msgid "Background: "
+msgstr "Фон: "
+
+#: src/dialogs/prefs.glade.h:40
+msgid "Foreground: "
+msgstr "Букви: "
+
+#: src/dialogs/prefs.glade.h:41
+msgid "Fonts/Colors"
+msgstr "Шрифтове/Цветове"
+
+#: src/dialogs/prefs.glade.h:42
+#: src/dialogs/prefs.glade.h:49
+msgid "Printing"
+msgstr "Печатане"
+
+#: src/dialogs/prefs.glade.h:43
+msgid "Add _header"
+msgstr "Добави горен колонтитул"
+
+#: src/dialogs/prefs.glade.h:44
+msgid "Enable word _wrapping"
+msgstr "Преливане на думите"
+
+#: src/dialogs/prefs.glade.h:45
+msgid "Print _line numbers every:"
+msgstr "Отпечатвай пореден номер на всеки"
+
+#: src/dialogs/prefs.glade.h:46
+msgid "line(s)"
+msgstr "реда"
+
+#: src/dialogs/prefs.glade.h:47
+msgid "_Portrait"
+msgstr "Вертикално"
+
+#: src/dialogs/prefs.glade.h:48
+msgid "_Landscape"
+msgstr "Хоризонтално"
+
+#: src/dialogs/prefs.glade.h:50
+msgid "Paper"
+msgstr "Лист"
+
+#: src/dialogs/program.glade.h:11
+msgid "File to use as body of message: "
+msgstr "Файл за изпращане:"
+
+#: src/dialogs/program.glade.h:12
+msgid "Location of sendmail to search for :"
+msgstr "sendmail да се търси на:"
+
+#: src/dialogs/replace.glade.h:8
+msgid "Find Next"
+msgstr "Намери пак"
+
+#: src/dialogs/replace.glade.h:10
+msgid "Replace All"
+msgstr "Замести всички"
+
+#: src/dialogs/replace.glade.h:11
+msgid "_Search for: "
+msgstr "Търси: "
+
+#: src/dialogs/replace.glade.h:12
+msgid "_Replace with: "
+msgstr "Замести с:"
+
+#: src/dialogs/replace.glade.h:13
+msgid "Search from the _beginning of the document"
+msgstr "Търси от началото на документа"
+
+#: src/dialogs/replace.glade.h:14
+msgid "Search from the _cursor position"
+msgstr "Търси от положението на курсора"
+
+#: src/dialogs/replace.glade.h:15
+msgid "Case _sensitive"
+msgstr "Различавай малки и главни букви"
+
+#: src/dialogs/plugin-manager.glade.h:7
+msgid "gedit Plugin Manager"
+msgstr "Управление на плъгините в gedit"
+
+#: src/dialogs/plugin-manager.glade.h:8
+msgid "Select the plugins to install"
+msgstr "Кои плъгини да се инсталират?"
+
+#: src/dialogs/plugin-manager.glade.h:9
+#: src/dialogs/plugin-manager.glade.h:10
+msgid "Available Plugins"
+msgstr "Налични плъгини"
+
+#: src/dialogs/plugin-manager.glade.h:11
+msgid "Add >"
+msgstr "Добави >"
+
+#: src/dialogs/plugin-manager.glade.h:12
+msgid "< Remove"
+msgstr "< Махни"
+
+#: src/dialogs/plugin-manager.glade.h:13
+msgid "Add All >>"
+msgstr "Добави всички >>"
+
+#: src/dialogs/plugin-manager.glade.h:14
+msgid "<< Remove All"
+msgstr "<< Махни всички"
+
+#: src/dialogs/plugin-manager.glade.h:15
+#: src/dialogs/plugin-manager.glade.h:16
+msgid "Installed Plugins"
+msgstr "Инсталирани плъгини"
+
+#: src/dialogs/plugin-manager.glade.h:17
+msgid "Plugin description"
+msgstr "Описание на плъгините"
+
+#: src/document.c:251
+msgid "RO - "
+msgstr "RO - "
+
+#: src/document.c:443
+#, c-format
+msgid "``%s'' has been modified.  Do you wish to save it?"
+msgstr "``%s'' е изменен. Искате ли да го запишете?"
+
+#: src/document.c:652
+#, c-format
+msgid "Untitled %i"
+msgstr "Неименован %i"
+
+#: src/document.c:658
+msgid "(modified)"
+msgstr "(променян)"
+
+#: src/document.c:660
+msgid "(readonly)"
+msgstr "(само за четене)"
+
+#: src/document.c:710
+#: src/document.c:750
+msgid "This file does not end with a valid extension\n"
+msgstr "Този документ не завършва с правилно разширение\n"
+
+#: src/document.c:758
+#, c-format
+msgid "The file %s was not found."
+msgstr "Файлът %s не е открит"
+
+#: src/file.c:161
+#, c-format
+msgid "An error was encountered while opening the file \"%s\".\nPlease make sure the file exists."
+msgstr "Възникна грешка при отварянето на файла \"%s\"\nПроверете дали съществува."
+
+#: src/file.c:172
+#, c-format
+msgid "An error was encountered while opening the file:\n\n%s\n\n\nPlease make sure the file is not being used by another application\nand that the file is not empty."
+msgstr "Възникна грешка при отварянето на файла:\n\n%s\n\n\nПроверете дали не се използва от друго приложение\nили не е празен."
+
+#: src/file.c:183
+#: src/file.c:467
+msgid "Could not allocate the required memory."
+msgstr "Няма достатъчно памет."
+
+#: src/file.c:189
+#, c-format
+msgid "gedit was unable to open the file: \n\n%s\n\nMake sure that you have permissions for opening the file."
+msgstr "gedit не може да отвори файла: \n\n%s\n\nПроверете дали имате права за четене върху него."
+
+#: src/file.c:306
+msgid "Save As..."
+msgstr "Запиши като..."
+
+#: src/file.c:365
+msgid "The document contains no data."
+msgstr "Документът не съдържа нищо."
+
+#: src/file.c:376
+#, c-format
+msgid "gedit was unable to save the file: \n\n %s \n\nMake sure that the path you provided exists,and that you have the appropriate write permissions."
+msgstr "gedit не може да запише файла: \n\n %s \n\nПроверете дали пътя от директории съществува\nи дали имате необходимите права за достъп."
+
+#: src/file.c:389
+#, c-format
+msgid "gedit was unable to save the file :\n\n %s \n\nBecause of an unknown reason (1). Please report this Problem to submit@bugs.gnome.org"
+msgstr "gedit не може да запише файла: \n\n %s \n\nпоради неясна причина (1). Докладвайте за проблема на submit@bugs.gnome.org"
+
+#: src/file.c:406
+#, c-format
+msgid "gedit was unable to save the file :\n\n %s \n\nBecause of an unknown reason (2). Please report this Problem to submit@bugs.gnome.org"
+msgstr "gedit не може да запише файла: \n\n %s \n\nпоради неясна причина (2). Докладвайте за проблема на submit@bugs.gnome.org"
+
+#: src/file.c:487
+msgid "Error in the pipe ."
+msgstr "Грешка в програмния канал."
+
+#: src/file.c:598
+#: src/file.c:605
+#, c-format
+msgid "Loaded file %s"
+msgstr "Отворен файл: %s"
+
+#: src/file.c:612
+#, c-format
+msgid "Loaded %i files"
+msgstr "%i отворени файла"
+
+#: src/file.c:668
+msgid "Open File ..."
+msgstr "Отвори файл ..."
+
+#: src/file.c:799
+#, c-format
+msgid "``%s'' is about to be overwritten. Do you want to continue ?"
+msgstr "Ще се записва върху файла ``%s''. Сигурни ли сте?"
+
+#: src/file.c:811
+msgid "Document has not been saved."
+msgstr "Документът не е записван."
+
+#: src/file.c:821
+msgid "Error saving file!"
+msgstr "Грешка при записването на файла!"
+
+#: src/file.c:941
+msgid "You can't revert an Untitled document\n"
+msgstr "Не може да възстановите ненаименован документ.\n"
+
+#: src/file.c:954
+#, c-format
+msgid "Are you sure you wish to revert all changes?\n(%s)"
+msgstr "Сигурни ли сте, че икате да отмените всички промени?\n(%s)"
+
+#: src/file.c:985
+#, c-format
+msgid "The file ``%s'' does not exist.  Would you like to create it?"
+msgstr "Файлът ``%s'' не съществува. Искате ли да бъде създаден?"
+
+#: src/menus.c:54
+msgid "Open (swap) .c/.h file"
+msgstr "Отвори (размени) .c/.h файл"
+
+#: src/menus.c:62
+msgid "_New"
+msgstr "Нов"
+
+#: src/menus.c:63
+#: src/menus.c:224
+msgid "Create a new document"
+msgstr "Създава нов документ"
+
+#: src/menus.c:68
+msgid "Save All"
+msgstr "Запиши всичко"
+
+#: src/menus.c:69
+msgid "Save All Open Files"
+msgstr "Записва всички отворени файлове"
+
+#: src/menus.c:74
+msgid "Revert"
+msgstr "Отмяна"
+
+#: src/menus.c:85
+msgid "Print pre_view"
+msgstr "Предпечат"
+
+#: src/menus.c:85
+msgid "Print preview"
+msgstr "Предпечат"
+
+#: src/menus.c:89
+msgid "Print preview..."
+msgstr "Предпеча..."
+
+#: src/menus.c:90
+msgid "Preview data to be printed"
+msgstr "Преглед на данните за отпечатване"
+
+#: src/menus.c:97
+msgid "Close All"
+msgstr "Затвори всичко"
+
+#: src/menus.c:98
+msgid "Close All Open Files"
+msgstr "Затвяря всички отворени файлове"
+
+#: src/menus.c:122
+msgid "Goto _Line..."
+msgstr "Иди на ред..."
+
+#: src/menus.c:123
+msgid "Go to a specific line number"
+msgstr "Отива на определен номер на ред"
+
+#: src/menus.c:138
+msgid "File _Info"
+msgstr ""
+
+#: src/menus.c:139
+msgid "Get the basic file info"
+msgstr ""
+
+#: src/menus.c:151
+msgid "_Add View"
+msgstr "Добави изглед"
+
+#: src/menus.c:152
+msgid "Add a new view of the document"
+msgstr "Добавя нов изглед на документа"
+
+#: src/menus.c:154
+msgid "_Remove View"
+msgstr "Махни изглед"
+
+#: src/menus.c:155
+msgid "Remove view of the document"
+msgstr "Маха изглед на документа"
+
+#: src/menus.c:198
+#: src/plugin.c:90
+#: src/plugin.c:401
+msgid "_Plugins"
+msgstr "Плъгини"
+
+#: src/menus.c:210
+msgid "_Documents"
+msgstr "Документи"
+
+#: src/menus.c:224
+msgid "New"
+msgstr "Нов"
+
+#: src/menus.c:228
+msgid "Open"
+msgstr "Отв."
+
+#: src/menus.c:228
+msgid "Open a file"
+msgstr "Отворя файл"
+
+#: src/menus.c:232
+msgid "Save"
+msgstr "Запис"
+
+#: src/menus.c:232
+msgid "Save the current file"
+msgstr "Записва текущия файл"
+
+#: src/menus.c:236
+msgid "Close"
+msgstr "Затв."
+
+#: src/menus.c:236
+msgid "Close the current file"
+msgstr "Затваря текущия файл "
+
+#: src/menus.c:240
+msgid "Print"
+msgstr "Печат"
+
+#: src/menus.c:240
+msgid "Print the current file"
+msgstr "Отпечатва текущия файл"
+
+#: src/menus.c:245
+msgid "Undo last operation"
+msgstr "Отмени последното действие"
+
+#: src/menus.c:249
+msgid "Redo"
+msgstr "Пак"
+
+#: src/menus.c:249
+msgid "Redo last operation"
+msgstr "Повтори последното действие"
+
+#: src/menus.c:254
+msgid "Cut"
+msgstr "Режи"
+
+#: src/menus.c:254
+msgid "Cut the selection"
+msgstr "Изрязва избраното"
+
+#: src/menus.c:258
+msgid "Copy"
+msgstr "Копие"
+
+#: src/menus.c:258
+msgid "Copy the selection"
+msgstr "Копира избраното"
+
+#: src/menus.c:262
+msgid "Paste"
+msgstr "Сложи"
+
+#: src/menus.c:262
+msgid "Paste the clipboard"
+msgstr "Вмъква съдържанието на клипборда"
+
+#: src/menus.c:266
+msgid "Search for a string"
+msgstr "Търси низ"
+
+#: src/menus.c:271
+msgid "Exit"
+msgstr "Изход"
+
+#: src/menus.c:271
+msgid "Exit the program"
+msgstr "Излиза от програмата"
+
+#: src/plugin.c:107
+msgid "Manager ..."
+msgstr "Управление ..."
+
+#: src/plugin.c:108
+msgid "Add/Remove installed plugins"
+msgstr "Добавяне/махане на плъгин"
+
+#: src/plugin.c:195
+#, c-format
+msgid "The program %s could not be found.\n\n"
+msgstr "Програмата %s не е открита.\n\n"
+
+#: src/plugin.c:211
+#, c-format
+msgid "'%s' doesn't seem to exist.\n\n"
+msgstr "'%s' не съществува.\n\n"
+
+#: src/plugin.c:213
+#, c-format
+msgid "'%s' seems to be a directory.\nbut '%s' could not be found inside it.\n\n"
+msgstr "'%s' е директория.\nно в нея не същевтува файл '%s'.\n\n"
+
+#: src/plugin.c:216
+#, c-format
+msgid "'%s' doesn't seem to be a program.\n\n"
+msgstr "'%s' не прилича на програма.\n\n"
+
+#: src/plugin.c:220
+#, c-format
+msgid "%sYou won't be able to use the %s plugin without %s. \n Do you want to specify a new location for %s?"
+msgstr "%sНевъзможно е да се ползва %s плъгина без %s. \n Искате ли да посочите друго местоположение за %s?"
+
+#: src/plugin.c:322
+#, c-format
+msgid "Error, unable to open module file, %s"
+msgstr "Грешка, невъзможно е отвярянето на %s модула."
+
+#: src/plugin.c:332
+msgid "Error, plugin does not contain init_plugin function."
+msgstr "Грешка, плъгина не съдържа фукция nit_plugin."
+
+#: src/plugin.c:344
+msgid "Error, init_plugin returned an error"
+msgstr "Грешка, функцията init_plugin върна грешка."
+
+#: src/plugin.c:391
+msgid "Error, plugin is still in use"
+msgstr "Грешка, плъгина все още се използва"
+
+#: src/print.c:295
+msgid "Pages"
+msgstr "Страници"
+
+#: src/print.c:353
+#, c-format
+msgid "gedit (%s): Print Preview"
+msgstr "gedit (%s): Предпечатен изглед"
+
+#: src/print.c:652
+#: src/print.c:667
+#, c-format
+msgid "gedit could not find the font \"%s\".\ngedit is unable to print without this font installed."
+msgstr "gedit не може да открие шрифта \"%s\".\ngedit не може да печата без него."
+
+#: src/print.c:960
+#, c-format
+msgid "Page: %i/%i"
+msgstr "Страница: %i/%i"
+
+#: src/recent.c:246
+msgid "_File/"
+msgstr "Файл/"
+
+#: src/recent.c:255
+msgid "_File"
+msgstr "Файл"
+
+#: src/recent.c:277
+#, c-format
+msgid "Unable to open recent file : %s"
+msgstr "Невъзможно е отварянето на скоро използвания файл: %scp"
+
+#: src/search.c:393
+msgid "Can't count lines if another search operation is active, please close the search dialog."
+msgstr "Редовете не могат да бъдат преброени, докато се извършва друго търсене. Затворете диалоговата кутия за търсене."
+
+#: src/search.c:410
+#, c-format
+msgid "Filename: %s\n\nTotal Characters: %i\nTotal Words: %i\nTotal Lines: %i\nTotal Paragraphs: %i\nTotal Bytes: %i\n\nCurrent Line: %i\nCurrent Column: %i"
+msgstr "Име на файла: %s\n\nОбщо: символи: %i\nОбщо: думи: %i\nОбщо: редове: %i\nОбщо: абзаци: %i\nОбщо: байтове: %i\n\nТекущ ред: %i\nТекуща колона: %i"
+
+#: src/view.c:963
+msgid "You can't remove the last view of a document."
+msgstr "Последният изглед към документа не се маха."
+
