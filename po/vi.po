@@ -1,0 +1,2382 @@
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gedit package.
+# pclouds <pclouds@gmx.net>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gedit VERSION\n"
+"POT-Creation-Date: 2002-05-13 01:54+0200\n"
+"PO-Revision-Date: 2002-05-30 22:48+0700\n"
+"Last-Translator: pclouds <pclouds@gmx.net>\n"
+"Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gedit.desktop.in.h:1
+msgid "Text editor"
+msgstr "Bộ soạn thảo văn bản"
+
+#: gedit.desktop.in.h:2
+msgid "gedit"
+msgstr "gedit"
+
+#: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
+msgid "ASCII table"
+msgstr "Bảng ASCII"
+
+#: plugins/ASCII/ascii.c:270
+msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
+msgstr "Plugin này hiển thị bảng mã ASCII"
+
+#: plugins/ASCII/asciitable.glade.h:1
+msgid "Char"
+msgstr "Ký tự"
+
+#: plugins/ASCII/asciitable.glade.h:2
+msgid "Dec#"
+msgstr "Thập phân#"
+
+#: plugins/ASCII/asciitable.glade.h:3
+msgid "Hex#"
+msgstr "Thập lục phân#"
+
+#: plugins/ASCII/asciitable.glade.h:4
+msgid ""
+"If you wish to insert any of the characters in to the active \n"
+"document, select the character and click the \"Insert Char\" \n"
+"button or double click the character in the table."
+msgstr ""
+"Nếu bạn muốn chèn một ký tự bất kỳ vào trong tài liệu hiện thời, \n"
+"chọn ký tự đó và nhấn nút \"Chèn ký tự\" hoặc nhấp đúp vào ký tự\n"
+"trong bảng."
+
+#: plugins/ASCII/asciitable.glade.h:7
+msgid "Insert char"
+msgstr "Chèn ký tự"
+
+#: plugins/ASCII/asciitable.glade.h:8
+msgid "Name"
+msgstr "Tên"
+
+#: plugins/ASCII/asciitable.glade.h:9
+msgid "gedit: ASCII table"
+msgstr "gedit: Bảng ASCII"
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/browse/browse.c:38 plugins/browse/browse.c:250
+msgid "Browse"
+msgstr "Duyệt"
+
+#: plugins/browse/browse.c:251 plugins/browse/browse.c:252
+msgid "Web browse plugin"
+msgstr ""
+
+#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
+#: plugins/email/email.glade.h:1
+msgid " _Change... "
+msgstr ""
+
+#: plugins/browse/browse.glade.h:2
+msgid "Enter the _URL to browse for:"
+msgstr ""
+
+#: plugins/browse/browse.glade.h:3
+msgid "Lynx found at: "
+msgstr ""
+
+#: plugins/browse/browse.glade.h:4
+msgid "gedit: Web Browse plugin"
+msgstr "gedit: Plugin duyệt web"
+
+#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
+#: plugins/email/email.glade.h:14
+msgid "location"
+msgstr "địa điểm"
+
+#: plugins/convert/convert.c:179
+msgid "Convert"
+msgstr "Chuyển đổi"
+
+#: plugins/convert/convert.c:180 plugins/convert/convert.c:181
+msgid "Number Converter"
+msgstr "Bộ chuyển đổi số"
+
+#: plugins/convert/convert.glade.h:1
+msgid " Decimal to _Hex "
+msgstr ""
+
+#: plugins/convert/convert.glade.h:2
+msgid " Decimal to _Octal "
+msgstr ""
+
+#: plugins/convert/convert.glade.h:3
+msgid " Hex to Decima_l "
+msgstr ""
+
+#: plugins/convert/convert.glade.h:4
+msgid "_Converted value:"
+msgstr ""
+
+#: plugins/convert/convert.glade.h:5
+msgid "_Value to be converted:"
+msgstr ""
+
+#: plugins/convert/convert.glade.h:6
+msgid "gedit: Number Converter plugin"
+msgstr "gedit: Plugin chuyển đổi số"
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/diff/diff.c:36
+msgid "diff"
+msgstr ""
+
+#: plugins/diff/diff.c:126
+msgid "The two documents you selected are the same."
+msgstr "Hai tài liệu bạn đã chọn hoàn toàn giống nhau."
+
+#: plugins/diff/diff.c:132
+msgid ""
+"The \"first\" file you selected does not exist.\n"
+"\n"
+"Please provide a valid file."
+msgstr ""
+"Tài liệu đầu tiên được chọn không tồn tại.\n"
+"\n"
+"Vui lòng chọn lại."
+
+#: plugins/diff/diff.c:139
+msgid ""
+"The \"second\" file you selected does not exist.\n"
+"\n"
+"Please provide a valid file."
+msgstr ""
+"Tài liệu thứ hai được chọn không tồn tại.\n"
+"\n"
+"Vui lòng chọn lại."
+
+#: plugins/diff/diff.c:150
+msgid "The \"first\" document contains no text."
+msgstr "Tài liệu đầu tiên không chứa text."
+
+#: plugins/diff/diff.c:162
+msgid "The \"second\" document contains no text."
+msgstr "Tài liệu thứ hai không chứa text."
+
+#. FIXME: do better error reporting ... . Chema
+#: plugins/diff/diff.c:171
+msgid ""
+"gedit could not create a temp file.\n"
+"\n"
+msgstr "Không thể tạo tập tin tạm.\n\n"
+
+#: plugins/diff/diff.c:295 plugins/email/email.c:229 src/document.c:669
+#, c-format
+msgid "Untitled %i"
+msgstr ""
+
+#: plugins/diff/diff.c:496
+msgid "Diff"
+msgstr ""
+
+#: plugins/diff/diff.c:497
+msgid "Makes a diff file from two documents or files"
+msgstr "Tạo tập tin diff từ hai tài liệu hoặc hai tập tin"
+
+#: plugins/diff/diff.c:498
+msgid ""
+"Makes a diff file from two documents or files on disk\n"
+"For more info on diff, type \"man diff\" in a shell prompt\n"
+msgstr ""
+"Tạo tập tin diff từ hai tài liệu hoặc tập tin trên đĩa.\n"
+"Để có thông tin chi tiết hơn về chương trình \"diff\", vui lòng gõ \"man diff\" tại dấu nhắc shell.\n"
+
+#: plugins/diff/diff.glade.h:2
+msgid "Choose the files to compare"
+msgstr "Chọn tập tin để so sánh"
+
+#: plugins/diff/diff.glade.h:3
+msgid "Diff found at: "
+msgstr ""
+
+#: plugins/diff/diff.glade.h:4
+msgid "First"
+msgstr "Đầu tiên"
+
+#: plugins/diff/diff.glade.h:5
+msgid "From a file on disk"
+msgstr "Từ tập tin trên đĩa"
+
+#: plugins/diff/diff.glade.h:6
+msgid "From document"
+msgstr "Từ tài liệu"
+
+#: plugins/diff/diff.glade.h:7
+msgid "Second"
+msgstr "Thứ hai"
+
+#: plugins/diff/diff.glade.h:8
+msgid "Select the \"first\" file..."
+msgstr ""
+
+#: plugins/diff/diff.glade.h:9
+msgid "Select the \"second\" file..."
+msgstr ""
+
+#: plugins/diff/diff.glade.h:10
+msgid "Use the _unified output format (-u option)"
+msgstr "Dùng dạng thức _unified (tùy chọn -u)"
+
+#: plugins/diff/diff.glade.h:11
+msgid "gedit: Diff plugin"
+msgstr "gedit: Plugin diff"
+
+#: plugins/docinfo/docinfo.c:214
+msgid ""
+"No document exists.\n"
+"The Document Info plugin is going be closed."
+msgstr ""
+
+#: plugins/docinfo/docinfo.c:369
+#, fuzzy
+msgid "Document info"
+msgstr "Tài _liệu"
+
+#: plugins/docinfo/docinfo.c:370
+#, fuzzy
+msgid "Get info on current document."
+msgstr "Lấy thông tin về tài liệu hiện thời"
+
+#: plugins/docinfo/docinfo.c:371
+#, fuzzy
+msgid ""
+"This plugin displays a pop-up dialog which contains basic information on "
+"current document."
+msgstr "Plugin này hiển thị bảng mã ASCII"
+
+#: plugins/docinfo/docinfo.glade.h:1
+msgid "0"
+msgstr "0"
+
+#: plugins/docinfo/docinfo.glade.h:2
+msgid "Characters (no spaces)"
+msgstr "Ký tự (không khoảng trắng)"
+
+#: plugins/docinfo/docinfo.glade.h:3
+msgid "Characters (with spaces)"
+msgstr "Ký tự (có khoảng trắng)"
+
+#: plugins/docinfo/docinfo.glade.h:4
+msgid "Current column"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:5
+msgid "Current line"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:6
+msgid "File Name"
+msgstr "Tên tập tin"
+
+#: plugins/docinfo/docinfo.glade.h:7
+msgid "Lines"
+msgstr "Dòng"
+
+#: plugins/docinfo/docinfo.glade.h:8
+msgid "Paragraphs"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:9
+msgid "Update"
+msgstr "Cập nhật"
+
+#: plugins/docinfo/docinfo.glade.h:10
+msgid "Words"
+msgstr "Từ"
+
+#: plugins/docinfo/docinfo.glade.h:11
+msgid "gedit: Document Info plugin"
+msgstr "gedit: Plugin Thông tin tài liệu"
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/email/email.c:22
+#, fuzzy
+msgid "email"
+msgstr "_Chi tiết"
+
+#: plugins/email/email.c:75
+#, c-format
+msgid "Executing command: %s"
+msgstr ""
+
+#: plugins/email/email.c:275
+msgid "Email"
+msgstr ""
+
+#: plugins/email/email.c:276
+#, fuzzy
+msgid "Email the current document"
+msgstr "Lấy thông tin về tài liệu hiện thời"
+
+#: plugins/email/email.c:277
+msgid ""
+"Email the current document to a specified email address\n"
+"gedit searches for sendmail to use this plugin."
+msgstr ""
+
+#: plugins/email/email.glade.h:2
+#, fuzzy
+msgid "Change..."
+msgstr "Khi đang lưu..."
+
+#: plugins/email/email.glade.h:3
+msgid "F_rom:"
+msgstr ""
+
+#: plugins/email/email.glade.h:4
+msgid "File to use as body of message: "
+msgstr ""
+
+#: plugins/email/email.glade.h:5
+msgid "From:"
+msgstr ""
+
+#: plugins/email/email.glade.h:6
+msgid "Sendmail found at:"
+msgstr ""
+
+#: plugins/email/email.glade.h:7
+msgid "Subject:"
+msgstr ""
+
+#: plugins/email/email.glade.h:8
+#, fuzzy
+msgid "To:"
+msgstr "Đỉnh"
+
+#: plugins/email/email.glade.h:9
+msgid "_Subject:"
+msgstr ""
+
+#: plugins/email/email.glade.h:10
+#, fuzzy
+msgid "_To:"
+msgstr "_Công cụ"
+
+#: plugins/email/email.glade.h:11
+#, fuzzy
+msgid "filename"
+msgstr "Tên tập tin"
+
+#: plugins/email/email.glade.h:12
+#, fuzzy
+msgid "gedit: E-mail plugin"
+msgstr "gedit: Plugin Đầu ra của shell"
+
+#: plugins/email/email.glade.h:13
+#, fuzzy
+msgid "gedit: e-mail plugin"
+msgstr "gedit: Plugin Đầu ra của shell"
+
+#: plugins/reverse/reverse.c:69
+#, fuzzy
+msgid "Reverse"
+msgstr "Hoàn nguyên"
+
+#: plugins/reverse/reverse.c:70 plugins/reverse/reverse.c:71
+#, fuzzy
+msgid "Reverse text"
+msgstr "Hoàn nguyên"
+
+#: plugins/sample/sample.c:69
+msgid "Hello World"
+msgstr ""
+
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
+msgid "Sample 'hello world' plugin."
+msgstr ""
+
+#: plugins/shell_output/shell_output.c:64
+msgid ""
+"The shell command entry is empty.\n"
+"\n"
+"Please, insert a valid shell command."
+msgstr ""
+"Chưa có lệnh shell.\n"
+"\n"
+"Vui lòng cho biết lệnh shell."
+
+#: plugins/shell_output/shell_output.c:213
+#, fuzzy
+msgid "Shell Output"
+msgstr "Đầu ra của shell"
+
+#: plugins/shell_output/shell_output.c:214
+#: plugins/shell_output/shell_output.c:215
+#, fuzzy
+msgid "Insert the shell output in the document"
+msgstr "Chèn đầu ra của shell vào tài liệu hiện thời."
+
+#: plugins/shell_output/shell_output.glade.h:1
+#, fuzzy
+msgid "Select the working directory..."
+msgstr "_Thư mục hiện thờu:"
+
+#: plugins/shell_output/shell_output.glade.h:2
+#, fuzzy
+msgid "Shell _command:"
+msgstr "Lệnh _shell:"
+
+#: plugins/shell_output/shell_output.glade.h:3
+msgid "Specify the working directory and the command you want to run."
+msgstr "Xác định thư mục hiện thời và lệnh cần thực hiện."
+
+#: plugins/shell_output/shell_output.glade.h:4
+msgid "_Working directory:"
+msgstr "_Thư mục hiện thờu:"
+
+#: plugins/shell_output/shell_output.glade.h:5
+msgid "gedit: Shell Output plugin"
+msgstr "gedit: Plugin Đầu ra của shell"
+
+#: plugins/sort/sort.c:192
+msgid "Sort"
+msgstr ""
+
+#: plugins/sort/sort.c:193
+#, fuzzy
+msgid "Sort a document."
+msgstr "Tạo tài liệu mới"
+
+#: plugins/sort/sort.c:194
+#, fuzzy
+msgid "Sort a document or selected text."
+msgstr "Hai tài liệu bạn đã chọn hoàn toàn giống nhau."
+
+#: plugins/sort/sort.glade.h:1
+msgid "1"
+msgstr ""
+
+#: plugins/sort/sort.glade.h:2
+#, fuzzy
+msgid "Case Sensitive"
+msgstr "Phân biệt hoa/thường"
+
+#: plugins/sort/sort.glade.h:3
+msgid "Sort starting at column:"
+msgstr ""
+
+#: plugins/sort/sort.glade.h:4
+#, fuzzy
+msgid "gedit: Sort plugin"
+msgstr "gedit: Plugin Đầu ra của shell"
+
+#: plugins/time/time.c:83
+#, fuzzy
+msgid "Insert Time"
+msgstr "Chèn ngày/giờ"
+
+#: plugins/time/time.c:84 plugins/time/time.c:85
+#, fuzzy
+msgid "Inserts the current date and time"
+msgstr "Chèn ngày, giờ hiện thời vào vị trí con trỏ hiện thời."
+
+#: src/dialogs/about.glade.h:1
+msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+msgstr ""
+
+#: src/dialogs/about.glade.h:2
+#, fuzzy
+msgid "gedit is a small and lightweight text editor for GNOME."
+msgstr "gedit là trình soạn thảo văn bản nhỏ gọn của Gnome"
+
+#: src/dialogs/dialog-plugins.c:87
+#, c-format
+msgid "To use the %s plugin, you need to specify a location for \"%s\"."
+msgstr ""
+
+#. glade won't let me set the title of the propertybox
+#: src/dialogs/dialog-prefs.c:578
+#, fuzzy
+msgid "gedit: Preferences"
+msgstr "Thông số"
+
+#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+msgid "Replace"
+msgstr "Thay thế"
+
+#: src/dialogs/dialog-replace.c:135 src/menus.c:298
+msgid "Find"
+msgstr "_Tìm"
+
+#: src/dialogs/dialog-replace.c:332
+#, fuzzy
+msgid "Search string not found"
+msgstr "Không tìm thấy chuỗi \"%s\"."
+
+#: src/dialogs/dialog-replace.c:337
+#, fuzzy
+msgid "Search string not found."
+msgstr "Không tìm thấy chuỗi \"%s\"."
+
+#: src/dialogs/dialog-replace.c:362
+#, fuzzy, c-format
+msgid "Found and replaced %i occurrences."
+msgstr "Đã tìm thấy và thay thế %d lần."
+
+#: src/dialogs/dialog-replace.c:373 src/dialogs/dialog-replace.c:376
+#, fuzzy
+msgid "Could not allocate the memory for the Replace all request."
+msgstr "Không thể tạo bản sao cho tập tin này."
+
+#: src/dialogs/dialog-uri.c:143 src/file.c:823 src/file.c:830
+#, fuzzy, c-format
+msgid "Loaded file %s"
+msgstr "Đã nạp tập tin '%s'"
+
+#: src/dialogs/goto-line.glade.h:1
+msgid "Goto Line"
+msgstr "Đi tới dòng"
+
+#: src/dialogs/goto-line.glade.h:2
+#, fuzzy
+msgid "Line number:"
+msgstr "Số _dòng:"
+
+#: src/dialogs/plugin-manager.glade.h:1
+#, fuzzy
+msgid "Author(s):"
+msgstr "Tác giả"
+
+#: src/dialogs/plugin-manager.glade.h:2
+#, fuzzy
+msgid "De_scription"
+msgstr "Mô tả"
+
+#: src/dialogs/plugin-manager.glade.h:3
+#, fuzzy
+msgid "De_tails"
+msgstr "_Chi tiết"
+
+#: src/dialogs/plugin-manager.glade.h:4
+#, fuzzy
+msgid "File name:"
+msgstr "Tên tập tin"
+
+#: src/dialogs/plugin-manager.glade.h:5
+#, fuzzy
+msgid "Plugins manager..."
+msgstr "Trình quản lý _plugin..."
+
+#: src/dialogs/plugin-manager.glade.h:6
+#, fuzzy
+msgid "Select the plugins to activate:"
+msgstr "Chọn một tên tập tin để lưu"
+
+#: src/dialogs/plugin-manager.glade.h:7
+#, fuzzy
+msgid "_Activate all"
+msgstr "Kích hoạt %s"
+
+#: src/dialogs/plugin-manager.glade.h:8
+#, fuzzy
+msgid "_Deactivate all"
+msgstr "Kích hoạt %s"
+
+#: src/dialogs/prefs.glade.h:1
+msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+
+#: src/dialogs/prefs.glade.h:2
+msgid "Add _header"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:3
+msgid "Appearance"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:4
+msgid "Bottom"
+msgstr "Đáy"
+
+#: src/dialogs/prefs.glade.h:5
+msgid "Colors"
+msgstr "Màu sắc"
+
+#: src/dialogs/prefs.glade.h:6
+#, fuzzy
+msgid "Default"
+msgstr "Xóa"
+
+#: src/dialogs/prefs.glade.h:7
+#, fuzzy
+msgid "Documents"
+msgstr "Tài _liệu"
+
+#: src/dialogs/prefs.glade.h:8
+msgid "Editor Behavior"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:9
+msgid "Enable _Auto-indent"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:10
+msgid "Enable word _wrapping"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:11
+msgid "Fonts"
+msgstr "Font"
+
+#: src/dialogs/prefs.glade.h:12
+#, fuzzy
+msgid "Fonts/Colors"
+msgstr "Font & Màu sắc"
+
+#: src/dialogs/prefs.glade.h:13
+msgid "General"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:14
+msgid "Left"
+msgstr "Trái"
+
+#: src/dialogs/prefs.glade.h:15
+msgid "MDI (Multiple Document Interface)"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:16
+msgid "Modal"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:17
+msgid "Notebook"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:18
+msgid "Notebook _tab position: "
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:19
+msgid "Orientation"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:20
+#, fuzzy
+msgid "Paper"
+msgstr "Trang"
+
+#: src/dialogs/prefs.glade.h:21
+msgid "Pick a Font"
+msgstr "Chọn font"
+
+#: src/dialogs/prefs.glade.h:22
+#, fuzzy
+msgid "Pick a color"
+msgstr "Chọn màu chữ"
+
+#: src/dialogs/prefs.glade.h:23
+msgid "Preferences"
+msgstr "Thông số"
+
+#: src/dialogs/prefs.glade.h:24
+#, fuzzy
+msgid "Print line _numbers every:"
+msgstr "In số _dòng mỗi"
+
+#: src/dialogs/prefs.glade.h:25
+#, fuzzy
+msgid "Printing"
+msgstr "In"
+
+#: src/dialogs/prefs.glade.h:26
+msgid "Right"
+msgstr "Phải"
+
+#: src/dialogs/prefs.glade.h:27
+#, fuzzy
+msgid "S_how statusbar"
+msgstr "_Hiện thanh trạng thái"
+
+#: src/dialogs/prefs.glade.h:28
+#, fuzzy
+msgid "Set limit on _undo levels to:"
+msgstr "Chọn giới hạn mức hoàn lại"
+
+#: src/dialogs/prefs.glade.h:29
+#, fuzzy
+msgid "Set toolbar according to _system settings"
+msgstr "_Tùy thuộc vào thiết lập hệ thống"
+
+#: src/dialogs/prefs.glade.h:30
+msgid "Set toolbar to _icons only"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:31
+msgid "Set toolbar to icons with _text"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:32
+#, fuzzy
+msgid "Tab _width: "
+msgstr "Thay thế _bằng: "
+
+#: src/dialogs/prefs.glade.h:33
+msgid "Top"
+msgstr "Đỉnh"
+
+#: src/dialogs/prefs.glade.h:34
+msgid "Toplevel"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:35 src/menus.c:276
+msgid "Undo"
+msgstr "Hoàn lại"
+
+#: src/dialogs/prefs.glade.h:36
+#, fuzzy
+msgid "_Background: "
+msgstr "Màu _nền:"
+
+#: src/dialogs/prefs.glade.h:37
+#, fuzzy
+msgid "_Default font: "
+msgstr "_Phục hồi font mặc định"
+
+#: src/dialogs/prefs.glade.h:38
+msgid "_Foreground: "
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:39
+msgid "_Landscape"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:40
+#, fuzzy
+msgid "_Mode: "
+msgstr "Chế độ _MDI:"
+
+#: src/dialogs/prefs.glade.h:41
+msgid "_Portrait"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:42
+#, fuzzy
+msgid "_level(s)"
+msgstr "mức"
+
+#: src/dialogs/prefs.glade.h:43
+#, fuzzy
+msgid "l_ine(s)"
+msgstr " dòng"
+
+#: src/dialogs/program.glade.h:1
+msgid "_Location to search for:"
+msgstr "_Vị trí cần tìm:"
+
+#: src/dialogs/program.glade.h:2
+#, fuzzy
+msgid "gedit: Browse for program location..."
+msgstr "Định vị trí chương trình..."
+
+#: src/dialogs/program.glade.h:3
+#, fuzzy
+msgid "gedit: Set program location..."
+msgstr "Định vị trí chương trình..."
+
+#: src/dialogs/program.glade.h:4
+msgid "label"
+msgstr "nhãn"
+
+#: src/dialogs/replace.glade.h:1
+#, fuzzy
+msgid "Case _sensitive"
+msgstr "Phân biệt hoa/thường"
+
+#: src/dialogs/replace.glade.h:2
+#, fuzzy
+msgid "Find Next"
+msgstr "Tìm t_iếp"
+
+#: src/dialogs/replace.glade.h:4
+#, fuzzy
+msgid "Replace All"
+msgstr "Thay thế tất _cả"
+
+#: src/dialogs/replace.glade.h:5
+#, fuzzy
+msgid "Search from the _beginning of the document"
+msgstr "Tìm từ đầ_u tài liệu"
+
+#: src/dialogs/replace.glade.h:6
+#, fuzzy
+msgid "Search from the _cursor position"
+msgstr "Tìm từ vị trí con trỏ hiện thời"
+
+#: src/dialogs/replace.glade.h:7
+#, fuzzy
+msgid "_Replace with: "
+msgstr "Thay thế _bằng: "
+
+#: src/dialogs/replace.glade.h:8
+msgid "_Search for: "
+msgstr "_Tìm: "
+
+#: src/dialogs/uri.glade.h:1
+msgid "Enter the location (URI) of the file you would like to open:"
+msgstr "Nhập vị trí (URI) của tập tin cần mở:"
+
+#: src/dialogs/uri.glade.h:2 src/menus.c:259
+msgid "Open"
+msgstr "Mở"
+
+#: src/dialogs/uri.glade.h:3
+msgid "Open from URI"
+msgstr "Mở từ URI"
+
+#: src/document.c:267 src/document.c:271
+msgid "RO - "
+msgstr ""
+
+#: src/document.c:295
+#, c-format
+msgid "%s %d"
+msgstr "%s %d"
+
+#: src/document.c:295 src/document.c:299
+msgid "Untitled"
+msgstr ""
+
+#: src/document.c:299
+#, fuzzy, c-format
+msgid "%s %d*"
+msgstr "%s %d"
+
+#: src/document.c:477
+#, c-format
+msgid "``%s'' has been modified.  Do you want to save the changes?"
+msgstr ""
+
+#: src/document.c:679 src/document.c:687
+msgid "(modified)"
+msgstr "(đã thay đổi)"
+
+#: src/document.c:681 src/document.c:689
+msgid "(readonly)"
+msgstr "(chỉ đọc)"
+
+#: src/document.c:740 src/document.c:780
+msgid "This file does not end with a valid extension\n"
+msgstr ""
+
+#: src/document.c:788
+#, fuzzy, c-format
+msgid "The file %s was not found."
+msgstr "Không tìm thấy đoạn text \"%s\"."
+
+#: src/file.c:226
+#, c-format
+msgid ""
+"An error was encountered while opening the file \"%s\".\n"
+"Please make sure the file exists."
+msgstr ""
+
+#: src/file.c:245
+#, c-format
+msgid ""
+"An error was encountered while opening the file \"%s\".\n"
+"Could not allocate the required memory."
+msgstr ""
+
+#: src/file.c:257
+#, c-format
+msgid ""
+"An error was encountered while reading the file: \n"
+"\n"
+"%s\n"
+"\n"
+"Make sure that you have permissions for opening the file. "
+msgstr ""
+
+#: src/file.c:277
+#, fuzzy, c-format
+msgid ""
+"An error was encountered while reading the file: \n"
+"\n"
+"%s"
+msgstr ""
+"Lỗi khi in.\n"
+"\n"
+"%s,"
+
+#: src/file.c:298
+#, c-format
+msgid ""
+"Internal error reading the file: \n"
+"\n"
+"%s\n"
+"\n"
+"Please, report this error to submit@bugs.gnome.org."
+msgstr ""
+
+#: src/file.c:314
+#, fuzzy, c-format
+msgid ""
+"An error was encountered while closing the file: \n"
+"\n"
+"%s"
+msgstr ""
+"Lỗi khi in.\n"
+"\n"
+"%s,"
+
+#: src/file.c:477
+#, fuzzy
+msgid "Save As..."
+msgstr "Lư_u là..."
+
+#: src/file.c:547
+#, fuzzy
+msgid "The document contains no data."
+msgstr "Tài liệu đầu tiên không chứa text."
+
+#: src/file.c:558
+#, fuzzy, c-format
+msgid ""
+"gedit was unable to save the file: \n"
+"\n"
+" %s \n"
+"\n"
+"Make sure that the path you provided exists,and that you have the "
+"appropriate write permissions."
+msgstr ""
+"Hãy chắc chắn rằng đường dẫn bạn cung cấp tồn tại, và bạn có quyền truy cập "
+"ghi đối với thư mục đó."
+
+#: src/file.c:572
+#, c-format
+msgid ""
+"gedit was unable to save the file:\n"
+"\n"
+" %s \n"
+"\n"
+"Because of an unknown reason (1). Please report this Problem to submit@bugs."
+"gnome.org"
+msgstr ""
+
+#: src/file.c:590
+#, c-format
+msgid ""
+"gedit was unable to save the file:\n"
+"\n"
+" %s \n"
+"\n"
+"Because of an unknown reason (2). Please report this Problem to submit@bugs."
+"gnome.org"
+msgstr ""
+
+#: src/file.c:692
+#, fuzzy
+msgid "Could not allocate the required memory."
+msgstr "Không thể mở tập tin \"%s\"."
+
+#: src/file.c:712
+msgid "Error in the pipe."
+msgstr ""
+
+#: src/file.c:837
+#, c-format
+msgid "Loaded %i files"
+msgstr "Đã nạp %i tập tin"
+
+#: src/file.c:903
+msgid "Open File ..."
+msgstr "Mở tập tin..."
+
+#: src/file.c:1036
+#, c-format
+msgid "``%s'' is about to be overwritten. Do you want to continue ?"
+msgstr ""
+
+#: src/file.c:1048
+#, fuzzy
+msgid "Document has not been saved."
+msgstr "Tài liệu chưa được lưu."
+
+#: src/file.c:1058
+msgid "Error saving file!"
+msgstr ""
+
+#: src/file.c:1187
+#, fuzzy
+msgid "You can't revert an Untitled document\n"
+msgstr "Không thể hoàn nguyên tài liệu Untitled"
+
+#: src/file.c:1200
+#, c-format
+msgid ""
+"Are you sure you want to revert all changes?\n"
+"(%s)"
+msgstr ""
+
+#: src/file.c:1231
+#, c-format
+msgid "The file ``%s'' does not exist.  Would you like to create it?"
+msgstr ""
+
+#: src/gedit.c:47
+msgid "Show window debugging messages."
+msgstr ""
+
+#: src/gedit.c:50
+msgid "Show commands debugging messages."
+msgstr ""
+
+#: src/gedit.c:53
+msgid "Show document debugging messages."
+msgstr ""
+
+#: src/gedit.c:56
+msgid "Show file debugging messages."
+msgstr ""
+
+#: src/gedit.c:59
+msgid "Show plugin debugging messages."
+msgstr ""
+
+#: src/gedit.c:62
+msgid "Show prefs debugging messages."
+msgstr ""
+
+#: src/gedit.c:65
+msgid "Show printing debugging messages."
+msgstr ""
+
+#: src/gedit.c:68
+msgid "Show search debugging messages."
+msgstr ""
+
+#: src/gedit.c:71
+msgid "Show undo debugging messages."
+msgstr ""
+
+#: src/gedit.c:74
+msgid "Show view debugging messages."
+msgstr ""
+
+#: src/gedit.c:77
+msgid "Show recent debugging messages."
+msgstr ""
+
+#: src/gedit.c:80
+msgid "Turn on all debugging messages."
+msgstr ""
+
+#: src/gedit.c:159
+msgid "Cannot initialize gnome-vfs."
+msgstr ""
+
+#: src/menus.c:54
+#, fuzzy
+msgid "Open (swap) .c/.h file"
+msgstr "Mở tập tin"
+
+#: src/menus.c:62
+msgid "_New"
+msgstr "Tạo mớ_i"
+
+#: src/menus.c:63 src/menus.c:255
+msgid "Create a new document"
+msgstr "Tạo tài liệu mới"
+
+#: src/menus.c:68
+#, fuzzy
+msgid "Sav_e All"
+msgstr "Lưu tất cả"
+
+#: src/menus.c:69
+#, fuzzy
+msgid "Save All Open Files"
+msgstr "Lưu mọi tập tin đang mở"
+
+#: src/menus.c:74
+msgid "_Revert"
+msgstr "_Hoàn nguyên"
+
+#: src/menus.c:83
+#, fuzzy
+msgid "Open from _URI..."
+msgstr "Mở từ URI"
+
+#: src/menus.c:84
+#, fuzzy
+msgid "Open a file from a specified URI"
+msgstr "Mở tập tin tại một địa điểm xác định"
+
+#: src/menus.c:98
+#, fuzzy
+msgid "Print pre_view"
+msgstr "Xem thử bản in"
+
+#: src/menus.c:98
+msgid "Print preview"
+msgstr "Xem thử bản in"
+
+#: src/menus.c:102
+#, fuzzy
+msgid "Print pre_view..."
+msgstr "Xem thử bản in"
+
+#: src/menus.c:103
+msgid "Preview data to be printed"
+msgstr ""
+
+#: src/menus.c:110
+#, fuzzy
+msgid "C_lose All"
+msgstr "Đóng tất cả"
+
+#: src/menus.c:111
+#, fuzzy
+msgid "Close All Open Files"
+msgstr "Đóng tất cả các tập tin đang mở"
+
+#: src/menus.c:150
+#, fuzzy
+msgid "Goto _Line..."
+msgstr "Đi tới dòng..."
+
+#: src/menus.c:151
+msgid "Go to a specific line number"
+msgstr "Đi tới một dòng xác định"
+
+#: src/menus.c:173
+#, fuzzy
+msgid "_Add View"
+msgstr "_Xem"
+
+#: src/menus.c:174
+msgid "Add a new view of the document"
+msgstr ""
+
+#: src/menus.c:176
+msgid "_Remove View"
+msgstr ""
+
+#: src/menus.c:177
+#, fuzzy
+msgid "Remove view of the document"
+msgstr "Tìm từ đầ_u tài liệu"
+
+#: src/menus.c:220
+#, fuzzy
+msgid "Se_arch"
+msgstr "_Tìm"
+
+#: src/menus.c:229 src/plugin.c:90 src/plugin.c:402 src/window.c:499
+#: src/window.c:676
+#, fuzzy
+msgid "_Plugins"
+msgstr "Plugin"
+
+#: src/menus.c:241
+msgid "_Documents"
+msgstr "Tài _liệu"
+
+#: src/menus.c:255
+msgid "New"
+msgstr "Mới"
+
+#: src/menus.c:259
+msgid "Open a file"
+msgstr "Mở tập tin"
+
+#: src/menus.c:263
+msgid "Save"
+msgstr "Lưu"
+
+#: src/menus.c:263
+msgid "Save the current file"
+msgstr "Lưu tập tin hiện thời"
+
+#: src/menus.c:267
+msgid "Close"
+msgstr "Đón_g"
+
+#: src/menus.c:267
+msgid "Close the current file"
+msgstr "Đóng tập tin hiện thời"
+
+#: src/menus.c:271
+msgid "Print"
+msgstr "In"
+
+#: src/menus.c:271
+msgid "Print the current file"
+msgstr "In tập tin hiện thời"
+
+#: src/menus.c:276
+#, fuzzy
+msgid "Undo last operation"
+msgstr "Hoàn lại hành động cuối cùng"
+
+#: src/menus.c:280
+msgid "Redo"
+msgstr "Làm lại"
+
+#: src/menus.c:280
+#, fuzzy
+msgid "Redo last operation"
+msgstr "Thực hiện lại hành động vừa rồi"
+
+#: src/menus.c:285
+msgid "Cut"
+msgstr "Cắt"
+
+#: src/menus.c:285
+msgid "Cut the selection"
+msgstr "Cắt vùng text được chọn"
+
+#: src/menus.c:289
+msgid "Copy"
+msgstr "Sao chép"
+
+#: src/menus.c:289
+msgid "Copy the selection"
+msgstr "Sao chép vùng text được chọn"
+
+#: src/menus.c:293
+msgid "Paste"
+msgstr "Dán"
+
+#: src/menus.c:293
+msgid "Paste the clipboard"
+msgstr "Dán từ clipboard"
+
+#: src/menus.c:298
+msgid "Search for a string"
+msgstr "Tìm chuỗi"
+
+#: src/menus.c:303
+#, fuzzy
+msgid "Exit"
+msgstr "_Hiệu chỉnh"
+
+#: src/menus.c:303
+#, fuzzy
+msgid "Exit the program"
+msgstr "Kết thúc chương trình"
+
+#: src/plugin.c:107
+#, fuzzy
+msgid "_Manager ..."
+msgstr "Trình quản lý _plugin..."
+
+#: src/plugin.c:108
+msgid "Manage available plugin modules"
+msgstr ""
+
+#: src/plugin.c:195
+#, fuzzy, c-format
+msgid ""
+"The program %s could not be found.\n"
+"\n"
+msgstr "Không tìm thấy chuỗi \"%s\"."
+
+#: src/plugin.c:211
+#, c-format
+msgid ""
+"'%s' doesn't seem to exist.\n"
+"\n"
+msgstr ""
+
+#: src/plugin.c:213
+#, c-format
+msgid ""
+"'%s' seems to be a directory.\n"
+"but '%s' could not be found inside it.\n"
+"\n"
+msgstr ""
+
+#: src/plugin.c:216
+#, c-format
+msgid ""
+"'%s' doesn't seem to be a program.\n"
+"\n"
+msgstr ""
+
+#: src/plugin.c:220
+#, c-format
+msgid ""
+"%sYou won't be able to use the %s plugin without %s. \n"
+" Do you want to specify a new location for %s?"
+msgstr ""
+
+#: src/plugin.c:322
+#, fuzzy, c-format
+msgid "Error, unable to open module file, %s"
+msgstr "Lỗi không thể mở tập tin module '%s'\n"
+
+#: src/plugin.c:332
+#, fuzzy
+msgid "Error, plugin does not contain init_plugin function."
+msgstr "Lỗi, plugin '%s' không chứa hàm init."
+
+#: src/plugin.c:345
+msgid "Error, init_plugin returned an error"
+msgstr ""
+
+#: src/plugin.c:392
+#, fuzzy
+msgid "Error, plugin is still in use"
+msgstr "Lỗi, plugin '%s' không chứa hàm init."
+
+#: src/prefs.c:42
+msgid "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
+msgstr ""
+
+#: src/print.c:230
+#, fuzzy
+msgid "Print Document"
+msgstr "gedit - Tài liệu in"
+
+#: src/print.c:238
+#, fuzzy
+msgid "Pages"
+msgstr "Trang"
+
+#: src/print.c:286
+#, fuzzy
+msgid "gedit: Print Preview\n"
+msgstr "gedit - Xem trước bản in"
+
+#: src/print-doc.c:505
+#, fuzzy, c-format
+msgid "Page: %i/%i"
+msgstr "Trang: %d"
+
+#: src/print-util.c:222 src/print-util.c:237
+#, c-format
+msgid ""
+"gedit could not find the font \"%s\".\n"
+"gedit is unable to print without this font installed."
+msgstr ""
+
+#: src/print-util.c:278
+#, fuzzy
+msgid "Printing .."
+msgstr "_In..."
+
+#: src/print-util.c:289
+#, fuzzy
+msgid "Printing ..."
+msgstr "_In..."
+
+#. xgettext translators: Use the name of the stock
+#. * Menu item for "File"	if it is not the same, we are going to
+#. * fail to insert the recent menu items.
+#: src/recent.c:549
+#, fuzzy
+msgid "_File/"
+msgstr "_Tập tin"
+
+#. xgettext translators: Use the name of the stock Menu item for "File"
+#. if it is not the same, we are going to fail to insert the recent menu items.
+#: src/recent.c:558
+msgid "_File"
+msgstr "_Tập tin"
+
+#: src/recent.c:580
+#, fuzzy, c-format
+msgid "Unable to open recent file: %s"
+msgstr "Lỗi không thể mở tập tin module '%s'\n"
+
+#: src/search.c:393
+msgid ""
+"Can't count lines if another search operation is active, please close the "
+"search dialog."
+msgstr ""
+
+#: src/search.c:410
+#, c-format
+msgid ""
+"Filename: %s\n"
+"\n"
+"Total Characters: %i\n"
+"Total Words: %i\n"
+"Total Lines: %i\n"
+"Total Paragraphs: %i\n"
+"Total Bytes: %i\n"
+"\n"
+"Current Line: %i\n"
+"Current Column: %i"
+msgstr ""
+
+#: src/view.c:949
+msgid "You can't remove the last view of a document."
+msgstr ""
+
+#~ msgid "Edit text files"
+#~ msgstr "Hiệu chỉnh file text"
+
+#~ msgid "_ASCII Table"
+#~ msgstr "Bảng _ASCII"
+
+#~ msgid "Pop-up a dialog containing an ASCII Table"
+#~ msgstr "Hiện hộp thoại chứa bảng mã ASCII"
+
+#~ msgid "_Insert char"
+#~ msgstr "_Chèn ký tự"
+
+#~ msgid "Copyright (C) 2001-2002 Paolo Maggi"
+#~ msgstr "Copyright (C) 2001-2002 Paolo Maggi"
+
+#~ msgid "Open CVS Chan_geLogs"
+#~ msgstr "Mở CVS ChangeLog"
+
+#~ msgid "Searches for ChangeLogs in the current document and opens them"
+#~ msgstr "Tìm các ChangeLog trong tài liệu hiện thời và mở chúng"
+
+#~ msgid "CVS ChangeLog"
+#~ msgstr "CVS ChangeLog"
+
+#~ msgid "A plugin that opens ChangeLogs found in CVS commit messages."
+#~ msgstr ""
+#~ "Plugin mở các ChangeLog được tìm thấy trong thông báo commit của CVS."
+
+#~ msgid "Copyright (C) 2002 - James Willcox"
+#~ msgstr "Copyright (C) 2002 - James Willcox"
+
+#~ msgid "Co_mpare Files..."
+#~ msgstr "_So sánh tập tin..."
+
+#~ msgid "Compare files"
+#~ msgstr "So sánh tập tin"
+
+#~ msgid "Compare two files..."
+#~ msgstr "So sánh hai tập tin..."
+
+#~ msgid "C_ompare"
+#~ msgstr "_So sánh"
+
+#~ msgid "The two files you selected are the same."
+#~ msgstr "Hai tập tin bạn chọn hoàn toàn giống nhau."
+
+#~ msgid ""
+#~ "Impossible to compare the selected documents.\n"
+#~ "\n"
+#~ "gedit could not create a temporary file."
+#~ msgstr ""
+#~ "Không thể so sánh những tài liệu được chọn.\n"
+#~ "\n"
+#~ "gedit không thể tạo tập tin tạm."
+
+#~ msgid ""
+#~ "Impossible to compare the selected documents.\n"
+#~ "\n"
+#~ "Error executing the diff command."
+#~ msgstr ""
+#~ "Không thể so sánh các tài liệu được chọn.\n"
+#~ "\n"
+#~ "Có lỗi khi thực hiện lệnh diff."
+
+#~ msgid "No differences were found between the selected documents."
+#~ msgstr "Không có khác biệt nào giữa những tài liệu được chọn."
+
+#~ msgid ""
+#~ "Impossible to compare the selected documents.\n"
+#~ "\n"
+#~ "The result contains invalid UTF-8 data."
+#~ msgstr ""
+#~ "Không thể so sánh những tài liệu được chọn.\n"
+#~ "\n"
+#~ "Kết quả có chứa dữ liệu không phải là UTF-8."
+
+#~ msgid ""
+#~ "Copyright (C) 2000 - 2001 Chema Celorio \n"
+#~ "Copyright (C) 2002 Paolo Maggi"
+#~ msgstr ""
+#~ "Copyright (C) 2000 - 2001 Chema Celorio \n"
+#~ "Copyright (C) 2002 Paolo Maggi"
+
+#~ msgid "Compare files..."
+#~ msgstr "So sánh tập tin..."
+
+#~ msgid "F_rom document"
+#~ msgstr "_Từ tài liệu"
+
+#~ msgid "From a _file on disk"
+#~ msgstr "Từ _tập tin trên đĩa"
+
+#~ msgid "Ignore _blanks (-b option)"
+#~ msgstr "Bỏ qua _khoảng trắng (tuỳ chọn -b)"
+
+#~ msgid "Note that this option is only supported by GNU diff"
+#~ msgstr "Chú ý là tùy chọn này chỉ được hỗ trợ bởi GNU diff"
+
+#~ msgid "_Word Count"
+#~ msgstr "Đế_m từ"
+
+#~ msgid "Word count"
+#~ msgstr "Đếm từ"
+
+#~ msgid "_Update"
+#~ msgstr "_Cập nhật"
+
+#~ msgid ""
+#~ "The word count plugin analyzes the current document and determines the "
+#~ "number of words, lines, characters and non-space characters in it and "
+#~ "display the result."
+#~ msgstr ""
+#~ "Plugin phân tích tài liệu hiện thời và xác định số từ, số dòng, số ký tự "
+#~ "(tính khoảng trắng và không tính khoảng trắng) trong tài liệu rồi hiển "
+#~ "thị kết quả."
+
+#~ msgid "Copyright (C) 2002 - Paolo Maggi"
+#~ msgstr "Copyright (C) 2002 - Paolo Maggi"
+
+#~ msgid "Bytes"
+#~ msgstr "Byte"
+
+#~ msgid "Insert User _Name"
+#~ msgstr "Chèn tên người dùng"
+
+#~ msgid "Insert the user name at the cursor position"
+#~ msgstr "Chèn tên người dùng vào vị trí con trỏ hiện thời"
+
+#~ msgid "User name"
+#~ msgstr "Tên người dùng"
+
+#~ msgid "Inserts the user name at the cursor position."
+#~ msgstr "Chèn tên người dùng vào vị trí con trỏ hiện thời."
+
+#~ msgid "Insert Shell _Output"
+#~ msgstr "Chèn đầu ra của shell"
+
+#~ msgid "_Run"
+#~ msgstr "_Chạy"
+
+#~ msgid ""
+#~ "Error parsing the shell command.\n"
+#~ "\n"
+#~ "Please, insert a valid shell command."
+#~ msgstr ""
+#~ "Lỗi khi phân tích lệnh shell.\n"
+#~ "\n"
+#~ "Vui lòng điền lệnh shell hợp lệ."
+
+#~ msgid "An error occurs while running the selected command."
+#~ msgstr "Lỗi khi đang chạy lệnh được chọn."
+
+#~ msgid ""
+#~ "Execute a program and insert its output in the current document at the "
+#~ "current cursor position"
+#~ msgstr ""
+#~ "Thực hiện chương trình và chèn kết quả vào tài liệu hiện thời, tại vị trí "
+#~ "con trỏ hiện thời"
+
+#~ msgid "_Insert Date/Time"
+#~ msgstr "_Chèn ngày/giờ"
+
+#~ msgid "Insert current date and time at the cursor position"
+#~ msgstr "Chèn ngày, giờ hiện thời vào vị trí con trỏ hiện thời"
+
+#~ msgid "Available formats"
+#~ msgstr "Dạng thức hỗ trợ"
+
+#~ msgid "Configure insert date/time plugin"
+#~ msgstr "Cấu hình plugin chèn ngày/giờ"
+
+#~ msgid "Select the format to use when inserting date/time."
+#~ msgstr "Chọn dạng thức được dùng khi chèn ngày/giờ."
+
+#~ msgid "_Goto line"
+#~ msgstr "Đi tới _dòng"
+
+#~ msgid "Could not find the required widgets inside goto-line.glade2.\n"
+#~ msgstr "Không thể tìm thấy widget yêu cầu trong goto-line.glade2.\n"
+
+#~ msgid "Load"
+#~ msgstr "Nạp"
+
+#~ msgid "Module file name"
+#~ msgstr "Tên tập tin module"
+
+#~ msgid "Could not find plugin-manager.glade2, reinstall gedit.\n"
+#~ msgstr "Không thể tìm thấy plugin-manager.glade2, hãy cài đặt lại gedit.\n"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Trình quản lý Plugin"
+
+#~ msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
+#~ msgstr ""
+#~ "Tập tin glade của trình quản lý plugin không hợp lệ -- không có widget "
+#~ "nào được tìm thấy.\n"
+
+#~ msgid "Could not create the Plugin Manager dialog"
+#~ msgstr "Không thể tạo hộp thoại Trình quản lý Plugin"
+
+#~ msgid "_Replace"
+#~ msgstr "T_hay thế"
+
+#~ msgid "Set program location ..."
+#~ msgstr "Định vị trí chương trình..."
+
+#~ msgid ""
+#~ "Could not find the required widgets inside program-location-dialog."
+#~ "glade2.\n"
+#~ msgstr ""
+#~ "Không thể tìm thấy widget yêu cầu trong program-location-dialog.glade2.\n"
+
+#~ msgid ""
+#~ "The %s plugin uses an external program, called <tt>%s</tt>, to perform "
+#~ "its task.\n"
+#~ "\n"
+#~ "Please, specify the location of the <tt>%s</tt> program."
+#~ msgstr ""
+#~ "Plugin %s dùng chương trình bên ngoài, gọi là <tt>%s</tt>, để thực công "
+#~ "việc.\n"
+#~ "\n"
+#~ "Vui lòng xác định vị trí của chương trình <tt>%s</tt>."
+
+#~ msgid "The selected file is not executable."
+#~ msgstr "Tập tin được chọn không phải là tập tin thực thi."
+
+#~ msgid "Toolbar"
+#~ msgstr "Thanh Công cụ"
+
+#~ msgid "Status bar"
+#~ msgstr "Thanh trạng thái"
+
+#~ msgid "MDI"
+#~ msgstr "MDI"
+
+#~ msgid "Font & Colors"
+#~ msgstr "Font & Màu sắc"
+
+#~ msgid "Wrap mode"
+#~ msgstr "Chế độ cuốn"
+
+#~ msgid "Line numbers"
+#~ msgstr "Số dòng"
+
+#~ msgid "Editor"
+#~ msgstr "Trình hiệu chỉnh"
+
+#~ msgid "User interface"
+#~ msgstr "Giao diện người dùng"
+
+#~ msgid "Cat_egories:"
+#~ msgstr "_Phân loại:"
+
+#~ msgid "Categories"
+#~ msgstr "Phân loại"
+
+#~ msgid " _Wrap lines (at character boundaries)"
+#~ msgstr "_Cuộn dòng (tại biên ký tự)"
+
+#~ msgid " character(s)"
+#~ msgstr " ký tự"
+
+#~ msgid "Always use _UTF-8 encoding (faster)"
+#~ msgstr "Luôn dùng mã hóa _UTF-8 (nhanh hơn)"
+
+#~ msgid "Button style"
+#~ msgstr "Kiểu nút"
+
+#~ msgid "Create a _backup copy of files before saving"
+#~ msgstr "Tạo _bản sao của tập tin trước khi lưu"
+
+#~ msgid "Font"
+#~ msgstr "Font"
+
+#~ msgid "Font used to print line _numbers:"
+#~ msgstr "Font dùng để in số _dòng:"
+
+#~ msgid "Font used to print the _body:"
+#~ msgstr "Font dùng để in phần thân tài liệu:"
+
+#~ msgid "Icon and _text"
+#~ msgstr "Biểu tượng và _text"
+
+#~ msgid "LOGO"
+#~ msgstr "LOGO"
+
+#~ msgid "Pick the background color"
+#~ msgstr "Chọn màu nền"
+
+#~ msgid "Pick the selected text color"
+#~ msgstr "Chọn màu chữ trong vùng được chọn"
+
+#~ msgid "Pick the selection color"
+#~ msgstr "Chọn màu vùng chọn"
+
+#~ msgid "Print _page headers"
+#~ msgstr "In tiêu đề _trang mỗi"
+
+#~ msgid "Print fonts"
+#~ msgstr "Font in"
+
+#~ msgid "S_elected text color:"
+#~ msgstr "Màu chữ được _chọn:"
+
+#~ msgid "Se_lection color:"
+#~ msgstr "Màu _vùng chọn:"
+
+#~ msgid "Show cursor _position"
+#~ msgstr "Hiện vị trí _con trỏ"
+
+#~ msgid "Show overwrite _mode"
+#~ msgstr "Hiện chế độ _ghi đè"
+
+#~ msgid ""
+#~ "The font & colors settings let you choose the font and the colors to be "
+#~ "used in the editor windows."
+#~ msgstr ""
+#~ "Các thông số font & màu sắc cho phép bạn chọn font và màu sắc được dùng "
+#~ "trong các cửa sổ hiệu chỉnh văn bản."
+
+#~ msgid ""
+#~ "The line numbers setting lets you choose to display the line numbers on "
+#~ "the left hand side of the window."
+#~ msgstr ""
+#~ "Thông số về số dòng cho phép bạn chọn hiển thị số dòng ở bên trái cửa sổ."
+
+#~ msgid ""
+#~ "The print fonts settings let you choose the fonts to be used to print "
+#~ "documents."
+#~ msgstr "Tham số font in cho phép bạn chọn font được dùng để in tài liệu."
+
+#~ msgid ""
+#~ "The print page settings let you customize how gedit prints documents."
+#~ msgstr ""
+#~ "Thông số trang in cho phép bạn xác định gedit sẽ in tài liệu như thế nào."
+
+#~ msgid "The save settings let you customize how gedit saves files."
+#~ msgstr ""
+#~ "Thông số lưu cho phép bạn xác định gedit sẽ lưu tập tin như thế nào."
+
+#~ msgid ""
+#~ "The status bar settings let you show or hide status bar and customize its "
+#~ "appearance."
+#~ msgstr ""
+#~ "Thông số thanh trạng thái cho phép bạn hiển thị hoặc ẩn thanh trạng thái "
+#~ "và thay đổi diện mạo của nó."
+
+#~ msgid ""
+#~ "The toolbar settings let you show or hide toolbar and customize its "
+#~ "appearance."
+#~ msgstr ""
+#~ "Thông số thanh công cụ cho phép bạn hiện hoặc ẩn và thay đổi diện mạo "
+#~ "thanh công cụ."
+
+#~ msgid ""
+#~ "The undo settings let you set the maximum number of actions that gedit "
+#~ "can undo."
+#~ msgstr ""
+#~ "Thông số hoàn lại cho phép bạn thiết lập số hoạt động tối đa mà gedit có "
+#~ "thể thực hiện quá trình hoàn lại."
+
+#~ msgid ""
+#~ "The wrap mode settings let you customize how lines have to be wrapped."
+#~ msgstr ""
+#~ "Thông số chế độ cuộn cho phép bạn xác định các dòng sẽ được cuộn như thế "
+#~ "nào."
+
+#~ msgid "Toolbars"
+#~ msgstr "Thanh công cụ"
+
+#~ msgid "U_se current locale only if the file already use it"
+#~ msgstr "_Dùng locale hiện thời chỉ khi tập tin đã dùng nó"
+
+#~ msgid "U_se default theme colors"
+#~ msgstr "_Dùng màu theme mặc định"
+
+#~ msgid "Use current _locale when possible"
+#~ msgstr "Dùng _locale hiện thời khi có thể"
+
+#~ msgid "Wrap lines at _word boundaries"
+#~ msgstr "Cuộn dòng tại biên của _từ"
+
+#~ msgid "Wrap lines at ch_aracter boundaries"
+#~ msgstr "Cuộn dòng tại biên _ký tự"
+
+#~ msgid "_Auto save current file every"
+#~ msgstr "Tự động lưu tập tin hiện thời mỗi"
+
+#~ msgid "_Display line numbers"
+#~ msgstr "_Hiện số dòng"
+
+#~ msgid "_Font used by the editor: "
+#~ msgstr "_Font dùng trong trình hiệu chỉnh: "
+
+#~ msgid "_Font used to print headers:"
+#~ msgstr "_Font dùng để in tiêu đề:"
+
+#~ msgid "_Icon"
+#~ msgstr "_Biểu tượng"
+
+#~ msgid "_Never wrap lines"
+#~ msgstr "_Không bao giờ cuộn dòng"
+
+#~ msgid "_Show toolbar"
+#~ msgstr "_Hiện thanh công cụ"
+
+#~ msgid "_Text color:"
+#~ msgstr "Màu _chữ:"
+
+#~ msgid "_Use default theme font"
+#~ msgstr "_Dùng font theme mặc định"
+
+#~ msgid "minutes"
+#~ msgstr "phút"
+
+#~ msgid "Preview"
+#~ msgstr "Xem trước"
+
+#~ msgid "Font Selection"
+#~ msgstr "Chọn font"
+
+#~ msgid "sans 12"
+#~ msgstr "sans 12"
+
+#~ msgid "Title"
+#~ msgstr "Tựa đề"
+
+#~ msgid "The title of the selection dialog box"
+#~ msgstr "Tựa đề của hộp thoại chọn font"
+
+#~ msgid "Font name"
+#~ msgstr "Tên font"
+
+#~ msgid "Name of the selected font"
+#~ msgstr "Tên của font được chọn"
+
+#~ msgid "Preview text"
+#~ msgstr "text xem thử"
+
+#~ msgid "Preview text shown in the dialog"
+#~ msgstr "Text xem thử được hiển thị trong hộp thoại"
+
+#~ msgid "Show size"
+#~ msgstr "Hiện kích thước"
+
+#~ msgid "Show size in font info mode"
+#~ msgstr "Hiện kích thước trong chế độ thông tin font"
+
+#~ msgid "C_onfigure plugin"
+#~ msgstr "Cấu _hình plugin"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "Cấu _hình plugin được chọn"
+
+#~ msgid ""
+#~ "This is the Plugin Manager. Plugins are extra pieces of software that "
+#~ "extend gedit capabilities. From here, you can choose which plugins you "
+#~ "want to have loaded."
+#~ msgstr ""
+#~ "Đây là trình quản lý plugin. Plugin là những phần phụ thêm của phần mềm "
+#~ "giúp mở rộng tính năng của gedit. Từ đây, bạn có thể chọn plugin nào bạn "
+#~ "muốn nạp."
+
+#~ msgid "dialog1"
+#~ msgstr "dialog1"
+
+#~ msgid "Not yet implemented."
+#~ msgstr "Chưa được làm."
+
+#~ msgid "Impossible to update gedit settings."
+#~ msgstr "Không thể cập nhật thông số gedit."
+
+#~ msgid "Invalid UTF-8 data"
+#~ msgstr "Dữ liệu UTF-8 không hợp lệ"
+
+#~ msgid ""
+#~ "There is no enough disk space to save the file.\n"
+#~ "Please, free some space on the disk and try again."
+#~ msgstr ""
+#~ "Không đủ chỗ trên đĩa để lưu tập tin.\n"
+#~ "Vui lòng giải phóng thêm chỗ trống trên đĩa rồi thử lại."
+
+#~ msgid "The file is too big."
+#~ msgstr "Tập tin quá lớn."
+
+#~ msgid ""
+#~ "A file named ''%s'' already exists.\n"
+#~ "Do you want to replace it with the one you are saving?"
+#~ msgstr ""
+#~ "Tập tin tên \"%s\" đã tồn tại rồi.\n"
+#~ "Bạn có muốn thay thế nó với tập tin bạn đang lưu?"
+
+#~ msgid "Do_n't replace"
+#~ msgstr "_Không thay thế"
+
+#~ msgid "Saving file '%s' ..."
+#~ msgstr "Đang lưu tập tin '%s' ..."
+
+#~ msgid "File '%s' saved."
+#~ msgstr "Tập tin '%s' đã được lưu."
+
+#~ msgid "Save as ..."
+#~ msgstr "Lưu là ..."
+
+#~ msgid "Reverting file '%s' ..."
+#~ msgstr "Đang hoàn nguyên tập tin '%s' ..."
+
+#~ msgid "The document has not been reverted."
+#~ msgstr "Tài liệu chưa được hoàn nguyên."
+
+#~ msgid "File '%s' reverted."
+#~ msgstr "Đã hoàn nguyên tập tin '%s'."
+
+#~ msgid "Loading %d file..."
+#~ msgstr "Đang nạp %d tập tin ..."
+
+#~ msgid "Could not read data from stdin."
+#~ msgstr "Không thể đọc dữ liệu từ stdin."
+
+#~ msgid ""
+#~ "Do you want to save the changes you made to the document \"%s\"? \n"
+#~ "\n"
+#~ "Your changes will be lost if you don't save them."
+#~ msgstr ""
+#~ "Bạn có muốn lưu các thay đổi bạn đã tạo ra trong tài liệu \"%s\"?\n"
+#~ "\n"
+#~ "Các thay đổi sẽ bị mất nếu bạn không lưu chúng lại."
+
+#~ msgid "Do_n't save"
+#~ msgstr "_Không lưu"
+
+#~ msgid "_Don't quit"
+#~ msgstr "Không _thoát"
+
+#~ msgid "_Don't close"
+#~ msgstr "Không đón_g"
+
+#~ msgid "Error, plugin '%s' does not contain activate function."
+#~ msgstr "Lỗi, plugin '%s' không chứa hàm activate."
+
+#~ msgid "Error, plugin '%s' does not contain deactivate function."
+#~ msgstr "Lỗi, plugin '%s' không chứa hàm deactivate."
+
+#~ msgid "Error, impossible to initialize plugin '%s'"
+#~ msgstr "Lỗi, không thể khởi động plugin '%s'"
+
+#~ msgid "Error, the plugin '%s' did not specified a name"
+#~ msgstr "Lỗi, plugin '%s' không xác định tên"
+
+#~ msgid "Error, impossible to save settings of the plugin '%s'"
+#~ msgstr "Lỗi, không thể lưu các thiết lập của plugin '%s'"
+
+#~ msgid "Error, impossible to activate plugin '%s'"
+#~ msgstr "Lỗi, không thể kích hoạt plugin '%s'"
+
+#~ msgid "Error, impossible to deactivate plugin '%s'"
+#~ msgstr "Lỗi, không thể dừng kích hoạt plugin '%s'"
+
+#~ msgid "Error, impossible to update ui of the plugin '%s'"
+#~ msgstr "Lỗi, không thể cập nhật UI của plugin '%s'"
+
+#~ msgid ""
+#~ "gedit is unable to print since it cannot find\n"
+#~ "one of the required fonts."
+#~ msgstr "gedit không thể in vì không tìm thấy font yêu cầu."
+
+#~ msgid "File: %s"
+#~ msgstr "Tập tin: %s"
+
+#~ msgid "Open %s"
+#~ msgstr "Mở %s"
+
+#~ msgid "About this application"
+#~ msgstr "Giới thiệu về ứng dụng này"
+
+#~ msgid "About..."
+#~ msgstr "Giới thiệu..."
+
+#~ msgid "Add/Remove plugins"
+#~ msgstr "Thêm/Bớt plugin"
+
+#~ msgid "C_ustomize Status Bar"
+#~ msgstr "Tùy biến thanh trạng thái"
+
+#~ msgid "Clos_e All"
+#~ msgstr "Đóng tất _cả"
+
+#~ msgid "Configure the application"
+#~ msgstr "Cấu hình ứng dụng"
+
+#~ msgid "Cu_t"
+#~ msgstr "Cắ_t"
+
+#~ msgid "Customize"
+#~ msgstr "Tùy biến"
+
+#~ msgid "Customize toolbars"
+#~ msgstr "Tùy biến thanh Công cụ"
+
+#~ msgid "Delete the selected text"
+#~ msgstr "Xóa vùng text được chọn"
+
+#~ msgid "Find Again"
+#~ msgstr "Tìm tiếp"
+
+#~ msgid "Goto _Line"
+#~ msgstr "Đi tới _dòng"
+
+#~ msgid "Icon and _Text"
+#~ msgstr "Biểu tượng và _Text"
+
+#~ msgid "Main toolbar"
+#~ msgstr "Thanh Công cụ chính"
+
+#~ msgid "Only show icons in the toolbar"
+#~ msgstr "Chỉ hiện biểu tượng trên thanh công cụ"
+
+#~ msgid "Open Location..."
+#~ msgstr "Mở địa điểm..."
+
+#~ msgid "Open _Location..."
+#~ msgstr "Mở đị_a điểm..."
+
+#~ msgid "Open the gedit manual"
+#~ msgstr "Mở sổ tay gedit"
+
+#~ msgid "Pr_eferences..."
+#~ msgstr "T_hông số..."
+
+#~ msgid "Print Previe_w"
+#~ msgstr "_Xem trước bản in"
+
+#~ msgid "Print Preview"
+#~ msgstr "_Xem trước bản in"
+
+#~ msgid "Print Setup"
+#~ msgstr "Thiết lập in"
+
+#~ msgid "Quit"
+#~ msgstr "T_hoát"
+
+#~ msgid "Recent _Files"
+#~ msgstr "Các _tập tin gần đây"
+
+#~ msgid "Replace a string"
+#~ msgstr "Thay thế chuỗi"
+
+#~ msgid "Revert to a saved version of the file"
+#~ msgstr "Hoàn nguyên phiên bản đã lưu của tập tin"
+
+#~ msgid "Sa_ve All"
+#~ msgstr "Lưu tất _cả"
+
+#~ msgid "Save As"
+#~ msgstr "Lưu là"
+
+#~ msgid "Save the current file with a different name"
+#~ msgstr "Lưu tập tin hiện thời với tên khác"
+
+#~ msgid "Search again for the same string"
+#~ msgstr "Tìm chuỗi tiếp"
+
+#~ msgid "Select All"
+#~ msgstr "Chọn tất cả"
+
+#~ msgid "Select _All"
+#~ msgstr "Chọn _tất cả"
+
+#~ msgid "Select the entire document"
+#~ msgstr "Chọn toàn bộ tài liệu"
+
+#~ msgid "Set toolbar button style according to desktop default"
+#~ msgstr "Chỉnh kiểu nút thanh công cụ như mặc định của desktop"
+
+#~ msgid "Setup the page settings for your current printer"
+#~ msgstr "Thiết lập thông số trang cho máy in hiện thời"
+
+#~ msgid "Show _Cursor Position"
+#~ msgstr "Hiện _vị trí con trỏ"
+
+#~ msgid "Show _Overwrite Mode"
+#~ msgstr "Hiện chế độ _ghi đè"
+
+#~ msgid "Show cursor position in the statusbar"
+#~ msgstr "Hiện vị trí con trỏ hiện thời trên thanh trạng thái"
+
+#~ msgid "Show overwrite mode in the statusbar"
+#~ msgstr "Hiện chế độ ghi đè trên thanh trạng thái"
+
+#~ msgid "_Close"
+#~ msgstr "Đón_g"
+
+#~ msgid "_Contents"
+#~ msgstr "_Nội dung"
+
+#~ msgid "_Copy"
+#~ msgstr "_Sao chép"
+
+#~ msgid "_Customize Toolbar"
+#~ msgstr "_Tùy biến Thanh công cụ"
+
+#~ msgid "_Delete"
+#~ msgstr "_Xóa"
+
+#~ msgid "_Desktop Default"
+#~ msgstr "Mặc định của _desktop"
+
+#~ msgid "_Find"
+#~ msgstr "_Tìm"
+
+#~ msgid "_Help"
+#~ msgstr "Trợ _giúp"
+
+#~ msgid "_Open..."
+#~ msgstr "_Mở..."
+
+#~ msgid "_Paste"
+#~ msgstr "_Dán"
+
+#~ msgid "_Plugin Manager"
+#~ msgstr "Trình quản lý _plugin"
+
+#~ msgid "_Quit"
+#~ msgstr "T_hoát"
+
+#~ msgid "_Redo"
+#~ msgstr "_Làm lại"
+
+#~ msgid "_Save"
+#~ msgstr "_Lưu"
+
+#~ msgid "_Status Bar"
+#~ msgstr "Thanh T_rạng thái"
+
+#~ msgid "_Toolbar"
+#~ msgstr "Thanh _Công cụ"
+
+#~ msgid "_Undo"
+#~ msgstr "_Hoàn lại"
+
+#~ msgid ""
+#~ "Could not find the file \"%s\".\n"
+#~ "\n"
+#~ "Please, check that you typed the location correctly and try again."
+#~ msgstr ""
+#~ "Không thể tìm thấy tập tin \"%s\".\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra bạn đã nhập đúng vị trí chưa và thử lại."
+
+#~ msgid "Could not open the file \"%s\" because it contains corrupted data."
+#~ msgstr "Không thể mở tập tin \"%s\" vì chứa dữ liệu hỏng."
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+#~ msgstr "Không thể mỡ tập tin \"%s\" vì gedit không thể xử lý %s: vị trí."
+
+#~ msgid "Could not open the file \"%s\""
+#~ msgstr "Không thể mở tập tin \"%s\""
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because it contains data in an invalid "
+#~ "format."
+#~ msgstr "Không thể mở tập tin \"%s\" vì nó chứa dữ liệu ở dạng thức sai."
+
+#~ msgid "Could not open the file \"%s\" because it is too big."
+#~ msgstr "Không thể mở tập tin \"%s\" vì nó quá lớn."
+
+#~ msgid ""
+#~ "\"%s\" is not a valid location.\n"
+#~ "\n"
+#~ "Please, check that you typed the location correctly and try again."
+#~ msgstr ""
+#~ "Địa điểm \"%s\" không hợp lệ.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra xem bạn đã nhập địa điểm đúng chưa rồi thử lại."
+
+#~ msgid "Could not open the file \"%s\" because access was denied."
+#~ msgstr "Không thể mở tập tin \"%s\" vì truy cập bị từ chối."
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because there are too many open files.\n"
+#~ "\n"
+#~ "Please, close some open file and try again."
+#~ msgstr ""
+#~ "Không thể mở tập tin \"%s\" vì đã mở quá nhiều tập tin.\n"
+#~ "\n"
+#~ "Vui lòng đóng bớt vài tập tin rồi thử lại."
+
+#~ msgid ""
+#~ "\"%s\" is a directory.\n"
+#~ "\n"
+#~ "Please, check that you typed the location correctly and try again."
+#~ msgstr ""
+#~ "\"%s\" là một thư mục.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra xem bạn đã nhập đúng địa điểm chưa rồi thử lại."
+
+#~ msgid ""
+#~ "Not enough available memory to open the file \"%s\". Please, close some "
+#~ "running application and try again."
+#~ msgstr ""
+#~ "Không đủ bộ nhớ để mở tập tin \"%s\". Vui lòng đóng bớt vài ứng dụng đang "
+#~ "chạy rồi thử lại."
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because no host \"%s\" could be found.\n"
+#~ "\n"
+#~ "Please, check that you typed the location correctly and that your proxy "
+#~ "settings are correct and then try again."
+#~ msgstr ""
+#~ "Không thể mở tập tin \"%s\" vì không tìm thấy máy chủ \"%s\".\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra xem bạn đã nhập đúng địa điểm chưa và thiết lập proxy "
+#~ "của bạn đã đúng chưa rồi thử lại."
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because the host name was invalid.\n"
+#~ "\n"
+#~ "Please, check that you typed the location correctly and try again."
+#~ msgstr ""
+#~ "Không thể mở tập tin \"%s\" vì tên máy chủ không hợp lệ.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra xem bạn đã nhập đúng địa điểm chưa rồi thử lại."
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because the host name was empty.\n"
+#~ "\n"
+#~ "Please, check that your proxy settings are correct and try again."
+#~ msgstr ""
+#~ "Không thể mở tập tin \"%s\" vì chưa có tên máy chủ.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra lại các thông số proxy của bạn rồi thử lại."
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because the attempt to log in failed.\n"
+#~ "\n"
+#~ "Please, check that you typed the location correctly and try again."
+#~ msgstr ""
+#~ "Không thể mở tập tin \"%s\" vì thất bại khi thử đăng nhập.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra xem bạn đã nhập đúng địa điểm chưa rồi thử lại."
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because it contains invalid UTF-8 data.\n"
+#~ "\n"
+#~ "Probably, you are trying to open a binary file."
+#~ msgstr ""
+#~ "Không thể mở tập tin \"%s\" vì nó chứa các dữ liệu UTF-8 không hợp lệ.\n"
+#~ "\n"
+#~ "Có lẽ do bạn đã thử mở một tập tin nhị phân."
+
+#~ msgid "Could not save the file \"%s\"."
+#~ msgstr "Không thể lưu tập tin \"%s\"."
+
+#~ msgid ""
+#~ "Could not save the file \"%s\".\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Không thể lưu tập tin \"%s\".\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because gedit cannot find it.\n"
+#~ "\n"
+#~ "Perhaps, it has recently been deleted."
+#~ msgstr ""
+#~ "Không thể hoàn nguyên tập tin \"%s\" vì gedit không tìm thấy nó.\n"
+#~ "\n"
+#~ "Có lẽ nó vừa mới bị xóa."
+
+#~ msgid "Could not revert the file \"%s\" because it contains corrupted data."
+#~ msgstr "Không thể hoàn nguyên tập tin \"%s\" vì nó chứa dữ liệu hỏng."
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because gedit cannot handle %s: "
+#~ "locations."
+#~ msgstr ""
+#~ "Không thể hoàn nguyên tập tin \"%s\" vì gedit không thể xử lý %s: địa "
+#~ "điểm."
+
+#~ msgid "Could not revert the file \"%s\"."
+#~ msgstr "Không thể hoàn nguyên tập tin \"%s\"."
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because it contains data in an invalid "
+#~ "format."
+#~ msgstr ""
+#~ "Không thể hoàn nguyên tập tin \"%s\" vì nó chứa dữ liệu trong dạng thức "
+#~ "không hợp lệ."
+
+#~ msgid "Could not revert the file \"%s\" because it is too big."
+#~ msgstr "Không thể hoàn nguyên tập tin \"%s\" vì nó quá lớn."
+
+#~ msgid "Could not revert the file \"%s\" because access was denied."
+#~ msgstr "Không thể hoàn nguyên tập tin \"%s\" vì truy cập bị từ chối."
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because there are too many open files.\n"
+#~ "\n"
+#~ "Please, close some open file and try again."
+#~ msgstr ""
+#~ "Không thể hoàn nguyên tập tin \"%s\" vì có quá nhiều tập tin được mở.\n"
+#~ "\n"
+#~ "Vui lòng đóng bớt một số tập tin rồi thử lại."
+
+#~ msgid ""
+#~ "Not enough available memory to revert the file \"%s\". Please, close some "
+#~ "running application and try again."
+#~ msgstr ""
+#~ "Không đủ bộ nhớ để hoàn nguyên tập tin \"%s\". Vui lòng đóng bớt một số "
+#~ "ứng dụng đang chạy rồi thử lại."
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because no host \"%s\" could be found.\n"
+#~ "\n"
+#~ "Please, check that your proxy settings are correct and try again."
+#~ msgstr ""
+#~ "Không thể hoàn nguyên tập tin \"%s\" vì không tìm thấy máy chủ \"%s\".\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra lại các thiết lập proxy rồi thử lại."
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because the host name was empty.\n"
+#~ "\n"
+#~ "Please, check that your proxy settings are correct and try again."
+#~ msgstr ""
+#~ "Không thể hoàn nguyên tập tin \"%s\" vì chưa có tên máy chủ.\n"
+#~ "\n"
+#~ "Vui lòng kiểm tra lại thiết lập proxy rồi thử lại."
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because the attempt to log in failed."
+#~ msgstr "Không thể hoàn nguyên tập tin \"%s\" vì đăng nhập thất bại."
+
+#~ msgid ""
+#~ "Could not revert the file \"%s\" because it contains invalid UTF-8 data.\n"
+#~ "\n"
+#~ "Probably, you are trying to revert a binary file."
+#~ msgstr ""
+#~ "Không thể hoàn nguyên tập tin \"%s\" vì nó chứa dữ liệu UTF-8 không hợp "
+#~ "lệ.\n"
+#~ "\n"
+#~ "Có lẽ do bạn đã cố hoàn nguyên một tập tin nhị phân."
+
+#~ msgid "It is not possible to revert an Untitled document."
+#~ msgstr "Không thể hoàn nguyên tài liệu \"Không tên\"."
+
+#~ msgid "  Ln %d, Col. %d"
+#~ msgstr " Dòng %d, Cột %d"
+
+#~ msgid "  OVR"
+#~ msgstr " ĐÈ"
+
+#~ msgid "  INS"
+#~ msgstr " CHÈN"
+
+#~ msgid "The GNOME text editor"
+#~ msgstr "Trình soạn thảo văn bản GNOME"
