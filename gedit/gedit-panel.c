@@ -29,6 +29,7 @@
 #include "gedit-panel.h"
 
 #include <glib/gi18n.h>
+
 #define PANEL_ITEM_KEY "GeditPanelItemKey"
 
 struct _GeditPanelPrivate 
@@ -40,6 +41,8 @@ struct _GeditPanelPrivate
 	
 	/* Notebook */
 	GtkWidget *notebook;
+	
+	GtkTooltips *tooltips;
 };
 
 typedef struct _GeditPanelItem GeditPanelItem;
@@ -90,7 +93,9 @@ gedit_panel_get_type (void)
 static void
 gedit_panel_finalize (GObject *obj)
 {
-	/* GeditPanel *panel = GEDIT_PANEL (obj); */
+	GeditPanel *panel = GEDIT_PANEL (obj);
+	
+	g_object_unref (panel->priv->tooltips);
 
 	if (G_OBJECT_CLASS (parent_class)->finalize)
 		(*G_OBJECT_CLASS (parent_class)->finalize) (obj);
@@ -108,6 +113,39 @@ gedit_panel_class_init (GeditPanelClass *c)
 	g_object_class->finalize = gedit_panel_finalize;
 }
 
+#define TAB_WIDTH_N_CHARS 10
+
+static void
+tab_label_style_set_cb (GtkWidget *label,
+			GtkStyle  *previous_style,
+			GtkWidget *hbox)
+{
+	PangoFontMetrics *metrics;
+	PangoContext *context;
+	gint char_width, h, w, len;
+	const gchar *str;
+
+	context = gtk_widget_get_pango_context (label);
+	metrics = pango_context_get_metrics (context,
+			                     label->style->font_desc,
+					     pango_context_get_language (context));
+
+	char_width = pango_font_metrics_get_approximate_digit_width (metrics);
+	pango_font_metrics_unref (metrics);
+
+	str = gtk_label_get_text (GTK_LABEL (label));
+	len = g_utf8_strlen (str, -1);
+	
+	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (label),
+					   GTK_ICON_SIZE_MENU, &w, &h);
+
+	if (GTK_WIDGET_VISIBLE (label))
+		gtk_widget_set_size_request
+			(hbox, MIN (TAB_WIDTH_N_CHARS, len) * PANGO_PIXELS(char_width) + w, -1);
+	else
+		gtk_widget_set_size_request (hbox, w, -1);
+}
+
 static void
 notebook_page_changed (GtkNotebook     *notebook,
                        GtkNotebookPage *page,
@@ -116,6 +154,8 @@ notebook_page_changed (GtkNotebook     *notebook,
 {
 	GtkWidget *item;
 	GeditPanelItem *data;
+	gint i;
+	gint pages;
 	
 	item = gtk_notebook_get_nth_page (notebook, page_num);
 	g_return_if_fail (item != NULL);
@@ -140,6 +180,33 @@ notebook_page_changed (GtkNotebook     *notebook,
 					  data->stock_id,
 					  GTK_ICON_SIZE_MENU);
 	}
+	
+	pages = gtk_notebook_get_n_pages (notebook);
+	for (i = 0; i < pages; ++i)
+	{
+		GtkWidget *p;
+		GtkWidget *label;
+		GtkWidget *hbox;
+		
+		p = gtk_notebook_get_nth_page (notebook, i);
+		
+		label = GTK_WIDGET (g_object_get_data (G_OBJECT (p), "label"));
+		
+		if (p != item)
+			gtk_widget_hide (label);
+		else
+			gtk_widget_show (label);
+			
+		hbox = GTK_WIDGET (g_object_get_data (G_OBJECT (p), "hbox"));
+		
+		tab_label_style_set_cb (label, NULL, hbox);
+	}
+}
+
+static void
+close_button_clicked_cb (GtkWidget *widget, GtkWidget *panel)
+{
+	gtk_widget_hide (panel);
 }
 
 static void
@@ -148,14 +215,24 @@ gedit_panel_init (GeditPanel *panel)
 	GtkWidget *title_hbox;
 	GtkWidget *icon_name_hbox;
 	GtkWidget *image;
+	GtkWidget *dummy_label;
+	GtkSettings *settings;
+	gint w, h;
 	
 	panel->priv = G_TYPE_INSTANCE_GET_PRIVATE (panel, 
 						   GEDIT_TYPE_PANEL,
 					 	   GeditPanelPrivate);
 	g_return_if_fail (panel->priv != NULL);	
 	
+	panel->priv->tooltips = gtk_tooltips_new ();
+	g_object_ref (G_OBJECT (panel->priv->tooltips));
+	gtk_object_sink (GTK_OBJECT (panel->priv->tooltips));
+	
 	/* Create title hbox */
 	title_hbox = gtk_hbox_new (FALSE, 12);
+	gtk_container_set_border_width (GTK_CONTAINER (title_hbox),
+					6);
+					
 	gtk_box_pack_start (GTK_BOX (panel), title_hbox, FALSE, FALSE, 0);
 	
 	icon_name_hbox = gtk_hbox_new (FALSE, 0);
@@ -168,15 +245,24 @@ gedit_panel_init (GeditPanel *panel)
 	panel->priv->title_image = 
 			gtk_image_new_from_stock (GTK_STOCK_FILE,
 						  GTK_ICON_SIZE_MENU); 							     
-	/* FIXME: I don't like using padding very much - Paolo */							    
-	gtk_misc_set_padding (GTK_MISC (panel->priv->title_image), 6, 0);
+
 	gtk_box_pack_start (GTK_BOX (icon_name_hbox), 
 			    panel->priv->title_image, 
 			    FALSE, 
 			    FALSE, 
 			    0);
 	
+	dummy_label = gtk_label_new (" ");
+	
+	gtk_box_pack_start (GTK_BOX (icon_name_hbox), 
+			    dummy_label, 
+			    FALSE, 
+			    FALSE, 
+			    0);	
+			    
 	panel->priv->title_label = gtk_label_new (_("Empty"));
+
+	/* FIXME: elipsize */
 
 	gtk_box_pack_start (GTK_BOX (icon_name_hbox), 
 			    panel->priv->title_label, 
@@ -187,15 +273,33 @@ gedit_panel_init (GeditPanel *panel)
 	panel->priv->close_button = gtk_button_new ();						    
 	gtk_button_set_relief (GTK_BUTTON (panel->priv->close_button), 
 			       GTK_RELIEF_NONE);
-	image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU); 
+	/* fetch the size of an icon */
+	settings = gtk_widget_get_settings (GTK_WIDGET (panel));
+	gtk_icon_size_lookup_for_settings (settings,
+					   GTK_ICON_SIZE_MENU,
+					   &w, &h);
+	image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
+	gtk_widget_set_size_request (panel->priv->close_button, w + 2, h + 2); 
 	gtk_container_add (GTK_CONTAINER (panel->priv->close_button), image);
-	
+	gtk_button_set_focus_on_click (GTK_BUTTON (panel->priv->close_button), 
+				       FALSE);
+				       
 	gtk_box_pack_start (GTK_BOX (title_hbox), 
 			    panel->priv->close_button, 
 			    FALSE, 
 			    FALSE, 
 			    0);
 	
+	gtk_tooltips_set_tip (panel->priv->tooltips, 
+			      panel->priv->close_button,
+			      _("Hide panel"), 
+			      NULL);
+
+	g_signal_connect (G_OBJECT (panel->priv->close_button), 
+			  "clicked",
+                          G_CALLBACK (close_button_clicked_cb),
+                          panel);
+                                
 	/* Create the notebook */
 	panel->priv->notebook = gtk_notebook_new ();
   	gtk_box_pack_start (GTK_BOX (panel), 
@@ -216,11 +320,75 @@ gedit_panel_init (GeditPanel *panel)
   			  panel);
 }
 
-
 GtkWidget *
 gedit_panel_new (void)
 {
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_PANEL, NULL));
+}
+
+static GtkWidget *
+build_tab_label (GeditPanel  *panel,
+		 GtkWidget   *item,
+		 const gchar *name,
+		 const gchar *stock_id)
+{
+	GtkWidget *hbox, *label_hbox, *label_ebox;
+	GtkWidget *label, *icon;
+
+	/* set hbox spacing and label padding (see below) so that there's an
+	 * equal amount of space around the label */
+	hbox = gtk_hbox_new (FALSE, 4);
+
+	label_ebox = gtk_event_box_new ();
+	gtk_event_box_set_visible_window (GTK_EVENT_BOX (label_ebox), FALSE);
+	gtk_box_pack_start (GTK_BOX (hbox), label_ebox, TRUE, TRUE, 0);
+
+	label_hbox = gtk_hbox_new (FALSE, 4);
+	gtk_container_add (GTK_CONTAINER (label_ebox), label_hbox);
+	
+	/* setup site icon, empty by default */
+	icon = gtk_image_new ();
+	if (stock_id == NULL)
+	{
+		gtk_image_set_from_stock (GTK_IMAGE (icon),
+					  GTK_STOCK_FILE,
+					  GTK_ICON_SIZE_MENU);
+	}
+	else
+	{
+		gtk_image_set_from_stock (GTK_IMAGE (icon),
+					  stock_id,
+					  GTK_ICON_SIZE_MENU);
+	}
+	gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
+
+	/* setup label */
+        label = gtk_label_new (name);
+	gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+        gtk_misc_set_padding (GTK_MISC (label), 2, 0);
+	gtk_box_pack_start (GTK_BOX (label_hbox), label, TRUE, TRUE, 0);
+
+	/* Set minimal size */
+	g_signal_connect (label, "style-set",
+			  G_CALLBACK (tab_label_style_set_cb), hbox);
+
+	gtk_tooltips_set_tip (panel->priv->tooltips,
+			      label_ebox,
+			      name,
+			      NULL);
+			      
+	gtk_widget_show (hbox);
+	gtk_widget_show (label_ebox);
+	gtk_widget_show (label_hbox);
+	gtk_widget_show (label);
+	gtk_widget_show (icon);
+	
+	g_object_set_data (G_OBJECT (item), "label", label);
+	g_object_set_data (G_OBJECT (item), "hbox", hbox);
+	g_object_set_data (G_OBJECT (item), "label-ebox", label_ebox);
+
+	return hbox;
 }
 
 void
@@ -245,13 +413,12 @@ gedit_panel_add_item (GeditPanel  *panel,
 		           PANEL_ITEM_KEY,
 		           data);
 		      
-	label = gtk_label_new (name);	
-	gtk_label_set_ellipsize (GTK_LABEL (label), 
-				 PANGO_ELLIPSIZE_END);
+	label = build_tab_label (panel, item, name, stock_id);
 					 
-	gtk_notebook_append_page (GTK_NOTEBOOK (panel->priv->notebook),
-				  item,
-				  GTK_WIDGET (gtk_label_new (name)));		
+	gtk_notebook_append_page_menu (GTK_NOTEBOOK (panel->priv->notebook),
+				       item,
+				       label,
+				       gtk_label_new (name));		
 }
 
 gboolean
@@ -259,6 +426,7 @@ gedit_panel_remove_item (GeditPanel *panel, GtkWidget *item)
 {
 	GeditPanelItem *data;
 	gint page_num;
+	GtkWidget *ebox;
 	
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), FALSE);
 	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
@@ -279,7 +447,13 @@ gedit_panel_remove_item (GeditPanel *panel, GtkWidget *item)
 	g_object_set_data (G_OBJECT (item),
 		           PANEL_ITEM_KEY,
 		           NULL);
-		      
+		           
+	ebox = g_object_get_data (G_OBJECT (item), "label-ebox");
+	gtk_tooltips_set_tip (GTK_TOOLTIPS (panel->priv->tooltips), 
+			      ebox, 
+			      NULL, 
+			      NULL);  
+	
 	gtk_notebook_remove_page (GTK_NOTEBOOK (panel->priv->notebook), 
 				  page_num);
 

@@ -916,8 +916,6 @@ build_tab_label (GeditNotebook *nb,
 	// GtkWidget *spinner;
 	GtkWidget *icon;
 
-	/* set hbox spacing and label padding (see below) so that there's an
-	 * equal amount of space around the label */
 	hbox = gtk_hbox_new (FALSE, 0);
 
 	label_ebox = gtk_event_box_new ();

@@ -48,12 +48,16 @@
 #include "gedit-debug.h"
 #include "gedit-prefs-manager-app.h"
 #include "gedit-app.h"
+#include "gedit-panel.h"
 
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
 
 struct _GeditWindowPrivate
 {
 	GtkWidget      *notebook;
+	
+	GtkWidget      *side_panel;
+	GtkWidget      *bottom_panel;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;	
@@ -947,6 +951,36 @@ set_toolbar_style (GeditWindow *window)
 	return visible;
 }
 
+static void
+create_side_panel (GeditWindow *window, 
+		   GtkPaned    *hpaned)
+{
+	window->priv->side_panel = gedit_panel_new ();
+  	gtk_paned_pack1 (hpaned, 
+  			 window->priv->side_panel, 
+  			 FALSE, 
+  			 TRUE);
+
+	// FIXME
+  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_tree_view_new (), "Documents", GTK_STOCK_FILE);
+  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_label_new ("Project"), "Projects", GTK_STOCK_EXECUTE);
+  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_label_new ("Selector"), "Selector", GTK_STOCK_HARDDISK);  	
+  	
+  	gtk_widget_show_all (window->priv->side_panel);
+}
+
+static void
+create_bottom_panel (GeditWindow *window, 
+		     GtkPaned    *vpaned)
+{
+	window->priv->bottom_panel = gedit_panel_new ();
+  	gtk_paned_pack2 (vpaned, 
+  			 window->priv->bottom_panel, 
+  			 FALSE, 
+  			 TRUE);
+  	gtk_widget_hide_all (window->priv->bottom_panel);
+}
+
 /* Generates a unique string for a window role.
  *
  * Taken from EOG.
@@ -990,10 +1024,6 @@ gedit_window_init (GeditWindow *window)
 	GtkWidget *hpaned;
 	GtkWidget *vpaned;
 
-	/* FIXME */
-	GtkWidget *label1;
-	GtkWidget *label2;
-
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
 	window->priv->active_tab = NULL;
 	window->priv->num_tabs = 0;
@@ -1015,11 +1045,8 @@ gedit_window_init (GeditWindow *window)
 	gtk_paned_set_position (GTK_PANED (hpaned), 0);
 	gtk_widget_show (hpaned);
 
-	/* FIXME */
-	label1 = gtk_label_new ("Side Panel");
-  	gtk_paned_pack1 (GTK_PANED (hpaned), label1, TRUE, TRUE);
-  	gtk_widget_show (label1);
-
+  	create_side_panel (window, GTK_PANED (hpaned));
+  	  	
 	vpaned = gtk_vpaned_new ();
   	gtk_paned_pack2 (GTK_PANED (hpaned), vpaned, TRUE, FALSE);
   	gtk_widget_show (vpaned);
@@ -1031,10 +1058,7 @@ gedit_window_init (GeditWindow *window)
   			 TRUE);
   	gtk_widget_show (window->priv->notebook);  			 
 
-	/* FIXME */
-	label2 = gtk_label_new ("Bottom Panel");
-  	gtk_paned_pack2 (GTK_PANED (vpaned), label2, TRUE, TRUE);
-	gtk_widget_show (label2);
+	create_bottom_panel (window, GTK_PANED (vpaned));
 	
 	/* Add status bar */
 	create_statusbar (window, main_box);
@@ -1082,7 +1106,7 @@ gedit_window_init (GeditWindow *window)
 			  "popup-menu",
 			  G_CALLBACK (notebook_popup_menu),
 			  window);
-
+			  
 	g_signal_connect (G_OBJECT (window), 
 			  "configure_event",
 	                  G_CALLBACK (configure_event_handler), 
