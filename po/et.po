@@ -6,8 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
+"POT-Creation-Date: 2003-08-16 00:48+0300\n"
 "PO-Revision-Date: 2003-04-15 23:20+0300\n"
 "Last-Translator: Tõivo Leedjärv <toivo@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -604,7 +603,7 @@ msgstr "Vali teine võrreldav fail."
 
 #: plugins/diff/diff.glade2.h:21
 msgid "Select the second open document to compare"
-msgstr "Vali teine võrreldav avatud dokuent"
+msgstr "Vali teine võrreldav avatud dokument"
 
 #: plugins/diff/diff.glade2.h:22
 msgid "Use the _unified output format (-u option)"
@@ -1335,7 +1334,7 @@ msgid "Save"
 msgstr "Salvesta"
 
 #: src/dialogs/gedit-preferences-dialog.c:245
-#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:72
+#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:70
 msgid "Undo"
 msgstr "Unusta"
 
@@ -1961,7 +1960,7 @@ msgstr ""
 "\n"
 "Seda tegevust ei saa sa tühistada."
 
-#: src/gedit-file.c:638 src/gedit-ui.xml.h:99
+#: src/gedit-file.c:638 src/gedit-ui.xml.h:97
 msgid "_Revert"
 msgstr "_Taasta"
 
@@ -2004,7 +2003,7 @@ msgid "RO"
 msgstr ""
 
 #. Add the detach tab button
-#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:89
+#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:87
 msgid "_Move to New Window"
 msgstr "_Liiguta uude aknasse"
 
@@ -2381,152 +2380,142 @@ msgid "Show _Overwrite Mode"
 msgstr "Näita _ülekirjutamise olekut"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
-msgid "Show both icons and texts in the toolbar"
-msgstr "Näita tööriistaribal ainult ikoone"
-
-#: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
 msgstr "Näita kursori asukohta olekuribal"
 
-#: src/gedit-ui.xml.h:70
+#: src/gedit-ui.xml.h:69
 msgid "Show overwrite mode in the statusbar"
 msgstr "Näita ülekirjutamise olekut olekuribal"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
-msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Näita tööriistaribal ainult ikoone"
-
-#: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
 msgstr "Unusta viimane tegevus"
 
-#: src/gedit-ui.xml.h:74
+#: src/gedit-ui.xml.h:72
 msgid "_About"
 msgstr "_Info"
 
-#: src/gedit-ui.xml.h:75
+#: src/gedit-ui.xml.h:73
 msgid "_Close"
 msgstr "Sul_ge"
 
-#: src/gedit-ui.xml.h:76
+#: src/gedit-ui.xml.h:74
 msgid "_Close All"
 msgstr "Sulge k_õik"
 
-#: src/gedit-ui.xml.h:77
+#: src/gedit-ui.xml.h:75
 msgid "_Contents"
 msgstr "_Sisu"
 
-#: src/gedit-ui.xml.h:78
+#: src/gedit-ui.xml.h:76
 msgid "_Copy"
 msgstr "_Kopeeri"
 
-#: src/gedit-ui.xml.h:79
+#: src/gedit-ui.xml.h:77
 msgid "_Customize Toolbar"
 msgstr "_Kohanda tööriistariba"
 
-#: src/gedit-ui.xml.h:80
+#: src/gedit-ui.xml.h:78
 msgid "_Debug"
 msgstr "_Silu (debug)"
 
-#: src/gedit-ui.xml.h:81
+#: src/gedit-ui.xml.h:79
 msgid "_Delete"
 msgstr "Ku_stuta"
 
-#: src/gedit-ui.xml.h:82
+#: src/gedit-ui.xml.h:80
 msgid "_Desktop Default"
 msgstr "T_öölaua vaikeväärtus"
 
-#: src/gedit-ui.xml.h:83
+#: src/gedit-ui.xml.h:81
 msgid "_Documents"
 msgstr "_Dokumendid"
 
-#: src/gedit-ui.xml.h:84
+#: src/gedit-ui.xml.h:82
 msgid "_Edit"
 msgstr "_Redaktor"
 
-#: src/gedit-ui.xml.h:85
+#: src/gedit-ui.xml.h:83
 msgid "_File"
 msgstr "_Fail"
 
-#: src/gedit-ui.xml.h:86
+#: src/gedit-ui.xml.h:84
 msgid "_Find..."
 msgstr "_Otsi..."
 
-#: src/gedit-ui.xml.h:87
+#: src/gedit-ui.xml.h:85
 msgid "_Help"
 msgstr "_Abi"
 
-#: src/gedit-ui.xml.h:88
+#: src/gedit-ui.xml.h:86
 msgid "_Icon"
 msgstr "_Ikoon"
 
-#: src/gedit-ui.xml.h:90
+#: src/gedit-ui.xml.h:88
 msgid "_New"
 msgstr "_Uus"
 
-#: src/gedit-ui.xml.h:91
+#: src/gedit-ui.xml.h:89
 msgid "_Open..."
 msgstr "_Ava..."
 
-#: src/gedit-ui.xml.h:92
+#: src/gedit-ui.xml.h:90
 msgid "_Output Window"
 msgstr "_Väljundiaken"
 
-#: src/gedit-ui.xml.h:93
+#: src/gedit-ui.xml.h:91
 msgid "_Paste"
 msgstr "_Aseta"
 
-#: src/gedit-ui.xml.h:94
+#: src/gedit-ui.xml.h:92
 msgid "_Print..."
 msgstr "_Prindi..."
 
-#: src/gedit-ui.xml.h:95
+#: src/gedit-ui.xml.h:93
 msgid "_Priority Text beside Icons"
 msgstr "_Tähtsam tekst ikoonide kõrval"
 
-#: src/gedit-ui.xml.h:96
+#: src/gedit-ui.xml.h:94
 msgid "_Quit"
 msgstr "L_õpeta"
 
-#: src/gedit-ui.xml.h:97
+#: src/gedit-ui.xml.h:95
 msgid "_Redo"
 msgstr "Uu_esti"
 
-#: src/gedit-ui.xml.h:98
+#: src/gedit-ui.xml.h:96
 msgid "_Replace..."
 msgstr "_Asenda..."
 
-#: src/gedit-ui.xml.h:100
+#: src/gedit-ui.xml.h:98
 msgid "_Save"
 msgstr "_Salvesta"
 
-#: src/gedit-ui.xml.h:101
+#: src/gedit-ui.xml.h:99
 msgid "_Save All"
 msgstr "_Salvesta kõik"
 
-#: src/gedit-ui.xml.h:102
+#: src/gedit-ui.xml.h:100
 msgid "_Search"
 msgstr "_Otsi"
 
-#: src/gedit-ui.xml.h:103
+#: src/gedit-ui.xml.h:101
 msgid "_Statusbar"
 msgstr "_Olekuriba"
 
-#: src/gedit-ui.xml.h:104
+#: src/gedit-ui.xml.h:102
 msgid "_Toolbar"
 msgstr "_Tööriistariba"
 
-#: src/gedit-ui.xml.h:105
+#: src/gedit-ui.xml.h:103
 msgid "_Tools"
 msgstr "_Tööriistad"
 
-#: src/gedit-ui.xml.h:106
+#: src/gedit-ui.xml.h:104
 msgid "_Undo"
 msgstr "_Unusta"
 
-#: src/gedit-ui.xml.h:107
+#: src/gedit-ui.xml.h:105
 msgid "_View"
 msgstr "_Vaade"
 
