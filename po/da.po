@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.7.1\n"
 "POT-Creation-Date: 2000-10-30 19:55-0600\n"
-"PO-Revision-Date: 2000-12-09 03:04+01:00\n"
+"PO-Revision-Date: 2000-12-18 03:04+01:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Dansk/Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -994,6 +994,10 @@ msgstr ""
 "%sDu vil ikke kunne bruge %s indstikket uden %s.\n"
 "Ønsker du at angive en ny placering for %s?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "fejl ved tildeling for indstik"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1006,6 +1010,14 @@ msgstr "Fejl, indstik indeholder ikke init_plugin-funktion."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Fejl, init_plugin returnerede fejl"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specified a description"
+msgstr "Fejl, indstikket angav ikke en beskrivelse"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specified a long description"
+msgstr "Fejl, indstikket angav ikke en lang beskrivelse"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
