@@ -1,3 +1,19 @@
+2004-04-27  Paolo Maggi  <paolo.maggi@polito.it>
+
+	* dialogs/gedit-preferences-dialog.c (get_selected_style)
+	(style_button_toggled): check if style = NULL
+
+	* gedit-file-selector-util.c (create_gtk_selector)
+	(run_file_selector) (gedit_file_selector_open)
+	(gedit_file_selector_open_multi) (gedit_file_selector_save):
+	really fixes bug #137329: Wrong filename got after Save as
+
+	* gedit-file-selector-util.h (gedit_file_selector_save): added
+	untitled_name parameter
+
+	* gedit-file.c (gedit_file_save_as): use the new gedit_file_selector_save
+	prototype
+
 2004-04-17  Paolo Maggi  <paolo.maggi@polito.it>
 
 	* gedit-file-selector-util.c (create_gtk_selector): try to call

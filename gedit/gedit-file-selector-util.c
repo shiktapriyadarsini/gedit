@@ -3,7 +3,7 @@
  * gedit-file-selector-util.c
  * This file is part of gedit
  *
- * Copyright (C) 2001-2002 Paolo Maggi 
+ * Copyright (C) 2001-2004 Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
  */
  
 /*
- * Modified by the gedit Team, 1998-2002. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2001-2004. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
  */
@@ -332,6 +332,7 @@ create_gtk_selector (GtkWindow *parent,
 		     const char *title,
 		     const char *default_path,
 		     const char *default_filename,
+		     const char *untitled_name,
 		     gboolean use_encoding,
 		     const GeditEncoding *encoding)
 {
@@ -410,15 +411,35 @@ create_gtk_selector (GtkWindow *parent,
 					encoding);
 
 	}
-	
-	if (default_path)
-		gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (filesel), default_path);
 
-	if (default_filename)
+	if (mode != FILESEL_SAVE)
+	{	
+		if (default_path != NULL)
+			gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (filesel), default_path);
+	}
+	else
 	{
-		/* This is a sort of hack but should work quite well */
-		if (!gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (filesel), default_filename))
-			gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (filesel), default_filename);
+		if (default_filename == NULL)
+		{
+			if (default_path != NULL)
+			{
+				gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (filesel), default_path);
+			}
+
+			g_return_val_if_fail (untitled_name != NULL, GTK_WINDOW (filesel));
+			gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (filesel), untitled_name);
+		}
+		else
+		{
+			if (default_path != NULL)
+			{
+				gchar *uri;
+
+				uri = g_strconcat (default_path, "/", default_filename, NULL);
+				gtk_file_chooser_set_uri (GTK_FILE_CHOOSER (filesel), uri);
+				g_free (uri);
+			}
+		}
 	}
 
 	if (mode == FILESEL_OPEN_MULTI) 
@@ -434,6 +455,7 @@ run_file_selector (GtkWindow  *parent,
 		   const char *title,
 		   const char *default_path, 
 		   const char *default_filename,
+		   const char *untitled_name,
 		   const GeditEncoding **encoding)
 
 {
@@ -446,6 +468,7 @@ run_file_selector (GtkWindow  *parent,
 				      title,
 				      default_path, 
 				      default_filename, 
+				      untitled_name,
 				      (encoding != NULL),
 				      (encoding != NULL) ? *encoding : NULL);
 
@@ -504,7 +527,7 @@ gedit_file_selector_open (GtkWindow  *parent,
 {
 	return run_file_selector (parent, enable_vfs, FILESEL_OPEN, 
 				  title ? title : _("Select a file to open"),
-				  default_path, NULL, encoding);
+				  default_path, NULL, NULL, encoding);
 }
 
 /**
@@ -530,7 +553,7 @@ gedit_file_selector_open_multi (GtkWindow  *parent,
 {
 	return run_file_selector (parent, enable_vfs, FILESEL_OPEN_MULTI,
 				  title ? title : _("Select files to open"),
-				  default_path, NULL, encoding);
+				  default_path, NULL, NULL, encoding);
 }
 
 /**
@@ -540,6 +563,7 @@ gedit_file_selector_open_multi (GtkWindow  *parent,
  * @title: optional window title to use
  * @default_path: optional directory to start in (must be an URI)
  * @default_filename: optional file name to default to
+ * @untitled_name: optional untitled name (valid UTF-8)
  *
  * Creates and shows a modal save file dialog, waiting for the user to
  * select a file or cancel before returning.
@@ -553,9 +577,13 @@ gedit_file_selector_save (GtkWindow  *parent,
 			   const char *title,
 			   const char *default_path, 
 			   const char *default_filename,
+			   const char *untitled_name,
 			   const GeditEncoding **encoding)
 {
+	g_return_val_if_fail (((default_filename != NULL) && (untitled_name == NULL)) ||
+                              ((default_filename == NULL) && (untitled_name != NULL)), NULL);
+
 	return run_file_selector (parent, enable_vfs, FILESEL_SAVE,
 				  title ? title : _("Select a filename to save"),
-				  default_path, default_filename, encoding);
+				  default_path, default_filename, untitled_name, encoding);
 }
