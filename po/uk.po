@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  gEdit 0.9.4\n"
-"POT-Creation-Date: 2001-01-03 09:17+0200\n"
+"POT-Creation-Date: 2001-01-12 12:50+0200\n"
 "PO-Revision-Date: 1999-09-20 17:36+0300\n"
 "Last-Translator: Yuri Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukraine <uk@li.org>\n"
@@ -610,12 +610,12 @@ msgid "The file %s was not found."
 msgstr "Файлу %s не знайдено."
 
 #: src/file.c:161
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error was encountered while opening the file \"%s\".\n"
 "Please make sure the file exists."
 msgstr ""
-"Сталася помилка на в╕дкриванн╕ файлу.\n"
+"Виявлено помилку п╕д час в╕дкривання файлу \"%s\".\n"
 "Переконайтеся що файл ╕сну╓."
 
 #: src/file.c:172
