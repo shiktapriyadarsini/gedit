@@ -148,6 +148,12 @@ src/dialogs/Makefile
 
 echo "
 
+NOTE : *********************************************************
+   This branch is not used anymore and will be remove soon
+   please use the HEAD branch of gedit
+***************************************************************
+   
+
 Configuration:
 
         Source code location:   ${srcdir}
