@@ -7,14 +7,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-01-23 21:29+0100\n"
-"PO-Revision-Date: 2003-01-23 21:31GMT\n"
-"Last-Translator: Michal Bukovjan <bukm@centrum.cz>\n"
+"POT-Creation-Date: 2003-02-06 12:00+0100\n"
+"PO-Revision-Date: 2003-02-07 04:29+0100\n"
+"Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0\n"
 
 #: data/GNOME_Gedit.server.in.h:1
 msgid "gedit application"
@@ -28,7 +27,7 @@ msgstr "generátor GEdit"
 msgid "Edit text files"
 msgstr "Úprava textových souborů"
 
-#: data/gedit.desktop.in.h:2 src/gedit2.c:340
+#: data/gedit.desktop.in.h:2 src/gedit2.c:342
 msgid "Text Editor"
 msgstr "Textový editor"
 
@@ -98,8 +97,8 @@ msgstr "Písmo editoru"
 msgid "Encoding for Saving"
 msgstr "Kódování uloženého souboru"
 
-#: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2292
-#: src/dialogs/gedit-encodings-dialog.c:257
+#: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2296
+#: src/dialogs/gedit-encodings-dialog.c:261
 #: src/dialogs/gedit-encodings-dialog.glade2.h:2
 msgid "Encodings"
 msgstr "Kódování"
@@ -239,7 +238,8 @@ msgstr ""
 "popsány."
 
 #: data/gedit.schemas.in.h:36
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr "Udává písmo, které bude použito pro tělo dokumentu při jeho tisku."
 
 #: data/gedit.schemas.in.h:37
@@ -272,7 +272,8 @@ msgstr ""
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
-msgstr "Udává počet mezerníků, které by se měly zobrazovat místo znaků tabelátoru."
+msgstr ""
+"Udává počet mezerníků, které by se měly zobrazovat místo znaků tabelátoru."
 
 #: data/gedit.schemas.in.h:41
 msgid "Status Bar is Visible"
@@ -385,7 +386,8 @@ msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Mají-li se vkládat mezery místo tabelátorů."
 
 #: data/gedit.schemas.in.h:57
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Má-li být viditelná stavová lišta pod editační oblastí."
 
 #: data/gedit.schemas.in.h:58
@@ -485,7 +487,8 @@ msgstr "Vyhledá změnové soubory v aktuálním dokumentu a otevře je"
 
 #: plugins/cvschangelog/cvschangelog.gedit-plugin.desktop.in.h:1
 msgid "A plugin that opens ChangeLogs found in CVS commit messages."
-msgstr "Plugin, který otevře změnové soubory nalezené ve odesílacích zprávách CVS."
+msgstr ""
+"Plugin, který otevře změnové soubory nalezené ve odesílacích zprávách CVS."
 
 #: plugins/cvschangelog/cvschangelog.gedit-plugin.desktop.in.h:2
 msgid "CVS ChangeLog"
@@ -681,11 +684,9 @@ msgid ""
 "For more info on <tt>diff</tt> program, type <tt>man diff</tt> in a shell "
 "prompt."
 msgstr ""
-"Plugin Poronat soubory používá program <tt>diff</tt> pro porovnání dvou "
-"dokumentů nebo souborů na disku.\n"
+"Plugin Porovnat soubory používá program <tt>diff</tt> pro porovnání dvou dokumentů nebo souborů na disku.\n"
 "\n"
-"Chcete-li více informací o programu <tt>diff</tt>, zadejte na příkazové "
-"řádce <tt>man diff</tt>."
+"Chcete-li více informací o programu <tt>diff</tt>, zadejte na příkazové řádce <tt>man diff</tt>."
 
 #: plugins/docinfo/docinfo.c:46
 msgid "_Document Statistics"
@@ -767,7 +768,7 @@ msgstr "Jméno uživatele"
 
 #: plugins/shell_output/shell_output.c:56
 msgid "_Run Command..."
-msgstr "_Spustít příkaz..."
+msgstr "_Spustit příkaz..."
 
 #: plugins/shell_output/shell_output.c:59
 msgid "Run a command"
@@ -832,7 +833,7 @@ msgstr "Vyberte pracovní adresář..."
 
 #: plugins/shell_output/shell_output.glade2.h:4
 msgid "_Show results in Output Window"
-msgstr "_Zobrazít výsledky v okně s výstupem"
+msgstr "_Zobrazit výsledky v okně s výstupem"
 
 #: plugins/shell_output/shell_output.glade2.h:5
 msgid "_Working directory:"
@@ -846,7 +847,8 @@ msgstr "GEdit: Plugin Výstup shellu"
 msgid ""
 "Execute an external program and eventually grabs its output in the output "
 "window."
-msgstr "Spustí externí program a popřípadě zachytí jeho výstup do okna s výstupem."
+msgstr ""
+"Spustí externí program a popřípadě zachytí jeho výstup do okna s výstupem."
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:2
 msgid "Shell command"
@@ -981,7 +983,7 @@ msgstr "Odsadit řádky"
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:2
 msgid "Indent or un-indent selected lines."
-msgstr "Odstadit nebo zrušit odsazení vybraných řádků."
+msgstr "Odsadit nebo zrušit odsazení vybraných řádků."
 
 #: plugins/sort/sort.glade2.h:1
 msgid "R_emove duplicates"
@@ -1015,26 +1017,26 @@ msgstr "Tří_dit"
 msgid "Sorts a document or selected text."
 msgstr "Třídí dokument nebo vybraný text."
 
-#: plugins/spell/gedit-automatic-spell-checker.c:318
+#: plugins/spell/gedit-automatic-spell-checker.c:322
 #: plugins/spell/gedit-spell-checker-dialog.c:504
 msgid "(no suggested words)"
 msgstr "(žádná navrhovaná slova)"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:342
+#: plugins/spell/gedit-automatic-spell-checker.c:346
 msgid "_More..."
 msgstr "Ví_ce..."
 
 #. Ignore all
-#: plugins/spell/gedit-automatic-spell-checker.c:395
+#: plugins/spell/gedit-automatic-spell-checker.c:399
 msgid "_Ignore All"
 msgstr "_Ignorovat vše"
 
 #. + Add to Dictionary
-#: plugins/spell/gedit-automatic-spell-checker.c:408
+#: plugins/spell/gedit-automatic-spell-checker.c:412
 msgid "_Add"
 msgstr "Přid_at"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:445
+#: plugins/spell/gedit-automatic-spell-checker.c:449
 msgid "_Spelling Suggestions..."
 msgstr "Návrhy pravopi_su"
 
@@ -1146,15 +1148,15 @@ msgstr "Švédština"
 msgid "Default"
 msgstr "Výchozí"
 
-#: plugins/spell/gedit-spell-language-dialog.c:229
-#: src/dialogs/gedit-dialog-goto-line.c:165
-#: src/dialogs/gedit-plugin-program-location-dialog.c:96
-#: src/dialogs/gedit-encodings-dialog.c:238
+#: plugins/spell/gedit-spell-language-dialog.c:233
+#: src/dialogs/gedit-dialog-goto-line.c:169
+#: src/dialogs/gedit-plugin-program-location-dialog.c:100
+#: src/dialogs/gedit-encodings-dialog.c:242
 #, c-format
 msgid "Could not find the required widgets inside %s."
 msgstr "Nemohu najít v %s požadované widgety."
 
-#: plugins/spell/gedit-spell-language-dialog.c:249
+#: plugins/spell/gedit-spell-language-dialog.c:253
 msgid "Languages"
 msgstr "Jazyky"
 
@@ -1280,12 +1282,12 @@ msgstr "Dokument neobsahuje chybně napsaná slova."
 msgid "Activate %s"
 msgstr "Aktivovat %s"
 
-#: src/dialogs/gedit-dialog-goto-line.c:139
+#: src/dialogs/gedit-dialog-goto-line.c:143
 msgid "Go to Line"
 msgstr "Jít na řádek"
 
 #. Add Goto Line button
-#: src/dialogs/gedit-dialog-goto-line.c:149
+#: src/dialogs/gedit-dialog-goto-line.c:153
 msgid "_Go to Line"
 msgstr "_Jít na řádek"
 
@@ -1348,12 +1350,12 @@ msgstr ""
 "Chybný soubor glade pro správce zásuvných modulů -- ne všechny prvky byly "
 "nalezeny.\n"
 
-#: src/dialogs/gedit-plugin-program-location-dialog.c:74
+#: src/dialogs/gedit-plugin-program-location-dialog.c:78
 #: src/dialogs/program-location-dialog.glade2.h:1
 msgid "Set program location..."
 msgstr "Nastavit umístění programu..."
 
-#: src/dialogs/gedit-plugin-program-location-dialog.c:102
+#: src/dialogs/gedit-plugin-program-location-dialog.c:106
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -1365,120 +1367,122 @@ msgstr ""
 "\n"
 "Prosím zadejte umístění tohoto programu <tt>%s</tt>."
 
-#: src/dialogs/gedit-plugin-program-location-dialog.c:148
+#: src/dialogs/gedit-plugin-program-location-dialog.c:152
 msgid "The selected file is not executable."
 msgstr "Vybraný soubor není spustitelný."
 
-#: src/dialogs/gedit-preferences-dialog.c:234
+#: src/dialogs/gedit-preferences-dialog.c:233
 msgid "Font & Colors"
 msgstr "Písma a barvy"
 
-#: src/dialogs/gedit-preferences-dialog.c:236
+#: src/dialogs/gedit-preferences-dialog.c:235
 #: src/dialogs/gedit-preferences.glade2.h:47
 msgid "Tabs"
 msgstr "Tabelátory"
 
-#: src/dialogs/gedit-preferences-dialog.c:237
+#: src/dialogs/gedit-preferences-dialog.c:236
 msgid "Wrap Mode"
 msgstr "Režim zalamování"
 
-#: src/dialogs/gedit-preferences-dialog.c:238
+#: src/dialogs/gedit-preferences-dialog.c:237
 msgid "Auto Indent"
 msgstr "Automatické odsazení"
 
-#: src/dialogs/gedit-preferences-dialog.c:239
+#: src/dialogs/gedit-preferences-dialog.c:238
 msgid "Line Numbers"
 msgstr "Čísla řádek"
 
-#: src/dialogs/gedit-preferences-dialog.c:241 src/gedit-ui.xml.h:32
+#: src/dialogs/gedit-preferences-dialog.c:240 src/gedit-ui.xml.h:32
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/dialogs/gedit-preferences-dialog.c:242
+#: src/dialogs/gedit-preferences-dialog.c:241
 #: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:55
 msgid "Save"
 msgstr "Uložit"
 
-#: src/dialogs/gedit-preferences-dialog.c:243
+#: src/dialogs/gedit-preferences-dialog.c:242
 #: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:72
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/dialogs/gedit-preferences-dialog.c:251
+#: src/dialogs/gedit-preferences-dialog.c:250
 msgid "Page"
 msgstr "Stránka"
 
-#: src/dialogs/gedit-preferences-dialog.c:253
+#: src/dialogs/gedit-preferences-dialog.c:252
 msgid "Fonts"
 msgstr "Písma"
 
-#: src/dialogs/gedit-preferences-dialog.c:260
+#: src/dialogs/gedit-preferences-dialog.c:259
 msgid "Manager"
 msgstr "Správce"
 
-#: src/dialogs/gedit-preferences-dialog.c:268
+#: src/dialogs/gedit-preferences-dialog.c:267
 msgid "Editor"
 msgstr "Editor"
 
-#: src/dialogs/gedit-preferences-dialog.c:269
+#: src/dialogs/gedit-preferences-dialog.c:268
 #: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:364
 #: src/gedit-ui.xml.h:41
 msgid "Print"
 msgstr "Tisk"
 
-#: src/dialogs/gedit-preferences-dialog.c:270
+#: src/dialogs/gedit-preferences-dialog.c:269
 msgid "Plugins"
 msgstr "Pluginy"
 
-#: src/dialogs/gedit-preferences-dialog.c:342
+#: src/dialogs/gedit-preferences-dialog.c:341
 msgid "Cat_egories:"
 msgstr "Kat_egorie:"
 
-#: src/dialogs/gedit-preferences-dialog.c:364
+#: src/dialogs/gedit-preferences-dialog.c:363
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: src/dialogs/gedit-preferences-dialog.c:604
+#: src/dialogs/gedit-preferences-dialog.c:603
 msgid "Categories"
 msgstr "Kategorie"
 
-#: src/dialogs/gedit-preferences-dialog.c:837
+#: src/dialogs/gedit-preferences-dialog.c:836
 msgid "Push this button to select the font to be used by the editor"
-msgstr "Chcete-li vybrat písmo, které bude editor používat, zmáčkněte toto tlačítko."
+msgstr ""
+"Chcete-li vybrat písmo, které bude editor používat, zmáčkněte toto tlačítko."
 
-#: src/dialogs/gedit-preferences-dialog.c:840
+#: src/dialogs/gedit-preferences-dialog.c:839
 msgid "Push this button to configure text color"
 msgstr "Chcete-li nastavit barvu textu, zmáčkněte toto tlačítko."
 
-#: src/dialogs/gedit-preferences-dialog.c:842
+#: src/dialogs/gedit-preferences-dialog.c:841
 msgid "Push this button to configure background color"
 msgstr "Chcete-li nastavit barvu pozadí, zmáčkněte toto tlačítko."
 
-#: src/dialogs/gedit-preferences-dialog.c:844
+#: src/dialogs/gedit-preferences-dialog.c:843
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
-msgstr "Chcete-li nastavit barvu pozadí vybraného textu, zmáčkněte toto tlačítko."
+msgstr ""
+"Chcete-li nastavit barvu pozadí vybraného textu, zmáčkněte toto tlačítko."
 
-#: src/dialogs/gedit-preferences-dialog.c:847
+#: src/dialogs/gedit-preferences-dialog.c:846
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
 msgstr "Chcete-li nastavit barvu vybraného textu, zmáčkněte toto tlačítko."
 
-#: src/dialogs/gedit-preferences-dialog.c:1852
+#: src/dialogs/gedit-preferences-dialog.c:1851
 msgid "Push this button to select the font to be used to print the body"
 msgstr ""
 "Chcete-li vybrat písmo, které se použije pro tisk těla dokumentu, zmáčkněte "
 "toto tlačítko."
 
-#: src/dialogs/gedit-preferences-dialog.c:1854
+#: src/dialogs/gedit-preferences-dialog.c:1853
 msgid "Push this button to select the font to be used to print the headers"
 msgstr ""
 "Chcete-li vybrat písmo, které se použije pro tisk záhlaví dokumentu, "
 "zmáčkněte toto tlačítko."
 
-#: src/dialogs/gedit-preferences-dialog.c:1856
+#: src/dialogs/gedit-preferences-dialog.c:1855
 msgid "Push this button to select the font to be used to print line numbers"
 msgstr ""
 "Chcete-li vybrat písmo, které se použije pro tisk čísel řádků, zmáčkněte "
@@ -1728,87 +1732,87 @@ msgstr "znak(ů)"
 msgid "li_ne(s)"
 msgstr "_řádek(ků)"
 
-#: src/dialogs/gnome-print-font-dialog.c:107
+#: src/dialogs/gnome-print-font-dialog.c:111
 msgid "_Insert a new preview phrase."
 msgstr "Vložit novou fráz_i pro náhled."
 
-#: src/dialogs/gnome-print-font-dialog.c:113
+#: src/dialogs/gnome-print-font-dialog.c:117
 msgid "Modify preview phrase..."
 msgstr "Upravit frázi pro náhled..."
 
-#: src/dialogs/gnome-print-font-dialog.c:167
+#: src/dialogs/gnome-print-font-dialog.c:171
 msgid "Preview"
 msgstr "Náhled"
 
-#: src/dialogs/gnome-print-font-dialog.c:180
+#: src/dialogs/gnome-print-font-dialog.c:184
 msgid "_Modify preview phrase..."
 msgstr "Upravit frázi pro _náhled..."
 
-#: src/dialogs/gnome-print-font-dialog.c:243
+#: src/dialogs/gnome-print-font-dialog.c:247
 msgid "Font Selection"
 msgstr "Výběr písma"
 
-#: src/dialogs/gnome-print-font-picker.c:89
+#: src/dialogs/gnome-print-font-picker.c:92
 msgid "Sans Regular 12"
 msgstr "Sans Regular 12"
 
-#: src/dialogs/gnome-print-font-picker.c:90
+#: src/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
 msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
 
-#: src/dialogs/gnome-print-font-picker.c:91
+#: src/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
 msgstr "Zvolte písmo"
 
-#: src/dialogs/gnome-print-font-picker.c:176
+#: src/dialogs/gnome-print-font-picker.c:179
 msgid "Title"
 msgstr "Titulek"
 
-#: src/dialogs/gnome-print-font-picker.c:177
+#: src/dialogs/gnome-print-font-picker.c:180
 msgid "The title of the selection dialog box"
 msgstr "Titulek dialogu pro výběr"
 
-#: src/dialogs/gnome-print-font-picker.c:197
+#: src/dialogs/gnome-print-font-picker.c:200
 msgid "Font name"
 msgstr "Název písma"
 
-#: src/dialogs/gnome-print-font-picker.c:198
+#: src/dialogs/gnome-print-font-picker.c:201
 msgid "Name of the selected font"
 msgstr "Název vybraného písma"
 
-#: src/dialogs/gnome-print-font-picker.c:206
+#: src/dialogs/gnome-print-font-picker.c:209
 msgid "Preview text"
 msgstr "Text pro náhled"
 
-#: src/dialogs/gnome-print-font-picker.c:207
+#: src/dialogs/gnome-print-font-picker.c:210
 msgid "Preview text shown in the dialog"
 msgstr "Text pro náhled zobrazený v dialogu"
 
-#: src/dialogs/gnome-print-font-picker.c:215
+#: src/dialogs/gnome-print-font-picker.c:218
 msgid "Use font in label"
 msgstr "Použít písmo v nadpisu"
 
-#: src/dialogs/gnome-print-font-picker.c:216
+#: src/dialogs/gnome-print-font-picker.c:219
 msgid "Use font in the label in font info mode"
 msgstr "Použít písmo v nadpisu v režimu informací o písmu"
 
-#: src/dialogs/gnome-print-font-picker.c:224
+#: src/dialogs/gnome-print-font-picker.c:227
 msgid "Font size for label"
 msgstr "Velikost písma pro nadpis"
 
-#: src/dialogs/gnome-print-font-picker.c:225
+#: src/dialogs/gnome-print-font-picker.c:228
 msgid "Font size for label in font info mode"
 msgstr "Velikost písma pro nadpis v režimu informací o písmu"
 
-#: src/dialogs/gnome-print-font-picker.c:235
+#: src/dialogs/gnome-print-font-picker.c:238
 msgid "Show size"
 msgstr "Ukázat velikost"
 
-#: src/dialogs/gnome-print-font-picker.c:236
+#: src/dialogs/gnome-print-font-picker.c:239
 msgid "Show size in font info mode"
 msgstr "Ukázat velikost v režimu informací o písmu"
 
-#: src/dialogs/gnome-print-font-picker.c:1015
+#: src/dialogs/gnome-print-font-picker.c:1018
 msgid "Font"
 msgstr "Písmo"
 
@@ -2060,12 +2064,12 @@ msgid "Could not read data from stdin."
 msgstr "Nebylo možné načíst data ze standardního vstupu."
 
 #. Read only
-#: src/gedit-mdi-child.c:215
+#: src/gedit-mdi-child.c:219
 msgid "RO"
 msgstr "RO"
 
 #. Add the detach tab button
-#: src/gedit-mdi-child.c:539 src/gedit-ui.xml.h:89
+#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:89
 msgid "_Move to New Window"
 msgstr "Přes_unout do nového okna"
 
@@ -2150,11 +2154,11 @@ msgstr "Chyba, nelze deaktivovat plugin '%s'."
 msgid "Error, impossible to update ui of the plugin '%s'"
 msgstr "Chyba, nelze aktualizovat UI pro plugin '%s'."
 
-#: src/gedit-prefs-manager.c:335
+#: src/gedit-prefs-manager.c:339
 msgid "Cannot initialize preferences manager."
 msgstr "Nelze inicializovat správce nastavení."
 
-#: src/gedit-prefs-manager.c:1756
+#: src/gedit-prefs-manager.c:1761
 #, c-format
 msgid "Expected `%s' got `%s' for key %s"
 msgstr "Očekával jsem '%s', ale obdržel jsem '%s' pro klíč %s"
@@ -2589,7 +2593,7 @@ msgstr "_Zpět"
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: src/gedit-utils.c:795
+#: src/gedit-utils.c:799
 #, c-format
 msgid ""
 "Could not find the file \"%s\".\n"
@@ -2600,34 +2604,37 @@ msgstr ""
 "\n"
 "Prosím, ověřte zda-li jste napsali lokaci správně a zkuste to znovu."
 
-#: src/gedit-utils.c:802
+#: src/gedit-utils.c:806
 #, c-format
 msgid "Could not open the file \"%s\" because it contains corrupted data."
 msgstr "Nelze otevřít soubor \"%s\", protože obsahuje poškozená data."
 
-#: src/gedit-utils.c:813
+#: src/gedit-utils.c:817
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Nelze otevřít soubor \"%s\", protože aplikace GEdit neumí zpracovat lokace %"
 "s."
 
-#: src/gedit-utils.c:819
+#: src/gedit-utils.c:823
 #, c-format
 msgid "Could not open the file \"%s\""
 msgstr "Nelze otevřít soubor \"%s\"."
 
-#: src/gedit-utils.c:829
+#: src/gedit-utils.c:833
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
-msgstr "Nelze otevřít soubor \"%s\", protože obsahuje data v nesprávném formátu."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
+msgstr ""
+"Nelze otevřít soubor \"%s\", protože obsahuje data v nesprávném formátu."
 
-#: src/gedit-utils.c:836
+#: src/gedit-utils.c:840
 #, c-format
 msgid "Could not open the file \"%s\" because it is too big."
 msgstr "Nelze otevřít soubor \"%s\", protože je příliš velký."
 
-#: src/gedit-utils.c:843
+#: src/gedit-utils.c:847
 #, c-format
 msgid ""
 "\"%s\" is not a valid location.\n"
@@ -2638,12 +2645,12 @@ msgstr ""
 "\n"
 "Prosím, ověřte, zda-li jste zadali lokaci správně a zkuste to znovu."
 
-#: src/gedit-utils.c:850
+#: src/gedit-utils.c:854
 #, c-format
 msgid "Could not open the file \"%s\" because access was denied."
 msgstr "Nelze otevřít soubor \"%s\", protože byl zamezen přístup."
 
-#: src/gedit-utils.c:857
+#: src/gedit-utils.c:861
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because there are too many open files.\n"
@@ -2654,7 +2661,7 @@ msgstr ""
 "\n"
 "Zavřete prosím některé otevřené soubory a zkuste to znovu."
 
-#: src/gedit-utils.c:865
+#: src/gedit-utils.c:869
 #, c-format
 msgid ""
 "\"%s\" is a directory.\n"
@@ -2665,7 +2672,7 @@ msgstr ""
 "\n"
 "Prosím, ověřte, zda-li jste zadali lokaci správně a zkuste to znovu."
 
-#: src/gedit-utils.c:872
+#: src/gedit-utils.c:876
 #, c-format
 msgid ""
 "Not enough available memory to open the file \"%s\". Please, close some "
@@ -2674,7 +2681,7 @@ msgstr ""
 "Nedostatek paměti pro otevření souboru \"%s\". Zavřete prosím některé běžící "
 "aplikace a zkuste to znovu."
 
-#: src/gedit-utils.c:898
+#: src/gedit-utils.c:902
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because no host \"%s\" could be found.\n"
@@ -2687,7 +2694,7 @@ msgstr ""
 "Prosím, ověřte, zda-li jste zadali lokaci správně, a zda-li je vaše "
 "nastavení proxy správné, a pak to zkuste znovu."
 
-#: src/gedit-utils.c:913
+#: src/gedit-utils.c:917
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because the host name was invalid.\n"
@@ -2698,7 +2705,7 @@ msgstr ""
 "\n"
 "Prosím, ověřte, zda-li jste zadali lokaci správně, a zkuste to znovu."
 
-#: src/gedit-utils.c:920
+#: src/gedit-utils.c:924
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because the host name was empty.\n"
@@ -2709,7 +2716,7 @@ msgstr ""
 "\n"
 "Prosím, ověřte, zda-li je nastavení vaší proxy správné a zkuste to znovu."
 
-#: src/gedit-utils.c:927
+#: src/gedit-utils.c:931
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because the attempt to log in failed.\n"
@@ -2720,7 +2727,7 @@ msgstr ""
 "\n"
 "Prosím, ověřte, zda-li jste zadali lokaci správně, a zkuste to znovu."
 
-#: src/gedit-utils.c:935
+#: src/gedit-utils.c:939
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because it contains invalid UTF-8 data.\n"
@@ -2732,17 +2739,17 @@ msgstr ""
 "\n"
 "Pravděpodobně se pokoušíte otevřít binární soubor."
 
-#: src/gedit-utils.c:973
+#: src/gedit-utils.c:977
 #, c-format
 msgid "Could not open the file \"%s\"."
 msgstr "Nelze otevřít soubor \"%s\"."
 
-#: src/gedit-utils.c:1024
+#: src/gedit-utils.c:1028
 #, c-format
 msgid "Could not save the file \"%s\"."
 msgstr "Nelze uložit soubor \"%s\"."
 
-#: src/gedit-utils.c:1028
+#: src/gedit-utils.c:1032
 #, c-format
 msgid ""
 "Could not save the file \"%s\".\n"
@@ -2753,7 +2760,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/gedit-utils.c:1081
+#: src/gedit-utils.c:1085
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because gedit cannot find it.\n"
@@ -2765,26 +2772,27 @@ msgstr ""
 "\n"
 "Původní soubor byl asi nedávno smazán."
 
-#: src/gedit-utils.c:1088
+#: src/gedit-utils.c:1092
 #, c-format
 msgid "Could not revert the file \"%s\" because it contains corrupted data."
 msgstr ""
 "Soubor \"%s\" nelze vrátit do původního stavu, protože původní soubor "
 "obsahuje poškozené data."
 
-#: src/gedit-utils.c:1099
+#: src/gedit-utils.c:1103
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Soubor \"%s\" nelze vrátit do původního stavu, protože aplikace GEdit neumí "
 "zpracovat lokaci %s."
 
-#: src/gedit-utils.c:1105 src/gedit-utils.c:1245
+#: src/gedit-utils.c:1109 src/gedit-utils.c:1249
 #, c-format
 msgid "Could not revert the file \"%s\"."
 msgstr "Soubor \"%s\" nelze vrátit do původního stavu."
 
-#: src/gedit-utils.c:1115
+#: src/gedit-utils.c:1119
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because it contains data in an invalid "
@@ -2793,19 +2801,20 @@ msgstr ""
 "Soubor \"%s\" nelze vrátit do původního stavu, protože původní soubor "
 "obsahuje data v neplatném formátu."
 
-#: src/gedit-utils.c:1122
+#: src/gedit-utils.c:1126
 #, c-format
 msgid "Could not revert the file \"%s\" because it is too big."
-msgstr "Soubor \"%s\" nelze vrátit do původního stavu, protože je příliš velký."
+msgstr ""
+"Soubor \"%s\" nelze vrátit do původního stavu, protože je příliš velký."
 
-#: src/gedit-utils.c:1129
+#: src/gedit-utils.c:1133
 #, c-format
 msgid "Could not revert the file \"%s\" because access was denied."
 msgstr ""
 "Soubor \"%s\" nelze vrátit do původního stavu, protože přístup k původnímu "
 "souboru byl odepřen."
 
-#: src/gedit-utils.c:1136
+#: src/gedit-utils.c:1140
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because there are too many open files.\n"
@@ -2817,7 +2826,7 @@ msgstr ""
 "\n"
 "Zavřete prosím některé soubory a zkuste to znovu."
 
-#: src/gedit-utils.c:1144
+#: src/gedit-utils.c:1148
 #, c-format
 msgid ""
 "Not enough available memory to revert the file \"%s\". Please, close some "
@@ -2826,7 +2835,7 @@ msgstr ""
 "Pro vrácení souboru \"%s\" do původního stavu není dostatek paměti. Zavřete "
 "prosím některé běžící aplikace a zkuste to znovu."
 
-#: src/gedit-utils.c:1170
+#: src/gedit-utils.c:1174
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because no host \"%s\" could be found.\n"
@@ -2838,7 +2847,7 @@ msgstr ""
 "\n"
 "Ověřte prosím, zda-li je vaše nastavení proxy správné a zkuste to znovu."
 
-#: src/gedit-utils.c:1184
+#: src/gedit-utils.c:1188
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because the host name was empty.\n"
@@ -2851,14 +2860,14 @@ msgstr ""
 "\n"
 "Zkontrolujte prosím nastavení vaší proxy a zkuste to znovu."
 
-#: src/gedit-utils.c:1191
+#: src/gedit-utils.c:1195
 #, c-format
 msgid "Could not revert the file \"%s\" because the attempt to log in failed."
 msgstr ""
 "Soubor \"%s\" nelze vrátit do původního stavu, protože pokus o přihlášení "
 "selhal."
 
-#: src/gedit-utils.c:1198
+#: src/gedit-utils.c:1202
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because it contains invalid UTF-8 data.\n"
@@ -2870,16 +2879,16 @@ msgstr ""
 "\n"
 "Pravděpodobně se pokoušíte o návrat do původního stavu z binárního souboru."
 
-#: src/gedit-utils.c:1207
+#: src/gedit-utils.c:1211
 msgid "It is not possible to revert an Untitled document."
 msgstr "Není možné vrátit do původního stavu Nepojmenovaný dokument."
 
-#: src/gedit-utils.c:1296
+#: src/gedit-utils.c:1300
 #, c-format
 msgid "The file \"%s\" already exists."
 msgstr "Soubor \"%s\" již existuje."
 
-#: src/gedit-utils.c:1302
+#: src/gedit-utils.c:1306
 #, c-format
 msgid ""
 "\"%s\" is a directory.\n"
@@ -2890,7 +2899,7 @@ msgstr ""
 "\n"
 "Prosím, ověřte, zda-li jste zadali lokaci správně."
 
-#: src/gedit-utils.c:1311
+#: src/gedit-utils.c:1315
 #, c-format
 msgid ""
 "Cannot create the file \"%s\".\n"
@@ -2901,7 +2910,7 @@ msgstr ""
 "\n"
 "Ověřte prosím, zda-li máte odpovídající práva zápisu."
 
-#: src/gedit-utils.c:1318
+#: src/gedit-utils.c:1322
 #, c-format
 msgid ""
 "Cannot create the file \"%s\".\n"
@@ -2912,7 +2921,7 @@ msgstr ""
 "\n"
 "Název souboru je příliš dlouhý."
 
-#: src/gedit-utils.c:1325
+#: src/gedit-utils.c:1329
 #, c-format
 msgid ""
 "Cannot create the file \"%s\".\n"
@@ -2925,7 +2934,7 @@ msgstr ""
 "Adresářová část názvu souboru neexistuje nebo to je porušený symbolický "
 "odkaz."
 
-#: src/gedit-utils.c:1334
+#: src/gedit-utils.c:1338
 #, c-format
 msgid ""
 "There is not enough disk space to create the file \"%s\".\n"
@@ -2936,7 +2945,7 @@ msgstr ""
 "\n"
 "Uvolněte prosím nějaké místo a zkuste to znova."
 
-#: src/gedit-utils.c:1340
+#: src/gedit-utils.c:1344
 #, c-format
 msgid "Could not create the file \"%s\"."
 msgstr "Nelze vytvořit soubor \"%s\"."
@@ -2960,71 +2969,71 @@ msgstr "  PŘE"
 msgid "  INS"
 msgstr "  VLO"
 
-#: src/gedit2.c:77
+#: src/gedit2.c:79
 msgid "Show utility debugging messages."
 msgstr "Ukazovat pomocné ladící zprávy."
 
-#: src/gedit2.c:80
+#: src/gedit2.c:82
 msgid "Show mdi debugging messages."
 msgstr "Ukazovat ladící zprávy MDI"
 
-#: src/gedit2.c:83
+#: src/gedit2.c:85
 msgid "Show commands debugging messages."
 msgstr "Ukazovat ladící zprávy příkazů."
 
-#: src/gedit2.c:86
+#: src/gedit2.c:88
 msgid "Show document debugging messages."
 msgstr "Ukazovat ladící zprávy dokumentu."
 
-#: src/gedit2.c:89
+#: src/gedit2.c:91
 msgid "Show file debugging messages."
 msgstr "Ukazovat ladící zprávy souboru."
 
-#: src/gedit2.c:92
+#: src/gedit2.c:94
 msgid "Show plugin debugging messages."
 msgstr "Ukazovat ladící zprávy pluginu."
 
-#: src/gedit2.c:95
+#: src/gedit2.c:97
 msgid "Show prefs debugging messages."
 msgstr "Ukazovat ladící zprávy nastavení."
 
-#: src/gedit2.c:98
+#: src/gedit2.c:100
 msgid "Show printing debugging messages."
 msgstr "Ukazovat ladící zprávy tisku."
 
-#: src/gedit2.c:101
+#: src/gedit2.c:103
 msgid "Show search debugging messages."
 msgstr "Ukazovat ladící zprávy vyhledávání."
 
-#: src/gedit2.c:104
+#: src/gedit2.c:106
 msgid "Show undo debugging messages."
 msgstr "Ukazovat ladící zprávy zpětných akcí."
 
-#: src/gedit2.c:107
+#: src/gedit2.c:109
 msgid "Show view debugging messages."
 msgstr "Ukazovat ladící zprávy zobrazení."
 
-#: src/gedit2.c:110
+#: src/gedit2.c:112
 msgid "Show recent debugging messages."
 msgstr "Ukazovat ladící zprávy nedávno otevřených souborů."
 
-#: src/gedit2.c:113
+#: src/gedit2.c:115
 msgid "Show session management debugging messages."
 msgstr "Ukazovat ladící zprávy pro správu sezení."
 
-#: src/gedit2.c:116
+#: src/gedit2.c:118
 msgid "Turn on all debugging messages."
 msgstr "Zapnout všechny ladící zprávy."
 
-#: src/gedit2.c:119
+#: src/gedit2.c:121
 msgid "Quit an existing instance of gedit"
 msgstr "Ukončit existující instanci aplikace GEdit."
 
-#: src/gedit2.c:122
+#: src/gedit2.c:124
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Vytvořit nové top-level okno v existující instanci aplikace GEdit."
 
-#: src/gedit2.c:125
+#: src/gedit2.c:127
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Vytvořit nový dokument v existující instanci aplikace GEdit."
 
@@ -3048,139 +3057,139 @@ msgstr "Řádky výstupu"
 msgid "Choose one or more e_ncodings:"
 msgstr "Vyberte jed_no nebo více kódování:"
 
-#: src/gedit-encodings.c:143 src/gedit-encodings.c:169
-#: src/gedit-encodings.c:210 src/gedit-encodings.c:260
-#: src/gedit-encodings.c:285
+#: src/gedit-encodings.c:147 src/gedit-encodings.c:173
+#: src/gedit-encodings.c:214 src/gedit-encodings.c:264
+#: src/gedit-encodings.c:289
 msgid "Western"
 msgstr "Západní"
 
-#: src/gedit-encodings.c:145 src/gedit-encodings.c:212
-#: src/gedit-encodings.c:240 src/gedit-encodings.c:281
+#: src/gedit-encodings.c:149 src/gedit-encodings.c:216
+#: src/gedit-encodings.c:244 src/gedit-encodings.c:285
 msgid "Central European"
 msgstr "Středoevropské"
 
-#: src/gedit-encodings.c:147
+#: src/gedit-encodings.c:151
 msgid "South European"
 msgstr "Jihoevropské"
 
-#: src/gedit-encodings.c:149 src/gedit-encodings.c:165
-#: src/gedit-encodings.c:295
+#: src/gedit-encodings.c:153 src/gedit-encodings.c:169
+#: src/gedit-encodings.c:299
 msgid "Baltic"
 msgstr "Baltské"
 
-#: src/gedit-encodings.c:151 src/gedit-encodings.c:214
-#: src/gedit-encodings.c:227 src/gedit-encodings.c:231
-#: src/gedit-encodings.c:244 src/gedit-encodings.c:283
+#: src/gedit-encodings.c:155 src/gedit-encodings.c:218
+#: src/gedit-encodings.c:231 src/gedit-encodings.c:235
+#: src/gedit-encodings.c:248 src/gedit-encodings.c:287
 msgid "Cyrillic"
 msgstr "Cyrilika"
 
-#: src/gedit-encodings.c:153 src/gedit-encodings.c:220
-#: src/gedit-encodings.c:238 src/gedit-encodings.c:293
+#: src/gedit-encodings.c:157 src/gedit-encodings.c:224
+#: src/gedit-encodings.c:242 src/gedit-encodings.c:297
 msgid "Arabic"
 msgstr "Arabské"
 
-#: src/gedit-encodings.c:155 src/gedit-encodings.c:250
-#: src/gedit-encodings.c:287
+#: src/gedit-encodings.c:159 src/gedit-encodings.c:254
+#: src/gedit-encodings.c:291
 msgid "Greek"
 msgstr "Řecké"
 
-#: src/gedit-encodings.c:157
+#: src/gedit-encodings.c:161
 msgid "Hebrew Visual"
 msgstr "Hebrejské vizuální"
 
-#: src/gedit-encodings.c:159 src/gedit-encodings.c:218
-#: src/gedit-encodings.c:256 src/gedit-encodings.c:291
+#: src/gedit-encodings.c:163 src/gedit-encodings.c:222
+#: src/gedit-encodings.c:260 src/gedit-encodings.c:295
 msgid "Hebrew"
 msgstr "Hebrejské"
 
-#: src/gedit-encodings.c:161 src/gedit-encodings.c:216
-#: src/gedit-encodings.c:264 src/gedit-encodings.c:289
+#: src/gedit-encodings.c:165 src/gedit-encodings.c:220
+#: src/gedit-encodings.c:268 src/gedit-encodings.c:293
 msgid "Turkish"
 msgstr "Turecké"
 
-#: src/gedit-encodings.c:163
+#: src/gedit-encodings.c:167
 msgid "Nordic"
 msgstr "Nordické"
 
-#: src/gedit-encodings.c:167
+#: src/gedit-encodings.c:171
 msgid "Celtic"
 msgstr "Keltské"
 
-#: src/gedit-encodings.c:171 src/gedit-encodings.c:262
+#: src/gedit-encodings.c:175 src/gedit-encodings.c:266
 msgid "Romanian"
 msgstr "Rumunské"
 
-#: src/gedit-encodings.c:174 src/gedit-encodings.c:176
 #: src/gedit-encodings.c:178 src/gedit-encodings.c:180
+#: src/gedit-encodings.c:182 src/gedit-encodings.c:184
 msgid "Unicode"
 msgstr "Unicode"
 
-#: src/gedit-encodings.c:183
+#: src/gedit-encodings.c:187
 msgid "Armenian"
 msgstr "Arménské"
 
-#: src/gedit-encodings.c:185 src/gedit-encodings.c:187
-#: src/gedit-encodings.c:196
+#: src/gedit-encodings.c:189 src/gedit-encodings.c:191
+#: src/gedit-encodings.c:200
 msgid "Chinese Traditional"
 msgstr "Čínské tradiční"
 
-#: src/gedit-encodings.c:189
+#: src/gedit-encodings.c:193
 msgid "Cyrillic/Russian"
 msgstr "Cyrilika / Ruské"
 
-#: src/gedit-encodings.c:192 src/gedit-encodings.c:223
-#: src/gedit-encodings.c:270
+#: src/gedit-encodings.c:196 src/gedit-encodings.c:227
+#: src/gedit-encodings.c:274
 msgid "Japanese"
 msgstr "Japonské"
 
-#: src/gedit-encodings.c:194 src/gedit-encodings.c:225
-#: src/gedit-encodings.c:229 src/gedit-encodings.c:276
+#: src/gedit-encodings.c:198 src/gedit-encodings.c:229
+#: src/gedit-encodings.c:233 src/gedit-encodings.c:280
 msgid "Korean"
 msgstr "Korejské"
 
-#: src/gedit-encodings.c:199 src/gedit-encodings.c:201
-#: src/gedit-encodings.c:203 src/gedit-encodings.c:207
+#: src/gedit-encodings.c:203 src/gedit-encodings.c:205
+#: src/gedit-encodings.c:207 src/gedit-encodings.c:211
 msgid "Chinese Simplified"
 msgstr "Čínské zjednodušené"
 
-#: src/gedit-encodings.c:205
+#: src/gedit-encodings.c:209
 msgid "Georgian"
 msgstr "Gruzínské"
 
-#: src/gedit-encodings.c:233 src/gedit-encodings.c:266
+#: src/gedit-encodings.c:237 src/gedit-encodings.c:270
 msgid "Cyrillic/Ukrainian"
 msgstr "Cyrilika / Ukrajinské"
 
-#: src/gedit-encodings.c:242
+#: src/gedit-encodings.c:246
 msgid "Croatian"
 msgstr "Chorvatské"
 
-#: src/gedit-encodings.c:246
+#: src/gedit-encodings.c:250
 msgid "Hindi"
 msgstr "Hindi"
 
-#: src/gedit-encodings.c:248
+#: src/gedit-encodings.c:252
 msgid "Farsi"
 msgstr "Farsi"
 
-#: src/gedit-encodings.c:252
+#: src/gedit-encodings.c:256
 msgid "Gujarati"
 msgstr "Gujarati"
 
-#: src/gedit-encodings.c:254
+#: src/gedit-encodings.c:258
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: src/gedit-encodings.c:258
+#: src/gedit-encodings.c:262
 msgid "Icelandic"
 msgstr "Islandské"
 
-#: src/gedit-encodings.c:272 src/gedit-encodings.c:278
-#: src/gedit-encodings.c:297
+#: src/gedit-encodings.c:276 src/gedit-encodings.c:282
+#: src/gedit-encodings.c:301
 msgid "Vietnamese"
 msgstr "Vietnamské"
 
-#: src/gedit-encodings.c:274
+#: src/gedit-encodings.c:278
 msgid "Thai"
 msgstr "Thajské"
 
@@ -3438,4 +3447,3 @@ msgstr " (neplatný Unicode)"
 
 #~ msgid "Open %s"
 #~ msgstr "Otevřít %s"
-
