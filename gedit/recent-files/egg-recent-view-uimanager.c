@@ -104,7 +104,7 @@ free_item_list (EggRecentViewUIManager *view)
 {
 	if (view->item_list == NULL)
 		return;
-	g_list_foreach (view->item_list, (GFunc) egg_recent_item_unref, NULL);
+//	g_list_foreach (view->item_list, (GFunc) egg_recent_item_unref, NULL);
 	g_list_free (view->item_list);
 	view->item_list = NULL;
 }
@@ -128,6 +128,18 @@ egg_recent_view_uimanager_clear (EggRecentViewUIManager *view)
 	free_item_list (view);
 }
 
+static GtkActionGroup *my = NULL;
+
+static void
+gahh (gpointer data, GtkActionGroup *o)
+{
+	if (o == my)
+	{
+		G_BREAKPOINT();
+		my = NULL;
+	}
+}
+
 static void
 egg_recent_view_uimanager_set_list (EggRecentViewUIManager *view, GList *list)
 {
@@ -141,6 +153,10 @@ egg_recent_view_uimanager_set_list (EggRecentViewUIManager *view, GList *list)
 	if (view->action_group == NULL) {
 		view->action_group = gtk_action_group_new ("EggRecentActions");
 		gtk_ui_manager_insert_action_group (view->uimanager, view->action_group, 0);
+
+//		if (my == NULL)
+//			my = view->action_group;
+//		g_object_weak_ref (G_OBJECT (view->action_group), (GWeakNotify ) gahh, NULL);
 	}
 
 	if (view->merge_id == 0)
