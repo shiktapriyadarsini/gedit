@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit (gnome-2-2)\n"
-"POT-Creation-Date: 2003-03-04 06:51+0000\n"
+"POT-Creation-Date: 2003-03-04 07:30+0000\n"
 "PO-Revision-Date: 2003-03-04 05:00+0300\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -139,7 +139,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:20
 msgid "Insert spaces"
-msgstr "Lisää tyhjeitä"
+msgstr "Lisää välilyöntejä"
 
 #: data/gedit.schemas.in.h:21
 msgid "Line Number Font for Printing"
@@ -154,9 +154,8 @@ msgid ""
 "List of encodings used by gedit for reading files not encoded in UTF-8 or in "
 "the current locale encoding."
 msgstr ""
-"Luettelo koodaustavoista jotka geditillä on käytössään luettaessa tiedostoja "
-"joita ei ole koodattu UTF-8:lla tai käytetössä olevan maa-asetuksetn "
-"koodauksella."
+"Luettelo koodaustavoista, joita gedit käyttää lukemaan tiedostoja, joita ei "
+"ole koodattu UTF-8:lla tai nykyisen maa-asetuksen mukaan."
 
 #: data/gedit.schemas.in.h:24
 msgid "Maximum Recent Files"
@@ -619,7 +618,7 @@ msgstr "Lev_yllä olevasta tiedostosta"
 
 #: plugins/diff/diff.glade2.h:11
 msgid "Ignore _blanks (-b option)"
-msgstr "Älä huomioi _tyhjeitä (-b valinta)"
+msgstr "Älä huomioi _tyhjeitä (-b valitsin)"
 
 #: plugins/diff/diff.glade2.h:12
 msgid "Note that this option is only supported by GNU diff"
@@ -832,7 +831,7 @@ msgstr "_Työhakemisto:"
 
 #: plugins/shell_output/shell_output.glade2.h:6
 msgid "gedit: Shell Output plugin"
-msgstr "gedit: Komentotulkkituloste liitännäinen"
+msgstr "gedit: Komentotulkin tulosteliitännäinen"
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:1
 msgid ""
@@ -906,7 +905,7 @@ msgstr "Käytettävissä olevat muodot"
 
 #: plugins/time/time.c:552
 msgid "Configure insert date/time plugin..."
-msgstr "Muokkaa päiväys/aika -liitännäisen asetuksia..."
+msgstr "Muokkaa päiväys/aika-liitännäisen asetuksia..."
 
 #: plugins/time/time.glade2.h:1 src/dialogs/gedit-preferences.glade2.h:1
 msgid "    "
@@ -922,7 +921,7 @@ msgstr "<span weight=\"bold\"> Lisättäessä päiväystä/aikaa...</span>"
 
 #: plugins/time/time.glade2.h:5
 msgid "Configure date/time plugin"
-msgstr "Muokkaa päiväys/aika -liitännäisen asetuksia"
+msgstr "Muokkaa päiväys/aika-liitännäisen asetuksia"
 
 #: plugins/time/time.glade2.h:6
 msgid "Insert Date and Time"
@@ -986,11 +985,11 @@ msgstr "Aloi_ta sarakkeesta:"
 
 #: plugins/sort/sort.glade2.h:3 plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sort"
-msgstr "Lajittele"
+msgstr "Järjestä"
 
 #: plugins/sort/sort.glade2.h:4
 msgid "You cannot undo a sort operation"
-msgstr "Lajittelua ei voi kumota"
+msgstr "Järjestämistä ei voi kumota"
 
 #: plugins/sort/sort.glade2.h:5
 msgid "_Ignore case"
@@ -1002,11 +1001,11 @@ msgstr "Käänteinen jä_rjestys"
 
 #: plugins/sort/sort.glade2.h:7
 msgid "_Sort"
-msgstr "_Lajittele"
+msgstr "_Järjestä"
 
 #: plugins/sort/sort.gedit-plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
-msgstr "Lajittelee asiakirjan tai valitun tekstin."
+msgstr "Järjestää asiakirjan tai valitun tekstin."
 
 #: plugins/spell/gedit-automatic-spell-checker.c:322
 #: plugins/spell/gedit-spell-checker-dialog.c:504
@@ -1354,7 +1353,7 @@ msgid ""
 "\n"
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr ""
-"%s -liitännäinen käyttää ulkoista ohjelmaa <tt>%s</tt> tehtävän "
+"Liitännäinen %s käyttää ulkoista ohjelmaa <tt>%s</tt> tehtävän "
 "suorittamiseen.\n"
 "\n"
 "Määritä ohjelman <tt>%s</tt> sijainti."
@@ -1391,12 +1390,12 @@ msgstr "Avaa"
 #: src/dialogs/gedit-preferences-dialog.c:241
 #: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:53
 msgid "Save"
-msgstr "Tallennus"
+msgstr "Tallenna"
 
 #: src/dialogs/gedit-preferences-dialog.c:242
 #: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:70
 msgid "Undo"
-msgstr "Kumoaminen"
+msgstr "Kumoa"
 
 #: src/dialogs/gedit-preferences-dialog.c:250
 msgid "Page"
@@ -1418,7 +1417,7 @@ msgstr "Muokkain"
 #: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:364
 #: src/gedit-ui.xml.h:39
 msgid "Print"
-msgstr "Tulostus"
+msgstr "Tulosta"
 
 #: src/dialogs/gedit-preferences-dialog.c:269
 msgid "Plugins"
@@ -1434,7 +1433,7 @@ msgstr "Asetukset"
 
 #: src/dialogs/gedit-preferences-dialog.c:603
 msgid "Categories"
-msgstr "Kategoriat"
+msgstr "Luokat"
 
 #: src/dialogs/gedit-preferences-dialog.c:836
 msgid "Push this button to select the font to be used by the editor"
@@ -1487,7 +1486,7 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Automaattinen sisennys</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
 msgid "<span weight=\"bold\" size=\"x-large\">Font &amp; Colors</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Kirjasin&amp;värit</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Kirjasin &amp; värit</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:5
 msgid "<span weight=\"bold\" size=\"x-large\">Fonts</span>"
@@ -1572,11 +1571,11 @@ msgstr "Käytä _rivitystä"
 
 #: src/dialogs/gedit-preferences.glade2.h:25
 msgid "Fonts & Colors"
-msgstr "Kirjasimet & Värit"
+msgstr "Kirjasimet & värit"
 
 #: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Insert _spaces instead of tabs"
-msgstr "Lisää _tyhjeitä sarkaimien sijaan"
+msgstr "Lisää _välilyöntejä sarkaimien sijaan"
 
 #: src/dialogs/gedit-preferences.glade2.h:27
 msgid "LOGO"
@@ -1620,7 +1619,7 @@ msgstr "Valitse tekstin väri"
 
 #: src/dialogs/gedit-preferences.glade2.h:37
 msgid "Plugin manager"
-msgstr "Lliitännäistenhallinta"
+msgstr "Liitännäistenhallinta"
 
 #: src/dialogs/gedit-preferences.glade2.h:39
 msgid "Print _line numbers every"
@@ -1885,7 +1884,9 @@ msgstr "Avaa URI:stä"
 
 #: src/gedit-commands.c:472
 msgid "translator_credits"
-msgstr "Jarkko Ranta <jjranta@cc.joensuu.fi>"
+msgstr ""
+"Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
+"http://gnome-fi.sourceforge.net/"
 
 #: src/gedit-commands.c:497
 msgid "gedit"
@@ -1893,9 +1894,7 @@ msgstr "gedit"
 
 #: src/gedit-commands.c:501
 msgid "gedit is a small and lightweight text editor for Gnome"
-msgstr ""
-"gedit on pieni ja kevyt tekstieditori Gnomelle. Suomennos: http://gnome-fi."
-"sourceforge.net/"
+msgstr "gedit on pieni ja kevyt tekstieditori Gnomelle."
 
 #: src/gedit-document.c:537 src/gedit-document.c:555
 #, c-format
@@ -2158,7 +2157,7 @@ msgstr "Asetusohjelman käynnistys epäonnistui."
 #: src/gedit-prefs-manager.c:1761
 #, c-format
 msgid "Expected `%s' got `%s' for key %s"
-msgstr "Odotettiin: \"%s\". Saatiin: \"%s\" (avaimelle %s)."
+msgstr "Odotettiin: \"%s\" mutta saatiin: \"%s\" (avaimelle %s)."
 
 #: src/gedit-print.c:254
 msgid ""
@@ -2408,7 +2407,7 @@ msgstr "Tallenna nykyinen tiedosto uudella nimellä"
 
 #: src/gedit-ui.xml.h:59
 msgid "Search again for the same string"
-msgstr "Etsi uudestan samaa merkkijonoa"
+msgstr "Etsi uudestaan samaa merkkijonoa"
 
 #: src/gedit-ui.xml.h:60
 msgid "Search for a string"
@@ -3053,62 +3052,62 @@ msgstr "Valitse yksi tai useampia _koodaustapoja:"
 #: src/gedit-encodings.c:128 src/gedit-encodings.c:154
 #: src/gedit-encodings.c:195 src/gedit-encodings.c:236
 msgid "Western"
-msgstr "Länsimainen"
+msgstr "länsimainen"
 
 #: src/gedit-encodings.c:130 src/gedit-encodings.c:197
 #: src/gedit-encodings.c:232
 msgid "Central European"
-msgstr "Keskieurooppalainen"
+msgstr "keskieurooppalainen"
 
 #: src/gedit-encodings.c:132
 msgid "South European"
-msgstr "Eteläeurooppalainen"
+msgstr "eteläeurooppalainen"
 
 #: src/gedit-encodings.c:134 src/gedit-encodings.c:150
 #: src/gedit-encodings.c:246
 msgid "Baltic"
-msgstr "Balttilainen"
+msgstr "balttilainen"
 
 #: src/gedit-encodings.c:136 src/gedit-encodings.c:199
 #: src/gedit-encodings.c:212 src/gedit-encodings.c:216
 #: src/gedit-encodings.c:234
 msgid "Cyrillic"
-msgstr "Kyrillinen"
+msgstr "kyrillinen"
 
 #: src/gedit-encodings.c:138 src/gedit-encodings.c:205
 #: src/gedit-encodings.c:244
 msgid "Arabic"
-msgstr "Arabialainen"
+msgstr "arabialainen"
 
 #: src/gedit-encodings.c:140 src/gedit-encodings.c:238
 msgid "Greek"
-msgstr "Kreikkalainen"
+msgstr "kreikkalainen"
 
 #: src/gedit-encodings.c:142
 msgid "Hebrew Visual"
-msgstr "Heprealainen kuvapohjainen"
+msgstr "heprealainen kuvapohjainen"
 
 #: src/gedit-encodings.c:144 src/gedit-encodings.c:203
 #: src/gedit-encodings.c:242
 msgid "Hebrew"
-msgstr "Heprealainen"
+msgstr "heprealainen"
 
 #: src/gedit-encodings.c:146 src/gedit-encodings.c:201
 #: src/gedit-encodings.c:240
 msgid "Turkish"
-msgstr "Turkkilainen"
+msgstr "turkkilainen"
 
 #: src/gedit-encodings.c:148
 msgid "Nordic"
-msgstr "Pohjoismainen"
+msgstr "pohjoismainen"
 
 #: src/gedit-encodings.c:152
 msgid "Celtic"
-msgstr "Kelttiläinen"
+msgstr "kelttiläinen"
 
 #: src/gedit-encodings.c:156
 msgid "Romanian"
-msgstr "Romanialainen"
+msgstr "romanialainen"
 
 #: src/gedit-encodings.c:159 src/gedit-encodings.c:161
 #: src/gedit-encodings.c:163 src/gedit-encodings.c:165
@@ -3117,48 +3116,48 @@ msgstr "Unicode"
 
 #: src/gedit-encodings.c:168
 msgid "Armenian"
-msgstr "Armenialainen"
+msgstr "armenialainen"
 
 #: src/gedit-encodings.c:170 src/gedit-encodings.c:172
 #: src/gedit-encodings.c:181
 msgid "Chinese Traditional"
-msgstr "Perinteinen kiinalainen"
+msgstr "perinteinen kiinalainen"
 
 #: src/gedit-encodings.c:174
 msgid "Cyrillic/Russian"
-msgstr "Kyrillinen/Venäläinen"
+msgstr "kyrillinen/Venäläinen"
 
 #: src/gedit-encodings.c:177 src/gedit-encodings.c:208
 #: src/gedit-encodings.c:221
 msgid "Japanese"
-msgstr "Japanilainen"
+msgstr "japanilainen"
 
 #: src/gedit-encodings.c:179 src/gedit-encodings.c:210
 #: src/gedit-encodings.c:214 src/gedit-encodings.c:227
 msgid "Korean"
-msgstr "Korealainen"
+msgstr "korealainen"
 
 #: src/gedit-encodings.c:184 src/gedit-encodings.c:186
 #: src/gedit-encodings.c:188 src/gedit-encodings.c:192
 msgid "Chinese Simplified"
-msgstr "Yksinkertaistettu kiinalainen"
+msgstr "yksinkertaistettu kiinalainen"
 
 #: src/gedit-encodings.c:190
 msgid "Georgian"
-msgstr "Georgialainen"
+msgstr "georgialainen"
 
 #: src/gedit-encodings.c:218
 msgid "Cyrillic/Ukrainian"
-msgstr "Kyrillinen/Ukrainalainen"
+msgstr "kyrillinen/Ukrainalainen"
 
 #: src/gedit-encodings.c:223 src/gedit-encodings.c:229
 #: src/gedit-encodings.c:248
 msgid "Vietnamese"
-msgstr "Vietnamilainen"
+msgstr "vietnamilainen"
 
 #: src/gedit-encodings.c:225
 msgid "Thai"
-msgstr "Thailainen"
+msgstr "thailainen"
 
 #: src/recent-files/egg-recent-vfs-utils.c:90
 msgid " (invalid Unicode)"
