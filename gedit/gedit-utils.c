@@ -49,7 +49,7 @@
 
 #include "gedit-utils.h"
 #include "gedit2.h"
-#include "bonobo-mdi.h"
+
 #include "gedit-document.h"
 #include "gedit-prefs-manager.h"
 #include "gedit-debug.h"
@@ -57,112 +57,6 @@
 
 #define STDIN_DELAY_MICROSECONDS 100000
 
-/* =================================================== */
-/* Flash */
-
-struct _MessageInfo {
-  BonoboWindow * win;
-  guint timeoutid;
-  guint handlerid;
-};
-
-typedef struct _MessageInfo MessageInfo;
-
-MessageInfo *current_mi = NULL;
-
-static gint remove_message_timeout (MessageInfo * mi);
-static void remove_timeout_cb (GtkWidget *win, MessageInfo *mi);
-static void bonobo_window_flash (BonoboWindow * win, const gchar * flash);
-
-static gint
-remove_message_timeout (MessageInfo * mi) 
-{
-	BonoboUIComponent *ui_component;
-
-	GDK_THREADS_ENTER ();	
-	
-  	ui_component = bonobo_mdi_get_ui_component_from_window (mi->win);
-	g_return_val_if_fail (ui_component != NULL, FALSE);
-
-	bonobo_ui_component_set_status (ui_component, " ", NULL);
-
-	g_signal_handler_disconnect (G_OBJECT (mi->win), mi->handlerid);
-	
-	g_free (mi);
-	current_mi = NULL;
-
-  	GDK_THREADS_LEAVE ();
-
-  	return FALSE; /* removes the timeout */
-}
-
-/* Called if the win is destroyed before the timeout occurs. */
-static void
-remove_timeout_cb (GtkWidget *win, MessageInfo *mi) 
-{
- 	g_source_remove (mi->timeoutid);
-  	g_free (mi);
-
-	if (mi == current_mi)
-	       	current_mi = NULL;
-}
-
-static const guint32 flash_length = 3000; /* 3 seconds, I hope */
-
-/**
- * bonobo_win_flash
- * @app: Pointer a Bonobo window object
- * @flash: Text of message to be flashed
- *
- * Description:
- * Flash the message in the statusbar for a few moments; if no
- * statusbar, do nothing. For trivial little status messages,
- * e.g. "Auto saving..."
- **/
-
-static void 
-bonobo_window_flash (BonoboWindow * win, const gchar * flash)
-{
-	BonoboUIComponent *ui_component;
-  	g_return_if_fail (win != NULL);
-  	g_return_if_fail (BONOBO_IS_WINDOW (win));
-  	g_return_if_fail (flash != NULL);
-  	
-	ui_component = bonobo_mdi_get_ui_component_from_window (win);
-	g_return_if_fail (ui_component != NULL);
-	
-	if (current_mi != NULL)
-	{
-		g_source_remove (current_mi->timeoutid);
-		remove_message_timeout (current_mi);
-	}
-	
-	if (bonobo_ui_component_path_exists (ui_component, "/status", NULL))
-	{
-    		MessageInfo * mi;
-
-		bonobo_ui_component_set_status (ui_component, flash, NULL);
-    		
-		mi = g_new(MessageInfo, 1);
-
-    		mi->timeoutid = 
-      			g_timeout_add (flash_length,
-				(GSourceFunc) remove_message_timeout,
-				mi);
-    
-    		mi->handlerid = 
-      			g_signal_connect (GTK_OBJECT (win),
-				"destroy",
-			   	G_CALLBACK (remove_timeout_cb),
-			   	mi);
-
-    		mi->win       = win;
-
-		current_mi = mi;
-  	}   
-}
-
-/* ========================================================== */
 
 /**
  * gedit_utils_flash:
@@ -175,7 +69,6 @@ gedit_utils_flash (const gchar *msg)
 {
 	g_return_if_fail (msg != NULL);
 	
-	bonobo_window_flash (bonobo_mdi_get_active_window (BONOBO_MDI (gedit_mdi)), msg);
 }
 
 /**
@@ -201,6 +94,7 @@ gedit_utils_flash_va (gchar *format, ...)
 void
 gedit_utils_set_status (const gchar *msg)
 {
+#if 0
 	BonoboWindow *win;
 	BonoboUIComponent *ui_component;
 
@@ -222,6 +116,7 @@ gedit_utils_set_status (const gchar *msg)
     		
 		current_mi =  NULL;
   	}   
+#endif
 }
 
 void

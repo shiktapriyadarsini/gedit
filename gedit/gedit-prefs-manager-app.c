@@ -45,6 +45,7 @@
 #include "gedit2.h"
 #include <gtksourceview/gtksourceview.h>
 
+#if 0
 static void		gedit_prefs_manager_editor_font_changed	(GConfClient *client,
 				   				 guint cnxn_id,
 				   				 GConfEntry *entry,
@@ -98,6 +99,7 @@ static void		gedit_prefs_manager_auto_save_changed (GConfClient *client,
 							       guint cnxn_id,
 							       GConfEntry *entry,
 							       gpointer user_data);
+#endif							       
 static gint window_state = -1;
 static gint window_height = -1;
 static gint window_width = -1;
@@ -119,7 +121,7 @@ gedit_prefs_manager_app_init (void)
 				GPM_PREFS_DIR,
 				GCONF_CLIENT_PRELOAD_RECURSIVE,
 				NULL);
-		
+#if 0		
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_FONT_DIR,
 				gedit_prefs_manager_editor_font_changed,
@@ -184,6 +186,7 @@ gedit_prefs_manager_app_init (void)
 				GPM_SAVE_DIR,
 				gedit_prefs_manager_auto_save_changed,
 				NULL, NULL, NULL);
+#endif				
 	}
 
 	return gedit_prefs_manager != NULL;	
@@ -287,6 +290,7 @@ gedit_prefs_manager_window_width_can_set (void)
 	return TRUE;
 }
 
+#if 0
 void
 gedit_prefs_manager_save_window_size_and_state (BonoboWindow *window)
 {
@@ -309,6 +313,7 @@ gedit_prefs_manager_save_window_size_and_state (BonoboWindow *window)
 	if (gedit_prefs_manager_window_state_can_set ())
 		gedit_prefs_manager_set_window_state (window_info->state);
 }
+
 
 static void 
 gedit_prefs_manager_editor_font_changed (GConfClient *client,
@@ -1077,3 +1082,4 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 		g_list_free (docs);
 	}
 }
+#endif
