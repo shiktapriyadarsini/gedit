@@ -1,5 +1,11 @@
 2004-11-25  Paolo Borelli  <pborelli@katamail.com>
 
+	* gedit-encodings.c: comment out UTF-16, UCS-2 e UCS-8 since
+	they are (and always have been) broken. I proper fix is being
+	worked on.
+
+2004-11-25  Paolo Borelli  <pborelli@katamail.com>
+
 	* dialogs/gedit-preferences-dialog.c: do not leak tooltips.
 
 2004-10-02  Paolo Maggi  <paolo@gnome.org>
@@ -22,7 +28,7 @@
 	* gedit-command.c:
 	* gedit-file.c
 	* gedit-mdi-child.c:
-	* gedit2.[ch]:
+	* gedit2.[ch]:	
 
 	Fix compilers warning recently introduced and make
 	gedit_get_active_view return a GtkWidget.
