@@ -7,15 +7,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.2.0.1\n"
-"POT-Creation-Date: 2003-10-16 18:20+0200\n"
-"PO-Revision-Date: 2003-08-23 16:09+0200\n"
+"Project-Id-Version: gedit 2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-29 16:11+0100\n"
+"PO-Revision-Date: 2003-11-29 16:14+0100\n"
 "Last-Translator: Goran Rakić <gox@devbase.net>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
@@ -55,7 +55,7 @@ msgid ""
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
 "Poseban font koji će biti korišćen u prostoru za izmenu teksta. Ovo će "
-"jedino imati efekta ako je isključena opcija \"Koristi predefinisani font\"."
+"jedino imati efekta ako je isključena opcija „Koristi predefinisani font“."
 
 #: data/gedit.schemas.in.h:2
 msgid "Auto Detected Encodings"
@@ -83,7 +83,7 @@ msgid ""
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 "Boja pozadine za označeni tekst u prostoru za izmenu teksta. Ovo će jedino "
-"imati efekta ako je isključena opcija \"Koristi predefinisane boje\"."
+"imati efekta ako je isključena opcija „Koristi predefinisane boje“."
 
 #: data/gedit.schemas.in.h:8
 msgid ""
@@ -91,7 +91,7 @@ msgid ""
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 "Boja pozadine neoznačenog teksta u prostoru za izmenu teksta. Ovo će jedino "
-"imati efekta ukoliko je isključena opcija \"Koristi predefinisane boje\"."
+"imati efekta ukoliko je isključena opcija „Koristi predefinisane boje“."
 
 #: data/gedit.schemas.in.h:9
 msgid "Backup Copy Extension"
@@ -111,7 +111,7 @@ msgstr "Prikaži brojeve linije"
 
 #: data/gedit.schemas.in.h:13
 msgid "Editor Font"
-msgstr "Font editora"
+msgstr "Font uređivača"
 
 #: data/gedit.schemas.in.h:14
 msgid "Encoding for Saving"
@@ -127,8 +127,8 @@ msgid ""
 "if the \"Create Backup Copies\" option is turned on."
 msgstr ""
 "Ekstenzija ili sufiks koji će biti korišćen u imenu rezervne kopije "
-"datoteke. Ovo će jedino imati efekta ukoliko je opcija \"Pravi rezervne "
-"kopije\" uključena."
+"datoteke. Ovo će jedino imati efekta ukoliko je opcija „Pravi rezervne "
+"kopije“ uključena."
 
 #: data/gedit.schemas.in.h:17
 msgid ""
@@ -136,7 +136,7 @@ msgid ""
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 "Boja označenog teksta u prostoru za izmene teksta. Ovo će jedino imati "
-"efekta ukoliko je opcija \"Koristi predefinisane boje\" isključena."
+"efekta ukoliko je opcija „Koristi predefinisane boje“ isključena."
 
 #: data/gedit.schemas.in.h:18
 msgid ""
@@ -144,7 +144,7 @@ msgid ""
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 "Boja neoznačenog teksta u prostoru za izmene teksta. Ovo će jedino imati "
-"efekta ukoliko je opcija \"Koristi predefinisane boje\" isključena."
+"efekta ukoliko je opcija „Koristi predefinisane boje“ isključena."
 
 #: data/gedit.schemas.in.h:19
 msgid "Header Font for Printing"
@@ -194,7 +194,7 @@ msgid ""
 "This will only take effect if the \"Auto Save\" option is turned on."
 msgstr ""
 "Broj minuta nakon kojih će gedit automatski snimiti izmenjenu datoteku. Ovo "
-"će jedino imati efekta ukoliko je opcija \"Automatsko snimanje\" uključena."
+"će jedino imati efekta ukoliko je opcija „Automatsko snimanje“ uključena."
 
 #: data/gedit.schemas.in.h:28
 msgid "Print Header"
@@ -239,10 +239,10 @@ msgid ""
 "here."
 msgstr ""
 "Podešava način preloma dugačkih linija za štampanje. Koristiti "
-"\"GTK_WRAP_NONE\" za iskljčivanje preloma, \"GTK_WRAP_WORD\" za preloma na "
-"krajevima reči, i \"GTK_WRAP_CHAR\" za prelom između karaktera. Obratite "
-"pažnju da su vrednosti osetljive na velika ili mala slova, pa se uverite da "
-"ih koristitie na isti način kao što su ovde navedene."
+"„GTK_WRAP_NONE“ za iskljčivanje preloma, „GTK_WRAP_WORD“ za preloma na "
+"krajevima reči, i „GTK_WRAP_CHAR“ za prelom između znakova. Obratite pažnju "
+"da su vrednosti osetljive na velika ili mala slova, pa se uverite da ih "
+"koristitie na isti način kao što su ovde navedene."
 
 #: data/gedit.schemas.in.h:36
 msgid ""
@@ -253,10 +253,10 @@ msgid ""
 "here."
 msgstr ""
 "Podešava način preloma dugačkih linija za štampanje. Koristiti "
-"\"GTK_WRAP_NONE\" za iskljčivanje preloma, \"GTK_WRAP_WORD\" za preloma na "
-"krajevima reči, i \"GTK_WRAP_CHAR\" za prelom između karaktera. Obratite "
-"pažnju da su vrednosti osetljive na velika ili mala slova, pa se uverite da "
-"ih koristitie na isti način kao što su ovde navedene."
+"„GTK_WRAP_NONE“ za iskljčivanje preloma, „GTK_WRAP_WORD“ za preloma na "
+"krajevima reči, i „GTK_WRAP_CHAR“ za prelom između znakova. Obratite pažnju "
+"da su vrednosti osetljive na velika ili mala slova, pa se uverite da ih "
+"koristitie na isti način kao što su ovde navedene."
 
 #: data/gedit.schemas.in.h:37
 msgid ""
@@ -269,9 +269,8 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Podešava koji će font biti korišćen za štampanje brojeva liija. Ovo će "
-"jedino imati efekta ukoliko opcija \"Štampaj brojeve linija\" nije podešena "
-"na 0."
+"Podešava koji će font biti korišćen za štampanje brojeva liija. Ovo će jedino "
+"imati efekta ukoliko opcija „Štampaj brojeve linija“ nije podešena na 0."
 
 #: data/gedit.schemas.in.h:39
 msgid ""
@@ -279,7 +278,7 @@ msgid ""
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
 "Podešava koji će font biti korišćen za štampanje zaglavlja stranice. Ovo će "
-"jedino imati efekta ako je uključena opcija \"Štampaj zaglavlje\"."
+"jedino imati efekta ako je uključena opcija „Štampaj zaglavlje“."
 
 #: data/gedit.schemas.in.h:40
 msgid ""
@@ -287,7 +286,7 @@ msgid ""
 "in the \"Recent Files\" submenu."
 msgstr ""
 "Podešava maksimalan broj skoro otvorenih datoteka koje će biti prikazane u "
-"\"Skoro otvorene datoteke\" podmeniju."
+"„Skoro otvorene datoteke“ podmeniju."
 
 #: data/gedit.schemas.in.h:41
 msgid ""
@@ -308,10 +307,10 @@ msgid ""
 "Note that the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"Stil dugmića na liniji alata. Moguće vrednosti su \"GEDIT_TOOLBAR_SYSTEM\" "
-"za predefinisani sistemski stil, \"GEDIT_TOOLBAR_ICONS\" za prikaz samo "
-"ikona, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" za prikaz i ikona i teksta, i "
-"\"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" za prikaz naglašenog teksta pored ikona. "
+"Stil dugmića na liniji alata. Moguće vrednosti su „GEDIT_TOOLBAR_SYSTEM“ za "
+"predefinisani sistemski stil, „GEDIT_TOOLBAR_ICONS“ za prikaz samo ikona, "
+"„GEDIT_TOOLBAR_ICONS_AND_TEXT“ za prikaz i ikona i teksta, i "
+"„GEDIT_TOOLBAR_ICONS_BOTH_HORIZ“ za prikaz naglašenog teksta pored ikona. "
 "Obratite pažnju da su vrednosti osetljive na velika i mala slova, pa se "
 "uverite da ih koristite kao što su ovde navedene."
 
@@ -338,17 +337,17 @@ msgid ""
 "appear exactly as mentioned here."
 msgstr ""
 "Konda strana u kojoj će datoteke biti snimljene. Moguće vrednosti su "
-"\"GEDIT_SAVE_ALWAYS_UTF8\" za obavezno snimanje u UTF-8 kodnom rasporedu, "
-"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" ako želite da gedit proba da "
+"„GEDIT_SAVE_ALWAYS_UTF8“ za obavezno snimanje u UTF-8 kodnom rasporedu, "
+"„GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE“ ako želite da gedit proba da "
 "pretvori dokument u trenutno podešenu kodnu stranu izabranih lokalnih "
-"podešavanja, \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" ako želite da "
+"podešavanja, „GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE“ ako želite da "
 "gedit proba da koristi originalnu kodnu stranu datoteke (nove datoteke "
-"koriste UTF8) i \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" ako "
+"koriste UTF8) i „GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL“ ako "
 "želite da gedit proba da koristi originalnu kodnu stranu datoteke (nove "
 "datoteke u kodnoj strani trenutno izabranih lokalnih podešavanja). Ako je "
 "pretvaranje uspešno, biće korišćeno.U suprotnom UTF-8 će biti korišćen. "
-"Obratite pažnju da su opcije osetljive na  velika i mala slova, pa se "
-"uverite da ih koristite kao što su navedene."
+"Obratite pažnju da su opcije osetljive na  velika i mala slova, pa se uverite "
+"da ih koristite kao što su navedene."
 
 #: data/gedit.schemas.in.h:47
 msgid "Toolbar Buttons Style"
@@ -377,8 +376,8 @@ msgid ""
 "option."
 msgstr ""
 "Da li gedit treba da automatski snima izmenjenu datoteku posle vremenskog "
-"intervala. Možete postaviti vremenski interval pomoću \"Interval automatskog "
-"snimanja\" opcije."
+"intervala. Možete postaviti vremenski interval pomoću „Interval automatskog "
+"snimanja“ opcije."
 
 #: data/gedit.schemas.in.h:53
 msgid ""
@@ -386,8 +385,8 @@ msgid ""
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
 "Da li gedit treba da pravi rezervnu kopiju za datoteke koje snima. Možete "
-"postaviti ekstenziju datoteke sa rezervnom kopijom pomoću opcije "
-"\"Ekstenzija rezervne kopije\"."
+"postaviti ekstenziju datoteke sa rezervnom kopijom pomoću opcije „Ekstenzija "
+"rezervne kopije“."
 
 #: data/gedit.schemas.in.h:54
 msgid "Whether gedit should display line numbers in the editing area."
@@ -396,7 +395,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:55
 msgid "Whether gedit should enable auto indentation."
-msgstr "Da li gedit treba da omogući automatsko poravnanje."
+msgstr "Da li gedit treba da omogući automatsko uvlačenje."
 
 #: data/gedit.schemas.in.h:56
 msgid "Whether gedit should include a document header when printing documents."
@@ -428,9 +427,9 @@ msgid ""
 "\", and \"Selection Color\" options."
 msgstr ""
 "Da li treba koristiti predefinisane sistemske boje za prostor za izmenu "
-"teksta. Ako je ova opcija uključena, onda će boje u prostoru za izmenu "
-"teksta biti one navedene u podešavanjima za \"Boja pozadina\", \"Boja teksta"
-"\", \"Boja označenog teksta\", i \"Boja oznake\"."
+"teksta. Ako je ova opcija uključena, onda će boje u prostoru za izmenu teksta "
+"biti one navedene u podešavanjima za „Boja pozadina“, „Boja teksta“, „Boja "
+"označenog teksta“, i „Boja oznake“."
 
 #: data/gedit.schemas.in.h:62
 msgid ""
@@ -439,9 +438,9 @@ msgid ""
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
 "Da li treba koristiti predefinisani sistemski font za prikaz teksta umesto "
-"fonta navedenog u podešavanjima gedit programa. Ako je ova opcija "
-"isključena, font naveden u opciji \"Font editora\" će biti korišćen umesto "
-"sistemskog fonta."
+"fonta navedenog u podešavanjima gedit programa. Ako je ova opcija isključena, "
+"font naveden u opciji „Font uređivača“ će biti korišćen umesto sistemskog "
+"fonta."
 
 #: gedit/bonobo-mdi.c:551 gedit/bonobo-mdi.c:1964
 #, c-format
@@ -462,13 +461,13 @@ msgstr "I_di na liniju"
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
-msgstr "Nisam mogu da pronađem neophodne kontrole u %s."
+msgstr "Ne mogu da pronađem neophodne elemente u %s."
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
 #: gedit/dialogs/gedit-dialog-replace.c:1140 gedit/gedit-commands.c:402
 #, c-format
 msgid "The text \"%s\" was not found."
-msgstr "Tekst \"%s\" nije pronađen."
+msgstr "Tekst „%s“ nije pronađen."
 
 #: gedit/dialogs/gedit-dialog-replace.c:268 gedit/dialogs/replace.glade2.h:4
 #: gedit/gedit-ui.xml.h:46
@@ -561,7 +560,7 @@ msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:587
 msgid "Could not find '"
-msgstr "Ne može da nađe '"
+msgstr "Ne mogu da nađem „"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:587
 #: gedit/dialogs/gedit-page-setup-dialog.c:629
@@ -570,13 +569,13 @@ msgid ""
 "\n"
 "Reinstall gedit."
 msgstr ""
-"page-setup-dialog.glade2'.\n"
+"page-setup-dialog.glade2“.\n"
 "\n"
 "Ponovo instalirajte gedit."
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:628
 msgid "Could not find the required widgets inside '"
-msgstr "Ne može da nađe neophodne elemente unutar '"
+msgstr "Ne može da nađe neophodne elemente unutar „"
 
 #: gedit/dialogs/gedit-plugin-manager.c:53
 msgid "Plugin"
@@ -593,8 +592,8 @@ msgstr "Ne mogu da pronađem plugin-manager.glade2, reinstalirajte gedit.\n"
 #: gedit/dialogs/gedit-plugin-manager.c:525
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
-"Neispravna glade datoteka za menadžer dodataka -- nisu pronađene sve "
-"kontrole.\n"
+"Neispravna glejd datoteka za upravljača dodacima — nisu pronađeni svi "
+"elementi.\n"
 
 #: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
@@ -654,7 +653,7 @@ msgstr "Menadžer"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:221
 msgid "Editor"
-msgstr "Editor"
+msgstr "Uređivač"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:223
 msgid "Plugins"
@@ -666,7 +665,7 @@ msgstr "Kat_egorije:"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:317
 msgid "Preferences"
-msgstr "Podešavanja"
+msgstr "Postavke"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:557
 msgid "Categories"
@@ -675,7 +674,8 @@ msgstr "Kategorije"
 #: gedit/dialogs/gedit-preferences-dialog.c:787
 msgid "Push this button to select the font to be used by the editor"
 msgstr ""
-"Pritisnite ovo dugme kako biste odabrali font koji će biti korišćen u editoru"
+"Pritisnite ovo dugme kako biste odabrali font koji će biti korišćen u "
+"uređivaču"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:790
 msgid "Push this button to configure text color"
@@ -758,11 +758,11 @@ msgstr "Ne deli re_č u dve linije"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:15
 msgid "Editor _font: "
-msgstr "Font _editora:"
+msgstr "Font _uređivača:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:16
 msgid "Enable _auto indentation"
-msgstr "Omogući _automatko uvlačenje"
+msgstr "Omogući _automatsko uvlačenje"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:17
 #: gedit/dialogs/page-setup-dialog.glade2.h:5
@@ -787,15 +787,15 @@ msgstr "Brojevi linija"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:22
 msgid "Pick the background color"
-msgstr "Odaberite boju pozadine"
+msgstr "Izaberite boju pozadine"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:23
 msgid "Pick the selected text color"
-msgstr "Odaberite boju odabranog teksta"
+msgstr "Izaberite boju odabranog teksta"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:24
 msgid "Pick the selection color"
-msgstr "Odaberite boju označenog prostora"
+msgstr "Izaberite boju označenog prostora"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:25
 msgid "Pick the text color"
@@ -807,11 +807,11 @@ msgstr "Menadžer dodataka"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:28
 msgid "Se_lection color:"
-msgstr "Bo_ja označenog prostora:"
+msgstr "Bo_ja izbora:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:29
 msgid "Selecte_d text color:"
-msgstr "Boja označeno_g teksta"
+msgstr "Boja _izabranog teksta"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:30
 msgid "Set _tabs width equivalent to"
@@ -823,7 +823,7 @@ msgstr "Podesi limit poni_štavanja akcija"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:33
 msgid "U_se default theme colors"
-msgstr "Koristi predefini_sane boje teme"
+msgstr "Koristi pod_razumevane boje teme"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:35
 msgid "Wrap mode"
@@ -835,7 +835,7 @@ msgstr "_Automatski snimi datoteku svakih"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:37
 msgid "_Background color:"
-msgstr "_Boja pozadine"
+msgstr "_Boja pozadine:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:38
 msgid "_Display line numbers"
@@ -847,7 +847,7 @@ msgstr "Boja _teksta:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:40
 msgid "_Use default theme font"
-msgstr "Koristi predefinisani _font teme:"
+msgstr "Koristi podrazumevani _font teme:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:41
 msgid "_action(s)"
@@ -859,7 +859,7 @@ msgstr "_minuta"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:43
 msgid "character(s)"
-msgstr "karakter(a)"
+msgstr "znakova"
 
 #: gedit/dialogs/gnome-print-font-dialog.c:111
 msgid "_Insert a new preview phrase."
@@ -887,7 +887,7 @@ msgstr "Sans Regular 12"
 
 #: gedit/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "AaBbVvGgDdĐđEeŽžZzIiJjKkLlLjljMmNnNjnjOoPpRrSsTtUuHhCcDždžŠš"
+msgstr "AaBbVvGgDdĐđEeŽžZzIiJjKkLlLjljMmNnNjnjOoPpRrSsTtUuHhCcDŽdžŠš"
 
 #: gedit/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
@@ -1129,11 +1129,11 @@ msgstr "Neispravni UTF-8 podaci"
 #: gedit/gedit-document.c:1210
 #, c-format
 msgid "Could not read symbolic link information for %s"
-msgstr "Ne mogu da pročitam informacije o simbolički link za %s"
+msgstr "Ne mogu da pročitam informacije o simboličkoj vezi za %s"
 
 #: gedit/gedit-document.c:1256
 msgid "The file has too many symbolic links."
-msgstr "Datoteka ima previše simboličkih linkova."
+msgstr "Datoteka ima previše simboličkih veza."
 
 #: gedit/gedit-document.c:1312
 #, c-format
@@ -1163,8 +1163,8 @@ msgid ""
 "not have this limitation."
 msgstr ""
 "Disk na koji pokušavate da snimite datoteku ima ograničenje veličine "
-"datoteke. Molimo vas da snimite manju datoteku ili da je snimite na disk "
-"koji nema ovo ograničenje."
+"datoteke. Molimo vas da snimite manju datoteku ili da je snimite na disk koji "
+"nema ovo ograničenje."
 
 #: gedit/gedit-document.c:1493
 msgid "Could not create a backup file."
@@ -1305,7 +1305,7 @@ msgid ""
 "A file named \"%s\" already exists.\n"
 "Do you want to replace it with the one you are saving?"
 msgstr ""
-"Datoteka \"%s\" već postoji.\n"
+"Datoteka „%s“ već postoji.\n"
 "Da li želite da je zamenite sa novom?"
 
 #: gedit/gedit-file-selector-util.c:160
@@ -1314,7 +1314,7 @@ msgid ""
 "The file \"%s\" is read-only.\n"
 "Do you want to try to replace it with the one you are saving?"
 msgstr ""
-"Datoteka \"%s\" je samo za čitanje.\n"
+"Datoteka „%s“ je samo za čitanje.\n"
 "Da li želite da pokušate da je zamenite sa novom?"
 
 #: gedit/gedit-file-selector-util.c:283
@@ -1583,7 +1583,7 @@ msgstr "Stranica %N od %Q"
 
 #: gedit/gedit-ui.xml.h:1
 msgid "About this application"
-msgstr "O ovoj aplikaciji"
+msgstr "O ovom programu"
 
 #: gedit/gedit-ui.xml.h:2
 msgid "Change the visibility of the output window in the current window"
@@ -1611,15 +1611,15 @@ msgstr "Zatvori trenutnu datoteku"
 
 #: gedit/gedit-ui.xml.h:8
 msgid "Configure the application"
-msgstr "Podesi aplikaciju"
+msgstr "Podesite program"
 
 #: gedit/gedit-ui.xml.h:9
 msgid "Copy"
-msgstr "Kopiraj"
+msgstr "Umnoži"
 
 #: gedit/gedit-ui.xml.h:10
 msgid "Copy the selection"
-msgstr "Kopiraj označeno"
+msgstr "Umnoži izabrano"
 
 #: gedit/gedit-ui.xml.h:11
 msgid "Create a new document"
@@ -1659,7 +1659,7 @@ msgstr "Nađi prethodno"
 
 #: gedit/gedit-ui.xml.h:22
 msgid "Go to _Line..."
-msgstr "Idi na _liniju..."
+msgstr "Idi u _red..."
 
 #: gedit/gedit-ui.xml.h:23
 msgid "Go to a specific line number"
@@ -1848,7 +1848,7 @@ msgstr "Sadr_žaj"
 
 #: gedit/gedit-ui.xml.h:74
 msgid "_Copy"
-msgstr "_Kopiraj"
+msgstr "_Umnoži"
 
 #: gedit/gedit-ui.xml.h:75
 msgid "_Customize Toolbar"
@@ -1969,39 +1969,39 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"Ne mogu da pronđem datoteku \"%s\".\n"
+"Ne mogu da pronađem datoteku „%s“.\n"
 "\n"
 "Molimo vas, proverite da li ste uneli tačnu lokaciju i pokušajte ponovo."
 
 #: gedit/gedit-utils.c:420
 #, c-format
 msgid "Could not open the file \"%s\" because it contains corrupted data."
-msgstr "Ne mogu da otvorim datoteku \"%s\" jer ona sadrži oštećene podatke."
+msgstr "Ne mogu da otvorim datoteku „%s“ jer ona sadrži oštećene podatke."
 
 #: gedit/gedit-utils.c:431
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
-"Ne mogu da otvorim datoteku \"%s\" jer gedit ne može da podrži %s: lokacije."
+"Ne mogu da otvorim datoteku „%s“ jer gedit ne može da podrži %s: lokacije."
 
 #: gedit/gedit-utils.c:437
 #, c-format
 msgid "Could not open the file \"%s\""
-msgstr "Ne mogu da otvorim datoteku \"%s\""
+msgstr "Ne mogu da otvorim datoteku „%s“"
 
 #: gedit/gedit-utils.c:447
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
-"Ne mogu da otvorim datoteku \"%s\" jer satrži podatke u neodgovarajućem "
+"Ne mogu da otvorim datoteku „%s“ jer sadrži podatke u neodgovarajućem "
 "formatu."
 
 #: gedit/gedit-utils.c:454
 #, c-format
 msgid "Could not open the file \"%s\" because it is too big."
-msgstr "Ne mogu da otvorim datoteku \"%s\" jer je prevelika."
+msgstr "Ne mogu da otvorim datoteku „%s“ jer je prevelika."
 
 #: gedit/gedit-utils.c:461
 #, c-format
@@ -2010,14 +2010,14 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"\"%s\" nije ispravna lokacija.\n"
+"„%s“ nije ispravna lokacija.\n"
 "\n"
 "Molimo vas, proverite da li ste uneli tačnu lokaciju i pokušajte ponovo."
 
 #: gedit/gedit-utils.c:469
 #, c-format
 msgid "Could not open the file \"%s\" because access was denied."
-msgstr "Ne mogu da otvorim datoteku \"%s\" jer je pristup odbijen."
+msgstr "Ne mogu da otvorim datoteku „%s“ jer je pristup odbijen."
 
 #: gedit/gedit-utils.c:476
 #, c-format
@@ -2026,7 +2026,7 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"Ne mogu da otvorim datoteku \"%s\" jer ima previše otvorenih datoteka.\n"
+"Ne mogu da otvorim datoteku „%s“ jer ima previše otvorenih datoteka.\n"
 "\n"
 "Molimo vas, zatvorite neke otvorene datoteke i pokušajte ponovo."
 
@@ -2037,7 +2037,7 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"\"%s\" je direktorijum.\n"
+"„%s“ je direktorijum.\n"
 "\n"
 "Molimo vas, proverite da li ste uneli tačnu lokaciju i pokušajte ponovo."
 
@@ -2047,8 +2047,8 @@ msgid ""
 "Not enough available memory to open the file \"%s\". Please, close some "
 "running application and try again."
 msgstr ""
-"Nema dovoljno slobodne memorije da biste otvorili datoteku \"%s\". Molimo "
-"vas, zatvorite neke pokrenute aplikacije i pokušajte ponovo."
+"Nema dovoljno slobodne memorije da biste otvorili datoteku „%s“. Molimo vas, "
+"zatvorite neke pokrenute programe i pokušajte ponovo."
 
 #: gedit/gedit-utils.c:518
 #, c-format
@@ -2058,7 +2058,7 @@ msgid ""
 "Please, check that you typed the location correctly and that your proxy "
 "settings are correct and then try again."
 msgstr ""
-"Ne mogu da otvorim datoteku \"%s\" jer ne mogu da pronađem adresu \"%s\".\n"
+"Ne mogu da otvorim datoteku „%s“ jer ne mogu da pronađem adresu „%s“.\n"
 "\n"
 "Molimo vas, proverite da li ste uneli tačnu lokaciju i da su podešavalja "
 "proksija ispravna, pa pokušajte ponovo."
@@ -2070,7 +2070,7 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"Ne mogu da otvorim datoteku \"%s\" jer je adresa neispravna.\n"
+"Ne mogu da otvorim datoteku „%s“ jer je adresa neispravna.\n"
 "\n"
 "Molimo vas, proverite da li ste uneli tačnu lokaciju pa pokušajte ponovo."
 
@@ -2081,7 +2081,7 @@ msgid ""
 "\n"
 "Please, check that your proxy settings are correct and try again."
 msgstr ""
-"Ne mogu da otvorim datoteku \"%s\" jer je adresa prazna.\n"
+"Ne mogu da otvorim datoteku „%s“ jer je adresa prazna.\n"
 "\n"
 "Molimo vas, proverite da li su podešavanja proksija tačna i pokušajte ponovo."
 
@@ -2092,7 +2092,7 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"Ne mogu da otvorim datoteku \"%s\" jer pokušaj prijavljivanja nije uspeo.\n"
+"Ne mogu da otvorim datoteku „%s“ jer pokušaj prijavljivanja nije uspeo.\n"
 "\n"
 "Molimo vas, proverite da li ste uneli tačnu lokaciju i pokušajte ponovo."
 
@@ -2117,8 +2117,8 @@ msgid ""
 "selecting a character coding in the 'Open File...' (or 'Open Location') "
 "dialog."
 msgstr ""
-"Ne može da otvori datoteku „%s“ pošto gedit ne može da sam prepozna "
-"kodiranje znakova.\n"
+"Ne može da otvori datoteku „%s“ pošto gedit ne može da sam prepozna kodiranje "
+"znakova.\n"
 "\n"
 "Molim proverite da ne pokušavate da otvorite binarnu datoteku i da li ste "
 "izabrali ispravno kodiranje znakova u prozorčetu za otvaranje datoteka, pa "
@@ -2142,7 +2142,7 @@ msgstr ""
 #: gedit/gedit-utils.c:662
 #, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Ne mogu da otvorim datoteku \"%s\"."
+msgstr "Ne mogu da otvorim datoteku „%s“."
 
 #: gedit/gedit-utils.c:666
 #, c-format
@@ -2178,26 +2178,26 @@ msgid ""
 "\n"
 "Perhaps, it has recently been deleted."
 msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer gedit ne može da je pronađe.\n"
+"Ne mogu da povratim datoteku „%s“ jer gedit ne može da je pronađe.\n"
 "\n"
 "Možda je skoro obrisana."
 
 #: gedit/gedit-utils.c:782
 #, c-format
 msgid "Could not revert the file \"%s\" because it contains corrupted data."
-msgstr "Ne mogu da povratim datoteku \"%s\" jer ona sadrži oštećene podatke."
+msgstr "Ne mogu da povratim datoteku „%s“ jer ona sadrži oštećene podatke."
 
 #: gedit/gedit-utils.c:793
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer gedit ne može da podrži %s: lokacije."
+"Ne mogu da povratim datoteku „%s“ jer gedit ne može da podrži %s: lokacije."
 
 #: gedit/gedit-utils.c:799 gedit/gedit-utils.c:939
 #, c-format
 msgid "Could not revert the file \"%s\"."
-msgstr "Ne mogu da povratim datoteku \"%s\"."
+msgstr "Ne mogu da povratim datoteku „%s“."
 
 #: gedit/gedit-utils.c:809
 #, c-format
@@ -2205,17 +2205,17 @@ msgid ""
 "Could not revert the file \"%s\" because it contains data in an invalid "
 "format."
 msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer sadrži podatke u neispravnom formatu."
+"Ne mogu da povratim datoteku „%s“ jer sadrži podatke u neispravnom formatu."
 
 #: gedit/gedit-utils.c:816
 #, c-format
 msgid "Could not revert the file \"%s\" because it is too big."
-msgstr "Ne mogu da povratim datoteku \"%s\" jer je prevelika."
+msgstr "Ne mogu da povratim datoteku „%s“ jer je prevelika."
 
 #: gedit/gedit-utils.c:823
 #, c-format
 msgid "Could not revert the file \"%s\" because access was denied."
-msgstr "Ne mogu da povratim datoteku \"%s\" jer je pristup odbijen."
+msgstr "Ne mogu da povratim datoteku „%s“ jer je pristup odbijen."
 
 #: gedit/gedit-utils.c:830
 #, c-format
@@ -2224,7 +2224,7 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer je otvoreno previše datoteka.\n"
+"Ne mogu da povratim datoteku „%s“ jer je otvoreno previše datoteka.\n"
 "\n"
 "Molimo vas da zatvorite neke otvorene datoteke i pokušate ponovo."
 
@@ -2234,8 +2234,8 @@ msgid ""
 "Not enough available memory to revert the file \"%s\". Please, close some "
 "running application and try again."
 msgstr ""
-"Nema dovoljno slobodne memorije za povraćaj datoteke \"%s\". Molimo vas, "
-"zatvorite neke pokrenute aplikacije i pokušajte ponovo."
+"Nema dovoljno slobodne memorije za povraćaj datoteke „%s“. Molimo vas, "
+"zatvorite neke pokrenute programe i pokušajte ponovo."
 
 #: gedit/gedit-utils.c:864
 #, c-format
@@ -2244,8 +2244,7 @@ msgid ""
 "\n"
 "Please, check that your proxy settings are correct and try again."
 msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer nisam mogao da pronađem adresu \"%s"
-"\".\n"
+"Ne mogu da povratim datoteku „%s“ jer nisam mogao da pronađem adresu „%s“.\n"
 "\n"
 "Molimo vas proverite podešavanje proksi i pokušajte ponovo."
 
@@ -2256,15 +2255,14 @@ msgid ""
 "\n"
 "Please, check that your proxy settings are correct and try again."
 msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer je adresa prazna.\n"
+"Ne mogu da povratim datoteku „%s“ jer je adresa prazna.\n"
 "\n"
 "Molimo vas proverite podešavanje proksi i pokušajte ponovo."
 
 #: gedit/gedit-utils.c:885
 #, c-format
 msgid "Could not revert the file \"%s\" because the attempt to log in failed."
-msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer nije uspeo pokušaj prijavljivanja."
+msgstr "Ne mogu da povratim datoteku „%s“ jer nije uspeo pokušaj prijavljivanja."
 
 #: gedit/gedit-utils.c:892
 #, c-format
@@ -2273,8 +2271,7 @@ msgid ""
 "\n"
 "Probably, you are trying to revert a binary file."
 msgstr ""
-"Ne mogu da povratim datoteku \"%s\" jer ona sadrži neispravne UTF-8 "
-"podatke.\n"
+"Ne mogu da povratim datoteku „%s“ jer ona sadrži neispravne UTF-8 podatke.\n"
 "\n"
 "Verovatno, pokušavate da povratite binarnu datoteku."
 
@@ -2285,7 +2282,7 @@ msgstr "Nije moguće povratiti Bez naslova dokument."
 #: gedit/gedit-utils.c:990
 #, c-format
 msgid "The file \"%s\" already exists."
-msgstr "Datoteka \"%s\" već postoji."
+msgstr "Datoteka „%s“ već postoji."
 
 #: gedit/gedit-utils.c:996
 #, c-format
@@ -2294,9 +2291,9 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly."
 msgstr ""
-"\"%s\" je direktorijum.\n"
+"„%s“ je direktorijum.\n"
 "\n"
-"Molimo vas, proverite da li ste uneli dobru lokaciju."
+"Molimo vas, proverite da li ste uneli dobru putanju."
 
 #: gedit/gedit-utils.c:1005
 #, c-format
@@ -2305,7 +2302,7 @@ msgid ""
 "\n"
 "Make sure you have the appropriate write permissions."
 msgstr ""
-"Ne mogu da napravim datoteku \"%s\".\n"
+"Ne mogu da napravim datoteku „%s“.\n"
 "\n"
 "Proverite da li imate prikladne dozvole pisanja."
 
@@ -2316,7 +2313,7 @@ msgid ""
 "\n"
 "The file name is too long."
 msgstr ""
-"Ne mogu da napravim datoteku \"%s\".\n"
+"Ne mogu da napravim datoteku „%s“.\n"
 "\n"
 "Ime datoteke je predugačko."
 
@@ -2328,9 +2325,9 @@ msgid ""
 "A directory component in the file name does not exist or is a dangling "
 "symbolic link."
 msgstr ""
-"ne mogu da kreiram datoteku \"%s\".\n"
+"ne mogu da napravim datoteku „%s“.\n"
 "\n"
-"Direktorijum iz imena datoteke ne postoji ili je lutajući simbolički link."
+"Direktorijum iz imena datoteke ne postoji ili je nepovezana simbolička veza."
 
 #: gedit/gedit-utils.c:1028
 #, c-format
@@ -2339,14 +2336,14 @@ msgid ""
 "\n"
 "Please free some disk space and try again."
 msgstr ""
-"Nema dovoljno prostora na disku da biste napravili datoteku \"%s\".\n"
+"Nema dovoljno prostora na disku da biste napravili datoteku „%s“.\n"
 "\n"
 "Molimo vas da oslobodite malo slobodnog prostora i pokušajte ponovo."
 
 #: gedit/gedit-utils.c:1034
 #, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Ne mogu da napravim direktorijum \"%s\"."
+msgstr "Ne mogu da napravim direktorijum „%s“."
 
 #.
 #. if (col == chars)
@@ -2467,7 +2464,7 @@ msgid ""
 "displays the result."
 msgstr ""
 "Dodatak za statistiku dokumenta koji analizira trenutni dokument i utvrđuje "
-"broj reči, linija, karaktera, i karaktera bez razmaka i prikazuje rezultate."
+"broj reči, linija, znakova, i znakova bez razmaka i prikazuje rezultate."
 
 #: plugins/docinfo/docinfo.glade2.h:2
 msgid "0"
@@ -2487,7 +2484,7 @@ msgstr "Znakova (bez razmaka)"
 
 #: plugins/docinfo/docinfo.glade2.h:6
 msgid "Characters (with spaces)"
-msgstr "Karaktera (sa razmacima)"
+msgstr "Znakovaa (sa razmacima)"
 
 #: plugins/docinfo/docinfo.glade2.h:8
 msgid "Update"
@@ -2958,7 +2955,7 @@ msgid ""
 "commonly used tags/strings without having to type them."
 msgstr ""
 "Dodatak za listu elemenata pruža način lakog umetalja često korišćenih "
-"elemenata/stringova u dokument bez potrebe da ih kucate."
+"elemenata/niski u dokument bez potrebe da ih kucate."
 
 #: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
@@ -3028,6 +3025,152 @@ msgstr "Ubacite izabrani tekst u spisak isečaka"
 msgid "_Copy Text"
 msgstr "_Kopiraj tekst"
 
+#~ msgid "Display Right Margin"
+#~ msgstr "Prikaži desnu marginu"
+
+#~ msgid "Enable Syntax Highlighting"
+#~ msgstr "Uključi isticanje sintakse"
+
+#~ msgid "Right Margin Position"
+#~ msgstr "Položaj desne margine"
+
+#~ msgid "Specifies the position of the right margin."
+#~ msgstr "Određuje položaj desne margine."
+
+#~ msgid "Whether gedit should display the right margin in the editing area."
+#~ msgstr ""
+#~ "Da li gedit treba da prikaže desnu marginu u prostoru za izmenu teksta."
+
+#~ msgid "Whether gedit should enable syntax highlighting."
+#~ msgstr "Da li gedit treba da omogući isticanje sintakse."
+
+#~ msgid ""
+#~ "Could not find '%s'.\n"
+#~ "\n"
+#~ "Please, reinstall gedit"
+#~ msgstr ""
+#~ "Ne mogu da pronađem „%s“.\n"
+#~ "\n"
+#~ "Ponovo instalirajte gedit."
+
+#~ msgid ""
+#~ "Could not find the required widgets inside '%s'.\n"
+#~ "\n"
+#~ "Please, reinstall gedit."
+#~ msgstr ""
+#~ "Ne mogu da pronađem neophodne elemente u „%s“.\n"
+#~ "\n"
+#~ "Ponovo instalirajte gedit."
+
+#~ msgid "Elements"
+#~ msgstr "Elementi"
+
+#~ msgid ""
+#~ "gedit-preferences.glade2'.\n"
+#~ "\n"
+#~ "Reinstall gedit."
+#~ msgstr ""
+#~ "gedit-preferences.glade2“.\n"
+#~ "\n"
+#~ "Ponovo instalirajte gedit."
+
+#~ msgid "<b>Auto Indentation</b>"
+#~ msgstr "<b>Automatsko uvlačenje</b>"
+
+#~ msgid "<b>Elements</b>"
+#~ msgstr "<b>Elementi</b>"
+
+#~ msgid "<b>File Saving</b>"
+#~ msgstr "<b>Snimanje datoteke</b>"
+
+#~ msgid "<b>Right Margin</b>"
+#~ msgstr "<b>Desna margina</b>"
+
+# nesigurno: da li su ovo jezicci ili tabulatori?
+#~ msgid "<b>Tabs</b>"
+#~ msgstr "<b>Listovi</b>"
+
+#~ msgid "<b>Undo</b>"
+#~ msgstr "<b>Opozivanje</b>"
+
+#~ msgid "Bold"
+#~ msgstr "Zacrnjena"
+
+#~ msgid "D_isplay right margin"
+#~ msgstr "Pr_ikaži desnu marginu"
+
+#~ msgid "Highlight _mode:"
+#~ msgstr "_Režim isticanja:"
+
+#~ msgid "Italic"
+#~ msgstr "Kurziv"
+
+#~ msgid "Normal _text color:"
+#~ msgstr "Boja običnog _teksta:"
+
+#~ msgid "Pick a color"
+#~ msgstr "Izaberite boju"
+
+#~ msgid "Pick the editor font"
+#~ msgstr "Izaberite boju teksta"
+
+#~ msgid "Strikethrough"
+#~ msgstr "Precrtano"
+
+#~ msgid "Syntax Highlighting"
+#~ msgstr "Isticanje sintakse"
+
+#~ msgid "Underline"
+#~ msgstr "Podvučeno"
+
+#~ msgid "View"
+#~ msgstr "Pregled"
+
+#~ msgid "_Background:"
+#~ msgstr "_Pozadina:"
+
+#~ msgid "_Enable syntax highlighting"
+#~ msgstr "Uključi is_ticanje sintakse"
+
+#~ msgid "_Foreground:"
+#~ msgstr "_Boja:"
+
+#~ msgid "_Limit to"
+#~ msgstr "_Ograniči na"
+
+#~ msgid "_Reset to Default "
+#~ msgstr "_Vrati na podrazumevano"
+
+#~ msgid "_Right margin at column:"
+#~ msgstr "_Desna margina u koloni:"
+
+#~ msgid "_Tabs width:"
+#~ msgstr "Širina _tabulatora:"
+
+#~ msgid "_Unlimited undo"
+#~ msgstr "_Neograničeno opozivanje"
+
+#~ msgid "_About Plugin"
+#~ msgstr "_O dodatku"
+
+#~ msgid "Open '%s'"
+#~ msgstr "Otvori „%s“"
+
+#~ msgid "Search for and replace text"
+#~ msgstr "Traži i zameni tekst"
+
+#~ msgid "Search for text"
+#~ msgstr "Traži tekst"
+
+#~ msgid "Search forwards for the same text"
+#~ msgstr "Traži isti tekst unapred"
+
+#~ msgid "Ukrainian"
+#~ msgstr "Ukrajinski"
+
+#~ msgid "Available Tag Lists"
+#~ msgstr "Dostupne liste elemenata"
+
 #~ msgid "Text Wrapping"
 #~ msgstr "Prelom teksta"
 
@@ -3060,8 +3203,7 @@ msgstr "_Kopiraj tekst"
 #~ msgstr "<span weight=\"bold\">Prilikom snimanja nove datoteke...</span>"
 
 #~ msgid "<span weight=\"bold\">When saving an existing file...</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\">Prilikom snimanja postojeće datoteke...</span>"
+#~ msgstr "<span weight=\"bold\">Prilikom snimanja postojeće datoteke...</span>"
 
 #~ msgid "Add new encodings"
 #~ msgstr "Dodaj novi kodni raspored"
