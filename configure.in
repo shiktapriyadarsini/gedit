@@ -1,7 +1,7 @@
 AC_INIT(src/gedit.c)
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gedit, 0.9.8cvs)
+AM_INIT_AUTOMAKE(gedit, 0.9.8)
 
 AM_MAINTAINER_MODE
 AM_ACLOCAL_INCLUDE(macros)
@@ -167,6 +167,7 @@ plugins/time/Makefile
 plugins/reverse/Makefile
 plugins/shell_output/Makefile
 plugins/sort/Makefile
+plugins/cvschangelog/Makefile
 src/Makefile
 src/dialogs/Makefile
 ],[sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile])
