@@ -8,7 +8,7 @@ distuninstallcheck_listfiles = find . -type f -print | grep -v '^\./var/scrollke
 
 EXTRA_DIST = BUGS		\
 	ChangeLog  		\
-	message-of-doom		\
+#	message-of-doom		\
 	README 			\
 	TODO 			\
 	xmldocs.make 		\
