@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.7.1\n"
-"POT-Creation-Date: 2000-11-30 11:45+0100\n"
-"PO-Revision-Date: 2000-11-30 11:46+01:00\n"
+"POT-Creation-Date: 2000-12-19 22:03+0100\n"
+"PO-Revision-Date: 2000-12-19 22:04+01:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -993,6 +993,10 @@ msgstr ""
 "%sDu vil ikke kunne bruke %s tillegget uten %s.\n"
 "Ønsker du å spesifisere en ny plassering for %s?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "allokeringsfeil for tillegg"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1005,6 +1009,14 @@ msgstr "Feil tillegg inneholder ikke init_plugin funksjonen."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Feil, init_plugin returnerte en feil"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specified a description"
+msgstr "Feil, tillegget spesifiserte ikke en beskrivelse"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specified a long description"
+msgstr "Feil, tillegget spesifiserte ikke en lang beskrivelse"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
