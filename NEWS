@@ -1,3 +1,50 @@
+=========================
+gedit 2.2.1 - "More time"
+=========================
+
+Updates
+=======
+
+- Updated user manual (Breda McColgan)
+
+Fixes
+=====
+
+- Bug #103844 - Sort plugin installs symlinks and .0.0.0 (Paolo Maggi)
+- Bug #105416 - Missing #include <sys/time.h> (Jim McElwaine)
+- Bug #98798  - Crash on close (Paolo)
+- Bug #107168 - Title string not localized from plugin manager browsing dlg (Paolo)
+- Bug #104940 - Don't add "Dump XML" and "Dump the UI Xml description" to
+  the .po files (Paolo)
+- Bug #106677 - "Farsi" should be changed to "Persian" (Paolo)
+- Bug #106456 - Theme problems with the popdown menu (James Willcox)
+- Bug #107491 - Use ISO-2022-JP/ISO-2022-KR instead 
+  of ISO2022JP/ISO2022KR (Hidetoshi Tajima)
+- Cut and paste bug in the undo manager code (Paolo)
+- Bug #106471 - Use the application font size for the font in 
+  the font pickers (Paolo)
+
+New and updated translations
+============================
+
+- Belarusian (Belarusian team)
+- Brazilian Portuguese (Evandro Fernandes Giovanini)
+- Catalan (Jordi Mallach)
+- Czech (Miloslav Trmac)
+- Danish (Ole Laursen)
+- Dutch (Vincent van Adrighem)
+- Finnish (Jarkko Ranta)
+- Greek (Kostas Papadimas)
+- Kannada (Pramod)
+- Lithuanian (Vaidotas Zemlys)
+- Persian (Roozbeh Pournader)
+- Polish (GNOME PL Team)
+- Portuguese (Duarte Loreto)
+- Russian (Russian team)
+- Spanish (Pablo Gonzalo del Campo)
+- Turkish (Erkan)
+
+
 ======================
 gedit 2.2.0.1 - "Hope"
 ======================
@@ -16,6 +63,7 @@ Updated translations
 - Romanian (Mugurel Tudor)
 - Russian (Russian team)
 - Ukrainian (Yuriy Syrota)
+
 
 
 =====================

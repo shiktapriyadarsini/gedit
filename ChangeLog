@@ -1,3 +1,11 @@
+2003-03-10  Paolo Maggi <paolo.maggi@polito.it>
+
+	* configure.in: bump version to 2.2.1,
+
+	* README: bump version to 2.2.1
+
+	* NEW: updated
+
 2003-03-07  Breda McColgan <Breda.McColgan@sun.com>
 
         * help/C/gedit.xml: updated for GNOME 2.2.1
