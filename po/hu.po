@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.9.4\n"
-"POT-Creation-Date: 2001-02-01 16:14+0100\n"
+"POT-Creation-Date: 2001-02-27 10:00+0100\n"
 "PO-Revision-Date: 2001-02-01 16:20+01:00\n"
 "Last-Translator: Emese KOVACS <emese@gnome.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
@@ -498,9 +498,8 @@ msgid "line(s)"
 msgstr "-ik sornál"
 
 #: src/dialogs/program.glade.h:1
-#, fuzzy
 msgid "Location to search for :"
-msgstr "Sendmail helye:"
+msgstr "Keresendõ hely:"
 
 #: src/dialogs/replace.glade.h:1
 msgid "Case _sensitive"
@@ -1053,188 +1052,3 @@ msgstr ""
 #: src/view.c:963
 msgid "You can't remove the last view of a document."
 msgstr "Nem tavolíthatod el a dokumentum utolsó nézetét."
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Right\n"
-#~ "Top\n"
-#~ "Bottom\n"
-#~ msgstr ""
-#~ "Bal\n"
-#~ "Jobb\n"
-#~ "Fent\n"
-#~ "Lent\n"
-
-#~ msgid ""
-#~ "Notebook\n"
-#~ "Toplevel\n"
-#~ "Modal\n"
-#~ "Default\n"
-#~ msgstr ""
-#~ "Regiszter\n"
-#~ "Legfelsõ\n"
-#~ "Modal\n"
-#~ "Alapértelmezett\n"
-
-#~ msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-#~ msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-
-#~ msgid "File to use as body of message: "
-#~ msgstr "Ez a fájl legyen a levél törzse: "
-
-#~ msgid "b_eginning of document"
-#~ msgstr "dokumentum _elejétõl keres"
-
-#~ msgid "_cursor position"
-#~ msgstr "_kurzor pozíciótól keres"
-
-#~ msgid "Line"
-#~ msgstr "Sor"
-
-#~ msgid "Text found at line :%i"
-#~ msgstr "Szöveg helye: %i. sor"
-
-#~ msgid "Enter the line number you wish to go to."
-#~ msgstr "Írd be annak a sornak a számát, amire ugrani szeretnél."
-
-#~ msgid "Get file info like characters, lines, words & paragraphs count."
-#~ msgstr "Statisztika a fájlról, karakterek, sorok, szavak, bekezdések száma."
-
-#~ msgid "Can't find again. There is not a text string to search for."
-#~ msgstr "Nem tudok újra keresni, nem adtad meg a keresendõ szöveget."
-
-#~ msgid "Show window debugging messages."
-#~ msgstr "Mutatsd az ablak hibakeresõ üzeneteit."
-
-#~ msgid "Show commands debugging messages."
-#~ msgstr "Mutasd a parancsok hibakeresõ üzeneteit."
-
-#~ msgid "Show document debugging messages."
-#~ msgstr "Mutasd a dokumetumok hibakeresõ üzeneteit."
-
-#~ msgid "Show file debugging messages."
-#~ msgstr "Mutasd a fájl hibakeresõ õzeneteit."
-
-#~ msgid "Show plugin debugging messages."
-#~ msgstr "Mutasd a plugin-ok hibakeresõ üzeneteit."
-
-#~ msgid "Show prefs debugging messages."
-#~ msgstr "Mutasd a beállítások hibekeresõ üzeneteit."
-
-#~ msgid "Show printing debugging messages."
-#~ msgstr "Mutasd a nyomtatás hibekeresõ üzeneteit."
-
-#~ msgid "Show search debugging messages."
-#~ msgstr "Mutasd a keresés hibekeresõ üzeneteit."
-
-#~ msgid "Show undo debugging messages."
-#~ msgstr "Mutasd a visszavonás hibekeresõ üzeneteit."
-
-#~ msgid "Show view debugging messages."
-#~ msgstr "Mutasd a nézet hibekeresõ üzeneteit."
-
-#~ msgid "Show recent debugging messages."
-#~ msgstr "Mutasd a beállítások hibekeresõ üzeneteit."
-
-#~ msgid "Turn on all debugging messages."
-#~ msgstr "Mutass minden hibakeresõ üzenetet"
-
-#~ msgid "Diff plugin."
-#~ msgstr "Diff plugin."
-
-#~ msgid "With special thanks to:"
-#~ msgstr "Köszönet:"
-
-#~ msgid "(C) 1998, 1999 Alex Roberts and Evan Lawrence"
-#~ msgstr "(C) 1998, 1999 Alex Roberts und Evan Lawrence"
-
-#~ msgid "gedit is a small and lightweight text editor for GNOME/Gtk+"
-#~ msgstr "gedit egy kicsi és könnyû szövegszerkesztõ a GNOME/Gtk+-hoz"
-
-#~ msgid "Show splitscreen"
-#~ msgstr "Splitscreen mutatása"
-
-#~ msgid "Enable Wordwrap"
-#~ msgstr "Sortörés"
-
-#, fuzzy
-#~ msgid "Find _In Files..."
-#~ msgstr "Keresés fájlokban"
-
-#~ msgid ""
-#~ "Enable or disable the statusbar at the bottom of this application window."
-#~ msgstr "Az alkalmazás ablakának alján található státuszsor ki/bekapcsolása."
-
-#~ msgid "Get the current and total lines"
-#~ msgstr "Aktuális és összes sort kiírja"
-
-#~ msgid ""
-#~ "Filename: %s\n"
-#~ "\n"
-#~ "Total Lines: %i\n"
-#~ "Current Line: %i"
-#~ msgstr ""
-#~ "Fájlnév: %s\n"
-#~ "\n"
-#~ "Össz sorok: %i\n"
-#~ "Aktuális sor: %i"
-
-#~ msgid "Filename"
-#~ msgstr "Fájlnév"
-
-#~ msgid "Contents"
-#~ msgstr "Tartalom"
-
-#~ msgid "Go to line"
-#~ msgstr "Sorra ugrás"
-
-#~ msgid "Line number: "
-#~ msgstr "Sor száma: "
-
-#~ msgid "Replace?"
-#~ msgstr "Cserélhetem?"
-
-#~ msgid "Replace all"
-#~ msgstr "Mindent cserél"
-
-#~ msgid "Search for:"
-#~ msgstr "Keresés erre:"
-
-#~ msgid "Replace with:"
-#~ msgstr "Csere ezzel:"
-
-#~ msgid "Ask before replacing"
-#~ msgstr "Csere elõtt kérdez"
-
-#~ msgid "Search"
-#~ msgstr "Keresés"
-
-#~ msgid "Wrap long lines at the page width"
-#~ msgstr "Hosszú sorok betörése oldalszélességnél"
-
-#~ msgid "Search from: "
-#~ msgstr "Keresés innen: "
-
-#~ msgid ""
-#~ "Cursor\n"
-#~ "Beginning of document\n"
-#~ "End of document\n"
-#~ msgstr ""
-#~ "Kurzortól\n"
-#~ "Dokumentum elejétõl\n"
-#~ "Dokumentum végétõl\n"
-
-#~ msgid ""
-#~ "Cursor\n"
-#~ "Beginning of Document\n"
-#~ "End of Document\n"
-#~ msgstr ""
-#~ "Kurzor\n"
-#~ "A dokumentum eleje\n"
-#~ "A dokumentum vége\n"
-
-#~ msgid "gedit"
-#~ msgstr "gedit"
-
-#~ msgid "Text editor"
-#~ msgstr "Szövegszerkesztõ"
