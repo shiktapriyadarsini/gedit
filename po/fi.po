@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2000-11-25 14:54+0000\n"
+"POT-Creation-Date: 2001-01-07 07:58+0100\n"
 "PO-Revision-Date: 2000-11-15 12:00+0300\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -988,13 +988,17 @@ msgstr ""
 "\n"
 
 #: src/plugin.c:220
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%sYou won't be able to use the %s plugin without %s. \n"
 " Do you want to specify a new location for %s?"
 msgstr ""
 "%s liitännäisen käyttämiseksi tarvitaan %s. \n"
 " Haluatko antaa %s:lle uuden sijainnin?"
+
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr ""
 
 #: src/plugin.c:322
 #, c-format
@@ -1008,6 +1012,14 @@ msgstr "Virhe, liitännäinen ei sisällä init_plugin -funktiota."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Virhe, init_plugin palautti virheen"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specify a description"
+msgstr ""
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specify a long description"
+msgstr ""
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"

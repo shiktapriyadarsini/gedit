@@ -610,7 +610,7 @@ msgid "The file %s was not found."
 msgstr "Файлу %s не знайдено."
 
 #: src/file.c:161
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "An error was encountered while opening the file \"%s\".\n"
 "Please make sure the file exists."
