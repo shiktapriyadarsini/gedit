@@ -58,7 +58,6 @@ typedef struct _GeditApp GeditApp;
 
 struct _GeditApp 
 {
-	/* FIXME: do we really need to extends GtkBin - Paolo */
 	GObject object;
 
 	/*< private > */
