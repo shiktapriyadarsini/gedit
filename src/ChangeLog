@@ -1,3 +1,10 @@
+2003-03-03  James Willcox  <jwillcox@gnome.org>
+
+	* gedit-mdi.c: (menu_position_under_widget),
+	(gedit_mdi_add_open_button):
+
+	Fix some theme problems with the popdown menu.  Fixes #106456.
+
 2003-03-03  Paolo Maggi <paolo.maggi@polito.it>
 
 	* gedit-encodings.c: removed unused commented code (fix bug #106677 too)
