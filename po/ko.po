@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: AC_PACKAGE_NAME AC_PACKAGE_VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-05-09 01:14+0900\n"
+"PO-Revision-Date: 2003-06-29 20:37+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
@@ -2422,9 +2422,8 @@ msgid "Show _Overwrite Mode"
 msgstr "겹쳐쓰기 모드 보기(_O)"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "도구막대에 아이콘만 보입니다"
+msgstr "도구막대에 아이콘과 글자 모두 보입니다"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2435,9 +2434,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "상태 막대에 겹쳐쓰기 모드를 보입니다"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "도구막대에 아이콘만 보입니다"
+msgstr "도구막대에 아이콘 옆에 우선순위 높은 글자를 보입니다"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
