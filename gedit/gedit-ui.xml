@@ -71,6 +71,11 @@
   </toolbar>
 
   <popup name="NotebookPopup" action="NotebookPopupAction">
+    <menuitem action="FileSave"/>
+    <menuitem action="FileSaveAs"/>
+    <separator />
+    <menuitem action="FilePrint"/>    
+    <separator />    
     <menuitem name="FileCloseMenu" action="FileClose"/>
   </popup>
 
