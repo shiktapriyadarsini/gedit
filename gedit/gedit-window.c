@@ -563,6 +563,7 @@ update_documents_list_menu (GeditWindow *window)
  		gtk_action_group_remove_action (p->documents_list_action_group,
 						GTK_ACTION (l->data));
 	}
+	g_list_free (actions);
 
 	n = gtk_notebook_get_n_pages (GTK_NOTEBOOK (p->notebook));
 
@@ -1074,6 +1075,9 @@ notebook_tab_removed (GeditNotebook *notebook,
 		{
 			/* the list has more than one item */
 			gtk_widget_destroy (GTK_WIDGET (window));
+
+			/* do not try updating the menu */
+			return;
 		}
 		else
 		{	
