@@ -5,21 +5,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.7.1\n"
-"POT-Creation-Date: 2001-12-11 23:37+0100\n"
+"POT-Creation-Date: 2001-12-11 21:48-0500\n"
 "PO-Revision-Date: 2001-12-11 23:37+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
-
-#: gedit.desktop.in.h:1
-msgid "Text editor"
-msgstr "Tekstredigering"
-
-#: gedit.desktop.in.h:2
-msgid "gedit"
-msgstr "gedit"
 
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
@@ -28,40 +20,6 @@ msgstr "ASCII-tabell"
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
 msgstr "Dette tillegget viser en pop-up dialog som inneholder en ASCII-tabell."
-
-#: plugins/ASCII/asciitable.glade.h:1
-msgid "Char"
-msgstr "Tegn"
-
-#: plugins/ASCII/asciitable.glade.h:2
-msgid "Dec#"
-msgstr "Des#"
-
-#: plugins/ASCII/asciitable.glade.h:3
-msgid "Hex#"
-msgstr "Hex#"
-
-#: plugins/ASCII/asciitable.glade.h:4
-msgid ""
-"If you wish to insert any of the characters in to the active \n"
-"document, select the character and click the \"Insert Char\" \n"
-"button or double click the character in the table."
-msgstr ""
-"Hvis du ønsker å sette inn noen av tegnene i det aktive \n"
-"dokumentet velger du tegnet og klikker \"Sett inn tegn\"- \n"
-"knappen eller dobbelklikker på tegnet i tabellen."
-
-#: plugins/ASCII/asciitable.glade.h:7
-msgid "Insert char"
-msgstr "Sett inn tegn"
-
-#: plugins/ASCII/asciitable.glade.h:8
-msgid "Name"
-msgstr "Navn"
-
-#: plugins/ASCII/asciitable.glade.h:9
-msgid "gedit: ASCII table"
-msgstr "gedit: ASCII-tabell"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -73,28 +31,6 @@ msgstr "Bla gjennom"
 msgid "Web browse plugin"
 msgstr "Webleser tillegg"
 
-#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-#: plugins/email/email.glade.h:1
-msgid " _Change... "
-msgstr " _Endre... "
-
-#: plugins/browse/browse.glade.h:2
-msgid "Enter the _URL to browse for:"
-msgstr "Skriv inn URL som skal vises:"
-
-#: plugins/browse/browse.glade.h:3
-msgid "Lynx found at: "
-msgstr "Lynx ble funnet i: "
-
-#: plugins/browse/browse.glade.h:4
-msgid "gedit: Web Browse plugin"
-msgstr "gedit Nettleser-tillegg"
-
-#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
-#: plugins/email/email.glade.h:14
-msgid "location"
-msgstr "plassering"
-
 #: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "Konverter"
@@ -102,30 +38,6 @@ msgstr "Konverter"
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
 msgstr "Tallkonverterer"
-
-#: plugins/convert/convert.glade.h:1
-msgid " Decimal to _Hex "
-msgstr " Desimal til _heksadesimal "
-
-#: plugins/convert/convert.glade.h:2
-msgid " Decimal to _Octal "
-msgstr " Desimal til _oktal "
-
-#: plugins/convert/convert.glade.h:3
-msgid " Hex to Decima_l "
-msgstr " Heksadesimal til desima_l "
-
-#: plugins/convert/convert.glade.h:4
-msgid "_Converted value:"
-msgstr "_Konvertert verdi:"
-
-#: plugins/convert/convert.glade.h:5
-msgid "_Value to be converted:"
-msgstr "_Verdi som skal konverteres:"
-
-#: plugins/convert/convert.glade.h:6
-msgid "gedit: Number Converter plugin"
-msgstr "gedit: Tallkonverterer-tillegg"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -196,46 +108,6 @@ msgstr ""
 "Lager en fil med forskjellene mellom to dokumenter eller filer på disk\n"
 "For mer informasjon om diff, skriv \"man diff\" på kommandolinjen\n"
 
-#: plugins/diff/diff.glade.h:2
-msgid "Choose the files to compare"
-msgstr "Velg filer som skal sammenlignes"
-
-#: plugins/diff/diff.glade.h:3
-msgid "Diff found at: "
-msgstr "Diff funnet i: "
-
-#: plugins/diff/diff.glade.h:4
-msgid "First"
-msgstr "Første"
-
-#: plugins/diff/diff.glade.h:5
-msgid "From a file on disk"
-msgstr "Fra en fil på disk"
-
-#: plugins/diff/diff.glade.h:6
-msgid "From document"
-msgstr "Fra dokument"
-
-#: plugins/diff/diff.glade.h:7
-msgid "Second"
-msgstr "Andre"
-
-#: plugins/diff/diff.glade.h:8
-msgid "Select the \"first\" file..."
-msgstr "Velg den \"første\" filen..."
-
-#: plugins/diff/diff.glade.h:9
-msgid "Select the \"second\" file..."
-msgstr "Velg den \"andre\" filen..."
-
-#: plugins/diff/diff.glade.h:10
-msgid "Use the _unified output format (-u option)"
-msgstr "Bruk enhetlig utskriftsformat (-u flagg)"
-
-#: plugins/diff/diff.glade.h:11
-msgid "gedit: Diff plugin"
-msgstr "gedit: Diff-tillegg"
-
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -259,50 +131,6 @@ msgid ""
 msgstr ""
 "Dette tillegget viser en dialog som inneholder basisinformasjon om dette "
 "dokumentet."
-
-#: plugins/docinfo/docinfo.glade.h:1
-msgid "0"
-msgstr "0"
-
-#: plugins/docinfo/docinfo.glade.h:2
-msgid "Characters (no spaces)"
-msgstr "Tegn (ikke mellomrom)"
-
-#: plugins/docinfo/docinfo.glade.h:3
-msgid "Characters (with spaces)"
-msgstr "Tegn (med mellomrom)"
-
-#: plugins/docinfo/docinfo.glade.h:4
-msgid "Current column"
-msgstr "Aktiv kolonne"
-
-#: plugins/docinfo/docinfo.glade.h:5
-msgid "Current line"
-msgstr "Aktiv linje"
-
-#: plugins/docinfo/docinfo.glade.h:6
-msgid "File Name"
-msgstr "Filnavn"
-
-#: plugins/docinfo/docinfo.glade.h:7
-msgid "Lines"
-msgstr "Linjer"
-
-#: plugins/docinfo/docinfo.glade.h:8
-msgid "Paragraphs"
-msgstr "Avsnitt"
-
-#: plugins/docinfo/docinfo.glade.h:9
-msgid "Update"
-msgstr "Oppdatering"
-
-#: plugins/docinfo/docinfo.glade.h:10
-msgid "Words"
-msgstr "Ord"
-
-#: plugins/docinfo/docinfo.glade.h:11
-msgid "gedit: Document Info plugin"
-msgstr "gedit: Dokumentinformasjonstillegg"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -330,54 +158,6 @@ msgid ""
 msgstr ""
 "Send aktivt dokument til en spesifisert e-post adresse\n"
 "gedit søker etter sendmail for å bruke dette tillegget."
-
-#: plugins/email/email.glade.h:2
-msgid "Change..."
-msgstr "Endre..."
-
-#: plugins/email/email.glade.h:3
-msgid "F_rom:"
-msgstr "F_ra:"
-
-#: plugins/email/email.glade.h:4
-msgid "File to use as body of message: "
-msgstr "Fil som skal brukes som meldingskropp: "
-
-#: plugins/email/email.glade.h:5
-msgid "From:"
-msgstr "Fra:"
-
-#: plugins/email/email.glade.h:6
-msgid "Sendmail found at:"
-msgstr "Sendmail funnet i:"
-
-#: plugins/email/email.glade.h:7
-msgid "Subject:"
-msgstr "Emne:"
-
-#: plugins/email/email.glade.h:8
-msgid "To:"
-msgstr "Til:"
-
-#: plugins/email/email.glade.h:9
-msgid "_Subject:"
-msgstr "E_mne:"
-
-#: plugins/email/email.glade.h:10
-msgid "_To:"
-msgstr "_Til:"
-
-#: plugins/email/email.glade.h:11
-msgid "filename"
-msgstr "filnavn"
-
-#: plugins/email/email.glade.h:12
-msgid "gedit: E-mail plugin"
-msgstr "gedit: E-post tillegg"
-
-#: plugins/email/email.glade.h:13
-msgid "gedit: e-mail plugin"
-msgstr "gedit: e-post tillegg"
 
 #: plugins/reverse/reverse.c:69
 msgid "Reverse"
@@ -414,26 +194,6 @@ msgstr "Skallutskrift"
 msgid "Insert the shell output in the document"
 msgstr "Sett inn utskrift fra skallet i dokumentet"
 
-#: plugins/shell_output/shell_output.glade.h:1
-msgid "Select the working directory..."
-msgstr "Velg arbeidskatalog..."
-
-#: plugins/shell_output/shell_output.glade.h:2
-msgid "Shell _command:"
-msgstr "Skall_kommando:"
-
-#: plugins/shell_output/shell_output.glade.h:3
-msgid "Specify the working directory and the command you want to run."
-msgstr "Spesifiser arbeidskatalogen og kommandoen du vil kjøre."
-
-#: plugins/shell_output/shell_output.glade.h:4
-msgid "_Working directory:"
-msgstr "_Arbeidskatalog:"
-
-#: plugins/shell_output/shell_output.glade.h:5
-msgid "gedit: Shell Output plugin"
-msgstr "gedit: Tillegg for skallutskrift"
-
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr "Sorter"
@@ -446,22 +206,6 @@ msgstr "Sorter et dokument."
 msgid "Sort a document or selected text."
 msgstr "Sorter et dokument eller valg tekst."
 
-#: plugins/sort/sort.glade.h:1
-msgid "1"
-msgstr "1"
-
-#: plugins/sort/sort.glade.h:2
-msgid "Case Sensitive"
-msgstr "Skill mellom store/små bokstaver"
-
-#: plugins/sort/sort.glade.h:3
-msgid "Sort starting at column:"
-msgstr "Sorter fra kolonne:"
-
-#: plugins/sort/sort.glade.h:4
-msgid "gedit: Sort plugin"
-msgstr "gedit: Sorteringstillegg"
-
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr "Sett inn tid"
@@ -469,14 +213,6 @@ msgstr "Sett inn tid"
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr "Setter inn dagens dato og tid"
-
-#: src/dialogs/about.glade.h:1
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(C) 1998, 1999, 2000 Alex Roberts og Evan Lawrence"
-
-#: src/dialogs/about.glade.h:2
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr "gedit er en liten lettvekt tekst editor for GNOME."
 
 #: src/dialogs/dialog-plugins.c:87
 #, c-format
@@ -488,7 +224,7 @@ msgstr "For å bruke %s-tillegget må du spesifisere en plassering for \"%s\"."
 msgid "gedit: Preferences"
 msgstr "gedit: Brukervalg"
 
-#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+#: src/dialogs/dialog-replace.c:130
 msgid "Replace"
 msgstr "Erstatt"
 
@@ -517,274 +253,6 @@ msgstr "Kunne ikke allokere minne for \"Erstatt alle\" forespørselen."
 #, c-format
 msgid "Loaded file %s"
 msgstr "Lastet fil %s"
-
-#: src/dialogs/goto-line.glade.h:1
-msgid "Goto Line"
-msgstr "Gå til linje"
-
-#: src/dialogs/goto-line.glade.h:2
-msgid "Line number:"
-msgstr "Linjenummer:"
-
-#: src/dialogs/plugin-manager.glade.h:1
-msgid "Author(s):"
-msgstr "Forfatter(e):"
-
-#: src/dialogs/plugin-manager.glade.h:2
-msgid "De_scription"
-msgstr "Be_skrivelse"
-
-#: src/dialogs/plugin-manager.glade.h:3
-msgid "De_tails"
-msgstr "De_taljer"
-
-#: src/dialogs/plugin-manager.glade.h:4
-msgid "File name:"
-msgstr "Filnavn:"
-
-#: src/dialogs/plugin-manager.glade.h:5
-msgid "Plugins manager..."
-msgstr "Tilleggshåndterer..."
-
-#: src/dialogs/plugin-manager.glade.h:6
-msgid "Select the plugins to activate:"
-msgstr "Velg tillegg som skal aktiveres:"
-
-#: src/dialogs/plugin-manager.glade.h:7
-msgid "_Activate all"
-msgstr "_Aktiver alle"
-
-#: src/dialogs/plugin-manager.glade.h:8
-msgid "_Deactivate all"
-msgstr "_Deaktiver alle"
-
-#: src/dialogs/prefs.glade.h:1
-msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÆæØøÅå"
-
-#: src/dialogs/prefs.glade.h:2
-msgid "Add _header"
-msgstr "Legg til _header"
-
-#: src/dialogs/prefs.glade.h:3
-msgid "Appearance"
-msgstr "Utseende"
-
-#: src/dialogs/prefs.glade.h:4
-msgid "Bottom"
-msgstr "Bunn"
-
-#: src/dialogs/prefs.glade.h:5
-msgid "Colors"
-msgstr "Farger"
-
-#: src/dialogs/prefs.glade.h:6
-msgid "Default"
-msgstr "Forvalg"
-
-#: src/dialogs/prefs.glade.h:7
-msgid "Documents"
-msgstr "Dokumenter"
-
-#: src/dialogs/prefs.glade.h:8
-msgid "Editor Behavior"
-msgstr "Editorens oppførsel"
-
-#: src/dialogs/prefs.glade.h:9
-msgid "Enable _Auto-indent"
-msgstr "Slå på _autoindentering"
-
-#: src/dialogs/prefs.glade.h:10
-msgid "Enable word _wrapping"
-msgstr "Slå på ordbr_yting"
-
-#: src/dialogs/prefs.glade.h:11
-msgid "Fonts"
-msgstr "Skrifttyper"
-
-#: src/dialogs/prefs.glade.h:12
-msgid "Fonts/Colors"
-msgstr "Skrifttyper/Farger"
-
-#: src/dialogs/prefs.glade.h:13
-msgid "General"
-msgstr "Generelt"
-
-#: src/dialogs/prefs.glade.h:14
-msgid "Left"
-msgstr "Venstre"
-
-#: src/dialogs/prefs.glade.h:15
-msgid "MDI (Multiple Document Interface)"
-msgstr "MDI (Multiple Document Interface)"
-
-#: src/dialogs/prefs.glade.h:16
-msgid "Modal"
-msgstr "Modal"
-
-#: src/dialogs/prefs.glade.h:17
-msgid "Notebook"
-msgstr "Notisblokk"
-
-#: src/dialogs/prefs.glade.h:18
-msgid "Notebook _tab position: "
-msgstr "No_tisbok faneplassering: "
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Orientation"
-msgstr "Orientering"
-
-#: src/dialogs/prefs.glade.h:20
-msgid "Paper"
-msgstr "Papir"
-
-#: src/dialogs/prefs.glade.h:21
-msgid "Pick a Font"
-msgstr "Velg en skrifttype"
-
-#: src/dialogs/prefs.glade.h:22
-msgid "Pick a color"
-msgstr "Velg en farge"
-
-#: src/dialogs/prefs.glade.h:23
-msgid "Preferences"
-msgstr "Brukervalg"
-
-#: src/dialogs/prefs.glade.h:24
-msgid "Print line _numbers every:"
-msgstr "Skriv ut linje_nummer for hver:"
-
-#: src/dialogs/prefs.glade.h:25
-msgid "Printing"
-msgstr "Utskrift"
-
-#: src/dialogs/prefs.glade.h:26
-msgid "Right"
-msgstr "Høyre"
-
-#: src/dialogs/prefs.glade.h:27
-msgid "S_how statusbar"
-msgstr "V_is statuslinje"
-
-#: src/dialogs/prefs.glade.h:28
-msgid "Set limit on _undo levels to:"
-msgstr "Sett grense for an_grenivåer til:"
-
-#: src/dialogs/prefs.glade.h:29
-msgid "Set toolbar according to _system settings"
-msgstr "Sett verktøylinjen i henhold til _systeminnstillingene"
-
-#: src/dialogs/prefs.glade.h:30
-msgid "Set toolbar to _icons only"
-msgstr "Sett verktøylinjen til kun _ikoner"
-
-#: src/dialogs/prefs.glade.h:31
-msgid "Set toolbar to icons with _text"
-msgstr "Sett verktøylinjen til ikoner med _tekst"
-
-#: src/dialogs/prefs.glade.h:32
-msgid "Tab _width: "
-msgstr "Ta_b bredde: "
-
-#: src/dialogs/prefs.glade.h:33
-msgid "Top"
-msgstr "Topp"
-
-#: src/dialogs/prefs.glade.h:34
-msgid "Toplevel"
-msgstr "Toppnivå"
-
-#: src/dialogs/prefs.glade.h:35 src/menus.c:276
-msgid "Undo"
-msgstr "Angre"
-
-#: src/dialogs/prefs.glade.h:36
-msgid "_Background: "
-msgstr "_Bakgrunn: "
-
-#: src/dialogs/prefs.glade.h:37
-msgid "_Default font: "
-msgstr "Stan_dard skrifttype: "
-
-#: src/dialogs/prefs.glade.h:38
-msgid "_Foreground: "
-msgstr "_Forgrunn: "
-
-#: src/dialogs/prefs.glade.h:39
-msgid "_Landscape"
-msgstr "_Landskap"
-
-#: src/dialogs/prefs.glade.h:40
-msgid "_Mode: "
-msgstr "_Modus: "
-
-#: src/dialogs/prefs.glade.h:41
-msgid "_Portrait"
-msgstr "_Portrett"
-
-#: src/dialogs/prefs.glade.h:42
-msgid "_level(s)"
-msgstr "_nivå(er)"
-
-#: src/dialogs/prefs.glade.h:43
-msgid "l_ine(s)"
-msgstr "l_inje(r)"
-
-#: src/dialogs/program.glade.h:1
-msgid "_Location to search for:"
-msgstr "_Lokasjon det skal søkes etter:"
-
-#: src/dialogs/program.glade.h:2
-msgid "gedit: Browse for program location..."
-msgstr "gedit: Se etter programlokasjon..."
-
-#: src/dialogs/program.glade.h:3
-msgid "gedit: Set program location..."
-msgstr "gedit: Sett programlokasjon..."
-
-#: src/dialogs/program.glade.h:4
-msgid "label"
-msgstr "etikett"
-
-#: src/dialogs/replace.glade.h:1
-msgid "Case _sensitive"
-msgstr "_Skill mellom store/små bokstaver"
-
-#: src/dialogs/replace.glade.h:2
-msgid "Find Next"
-msgstr "Finn neste"
-
-#: src/dialogs/replace.glade.h:4
-msgid "Replace All"
-msgstr "Erstatt alt"
-
-#: src/dialogs/replace.glade.h:5
-msgid "Search from the _beginning of the document"
-msgstr "Søk fra _begynnelsen av dokumentet"
-
-#: src/dialogs/replace.glade.h:6
-msgid "Search from the _cursor position"
-msgstr "Søk fra mark_ørposisjonen"
-
-#: src/dialogs/replace.glade.h:7
-msgid "_Replace with: "
-msgstr "E_rstatt med: "
-
-#: src/dialogs/replace.glade.h:8
-msgid "_Search for: "
-msgstr "_Søk etter: "
-
-#: src/dialogs/uri.glade.h:1
-msgid "Enter the location (URI) of the file you would like to open:"
-msgstr "Skriv inn lokasjon (URI) for filen du ønsker å åpne:"
-
-#: src/dialogs/uri.glade.h:2 src/menus.c:259
-msgid "Open"
-msgstr "Åpne"
-
-#: src/dialogs/uri.glade.h:3
-msgid "Open from URI"
-msgstr "Åpne fra URI"
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -1153,6 +621,10 @@ msgid "New"
 msgstr "Ny"
 
 #: src/menus.c:259
+msgid "Open"
+msgstr "Åpne"
+
+#: src/menus.c:259
 msgid "Open a file"
 msgstr "Åpne en fil"
 
@@ -1179,6 +651,10 @@ msgstr "Skriv ut"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr "Skriv ut aktiv fil"
+
+#: src/menus.c:276
+msgid "Undo"
+msgstr "Angre"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -1392,3 +868,396 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "Du kan ikke fjerne forrige visning av et dokument."
+
+#~ msgid "Text editor"
+#~ msgstr "Tekstredigering"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "Char"
+#~ msgstr "Tegn"
+
+#~ msgid "Dec#"
+#~ msgstr "Des#"
+
+#~ msgid "Hex#"
+#~ msgstr "Hex#"
+
+#~ msgid ""
+#~ "If you wish to insert any of the characters in to the active \n"
+#~ "document, select the character and click the \"Insert Char\" \n"
+#~ "button or double click the character in the table."
+#~ msgstr ""
+#~ "Hvis du ønsker å sette inn noen av tegnene i det aktive \n"
+#~ "dokumentet velger du tegnet og klikker \"Sett inn tegn\"- \n"
+#~ "knappen eller dobbelklikker på tegnet i tabellen."
+
+#~ msgid "Insert char"
+#~ msgstr "Sett inn tegn"
+
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#~ msgid "gedit: ASCII table"
+#~ msgstr "gedit: ASCII-tabell"
+
+#~ msgid " _Change... "
+#~ msgstr " _Endre... "
+
+#~ msgid "Enter the _URL to browse for:"
+#~ msgstr "Skriv inn URL som skal vises:"
+
+#~ msgid "Lynx found at: "
+#~ msgstr "Lynx ble funnet i: "
+
+#~ msgid "gedit: Web Browse plugin"
+#~ msgstr "gedit Nettleser-tillegg"
+
+#~ msgid "location"
+#~ msgstr "plassering"
+
+#~ msgid " Decimal to _Hex "
+#~ msgstr " Desimal til _heksadesimal "
+
+#~ msgid " Decimal to _Octal "
+#~ msgstr " Desimal til _oktal "
+
+#~ msgid " Hex to Decima_l "
+#~ msgstr " Heksadesimal til desima_l "
+
+#~ msgid "_Converted value:"
+#~ msgstr "_Konvertert verdi:"
+
+#~ msgid "_Value to be converted:"
+#~ msgstr "_Verdi som skal konverteres:"
+
+#~ msgid "gedit: Number Converter plugin"
+#~ msgstr "gedit: Tallkonverterer-tillegg"
+
+#~ msgid "Choose the files to compare"
+#~ msgstr "Velg filer som skal sammenlignes"
+
+#~ msgid "Diff found at: "
+#~ msgstr "Diff funnet i: "
+
+#~ msgid "First"
+#~ msgstr "Første"
+
+#~ msgid "From a file on disk"
+#~ msgstr "Fra en fil på disk"
+
+#~ msgid "From document"
+#~ msgstr "Fra dokument"
+
+#~ msgid "Second"
+#~ msgstr "Andre"
+
+#~ msgid "Select the \"first\" file..."
+#~ msgstr "Velg den \"første\" filen..."
+
+#~ msgid "Select the \"second\" file..."
+#~ msgstr "Velg den \"andre\" filen..."
+
+#~ msgid "Use the _unified output format (-u option)"
+#~ msgstr "Bruk enhetlig utskriftsformat (-u flagg)"
+
+#~ msgid "gedit: Diff plugin"
+#~ msgstr "gedit: Diff-tillegg"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "Characters (no spaces)"
+#~ msgstr "Tegn (ikke mellomrom)"
+
+#~ msgid "Characters (with spaces)"
+#~ msgstr "Tegn (med mellomrom)"
+
+#~ msgid "Current column"
+#~ msgstr "Aktiv kolonne"
+
+#~ msgid "Current line"
+#~ msgstr "Aktiv linje"
+
+#~ msgid "File Name"
+#~ msgstr "Filnavn"
+
+#~ msgid "Lines"
+#~ msgstr "Linjer"
+
+#~ msgid "Paragraphs"
+#~ msgstr "Avsnitt"
+
+#~ msgid "Update"
+#~ msgstr "Oppdatering"
+
+#~ msgid "Words"
+#~ msgstr "Ord"
+
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "gedit: Dokumentinformasjonstillegg"
+
+#~ msgid "Change..."
+#~ msgstr "Endre..."
+
+#~ msgid "F_rom:"
+#~ msgstr "F_ra:"
+
+#~ msgid "File to use as body of message: "
+#~ msgstr "Fil som skal brukes som meldingskropp: "
+
+#~ msgid "From:"
+#~ msgstr "Fra:"
+
+#~ msgid "Sendmail found at:"
+#~ msgstr "Sendmail funnet i:"
+
+#~ msgid "Subject:"
+#~ msgstr "Emne:"
+
+#~ msgid "To:"
+#~ msgstr "Til:"
+
+#~ msgid "_Subject:"
+#~ msgstr "E_mne:"
+
+#~ msgid "_To:"
+#~ msgstr "_Til:"
+
+#~ msgid "filename"
+#~ msgstr "filnavn"
+
+#~ msgid "gedit: E-mail plugin"
+#~ msgstr "gedit: E-post tillegg"
+
+#~ msgid "gedit: e-mail plugin"
+#~ msgstr "gedit: e-post tillegg"
+
+#~ msgid "Select the working directory..."
+#~ msgstr "Velg arbeidskatalog..."
+
+#~ msgid "Shell _command:"
+#~ msgstr "Skall_kommando:"
+
+#~ msgid "Specify the working directory and the command you want to run."
+#~ msgstr "Spesifiser arbeidskatalogen og kommandoen du vil kjøre."
+
+#~ msgid "_Working directory:"
+#~ msgstr "_Arbeidskatalog:"
+
+#~ msgid "gedit: Shell Output plugin"
+#~ msgstr "gedit: Tillegg for skallutskrift"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "Case Sensitive"
+#~ msgstr "Skill mellom store/små bokstaver"
+
+#~ msgid "Sort starting at column:"
+#~ msgstr "Sorter fra kolonne:"
+
+#~ msgid "gedit: Sort plugin"
+#~ msgstr "gedit: Sorteringstillegg"
+
+#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+#~ msgstr "(C) 1998, 1999, 2000 Alex Roberts og Evan Lawrence"
+
+#~ msgid "gedit is a small and lightweight text editor for GNOME."
+#~ msgstr "gedit er en liten lettvekt tekst editor for GNOME."
+
+#~ msgid "Goto Line"
+#~ msgstr "Gå til linje"
+
+#~ msgid "Line number:"
+#~ msgstr "Linjenummer:"
+
+#~ msgid "Author(s):"
+#~ msgstr "Forfatter(e):"
+
+#~ msgid "De_scription"
+#~ msgstr "Be_skrivelse"
+
+#~ msgid "De_tails"
+#~ msgstr "De_taljer"
+
+#~ msgid "File name:"
+#~ msgstr "Filnavn:"
+
+#~ msgid "Plugins manager..."
+#~ msgstr "Tilleggshåndterer..."
+
+#~ msgid "Select the plugins to activate:"
+#~ msgstr "Velg tillegg som skal aktiveres:"
+
+#~ msgid "_Activate all"
+#~ msgstr "_Aktiver alle"
+
+#~ msgid "_Deactivate all"
+#~ msgstr "_Deaktiver alle"
+
+#~ msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+#~ msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÆæØøÅå"
+
+#~ msgid "Add _header"
+#~ msgstr "Legg til _header"
+
+#~ msgid "Appearance"
+#~ msgstr "Utseende"
+
+#~ msgid "Bottom"
+#~ msgstr "Bunn"
+
+#~ msgid "Colors"
+#~ msgstr "Farger"
+
+#~ msgid "Default"
+#~ msgstr "Forvalg"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumenter"
+
+#~ msgid "Editor Behavior"
+#~ msgstr "Editorens oppførsel"
+
+#~ msgid "Enable _Auto-indent"
+#~ msgstr "Slå på _autoindentering"
+
+#~ msgid "Enable word _wrapping"
+#~ msgstr "Slå på ordbr_yting"
+
+#~ msgid "Fonts"
+#~ msgstr "Skrifttyper"
+
+#~ msgid "Fonts/Colors"
+#~ msgstr "Skrifttyper/Farger"
+
+#~ msgid "General"
+#~ msgstr "Generelt"
+
+#~ msgid "Left"
+#~ msgstr "Venstre"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "MDI (Multiple Document Interface)"
+
+#~ msgid "Modal"
+#~ msgstr "Modal"
+
+#~ msgid "Notebook"
+#~ msgstr "Notisblokk"
+
+#~ msgid "Notebook _tab position: "
+#~ msgstr "No_tisbok faneplassering: "
+
+#~ msgid "Orientation"
+#~ msgstr "Orientering"
+
+#~ msgid "Paper"
+#~ msgstr "Papir"
+
+#~ msgid "Pick a Font"
+#~ msgstr "Velg en skrifttype"
+
+#~ msgid "Pick a color"
+#~ msgstr "Velg en farge"
+
+#~ msgid "Preferences"
+#~ msgstr "Brukervalg"
+
+#~ msgid "Print line _numbers every:"
+#~ msgstr "Skriv ut linje_nummer for hver:"
+
+#~ msgid "Printing"
+#~ msgstr "Utskrift"
+
+#~ msgid "Right"
+#~ msgstr "Høyre"
+
+#~ msgid "S_how statusbar"
+#~ msgstr "V_is statuslinje"
+
+#~ msgid "Set limit on _undo levels to:"
+#~ msgstr "Sett grense for an_grenivåer til:"
+
+#~ msgid "Set toolbar according to _system settings"
+#~ msgstr "Sett verktøylinjen i henhold til _systeminnstillingene"
+
+#~ msgid "Set toolbar to _icons only"
+#~ msgstr "Sett verktøylinjen til kun _ikoner"
+
+#~ msgid "Set toolbar to icons with _text"
+#~ msgstr "Sett verktøylinjen til ikoner med _tekst"
+
+#~ msgid "Tab _width: "
+#~ msgstr "Ta_b bredde: "
+
+#~ msgid "Top"
+#~ msgstr "Topp"
+
+#~ msgid "Toplevel"
+#~ msgstr "Toppnivå"
+
+#~ msgid "_Background: "
+#~ msgstr "_Bakgrunn: "
+
+#~ msgid "_Default font: "
+#~ msgstr "Stan_dard skrifttype: "
+
+#~ msgid "_Foreground: "
+#~ msgstr "_Forgrunn: "
+
+#~ msgid "_Landscape"
+#~ msgstr "_Landskap"
+
+#~ msgid "_Mode: "
+#~ msgstr "_Modus: "
+
+#~ msgid "_Portrait"
+#~ msgstr "_Portrett"
+
+#~ msgid "_level(s)"
+#~ msgstr "_nivå(er)"
+
+#~ msgid "l_ine(s)"
+#~ msgstr "l_inje(r)"
+
+#~ msgid "_Location to search for:"
+#~ msgstr "_Lokasjon det skal søkes etter:"
+
+#~ msgid "gedit: Browse for program location..."
+#~ msgstr "gedit: Se etter programlokasjon..."
+
+#~ msgid "gedit: Set program location..."
+#~ msgstr "gedit: Sett programlokasjon..."
+
+#~ msgid "label"
+#~ msgstr "etikett"
+
+#~ msgid "Case _sensitive"
+#~ msgstr "_Skill mellom store/små bokstaver"
+
+#~ msgid "Find Next"
+#~ msgstr "Finn neste"
+
+#~ msgid "Replace All"
+#~ msgstr "Erstatt alt"
+
+#~ msgid "Search from the _beginning of the document"
+#~ msgstr "Søk fra _begynnelsen av dokumentet"
+
+#~ msgid "Search from the _cursor position"
+#~ msgstr "Søk fra mark_ørposisjonen"
+
+#~ msgid "_Replace with: "
+#~ msgstr "E_rstatt med: "
+
+#~ msgid "_Search for: "
+#~ msgstr "_Søk etter: "
+
+#~ msgid "Enter the location (URI) of the file you would like to open:"
+#~ msgstr "Skriv inn lokasjon (URI) for filen du ønsker å åpne:"
+
+#~ msgid "Open from URI"
+#~ msgstr "Åpne fra URI"

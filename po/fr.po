@@ -7,21 +7,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.9.8cvs\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
+"POT-Creation-Date: 2001-12-11 21:48-0500\n"
 "PO-Revision-Date: 2001-10-12 22:43+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@eikonex.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: gedit.desktop.in.h:1
-msgid "Text editor"
-msgstr "Éditeur de texte"
-
-#: gedit.desktop.in.h:2
-msgid "gedit"
-msgstr "gedit"
 
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
@@ -30,40 +22,6 @@ msgstr "Table ASCII"
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
 msgstr "Ce greffon affiche une boîte de dialogue qui contient une table ASCII."
-
-#: plugins/ASCII/asciitable.glade.h:1
-msgid "Char"
-msgstr "Caractère"
-
-#: plugins/ASCII/asciitable.glade.h:2
-msgid "Dec#"
-msgstr "Déc#"
-
-#: plugins/ASCII/asciitable.glade.h:3
-msgid "Hex#"
-msgstr "Hex#"
-
-#: plugins/ASCII/asciitable.glade.h:4
-msgid ""
-"If you wish to insert any of the characters in to the active \n"
-"document, select the character and click the \"Insert Char\" \n"
-"button or double click the character in the table."
-msgstr ""
-"Si vous voulez insérer un caractère dans le document actif,\n"
-"sélectionnez la caractère et cliquez sur le bouton « Insérer\n"
-"le caractère » ou double-cliquez sur le caractère dans la table."
-
-#: plugins/ASCII/asciitable.glade.h:7
-msgid "Insert char"
-msgstr "Insérer le caractère"
-
-#: plugins/ASCII/asciitable.glade.h:8
-msgid "Name"
-msgstr "Nom"
-
-#: plugins/ASCII/asciitable.glade.h:9
-msgid "gedit: ASCII table"
-msgstr "gedit : table ASCII"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -75,28 +33,6 @@ msgstr "Navigation Web"
 msgid "Web browse plugin"
 msgstr "Greffon de navigation Web"
 
-#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-#: plugins/email/email.glade.h:1
-msgid " _Change... "
-msgstr " _Changer... "
-
-#: plugins/browse/browse.glade.h:2
-msgid "Enter the _URL to browse for:"
-msgstr "Saisissez l'_URL à afficher :"
-
-#: plugins/browse/browse.glade.h:3
-msgid "Lynx found at: "
-msgstr "Lynx a été trouvé à : "
-
-#: plugins/browse/browse.glade.h:4
-msgid "gedit: Web Browse plugin"
-msgstr "gedit : greffon de navigation Web de gedit"
-
-#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
-#: plugins/email/email.glade.h:14
-msgid "location"
-msgstr "emplacement"
-
 #: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "Convertir"
@@ -104,30 +40,6 @@ msgstr "Convertir"
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
 msgstr "Convertisseur de nombres"
-
-#: plugins/convert/convert.glade.h:1
-msgid " Decimal to _Hex "
-msgstr " Décimal vers _Hexa "
-
-#: plugins/convert/convert.glade.h:2
-msgid " Decimal to _Octal "
-msgstr " Décimal vers _Octal "
-
-#: plugins/convert/convert.glade.h:3
-msgid " Hex to Decima_l "
-msgstr " Hexa vers Décima_l "
-
-#: plugins/convert/convert.glade.h:4
-msgid "_Converted value:"
-msgstr "Valeur _convertie :"
-
-#: plugins/convert/convert.glade.h:5
-msgid "_Value to be converted:"
-msgstr "_Valeur à convertir :"
-
-#: plugins/convert/convert.glade.h:6
-msgid "gedit: Number Converter plugin"
-msgstr "gedit : Convertisseur de nombres"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -197,46 +109,6 @@ msgstr ""
 "Crée un fichier diff depuis deux documents ou fichiers du disque\n"
 "Pour plus d'info sur diff, tapez « man diff » à l'invite du shell\n"
 
-#: plugins/diff/diff.glade.h:2
-msgid "Choose the files to compare"
-msgstr "Choisissez les fichiers à comparer"
-
-#: plugins/diff/diff.glade.h:3
-msgid "Diff found at: "
-msgstr "Différences trouvé à : "
-
-#: plugins/diff/diff.glade.h:4
-msgid "First"
-msgstr "Premier"
-
-#: plugins/diff/diff.glade.h:5
-msgid "From a file on disk"
-msgstr "Depuis un fichier du disque"
-
-#: plugins/diff/diff.glade.h:6
-msgid "From document"
-msgstr "Depuis le document"
-
-#: plugins/diff/diff.glade.h:7
-msgid "Second"
-msgstr "Second"
-
-#: plugins/diff/diff.glade.h:8
-msgid "Select the \"first\" file..."
-msgstr "Sélectionnez le « premier » fichier..."
-
-#: plugins/diff/diff.glade.h:9
-msgid "Select the \"second\" file..."
-msgstr "Sélectionnez le « second » fichier..."
-
-#: plugins/diff/diff.glade.h:10
-msgid "Use the _unified output format (-u option)"
-msgstr "Utiliser le format de sortie _unifié (option -u)"
-
-#: plugins/diff/diff.glade.h:11
-msgid "gedit: Diff plugin"
-msgstr "gedit : greffon de comparaison"
-
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -260,50 +132,6 @@ msgid ""
 msgstr ""
 "Ce greffon affiche une boite de dialogue contenant des informations de base "
 "sur le document courant."
-
-#: plugins/docinfo/docinfo.glade.h:1
-msgid "0"
-msgstr "0"
-
-#: plugins/docinfo/docinfo.glade.h:2
-msgid "Characters (no spaces)"
-msgstr "Caractères (sans espaces)"
-
-#: plugins/docinfo/docinfo.glade.h:3
-msgid "Characters (with spaces)"
-msgstr "Caractères (avec espaces)"
-
-#: plugins/docinfo/docinfo.glade.h:4
-msgid "Current column"
-msgstr "Colonne courante"
-
-#: plugins/docinfo/docinfo.glade.h:5
-msgid "Current line"
-msgstr "Ligne courante"
-
-#: plugins/docinfo/docinfo.glade.h:6
-msgid "File Name"
-msgstr "Nom du fichier"
-
-#: plugins/docinfo/docinfo.glade.h:7
-msgid "Lines"
-msgstr "Lignes"
-
-#: plugins/docinfo/docinfo.glade.h:8
-msgid "Paragraphs"
-msgstr "Paragraphes"
-
-#: plugins/docinfo/docinfo.glade.h:9
-msgid "Update"
-msgstr "Mise à jour"
-
-#: plugins/docinfo/docinfo.glade.h:10
-msgid "Words"
-msgstr "Mots"
-
-#: plugins/docinfo/docinfo.glade.h:11
-msgid "gedit: Document Info plugin"
-msgstr "gedit : greffon d'information de document"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -332,54 +160,6 @@ msgstr ""
 "Envoie le document en cours à un adresse électronique spécifiée\n"
 "gedit nécessite sendmail pour utiliser ce greffon."
 
-#: plugins/email/email.glade.h:2
-msgid "Change..."
-msgstr "Changer..."
-
-#: plugins/email/email.glade.h:3
-msgid "F_rom:"
-msgstr "_De :"
-
-#: plugins/email/email.glade.h:4
-msgid "File to use as body of message: "
-msgstr "Fichier à utiliser comme corps du message : "
-
-#: plugins/email/email.glade.h:5
-msgid "From:"
-msgstr "De :"
-
-#: plugins/email/email.glade.h:6
-msgid "Sendmail found at:"
-msgstr "Sendmail trouvé à :"
-
-#: plugins/email/email.glade.h:7
-msgid "Subject:"
-msgstr "Sujet :"
-
-#: plugins/email/email.glade.h:8
-msgid "To:"
-msgstr "À :"
-
-#: plugins/email/email.glade.h:9
-msgid "_Subject:"
-msgstr "_Sujet :"
-
-#: plugins/email/email.glade.h:10
-msgid "_To:"
-msgstr "_À :"
-
-#: plugins/email/email.glade.h:11
-msgid "filename"
-msgstr "nom de fichier"
-
-#: plugins/email/email.glade.h:12
-msgid "gedit: E-mail plugin"
-msgstr "gedit : greffon de courrier électronique"
-
-#: plugins/email/email.glade.h:13
-msgid "gedit: e-mail plugin"
-msgstr "gedit : greffon de courrier électronique"
-
 #: plugins/reverse/reverse.c:69
 msgid "Reverse"
 msgstr "Inverser"
@@ -388,11 +168,11 @@ msgstr "Inverser"
 msgid "Reverse text"
 msgstr "Inverse le texte"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Hello World"
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr "Greffon d'exemple « hello world »."
 
@@ -415,26 +195,6 @@ msgstr "Sortie de shell"
 msgid "Insert the shell output in the document"
 msgstr "Insère la sortie du shell dans le document"
 
-#: plugins/shell_output/shell_output.glade.h:1
-msgid "Select the working directory..."
-msgstr "Sélectionnez le répertoire de travail..."
-
-#: plugins/shell_output/shell_output.glade.h:2
-msgid "Shell _command:"
-msgstr "_Commande de shell :"
-
-#: plugins/shell_output/shell_output.glade.h:3
-msgid "Specify the working directory and the command you want to run."
-msgstr "Spécifie le répertoire de travail et la commande à exécuter."
-
-#: plugins/shell_output/shell_output.glade.h:4
-msgid "_Working directory:"
-msgstr "Répertoire de _travail :"
-
-#: plugins/shell_output/shell_output.glade.h:5
-msgid "gedit: Shell Output plugin"
-msgstr "gedit : greffon de sortie de shell"
-
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr "Comparer"
@@ -447,22 +207,6 @@ msgstr "Compare un document"
 msgid "Sort a document or selected text."
 msgstr "Compare un document ou le texte sélectionné."
 
-#: plugins/sort/sort.glade.h:1
-msgid "1"
-msgstr "1"
-
-#: plugins/sort/sort.glade.h:2
-msgid "Case Sensitive"
-msgstr "Sensible à la casse"
-
-#: plugins/sort/sort.glade.h:3
-msgid "Sort starting at column:"
-msgstr "Comparaison commençant à la colonne :"
-
-#: plugins/sort/sort.glade.h:4
-msgid "gedit: Sort plugin"
-msgstr "gedit : greffon de comparaison"
-
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr "Insérer l'heure"
@@ -470,14 +214,6 @@ msgstr "Insérer l'heure"
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr "Insère la date et l'heure courante"
-
-#: src/dialogs/about.glade.h:1
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(C) 1998, 1999, 2000 Alex Roberts et Evan Lawrence"
-
-#: src/dialogs/about.glade.h:2
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr "gedit est un petit éditeur de texte, léger, pour GNOME."
 
 #: src/dialogs/dialog-plugins.c:87
 #, c-format
@@ -490,7 +226,7 @@ msgstr ""
 msgid "gedit: Preferences"
 msgstr "gedit : Préférences"
 
-#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+#: src/dialogs/dialog-replace.c:130
 msgid "Replace"
 msgstr "Remplacer"
 
@@ -519,270 +255,6 @@ msgstr "Ne peut allouer la mémoire pour la requête « Remplacer tout »."
 #, c-format
 msgid "Loaded file %s"
 msgstr "Chargement du fichier %s"
-
-#: src/dialogs/goto-line.glade.h:1
-msgid "Goto Line"
-msgstr "Aller à la ligne"
-
-#: src/dialogs/goto-line.glade.h:2
-msgid "Line number:"
-msgstr "Numéro de ligne :"
-
-#: src/dialogs/plugin-manager.glade.h:1
-msgid "Author(s):"
-msgstr "Auteur(s) :"
-
-#: src/dialogs/plugin-manager.glade.h:2
-msgid "De_scription"
-msgstr "De_scription"
-
-#: src/dialogs/plugin-manager.glade.h:3
-msgid "De_tails"
-msgstr "Dé_tails"
-
-#: src/dialogs/plugin-manager.glade.h:4
-msgid "File name:"
-msgstr "Nom du fichier :"
-
-#: src/dialogs/plugin-manager.glade.h:5
-msgid "Plugins manager..."
-msgstr "Gestionnaire de greffons..."
-
-#: src/dialogs/plugin-manager.glade.h:6
-msgid "Select the plugins to activate:"
-msgstr "Sélectionnez le greffon à activer :"
-
-#: src/dialogs/plugin-manager.glade.h:7
-msgid "_Activate all"
-msgstr "Tout _activer"
-
-#: src/dialogs/plugin-manager.glade.h:8
-msgid "_Deactivate all"
-msgstr "Tout _désactiver"
-
-#: src/dialogs/prefs.glade.h:1
-msgid "Add _header"
-msgstr "Ajouter un _en-tête"
-
-#: src/dialogs/prefs.glade.h:2
-msgid "Appearance"
-msgstr "Apparence"
-
-#: src/dialogs/prefs.glade.h:3
-msgid "Bottom"
-msgstr "Bas"
-
-#: src/dialogs/prefs.glade.h:4
-msgid "Colors"
-msgstr "Couleurs"
-
-#: src/dialogs/prefs.glade.h:5
-msgid "Default"
-msgstr "Défaut"
-
-#: src/dialogs/prefs.glade.h:6
-msgid "Documents"
-msgstr "Documents"
-
-#: src/dialogs/prefs.glade.h:7
-msgid "Editor Behavior"
-msgstr "Comportement de l'éditeur"
-
-#: src/dialogs/prefs.glade.h:8
-msgid "Enable _Auto-indent"
-msgstr "Activer l'indentation _automatique"
-
-#: src/dialogs/prefs.glade.h:9
-msgid "Enable word _wrapping"
-msgstr "Activer le _retour à la ligne automatique"
-
-#: src/dialogs/prefs.glade.h:10
-msgid "Fonts"
-msgstr "Polices"
-
-#: src/dialogs/prefs.glade.h:11
-msgid "Fonts/Colors"
-msgstr "Polices/Couleurs"
-
-#: src/dialogs/prefs.glade.h:12
-msgid "General"
-msgstr "Général"
-
-#: src/dialogs/prefs.glade.h:13
-msgid "Left"
-msgstr "Gauche"
-
-#: src/dialogs/prefs.glade.h:14
-msgid "MDI (Multiple Document Interface)"
-msgstr "IMD (Interface Multi Document)"
-
-#: src/dialogs/prefs.glade.h:15
-msgid "Modal"
-msgstr "Modal"
-
-#: src/dialogs/prefs.glade.h:16
-msgid "Notebook"
-msgstr "Carnet"
-
-#: src/dialogs/prefs.glade.h:17
-msgid "Notebook _tab position: "
-msgstr "Position des _onglets du carnet : "
-
-#: src/dialogs/prefs.glade.h:18
-msgid "Orientation"
-msgstr "Orientation"
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Paper"
-msgstr "Papier"
-
-#: src/dialogs/prefs.glade.h:20
-msgid "Pick a Font"
-msgstr "Choisissez une police"
-
-#: src/dialogs/prefs.glade.h:21
-msgid "Pick a color"
-msgstr "Choisissez une couleur"
-
-#: src/dialogs/prefs.glade.h:22
-msgid "Preferences"
-msgstr "Préférences"
-
-#: src/dialogs/prefs.glade.h:23
-msgid "Print line _numbers every:"
-msgstr "Imprimer le _numéro de ligne toutes les :"
-
-#: src/dialogs/prefs.glade.h:24
-msgid "Printing"
-msgstr "Impression"
-
-#: src/dialogs/prefs.glade.h:25
-msgid "Right"
-msgstr "Droite"
-
-#: src/dialogs/prefs.glade.h:26
-msgid "S_how statusbar"
-msgstr "_Afficher la barre d'état"
-
-#: src/dialogs/prefs.glade.h:27
-msgid "Set limit on _undo levels to:"
-msgstr "Définir la limite de niveaux d'_annulation à :"
-
-#: src/dialogs/prefs.glade.h:28
-msgid "Set toolbar according to _system settings"
-msgstr "La barre d'outils s'affiche selon les réglages du _système"
-
-#: src/dialogs/prefs.glade.h:29
-msgid "Set toolbar to _icons only"
-msgstr "La barre d'outils a seulement des _icônes"
-
-#: src/dialogs/prefs.glade.h:30
-msgid "Set toolbar to icons with _text"
-msgstr "La barre d'outils a des icônes avec du _texte"
-
-#: src/dialogs/prefs.glade.h:31
-msgid "Tab _width: "
-msgstr "Largeur de _tabulation : "
-
-#: src/dialogs/prefs.glade.h:32
-msgid "Top"
-msgstr "Haut"
-
-#: src/dialogs/prefs.glade.h:33
-msgid "Toplevel"
-msgstr "1er Niveau"
-
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
-msgid "Undo"
-msgstr "Annuler"
-
-#: src/dialogs/prefs.glade.h:35
-msgid "_Background: "
-msgstr "_Arrière-plan : "
-
-#: src/dialogs/prefs.glade.h:36
-msgid "_Default font: "
-msgstr "Police par _défaut : "
-
-#: src/dialogs/prefs.glade.h:37
-msgid "_Foreground: "
-msgstr "_Premier plan : "
-
-#: src/dialogs/prefs.glade.h:38
-msgid "_Landscape"
-msgstr "Pa_ysage"
-
-#: src/dialogs/prefs.glade.h:39
-msgid "_Mode: "
-msgstr "_Mode : "
-
-#: src/dialogs/prefs.glade.h:40
-msgid "_Portrait"
-msgstr "_Portrait"
-
-#: src/dialogs/prefs.glade.h:41
-msgid "_level(s)"
-msgstr "_niveau(x)"
-
-#: src/dialogs/prefs.glade.h:42
-msgid "l_ine(s)"
-msgstr "l_igne(s)"
-
-#: src/dialogs/program.glade.h:1
-msgid "_Location to search for:"
-msgstr "_Emplacement dans lequel rechercher :"
-
-#: src/dialogs/program.glade.h:2
-msgid "gedit: Browse for program location..."
-msgstr "gedit : recherche pour l'emplacement du programme..."
-
-#: src/dialogs/program.glade.h:3
-msgid "gedit: Set program location..."
-msgstr "gedit : défini l'emplacement du programme..."
-
-#: src/dialogs/program.glade.h:4
-msgid "label"
-msgstr "label"
-
-#: src/dialogs/replace.glade.h:1
-msgid "Case _sensitive"
-msgstr "Sensible à la ca_sse"
-
-#: src/dialogs/replace.glade.h:2
-msgid "Find Next"
-msgstr "Rechercher le suivant"
-
-#: src/dialogs/replace.glade.h:4
-msgid "Replace All"
-msgstr "Tout remplacer"
-
-#: src/dialogs/replace.glade.h:5
-msgid "Search from the _beginning of the document"
-msgstr "Rechercher à partir du _début du document"
-
-#: src/dialogs/replace.glade.h:6
-msgid "Search from the _cursor position"
-msgstr "Rechercher à partir de la position du _curseur"
-
-#: src/dialogs/replace.glade.h:7
-msgid "_Replace with: "
-msgstr "Remplacer _avec : "
-
-#: src/dialogs/replace.glade.h:8
-msgid "_Search for: "
-msgstr "_Rechercher pour : "
-
-#: src/dialogs/uri.glade.h:1
-msgid "Enter the location (URI) of the file you would like to open:"
-msgstr "Saisissez l'emplacement (URI) du fichier que vous voulez ouvrir :"
-
-#: src/dialogs/uri.glade.h:2 src/menus.c:259
-msgid "Open"
-msgstr "Ouvrir"
-
-#: src/dialogs/uri.glade.h:3
-msgid "Open from URI"
-msgstr "Ouvrir depuis une URI"
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -1151,6 +623,10 @@ msgid "New"
 msgstr "Nouveau"
 
 #: src/menus.c:259
+msgid "Open"
+msgstr "Ouvrir"
+
+#: src/menus.c:259
 msgid "Open a file"
 msgstr "Ouvre un fichier"
 
@@ -1177,6 +653,10 @@ msgstr "Imprimer"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr "Imprime le fichier courant"
+
+#: src/menus.c:276
+msgid "Undo"
+msgstr "Annuler"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -1390,6 +870,396 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "Vous ne pouvez supprimer la dernière vue d'un document"
+
+#~ msgid "Text editor"
+#~ msgstr "Éditeur de texte"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "Char"
+#~ msgstr "Caractère"
+
+#~ msgid "Dec#"
+#~ msgstr "Déc#"
+
+#~ msgid "Hex#"
+#~ msgstr "Hex#"
+
+#~ msgid ""
+#~ "If you wish to insert any of the characters in to the active \n"
+#~ "document, select the character and click the \"Insert Char\" \n"
+#~ "button or double click the character in the table."
+#~ msgstr ""
+#~ "Si vous voulez insérer un caractère dans le document actif,\n"
+#~ "sélectionnez la caractère et cliquez sur le bouton « Insérer\n"
+#~ "le caractère » ou double-cliquez sur le caractère dans la table."
+
+#~ msgid "Insert char"
+#~ msgstr "Insérer le caractère"
+
+#~ msgid "Name"
+#~ msgstr "Nom"
+
+#~ msgid "gedit: ASCII table"
+#~ msgstr "gedit : table ASCII"
+
+#~ msgid " _Change... "
+#~ msgstr " _Changer... "
+
+#~ msgid "Enter the _URL to browse for:"
+#~ msgstr "Saisissez l'_URL à afficher :"
+
+#~ msgid "Lynx found at: "
+#~ msgstr "Lynx a été trouvé à : "
+
+#~ msgid "gedit: Web Browse plugin"
+#~ msgstr "gedit : greffon de navigation Web de gedit"
+
+#~ msgid "location"
+#~ msgstr "emplacement"
+
+#~ msgid " Decimal to _Hex "
+#~ msgstr " Décimal vers _Hexa "
+
+#~ msgid " Decimal to _Octal "
+#~ msgstr " Décimal vers _Octal "
+
+#~ msgid " Hex to Decima_l "
+#~ msgstr " Hexa vers Décima_l "
+
+#~ msgid "_Converted value:"
+#~ msgstr "Valeur _convertie :"
+
+#~ msgid "_Value to be converted:"
+#~ msgstr "_Valeur à convertir :"
+
+#~ msgid "gedit: Number Converter plugin"
+#~ msgstr "gedit : Convertisseur de nombres"
+
+#~ msgid "Choose the files to compare"
+#~ msgstr "Choisissez les fichiers à comparer"
+
+#~ msgid "Diff found at: "
+#~ msgstr "Différences trouvé à : "
+
+#~ msgid "First"
+#~ msgstr "Premier"
+
+#~ msgid "From a file on disk"
+#~ msgstr "Depuis un fichier du disque"
+
+#~ msgid "From document"
+#~ msgstr "Depuis le document"
+
+#~ msgid "Second"
+#~ msgstr "Second"
+
+#~ msgid "Select the \"first\" file..."
+#~ msgstr "Sélectionnez le « premier » fichier..."
+
+#~ msgid "Select the \"second\" file..."
+#~ msgstr "Sélectionnez le « second » fichier..."
+
+#~ msgid "Use the _unified output format (-u option)"
+#~ msgstr "Utiliser le format de sortie _unifié (option -u)"
+
+#~ msgid "gedit: Diff plugin"
+#~ msgstr "gedit : greffon de comparaison"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "Characters (no spaces)"
+#~ msgstr "Caractères (sans espaces)"
+
+#~ msgid "Characters (with spaces)"
+#~ msgstr "Caractères (avec espaces)"
+
+#~ msgid "Current column"
+#~ msgstr "Colonne courante"
+
+#~ msgid "Current line"
+#~ msgstr "Ligne courante"
+
+#~ msgid "File Name"
+#~ msgstr "Nom du fichier"
+
+#~ msgid "Lines"
+#~ msgstr "Lignes"
+
+#~ msgid "Paragraphs"
+#~ msgstr "Paragraphes"
+
+#~ msgid "Update"
+#~ msgstr "Mise à jour"
+
+#~ msgid "Words"
+#~ msgstr "Mots"
+
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "gedit : greffon d'information de document"
+
+#~ msgid "Change..."
+#~ msgstr "Changer..."
+
+#~ msgid "F_rom:"
+#~ msgstr "_De :"
+
+#~ msgid "File to use as body of message: "
+#~ msgstr "Fichier à utiliser comme corps du message : "
+
+#~ msgid "From:"
+#~ msgstr "De :"
+
+#~ msgid "Sendmail found at:"
+#~ msgstr "Sendmail trouvé à :"
+
+#~ msgid "Subject:"
+#~ msgstr "Sujet :"
+
+#~ msgid "To:"
+#~ msgstr "À :"
+
+#~ msgid "_Subject:"
+#~ msgstr "_Sujet :"
+
+#~ msgid "_To:"
+#~ msgstr "_À :"
+
+#~ msgid "filename"
+#~ msgstr "nom de fichier"
+
+#~ msgid "gedit: E-mail plugin"
+#~ msgstr "gedit : greffon de courrier électronique"
+
+#~ msgid "gedit: e-mail plugin"
+#~ msgstr "gedit : greffon de courrier électronique"
+
+#~ msgid "Select the working directory..."
+#~ msgstr "Sélectionnez le répertoire de travail..."
+
+#~ msgid "Shell _command:"
+#~ msgstr "_Commande de shell :"
+
+#~ msgid "Specify the working directory and the command you want to run."
+#~ msgstr "Spécifie le répertoire de travail et la commande à exécuter."
+
+#~ msgid "_Working directory:"
+#~ msgstr "Répertoire de _travail :"
+
+#~ msgid "gedit: Shell Output plugin"
+#~ msgstr "gedit : greffon de sortie de shell"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "Case Sensitive"
+#~ msgstr "Sensible à la casse"
+
+#~ msgid "Sort starting at column:"
+#~ msgstr "Comparaison commençant à la colonne :"
+
+#~ msgid "gedit: Sort plugin"
+#~ msgstr "gedit : greffon de comparaison"
+
+#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+#~ msgstr "(C) 1998, 1999, 2000 Alex Roberts et Evan Lawrence"
+
+#~ msgid "gedit is a small and lightweight text editor for GNOME."
+#~ msgstr "gedit est un petit éditeur de texte, léger, pour GNOME."
+
+#~ msgid "Goto Line"
+#~ msgstr "Aller à la ligne"
+
+#~ msgid "Line number:"
+#~ msgstr "Numéro de ligne :"
+
+#~ msgid "Author(s):"
+#~ msgstr "Auteur(s) :"
+
+#~ msgid "De_scription"
+#~ msgstr "De_scription"
+
+#~ msgid "De_tails"
+#~ msgstr "Dé_tails"
+
+#~ msgid "File name:"
+#~ msgstr "Nom du fichier :"
+
+#~ msgid "Plugins manager..."
+#~ msgstr "Gestionnaire de greffons..."
+
+#~ msgid "Select the plugins to activate:"
+#~ msgstr "Sélectionnez le greffon à activer :"
+
+#~ msgid "_Activate all"
+#~ msgstr "Tout _activer"
+
+#~ msgid "_Deactivate all"
+#~ msgstr "Tout _désactiver"
+
+#~ msgid "Add _header"
+#~ msgstr "Ajouter un _en-tête"
+
+#~ msgid "Appearance"
+#~ msgstr "Apparence"
+
+#~ msgid "Bottom"
+#~ msgstr "Bas"
+
+#~ msgid "Colors"
+#~ msgstr "Couleurs"
+
+#~ msgid "Default"
+#~ msgstr "Défaut"
+
+#~ msgid "Documents"
+#~ msgstr "Documents"
+
+#~ msgid "Editor Behavior"
+#~ msgstr "Comportement de l'éditeur"
+
+#~ msgid "Enable _Auto-indent"
+#~ msgstr "Activer l'indentation _automatique"
+
+#~ msgid "Enable word _wrapping"
+#~ msgstr "Activer le _retour à la ligne automatique"
+
+#~ msgid "Fonts"
+#~ msgstr "Polices"
+
+#~ msgid "Fonts/Colors"
+#~ msgstr "Polices/Couleurs"
+
+#~ msgid "General"
+#~ msgstr "Général"
+
+#~ msgid "Left"
+#~ msgstr "Gauche"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "IMD (Interface Multi Document)"
+
+#~ msgid "Modal"
+#~ msgstr "Modal"
+
+#~ msgid "Notebook"
+#~ msgstr "Carnet"
+
+#~ msgid "Notebook _tab position: "
+#~ msgstr "Position des _onglets du carnet : "
+
+#~ msgid "Orientation"
+#~ msgstr "Orientation"
+
+#~ msgid "Paper"
+#~ msgstr "Papier"
+
+#~ msgid "Pick a Font"
+#~ msgstr "Choisissez une police"
+
+#~ msgid "Pick a color"
+#~ msgstr "Choisissez une couleur"
+
+#~ msgid "Preferences"
+#~ msgstr "Préférences"
+
+#~ msgid "Print line _numbers every:"
+#~ msgstr "Imprimer le _numéro de ligne toutes les :"
+
+#~ msgid "Printing"
+#~ msgstr "Impression"
+
+#~ msgid "Right"
+#~ msgstr "Droite"
+
+#~ msgid "S_how statusbar"
+#~ msgstr "_Afficher la barre d'état"
+
+#~ msgid "Set limit on _undo levels to:"
+#~ msgstr "Définir la limite de niveaux d'_annulation à :"
+
+#~ msgid "Set toolbar according to _system settings"
+#~ msgstr "La barre d'outils s'affiche selon les réglages du _système"
+
+#~ msgid "Set toolbar to _icons only"
+#~ msgstr "La barre d'outils a seulement des _icônes"
+
+#~ msgid "Set toolbar to icons with _text"
+#~ msgstr "La barre d'outils a des icônes avec du _texte"
+
+#~ msgid "Tab _width: "
+#~ msgstr "Largeur de _tabulation : "
+
+#~ msgid "Top"
+#~ msgstr "Haut"
+
+#~ msgid "Toplevel"
+#~ msgstr "1er Niveau"
+
+#~ msgid "_Background: "
+#~ msgstr "_Arrière-plan : "
+
+#~ msgid "_Default font: "
+#~ msgstr "Police par _défaut : "
+
+#~ msgid "_Foreground: "
+#~ msgstr "_Premier plan : "
+
+#~ msgid "_Landscape"
+#~ msgstr "Pa_ysage"
+
+#~ msgid "_Mode: "
+#~ msgstr "_Mode : "
+
+#~ msgid "_Portrait"
+#~ msgstr "_Portrait"
+
+#~ msgid "_level(s)"
+#~ msgstr "_niveau(x)"
+
+#~ msgid "l_ine(s)"
+#~ msgstr "l_igne(s)"
+
+#~ msgid "_Location to search for:"
+#~ msgstr "_Emplacement dans lequel rechercher :"
+
+#~ msgid "gedit: Browse for program location..."
+#~ msgstr "gedit : recherche pour l'emplacement du programme..."
+
+#~ msgid "gedit: Set program location..."
+#~ msgstr "gedit : défini l'emplacement du programme..."
+
+#~ msgid "label"
+#~ msgstr "label"
+
+#~ msgid "Case _sensitive"
+#~ msgstr "Sensible à la ca_sse"
+
+#~ msgid "Find Next"
+#~ msgstr "Rechercher le suivant"
+
+#~ msgid "Replace All"
+#~ msgstr "Tout remplacer"
+
+#~ msgid "Search from the _beginning of the document"
+#~ msgstr "Rechercher à partir du _début du document"
+
+#~ msgid "Search from the _cursor position"
+#~ msgstr "Rechercher à partir de la position du _curseur"
+
+#~ msgid "_Replace with: "
+#~ msgstr "Remplacer _avec : "
+
+#~ msgid "_Search for: "
+#~ msgstr "_Rechercher pour : "
+
+#~ msgid "Enter the location (URI) of the file you would like to open:"
+#~ msgstr "Saisissez l'emplacement (URI) du fichier que vous voulez ouvrir :"
+
+#~ msgid "Open from URI"
+#~ msgstr "Ouvrir depuis une URI"
 
 #~ msgid "label12"
 #~ msgstr "label12"

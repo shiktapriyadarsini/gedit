@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.9.*\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
+"POT-Creation-Date: 2001-12-11 21:48-0500\n"
 "PO-Revision-Date: 2001-09-29 23:07+0400\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -12,52 +12,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gedit.desktop.in.h:1
-msgid "Text editor"
-msgstr ""
-
-#: gedit.desktop.in.h:2
-msgid "gedit"
-msgstr ""
-
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
 msgstr ""
 
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:1
-msgid "Char"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:2
-msgid "Dec#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:3
-msgid "Hex#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:4
-msgid ""
-"If you wish to insert any of the characters in to the active \n"
-"document, select the character and click the \"Insert Char\" \n"
-"button or double click the character in the table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:7
-#, fuzzy
-msgid "Insert char"
-msgstr "Вставить время"
-
-#: plugins/ASCII/asciitable.glade.h:8
-msgid "Name"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:9
-msgid "gedit: ASCII table"
 msgstr ""
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
@@ -70,28 +30,6 @@ msgstr "Просмотр Web"
 msgid "Web browse plugin"
 msgstr "Дополнение просмотра Web"
 
-#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-#: plugins/email/email.glade.h:1
-msgid " _Change... "
-msgstr "Изменить..."
-
-#: plugins/browse/browse.glade.h:2
-msgid "Enter the _URL to browse for:"
-msgstr "Введите URL для просмотра:"
-
-#: plugins/browse/browse.glade.h:3
-msgid "Lynx found at: "
-msgstr "Lynx найден в:"
-
-#: plugins/browse/browse.glade.h:4
-msgid "gedit: Web Browse plugin"
-msgstr "gedit: Дополнение просмотра Web"
-
-#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
-#: plugins/email/email.glade.h:14
-msgid "location"
-msgstr "положение"
-
 #: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "Преобразовать"
@@ -99,30 +37,6 @@ msgstr "Преобразовать"
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
 msgstr "Преобразователь чисел"
-
-#: plugins/convert/convert.glade.h:1
-msgid " Decimal to _Hex "
-msgstr "Десятичное в шестнадцатеричное"
-
-#: plugins/convert/convert.glade.h:2
-msgid " Decimal to _Octal "
-msgstr "Десятичное в восьмеричное"
-
-#: plugins/convert/convert.glade.h:3
-msgid " Hex to Decima_l "
-msgstr "Шестнадцатиричное в десятичное"
-
-#: plugins/convert/convert.glade.h:4
-msgid "_Converted value:"
-msgstr "Преобразованное значение:"
-
-#: plugins/convert/convert.glade.h:5
-msgid "_Value to be converted:"
-msgstr "Значение для преобразования:"
-
-#: plugins/convert/convert.glade.h:6
-msgid "gedit: Number Converter plugin"
-msgstr "gedit: Дополнение преобразователя чисел"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -193,46 +107,6 @@ msgstr ""
 "Делает diff файл из 2-х документов или файлов на диске\n"
 "Для дополнительной информации о diff, наберите \"man diff\" в shell\n"
 
-#: plugins/diff/diff.glade.h:2
-msgid "Choose the files to compare"
-msgstr "Выберите файлы для сравнения"
-
-#: plugins/diff/diff.glade.h:3
-msgid "Diff found at: "
-msgstr "Diff найден в:"
-
-#: plugins/diff/diff.glade.h:4
-msgid "First"
-msgstr "Первый"
-
-#: plugins/diff/diff.glade.h:5
-msgid "From a file on disk"
-msgstr "Из файла на диске"
-
-#: plugins/diff/diff.glade.h:6
-msgid "From document"
-msgstr "Из документа"
-
-#: plugins/diff/diff.glade.h:7
-msgid "Second"
-msgstr "Второй"
-
-#: plugins/diff/diff.glade.h:8
-msgid "Select the \"first\" file..."
-msgstr "Выберите \"первый\" файл..."
-
-#: plugins/diff/diff.glade.h:9
-msgid "Select the \"second\" file..."
-msgstr "Выберите \"второй\" файл..."
-
-#: plugins/diff/diff.glade.h:10
-msgid "Use the _unified output format (-u option)"
-msgstr "Использовать унифицированный формат вывода (параметр \"-u\")"
-
-#: plugins/diff/diff.glade.h:11
-msgid "gedit: Diff plugin"
-msgstr "gedit: дополнение diff"
-
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -254,53 +128,6 @@ msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:1
-msgid "0"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:2
-msgid "Characters (no spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:3
-msgid "Characters (with spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:4
-msgid "Current column"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:5
-msgid "Current line"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:6
-#, fuzzy
-msgid "File Name"
-msgstr "Имя файла:"
-
-#: plugins/docinfo/docinfo.glade.h:7
-#, fuzzy
-msgid "Lines"
-msgstr "строк(и)"
-
-#: plugins/docinfo/docinfo.glade.h:8
-msgid "Paragraphs"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:9
-msgid "Update"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:10
-msgid "Words"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:11
-#, fuzzy
-msgid "gedit: Document Info plugin"
-msgstr "gedit: дополнение diff"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -330,54 +157,6 @@ msgstr ""
 "Отправляет текущий документ по указанному эл.адресу\n"
 "gedit ищет sendmail, чтобы использовать это дополнение."
 
-#: plugins/email/email.glade.h:2
-msgid "Change..."
-msgstr "Изменить..."
-
-#: plugins/email/email.glade.h:3
-msgid "F_rom:"
-msgstr "От:"
-
-#: plugins/email/email.glade.h:4
-msgid "File to use as body of message: "
-msgstr "Файл используемый как тело сообщения: "
-
-#: plugins/email/email.glade.h:5
-msgid "From:"
-msgstr "От:"
-
-#: plugins/email/email.glade.h:6
-msgid "Sendmail found at:"
-msgstr "Sendmail найден в:"
-
-#: plugins/email/email.glade.h:7
-msgid "Subject:"
-msgstr "Тема:"
-
-#: plugins/email/email.glade.h:8
-msgid "To:"
-msgstr "Кому:"
-
-#: plugins/email/email.glade.h:9
-msgid "_Subject:"
-msgstr "Тема:"
-
-#: plugins/email/email.glade.h:10
-msgid "_To:"
-msgstr "Кому:"
-
-#: plugins/email/email.glade.h:11
-msgid "filename"
-msgstr "название файла"
-
-#: plugins/email/email.glade.h:12
-msgid "gedit: E-mail plugin"
-msgstr "gedit: дополнение эл.почты"
-
-#: plugins/email/email.glade.h:13
-msgid "gedit: e-mail plugin"
-msgstr "gedit: дополнение эл.почты"
-
 #: plugins/reverse/reverse.c:69
 msgid "Reverse"
 msgstr "Перевернуть"
@@ -386,11 +165,11 @@ msgstr "Перевернуть"
 msgid "Reverse text"
 msgstr "Перевернуть текст"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Здравствуй, Мир!"
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr "Пример дополнения \"Здравствуй, Мир!\"."
 
@@ -413,26 +192,6 @@ msgstr "Вывод оболочки"
 msgid "Insert the shell output in the document"
 msgstr "Вставить вывод оболочки в документ"
 
-#: plugins/shell_output/shell_output.glade.h:1
-msgid "Select the working directory..."
-msgstr "Выбор рабочего каталога..."
-
-#: plugins/shell_output/shell_output.glade.h:2
-msgid "Shell _command:"
-msgstr "Команда оболочки:"
-
-#: plugins/shell_output/shell_output.glade.h:3
-msgid "Specify the working directory and the command you want to run."
-msgstr "Указать рабочий каталог и команду, которую вы хотите выполнить."
-
-#: plugins/shell_output/shell_output.glade.h:4
-msgid "_Working directory:"
-msgstr "Рабочий каталог:"
-
-#: plugins/shell_output/shell_output.glade.h:5
-msgid "gedit: Shell Output plugin"
-msgstr "gedit: Дополнение вывода оболочки"
-
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr ""
@@ -447,25 +206,6 @@ msgstr "Создать новый документ"
 msgid "Sort a document or selected text."
 msgstr "Оба выбранных документа одинаковы"
 
-#: plugins/sort/sort.glade.h:1
-msgid "1"
-msgstr ""
-
-#: plugins/sort/sort.glade.h:2
-#, fuzzy
-msgid "Case Sensitive"
-msgstr "Чувствительный к регистру"
-
-#: plugins/sort/sort.glade.h:3
-#, fuzzy
-msgid "Sort starting at column:"
-msgstr "Искомая строка не найдена"
-
-#: plugins/sort/sort.glade.h:4
-#, fuzzy
-msgid "gedit: Sort plugin"
-msgstr "gedit: дополнение diff"
-
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr "Вставить время"
@@ -473,14 +213,6 @@ msgstr "Вставить время"
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr "Вставить текущую дату и время"
-
-#: src/dialogs/about.glade.h:1
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(С) 1998-2000 Alex Roberts и Evan Lawrence"
-
-#: src/dialogs/about.glade.h:2
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr "gEdit -- маленький и легкий текстовый редактор для GNOME."
 
 #: src/dialogs/dialog-plugins.c:87
 #, c-format
@@ -492,7 +224,7 @@ msgstr "Чтобы использовать дополнение %s, вам на
 msgid "gedit: Preferences"
 msgstr "gedit: Настройки"
 
-#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+#: src/dialogs/dialog-replace.c:130
 msgid "Replace"
 msgstr "Заменить"
 
@@ -521,272 +253,6 @@ msgstr "Не удалось получить необходимую память
 #, c-format
 msgid "Loaded file %s"
 msgstr "Загружен файл %s"
-
-#: src/dialogs/goto-line.glade.h:1
-msgid "Goto Line"
-msgstr "Перейти к строке"
-
-#: src/dialogs/goto-line.glade.h:2
-msgid "Line number:"
-msgstr "Номер строки:"
-
-#: src/dialogs/plugin-manager.glade.h:1
-msgid "Author(s):"
-msgstr "Автор(ы):"
-
-#: src/dialogs/plugin-manager.glade.h:2
-msgid "De_scription"
-msgstr "Описание"
-
-#: src/dialogs/plugin-manager.glade.h:3
-msgid "De_tails"
-msgstr "Подробности"
-
-#: src/dialogs/plugin-manager.glade.h:4
-msgid "File name:"
-msgstr "Имя файла:"
-
-#: src/dialogs/plugin-manager.glade.h:5
-msgid "Plugins manager..."
-msgstr "Диспетчер дополнений..."
-
-#: src/dialogs/plugin-manager.glade.h:6
-msgid "Select the plugins to activate:"
-msgstr "Выберите дополнение для включения:"
-
-#: src/dialogs/plugin-manager.glade.h:7
-msgid "_Activate all"
-msgstr "Включить все"
-
-#: src/dialogs/plugin-manager.glade.h:8
-msgid "_Deactivate all"
-msgstr "Отключить все"
-
-#: src/dialogs/prefs.glade.h:1
-msgid "Add _header"
-msgstr "Добавить заголовок"
-
-#: src/dialogs/prefs.glade.h:2
-msgid "Appearance"
-msgstr "Внешний вид"
-
-#: src/dialogs/prefs.glade.h:3
-msgid "Bottom"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:4
-msgid "Colors"
-msgstr "Цвета"
-
-#: src/dialogs/prefs.glade.h:5
-#, fuzzy
-msgid "Default"
-msgstr "Шрифт по умолчанию:"
-
-#: src/dialogs/prefs.glade.h:6
-msgid "Documents"
-msgstr "Документы"
-
-#: src/dialogs/prefs.glade.h:7
-msgid "Editor Behavior"
-msgstr "Поведение редактора"
-
-#: src/dialogs/prefs.glade.h:8
-msgid "Enable _Auto-indent"
-msgstr "Включить Автовыравнивание"
-
-#: src/dialogs/prefs.glade.h:9
-msgid "Enable word _wrapping"
-msgstr "Включить перевод строк"
-
-#: src/dialogs/prefs.glade.h:10
-msgid "Fonts"
-msgstr "Шрифты"
-
-#: src/dialogs/prefs.glade.h:11
-msgid "Fonts/Colors"
-msgstr "Шрифты/Цвета"
-
-#: src/dialogs/prefs.glade.h:12
-msgid "General"
-msgstr "Общие"
-
-#: src/dialogs/prefs.glade.h:13
-msgid "Left"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:14
-msgid "MDI (Multiple Document Interface)"
-msgstr "MDI (Многодокументный интерфейс)"
-
-#: src/dialogs/prefs.glade.h:15
-msgid "Modal"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:16
-msgid "Notebook"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:17
-msgid "Notebook _tab position: "
-msgstr "Положение ярлыков блокнота: "
-
-#: src/dialogs/prefs.glade.h:18
-msgid "Orientation"
-msgstr "Ориентация"
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Paper"
-msgstr "Бумага"
-
-#: src/dialogs/prefs.glade.h:20
-msgid "Pick a Font"
-msgstr "Выбрать шрифт"
-
-#: src/dialogs/prefs.glade.h:21
-msgid "Pick a color"
-msgstr "Выбрать цвет"
-
-#: src/dialogs/prefs.glade.h:22
-msgid "Preferences"
-msgstr "Настройки"
-
-#: src/dialogs/prefs.glade.h:23
-msgid "Print line _numbers every:"
-msgstr "Печатать номера строк каждые:"
-
-#: src/dialogs/prefs.glade.h:24
-msgid "Printing"
-msgstr "Печать"
-
-#: src/dialogs/prefs.glade.h:25
-msgid "Right"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:26
-msgid "S_how statusbar"
-msgstr "Показать строку состояния"
-
-#: src/dialogs/prefs.glade.h:27
-msgid "Set limit on _undo levels to:"
-msgstr "Установить предел уровней отката:"
-
-#: src/dialogs/prefs.glade.h:28
-msgid "Set toolbar according to _system settings"
-msgstr "Установить панель инструментов в соответствии с системными установками"
-
-#: src/dialogs/prefs.glade.h:29
-msgid "Set toolbar to _icons only"
-msgstr "Показывать на панели инструментов только пиктограммы"
-
-#: src/dialogs/prefs.glade.h:30
-msgid "Set toolbar to icons with _text"
-msgstr "Показывать на панели инструментов пиктограммы и подписи"
-
-#: src/dialogs/prefs.glade.h:31
-msgid "Tab _width: "
-msgstr "Ширина табулятора: "
-
-#: src/dialogs/prefs.glade.h:32
-#, fuzzy
-msgid "Top"
-msgstr "Кому:"
-
-#: src/dialogs/prefs.glade.h:33
-msgid "Toplevel"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
-msgid "Undo"
-msgstr "Откат"
-
-#: src/dialogs/prefs.glade.h:35
-msgid "_Background: "
-msgstr "Цвет фона:"
-
-#: src/dialogs/prefs.glade.h:36
-msgid "_Default font: "
-msgstr "Шрифт по умолчанию:"
-
-#: src/dialogs/prefs.glade.h:37
-msgid "_Foreground: "
-msgstr "Цвет текста:"
-
-#: src/dialogs/prefs.glade.h:38
-msgid "_Landscape"
-msgstr "Блокнот"
-
-#: src/dialogs/prefs.glade.h:39
-msgid "_Mode: "
-msgstr "Режим:"
-
-#: src/dialogs/prefs.glade.h:40
-msgid "_Portrait"
-msgstr "Портрет"
-
-#: src/dialogs/prefs.glade.h:41
-msgid "_level(s)"
-msgstr "уровень(и)"
-
-#: src/dialogs/prefs.glade.h:42
-msgid "l_ine(s)"
-msgstr "строк(и)"
-
-#: src/dialogs/program.glade.h:1
-msgid "_Location to search for:"
-msgstr "Место поиска: "
-
-#: src/dialogs/program.glade.h:2
-msgid "gedit: Browse for program location..."
-msgstr "gedit: Просмотр места размещения программы..."
-
-#: src/dialogs/program.glade.h:3
-msgid "gedit: Set program location..."
-msgstr "gedit: Установить расположение программы..."
-
-#: src/dialogs/program.glade.h:4
-msgid "label"
-msgstr "метка12"
-
-#: src/dialogs/replace.glade.h:1
-msgid "Case _sensitive"
-msgstr "Чувствительный к регистру"
-
-#: src/dialogs/replace.glade.h:2
-msgid "Find Next"
-msgstr "Найти следующее"
-
-#: src/dialogs/replace.glade.h:4
-msgid "Replace All"
-msgstr "Заменить все"
-
-#: src/dialogs/replace.glade.h:5
-msgid "Search from the _beginning of the document"
-msgstr "Искать от начала документа"
-
-#: src/dialogs/replace.glade.h:6
-msgid "Search from the _cursor position"
-msgstr "Искать от позиции курсора"
-
-#: src/dialogs/replace.glade.h:7
-msgid "_Replace with: "
-msgstr "Заменить на:"
-
-#: src/dialogs/replace.glade.h:8
-msgid "_Search for: "
-msgstr "Поиск:"
-
-#: src/dialogs/uri.glade.h:1
-msgid "Enter the location (URI) of the file you would like to open:"
-msgstr "Введите положение (URI) файла, который вы хотите открыть:"
-
-#: src/dialogs/uri.glade.h:2 src/menus.c:259
-msgid "Open"
-msgstr "Открыть"
-
-#: src/dialogs/uri.glade.h:3
-msgid "Open from URI"
-msgstr "Открыть по URI"
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -1155,6 +621,10 @@ msgid "New"
 msgstr "Новый"
 
 #: src/menus.c:259
+msgid "Open"
+msgstr "Открыть"
+
+#: src/menus.c:259
 msgid "Open a file"
 msgstr "Открыть файл"
 
@@ -1181,6 +651,10 @@ msgstr "Печать"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr "Напечатать текущий файл"
+
+#: src/menus.c:276
+msgid "Undo"
+msgstr "Откат"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -1394,6 +868,331 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "Вы не можете удалить последнее окно документа."
+
+#, fuzzy
+#~ msgid "Insert char"
+#~ msgstr "Вставить время"
+
+#~ msgid " _Change... "
+#~ msgstr "Изменить..."
+
+#~ msgid "Enter the _URL to browse for:"
+#~ msgstr "Введите URL для просмотра:"
+
+#~ msgid "Lynx found at: "
+#~ msgstr "Lynx найден в:"
+
+#~ msgid "gedit: Web Browse plugin"
+#~ msgstr "gedit: Дополнение просмотра Web"
+
+#~ msgid "location"
+#~ msgstr "положение"
+
+#~ msgid " Decimal to _Hex "
+#~ msgstr "Десятичное в шестнадцатеричное"
+
+#~ msgid " Decimal to _Octal "
+#~ msgstr "Десятичное в восьмеричное"
+
+#~ msgid " Hex to Decima_l "
+#~ msgstr "Шестнадцатиричное в десятичное"
+
+#~ msgid "_Converted value:"
+#~ msgstr "Преобразованное значение:"
+
+#~ msgid "_Value to be converted:"
+#~ msgstr "Значение для преобразования:"
+
+#~ msgid "gedit: Number Converter plugin"
+#~ msgstr "gedit: Дополнение преобразователя чисел"
+
+#~ msgid "Choose the files to compare"
+#~ msgstr "Выберите файлы для сравнения"
+
+#~ msgid "Diff found at: "
+#~ msgstr "Diff найден в:"
+
+#~ msgid "First"
+#~ msgstr "Первый"
+
+#~ msgid "From a file on disk"
+#~ msgstr "Из файла на диске"
+
+#~ msgid "From document"
+#~ msgstr "Из документа"
+
+#~ msgid "Second"
+#~ msgstr "Второй"
+
+#~ msgid "Select the \"first\" file..."
+#~ msgstr "Выберите \"первый\" файл..."
+
+#~ msgid "Select the \"second\" file..."
+#~ msgstr "Выберите \"второй\" файл..."
+
+#~ msgid "Use the _unified output format (-u option)"
+#~ msgstr "Использовать унифицированный формат вывода (параметр \"-u\")"
+
+#~ msgid "gedit: Diff plugin"
+#~ msgstr "gedit: дополнение diff"
+
+#, fuzzy
+#~ msgid "File Name"
+#~ msgstr "Имя файла:"
+
+#, fuzzy
+#~ msgid "Lines"
+#~ msgstr "строк(и)"
+
+#, fuzzy
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "gedit: дополнение diff"
+
+#~ msgid "Change..."
+#~ msgstr "Изменить..."
+
+#~ msgid "F_rom:"
+#~ msgstr "От:"
+
+#~ msgid "File to use as body of message: "
+#~ msgstr "Файл используемый как тело сообщения: "
+
+#~ msgid "From:"
+#~ msgstr "От:"
+
+#~ msgid "Sendmail found at:"
+#~ msgstr "Sendmail найден в:"
+
+#~ msgid "Subject:"
+#~ msgstr "Тема:"
+
+#~ msgid "To:"
+#~ msgstr "Кому:"
+
+#~ msgid "_Subject:"
+#~ msgstr "Тема:"
+
+#~ msgid "_To:"
+#~ msgstr "Кому:"
+
+#~ msgid "filename"
+#~ msgstr "название файла"
+
+#~ msgid "gedit: E-mail plugin"
+#~ msgstr "gedit: дополнение эл.почты"
+
+#~ msgid "gedit: e-mail plugin"
+#~ msgstr "gedit: дополнение эл.почты"
+
+#~ msgid "Select the working directory..."
+#~ msgstr "Выбор рабочего каталога..."
+
+#~ msgid "Shell _command:"
+#~ msgstr "Команда оболочки:"
+
+#~ msgid "Specify the working directory and the command you want to run."
+#~ msgstr "Указать рабочий каталог и команду, которую вы хотите выполнить."
+
+#~ msgid "_Working directory:"
+#~ msgstr "Рабочий каталог:"
+
+#~ msgid "gedit: Shell Output plugin"
+#~ msgstr "gedit: Дополнение вывода оболочки"
+
+#, fuzzy
+#~ msgid "Case Sensitive"
+#~ msgstr "Чувствительный к регистру"
+
+#, fuzzy
+#~ msgid "Sort starting at column:"
+#~ msgstr "Искомая строка не найдена"
+
+#, fuzzy
+#~ msgid "gedit: Sort plugin"
+#~ msgstr "gedit: дополнение diff"
+
+#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+#~ msgstr "(С) 1998-2000 Alex Roberts и Evan Lawrence"
+
+#~ msgid "gedit is a small and lightweight text editor for GNOME."
+#~ msgstr "gEdit -- маленький и легкий текстовый редактор для GNOME."
+
+#~ msgid "Goto Line"
+#~ msgstr "Перейти к строке"
+
+#~ msgid "Line number:"
+#~ msgstr "Номер строки:"
+
+#~ msgid "Author(s):"
+#~ msgstr "Автор(ы):"
+
+#~ msgid "De_scription"
+#~ msgstr "Описание"
+
+#~ msgid "De_tails"
+#~ msgstr "Подробности"
+
+#~ msgid "File name:"
+#~ msgstr "Имя файла:"
+
+#~ msgid "Plugins manager..."
+#~ msgstr "Диспетчер дополнений..."
+
+#~ msgid "Select the plugins to activate:"
+#~ msgstr "Выберите дополнение для включения:"
+
+#~ msgid "_Activate all"
+#~ msgstr "Включить все"
+
+#~ msgid "_Deactivate all"
+#~ msgstr "Отключить все"
+
+#~ msgid "Add _header"
+#~ msgstr "Добавить заголовок"
+
+#~ msgid "Appearance"
+#~ msgstr "Внешний вид"
+
+#~ msgid "Colors"
+#~ msgstr "Цвета"
+
+#, fuzzy
+#~ msgid "Default"
+#~ msgstr "Шрифт по умолчанию:"
+
+#~ msgid "Documents"
+#~ msgstr "Документы"
+
+#~ msgid "Editor Behavior"
+#~ msgstr "Поведение редактора"
+
+#~ msgid "Enable _Auto-indent"
+#~ msgstr "Включить Автовыравнивание"
+
+#~ msgid "Enable word _wrapping"
+#~ msgstr "Включить перевод строк"
+
+#~ msgid "Fonts"
+#~ msgstr "Шрифты"
+
+#~ msgid "Fonts/Colors"
+#~ msgstr "Шрифты/Цвета"
+
+#~ msgid "General"
+#~ msgstr "Общие"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "MDI (Многодокументный интерфейс)"
+
+#~ msgid "Notebook _tab position: "
+#~ msgstr "Положение ярлыков блокнота: "
+
+#~ msgid "Orientation"
+#~ msgstr "Ориентация"
+
+#~ msgid "Paper"
+#~ msgstr "Бумага"
+
+#~ msgid "Pick a Font"
+#~ msgstr "Выбрать шрифт"
+
+#~ msgid "Pick a color"
+#~ msgstr "Выбрать цвет"
+
+#~ msgid "Preferences"
+#~ msgstr "Настройки"
+
+#~ msgid "Print line _numbers every:"
+#~ msgstr "Печатать номера строк каждые:"
+
+#~ msgid "Printing"
+#~ msgstr "Печать"
+
+#~ msgid "S_how statusbar"
+#~ msgstr "Показать строку состояния"
+
+#~ msgid "Set limit on _undo levels to:"
+#~ msgstr "Установить предел уровней отката:"
+
+#~ msgid "Set toolbar according to _system settings"
+#~ msgstr ""
+#~ "Установить панель инструментов в соответствии с системными установками"
+
+#~ msgid "Set toolbar to _icons only"
+#~ msgstr "Показывать на панели инструментов только пиктограммы"
+
+#~ msgid "Set toolbar to icons with _text"
+#~ msgstr "Показывать на панели инструментов пиктограммы и подписи"
+
+#~ msgid "Tab _width: "
+#~ msgstr "Ширина табулятора: "
+
+#, fuzzy
+#~ msgid "Top"
+#~ msgstr "Кому:"
+
+#~ msgid "_Background: "
+#~ msgstr "Цвет фона:"
+
+#~ msgid "_Default font: "
+#~ msgstr "Шрифт по умолчанию:"
+
+#~ msgid "_Foreground: "
+#~ msgstr "Цвет текста:"
+
+#~ msgid "_Landscape"
+#~ msgstr "Блокнот"
+
+#~ msgid "_Mode: "
+#~ msgstr "Режим:"
+
+#~ msgid "_Portrait"
+#~ msgstr "Портрет"
+
+#~ msgid "_level(s)"
+#~ msgstr "уровень(и)"
+
+#~ msgid "l_ine(s)"
+#~ msgstr "строк(и)"
+
+#~ msgid "_Location to search for:"
+#~ msgstr "Место поиска: "
+
+#~ msgid "gedit: Browse for program location..."
+#~ msgstr "gedit: Просмотр места размещения программы..."
+
+#~ msgid "gedit: Set program location..."
+#~ msgstr "gedit: Установить расположение программы..."
+
+#~ msgid "label"
+#~ msgstr "метка12"
+
+#~ msgid "Case _sensitive"
+#~ msgstr "Чувствительный к регистру"
+
+#~ msgid "Find Next"
+#~ msgstr "Найти следующее"
+
+#~ msgid "Replace All"
+#~ msgstr "Заменить все"
+
+#~ msgid "Search from the _beginning of the document"
+#~ msgstr "Искать от начала документа"
+
+#~ msgid "Search from the _cursor position"
+#~ msgstr "Искать от позиции курсора"
+
+#~ msgid "_Replace with: "
+#~ msgstr "Заменить на:"
+
+#~ msgid "_Search for: "
+#~ msgstr "Поиск:"
+
+#~ msgid "Enter the location (URI) of the file you would like to open:"
+#~ msgstr "Введите положение (URI) файла, который вы хотите открыть:"
+
+#~ msgid "Open from URI"
+#~ msgstr "Открыть по URI"
 
 #~ msgid "label12"
 #~ msgstr "метка12"

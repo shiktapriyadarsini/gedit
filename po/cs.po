@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.5.5\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
+"POT-Creation-Date: 2001-12-11 21:48-0500\n"
 "PO-Revision-Date: 1999-08-09 20:17+0100\n"
 "Last-Translator: Unknown :-(\n"
 "Language-Team: \n"
@@ -12,51 +12,12 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gedit.desktop.in.h:1
-msgid "Text editor"
-msgstr ""
-
-#: gedit.desktop.in.h:2
-msgid "gedit"
-msgstr ""
-
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
 msgstr ""
 
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:1
-msgid "Char"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:2
-msgid "Dec#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:3
-msgid "Hex#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:4
-msgid ""
-"If you wish to insert any of the characters in to the active \n"
-"document, select the character and click the \"Insert Char\" \n"
-"button or double click the character in the table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:7
-msgid "Insert char"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:8
-msgid "Name"
-msgstr "Jméno"
-
-#: plugins/ASCII/asciitable.glade.h:9
-msgid "gedit: ASCII table"
 msgstr ""
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
@@ -70,31 +31,6 @@ msgstr ""
 msgid "Web browse plugin"
 msgstr "gEdit plugin na prohlí¾ení webu"
 
-#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-#: plugins/email/email.glade.h:1
-#, fuzzy
-msgid " _Change... "
-msgstr "Zru¹it"
-
-#: plugins/browse/browse.glade.h:2
-msgid "Enter the _URL to browse for:"
-msgstr ""
-
-#: plugins/browse/browse.glade.h:3
-msgid "Lynx found at: "
-msgstr ""
-
-#: plugins/browse/browse.glade.h:4
-#, fuzzy
-msgid "gedit: Web Browse plugin"
-msgstr "gEdit plugin na prohlí¾ení webu"
-
-#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
-#: plugins/email/email.glade.h:14
-#, fuzzy
-msgid "location"
-msgstr "Místo"
-
 #: plugins/convert/convert.c:179
 #, fuzzy
 msgid "Convert"
@@ -103,32 +39,6 @@ msgstr "Vrátit"
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
 msgstr ""
-
-#: plugins/convert/convert.glade.h:1
-msgid " Decimal to _Hex "
-msgstr ""
-
-#: plugins/convert/convert.glade.h:2
-msgid " Decimal to _Octal "
-msgstr ""
-
-#: plugins/convert/convert.glade.h:3
-msgid " Hex to Decima_l "
-msgstr ""
-
-#: plugins/convert/convert.glade.h:4
-#, fuzzy
-msgid "_Converted value:"
-msgstr "Vrátit"
-
-#: plugins/convert/convert.glade.h:5
-msgid "_Value to be converted:"
-msgstr ""
-
-#: plugins/convert/convert.glade.h:6
-#, fuzzy
-msgid "gedit: Number Converter plugin"
-msgstr "gEdit plugin na prohlí¾ení webu"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -188,48 +98,6 @@ msgid ""
 "For more info on diff, type \"man diff\" in a shell prompt\n"
 msgstr ""
 
-#: plugins/diff/diff.glade.h:2
-msgid "Choose the files to compare"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:3
-msgid "Diff found at: "
-msgstr ""
-
-#: plugins/diff/diff.glade.h:4
-msgid "First"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:5
-msgid "From a file on disk"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:6
-#, fuzzy
-msgid "From document"
-msgstr "Dokument"
-
-#: plugins/diff/diff.glade.h:7
-msgid "Second"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:8
-msgid "Select the \"first\" file..."
-msgstr ""
-
-#: plugins/diff/diff.glade.h:9
-msgid "Select the \"second\" file..."
-msgstr ""
-
-#: plugins/diff/diff.glade.h:10
-msgid "Use the _unified output format (-u option)"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:11
-#, fuzzy
-msgid "gedit: Diff plugin"
-msgstr "Email plugin gEditu"
-
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -251,54 +119,6 @@ msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:1
-msgid "0"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:2
-msgid "Characters (no spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:3
-msgid "Characters (with spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:4
-#, fuzzy
-msgid "Current column"
-msgstr "SouèaVýbìr..."
-
-#: plugins/docinfo/docinfo.glade.h:5
-#, fuzzy
-msgid "Current line"
-msgstr "SouèaVýbìr..."
-
-#: plugins/docinfo/docinfo.glade.h:6
-#, fuzzy
-msgid "File Name"
-msgstr "Soubor"
-
-#: plugins/docinfo/docinfo.glade.h:7
-msgid "Lines"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:8
-msgid "Paragraphs"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:9
-msgid "Update"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:10
-msgid "Words"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:11
-#, fuzzy
-msgid "gedit: Document Info plugin"
-msgstr "Email plugin gEditu"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -325,57 +145,6 @@ msgid ""
 "gedit searches for sendmail to use this plugin."
 msgstr ""
 
-#: plugins/email/email.glade.h:2
-msgid "Change..."
-msgstr ""
-
-#: plugins/email/email.glade.h:3
-msgid "F_rom:"
-msgstr ""
-
-#: plugins/email/email.glade.h:4
-msgid "File to use as body of message: "
-msgstr ""
-
-#: plugins/email/email.glade.h:5
-msgid "From:"
-msgstr ""
-
-#: plugins/email/email.glade.h:6
-msgid "Sendmail found at:"
-msgstr ""
-
-#: plugins/email/email.glade.h:7
-msgid "Subject:"
-msgstr ""
-
-#: plugins/email/email.glade.h:8
-msgid "To:"
-msgstr ""
-
-#: plugins/email/email.glade.h:9
-msgid "_Subject:"
-msgstr ""
-
-#: plugins/email/email.glade.h:10
-msgid "_To:"
-msgstr ""
-
-#: plugins/email/email.glade.h:11
-#, fuzzy
-msgid "filename"
-msgstr "Soubor"
-
-#: plugins/email/email.glade.h:12
-#, fuzzy
-msgid "gedit: E-mail plugin"
-msgstr "Email plugin gEditu"
-
-#: plugins/email/email.glade.h:13
-#, fuzzy
-msgid "gedit: e-mail plugin"
-msgstr "Email plugin gEditu"
-
 #: plugins/reverse/reverse.c:69
 #, fuzzy
 msgid "Reverse"
@@ -386,11 +155,11 @@ msgstr "Vrátit"
 msgid "Reverse text"
 msgstr "Vrátit"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr ""
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr ""
 
@@ -410,27 +179,6 @@ msgstr ""
 msgid "Insert the shell output in the document"
 msgstr ""
 
-#: plugins/shell_output/shell_output.glade.h:1
-msgid "Select the working directory..."
-msgstr ""
-
-#: plugins/shell_output/shell_output.glade.h:2
-msgid "Shell _command:"
-msgstr ""
-
-#: plugins/shell_output/shell_output.glade.h:3
-msgid "Specify the working directory and the command you want to run."
-msgstr ""
-
-#: plugins/shell_output/shell_output.glade.h:4
-msgid "_Working directory:"
-msgstr ""
-
-#: plugins/shell_output/shell_output.glade.h:5
-#, fuzzy
-msgid "gedit: Shell Output plugin"
-msgstr "Email plugin gEditu"
-
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr ""
@@ -444,24 +192,6 @@ msgstr "Vytvoøit nový dokument"
 msgid "Sort a document or selected text."
 msgstr ""
 
-#: plugins/sort/sort.glade.h:1
-msgid "1"
-msgstr ""
-
-#: plugins/sort/sort.glade.h:2
-msgid "Case Sensitive"
-msgstr ""
-
-#: plugins/sort/sort.glade.h:3
-#, fuzzy
-msgid "Sort starting at column:"
-msgstr "Hledat specifickou linku"
-
-#: plugins/sort/sort.glade.h:4
-#, fuzzy
-msgid "gedit: Sort plugin"
-msgstr "Email plugin gEditu"
-
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr ""
@@ -469,16 +199,6 @@ msgstr ""
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr ""
-
-#: src/dialogs/about.glade.h:1
-#, fuzzy
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(C) 1998, 1999 Alex Roberts and Evan Lawrence"
-
-#: src/dialogs/about.glade.h:2
-#, fuzzy
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr "gEdit je jednoduchý a malý textový editor pro GNOME/Gtk+"
 
 #: src/dialogs/dialog-plugins.c:87
 #, c-format
@@ -490,7 +210,7 @@ msgstr ""
 msgid "gedit: Preferences"
 msgstr ""
 
-#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+#: src/dialogs/dialog-replace.c:130
 msgid "Replace"
 msgstr "Vymìnit"
 
@@ -522,291 +242,6 @@ msgstr ""
 #, c-format
 msgid "Loaded file %s"
 msgstr ""
-
-#: src/dialogs/goto-line.glade.h:1
-#, fuzzy
-msgid "Goto Line"
-msgstr "Jít na linku"
-
-#: src/dialogs/goto-line.glade.h:2
-#, fuzzy
-msgid "Line number:"
-msgstr "Èíslo linky"
-
-#: src/dialogs/plugin-manager.glade.h:1
-msgid "Author(s):"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:2
-#, fuzzy
-msgid "De_scription"
-msgstr "Vybíraè pluginù"
-
-#: src/dialogs/plugin-manager.glade.h:3
-msgid "De_tails"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:4
-#, fuzzy
-msgid "File name:"
-msgstr "Soubor"
-
-#: src/dialogs/plugin-manager.glade.h:5
-msgid "Plugins manager..."
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:6
-msgid "Select the plugins to activate:"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:7
-msgid "_Activate all"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:8
-#, fuzzy
-msgid "_Deactivate all"
-msgstr "Vymìnit v¹e"
-
-#: src/dialogs/prefs.glade.h:1
-msgid "Add _header"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:2
-msgid "Appearance"
-msgstr "Vzhled"
-
-#: src/dialogs/prefs.glade.h:3
-msgid "Bottom"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:4
-#, fuzzy
-msgid "Colors"
-msgstr "Zavøít"
-
-#: src/dialogs/prefs.glade.h:5
-#, fuzzy
-msgid "Default"
-msgstr "Standardní"
-
-#: src/dialogs/prefs.glade.h:6
-#, fuzzy
-msgid "Documents"
-msgstr "Dokument"
-
-#: src/dialogs/prefs.glade.h:7
-msgid "Editor Behavior"
-msgstr "Chování editory"
-
-#: src/dialogs/prefs.glade.h:8
-msgid "Enable _Auto-indent"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:9
-msgid "Enable word _wrapping"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:10
-msgid "Fonts"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:11
-msgid "Fonts/Colors"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:12
-msgid "General"
-msgstr "V¹eobecné"
-
-#: src/dialogs/prefs.glade.h:13
-msgid "Left"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:14
-msgid "MDI (Multiple Document Interface)"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:15
-msgid "Modal"
-msgstr "Modální"
-
-#: src/dialogs/prefs.glade.h:16
-msgid "Notebook"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:17
-msgid "Notebook _tab position: "
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:18
-#, fuzzy
-msgid "Orientation"
-msgstr "Tisk"
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Paper"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:20
-msgid "Pick a Font"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:21
-msgid "Pick a color"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:22
-msgid "Preferences"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:23
-msgid "Print line _numbers every:"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:24
-#, fuzzy
-msgid "Printing"
-msgstr "Tisk"
-
-#: src/dialogs/prefs.glade.h:25
-msgid "Right"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:26
-#, fuzzy
-msgid "S_how statusbar"
-msgstr "Ukázat linku stavu"
-
-#: src/dialogs/prefs.glade.h:27
-msgid "Set limit on _undo levels to:"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:28
-msgid "Set toolbar according to _system settings"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:29
-msgid "Set toolbar to _icons only"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:30
-msgid "Set toolbar to icons with _text"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:31
-#, fuzzy
-msgid "Tab _width: "
-msgstr "Vymìnit za:"
-
-#: src/dialogs/prefs.glade.h:32
-msgid "Top"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:33
-msgid "Toplevel"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
-#, fuzzy
-msgid "Undo"
-msgstr "Okno"
-
-#: src/dialogs/prefs.glade.h:35
-msgid "_Background: "
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:36
-#, fuzzy
-msgid "_Default font: "
-msgstr "Standardní"
-
-#: src/dialogs/prefs.glade.h:37
-msgid "_Foreground: "
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:38
-msgid "_Landscape"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:39
-msgid "_Mode: "
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:40
-msgid "_Portrait"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:41
-msgid "_level(s)"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:42
-msgid "l_ine(s)"
-msgstr ""
-
-#: src/dialogs/program.glade.h:1
-msgid "_Location to search for:"
-msgstr ""
-
-#: src/dialogs/program.glade.h:2
-msgid "gedit: Browse for program location..."
-msgstr ""
-
-#: src/dialogs/program.glade.h:3
-msgid "gedit: Set program location..."
-msgstr ""
-
-#: src/dialogs/program.glade.h:4
-msgid "label"
-msgstr ""
-
-#: src/dialogs/replace.glade.h:1
-msgid "Case _sensitive"
-msgstr ""
-
-#: src/dialogs/replace.glade.h:2
-#, fuzzy
-msgid "Find Next"
-msgstr "Okno"
-
-#: src/dialogs/replace.glade.h:4
-#, fuzzy
-msgid "Replace All"
-msgstr "Vymìnit v¹e"
-
-#: src/dialogs/replace.glade.h:5
-#, fuzzy
-msgid "Search from the _beginning of the document"
-msgstr "Hledat od konce dokumentu"
-
-#: src/dialogs/replace.glade.h:6
-#, fuzzy
-msgid "Search from the _cursor position"
-msgstr "Hledat od kurzoru"
-
-#: src/dialogs/replace.glade.h:7
-#, fuzzy
-msgid "_Replace with: "
-msgstr "Vymìnit za:"
-
-#: src/dialogs/replace.glade.h:8
-#, fuzzy
-msgid "_Search for: "
-msgstr "Hledat:"
-
-#: src/dialogs/uri.glade.h:1
-msgid "Enter the location (URI) of the file you would like to open:"
-msgstr ""
-
-#: src/dialogs/uri.glade.h:2 src/menus.c:259
-msgid "Open"
-msgstr ""
-
-#: src/dialogs/uri.glade.h:3
-#, fuzzy
-msgid "Open from URI"
-msgstr "Otevøít soubor..."
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -1149,6 +584,10 @@ msgid "New"
 msgstr "Nový"
 
 #: src/menus.c:259
+msgid "Open"
+msgstr ""
+
+#: src/menus.c:259
 #, fuzzy
 msgid "Open a file"
 msgstr "Otevøít soubor..."
@@ -1178,6 +617,11 @@ msgstr "Tisk"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr ""
+
+#: src/menus.c:276
+#, fuzzy
+msgid "Undo"
+msgstr "Okno"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -1374,6 +818,177 @@ msgstr ""
 #, fuzzy
 msgid "You can't remove the last view of a document."
 msgstr "Zru¹it pohled tohoto dokumentu"
+
+#~ msgid "Name"
+#~ msgstr "Jméno"
+
+#, fuzzy
+#~ msgid " _Change... "
+#~ msgstr "Zru¹it"
+
+#, fuzzy
+#~ msgid "gedit: Web Browse plugin"
+#~ msgstr "gEdit plugin na prohlí¾ení webu"
+
+#, fuzzy
+#~ msgid "location"
+#~ msgstr "Místo"
+
+#, fuzzy
+#~ msgid "_Converted value:"
+#~ msgstr "Vrátit"
+
+#, fuzzy
+#~ msgid "gedit: Number Converter plugin"
+#~ msgstr "gEdit plugin na prohlí¾ení webu"
+
+#, fuzzy
+#~ msgid "From document"
+#~ msgstr "Dokument"
+
+#, fuzzy
+#~ msgid "gedit: Diff plugin"
+#~ msgstr "Email plugin gEditu"
+
+#, fuzzy
+#~ msgid "Current column"
+#~ msgstr "SouèaVýbìr..."
+
+#, fuzzy
+#~ msgid "Current line"
+#~ msgstr "SouèaVýbìr..."
+
+#, fuzzy
+#~ msgid "File Name"
+#~ msgstr "Soubor"
+
+#, fuzzy
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "Email plugin gEditu"
+
+#, fuzzy
+#~ msgid "filename"
+#~ msgstr "Soubor"
+
+#, fuzzy
+#~ msgid "gedit: E-mail plugin"
+#~ msgstr "Email plugin gEditu"
+
+#, fuzzy
+#~ msgid "gedit: e-mail plugin"
+#~ msgstr "Email plugin gEditu"
+
+#, fuzzy
+#~ msgid "gedit: Shell Output plugin"
+#~ msgstr "Email plugin gEditu"
+
+#, fuzzy
+#~ msgid "Sort starting at column:"
+#~ msgstr "Hledat specifickou linku"
+
+#, fuzzy
+#~ msgid "gedit: Sort plugin"
+#~ msgstr "Email plugin gEditu"
+
+#, fuzzy
+#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+#~ msgstr "(C) 1998, 1999 Alex Roberts and Evan Lawrence"
+
+#, fuzzy
+#~ msgid "gedit is a small and lightweight text editor for GNOME."
+#~ msgstr "gEdit je jednoduchý a malý textový editor pro GNOME/Gtk+"
+
+#, fuzzy
+#~ msgid "Goto Line"
+#~ msgstr "Jít na linku"
+
+#, fuzzy
+#~ msgid "Line number:"
+#~ msgstr "Èíslo linky"
+
+#, fuzzy
+#~ msgid "De_scription"
+#~ msgstr "Vybíraè pluginù"
+
+#, fuzzy
+#~ msgid "File name:"
+#~ msgstr "Soubor"
+
+#, fuzzy
+#~ msgid "_Deactivate all"
+#~ msgstr "Vymìnit v¹e"
+
+#~ msgid "Appearance"
+#~ msgstr "Vzhled"
+
+#, fuzzy
+#~ msgid "Colors"
+#~ msgstr "Zavøít"
+
+#, fuzzy
+#~ msgid "Default"
+#~ msgstr "Standardní"
+
+#, fuzzy
+#~ msgid "Documents"
+#~ msgstr "Dokument"
+
+#~ msgid "Editor Behavior"
+#~ msgstr "Chování editory"
+
+#~ msgid "General"
+#~ msgstr "V¹eobecné"
+
+#~ msgid "Modal"
+#~ msgstr "Modální"
+
+#, fuzzy
+#~ msgid "Orientation"
+#~ msgstr "Tisk"
+
+#, fuzzy
+#~ msgid "Printing"
+#~ msgstr "Tisk"
+
+#, fuzzy
+#~ msgid "S_how statusbar"
+#~ msgstr "Ukázat linku stavu"
+
+#, fuzzy
+#~ msgid "Tab _width: "
+#~ msgstr "Vymìnit za:"
+
+#, fuzzy
+#~ msgid "_Default font: "
+#~ msgstr "Standardní"
+
+#, fuzzy
+#~ msgid "Find Next"
+#~ msgstr "Okno"
+
+#, fuzzy
+#~ msgid "Replace All"
+#~ msgstr "Vymìnit v¹e"
+
+#, fuzzy
+#~ msgid "Search from the _beginning of the document"
+#~ msgstr "Hledat od konce dokumentu"
+
+#, fuzzy
+#~ msgid "Search from the _cursor position"
+#~ msgstr "Hledat od kurzoru"
+
+#, fuzzy
+#~ msgid "_Replace with: "
+#~ msgstr "Vymìnit za:"
+
+#, fuzzy
+#~ msgid "_Search for: "
+#~ msgstr "Hledat:"
+
+#, fuzzy
+#~ msgid "Open from URI"
+#~ msgstr "Otevøít soubor..."
 
 #, fuzzy
 #~ msgid "Add >"

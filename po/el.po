@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.9.5\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
+"POT-Creation-Date: 2001-12-11 21:48-0500\n"
 "PO-Revision-Date: 2001-03-02 00:42:17+0900\n"
 "Last-Translator: Simos Xenitellis <simos@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -20,53 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-7\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gedit.desktop.in.h:1
-msgid "Text editor"
-msgstr "ΞΟΞ»ΟΟ ΞΊΞ΅ΞΉΞΌΞ΅Ξ½ΞΏΞ³ΟΞ¬ΟΞΏΟ"
-
-#: gedit.desktop.in.h:2
-msgid "gedit"
-msgstr "ΞΞ΅ΞΉΞΌΞ΅Ξ½ΞΏΞ³ΟΞ¬ΟΞΏΟ"
-
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
 msgstr ""
 
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:1
-#, fuzzy
-msgid "Char"
-msgstr "Αλλαγή"
-
-#: plugins/ASCII/asciitable.glade.h:2
-msgid "Dec#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:3
-msgid "Hex#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:4
-msgid ""
-"If you wish to insert any of the characters in to the active \n"
-"document, select the character and click the \"Insert Char\" \n"
-"button or double click the character in the table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:7
-#, fuzzy
-msgid "Insert char"
-msgstr "Εισαγωγή Ώρας"
-
-#: plugins/ASCII/asciitable.glade.h:8
-msgid "Name"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:9
-msgid "gedit: ASCII table"
 msgstr ""
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
@@ -79,28 +38,6 @@ msgstr "Περιήγηση"
 msgid "Web browse plugin"
 msgstr "Άρθρωμα περιήγησης δικτυακού ιστού"
 
-#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-#: plugins/email/email.glade.h:1
-msgid " _Change... "
-msgstr "_Αλλαγή... "
-
-#: plugins/browse/browse.glade.h:2
-msgid "Enter the _URL to browse for:"
-msgstr "Εισάγετε το _URL για περιήγηση:"
-
-#: plugins/browse/browse.glade.h:3
-msgid "Lynx found at: "
-msgstr "Το πρόγραμμα lynx βρέθηκε στο: "
-
-#: plugins/browse/browse.glade.h:4
-msgid "gedit: Web Browse plugin"
-msgstr "gedit: Άρθρωμα περιήγησης δικτυακού ιστού"
-
-#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
-#: plugins/email/email.glade.h:14
-msgid "location"
-msgstr "τοποθεσία"
-
 #: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "Μετατροπή"
@@ -108,30 +45,6 @@ msgstr "Μετατροπή"
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
 msgstr "Μετατροπέας Αριθμών"
-
-#: plugins/convert/convert.glade.h:1
-msgid " Decimal to _Hex "
-msgstr " Δεκαδικό σε Δεκαε_ξαδικό "
-
-#: plugins/convert/convert.glade.h:2
-msgid " Decimal to _Octal "
-msgstr " Δεκαδικό σε _Οκταδικό "
-
-#: plugins/convert/convert.glade.h:3
-msgid " Hex to Decima_l "
-msgstr " Δεκαεξαδικό σε _Δεκαδικό"
-
-#: plugins/convert/convert.glade.h:4
-msgid "_Converted value:"
-msgstr "Τιμή που έχει _μετατραπεί:"
-
-#: plugins/convert/convert.glade.h:5
-msgid "_Value to be converted:"
-msgstr "_Τιμή για μετατροπή:"
-
-#: plugins/convert/convert.glade.h:6
-msgid "gedit: Number Converter plugin"
-msgstr "gedit: Άρθρωμα Μετατροπέα Αριθμών"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -203,46 +116,6 @@ msgstr ""
 "Για περισσότερες πληροφορίες για την diff, γράψτε \"man diff\" στη γραμμή "
 "εντολών\n"
 
-#: plugins/diff/diff.glade.h:2
-msgid "Choose the files to compare"
-msgstr "Επιλέξτε αρχεία προς σύγκριση"
-
-#: plugins/diff/diff.glade.h:3
-msgid "Diff found at: "
-msgstr "Το πρόγραμμα diff βρέθηκε στο: "
-
-#: plugins/diff/diff.glade.h:4
-msgid "First"
-msgstr "Πρώτο"
-
-#: plugins/diff/diff.glade.h:5
-msgid "From a file on disk"
-msgstr "Από αρχείου στο δίσκου"
-
-#: plugins/diff/diff.glade.h:6
-msgid "From document"
-msgstr "Από έγγραφο"
-
-#: plugins/diff/diff.glade.h:7
-msgid "Second"
-msgstr "Δεύτερο"
-
-#: plugins/diff/diff.glade.h:8
-msgid "Select the \"first\" file..."
-msgstr "Επιλέξτε το \"πρώτο\" αρχείο..."
-
-#: plugins/diff/diff.glade.h:9
-msgid "Select the \"second\" file..."
-msgstr "Επιλέξτε το \"δεύτερο\" αρχείο..."
-
-#: plugins/diff/diff.glade.h:10
-msgid "Use the _unified output format (-u option)"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:11
-msgid "gedit: Diff plugin"
-msgstr "gedit: Άρθρωμα διαφορών αρχείων"
-
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -264,55 +137,6 @@ msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:1
-msgid "0"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:2
-msgid "Characters (no spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:3
-msgid "Characters (with spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:4
-#, fuzzy
-msgid "Current column"
-msgstr "Τρέχουσα γραμματοσειρά"
-
-#: plugins/docinfo/docinfo.glade.h:5
-#, fuzzy
-msgid "Current line"
-msgstr "Τρέχουσα γραμματοσειρά"
-
-#: plugins/docinfo/docinfo.glade.h:6
-#, fuzzy
-msgid "File Name"
-msgstr "όνομα αρχείου"
-
-#: plugins/docinfo/docinfo.glade.h:7
-#, fuzzy
-msgid "Lines"
-msgstr "Γραμμή"
-
-#: plugins/docinfo/docinfo.glade.h:8
-msgid "Paragraphs"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:9
-msgid "Update"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:10
-msgid "Words"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:11
-#, fuzzy
-msgid "gedit: Document Info plugin"
-msgstr "gedit: Άρθρωμα διαφορών αρχείων"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -342,54 +166,6 @@ msgstr ""
 "Αποστολή του τρέχοντος εγγράφου μέσω αλληλογραφίας στη ορισμένη διεύθυνση\n"
 "Ο Κειμενογράφος αναζητεί το πρόγραμμα sendmail για αυτό το άρθρωμα."
 
-#: plugins/email/email.glade.h:2
-msgid "Change..."
-msgstr "Αλλαγή..."
-
-#: plugins/email/email.glade.h:3
-msgid "F_rom:"
-msgstr "Α_πό:"
-
-#: plugins/email/email.glade.h:4
-msgid "File to use as body of message: "
-msgstr "Χρήση αρχείου ως το περιεχόμενο του γράμματος: "
-
-#: plugins/email/email.glade.h:5
-msgid "From:"
-msgstr "Από:"
-
-#: plugins/email/email.glade.h:6
-msgid "Sendmail found at:"
-msgstr "Το πρόγραμμα sendmail βρέθηκε στο:"
-
-#: plugins/email/email.glade.h:7
-msgid "Subject:"
-msgstr "Θέμα:"
-
-#: plugins/email/email.glade.h:8
-msgid "To:"
-msgstr "Προς:"
-
-#: plugins/email/email.glade.h:9
-msgid "_Subject:"
-msgstr "_Θέμα:"
-
-#: plugins/email/email.glade.h:10
-msgid "_To:"
-msgstr "Πρ_ος:"
-
-#: plugins/email/email.glade.h:11
-msgid "filename"
-msgstr "όνομα αρχείου"
-
-#: plugins/email/email.glade.h:12
-msgid "gedit: E-mail plugin"
-msgstr "gedit: Άρθρωμα ηλεκτρονικής αλληλογραφίας"
-
-#: plugins/email/email.glade.h:13
-msgid "gedit: e-mail plugin"
-msgstr "Κειμενογράφος: άρθρωμα ηλεκτρονικής αλληλογραφίας"
-
 #: plugins/reverse/reverse.c:69
 msgid "Reverse"
 msgstr "Αντιστροφή"
@@ -398,11 +174,11 @@ msgstr "Αντιστροφή"
 msgid "Reverse text"
 msgstr "Αντιστροφή κειμένου"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Καλημέρα Κόσμε"
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr "Δείγμα αρθρώματος 'καλημέρα κόσμε'"
 
@@ -425,27 +201,6 @@ msgstr "Αποτέλεσμα Φλοιού"
 msgid "Insert the shell output in the document"
 msgstr "Εισαγωγής του αποτελέσματος του φλοιού στο έγγραφο"
 
-#: plugins/shell_output/shell_output.glade.h:1
-msgid "Select the working directory..."
-msgstr "Επιλέξτε τον κατάλογο εργασίας..."
-
-#: plugins/shell_output/shell_output.glade.h:2
-msgid "Shell _command:"
-msgstr "Εντολή _φλοιού:"
-
-#: plugins/shell_output/shell_output.glade.h:3
-msgid "Specify the working directory and the command you want to run."
-msgstr ""
-"Καθορίστε τον κατάλογο εργασίας και την εντολή που θέλετε να εκτελέσετε."
-
-#: plugins/shell_output/shell_output.glade.h:4
-msgid "_Working directory:"
-msgstr "Κατάλογος _Εργασίας:"
-
-#: plugins/shell_output/shell_output.glade.h:5
-msgid "gedit: Shell Output plugin"
-msgstr "gedit: Άρθρωμα Αποτελέσματος Φλοιού"
-
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr ""
@@ -460,25 +215,6 @@ msgstr "Δημιουργία νέου εγγράφου"
 msgid "Sort a document or selected text."
 msgstr "Τα δύο έγγραφα που επιλέχθηκαν είναι τα ίδια."
 
-#: plugins/sort/sort.glade.h:1
-msgid "1"
-msgstr ""
-
-#: plugins/sort/sort.glade.h:2
-#, fuzzy
-msgid "Case Sensitive"
-msgstr "_Διάκριση κεφαλαίων/πεζών"
-
-#: plugins/sort/sort.glade.h:3
-#, fuzzy
-msgid "Sort starting at column:"
-msgstr "Δε βρέθηκε το κείμενο"
-
-#: plugins/sort/sort.glade.h:4
-#, fuzzy
-msgid "gedit: Sort plugin"
-msgstr "gedit: Άρθρωμα διαφορών αρχείων"
-
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr "Εισαγωγή Ώρας"
@@ -486,16 +222,6 @@ msgstr "Εισαγωγή Ώρας"
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας"
-
-#: src/dialogs/about.glade.h:1
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(C) 1998, 1999, 2000 Alex Roberts και Evan Lawrence"
-
-#: src/dialogs/about.glade.h:2
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr ""
-"O Κειμενογράφος είναι ένας μικρός και ελαφρύς διορθωτής κειμένου για το "
-"GNOME."
 
 #: src/dialogs/dialog-plugins.c:87
 #, c-format
@@ -509,7 +235,7 @@ msgstr ""
 msgid "gedit: Preferences"
 msgstr "Κειμενογράφος: Προτιμίσεις"
 
-#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+#: src/dialogs/dialog-replace.c:130
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
@@ -541,297 +267,6 @@ msgstr ""
 #, c-format
 msgid "Loaded file %s"
 msgstr "Φόρτωση του αρχείου %s"
-
-#: src/dialogs/goto-line.glade.h:1
-msgid "Goto Line"
-msgstr "Επίσκεψη Γραμμής"
-
-#: src/dialogs/goto-line.glade.h:2
-msgid "Line number:"
-msgstr "Αριθμός γραμμής:"
-
-#: src/dialogs/plugin-manager.glade.h:1
-msgid "Author(s):"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:2
-#, fuzzy
-msgid "De_scription"
-msgstr "Περιγραφή Αρθρώματος"
-
-#: src/dialogs/plugin-manager.glade.h:3
-msgid "De_tails"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:4
-#, fuzzy
-msgid "File name:"
-msgstr "όνομα αρχείου"
-
-#: src/dialogs/plugin-manager.glade.h:5
-#, fuzzy
-msgid "Plugins manager..."
-msgstr "Διαχειριστής Αρθρωμάτων Κειμενογράφου"
-
-#: src/dialogs/plugin-manager.glade.h:6
-#, fuzzy
-msgid "Select the plugins to activate:"
-msgstr "Επιλογή αρθρωμάτων για εγκατάσταση"
-
-#: src/dialogs/plugin-manager.glade.h:7
-msgid "_Activate all"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:8
-msgid "_Deactivate all"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:1
-msgid "Add _header"
-msgstr "Προσθήκη _κεφαλίδας"
-
-#: src/dialogs/prefs.glade.h:2
-msgid "Appearance"
-msgstr "Εμφάνιση"
-
-#: src/dialogs/prefs.glade.h:3
-#, fuzzy
-msgid "Bottom"
-msgstr "_Κάτω"
-
-#: src/dialogs/prefs.glade.h:4
-msgid "Colors"
-msgstr "Χρώματα"
-
-#: src/dialogs/prefs.glade.h:5
-#, fuzzy
-msgid "Default"
-msgstr "Εξ'ορισμού Γραμματοσειρά: "
-
-#: src/dialogs/prefs.glade.h:6
-msgid "Documents"
-msgstr "Έγγραφα"
-
-#: src/dialogs/prefs.glade.h:7
-msgid "Editor Behavior"
-msgstr "Συμπεριφορά Διορθωτή"
-
-#: src/dialogs/prefs.glade.h:8
-#, fuzzy
-msgid "Enable _Auto-indent"
-msgstr "Ενεργοποίηση αυτόματης στοίχισης"
-
-#: src/dialogs/prefs.glade.h:9
-msgid "Enable word _wrapping"
-msgstr "Ενεργοποίηση αυτόματης _αλλαγής γραμμής"
-
-#: src/dialogs/prefs.glade.h:10
-msgid "Fonts"
-msgstr "Γραμματοσειρές"
-
-#: src/dialogs/prefs.glade.h:11
-msgid "Fonts/Colors"
-msgstr "Γραμματοσειρές/Χρώματα"
-
-#: src/dialogs/prefs.glade.h:12
-msgid "General"
-msgstr "Γενικά"
-
-#: src/dialogs/prefs.glade.h:13
-#, fuzzy
-msgid "Left"
-msgstr "Α_ριστερά"
-
-#: src/dialogs/prefs.glade.h:14
-msgid "MDI (Multiple Document Interface)"
-msgstr "ΔΠΕ (Διασύνδεση Πολλαπλών Εγγράφων)"
-
-#: src/dialogs/prefs.glade.h:15
-msgid "Modal"
-msgstr "Αποκλειστικό"
-
-#: src/dialogs/prefs.glade.h:16
-msgid "Notebook"
-msgstr "Τετράδιο"
-
-#: src/dialogs/prefs.glade.h:17
-#, fuzzy
-msgid "Notebook _tab position: "
-msgstr "Θέση Στηλοθέτη Τετραδίου: "
-
-#: src/dialogs/prefs.glade.h:18
-#, fuzzy
-msgid "Orientation"
-msgstr "Σε εκτύπωση"
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Paper"
-msgstr "Χαρτί"
-
-#: src/dialogs/prefs.glade.h:20
-msgid "Pick a Font"
-msgstr "Επιλογή Γραμματοσειράς"
-
-#: src/dialogs/prefs.glade.h:21
-msgid "Pick a color"
-msgstr "Επιλογή χρώματος"
-
-#: src/dialogs/prefs.glade.h:22
-#, fuzzy
-msgid "Preferences"
-msgstr "Κειμενογράφος: Προτιμίσεις"
-
-#: src/dialogs/prefs.glade.h:23
-#, fuzzy
-msgid "Print line _numbers every:"
-msgstr "Εκτύπωση αρι_θμών γραμμής κάθε:"
-
-#: src/dialogs/prefs.glade.h:24
-msgid "Printing"
-msgstr "Σε εκτύπωση"
-
-#: src/dialogs/prefs.glade.h:25
-#, fuzzy
-msgid "Right"
-msgstr "_Δεξιά"
-
-#: src/dialogs/prefs.glade.h:26
-#, fuzzy
-msgid "S_how statusbar"
-msgstr "Εμφάνιση Γραμμής Κατάστασης"
-
-#: src/dialogs/prefs.glade.h:27
-#, fuzzy
-msgid "Set limit on _undo levels to:"
-msgstr "Καθορισμός ορίου των επιπέδων ακυρώσεων σε:"
-
-#: src/dialogs/prefs.glade.h:28
-#, fuzzy
-msgid "Set toolbar according to _system settings"
-msgstr "Η εργαλειοθήκη να ρυθμιστεί βάση ρυθμίσεων του συστήματος"
-
-#: src/dialogs/prefs.glade.h:29
-#, fuzzy
-msgid "Set toolbar to _icons only"
-msgstr "Η εργαλειοθήκη ρυθμιστεί σε Μόνο Εικονίδια"
-
-#: src/dialogs/prefs.glade.h:30
-#, fuzzy
-msgid "Set toolbar to icons with _text"
-msgstr "Η εργαλειοθήκη να οριστεί σε Εικονίδια με κείμενο"
-
-#: src/dialogs/prefs.glade.h:31
-#, fuzzy
-msgid "Tab _width: "
-msgstr "Πλάτος στοιλοθέτη: "
-
-#: src/dialogs/prefs.glade.h:32
-#, fuzzy
-msgid "Top"
-msgstr "Ε_πάνω"
-
-#: src/dialogs/prefs.glade.h:33
-msgid "Toplevel"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
-msgid "Undo"
-msgstr "Ακύρωση"
-
-#: src/dialogs/prefs.glade.h:35
-#, fuzzy
-msgid "_Background: "
-msgstr "Παρασκήνιο: "
-
-#: src/dialogs/prefs.glade.h:36
-#, fuzzy
-msgid "_Default font: "
-msgstr "Εξ'ορισμού Γραμματοσειρά: "
-
-#: src/dialogs/prefs.glade.h:37
-#, fuzzy
-msgid "_Foreground: "
-msgstr "Φόντο: "
-
-#: src/dialogs/prefs.glade.h:38
-msgid "_Landscape"
-msgstr "_Τοπίο"
-
-#: src/dialogs/prefs.glade.h:39
-#, fuzzy
-msgid "_Mode: "
-msgstr "Κατάσταση:"
-
-#: src/dialogs/prefs.glade.h:40
-msgid "_Portrait"
-msgstr "_Πορτραίτο"
-
-#: src/dialogs/prefs.glade.h:41
-#, fuzzy
-msgid "_level(s)"
-msgstr "επίπεδο(α)"
-
-#: src/dialogs/prefs.glade.h:42
-#, fuzzy
-msgid "l_ine(s)"
-msgstr "γραμμή(ές)"
-
-#: src/dialogs/program.glade.h:1
-msgid "_Location to search for:"
-msgstr "_Θέση προς αναζήτηση:"
-
-#: src/dialogs/program.glade.h:2
-msgid "gedit: Browse for program location..."
-msgstr "gedit: Περιήγηση για τη θέση προγράμματος..."
-
-#: src/dialogs/program.glade.h:3
-msgid "gedit: Set program location..."
-msgstr "gedit: Καθορισμός θέσης προγράμματος..."
-
-#: src/dialogs/program.glade.h:4
-msgid "label"
-msgstr "ετικέτα"
-
-#: src/dialogs/replace.glade.h:1
-msgid "Case _sensitive"
-msgstr "_Διάκριση κεφαλαίων/πεζών"
-
-#: src/dialogs/replace.glade.h:2
-msgid "Find Next"
-msgstr "Εύρεση Επόμενου"
-
-#: src/dialogs/replace.glade.h:4
-msgid "Replace All"
-msgstr "Αντικατάσταση Όλων"
-
-#: src/dialogs/replace.glade.h:5
-msgid "Search from the _beginning of the document"
-msgstr "Αναζήτηση από αρ_χή του εγγράφου"
-
-#: src/dialogs/replace.glade.h:6
-msgid "Search from the _cursor position"
-msgstr "Αναζήτηση από τη θέση του _δείκτη"
-
-#: src/dialogs/replace.glade.h:7
-msgid "_Replace with: "
-msgstr "_Αντικατάσταση με:"
-
-#: src/dialogs/replace.glade.h:8
-msgid "_Search for: "
-msgstr "_Εύρεση του: "
-
-#: src/dialogs/uri.glade.h:1
-msgid "Enter the location (URI) of the file you would like to open:"
-msgstr "Εισάγετε την τοποθεσία (URI) του αρχείου που θέλετε να ανοίξετε:"
-
-#: src/dialogs/uri.glade.h:2 src/menus.c:259
-msgid "Open"
-msgstr "Άνοιγμα"
-
-#: src/dialogs/uri.glade.h:3
-#, fuzzy
-msgid "Open from URI"
-msgstr "Άνοιγμα από _URI..."
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -1205,6 +640,10 @@ msgid "New"
 msgstr "Νέο"
 
 #: src/menus.c:259
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: src/menus.c:259
 msgid "Open a file"
 msgstr "Άνοιγμα αρχείου"
 
@@ -1231,6 +670,10 @@ msgstr "Εκτύπωση"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr "Εκτύπωση του τρέχοντος αρχείου"
+
+#: src/menus.c:276
+msgid "Undo"
+msgstr "Ακύρωση"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -1447,6 +890,376 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "Δε μπορείτε να διαγράψετε την τελευταία απεικόνιση ενός εγγράφου."
+
+#~ msgid "Text editor"
+#~ msgstr "ΞΟΞ»ΟΟ ΞΊΞ΅ΞΉΞΌΞ΅Ξ½ΞΏΞ³ΟΞ¬ΟΞΏΟ"
+
+#~ msgid "gedit"
+#~ msgstr "ΞΞ΅ΞΉΞΌΞ΅Ξ½ΞΏΞ³ΟΞ¬ΟΞΏΟ"
+
+#, fuzzy
+#~ msgid "Char"
+#~ msgstr "Αλλαγή"
+
+#, fuzzy
+#~ msgid "Insert char"
+#~ msgstr "Εισαγωγή Ώρας"
+
+#~ msgid " _Change... "
+#~ msgstr "_Αλλαγή... "
+
+#~ msgid "Enter the _URL to browse for:"
+#~ msgstr "Εισάγετε το _URL για περιήγηση:"
+
+#~ msgid "Lynx found at: "
+#~ msgstr "Το πρόγραμμα lynx βρέθηκε στο: "
+
+#~ msgid "gedit: Web Browse plugin"
+#~ msgstr "gedit: Άρθρωμα περιήγησης δικτυακού ιστού"
+
+#~ msgid "location"
+#~ msgstr "τοποθεσία"
+
+#~ msgid " Decimal to _Hex "
+#~ msgstr " Δεκαδικό σε Δεκαε_ξαδικό "
+
+#~ msgid " Decimal to _Octal "
+#~ msgstr " Δεκαδικό σε _Οκταδικό "
+
+#~ msgid " Hex to Decima_l "
+#~ msgstr " Δεκαεξαδικό σε _Δεκαδικό"
+
+#~ msgid "_Converted value:"
+#~ msgstr "Τιμή που έχει _μετατραπεί:"
+
+#~ msgid "_Value to be converted:"
+#~ msgstr "_Τιμή για μετατροπή:"
+
+#~ msgid "gedit: Number Converter plugin"
+#~ msgstr "gedit: Άρθρωμα Μετατροπέα Αριθμών"
+
+#~ msgid "Choose the files to compare"
+#~ msgstr "Επιλέξτε αρχεία προς σύγκριση"
+
+#~ msgid "Diff found at: "
+#~ msgstr "Το πρόγραμμα diff βρέθηκε στο: "
+
+#~ msgid "First"
+#~ msgstr "Πρώτο"
+
+#~ msgid "From a file on disk"
+#~ msgstr "Από αρχείου στο δίσκου"
+
+#~ msgid "From document"
+#~ msgstr "Από έγγραφο"
+
+#~ msgid "Second"
+#~ msgstr "Δεύτερο"
+
+#~ msgid "Select the \"first\" file..."
+#~ msgstr "Επιλέξτε το \"πρώτο\" αρχείο..."
+
+#~ msgid "Select the \"second\" file..."
+#~ msgstr "Επιλέξτε το \"δεύτερο\" αρχείο..."
+
+#~ msgid "gedit: Diff plugin"
+#~ msgstr "gedit: Άρθρωμα διαφορών αρχείων"
+
+#, fuzzy
+#~ msgid "Current column"
+#~ msgstr "Τρέχουσα γραμματοσειρά"
+
+#, fuzzy
+#~ msgid "Current line"
+#~ msgstr "Τρέχουσα γραμματοσειρά"
+
+#, fuzzy
+#~ msgid "File Name"
+#~ msgstr "όνομα αρχείου"
+
+#, fuzzy
+#~ msgid "Lines"
+#~ msgstr "Γραμμή"
+
+#, fuzzy
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "gedit: Άρθρωμα διαφορών αρχείων"
+
+#~ msgid "Change..."
+#~ msgstr "Αλλαγή..."
+
+#~ msgid "F_rom:"
+#~ msgstr "Α_πό:"
+
+#~ msgid "File to use as body of message: "
+#~ msgstr "Χρήση αρχείου ως το περιεχόμενο του γράμματος: "
+
+#~ msgid "From:"
+#~ msgstr "Από:"
+
+#~ msgid "Sendmail found at:"
+#~ msgstr "Το πρόγραμμα sendmail βρέθηκε στο:"
+
+#~ msgid "Subject:"
+#~ msgstr "Θέμα:"
+
+#~ msgid "To:"
+#~ msgstr "Προς:"
+
+#~ msgid "_Subject:"
+#~ msgstr "_Θέμα:"
+
+#~ msgid "_To:"
+#~ msgstr "Πρ_ος:"
+
+#~ msgid "filename"
+#~ msgstr "όνομα αρχείου"
+
+#~ msgid "gedit: E-mail plugin"
+#~ msgstr "gedit: Άρθρωμα ηλεκτρονικής αλληλογραφίας"
+
+#~ msgid "gedit: e-mail plugin"
+#~ msgstr "Κειμενογράφος: άρθρωμα ηλεκτρονικής αλληλογραφίας"
+
+#~ msgid "Select the working directory..."
+#~ msgstr "Επιλέξτε τον κατάλογο εργασίας..."
+
+#~ msgid "Shell _command:"
+#~ msgstr "Εντολή _φλοιού:"
+
+#~ msgid "Specify the working directory and the command you want to run."
+#~ msgstr ""
+#~ "Καθορίστε τον κατάλογο εργασίας και την εντολή που θέλετε να εκτελέσετε."
+
+#~ msgid "_Working directory:"
+#~ msgstr "Κατάλογος _Εργασίας:"
+
+#~ msgid "gedit: Shell Output plugin"
+#~ msgstr "gedit: Άρθρωμα Αποτελέσματος Φλοιού"
+
+#, fuzzy
+#~ msgid "Case Sensitive"
+#~ msgstr "_Διάκριση κεφαλαίων/πεζών"
+
+#, fuzzy
+#~ msgid "Sort starting at column:"
+#~ msgstr "Δε βρέθηκε το κείμενο"
+
+#, fuzzy
+#~ msgid "gedit: Sort plugin"
+#~ msgstr "gedit: Άρθρωμα διαφορών αρχείων"
+
+#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+#~ msgstr "(C) 1998, 1999, 2000 Alex Roberts και Evan Lawrence"
+
+#~ msgid "gedit is a small and lightweight text editor for GNOME."
+#~ msgstr ""
+#~ "O Κειμενογράφος είναι ένας μικρός και ελαφρύς διορθωτής κειμένου για το "
+#~ "GNOME."
+
+#~ msgid "Goto Line"
+#~ msgstr "Επίσκεψη Γραμμής"
+
+#~ msgid "Line number:"
+#~ msgstr "Αριθμός γραμμής:"
+
+#, fuzzy
+#~ msgid "De_scription"
+#~ msgstr "Περιγραφή Αρθρώματος"
+
+#, fuzzy
+#~ msgid "File name:"
+#~ msgstr "όνομα αρχείου"
+
+#, fuzzy
+#~ msgid "Plugins manager..."
+#~ msgstr "Διαχειριστής Αρθρωμάτων Κειμενογράφου"
+
+#, fuzzy
+#~ msgid "Select the plugins to activate:"
+#~ msgstr "Επιλογή αρθρωμάτων για εγκατάσταση"
+
+#~ msgid "Add _header"
+#~ msgstr "Προσθήκη _κεφαλίδας"
+
+#~ msgid "Appearance"
+#~ msgstr "Εμφάνιση"
+
+#, fuzzy
+#~ msgid "Bottom"
+#~ msgstr "_Κάτω"
+
+#~ msgid "Colors"
+#~ msgstr "Χρώματα"
+
+#, fuzzy
+#~ msgid "Default"
+#~ msgstr "Εξ'ορισμού Γραμματοσειρά: "
+
+#~ msgid "Documents"
+#~ msgstr "Έγγραφα"
+
+#~ msgid "Editor Behavior"
+#~ msgstr "Συμπεριφορά Διορθωτή"
+
+#, fuzzy
+#~ msgid "Enable _Auto-indent"
+#~ msgstr "Ενεργοποίηση αυτόματης στοίχισης"
+
+#~ msgid "Enable word _wrapping"
+#~ msgstr "Ενεργοποίηση αυτόματης _αλλαγής γραμμής"
+
+#~ msgid "Fonts"
+#~ msgstr "Γραμματοσειρές"
+
+#~ msgid "Fonts/Colors"
+#~ msgstr "Γραμματοσειρές/Χρώματα"
+
+#~ msgid "General"
+#~ msgstr "Γενικά"
+
+#, fuzzy
+#~ msgid "Left"
+#~ msgstr "Α_ριστερά"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "ΔΠΕ (Διασύνδεση Πολλαπλών Εγγράφων)"
+
+#~ msgid "Modal"
+#~ msgstr "Αποκλειστικό"
+
+#~ msgid "Notebook"
+#~ msgstr "Τετράδιο"
+
+#, fuzzy
+#~ msgid "Notebook _tab position: "
+#~ msgstr "Θέση Στηλοθέτη Τετραδίου: "
+
+#, fuzzy
+#~ msgid "Orientation"
+#~ msgstr "Σε εκτύπωση"
+
+#~ msgid "Paper"
+#~ msgstr "Χαρτί"
+
+#~ msgid "Pick a Font"
+#~ msgstr "Επιλογή Γραμματοσειράς"
+
+#~ msgid "Pick a color"
+#~ msgstr "Επιλογή χρώματος"
+
+#, fuzzy
+#~ msgid "Preferences"
+#~ msgstr "Κειμενογράφος: Προτιμίσεις"
+
+#, fuzzy
+#~ msgid "Print line _numbers every:"
+#~ msgstr "Εκτύπωση αρι_θμών γραμμής κάθε:"
+
+#~ msgid "Printing"
+#~ msgstr "Σε εκτύπωση"
+
+#, fuzzy
+#~ msgid "Right"
+#~ msgstr "_Δεξιά"
+
+#, fuzzy
+#~ msgid "S_how statusbar"
+#~ msgstr "Εμφάνιση Γραμμής Κατάστασης"
+
+#, fuzzy
+#~ msgid "Set limit on _undo levels to:"
+#~ msgstr "Καθορισμός ορίου των επιπέδων ακυρώσεων σε:"
+
+#, fuzzy
+#~ msgid "Set toolbar according to _system settings"
+#~ msgstr "Η εργαλειοθήκη να ρυθμιστεί βάση ρυθμίσεων του συστήματος"
+
+#, fuzzy
+#~ msgid "Set toolbar to _icons only"
+#~ msgstr "Η εργαλειοθήκη ρυθμιστεί σε Μόνο Εικονίδια"
+
+#, fuzzy
+#~ msgid "Set toolbar to icons with _text"
+#~ msgstr "Η εργαλειοθήκη να οριστεί σε Εικονίδια με κείμενο"
+
+#, fuzzy
+#~ msgid "Tab _width: "
+#~ msgstr "Πλάτος στοιλοθέτη: "
+
+#, fuzzy
+#~ msgid "Top"
+#~ msgstr "Ε_πάνω"
+
+#, fuzzy
+#~ msgid "_Background: "
+#~ msgstr "Παρασκήνιο: "
+
+#, fuzzy
+#~ msgid "_Default font: "
+#~ msgstr "Εξ'ορισμού Γραμματοσειρά: "
+
+#, fuzzy
+#~ msgid "_Foreground: "
+#~ msgstr "Φόντο: "
+
+#~ msgid "_Landscape"
+#~ msgstr "_Τοπίο"
+
+#, fuzzy
+#~ msgid "_Mode: "
+#~ msgstr "Κατάσταση:"
+
+#~ msgid "_Portrait"
+#~ msgstr "_Πορτραίτο"
+
+#, fuzzy
+#~ msgid "_level(s)"
+#~ msgstr "επίπεδο(α)"
+
+#, fuzzy
+#~ msgid "l_ine(s)"
+#~ msgstr "γραμμή(ές)"
+
+#~ msgid "_Location to search for:"
+#~ msgstr "_Θέση προς αναζήτηση:"
+
+#~ msgid "gedit: Browse for program location..."
+#~ msgstr "gedit: Περιήγηση για τη θέση προγράμματος..."
+
+#~ msgid "gedit: Set program location..."
+#~ msgstr "gedit: Καθορισμός θέσης προγράμματος..."
+
+#~ msgid "label"
+#~ msgstr "ετικέτα"
+
+#~ msgid "Case _sensitive"
+#~ msgstr "_Διάκριση κεφαλαίων/πεζών"
+
+#~ msgid "Find Next"
+#~ msgstr "Εύρεση Επόμενου"
+
+#~ msgid "Replace All"
+#~ msgstr "Αντικατάσταση Όλων"
+
+#~ msgid "Search from the _beginning of the document"
+#~ msgstr "Αναζήτηση από αρ_χή του εγγράφου"
+
+#~ msgid "Search from the _cursor position"
+#~ msgstr "Αναζήτηση από τη θέση του _δείκτη"
+
+#~ msgid "_Replace with: "
+#~ msgstr "_Αντικατάσταση με:"
+
+#~ msgid "_Search for: "
+#~ msgstr "_Εύρεση του: "
+
+#~ msgid "Enter the location (URI) of the file you would like to open:"
+#~ msgstr "Εισάγετε την τοποθεσία (URI) του αρχείου που θέλετε να ανοίξετε:"
+
+#, fuzzy
+#~ msgid "Open from URI"
+#~ msgstr "Άνοιγμα από _URI..."
 
 #~ msgid "label12"
 #~ msgstr "label12"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.9.1\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
+"POT-Creation-Date: 2001-12-11 21:48-0500\n"
 "PO-Revision-Date: 2000-10-10 21:22+0300\n"
 "Last-Translator: Gediminas Paulauskas <menesis@delfi.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konf.lt>\n"
@@ -13,53 +13,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gedit.desktop.in.h:1
-msgid "Text editor"
-msgstr "Tekstų redaktorius"
-
-#: gedit.desktop.in.h:2
-msgid "gedit"
-msgstr "gedit"
-
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
 msgstr ""
 
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:1
-#, fuzzy
-msgid "Char"
-msgstr "Keisti"
-
-#: plugins/ASCII/asciitable.glade.h:2
-msgid "Dec#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:3
-msgid "Hex#"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:4
-msgid ""
-"If you wish to insert any of the characters in to the active \n"
-"document, select the character and click the \"Insert Char\" \n"
-"button or double click the character in the table."
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:7
-#, fuzzy
-msgid "Insert char"
-msgstr "Įterpti laiką"
-
-#: plugins/ASCII/asciitable.glade.h:8
-msgid "Name"
-msgstr ""
-
-#: plugins/ASCII/asciitable.glade.h:9
-msgid "gedit: ASCII table"
 msgstr ""
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
@@ -72,68 +31,12 @@ msgstr "Naršyti"
 msgid "Web browse plugin"
 msgstr "Priedas voratinkliui naršyti"
 
-#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-#: plugins/email/email.glade.h:1
-#, fuzzy
-msgid " _Change... "
-msgstr "Keisti..."
-
-#: plugins/browse/browse.glade.h:2
-#, fuzzy
-msgid "Enter the _URL to browse for:"
-msgstr "Įvesk URL, ką naršyti:"
-
-#: plugins/browse/browse.glade.h:3
-#, fuzzy
-msgid "Lynx found at: "
-msgstr "lynx buvo rastas čia:"
-
-#: plugins/browse/browse.glade.h:4
-#, fuzzy
-msgid "gedit: Web Browse plugin"
-msgstr "gedit priedas voratinkliui naršyti"
-
-#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
-#: plugins/email/email.glade.h:14
-msgid "location"
-msgstr "vieta"
-
 #: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "Versti"
 
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
-msgstr "Skaičių vertiklis"
-
-#: plugins/convert/convert.glade.h:1
-#, fuzzy
-msgid " Decimal to _Hex "
-msgstr "Dešimtainį į šešioliktainį"
-
-#: plugins/convert/convert.glade.h:2
-#, fuzzy
-msgid " Decimal to _Octal "
-msgstr "Dešimtainį į aštuntainį"
-
-#: plugins/convert/convert.glade.h:3
-#, fuzzy
-msgid " Hex to Decima_l "
-msgstr "Šešioliktainį į dešimtainį"
-
-#: plugins/convert/convert.glade.h:4
-#, fuzzy
-msgid "_Converted value:"
-msgstr "Paversta reikšmė:"
-
-#: plugins/convert/convert.glade.h:5
-#, fuzzy
-msgid "_Value to be converted:"
-msgstr "Verčiama reikšmė:"
-
-#: plugins/convert/convert.glade.h:6
-#, fuzzy
-msgid "gedit: Number Converter plugin"
 msgstr "Skaičių vertiklis"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
@@ -210,50 +113,6 @@ msgstr ""
 "Pagamina diff bylą, palygindamas 2 bylas.\n"
 "Daugiau info apie diff rasi, įvykdęs =A5man diff“.\n"
 
-#: plugins/diff/diff.glade.h:2
-#, fuzzy
-msgid "Choose the files to compare"
-msgstr "Pasirink, kurias bylas diff'inti"
-
-#: plugins/diff/diff.glade.h:3
-#, fuzzy
-msgid "Diff found at: "
-msgstr "diff rastas čia:"
-
-#: plugins/diff/diff.glade.h:4
-msgid "First"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:5
-msgid "From a file on disk"
-msgstr "Iš bylos, esančios diske"
-
-#: plugins/diff/diff.glade.h:6
-msgid "From document"
-msgstr "Iš dokumento"
-
-#: plugins/diff/diff.glade.h:7
-msgid "Second"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:8
-#, fuzzy
-msgid "Select the \"first\" file..."
-msgstr "Pasirink, kuriuos priedus įdiegti"
-
-#: plugins/diff/diff.glade.h:9
-msgid "Select the \"second\" file..."
-msgstr ""
-
-#: plugins/diff/diff.glade.h:10
-msgid "Use the _unified output format (-u option)"
-msgstr ""
-
-#: plugins/diff/diff.glade.h:11
-#, fuzzy
-msgid "gedit: Diff plugin"
-msgstr "gedit: el. pašto priedas"
-
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -275,53 +134,6 @@ msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:1
-msgid "0"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:2
-msgid "Characters (no spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:3
-msgid "Characters (with spaces)"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:4
-msgid "Current column"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:5
-msgid "Current line"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:6
-#, fuzzy
-msgid "File Name"
-msgstr "Eilutės numeris:"
-
-#: plugins/docinfo/docinfo.glade.h:7
-#, fuzzy
-msgid "Lines"
-msgstr "Eilutė"
-
-#: plugins/docinfo/docinfo.glade.h:8
-msgid "Paragraphs"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:9
-msgid "Update"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:10
-msgid "Words"
-msgstr ""
-
-#: plugins/docinfo/docinfo.glade.h:11
-#, fuzzy
-msgid "gedit: Document Info plugin"
-msgstr "gedit: el. pašto priedas"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -351,60 +163,6 @@ msgstr ""
 "Išsiųsti esamąjį dokumentą el. paštu nurodytu adresu.\n"
 "gedit susiranda sendmail, kad galėtum naudoti šį priedą."
 
-#: plugins/email/email.glade.h:2
-msgid "Change..."
-msgstr "Keisti..."
-
-#: plugins/email/email.glade.h:3
-#, fuzzy
-msgid "F_rom:"
-msgstr "Nuo:"
-
-#: plugins/email/email.glade.h:4
-#, fuzzy
-msgid "File to use as body of message: "
-msgstr "Byla, kurią naudoti laiško tekstui: "
-
-#: plugins/email/email.glade.h:5
-msgid "From:"
-msgstr "Nuo:"
-
-#: plugins/email/email.glade.h:6
-#, fuzzy
-msgid "Sendmail found at:"
-msgstr "Sendmail rastas čia:"
-
-#: plugins/email/email.glade.h:7
-msgid "Subject:"
-msgstr "Tema:"
-
-#: plugins/email/email.glade.h:8
-msgid "To:"
-msgstr "Kam:"
-
-#: plugins/email/email.glade.h:9
-#, fuzzy
-msgid "_Subject:"
-msgstr "Tema:"
-
-#: plugins/email/email.glade.h:10
-#, fuzzy
-msgid "_To:"
-msgstr "Kam:"
-
-#: plugins/email/email.glade.h:11
-msgid "filename"
-msgstr ""
-
-#: plugins/email/email.glade.h:12
-#, fuzzy
-msgid "gedit: E-mail plugin"
-msgstr "gedit: el. pašto priedas"
-
-#: plugins/email/email.glade.h:13
-msgid "gedit: e-mail plugin"
-msgstr "gedit: el. pašto priedas"
-
 #: plugins/reverse/reverse.c:69
 msgid "Reverse"
 msgstr "Apversti"
@@ -413,11 +171,11 @@ msgstr "Apversti"
 msgid "Reverse text"
 msgstr "Apversti tekstą"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Sveikas, Pasauli"
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr "Pavyzdinis =A5sveikas, pasauli“ priedas."
 
@@ -437,28 +195,6 @@ msgstr "Shell išvestis"
 msgid "Insert the shell output in the document"
 msgstr "Įterpti įvykdytos komandos išvestį į dokumentą"
 
-#: plugins/shell_output/shell_output.glade.h:1
-msgid "Select the working directory..."
-msgstr ""
-
-#: plugins/shell_output/shell_output.glade.h:2
-#, fuzzy
-msgid "Shell _command:"
-msgstr "Įvesk shell komandą"
-
-#: plugins/shell_output/shell_output.glade.h:3
-msgid "Specify the working directory and the command you want to run."
-msgstr ""
-
-#: plugins/shell_output/shell_output.glade.h:4
-msgid "_Working directory:"
-msgstr ""
-
-#: plugins/shell_output/shell_output.glade.h:5
-#, fuzzy
-msgid "gedit: Shell Output plugin"
-msgstr "Shell išvesties priedas"
-
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr ""
@@ -473,25 +209,6 @@ msgstr "Sukurti naują dokumentą"
 msgid "Sort a document or selected text."
 msgstr "Du pasirinkti dokumentai yra vienodi"
 
-#: plugins/sort/sort.glade.h:1
-msgid "1"
-msgstr ""
-
-#: plugins/sort/sort.glade.h:2
-#, fuzzy
-msgid "Case Sensitive"
-msgstr "Skirti raidžių _dydį"
-
-#: plugins/sort/sort.glade.h:3
-#, fuzzy
-msgid "Sort starting at column:"
-msgstr "Tekstas nerastas"
-
-#: plugins/sort/sort.glade.h:4
-#, fuzzy
-msgid "gedit: Sort plugin"
-msgstr "gedit: el. pašto priedas"
-
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr "Įterpti laiką"
@@ -499,14 +216,6 @@ msgstr "Įterpti laiką"
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr "Įterpti dabartinę datą ir laiką"
-
-#: src/dialogs/about.glade.h:1
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-
-#: src/dialogs/about.glade.h:2
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr "gedit yra mažas ir nesudėtingas tekstų redaktorius, skirtas GNOME."
 
 #: src/dialogs/dialog-plugins.c:87
 #, fuzzy, c-format
@@ -520,7 +229,7 @@ msgstr ""
 msgid "gedit: Preferences"
 msgstr "gedit: Nuostatos"
 
-#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+#: src/dialogs/dialog-replace.c:130
 msgid "Replace"
 msgstr "Pakeisti"
 
@@ -552,299 +261,6 @@ msgstr "Nepavyko paskirti reikalingo atminties kiekio."
 #, c-format
 msgid "Loaded file %s"
 msgstr "Įkelta byla %s"
-
-#: src/dialogs/goto-line.glade.h:1
-msgid "Goto Line"
-msgstr "Eiti į eilutę"
-
-#: src/dialogs/goto-line.glade.h:2
-msgid "Line number:"
-msgstr "Eilutės numeris:"
-
-#: src/dialogs/plugin-manager.glade.h:1
-msgid "Author(s):"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:2
-#, fuzzy
-msgid "De_scription"
-msgstr "Priedo aprašymas"
-
-#: src/dialogs/plugin-manager.glade.h:3
-msgid "De_tails"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:4
-#, fuzzy
-msgid "File name:"
-msgstr "Eilutės numeris:"
-
-#: src/dialogs/plugin-manager.glade.h:5
-#, fuzzy
-msgid "Plugins manager..."
-msgstr "gedit priedų tvarkyklė"
-
-#: src/dialogs/plugin-manager.glade.h:6
-#, fuzzy
-msgid "Select the plugins to activate:"
-msgstr "Pasirink, kuriuos priedus įdiegti"
-
-#: src/dialogs/plugin-manager.glade.h:7
-msgid "_Activate all"
-msgstr ""
-
-#: src/dialogs/plugin-manager.glade.h:8
-msgid "_Deactivate all"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:1
-msgid "Add _header"
-msgstr "Pridėti _antraštę"
-
-#: src/dialogs/prefs.glade.h:2
-msgid "Appearance"
-msgstr "Išvaizda"
-
-#: src/dialogs/prefs.glade.h:3
-msgid "Bottom"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:4
-msgid "Colors"
-msgstr "Spalvos"
-
-#: src/dialogs/prefs.glade.h:5
-#, fuzzy
-msgid "Default"
-msgstr "Įprastas šriftas: "
-
-#: src/dialogs/prefs.glade.h:6
-msgid "Documents"
-msgstr "Dokumentai"
-
-#: src/dialogs/prefs.glade.h:7
-msgid "Editor Behavior"
-msgstr "Redaktoriaus elgesys"
-
-#: src/dialogs/prefs.glade.h:8
-#, fuzzy
-msgid "Enable _Auto-indent"
-msgstr "Leisti savaime atitraukti"
-
-#: src/dialogs/prefs.glade.h:9
-msgid "Enable word _wrapping"
-msgstr "Leisti _laužyti žodžius"
-
-#: src/dialogs/prefs.glade.h:10
-msgid "Fonts"
-msgstr "Šriftai"
-
-#: src/dialogs/prefs.glade.h:11
-msgid "Fonts/Colors"
-msgstr "Šriftai/Spalvos"
-
-#: src/dialogs/prefs.glade.h:12
-msgid "General"
-msgstr "Pagrindas"
-
-#: src/dialogs/prefs.glade.h:13
-msgid "Left"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:14
-msgid "MDI (Multiple Document Interface)"
-msgstr "MDI (kelių dokumentų sąsaja)"
-
-#: src/dialogs/prefs.glade.h:15
-msgid "Modal"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:16
-msgid "Notebook"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:17
-#, fuzzy
-msgid "Notebook _tab position: "
-msgstr "Užrašų knygelės lapų vieta: "
-
-#: src/dialogs/prefs.glade.h:18
-#, fuzzy
-msgid "Orientation"
-msgstr "Spausdinimas"
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Paper"
-msgstr "Popierius"
-
-#: src/dialogs/prefs.glade.h:20
-msgid "Pick a Font"
-msgstr "Pasirink šriftą"
-
-#: src/dialogs/prefs.glade.h:21
-msgid "Pick a color"
-msgstr "Pasirink spalvą"
-
-#: src/dialogs/prefs.glade.h:22
-#, fuzzy
-msgid "Preferences"
-msgstr "gedit: Nuostatos"
-
-#: src/dialogs/prefs.glade.h:23
-#, fuzzy
-msgid "Print line _numbers every:"
-msgstr "Spausdinti eilučių _numerius kas:"
-
-#: src/dialogs/prefs.glade.h:24
-msgid "Printing"
-msgstr "Spausdinimas"
-
-#: src/dialogs/prefs.glade.h:25
-msgid "Right"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:26
-#, fuzzy
-msgid "S_how statusbar"
-msgstr "Rodyti būsenos juostą"
-
-#: src/dialogs/prefs.glade.h:27
-#, fuzzy
-msgid "Set limit on _undo levels to:"
-msgstr "Apriboti galimybę atšaukti iki "
-
-#: src/dialogs/prefs.glade.h:28
-#, fuzzy
-msgid "Set toolbar according to _system settings"
-msgstr "Rodyti įrankių juostą, atsižvelgiant į sistemos nuostatas"
-
-#: src/dialogs/prefs.glade.h:29
-#, fuzzy
-msgid "Set toolbar to _icons only"
-msgstr "Įrankių juostoje rodyti tiktai ikonas"
-
-#: src/dialogs/prefs.glade.h:30
-#, fuzzy
-msgid "Set toolbar to icons with _text"
-msgstr "Įrankių juostoje rodyti ikonas su tekstu"
-
-#: src/dialogs/prefs.glade.h:31
-#, fuzzy
-msgid "Tab _width: "
-msgstr "Pa_keisti kuo: "
-
-#: src/dialogs/prefs.glade.h:32
-#, fuzzy
-msgid "Top"
-msgstr "Kam:"
-
-#: src/dialogs/prefs.glade.h:33
-msgid "Toplevel"
-msgstr ""
-
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
-msgid "Undo"
-msgstr "Atšaukimas"
-
-#: src/dialogs/prefs.glade.h:35
-#, fuzzy
-msgid "_Background: "
-msgstr "Fono spalva: "
-
-#: src/dialogs/prefs.glade.h:36
-#, fuzzy
-msgid "_Default font: "
-msgstr "Įprastas šriftas: "
-
-#: src/dialogs/prefs.glade.h:37
-#, fuzzy
-msgid "_Foreground: "
-msgstr "Raidžių spalva: "
-
-#: src/dialogs/prefs.glade.h:38
-msgid "_Landscape"
-msgstr "_Gulsčias lapas"
-
-#: src/dialogs/prefs.glade.h:39
-#, fuzzy
-msgid "_Mode: "
-msgstr "Pobūdis: "
-
-#: src/dialogs/prefs.glade.h:40
-msgid "_Portrait"
-msgstr "_Stačias lapas"
-
-#: src/dialogs/prefs.glade.h:41
-#, fuzzy
-msgid "_level(s)"
-msgstr "kartų"
-
-#: src/dialogs/prefs.glade.h:42
-#, fuzzy
-msgid "l_ine(s)"
-msgstr "eilutes"
-
-#: src/dialogs/program.glade.h:1
-msgid "_Location to search for:"
-msgstr ""
-
-#: src/dialogs/program.glade.h:2
-msgid "gedit: Browse for program location..."
-msgstr ""
-
-#: src/dialogs/program.glade.h:3
-msgid "gedit: Set program location..."
-msgstr ""
-
-#: src/dialogs/program.glade.h:4
-#, fuzzy
-msgid "label"
-msgstr "label12"
-
-#: src/dialogs/replace.glade.h:1
-#, fuzzy
-msgid "Case _sensitive"
-msgstr "Skirti raidžių _dydį"
-
-#: src/dialogs/replace.glade.h:2
-#, fuzzy
-msgid "Find Next"
-msgstr "Rasti"
-
-#: src/dialogs/replace.glade.h:4
-msgid "Replace All"
-msgstr "Pakeisti visus"
-
-#: src/dialogs/replace.glade.h:5
-#, fuzzy
-msgid "Search from the _beginning of the document"
-msgstr "dokumento _pradžios"
-
-#: src/dialogs/replace.glade.h:6
-#, fuzzy
-msgid "Search from the _cursor position"
-msgstr "žymeklio _vietos"
-
-#: src/dialogs/replace.glade.h:7
-msgid "_Replace with: "
-msgstr "Pa_keisti kuo: "
-
-#: src/dialogs/replace.glade.h:8
-msgid "_Search for: "
-msgstr "_Ieškoti ko: "
-
-#: src/dialogs/uri.glade.h:1
-msgid "Enter the location (URI) of the file you would like to open:"
-msgstr ""
-
-#: src/dialogs/uri.glade.h:2 src/menus.c:259
-msgid "Open"
-msgstr "Atidaryti"
-
-#: src/dialogs/uri.glade.h:3
-#, fuzzy
-msgid "Open from URI"
-msgstr "Atidaryti bylą..."
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -1219,6 +635,10 @@ msgid "New"
 msgstr "Naujas"
 
 #: src/menus.c:259
+msgid "Open"
+msgstr "Atidaryti"
+
+#: src/menus.c:259
 msgid "Open a file"
 msgstr "Atidaryti bylą"
 
@@ -1245,6 +665,10 @@ msgstr "Spausdinti"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr "Spausdinti esamąją bylą"
+
+#: src/menus.c:276
+msgid "Undo"
+msgstr "Atšaukimas"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -1457,6 +881,341 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "Tu negali pašalinti paskutinio dokumento vaizdo."
+
+#~ msgid "Text editor"
+#~ msgstr "Tekstų redaktorius"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#, fuzzy
+#~ msgid "Char"
+#~ msgstr "Keisti"
+
+#, fuzzy
+#~ msgid "Insert char"
+#~ msgstr "Įterpti laiką"
+
+#, fuzzy
+#~ msgid " _Change... "
+#~ msgstr "Keisti..."
+
+#, fuzzy
+#~ msgid "Enter the _URL to browse for:"
+#~ msgstr "Įvesk URL, ką naršyti:"
+
+#, fuzzy
+#~ msgid "Lynx found at: "
+#~ msgstr "lynx buvo rastas čia:"
+
+#, fuzzy
+#~ msgid "gedit: Web Browse plugin"
+#~ msgstr "gedit priedas voratinkliui naršyti"
+
+#~ msgid "location"
+#~ msgstr "vieta"
+
+#, fuzzy
+#~ msgid " Decimal to _Hex "
+#~ msgstr "Dešimtainį į šešioliktainį"
+
+#, fuzzy
+#~ msgid " Decimal to _Octal "
+#~ msgstr "Dešimtainį į aštuntainį"
+
+#, fuzzy
+#~ msgid " Hex to Decima_l "
+#~ msgstr "Šešioliktainį į dešimtainį"
+
+#, fuzzy
+#~ msgid "_Converted value:"
+#~ msgstr "Paversta reikšmė:"
+
+#, fuzzy
+#~ msgid "_Value to be converted:"
+#~ msgstr "Verčiama reikšmė:"
+
+#, fuzzy
+#~ msgid "gedit: Number Converter plugin"
+#~ msgstr "Skaičių vertiklis"
+
+#, fuzzy
+#~ msgid "Choose the files to compare"
+#~ msgstr "Pasirink, kurias bylas diff'inti"
+
+#, fuzzy
+#~ msgid "Diff found at: "
+#~ msgstr "diff rastas čia:"
+
+#~ msgid "From a file on disk"
+#~ msgstr "Iš bylos, esančios diske"
+
+#~ msgid "From document"
+#~ msgstr "Iš dokumento"
+
+#, fuzzy
+#~ msgid "Select the \"first\" file..."
+#~ msgstr "Pasirink, kuriuos priedus įdiegti"
+
+#, fuzzy
+#~ msgid "gedit: Diff plugin"
+#~ msgstr "gedit: el. pašto priedas"
+
+#, fuzzy
+#~ msgid "File Name"
+#~ msgstr "Eilutės numeris:"
+
+#, fuzzy
+#~ msgid "Lines"
+#~ msgstr "Eilutė"
+
+#, fuzzy
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "gedit: el. pašto priedas"
+
+#~ msgid "Change..."
+#~ msgstr "Keisti..."
+
+#, fuzzy
+#~ msgid "F_rom:"
+#~ msgstr "Nuo:"
+
+#, fuzzy
+#~ msgid "File to use as body of message: "
+#~ msgstr "Byla, kurią naudoti laiško tekstui: "
+
+#~ msgid "From:"
+#~ msgstr "Nuo:"
+
+#, fuzzy
+#~ msgid "Sendmail found at:"
+#~ msgstr "Sendmail rastas čia:"
+
+#~ msgid "Subject:"
+#~ msgstr "Tema:"
+
+#~ msgid "To:"
+#~ msgstr "Kam:"
+
+#, fuzzy
+#~ msgid "_Subject:"
+#~ msgstr "Tema:"
+
+#, fuzzy
+#~ msgid "_To:"
+#~ msgstr "Kam:"
+
+#, fuzzy
+#~ msgid "gedit: E-mail plugin"
+#~ msgstr "gedit: el. pašto priedas"
+
+#~ msgid "gedit: e-mail plugin"
+#~ msgstr "gedit: el. pašto priedas"
+
+#, fuzzy
+#~ msgid "Shell _command:"
+#~ msgstr "Įvesk shell komandą"
+
+#, fuzzy
+#~ msgid "gedit: Shell Output plugin"
+#~ msgstr "Shell išvesties priedas"
+
+#, fuzzy
+#~ msgid "Case Sensitive"
+#~ msgstr "Skirti raidžių _dydį"
+
+#, fuzzy
+#~ msgid "Sort starting at column:"
+#~ msgstr "Tekstas nerastas"
+
+#, fuzzy
+#~ msgid "gedit: Sort plugin"
+#~ msgstr "gedit: el. pašto priedas"
+
+#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+#~ msgstr "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+
+#~ msgid "gedit is a small and lightweight text editor for GNOME."
+#~ msgstr "gedit yra mažas ir nesudėtingas tekstų redaktorius, skirtas GNOME."
+
+#~ msgid "Goto Line"
+#~ msgstr "Eiti į eilutę"
+
+#~ msgid "Line number:"
+#~ msgstr "Eilutės numeris:"
+
+#, fuzzy
+#~ msgid "De_scription"
+#~ msgstr "Priedo aprašymas"
+
+#, fuzzy
+#~ msgid "File name:"
+#~ msgstr "Eilutės numeris:"
+
+#, fuzzy
+#~ msgid "Plugins manager..."
+#~ msgstr "gedit priedų tvarkyklė"
+
+#, fuzzy
+#~ msgid "Select the plugins to activate:"
+#~ msgstr "Pasirink, kuriuos priedus įdiegti"
+
+#~ msgid "Add _header"
+#~ msgstr "Pridėti _antraštę"
+
+#~ msgid "Appearance"
+#~ msgstr "Išvaizda"
+
+#~ msgid "Colors"
+#~ msgstr "Spalvos"
+
+#, fuzzy
+#~ msgid "Default"
+#~ msgstr "Įprastas šriftas: "
+
+#~ msgid "Documents"
+#~ msgstr "Dokumentai"
+
+#~ msgid "Editor Behavior"
+#~ msgstr "Redaktoriaus elgesys"
+
+#, fuzzy
+#~ msgid "Enable _Auto-indent"
+#~ msgstr "Leisti savaime atitraukti"
+
+#~ msgid "Enable word _wrapping"
+#~ msgstr "Leisti _laužyti žodžius"
+
+#~ msgid "Fonts"
+#~ msgstr "Šriftai"
+
+#~ msgid "Fonts/Colors"
+#~ msgstr "Šriftai/Spalvos"
+
+#~ msgid "General"
+#~ msgstr "Pagrindas"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "MDI (kelių dokumentų sąsaja)"
+
+#, fuzzy
+#~ msgid "Notebook _tab position: "
+#~ msgstr "Užrašų knygelės lapų vieta: "
+
+#, fuzzy
+#~ msgid "Orientation"
+#~ msgstr "Spausdinimas"
+
+#~ msgid "Paper"
+#~ msgstr "Popierius"
+
+#~ msgid "Pick a Font"
+#~ msgstr "Pasirink šriftą"
+
+#~ msgid "Pick a color"
+#~ msgstr "Pasirink spalvą"
+
+#, fuzzy
+#~ msgid "Preferences"
+#~ msgstr "gedit: Nuostatos"
+
+#, fuzzy
+#~ msgid "Print line _numbers every:"
+#~ msgstr "Spausdinti eilučių _numerius kas:"
+
+#~ msgid "Printing"
+#~ msgstr "Spausdinimas"
+
+#, fuzzy
+#~ msgid "S_how statusbar"
+#~ msgstr "Rodyti būsenos juostą"
+
+#, fuzzy
+#~ msgid "Set limit on _undo levels to:"
+#~ msgstr "Apriboti galimybę atšaukti iki "
+
+#, fuzzy
+#~ msgid "Set toolbar according to _system settings"
+#~ msgstr "Rodyti įrankių juostą, atsižvelgiant į sistemos nuostatas"
+
+#, fuzzy
+#~ msgid "Set toolbar to _icons only"
+#~ msgstr "Įrankių juostoje rodyti tiktai ikonas"
+
+#, fuzzy
+#~ msgid "Set toolbar to icons with _text"
+#~ msgstr "Įrankių juostoje rodyti ikonas su tekstu"
+
+#, fuzzy
+#~ msgid "Tab _width: "
+#~ msgstr "Pa_keisti kuo: "
+
+#, fuzzy
+#~ msgid "Top"
+#~ msgstr "Kam:"
+
+#, fuzzy
+#~ msgid "_Background: "
+#~ msgstr "Fono spalva: "
+
+#, fuzzy
+#~ msgid "_Default font: "
+#~ msgstr "Įprastas šriftas: "
+
+#, fuzzy
+#~ msgid "_Foreground: "
+#~ msgstr "Raidžių spalva: "
+
+#~ msgid "_Landscape"
+#~ msgstr "_Gulsčias lapas"
+
+#, fuzzy
+#~ msgid "_Mode: "
+#~ msgstr "Pobūdis: "
+
+#~ msgid "_Portrait"
+#~ msgstr "_Stačias lapas"
+
+#, fuzzy
+#~ msgid "_level(s)"
+#~ msgstr "kartų"
+
+#, fuzzy
+#~ msgid "l_ine(s)"
+#~ msgstr "eilutes"
+
+#, fuzzy
+#~ msgid "label"
+#~ msgstr "label12"
+
+#, fuzzy
+#~ msgid "Case _sensitive"
+#~ msgstr "Skirti raidžių _dydį"
+
+#, fuzzy
+#~ msgid "Find Next"
+#~ msgstr "Rasti"
+
+#~ msgid "Replace All"
+#~ msgstr "Pakeisti visus"
+
+#, fuzzy
+#~ msgid "Search from the _beginning of the document"
+#~ msgstr "dokumento _pradžios"
+
+#, fuzzy
+#~ msgid "Search from the _cursor position"
+#~ msgstr "žymeklio _vietos"
+
+#~ msgid "_Replace with: "
+#~ msgstr "Pa_keisti kuo: "
+
+#~ msgid "_Search for: "
+#~ msgstr "_Ieškoti ko: "
+
+#, fuzzy
+#~ msgid "Open from URI"
+#~ msgstr "Atidaryti bylą..."
 
 #~ msgid "label12"
 #~ msgstr "label12"

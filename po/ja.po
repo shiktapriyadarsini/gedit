@@ -7,21 +7,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit CVS20000908\n"
-"POT-Creation-Date: 2001-12-10 18:20-0500\n"
+"POT-Creation-Date: 2001-12-11 21:48-0500\n"
 "PO-Revision-Date: 2001-06-27 17:50+09:00\n"
 "Last-Translator: Yukihiro Nakai <nakai@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=euc-jp\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: gedit.desktop.in.h:1
-msgid "Text editor"
-msgstr "テキストエディタ"
-
-#: gedit.desktop.in.h:2
-msgid "gedit"
-msgstr "gedit"
 
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
@@ -30,40 +22,6 @@ msgstr "ASCIIテーブル"
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
 msgstr "このプラグインはASCIIテーブルのポップアップダイアログを表示します。"
-
-#: plugins/ASCII/asciitable.glade.h:1
-msgid "Char"
-msgstr "文字"
-
-#: plugins/ASCII/asciitable.glade.h:2
-msgid "Dec#"
-msgstr "10進数"
-
-#: plugins/ASCII/asciitable.glade.h:3
-msgid "Hex#"
-msgstr "16進数"
-
-#: plugins/ASCII/asciitable.glade.h:4
-msgid ""
-"If you wish to insert any of the characters in to the active \n"
-"document, select the character and click the \"Insert Char\" \n"
-"button or double click the character in the table."
-msgstr ""
-"現在のドキュメントに何か文字を挿入したいときは \n"
-"文字を選択して\"文字の挿入\"ボタンをクリックするか\n"
-"テーブルの文字をダブルクリックして下さい。"
-
-#: plugins/ASCII/asciitable.glade.h:7
-msgid "Insert char"
-msgstr "文字の挿入"
-
-#: plugins/ASCII/asciitable.glade.h:8
-msgid "Name"
-msgstr "名前"
-
-#: plugins/ASCII/asciitable.glade.h:9
-msgid "gedit: ASCII table"
-msgstr "gedit: ASCIIテーブル"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -75,28 +33,6 @@ msgstr "ブラウズ"
 msgid "Web browse plugin"
 msgstr "Webブラウザプラグイン"
 
-#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-#: plugins/email/email.glade.h:1
-msgid " _Change... "
-msgstr "変更(_C)..."
-
-#: plugins/browse/browse.glade.h:2
-msgid "Enter the _URL to browse for:"
-msgstr "ブラウズするURLを入力して下さい(_U) :"
-
-#: plugins/browse/browse.glade.h:3
-msgid "Lynx found at: "
-msgstr "lynxが見つかりました : "
-
-#: plugins/browse/browse.glade.h:4
-msgid "gedit: Web Browse plugin"
-msgstr "gedit: ウェブブラウザプラグイン"
-
-#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
-#: plugins/email/email.glade.h:14
-msgid "location"
-msgstr "位置"
-
 #: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "変換"
@@ -104,30 +40,6 @@ msgstr "変換"
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
 msgstr "数値変換"
-
-#: plugins/convert/convert.glade.h:1
-msgid " Decimal to _Hex "
-msgstr "10進から16進(_H)"
-
-#: plugins/convert/convert.glade.h:2
-msgid " Decimal to _Octal "
-msgstr "10進から8進(_O)"
-
-#: plugins/convert/convert.glade.h:3
-msgid " Hex to Decima_l "
-msgstr "16進から10進(_L)"
-
-#: plugins/convert/convert.glade.h:4
-msgid "_Converted value:"
-msgstr "変換後の値(_C):"
-
-#: plugins/convert/convert.glade.h:5
-msgid "_Value to be converted:"
-msgstr "変換する値(_V):"
-
-#: plugins/convert/convert.glade.h:6
-msgid "gedit: Number Converter plugin"
-msgstr "gedit: 数値変換プラグイン"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -198,46 +110,6 @@ msgstr ""
 "diffコマンドについての詳しい説明は、シェルプロンプトで\"man diff\"\n"
 "と入力してください。\n"
 
-#: plugins/diff/diff.glade.h:2
-msgid "Choose the files to compare"
-msgstr "比較するファイルを選択してください"
-
-#: plugins/diff/diff.glade.h:3
-msgid "Diff found at: "
-msgstr "diffが見つかりました: "
-
-#: plugins/diff/diff.glade.h:4
-msgid "First"
-msgstr "最初"
-
-#: plugins/diff/diff.glade.h:5
-msgid "From a file on disk"
-msgstr "ディスク上のファイルから"
-
-#: plugins/diff/diff.glade.h:6
-msgid "From document"
-msgstr "ドキュメントから"
-
-#: plugins/diff/diff.glade.h:7
-msgid "Second"
-msgstr "2番目"
-
-#: plugins/diff/diff.glade.h:8
-msgid "Select the \"first\" file..."
-msgstr "\"最初\"のファイルを選択してください..."
-
-#: plugins/diff/diff.glade.h:9
-msgid "Select the \"second\" file..."
-msgstr "\"2番目\"のファイルを選択してください..."
-
-#: plugins/diff/diff.glade.h:10
-msgid "Use the _unified output format (-u option)"
-msgstr "unified出力フォーマットを使う(-uオプション)(_U)"
-
-#: plugins/diff/diff.glade.h:11
-msgid "gedit: Diff plugin"
-msgstr "gedit: Diffプラグイン"
-
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -261,50 +133,6 @@ msgid ""
 msgstr ""
 "このプラグインは現在のドキュメントの基本的な情報のポップアップダイアログを表"
 "示します。"
-
-#: plugins/docinfo/docinfo.glade.h:1
-msgid "0"
-msgstr "0"
-
-#: plugins/docinfo/docinfo.glade.h:2
-msgid "Characters (no spaces)"
-msgstr "文字(スペースなし)"
-
-#: plugins/docinfo/docinfo.glade.h:3
-msgid "Characters (with spaces)"
-msgstr "文字(スペース含む)"
-
-#: plugins/docinfo/docinfo.glade.h:4
-msgid "Current column"
-msgstr "現在列"
-
-#: plugins/docinfo/docinfo.glade.h:5
-msgid "Current line"
-msgstr "現在行"
-
-#: plugins/docinfo/docinfo.glade.h:6
-msgid "File Name"
-msgstr "ファイル名"
-
-#: plugins/docinfo/docinfo.glade.h:7
-msgid "Lines"
-msgstr "行"
-
-#: plugins/docinfo/docinfo.glade.h:8
-msgid "Paragraphs"
-msgstr "段落"
-
-#: plugins/docinfo/docinfo.glade.h:9
-msgid "Update"
-msgstr "更新"
-
-#: plugins/docinfo/docinfo.glade.h:10
-msgid "Words"
-msgstr "ワード"
-
-#: plugins/docinfo/docinfo.glade.h:11
-msgid "gedit: Document Info plugin"
-msgstr "gedit: ドキュメント情報プラグイン"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -332,54 +160,6 @@ msgid ""
 msgstr ""
 "編集中のドキュメントを指定した電子メールアドレスに送信します\n"
 "このプラグインを使うためにsendmailを検索しています。"
-
-#: plugins/email/email.glade.h:2
-msgid "Change..."
-msgstr "変更..."
-
-#: plugins/email/email.glade.h:3
-msgid "F_rom:"
-msgstr "送信元(_R):"
-
-#: plugins/email/email.glade.h:4
-msgid "File to use as body of message: "
-msgstr "メッセージの本文にするファイル: "
-
-#: plugins/email/email.glade.h:5
-msgid "From:"
-msgstr "送信元:"
-
-#: plugins/email/email.glade.h:6
-msgid "Sendmail found at:"
-msgstr "Sendmailが見つかりました:"
-
-#: plugins/email/email.glade.h:7
-msgid "Subject:"
-msgstr "件名:"
-
-#: plugins/email/email.glade.h:8
-msgid "To:"
-msgstr "宛先:"
-
-#: plugins/email/email.glade.h:9
-msgid "_Subject:"
-msgstr "件名(_S):"
-
-#: plugins/email/email.glade.h:10
-msgid "_To:"
-msgstr "宛先(_T):"
-
-#: plugins/email/email.glade.h:11
-msgid "filename"
-msgstr "ファイル名"
-
-#: plugins/email/email.glade.h:12
-msgid "gedit: E-mail plugin"
-msgstr "gedit: 電子メールプラグイン"
-
-#: plugins/email/email.glade.h:13
-msgid "gedit: e-mail plugin"
-msgstr "gedit: 電子メールプラグイン"
 
 #: plugins/reverse/reverse.c:69
 msgid "Reverse"
@@ -416,26 +196,6 @@ msgstr "シェル出力"
 msgid "Insert the shell output in the document"
 msgstr "シェルの出力をドキュメントに挿入します"
 
-#: plugins/shell_output/shell_output.glade.h:1
-msgid "Select the working directory..."
-msgstr "作業するディレクトリを選択してください..."
-
-#: plugins/shell_output/shell_output.glade.h:2
-msgid "Shell _command:"
-msgstr "シェルコマンド(_C):"
-
-#: plugins/shell_output/shell_output.glade.h:3
-msgid "Specify the working directory and the command you want to run."
-msgstr "作業するディレクトリと実行したいコマンドを指定してください。"
-
-#: plugins/shell_output/shell_output.glade.h:4
-msgid "_Working directory:"
-msgstr "作業するディレクトリ(_W):"
-
-#: plugins/shell_output/shell_output.glade.h:5
-msgid "gedit: Shell Output plugin"
-msgstr "gedit: シェル出力プラグイン"
-
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr "ソート"
@@ -448,22 +208,6 @@ msgstr "ドキュメントをソートします。"
 msgid "Sort a document or selected text."
 msgstr "ドキュメントか選択したテキストをソートします。"
 
-#: plugins/sort/sort.glade.h:1
-msgid "1"
-msgstr "1"
-
-#: plugins/sort/sort.glade.h:2
-msgid "Case Sensitive"
-msgstr "大小文字を区別する"
-
-#: plugins/sort/sort.glade.h:3
-msgid "Sort starting at column:"
-msgstr "ソートを開始する列:"
-
-#: plugins/sort/sort.glade.h:4
-msgid "gedit: Sort plugin"
-msgstr "gedit: ソートプラグイン"
-
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr "現在時刻"
@@ -471,14 +215,6 @@ msgstr "現在時刻"
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr "現在の時間をファイルに挿入"
-
-#: src/dialogs/about.glade.h:1
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-
-#: src/dialogs/about.glade.h:2
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr "geditはGNOME/Gtk+用に作られた小型軽量のテキストエディタです"
 
 #: src/dialogs/dialog-plugins.c:87
 #, c-format
@@ -490,7 +226,7 @@ msgstr "%sプラグインを使うには、\"%s\"の位置を指定してください。"
 msgid "gedit: Preferences"
 msgstr "gedit: 設定"
 
-#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+#: src/dialogs/dialog-replace.c:130
 msgid "Replace"
 msgstr "置換"
 
@@ -519,274 +255,6 @@ msgstr "要求されたメモリをすべて割り当てることはできませんでした。"
 #, c-format
 msgid "Loaded file %s"
 msgstr "読み込み完了: %s"
-
-#: src/dialogs/goto-line.glade.h:1
-msgid "Goto Line"
-msgstr "指定行へ移動"
-
-#: src/dialogs/goto-line.glade.h:2
-msgid "Line number:"
-msgstr "行番号:"
-
-#: src/dialogs/plugin-manager.glade.h:1
-msgid "Author(s):"
-msgstr "作者:"
-
-#: src/dialogs/plugin-manager.glade.h:2
-msgid "De_scription"
-msgstr "説明(_S)"
-
-#: src/dialogs/plugin-manager.glade.h:3
-msgid "De_tails"
-msgstr "詳細(_T)"
-
-#: src/dialogs/plugin-manager.glade.h:4
-msgid "File name:"
-msgstr "ファイル名:"
-
-#: src/dialogs/plugin-manager.glade.h:5
-msgid "Plugins manager..."
-msgstr "プラグインマネージャ..."
-
-#: src/dialogs/plugin-manager.glade.h:6
-msgid "Select the plugins to activate:"
-msgstr "有効にするプラグインの選択:"
-
-#: src/dialogs/plugin-manager.glade.h:7
-msgid "_Activate all"
-msgstr "すべて有効にする(_A)"
-
-#: src/dialogs/plugin-manager.glade.h:8
-msgid "_Deactivate all"
-msgstr "すべて無効にする(_D)"
-
-#: src/dialogs/prefs.glade.h:1
-msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-
-#: src/dialogs/prefs.glade.h:2
-msgid "Add _header"
-msgstr "ヘッダの追加(_H)"
-
-#: src/dialogs/prefs.glade.h:3
-msgid "Appearance"
-msgstr "外観"
-
-#: src/dialogs/prefs.glade.h:4
-msgid "Bottom"
-msgstr "下"
-
-#: src/dialogs/prefs.glade.h:5
-msgid "Colors"
-msgstr "色"
-
-#: src/dialogs/prefs.glade.h:6
-msgid "Default"
-msgstr "デフォルト"
-
-#: src/dialogs/prefs.glade.h:7
-msgid "Documents"
-msgstr "ドキュメント"
-
-#: src/dialogs/prefs.glade.h:8
-msgid "Editor Behavior"
-msgstr "エディタの動作"
-
-#: src/dialogs/prefs.glade.h:9
-msgid "Enable _Auto-indent"
-msgstr "自動字下げを有効にする(_A)"
-
-#: src/dialogs/prefs.glade.h:10
-msgid "Enable word _wrapping"
-msgstr "文字を折り返す(_W)"
-
-#: src/dialogs/prefs.glade.h:11
-msgid "Fonts"
-msgstr "フォント"
-
-#: src/dialogs/prefs.glade.h:12
-msgid "Fonts/Colors"
-msgstr "フォント/色"
-
-#: src/dialogs/prefs.glade.h:13
-msgid "General"
-msgstr "一般"
-
-#: src/dialogs/prefs.glade.h:14
-msgid "Left"
-msgstr "左"
-
-#: src/dialogs/prefs.glade.h:15
-msgid "MDI (Multiple Document Interface)"
-msgstr "MDI (マルチ・ドキュメント・インターフェース)"
-
-#: src/dialogs/prefs.glade.h:16
-msgid "Modal"
-msgstr "モーダル"
-
-#: src/dialogs/prefs.glade.h:17
-msgid "Notebook"
-msgstr "ノートブック"
-
-#: src/dialogs/prefs.glade.h:18
-msgid "Notebook _tab position: "
-msgstr "ノートのタブの位置(_T): "
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Orientation"
-msgstr "方向"
-
-#: src/dialogs/prefs.glade.h:20
-msgid "Paper"
-msgstr "用紙"
-
-#: src/dialogs/prefs.glade.h:21
-msgid "Pick a Font"
-msgstr "フォントを選択"
-
-#: src/dialogs/prefs.glade.h:22
-msgid "Pick a color"
-msgstr "色を選択"
-
-#: src/dialogs/prefs.glade.h:23
-msgid "Preferences"
-msgstr "設定"
-
-#: src/dialogs/prefs.glade.h:24
-msgid "Print line _numbers every:"
-msgstr "行数の表示は(_N):"
-
-#: src/dialogs/prefs.glade.h:25
-msgid "Printing"
-msgstr "印刷"
-
-#: src/dialogs/prefs.glade.h:26
-msgid "Right"
-msgstr "右"
-
-#: src/dialogs/prefs.glade.h:27
-msgid "S_how statusbar"
-msgstr "ステータスバーを表示(_S)"
-
-#: src/dialogs/prefs.glade.h:28
-msgid "Set limit on _undo levels to:"
-msgstr "元に戻せる回数は(_U):"
-
-#: src/dialogs/prefs.glade.h:29
-msgid "Set toolbar according to _system settings"
-msgstr "ツールバーはシステム設定通りにする(_S)"
-
-#: src/dialogs/prefs.glade.h:30
-msgid "Set toolbar to _icons only"
-msgstr "ツールバーはアイコンのみにする(_I)"
-
-#: src/dialogs/prefs.glade.h:31
-msgid "Set toolbar to icons with _text"
-msgstr "ツールバーはアイコンとテキストにする(_T)"
-
-#: src/dialogs/prefs.glade.h:32
-msgid "Tab _width: "
-msgstr "タブの幅(_W): "
-
-#: src/dialogs/prefs.glade.h:33
-msgid "Top"
-msgstr "上"
-
-#: src/dialogs/prefs.glade.h:34
-msgid "Toplevel"
-msgstr "トップレベル"
-
-#: src/dialogs/prefs.glade.h:35 src/menus.c:276
-msgid "Undo"
-msgstr "元に戻す"
-
-#: src/dialogs/prefs.glade.h:36
-msgid "_Background: "
-msgstr "背景色(_B): "
-
-#: src/dialogs/prefs.glade.h:37
-msgid "_Default font: "
-msgstr "デフォルトフォント(_D): "
-
-#: src/dialogs/prefs.glade.h:38
-msgid "_Foreground: "
-msgstr "文字色(_F): "
-
-#: src/dialogs/prefs.glade.h:39
-msgid "_Landscape"
-msgstr "横(_L)"
-
-#: src/dialogs/prefs.glade.h:40
-msgid "_Mode: "
-msgstr "モード(_M): "
-
-#: src/dialogs/prefs.glade.h:41
-msgid "_Portrait"
-msgstr "縦(_P)"
-
-#: src/dialogs/prefs.glade.h:42
-msgid "_level(s)"
-msgstr "レベル(_L)"
-
-#: src/dialogs/prefs.glade.h:43
-msgid "l_ine(s)"
-msgstr "行毎に表示(_I)"
-
-#: src/dialogs/program.glade.h:1
-msgid "_Location to search for:"
-msgstr "検索する位置(_L):"
-
-#: src/dialogs/program.glade.h:2
-msgid "gedit: Browse for program location..."
-msgstr "gedit: プログラム位置のブラウズ..."
-
-#: src/dialogs/program.glade.h:3
-msgid "gedit: Set program location..."
-msgstr "gedit: プログラム位置の設定..."
-
-#: src/dialogs/program.glade.h:4
-msgid "label"
-msgstr "label"
-
-#: src/dialogs/replace.glade.h:1
-msgid "Case _sensitive"
-msgstr "大小文字を区別する(_S)"
-
-#: src/dialogs/replace.glade.h:2
-msgid "Find Next"
-msgstr "次を検索"
-
-#: src/dialogs/replace.glade.h:4
-msgid "Replace All"
-msgstr "すべて置換"
-
-#: src/dialogs/replace.glade.h:5
-msgid "Search from the _beginning of the document"
-msgstr "ドキュメントの先頭から検索(_B)"
-
-#: src/dialogs/replace.glade.h:6
-msgid "Search from the _cursor position"
-msgstr "カーソル位置から検索(_C)"
-
-#: src/dialogs/replace.glade.h:7
-msgid "_Replace with: "
-msgstr "置換(_R): "
-
-#: src/dialogs/replace.glade.h:8
-msgid "_Search for: "
-msgstr "検索(_S): "
-
-#: src/dialogs/uri.glade.h:1
-msgid "Enter the location (URI) of the file you would like to open:"
-msgstr "開きたいファイルの位置(URI)を入力して下さい:"
-
-#: src/dialogs/uri.glade.h:2 src/menus.c:259
-msgid "Open"
-msgstr "開く"
-
-#: src/dialogs/uri.glade.h:3
-msgid "Open from URI"
-msgstr "URIから開く..."
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -1154,6 +622,10 @@ msgid "New"
 msgstr "新規"
 
 #: src/menus.c:259
+msgid "Open"
+msgstr "開く"
+
+#: src/menus.c:259
 msgid "Open a file"
 msgstr "ファイルを開く"
 
@@ -1180,6 +652,10 @@ msgstr "印刷"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr "現在編集中のファイルを印刷"
+
+#: src/menus.c:276
+msgid "Undo"
+msgstr "元に戻す"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -1390,6 +866,399 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "ドキュメントの最後のビューは削除できません。"
+
+#~ msgid "Text editor"
+#~ msgstr "テキストエディタ"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "Char"
+#~ msgstr "文字"
+
+#~ msgid "Dec#"
+#~ msgstr "10進数"
+
+#~ msgid "Hex#"
+#~ msgstr "16進数"
+
+#~ msgid ""
+#~ "If you wish to insert any of the characters in to the active \n"
+#~ "document, select the character and click the \"Insert Char\" \n"
+#~ "button or double click the character in the table."
+#~ msgstr ""
+#~ "現在のドキュメントに何か文字を挿入したいときは \n"
+#~ "文字を選択して\"文字の挿入\"ボタンをクリックするか\n"
+#~ "テーブルの文字をダブルクリックして下さい。"
+
+#~ msgid "Insert char"
+#~ msgstr "文字の挿入"
+
+#~ msgid "Name"
+#~ msgstr "名前"
+
+#~ msgid "gedit: ASCII table"
+#~ msgstr "gedit: ASCIIテーブル"
+
+#~ msgid " _Change... "
+#~ msgstr "変更(_C)..."
+
+#~ msgid "Enter the _URL to browse for:"
+#~ msgstr "ブラウズするURLを入力して下さい(_U) :"
+
+#~ msgid "Lynx found at: "
+#~ msgstr "lynxが見つかりました : "
+
+#~ msgid "gedit: Web Browse plugin"
+#~ msgstr "gedit: ウェブブラウザプラグイン"
+
+#~ msgid "location"
+#~ msgstr "位置"
+
+#~ msgid " Decimal to _Hex "
+#~ msgstr "10進から16進(_H)"
+
+#~ msgid " Decimal to _Octal "
+#~ msgstr "10進から8進(_O)"
+
+#~ msgid " Hex to Decima_l "
+#~ msgstr "16進から10進(_L)"
+
+#~ msgid "_Converted value:"
+#~ msgstr "変換後の値(_C):"
+
+#~ msgid "_Value to be converted:"
+#~ msgstr "変換する値(_V):"
+
+#~ msgid "gedit: Number Converter plugin"
+#~ msgstr "gedit: 数値変換プラグイン"
+
+#~ msgid "Choose the files to compare"
+#~ msgstr "比較するファイルを選択してください"
+
+#~ msgid "Diff found at: "
+#~ msgstr "diffが見つかりました: "
+
+#~ msgid "First"
+#~ msgstr "最初"
+
+#~ msgid "From a file on disk"
+#~ msgstr "ディスク上のファイルから"
+
+#~ msgid "From document"
+#~ msgstr "ドキュメントから"
+
+#~ msgid "Second"
+#~ msgstr "2番目"
+
+#~ msgid "Select the \"first\" file..."
+#~ msgstr "\"最初\"のファイルを選択してください..."
+
+#~ msgid "Select the \"second\" file..."
+#~ msgstr "\"2番目\"のファイルを選択してください..."
+
+#~ msgid "Use the _unified output format (-u option)"
+#~ msgstr "unified出力フォーマットを使う(-uオプション)(_U)"
+
+#~ msgid "gedit: Diff plugin"
+#~ msgstr "gedit: Diffプラグイン"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "Characters (no spaces)"
+#~ msgstr "文字(スペースなし)"
+
+#~ msgid "Characters (with spaces)"
+#~ msgstr "文字(スペース含む)"
+
+#~ msgid "Current column"
+#~ msgstr "現在列"
+
+#~ msgid "Current line"
+#~ msgstr "現在行"
+
+#~ msgid "File Name"
+#~ msgstr "ファイル名"
+
+#~ msgid "Lines"
+#~ msgstr "行"
+
+#~ msgid "Paragraphs"
+#~ msgstr "段落"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "Words"
+#~ msgstr "ワード"
+
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "gedit: ドキュメント情報プラグイン"
+
+#~ msgid "Change..."
+#~ msgstr "変更..."
+
+#~ msgid "F_rom:"
+#~ msgstr "送信元(_R):"
+
+#~ msgid "File to use as body of message: "
+#~ msgstr "メッセージの本文にするファイル: "
+
+#~ msgid "From:"
+#~ msgstr "送信元:"
+
+#~ msgid "Sendmail found at:"
+#~ msgstr "Sendmailが見つかりました:"
+
+#~ msgid "Subject:"
+#~ msgstr "件名:"
+
+#~ msgid "To:"
+#~ msgstr "宛先:"
+
+#~ msgid "_Subject:"
+#~ msgstr "件名(_S):"
+
+#~ msgid "_To:"
+#~ msgstr "宛先(_T):"
+
+#~ msgid "filename"
+#~ msgstr "ファイル名"
+
+#~ msgid "gedit: E-mail plugin"
+#~ msgstr "gedit: 電子メールプラグイン"
+
+#~ msgid "gedit: e-mail plugin"
+#~ msgstr "gedit: 電子メールプラグイン"
+
+#~ msgid "Select the working directory..."
+#~ msgstr "作業するディレクトリを選択してください..."
+
+#~ msgid "Shell _command:"
+#~ msgstr "シェルコマンド(_C):"
+
+#~ msgid "Specify the working directory and the command you want to run."
+#~ msgstr "作業するディレクトリと実行したいコマンドを指定してください。"
+
+#~ msgid "_Working directory:"
+#~ msgstr "作業するディレクトリ(_W):"
+
+#~ msgid "gedit: Shell Output plugin"
+#~ msgstr "gedit: シェル出力プラグイン"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "Case Sensitive"
+#~ msgstr "大小文字を区別する"
+
+#~ msgid "Sort starting at column:"
+#~ msgstr "ソートを開始する列:"
+
+#~ msgid "gedit: Sort plugin"
+#~ msgstr "gedit: ソートプラグイン"
+
+#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+#~ msgstr "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+
+#~ msgid "gedit is a small and lightweight text editor for GNOME."
+#~ msgstr "geditはGNOME/Gtk+用に作られた小型軽量のテキストエディタです"
+
+#~ msgid "Goto Line"
+#~ msgstr "指定行へ移動"
+
+#~ msgid "Line number:"
+#~ msgstr "行番号:"
+
+#~ msgid "Author(s):"
+#~ msgstr "作者:"
+
+#~ msgid "De_scription"
+#~ msgstr "説明(_S)"
+
+#~ msgid "De_tails"
+#~ msgstr "詳細(_T)"
+
+#~ msgid "File name:"
+#~ msgstr "ファイル名:"
+
+#~ msgid "Plugins manager..."
+#~ msgstr "プラグインマネージャ..."
+
+#~ msgid "Select the plugins to activate:"
+#~ msgstr "有効にするプラグインの選択:"
+
+#~ msgid "_Activate all"
+#~ msgstr "すべて有効にする(_A)"
+
+#~ msgid "_Deactivate all"
+#~ msgstr "すべて無効にする(_D)"
+
+#~ msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+#~ msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+
+#~ msgid "Add _header"
+#~ msgstr "ヘッダの追加(_H)"
+
+#~ msgid "Appearance"
+#~ msgstr "外観"
+
+#~ msgid "Bottom"
+#~ msgstr "下"
+
+#~ msgid "Colors"
+#~ msgstr "色"
+
+#~ msgid "Default"
+#~ msgstr "デフォルト"
+
+#~ msgid "Documents"
+#~ msgstr "ドキュメント"
+
+#~ msgid "Editor Behavior"
+#~ msgstr "エディタの動作"
+
+#~ msgid "Enable _Auto-indent"
+#~ msgstr "自動字下げを有効にする(_A)"
+
+#~ msgid "Enable word _wrapping"
+#~ msgstr "文字を折り返す(_W)"
+
+#~ msgid "Fonts"
+#~ msgstr "フォント"
+
+#~ msgid "Fonts/Colors"
+#~ msgstr "フォント/色"
+
+#~ msgid "General"
+#~ msgstr "一般"
+
+#~ msgid "Left"
+#~ msgstr "左"
+
+#~ msgid "MDI (Multiple Document Interface)"
+#~ msgstr "MDI (マルチ・ドキュメント・インターフェース)"
+
+#~ msgid "Modal"
+#~ msgstr "モーダル"
+
+#~ msgid "Notebook"
+#~ msgstr "ノートブック"
+
+#~ msgid "Notebook _tab position: "
+#~ msgstr "ノートのタブの位置(_T): "
+
+#~ msgid "Orientation"
+#~ msgstr "方向"
+
+#~ msgid "Paper"
+#~ msgstr "用紙"
+
+#~ msgid "Pick a Font"
+#~ msgstr "フォントを選択"
+
+#~ msgid "Pick a color"
+#~ msgstr "色を選択"
+
+#~ msgid "Preferences"
+#~ msgstr "設定"
+
+#~ msgid "Print line _numbers every:"
+#~ msgstr "行数の表示は(_N):"
+
+#~ msgid "Printing"
+#~ msgstr "印刷"
+
+#~ msgid "Right"
+#~ msgstr "右"
+
+#~ msgid "S_how statusbar"
+#~ msgstr "ステータスバーを表示(_S)"
+
+#~ msgid "Set limit on _undo levels to:"
+#~ msgstr "元に戻せる回数は(_U):"
+
+#~ msgid "Set toolbar according to _system settings"
+#~ msgstr "ツールバーはシステム設定通りにする(_S)"
+
+#~ msgid "Set toolbar to _icons only"
+#~ msgstr "ツールバーはアイコンのみにする(_I)"
+
+#~ msgid "Set toolbar to icons with _text"
+#~ msgstr "ツールバーはアイコンとテキストにする(_T)"
+
+#~ msgid "Tab _width: "
+#~ msgstr "タブの幅(_W): "
+
+#~ msgid "Top"
+#~ msgstr "上"
+
+#~ msgid "Toplevel"
+#~ msgstr "トップレベル"
+
+#~ msgid "_Background: "
+#~ msgstr "背景色(_B): "
+
+#~ msgid "_Default font: "
+#~ msgstr "デフォルトフォント(_D): "
+
+#~ msgid "_Foreground: "
+#~ msgstr "文字色(_F): "
+
+#~ msgid "_Landscape"
+#~ msgstr "横(_L)"
+
+#~ msgid "_Mode: "
+#~ msgstr "モード(_M): "
+
+#~ msgid "_Portrait"
+#~ msgstr "縦(_P)"
+
+#~ msgid "_level(s)"
+#~ msgstr "レベル(_L)"
+
+#~ msgid "l_ine(s)"
+#~ msgstr "行毎に表示(_I)"
+
+#~ msgid "_Location to search for:"
+#~ msgstr "検索する位置(_L):"
+
+#~ msgid "gedit: Browse for program location..."
+#~ msgstr "gedit: プログラム位置のブラウズ..."
+
+#~ msgid "gedit: Set program location..."
+#~ msgstr "gedit: プログラム位置の設定..."
+
+#~ msgid "label"
+#~ msgstr "label"
+
+#~ msgid "Case _sensitive"
+#~ msgstr "大小文字を区別する(_S)"
+
+#~ msgid "Find Next"
+#~ msgstr "次を検索"
+
+#~ msgid "Replace All"
+#~ msgstr "すべて置換"
+
+#~ msgid "Search from the _beginning of the document"
+#~ msgstr "ドキュメントの先頭から検索(_B)"
+
+#~ msgid "Search from the _cursor position"
+#~ msgstr "カーソル位置から検索(_C)"
+
+#~ msgid "_Replace with: "
+#~ msgstr "置換(_R): "
+
+#~ msgid "_Search for: "
+#~ msgstr "検索(_S): "
+
+#~ msgid "Enter the location (URI) of the file you would like to open:"
+#~ msgstr "開きたいファイルの位置(URI)を入力して下さい:"
+
+#~ msgid "Open from URI"
+#~ msgstr "URIから開く..."
 
 #~ msgid "label12"
 #~ msgstr "label12"
