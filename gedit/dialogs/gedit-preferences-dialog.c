@@ -44,7 +44,6 @@
 #include <gedit/gedit-prefs-manager.h>
 
 #include "gedit-preferences-dialog.h"
-#include "gedit2.h"
 #include "gedit-utils.h"
 #include "gedit-debug.h"
 #include "gedit-plugin-manager.h"
@@ -375,36 +374,21 @@ setup_editor_page (GeditPreferencesDialog *dlg)
 
 	/* Connect signal */
 	g_signal_connect (G_OBJECT (dlg->tabs_width_spinbutton), "value_changed",
-			  G_CALLBACK (tabs_width_spinbutton_value_changed),
-			  dlg);
-
+			  G_CALLBACK (tabs_width_spinbutton_value_changed), dlg);
 	g_signal_connect (G_OBJECT (dlg->insert_spaces_checkbutton), "toggled", 
-			  G_CALLBACK (insert_spaces_checkbutton_toggled), 
-			  dlg);
-	
+			  G_CALLBACK (insert_spaces_checkbutton_toggled), dlg);
 	g_signal_connect (G_OBJECT (dlg->auto_indent_checkbutton), "toggled", 
-			  G_CALLBACK (auto_indent_checkbutton_toggled), 
-			  dlg);
-	
+			  G_CALLBACK (auto_indent_checkbutton_toggled), dlg);
 	g_signal_connect (G_OBJECT (dlg->auto_save_checkbutton), "toggled", 
-			  G_CALLBACK (auto_save_checkbutton_toggled), 
-			  dlg);
-
+			  G_CALLBACK (auto_save_checkbutton_toggled), dlg);
 	g_signal_connect (G_OBJECT (dlg->backup_copy_checkbutton), "toggled", 
-			  G_CALLBACK (backup_copy_checkbutton_toggled), 
-			  dlg);
-
+			  G_CALLBACK (backup_copy_checkbutton_toggled), dlg);
 	g_signal_connect (G_OBJECT (dlg->auto_save_spinbutton), "value_changed",
-			  G_CALLBACK (auto_save_spinbutton_value_changed),
-			  dlg);
-
+			  G_CALLBACK (auto_save_spinbutton_value_changed), dlg);
 	g_signal_connect (G_OBJECT (dlg->limited_undo_radiobutton), "toggled", 
-		  	  G_CALLBACK (limited_undo_radiobutton_toggled), 
-			  dlg);
-
+		  	  G_CALLBACK (limited_undo_radiobutton_toggled), dlg);
 	g_signal_connect (G_OBJECT (dlg->undo_levels_spinbutton), "value_changed",
-		  	  G_CALLBACK (undo_levels_spinbutton_value_changed),
-		  	  dlg);
+		  	  G_CALLBACK (undo_levels_spinbutton_value_changed), dlg);
 }
 
 static void
@@ -475,7 +459,6 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 			
 			gedit_prefs_manager_set_wrap_mode (GTK_WRAP_CHAR);
 		}
-			
 	}
 }
 

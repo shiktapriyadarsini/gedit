@@ -34,6 +34,7 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
 #include <glade/glade-xml.h>
 #include <libgnome/gnome-help.h>
 #include <gconf/gconf-client.h>
@@ -41,7 +42,6 @@
 #include <gedit/gedit-prefs-manager.h>
 
 #include "gedit-page-setup-dialog.h"
-#include "gedit2.h"
 #include "gedit-utils.h"
 #include "gedit-debug.h"
 
@@ -106,8 +106,7 @@ dialog_response_handler (GtkDialog *dlg, gint res_id,  GeditPageSetupDialog *dia
 				gedit_warning (GTK_WINDOW (dlg), error->message);
 				g_error_free (error);
 			}
-			break;
-			
+			break;		
 		default:
 			gtk_widget_destroy (dialog->dialog);
 	}
@@ -199,8 +198,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton *button, GeditPageSetupDialog *dl
 			split_button_state = FALSE;
 			
 			gedit_prefs_manager_set_print_wrap_mode (GTK_WRAP_CHAR);
-		}
-			
+		}	
 	}
 }
 

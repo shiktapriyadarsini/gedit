@@ -12,20 +12,20 @@ INCLUDES = 							\
 noinst_LTLIBRARIES = libdialogs.la
 
 libdialogs_la_SOURCES = 			\
+	gedit-page-setup-dialog.c		\
+	gedit-page-setup-dialog.h		\
+	gedit-plugin-manager.h			\
+	gedit-plugin-manager.c			\
+	gedit-preferences-dialog.h		\
+	gedit-preferences-dialog.c		\
 	gedit-dialog-goto-line.c		\
 	gedit-dialog-replace.c			\
 	gedit-dialogs.h
 
 #	gedit-dialog-uri.c		\
-#	gedit-preferences-dialog.h	\
-#	gedit-preferences-dialog.c	\
-#	gedit-plugin-manager.c		\
-#	gedit-plugin-manager.h	\
 #	gedit-plugin-program-location-dialog.c \
 #	gedit-encodings-dialog.c	\
 #	gedit-encodings-dialog.h	\
-#	gedit-page-setup-dialog.c	\
-#	gedit-page-setup-dialog.h	\
 #	gedit-close-confirmation-dialog.c \
 #	gedit-close-confirmation-dialog.h 
 

@@ -37,9 +37,9 @@ NON_INST_H_FILS =			\
 	gedit-file-selector-util.h 	\
 	gedit-io-error-dialogs.h	\
 	gedit-tooltips.h		\
-	gedit-languages-manager.h
+	gedit-languages-manager.h	\
+	gedit-plugins-engine.h
 
-#	gedit-plugins-engine.h		\
 #	gedit-session.h
 
 INST_H_FILES =				\
@@ -52,14 +52,14 @@ INST_H_FILES =				\
 	gedit-recent.h			\
 	gedit-window.h			\
 	gedit-panel.h			\
-	gedit-statusbar.h
+	gedit-statusbar.h		\
+	gedit-print.h
 
 #	gedit2.h			\
 #	gedit-file.h			\
 #	gedit-encodings-option-menu.h	\
 #	gedit-menus.h			\
 #	bonobo-mdi.h			\
-#	gedit-print.h			\
 #	gedit-plugin.h			\
 #	gedit-output-window.h
 
@@ -93,6 +93,8 @@ gedit_SOURCES = 			\
 	gedit-statusbar.c		\
 	gedit-utils.c 			\
 	gedit-languages-manager.c	\
+	gedit-plugins-engine.c		\
+	gedit-print.c			\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 
@@ -100,11 +102,9 @@ gedit_SOURCES = 			\
 #	gedit2.c			\
 #	gedit-menus.c			\
 #	gedit-file.c			\
-#	gedit-print.c			\
 #	gedit-session.c			\
 #	gedit-file-selector-util.c 	\
 #	gedit-io-error-dialogs.c	\
-#	gedit-plugins-engine.c		\
 #	gedit-plugin.c			\
 #	gedit-recent.c			\
 #	gedit-output-window.c		\

@@ -32,7 +32,7 @@
 
 #include <gedit/gedit-document.h>
 
-void gedit_print 		(GeditDocument* doc);
-void gedit_print_preview	(GeditDocument* doc);
+void gedit_print 		(GtkWindow *parent, GeditDocument* doc);
+void gedit_print_preview	(GtkWindow *parent, GeditDocument* doc);
 
 #endif /* __GEDIT_PRINT_H__ */

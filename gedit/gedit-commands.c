@@ -44,12 +44,12 @@
 #include "gedit-debug.h"
 #include "gedit-view.h"
 #include "gedit-utils.h"
+#include "gedit-print.h"
+#include "dialogs/gedit-page-setup-dialog.h"
 #include "dialogs/gedit-dialogs.h"
+#include "dialogs/gedit-preferences-dialog.h"
 #if 0
 #include "gedit-file.h"
-#include "gedit-print.h"
-#include "dialogs/gedit-preferences-dialog.h"
-#include "dialogs/gedit-page-setup-dialog.h"
 #endif
 
 void
@@ -153,57 +153,40 @@ gedit_cmd_file_open_uri (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_file_page_setup (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	BonoboWindow *active_window;
-
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	active_window = gedit_get_active_window ();
-	g_return_if_fail (active_window != NULL);
-
-	gedit_show_page_setup_dialog (GTK_WINDOW (active_window));
-#endif
+	gedit_show_page_setup_dialog (GTK_WINDOW (window));
 }
 
 void
 gedit_cmd_file_print_preview (GtkAction *action, GeditWindow *window)
 {
-#if 0
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	doc = gedit_get_active_document ();
+	doc = gedit_window_get_active_document (window);
 	if (doc == NULL)	
 		return;
-	
-	gedit_print_preview (doc);
-#endif
+
+	gedit_print_preview (GTK_WINDOW (window), doc);
 }
 
 void
 gedit_cmd_file_print (GtkAction *action, GeditWindow *window)
 {
-#if 0
 	GeditDocument *doc;
-	GtkWidget *active_view;
 
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	doc = gedit_get_active_document ();
+	doc = gedit_window_get_active_document (window);
 	if (doc == NULL)	
 		return;
 
-	active_view = gedit_get_active_view ();
-
-	if (active_view != NULL)
-		gtk_widget_grab_focus (active_view);
-
-	gedit_print (doc);
-#endif
+	gedit_print (GTK_WINDOW (window), doc);
 }
 
-void 
+void
 gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 {
 #if 0
@@ -239,46 +222,42 @@ gedit_cmd_file_quit (GtkAction *action, GeditWindow *window)
 #endif
 }
 
-void 
+void
 gedit_cmd_edit_undo (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
+	GeditView *active_view;
 	GeditDocument *active_document;
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	active_document = gedit_view_get_document (GEDIT_VIEW (active_view));
+	active_document = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 	g_return_if_fail (active_document);
 
 	gedit_document_undo (active_document);
 
-	gedit_view_scroll_to_cursor (GEDIT_VIEW (active_view));
+	gedit_view_scroll_to_cursor (active_view);
 
-	gtk_widget_grab_focus (active_view);
-#endif
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
-void 
+void
 gedit_cmd_edit_redo (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
+	GeditView *active_view;
 	GeditDocument *active_document;
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	active_document = gedit_view_get_document (GEDIT_VIEW (active_view));
+	active_document = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 	g_return_if_fail (active_document);
 
 	gedit_document_redo (active_document);
 
-	gedit_view_scroll_to_cursor (GEDIT_VIEW (active_view));
+	gedit_view_scroll_to_cursor (active_view);
 
-	gtk_widget_grab_focus (active_view);
-#endif
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void 
@@ -349,16 +328,9 @@ gedit_cmd_edit_select_all (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_edit_preferences (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	BonoboWindow *active_window;
-
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	active_window = gedit_get_active_window ();
-	g_return_if_fail (active_window != NULL);
-
-	gedit_show_preferences_dialog (GTK_WINDOW (active_window));
-#endif
+	gedit_show_preferences_dialog (GTK_WINDOW (window));
 }
 
 void 

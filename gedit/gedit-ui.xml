@@ -10,6 +10,10 @@
       <menuitem name="FileSaveAsMenu" action="FileSaveAs"/>
       <menuitem name="FileRevertMenu" action="FileRevert"/>
       <separator name="FileSep2"/>
+      <menuitem name="FilePageSetupMenu" action="FilePageSetup"/>
+      <menuitem name="FilePrintPreviewMenu" action="FilePrintPreview"/>
+      <menuitem name="FilePrintMenu" action="FilePrint"/>
+      <separator name="FileSep3"/>
       <menuitem name="FileCloseMenu" action="FileClose"/>
       <menuitem name="FileQuitMenu" action="FileQuit"/>
     </menu>

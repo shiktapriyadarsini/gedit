@@ -166,7 +166,6 @@ save_error:
 	g_free (str);
 }
 
-
 static void
 gedit_print_job_info_destroy (GeditPrintJobInfo *pji, gboolean save_config)
 {
@@ -192,7 +191,7 @@ gedit_print_job_info_destroy (GeditPrintJobInfo *pji, gboolean save_config)
 }
 
 static GtkWidget *
-get_print_dialog (GeditPrintJobInfo *pji)
+get_print_dialog (GtkWindow *parent, GeditPrintJobInfo *pji)
 {
 	GtkWidget *dialog;
 	gint selection_flag;
@@ -225,8 +224,7 @@ get_print_dialog (GeditPrintJobInfo *pji)
 						  selection_flag,
 						  1, lines, "A", _("Lines"));
 
-	gtk_window_set_transient_for (GTK_WINDOW (dialog),
-				      GTK_WINDOW (gedit_get_active_window ()));
+	gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
 
 	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE); 
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
@@ -271,8 +269,7 @@ gedit_print_dialog_response (GtkWidget *dialog, int response, GeditPrintJobInfo 
 	case GNOME_PRINT_DIALOG_RESPONSE_PRINT:
 		gedit_debug (DEBUG_PRINT, "Print button pressed.");
 		pji->preview = PREVIEW_NO;
-		gedit_print_real (pji, &start, &end, 
-				  GTK_WINDOW (gedit_get_active_window ()));
+		gedit_print_real (pji, &start, &end, pji->parent);
 		gtk_widget_destroy (dialog);
 		break;
 
@@ -415,20 +412,22 @@ print_finished_cb (GtkSourcePrintJob *job, GeditPrintJobInfo *pji)
 }
 
 void 
-gedit_print (GeditDocument *doc)
+gedit_print (GtkWindow *parent, GeditDocument *doc)
 {
 	GeditPrintJobInfo *pji;
 	GtkWidget *dialog;
-	
+
 	gedit_debug (DEBUG_PRINT, "");
-		
+
 	g_return_if_fail (doc != NULL);
 
 	pji = gedit_print_job_info_new (doc);
 	pji->preview = PREVIEW_NO;
 
-	dialog = get_print_dialog (pji);
-	
+	dialog = get_print_dialog (parent, pji);
+
+	pji->parent = parent;
+
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gedit_print_dialog_response),
 			  pji);
@@ -477,13 +476,13 @@ gedit_print_real (GeditPrintJobInfo *pji,
 }
 
 void 
-gedit_print_preview (GeditDocument *doc)
+gedit_print_preview (GtkWindow *parent, GeditDocument *doc)
 {
 	GeditPrintJobInfo *pji;
 	GtkTextIter start, end;
 
 	gedit_debug (DEBUG_PRINT, "");
-		
+
 	g_return_if_fail (doc != NULL);
 
 	pji = gedit_print_job_info_new (doc);
@@ -491,7 +490,7 @@ gedit_print_preview (GeditDocument *doc)
 	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (pji->doc), &start, &end);
 
 	pji->preview = PREVIEW;
-	gedit_print_preview_real (pji, &start, &end, GTK_WINDOW (gedit_get_active_window ()));
+	gedit_print_preview_real (pji, &start, &end, parent);
 }
 
 static GeditPrintJobInfo *

@@ -37,10 +37,7 @@
 #include <glade/glade-xml.h>
 
 #include "gedit-plugin-manager.h"
-#include "gedit2.h"
-#include "gedit-mdi.h"
 #include "gedit-utils.h"
-#include "gedit-dialogs.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-plugin.h"
 #include "gedit-debug.h"
