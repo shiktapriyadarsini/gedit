@@ -10,9 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-03-08 17:00--100\n"
+"POT-Creation-Date: 2003-06-15 11:29+0200\n"
+"PO-Revision-Date: 2003-06-15 13:40+0100\n"
 "Last-Translator: Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
@@ -2471,9 +2470,8 @@ msgid "Show _Overwrite Mode"
 msgstr "_Overschrijfmodus tonen"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Alleen pictogrammen tonen in de werkbalk"
+msgstr "Zowel tekst als pictogrammen tonen in de werkbalk"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2484,9 +2482,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Overschrijfmodus in de statusbalk tonen"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Alleen pictogrammen tonen in de werkbalk"
+msgstr "Alleen belangrijke tekst naast pictogrammen tonen in de werkbalk"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
