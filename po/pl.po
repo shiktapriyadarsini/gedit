@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-10 13:49+0200\n"
+"POT-Creation-Date: 2004-12-05 20:11+0100\n"
 "PO-Revision-Date: 2003-11-15 01:43+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -793,26 +793,26 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "Wybrany plik nie jest wykonywalny."
 
-#: gedit/dialogs/gedit-preferences-dialog.c:673
+#: gedit/dialogs/gedit-preferences-dialog.c:680
 msgid "Push this button to select the font to be used by the editor"
 msgstr "Wciśnięcie tego przycisku umożliwia wybór czcionki edytora"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:675
+#: gedit/dialogs/gedit-preferences-dialog.c:682
 msgid "Push this button to configure text color"
 msgstr "Wciśnięcie tego przycisku umożliwia ustawienie koloru tekstu"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:677
+#: gedit/dialogs/gedit-preferences-dialog.c:684
 msgid "Push this button to configure background color"
 msgstr "Wciśnięcie tego przycisku umożliwia ustawienie koloru tła"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:679
+#: gedit/dialogs/gedit-preferences-dialog.c:686
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
 msgstr ""
 "Wciśnięcie tego przycisku umożliwia ustawienie koloru zaznaczonego tekstu"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:682
+#: gedit/dialogs/gedit-preferences-dialog.c:689
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
@@ -820,7 +820,7 @@ msgstr ""
 "Wciśnięcie tego przycisku umożliwia ustawienie koloru oznaczenia "
 "zaznaczonego tekstu"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1132
+#: gedit/dialogs/gedit-preferences-dialog.c:1139
 msgid "Elements"
 msgstr "Elementy"
 
@@ -1290,34 +1290,34 @@ msgstr "BezNazwy"
 msgid "Invalid file name"
 msgstr "Niepoprawna nazwa pliku"
 
-#: gedit/gedit-document.c:838 gedit/gedit-document.c:1399
+#: gedit/gedit-document.c:838 gedit/gedit-document.c:1401
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
 msgstr "Niepoprawne dane UTF-8"
 
-#: gedit/gedit-document.c:1725
+#: gedit/gedit-document.c:1727
 #, c-format
 msgid "Could not read symbolic link information for %s"
 msgstr "Nie można odczytać informacji o dowiązaniu symbolicznym związanym z %s"
 
-#: gedit/gedit-document.c:1771
+#: gedit/gedit-document.c:1773
 msgid "The file has too many symbolic links."
 msgstr "Plik posiada zbyt wiele dowiązań symbolicznych."
 
-#: gedit/gedit-document.c:1827
+#: gedit/gedit-document.c:1829
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr "gedit nie obsługuje położenia typu %s: w trybie zapisu."
 
-#: gedit/gedit-document.c:1834
+#: gedit/gedit-document.c:1836
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr "gedit nie może obsłużyć tego rodzaju położenia w trybie zapisu."
 
-#: gedit/gedit-document.c:1847
+#: gedit/gedit-document.c:1849
 msgid "Invalid filename."
 msgstr "Niepoprawna nazwa pliku"
 
-#: gedit/gedit-document.c:1959
+#: gedit/gedit-document.c:1961
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1325,7 +1325,7 @@ msgstr ""
 "Brak miejsca na dysku, aby zapisać plik.\n"
 "Zwolnij trochę miejsca i spróbuj ponownie."
 
-#: gedit/gedit-document.c:1964
+#: gedit/gedit-document.c:1966
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1335,7 +1335,7 @@ msgstr ""
 "Spróbuj zapisywać mniejsze pliki lub zapisywać je na dysku nie posiadającym "
 "tego typu ograniczeń."
 
-#: gedit/gedit-document.c:2008
+#: gedit/gedit-document.c:2010
 msgid "Could not create a backup file."
 msgstr "Nie można utworzyć kopii zapasowej pliku."
 
@@ -1353,115 +1353,115 @@ msgstr "Bieżące ustawienia regionalne (%s)"
 msgid "Add or _Remove..."
 msgstr "Dodaj lub _usuń..."
 
-#: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
-#: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
-#: gedit/gedit-encodings.c:182
+#: gedit/gedit-encodings.c:136 gedit/gedit-encodings.c:180
+#: gedit/gedit-encodings.c:184 gedit/gedit-encodings.c:186
+#: gedit/gedit-encodings.c:188
 msgid "Unicode"
 msgstr "Unicode"
 
-#: gedit/gedit-encodings.c:145 gedit/gedit-encodings.c:171
-#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:149 gedit/gedit-encodings.c:175
+#: gedit/gedit-encodings.c:219 gedit/gedit-encodings.c:262
 msgid "Western"
 msgstr "Zachodni"
 
-#: gedit/gedit-encodings.c:147 gedit/gedit-encodings.c:214
-#: gedit/gedit-encodings.c:251
+#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:221
+#: gedit/gedit-encodings.c:258
 msgid "Central European"
 msgstr "Środkowoeuropejski"
 
-#: gedit/gedit-encodings.c:149
+#: gedit/gedit-encodings.c:153
 msgid "South European"
 msgstr "Południowoeuropejski"
 
-#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:167
-#: gedit/gedit-encodings.c:265
+#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:171
+#: gedit/gedit-encodings.c:272
 msgid "Baltic"
 msgstr "Bałtycki"
 
-#: gedit/gedit-encodings.c:153 gedit/gedit-encodings.c:216
-#: gedit/gedit-encodings.c:229 gedit/gedit-encodings.c:233
-#: gedit/gedit-encodings.c:235 gedit/gedit-encodings.c:253
+#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:223
+#: gedit/gedit-encodings.c:236 gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:260
 msgid "Cyrillic"
 msgstr "Cyrylica"
 
-#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:222
-#: gedit/gedit-encodings.c:263
+#: gedit/gedit-encodings.c:159 gedit/gedit-encodings.c:229
+#: gedit/gedit-encodings.c:270
 msgid "Arabic"
 msgstr "Arabski"
 
-#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:257
+#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:264
 #: plugins/spell/gedit-spell-checker.c:89
 msgid "Greek"
 msgstr "Grecki"
 
-#: gedit/gedit-encodings.c:159
+#: gedit/gedit-encodings.c:163
 msgid "Hebrew Visual"
 msgstr "Hebrajski wizualny"
 
-#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:220
-#: gedit/gedit-encodings.c:261
+#: gedit/gedit-encodings.c:165 gedit/gedit-encodings.c:227
+#: gedit/gedit-encodings.c:268
 msgid "Hebrew"
 msgstr "Hebrajski"
 
-#: gedit/gedit-encodings.c:163 gedit/gedit-encodings.c:218
-#: gedit/gedit-encodings.c:259
+#: gedit/gedit-encodings.c:167 gedit/gedit-encodings.c:225
+#: gedit/gedit-encodings.c:266
 msgid "Turkish"
 msgstr "Turecki"
 
-#: gedit/gedit-encodings.c:165
+#: gedit/gedit-encodings.c:169
 msgid "Nordic"
 msgstr "Nordycki"
 
-#: gedit/gedit-encodings.c:169
+#: gedit/gedit-encodings.c:173
 msgid "Celtic"
 msgstr "Celtycki"
 
-#: gedit/gedit-encodings.c:173
+#: gedit/gedit-encodings.c:177
 msgid "Romanian"
 msgstr "Rumuński"
 
-#: gedit/gedit-encodings.c:185
+#: gedit/gedit-encodings.c:192
 msgid "Armenian"
 msgstr "Armeński"
 
-#: gedit/gedit-encodings.c:187 gedit/gedit-encodings.c:189
-#: gedit/gedit-encodings.c:198
+#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:196
+#: gedit/gedit-encodings.c:205
 msgid "Chinese Traditional"
 msgstr "Chiński tradycyjny"
 
-#: gedit/gedit-encodings.c:191
+#: gedit/gedit-encodings.c:198
 msgid "Cyrillic/Russian"
 msgstr "Cyrylica/Rosyjski"
 
-#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:225
-#: gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:232
+#: gedit/gedit-encodings.c:247
 msgid "Japanese"
 msgstr "Japoński"
 
-#: gedit/gedit-encodings.c:196 gedit/gedit-encodings.c:227
-#: gedit/gedit-encodings.c:231 gedit/gedit-encodings.c:246
+#: gedit/gedit-encodings.c:203 gedit/gedit-encodings.c:234
+#: gedit/gedit-encodings.c:238 gedit/gedit-encodings.c:253
 msgid "Korean"
 msgstr "Koreański"
 
-#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:203
-#: gedit/gedit-encodings.c:205 gedit/gedit-encodings.c:209
+#: gedit/gedit-encodings.c:208 gedit/gedit-encodings.c:210
+#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:216
 msgid "Chinese Simplified"
 msgstr "Chiński uproszczony"
 
-#: gedit/gedit-encodings.c:207
+#: gedit/gedit-encodings.c:214
 msgid "Georgian"
 msgstr "Gruziński"
 
-#: gedit/gedit-encodings.c:237
+#: gedit/gedit-encodings.c:244
 msgid "Cyrillic/Ukrainian"
 msgstr "Cyrylica/Ukraiński"
 
-#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:248
-#: gedit/gedit-encodings.c:267
+#: gedit/gedit-encodings.c:249 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:274
 msgid "Vietnamese"
 msgstr "Wietnamski"
 
-#: gedit/gedit-encodings.c:244
+#: gedit/gedit-encodings.c:251
 msgid "Thai"
 msgstr "Tajski"
 
@@ -2844,28 +2844,28 @@ msgstr "U_ruchom polecenie..."
 msgid "Run a command"
 msgstr "Uruchamia polecenie"
 
-#: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:502
+#: plugins/shell_output/shell_output.c:160
+#: plugins/shell_output/shell_output.c:490
 msgid "Stopped"
 msgstr "Zatrzymane"
 
-#: plugins/shell_output/shell_output.c:282
+#: plugins/shell_output/shell_output.c:271
 msgid "Run Command"
 msgstr "Wykonanie polecenia"
 
-#: plugins/shell_output/shell_output.c:301
+#: plugins/shell_output/shell_output.c:290
 msgid "_Run"
 msgstr "U_ruchom"
 
-#: plugins/shell_output/shell_output.c:508
+#: plugins/shell_output/shell_output.c:496
 msgid "Done"
 msgstr "Wykonano"
 
-#: plugins/shell_output/shell_output.c:510
+#: plugins/shell_output/shell_output.c:498
 msgid "Failed"
 msgstr "Niepowodzenie"
 
-#: plugins/shell_output/shell_output.c:676
+#: plugins/shell_output/shell_output.c:658
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2875,7 +2875,7 @@ msgstr ""
 "\n"
 "Wprowadź poprawne polecenie powłoki."
 
-#: plugins/shell_output/shell_output.c:695
+#: plugins/shell_output/shell_output.c:677
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2885,11 +2885,11 @@ msgstr ""
 "\n"
 "Wprowadź poprawne polecenie powłoki."
 
-#: plugins/shell_output/shell_output.c:773
+#: plugins/shell_output/shell_output.c:755
 msgid "Executing command"
 msgstr "Wykonywanie polecenia"
 
-#: plugins/shell_output/shell_output.c:841
+#: plugins/shell_output/shell_output.c:823
 msgid "An error occurred while running the selected command."
 msgstr "Podczas uruchamiania wybranego polecenia wystąpił błąd."
 
@@ -3249,24 +3249,24 @@ msgstr "Sprawdza pisownię bieżącego dokumentu."
 msgid "Spell checker"
 msgstr "Sprawdzanie pisowni"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:139
+#: plugins/taglist/gedit-taglist-plugin-window.c:146
 msgid "Tag list plugin"
 msgstr "Wtyczka listy znaczników"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:157
+#: plugins/taglist/gedit-taglist-plugin-window.c:167
 msgid "Select the group of tags you want to use"
 msgstr "Określa wyświetlaną grupę znaczników"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:179
+#: plugins/taglist/gedit-taglist-plugin-window.c:189
 msgid "Available Tag Lists"
 msgstr "Dostępne listy znaczników"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:181
-#: plugins/taglist/gedit-taglist-plugin-window.c:202
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:212
 msgid "Tags"
 msgstr "Znaczniki"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:201
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Kliknij dwukrotnie znacznik, aby wstawić go do dokumentu."
 

@@ -1,10 +1,10 @@
 General Information
 ===================
 
-This is version 2.8.1 of gedit. gedit is a small and lightweight UTF-8 text 
+This is version 2.8.2 of gedit. gedit is a small and lightweight UTF-8 text 
 editor for the GNOME environment.
 
-Designed for the X Window System, it uses the GTK+ 2.4 and GNOME 2.6 libraries. 
+Designed for the X Window System, it uses the GTK+ 2.4 and GNOME 2.8 libraries. 
 Complete GNOME integration is featured, with support for Drag and Drop (DnD) 
 between Nautilus (the GNOME file manager) and the use of the GNOME help system,
 the GNOME Virtual File System and the GNOME print framework.
@@ -49,7 +49,7 @@ the file 'COPYING' for more information.
 
 The official web site is:
 
-    http://www.gnome.org/projects/gedit
+    http://www.gedit.org
 
 You can dowload the latest gedit tarball from the gnome ftp server:
 
@@ -63,12 +63,12 @@ Information about gedit mailing lists can be found at
 Installation
 ============
 
-gedit requires GTK+-2.4.x, GtkSourceView 1.0.0 and GNOME 2.6.x libraries.
+gedit requires GTK+-2.4.x, GtkSourceView 1.1.1 and GNOME 2.8.x libraries.
 
 Simple install procedure:
 
-  % gzip -cd gedit-2.8.1.tar.gz | tar xvf - 	# unpack the sources
-  % cd gedit-2.8.1				# change to the toplevel directory
+  % gzip -cd gedit-2.8.2.tar.gz | tar xvf - 	# unpack the sources
+  % cd gedit-2.8.2				# change to the toplevel directory
   % ./configure					# run the `configure' script
   % make					# build gedit
   [ Become root if necessary ]

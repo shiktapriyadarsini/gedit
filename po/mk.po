@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-10 13:49+0200\n"
+"POT-Creation-Date: 2004-12-05 20:11+0100\n"
 "PO-Revision-Date: 2004-09-18 02:47+0200\n"
 "Last-Translator: Tomislav Markovski <herrera@users.sourceforge.net>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
@@ -767,27 +767,27 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "Избраната датотека не е извршна."
 
-#: gedit/dialogs/gedit-preferences-dialog.c:673
+#: gedit/dialogs/gedit-preferences-dialog.c:680
 msgid "Push this button to select the font to be used by the editor"
 msgstr ""
 "Притиснете го ова копче за селектирање на фонт што ќе се користи во "
 "уредувачот"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:675
+#: gedit/dialogs/gedit-preferences-dialog.c:682
 msgid "Push this button to configure text color"
 msgstr "Притиснете го ова копче за конфигурација на бојата на текстот"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:677
+#: gedit/dialogs/gedit-preferences-dialog.c:684
 msgid "Push this button to configure background color"
 msgstr "Притиснете го ова копче за конфигурација на позадинската боја"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:679
+#: gedit/dialogs/gedit-preferences-dialog.c:686
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
 msgstr "Притиснете го ова копче за конфигурација на бојата на одбраниот текст"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:682
+#: gedit/dialogs/gedit-preferences-dialog.c:689
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
@@ -795,7 +795,7 @@ msgstr ""
 "Притиснете го ова копче за конфигурација на бојата со која треба да се "
 "маркира одбраниот текст"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1132
+#: gedit/dialogs/gedit-preferences-dialog.c:1139
 msgid "Elements"
 msgstr "Елементи"
 
@@ -1261,34 +1261,34 @@ msgstr "Неименувано"
 msgid "Invalid file name"
 msgstr "Неважечко име на датотеката"
 
-#: gedit/gedit-document.c:838 gedit/gedit-document.c:1399
+#: gedit/gedit-document.c:838 gedit/gedit-document.c:1401
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
 msgstr "Невалидни UTF-8 податоци"
 
-#: gedit/gedit-document.c:1725
+#: gedit/gedit-document.c:1727
 #, c-format
 msgid "Could not read symbolic link information for %s"
 msgstr "Неможе да се прочитаат информациите на симболичката врска за %s"
 
-#: gedit/gedit-document.c:1771
+#: gedit/gedit-document.c:1773
 msgid "The file has too many symbolic links."
 msgstr "Датотеката има премногу симболички врски."
 
-#: gedit/gedit-document.c:1827
+#: gedit/gedit-document.c:1829
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr "gedit cannot handle %s: locations in write mode."
 
-#: gedit/gedit-document.c:1834
+#: gedit/gedit-document.c:1836
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr "gedit cannot handle this kind of location in write mode."
 
-#: gedit/gedit-document.c:1847
+#: gedit/gedit-document.c:1849
 msgid "Invalid filename."
 msgstr "Невалидно име на датотека."
 
-#: gedit/gedit-document.c:1959
+#: gedit/gedit-document.c:1961
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1296,7 +1296,7 @@ msgstr ""
 "Нема доволно простор за да се зачува датотеката.\n"
 "Ве молиме ослобдете простор на дискот и обидете се повторно."
 
-#: gedit/gedit-document.c:1964
+#: gedit/gedit-document.c:1966
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1306,7 +1306,7 @@ msgstr ""
 "големината на датотеката.  Ве молиме пробајте да зачувате помала датотека, "
 "или да ја снимите на диск кој што го нема ова ограничување."
 
-#: gedit/gedit-document.c:2008
+#: gedit/gedit-document.c:2010
 msgid "Could not create a backup file."
 msgstr "Не можам да креирам сигурносна копија."
 
@@ -1324,115 +1324,115 @@ msgstr "Моментално локале (%s)"
 msgid "Add or _Remove..."
 msgstr "Додај или одстрани..."
 
-#: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
-#: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
-#: gedit/gedit-encodings.c:182
+#: gedit/gedit-encodings.c:136 gedit/gedit-encodings.c:180
+#: gedit/gedit-encodings.c:184 gedit/gedit-encodings.c:186
+#: gedit/gedit-encodings.c:188
 msgid "Unicode"
 msgstr "Уникод"
 
-#: gedit/gedit-encodings.c:145 gedit/gedit-encodings.c:171
-#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:149 gedit/gedit-encodings.c:175
+#: gedit/gedit-encodings.c:219 gedit/gedit-encodings.c:262
 msgid "Western"
 msgstr "Western"
 
-#: gedit/gedit-encodings.c:147 gedit/gedit-encodings.c:214
-#: gedit/gedit-encodings.c:251
+#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:221
+#: gedit/gedit-encodings.c:258
 msgid "Central European"
 msgstr "Централно Европски"
 
-#: gedit/gedit-encodings.c:149
+#: gedit/gedit-encodings.c:153
 msgid "South European"
 msgstr "Јужно Европски"
 
-#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:167
-#: gedit/gedit-encodings.c:265
+#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:171
+#: gedit/gedit-encodings.c:272
 msgid "Baltic"
 msgstr "Балтички"
 
-#: gedit/gedit-encodings.c:153 gedit/gedit-encodings.c:216
-#: gedit/gedit-encodings.c:229 gedit/gedit-encodings.c:233
-#: gedit/gedit-encodings.c:235 gedit/gedit-encodings.c:253
+#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:223
+#: gedit/gedit-encodings.c:236 gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:260
 msgid "Cyrillic"
 msgstr "Кириличен"
 
-#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:222
-#: gedit/gedit-encodings.c:263
+#: gedit/gedit-encodings.c:159 gedit/gedit-encodings.c:229
+#: gedit/gedit-encodings.c:270
 msgid "Arabic"
 msgstr "Арапски"
 
-#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:257
+#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:264
 #: plugins/spell/gedit-spell-checker.c:89
 msgid "Greek"
 msgstr "Грчки"
 
-#: gedit/gedit-encodings.c:159
+#: gedit/gedit-encodings.c:163
 msgid "Hebrew Visual"
 msgstr "Хебрејски Визуелен"
 
-#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:220
-#: gedit/gedit-encodings.c:261
+#: gedit/gedit-encodings.c:165 gedit/gedit-encodings.c:227
+#: gedit/gedit-encodings.c:268
 msgid "Hebrew"
 msgstr "Хебрејски"
 
-#: gedit/gedit-encodings.c:163 gedit/gedit-encodings.c:218
-#: gedit/gedit-encodings.c:259
+#: gedit/gedit-encodings.c:167 gedit/gedit-encodings.c:225
+#: gedit/gedit-encodings.c:266
 msgid "Turkish"
 msgstr "Турски"
 
-#: gedit/gedit-encodings.c:165
+#: gedit/gedit-encodings.c:169
 msgid "Nordic"
 msgstr "Нордиски"
 
-#: gedit/gedit-encodings.c:169
+#: gedit/gedit-encodings.c:173
 msgid "Celtic"
 msgstr "Келтски"
 
-#: gedit/gedit-encodings.c:173
+#: gedit/gedit-encodings.c:177
 msgid "Romanian"
 msgstr "Романски"
 
-#: gedit/gedit-encodings.c:185
+#: gedit/gedit-encodings.c:192
 msgid "Armenian"
 msgstr "Ерменски"
 
-#: gedit/gedit-encodings.c:187 gedit/gedit-encodings.c:189
-#: gedit/gedit-encodings.c:198
+#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:196
+#: gedit/gedit-encodings.c:205
 msgid "Chinese Traditional"
 msgstr "Традиционален Кинески"
 
-#: gedit/gedit-encodings.c:191
+#: gedit/gedit-encodings.c:198
 msgid "Cyrillic/Russian"
 msgstr "Кирилица/Руски"
 
-#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:225
-#: gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:232
+#: gedit/gedit-encodings.c:247
 msgid "Japanese"
 msgstr "Јапонски"
 
-#: gedit/gedit-encodings.c:196 gedit/gedit-encodings.c:227
-#: gedit/gedit-encodings.c:231 gedit/gedit-encodings.c:246
+#: gedit/gedit-encodings.c:203 gedit/gedit-encodings.c:234
+#: gedit/gedit-encodings.c:238 gedit/gedit-encodings.c:253
 msgid "Korean"
 msgstr "Корејски"
 
-#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:203
-#: gedit/gedit-encodings.c:205 gedit/gedit-encodings.c:209
+#: gedit/gedit-encodings.c:208 gedit/gedit-encodings.c:210
+#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:216
 msgid "Chinese Simplified"
 msgstr "Упростен Кинески"
 
-#: gedit/gedit-encodings.c:207
+#: gedit/gedit-encodings.c:214
 msgid "Georgian"
 msgstr "Грузиски"
 
-#: gedit/gedit-encodings.c:237
+#: gedit/gedit-encodings.c:244
 msgid "Cyrillic/Ukrainian"
 msgstr "Кирилица/Украински"
 
-#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:248
-#: gedit/gedit-encodings.c:267
+#: gedit/gedit-encodings.c:249 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:274
 msgid "Vietnamese"
 msgstr "Виетнамски"
 
-#: gedit/gedit-encodings.c:244
+#: gedit/gedit-encodings.c:251
 msgid "Thai"
 msgstr "Тајландски"
 
@@ -2813,28 +2813,28 @@ msgstr "_Изврши команда..."
 msgid "Run a command"
 msgstr "Изврши команда"
 
-#: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:502
+#: plugins/shell_output/shell_output.c:160
+#: plugins/shell_output/shell_output.c:490
 msgid "Stopped"
 msgstr "Стопирано"
 
-#: plugins/shell_output/shell_output.c:282
+#: plugins/shell_output/shell_output.c:271
 msgid "Run Command"
 msgstr "Изврши команда "
 
-#: plugins/shell_output/shell_output.c:301
+#: plugins/shell_output/shell_output.c:290
 msgid "_Run"
 msgstr "_Изврши"
 
-#: plugins/shell_output/shell_output.c:508
+#: plugins/shell_output/shell_output.c:496
 msgid "Done"
 msgstr "Завршено"
 
-#: plugins/shell_output/shell_output.c:510
+#: plugins/shell_output/shell_output.c:498
 msgid "Failed"
 msgstr "Неуспешно"
 
-#: plugins/shell_output/shell_output.c:676
+#: plugins/shell_output/shell_output.c:658
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2844,7 +2844,7 @@ msgstr ""
 "\n"
 "Внеси валидна команда "
 
-#: plugins/shell_output/shell_output.c:695
+#: plugins/shell_output/shell_output.c:677
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2854,11 +2854,11 @@ msgstr ""
 "\n"
 "Внеси валидна команда."
 
-#: plugins/shell_output/shell_output.c:773
+#: plugins/shell_output/shell_output.c:755
 msgid "Executing command"
 msgstr "Извршувам команда"
 
-#: plugins/shell_output/shell_output.c:841
+#: plugins/shell_output/shell_output.c:823
 msgid "An error occurred while running the selected command."
 msgstr "Се појавуви грешка при извршување на избраната команда."
 
@@ -3217,24 +3217,24 @@ msgstr "Го проверува правописот на тековниот д�
 msgid "Spell checker"
 msgstr "Проверска на правопис"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:139
+#: plugins/taglist/gedit-taglist-plugin-window.c:146
 msgid "Tag list plugin"
 msgstr "Таг листа додаток"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:157
+#: plugins/taglist/gedit-taglist-plugin-window.c:167
 msgid "Select the group of tags you want to use"
 msgstr "Изберија групата на табови кои сакаш да ги користиш"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:179
+#: plugins/taglist/gedit-taglist-plugin-window.c:189
 msgid "Available Tag Lists"
 msgstr "Достапни листи со ознака"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:181
-#: plugins/taglist/gedit-taglist-plugin-window.c:202
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:212
 msgid "Tags"
 msgstr "Тагови"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:201
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Двоен клик на таг за да го внесеш во моменталниот документ "
 

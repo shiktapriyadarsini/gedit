@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-10 13:49+0200\n"
+"POT-Creation-Date: 2004-12-05 20:11+0100\n"
 "PO-Revision-Date: 2004-10-06 14:02+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
@@ -695,31 +695,31 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "선택한 파일을 실행할 수 없습니다."
 
-#: gedit/dialogs/gedit-preferences-dialog.c:673
+#: gedit/dialogs/gedit-preferences-dialog.c:680
 msgid "Push this button to select the font to be used by the editor"
 msgstr "단추를 눌러서 편집기에서 쓸 글꼴을 선택하십시오"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:675
+#: gedit/dialogs/gedit-preferences-dialog.c:682
 msgid "Push this button to configure text color"
 msgstr "단추를 눌러서 글자 색상을 선택하십시오"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:677
+#: gedit/dialogs/gedit-preferences-dialog.c:684
 msgid "Push this button to configure background color"
 msgstr "단추를 눌러서 바탕 색상을 선택하십시오"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:679
+#: gedit/dialogs/gedit-preferences-dialog.c:686
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
 msgstr "선택된 글자가 나타날 색상을 설정하려면 단추를 누르십시오"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:682
+#: gedit/dialogs/gedit-preferences-dialog.c:689
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
 msgstr "선택된 글자의 바탕 색상을 설정하려면 단추를 누르십시오"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1132
+#: gedit/dialogs/gedit-preferences-dialog.c:1139
 msgid "Elements"
 msgstr "구성 요소"
 
@@ -1198,34 +1198,34 @@ msgstr "제목 없음"
 msgid "Invalid file name"
 msgstr "잘못된 파일이름"
 
-#: gedit/gedit-document.c:838 gedit/gedit-document.c:1399
+#: gedit/gedit-document.c:838 gedit/gedit-document.c:1401
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
 msgstr "잘못된 UTF-8 데이터"
 
-#: gedit/gedit-document.c:1725
+#: gedit/gedit-document.c:1727
 #, c-format
 msgid "Could not read symbolic link information for %s"
 msgstr "%s의 심벌릭 링크 정보를 읽을 수 없습니다"
 
-#: gedit/gedit-document.c:1771
+#: gedit/gedit-document.c:1773
 msgid "The file has too many symbolic links."
 msgstr "파일이 너무 많은 심벌릭 링크가 있습니다."
 
-#: gedit/gedit-document.c:1827
+#: gedit/gedit-document.c:1829
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr "gedit가 쓰기 모드에서 %s: 위치를 처리할 수 없습니다."
 
-#: gedit/gedit-document.c:1834
+#: gedit/gedit-document.c:1836
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr "gedit가 쓰기 모드에서 이런 종류의 위치를 처리할 수 없습니다."
 
-#: gedit/gedit-document.c:1847
+#: gedit/gedit-document.c:1849
 msgid "Invalid filename."
 msgstr "잘못된 파일이름."
 
-#: gedit/gedit-document.c:1959
+#: gedit/gedit-document.c:1961
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1233,7 +1233,7 @@ msgstr ""
 "파일을 저장하기 위한 디스크 공간이 부족합니다\n"
 "디스크 공간을 확보하고 다시 시도하십시오."
 
-#: gedit/gedit-document.c:1964
+#: gedit/gedit-document.c:1966
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1242,7 +1242,7 @@ msgstr ""
 "파일을 저장하려는 디스크에 파일 크기 제한이 걸려있습니다. 파일 크기를 줄이던"
 "지 크기 제한이 풀려있는 디스크에 저장하십시오."
 
-#: gedit/gedit-document.c:2008
+#: gedit/gedit-document.c:2010
 msgid "Could not create a backup file."
 msgstr "백업 파일을 만들 수 없습니다."
 
@@ -1260,115 +1260,115 @@ msgstr "현재 로케일 (%s)"
 msgid "Add or _Remove..."
 msgstr "더하기 혹은 지우기(_R)..."
 
-#: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
-#: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
-#: gedit/gedit-encodings.c:182
+#: gedit/gedit-encodings.c:136 gedit/gedit-encodings.c:180
+#: gedit/gedit-encodings.c:184 gedit/gedit-encodings.c:186
+#: gedit/gedit-encodings.c:188
 msgid "Unicode"
 msgstr "유니코드"
 
-#: gedit/gedit-encodings.c:145 gedit/gedit-encodings.c:171
-#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:149 gedit/gedit-encodings.c:175
+#: gedit/gedit-encodings.c:219 gedit/gedit-encodings.c:262
 msgid "Western"
 msgstr "서유럽어"
 
-#: gedit/gedit-encodings.c:147 gedit/gedit-encodings.c:214
-#: gedit/gedit-encodings.c:251
+#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:221
+#: gedit/gedit-encodings.c:258
 msgid "Central European"
 msgstr "중앙 유럽어"
 
-#: gedit/gedit-encodings.c:149
+#: gedit/gedit-encodings.c:153
 msgid "South European"
 msgstr "남부 유럽어"
 
-#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:167
-#: gedit/gedit-encodings.c:265
+#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:171
+#: gedit/gedit-encodings.c:272
 msgid "Baltic"
 msgstr "발트어"
 
-#: gedit/gedit-encodings.c:153 gedit/gedit-encodings.c:216
-#: gedit/gedit-encodings.c:229 gedit/gedit-encodings.c:233
-#: gedit/gedit-encodings.c:235 gedit/gedit-encodings.c:253
+#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:223
+#: gedit/gedit-encodings.c:236 gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:260
 msgid "Cyrillic"
 msgstr "키릴어"
 
-#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:222
-#: gedit/gedit-encodings.c:263
+#: gedit/gedit-encodings.c:159 gedit/gedit-encodings.c:229
+#: gedit/gedit-encodings.c:270
 msgid "Arabic"
 msgstr "아라비아어"
 
-#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:257
+#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:264
 #: plugins/spell/gedit-spell-checker.c:89
 msgid "Greek"
 msgstr "그리스어"
 
-#: gedit/gedit-encodings.c:159
+#: gedit/gedit-encodings.c:163
 msgid "Hebrew Visual"
 msgstr "히브리어 비주얼"
 
-#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:220
-#: gedit/gedit-encodings.c:261
+#: gedit/gedit-encodings.c:165 gedit/gedit-encodings.c:227
+#: gedit/gedit-encodings.c:268
 msgid "Hebrew"
 msgstr "히브리어"
 
-#: gedit/gedit-encodings.c:163 gedit/gedit-encodings.c:218
-#: gedit/gedit-encodings.c:259
+#: gedit/gedit-encodings.c:167 gedit/gedit-encodings.c:225
+#: gedit/gedit-encodings.c:266
 msgid "Turkish"
 msgstr "터키어"
 
-#: gedit/gedit-encodings.c:165
+#: gedit/gedit-encodings.c:169
 msgid "Nordic"
 msgstr "북유럽어"
 
-#: gedit/gedit-encodings.c:169
+#: gedit/gedit-encodings.c:173
 msgid "Celtic"
 msgstr "켈트어"
 
-#: gedit/gedit-encodings.c:173
+#: gedit/gedit-encodings.c:177
 msgid "Romanian"
 msgstr "루마니아어"
 
-#: gedit/gedit-encodings.c:185
+#: gedit/gedit-encodings.c:192
 msgid "Armenian"
 msgstr "아르메니아어"
 
-#: gedit/gedit-encodings.c:187 gedit/gedit-encodings.c:189
-#: gedit/gedit-encodings.c:198
+#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:196
+#: gedit/gedit-encodings.c:205
 msgid "Chinese Traditional"
 msgstr "중국어 번체"
 
-#: gedit/gedit-encodings.c:191
+#: gedit/gedit-encodings.c:198
 msgid "Cyrillic/Russian"
 msgstr "키릴/러시아어"
 
-#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:225
-#: gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:232
+#: gedit/gedit-encodings.c:247
 msgid "Japanese"
 msgstr "일본어"
 
-#: gedit/gedit-encodings.c:196 gedit/gedit-encodings.c:227
-#: gedit/gedit-encodings.c:231 gedit/gedit-encodings.c:246
+#: gedit/gedit-encodings.c:203 gedit/gedit-encodings.c:234
+#: gedit/gedit-encodings.c:238 gedit/gedit-encodings.c:253
 msgid "Korean"
 msgstr "한국어"
 
-#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:203
-#: gedit/gedit-encodings.c:205 gedit/gedit-encodings.c:209
+#: gedit/gedit-encodings.c:208 gedit/gedit-encodings.c:210
+#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:216
 msgid "Chinese Simplified"
 msgstr "중국어 간체"
 
-#: gedit/gedit-encodings.c:207
+#: gedit/gedit-encodings.c:214
 msgid "Georgian"
 msgstr "그루지야어"
 
-#: gedit/gedit-encodings.c:237
+#: gedit/gedit-encodings.c:244
 msgid "Cyrillic/Ukrainian"
 msgstr "키릴/우크라이나어"
 
-#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:248
-#: gedit/gedit-encodings.c:267
+#: gedit/gedit-encodings.c:249 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:274
 msgid "Vietnamese"
 msgstr "베트남어"
 
-#: gedit/gedit-encodings.c:244
+#: gedit/gedit-encodings.c:251
 msgid "Thai"
 msgstr "타이어"
 
@@ -2683,28 +2683,28 @@ msgstr "명령 실행(_R)..."
 msgid "Run a command"
 msgstr "명령을 실행합니다"
 
-#: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:502
+#: plugins/shell_output/shell_output.c:160
+#: plugins/shell_output/shell_output.c:490
 msgid "Stopped"
 msgstr "멈춤"
 
-#: plugins/shell_output/shell_output.c:282
+#: plugins/shell_output/shell_output.c:271
 msgid "Run Command"
 msgstr "명령 실행"
 
-#: plugins/shell_output/shell_output.c:301
+#: plugins/shell_output/shell_output.c:290
 msgid "_Run"
 msgstr "실행(_R)"
 
-#: plugins/shell_output/shell_output.c:508
+#: plugins/shell_output/shell_output.c:496
 msgid "Done"
 msgstr "완료"
 
-#: plugins/shell_output/shell_output.c:510
+#: plugins/shell_output/shell_output.c:498
 msgid "Failed"
 msgstr "실패"
 
-#: plugins/shell_output/shell_output.c:676
+#: plugins/shell_output/shell_output.c:658
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2714,7 +2714,7 @@ msgstr ""
 "\n"
 "올바른 쉘 명령어를 입력하십시오."
 
-#: plugins/shell_output/shell_output.c:695
+#: plugins/shell_output/shell_output.c:677
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2724,11 +2724,11 @@ msgstr ""
 "\n"
 "올바른 쉘 명령어를 입력하십시오."
 
-#: plugins/shell_output/shell_output.c:773
+#: plugins/shell_output/shell_output.c:755
 msgid "Executing command"
 msgstr "명령 실행"
 
-#: plugins/shell_output/shell_output.c:841
+#: plugins/shell_output/shell_output.c:823
 msgid "An error occurred while running the selected command."
 msgstr "선택한 명령을 실행하는 중 오류가 발생했습니다."
 
@@ -3086,24 +3086,24 @@ msgstr "현재 문서의 맞춤법을 검사합니다."
 msgid "Spell checker"
 msgstr "맞춤법 검사"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:139
+#: plugins/taglist/gedit-taglist-plugin-window.c:146
 msgid "Tag list plugin"
 msgstr "태그 목록 플러그인"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:157
+#: plugins/taglist/gedit-taglist-plugin-window.c:167
 msgid "Select the group of tags you want to use"
 msgstr "쓸려는 태그 묶음을 선택하십시오"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:179
+#: plugins/taglist/gedit-taglist-plugin-window.c:189
 msgid "Available Tag Lists"
 msgstr "쓸 수 있는 태그 목록"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:181
-#: plugins/taglist/gedit-taglist-plugin-window.c:202
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:212
 msgid "Tags"
 msgstr "태그"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:201
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "문서에 태그를 끼워 넣기위해 두번 클릭하십시오"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-10 13:49+0200\n"
+"POT-Creation-Date: 2004-12-05 20:11+0100\n"
 "PO-Revision-Date: 2003-05-26 07:05+0545\n"
 "Last-Translator: Laxmi Pd Khatiwada<laxmi@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -696,31 +696,31 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "छानिएको फाइल चलाउन योग्य छैन"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:673
+#: gedit/dialogs/gedit-preferences-dialog.c:680
 msgid "Push this button to select the font to be used by the editor"
 msgstr "छानेको लिपि प्रयोग गर्न यो बटन थिच्नुस"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:675
+#: gedit/dialogs/gedit-preferences-dialog.c:682
 msgid "Push this button to configure text color"
 msgstr "पाठ रङ्ग कन्फिगर गर्न यो बटन थिच्नुस"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:677
+#: gedit/dialogs/gedit-preferences-dialog.c:684
 msgid "Push this button to configure background color"
 msgstr "पार्श्व रङ्ग कन्फिगर गर्न यो बटन थिच्नुस"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:679
+#: gedit/dialogs/gedit-preferences-dialog.c:686
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
 msgstr "छनोट गरेको पाठमा रङ्ग कन्फिगर गर्न यो बटन थिच्नुस"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:682
+#: gedit/dialogs/gedit-preferences-dialog.c:689
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
 msgstr "छनोट गरेको पाठमा रङ्ग कन्फिगर गर्न यो बटन थिच्नुस"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1132
+#: gedit/dialogs/gedit-preferences-dialog.c:1139
 msgid "Elements"
 msgstr "आबस्यक तत्वहरु"
 
@@ -1208,34 +1208,34 @@ msgstr "शीर्षक  नभएको"
 msgid "Invalid file name"
 msgstr "अबैध फाइल नाम"
 
-#: gedit/gedit-document.c:838 gedit/gedit-document.c:1399
+#: gedit/gedit-document.c:838 gedit/gedit-document.c:1401
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
 msgstr "अवैध युटिएफ-८ डाटा"
 
-#: gedit/gedit-document.c:1725
+#: gedit/gedit-document.c:1727
 #, c-format
 msgid "Could not read symbolic link information for %s"
 msgstr " %s का लागि सांकेतिक सम्बन्धको सूचना पाइएन"
 
-#: gedit/gedit-document.c:1771
+#: gedit/gedit-document.c:1773
 msgid "The file has too many symbolic links."
 msgstr "फाइलका धेरै सांकेतिक सम्बन्धहरु छन्"
 
-#: gedit/gedit-document.c:1827
+#: gedit/gedit-document.c:1829
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr "जीइडिटले लेखन मोडमा  %s:स्थान को प्रयोग गर्न सक्दैन"
 
-#: gedit/gedit-document.c:1834
+#: gedit/gedit-document.c:1836
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr "जीइडिटले लेखन मोडमा यस्तो स्थानको प्रयोग गर्न सक्दैन।"
 
-#: gedit/gedit-document.c:1847
+#: gedit/gedit-document.c:1849
 msgid "Invalid filename."
 msgstr "अबैध फाइल नाम"
 
-#: gedit/gedit-document.c:1959
+#: gedit/gedit-document.c:1961
 #, fuzzy
 msgid ""
 "There is not enough disk space to save the file.\n"
@@ -1244,7 +1244,7 @@ msgstr ""
 "फाइल %s लाई  पुरानो स्थितिमा ल्याउन उपलब्ध मेमोरी पर्याप्त छैन। कृपया चलेको केहि "
 "एप्लिकेसन बंद गरी फेरी प्रयास गर्नुस"
 
-#: gedit/gedit-document.c:1964
+#: gedit/gedit-document.c:1966
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1253,7 +1253,7 @@ msgstr ""
 "तपाईंले फाइल संग्रह गर्न खोजेको डिस्क सानो आकारको छ .सानो फाइलमात्र संग्रह गर्नुहोस् नत्र "
 "डिस्कको सीमाले भेट्दैन "
 
-#: gedit/gedit-document.c:2008
+#: gedit/gedit-document.c:2010
 msgid "Could not create a backup file."
 msgstr "ब्याकअप फाइल बनाउन सकिएन"
 
@@ -1271,115 +1271,115 @@ msgstr "वर्तमान दृष्य-घटक (%s)"
 msgid "Add or _Remove..."
 msgstr "थप वा _हटाउ...."
 
-#: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
-#: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
-#: gedit/gedit-encodings.c:182
+#: gedit/gedit-encodings.c:136 gedit/gedit-encodings.c:180
+#: gedit/gedit-encodings.c:184 gedit/gedit-encodings.c:186
+#: gedit/gedit-encodings.c:188
 msgid "Unicode"
 msgstr "युनिकोड"
 
-#: gedit/gedit-encodings.c:145 gedit/gedit-encodings.c:171
-#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:149 gedit/gedit-encodings.c:175
+#: gedit/gedit-encodings.c:219 gedit/gedit-encodings.c:262
 msgid "Western"
 msgstr "पश्चिमी"
 
-#: gedit/gedit-encodings.c:147 gedit/gedit-encodings.c:214
-#: gedit/gedit-encodings.c:251
+#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:221
+#: gedit/gedit-encodings.c:258
 msgid "Central European"
 msgstr "केन्द्रीय युरोपीयन"
 
-#: gedit/gedit-encodings.c:149
+#: gedit/gedit-encodings.c:153
 msgid "South European"
 msgstr "साउथ युरोपीयन"
 
-#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:167
-#: gedit/gedit-encodings.c:265
+#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:171
+#: gedit/gedit-encodings.c:272
 msgid "Baltic"
 msgstr "बाल्टिक"
 
-#: gedit/gedit-encodings.c:153 gedit/gedit-encodings.c:216
-#: gedit/gedit-encodings.c:229 gedit/gedit-encodings.c:233
-#: gedit/gedit-encodings.c:235 gedit/gedit-encodings.c:253
+#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:223
+#: gedit/gedit-encodings.c:236 gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:260
 msgid "Cyrillic"
 msgstr "सिरिलिक"
 
-#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:222
-#: gedit/gedit-encodings.c:263
+#: gedit/gedit-encodings.c:159 gedit/gedit-encodings.c:229
+#: gedit/gedit-encodings.c:270
 msgid "Arabic"
 msgstr "अरेबिक"
 
-#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:257
+#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:264
 #: plugins/spell/gedit-spell-checker.c:89
 msgid "Greek"
 msgstr "ग्रीक"
 
-#: gedit/gedit-encodings.c:159
+#: gedit/gedit-encodings.c:163
 msgid "Hebrew Visual"
 msgstr "हिब्रु दृष्यक "
 
-#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:220
-#: gedit/gedit-encodings.c:261
+#: gedit/gedit-encodings.c:165 gedit/gedit-encodings.c:227
+#: gedit/gedit-encodings.c:268
 msgid "Hebrew"
 msgstr "हिब्रु "
 
-#: gedit/gedit-encodings.c:163 gedit/gedit-encodings.c:218
-#: gedit/gedit-encodings.c:259
+#: gedit/gedit-encodings.c:167 gedit/gedit-encodings.c:225
+#: gedit/gedit-encodings.c:266
 msgid "Turkish"
 msgstr "टर्कीस"
 
-#: gedit/gedit-encodings.c:165
+#: gedit/gedit-encodings.c:169
 msgid "Nordic"
 msgstr "नर्डिक"
 
-#: gedit/gedit-encodings.c:169
+#: gedit/gedit-encodings.c:173
 msgid "Celtic"
 msgstr "केल्टिक"
 
-#: gedit/gedit-encodings.c:173
+#: gedit/gedit-encodings.c:177
 msgid "Romanian"
 msgstr "रोमानियन"
 
-#: gedit/gedit-encodings.c:185
+#: gedit/gedit-encodings.c:192
 msgid "Armenian"
 msgstr "आर्मेनियन"
 
-#: gedit/gedit-encodings.c:187 gedit/gedit-encodings.c:189
-#: gedit/gedit-encodings.c:198
+#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:196
+#: gedit/gedit-encodings.c:205
 msgid "Chinese Traditional"
 msgstr "चाइनिज पारम्परिक"
 
-#: gedit/gedit-encodings.c:191
+#: gedit/gedit-encodings.c:198
 msgid "Cyrillic/Russian"
 msgstr "सिरिलिक/रसियन"
 
-#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:225
-#: gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:232
+#: gedit/gedit-encodings.c:247
 msgid "Japanese"
 msgstr "जापनिज"
 
-#: gedit/gedit-encodings.c:196 gedit/gedit-encodings.c:227
-#: gedit/gedit-encodings.c:231 gedit/gedit-encodings.c:246
+#: gedit/gedit-encodings.c:203 gedit/gedit-encodings.c:234
+#: gedit/gedit-encodings.c:238 gedit/gedit-encodings.c:253
 msgid "Korean"
 msgstr "कोरियन"
 
-#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:203
-#: gedit/gedit-encodings.c:205 gedit/gedit-encodings.c:209
+#: gedit/gedit-encodings.c:208 gedit/gedit-encodings.c:210
+#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:216
 msgid "Chinese Simplified"
 msgstr "सरल चाइनिज"
 
-#: gedit/gedit-encodings.c:207
+#: gedit/gedit-encodings.c:214
 msgid "Georgian"
 msgstr "जर्जीयन"
 
-#: gedit/gedit-encodings.c:237
+#: gedit/gedit-encodings.c:244
 msgid "Cyrillic/Ukrainian"
 msgstr "सिरिलिक/युक्रेनियन"
 
-#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:248
-#: gedit/gedit-encodings.c:267
+#: gedit/gedit-encodings.c:249 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:274
 msgid "Vietnamese"
 msgstr "भियतनामिज"
 
-#: gedit/gedit-encodings.c:244
+#: gedit/gedit-encodings.c:251
 msgid "Thai"
 msgstr "थाई"
 
@@ -2693,46 +2693,46 @@ msgstr "आदेश _चलाउ..."
 msgid "Run a command"
 msgstr "आदेश चलाउ"
 
-#: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:502
+#: plugins/shell_output/shell_output.c:160
+#: plugins/shell_output/shell_output.c:490
 msgid "Stopped"
 msgstr "रोकियो"
 
-#: plugins/shell_output/shell_output.c:282
+#: plugins/shell_output/shell_output.c:271
 msgid "Run Command"
 msgstr "आदेश चलाउ"
 
-#: plugins/shell_output/shell_output.c:301
+#: plugins/shell_output/shell_output.c:290
 msgid "_Run"
 msgstr "_चलाउ"
 
-#: plugins/shell_output/shell_output.c:508
+#: plugins/shell_output/shell_output.c:496
 msgid "Done"
 msgstr "भयो"
 
-#: plugins/shell_output/shell_output.c:510
+#: plugins/shell_output/shell_output.c:498
 msgid "Failed"
 msgstr "असफल"
 
-#: plugins/shell_output/shell_output.c:676
+#: plugins/shell_output/shell_output.c:658
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
 "Please, insert a valid shell command."
 msgstr "कृपया, बैध-कोष्ठ घुसाउन आदेश देउ"
 
-#: plugins/shell_output/shell_output.c:695
+#: plugins/shell_output/shell_output.c:677
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
 "Please, insert a valid shell command."
 msgstr "कोष्ठ क्रममिलानमा गल्ती. कृपया, बैध-कोष्ठ घुसाउन आदेश देउ"
 
-#: plugins/shell_output/shell_output.c:773
+#: plugins/shell_output/shell_output.c:755
 msgid "Executing command"
 msgstr "उपल्लोस्तरको आदेश"
 
-#: plugins/shell_output/shell_output.c:841
+#: plugins/shell_output/shell_output.c:823
 #, fuzzy
 msgid "An error occurred while running the selected command."
 msgstr " छानिएको कमाण्ड चलाउदा एउटा त्रुटि आएको छ"
@@ -3095,25 +3095,25 @@ msgstr "हालैको लिखतमा हिज्जे मिलाउ
 msgid "Spell checker"
 msgstr "हिज्जे जाँचक"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:139
+#: plugins/taglist/gedit-taglist-plugin-window.c:146
 msgid "Tag list plugin"
 msgstr "ट्याग लिष्ट प्लगइन"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:157
+#: plugins/taglist/gedit-taglist-plugin-window.c:167
 msgid "Select the group of tags you want to use"
 msgstr "प्रयोग गर्न चाहेको ट्याग समूह चयन गर"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:179
+#: plugins/taglist/gedit-taglist-plugin-window.c:189
 #, fuzzy
 msgid "Available Tag Lists"
 msgstr "उपलब्ध ट्याग लिष्ट"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:181
-#: plugins/taglist/gedit-taglist-plugin-window.c:202
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:212
 msgid "Tags"
 msgstr "ट्याग"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:201
 msgid "Double-click on a tag to insert it in the current document"
 msgstr ""
 

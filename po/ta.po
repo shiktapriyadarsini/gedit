@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-10 13:49+0200\n"
+"POT-Creation-Date: 2004-12-05 20:11+0100\n"
 "PO-Revision-Date: 2004-10-11 15:04+0530\n"
 "Last-Translator: Jayaradha N <jaya@pune.redhat.com>\n"
 "Language-Team: Tamil <zhakanini@yahoogroups.com>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
 "\n"
 "\n"
 
@@ -286,7 +287,8 @@ msgstr ""
 "வேண்டும் என்பதை நினைவில் கொள்க"
 
 #: data/gedit.schemas.in.h:43
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr "ஆவணம் அச்சடிக்கும் போது பயன்படுத்த வேண்டிய எழுத்துருவை குறிக்கும்"
 
 #: data/gedit.schemas.in.h:44
@@ -309,13 +311,15 @@ msgstr ""
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
-msgstr "சமீபத்திய கோப்புகள் துணைப்பட்டியலிக் காட்டப்பட வேண்டிய அதிக பட்ச கோப்புகளின் எண்ணிக்கை"
+msgstr ""
+"சமீபத்திய கோப்புகள் துணைப்பட்டியலிக் காட்டப்பட வேண்டிய அதிக பட்ச கோப்புகளின் எண்ணிக்கை"
 
 #: data/gedit.schemas.in.h:47
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
-msgstr "தத்தல் விசையை பயன்படுத்தும்போது காட்டப்பட வேண்டிய இடைவெளிகளின் எண்ணிக்கையை குறிப்பிடவும்"
+msgstr ""
+"தத்தல் விசையை பயன்படுத்தும்போது காட்டப்பட வேண்டிய இடைவெளிகளின் எண்ணிக்கையை குறிப்பிடவும்"
 
 #: data/gedit.schemas.in.h:48
 msgid "Specifies the position of the right margin."
@@ -415,7 +419,8 @@ msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "ஆவணத்தை அச்சிடுபொழுது ஜிதிருத்தம் "
 
 #: data/gedit.schemas.in.h:67
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr "தொகுப்பி சாளரத்தின் கீழ் உள்ள நிலைப்பட்டி காட்டப்பட வேண்டுமா"
 
 #: data/gedit.schemas.in.h:68
@@ -492,17 +497,20 @@ msgstr "கேள்விகள்"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:364
 #, c-format
-msgid "If you don't save, changes from the last %ld second will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
 "நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து %ld மாற்றங்களை உறுதியாக "
 "இழந்துவிடுவீர்கள்"
-msgstr[1] "நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து மாற்றங்களை உறுதியாக இழந்துவிடுவிர்கள்."
+msgstr[1] ""
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து மாற்றங்களை உறுதியாக இழந்துவிடுவிர்கள்."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:373
-msgid "If you don't save, changes from the last minute will be permanently lost."
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நிமிடத்திலிருந்து மாற்றங்களை உறுதியாக "
 "இழந்துவிடுவீர்கள்கள்."
@@ -524,7 +532,8 @@ msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:389
 #, c-format
-msgid "If you don't save, changes from the last %ld minute will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -537,7 +546,8 @@ msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:404
 msgid "If you don't save, changes from the last hour will be permanently lost."
-msgstr "நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து மாற்றங்களை உறுதியாக இழந்துவிடுவீர்கள்"
+msgstr ""
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து மாற்றங்களை உறுதியாக இழந்துவிடுவீர்கள்"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:410
 #, c-format
@@ -556,12 +566,15 @@ msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:425
 #, c-format
-msgid "If you don't save, changes from the last %d hour will be permanently lost."
-msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
 "நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து %d மாற்றங்களை உறுதியாக "
 "இழந்துவிடுவிர்கள்."
-msgstr[1] "நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து மாற்றங்களை உறுதியாக இழந்துவிடுவிர்கள்."
+msgstr[1] ""
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நேரத்திலிருந்து மாற்றங்களை உறுதியாக இழந்துவிடுவிர்கள்."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:469
 #, c-format
@@ -571,8 +584,10 @@ msgstr "\"%s\" சை மூடுவதற்கு முன் ஆவணத�
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:643
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
-msgstr[0] "%d ஆவணங்கள் சேமிக்கப்படாமல் உள்ளது. மூடுவதற்கு முன் மாற்றங்களை சேமிக்க வேண்டுமா?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] ""
+"%d ஆவணங்கள் சேமிக்கப்படாமல் உள்ளது. மூடுவதற்கு முன் மாற்றங்களை சேமிக்க வேண்டுமா?"
 msgstr[1] ""
 
 #. Secondary label
@@ -658,15 +673,18 @@ msgstr "உடல் எழுத்தை பொறுக்கு"
 msgid ""
 "Push this button to select the font to be used to print the body of the "
 "document"
-msgstr "இந்தப் பொத்தானை அழுத்தி ஆவண உடலைப் பயன்படுத்தி அச்சிடுவதற்காக எழுத்தினைத் தேர்ந்தெடு."
+msgstr ""
+"இந்தப் பொத்தானை அழுத்தி ஆவண உடலைப் பயன்படுத்தி அச்சிடுவதற்காக எழுத்தினைத் தேர்ந்தெடு."
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:498
 msgid "Page headers font picker"
 msgstr "பக்க தலைப்பு எழுத்துரு தேர்வு"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:499
-msgid "Push this button to select the font to be used to print the page headers"
-msgstr "இந்தப் பொத்தானை அழுத்திப் பக்கத் தலைப்பில் பயன்படுத்தி அச்சிடுவதற்காக எழுத்தினைத் தேர்ந்தெடு."
+msgid ""
+"Push this button to select the font to be used to print the page headers"
+msgstr ""
+"இந்தப் பொத்தானை அழுத்திப் பக்கத் தலைப்பில் பயன்படுத்தி அச்சிடுவதற்காக எழுத்தினைத் தேர்ந்தெடு."
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:500
 msgid "Line numbers font picker"
@@ -674,7 +692,8 @@ msgstr "வரிசை எண்கள் எழுத்து"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:501
 msgid "Push this button to select the font to be used to print line numbers"
-msgstr "இந்தப் பொத்தானை அழுத்தி வரி எண்களைப் பயன்படுத்தி அச்சிடுவதற்காக எழுத்தினைத் தேர்ந்தெடு."
+msgstr ""
+"இந்தப் பொத்தானை அழுத்தி வரி எண்களைப் பயன்படுத்தி அச்சிடுவதற்காக எழுத்தினைத் தேர்ந்தெடு."
 
 #: gedit/dialogs/gedit-plugin-manager.c:53
 msgid "Plugin"
@@ -715,31 +734,31 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "தெரிவுசெய்துள்ள கோப்பு இயக்கக்கூடியதல்ல."
 
-#: gedit/dialogs/gedit-preferences-dialog.c:673
+#: gedit/dialogs/gedit-preferences-dialog.c:680
 msgid "Push this button to select the font to be used by the editor"
 msgstr "இந்தப் பொத்தானை அழுத்தி திருத்தில் பயன்படுத்துவதற்காக எழுத்தினைத் தேர்வுச் செய்க"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:675
+#: gedit/dialogs/gedit-preferences-dialog.c:682
 msgid "Push this button to configure text color"
 msgstr "உரை வண்ணத்தை அமைக்க இந்த பொத்தான் அமுத்துக"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:677
+#: gedit/dialogs/gedit-preferences-dialog.c:684
 msgid "Push this button to configure background color"
 msgstr "பின்னணி வண்ணத்தை அமைக்க இந்த பொத்தானை அமுத்துக"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:679
+#: gedit/dialogs/gedit-preferences-dialog.c:686
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
 msgstr "இந்தப் பொத்தானைச் அழுத்தி வண்ணத்தை உள்ளமைத்துத் தேர்ந்தெடுத்த உரை தோற்றம்"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:682
+#: gedit/dialogs/gedit-preferences-dialog.c:689
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
 msgstr "பொத்தானை அழுத்தி வண்ணத்தைத் தேர்ந்தெடுத்த உரையில் குறித்தை உள்ளமை"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1132
+#: gedit/dialogs/gedit-preferences-dialog.c:1139
 msgid "Elements"
 msgstr "உறுப்புகள்"
 
@@ -1205,34 +1224,34 @@ msgstr "பெயரில்லாத"
 msgid "Invalid file name"
 msgstr "செல்லாத கோப்புப் பெயர்"
 
-#: gedit/gedit-document.c:838 gedit/gedit-document.c:1399
+#: gedit/gedit-document.c:838 gedit/gedit-document.c:1401
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
 msgstr "பிழையான UTF-8 தரவு"
 
-#: gedit/gedit-document.c:1725
+#: gedit/gedit-document.c:1727
 #, c-format
 msgid "Could not read symbolic link information for %s"
 msgstr "%s சுக்காக குறியீட்டு இணைப்புத் தகவலைப் படிக்க முடியவில்லை"
 
-#: gedit/gedit-document.c:1771
+#: gedit/gedit-document.c:1773
 msgid "The file has too many symbolic links."
 msgstr "இந்தக் கோப்பு அதிகமான இணைப்புகளை கொண்டுள்ளது."
 
-#: gedit/gedit-document.c:1827
+#: gedit/gedit-document.c:1829
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr "gedit எழுது பாங்கில் %s இடத்தை கையால முடியவில்லை: "
 
-#: gedit/gedit-document.c:1834
+#: gedit/gedit-document.c:1836
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr "gedit இந்த வகையான இடத்தில் எழுத்து பாங்கில் கையாளமுடியவில்லை."
 
-#: gedit/gedit-document.c:1847
+#: gedit/gedit-document.c:1849
 msgid "Invalid filename."
 msgstr "செல்லாத கோப்புப் பெயர்."
 
-#: gedit/gedit-document.c:1959
+#: gedit/gedit-document.c:1961
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1240,7 +1259,7 @@ msgstr ""
 "கோப்பை சேமிப்பதற்கு வட்டில் இடம் கிடையாது.\n"
 "தயவுசெய்து, வட்டில் இடம் உருவாக்கி மறுபடியும் முயற்சிசெய்க."
 
-#: gedit/gedit-document.c:1964
+#: gedit/gedit-document.c:1966
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1249,7 +1268,7 @@ msgstr ""
 "நீங்கள் சேமிக்க விரும்பும் அடைவு உள்ள வட்டில் சில வரம்புகள் உள்ளது. சிறிய கோப்புகளை "
 "சேமிக்க முயற்சி செய்யவும் அல்லது வரம்பு இல்லாத வட்டில் சேமிக்கவும்"
 
-#: gedit/gedit-document.c:2008
+#: gedit/gedit-document.c:2010
 msgid "Could not create a backup file."
 msgstr "கோப்பின் காப்பு-நகலை உருவாக்க முடியவில்லை"
 
@@ -1267,115 +1286,115 @@ msgstr "தற்போதைய மொழி (%s)"
 msgid "Add or _Remove..."
 msgstr "(_R)சேர்க்கவும் அல்லது நீக்கவும்..."
 
-#: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
-#: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
-#: gedit/gedit-encodings.c:182
+#: gedit/gedit-encodings.c:136 gedit/gedit-encodings.c:180
+#: gedit/gedit-encodings.c:184 gedit/gedit-encodings.c:186
+#: gedit/gedit-encodings.c:188
 msgid "Unicode"
 msgstr "யூனிகோட்"
 
-#: gedit/gedit-encodings.c:145 gedit/gedit-encodings.c:171
-#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:149 gedit/gedit-encodings.c:175
+#: gedit/gedit-encodings.c:219 gedit/gedit-encodings.c:262
 msgid "Western"
 msgstr "மேற்கு மொழி"
 
-#: gedit/gedit-encodings.c:147 gedit/gedit-encodings.c:214
-#: gedit/gedit-encodings.c:251
+#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:221
+#: gedit/gedit-encodings.c:258
 msgid "Central European"
 msgstr "மத்திய ஐரோப்பா"
 
-#: gedit/gedit-encodings.c:149
+#: gedit/gedit-encodings.c:153
 msgid "South European"
 msgstr "தெற்கு ஐரோப்பா"
 
-#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:167
-#: gedit/gedit-encodings.c:265
+#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:171
+#: gedit/gedit-encodings.c:272
 msgid "Baltic"
 msgstr "பால்டிக்"
 
-#: gedit/gedit-encodings.c:153 gedit/gedit-encodings.c:216
-#: gedit/gedit-encodings.c:229 gedit/gedit-encodings.c:233
-#: gedit/gedit-encodings.c:235 gedit/gedit-encodings.c:253
+#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:223
+#: gedit/gedit-encodings.c:236 gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:260
 msgid "Cyrillic"
 msgstr "ஸைரிலிக்"
 
-#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:222
-#: gedit/gedit-encodings.c:263
+#: gedit/gedit-encodings.c:159 gedit/gedit-encodings.c:229
+#: gedit/gedit-encodings.c:270
 msgid "Arabic"
 msgstr "அராபிக்"
 
-#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:257
+#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:264
 #: plugins/spell/gedit-spell-checker.c:89
 msgid "Greek"
 msgstr "கிரீக்"
 
-#: gedit/gedit-encodings.c:159
+#: gedit/gedit-encodings.c:163
 msgid "Hebrew Visual"
 msgstr "ஹீப்ரு காட்சி"
 
-#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:220
-#: gedit/gedit-encodings.c:261
+#: gedit/gedit-encodings.c:165 gedit/gedit-encodings.c:227
+#: gedit/gedit-encodings.c:268
 msgid "Hebrew"
 msgstr "ஹீப்ரு"
 
-#: gedit/gedit-encodings.c:163 gedit/gedit-encodings.c:218
-#: gedit/gedit-encodings.c:259
+#: gedit/gedit-encodings.c:167 gedit/gedit-encodings.c:225
+#: gedit/gedit-encodings.c:266
 msgid "Turkish"
 msgstr "துருக்கி"
 
-#: gedit/gedit-encodings.c:165
+#: gedit/gedit-encodings.c:169
 msgid "Nordic"
 msgstr "நோர்டிக்"
 
-#: gedit/gedit-encodings.c:169
+#: gedit/gedit-encodings.c:173
 msgid "Celtic"
 msgstr "செல்டிக்"
 
-#: gedit/gedit-encodings.c:173
+#: gedit/gedit-encodings.c:177
 msgid "Romanian"
 msgstr "ரோமேனியன்"
 
-#: gedit/gedit-encodings.c:185
+#: gedit/gedit-encodings.c:192
 msgid "Armenian"
 msgstr "அர்மேனியன்"
 
-#: gedit/gedit-encodings.c:187 gedit/gedit-encodings.c:189
-#: gedit/gedit-encodings.c:198
+#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:196
+#: gedit/gedit-encodings.c:205
 msgid "Chinese Traditional"
 msgstr "சைனிஸ் மரபு"
 
-#: gedit/gedit-encodings.c:191
+#: gedit/gedit-encodings.c:198
 msgid "Cyrillic/Russian"
 msgstr "ஸைரெலிக்/ரசியன்"
 
-#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:225
-#: gedit/gedit-encodings.c:240
+#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:232
+#: gedit/gedit-encodings.c:247
 msgid "Japanese"
 msgstr "ஜப்பானியொழி"
 
-#: gedit/gedit-encodings.c:196 gedit/gedit-encodings.c:227
-#: gedit/gedit-encodings.c:231 gedit/gedit-encodings.c:246
+#: gedit/gedit-encodings.c:203 gedit/gedit-encodings.c:234
+#: gedit/gedit-encodings.c:238 gedit/gedit-encodings.c:253
 msgid "Korean"
 msgstr "கொரியன்"
 
-#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:203
-#: gedit/gedit-encodings.c:205 gedit/gedit-encodings.c:209
+#: gedit/gedit-encodings.c:208 gedit/gedit-encodings.c:210
+#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:216
 msgid "Chinese Simplified"
 msgstr "சைனிஸ்சைச் சுருக்குக"
 
-#: gedit/gedit-encodings.c:207
+#: gedit/gedit-encodings.c:214
 msgid "Georgian"
 msgstr "சியோர்ஜியன்"
 
-#: gedit/gedit-encodings.c:237
+#: gedit/gedit-encodings.c:244
 msgid "Cyrillic/Ukrainian"
 msgstr "ஸைரெலிக்/யூக்கிரேனியன்"
 
-#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:248
-#: gedit/gedit-encodings.c:267
+#: gedit/gedit-encodings.c:249 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:274
 msgid "Vietnamese"
 msgstr "வியட்னாம்"
 
-#: gedit/gedit-encodings.c:244
+#: gedit/gedit-encodings.c:251
 msgid "Thai"
 msgstr "தாய்-மொழி"
 
@@ -1451,16 +1470,20 @@ msgstr "\"%s\" ஆவணத்தில் சேமிக்காதவற்�
 
 #: gedit/gedit-file.c:614
 #, c-format
-msgid "Changes made to the document in the last %ld second will be permanently lost."
+msgid ""
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
 msgstr[0] "கடைசி %ld நொடிகளில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் நிரந்தமாக இழக்க நேரும்"
-msgstr[1] "கடைசி நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
+msgstr[1] ""
+"கடைசி நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
 
 #: gedit/gedit-file.c:623
-msgid "Changes made to the document in the last minute will be permanently lost."
-msgstr "கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
+msgstr ""
+"கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
 
 #: gedit/gedit-file.c:629
 #, c-format
@@ -1473,20 +1496,25 @@ msgid_plural ""
 msgstr[0] ""
 "கடைசி நிமிடத்தில் மற்றும் %ld நொடியில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் ஆவணத்தை "
 "நிரந்தரமாக இழக்க நேரும்"
-msgstr[1] "கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
+msgstr[1] ""
+"கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
 
 #: gedit/gedit-file.c:639
 #, c-format
-msgid "Changes made to the document in the last %ld minute will be permanently lost."
+msgid ""
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "கடைசி %ld நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் ஆவணத்தை நிரந்தரமாக இழக்க நேரும்"
-msgstr[1] "கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
+msgstr[0] ""
+"கடைசி %ld நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் ஆவணத்தை நிரந்தரமாக இழக்க நேரும்"
+msgstr[1] ""
+"கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
 
 #: gedit/gedit-file.c:654
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgstr "கடைசி நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
+msgstr ""
+"கடைசி நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
 
 #: gedit/gedit-file.c:660
 #, c-format
@@ -1499,14 +1527,19 @@ msgid_plural ""
 msgstr[0] ""
 "கடைசி மணி மற்றும் %d நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் ஆவணத்தை நிரந்தரமாக "
 "இழக்க நேரும்"
-msgstr[1] "கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
+msgstr[1] ""
+"கடைசி நிமிடத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
 
 #: gedit/gedit-file.c:675
 #, c-format
-msgid "Changes made to the document in the last %d hour will be permanently lost."
-msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "கடைசி %d நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் ஆவணத்தை நிரந்தரமாக இழக்க நேரும்"
-msgstr[1] "கடைசி நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
+msgid ""
+"Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] ""
+"கடைசி %d நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் ஆவணத்தை நிரந்தரமாக இழக்க நேரும்"
+msgstr[1] ""
+"கடைசி நேரத்தில் ஆவணத்தில் மாற்றங்கள் நிகழ்த்தினால் அது நிரந்தரமாகப் பழுது அடைந்துவிடும்."
 
 #: gedit/gedit-file.c:698 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
@@ -1965,7 +1998,8 @@ msgid "Select the entire document"
 msgstr "முழு ஆவணத்தையும் தேர்வு செய்"
 
 #: gedit/gedit-ui.xml.h:62
-msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid ""
+"Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr "மேல்மேசை மெனு மற்றும் விருப்பத்திற்கு ஏற்ப கருவிப்பட்டி பாணியை அமை"
 
 #: gedit/gedit-ui.xml.h:63
@@ -2142,8 +2176,10 @@ msgstr "தவறான தகவல் உள்ளதால், \"%s\" கோ�
 
 #: gedit/gedit-utils.c:444
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
-msgstr "\"%s\" கோப்பைத் திறக்கமுடியவில்லை ஏன்னென்றால் %s: இடங்களில் gedit ஐ கையாள முடியவில்லை."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgstr ""
+"\"%s\" கோப்பைத் திறக்கமுடியவில்லை ஏன்னென்றால் %s: இடங்களில் gedit ஐ கையாள முடியவில்லை."
 
 #: gedit/gedit-utils.c:450
 #, c-format
@@ -2152,7 +2188,8 @@ msgstr "\"%s\" கோப்பை திறக்க முடியவில்
 
 #: gedit/gedit-utils.c:460
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr "செல்லுபடியாகாதது தரவு உள்ளதால், \"%s\" கோப்பை திறக்க முடியவில்லை."
 
 #: gedit/gedit-utils.c:467
@@ -2346,7 +2383,8 @@ msgstr "\"%s\"  கோப்பை மாற்றமுடியவில்ல
 
 #: gedit/gedit-utils.c:828
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "\"%s\"  கோப்பை மாற்றமுடியவில்லை ஏன்னென்றால் ஜிதிருத்தம் %s இடங்களை கையாளுதல்: "
 
 #: gedit/gedit-utils.c:834 gedit/gedit-utils.c:893 gedit/gedit-utils.c:904
@@ -2360,7 +2398,8 @@ msgstr "\"%s\" கோப்பு மீட்க முடியவில்ல
 msgid ""
 "Could not revert the file \"%s\" because it contains data in an invalid "
 "format."
-msgstr "\"%s\" கோப்பைத் திருப்ப முடியவில்லை ஏன்னென்றால் செல்லாத வடிவத்தில் தரவைக் கொண்டுள்ளது."
+msgstr ""
+"\"%s\" கோப்பைத் திருப்ப முடியவில்லை ஏன்னென்றால் செல்லாத வடிவத்தில் தரவைக் கொண்டுள்ளது."
 
 #: gedit/gedit-utils.c:851
 #, c-format
@@ -2692,28 +2731,28 @@ msgstr "(_R)கட்டளை செயல்படுத்துக..."
 msgid "Run a command"
 msgstr " கட்டளை செயல்படுத்துக"
 
-#: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:502
+#: plugins/shell_output/shell_output.c:160
+#: plugins/shell_output/shell_output.c:490
 msgid "Stopped"
 msgstr "நிறுத்தப்பட்டது"
 
-#: plugins/shell_output/shell_output.c:282
+#: plugins/shell_output/shell_output.c:271
 msgid "Run Command"
 msgstr "கட்டளை செயல்படுத்துக"
 
-#: plugins/shell_output/shell_output.c:301
+#: plugins/shell_output/shell_output.c:290
 msgid "_Run"
 msgstr "(_R)இயக்கு"
 
-#: plugins/shell_output/shell_output.c:508
+#: plugins/shell_output/shell_output.c:496
 msgid "Done"
 msgstr "முடிந்தது"
 
-#: plugins/shell_output/shell_output.c:510
+#: plugins/shell_output/shell_output.c:498
 msgid "Failed"
 msgstr "தோல்வி"
 
-#: plugins/shell_output/shell_output.c:676
+#: plugins/shell_output/shell_output.c:658
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2723,7 +2762,7 @@ msgstr ""
 "\n"
 "செல்லத்தக்க கட்டளை ஒன்றை உள்ளீடவும்."
 
-#: plugins/shell_output/shell_output.c:695
+#: plugins/shell_output/shell_output.c:677
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2733,11 +2772,11 @@ msgstr ""
 "\n"
 "செல்லத்தக்க கட்டளை ஒன்றை உள்ளிடவும்."
 
-#: plugins/shell_output/shell_output.c:773
+#: plugins/shell_output/shell_output.c:755
 msgid "Executing command"
 msgstr "கட்டளை இயக்கப்படுகின்றது"
 
-#: plugins/shell_output/shell_output.c:841
+#: plugins/shell_output/shell_output.c:823
 msgid "An error occurred while running the selected command."
 msgstr "தேர்வு செய்த கட்டளையை செயல்படுத்தும்போது ஒரு பிழை நேர்ந்தது."
 
@@ -3095,24 +3134,24 @@ msgstr "இந்த ஆவணத்தின் சொற்களை சரி
 msgid "Spell checker"
 msgstr "எழுத்துப்பிழை சரிபார்ப்பு"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:139
+#: plugins/taglist/gedit-taglist-plugin-window.c:146
 msgid "Tag list plugin"
 msgstr "குறி பட்டியல் சொருகுபொருள்"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:157
+#: plugins/taglist/gedit-taglist-plugin-window.c:167
 msgid "Select the group of tags you want to use"
 msgstr "புழங்க விரும்பும் குறிகளை தேர்வு செய்யவும்"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:179
+#: plugins/taglist/gedit-taglist-plugin-window.c:189
 msgid "Available Tag Lists"
 msgstr "இருக்கும் குறிகளின் பட்டியல்"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:181
-#: plugins/taglist/gedit-taglist-plugin-window.c:202
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:212
 msgid "Tags"
 msgstr "குறிகள் (Tags)"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:191
+#: plugins/taglist/gedit-taglist-plugin-window.c:201
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "இந்த ஆவணத்தில் செருக குறிகளின் மேல் இரண்டு முறை க்ளிக் செய்யவும்"
 
@@ -3131,7 +3170,9 @@ msgstr "குறி பட்டியல் சாளரத்தைக் க
 msgid ""
 "Provides a method to easily insert into a document commonly used tags/"
 "strings without having to type them."
-msgstr "பொதுவாக உபயோகப்படுத்தும் குறிகள்/எழுத்துகள் ஆகியவைகளை தட்டச்சு செய்யாமல் எளிதாக சொருகும் வழிமுறையை வழங்கும்."
+msgstr ""
+"பொதுவாக உபயோகப்படுத்தும் குறிகள்/எழுத்துகள் ஆகியவைகளை தட்டச்சு செய்யாமல் எளிதாக "
+"சொருகும் வழிமுறையை வழங்கும்."
 
 #: plugins/taglist/taglist.gedit-plugin.desktop.in.h:2
 msgid "Tag list"
@@ -3204,4 +3245,3 @@ msgstr "தேர்வுசெய்த உரையை நகல்செய�
 #: viewer/gedit-viewer-ui.xml.h:2
 msgid "_Copy Text"
 msgstr "(_C)உரையை நகல் செய்க"
-
