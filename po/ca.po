@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.0.2\n"
-"POT-Creation-Date: 2002-08-15 20:10+0200\n"
-"PO-Revision-Date: 2002-08-15 20:12+0200\n"
+"Project-Id-Version: gedit 2.0.4\n"
+"POT-Creation-Date: 2002-08-29 18:06+0200\n"
+"PO-Revision-Date: 2002-08-29 18:12+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -504,33 +504,33 @@ msgid "Copyright (C) 2002 - James Willcox"
 msgstr "Copyright (C) 2002 - James Willcox"
 
 #
-#: plugins/diff/diff.c:61
+#: plugins/diff/diff.c:62
 msgid "Co_mpare Files..."
 msgstr "Compara els fitxers..."
 
-#: plugins/diff/diff.c:64
+#: plugins/diff/diff.c:65
 msgid "Makes a diff file from two documents or files"
 msgstr "Crea un fitxer diff a partir de dos documents o fitxers"
 
 #
-#: plugins/diff/diff.c:66
+#: plugins/diff/diff.c:67
 msgid "Compare files"
 msgstr "Compara els fitxers"
 
 #. Create the dialog
-#: plugins/diff/diff.c:267
+#: plugins/diff/diff.c:268
 msgid "Compare two files..."
 msgstr "Compara dos fitxers..."
 
-#: plugins/diff/diff.c:281
+#: plugins/diff/diff.c:282
 msgid "C_ompare"
 msgstr "C_ompara"
 
-#: plugins/diff/diff.c:502
+#: plugins/diff/diff.c:503
 msgid "The two documents you selected are the same."
 msgstr "Els dos documents seleccionats són iguals."
 
-#: plugins/diff/diff.c:510
+#: plugins/diff/diff.c:511
 msgid ""
 "The \"first\" file you selected does not exist.\n"
 "\n"
@@ -540,7 +540,7 @@ msgstr ""
 "\n"
 "Si us plau, indiqueu un fitxer vàlid."
 
-#: plugins/diff/diff.c:519
+#: plugins/diff/diff.c:520
 msgid ""
 "The \"second\" file you selected does not exist.\n"
 "\n"
@@ -551,20 +551,20 @@ msgstr ""
 "Si us plau, indiqueu un fitxer vàlid."
 
 #
-#: plugins/diff/diff.c:527
+#: plugins/diff/diff.c:528
 msgid "The two files you selected are the same."
 msgstr "Els dos fitxers seleccionats són iguals."
 
-#: plugins/diff/diff.c:544
+#: plugins/diff/diff.c:546
 msgid "The \"first\" document contains no text."
 msgstr "El \"primer\" document no conté cap text."
 
-#: plugins/diff/diff.c:573
+#: plugins/diff/diff.c:581
 msgid "The \"second\" document contains no text."
 msgstr "El \"segon\" document no conté cap text."
 
 #. FIXME: do better error reporting ... . Chema
-#: plugins/diff/diff.c:594
+#: plugins/diff/diff.c:607
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -574,7 +574,7 @@ msgstr ""
 "\n"
 "El gedit no pot crear un fitxer temporal."
 
-#: plugins/diff/diff.c:612 plugins/diff/diff.c:625
+#: plugins/diff/diff.c:625 plugins/diff/diff.c:638
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -584,11 +584,11 @@ msgstr ""
 "\n"
 "S'ha produït un error a l'executar una ordre diff."
 
-#: plugins/diff/diff.c:647
+#: plugins/diff/diff.c:660
 msgid "No differences were found between the selected documents."
 msgstr "No s'han trobat diferencies entre els documents seleccionats."
 
-#: plugins/diff/diff.c:688
+#: plugins/diff/diff.c:701
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -599,7 +599,7 @@ msgstr ""
 "El resultat conté dades UTF-8 invàlides."
 
 #
-#: plugins/diff/diff.c:912
+#: plugins/diff/diff.c:925
 msgid ""
 "Makes a diff file from two documents or files on disk.\n"
 "\n"
@@ -610,7 +610,7 @@ msgstr ""
 "Per a més informació sobre \"diff\", escriviu \"man diff\" a l'intèrpret "
 "d'ordres.\n"
 
-#: plugins/diff/diff.c:915
+#: plugins/diff/diff.c:928
 msgid ""
 "Copyright (C) 2000 - 2001 Chema Celorio \n"
 "Copyright (C) 2002 Paolo Maggi"
@@ -618,53 +618,102 @@ msgstr ""
 "Copyright (C) 2000 - 2001 Chema Celorio \n"
 "Copyright (C) 2002 Paolo Maggi"
 
-#
 #: plugins/diff/diff.glade2.h:1
+msgid "*"
+msgstr "*"
+
+#
+#: plugins/diff/diff.glade2.h:2
 msgid "Choose the files to compare."
 msgstr "Seleccioneu els fitxers a comparar."
 
 #
-#: plugins/diff/diff.glade2.h:2
+#: plugins/diff/diff.glade2.h:3
 msgid "Compare files..."
 msgstr "Compara els fitxers..."
 
 #
-#: plugins/diff/diff.glade2.h:3
+#: plugins/diff/diff.glade2.h:4
 msgid "F_rom document"
 msgstr "Des d'un document"
 
-#: plugins/diff/diff.glade2.h:4
+#: plugins/diff/diff.glade2.h:5
 msgid "First"
 msgstr "Primer"
 
 #
-#: plugins/diff/diff.glade2.h:5
+#: plugins/diff/diff.glade2.h:6
+msgid "First file from disk"
+msgstr "Primer fitxer del disc"
+
+#
+#: plugins/diff/diff.glade2.h:7
+msgid "First file from open document"
+msgstr "Primer fitxer del document obert"
+
+#
+#: plugins/diff/diff.glade2.h:8
 msgid "From _document"
 msgstr "Des d'un _document"
 
 #
-#: plugins/diff/diff.glade2.h:6
+#: plugins/diff/diff.glade2.h:9
 msgid "From a _file on disk"
 msgstr "Des d'un _fitxer del disc"
 
 #
-#: plugins/diff/diff.glade2.h:7
+#: plugins/diff/diff.glade2.h:10
 msgid "From a file o_n disk"
 msgstr "Des d'un fitxer del disc"
 
-#: plugins/diff/diff.glade2.h:8
+#: plugins/diff/diff.glade2.h:11
 msgid "Ignore _blanks (-b option)"
 msgstr "Ignora els _buits (opció -b)"
 
-#: plugins/diff/diff.glade2.h:9
+#: plugins/diff/diff.glade2.h:12
 msgid "Note that this option is only supported by GNU diff"
 msgstr "Observa que aquesta opció només està suportada per diff GNU"
 
-#: plugins/diff/diff.glade2.h:10
+#: plugins/diff/diff.glade2.h:13
 msgid "Second"
 msgstr "Segon"
 
-#: plugins/diff/diff.glade2.h:11
+#
+#: plugins/diff/diff.glade2.h:14
+msgid "Second file from disk"
+msgstr "Segon fitxer del disc"
+
+#: plugins/diff/diff.glade2.h:15
+msgid "Second file from open document"
+msgstr "Segon fitxer del document obert"
+
+#: plugins/diff/diff.glade2.h:16
+msgid "Select the \"first\" file..."
+msgstr "Seleccioneu el \"primer\" fitxer..."
+
+#: plugins/diff/diff.glade2.h:17
+msgid "Select the \"second\" file..."
+msgstr "Seleccioneu el \"segon\" fitxer..."
+
+#: plugins/diff/diff.glade2.h:18
+msgid "Select the first file to compare"
+msgstr "Seleccioneu el primer fitxer a comparar"
+
+#
+#: plugins/diff/diff.glade2.h:19
+msgid "Select the first open document to compare"
+msgstr "Selecciona el primer document obert a comparar"
+
+#: plugins/diff/diff.glade2.h:20
+msgid "Select the second file to compare"
+msgstr "Seleccioneu el segon fitxer a comparar"
+
+#
+#: plugins/diff/diff.glade2.h:21
+msgid "Select the second open document to compare"
+msgstr "Selecciona el segon document obert a comparar"
+
+#: plugins/diff/diff.glade2.h:22
 msgid "Use the _unified output format (-u option)"
 msgstr "Utilitza el format de sortida _unificat (opció -u)"
 
@@ -917,7 +966,7 @@ msgstr "Inserta la data i hora actual a la posició del cursor."
 msgid "Select the format to use when inserting date/time."
 msgstr "Selecciona el format a utilitzar quan s'inserta la data/hora."
 
-#: src/bonobo-mdi.c:522 src/bonobo-mdi.c:612 src/bonobo-mdi.c:1850
+#: src/bonobo-mdi.c:532 src/bonobo-mdi.c:622 src/bonobo-mdi.c:1858
 #, c-format
 msgid "Activate %s"
 msgstr "Activa %s"
@@ -1039,28 +1088,28 @@ msgid "Font & Colors"
 msgstr "Tipus de lletra/Colors"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
-#: src/dialogs/gedit-preferences.glade2.h:28
+#: src/dialogs/gedit-preferences.glade2.h:30
 msgid "Tabs"
 msgstr "Tabuladors"
 
 #: src/dialogs/gedit-preferences-dialog.c:210
-#: src/dialogs/gedit-preferences.glade2.h:47
+#: src/dialogs/gedit-preferences.glade2.h:51
 msgid "Wrap mode"
 msgstr "Mode d'ajust"
 
 #
 #: src/dialogs/gedit-preferences-dialog.c:211
-#: src/dialogs/gedit-preferences.glade2.h:13
+#: src/dialogs/gedit-preferences.glade2.h:15
 msgid "Line numbers"
 msgstr "Números de línia"
 
 #: src/dialogs/gedit-preferences-dialog.c:213
-#: src/dialogs/gedit-preferences.glade2.h:23 src/gedit-ui.xml.h:58
+#: src/dialogs/gedit-preferences.glade2.h:25 src/gedit-ui.xml.h:58
 msgid "Save"
 msgstr "Desa"
 
 #: src/dialogs/gedit-preferences-dialog.c:214
-#: src/dialogs/gedit-preferences.glade2.h:40 src/gedit-ui.xml.h:76
+#: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:76
 msgid "Undo"
 msgstr "Desfés"
 
@@ -1085,7 +1134,7 @@ msgid "Editor"
 msgstr "Editor"
 
 #: src/dialogs/gedit-preferences-dialog.c:240
-#: src/dialogs/gedit-preferences.glade2.h:19 src/gedit-print.c:309
+#: src/dialogs/gedit-preferences.glade2.h:21 src/gedit-print.c:309
 #: src/gedit-ui.xml.h:42
 msgid "Print"
 msgstr "Imprimeix"
@@ -1184,103 +1233,111 @@ msgid " line(s)"
 msgstr " línia(es)"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
+msgid "Always use UTF-8 encoding (faster) when creating a new file"
+msgstr "Utilitza sempre la codificació UTF-8 (més ràpida) al crear un fitxer nou"
+
+#: src/dialogs/gedit-preferences.glade2.h:5
+msgid "Always use UTF-8 encoding (faster) when saving"
+msgstr "Utilitza sempre la codificació UTF-8 (més ràpida) al desar"
+
+#: src/dialogs/gedit-preferences.glade2.h:6
 msgid "Always use U_TF-8 encoding (faster)"
 msgstr "Utilitza sempre la codificació U_TF-8 (més ràpida)"
 
-#: src/dialogs/gedit-preferences.glade2.h:5
+#: src/dialogs/gedit-preferences.glade2.h:7
 msgid "Always use _UTF-8 encoding (faster)"
 msgstr "Utilitza sempre la codificació _UTF-8 (més ràpida)"
 
-#: src/dialogs/gedit-preferences.glade2.h:6
+#: src/dialogs/gedit-preferences.glade2.h:8
 msgid "Colors"
 msgstr "Colors"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:7
+#: src/dialogs/gedit-preferences.glade2.h:9
 msgid "Create a _backup copy of files before saving"
 msgstr "Crea una còpia de seguretat dels fitxers abans de desar-los"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:8
+#: src/dialogs/gedit-preferences.glade2.h:10
 #: src/dialogs/gnome-print-font-picker.c:1014
 msgid "Font"
 msgstr "Tipus de lletra"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:9
+#: src/dialogs/gedit-preferences.glade2.h:11
 msgid "Font used to print line _numbers:"
 msgstr "Lletra utilitzada per imprimir els números de línia:"
 
-#: src/dialogs/gedit-preferences.glade2.h:10
+#: src/dialogs/gedit-preferences.glade2.h:12
 msgid "Font used to print the _body:"
 msgstr "Lletra utilitzada per imprimir el cos:"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:11
+#: src/dialogs/gedit-preferences.glade2.h:13
 msgid "Fonts & Colors"
 msgstr "Tipus de lletra/Colors"
 
-#: src/dialogs/gedit-preferences.glade2.h:12
+#: src/dialogs/gedit-preferences.glade2.h:14
 msgid "LOGO"
 msgstr "LOGO"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:14
+#: src/dialogs/gedit-preferences.glade2.h:16
 msgid "Pick the background color"
 msgstr "Agafa el color de fons"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:15
+#: src/dialogs/gedit-preferences.glade2.h:17
 msgid "Pick the selected text color"
 msgstr "Agafa el color del text seleccionat"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:16
+#: src/dialogs/gedit-preferences.glade2.h:18
 msgid "Pick the selection color"
 msgstr "Agafa el color de la selecció"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:17
+#: src/dialogs/gedit-preferences.glade2.h:19
 msgid "Pick the text color"
 msgstr "Agafa el color del text"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:18
+#: src/dialogs/gedit-preferences.glade2.h:20
 msgid "Plugin manager"
 msgstr "Gestor de connectors"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:20
+#: src/dialogs/gedit-preferences.glade2.h:22
 msgid "Print _line numbers every"
 msgstr "Imprimeix els números de _línia cada"
 
-#: src/dialogs/gedit-preferences.glade2.h:21
+#: src/dialogs/gedit-preferences.glade2.h:23
 msgid "Print _page headers"
 msgstr "Imprimeix les capçaleres de la pàgina"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:22
+#: src/dialogs/gedit-preferences.glade2.h:24
 msgid "Print fonts"
 msgstr "Imprimeix els tipus de lletra"
 
-#: src/dialogs/gedit-preferences.glade2.h:24
+#: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Se_lection color:"
 msgstr "Color de la selecció"
 
-#: src/dialogs/gedit-preferences.glade2.h:25
+#: src/dialogs/gedit-preferences.glade2.h:27
 msgid "Selecte_d text color:"
 msgstr "Color del text selecciona_t:"
 
-#: src/dialogs/gedit-preferences.glade2.h:26
+#: src/dialogs/gedit-preferences.glade2.h:28
 msgid "Set _tabs width equivalent to  "
 msgstr "Defineix l'amplada dels tabuladors equivalent a "
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:27
+#: src/dialogs/gedit-preferences.glade2.h:29
 msgid "Set limit on _undo actions to"
 msgstr "Limita els nivells de _desfer a"
 
-#: src/dialogs/gedit-preferences.glade2.h:29
+#: src/dialogs/gedit-preferences.glade2.h:31
 msgid ""
 "The font & colors settings let you choose the font and the colors to be used "
 "in the editor windows."
@@ -1288,7 +1345,7 @@ msgstr ""
 "Els paràmetres de colors i lletres permeten escollir el tipus de lletra i "
 "elscolors que s'utilitzaran en la finestra de l'editor."
 
-#: src/dialogs/gedit-preferences.glade2.h:30
+#: src/dialogs/gedit-preferences.glade2.h:32
 msgid ""
 "The line numbers setting lets you choose to display the line numbers on the "
 "left hand side of the window."
@@ -1296,7 +1353,7 @@ msgstr ""
 "Els paràmetres de número de línia permeten escollir la visualització dels "
 "números de línia ala part esquerra de la finestra."
 
-#: src/dialogs/gedit-preferences.glade2.h:31
+#: src/dialogs/gedit-preferences.glade2.h:33
 msgid ""
 "The plugin manager settings let you choose which plugins you want to have "
 "loaded."
@@ -1304,7 +1361,7 @@ msgstr ""
 "La configuració del gestor de connectors vos permet triar quins connectors "
 "voleu que es carreguen."
 
-#: src/dialogs/gedit-preferences.glade2.h:32
+#: src/dialogs/gedit-preferences.glade2.h:34
 msgid ""
 "The print fonts settings let you choose the fonts to be used to print "
 "documents."
@@ -1312,25 +1369,25 @@ msgstr ""
 "Els paràmetres de les lletres d'impressió, permeten escollir el tipus de "
 "lletra ques'utilitzaran per imprimir documents."
 
-#: src/dialogs/gedit-preferences.glade2.h:33
+#: src/dialogs/gedit-preferences.glade2.h:35
 msgid "The print page settings let you customize how gedit prints documents."
 msgstr ""
 "Els paràmetres de la pàgina d'impressió permeten personalitzar la maneracom "
 "gedit imprimeix els documents."
 
-#: src/dialogs/gedit-preferences.glade2.h:34
+#: src/dialogs/gedit-preferences.glade2.h:36
 msgid "The save settings let you customize how gedit saves files."
 msgstr ""
 "Els paràmetres de desar permeten personalitzar la manera com geditdesa els "
 "fitxers."
 
-#: src/dialogs/gedit-preferences.glade2.h:35
+#: src/dialogs/gedit-preferences.glade2.h:37
 msgid "The tabs settings let you customize the tabs width."
 msgstr ""
 "Els paràmetres dels tabuladors permeten personalitzar l'amplada dels "
 "tabuladors."
 
-#: src/dialogs/gedit-preferences.glade2.h:36
+#: src/dialogs/gedit-preferences.glade2.h:38
 msgid ""
 "The undo settings let you set the maximum number of actions that gedit can "
 "undo."
@@ -1338,94 +1395,102 @@ msgstr ""
 "Els paràmetres de desfer permeten definir el nombre màxim d'accions que "
 "gedit pot desfer."
 
-#: src/dialogs/gedit-preferences.glade2.h:37
+#: src/dialogs/gedit-preferences.glade2.h:39
 msgid "The wrap mode settings let you customize how lines have to be wrapped."
 msgstr ""
 "Els paràmetres del mode d'ajust permeten personalitzar com s'ajusten les "
 "línies."
 
-#: src/dialogs/gedit-preferences.glade2.h:38
+#: src/dialogs/gedit-preferences.glade2.h:40
 msgid "U_se default theme colors"
-msgstr "Usa els colors del tema predeterminat"
-
-#: src/dialogs/gedit-preferences.glade2.h:39
-msgid "U_se original file encoding if possible"
-msgstr "U_sa la codificació original del fitxer si és possible"
+msgstr "Utilit_za els colors del tema predeterminat"
 
 #: src/dialogs/gedit-preferences.glade2.h:41
-msgid "Use cu_rrent locale's encoding if possible"
-msgstr "Usa la codificació del locale ac_tual si és possible"
-
-#: src/dialogs/gedit-preferences.glade2.h:42
-msgid "Use current _locale's encoding if possible"
-msgstr "Usa la codificació del _locale actual si és possible"
+msgid "U_se original file encoding if possible"
+msgstr "Utilit_za la codificació original del fitxer si és possible"
 
 #: src/dialogs/gedit-preferences.glade2.h:43
+msgid "Use cu_rrent locale's encoding if possible"
+msgstr "Utilitza la codificació del locale ac_tual si és possible"
+
+#: src/dialogs/gedit-preferences.glade2.h:44
+msgid "Use current _locale's encoding if possible"
+msgstr "Utilitza la codificació del _locale actual si és possible"
+
+#: src/dialogs/gedit-preferences.glade2.h:45
+msgid "Use current locale's encoding if possible when creating a new file"
+msgstr "Utilitza la codificació del locale actual si és possible al crear un fitxer nou"
+
+#: src/dialogs/gedit-preferences.glade2.h:46
+msgid "Use current locale's encoding if possible when saving"
+msgstr "Utilitza la codificació del locale actual si és possible al desar"
+
+#: src/dialogs/gedit-preferences.glade2.h:47
 msgid "When creating a new file..."
 msgstr "Al crear un nou fitxer..."
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:44
+#: src/dialogs/gedit-preferences.glade2.h:48
 msgid "When saving..."
 msgstr "Quan desis..."
 
-#: src/dialogs/gedit-preferences.glade2.h:45
+#: src/dialogs/gedit-preferences.glade2.h:49
 msgid "Wrap lines at _word boundaries"
 msgstr "Ajusta les línies a les paraules"
 
-#: src/dialogs/gedit-preferences.glade2.h:46
+#: src/dialogs/gedit-preferences.glade2.h:50
 msgid "Wrap lines at ch_aracter boundaries"
 msgstr "Ajusta les línies als caràcters"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:48
+#: src/dialogs/gedit-preferences.glade2.h:52
 msgid "_Autosave current file every"
 msgstr "Desa automàticament el fitxer actual cada"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:49
+#: src/dialogs/gedit-preferences.glade2.h:53
 msgid "_Background color:"
 msgstr "Color de fons:"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:50
+#: src/dialogs/gedit-preferences.glade2.h:54
 msgid "_Display line numbers"
 msgstr "Mostra els números de línia"
 
-#: src/dialogs/gedit-preferences.glade2.h:51
+#: src/dialogs/gedit-preferences.glade2.h:55
 msgid "_Font used by the editor: "
 msgstr "Lletra utilitzada per l'editor: "
 
-#: src/dialogs/gedit-preferences.glade2.h:52
+#: src/dialogs/gedit-preferences.glade2.h:56
 msgid "_Font used to print headers:"
 msgstr "Lletra utilitzada per imprimir capçaleres"
 
-#: src/dialogs/gedit-preferences.glade2.h:53
+#: src/dialogs/gedit-preferences.glade2.h:57
 msgid "_Never wrap lines"
 msgstr "_No ajustis mai les línies"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:54
+#: src/dialogs/gedit-preferences.glade2.h:58
 msgid "_Restore default fonts"
 msgstr "_Restaura els tipus de lletra per defecte: "
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:55
+#: src/dialogs/gedit-preferences.glade2.h:59
 msgid "_Text color:"
 msgstr "Color del _text:"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:56
+#: src/dialogs/gedit-preferences.glade2.h:60
 msgid "_Use default theme font"
 msgstr "Usa la lletra del tema per defecte "
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:57
+#: src/dialogs/gedit-preferences.glade2.h:61
 msgid "action(s)"
 msgstr "acció(ns)"
 
 #
-#: src/dialogs/gedit-preferences.glade2.h:58
+#: src/dialogs/gedit-preferences.glade2.h:62
 msgid "minutes"
 msgstr "mínuts"
 
@@ -1726,67 +1791,67 @@ msgstr "Seleccioneu el nom del fitxer a desar"
 msgid "Open File ..."
 msgstr "Obre el fitxer..."
 
-#: src/gedit-file.c:176 src/gedit-file.c:806
+#: src/gedit-file.c:176 src/gedit-file.c:831
 #, c-format
 msgid "Loaded file '%s'"
 msgstr "S'ha carregat el fitxer '%s'"
 
-#: src/gedit-file.c:304 src/gedit-file.c:420
+#: src/gedit-file.c:304 src/gedit-file.c:433
 #, c-format
 msgid "Saving file '%s' ..."
 msgstr "S'està desant el fitxer '%s'..."
 
 #
-#: src/gedit-file.c:325 src/gedit-file.c:435
+#: src/gedit-file.c:332 src/gedit-file.c:448
 msgid "The document has not been saved."
 msgstr "No s'ha desat el document."
 
-#: src/gedit-file.c:338 src/gedit-file.c:432
+#: src/gedit-file.c:345 src/gedit-file.c:445
 #, c-format
 msgid "File '%s' saved."
 msgstr "S'ha desat el fitxer '%s'."
 
 #
-#: src/gedit-file.c:399
+#: src/gedit-file.c:412
 msgid "Save as ..."
 msgstr "Anomena i desa..."
 
-#: src/gedit-file.c:606
+#: src/gedit-file.c:626
 #, c-format
 msgid "Reverting file '%s' ..."
 msgstr "Recuperant el fitxer '%s'..."
 
 #
-#: src/gedit-file.c:619
+#: src/gedit-file.c:639
 msgid "The document has not been reverted."
 msgstr "No s'ha recuperat el document."
 
-#: src/gedit-file.c:629
+#: src/gedit-file.c:649
 #, c-format
 msgid "File '%s' reverted."
 msgstr "S'ha recuperat el fitxer '%s'"
 
-#: src/gedit-file.c:655
+#: src/gedit-file.c:675
 #, c-format
 msgid "Loading %d files..."
 msgstr "S'estan carregant %d fitxers..."
 
-#: src/gedit-file.c:691
+#: src/gedit-file.c:711
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "El fitxer «%s» no existeix. Voleu crear-lo?"
 
-#: src/gedit-file.c:741
+#: src/gedit-file.c:766
 #, c-format
 msgid "Loaded %i files"
 msgstr "S'han carregat %i fitxers"
 
 #
-#: src/gedit-file.c:864
+#: src/gedit-file.c:889
 msgid "Could not read data from stdin."
 msgstr "No es pot llegir les dades des de stdin."
 
-#: src/gedit-mdi.c:840
+#: src/gedit-mdi.c:850
 #, c-format
 msgid ""
 "Do you want to save the changes you made to the document \"%s\"? \n"
@@ -1797,23 +1862,23 @@ msgstr ""
 "\n"
 "Els canvis es perdran si no els deses."
 
-#: src/gedit-mdi.c:845
+#: src/gedit-mdi.c:855
 msgid "Do_n't save"
 msgstr "_No ho desis"
 
-#: src/gedit-mdi.c:864
+#: src/gedit-mdi.c:874
 msgid "_Don't quit"
 msgstr "_No surtis"
 
-#: src/gedit-mdi.c:868
+#: src/gedit-mdi.c:878
 msgid "_Don't close"
 msgstr "_No tanquis"
 
-#: src/gedit-mdi.c:958
+#: src/gedit-mdi.c:968
 msgid "(modified)"
 msgstr "(modificat)"
 
-#: src/gedit-mdi.c:964
+#: src/gedit-mdi.c:974
 msgid "(readonly)"
 msgstr "(només de lectura)"
 
@@ -3190,12 +3255,6 @@ msgstr "Obre %s"
 #~ msgid "Diff found at: "
 #~ msgstr "S'ha trobat el Diff a: "
 
-#~ msgid "Select the \"first\" file..."
-#~ msgstr "Seleccioneu el \"primer\" fitxer..."
-
-#~ msgid "Select the \"second\" file..."
-#~ msgstr "Seleccioneu el \"segon\" fitxer..."
-
 #
 #~ msgid "Current column"
 #~ msgstr "Columna actual"
@@ -3448,9 +3507,6 @@ msgstr "Obre %s"
 
 #~ msgid "_Remove View"
 #~ msgstr "_Elimina la vista"
-
-#~ msgid "Remove view of the document"
-#~ msgstr "Elimina la vista del document"
 
 #~ msgid "Manage available plugin modules"
 #~ msgstr "Gestiona els mòduls d'extensions disponibles"
