@@ -6,15 +6,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.4.0\n"
-"POT-Creation-Date: 2003-10-16 18:20+0200\n"
-"PO-Revision-Date: 2003-09-30 17:25+0200\n"
+"Project-Id-Version: gedit 2.4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-15 14:09+0100\n"
+"PO-Revision-Date: 2003-11-15 14:09+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
@@ -1892,7 +1892,7 @@ msgstr "_Systemvorgabe"
 
 #: gedit/gedit-ui.xml.h:79
 msgid "_Documents"
-msgstr "_Dokumente"
+msgstr "D_okumente"
 
 #: gedit/gedit-ui.xml.h:80
 msgid "_Edit"
