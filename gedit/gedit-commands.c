@@ -27,6 +27,8 @@
  * Modified by the gedit Team, 1998-2003. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -49,6 +51,9 @@
 #include "dialogs/gedit-dialogs.h"
 #include "dialogs/gedit-preferences-dialog.h"
 #include "dialogs/gedit-close-confirmation-dialog.h"
+#include "gedit-notebook.h"
+#include "gedit-app.h"
+
 #if 0
 #include "gedit-file.h"
 #endif
@@ -556,16 +561,20 @@ gedit_cmd_search_goto_line (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_documents_move_to_new_window (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *view;
+	GeditNotebook *old_notebook;
+	GeditTab *tab;
 
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	view = gedit_get_active_view ();
-	g_return_if_fail (view != NULL);
-
-	bonobo_mdi_move_view_to_new_window (BONOBO_MDI (gedit_mdi), view);
-#endif
+	tab = gedit_window_get_active_tab (window);
+	
+	if (tab == NULL)
+		return;
+		
+	old_notebook = GEDIT_NOTEBOOK (_gedit_window_get_notebook (window));
+	
+	if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (old_notebook)) <= 1)
+		return;
+		
+	_gedit_window_move_tab_to_new_window (window, tab);			 
 }
 
 void 

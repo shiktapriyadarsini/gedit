@@ -24,6 +24,8 @@
  * Modified by the gedit Team, 2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifndef __GEDIT_WINDOW_H__
@@ -106,6 +108,8 @@ void		 _gedit_window_set_toolbar_visible	(GeditWindow *window,
 							 gboolean     visible);
 void		 _gedit_window_set_side_panel_visible	(GeditWindow *window,
 							 gboolean     visible);							 							 
+GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow *window,
+							 GeditTab    *tab);								 
 G_END_DECLS
 
 #endif  /* __GEDIT_WINDOW_H__  */

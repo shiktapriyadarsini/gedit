@@ -116,12 +116,14 @@ gedit_window_destroy (GtkObject *object)
 	if (gedit_prefs_manager_window_state_can_set ())
 		gedit_prefs_manager_set_window_state (window->priv->state);
 		
-	if (gedit_prefs_manager_side_panel_size_can_set ())
-		gedit_prefs_manager_set_side_panel_size	(
+	if ((window->priv->side_panel_size > 0) &&
+		gedit_prefs_manager_side_panel_size_can_set ())
+			gedit_prefs_manager_set_side_panel_size	(
 					window->priv->side_panel_size);
 	
-	if (gedit_prefs_manager_bottom_panel_size_can_set ())
-		gedit_prefs_manager_set_bottom_panel_size (
+	if ((window->priv->bottom_panel_size > 0) && 
+		gedit_prefs_manager_bottom_panel_size_can_set ())
+			gedit_prefs_manager_set_bottom_panel_size (
 					window->priv->bottom_panel_size);
 
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
@@ -1608,3 +1610,27 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 }
+
+GeditWindow *
+_gedit_window_move_tab_to_new_window (GeditWindow *window,
+				      GeditTab    *tab)
+{
+	GeditWindow *new_window;
+
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
+	g_return_val_if_fail (gtk_notebook_get_n_pages (
+				GTK_NOTEBOOK (window->priv->notebook)) > 1, 
+			      NULL);
+			      
+	new_window = clone_window (window);
+
+	gedit_notebook_move_tab (GEDIT_NOTEBOOK (window->priv->notebook),
+				 GEDIT_NOTEBOOK (new_window->priv->notebook),
+				 tab,
+				 -1);
+				 
+	gtk_widget_show (GTK_WIDGET (new_window));
+	
+	return new_window;
+}				      
