@@ -1,3 +1,11 @@
+2003-10-16  Paolo Maggi  <paolo.maggi@polito.it>
+
+	* configure.in: bump version to 2.4.1, updated requirements
+	
+	* README: bump version to 2.4.1
+
+	* NEWS: Updated
+
 2003-09-09  Paolo Maggi  <paolo.maggi@polito.it>
 
 	[ gedit 2.4.0 released ]
