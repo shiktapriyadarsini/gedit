@@ -25,8 +25,17 @@
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
  */
- 
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <glib/gi18n.h>
+
+#include <libgnomevfs/gnome-vfs-mime-handlers.h>
+
 #include "gedit-tab.h"
+#include "gedit-utils.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -37,7 +46,49 @@ struct _GeditTabPrivate
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
 
+enum
+{
+	PROP_0,
+	PROP_NAME,
+};
 
+static void
+gedit_tab_set_property (GObject      *object,
+		        guint         prop_id,
+		        const GValue *value,
+		        GParamSpec   *pspec)
+{
+	/* GeditTab *tab = GEDIT_TAB (object); */
+
+	switch (prop_id)
+
+	{
+		/* All properties are READONLY */
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_tab_get_property (GObject    *object,
+		        guint       prop_id,
+		        GValue     *value,
+		        GParamSpec *pspec)
+{
+	GeditTab *tab = GEDIT_TAB (object);
+
+	switch (prop_id)
+	{
+		case PROP_NAME:
+			g_value_take_string (value,
+					     _gedit_tab_get_name (tab));
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;			
+	}
+}
 static void
 gedit_tab_finalize (GObject *object)
 {
@@ -52,8 +103,24 @@ gedit_tab_class_init (GeditTabClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->finalize = gedit_tab_finalize;
+	object_class->get_property = gedit_tab_get_property;
+	object_class->set_property = gedit_tab_set_property;
 	
+	g_object_class_install_property (object_class,
+					 PROP_NAME,
+					 g_param_spec_string ("name",
+							      "Name",
+							      "The tab's name",
+							      "",
+							      G_PARAM_READABLE));	
+							      
 	g_type_class_add_private (object_class, sizeof(GeditTabPrivate));
+}
+
+static void 
+document_name_modified_changed (GeditDocument *document, GeditTab *tab)
+{
+	g_object_notify (G_OBJECT (tab), "name");
 }
 
 static void
@@ -81,7 +148,16 @@ gedit_tab_init (GeditTab *tab)
 	gtk_container_add (GTK_CONTAINER (sw), tab->priv->view);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
                                              GTK_SHADOW_IN);	
-	gtk_widget_show (sw);                                             
+	gtk_widget_show (sw);
+	
+	g_signal_connect (G_OBJECT (doc),
+			  "name_changed",
+			  G_CALLBACK (document_name_modified_changed),
+			  tab);
+	g_signal_connect (G_OBJECT (doc),
+			  "modified_changed",
+			  G_CALLBACK (document_name_modified_changed),
+			  tab);			                                   
 }
 
 GtkWidget *
@@ -123,3 +199,103 @@ gedit_tab_get_document (GeditTab *tab)
 	return GEDIT_DOCUMENT (gtk_text_view_get_buffer (
 					GTK_TEXT_VIEW (tab->priv->view)));
 }
+
+#define MAX_DOC_NAME_LENGTH 40
+
+gchar *
+_gedit_tab_get_name (GeditTab *tab)
+{
+	GeditDocument *doc;
+	gchar* name = NULL;
+	gchar* docname = NULL;
+	gchar* tab_name = NULL;
+
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
+
+	doc = gedit_tab_get_document (tab);
+	
+	name = gedit_document_get_short_name (doc);
+
+	/* Truncate the name so it doesn't get insanely wide. */
+	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
+	g_free (name);
+
+	if (gedit_document_get_modified (doc))
+	{
+		tab_name = g_strdup_printf ("*%s", docname);
+	} 
+	else 
+	{
+ #if 0		
+		if (gedit_document_is_readonly (doc)) 
+		{
+			tab_name = g_strdup_printf ("%s [%s]", docname, 
+						/*Read only*/ _("RO"));
+		} 
+		else 
+		{
+			tab_name = g_strdup_printf ("%s", docname);
+		}
+#endif
+		tab_name = g_strdup_printf ("%s", docname);
+
+	}
+	
+	g_free (docname);
+
+	return tab_name;
+}
+
+gchar *
+_gedit_tab_get_tooltips	(GeditTab *tab)
+{
+	GeditDocument *doc;
+	gchar *tip;
+	gchar *uri;
+	gchar *ruri;
+	const gchar *mime_type;
+	const gchar *mime_description = NULL;
+	gchar *mime_full_description; 
+	gchar *encoding;
+	const GeditEncoding *enc;
+	
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
+
+	doc = gedit_tab_get_document (tab);
+	
+	uri = gedit_document_get_uri (doc);
+	g_return_val_if_fail (uri != NULL, NULL);
+
+	mime_type = gedit_document_get_mime_type (doc);
+	mime_description = gnome_vfs_mime_get_description (mime_type);
+
+	if (mime_description == NULL)
+		mime_full_description = g_strdup (mime_type);
+	else
+		mime_full_description = g_strdup_printf ("%s (%s)", 
+				mime_description, mime_type);
+
+	enc = gedit_document_get_encoding (doc);
+
+	if (enc == NULL)
+		encoding = g_strdup (_("Unicode (UTF-8)"));
+	else
+		encoding = gedit_encoding_to_string (enc);
+	
+	ruri = 	gedit_utils_replace_home_dir_with_tilde (uri);
+	g_free (uri);
+
+	tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
+				       "<b>%s</b> %s\n"
+				       "<b>%s</b> %s",
+				       _("Name:"), ruri,
+				       _("MIME Type:"), mime_full_description,
+				       _("Encoding:"), encoding);
+
+	g_free (ruri);
+	g_free (encoding);
+	g_free (mime_full_description);
+	
+	return tip;
+}
+

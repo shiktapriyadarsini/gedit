@@ -91,6 +91,14 @@ GeditView	*gedit_tag_get_view		(GeditTab    *tab);
 /* This is only an helper function */
 GeditDocument	*gedit_tab_get_document		(GeditTab    *tab);
 
+
+/*
+ * Non exported methods
+ */
+gchar 		*_gedit_tab_get_name		(GeditTab    *tab);
+gchar 		*_gedit_tab_get_tooltips	(GeditTab    *tab);
+
+
 G_END_DECLS
 
 #endif  /* __GEDIT_TAB_H__  */

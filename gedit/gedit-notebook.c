@@ -42,6 +42,7 @@
 #include "gedit-notebook.h"
 #include "gedit-marshal.h"
 #include "gedit-window.h"
+#include "gedit-tooltips.h"
 
 #include <glib-object.h>
 #include <gtk/gtkeventbox.h>
@@ -69,13 +70,13 @@
 
 struct _GeditNotebookPrivate
 {
-	GList       *focused_pages;
-	GtkTooltips *title_tips;
-	gulong       motion_notify_handler_id;
-	gint         x_start;
-	gint         y_start;
-	gboolean     drag_in_progress;
-	gboolean     always_show_tabs;
+	GList         *focused_pages;
+	GeditTooltips *title_tips;
+	gulong         motion_notify_handler_id;
+	gint           x_start;
+	gint           y_start;
+	gboolean       drag_in_progress;
+	gboolean       always_show_tabs;
 };
 
 static void gedit_notebook_init           (GeditNotebook      *notebook);
@@ -748,7 +749,7 @@ gedit_notebook_init (GeditNotebook *notebook)
 	gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), FALSE);
 
-	notebook->priv->title_tips = gtk_tooltips_new ();
+	notebook->priv->title_tips = gedit_tooltips_new ();
 	g_object_ref (G_OBJECT (notebook->priv->title_tips));
 	gtk_object_sink (GTK_OBJECT (notebook->priv->title_tips));
 
@@ -852,29 +853,31 @@ sync_icon (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
 }
 
 static void
-sync_label (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
+sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 {
-#if 0
-	GtkWidget *label, *ebox;
-	GtkTooltips *tips;	
-	const char *title;
+	GtkWidget *label;
+	GtkWidget *ebox;
+	GeditTooltips *tips;	
+	gchar *str;
 
-	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (proxy), "label-ebox"));
-	tips = GTK_TOOLTIPS (g_object_get_data (G_OBJECT (proxy), "tooltips"));
-	label = GTK_WIDGET (g_object_get_data (G_OBJECT (proxy), "label"));
+	tips = GEDIT_TOOLTIPS (g_object_get_data (G_OBJECT (hbox), "tooltips"));
+	label = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label"));
+	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label-ebox"));
+	
+	g_return_if_fail ((tips != NULL) && (label != NULL) && (ebox != NULL));
 
-	g_return_if_fail (ebox != NULL && tips != NULL && label != NULL);
-
-	title = ephy_tab_get_title (tab);
-
-	if (title)
-	{
-		gtk_label_set_text (GTK_LABEL (label), title);
-		gtk_tooltips_set_tip (tips, ebox, title, NULL);
-	}
-#endif	
+	str = _gedit_tab_get_name (tab);
+	g_return_if_fail (str != NULL);
+	
+	gtk_label_set_text (GTK_LABEL (label), str);
+	g_free (str);
+	
+	str = _gedit_tab_get_tooltips (tab);
+	g_return_if_fail (str != NULL);
+	
+	gedit_tooltips_set_tip (tips, ebox, str, NULL);
+	g_free (str);
 }
-
 
 static void
 close_button_clicked_cb (GtkWidget *widget, GtkWidget *tab)
@@ -891,6 +894,7 @@ close_button_clicked_cb (GtkWidget *widget, GtkWidget *tab)
 	}
 }
 
+/*
 static void
 tab_label_style_set_cb (GtkWidget *label,
 			GtkStyle  *previous_style,
@@ -914,29 +918,32 @@ tab_label_style_set_cb (GtkWidget *label,
 	gtk_widget_set_size_request (hbox, 
 				     TAB_WIDTH_N_CHARS * PANGO_PIXELS(char_width) + 2 * w, -1);
 }
+*/
 
 
 static GtkWidget *
 build_tab_label (GeditNotebook *nb, 
-		 GeditTab *tab)
+		 GeditTab      *tab)
 {
 	GtkWidget *hbox, *label_hbox, *label_ebox;
 	GtkWidget *label;
 	GtkWidget *close_button;
-	// GtkWidget *image;
+	GtkSettings *settings;
+	gint w, h;
+	GtkWidget *image;
 	// GtkWidget *spinner;
 	// GtkWidget *icon;
 	// GtkIconSize close_icon_size;
 
 	/* set hbox spacing and label padding (see below) so that there's an
 	 * equal amount of space around the label */
-	hbox = gtk_hbox_new (FALSE, 4);
+	hbox = gtk_hbox_new (FALSE, 0);
 
 	label_ebox = gtk_event_box_new ();
 	gtk_event_box_set_visible_window (GTK_EVENT_BOX (label_ebox), FALSE);
 	gtk_box_pack_start (GTK_BOX (hbox), label_ebox, TRUE, TRUE, 0);
 
-	label_hbox = gtk_hbox_new (FALSE, 4);
+	label_hbox = gtk_hbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (label_ebox), label_hbox);
 
 	/* setup close button */
@@ -945,14 +952,19 @@ build_tab_label (GeditNotebook *nb,
 			       GTK_RELIEF_NONE);
 	/* don't allow focus on the close button */
 	gtk_button_set_focus_on_click (GTK_BUTTON (close_button), FALSE);
-#if 0
-	close_icon_size = gtk_icon_size_from_name (EPHY_ICON_SIZE_TAB_BUTTON);
-	image = gtk_image_new_from_stock (EPHY_STOCK_CLOSE_TAB, close_icon_size);
+
+	/* fetch the size of an icon */
+	settings = gtk_widget_get_settings (GTK_WIDGET (tab));
+	gtk_icon_size_lookup_for_settings (settings,
+					   GTK_ICON_SIZE_MENU,
+					   &w, &h);
+	image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
+	gtk_widget_set_size_request (close_button, w + 2, h + 2);
 	gtk_container_add (GTK_CONTAINER (close_button), image);
 	gtk_box_pack_start (GTK_BOX (hbox), close_button, FALSE, FALSE, 0);
-#endif
-	gtk_tooltips_set_tip (nb->priv->title_tips, close_button,
-			      _("Close tab"), NULL);
+
+	gedit_tooltips_set_tip (nb->priv->title_tips, close_button,
+			      _("Close document"), NULL);
 
 	g_signal_connect (G_OBJECT (close_button), "clicked",
                           G_CALLBACK (close_button_clicked_cb),
@@ -969,20 +981,15 @@ build_tab_label (GeditNotebook *nb,
 #endif
 	/* setup label */
         label = gtk_label_new ("");
-	gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-        gtk_misc_set_padding (GTK_MISC (label), 0, 0);
+        gtk_misc_set_padding (GTK_MISC (label), 4, 0);
 	gtk_box_pack_start (GTK_BOX (label_hbox), label, TRUE, TRUE, 0);
-
-	/* Set minimal size */
-	g_signal_connect (label, "style-set",
-			  G_CALLBACK (tab_label_style_set_cb), hbox);
 
 	gtk_widget_show (hbox);
 	gtk_widget_show (label_ebox);
 	gtk_widget_show (label_hbox);
 	gtk_widget_show (label);
-//	gtk_widget_show (image);
+	gtk_widget_show (image);
 	gtk_widget_show (close_button);
 	
 	g_object_set_data (G_OBJECT (hbox), "label", label);
@@ -1039,25 +1046,27 @@ gedit_notebook_add_tab (GeditNotebook *nb,
 			   GDK_ACTION_MOVE | GDK_ACTION_COPY);
 #endif
 	sync_icon (tab, NULL, label);
-	sync_label (tab, NULL, label);
+	sync_name (tab, NULL, label);
 	sync_load_status (tab, NULL, label);
-
+/*
 	g_signal_connect_object (tab, 
 				 "notify::icon",
 			         G_CALLBACK (sync_icon), 
 			         label, 
 			         0);
+*/			         
 	g_signal_connect_object (tab, 
-				 "notify::title",
-			         G_CALLBACK (sync_label), 
+				 "notify::name",
+			         G_CALLBACK (sync_name), 
 			         label, 
 			         0);
+/*			         
 	g_signal_connect_object (tab, 
 				 "notify::load-status",
 				 G_CALLBACK (sync_load_status), 
 				 label, 
 				 0);
-
+*/
 	g_signal_emit (G_OBJECT (nb), signals[TAB_ADDED], 0, tab);
 
 	/* The signal handler may have reordered the tabs */
@@ -1126,21 +1135,23 @@ gedit_notebook_remove_tab (GeditNotebook *nb,
 
 	label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
 	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (label), "label-ebox"));
-	gtk_tooltips_set_tip (GTK_TOOLTIPS (nb->priv->title_tips), 
-			      ebox, 
-			      NULL, 
-			      NULL);
-
+	gedit_tooltips_set_tip (GEDIT_TOOLTIPS (nb->priv->title_tips), 
+			        ebox, 
+			        NULL, 
+			        NULL);
+/*
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_icon), 
 					      label);
+*/					      
 	g_signal_handlers_disconnect_by_func (tab,
-					      G_CALLBACK (sync_label), 
+					      G_CALLBACK (sync_name), 
 					      label);
+/*
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_load_status), 
 					      label);
-
+*/
 	/**
 	 * we ref the tab so that it's still alive while the tabs_removed
 	 * signal is processed.

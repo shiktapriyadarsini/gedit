@@ -316,7 +316,7 @@ static void
 gedit_view_finalize (GObject *object)
 {
 	GeditView *view;
-	GeditDocument *doc;
+	GtkTextBuffer *doc;
 
 	gedit_debug (DEBUG_VIEW, "%d", object->ref_count);
 
@@ -324,12 +324,15 @@ gedit_view_finalize (GObject *object)
 
    	view = GEDIT_VIEW (object);
 
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	doc = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (doc != NULL);
 	
 	g_signal_handlers_disconnect_by_func (G_OBJECT (doc),
 					      G_CALLBACK (gedit_view_move_cursor),
 					      view);
-					      
+
+//	g_object_unref (doc);
+						      					      
 	G_OBJECT_CLASS (parent_class)->finalize (object);
 
 	gedit_debug (DEBUG_VIEW, "END");
@@ -354,10 +357,11 @@ gedit_view_new (GeditDocument *doc)
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	
-	view = GTK_WIDGET (g_object_new (GEDIT_TYPE_VIEW, 
-					 "buffer", doc,
-					 NULL));
-
+	view = GTK_WIDGET (g_object_new (GEDIT_TYPE_VIEW, NULL));
+	
+	gtk_text_view_set_buffer (GTK_TEXT_VIEW (view),
+				  GTK_TEXT_BUFFER (doc));
+				  		
 	g_signal_connect (G_OBJECT (doc),
 			  "readonly_changed",
 			  G_CALLBACK (doc_readonly_changed_handler),
