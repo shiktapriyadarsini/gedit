@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.7.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-10 13:49+0200\n"
-"PO-Revision-Date: 2004-08-18 11:33+0200\n"
+"POT-Creation-Date: 2004-11-22 13:01+0100\n"
+"PO-Revision-Date: 2004-11-22 13:03+0100\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1203,12 +1203,15 @@ msgstr "Åbn fra URI"
 #: gedit/gedit-commands.c:536
 msgid "translator_credits"
 msgstr ""
-"Birger Langkjer <birger.langkjer@image.dk>\n"
-"Keld Simonsen <keld@dkuug.dk>\n"
-"Kenneth Christiansen <kenneth@gnome.org>\n"
-"Marie Lund <marielund@post.cybercity.dk>\n"
-"Martin Willemoes Hansen <mwh@sysrq.dk>\n"
-"Ole Laursen <olau@hardworking.dk>"
+"Birger Langkjer\n"
+"Keld Simonsen\n"
+"Kenneth Christiansen\n"
+"Marie Lund\n"
+"Martin Willemoes Hansen\n"
+"Ole Laursen\n"
+"\n"
+"Dansk-gruppen <dansk@klid.dk>\n"
+"Mere info: http://www.klid.dk/dansk/"
 
 #: gedit/gedit-commands.c:549
 msgid "gedit"
@@ -1233,34 +1236,34 @@ msgstr "Unavngivet"
 msgid "Invalid file name"
 msgstr "Ugyldigt filnavn"
 
-#: gedit/gedit-document.c:838 gedit/gedit-document.c:1399
+#: gedit/gedit-document.c:838 gedit/gedit-document.c:1401
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
 msgstr "Ugyldige UTF-8-data"
 
-#: gedit/gedit-document.c:1725
+#: gedit/gedit-document.c:1727
 #, c-format
 msgid "Could not read symbolic link information for %s"
 msgstr "Kunne ikke læse symbolsk henvisningsoplysninger for %s"
 
-#: gedit/gedit-document.c:1771
+#: gedit/gedit-document.c:1773
 msgid "The file has too many symbolic links."
 msgstr "Filen har for mange symbolske henvisninger."
 
-#: gedit/gedit-document.c:1827
+#: gedit/gedit-document.c:1829
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr "kan ikke håndtere \"%s:\"-placeringer i skrivetilstand."
 
-#: gedit/gedit-document.c:1834
+#: gedit/gedit-document.c:1836
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr "kan ikke håndtere denne form for placering i skrivetilstand."
 
-#: gedit/gedit-document.c:1847
+#: gedit/gedit-document.c:1849
 msgid "Invalid filename."
 msgstr "Ugyldigt filnavn."
 
-#: gedit/gedit-document.c:1959
+#: gedit/gedit-document.c:1961
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1268,7 +1271,7 @@ msgstr ""
 "Der er ikke tilstrækkeligt plads på disken til at gemme filen.\n"
 "Frigør noget diskplads og prøv igen."
 
-#: gedit/gedit-document.c:1964
+#: gedit/gedit-document.c:1966
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1278,7 +1281,7 @@ msgstr ""
 "filstørrelserne. Forsøg at gemme en mindre fil eller gem den på en disk uden "
 "denne begrænsning."
 
-#: gedit/gedit-document.c:2008
+#: gedit/gedit-document.c:2010
 msgid "Could not create a backup file."
 msgstr "Kunne ikke oprette en sikkerhedskopi."
 
@@ -2760,28 +2763,28 @@ msgstr "_Kør kommando..."
 msgid "Run a command"
 msgstr "Kør en kommando"
 
-#: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:502
+#: plugins/shell_output/shell_output.c:160
+#: plugins/shell_output/shell_output.c:490
 msgid "Stopped"
 msgstr "Stoppet"
 
-#: plugins/shell_output/shell_output.c:282
+#: plugins/shell_output/shell_output.c:271
 msgid "Run Command"
 msgstr "Kør kommando"
 
-#: plugins/shell_output/shell_output.c:301
+#: plugins/shell_output/shell_output.c:290
 msgid "_Run"
 msgstr "_Kør"
 
-#: plugins/shell_output/shell_output.c:508
+#: plugins/shell_output/shell_output.c:496
 msgid "Done"
 msgstr "Færdig"
 
-#: plugins/shell_output/shell_output.c:510
+#: plugins/shell_output/shell_output.c:498
 msgid "Failed"
 msgstr "Mislykkedes"
 
-#: plugins/shell_output/shell_output.c:676
+#: plugins/shell_output/shell_output.c:658
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2791,7 +2794,7 @@ msgstr ""
 "\n"
 "Indtast venligst en gyldig kommando."
 
-#: plugins/shell_output/shell_output.c:695
+#: plugins/shell_output/shell_output.c:677
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2801,11 +2804,11 @@ msgstr ""
 "\n"
 "Indtast venligst en gyldig kommando."
 
-#: plugins/shell_output/shell_output.c:773
+#: plugins/shell_output/shell_output.c:755
 msgid "Executing command"
 msgstr "Kører kommando"
 
-#: plugins/shell_output/shell_output.c:841
+#: plugins/shell_output/shell_output.c:823
 msgid "An error occurred while running the selected command."
 msgstr "En fejl opstod ved kørsel af den valgte kommando."
 
