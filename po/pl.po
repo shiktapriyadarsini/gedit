@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2003-02-21 22:05+0100\n"
-"PO-Revision-Date: 2003-02-21 22:13+0100\n"
+"POT-Creation-Date: 2003-03-05 16:39+0100\n"
+"PO-Revision-Date: 2003-03-05 18:53+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -983,35 +983,35 @@ msgstr "Wstawia na pozycji kursora bieżącą datę i czas."
 
 #: plugins/indent/indent.c:1
 msgid "_Indent"
-msgstr ""
+msgstr "Utwórz w_cięcie"
 
 #: plugins/indent/indent.c:1
 msgid "Indent selected lines"
-msgstr ""
+msgstr "Tworzy wcięcie przed zaznaczonymi wierszami"
 
 #: plugins/indent/indent.c:1
 msgid "U_nindent"
-msgstr ""
+msgstr "Cofnij wc_ięcie"
 
 #: plugins/indent/indent.c:1
 msgid "Unindent selected lines"
-msgstr ""
+msgstr "Wycofuje wcięcie przed zaznaczonymi wierszami"
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:1
 msgid "Indent lines"
-msgstr ""
+msgstr "Wcięcia wierszy"
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:1
 msgid "Indent or un-indent selected lines."
-msgstr ""
+msgstr "Tworzy lub wycofuje wcięcia przed zaznaczonymi wierszami."
 
 #: plugins/sort/sort.glade2.h:1
 msgid "R_emove duplicates"
-msgstr ""
+msgstr "_Usunięcie duplikatów"
 
 #: plugins/sort/sort.glade2.h:1
 msgid "S_tart at column:"
-msgstr "R_ozpoczęcie od kolumny:"
+msgstr "_Rozpoczęcie od kolumny:"
 
 #: plugins/sort/sort.glade2.h:1 plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sort"
@@ -1023,15 +1023,15 @@ msgstr "Operacji sortowania nie można cofnąć"
 
 #: plugins/sort/sort.glade2.h:1
 msgid "_Ignore case"
-msgstr "_Ignorowanie wielkości liter"
+msgstr "_Bez rozróżniania małych i wielkich liter"
 
 #: plugins/sort/sort.glade2.h:1
 msgid "_Reverse order"
-msgstr "O_dwrócony porządek"
+msgstr "_Odwrócony porządek"
 
 #: plugins/sort/sort.glade2.h:1
 msgid "_Sort"
-msgstr "_Sortowanie"
+msgstr "Po_sortuj"
 
 #: plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sorts a document or selected text."
@@ -1049,7 +1049,7 @@ msgstr "_Więcej..."
 #. Ignore all
 #: plugins/spell/gedit-automatic-spell-checker.c:1
 msgid "_Ignore All"
-msgstr "Z_ignoruj wszystkie"
+msgstr "Zig_noruj wszystkie"
 
 #. + Add to Dictionary
 #: plugins/spell/gedit-automatic-spell-checker.c:1
@@ -1122,7 +1122,7 @@ msgstr "hiszpański"
 
 #: plugins/spell/gedit-spell-checker.c:1
 msgid "Faroese"
-msgstr ""
+msgstr "farerski"
 
 #: plugins/spell/gedit-spell-checker.c:1
 msgid "French (France)"
@@ -1206,11 +1206,11 @@ msgstr "<b>słowo</b>"
 
 #: plugins/spell/spell-checker.glade2.h:1
 msgid "Add w_ord"
-msgstr "Dodaj _słowo"
+msgstr "_Dodaj słowo"
 
 #: plugins/spell/spell-checker.glade2.h:1
 msgid "Cha_nge"
-msgstr "Z_mień"
+msgstr "_Zmień"
 
 #: plugins/spell/spell-checker.glade2.h:1
 msgid "Change A_ll"
@@ -1342,7 +1342,7 @@ msgstr "Znaleziono i zmieniono %d wystąpień."
 
 #: src/dialogs/gedit-dialog-uri.c:1
 msgid "Open Location"
-msgstr ""
+msgstr "Wybór otwieranego położenia"
 
 #: src/dialogs/gedit-plugin-manager.c:1
 msgid "Plugin"
@@ -1409,7 +1409,7 @@ msgstr "Tryb zawijania"
 
 #: src/dialogs/gedit-preferences-dialog.c:1
 msgid "Auto Indent"
-msgstr ""
+msgstr "Automatyczne wcięcia"
 
 #: src/dialogs/gedit-preferences-dialog.c:1
 msgid "Line Numbers"
@@ -1540,11 +1540,11 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Numery wierszy</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Manager</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Menedżer</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Open</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Otwieranie</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Page</span>"
@@ -1552,7 +1552,7 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Strona</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Save</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Zapis</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Tabs</span>"
@@ -1560,11 +1560,11 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Zakładki</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Undo</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Cofanie</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Wrap Mode</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Tryb zawijania</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\">Colors</span>"
@@ -1572,15 +1572,15 @@ msgstr "<span weight=\"bold\">Kolory</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\">When saving a new file...</span>"
-msgstr ""
+msgstr "<span weight=\"bold\">Przy zapisywaniu nowego pliku...</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\">When saving an existing file...</span>"
-msgstr ""
+msgstr "<span weight=\"bold\">Przy zapisywaniu istniejącego pliku...</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Add new encodings"
-msgstr ""
+msgstr "Dodaje nowe kodowania"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Always use U_TF-8 encoding (faster)"
@@ -1600,11 +1600,11 @@ msgstr "Bez _rozdzielania słów pomiędzy dwa wiersze"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Editor _font: "
-msgstr "Czcionka w _edytorze: "
+msgstr "C_zcionka w edytorze: "
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Enable _auto indentation"
-msgstr ""
+msgstr "_Automatyczne tworzenei wcięć"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Enable text _wrapping"
@@ -1672,11 +1672,11 @@ msgstr "Czcionki na wydruku"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Remove an encoding"
-msgstr ""
+msgstr "Usuwa kodowanie"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Se_lection color:"
-msgstr "Kolor zazna_czenia:"
+msgstr "Kolor _zaznaczenia:"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Selecte_d text color:"
@@ -1688,11 +1688,11 @@ msgstr "Znak _tabulacji jako odpowiednik "
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Set limit on _undo actions to"
-msgstr "Ograniczenie liczby możliwych _cofnięć do"
+msgstr "_Ograniczenie liczby możliwych cofnięć do"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "U_se default theme colors"
-msgstr "Uży_wanie domyślnych kolorów motywu"
+msgstr "Użycie d_omyślnych kolorów motywu"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "U_se original file encoding if possible"
@@ -1720,7 +1720,7 @@ msgstr "Kolor _tła:"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_Body:"
-msgstr ""
+msgstr "_Treść:"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_Display line numbers"
@@ -1728,7 +1728,7 @@ msgstr "_Numery wierszy"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_Print page headers"
-msgstr "Drukowanie nagłówków _stron"
+msgstr "Drukowanie _nagłówków stron"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_Restore Default Fonts"
@@ -1740,27 +1740,28 @@ msgstr "_Obsługiwane kodowania:"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_Text color:"
-msgstr "Kolor _tekstu:"
+msgstr "_Kolor tekstu:"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_Use default theme font"
-msgstr "Używanie _domyślnej czcionki motywu"
+msgstr "Użycie _domyślnej czcionki motywu"
 
+# Tak ma być, bo to jest część tekstu do undo
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_action(s)"
-msgstr ""
+msgstr "_zmian"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "_minutes"
-msgstr ""
+msgstr "m_inut"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "character(s)"
-msgstr ""
+msgstr "znaków"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "li_ne(s)"
-msgstr ""
+msgstr "w_ierszy"
 
 #: src/dialogs/gnome-print-font-dialog.c:1
 msgid "_Insert a new preview phrase."
@@ -1879,6 +1880,10 @@ msgid "dialog1"
 msgstr "dialog1"
 
 #: src/dialogs/program-location-dialog.glade2.h:1
+msgid "Browse for program location..."
+msgstr "Wybór położenia programu..."
+
+#: src/dialogs/program-location-dialog.glade2.h:1
 msgid "_Location to search for:"
 msgstr "P_rzeszukiwane położenie:"
 
@@ -1892,7 +1897,7 @@ msgstr "Znajdź następne"
 
 #: src/dialogs/replace.glade2.h:1
 msgid "Match _entire word only"
-msgstr ""
+msgstr "Tylko całe _wyrazy"
 
 #: src/dialogs/replace.glade2.h:1
 msgid "Replace All"
@@ -1904,7 +1909,7 @@ msgstr "Zmiana _na: "
 
 #: src/dialogs/replace.glade2.h:1
 msgid "_Match case"
-msgstr ""
+msgstr "_Rozróżnianie małych i wielkich liter"
 
 #: src/dialogs/replace.glade2.h:1
 msgid "_Search for: "
@@ -1912,7 +1917,7 @@ msgstr "Wyszukiwany _tekst: "
 
 #: src/dialogs/replace.glade2.h:1
 msgid "_Wrap around"
-msgstr ""
+msgstr "_Automatyczny powrót do początku"
 
 #: src/dialogs/uri.glade2.h:1
 msgid "Enter the _location (URI) of the file you would like to open:"
@@ -2099,12 +2104,12 @@ msgstr "Nie można odczytać danych ze standardowego wejścia."
 #. Read only
 #: src/gedit-mdi-child.c:1
 msgid "RO"
-msgstr ""
+msgstr "tylko do odczytu"
 
 #. Add the detach tab button
 #: src/gedit-mdi-child.c:1 src/gedit-ui.xml.h:1
 msgid "_Move to New Window"
-msgstr ""
+msgstr "_Otwórz w nowym oknie"
 
 #: src/gedit-mdi.c:1
 msgid "Open a file."
@@ -2307,14 +2312,6 @@ msgid "Delete the selected text"
 msgstr "Usuwa zaznaczony tekst"
 
 #: src/gedit-ui.xml.h:1
-msgid "Dump XML"
-msgstr "Zrzuć XML"
-
-#: src/gedit-ui.xml.h:1
-msgid "Dump the UI Xml description"
-msgstr "Zrzuca plik XML z opisem interfejsu użytkownika"
-
-#: src/gedit-ui.xml.h:1
 msgid "Find Again"
 msgstr "Znajdź ponownie"
 
@@ -2340,7 +2337,7 @@ msgstr "Główny pasek narzędziowy"
 
 #: src/gedit-ui.xml.h:1
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "Otwiera bieżący dokument w nowym oknie"
 
 #: src/gedit-ui.xml.h:1
 msgid "New"
@@ -2580,7 +2577,7 @@ msgstr "Wy_drukuj..."
 
 #: src/gedit-ui.xml.h:1
 msgid "_Priority Text beside Icons"
-msgstr ""
+msgstr "_Priorytetowy tekst obok ikon"
 
 #: src/gedit-ui.xml.h:1
 msgid "_Quit"
@@ -3074,7 +3071,7 @@ msgstr "Czyści okno wyjściowe"
 
 #: src/gedit-output-window.c:1
 msgid "Output Lines"
-msgstr ""
+msgstr "Wiersze wyjścia"
 
 #: src/dialogs/gedit-encodings-dialog.glade2.h:1
 msgid "Choose one or more e_ncodings:"
@@ -3082,12 +3079,11 @@ msgstr "Wybierz jeden lub więcej standardów _kodowania:"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
-#: src/gedit-encodings.c:1
 msgid "Western"
 msgstr "Zachodni"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
-#: src/gedit-encodings.c:1 src/gedit-encodings.c:1
+#: src/gedit-encodings.c:1
 msgid "Central European"
 msgstr "Środkowoeuropejski"
 
@@ -3102,45 +3098,44 @@ msgstr "Bałtycki"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
-#: src/gedit-encodings.c:1 src/gedit-encodings.c:1
+#: src/gedit-encodings.c:1
 msgid "Cyrillic"
 msgstr "Cyrylica"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
-#: src/gedit-encodings.c:1 src/gedit-encodings.c:1
+#: src/gedit-encodings.c:1
 msgid "Arabic"
 msgstr "Arabski"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
-#: src/gedit-encodings.c:1
 msgid "Greek"
 msgstr "Grecki"
 
 #: src/gedit-encodings.c:1
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebrajski wizualny"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
-#: src/gedit-encodings.c:1 src/gedit-encodings.c:1
+#: src/gedit-encodings.c:1
 msgid "Hebrew"
 msgstr "Hebrajski"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
-#: src/gedit-encodings.c:1 src/gedit-encodings.c:1
+#: src/gedit-encodings.c:1
 msgid "Turkish"
 msgstr "Turecki"
 
 #: src/gedit-encodings.c:1
 msgid "Nordic"
-msgstr ""
+msgstr "Nordycki"
 
 #: src/gedit-encodings.c:1
 msgid "Celtic"
-msgstr ""
+msgstr "Celtycki"
 
-#: src/gedit-encodings.c:1 src/gedit-encodings.c:1
+#: src/gedit-encodings.c:1
 msgid "Romanian"
-msgstr ""
+msgstr "Rumuński"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
@@ -3158,7 +3153,7 @@ msgstr "Chiński tradycyjny"
 
 #: src/gedit-encodings.c:1
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Cyrylica/Rosyjski"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
@@ -3177,35 +3172,11 @@ msgstr "Chiński uproszczony"
 
 #: src/gedit-encodings.c:1
 msgid "Georgian"
-msgstr ""
+msgstr "Gruziński"
 
-#: src/gedit-encodings.c:1 src/gedit-encodings.c:1
+#: src/gedit-encodings.c:1
 msgid "Cyrillic/Ukrainian"
-msgstr ""
-
-#: src/gedit-encodings.c:1
-msgid "Croatian"
-msgstr "Chorwacki"
-
-#: src/gedit-encodings.c:1
-msgid "Hindi"
-msgstr ""
-
-#: src/gedit-encodings.c:1
-msgid "Farsi"
-msgstr "Farsi"
-
-#: src/gedit-encodings.c:1
-msgid "Gujarati"
-msgstr ""
-
-#: src/gedit-encodings.c:1
-msgid "Gurmukhi"
-msgstr ""
-
-#: src/gedit-encodings.c:1
-msgid "Icelandic"
-msgstr "Islandzki"
+msgstr "Cyrylica/Ukraiński"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
@@ -3219,6 +3190,30 @@ msgstr "Tajski"
 #: src/recent-files/egg-recent-vfs-utils.c:1
 msgid " (invalid Unicode)"
 msgstr " (niepoprawny Unicode)"
+
+#~ msgid "Dump XML"
+#~ msgstr "Zrzuć XML"
+
+#~ msgid "Dump the UI Xml description"
+#~ msgstr "Zrzuca plik XML z opisem interfejsu użytkownika"
+
+#~ msgid "Croatian"
+#~ msgstr "Chorwacki"
+
+#~ msgid "Hindi"
+#~ msgstr "Hindi"
+
+#~ msgid "Farsi"
+#~ msgstr "Perski"
+
+#~ msgid "Gujarati"
+#~ msgstr "Gudżarati"
+
+#~ msgid "Gurmukhi"
+#~ msgstr "Gurmukhi"
+
+#~ msgid "Icelandic"
+#~ msgstr "Islandzki"
 
 #~ msgid "Copyright (C) 2001-2002 Paolo Maggi"
 #~ msgstr "Copyright (C) 2001-2002 Paolo Maggi"
