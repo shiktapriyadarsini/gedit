@@ -1,18 +1,19 @@
 # GNOME gedit Greek translation.
-# Copyright (C) 2000 Free Software Foundation, Inc.
+# Copyright (C) 2000, 2001 Free Software Foundation, Inc.
 # Spiros Papadimitriou <spapadim+@cs.cmu.edu>, 2000.
-# Simos Xenitellis <simos@hellug.gr>, 2000.
+# Simos Xenitellis <simos@hellug.gr>, 2000, 2001.
 #
 # spyros:
 #   initial translation, around 85 messages
 # simos: 
 #   updated: 37 translated messages, 52 fuzzy translations, 116 untranslated messages.
 #   updated to 206 messages, 05Dec2000
+#   updated to 209 messages, 12Jan2001
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.9.4\n"
-"POT-Creation-Date: 2000-12-05 15:51+0000\n"
-"PO-Revision-Date: 2000-12-05 15:53:10+0900\n"
+"POT-Creation-Date: 2001-01-13 17:58+0000\n"
+"PO-Revision-Date: 2001-01-13 18:01:34+0900\n"
 "Last-Translator: Simos Xenitellis <simos@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -999,6 +1000,10 @@ msgstr ""
 "%sΔε θα μπορέσετε να χρησιμοποιήσετε το άρθρωμα %s χωρίς το %s. \n"
 " Θέλετε να ορίσετε μια νέα τοποθεσία για το %s;"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "σφάλμα δέσμευσης εισερχόμενου"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1011,6 +1016,14 @@ msgstr "Σφάλμα, το άρθρωμα δεν περιέχει τη συνάρτηση init_plugin."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Σφάλμα, η init_plugin επέστρεψε σφάλμα"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specify a description"
+msgstr "Σφάλμα, το άρθρωμα δεν έδωσε περιγραφή"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specify a long description"
+msgstr "Σφάλμα, το άρθρωμα δεν έδωσε μεγάλη περιγραφή"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
