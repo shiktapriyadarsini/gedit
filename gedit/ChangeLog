@@ -1,6 +1,6 @@
 2005-02-12  Paolo Borelli  <pborelli@katamail.com>
 
-	* gedit-mdi.c: backport leak fix.
+	* gedit-mdi.c: backport leak fix and startup speedup.
 	* gedit-view.c: backport speedup and bugfixes.
 	* recent-files/*: sync to latest libegg
 
