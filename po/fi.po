@@ -7,13 +7,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2001-01-26 22:52+0100\n"
-"PO-Revision-Date: 2000-11-15 12:00+0300\n"
+"POT-Creation-Date: 2001-02-06 20:39+0000\n"
+"PO-Revision-Date: 2000-02-06 12:00+0200\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: gedit.desktop.in.h:1
+msgid "Text editor"
+msgstr "Tekstieditori"
+
+#: gedit.desktop.in.h:2
+msgid "gedit"
+msgstr "gedit"
 
 #. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -29,13 +37,54 @@ msgstr "Selaa"
 msgid "Web browse plugin"
 msgstr "Internet-selain liitännäinen"
 
+#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
+msgid "Change"
+msgstr "Muuta"
+
+#: plugins/browse/browse.glade.h:2
+msgid "Enter the Url to browse for :"
+msgstr "Anna selattava URL :"
+
+#: plugins/browse/browse.glade.h:3
+msgid "gedit web browse plugin"
+msgstr "geditin internet-selain liitännäinen"
+
+#: plugins/browse/browse.glade.h:4 plugins/diff/diff.glade.h:7
+msgid "location"
+msgstr "sijainti"
+
+#: plugins/browse/browse.glade.h:5
+msgid "lynx was found at : "
+msgstr "Lynx löydetty polusta :"
+
 #: plugins/convert/convert.c:150
 msgid "Convert"
 msgstr "Muunna"
 
 #: plugins/convert/convert.c:151 plugins/convert/convert.c:152
+#: plugins/convert/convert.glade.h:5
 msgid "Number Converter"
 msgstr "Numeromuunnin"
+
+#: plugins/convert/convert.glade.h:1
+msgid "Converted Value:"
+msgstr "Muunnettu luku:"
+
+#: plugins/convert/convert.glade.h:2
+msgid "Decimal to Hex"
+msgstr "Desimaalista heksaksi"
+
+#: plugins/convert/convert.glade.h:3
+msgid "Decimal to Octal"
+msgstr "Desimaalista oktaksi"
+
+#: plugins/convert/convert.glade.h:4
+msgid "Hex to Decimal"
+msgstr "Heksasta desimaaliksi"
+
+#: plugins/convert/convert.glade.h:6
+msgid "Value to be converted:"
+msgstr "Muunnettava luku:"
 
 #: plugins/diff/diff.c:109
 msgid "The two documents selected are the same"
@@ -85,6 +134,26 @@ msgstr ""
 "Luo diff-tiedoston 2 asiakirjasta tai tiedostosta levyllä\n"
 "Halutessasi enemmän tietoa diffistä, kirjoita\"man diff\" komentotulkissa\n"
 
+#: plugins/diff/diff.glade.h:2
+msgid "Choose the files to diff"
+msgstr "Valitse tiedostot joita verrataan diffillä"
+
+#: plugins/diff/diff.glade.h:3
+msgid "From a file on disk"
+msgstr "Levykkeellä olevasta tiedostosta"
+
+#: plugins/diff/diff.glade.h:4
+msgid "From document"
+msgstr "Asiakirjasta"
+
+#: plugins/diff/diff.glade.h:5
+msgid "diff found at : "
+msgstr "Diff löydetty polusta :"
+
+#: plugins/diff/diff.glade.h:6
+msgid "don't translate this"
+msgstr "don't translate this"
+
 #: plugins/email/email.c:64
 #, c-format
 msgid "Executing command : %s"
@@ -105,6 +174,42 @@ msgid ""
 msgstr ""
 "Lähetä nykyinen asiakirja tiettyyn sähköpostiosoitteeseen\n"
 "gedit etsii sendmail:in käyttääkseen tätä liitännäistä."
+
+#: plugins/email/email.glade.h:1
+msgid "Change..."
+msgstr "Muuta..."
+
+#: plugins/email/email.glade.h:2
+msgid "File to use as body of message : "
+msgstr "Tiedosto, josta viesti muodostetaan:"
+
+#: plugins/email/email.glade.h:3
+msgid "From:"
+msgstr "Lähettäjä:"
+
+#: plugins/email/email.glade.h:4
+msgid "Sendmail found at :"
+msgstr "Sendmail löydetty polusta :"
+
+#: plugins/email/email.glade.h:5
+msgid "Subject:"
+msgstr "Aihe"
+
+#: plugins/email/email.glade.h:6
+msgid "To:"
+msgstr "Vastaanottaja:"
+
+#: plugins/email/email.glade.h:7
+msgid "gedit: e-mail plugin"
+msgstr "gedit: sähköpostiliitännäinen"
+
+#: plugins/email/email.glade.h:8
+msgid "label12"
+msgstr "label12"
+
+#: plugins/email/email.glade.h:9
+msgid "label13"
+msgstr "label13"
 
 #: plugins/reverse/reverse.c:70
 msgid "Reverse"
@@ -131,6 +236,18 @@ msgstr "Komentotulkin tuloste"
 msgid "Insert the shell output in the document"
 msgstr "Lisää asiakirjaan tuloste komentotulkista"
 
+#: plugins/shell_output/shell_output.glade.h:1
+msgid "Directory  "
+msgstr "Hakemisto  "
+
+#: plugins/shell_output/shell_output.glade.h:2
+msgid "Enter shell command "
+msgstr "Anna komentotulkille annettava komento "
+
+#: plugins/shell_output/shell_output.glade.h:3
+msgid "Shell Output plugin"
+msgstr "Komentotulkin tulosteliitännäinen"
+
 #: plugins/time/time.c:84
 msgid "Insert Time"
 msgstr "Lisää aika"
@@ -138,6 +255,16 @@ msgstr "Lisää aika"
 #: plugins/time/time.c:85 plugins/time/time.c:86
 msgid "Inserts the current date and time"
 msgstr "Lisää päiväyksen ja ajan"
+
+#: src/dialogs/about.glade.h:1
+msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+msgstr "(C) 1998, 1999, 2000 Alex Roberts ja Evan Lawrence"
+
+#: src/dialogs/about.glade.h:2
+msgid "gedit is a small and lightweight text editor for GNOME."
+msgstr ""
+"gedit on pieni ja hyvin kevyt tekstieditori Gnomelle. Suomennos: "
+"http://gnome-fi.sourceforge.net/"
 
 #: src/dialogs/dialog-plugins.c:442
 #, c-format
@@ -155,7 +282,7 @@ msgstr ""
 msgid "gedit: Preferences"
 msgstr "gedit: Asetukset"
 
-#: src/dialogs/dialog-replace.c:130
+#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
 msgid "Replace"
 msgstr "Korvaa"
 
@@ -181,9 +308,246 @@ msgid "Could not allocate the memory for the Replace all request."
 msgstr ""
 "\"Korvaa kaikki\"-operaatiolle  ei voitu varata tarvittavaa  määrää muistia."
 
+#: src/dialogs/goto-line.glade.h:1
+msgid "Goto Line"
+msgstr "Siirry riville"
+
+#: src/dialogs/goto-line.glade.h:2
+msgid "Line number:"
+msgstr "Rivinumero:"
+
+#: src/dialogs/plugin-manager.glade.h:1
+msgid "< Remove"
+msgstr "< Poista"
+
+#: src/dialogs/plugin-manager.glade.h:2
+msgid "<< Remove All"
+msgstr "<< Poista kaikki"
+
+#: src/dialogs/plugin-manager.glade.h:3
+msgid "Add >"
+msgstr "Lisää >"
+
+#: src/dialogs/plugin-manager.glade.h:4
+msgid "Add All >>"
+msgstr "Lisää kaikki >>"
+
+#: src/dialogs/plugin-manager.glade.h:5
+msgid "Available Plugins"
+msgstr "Tarjolla olevat liitännäiset"
+
+#: src/dialogs/plugin-manager.glade.h:6
+msgid "Installed Plugins"
+msgstr "Asennetut liitännäiset"
+
+#: src/dialogs/plugin-manager.glade.h:7
+msgid "Plugin description"
+msgstr "Liitännäisen kuvaus"
+
+#: src/dialogs/plugin-manager.glade.h:8
+msgid "Select the plugins to install"
+msgstr "Valitse asennettavat liitännäiset"
+
+#: src/dialogs/plugin-manager.glade.h:9
+msgid "gedit Plugin Manager"
+msgstr "geditin liitännäistenhallinta"
+
+#: src/dialogs/prefs.glade.h:1
+msgid "Add _header"
+msgstr "Lisää _otsikkorivi"
+
+#: src/dialogs/prefs.glade.h:2
+msgid "Appearance"
+msgstr "Ulkonäkö"
+
+#: src/dialogs/prefs.glade.h:3
+msgid "Background: "
+msgstr "Taustaväri: "
+
+#: src/dialogs/prefs.glade.h:4
+msgid "Bottom"
+msgstr "Alhaalla"
+
+#: src/dialogs/prefs.glade.h:5
+msgid "Colors"
+msgstr "Värit"
+
+#: src/dialogs/prefs.glade.h:6
+msgid "Default"
+msgstr "Oletus"
+
+#: src/dialogs/prefs.glade.h:7
+msgid "Default Font: "
+msgstr "Oletuskirjasin: "
+
+#: src/dialogs/prefs.glade.h:8
+msgid "Documents"
+msgstr "Asiakirjat"
+
+#: src/dialogs/prefs.glade.h:9
+msgid "Editor Behavior"
+msgstr "Editointiasetukset"
+
+#: src/dialogs/prefs.glade.h:10
+msgid "Enable Auto-indent"
+msgstr "Sisennä automaattisesti"
+
+#: src/dialogs/prefs.glade.h:11
+msgid "Enable word _wrapping"
+msgstr "Rivitä _automaattisesti"
+
+#: src/dialogs/prefs.glade.h:12
+msgid "Fonts"
+msgstr "Kirjasimet"
+
+#: src/dialogs/prefs.glade.h:13
+msgid "Fonts/Colors"
+msgstr "Kirjasimet/Värit"
+
+#: src/dialogs/prefs.glade.h:14
+msgid "Foreground: "
+msgstr "Tekstin väri: "
+
+#: src/dialogs/prefs.glade.h:15
+msgid "General"
+msgstr "Yleiset"
+
+#: src/dialogs/prefs.glade.h:16
+msgid "Left"
+msgstr "Vasemmalla"
+
+#: src/dialogs/prefs.glade.h:17
+msgid "MDI (Multiple Document Interface)"
+msgstr "UAK (Usean Asiakirjan Käyttöliittymä)"
+
+#: src/dialogs/prefs.glade.h:18
+msgid "Modal"
+msgstr "Alisteiset"
+
+#: src/dialogs/prefs.glade.h:19
+msgid "Mode: "
+msgstr "Tila: "
+
+#: src/dialogs/prefs.glade.h:20
+msgid "Notebook"
+msgstr "Muistio"
+
+#: src/dialogs/prefs.glade.h:21
+msgid "Notebook Tab Position: "
+msgstr "Muistio-tilan painikkeet: "
+
+#: src/dialogs/prefs.glade.h:22
+msgid "Paper"
+msgstr "Paperi"
+
+#: src/dialogs/prefs.glade.h:23
+msgid "Pick a Font"
+msgstr "Valitse kirjasinlaji"
+
+#: src/dialogs/prefs.glade.h:24
+msgid "Pick a color"
+msgstr "Valitse väri"
+
+#: src/dialogs/prefs.glade.h:25
+msgid "Print _line numbers every:"
+msgstr "Tulosta _rivinumero joka"
+
+#: src/dialogs/prefs.glade.h:26
+msgid "Printing"
+msgstr "Tulostus"
+
+#: src/dialogs/prefs.glade.h:27
+msgid "Right"
+msgstr "Oikealla"
+
+#: src/dialogs/prefs.glade.h:28
+msgid "Set limit on undo levels to :"
+msgstr "Aseta kumoamiskerroille raja :"
+
+#: src/dialogs/prefs.glade.h:29
+msgid "Set toolbar according to system settings"
+msgstr "Aseta työkalurivi järjestelmän asetusten mukaisesti"
+
+#: src/dialogs/prefs.glade.h:30
+msgid "Set toolbar to Icons only"
+msgstr "Näytä vain ikonit työkalurivissä"
+
+#: src/dialogs/prefs.glade.h:31
+msgid "Set toolbar to Icons with text"
+msgstr "Näytä sekä ikonit että teksti työkalurivissä"
+
+#: src/dialogs/prefs.glade.h:32
+msgid "Show Statusbar"
+msgstr "Näytä tilarivi"
+
+#: src/dialogs/prefs.glade.h:33
+msgid "Top"
+msgstr "Ylhäällä"
+
+#: src/dialogs/prefs.glade.h:34
+msgid "Toplevel"
+msgstr "Itsenäiset"
+
+#: src/dialogs/prefs.glade.h:35 src/menus.c:245
+msgid "Undo"
+msgstr "Kumoa"
+
+#: src/dialogs/prefs.glade.h:36
+msgid "_Landscape"
+msgstr "_Vaaka"
+
+#: src/dialogs/prefs.glade.h:37
+msgid "_Portrait"
+msgstr "_Pysty"
+
+#: src/dialogs/prefs.glade.h:38
+msgid "level(s)"
+msgstr "taso(a)"
+
+#: src/dialogs/prefs.glade.h:39
+msgid "line(s)"
+msgstr ":s rivi"
+
+#: src/dialogs/program.glade.h:1
+msgid "Location to search for :"
+msgstr "Paikka josta etsitään :"
+
+#: src/dialogs/replace.glade.h:1
+msgid "Case _sensitive"
+msgstr "_Huomioi kirjainkoko"
+
+#: src/dialogs/replace.glade.h:2
+msgid "Find Next"
+msgstr "Etsi seuraava"
+
+#: src/dialogs/replace.glade.h:4
+msgid "Replace All"
+msgstr "Korvaa kaikki"
+
+#: src/dialogs/replace.glade.h:5
+msgid "Search from the _beginning of the document"
+msgstr "Etsi asiakirjan _alusta alkaen"
+
+#: src/dialogs/replace.glade.h:6
+msgid "Search from the _cursor position"
+msgstr "Etsi k_ursorin kohdasta alkaen"
+
+#: src/dialogs/replace.glade.h:7
+msgid "_Replace with: "
+msgstr "_Korvaa seuraavalla: "
+
+#: src/dialogs/replace.glade.h:8
+msgid "_Search for: "
+msgstr "_Etsi merkkijonoa: "
+
 #: src/document.c:251
 msgid "RO - "
 msgstr "RO - "
+
+#: src/document.c:269
+#, c-format
+msgid "%s %d"
+msgstr "%s %d"
 
 #: src/document.c:443
 #, c-format
@@ -492,10 +856,6 @@ msgid "Print the current file"
 msgstr "Tulosta nykyinen tiedosto"
 
 #: src/menus.c:245
-msgid "Undo"
-msgstr "Kumoa"
-
-#: src/menus.c:245
 msgid "Undo last operation"
 msgstr "Kumoa edellisen toiminto"
 
@@ -590,13 +950,13 @@ msgstr ""
 "\n"
 
 #: src/plugin.c:220
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%sYou won't be able to use the %s plugin without %s. \n"
 " Do you want to specify a new location for %s?"
 msgstr ""
-"%s liitännäisen käyttämiseksi tarvitaan %s. \n"
-" Haluatko antaa %s:lle uuden sijainnin?"
+"%sliitännäisen käyttämiseksi tarvitaan %s. \n"
+" Haluatko määrittää %s:lle uuden sijainnin?"
 
 #: src/plugin.c:312
 msgid "plugin allocation error"
@@ -704,273 +1064,3 @@ msgstr ""
 #: src/view.c:963
 msgid "You can't remove the last view of a document."
 msgstr "Viimeistä näkymää ei voi poistaa."
-
-msgid "gedit web browse plugin"
-msgstr "geditin internet-selain liitännäinen"
-
-msgid "Enter the Url to browse for :"
-msgstr "Anna selattava URL :"
-
-msgid "lynx was found at : "
-msgstr "Lynx löydetty polusta :"
-
-msgid "location"
-msgstr "sijainti"
-
-msgid "Change"
-msgstr "Muuta"
-
-msgid "Converted Value:"
-msgstr "Muunnettu luku:"
-
-msgid "Value to be converted:"
-msgstr "Muunnettava luku:"
-
-msgid "Decimal to Hex"
-msgstr "Desimaalista heksaksi"
-
-msgid "Decimal to Octal"
-msgstr "Desimaalista oktaksi"
-
-msgid "Hex to Decimal"
-msgstr "Heksasta desimaaliksi"
-
-msgid "Choose the files to diff"
-msgstr "Valitse tiedostot joita verrataan diffillä"
-
-msgid "From document"
-msgstr "Asiakirjasta"
-
-msgid "From a file on disk"
-msgstr "Levykkeellä olevasta tiedostosta"
-
-msgid "don't translate this\n"
-msgstr "don't translate this\n"
-
-msgid "diff found at : "
-msgstr "Diff löydetty polusta :"
-
-msgid "gedit: e-mail plugin"
-msgstr "gedit: sähköpostiliitännäinen"
-
-msgid "From:"
-msgstr "Lähettäjä:"
-
-msgid "To:"
-msgstr "Vastaanottaja:"
-
-msgid "Subject:"
-msgstr "Aihe"
-
-msgid "Change..."
-msgstr "Muuta..."
-
-msgid "label12"
-msgstr "label12"
-
-msgid "File to use as body of message : "
-msgstr "Tiedosto, josta viesti muodostetaan:"
-
-msgid "Sendmail found at :"
-msgstr "Sendmail löydetty polusta :"
-
-msgid "label13"
-msgstr "label13"
-
-msgid "Shell Output plugin"
-msgstr "Komentotulkin tulosteliitännäinen"
-
-msgid "Directory  "
-msgstr "Hakemisto  "
-
-msgid "Enter shell command "
-msgstr "Anna komentotulkille annettava komento "
-
-msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-msgstr "(C) 1998, 1999, 2000 Alex Roberts ja Evan Lawrence"
-
-msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr ""
-"gedit on pieni ja hyvin kevyt tekstieditori Gnomelle. Suomennos: "
-"http://gnome-fi.sourceforge.net/"
-
-msgid "Goto Line"
-msgstr "Siirry riville"
-
-msgid "Line number:"
-msgstr "Rivinumero:"
-
-msgid "Appearance"
-msgstr "Ulkonäkö"
-
-msgid "Show Statusbar"
-msgstr "Näytä tilarivi"
-
-msgid "Set toolbar according to system settings"
-msgstr "Aseta työkalurivi järjestelmän asetusten mukaisesti"
-
-msgid "Set toolbar to Icons only"
-msgstr "Näytä vain ikonit työkalurivissä"
-
-msgid "Set toolbar to Icons with text"
-msgstr "Näytä sekä ikonit että teksti työkalurivissä"
-
-msgid "Editor Behavior"
-msgstr "Editointiasetukset"
-
-msgid "Enable Auto-indent"
-msgstr "Sisennä automaattisesti"
-
-msgid "General"
-msgstr "Yleiset"
-
-msgid "MDI (Multiple Document Interface)"
-msgstr "UAK (Usean Asiakirjan Käyttöliittymä)"
-
-msgid ""
-"Left\n"
-"Right\n"
-"Top\n"
-"Bottom\n"
-msgstr ""
-"Vasemmalla\n"
-"Oikealla\n"
-"Ylhäällä\n"
-"Alhaalla\n"
-
-msgid ""
-"Notebook\n"
-"Toplevel\n"
-"Modal\n"
-"Default\n"
-msgstr ""
-"Muistio\n"
-"Itsenäiset\n"
-"Alisteiset\n"
-"Oletus\n"
-
-msgid "Mode: "
-msgstr "Tila: "
-
-msgid "Notebook Tab Position: "
-msgstr "Muistio-tilan painikkeet: "
-
-msgid "Set limit on undo levels to :"
-msgstr "Aseta kumoamiskerroille raja :"
-
-msgid "level(s)"
-msgstr "taso(a)"
-
-msgid "Documents"
-msgstr "Asiakirjat"
-
-msgid "Fonts"
-msgstr "Kirjasimet"
-
-msgid "Pick a Font"
-msgstr "Valitse kirjasinlaji"
-
-msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÅåÄäÖö"
-
-msgid "Default Font: "
-msgstr "Oletuskirjasin: "
-
-msgid "Colors"
-msgstr "Värit"
-
-msgid "Pick a color"
-msgstr "Valitse väri"
-
-msgid "Background: "
-msgstr "Taustaväri: "
-
-msgid "Foreground: "
-msgstr "Tekstin väri: "
-
-msgid "Fonts/Colors"
-msgstr "Kirjasimet/Värit"
-
-msgid "Printing"
-msgstr "Tulostus"
-
-msgid "Add _header"
-msgstr "Lisää _otsikkorivi"
-
-msgid "Enable word _wrapping"
-msgstr "Rivitä _automaattisesti"
-
-msgid "Print _line numbers every:"
-msgstr "Tulosta _rivinumero joka"
-
-msgid "line(s)"
-msgstr ":s rivi"
-
-msgid "_Portrait"
-msgstr "_Pysty"
-
-msgid "_Landscape"
-msgstr "_Vaaka"
-
-msgid "Paper"
-msgstr "Paperi"
-
-msgid "File to use as body of message: "
-msgstr "Tiedosto, josta viesti muodostetaan: "
-
-msgid "Location of sendmail to search for :"
-msgstr "Paikka josta sendmailia etsitään :"
-
-msgid "Find Next"
-msgstr "Etsi seuraava"
-
-msgid "Replace All"
-msgstr "Korvaa kaikki"
-
-msgid "_Search for: "
-msgstr "_Etsi merkkijonoa: "
-
-msgid "_Replace with: "
-msgstr "_Korvaa seuraavalla: "
-
-msgid "Search from the _beginning of the document"
-msgstr "Etsi asiakirjan _alusta alkaen"
-
-msgid "Search from the _cursor position"
-msgstr "Etsi k_ursorin kohdasta alkaen"
-
-msgid "Case _sensitive"
-msgstr "_Huomioi kirjainkoko"
-
-msgid "gedit Plugin Manager"
-msgstr "geditin liitännäistenhallinta"
-
-msgid "Select the plugins to install"
-msgstr "Valitse asennettavat liitännäiset"
-
-msgid "Available Plugins"
-msgstr "Tarjolla olevat liitännäiset"
-
-msgid "Add >"
-msgstr "Lisää >"
-
-msgid "< Remove"
-msgstr "< Poista"
-
-msgid "Add All >>"
-msgstr "Lisää kaikki >>"
-
-msgid "<< Remove All"
-msgstr "<< Poista kaikki"
-
-msgid "Installed Plugins"
-msgstr "Asennetut liitännäiset"
-
-msgid "Plugin description"
-msgstr "Liitännäisen kuvaus"
-
-msgid "gedit"
-msgstr "gedit"
-
-msgid "Text editor"
-msgstr "Tekstieditori"
