@@ -1,7 +1,7 @@
 2005-02-12  Paolo Borelli  <pborelli@katamail.com>
 
 	* gedit-mdi.c: backport leak fix.
-	* gedit-view.c: backport speedup.
+	* gedit-view.c: backport speedup and bugfixes.
 
 2004-12-10  Balamurali Viswanathan  <balamurali.viswanathan@wipro.com>
 
