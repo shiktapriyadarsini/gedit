@@ -1,5 +1,4 @@
 # translation of gedit.HEAD.mn.po to Mongolian
-# translation of gedit.HEAD.mn.po to mongolian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # Sanlig Badral <badral@chinggis.com>, 2003
@@ -14,7 +13,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.1\n"
 
 #: data/GNOME_Gedit.server.in.h:1
 msgid "gedit application"
@@ -2153,7 +2151,7 @@ msgid ""
 msgstr ""
 "Та »%s« баримтад хийсэн өөрчилөлтүүдээ хадгалахыг хүсэж байна уу?\n"
 "\n"
-"Хэрвээ та өөрчилөлтөө хадгалахгүй бол тэд хаягдана."
+"Хэрвээ та өөрчилөлтөө хадгалахгүй бол тэд устана!"
 
 #: src/gedit-mdi.c:1037
 msgid "Do_n't save"
