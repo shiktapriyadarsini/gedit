@@ -384,6 +384,30 @@ gedit_cmd_view_show_statusbar (GtkAction *action, GeditWindow *window)
 	_gedit_window_set_statusbar_visible (window, visible);
 }
 
+void
+gedit_cmd_view_show_side_pane (GtkAction *action, GeditWindow *window)
+{
+	gboolean visible;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+	_gedit_window_set_side_panel_visible (window, visible);
+}
+
+void
+gedit_cmd_view_show_bottom_panel (GtkAction *action, GeditWindow *window)
+{
+	gboolean visible;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+	// TODO
+}
+
 void 
 gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 {

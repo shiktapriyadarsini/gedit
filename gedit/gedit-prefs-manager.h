@@ -92,6 +92,12 @@
 #define GPM_STATUSBAR_DIR		GPM_PREFS_DIR "/ui/statusbar"
 #define GPM_STATUSBAR_VISIBLE		GPM_STATUSBAR_DIR "/statusbar_visible"
 
+#define GPM_SIDE_PANE_DIR		GPM_PREFS_DIR "/ui/side_pane"
+#define GPM_SIDE_PANE_VISIBLE		GPM_SIDE_PANE_DIR "/side_pane_visible"
+
+#define GPM_BOTTOM_PANEL_DIR		GPM_PREFS_DIR "/ui/bottom_panel"
+#define GPM_BOTTOM_PANEL_VISIBLE	GPM_BOTTOM_PANEL_DIR "/bottom_panel_visible"
+
 #define GPM_RECENTS_DIR			GPM_PREFS_DIR "/ui/recents"
 #define GPM_MAX_RECENTS			GPM_RECENTS_DIR "/max_recents"
 
@@ -161,6 +167,8 @@
 #define GPM_DEFAULT_TOOLBAR_SHOW_TOOLTIPS 1 /* TRUE */
 
 #define GPM_DEFAULT_STATUSBAR_VISIBLE	1 /* TRUE */
+#define GPM_DEFAULT_SIDE_PANE_VISIBLE	0 /* FALSE */
+#define GPM_DEFAULT_BOTTOM_PANEL_VISIBLE 0 /* FALSE */
 
 #define GPM_DEFAULT_PRINT_SYNTAX	1 /* TRUE */
 #define GPM_DEFAULT_PRINT_HEADER	1 /* TRUE */
@@ -312,6 +320,15 @@ gboolean		 gedit_prefs_manager_get_statusbar_visible	(void);
 void			 gedit_prefs_manager_set_statusbar_visible	(gboolean sv);
 gboolean		 gedit_prefs_manager_statusbar_visible_can_set	(void);
 
+/* Side pane visible */
+gboolean		 gedit_prefs_manager_get_side_pane_visible	(void);
+void			 gedit_prefs_manager_set_side_pane_visible	(gboolean tv);
+gboolean		 gedit_prefs_manager_side_pane_visible_can_set	(void);
+
+/* Bottom panel visible */
+gboolean		 gedit_prefs_manager_get_bottom_panel_visible	(void);
+void			 gedit_prefs_manager_set_bottom_panel_visible	(gboolean tv);
+gboolean		 gedit_prefs_manager_bottom_panel_visible_can_set(void);
 /* Print syntax highlighting */
 gboolean		 gedit_prefs_manager_get_print_syntax_hl	(void);
 void			 gedit_prefs_manager_set_print_syntax_hl	(gboolean ps);

@@ -136,10 +136,10 @@ static const GtkToggleActionEntry gedit_toggle_menu_entries[] =
 	  G_CALLBACK (gedit_cmd_view_show_statusbar), TRUE },
 	{ "ViewSidePane", NULL, N_("Side _Pane"), "F9",
 	  N_("Show or hide the side pane in the current window"),
-	  NULL, FALSE },
+	  G_CALLBACK (gedit_cmd_view_show_side_pane), FALSE },
 	{ "ViewBottomPanel", NULL, N_("_Bottom Panel"), "<control>F9",
 	  N_("Show or hide the bottom panel in the current window"),
-	  NULL, FALSE }	  
+	  G_CALLBACK (gedit_cmd_view_show_bottom_panel), FALSE }	  
 };
 
 static const guint gedit_n_toggle_menu_entries = G_N_ELEMENTS (gedit_toggle_menu_entries);

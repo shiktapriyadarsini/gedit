@@ -1326,6 +1326,8 @@ void
 _gedit_window_set_statusbar_visible (GeditWindow *window,
 				     gboolean     visible)
 {
+	GtkAction *action;
+	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	
 	if (visible)
@@ -1335,12 +1337,20 @@ _gedit_window_set_statusbar_visible (GeditWindow *window,
 
 	if (gedit_prefs_manager_statusbar_visible_can_set ())
 		gedit_prefs_manager_set_statusbar_visible (visible);
+		
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewStatusbar");		
+		
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 }
 
 void
 _gedit_window_set_toolbar_visible (GeditWindow *window,
 				   gboolean     visible)
 {
+	GtkAction *action;
+	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	
 	if (visible)
@@ -1350,5 +1360,36 @@ _gedit_window_set_toolbar_visible (GeditWindow *window,
 
 	if (gedit_prefs_manager_toolbar_visible_can_set ())
 		gedit_prefs_manager_set_toolbar_visible (visible);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewToolbar");		
+		
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);		
 }
 
+void
+_gedit_window_set_side_panel_visible (GeditWindow *window,
+				      gboolean     visible)
+{
+	GtkAction *action;
+	
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	
+	if (visible)
+		gtk_widget_show (window->priv->side_panel);
+	else
+		gtk_widget_hide (window->priv->side_panel);
+
+	// FIXME
+	/*
+	if (gedit_prefs_manager_toolbar_visible_can_set ())
+		gedit_prefs_manager_set_toolbar_visible (visible);
+	*/		
+	
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewSidePane");		
+		
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+}

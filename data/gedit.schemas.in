@@ -329,6 +329,32 @@
 	should be visible.</long>
       </locale>
     </schema>
+    
+    <schema>
+      <key>/schemas/apps/gedit-2/preferences/ui/side_pane/side_pane_visible</key>
+      <applyto>/apps/gedit-2/preferences/ui/side_pane/side_pane_visible</applyto>
+      <owner>gedit</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+	<short>Side Pane is Visible</short>
+	<long>Whether the side pane at the left of the editing window
+	should be visible.</long>
+      </locale>
+    </schema>
+    
+    <schema>
+      <key>/schemas/apps/gedit-2/preferences/ui/bottom_panel/bottom_panel_visible</key>
+      <applyto>/apps/gedit-2/preferences/ui/bottom_panel/bottom_panel_visible</applyto>
+      <owner>gedit</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+	<short>Bottom Panel is Visible</short>
+	<long>Whether the bottom panel at the bottom of editing windows
+	should be visible.</long>
+      </locale>
+    </schema>        
 
     <schema>
       <key>/schemas/apps/gedit-2/preferences/print/page/print_syntax_highlighting</key>

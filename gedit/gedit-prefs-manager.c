@@ -725,6 +725,16 @@ gedit_prefs_manager_toolbar_buttons_style_can_set (void)
 DEFINE_BOOL_PREF (statusbar_visible,
 		  GPM_STATUSBAR_VISIBLE,
 		  GPM_DEFAULT_STATUSBAR_VISIBLE)
+		  
+/* Side Pane visiblity */
+DEFINE_BOOL_PREF (side_pane_visible,
+		  GPM_SIDE_PANE_VISIBLE,
+		  GPM_DEFAULT_SIDE_PANE_VISIBLE)
+		  
+/* Bottom Panel visiblity */
+DEFINE_BOOL_PREF (bottom_panel_visible,
+		  GPM_BOTTOM_PANEL_VISIBLE,
+		  GPM_DEFAULT_BOTTOM_PANEL_VISIBLE)		  		  
 
 /* Print syntax highlighting */
 DEFINE_BOOL_PREF (print_syntax_hl,
