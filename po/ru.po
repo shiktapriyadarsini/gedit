@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.5.5\n"
-"POT-Creation-Date: 2000-11-30 13:53+0300\n"
-"PO-Revision-Date: 2000-11-30 13:50+03:00\n"
+"POT-Creation-Date: 2000-12-18 17:34+0300\n"
+"PO-Revision-Date: 2000-12-18 17:35+03:00\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -995,6 +995,10 @@ msgstr ""
 "%s Вы не сможете использовать дополнение %s без %s. \n"
 "Хотите указать новое расположение для %s?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "ошибка получения дополнения"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1007,6 +1011,14 @@ msgstr "Ошибка, дополнение не содержит функции init_plugin."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Ошибка, init_plugin вернула ошибку"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specified a description"
+msgstr "Ошибка, у дополнения не указано описание"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specified a long description"
+msgstr "Ошибка, у дополнения не указано подробное описание"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
@@ -1089,12 +1101,3 @@ msgstr ""
 #: src/view.c:963
 msgid "You can't remove the last view of a document."
 msgstr "Вы не можете удалить последнее окно документа."
-
-#~ msgid ""
-#~ "Hello Dear Translator :\n"
-#~ "This is the unstable branch of gedit. \n"
-#~ "I think you should be translating the gedit-1-0 branch. To get it from cvs "
-#~ "type : \n"
-#~ "cvs -z3 co -r gedit-1-0 gedit\n"
-#~ "Thank you. Chema"
-#~ msgstr "Thank you too. Frob. =)"
