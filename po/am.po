@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.0\n"
 "POT-Creation-Date: 2002-11-24 14:36+0100\n"
-"PO-Revision-Date: 2002-12-13 15:52+EDT\n"
+"PO-Revision-Date: 2002-12-21 22:37+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "የመስመር ቍጥሮች አሳይ"
 
 #: data/gedit.schemas.in.h:11
 msgid "Editor Font"
-msgstr "የአርታዒ ፊደል ቅርጽ ምረጥ"
+msgstr "የአርታዒ ፊደል ቅርጽ"
 
 #: data/gedit.schemas.in.h:12
 msgid "Encoding for Saving"
@@ -155,7 +155,7 @@ msgstr "የተመረጠው ጽሑፍ ቀለም"
 
 #: data/gedit.schemas.in.h:27
 msgid "Selection Color"
-msgstr "የተመረጠውን ቀለም"
+msgstr "የምርጫው ቀለም"
 
 #: data/gedit.schemas.in.h:28
 msgid "Show Cursor Position"
@@ -686,7 +686,7 @@ msgstr "የሼል ውጤት"
 
 #: plugins/shell_output/shell_output.c:200
 msgid "_Run"
-msgstr "_አስጀምር"
+msgstr "_አስኪድ"
 
 #: plugins/shell_output/shell_output.c:360
 msgid ""
@@ -903,7 +903,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences-dialog.c:207
 msgid "Font & Colors"
-msgstr "የፊደል አፃፃፍ ዓይነት እና ቀለማት"
+msgstr "የፊደል አፃፃፍ ዓይነት እና ቀለሞች"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
 #: src/dialogs/gedit-preferences.glade2.h:34
@@ -1053,7 +1053,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:12
 msgid "Colors"
-msgstr "ቀለማት"
+msgstr "ቀለሞች"
 
 #: src/dialogs/gedit-preferences.glade2.h:13
 msgid "Create a _backup copy of files before saving"
@@ -1292,7 +1292,7 @@ msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
 
 #: src/dialogs/gnome-print-font-picker.c:91
 msgid "Pick a Font"
-msgstr "የፊደል ቅርጽ ምረጥ"
+msgstr "የፊደል ቅርጽ ምረጡ"
 
 #: src/dialogs/gnome-print-font-picker.c:176
 msgid "Title"
@@ -1830,11 +1830,11 @@ msgstr "ክፈት"
 
 #: src/gedit-ui.xml.h:33
 msgid "Open Location..."
-msgstr "ቦታ ክፍት..."
+msgstr "ቦታ ክፈት..."
 
 #: src/gedit-ui.xml.h:34
 msgid "Open _Location..."
-msgstr "ቦታ ክፍት... (_L)"
+msgstr "ቦታ ክፈት... (_L)"
 
 #: src/gedit-ui.xml.h:35
 msgid "Open a file"
@@ -1950,15 +1950,15 @@ msgstr "ሐረጉን አስስ"
 
 #: src/gedit-ui.xml.h:67
 msgid "Select All"
-msgstr "ሁሉንም ምረጥ"
+msgstr "ሁሉንም ምረጡ"
 
 #: src/gedit-ui.xml.h:68
 msgid "Select _All"
-msgstr "ሁሉንም ምረጥ (_A)"
+msgstr "ሁሉንም ምረጡ (_A)"
 
 #: src/gedit-ui.xml.h:69
 msgid "Select the entire document"
-msgstr "ሰነዱን እንዳለ ምረጥ"
+msgstr "ሰነዱን እንዳለ ምረጡ"
 
 #: src/gedit-ui.xml.h:70
 msgid "Set toolbar button style according to desktop default"
