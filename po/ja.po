@@ -1153,3 +1153,11 @@ msgstr "ドキュメントの最後のビューは削除できません。"
 
 #~ msgid "Enter the line number you wish to go to."
 #~ msgstr "移動したい行の番号を入力します."
+
+#: gedit.desktop.in:3
+msgid "gedit"
+msgstr "gedit"
+
+#: gedit.desktop.in:4
+msgid "Text editor"
+msgstr "テキストエディタ"

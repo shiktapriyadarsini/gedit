@@ -888,3 +888,11 @@ msgstr "Contido"
 
 #~ msgid "Search from end of document"
 #~ msgstr "Comezar a búsqueda ó final do documento"
+
+#: gedit.desktop.in:3
+msgid "gedit"
+msgstr "gedit"
+
+#: gedit.desktop.in:4
+msgid "Text editor"
+msgstr "Editor de texto"

@@ -1343,3 +1343,11 @@ msgstr "Δε μπορείτε να διαγράψετε την τελευταία απεικόνιση ενός εγγράφου."
 
 #~ msgid "Replace?"
 #~ msgstr "Αντικατάσταση;"
+
+#: gedit.desktop.in:3
+msgid "gedit"
+msgstr "Κειμενογράφος"
+
+#: gedit.desktop.in:4
+msgid "Text editor"
+msgstr "Απλός κειμενογράφος"

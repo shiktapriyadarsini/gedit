@@ -29,3 +29,7 @@ ci.sh
 ABOUT-NLS
 *.tar.gz
 texts
+gedit.desktop
+xml-i18n-update
+xml-i18n-extract
+xml-i18n-merge

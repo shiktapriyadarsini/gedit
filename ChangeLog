@@ -1,3 +1,13 @@
+2001-01-25  Gediminas Paulauskas <menesis@delfi.lt>
+
+	Made gedit use xml-i18n-tools for glade and desktop file translation.
+	That package is now needed to compile from CVS. You now longer need to
+	save glade.h files -- they are generated automatically.
+	* macros/autogen.sh: added xml-i18n-toolize.
+	* Makefile.am, configure.in: stuff to build gedit.desktop
+	automatically and distribute xml-i18n-*.
+	* NEWS: something.
+
 2000-12-21  Emese Kovacs <emese@gnome.hu>
 
 	* src/plugin.c: Typo fixes: s/specified/specify/

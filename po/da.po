@@ -1151,3 +1151,11 @@ msgstr "Du kan ikke fjerne forrige visning af et dokument."
 
 #~ msgid "Turn on all debugging messages."
 #~ msgstr "Vis alle aflusingsbeskeder."
+
+#: gedit.desktop.in:3
+msgid "gedit"
+msgstr "gedit"
+
+#: gedit.desktop.in:4
+msgid "Text editor"
+msgstr "Teksteditor"

@@ -1084,3 +1084,11 @@ msgstr "Son belge görüntüsünü silemezsiniz."
 
 #~ msgid "Can't find again. There is not a text string to search for."
 #~ msgstr "Yeniden bulunamadý. Aranacak kelime yok."
+
+#: gedit.desktop.in:3
+msgid "gedit"
+msgstr "gedit"
+
+#: gedit.desktop.in:4
+msgid "Text editor"
+msgstr "Metin editörü"

@@ -1,3 +1,9 @@
+gedit unreleased
+	
+	Translations :
+		- Use xml-i18n-tools for translating of glade and files.
+		- Updated Lithuanian... and other translations
+
 gedit 0.9.4 (Nov 24, 2000)
 
 gedit 0.9.4, codename "Bruta ciega sordomuda torpe traste testaruda"

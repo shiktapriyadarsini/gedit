@@ -1302,3 +1302,11 @@ msgstr "Remover visão do documento"
 
 #~ msgid "Column:"
 #~ msgstr "Coluna:"
+
+#: gedit.desktop.in:3
+msgid "gedit"
+msgstr "gedit"
+
+#: gedit.desktop.in:4
+msgid "Text editor"
+msgstr "Editor de texto"
