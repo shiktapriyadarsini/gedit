@@ -309,7 +309,7 @@ gedit_plugin_load (const gchar *file)
 	g_return_val_if_fail (file != NULL, NULL);
 	if (!(pd = g_new0 (PluginData, 1)))
 	{
-		g_warning ("plugin allocation error");
+		g_warning (_("plugin allocation error"));
 		return NULL;
 	}
 
@@ -346,12 +346,12 @@ gedit_plugin_load (const gchar *file)
 	}
 	if (pd->desc == NULL)
 	{
-		g_warning ("Error, the plugin did not specified a description" );
+		g_warning (_("Error, the plugin did not specified a description"));
 		goto error;
 	}
 	if (pd->long_desc == NULL)
 	{
-		g_warning ("Error, the plugin did not specified a long description" );
+		g_warning (_("Error, the plugin did not specified a long description"));
 		goto error;
 	}
 
