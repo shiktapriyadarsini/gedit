@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  gEdit 0.9.4\n"
-"POT-Creation-Date: 2000-11-24 11:22+0200\n"
+"POT-Creation-Date: 2001-01-03 09:17+0200\n"
 "PO-Revision-Date: 1999-09-20 17:36+0300\n"
 "Last-Translator: Yuri Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukraine <uk@li.org>\n"
@@ -991,6 +991,10 @@ msgstr ""
 "%sВи не зможете використовувати доповнення \"%s\" без %s. \n"
 " Ви хочете вказати нове розм╕щення %s?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "помилка отримання доповнення"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1003,6 +1007,14 @@ msgstr "Помилка, доповнення не м╕стить функц╕╖ init_plugin."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Помилка, функц╕я init_plugin повернула помилку"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specify a description"
+msgstr "Помилка, в доповнення не вказано опису"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specify a long description"
+msgstr "Помилка, в доповнення не вказано детального опису"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
