@@ -1,4 +1,17 @@
 ===========
+gedit 2.8.3
+===========
+
+Fixes
+=====
+- backport misc fixes from 2.9 (Paolo Maggi and Paolo Borelli) 
+
+New and updated translations
+============================
+- Rhys Jones (cy)
+- Artur Flinta (pl)
+
+===========
 gedit 2.8.2
 ===========
 
