@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.7.1\n"
-"POT-Creation-Date: 2001-03-25 13:51+0200\n"
+"POT-Creation-Date: 2001-04-18 13:51+0200\n"
 "PO-Revision-Date: 2000-06-08 23:34+0200\n"
 "Last-Translator: Andraz Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -20,6 +20,12 @@ msgstr "Urejevalnik besedil"
 #: gedit.desktop.in.h:2
 msgid "gedit"
 msgstr "gedit"
+
+#. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/browse/browse.c:38 plugins/email/email.c:21
+msgid "email"
+msgstr "e-po¹ta"
 
 #. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -83,6 +89,12 @@ msgstr "©estnajsti¹ko v Deseti¹ko"
 #: plugins/convert/convert.glade.h:6
 msgid "Value to be converted:"
 msgstr "Vrednost za pretvorbo:"
+
+#. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/diff/diff.c:35
+msgid "diff"
+msgstr "Program diff"
 
 #: plugins/diff/diff.c:109
 msgid "The two documents selected are the same"
@@ -449,7 +461,7 @@ msgstr "Desno"
 
 #: src/dialogs/prefs.glade.h:28
 msgid "Set limit on undo levels to :"
-msgstr "Nastavi limit razeljavitvenih stopenj na:"
+msgstr "Nastavi omejitev razeljavitvenih stopenj na:"
 
 #: src/dialogs/prefs.glade.h:29
 msgid "Set toolbar according to system settings"
@@ -642,8 +654,8 @@ msgid ""
 "\n"
 " %s \n"
 "\n"
-"Because of an unknown reason (1). Please report this Problem to "
-"submit@bugs.gnome.org"
+"Because of an unknown reason (1). Please report this Problem to submit@bugs."
+"gnome.org"
 msgstr ""
 "gedit ni uspel shraniti datoteke :\n"
 "\n"
@@ -660,8 +672,8 @@ msgid ""
 "\n"
 " %s \n"
 "\n"
-"Because of an unknown reason (2). Please report this Problem to "
-"submit@bugs.gnome.org"
+"Because of an unknown reason (2). Please report this Problem to submit@bugs."
+"gnome.org"
 msgstr ""
 "gedit ni uspel shraniti datoteke :\n"
 "\n"
@@ -1090,15 +1102,15 @@ msgstr "Ne morete razveljaviti neimenovanega dokumenta."
 #~ msgid ""
 #~ "Hello Dear Translator :\n"
 #~ "This is the unstable branch of gedit. \n"
-#~ "I think you should be translating the gedit-1-0 branch. To get it from cvs "
-#~ "type : \n"
+#~ "I think you should be translating the gedit-1-0 branch. To get it from "
+#~ "cvs type : \n"
 #~ "cvs -z3 co -r gedit-1-0 gedit\n"
 #~ "Thank you. Chema"
 #~ msgstr ""
 #~ "Hello Dear Translator :\n"
 #~ "This is the unstable branch of gedit. \n"
-#~ "I think you should be translating the gedit-1-0 branch. To get it from cvs "
-#~ "type : \n"
+#~ "I think you should be translating the gedit-1-0 branch. To get it from "
+#~ "cvs type : \n"
 #~ "cvs -z3 co -r gedit-1-0 gedit\n"
 #~ "Thank you. Chema"
 
@@ -1119,7 +1131,8 @@ msgstr "Ne morete razveljaviti neimenovanega dokumenta."
 
 #~ msgid "Get file info like characters, lines, words & paragraphs count."
 #~ msgstr ""
-#~ "Izpi¹e podatke o datoteki kot so ¹tevilo znakov, vrstic, besed in odstavkov."
+#~ "Izpi¹e podatke o datoteki kot so ¹tevilo znakov, vrstic, besed in "
+#~ "odstavkov."
 
 #~ msgid "Can't find again. There is not a text string to search for."
 #~ msgstr "Ne morem najti znova. Ni besedila, ki naj ga i¹èem."
@@ -1188,9 +1201,6 @@ msgstr "Ne morete razveljaviti neimenovanega dokumenta."
 
 #~ msgid "Calculate Diff"
 #~ msgstr "Izraèunaj Diff"
-
-#~ msgid "email"
-#~ msgstr "e-po¹ta"
 
 #~ msgid "With special thanks to:"
 #~ msgstr "S posebnimi zahvalami:"
