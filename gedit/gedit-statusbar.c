@@ -131,6 +131,14 @@ gedit_statusbar_set_overwrite (GeditStatusbar *statusbar, gboolean overwrite)
       	g_free (msg);
 }
 
+void
+gedit_statusbar_clear_overwrite (GeditStatusbar *statusbar)
+{
+	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
+
+	gtk_statusbar_pop (GTK_STATUSBAR (statusbar->priv->overwrite_mode_statusbar), 0); 
+}
+
 /**
  * gedit_statusbar_cursor_position:
  * @statusbar: an #GeditStatusbar

@@ -127,45 +127,45 @@ static GtkActionEntry gedit_menu_entries[] =
 
 	/* File menu */
 	{ "FileNew", GTK_STOCK_NEW, N_("_New"), "<control>N",
-	  N_("Create a new document"), G_CALLBACK (gedit_cmd_file_new) },
+	  N_("Create a new document"), /* G_CALLBACK (gedit_cmd_file_new) */ NULL },
 	{ "FileOpen", GTK_STOCK_OPEN, N_("_Open..."), "<control>O",
-	  N_("Open a file"), G_CALLBACK (gedit_cmd_file_open) },
+	  N_("Open a file"), /* G_CALLBACK (gedit_cmd_file_open)*/ NULL },
 	{ "FileOpenURI", NULL, N_("Open _Location..."), "<control>L",
-	  N_("Open a file from a specified location"), G_CALLBACK (gedit_cmd_file_open_uri) },
+	  N_("Open a file from a specified location"), /* G_CALLBACK (gedit_cmd_file_open_uri)*/ NULL },
 	{ "FileSave", GTK_STOCK_SAVE, N_("Save"), "<control>S",
-	  N_("Save the current file"), G_CALLBACK (gedit_cmd_file_save) },
+	  N_("Save the current file"), /* G_CALLBACK (gedit_cmd_file_save) */ NULL},
 	{ "FileSaveAs", GTK_STOCK_SAVE_AS, N_("Save _As..."), "<shift><control>S",
-	  N_("Save the current file with a different name"), G_CALLBACK (gedit_cmd_file_save_as) },
+	  N_("Save the current file with a different name"), /* G_CALLBACK (gedit_cmd_file_save_as)*/ NULL },
 	{ "FileRevert", GTK_STOCK_REVERT_TO_SAVED, N_("_Revert"), NULL,
-	  N_("Revert to a saved version of the file"), G_CALLBACK (gedit_cmd_file_revert) },
+	  N_("Revert to a saved version of the file"), /* G_CALLBACK (gedit_cmd_file_revert)*/ NULL },
 	{ "FilePageSetup", NULL, N_("Page Set_up..."), NULL,
-	  N_("Setup the page settings"), G_CALLBACK (gedit_cmd_file_page_setup) },
+	  N_("Setup the page settings"), /* G_CALLBACK (gedit_cmd_file_page_setup) */ NULL},
 	{ "FilePrintPreview", GTK_STOCK_PRINT_PREVIEW, N_("Print Previe_w"),"<control><shift>P",
-	  N_("Print preview"), G_CALLBACK (gedit_cmd_file_print_preview) },
+	  N_("Print preview"), /* G_CALLBACK (window_cmd_file_print_preview) */ NULL },
 	 { "FilePrint", GTK_STOCK_PRINT, N_("_Print..."), "<control>P",
-	  N_("Print the current page"), G_CALLBACK (gedit_cmd_file_print) },
+	  N_("Print the current page"), /* G_CALLBACK (window_cmd_file_print) */ NULL},
 	{ "FileClose", GTK_STOCK_CLOSE, N_("_Close"), "<control>W",
-	  N_("Close the current file"), G_CALLBACK (gedit_cmd_file_close) },
+	  N_("Close the current file"), /* G_CALLBACK (window_cmd_file_close_window) */ NULL},
 	{ "FileQuit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
-	  N_("Quit the program"), G_CALLBACK (gedit_cmd_file_quit) },
+	  N_("Quit the program"), /* G_CALLBACK (window_cmd_file_quit) */ NULL},
 
 	/* Edit menu */
 	{ "EditUndo", GTK_STOCK_UNDO, N_("_Undo"), "<control>Z",
-	  N_("Undo the last action"), G_CALLBACK (gedit_cmd_edit_undo) },
+	  N_("Undo the last action"), /* G_CALLBACK (window_cmd_edit_undo) */ NULL},
 	{ "EditRedo", GTK_STOCK_REDO, N_("_Redo"), "<shift><control>Z",
-	  N_("Redo the last undone action"), G_CALLBACK (gedit_cmd_edit_redo) },
+	  N_("Redo the last undone action"), /* G_CALLBACK (window_cmd_edit_redo) */ NULL},
 	{ "EditCut", GTK_STOCK_CUT, N_("Cu_t"), "<control>X",
-	  N_("Cut the selection"), G_CALLBACK (gedit_cmd_edit_cut) },
+	  N_("Cut the selection"), NULL},
 	{ "EditCopy", GTK_STOCK_COPY, N_("_Copy"), "<control>C",
-	  N_("Copy the selection"), G_CALLBACK (gedit_cmd_edit_copy) },
+	  N_("Copy the selection"), NULL},
 	{ "EditPaste", GTK_STOCK_PASTE, N_("_Paste"), "<control>V",
-	  N_("Paste the clipboard"), G_CALLBACK (gedit_cmd_edit_paste) },
+	  N_("Paste the clipboard"), NULL},
 	{ "EditDelete", GTK_STOCK_DELETE, N_("_Delete"), NULL,
-	  N_("Delete the selected text"), G_CALLBACK (gedit_cmd_edit_delete) },
+	  N_("Delete the selected text"), NULL},
 	{ "EditSelectAll", NULL, N_("Select _All"), "<control>A",
-	  N_("Select the entire document"), G_CALLBACK (gedit_cmd_edit_select_all) },
+	  N_("Select the entire document"), NULL},
 	{ "EditPreferences", GTK_STOCK_PREFERENCES, N_("Pr_eferences"), NULL,
-	  N_("Configure the application"), G_CALLBACK (gedit_cmd_edit_preferences) },
+	  N_("Configure the application"), NULL},
 
 	/* View menu */
 	{ "ViewToolbar", NULL, N_("_Toolbar"), NULL,
@@ -177,21 +177,21 @@ static GtkActionEntry gedit_menu_entries[] =
 
 	/* Search menu */
 	{ "SearchFind", GTK_STOCK_FIND, N_("_Find..."), "<control>F",
-	  N_("Search for text"), G_CALLBACK (gedit_cmd_search_find) },
+	  N_("Search for text"), NULL},
 	{ "SearchFindNext", NULL, N_("Find Ne_xt"), "<control>G",
-	  N_("Search forwards for the same text"), G_CALLBACK (gedit_cmd_search_find_next) },
+	  N_("Search forwards for the same text"), NULL},
 	{ "SearchFindPrevious", NULL, N_("Find Pre_vious"), "<shift><control>G",
-	  N_("Search backwards for the same text"), G_CALLBACK (gedit_cmd_search_find_prev) },
+	  N_("Search backwards for the same text"), NULL},
 	{ "SearchReplace", GTK_STOCK_FIND_AND_REPLACE, N_("_Replace..."), "<control>R",
-	  N_("Search for and replace text"), G_CALLBACK (gedit_cmd_search_replace) },
+	  N_("Search for and replace text"), NULL},
 	{ "SearchGoToLine", GTK_STOCK_JUMP_TO, N_("Go to _Line..."), "<control>I",
-	  N_("Go to a specific line"), G_CALLBACK (gedit_cmd_search_goto_line) },
+	  N_("Go to a specific line"), NULL},
 
 	/* Help menu */
 	{"HelpContents", GTK_STOCK_HELP, N_("_Contents"), "F1",
-	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents) },
+	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents)},
 	{ "HelpAbout", GTK_STOCK_ABOUT, N_("_About"), NULL,
-	  N_("About this application"), G_CALLBACK (gedit_cmd_help_about) }
+	  N_("About this application"), G_CALLBACK (gedit_cmd_help_about)}  
 };
 
 static guint gedit_n_menu_entries = G_N_ELEMENTS (gedit_menu_entries);
@@ -434,9 +434,13 @@ update_overwrite_mode_statusbar (GtkTextView *view,
 	if (view != GTK_TEXT_VIEW (gedit_window_get_active_view (window)))
 		return;
 		
+	/* Note that we have to use !gtk_text_view_get_overwrite since we
+	   are in the in the signal handler of "toggle overwrite" that is
+	   G_SIGNAL_RUN_LAST
+	*/
 	gedit_statusbar_set_overwrite (
 			GEDIT_STATUSBAR (window->priv->statusbar),
-			gtk_text_view_get_overwrite (view));
+			!gtk_text_view_get_overwrite (view));
 }
 
 #define MAX_TITLE_LENGTH 100
@@ -575,18 +579,21 @@ notebook_switch_page (GtkNotebook     *book,
 		      gint             page_num, 
 		      GeditWindow     *window)
 {
+	GeditView *view;
 	window->priv->active_tab = GEDIT_TAB (
 					gtk_notebook_get_nth_page (book, 
 								   page_num));
 
 	set_title (window);
 	
+	view = gedit_tab_get_view (window->priv->active_tab);
+	
 	update_cursor_position_statusbar (
 			GTK_TEXT_BUFFER (gedit_tab_get_document (window->priv->active_tab)),
 			window);
-	update_overwrite_mode_statusbar (
-			GTK_TEXT_VIEW (gedit_tab_get_view (window->priv->active_tab)),
-			window);
+	gedit_statusbar_set_overwrite (
+			GEDIT_STATUSBAR (window->priv->statusbar),
+			gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
 }
 
 static void
@@ -664,6 +671,9 @@ notebook_tab_removed (GeditNotebook *notebook,
 				GEDIT_STATUSBAR (window->priv->statusbar),
 				-1,
 				-1);
+				
+		gedit_statusbar_clear_overwrite (
+				GEDIT_STATUSBAR (window->priv->statusbar));				
 	}
 }
 

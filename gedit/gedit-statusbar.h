@@ -73,6 +73,8 @@ void		 gedit_statusbar_set_cursor_position	(GeditStatusbar *statusbar,
 							 gint            line,
 							 gint            col);
 
+void		 gedit_statusbar_clear_overwrite 	(GeditStatusbar *statusbar);
+
 GtkWidget	*gedit_statusbar_get_progress		(GeditStatusbar *statusbar);
 
 void		 gedit_statusbar_flash_message		(GeditStatusbar *statusbar,
