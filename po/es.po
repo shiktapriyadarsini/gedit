@@ -1,3 +1,4 @@
+# translation of gedit.gnome-2-2.es.po to Spanish
 # Gedit's Spanish translation
 # Copyright © 1999-2003 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
@@ -6,19 +7,20 @@
 # Chema Celorio <chema@celorio.com>, 2000.
 # QA by <asan@euskalnet.net>, 2001.
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com>,2002-2003.
+# Francisco Javier F. Serrador <serrador@arrakis.es>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 1.2.0\n"
+"Project-Id-Version: gedit.gnome-2-2.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-03-04 12:11-0300\n"
-"Last-Translator: Pablo Gonzalo del Campo <pablodc@bigfoot.com>\n"
+"POT-Creation-Date: 2003-07-07 11:32+0200\n"
+"PO-Revision-Date: 2003-07-07 17:42+0200\n"
+"Last-Translator: Francisco Javier F. Serrador <serrador@arrakis.es>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.1\n"
+"X-Generator: KBabel 1.0.1\n"
 
 #: data/GNOME_Gedit.server.in.h:1
 msgid "gedit application"
@@ -246,8 +248,7 @@ msgstr ""
 "mismo modo en que son mencionados aquí."
 
 #: data/gedit.schemas.in.h:36
-msgid ""
-"Specifies the font to use for a document's body when printing documents."
+msgid "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Especifica la tipografía a utilizar para el cuerpo del documento cuando se "
 "imprimen archivos."
@@ -390,16 +391,14 @@ msgstr "¿Debería gedit activar la indentación automática?"
 
 #: data/gedit.schemas.in.h:55
 msgid "Whether gedit should include a document header when printing documents."
-msgstr ""
-"¿Debería gedit incluir una cabecera del documento al imprimir archivos?"
+msgstr "¿Debería gedit incluir una cabecera del documento al imprimir archivos?"
 
 #: data/gedit.schemas.in.h:56
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "¿Debería gedit insertar espacios en ves de tabuladores?."
 
 #: data/gedit.schemas.in.h:57
-msgid ""
-"Whether the status bar at the bottom of editing windows should be visible."
+msgid "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "¿Debería la barra de estado de la parte inferior del área de edición "
 "encontrarse visible?"
@@ -1271,8 +1270,7 @@ msgstr "_Comprobar ortografía"
 
 #: plugins/spell/spell.c:54
 msgid "Check the current document for incorrect spelling"
-msgstr ""
-"Comprueba la ortografía del documento actual buscando palabras incorrectas"
+msgstr "Comprueba la ortografía del documento actual buscando palabras incorrectas"
 
 #: plugins/spell/spell.c:56
 msgid "_Autocheck Spelling"
@@ -1472,8 +1470,7 @@ msgstr "Categorías"
 
 #: src/dialogs/gedit-preferences-dialog.c:839
 msgid "Push this button to select the font to be used by the editor"
-msgstr ""
-"Pulse este botón para seleccionar la tipografía que utilizará el editor"
+msgstr "Pulse este botón para seleccionar la tipografía que utilizará el editor"
 
 #: src/dialogs/gedit-preferences-dialog.c:842
 msgid "Push this button to configure text color"
@@ -1527,8 +1524,7 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Indentar automáticamente</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
 msgid "<span weight=\"bold\" size=\"x-large\">Font &amp; Colors</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"x-large\">Tipografías &amp; colores</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Tipografías &amp; colores</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:5
 msgid "<span weight=\"bold\" size=\"x-large\">Fonts</span>"
@@ -1832,8 +1828,7 @@ msgstr "Tamaño de la tipografía para la etiqueta"
 
 #: src/dialogs/gnome-print-font-picker.c:228
 msgid "Font size for label in font info mode"
-msgstr ""
-"Tamaño de la tipografía para la etiqueta en el modo información de tipografía"
+msgstr "Tamaño de la tipografía para la etiqueta en el modo información de tipografía"
 
 #: src/dialogs/gnome-print-font-picker.c:238
 msgid "Show size"
@@ -2193,8 +2188,7 @@ msgstr "Error: imposible desactivar la extensión «%s»"
 #: src/gedit-plugins-engine.c:683
 #, c-format
 msgid "Error, impossible to update ui of the plugin '%s'"
-msgstr ""
-"Error: imposible actualizar la interfaz de usuario de la extensión «%s»"
+msgstr "Error: imposible actualizar la interfaz de usuario de la extensión «%s»"
 
 #: src/gedit-prefs-manager.c:339
 msgid "Cannot initialize preferences manager."
@@ -2490,9 +2484,8 @@ msgid "Show _Overwrite Mode"
 msgstr "Mostrar m_odo de sobreescritura"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Mostrar únicamente iconos en la barra"
+msgstr "Mostrar tanto los iconos como el texto en la barra"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2503,9 +2496,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Mostrar el modo de sobreescritura en la barra de estado"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Mostrar únicamente iconos en la barra"
+msgstr "Mostrar el texto priorizando sobre los iconos en la barra"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
@@ -2658,8 +2650,7 @@ msgstr "No se ha podido abrir el archivo «%s» porque contiene datos corruptos.
 
 #: src/gedit-utils.c:815
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "No se ha podido abrir el archivo «%s» porque gedit no puede manejar %s "
 "direcciones."
@@ -2671,8 +2662,7 @@ msgstr "No se ha podido abrir el archivo «%s»"
 
 #: src/gedit-utils.c:831
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because it contains data in an invalid format."
+msgid "Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 "No se ha podido abrir el archivo «%s» porque contiene datos en un formato "
 "inválido."
@@ -2839,8 +2829,7 @@ msgstr ""
 
 #: src/gedit-utils.c:1101
 #, c-format
-msgid ""
-"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "No se ha podido recuperar el archivo «%s» porque gedit no puede manejar %s "
 "direcciones."
@@ -2867,8 +2856,7 @@ msgstr "No se ha podido recuperar el archivo «%s» porque es demasiado grande."
 #: src/gedit-utils.c:1131
 #, c-format
 msgid "Could not revert the file \"%s\" because access was denied."
-msgstr ""
-"No se ha podido recuperar el archivo «%s» porque el acceso fue denegado."
+msgstr "No se ha podido recuperar el archivo «%s» porque el acceso fue denegado."
 
 #: src/gedit-utils.c:1138
 #, c-format
@@ -3689,3 +3677,4 @@ msgstr " (Unicode inválido)"
 
 #~ msgid "The GNOME text editor"
 #~ msgstr "El editor de texto de GNOME"
+
