@@ -1,3 +1,8 @@
+2004-01-16  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* gedit/gedit-document.c: (gedit_document_load):
+	64-bits fixes
+
 2003-10-16  Paolo Maggi  <paolo.maggi@polito.it>
 
 	* configure.in: bump version to 2.4.1, updated requirements

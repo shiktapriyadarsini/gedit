@@ -725,7 +725,7 @@ gedit_document_load (GeditDocument        *doc,
 {
 	char* file_contents;
 	GnomeVFSResult res;
-   	gsize file_size;
+   	int file_size;
 	GtkTextIter iter, end;
 	
 	gedit_debug (DEBUG_DOCUMENT, "File to load: %s", uri);
