@@ -1,5 +1,12 @@
 2002-11-15  James Willcox  <jwillcox@gnome.org>
 
+	* gedit-document.c: (gedit_document_save_as_real):
+
+	Use umask(2) to calculate permissions for new files.
+	Fixes #93303, backported from HEAD.  Original patch by Matt Brubeck.
+
+2002-11-15  James Willcox  <jwillcox@gnome.org>
+
 	* bonobo-mdi.c: (toplevel_focus), (app_close_book):
 
 	Fixes #92376, backported from HEAD.  Original patch by Paolo.

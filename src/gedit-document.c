@@ -1302,7 +1302,9 @@ gedit_document_save_as_real (GeditDocument* doc, const gchar *uri,
 		create_backup_copy = FALSE;
 
 		/* Use default permissions */
-		st.st_mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+		saved_umask = umask (0);
+		st.st_mode = 0666 & ~saved_umask;
+		umask (saved_umask);
 		st.st_uid = getuid ();
 
 		result = stat (dirname, &dir_st);
