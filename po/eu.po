@@ -1,0 +1,1428 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gedit 0.99.0\n"
+"POT-Creation-Date: 2002-01-02 15:28+0100\n"
+"PO-Revision-Date: 2001-05-25 13:35+0200\n"
+"Last-Translator: Josu Waliño <josu@elhuyar.com>\n"
+"Language-Team: Euskara\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gedit.desktop.in.h:1
+msgid "Text editor"
+msgstr ""
+
+#: gedit.desktop.in.h:2
+msgid "gedit"
+msgstr ""
+
+#: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
+msgid "ASCII table"
+msgstr ""
+
+#: plugins/ASCII/ascii.c:270
+msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
+msgstr ""
+
+#: plugins/ASCII/asciitable.glade.h:1
+msgid "Char"
+msgstr ""
+
+#: plugins/ASCII/asciitable.glade.h:2
+msgid "Dec#"
+msgstr ""
+
+#: plugins/ASCII/asciitable.glade.h:3
+msgid "Hex#"
+msgstr ""
+
+#: plugins/ASCII/asciitable.glade.h:4
+msgid ""
+"If you wish to insert any of the characters in to the active \n"
+"document, select the character and click the \"Insert Char\" \n"
+"button or double click the character in the table."
+msgstr ""
+
+#: plugins/ASCII/asciitable.glade.h:7
+#, fuzzy
+msgid "Insert char"
+msgstr "Txertatu ordua"
+
+#: plugins/ASCII/asciitable.glade.h:8
+msgid "Name"
+msgstr ""
+
+#: plugins/ASCII/asciitable.glade.h:9
+msgid "gedit: ASCII table"
+msgstr ""
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/browse/browse.c:38 plugins/browse/browse.c:250
+msgid "Browse"
+msgstr "Arakatu"
+
+#: plugins/browse/browse.c:251 plugins/browse/browse.c:252
+msgid "Web browse plugin"
+msgstr "Web arakatzailearen plugin-a"
+
+#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
+#: plugins/email/email.glade.h:1
+msgid " _Change... "
+msgstr " _Aldatu... "
+
+#: plugins/browse/browse.glade.h:2
+msgid "Enter the _URL to browse for:"
+msgstr "Sartu _URLa hau arakatzeko:"
+
+#: plugins/browse/browse.glade.h:3
+msgid "Lynx found at: "
+msgstr "Lynx hemen aurkitu da: "
+
+#: plugins/browse/browse.glade.h:4
+msgid "gedit: Web Browse plugin"
+msgstr "gedit: Web arakatzailearen plugin-a"
+
+#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
+#: plugins/email/email.glade.h:14
+msgid "location"
+msgstr "kokalekua"
+
+#: plugins/convert/convert.c:179
+msgid "Convert"
+msgstr "Bihurtu"
+
+#: plugins/convert/convert.c:180 plugins/convert/convert.c:181
+msgid "Number Converter"
+msgstr "Zenbaki-bihurgailua"
+
+#: plugins/convert/convert.glade.h:1
+msgid " Decimal to _Hex "
+msgstr " Hamartarra _hamaseitar  "
+
+#: plugins/convert/convert.glade.h:2
+msgid " Decimal to _Octal "
+msgstr " Hamartarra _zortzitar "
+
+#: plugins/convert/convert.glade.h:3
+msgid " Hex to Decima_l "
+msgstr " Hamaseitarra h_amartar "
+
+#: plugins/convert/convert.glade.h:4
+msgid "_Converted value:"
+msgstr "_Bihurtutako balioa:"
+
+#: plugins/convert/convert.glade.h:5
+msgid "_Value to be converted:"
+msgstr "_Bihurtu behar den balioa:"
+
+#: plugins/convert/convert.glade.h:6
+msgid "gedit: Number Converter plugin"
+msgstr "gedit: Zenbaki-bihurgailuaren plugin-a"
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/diff/diff.c:36
+msgid "diff"
+msgstr "diff"
+
+#: plugins/diff/diff.c:126
+msgid "The two documents you selected are the same."
+msgstr "Hautatu dituzun bi dokumentuak berdinak dira."
+
+#: plugins/diff/diff.c:132
+msgid ""
+"The \"first\" file you selected does not exist.\n"
+"\n"
+"Please provide a valid file."
+msgstr ""
+"Hautatu duzun \"Lehenengo\" fitxategia ez dago.\n"
+"\n"
+"Baliozko fitxategia eman."
+
+#: plugins/diff/diff.c:139
+msgid ""
+"The \"second\" file you selected does not exist.\n"
+"\n"
+"Please provide a valid file."
+msgstr ""
+"Hautatu duzun \"bigarren\" fitxategia ez dago.\n"
+"\n"
+"Baliozko fitxategia eman."
+
+#: plugins/diff/diff.c:150
+msgid "The \"first\" document contains no text."
+msgstr "\"Lehenengo\" dokumentuak ez du testurik."
+
+#: plugins/diff/diff.c:162
+msgid "The \"second\" document contains no text."
+msgstr "\"Bigarren\" dokumentuak ez du testurik."
+
+#. FIXME: do better error reporting ... . Chema
+#: plugins/diff/diff.c:171
+msgid ""
+"gedit could not create a temp file.\n"
+"\n"
+msgstr ""
+"gedit-ek ezin izan du temp fitxategia sortu.\n"
+"\n"
+
+#: plugins/diff/diff.c:295 plugins/email/email.c:229 src/document.c:669
+#, c-format
+msgid "Untitled %i"
+msgstr "%i izengabea"
+
+#: plugins/diff/diff.c:496
+msgid "Diff"
+msgstr "Diff"
+
+#: plugins/diff/diff.c:497
+msgid "Makes a diff file from two documents or files"
+msgstr "Bi dokumentu edo fitxategietatik diff fitxategia sortzen du "
+
+#: plugins/diff/diff.c:498
+msgid ""
+"Makes a diff file from two documents or files on disk\n"
+"For more info on diff, type \"man diff\" in a shell prompt\n"
+msgstr ""
+"Bi dokumentu edo fitxategietatik diff fitxategia sortzen du diskoan\n"
+"Diff-i buruz informazio gehiago lortzeko, idatzi \"man diff\" shell "
+"gonbitean \n"
+
+#: plugins/diff/diff.glade.h:2
+msgid "Choose the files to compare"
+msgstr "Aukeratu fitxategiak konparatzeko"
+
+#: plugins/diff/diff.glade.h:3
+msgid "Diff found at: "
+msgstr "Diff hemen aurkitu da: "
+
+#: plugins/diff/diff.glade.h:4
+msgid "First"
+msgstr "Lehena"
+
+#: plugins/diff/diff.glade.h:5
+msgid "From a file on disk"
+msgstr "Diskoko fitxategi honetatik"
+
+#: plugins/diff/diff.glade.h:6
+msgid "From document"
+msgstr "Dokumentu honetatik"
+
+#: plugins/diff/diff.glade.h:7
+msgid "Second"
+msgstr "Bigarrena"
+
+#: plugins/diff/diff.glade.h:8
+msgid "Select the \"first\" file..."
+msgstr "Hautatu \"lehenengo\" fitxategia..."
+
+#: plugins/diff/diff.glade.h:9
+msgid "Select the \"second\" file..."
+msgstr "Hautatu \"bigarren\" fitxategia..."
+
+#: plugins/diff/diff.glade.h:10
+msgid "Use the _unified output format (-u option)"
+msgstr "Erabili _irteera formatu bateratua (-u aukera)"
+
+#: plugins/diff/diff.glade.h:11
+msgid "gedit: Diff plugin"
+msgstr "gedit: Diff-en plugin-a"
+
+#: plugins/docinfo/docinfo.c:214
+msgid ""
+"No document exists.\n"
+"The Document Info plugin is going be closed."
+msgstr ""
+
+#: plugins/docinfo/docinfo.c:369
+#, fuzzy
+msgid "Document info"
+msgstr "Dokumentuak"
+
+#: plugins/docinfo/docinfo.c:370
+#, fuzzy
+msgid "Get info on current document."
+msgstr "Uneko dokumentua posta elektronikoz bidali "
+
+#: plugins/docinfo/docinfo.c:371
+msgid ""
+"This plugin displays a pop-up dialog which contains basic information on "
+"current document."
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:1
+msgid "0"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:2
+msgid "Characters (no spaces)"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:3
+msgid "Characters (with spaces)"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:4
+msgid "Current column"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:5
+msgid "Current line"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:6
+#, fuzzy
+msgid "File Name"
+msgstr "Fitxategi-izena:"
+
+#: plugins/docinfo/docinfo.glade.h:7
+#, fuzzy
+msgid "Lines"
+msgstr "_lerroz behin"
+
+#: plugins/docinfo/docinfo.glade.h:8
+msgid "Paragraphs"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:9
+msgid "Update"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:10
+msgid "Words"
+msgstr ""
+
+#: plugins/docinfo/docinfo.glade.h:11
+#, fuzzy
+msgid "gedit: Document Info plugin"
+msgstr "gedit: Diff-en plugin-a"
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/email/email.c:22
+msgid "email"
+msgstr "posta elektronikoa"
+
+#: plugins/email/email.c:75
+#, c-format
+msgid "Executing command: %s"
+msgstr "Komando hau exekutatzen: %s"
+
+#: plugins/email/email.c:275
+msgid "Email"
+msgstr "Posta elektronikoa"
+
+#: plugins/email/email.c:276
+msgid "Email the current document"
+msgstr "Uneko dokumentua posta elektronikoz bidali "
+
+#: plugins/email/email.c:277
+msgid ""
+"Email the current document to a specified email address\n"
+"gedit searches for sendmail to use this plugin."
+msgstr ""
+"Uneko dokumentua posta elektronikoz bidali zehaztutako helbide "
+"elektronikobatera\n"
+"gedit sendmail bilatzen ari da plugin hau erabiltzeko."
+
+#: plugins/email/email.glade.h:2
+msgid "Change..."
+msgstr "Aldatu..."
+
+#: plugins/email/email.glade.h:3
+msgid "F_rom:"
+msgstr "_Nork:"
+
+#: plugins/email/email.glade.h:4
+msgid "File to use as body of message: "
+msgstr "Mezuaren gorputz gisa erabiltzeko fitxategia: "
+
+#: plugins/email/email.glade.h:5
+msgid "From:"
+msgstr "Nork:"
+
+#: plugins/email/email.glade.h:6
+msgid "Sendmail found at:"
+msgstr "Sendmail hemen aurkitu da:"
+
+#: plugins/email/email.glade.h:7
+msgid "Subject:"
+msgstr "Gaia:"
+
+#: plugins/email/email.glade.h:8
+msgid "To:"
+msgstr "Nori:"
+
+#: plugins/email/email.glade.h:9
+msgid "_Subject:"
+msgstr "_Gaia:"
+
+#: plugins/email/email.glade.h:10
+msgid "_To:"
+msgstr "_Nori:"
+
+#: plugins/email/email.glade.h:11
+msgid "filename"
+msgstr "fitxategi-izena"
+
+#: plugins/email/email.glade.h:12
+msgid "gedit: E-mail plugin"
+msgstr "gedit: posta elektronikoaren plugin-a"
+
+#: plugins/email/email.glade.h:13
+msgid "gedit: e-mail plugin"
+msgstr "gedit: posta elektronikoaren plugin-a"
+
+#: plugins/reverse/reverse.c:69
+msgid "Reverse"
+msgstr "Alderantzikatu"
+
+#: plugins/reverse/reverse.c:70 plugins/reverse/reverse.c:71
+msgid "Reverse text"
+msgstr "Alderantzikatu testua"
+
+#: plugins/sample/sample.c:69
+msgid "Hello World"
+msgstr "Kaixo guztiei"
+
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
+msgid "Sample 'hello world' plugin."
+msgstr "Mostrako 'kaixo guztiei' plugin-a."
+
+#: plugins/shell_output/shell_output.c:64
+msgid ""
+"The shell command entry is empty.\n"
+"\n"
+"Please, insert a valid shell command."
+msgstr ""
+"Shell komandoaren sarrera hutsik dago.\n"
+"\n"
+"Sartu baliozko shell komandoa."
+
+#: plugins/shell_output/shell_output.c:213
+msgid "Shell Output"
+msgstr "Shell irteera"
+
+#: plugins/shell_output/shell_output.c:214
+#: plugins/shell_output/shell_output.c:215
+msgid "Insert the shell output in the document"
+msgstr "Txertatu shell irteera dokumentuan"
+
+#: plugins/shell_output/shell_output.glade.h:1
+msgid "Select the working directory..."
+msgstr "Hautatu oraingo direktorioa..."
+
+#: plugins/shell_output/shell_output.glade.h:2
+msgid "Shell _command:"
+msgstr "Shell _komandoa:"
+
+#: plugins/shell_output/shell_output.glade.h:3
+msgid "Specify the working directory and the command you want to run."
+msgstr "Zehaztu oraingo direktorioa eta exekutatu nahi duzun komandoa."
+
+#: plugins/shell_output/shell_output.glade.h:4
+msgid "_Working directory:"
+msgstr "_Oraingo direktorioa:"
+
+#: plugins/shell_output/shell_output.glade.h:5
+msgid "gedit: Shell Output plugin"
+msgstr "gedit: Shell irteeraren plugin-a"
+
+#: plugins/sort/sort.c:192
+msgid "Sort"
+msgstr ""
+
+#: plugins/sort/sort.c:193
+#, fuzzy
+msgid "Sort a document."
+msgstr "Dokumentu berria sortzen du"
+
+#: plugins/sort/sort.c:194
+#, fuzzy
+msgid "Sort a document or selected text."
+msgstr "Hautatu dituzun bi dokumentuak berdinak dira."
+
+#: plugins/sort/sort.glade.h:1
+msgid "1"
+msgstr ""
+
+#: plugins/sort/sort.glade.h:2
+#, fuzzy
+msgid "Case Sensitive"
+msgstr "_Maiuskulak eta minuskulak bereizten ditu"
+
+#: plugins/sort/sort.glade.h:3
+#, fuzzy
+msgid "Sort starting at column:"
+msgstr "Bilatutako katea ez da aurkitu"
+
+#: plugins/sort/sort.glade.h:4
+#, fuzzy
+msgid "gedit: Sort plugin"
+msgstr "gedit: Diff-en plugin-a"
+
+#: plugins/time/time.c:83
+msgid "Insert Time"
+msgstr "Txertatu ordua"
+
+#: plugins/time/time.c:84 plugins/time/time.c:85
+msgid "Inserts the current date and time"
+msgstr "Uneko data eta ordua txertatzen ditu"
+
+#: src/dialogs/about.glade.h:1
+msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+msgstr "(C) 1998, 1999, 2000 Alex Roberts eta Evan Lawrence"
+
+#: src/dialogs/about.glade.h:2
+msgid "gedit is a small and lightweight text editor for GNOME."
+msgstr "gedit GNOMEren testu-editore txikia eta sinplea da."
+
+#: src/dialogs/dialog-plugins.c:87
+#, c-format
+msgid "To use the %s plugin, you need to specify a location for \"%s\"."
+msgstr "%s plugin-a erabiltzeko, \"%s\"(r)en kokalekua zehaztu behar duzu."
+
+#. glade won't let me set the title of the propertybox
+#: src/dialogs/dialog-prefs.c:578
+msgid "gedit: Preferences"
+msgstr "gedit: Hobespenak"
+
+#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
+msgid "Replace"
+msgstr "Ordeztu"
+
+#: src/dialogs/dialog-replace.c:135 src/menus.c:298
+msgid "Find"
+msgstr "Bilatu"
+
+#: src/dialogs/dialog-replace.c:332
+msgid "Search string not found"
+msgstr "Bilatutako katea ez da aurkitu"
+
+#: src/dialogs/dialog-replace.c:337
+msgid "Search string not found."
+msgstr "Bilatutako katea ez da aurkitu."
+
+#: src/dialogs/dialog-replace.c:362
+#, c-format
+msgid "Found and replaced %i occurrences."
+msgstr "%i agerraldi aurkitu eta ordezkatu dira."
+
+#: src/dialogs/dialog-replace.c:373 src/dialogs/dialog-replace.c:376
+msgid "Could not allocate the memory for the Replace all request."
+msgstr "Ezin izan da Ordezkatu eskaera guztiak aukerarentzat memoria esleitu."
+
+#: src/dialogs/dialog-uri.c:143 src/file.c:823 src/file.c:830
+#, c-format
+msgid "Loaded file %s"
+msgstr "%s fitxategia kargatuta"
+
+#: src/dialogs/goto-line.glade.h:1
+msgid "Goto Line"
+msgstr "Joan lerrora"
+
+#: src/dialogs/goto-line.glade.h:2
+msgid "Line number:"
+msgstr "Lerro-zenbakia:"
+
+#: src/dialogs/plugin-manager.glade.h:1
+msgid "Author(s):"
+msgstr "Egilea(k):"
+
+#: src/dialogs/plugin-manager.glade.h:2
+msgid "De_scription"
+msgstr "Azal_pena"
+
+#: src/dialogs/plugin-manager.glade.h:3
+msgid "De_tails"
+msgstr "_Xehetasunak"
+
+#: src/dialogs/plugin-manager.glade.h:4
+msgid "File name:"
+msgstr "Fitxategi-izena:"
+
+#: src/dialogs/plugin-manager.glade.h:5
+msgid "Plugins manager..."
+msgstr "Plugin-kudeatzailea..."
+
+#: src/dialogs/plugin-manager.glade.h:6
+msgid "Select the plugins to activate:"
+msgstr "Hautatu aktibatu behar diren plugin-ak:"
+
+#: src/dialogs/plugin-manager.glade.h:7
+msgid "_Activate all"
+msgstr "_Aktibatu guztia"
+
+#: src/dialogs/plugin-manager.glade.h:8
+msgid "_Deactivate all"
+msgstr "_Desaktibatu guztia"
+
+#: src/dialogs/prefs.glade.h:1
+msgid "Add _header"
+msgstr "Gehitu _goiburukoa"
+
+#: src/dialogs/prefs.glade.h:2
+msgid "Appearance"
+msgstr "Itxura"
+
+#: src/dialogs/prefs.glade.h:3
+msgid "Bottom"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:4
+msgid "Colors"
+msgstr "Koloreak"
+
+#: src/dialogs/prefs.glade.h:5
+#, fuzzy
+msgid "Default"
+msgstr "_Letra-tipo lehenetsia: "
+
+#: src/dialogs/prefs.glade.h:6
+msgid "Documents"
+msgstr "Dokumentuak"
+
+#: src/dialogs/prefs.glade.h:7
+msgid "Editor Behavior"
+msgstr "Editorearen jokabidea"
+
+#: src/dialogs/prefs.glade.h:8
+msgid "Enable _Auto-indent"
+msgstr "Gaitu _Koska automatikoa"
+
+#: src/dialogs/prefs.glade.h:9
+msgid "Enable word _wrapping"
+msgstr "Gaitu hitzaren _doitzea"
+
+#: src/dialogs/prefs.glade.h:10
+msgid "Fonts"
+msgstr "Letra-tipoak"
+
+#: src/dialogs/prefs.glade.h:11
+msgid "Fonts/Colors"
+msgstr "Letra tipoak/Koloreak"
+
+#: src/dialogs/prefs.glade.h:12
+msgid "General"
+msgstr "Orokorra"
+
+#: src/dialogs/prefs.glade.h:13
+msgid "Left"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:14
+msgid "MDI (Multiple Document Interface)"
+msgstr "MDI (Dokumentu anitzeko interfazea)"
+
+#: src/dialogs/prefs.glade.h:15
+msgid "Modal"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:16
+msgid "Notebook"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:17
+msgid "Notebook _tab position: "
+msgstr "Ohar-koadernoa _fitxaren kokalekua: "
+
+#: src/dialogs/prefs.glade.h:18
+msgid "Orientation"
+msgstr "Orientazioa"
+
+#: src/dialogs/prefs.glade.h:19
+msgid "Paper"
+msgstr "Papera"
+
+#: src/dialogs/prefs.glade.h:20
+msgid "Pick a Font"
+msgstr "Aukeratu letra-tipoa"
+
+#: src/dialogs/prefs.glade.h:21
+msgid "Pick a color"
+msgstr "Aukeratu kolorea"
+
+#: src/dialogs/prefs.glade.h:22
+msgid "Preferences"
+msgstr "Hobespenak"
+
+#: src/dialogs/prefs.glade.h:23
+msgid "Print line _numbers every:"
+msgstr "Inprimatu lerro-zenbakiak"
+
+#: src/dialogs/prefs.glade.h:24
+msgid "Printing"
+msgstr "Inprimatzen"
+
+#: src/dialogs/prefs.glade.h:25
+msgid "Right"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:26
+msgid "S_how statusbar"
+msgstr "_Erakutsi egoera-barra"
+
+#: src/dialogs/prefs.glade.h:27
+msgid "Set limit on _undo levels to:"
+msgstr "Ezarri muga _desegindako mailetan:"
+
+#: src/dialogs/prefs.glade.h:28
+msgid "Set toolbar according to _system settings"
+msgstr "Konfiguratu egoera-barra _sistemako ezarpenen arabera"
+
+#: src/dialogs/prefs.glade.h:29
+msgid "Set toolbar to _icons only"
+msgstr "Konfiguratu tresna-barra _ikonoen arabera bakarrik "
+
+#: src/dialogs/prefs.glade.h:30
+msgid "Set toolbar to icons with _text"
+msgstr "Konfiguratu tresna-barra _testudun ikonoen arabera"
+
+#: src/dialogs/prefs.glade.h:31
+msgid "Tab _width: "
+msgstr "Fitxaren _zabalera: "
+
+#: src/dialogs/prefs.glade.h:32
+#, fuzzy
+msgid "Top"
+msgstr "Nori:"
+
+#: src/dialogs/prefs.glade.h:33
+msgid "Toplevel"
+msgstr ""
+
+#: src/dialogs/prefs.glade.h:34 src/menus.c:276
+msgid "Undo"
+msgstr "Desegin"
+
+#: src/dialogs/prefs.glade.h:35
+msgid "_Background: "
+msgstr "_Atzeko planoa: "
+
+#: src/dialogs/prefs.glade.h:36
+msgid "_Default font: "
+msgstr "_Letra-tipo lehenetsia: "
+
+#: src/dialogs/prefs.glade.h:37
+msgid "_Foreground: "
+msgstr "A_urreko planoa: "
+
+#: src/dialogs/prefs.glade.h:38
+msgid "_Landscape"
+msgstr "_Horizontala"
+
+#: src/dialogs/prefs.glade.h:39
+msgid "_Mode: "
+msgstr "_Modua: "
+
+#: src/dialogs/prefs.glade.h:40
+msgid "_Portrait"
+msgstr "_Bertikala"
+
+#: src/dialogs/prefs.glade.h:41
+msgid "_level(s)"
+msgstr "_maila"
+
+#: src/dialogs/prefs.glade.h:42
+msgid "l_ine(s)"
+msgstr "_lerroz behin"
+
+#: src/dialogs/program.glade.h:1
+msgid "_Location to search for:"
+msgstr "_Zein kokalekutan bilatu:"
+
+#: src/dialogs/program.glade.h:2
+msgid "gedit: Browse for program location..."
+msgstr "gedit: Arakatu programaren kokalekua..."
+
+#: src/dialogs/program.glade.h:3
+msgid "gedit: Set program location..."
+msgstr "gedit: Ezarri programaren kokalekua..."
+
+#: src/dialogs/program.glade.h:4
+msgid "label"
+msgstr "etiketa"
+
+#: src/dialogs/replace.glade.h:1
+msgid "Case _sensitive"
+msgstr "_Maiuskulak eta minuskulak bereizten ditu"
+
+#: src/dialogs/replace.glade.h:2
+msgid "Find Next"
+msgstr "Bilatu hurrengoa"
+
+#: src/dialogs/replace.glade.h:4
+msgid "Replace All"
+msgstr "Ordeztu guztiak"
+
+#: src/dialogs/replace.glade.h:5
+msgid "Search from the _beginning of the document"
+msgstr "Bilatu dokumentuaren _hasieratik"
+
+#: src/dialogs/replace.glade.h:6
+msgid "Search from the _cursor position"
+msgstr "Bilatu kurtsorearen kokalekutik"
+
+#: src/dialogs/replace.glade.h:7
+msgid "_Replace with: "
+msgstr "_Ordeztu honekin: "
+
+#: src/dialogs/replace.glade.h:8
+msgid "_Search for: "
+msgstr "Bila_tu: "
+
+#: src/dialogs/uri.glade.h:1
+msgid "Enter the location (URI) of the file you would like to open:"
+msgstr "Idatzi ireki nahi duzun fitxategiaren kokalekua (URI):"
+
+#: src/dialogs/uri.glade.h:2 src/menus.c:259
+msgid "Open"
+msgstr "Ireki"
+
+#: src/dialogs/uri.glade.h:3
+msgid "Open from URI"
+msgstr "Ireki URItik"
+
+#: src/document.c:267 src/document.c:271
+msgid "RO - "
+msgstr "RO - "
+
+#: src/document.c:295
+#, c-format
+msgid "%s %d"
+msgstr "%s %d"
+
+#: src/document.c:295 src/document.c:299
+msgid "Untitled"
+msgstr "Izengabea"
+
+#: src/document.c:299
+#, c-format
+msgid "%s %d*"
+msgstr "%s %d*"
+
+#: src/document.c:477
+#, fuzzy, c-format
+msgid "``%s'' has been modified.  Do you want to save the changes?"
+msgstr "``%s'' aldatu egin da.  Gorde nahi duzu?"
+
+#: src/document.c:679 src/document.c:687
+msgid "(modified)"
+msgstr "(aldatua)"
+
+#: src/document.c:681 src/document.c:689
+msgid "(readonly)"
+msgstr "(irakurtzeko soilik)"
+
+#: src/document.c:740 src/document.c:780
+msgid "This file does not end with a valid extension\n"
+msgstr "Fitxategi honen luzapena ez da baliozkoa\n"
+
+#: src/document.c:788
+#, c-format
+msgid "The file %s was not found."
+msgstr "%s fitxategia ez da aurkitu. "
+
+#: src/file.c:226
+#, c-format
+msgid ""
+"An error was encountered while opening the file \"%s\".\n"
+"Please make sure the file exists."
+msgstr ""
+"Errorea gertatu da \"%s\" fitxategia irekitzean.\n"
+"Ziurtatu fitxategia lehendik badagoela."
+
+#: src/file.c:245
+#, c-format
+msgid ""
+"An error was encountered while opening the file \"%s\".\n"
+"Could not allocate the required memory."
+msgstr ""
+"Errorea gertatu da \"%s\" fitxategia irekitzean.\n"
+"Ezin izan da behar den memoria esleitu."
+
+#: src/file.c:257
+#, c-format
+msgid ""
+"An error was encountered while reading the file: \n"
+"\n"
+"%s\n"
+"\n"
+"Make sure that you have permissions for opening the file. "
+msgstr ""
+"Errorea gertatu da fitxategi hau irakurtzean: \n"
+"\n"
+"%s\n"
+"\n"
+"Ziurtatu fitxategia irekitzeko baimenak badituzula. "
+
+#: src/file.c:277
+#, c-format
+msgid ""
+"An error was encountered while reading the file: \n"
+"\n"
+"%s"
+msgstr ""
+"Errorea gertatu da fitxategi hau irakurtzean: \n"
+"\n"
+"%s"
+
+#: src/file.c:298
+#, c-format
+msgid ""
+"Internal error reading the file: \n"
+"\n"
+"%s\n"
+"\n"
+"Please, report this error to submit@bugs.gnome.org."
+msgstr ""
+"Barne-errorea fitxategi hau irakurtzean: \n"
+"\n"
+"%s\n"
+"\n"
+"Errore horren berri helbide honetan eman: submit@bugs.gnome.org."
+
+#: src/file.c:314
+#, c-format
+msgid ""
+"An error was encountered while closing the file: \n"
+"\n"
+"%s"
+msgstr ""
+"Errorea gertatu da fitxategi hau ixtean: \n"
+"\n"
+"%s"
+
+#: src/file.c:477
+msgid "Save As..."
+msgstr "Gorde honela..."
+
+#: src/file.c:547
+msgid "The document contains no data."
+msgstr "Dokumentuak ez dauka daturik."
+
+#: src/file.c:558
+#, c-format
+msgid ""
+"gedit was unable to save the file: \n"
+"\n"
+" %s \n"
+"\n"
+"Make sure that the path you provided exists,and that you have the "
+"appropriate write permissions."
+msgstr ""
+"gedit-ek ezin izan du fitxategi hau gorde: \n"
+"\n"
+" %s \n"
+"\n"
+"Ziurtatu eman duzun bide-izena lehendik badagoela, eta idazteko behar diren "
+"baimenak badituzula."
+
+#: src/file.c:572
+#, c-format
+msgid ""
+"gedit was unable to save the file:\n"
+"\n"
+" %s \n"
+"\n"
+"Because of an unknown reason (1). Please report this Problem to submit@bugs."
+"gnome.org"
+msgstr ""
+"gedit-ek ezin izan du fitxategi hau gorde:\n"
+"\n"
+" %s \n"
+"\n"
+"Arrazoi ezezaguna gertatu da (1). Arazo honen berri helbide honetan eman: "
+"submit@bugs.gnome.org"
+
+#: src/file.c:590
+#, c-format
+msgid ""
+"gedit was unable to save the file:\n"
+"\n"
+" %s \n"
+"\n"
+"Because of an unknown reason (2). Please report this Problem to submit@bugs."
+"gnome.org"
+msgstr ""
+"gedit-ek ezin izan du fitxategi hau gorde:\n"
+"\n"
+" %s \n"
+"\n"
+"Arrazoi ezezaguna gertatu da (2). Arazo honen berri helbide honetan eman: "
+"submit@bugs.gnome.org"
+
+#: src/file.c:692
+msgid "Could not allocate the required memory."
+msgstr "Ezin izan da behar den memoria esleitu."
+
+#: src/file.c:712
+msgid "Error in the pipe."
+msgstr "Errorea kanalizazioan."
+
+#: src/file.c:837
+#, c-format
+msgid "Loaded %i files"
+msgstr "%i fitxategi kargatuta"
+
+#: src/file.c:903
+msgid "Open File ..."
+msgstr "Ireki fitxategia ..."
+
+#: src/file.c:1036
+#, c-format
+msgid "``%s'' is about to be overwritten. Do you want to continue ?"
+msgstr "``%s'' gainidatzi egingo da. Jarraitu nahi duzu?"
+
+#: src/file.c:1048
+msgid "Document has not been saved."
+msgstr "Dokumentua ez da gorde."
+
+#: src/file.c:1058
+msgid "Error saving file!"
+msgstr "Errorea fitxategia gordetzean!"
+
+#: src/file.c:1187
+msgid "You can't revert an Untitled document\n"
+msgstr "Ezin duzu dokumentu izengabe bat itzuli\n"
+
+#: src/file.c:1200
+#, fuzzy, c-format
+msgid ""
+"Are you sure you want to revert all changes?\n"
+"(%s)"
+msgstr ""
+"Ziur zaude aldaketa guztiak itzuli nahi dituzula?\n"
+"(%s)"
+
+#: src/file.c:1231
+#, c-format
+msgid "The file ``%s'' does not exist.  Would you like to create it?"
+msgstr "``%s'' fitxategia ez dago.  Sortu nahi duzu?"
+
+#: src/gedit.c:47
+msgid "Show window debugging messages."
+msgstr "Erakutsi leihoko arazketa-mezuak."
+
+#: src/gedit.c:50
+msgid "Show commands debugging messages."
+msgstr "Erakutsi komandoetako arazketa-mezuak."
+
+#: src/gedit.c:53
+msgid "Show document debugging messages."
+msgstr "Erakutsi dokumentuko arazketa-mezuak."
+
+#: src/gedit.c:56
+msgid "Show file debugging messages."
+msgstr "Erakutsi fitxategiko arazketa-mezuak."
+
+#: src/gedit.c:59
+msgid "Show plugin debugging messages."
+msgstr "Erakutsi plugin-eko arazketa-mezuak."
+
+#: src/gedit.c:62
+msgid "Show prefs debugging messages."
+msgstr "Erakutsi hobespenetako arazketa-mezuak."
+
+#: src/gedit.c:65
+msgid "Show printing debugging messages."
+msgstr "Erakutsi inprimaketako arazketa-mezuak."
+
+#: src/gedit.c:68
+msgid "Show search debugging messages."
+msgstr "Erakutsi bilaketako arazketa-mezuak."
+
+#: src/gedit.c:71
+msgid "Show undo debugging messages."
+msgstr "Erakutsi desegitearen arazketa-mezuak."
+
+#: src/gedit.c:74
+msgid "Show view debugging messages."
+msgstr "Erakutsi ikuspegiko arazketa-mezuak."
+
+#: src/gedit.c:77
+msgid "Show recent debugging messages."
+msgstr "Erakutsi arazketa-mezu berriak."
+
+#: src/gedit.c:80
+msgid "Turn on all debugging messages."
+msgstr "Aktibatu arazketa-mezu guztiak."
+
+#: src/gedit.c:159
+msgid "Cannot initialize gnome-vfs."
+msgstr "Ezin da gnome-vfs hasieratu."
+
+#: src/menus.c:54
+msgid "Open (swap) .c/.h file"
+msgstr "Ireki (swap) .c/.h fitxategia"
+
+#: src/menus.c:62
+msgid "_New"
+msgstr "Be_rria"
+
+#: src/menus.c:63 src/menus.c:255
+msgid "Create a new document"
+msgstr "Dokumentu berria sortzen du"
+
+#: src/menus.c:68
+msgid "Sav_e All"
+msgstr "G_orde dena"
+
+#: src/menus.c:69
+msgid "Save All Open Files"
+msgstr "Irekita dauden fitxategi guztiak gordetzen ditu"
+
+#: src/menus.c:74
+msgid "_Revert"
+msgstr "It_zuli"
+
+#: src/menus.c:83
+msgid "Open from _URI..."
+msgstr "Ireki _URItik..."
+
+#: src/menus.c:84
+msgid "Open a file from a specified URI"
+msgstr "Fitxategia zehaztutako URItik irekitzen du"
+
+#: src/menus.c:98
+msgid "Print pre_view"
+msgstr "Inprimatzeko _aurrebista"
+
+#: src/menus.c:98
+msgid "Print preview"
+msgstr "Inprimatzeko aurrebista"
+
+#: src/menus.c:102
+msgid "Print pre_view..."
+msgstr "Inprimatzeko _aurrebista"
+
+#: src/menus.c:103
+msgid "Preview data to be printed"
+msgstr "Inprimatu behar diren datuen aurrebista"
+
+#: src/menus.c:110
+msgid "C_lose All"
+msgstr "Itxi _dena"
+
+#: src/menus.c:111
+msgid "Close All Open Files"
+msgstr "Irekita dauden fitxategi guztiak ixten ditu"
+
+#: src/menus.c:150
+msgid "Goto _Line..."
+msgstr "_Joan lerrora..."
+
+#: src/menus.c:151
+msgid "Go to a specific line number"
+msgstr "Lerro-zenbaki jakin batera joaten da"
+
+#: src/menus.c:173
+msgid "_Add View"
+msgstr "_Gehitu ikuspegia"
+
+#: src/menus.c:174
+msgid "Add a new view of the document"
+msgstr "Dokumentuaren ikuspegi berria gehitzen du"
+
+#: src/menus.c:176
+msgid "_Remove View"
+msgstr "_Kendu ikuspegia"
+
+#: src/menus.c:177
+msgid "Remove view of the document"
+msgstr "Dokumentuaren ikuspegia kentzen du"
+
+#: src/menus.c:220
+msgid "Se_arch"
+msgstr "_Bilatu"
+
+#: src/menus.c:229 src/plugin.c:90 src/plugin.c:402 src/window.c:499
+#: src/window.c:676
+msgid "_Plugins"
+msgstr "_Plugin-ak"
+
+#: src/menus.c:241
+msgid "_Documents"
+msgstr "_Dokumentuak"
+
+#: src/menus.c:255
+msgid "New"
+msgstr "Berria"
+
+#: src/menus.c:259
+msgid "Open a file"
+msgstr "Fitxategi bat irekitzen du"
+
+#: src/menus.c:263
+msgid "Save"
+msgstr "Gorde"
+
+#: src/menus.c:263
+msgid "Save the current file"
+msgstr "Uneko fitxategia gordetzen du"
+
+#: src/menus.c:267
+msgid "Close"
+msgstr "Itxi"
+
+#: src/menus.c:267
+msgid "Close the current file"
+msgstr "Uneko fitxategia ixten du"
+
+#: src/menus.c:271
+msgid "Print"
+msgstr "Inprimatu"
+
+#: src/menus.c:271
+msgid "Print the current file"
+msgstr "Uneko fitxategia inprimatzen du"
+
+#: src/menus.c:276
+msgid "Undo last operation"
+msgstr "Azken eragiketa desegiten du"
+
+#: src/menus.c:280
+msgid "Redo"
+msgstr "Berregin"
+
+#: src/menus.c:280
+msgid "Redo last operation"
+msgstr "Azken eragiketa berregiten du"
+
+#: src/menus.c:285
+msgid "Cut"
+msgstr "Ebaki"
+
+#: src/menus.c:285
+msgid "Cut the selection"
+msgstr "Hautapena ebakitzen du"
+
+#: src/menus.c:289
+msgid "Copy"
+msgstr "Kopiatu"
+
+#: src/menus.c:289
+msgid "Copy the selection"
+msgstr "Hautapena kopiatzen du"
+
+#: src/menus.c:293
+msgid "Paste"
+msgstr "Itsatsi"
+
+#: src/menus.c:293
+msgid "Paste the clipboard"
+msgstr "Arbelaren edukia itsasten du"
+
+#: src/menus.c:298
+msgid "Search for a string"
+msgstr "Kate bat bilatzen du"
+
+#: src/menus.c:303
+msgid "Exit"
+msgstr "Irten"
+
+#: src/menus.c:303
+msgid "Exit the program"
+msgstr "Programatik irteten da"
+
+#: src/plugin.c:107
+msgid "_Manager ..."
+msgstr "_Kudeatzailea ..."
+
+#: src/plugin.c:108
+msgid "Manage available plugin modules"
+msgstr "Kudeatu plugin-en modulu erabilgarriak"
+
+#: src/plugin.c:195
+#, c-format
+msgid ""
+"The program %s could not be found.\n"
+"\n"
+msgstr ""
+"Ezin izan da %s programa aurkitu.\n"
+"\n"
+
+#: src/plugin.c:211
+#, c-format
+msgid ""
+"'%s' doesn't seem to exist.\n"
+"\n"
+msgstr ""
+"ez dirudi '%s' dagoenik.\n"
+"\n"
+
+#: src/plugin.c:213
+#, c-format
+msgid ""
+"'%s' seems to be a directory.\n"
+"but '%s' could not be found inside it.\n"
+"\n"
+msgstr ""
+"'%s' direktorioa dela dirudi.\n"
+"baina ezin izan da '%s' bertan aurkitu.\n"
+"\n"
+
+#: src/plugin.c:216
+#, c-format
+msgid ""
+"'%s' doesn't seem to be a program.\n"
+"\n"
+msgstr ""
+"ez dirudi '%s' programa denik.\n"
+"\n"
+
+#: src/plugin.c:220
+#, c-format
+msgid ""
+"%sYou won't be able to use the %s plugin without %s. \n"
+" Do you want to specify a new location for %s?"
+msgstr ""
+"%sEzingo duzu %s plugin-a erabili %s gabe. \n"
+" Kokaleku berria zehaztu nahi duzu %s(r)entzat?"
+
+#: src/plugin.c:322
+#, c-format
+msgid "Error, unable to open module file, %s"
+msgstr "Errorea, ezin da modulu-fitxategia ireki, %s"
+
+#: src/plugin.c:332
+msgid "Error, plugin does not contain init_plugin function."
+msgstr "Errorea, plugin-ak ez du init_plugin funtziorik. "
+
+#: src/plugin.c:345
+msgid "Error, init_plugin returned an error"
+msgstr "Errorea, init_plugin-ak errorea itzuli du "
+
+#: src/plugin.c:392
+msgid "Error, plugin is still in use"
+msgstr "Errorea, plugin-a oraindik erabiltzen ari da "
+
+#: src/prefs.c:42
+msgid "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
+msgstr ""
+
+#: src/print.c:230
+msgid "Print Document"
+msgstr "Inprimatu dokumentua"
+
+#: src/print.c:238
+msgid "Pages"
+msgstr "Orrialdeak"
+
+#: src/print.c:286
+msgid "gedit: Print Preview\n"
+msgstr "gedit: Inprimatzeko aurrebista\n"
+
+#: src/print-doc.c:505
+#, c-format
+msgid "Page: %i/%i"
+msgstr "Orrialdea: %i/%i"
+
+#: src/print-util.c:222 src/print-util.c:237
+#, c-format
+msgid ""
+"gedit could not find the font \"%s\".\n"
+"gedit is unable to print without this font installed."
+msgstr ""
+"gedit-ek ezin izan du \"%s\" letra-tipoa aurkitu.\n"
+"gedit-ek ezin du inprimatu letra-tipoa instalatu gabe badago."
+
+#: src/print-util.c:278
+msgid "Printing .."
+msgstr "Inprimatzen..."
+
+#: src/print-util.c:289
+msgid "Printing ..."
+msgstr "Inprimatzen..."
+
+#. xgettext translators: Use the name of the stock
+#. * Menu item for "File"	if it is not the same, we are going to
+#. * fail to insert the recent menu items.
+#: src/recent.c:549
+msgid "_File/"
+msgstr "_Fitxategia/"
+
+#. xgettext translators: Use the name of the stock Menu item for "File"
+#. if it is not the same, we are going to fail to insert the recent menu items.
+#: src/recent.c:558
+msgid "_File"
+msgstr "_Fitxategia"
+
+#: src/recent.c:580
+#, c-format
+msgid "Unable to open recent file: %s"
+msgstr "Ezin da fitxategi berria ireki: %s"
+
+#: src/search.c:393
+msgid ""
+"Can't count lines if another search operation is active, please close the "
+"search dialog."
+msgstr ""
+"Ezin dira lerroak kontatu, beste bilaketa-eragiketa bat aktibaturik badago,"
+"itxi bilaketaren elkarrizketa."
+
+#: src/search.c:410
+#, c-format
+msgid ""
+"Filename: %s\n"
+"\n"
+"Total Characters: %i\n"
+"Total Words: %i\n"
+"Total Lines: %i\n"
+"Total Paragraphs: %i\n"
+"Total Bytes: %i\n"
+"\n"
+"Current Line: %i\n"
+"Current Column: %i"
+msgstr ""
+"Fitxategi-izena: %s\n"
+"\n"
+"Karaktereak, guztira: %i\n"
+"Hitzak, guztira: %i\n"
+"Lerroak, guztira: %i\n"
+"Paragrafoak, guztira: %i\n"
+"Byteak, guztira: %i\n"
+"\n"
+"Uneko lerroa: %i\n"
+"Uneko zutabea: %i"
+
+#: src/view.c:949
+msgid "You can't remove the last view of a document."
+msgstr "Ezin duzu dokumentuaren azken ikuspegia kendu."
+
+#~ msgid "label12"
+#~ msgstr "label12"
+
+#~ msgid "label13"
+#~ msgstr "label13"
+
+#~ msgid ""
+#~ "Left\n"
+#~ "Right\n"
+#~ "Top\n"
+#~ "Bottom\n"
+#~ msgstr ""
+#~ "Ezkerrean\n"
+#~ "Eskuinean\n"
+#~ "Goian\n"
+#~ "Behean\n"
+
+#~ msgid ""
+#~ "Notebook\n"
+#~ "Toplevel\n"
+#~ "Modal\n"
+#~ "Default\n"
+#~ msgstr ""
+#~ "Ohar-koadernoa\n"
+#~ "Goi-maila\n"
+#~ "Modala\n"
+#~ "Lehenetsia\n"
+
+#~ msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+#~ msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
