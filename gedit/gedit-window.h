@@ -80,6 +80,9 @@ GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
 GeditTab	*gedit_window_create_tab		(GeditWindow *window,
 							 gboolean     jump_to);
 
+void		 gedit_window_close_tab			(GeditWindow *window,
+							 GeditTab    *tab);
+							 
 GeditTab	*gedit_window_get_active_tab		(GeditWindow *window);
 
 /* Helper functions */

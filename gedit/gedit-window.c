@@ -1063,4 +1063,13 @@ gedit_window_get_views (GeditWindow *window)
 	return res;
 }
 
-
+void 
+gedit_window_close_tab (GeditWindow *window,
+			GeditTab    *tab)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	
+	gedit_notebook_remove_tab (GEDIT_NOTEBOOK (window->priv->notebook),
+				   tab);
+}

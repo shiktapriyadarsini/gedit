@@ -48,6 +48,7 @@
 #include "dialogs/gedit-page-setup-dialog.h"
 #include "dialogs/gedit-dialogs.h"
 #include "dialogs/gedit-preferences-dialog.h"
+#include "dialogs/gedit-close-confirmation-dialog.h"
 #if 0
 #include "gedit-file.h"
 #endif
@@ -185,17 +186,38 @@ gedit_cmd_file_print (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
-
+	GeditTab      *active_tab;
+	GeditDocument *doc;
+	gboolean       close = TRUE;
+	
 	gedit_debug (DEBUG_COMMANDS, "");
-
-	active_view = gedit_get_active_view ();
-	if (active_view == NULL)
-		return;
-
-	gedit_file_close (active_view);
-#endif
+	
+	active_tab = gedit_window_get_active_tab (window);
+	if (active_tab == NULL)
+		return;	
+		
+	doc = gedit_tab_get_document (active_tab);
+	
+	if (gedit_document_get_modified (doc) || 
+	    gedit_document_get_deleted (doc))
+	{
+		GtkWidget *dlg;
+		
+		dlg = gedit_close_confirmation_dialog_new_single (
+					GTK_WINDOW (window), 
+					doc);
+				 
+		close = gedit_close_confirmation_dialog_run (
+					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
+		
+		// TODO: salvare il documenta se necessario
+		g_print ("Close? %s\n", close ? "TRUE": "FALSE");
+		
+		gtk_widget_destroy (dlg);		
+	}
+	
+	if (close)
+		gedit_window_close_tab (window, active_tab);
 }
 
 void 
