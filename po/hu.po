@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.9.4\n"
-"POT-Creation-Date: 2002-08-21 22:36+0200\n"
-"PO-Revision-Date: 2002-08-21 11:10+0200\n"
+"POT-Creation-Date: 2002-10-27 18:53+0100\n"
+"PO-Revision-Date: 2002-10-27 18:50+0100\n"
 "Last-Translator: Emese KOVACS <emese@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -652,7 +652,7 @@ msgstr "Válaszd ki a \"második\" fájlt..."
 
 #: plugins/diff/diff.glade2.h:18
 msgid "Select the first file to compare"
-msgstr "Válaszd ki az első öszehasonlítandó fájlt..."
+msgstr "Válaszd ki az első összehasonlítandó fájlt..."
 
 #: plugins/diff/diff.glade2.h:19
 msgid "Select the first open document to compare"
@@ -1135,7 +1135,7 @@ msgstr " karakter"
 
 #: src/dialogs/gedit-preferences.glade2.h:3
 msgid " line(s)"
-msgstr ". sornál"
+msgstr " sor"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
 msgid "Always use UTF-8 encoding (faster) when creating a new file"
@@ -1164,7 +1164,7 @@ msgstr "_Biztonsági másolatok létrehozása mentés előtt"
 #: src/dialogs/gedit-preferences.glade2.h:10
 #: src/dialogs/gnome-print-font-picker.c:1014
 msgid "Font"
-msgstr "Betűtípusok"
+msgstr "Betűkészletek"
 
 #: src/dialogs/gedit-preferences.glade2.h:11
 msgid "Font used to print line _numbers:"
@@ -1354,7 +1354,7 @@ msgstr "_Soha ne törje a sorokat"
 
 #: src/dialogs/gedit-preferences.glade2.h:58
 msgid "_Restore default fonts"
-msgstr "_Alapértelmezett betűtípusok visszállítása"
+msgstr "_Alapértelmezett betűkészletek visszaállítása"
 
 #: src/dialogs/gedit-preferences.glade2.h:59
 msgid "_Text color:"
@@ -1390,7 +1390,7 @@ msgstr "Előnézeti szöveg _módosítása..."
 
 #: src/dialogs/gnome-print-font-dialog.c:243
 msgid "Font Selection"
-msgstr "Betűtípus kiválasztása"
+msgstr "Betűkészlet kiválasztása"
 
 #: src/dialogs/gnome-print-font-picker.c:89
 msgid "sans 12"
@@ -1402,7 +1402,7 @@ msgstr "AaÁáBbCcDdEeÉéFfGgHhIiÍíJjKkLlMmNnOoÓóÖöŐőPpQqRrSsTtUuÚúÜ
 
 #: src/dialogs/gnome-print-font-picker.c:91
 msgid "Pick a Font"
-msgstr "Válassz betűkészletet"
+msgstr "Betűkészlet választása"
 
 #: src/dialogs/gnome-print-font-picker.c:176
 msgid "Title"
@@ -1410,11 +1410,11 @@ msgstr "Cím"
 
 #: src/dialogs/gnome-print-font-picker.c:177
 msgid "The title of the selection dialog box"
-msgstr "A kiválasztó párbeszéddoboz címsora"
+msgstr "A kiválasztó párbeszédablak címsora"
 
 #: src/dialogs/gnome-print-font-picker.c:197
 msgid "Font name"
-msgstr "Betűtípus neve"
+msgstr "Betűkészlet neve"
 
 #: src/dialogs/gnome-print-font-picker.c:198
 msgid "Name of the selected font"
@@ -1546,7 +1546,7 @@ msgstr ""
 
 #: src/gedit-commands.c:465
 msgid "gedit is a small and lightweight text editor for Gnome"
-msgstr "A gedit egy kicsi és könnyű szövegszerkesztő a Gnome-hoz"
+msgstr "A gedit egy kicsi és könnyű szövegszerkesztő a GNOME-hoz"
 
 #: src/gedit-document.c:573 src/gedit-document.c:591
 #, c-format
@@ -1587,7 +1587,7 @@ msgstr "A gedit nem tudja ezt a típusú helyet írásra használni."
 msgid "Invalid filename."
 msgstr "Érvénytelen fájlnév."
 
-#: src/gedit-document.c:1382
+#: src/gedit-document.c:1397
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
@@ -1595,7 +1595,7 @@ msgstr ""
 "Nincs elég hely a lemezen a fájl mentéséhez.\n"
 "Csinálj egy kis helyet és próbáld újra."
 
-#: src/gedit-document.c:1387
+#: src/gedit-document.c:1402
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1605,11 +1605,11 @@ msgstr ""
 "rendelkezik.  Próbálj meg kisebb fájlt menteni, vagy egy olyan lemezre "
 "ments, amin nincs korlátozás."
 
-#: src/gedit-document.c:1426
+#: src/gedit-document.c:1441
 msgid "Could not create a backup file."
 msgstr "Nem tudom létrehozni a biztonsági mentést."
 
-#: src/gedit-document.c:1574
+#: src/gedit-document.c:1589
 msgid "It is not possible to revert an Untitled document"
 msgstr "Nem állíthatsz vissza egy Névtelen dokumentumot"
 
@@ -1991,7 +1991,7 @@ msgstr "Nyomtatás beállítása"
 
 #: src/gedit-ui.xml.h:46
 msgid "Print preview"
-msgstr "Nomtatási kép"
+msgstr "Nyomtatási kép"
 
 #: src/gedit-ui.xml.h:47
 msgid "Print the current file"
@@ -2087,7 +2087,7 @@ msgstr "Az oldalak beállítása a jelenlegi nyomtatódhoz."
 
 #: src/gedit-ui.xml.h:72
 msgid "Show _Cursor Position"
-msgstr "_Kurzorpozíció megejelenítése"
+msgstr "_Kurzorpozíció megjelenítése"
 
 #: src/gedit-ui.xml.h:73
 msgid "Show _Overwrite Mode"
@@ -2559,12 +2559,12 @@ msgid ""
 msgstr ""
 "Nincs elég hely a lemezen a \"%s\" fájl létrehozásához.\n"
 "\n"
-"Csinájl egy kis helyet a lemezen és próbáld újra."
+"Szabadítsd fel helyet a lemezen és próbáld újra."
 
 #: src/gedit-utils.c:1337
 #, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Nem tudom létehozni a \"%s\" fájlt."
+msgstr "Nem sikerült létrehozni a \"%s\" fájlt."
 
 #: src/gedit-view.c:904
 #, c-format
@@ -2589,11 +2589,11 @@ msgstr "Mutasd a parancsok hibakereső üzeneteit."
 
 #: src/gedit2.c:81
 msgid "Show document debugging messages."
-msgstr "Mutasd a dokumetumok hibakereső üzeneteit."
+msgstr "Mutasd a dokumentumok hibakereső üzeneteit."
 
 #: src/gedit2.c:84
 msgid "Show file debugging messages."
-msgstr "Mutasd a fájl hibakereső őzeneteit."
+msgstr "Mutasd a fájl hibakereső üzeneteit."
 
 #: src/gedit2.c:87
 msgid "Show plugin debugging messages."
@@ -2648,789 +2648,3 @@ msgstr "Új dokumentum létrehozása egy már megnyitott gedit példányban"
 msgid "Open %s"
 msgstr "%s megnyitása"
 
-#, fuzzy
-#~ msgid "Plugin Manager"
-#~ msgstr "gedit Plugin Manager"
-
-#, fuzzy
-#~ msgid "Notebook _tab position:"
-#~ msgstr "Regiszterfül pozíciója: "
-
-#, fuzzy
-#~ msgid "Sho_w tooltips"
-#~ msgstr "_Címzett:"
-
-#, fuzzy
-#~ msgid "Show cursor _position"
-#~ msgstr "_kurzor pozíciótól keres"
-
-#, fuzzy
-#~ msgid "Top"
-#~ msgstr "Címzett:"
-
-#, fuzzy
-#~ msgid "_MDI Mode:"
-#~ msgstr "Mód:  "
-
-#, fuzzy
-#~ msgid "_Show toolbar"
-#~ msgstr "_Címzett:"
-
-#, fuzzy
-#~ msgid "level(s)"
-#~ msgstr " "
-
-#, fuzzy
-#~ msgid "Find Next"
-#~ msgstr "Következő találat"
-
-#, fuzzy
-#~ msgid "Replace All"
-#~ msgstr "Mindent cserél"
-
-#, fuzzy
-#~ msgid "The GNOME text editor"
-#~ msgstr "Szövegszerkesztő"
-
-#, fuzzy
-#~ msgid "gedit - Print Document"
-#~ msgstr "Dokumentumok nyomtatása"
-
-#, fuzzy
-#~ msgid "Add/Remove plugins"
-#~ msgstr "Telepített plugin-okat hozzáad/eltávolít"
-
-#~ msgid "Contents"
-#~ msgstr "Tartalom"
-
-#, fuzzy
-#~ msgid "Show _Tooltips"
-#~ msgstr "_Címzett:"
-
-#, fuzzy
-#~ msgid "_Plugin Manager"
-#~ msgstr "gedit Plugin Manager"
-
-#, fuzzy
-#~ msgid "_Plugin Manager..."
-#~ msgstr "gedit Plugin Manager"
-
-#, fuzzy
-#~ msgid "Could not revert the file \"%s\""
-#~ msgstr ""
-#~ "Hiba történt a következő fájl olvasásakor:\n"
-#~ "\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Loaded file %s"
-#~ msgstr "%s fájl betöltve"
-
-#, fuzzy
-#~ msgid "Unable to open recent file: %s"
-#~ msgstr "Nem tudom az előző fájlt megnyitni: %s"
-
-#, fuzzy
-#~ msgid "_Hello World"
-#~ msgstr "Szia Világ"
-
-#, fuzzy
-#~ msgid "Prints Hello World."
-#~ msgstr "Szia Világ"
-
-#, fuzzy
-#~ msgid "Hello World "
-#~ msgstr "Szia Világ"
-
-#~ msgid "Hello World"
-#~ msgstr "Szia Világ"
-
-#~ msgid "Sample 'hello world' plugin."
-#~ msgstr "'Szia Világ' példa-beépülő."
-
-#, fuzzy
-#~ msgid "Invalid UTF-8 data encountered reading file"
-#~ msgstr ""
-#~ "Hiba történt a következő fájl olvasásakor:\n"
-#~ "\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid ""
-#~ "An error occurred while opening the file \"%s\".\n"
-#~ "\n"
-#~ "%s."
-#~ msgstr ""
-#~ "Hiba történt a következő fájl olvasásakor:\n"
-#~ "\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "C_lear"
-#~ msgstr "Másik"
-
-#, fuzzy
-#~ msgid "C_lose All"
-#~ msgstr "Mindent bezár"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "Másik"
-
-#, fuzzy
-#~ msgid "E_xit"
-#~ msgstr "Kilép"
-
-#~ msgid "Exit"
-#~ msgstr "Kilép"
-
-#~ msgid "Open from _URI..."
-#~ msgstr "Megnyitás errő a _URI-ről..."
-
-#, fuzzy
-#~ msgid "Print Pre_view"
-#~ msgstr "Nomtatási _kép"
-
-#, fuzzy
-#~ msgid "Revert to saved"
-#~ msgstr "Fordított"
-
-#, fuzzy
-#~ msgid "Sav_e All"
-#~ msgstr "Mindent ment"
-
-#, fuzzy
-#~ msgid "_Preferences"
-#~ msgstr "gedit: Beállítások"
-
-#~ msgid "Save As..."
-#~ msgstr "Mentés másként.."
-
-#, fuzzy
-#~ msgid "_Manager"
-#~ msgstr "Plugin kezelő"
-
-#~ msgid "Browse"
-#~ msgstr "Tallóz"
-
-#~ msgid "Web browse plugin"
-#~ msgstr "Webböngésző plug-in"
-
-#~ msgid "Convert"
-#~ msgstr "Konvertálás"
-
-#~ msgid "Number Converter"
-#~ msgstr "Számkonvertáló"
-
-#, fuzzy
-#~ msgid "diff"
-#~ msgstr "Diff"
-
-#~ msgid "Untitled %i"
-#~ msgstr "Névtelen %i"
-
-#~ msgid "Diff"
-#~ msgstr "Diff"
-
-#, fuzzy
-#~ msgid "Document info"
-#~ msgstr "Dokumentumok"
-
-#, fuzzy
-#~ msgid "Executing command: %s"
-#~ msgstr "%s parancs végrehajtása"
-
-#~ msgid "Email"
-#~ msgstr "Email"
-
-#~ msgid "Email the current document"
-#~ msgstr "Küldd el az aktuális dokumentumot"
-
-#~ msgid ""
-#~ "Email the current document to a specified email address\n"
-#~ "gedit searches for sendmail to use this plugin."
-#~ msgstr ""
-#~ "Elküldi e-mailben az aktuális dokumentumot a megadott címre.\n"
-#~ "A geditnek szüksége van a sendmail-re ehhez a pluginhoz."
-
-#~ msgid "Reverse"
-#~ msgstr "Fordított"
-
-#, fuzzy
-#~ msgid "Sort a document."
-#~ msgstr "Egy új dokumentum készítése"
-
-#, fuzzy
-#~ msgid "Sort a document or selected text."
-#~ msgstr "A két kijelölt dokumentum megegyezik."
-
-#~ msgid " _Change... "
-#~ msgstr "_Másik..."
-
-#~ msgid "Enter the _URL to browse for:"
-#~ msgstr "Add meg a betöltendő _URL-t:"
-
-#~ msgid "Lynx found at: "
-#~ msgstr "A lynx itt található: "
-
-#~ msgid "gedit: Web Browse plugin"
-#~ msgstr "gedit: webböngésző-beépülő"
-
-#~ msgid "location"
-#~ msgstr "hely"
-
-#~ msgid " Decimal to _Hex "
-#~ msgstr " Tizesből _hexába "
-
-#~ msgid " Decimal to _Octal "
-#~ msgstr " Tizesből _nyolcasba "
-
-#~ msgid " Hex to Decima_l "
-#~ msgstr " Hexából ti_zesbe "
-
-#~ msgid "_Converted value:"
-#~ msgstr "Konvertált ér_ték:"
-
-#~ msgid "_Value to be converted:"
-#~ msgstr "Konvertálandó é_rték:"
-
-#~ msgid "gedit: Number Converter plugin"
-#~ msgstr "gedit: Számkonvertáló-beépülő"
-
-#, fuzzy
-#~ msgid "Diff found at: "
-#~ msgstr "A diff itt található: "
-
-#~ msgid "F_rom:"
-#~ msgstr "_Feladó:"
-
-#~ msgid "File to use as body of message: "
-#~ msgstr "Ez a fájl legyen a levél törzse: "
-
-#~ msgid "From:"
-#~ msgstr "Feladó:"
-
-#~ msgid "Sendmail found at:"
-#~ msgstr "A sendmail itt található:"
-
-#~ msgid "Subject:"
-#~ msgstr "Tárgy:"
-
-#~ msgid "To:"
-#~ msgstr "Címzett:"
-
-#~ msgid "_Subject:"
-#~ msgstr "_Tárgy:"
-
-#~ msgid "gedit: E-mail plugin"
-#~ msgstr "gedit: elektronikus levelező beépülő"
-
-#~ msgid "gedit: e-mail plugin"
-#~ msgstr "gedit: e-mail plugin"
-
-#~ msgid "Select the working directory..."
-#~ msgstr "Munkakönyvtár megadása..."
-
-#, fuzzy
-#~ msgid "Case Sensitive"
-#~ msgstr "Kis- nagy_betű különbség"
-
-#, fuzzy
-#~ msgid "Sort starting at column:"
-#~ msgstr "Nincs találat"
-
-#, fuzzy
-#~ msgid "gedit: Sort plugin"
-#~ msgstr "gedit: diff-beépülő"
-
-#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-#~ msgstr "(C) 1998, 1999, 2000 Alex Roberts és Evan Lawrence"
-
-#~ msgid "To use the %s plugin, you need to specify a location for \"%s\"."
-#~ msgstr ""
-#~ "A(z) %s beépülő használatához meg kell adnod a következő helyét: \"%s\"."
-
-#~ msgid "gedit: Preferences"
-#~ msgstr "gedit: Beállítások"
-
-#, fuzzy
-#~ msgid "Search string not found"
-#~ msgstr "Nincs találat"
-
-#~ msgid "Could not allocate the memory for the Replace all request."
-#~ msgstr ""
-#~ "Nem tudtam a szükséges memóriát allokálni a \"Mindent cserél\" parancshoz."
-
-#~ msgid "Add _header"
-#~ msgstr "_Fejléc hozzáadása"
-
-#~ msgid "Appearance"
-#~ msgstr "Megjelenés"
-
-#~ msgid "Documents"
-#~ msgstr "Dokumentumok"
-
-#~ msgid "Editor Behavior"
-#~ msgstr "Szerkesztő viselkedése"
-
-#, fuzzy
-#~ msgid "Enable _Auto-indent"
-#~ msgstr "Automatikus bekezdés"
-
-#~ msgid "Enable word _wrapping"
-#~ msgstr "_Sortörés"
-
-#~ msgid "General"
-#~ msgstr "Általános"
-
-#~ msgid "MDI (Multiple Document Interface)"
-#~ msgstr "MDI (Több dokumentum kezeléséhez)"
-
-#, fuzzy
-#~ msgid "Orientation"
-#~ msgstr "Nyomtatás"
-
-#~ msgid "Paper"
-#~ msgstr "Papír"
-
-#~ msgid "Printing"
-#~ msgstr "Nyomtatás"
-
-#, fuzzy
-#~ msgid "Set toolbar to _icons only"
-#~ msgstr "Csak ikonok megjelenítése"
-
-#, fuzzy
-#~ msgid "Set toolbar to icons with _text"
-#~ msgstr "Szöveges ikonok megjelenítése"
-
-#, fuzzy
-#~ msgid "Tab _width: "
-#~ msgstr "Fül szélessége: "
-
-#, fuzzy
-#~ msgid "_Foreground: "
-#~ msgstr "Előtér: "
-
-#~ msgid "_Landscape"
-#~ msgstr "F_ekvő"
-
-#~ msgid "_Portrait"
-#~ msgstr "Á_lló"
-
-#~ msgid "gedit: Browse for program location..."
-#~ msgstr "gedit: alkalmazás helyének kiválasztása..."
-
-#~ msgid "RO - "
-#~ msgstr "RO - "
-
-#, fuzzy
-#~ msgid "``%s'' has been modified.  Do you want to save the changes?"
-#~ msgstr "``%s'' módosult. El akarod menteni?"
-
-#~ msgid "This file does not end with a valid extension\n"
-#~ msgstr "Ennek a fájlnak nem érvényes a kiterjesztése\n"
-
-#~ msgid ""
-#~ "An error was encountered while opening the file \"%s\".\n"
-#~ "Please make sure the file exists."
-#~ msgstr ""
-#~ "Hiba történt a \"%s\" fájl megnyitásakor.\n"
-#~ "Győződj meg róla, hogy a fájl létezik."
-
-#~ msgid ""
-#~ "An error was encountered while opening the file \"%s\".\n"
-#~ "Could not allocate the required memory."
-#~ msgstr ""
-#~ "Hiba történt a \"%s\" fájl megnyitásakor.\n"
-#~ "Nincs elég memória."
-
-#~ msgid ""
-#~ "An error was encountered while reading the file: \n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Make sure that you have permissions for opening the file. "
-#~ msgstr ""
-#~ "a gedit nem tudta megnyitni a fájlt: \n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Győződj meg róla, hogy jogosult vagy a fájl megnyitására."
-
-#~ msgid ""
-#~ "Internal error reading the file: \n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Please, report this error to submit@bugs.gnome.org."
-#~ msgstr ""
-#~ "Belső hiba a következő fájl olvasása közben:\n"
-#~ "\n"
-#~ "%s \n"
-#~ "\n"
-#~ "Kérlek jelentsd ezt a hibát a submit@bugs.gnome.org címen."
-
-#~ msgid "The document contains no data."
-#~ msgstr "A dokumentum üres (nem tartalmaz adatot)."
-
-#, fuzzy
-#~ msgid ""
-#~ "gedit was unable to save the file:\n"
-#~ "\n"
-#~ " %s \n"
-#~ "\n"
-#~ "Because of an unknown reason (1). Please report this Problem to "
-#~ "submit@bugs.gnome.org"
-#~ msgstr ""
-#~ "A gedit nem tudta elmenteni a fájlt :\n"
-#~ "\n"
-#~ " %s \n"
-#~ "\n"
-#~ "Ismeretlen hiba történt (1). Kérlek jelentsd a hibát a submit@bugs.gnome."
-#~ "org címen"
-
-#, fuzzy
-#~ msgid ""
-#~ "gedit was unable to save the file:\n"
-#~ "\n"
-#~ " %s \n"
-#~ "\n"
-#~ "Because of an unknown reason (2). Please report this Problem to "
-#~ "submit@bugs.gnome.org"
-#~ msgstr ""
-#~ "A gedit nem tudta elmenteni a fájlt :\n"
-#~ "\n"
-#~ " %s \n"
-#~ "\n"
-#~ "Ismeretlen hiba történt (2). Kérlek jelentsd a hibát a submit@bugs.gnome."
-#~ "org címen"
-
-#, fuzzy
-#~ msgid "Error in the pipe."
-#~ msgstr "Hiba a csőben (|)."
-
-#~ msgid "``%s'' is about to be overwritten. Do you want to continue ?"
-#~ msgstr "A ``%s'' fájl felülírás előtt áll. Biztos, hogy folytassam ?"
-
-#~ msgid "Error saving file!"
-#~ msgstr "Hiba a fájl mentése közben!"
-
-#, fuzzy
-#~ msgid ""
-#~ "Are you sure you want to revert all changes?\n"
-#~ "(%s)"
-#~ msgstr ""
-#~ "Biztos, hogy minden változtatást el akarsz vetni?\n"
-#~ "(%s)"
-
-#~ msgid "Show window debugging messages."
-#~ msgstr "Mutatsd az ablak hibakereső üzeneteit."
-
-#~ msgid "Open (swap) .c/.h file"
-#~ msgstr ".c/.h fájl betöltése (cseréje)"
-
-#, fuzzy
-#~ msgid "Print pre_view..."
-#~ msgstr "Nomtatási kép..."
-
-#~ msgid "Preview data to be printed"
-#~ msgstr "Előnézet a nyomtatásra szánt adatokról"
-
-#~ msgid "Add a new view of the document"
-#~ msgstr "Új nézet hozzáadása a dokumentumhoz"
-
-#~ msgid "_Remove View"
-#~ msgstr "Né_zet törlése"
-
-#, fuzzy
-#~ msgid "Manage available plugin modules"
-#~ msgstr "Elérhető plugin-ok"
-
-#~ msgid ""
-#~ "The program %s could not be found.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "A(z) %s program nem található\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "'%s' doesn't seem to exist.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Úgy tünik, hogy '%s' nem létezik\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "'%s' seems to be a directory.\n"
-#~ "but '%s' could not be found inside it.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Úgy látom, hogy '%s' könyvtár,\n"
-#~ "de '%s' nem található benne.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "'%s' doesn't seem to be a program.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "'%s' valószínüleg nem program.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "%sYou won't be able to use the %s plugin without %s. \n"
-#~ " Do you want to specify a new location for %s?"
-#~ msgstr ""
-#~ "%sNem használhatod a(z) %s plugint %s nélkül. \n"
-#~ "Megadsz új helyet %s-nek/-nak."
-
-#~ msgid "Error, init_plugin returned an error"
-#~ msgstr "Hiba, az init_plugin hibával tért vissza"
-
-#~ msgid "Error, plugin is still in use"
-#~ msgstr "Hiba, a plugint még mindíg használja valami"
-
-#~ msgid ""
-#~ "gedit could not find the font \"%s\".\n"
-#~ "gedit is unable to print without this font installed."
-#~ msgstr ""
-#~ "A gedit nem találja a(z) \"%s\" betűkészletet.\n"
-#~ "A gedit ne tud nyomtatni ezen betűkészlet nélkül."
-
-#, fuzzy
-#~ msgid "Printing .."
-#~ msgstr "Nyomtatás"
-
-#, fuzzy
-#~ msgid "Printing ..."
-#~ msgstr "Nyomtatás"
-
-#~ msgid "_File/"
-#~ msgstr "_Fájl/"
-
-#~ msgid ""
-#~ "Can't count lines if another search operation is active, please close the "
-#~ "search dialog."
-#~ msgstr ""
-#~ "Nem tudom a sorokat megszámolni, ha közben keresés is aktív. Kérlek zárd "
-#~ "be a keresés párbeszédablakot."
-
-#~ msgid ""
-#~ "Filename: %s\n"
-#~ "\n"
-#~ "Total Characters: %i\n"
-#~ "Total Words: %i\n"
-#~ "Total Lines: %i\n"
-#~ "Total Paragraphs: %i\n"
-#~ "Total Bytes: %i\n"
-#~ "\n"
-#~ "Current Line: %i\n"
-#~ "Current Column: %i"
-#~ msgstr ""
-#~ "Fájlnév: %s\n"
-#~ "\n"
-#~ "Karakterek száma: %i\n"
-#~ "Szavak száma: %i\n"
-#~ "Sorok száma: %i\n"
-#~ "Bekezdések száma: %i\n"
-#~ "Bájtok száma: %i\n"
-#~ "\n"
-#~ "Aktuális sor: %i\n"
-#~ "Aktuális oszlop: %i"
-
-#~ msgid "You can't remove the last view of a document."
-#~ msgstr "Nem tavolíthatod el a dokumentum utolsó nézetét."
-
-#~ msgid "label12"
-#~ msgstr "cimke12"
-
-#~ msgid "label13"
-#~ msgstr "cimke13"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Right\n"
-#~ "Top\n"
-#~ "Bottom\n"
-#~ msgstr ""
-#~ "Bal\n"
-#~ "Jobb\n"
-#~ "Fent\n"
-#~ "Lent\n"
-
-#~ msgid ""
-#~ "Notebook\n"
-#~ "Toplevel\n"
-#~ "Modal\n"
-#~ "Default\n"
-#~ msgstr ""
-#~ "Regiszter\n"
-#~ "Legfelső\n"
-#~ "Modal\n"
-#~ "Alapértelmezett\n"
-
-#~ msgid "File to use as body of message : "
-#~ msgstr "Ez a fájl legyen a levél törzse: "
-
-#~ msgid "Sendmail found at :"
-#~ msgstr "A sendmail itt található: "
-
-#~ msgid ""
-#~ "Plugin Name : %s\n"
-#~ "Author : %s\n"
-#~ "Description : %s\n"
-#~ msgstr ""
-#~ "Plugin neve: %s\n"
-#~ "Szerző: %s\n"
-#~ "Leírás: %s\n"
-
-#~ msgid "Add >"
-#~ msgstr "Hozzáad >"
-
-#~ msgid "< Remove"
-#~ msgstr "< Eltávolít"
-
-#~ msgid "Add All >>"
-#~ msgstr "Mindent hozzáad >>"
-
-#~ msgid "<< Remove All"
-#~ msgstr "<< Mindent eltávolít"
-
-#~ msgid "Installed Plugins"
-#~ msgstr "Telepített plugin-ok"
-
-#~ msgid ""
-#~ "An error was encountered while opening the file: \n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Please make sure the file exists."
-#~ msgstr ""
-#~ "Hiba történt a következő fájl megnyitásakor:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Győződj meg róla, hogy a fájl létezik."
-
-#~ msgid "File _Info"
-#~ msgstr "Adat_lap"
-
-#~ msgid "Get the basic file info"
-#~ msgstr "Alapvető fájlinformációk"
-
-#~ msgid "browse"
-#~ msgstr "tallóz"
-
-#~ msgid "don't translate this\n"
-#~ msgstr "don't translate this\n"
-
-#~ msgid "Directory  "
-#~ msgstr "Könyvtár   "
-
-#~ msgid ""
-#~ "Hello Dear Translator :\n"
-#~ "This is the unstable branch of gedit. \n"
-#~ "I think you should be translating the gedit-1-0 branch. To get it from "
-#~ "cvs type : \n"
-#~ "cvs -z3 co -r gedit-1-0 gedit\n"
-#~ "Thank you. Chema"
-#~ msgstr ""
-#~ "Thanks, Chema.\n"
-#~ "(so that we get 100% :-)"
-
-#~ msgid ""
-#~ "An error was encountered while opening the file:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "\n"
-#~ "Please make sure the file is not being used by another application\n"
-#~ "and that the file is not empty."
-#~ msgstr ""
-#~ "Hiba történt a fájl megnyitásakor:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "\n"
-#~ "Győződj meg róla, hogy a fájlt nem használja más alkalmazás\n"
-#~ "és hogy a fájl nem üres."
-
-#~ msgid "b_eginning of document"
-#~ msgstr "dokumentum _elejétől keres"
-
-#~ msgid "Text found at line :%i"
-#~ msgstr "Szöveg helye: %i. sor"
-
-#~ msgid "Enter the line number you wish to go to."
-#~ msgstr "Írd be annak a sornak a számát, amire ugrani szeretnél."
-
-#~ msgid "Get file info like characters, lines, words & paragraphs count."
-#~ msgstr "Statisztika a fájlról, karakterek, sorok, szavak, bekezdések száma."
-
-#~ msgid "Can't find again. There is not a text string to search for."
-#~ msgstr "Nem tudok újra keresni, nem adtad meg a keresendő szöveget."
-
-#~ msgid "Diff plugin."
-#~ msgstr "Diff plugin."
-
-#~ msgid "With special thanks to:"
-#~ msgstr "Köszönet:"
-
-#~ msgid "(C) 1998, 1999 Alex Roberts and Evan Lawrence"
-#~ msgstr "(C) 1998, 1999 Alex Roberts und Evan Lawrence"
-
-#~ msgid "gedit is a small and lightweight text editor for GNOME/Gtk+"
-#~ msgstr "gedit egy kicsi és könnyű szövegszerkesztő a GNOME/Gtk+-hoz"
-
-#~ msgid "Enable Wordwrap"
-#~ msgstr "Sortörés"
-
-#~ msgid "Get the current and total lines"
-#~ msgstr "Aktuális és összes sort kiírja"
-
-#~ msgid ""
-#~ "Filename: %s\n"
-#~ "\n"
-#~ "Total Lines: %i\n"
-#~ "Current Line: %i"
-#~ msgstr ""
-#~ "Fájlnév: %s\n"
-#~ "\n"
-#~ "Össz sorok: %i\n"
-#~ "Aktuális sor: %i"
-
-#~ msgid "Replace?"
-#~ msgstr "Cserélhetem?"
-
-#~ msgid "Search for:"
-#~ msgstr "Keresés erre:"
-
-#~ msgid "Replace with:"
-#~ msgstr "Csere ezzel:"
-
-#~ msgid "Ask before replacing"
-#~ msgstr "Csere előtt kérdez"
-
-#~ msgid "Wrap long lines at the page width"
-#~ msgstr "Hosszú sorok betörése oldalszélességnél"
-
-#~ msgid "Search from: "
-#~ msgstr "Keresés innen: "
-
-#~ msgid ""
-#~ "Cursor\n"
-#~ "Beginning of document\n"
-#~ "End of document\n"
-#~ msgstr ""
-#~ "Kurzortól\n"
-#~ "Dokumentum elejétől\n"
-#~ "Dokumentum végétől\n"
-
-#~ msgid ""
-#~ "Cursor\n"
-#~ "Beginning of Document\n"
-#~ "End of Document\n"
-#~ msgstr ""
-#~ "Kurzor\n"
-#~ "A dokumentum eleje\n"
-#~ "A dokumentum vége\n"
