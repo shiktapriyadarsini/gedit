@@ -1,3 +1,10 @@
+2004-10-15  Marco Pesenti Gritti  <marco@gnome.org>
+
+	* gedit/dialogs/gedit-encodings-dialog.c: (update_list),
+	(gedit_encodings_dialog_run):
+
+	Fix a trivial compilation warning
+
 2004-10-11  Paolo Borelli  <pborelli@katamail.com>
 
 	* Makefile.am: fix distcheck with latest gnome-common.
