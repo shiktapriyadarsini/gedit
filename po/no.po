@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.7.1\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
-"PO-Revision-Date: 2001-10-10 22:46+0200\n"
+"POT-Creation-Date: 2001-12-11 23:37+0100\n"
+"PO-Revision-Date: 2001-12-11 23:37+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -387,11 +387,11 @@ msgstr "Reverser"
 msgid "Reverse text"
 msgstr "Reverser tekst"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Hallo verden"
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr "Eksempel 'hallo verden' tillegg."
 
@@ -559,170 +559,174 @@ msgid "_Deactivate all"
 msgstr "_Deaktiver alle"
 
 #: src/dialogs/prefs.glade.h:1
+msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÆæØøÅå"
+
+#: src/dialogs/prefs.glade.h:2
 msgid "Add _header"
 msgstr "Legg til _header"
 
-#: src/dialogs/prefs.glade.h:2
+#: src/dialogs/prefs.glade.h:3
 msgid "Appearance"
 msgstr "Utseende"
 
-#: src/dialogs/prefs.glade.h:3
+#: src/dialogs/prefs.glade.h:4
 msgid "Bottom"
 msgstr "Bunn"
 
-#: src/dialogs/prefs.glade.h:4
+#: src/dialogs/prefs.glade.h:5
 msgid "Colors"
 msgstr "Farger"
 
-#: src/dialogs/prefs.glade.h:5
+#: src/dialogs/prefs.glade.h:6
 msgid "Default"
 msgstr "Forvalg"
 
-#: src/dialogs/prefs.glade.h:6
+#: src/dialogs/prefs.glade.h:7
 msgid "Documents"
 msgstr "Dokumenter"
 
-#: src/dialogs/prefs.glade.h:7
+#: src/dialogs/prefs.glade.h:8
 msgid "Editor Behavior"
 msgstr "Editorens oppførsel"
 
-#: src/dialogs/prefs.glade.h:8
+#: src/dialogs/prefs.glade.h:9
 msgid "Enable _Auto-indent"
 msgstr "Slå på _autoindentering"
 
-#: src/dialogs/prefs.glade.h:9
+#: src/dialogs/prefs.glade.h:10
 msgid "Enable word _wrapping"
 msgstr "Slå på ordbr_yting"
 
-#: src/dialogs/prefs.glade.h:10
+#: src/dialogs/prefs.glade.h:11
 msgid "Fonts"
 msgstr "Skrifttyper"
 
-#: src/dialogs/prefs.glade.h:11
+#: src/dialogs/prefs.glade.h:12
 msgid "Fonts/Colors"
 msgstr "Skrifttyper/Farger"
 
-#: src/dialogs/prefs.glade.h:12
+#: src/dialogs/prefs.glade.h:13
 msgid "General"
 msgstr "Generelt"
 
-#: src/dialogs/prefs.glade.h:13
+#: src/dialogs/prefs.glade.h:14
 msgid "Left"
 msgstr "Venstre"
 
-#: src/dialogs/prefs.glade.h:14
+#: src/dialogs/prefs.glade.h:15
 msgid "MDI (Multiple Document Interface)"
 msgstr "MDI (Multiple Document Interface)"
 
-#: src/dialogs/prefs.glade.h:15
+#: src/dialogs/prefs.glade.h:16
 msgid "Modal"
 msgstr "Modal"
 
-#: src/dialogs/prefs.glade.h:16
+#: src/dialogs/prefs.glade.h:17
 msgid "Notebook"
 msgstr "Notisblokk"
 
-#: src/dialogs/prefs.glade.h:17
+#: src/dialogs/prefs.glade.h:18
 msgid "Notebook _tab position: "
 msgstr "No_tisbok faneplassering: "
 
-#: src/dialogs/prefs.glade.h:18
+#: src/dialogs/prefs.glade.h:19
 msgid "Orientation"
 msgstr "Orientering"
 
-#: src/dialogs/prefs.glade.h:19
+#: src/dialogs/prefs.glade.h:20
 msgid "Paper"
 msgstr "Papir"
 
-#: src/dialogs/prefs.glade.h:20
+#: src/dialogs/prefs.glade.h:21
 msgid "Pick a Font"
 msgstr "Velg en skrifttype"
 
-#: src/dialogs/prefs.glade.h:21
+#: src/dialogs/prefs.glade.h:22
 msgid "Pick a color"
 msgstr "Velg en farge"
 
-#: src/dialogs/prefs.glade.h:22
+#: src/dialogs/prefs.glade.h:23
 msgid "Preferences"
 msgstr "Brukervalg"
 
-#: src/dialogs/prefs.glade.h:23
+#: src/dialogs/prefs.glade.h:24
 msgid "Print line _numbers every:"
 msgstr "Skriv ut linje_nummer for hver:"
 
-#: src/dialogs/prefs.glade.h:24
+#: src/dialogs/prefs.glade.h:25
 msgid "Printing"
 msgstr "Utskrift"
 
-#: src/dialogs/prefs.glade.h:25
+#: src/dialogs/prefs.glade.h:26
 msgid "Right"
 msgstr "Høyre"
 
-#: src/dialogs/prefs.glade.h:26
+#: src/dialogs/prefs.glade.h:27
 msgid "S_how statusbar"
 msgstr "V_is statuslinje"
 
-#: src/dialogs/prefs.glade.h:27
+#: src/dialogs/prefs.glade.h:28
 msgid "Set limit on _undo levels to:"
 msgstr "Sett grense for an_grenivåer til:"
 
-#: src/dialogs/prefs.glade.h:28
+#: src/dialogs/prefs.glade.h:29
 msgid "Set toolbar according to _system settings"
 msgstr "Sett verktøylinjen i henhold til _systeminnstillingene"
 
-#: src/dialogs/prefs.glade.h:29
+#: src/dialogs/prefs.glade.h:30
 msgid "Set toolbar to _icons only"
 msgstr "Sett verktøylinjen til kun _ikoner"
 
-#: src/dialogs/prefs.glade.h:30
+#: src/dialogs/prefs.glade.h:31
 msgid "Set toolbar to icons with _text"
 msgstr "Sett verktøylinjen til ikoner med _tekst"
 
-#: src/dialogs/prefs.glade.h:31
+#: src/dialogs/prefs.glade.h:32
 msgid "Tab _width: "
 msgstr "Ta_b bredde: "
 
-#: src/dialogs/prefs.glade.h:32
+#: src/dialogs/prefs.glade.h:33
 msgid "Top"
 msgstr "Topp"
 
-#: src/dialogs/prefs.glade.h:33
+#: src/dialogs/prefs.glade.h:34
 msgid "Toplevel"
 msgstr "Toppnivå"
 
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
+#: src/dialogs/prefs.glade.h:35 src/menus.c:276
 msgid "Undo"
 msgstr "Angre"
 
-#: src/dialogs/prefs.glade.h:35
+#: src/dialogs/prefs.glade.h:36
 msgid "_Background: "
 msgstr "_Bakgrunn: "
 
-#: src/dialogs/prefs.glade.h:36
+#: src/dialogs/prefs.glade.h:37
 msgid "_Default font: "
 msgstr "Stan_dard skrifttype: "
 
-#: src/dialogs/prefs.glade.h:37
+#: src/dialogs/prefs.glade.h:38
 msgid "_Foreground: "
 msgstr "_Forgrunn: "
 
-#: src/dialogs/prefs.glade.h:38
+#: src/dialogs/prefs.glade.h:39
 msgid "_Landscape"
 msgstr "_Landskap"
 
-#: src/dialogs/prefs.glade.h:39
+#: src/dialogs/prefs.glade.h:40
 msgid "_Mode: "
 msgstr "_Modus: "
 
-#: src/dialogs/prefs.glade.h:40
+#: src/dialogs/prefs.glade.h:41
 msgid "_Portrait"
 msgstr "_Portrett"
 
-#: src/dialogs/prefs.glade.h:41
+#: src/dialogs/prefs.glade.h:42
 msgid "_level(s)"
 msgstr "_nivå(er)"
 
-#: src/dialogs/prefs.glade.h:42
+#: src/dialogs/prefs.glade.h:43
 msgid "l_ine(s)"
 msgstr "l_inje(r)"
 
@@ -1388,6 +1392,3 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "Du kan ikke fjerne forrige visning av et dokument."
-
-#~ msgid "Spell Check"
-#~ msgstr "Stavekontroll"
