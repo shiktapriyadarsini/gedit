@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-06-11 13:17+0200\n"
+"POT-Creation-Date: 2003-06-25 14:17+0200\n"
+"PO-Revision-Date: 2003-06-25 14:18+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -2642,9 +2642,8 @@ msgid "Show _Overwrite Mode"
 msgstr "Mostra el mode de s_obreescriptura"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Mostra només les icones a la barra d'eines"
+msgstr "Mostra icones i text a la barra d'eines"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2655,9 +2654,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Mostra el mode de sobreescriptura a la barra d'estat"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Mostra només les icones a la barra d'eines"
+msgstr "Mostra text prioritari al costat de les icones a la barra d'eines"
 
 #
 #: src/gedit-ui.xml.h:73
@@ -3398,14 +3396,6 @@ msgstr "Tailandès"
 #: src/recent-files/egg-recent-vfs-utils.c:90
 msgid " (invalid Unicode)"
 msgstr " (Unicode invàlid)"
-
-#, fuzzy
-#~ msgid "Gedit viewer factory"
-#~ msgstr "factoria d'automatització de gedit"
-
-#, fuzzy
-#~ msgid "Source"
-#~ msgstr "Ordena"
 
 #~ msgid "Dump XML"
 #~ msgstr "Desfés el XML"
