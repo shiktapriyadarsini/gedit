@@ -1,8 +1,20 @@
-2003-09-23 Leena Gunda  <leena.gunda@wipro.com>
+2003-10-16  Paolo Maggi  <paolo.maggi@polito.it>
 
-       * time/time.c (help_button_pressed):
-       Pass correct section-id for displaying help.
-       Fixes bug #123007.
+	* shell_output/shell_output.c (handle_command_output): 
+	on some systems EOF is indicating by G_IO_IN and a 
+	zero-length read, and not by G_IO_HUP (fixes bug #121377,
+	thanks to Laurent Vivier <Laurent.Vivier@bull.net>)
+
+	* shell_output/shell_output.c (handle_command_output): 
+	handle the 'pos' return value from g_io_channel_read_line() 
+	correctly (fixes bug #124052, patch by 
+	Owen Taylor <otaylor@redhat.com>)
+
+2003-09-23  Leena Gunda  <leena.gunda@wipro.com>
+
+	* time/time.c (help_button_pressed):
+	Pass correct section-id for displaying help.
+	Fixes bug #123007.
 
 2003-06-30  Paolo Maggi  <paolo.maggi@polito.it>
 
