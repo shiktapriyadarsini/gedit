@@ -1,3 +1,8 @@
+2004-07-29  Padraig O'Briain  <padraig.obriain@sun.com>
+
+	* dialogs/uri.glade: Move labelled-by relation from GtkEntry
+	to GtkCombo. Fixes bug #145138
+
 2004-06-26  Muktha  <muktha.narayan@wipro.com>
 
 	* dialogs/gedit-page-setup-dialog.c (dialog_response_handler):
