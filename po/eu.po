@@ -15,31 +15,31 @@ msgstr ""
 
 #: gedit.desktop.in.h:1
 msgid "Text editor"
-msgstr ""
+msgstr "Testu-editorea"
 
 #: gedit.desktop.in.h:2
 msgid "gedit"
-msgstr ""
+msgstr "gedit:"
 
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
-msgstr ""
+msgstr "ASCII taula"
 
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
-msgstr ""
+msgstr "Plugin honek ASCII taula duen elkarrizketa-koadroa bistaratzen du."
 
 #: plugins/ASCII/asciitable.glade.h:1
 msgid "Char"
-msgstr ""
+msgstr "Karaktere"
 
 #: plugins/ASCII/asciitable.glade.h:2
 msgid "Dec#"
-msgstr ""
+msgstr "Dec#"
 
 #: plugins/ASCII/asciitable.glade.h:3
 msgid "Hex#"
-msgstr ""
+msgstr "Hex#"
 
 #: plugins/ASCII/asciitable.glade.h:4
 msgid ""
@@ -47,19 +47,21 @@ msgid ""
 "document, select the character and click the \"Insert Char\" \n"
 "button or double click the character in the table."
 msgstr ""
+"Dokumentu aktiboan karaktereetako bat txertatu nahi baduzu, \n"
+"hautatu karakterea eta egin klik \"Txertatu karakterea\" botoian \n"
+"edo egin klik bi aldiz karakterearen gainean."
 
 #: plugins/ASCII/asciitable.glade.h:7
-#, fuzzy
 msgid "Insert char"
-msgstr "Txertatu ordua"
+msgstr "Txertatu karakterea"
 
 #: plugins/ASCII/asciitable.glade.h:8
 msgid "Name"
-msgstr ""
+msgstr "Izena"
 
 #: plugins/ASCII/asciitable.glade.h:9
 msgid "gedit: ASCII table"
-msgstr ""
+msgstr "gedit: ASCII taula"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -74,7 +76,7 @@ msgstr "Web arakatzailearen plugin-a"
 #: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
 #: plugins/email/email.glade.h:1
 msgid " _Change... "
-msgstr " _Aldatu... "
+msgstr "_Aldatu..."
 
 #: plugins/browse/browse.glade.h:2
 msgid "Enter the _URL to browse for:"
@@ -103,15 +105,15 @@ msgstr "Zenbaki-bihurgailua"
 
 #: plugins/convert/convert.glade.h:1
 msgid " Decimal to _Hex "
-msgstr " Hamartarra _hamaseitar  "
+msgstr "Hamartarra _hamaseitar  "
 
 #: plugins/convert/convert.glade.h:2
 msgid " Decimal to _Octal "
-msgstr " Hamartarra _zortzitar "
+msgstr "Hamartarra _zortzitar "
 
 #: plugins/convert/convert.glade.h:3
 msgid " Hex to Decima_l "
-msgstr " Hamaseitarra h_amartar "
+msgstr "Hamaseitarra h_amartar "
 
 #: plugins/convert/convert.glade.h:4
 msgid "_Converted value:"
@@ -192,7 +194,7 @@ msgid ""
 msgstr ""
 "Bi dokumentu edo fitxategietatik diff fitxategia sortzen du diskoan\n"
 "Diff-i buruz informazio gehiago lortzeko, idatzi \"man diff\" shell "
-"gonbitean \n"
+"gonbitean\n"
 
 #: plugins/diff/diff.glade.h:2
 msgid "Choose the files to compare"
@@ -239,69 +241,68 @@ msgid ""
 "No document exists.\n"
 "The Document Info plugin is going be closed."
 msgstr ""
+"Ez dago dokumenturik.\n"
+"Dokumentuaren informazioaren plugin-a itxi egingo da."
 
 #: plugins/docinfo/docinfo.c:369
-#, fuzzy
 msgid "Document info"
-msgstr "Dokumentuak"
+msgstr "Dokumentuaren informazioa"
 
 #: plugins/docinfo/docinfo.c:370
-#, fuzzy
 msgid "Get info on current document."
-msgstr "Uneko dokumentua posta elektronikoz bidali "
+msgstr "Lortu uneko dokumentuari buruzko informazioa."
 
 #: plugins/docinfo/docinfo.c:371
 msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr ""
+"Plugin honek uneko dokumentuari buruzko oinarrizko informazioa "
+"duenelkarrizketa-koadroa bistaratzen du."
 
 #: plugins/docinfo/docinfo.glade.h:1
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: plugins/docinfo/docinfo.glade.h:2
 msgid "Characters (no spaces)"
-msgstr ""
+msgstr "Karaktereak (tarterik ez)"
 
 #: plugins/docinfo/docinfo.glade.h:3
 msgid "Characters (with spaces)"
-msgstr ""
+msgstr "Karaktereak (tarteekin)"
 
 #: plugins/docinfo/docinfo.glade.h:4
 msgid "Current column"
-msgstr ""
+msgstr "Uneko zutabea"
 
 #: plugins/docinfo/docinfo.glade.h:5
 msgid "Current line"
-msgstr ""
+msgstr "Uneko lerroa"
 
 #: plugins/docinfo/docinfo.glade.h:6
-#, fuzzy
 msgid "File Name"
-msgstr "Fitxategi-izena:"
+msgstr "Fitxategi-izena"
 
 #: plugins/docinfo/docinfo.glade.h:7
-#, fuzzy
 msgid "Lines"
-msgstr "_lerroz behin"
+msgstr "Lerroak"
 
 #: plugins/docinfo/docinfo.glade.h:8
 msgid "Paragraphs"
-msgstr ""
+msgstr "Paragrafoak"
 
 #: plugins/docinfo/docinfo.glade.h:9
 msgid "Update"
-msgstr ""
+msgstr "Eguneratu"
 
 #: plugins/docinfo/docinfo.glade.h:10
 msgid "Words"
-msgstr ""
+msgstr "Hitzak"
 
 #: plugins/docinfo/docinfo.glade.h:11
-#, fuzzy
 msgid "gedit: Document Info plugin"
-msgstr "gedit: Diff-en plugin-a"
+msgstr "gedit: dokumentuaren informazioaren plugin-a"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -327,9 +328,8 @@ msgid ""
 "Email the current document to a specified email address\n"
 "gedit searches for sendmail to use this plugin."
 msgstr ""
-"Uneko dokumentua posta elektronikoz bidali zehaztutako helbide "
-"elektronikobatera\n"
-"gedit sendmail bilatzen ari da plugin hau erabiltzeko."
+"Uneko dokumentua posta elektronikoz bidali zehaztutako helbide batera\n"
+"gedit plugin hau erabiltzeko sendmail bilatzen ari da."
 
 #: plugins/email/email.glade.h:2
 msgid "Change..."
@@ -436,36 +436,31 @@ msgstr "gedit: Shell irteeraren plugin-a"
 
 #: plugins/sort/sort.c:192
 msgid "Sort"
-msgstr ""
+msgstr "Ordenatu"
 
 #: plugins/sort/sort.c:193
-#, fuzzy
 msgid "Sort a document."
-msgstr "Dokumentu berria sortzen du"
+msgstr "Ordenatu dokumentua."
 
 #: plugins/sort/sort.c:194
-#, fuzzy
 msgid "Sort a document or selected text."
-msgstr "Hautatu dituzun bi dokumentuak berdinak dira."
+msgstr "Ordenatu dokumentua edo hautatutako testua. "
 
 #: plugins/sort/sort.glade.h:1
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/sort/sort.glade.h:2
-#, fuzzy
 msgid "Case Sensitive"
-msgstr "_Maiuskulak eta minuskulak bereizten ditu"
+msgstr "Maiuskulak/minuskulak bereizten ditu"
 
 #: plugins/sort/sort.glade.h:3
-#, fuzzy
 msgid "Sort starting at column:"
-msgstr "Bilatutako katea ez da aurkitu"
+msgstr "Ordenatu zutabe honetatik hasiz:"
 
 #: plugins/sort/sort.glade.h:4
-#, fuzzy
 msgid "gedit: Sort plugin"
-msgstr "gedit: Diff-en plugin-a"
+msgstr "gedit: Ordenatzeko plugin-a"
 
 #: plugins/time/time.c:83
 msgid "Insert Time"
@@ -557,11 +552,11 @@ msgstr "Hautatu aktibatu behar diren plugin-ak:"
 
 #: src/dialogs/plugin-manager.glade.h:7
 msgid "_Activate all"
-msgstr "_Aktibatu guztia"
+msgstr "_Aktibatu denak"
 
 #: src/dialogs/plugin-manager.glade.h:8
 msgid "_Deactivate all"
-msgstr "_Desaktibatu guztia"
+msgstr "_Desaktibatu denak"
 
 #: src/dialogs/prefs.glade.h:1
 msgid "Add _header"
@@ -573,16 +568,15 @@ msgstr "Itxura"
 
 #: src/dialogs/prefs.glade.h:3
 msgid "Bottom"
-msgstr ""
+msgstr "Behean"
 
 #: src/dialogs/prefs.glade.h:4
 msgid "Colors"
 msgstr "Koloreak"
 
 #: src/dialogs/prefs.glade.h:5
-#, fuzzy
 msgid "Default"
-msgstr "_Letra-tipo lehenetsia: "
+msgstr "Lehenetsia"
 
 #: src/dialogs/prefs.glade.h:6
 msgid "Documents"
@@ -614,7 +608,7 @@ msgstr "Orokorra"
 
 #: src/dialogs/prefs.glade.h:13
 msgid "Left"
-msgstr ""
+msgstr "Ezkerrean"
 
 #: src/dialogs/prefs.glade.h:14
 msgid "MDI (Multiple Document Interface)"
@@ -622,11 +616,11 @@ msgstr "MDI (Dokumentu anitzeko interfazea)"
 
 #: src/dialogs/prefs.glade.h:15
 msgid "Modal"
-msgstr ""
+msgstr "Modua"
 
 #: src/dialogs/prefs.glade.h:16
 msgid "Notebook"
-msgstr ""
+msgstr "Ohar-koadernoa"
 
 #: src/dialogs/prefs.glade.h:17
 msgid "Notebook _tab position: "
@@ -662,7 +656,7 @@ msgstr "Inprimatzen"
 
 #: src/dialogs/prefs.glade.h:25
 msgid "Right"
-msgstr ""
+msgstr "Eskuinean"
 
 #: src/dialogs/prefs.glade.h:26
 msgid "S_how statusbar"
@@ -689,13 +683,12 @@ msgid "Tab _width: "
 msgstr "Fitxaren _zabalera: "
 
 #: src/dialogs/prefs.glade.h:32
-#, fuzzy
 msgid "Top"
-msgstr "Nori:"
+msgstr "Goian"
 
 #: src/dialogs/prefs.glade.h:33
 msgid "Toplevel"
-msgstr ""
+msgstr "Goi-maila"
 
 #: src/dialogs/prefs.glade.h:34 src/menus.c:276
 msgid "Undo"
@@ -810,7 +803,7 @@ msgstr "%s %d*"
 #: src/document.c:477
 #, fuzzy, c-format
 msgid "``%s'' has been modified.  Do you want to save the changes?"
-msgstr "``%s'' aldatu egin da.  Gorde nahi duzu?"
+msgstr "``%s'' aldatu egin da. Aldaketak gorde nahi dituzu?"
 
 #: src/document.c:679 src/document.c:687
 msgid "(modified)"
@@ -827,7 +820,7 @@ msgstr "Fitxategi honen luzapena ez da baliozkoa\n"
 #: src/document.c:788
 #, c-format
 msgid "The file %s was not found."
-msgstr "%s fitxategia ez da aurkitu. "
+msgstr "%s fitxategia ez da aurkitu."
 
 #: src/file.c:226
 #, c-format
@@ -860,7 +853,7 @@ msgstr ""
 "\n"
 "%s\n"
 "\n"
-"Ziurtatu fitxategia irekitzeko baimenak badituzula. "
+"Ziurtatu fitxategia irekitzeko baimenak badituzula."
 
 #: src/file.c:277
 #, c-format
@@ -939,7 +932,7 @@ msgstr ""
 " %s \n"
 "\n"
 "Arrazoi ezezaguna gertatu da (1). Arazo honen berri helbide honetan eman: "
-"submit@bugs.gnome.org"
+"submit@bugs."
 
 #: src/file.c:590
 #, c-format
@@ -956,7 +949,7 @@ msgstr ""
 " %s \n"
 "\n"
 "Arrazoi ezezaguna gertatu da (2). Arazo honen berri helbide honetan eman: "
-"submit@bugs.gnome.org"
+"submit@bugs."
 
 #: src/file.c:692
 msgid "Could not allocate the required memory."
@@ -998,13 +991,13 @@ msgid ""
 "Are you sure you want to revert all changes?\n"
 "(%s)"
 msgstr ""
-"Ziur zaude aldaketa guztiak itzuli nahi dituzula?\n"
+"Ziur zaude aldaketa guztiak desegin nahi dituzula?\n"
 "(%s)"
 
 #: src/file.c:1231
 #, c-format
 msgid "The file ``%s'' does not exist.  Would you like to create it?"
-msgstr "``%s'' fitxategia ez dago.  Sortu nahi duzu?"
+msgstr "``%s'' fitxategia ez dago. Sortu nahi duzu?"
 
 #: src/gedit.c:47
 msgid "Show window debugging messages."
@@ -1284,7 +1277,7 @@ msgid ""
 " Do you want to specify a new location for %s?"
 msgstr ""
 "%sEzingo duzu %s plugin-a erabili %s gabe. \n"
-" Kokaleku berria zehaztu nahi duzu %s(r)entzat?"
+" %s(r)entzat kokaleku berria zehaztu nahi duzu?"
 
 #: src/plugin.c:322
 #, c-format
@@ -1293,7 +1286,7 @@ msgstr "Errorea, ezin da modulu-fitxategia ireki, %s"
 
 #: src/plugin.c:332
 msgid "Error, plugin does not contain init_plugin function."
-msgstr "Errorea, plugin-ak ez du init_plugin funtziorik. "
+msgstr "Errorea, plugin-ak ez du init_plugin funtziorik."
 
 #: src/plugin.c:345
 msgid "Error, init_plugin returned an error"
@@ -1305,7 +1298,7 @@ msgstr "Errorea, plugin-a oraindik erabiltzen ari da "
 
 #: src/prefs.c:42
 msgid "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
-msgstr ""
+msgstr "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
 
 #: src/print.c:230
 msgid "Print Document"
