@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-26 23:34+0200\n"
-"PO-Revision-Date: 2003-09-26 23:48+0200\n"
+"POT-Creation-Date: 2003-09-30 17:25+0200\n"
+"PO-Revision-Date: 2003-09-30 17:25+0200\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -326,8 +326,8 @@ msgstr ""
 "»GEDIT_TOOLBAR_SYSTEM« für den vom System vorgegebenen Stil, "
 "»GEDIT_TOOLBAR_ICONS«, um nur Symbole anzuzeigen, "
 "»GEDIT_TOOLBAR_ICONS_AND_TEXT«, um Symbole und Text anzuzeigen sowie "
-"»GEDIT_TOOLBAR_ICONS_BOTH_HORIZ«, um wichtigen Text neben Icons anzuzeigen. "
-"Hinweis: Bei den Werten wird zwischen Groß- und Kleinschreibung "
+"»GEDIT_TOOLBAR_ICONS_BOTH_HORIZ«, um wichtigen Text neben Symbolen "
+"anzuzeigen. Hinweis: Bei den Werten wird zwischen Groß- und Kleinschreibung "
 "unterschieden. Verwenden Sie daher die Werte genau wie hier angegeben."
 
 #: data/gedit.schemas.in.h:44
@@ -2332,7 +2332,7 @@ msgstr ""
 
 #: gedit/gedit-utils.c:901
 msgid "It is not possible to revert an Untitled document."
-msgstr "Sie können kein unbenanntes Dokument zurücksetzen."
+msgstr "Sie können unbenannte Dokumente nicht zurücksetzen."
 
 #: gedit/gedit-utils.c:990
 #, c-format
@@ -2962,7 +2962,7 @@ msgstr "Das Dokument enthält keinen Text."
 
 #: plugins/spell/spell.c:571
 msgid "The selected text does not contain mispelled words."
-msgstr "Das Dokument enthält keine Rechtschreibfehler."
+msgstr "Der markierte Text enthält keine Rechtschreibfehler."
 
 #: plugins/spell/spell.c:572
 msgid "The document does not contain mispelled words."
@@ -2982,11 +2982,11 @@ msgstr "Floskellisten-Plugin"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:154
 msgid "Select the group of tags you want to use"
-msgstr "Wählen Sie die zu verwendende Floskellistengruppe"
+msgstr "Wählen Sie die zu verwendende Floskelgruppe"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:176
 msgid "Tag Groups Combo"
-msgstr "Floskellistengruppen-Kombinationsfeld"
+msgstr "Floskelgruppen-Kombinationsfeld"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:178
 msgid "Tags Name List"
@@ -3065,7 +3065,7 @@ msgstr "Das Datums-/Uhrzeit-Plugin konfigurieren"
 
 #: plugins/time/time.glade2.h:6
 msgid "Insert Date and Time"
-msgstr "Das Datum und die Uhrzeit einfügen"
+msgstr "Datum und Uhrzeit einfügen"
 
 #: plugins/time/time.glade2.h:7
 msgid "Use the _selected format"
