@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-03-04 14:12+0100\n"
+"POT-Creation-Date: 2003-06-16 11:28+0200\n"
+"PO-Revision-Date: 2003-06-16 18:35+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2453,9 +2453,8 @@ msgid "Show _Overwrite Mode"
 msgstr "Zobrazit režim přepis_ování"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Zobrazit v nástrojové liště pouze ikony"
+msgstr "Zobrazit v nástrojové liště jak ikony, tak text"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2466,9 +2465,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Zobrazí režim přepisování ve stavové liště"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Zobrazit v nástrojové liště pouze ikony"
+msgstr "Zobrazit v nástrojové liště prioritní text vedle ikon"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
