@@ -1,38 +1,39 @@
+# translation of gedit.gnome-2-4.mn.po to Mongolian
 # translation of gedit.HEAD.mn.po to Mongolian
 # translation of gedit.HEAD.mn.po to mongolian
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# Sanlig Badral <badral@chinggis.com>, 2003
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Sanlig Badral <badral@chinggis.com>, 2003.
+# Sanlig Badral <badral@users.sf.net>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.HEAD.mn\n"
-"POT-Creation-Date: 2003-10-16 18:20+0200\n"
-"PO-Revision-Date: 2003-01-21 06:31+0100\n"
-"Last-Translator: Sanlig Badral <badral@chinggis.com>\n"
-"Language-Team: Mongolian <mn@li.org>\n"
+"Project-Id-Version: gedit.gnome-2-4.mn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-09 18:43+0100\n"
+"PO-Revision-Date: 2003-11-10 02:55+0100\n"
+"Last-Translator: Sanlig Badral <badral@users.sf.net>\n"
+"Language-Team: Mongolian <openmn-core@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.1\n"
+"X-Generator: KBabel 1.0.2\n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
-msgstr ""
+msgstr "Gedit Харагдац"
 
 #: data/GNOME_Gedit.server.in.in.h:2
 msgid "Gedit View."
-msgstr ""
+msgstr "Gedit Харагдац."
 
 #: data/GNOME_Gedit.server.in.in.h:3 viewer/gedit-factory.c:53
-#, fuzzy
 msgid "Gedit viewer factory"
-msgstr "gedit-автоматжуулалтийн үйлдвэр"
+msgstr "gedit-харагчийн үйлдвэр"
 
 #: data/GNOME_Gedit.server.in.in.h:4
-#, fuzzy
 msgid "Source"
-msgstr "Эрэмблэх"
+msgstr "Эх"
 
 #: data/GNOME_Gedit.server.in.in.h:5
 msgid "gedit application"
@@ -40,7 +41,7 @@ msgstr "gedit-Х.программ"
 
 #: data/GNOME_Gedit.server.in.in.h:6
 msgid "gedit automation factory"
-msgstr "gedit-автоматжуулалтийн үйлдвэр"
+msgstr "gedit-автоматжуулалтын үйлдвэр"
 
 #: data/gedit.desktop.in.h:1
 msgid "Edit text files"
@@ -59,9 +60,8 @@ msgstr ""
 "»Стандарт бичиг хэрэглэх« сонголтыг хаасан үед л хэрэгжинэ."
 
 #: data/gedit.schemas.in.h:2
-#, fuzzy
 msgid "Auto Detected Encodings"
-msgstr "Дэмжигдсэн тэмдэгт _кодчилолууд:"
+msgstr "Автоматаар илэрсэн тэмдэгт кодчилолууд:"
 
 #: data/gedit.schemas.in.h:3
 msgid "Auto Save"
@@ -120,9 +120,8 @@ msgid "Encoding for Saving"
 msgstr "Хадгалах тэмдэгт кодчилол"
 
 #: data/gedit.schemas.in.h:15
-#, fuzzy
 msgid "Encodings shown in menu"
-msgstr "Хадгалах тэмдэгт кодчилол"
+msgstr "Цэсэнд харуулах тэмдэгт кодчилолууд"
 
 #: data/gedit.schemas.in.h:16
 msgid ""
@@ -178,6 +177,8 @@ msgid ""
 "List of encodings shown in Character Coding menu in open/save file selector. "
 "Only recognized encodings are used."
 msgstr ""
+"Нээх/хадгалах файл сонгогчийн цэсэний тэмдэгт кодчилолд харагдах "
+"кодчилолуудын жагсаалт. Зөвхөн танигдсан кодчилолууд хэрэглэгдэнэ."
 
 #: data/gedit.schemas.in.h:25
 msgid "Maximum Recent Files"
@@ -205,7 +206,7 @@ msgstr "Мөрийн дугаар хэвлэх"
 
 #: data/gedit.schemas.in.h:30
 msgid "Print Syntax Highlighting"
-msgstr ""
+msgstr "Хэвлэх дүрэм онцгойлолт"
 
 #: data/gedit.schemas.in.h:31
 msgid "Printing Line Wrapping Mode"
@@ -220,14 +221,14 @@ msgid "Selection Color"
 msgstr "Тэмдэглэх өнгө"
 
 #: data/gedit.schemas.in.h:34
-#, fuzzy
 msgid ""
 "Sorted list of encodings used by gedit for auto-detecting the encoding of a "
 "file. \"CURRENT\" is the current locale encoding. Only recognized encodings "
 "are used."
 msgstr ""
-"gedit -р файл уншихад хэрэглэгдэж байгаа тэмдэгт кодчилолын жигсаалт UTF-8 "
-"кодлогч эсвэл идэвхитэй байрлалын кодчилолоор кодлогдоогүй."
+"gedit-н файлын кодчилол авомат танихад хэрэглэж буй кодчилолуудын "
+"жагсаалт.  \"ОДОО\" бол идэвхитэй локалын кодчилол. Зөвхөн танигдсан "
+"кодчилолууд хэрэглэгдэнэ."
 
 #: data/gedit.schemas.in.h:35
 msgid ""
@@ -258,8 +259,7 @@ msgstr ""
 "үү."
 
 #: data/gedit.schemas.in.h:37
-msgid ""
-"Specifies the font to use for a document's body when printing documents."
+msgid "Specifies the font to use for a document's body when printing documents."
 msgstr "Баримтын эх биеийг хэвлэхэд хэрэглэгдэх бичгийг өгнө үү."
 
 #: data/gedit.schemas.in.h:38
@@ -404,13 +404,11 @@ msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "gedit хоосон тэмдэгт ТАВ-ын оронд хэрэглэх үү?"
 
 #: data/gedit.schemas.in.h:58
-#, fuzzy
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "gedit баримтыг хэвлэх үед толгойн хэсэг холбох эсэх?"
+msgstr "gedit баримтыг хэвлэх үед хэвлэх дүрэм онцгойлох эсэх."
 
 #: data/gedit.schemas.in.h:59
-msgid ""
-"Whether the status bar at the bottom of editing windows should be visible."
+msgid "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Боловсруулах мужийн цонхны доод хэсэг төлвийн самбарыг харуулах уу ?"
 
 #: data/gedit.schemas.in.h:60
@@ -486,9 +484,9 @@ msgid "Find"
 msgstr "Хайх"
 
 #: gedit/dialogs/gedit-dialog-replace.c:1149
-#, fuzzy, c-format
+#, c-format
 msgid "Found and replaced %d occurrences."
-msgstr "%d тохиолдлууд олдож орлуулагдлаа."
+msgstr "%d тохиолдлууд олдож орлуулагдлаа"
 
 #: gedit/dialogs/gedit-dialog-uri.c:87
 msgid "Open Location"
@@ -497,7 +495,7 @@ msgstr "Байрлал нээх"
 #: gedit/dialogs/gedit-encodings-dialog.c:76
 #, c-format
 msgid "There was an error displaying help: %s"
-msgstr ""
+msgstr "Тусламж харуулахад алдаа гарав: %s"
 
 #: gedit/dialogs/gedit-encodings-dialog.c:381
 #: gedit/dialogs/gedit-encodings-dialog.c:449
@@ -506,53 +504,46 @@ msgstr "_Тодорхойлолт"
 
 #: gedit/dialogs/gedit-encodings-dialog.c:390
 #: gedit/dialogs/gedit-encodings-dialog.c:458
-#, fuzzy
 msgid "_Encoding"
-msgstr "Тэмдэгт кодчилол"
+msgstr "_Кодчилол"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:1
-#, fuzzy
 msgid "A_vailable encodings:"
-msgstr "Шинэ тэмдэгт кодчилол нэмэх"
+msgstr "_Бэлэн буй кодчилолууд:"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:2
-#, fuzzy
 msgid "Character codings"
-msgstr "Тэмдэгт(үүд)"
+msgstr "Тэмдэгт кодчилолууд"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:3
 msgid "E_ncodings shown in menu:"
-msgstr ""
+msgstr "_Кодчилолуудыг цэсэнд харуулах:"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:490
 msgid "Body font picker"
-msgstr ""
+msgstr "Эх биеийн бичиг сонгогч"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:491
-#, fuzzy
 msgid ""
 "Push this button to select the font to be used to print the body of the "
 "document"
 msgstr ""
-"Биеийг хэвлэхэд хэрэглэгдэх бичгийг тохируулахдаа та энэ товчин дээр дарна уу"
+"Баримтын биеийг хэвлэхэд хэрэглэгдэх бичгийг тохируулахдаа та "
+"энэ товчин дээр дарна уу"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:492
-#, fuzzy
 msgid "Page headers font picker"
-msgstr "Хуудсын _толгой:"
+msgstr "Хуудсын толгойн фонт сонгогч"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:493
-#, fuzzy
-msgid ""
-"Push this button to select the font to be used to print the page headers"
+msgid "Push this button to select the font to be used to print the page headers"
 msgstr ""
 "Толгойн хэсэгийг хэвлэхэд хэрэглэгдэх бичгийг тохируулахдаа та энэ товчин "
 "дээр дарна уу"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:494
-#, fuzzy
 msgid "Line numbers font picker"
-msgstr "Мөрийн дугаар"
+msgstr "Мөрийн дугаарын бичгийн хэв сонгогч"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:495
 msgid "Push this button to select the font to be used to print line numbers"
@@ -562,7 +553,7 @@ msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:587
 msgid "Could not find '"
-msgstr ""
+msgstr "Олдсонгүй '"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:587
 #: gedit/dialogs/gedit-page-setup-dialog.c:629
@@ -571,20 +562,21 @@ msgid ""
 "\n"
 "Reinstall gedit."
 msgstr ""
+"Хуудас тохируулга -dialog.glade2'.\n"
+"\n"
+"gedit -г дахин суулгана уу."
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:628
-#, fuzzy
 msgid "Could not find the required widgets inside '"
-msgstr "Шаардлагатай үзэмжүүд (widgets) %s дотроос олдсонгүй."
+msgstr "Шаардлагатай үзэмжүүд (widgets) олдсонгүй '"
 
 #: gedit/dialogs/gedit-plugin-manager.c:53
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Плугин"
 
 #: gedit/dialogs/gedit-plugin-manager.c:54
-#, fuzzy
 msgid "Enabled"
-msgstr "Нурсан"
+msgstr "Нээлттэй"
 
 #: gedit/dialogs/gedit-plugin-manager.c:507
 msgid "Could not find plugin-manager.glade2, reinstall gedit.\n"
@@ -592,8 +584,7 @@ msgstr "plugin-manager.glade2 олдсонгүй; Та gedit -г шинээр с
 
 #: gedit/dialogs/gedit-plugin-manager.c:525
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
-msgstr ""
-"Plugin менежерийн хүчингүй Glade-Файл  -- бүх үзэмж(widgets) олдсонгүй.\n"
+msgstr "плугин менежерийн хүчингүй Glade-Файл  -- бүх үзэмж(widgets) олдсонгүй.\n"
 
 #: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
@@ -658,7 +649,7 @@ msgstr "Боловсруулагч"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:223
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "плугинs"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:295
 msgid "Cat_egories:"
@@ -674,8 +665,7 @@ msgstr "Ангилалууд"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:787
 msgid "Push this button to select the font to be used by the editor"
-msgstr ""
-"Боловсруулагчийн хэрэглэх бичгийг сонгохдоо та энэ товчин дээр дарна уу"
+msgstr "Боловсруулагчийн хэрэглэх бичгийг сонгохдоо та энэ товчин дээр дарна уу"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:790
 msgid "Push this button to configure text color"
@@ -689,15 +679,13 @@ msgstr "Дэвсгэрийн өнгө тохируулахдаа энэ товч
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
-msgstr ""
-"Сонгосон текстийн харагдах өнгийг тохируулахдаа энэ товчин дээр дарна уу"
+msgstr "Сонгосон текстийн харагдах өнгийг тохируулахдаа энэ товчин дээр дарна уу"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:797
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
-msgstr ""
-"Сонгосон текстийн тэмдэглэгдсэн өнгийг тохируулахдаа энэ товчин дээр дарна уу"
+msgstr "Сонгосон текстийн тэмдэглэгдсэн өнгийг тохируулахдаа энэ товчин дээр дарна уу"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:1
 #: gedit/dialogs/page-setup-dialog.glade2.h:1
@@ -801,7 +789,7 @@ msgstr "Текстийн өнгөө сонгоно уу"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:26
 msgid "Plugin manager"
-msgstr "Plugin-менежер"
+msgstr "плугин-менежер"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:28
 msgid "Se_lection color:"
@@ -953,13 +941,12 @@ msgid "_Line number:"
 msgstr "_Мөрийн дугаар:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:2
-#, fuzzy
 msgid "<b>Line Numbers</b>"
-msgstr "Мөрийн дугаар"
+msgstr "<b>Мөрийн дугаар</b>"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:3
 msgid "<b>Text Wrapping</b>"
-msgstr ""
+msgstr "<b>Текст таслалт</b>"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:6
 msgid "Fonts"
@@ -967,39 +954,35 @@ msgstr "Бичгүүд"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:7
 msgid "General"
-msgstr ""
+msgstr "Ерөнхий"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:8
 msgid "He_aders and footers:"
-msgstr ""
+msgstr "_Толгой ба хөл:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:9
-#, fuzzy
 msgid "Page Setup"
-msgstr "Хэвлэх тохируулга"
+msgstr "Хуудас тохируулга"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:10
-#, fuzzy
 msgid "Print _line numbers"
-msgstr "Мөрийн дугаар хэвлэх"
+msgstr "_Мөрийн дугаар хэвлэх"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:11
 msgid "Print s_yntax highlighting"
-msgstr ""
+msgstr "_Дүрэм онцгойлолт хэвлэх"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:12
 msgid "_Body:"
 msgstr "_Бие:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:13
-#, fuzzy
 msgid "_Line numbers:"
 msgstr "_Мөрийн дугаар:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:14
-#, fuzzy
 msgid "_Number every"
-msgstr "Бүх мөрийн _дугаар хэвлэх"
+msgstr "_Дугаар тус бүр"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:15
 msgid "_Print page headers"
@@ -1010,36 +993,32 @@ msgid "_Restore Default Fonts"
 msgstr "Стандарт бичгийг _сэргээх"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:17
-#, fuzzy
 msgid "lines"
 msgstr "Мөрүүд"
 
 #: gedit/dialogs/plugin-manager.glade2.h:1
-#, fuzzy
 msgid "About selected plugin"
-msgstr "Сонгосон Plugin -г тохируулах"
+msgstr "Сонгосон плугины тухай"
 
 #: gedit/dialogs/plugin-manager.glade2.h:2
-#, fuzzy
 msgid "C_onfigure Plugin"
-msgstr "Plugin тохируулах"
+msgstr "Плугин _тохируулах"
 
 #: gedit/dialogs/plugin-manager.glade2.h:3
 msgid "Configure the selected plugin"
-msgstr "Сонгосон Plugin -г тохируулах"
+msgstr "Сонгосон плугин -г тохируулах"
 
 #: gedit/dialogs/plugin-manager.glade2.h:4
 msgid "button1"
-msgstr ""
+msgstr "Товч1"
 
 #: gedit/dialogs/plugin-manager.glade2.h:5
 msgid "dialog1"
 msgstr "Диалог1"
 
 #: gedit/dialogs/program-location-dialog.glade2.h:1
-#, fuzzy
 msgid "Browse for program location..."
-msgstr "Программын байрлалыг өгөх..."
+msgstr "Програмын байрлалыг өгөх..."
 
 #: gedit/dialogs/program-location-dialog.glade2.h:3
 msgid "_Location to search for:"
@@ -1073,7 +1052,7 @@ msgstr "_Аар орлуулах: "
 
 #: gedit/dialogs/replace.glade2.h:7
 msgid "Search _backwards"
-msgstr ""
+msgstr "_Гэдрэг хайх"
 
 #: gedit/dialogs/replace.glade2.h:8
 msgid "_Match case"
@@ -1088,9 +1067,8 @@ msgid "_Wrap around"
 msgstr "_Мөр таслах"
 
 #: gedit/dialogs/uri.glade2.h:2
-#, fuzzy
 msgid "Ch_aracter coding:"
-msgstr "Дэмжигдсэн тэмдэгт _кодчилолууд:"
+msgstr "Тэмдэгт _кодчилолууд:"
 
 #: gedit/dialogs/uri.glade2.h:3
 msgid "Enter the _location (URI) of the file you would like to open:"
@@ -1180,17 +1158,17 @@ msgstr "Нэргүй баримт буцаах боломжгүй"
 
 #: gedit/gedit-encodings-option-menu.c:203
 msgid "Auto Detected"
-msgstr ""
+msgstr "Автомат илэрсэн"
 
 #: gedit/gedit-encodings-option-menu.c:223
 #: gedit/gedit-encodings-option-menu.c:245
 #, c-format
 msgid "Current Locale (%s)"
-msgstr ""
+msgstr "Идэвхитэй локал (%s)"
 
 #: gedit/gedit-encodings-option-menu.c:306
 msgid "Add or _Remove..."
-msgstr ""
+msgstr "Нэмэх эсвэл _Устгах ..."
 
 #: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
 #: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
@@ -1323,17 +1301,15 @@ msgstr ""
 
 #: gedit/gedit-file-selector-util.c:283
 msgid "Ch_aracter Coding:"
-msgstr ""
+msgstr "_Тэмдэгт кодчилол:"
 
 #: gedit/gedit-file-selector-util.c:460
-#, fuzzy
 msgid "Select a file to open"
-msgstr "Хадгалах файлын нэр сонгох"
+msgstr "Нээх файл сонгох"
 
 #: gedit/gedit-file-selector-util.c:489
-#, fuzzy
 msgid "Select files to open"
-msgstr "Хадгалах файлын нэр сонгох"
+msgstr "Нээх файлууд сонгох"
 
 #: gedit/gedit-file-selector-util.c:519
 msgid "Select a filename to save"
@@ -1426,17 +1402,15 @@ msgstr "Шинэ цонх руу _шилжүүлэх"
 
 #: gedit/gedit-mdi-child.c:664
 msgid "Unknown"
-msgstr ""
+msgstr "Мэдэгдэхгүй"
 
 #: gedit/gedit-mdi-child.c:672
-#, fuzzy
 msgid "Unicode (UTF-8)"
-msgstr "Юникод"
+msgstr "Юникод (ЮТФ-8)"
 
 #: gedit/gedit-mdi.c:450
-#, fuzzy
 msgid "Open a recently used file"
-msgstr "Файл нээх"
+msgstr "Шинэхэн хэрэглэсэн файл нээх"
 
 #: gedit/gedit-mdi.c:954
 #, c-format
@@ -1471,16 +1445,16 @@ msgstr "(зөвхөн унших)"
 
 #: gedit/gedit-mdi.c:1676
 msgid "Normal"
-msgstr ""
+msgstr "Энгийн"
 
 #: gedit/gedit-mdi.c:1677
 msgid "Use Normal highlight mode"
-msgstr ""
+msgstr "Энгийн онцгойлолын горим хэрэглэх"
 
 #: gedit/gedit-mdi.c:1753
 #, c-format
 msgid "Use %s highlight mode"
-msgstr ""
+msgstr "%s онцгойлолын горим хэрэглэх"
 
 #: gedit/gedit-output-window.c:333
 msgid "Close the output window"
@@ -1506,43 +1480,43 @@ msgstr "Алдаа: »%s« файлыг нээх боломжгүй\n"
 #: gedit/gedit-plugins-engine.c:372
 #, c-format
 msgid "Error, plugin '%s' does not contain init function."
-msgstr "Алдаа: »%s« Plugin инициаляци функцгүй байна."
+msgstr "Алдаа: »%s« плугин инициаляци функцгүй байна."
 
 #: gedit/gedit-plugins-engine.c:382
 #, c-format
 msgid "Error, plugin '%s' does not contain activate function."
-msgstr "Алдаа: »%s« Plugin идэвхижүүлэгч функцгүй байна."
+msgstr "Алдаа: »%s« плугин идэвхижүүлэгч функцгүй байна."
 
 #: gedit/gedit-plugins-engine.c:392
 #, c-format
 msgid "Error, plugin '%s' does not contain deactivate function."
-msgstr "Алдаа: »%s« Plugin хаагч (deactivate) функцгүй байна."
+msgstr "Алдаа: »%s« плугин хаагч (deactivate) функцгүй байна."
 
 #: gedit/gedit-plugins-engine.c:417
 #, c-format
 msgid "Error, impossible to initialize plugin '%s'"
-msgstr "Алдаа: »%s« Plugin инициацлагдах боломжгүй байна"
+msgstr "Алдаа: »%s« плугин инициацлагдах боломжгүй байна"
 
 #: gedit/gedit-plugins-engine.c:468
 #, c-format
 msgid "Error, impossible to destroy plugin '%s'"
-msgstr "Алдаа: »%s« Plugin устгагдах боломжгүй байна."
+msgstr "Алдаа: »%s« плугин устгагдах боломжгүй байна."
 
 #: gedit/gedit-plugins-engine.c:551 gedit/gedit-plugins-engine.c:639
 #: gedit/gedit-plugins-engine.c:764
 #, c-format
 msgid "Error, impossible to activate plugin '%s'"
-msgstr "Алдаа: »%s« Plugin идэвхижих боломжгүй байна."
+msgstr "Алдаа: »%s« плугин идэвхижих боломжгүй байна."
 
 #: gedit/gedit-plugins-engine.c:590 gedit/gedit-plugins-engine.c:782
 #, c-format
 msgid "Error, impossible to deactivate plugin '%s'"
-msgstr "Алдаа: »%s« Plugin хаагдах боломжгүй байна."
+msgstr "Алдаа: »%s« плугин хаагдах боломжгүй байна."
 
 #: gedit/gedit-plugins-engine.c:683
 #, c-format
 msgid "Error, impossible to update ui of the plugin '%s'"
-msgstr "Алдаа: »%s« Plugin -ны хэрэглэгчийн гадаргуу сэргээх боломжгүй байна"
+msgstr "Алдаа: »%s« плугин -ны хэрэглэгчийн гадаргуу сэргээх боломжгүй байна"
 
 #: gedit/gedit-prefs-manager.c:177
 msgid "Cannot initialize preferences manager."
@@ -1563,17 +1537,17 @@ msgstr "Мөрүүд"
 
 #: gedit/gedit-print.c:331
 msgid "Preparing pages..."
-msgstr ""
+msgstr "Хуудсуудыг бэлтгэж байна..."
 
 #: gedit/gedit-print.c:358
 #, c-format
 msgid "Rendering page %d of %d..."
-msgstr ""
+msgstr "Нийт %2$d хуудсын %1$d -г гүйцээв..."
 
 #: gedit/gedit-print.c:360
 #, c-format
 msgid "Printing page %d of %d..."
-msgstr ""
+msgstr "Нийт %2$d хуудсын %1$d -г хэвлэв..."
 
 #: gedit/gedit-print.c:382 gedit/gedit-ui.xml.h:40
 msgid "Print preview"
@@ -1586,7 +1560,7 @@ msgstr "Файл: %s"
 
 #: gedit/gedit-print.c:556
 msgid "Page %N of %Q"
-msgstr ""
+msgstr "%2$Q -н %1$N хуудас"
 
 #: gedit/gedit-ui.xml.h:1
 msgid "About this application"
@@ -1658,12 +1632,11 @@ msgstr "_Цааш хайх"
 
 #: gedit/gedit-ui.xml.h:20
 msgid "Find Pre_vious"
-msgstr ""
+msgstr "Ө_мнөхийг олох"
 
 #: gedit/gedit-ui.xml.h:21
-#, fuzzy
 msgid "Find Previous"
-msgstr "Хэвлэхээр харах"
+msgstr "Өмнөхийг олох"
 
 #: gedit/gedit-ui.xml.h:22
 msgid "Go to _Line..."
@@ -1710,9 +1683,8 @@ msgid "Open the gedit manual"
 msgstr "gedit-гарын авлага нээх"
 
 #: gedit/gedit-ui.xml.h:33
-#, fuzzy
 msgid "Page Set_up"
-msgstr "Хэвлэх тохируулга"
+msgstr "Хуудсын _тохируулга"
 
 #: gedit/gedit-ui.xml.h:34
 msgid "Paste"
@@ -1791,9 +1763,8 @@ msgid "Search again for the same string"
 msgstr "Ижил үгийг дахин хайх"
 
 #: gedit/gedit-ui.xml.h:57
-#, fuzzy
 msgid "Search backwards for the same string"
-msgstr "Ижил үгийг дахин хайх"
+msgstr "Ижил үгийг гэдрэг хайх"
 
 #: gedit/gedit-ui.xml.h:58
 msgid "Search for a string"
@@ -1812,34 +1783,28 @@ msgid "Select the entire document"
 msgstr "Бүхийл баримтыг тэмдэглэх"
 
 #: gedit/gedit-ui.xml.h:62
-#, fuzzy
-msgid ""
-"Set toolbar button style according to desktop Menu and Toolbar Preferences"
-msgstr "Багаж самбарын товчины хэлбэрийг _системийн стандартаар тохируулах"
+msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgstr "Багаж самбарын товчны хэлбэрийг системийн стандартаар тохируулах"
 
 #: gedit/gedit-ui.xml.h:63
-#, fuzzy
 msgid "Setup the page settings"
-msgstr "Таны идэвхитэй хэвлэгчийн хувьд хуудсын тохируулга хийх"
+msgstr "Хуудсын тохируулга хийх"
 
 #: gedit/gedit-ui.xml.h:64
-#, fuzzy
 msgid "Show only icons in the toolbar"
-msgstr "Зөвхөн дүрсүүдийг багаж самбарт харуулах"
+msgstr "Зөвхөн тэмдэгүүдийг багаж самбарт харуулах"
 
 #: gedit/gedit-ui.xml.h:65
-#, fuzzy
 msgid "Show text below every icon in the toolbar"
-msgstr "Зөвхөн дүрсүүдийг багаж самбарт харуулах"
+msgstr "Багаж самбарт тэмдэгүүдийн доор текст харуулах"
 
 #: gedit/gedit-ui.xml.h:66
-#, fuzzy
 msgid "Show text only beside important icons in the toolbar"
-msgstr "Зөвхөн дүрсүүдийг багаж самбарт харуулах"
+msgstr "Багаж самбарт зөвхөн чухал тэмдэгүүдийн доор текст харуулах"
 
 #: gedit/gedit-ui.xml.h:67
 msgid "T_ext for Important Icons"
-msgstr ""
+msgstr "Чухал тэмдэгүүдийн _текст"
 
 #: gedit/gedit-ui.xml.h:69
 msgid "Undo the last action"
@@ -1903,12 +1868,11 @@ msgstr "_Тусламж"
 
 #: gedit/gedit-ui.xml.h:84
 msgid "_Highlight Mode"
-msgstr ""
+msgstr "_Онцгойлолын горим"
 
 #: gedit/gedit-ui.xml.h:85
-#, fuzzy
 msgid "_Icons Only"
-msgstr "_Дүрс"
+msgstr "Зөвхөн _тэмдэг"
 
 #: gedit/gedit-ui.xml.h:87
 msgid "_New"
@@ -1960,7 +1924,7 @@ msgstr "_Төлөв самбар"
 
 #: gedit/gedit-ui.xml.h:100
 msgid "_Text for All Icons"
-msgstr ""
+msgstr "Бүх темдэгүүдийн _текст"
 
 #: gedit/gedit-ui.xml.h:101
 msgid "_Toolbar"
@@ -1996,10 +1960,8 @@ msgstr "»%s« файл нээгдсэнгүй, учир нь тэр гэмтс�
 
 #: gedit/gedit-utils.c:431
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because gedit cannot handle %s: locations."
-msgstr ""
-"»%s« файл нээгдсэнгүй , учир нь gedit %s:-байрлалыг боловсруулж чадахгүй."
+msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgstr "»%s« файл нээгдсэнгүй , учир нь gedit %s:-байрлалыг боловсруулж чадахгүй."
 
 #: gedit/gedit-utils.c:437
 #, c-format
@@ -2008,10 +1970,8 @@ msgstr "»%s« файл нээгдсэнгүй"
 
 #: gedit/gedit-utils.c:447
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because it contains data in an invalid format."
-msgstr ""
-"»%s« файл нээгдсэнгүй, учир нь тэр хүчингүй форматтай өгөгдөл агуулж байна."
+msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgstr "»%s« файл нээгдсэнгүй, учир нь тэр хүчингүй форматтай өгөгдөл агуулж байна."
 
 #: gedit/gedit-utils.c:454
 #, c-format
@@ -2111,13 +2071,13 @@ msgstr ""
 "Та байрлалаа зөв өгсөн эсэхийг нягтлаад дахин оролдоно уу."
 
 #: gedit/gedit-utils.c:560 gedit/gedit-utils.c:628
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the file \"%s\" because it contains invalid data.\n"
 "\n"
 "Probably, you are trying to open a binary file."
 msgstr ""
-"»%s« файл нээгдсэнгүй, учир нь тэр хүчингүй UTF-8 өгөгдөл агуулж байна\n"
+"»%s« файл нээгдсэнгүй, учир нь тэр хүчингүй өгөгдөл агуулж байна\n"
 "\n"
 "Та магад бинар файл нээхийг оролдсон байх."
 
@@ -2131,9 +2091,15 @@ msgid ""
 "selecting a character coding in the 'Open File...' (or 'Open Location') "
 "dialog."
 msgstr ""
+"»%s« файл нээгдсэнгүй, учир нь gedit автомат тэмдэгт кодчилолоороо "
+"юу ч илрүүлсэнгүй.\n"
+"\n"
+"Та бинар файл нээхийг оролдоогүй эсэхээ шалгаад  'Файл нээх...' "
+"(эсвэл 'Байрлал нээх') диалогоос тэмдэгт кодчилолыг сонгоод ахин "
+"оролдоно уу."
 
 #: gedit/gedit-utils.c:616 gedit/gedit-utils.c:646
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the file \"%s\" using the %s character coding.\n"
 "\n"
@@ -2141,10 +2107,11 @@ msgid ""
 "selected the right character coding in the 'Open File...' (or 'Open "
 "Location') dialog and try again."
 msgstr ""
-"»%s« файл нээгдсэнгүй, учир нь хост »%s« олдсонгүй.\n"
+"»%2$s« тэмдэгт кодчилол бүхий »%1$s« файл нээгдсэнгүй.\n"
 "\n"
-"Та өгсөн байрлалаа зөв эсэхийг нягтлаад мөн итгэмжилэгчийн тохируулгаа зөв "
-"эсэхийг шалгаад дахин оролдоно уу."
+"Та бинар файл нээхийг оролдоогүй эсэхээ шалгаад  'Файл нээх...' "
+"(эсвэл 'Байрлал нээх') диалогоос зөв тэмдэгт кодчилолыг сонгоод ахин "
+"оролдоно уу."
 
 #: gedit/gedit-utils.c:662
 #, c-format
@@ -2152,12 +2119,15 @@ msgid "Could not open the file \"%s\"."
 msgstr "»%s« файл нээгдсэнгүй."
 
 #: gedit/gedit-utils.c:666
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the file \"%s\".\n"
 "\n"
 "%s"
-msgstr "»%s« файл нээгдсэнгүй."
+msgstr ""
+"»%s« файл нээгдсэнгүй.\n"
+"\n"
+"%s"
 
 #: gedit/gedit-utils.c:718
 #, c-format
@@ -2189,13 +2159,11 @@ msgstr ""
 #: gedit/gedit-utils.c:782
 #, c-format
 msgid "Could not revert the file \"%s\" because it contains corrupted data."
-msgstr ""
-"»%s« файлыг урвуулж чадсангүй учир нь тэр гэмтэлтэй өгөгдөл агуулж байна."
+msgstr "»%s« файлыг урвуулж чадсангүй учир нь тэр гэмтэлтэй өгөгдөл агуулж байна."
 
 #: gedit/gedit-utils.c:793
 #, c-format
-msgid ""
-"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "»%s« файлыг урвуулж чадсангүй учир нь gedit %s:-байрлалыг боловсруулж "
 "чадахгүй."
@@ -2210,8 +2178,7 @@ msgstr "»%s« файлыг урвуулж чадсангүй."
 msgid ""
 "Could not revert the file \"%s\" because it contains data in an invalid "
 "format."
-msgstr ""
-"»%s« файлыг урвуулж чадсангүй учир нь тэр хүчингүй формат агуулсан байна."
+msgstr "»%s« файлыг урвуулж чадсангүй учир нь тэр хүчингүй формат агуулсан байна."
 
 #: gedit/gedit-utils.c:816
 #, c-format
@@ -2359,9 +2326,9 @@ msgstr "»%s« файл үүсгэгдсэнгүй."
 #. msg = g_strdup_printf (_("  Ln %d, Col %d-%d"), row + 1, chars + 1, col + 1);
 #.
 #: gedit/gedit-view.c:685
-#, fuzzy, c-format
+#, c-format
 msgid "  Ln %d, Col %d"
-msgstr "   Мөр. %d, Баг. %d"
+msgstr "   Мөр %d, Баг %d"
 
 #: gedit/gedit-view.c:723
 msgid "  OVR"
@@ -2376,9 +2343,8 @@ msgid "Show utility debugging messages."
 msgstr "Хэрэгсэл оношилгооны мэдээг харуулах."
 
 #: gedit/gedit2.c:85
-#, fuzzy
 msgid "Show metadata debugging messages."
-msgstr "MDI-оношилгооны мэдээг харуулах."
+msgstr "MDI-оношилгооны мита мэдээг харуулах."
 
 #: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
@@ -2398,7 +2364,7 @@ msgstr "Файл оношилгооны мэдээг харуулах."
 
 #: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
-msgstr "Plugin оношилгооны мэдээг харуулах."
+msgstr "плугин оношилгооны мэдээг харуулах."
 
 #: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
@@ -2471,7 +2437,7 @@ msgid ""
 "the number of words, lines, characters and non-space characters in it and "
 "displays the result."
 msgstr ""
-"Баримтын тоон үзүүлэлтийн Plugin идэвхитэй баримтыг шинжилээд баримтад "
+"Баримтын тоон үзүүлэлтийн плугин идэвхитэй баримтыг шинжилээд баримтад "
 "агуулагдаж буй үгсийн тоо, мөр, тэмдэгт түүгчлэн хоосон бус тэмдэгтийн олоод "
 "дэлгэцэнд үзүүлнэ."
 
@@ -2480,9 +2446,8 @@ msgid "0"
 msgstr "0"
 
 #: plugins/docinfo/docinfo.glade2.h:3
-#, fuzzy
 msgid "<span weight=\"bold\">File Name</span>"
-msgstr "<span weight=\"bold\">Өнгө</span>"
+msgstr "<span weight=\"bold\">Файлын нэр</span>"
 
 #: plugins/docinfo/docinfo.glade2.h:4
 msgid "Bytes"
@@ -2506,7 +2471,7 @@ msgstr "Үгс"
 
 #: plugins/docinfo/docinfo.glade2.h:10
 msgid "gedit: Document Info plugin"
-msgstr "gedit: Баримтийн Info-Plugin"
+msgstr "gedit: Баримтийн Info-плугин"
 
 #: plugins/indent/indent.c:45
 msgid "_Indent"
@@ -2609,8 +2574,7 @@ msgstr "Тушаалыг биелүүлж байна"
 msgid ""
 "Execute an external program and eventually grabs its output in the output "
 "window."
-msgstr ""
-"Тусгай программ ажиллуулах болон боломжит гаралтыг гаралтын цонхонд харуулах."
+msgstr "Тусгай программ ажиллуулах болон боломжит гаралтыг гаралтын цонхонд харуулах."
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:2
 msgid "Shell command"
@@ -2964,7 +2928,7 @@ msgid ""
 "The tag list plugin provides a method to easily insert into a document "
 "commonly used tags/strings without having to type them."
 msgstr ""
-"»Тагийн жигсаалт« Plugin баримт дотор өргөн хэрэглэгддэг таг/стрингийг "
+"»Тагийн жигсаалт« плугин баримт дотор өргөн хэрэглэгддэг таг/стрингийг "
 "тэдгээрийг бүтэн бичихгүйгээр нэмэх боломж олгодог."
 
 #: plugins/time/time.c:50
@@ -2981,7 +2945,7 @@ msgstr "Байгаа форматууд"
 
 #: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
-msgstr "»Огноо/Цаг нэмэх« Plugin -г тохируулах..."
+msgstr "»Огноо/Цаг нэмэх« плугин -г тохируулах..."
 
 #: plugins/time/time.gedit-plugin.desktop.in.h:1
 msgid "Insert Date/Time"
@@ -3001,7 +2965,7 @@ msgstr "<span weight=\"bold\"> Огноо/Цаг оруулж байна...</spa
 
 #: plugins/time/time.glade2.h:5
 msgid "Configure date/time plugin"
-msgstr "Огноо/Цаг Plugin -г тохируулах"
+msgstr "Огноо/Цаг плугин -г тохируулах"
 
 #: plugins/time/time.glade2.h:6
 msgid "Insert Date and Time"
@@ -3025,17 +2989,15 @@ msgstr "_Хэвшмэл форматыг хэрэглэх"
 
 #: viewer/gedit-persist-stream.c:44
 msgid "Save method not implemented for gedit viewer"
-msgstr ""
+msgstr "Gedit харагчийн хувьд тусгагдаагүй аргыг хадгалах"
 
 #: viewer/gedit-viewer-ui.xml.h:1
-#, fuzzy
 msgid "Copy the selected text to the clipboard"
-msgstr "Тэмдэглэсэн текстийн өнгөө сонгоно уу"
+msgstr "Тэмдэглэсэн текстийг клипборд руу хуулах"
 
 #: viewer/gedit-viewer-ui.xml.h:2
-#, fuzzy
 msgid "_Copy Text"
-msgstr "Х_уулах"
+msgstr "Текст х_уулах"
 
 #~ msgid "Show Cursor Position"
 #~ msgstr "Курсорын байрлал харуулах"
@@ -3453,3 +3415,4 @@ msgstr "Х_уулах"
 
 #~ msgid "Icelandic"
 #~ msgstr "Исланд"
+
