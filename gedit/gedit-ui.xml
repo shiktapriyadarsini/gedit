@@ -53,8 +53,21 @@
     </menu>
   </menubar>
 
-  <toolbar name='ToolBar'>
-    <toolitem action='FileNew'/>
+  <toolbar name="ToolBar">
+    <toolitem action="FileNew"/>
+    <toolitem action="FileSave"/>
+    <separator name="ToolbarSep1"/>
+    <toolitem action="FilePrint"/>
+    <separator name="ToolbarSep2"/>
+    <toolitem action="EditUndo"/>
+    <toolitem action="EditRedo"/>
+    <separator name="ToolbarSep3"/>    
+    <toolitem action="EditCut"/>
+    <toolitem action="EditCopy"/>
+    <toolitem action="EditPaste"/>
+    <separator name="ToolbarSep4"/>        
+    <toolitem action="SearchFind"/>
+    <toolitem action="SearchReplace"/>    
   </toolbar>
 
   <popup name="NotebookPopup" action="NotebookPopupAction">
