@@ -1,18 +1,17 @@
 # Irish translation of gedit
 # Alastair McKinstry <mckinstry@computer.org>, 2000
 # Paul Duffy <dubhthach@frink.nuigalway.ie>, 2003
-
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.5.5\n"
-"POT-Creation-Date: 2003-04-11 11:32+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-13 17:48+0100\n"
 "PO-Revision-Date: 2003-04-1  11:17+0100\n"
 "Last-Translator: Paul Duffy <dubhthach@frink.nuigalway.ie>\n"
 "Language-Team: Irish \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
 
 #: data/GNOME_Gedit.server.in.h:1
 msgid "gedit application"
@@ -91,9 +90,9 @@ msgstr "Ealu"
 msgid "Encoding for Saving"
 msgstr ""
 
-#: data/gedit.schemas.in.h:14 src/dialogs/gedit-encodings-dialog.c:261
+#: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2308
+#: src/dialogs/gedit-encodings-dialog.c:261
 #: src/dialogs/gedit-encodings-dialog.glade2.h:2
-#: src/dialogs/gedit-preferences-dialog.c:2308
 msgid "Encodings"
 msgstr ""
 
@@ -398,8 +397,8 @@ msgstr ""
 msgid "_Insert char"
 msgstr ""
 
-#: plugins/ASCII/ascii.gedit-plugin.desktop.in.h:1
 #: plugins/ASCII/asciitable.glade2.h:1
+#: plugins/ASCII/ascii.gedit-plugin.desktop.in.h:1
 msgid "ASCII table"
 msgstr ""
 
@@ -505,7 +504,7 @@ msgid ""
 msgstr ""
 
 #: plugins/diff/diff.glade2.h:1 plugins/shell_output/shell_output.glade2.h:1
-#: plugins/spell/spell-checker.glade2.h:1 plugins/time/time.glade2.h:2
+#: plugins/time/time.glade2.h:2 plugins/spell/spell-checker.glade2.h:1
 #: src/dialogs/replace.glade2.h:1 src/dialogs/uri.glade2.h:1
 msgid "*"
 msgstr ""
@@ -653,7 +652,7 @@ msgstr ""
 msgid "File Name"
 msgstr "Ainm Comhad"
 
-#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:373
+#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:376
 msgid "Lines"
 msgstr ""
 
@@ -926,7 +925,7 @@ msgstr "_Bain as Radharc"
 msgid "S_tart at column:"
 msgstr "Capéiseanna"
 
-#: plugins/sort/sort.gedit-plugin.desktop.in.h:1 plugins/sort/sort.glade2.h:3
+#: plugins/sort/sort.glade2.h:3 plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sort"
 msgstr ""
 
@@ -951,28 +950,28 @@ msgstr ""
 msgid "Sorts a document or selected text."
 msgstr "Capéiseanna"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:322
+#: plugins/spell/gedit-automatic-spell-checker.c:318
 #: plugins/spell/gedit-spell-checker-dialog.c:504
 msgid "(no suggested words)"
 msgstr ""
 
-#: plugins/spell/gedit-automatic-spell-checker.c:346
+#: plugins/spell/gedit-automatic-spell-checker.c:342
 #, fuzzy
 msgid "_More..."
 msgstr "Oscáil"
 
 #. Ignore all
-#: plugins/spell/gedit-automatic-spell-checker.c:399
+#: plugins/spell/gedit-automatic-spell-checker.c:395
 #, fuzzy
 msgid "_Ignore All"
 msgstr "Dún Gach Rud"
 
 #. + Add to Dictionary
-#: plugins/spell/gedit-automatic-spell-checker.c:412
+#: plugins/spell/gedit-automatic-spell-checker.c:408
 msgid "_Add"
 msgstr ""
 
-#: plugins/spell/gedit-automatic-spell-checker.c:449
+#: plugins/spell/gedit-automatic-spell-checker.c:445
 msgid "_Spelling Suggestions..."
 msgstr ""
 
@@ -992,103 +991,103 @@ msgstr ""
 msgid "Completed spell checking"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:73
+#: plugins/spell/gedit-spell-checker.c:80
 msgid "Breton"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:74
+#: plugins/spell/gedit-spell-checker.c:81
 msgid "Catalan"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:75
+#: plugins/spell/gedit-spell-checker.c:82
 msgid "Czech"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:76
+#: plugins/spell/gedit-spell-checker.c:83
 msgid "Danish"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:77
+#: plugins/spell/gedit-spell-checker.c:84
 msgid "German (Germany)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:78
+#: plugins/spell/gedit-spell-checker.c:85
 msgid "German (Swiss)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:79
+#: plugins/spell/gedit-spell-checker.c:86
 msgid "English (American)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:80
+#: plugins/spell/gedit-spell-checker.c:87
 msgid "English (British)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:81
+#: plugins/spell/gedit-spell-checker.c:88
 msgid "English (Canadian)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:82
+#: plugins/spell/gedit-spell-checker.c:89
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: plugins/spell/gedit-spell-checker.c:83
+#: plugins/spell/gedit-spell-checker.c:90
 msgid "Spanish"
 msgstr "Spáinnis"
 
-#: plugins/spell/gedit-spell-checker.c:84
+#: plugins/spell/gedit-spell-checker.c:91
 msgid "Faroese"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:85
+#: plugins/spell/gedit-spell-checker.c:92
 msgid "French (France)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:86
+#: plugins/spell/gedit-spell-checker.c:93
 msgid "French (Swiss)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:87
+#: plugins/spell/gedit-spell-checker.c:94
 msgid "Italian"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:88
+#: plugins/spell/gedit-spell-checker.c:95
 msgid "Dutch"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:89
+#: plugins/spell/gedit-spell-checker.c:96
 msgid "Norwegian"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:90
+#: plugins/spell/gedit-spell-checker.c:97
 msgid "Polish"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:91
+#: plugins/spell/gedit-spell-checker.c:98
 msgid "Portuguese (Portugal)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:92
+#: plugins/spell/gedit-spell-checker.c:99
 msgid "Portuguese (Brazilian)"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:93
+#: plugins/spell/gedit-spell-checker.c:100
 msgid "Russian"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:94
+#: plugins/spell/gedit-spell-checker.c:101
 msgid "Swedish"
 msgstr ""
 
-#: plugins/spell/gedit-spell-checker.c:653
+#: plugins/spell/gedit-spell-checker.c:734
 #, fuzzy
 msgid "Default"
 msgstr "Cló gnáth: "
 
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #: src/dialogs/gedit-dialog-goto-line.c:169
-#: src/dialogs/gedit-encodings-dialog.c:242
 #: src/dialogs/gedit-plugin-program-location-dialog.c:100
+#: src/dialogs/gedit-encodings-dialog.c:242
 #, c-format
 msgid "Could not find the required widgets inside %s."
 msgstr ""
@@ -1346,7 +1345,7 @@ msgid "Save"
 msgstr "Sábháil"
 
 #: src/dialogs/gedit-preferences-dialog.c:245
-#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:70
+#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:72
 msgid "Undo"
 msgstr "Leasú"
 
@@ -1371,7 +1370,7 @@ msgid "Editor"
 msgstr "Ealu"
 
 #: src/dialogs/gedit-preferences-dialog.c:271
-#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:364
+#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:367
 #: src/gedit-ui.xml.h:39
 msgid "Print"
 msgstr "Priontáil"
@@ -1986,7 +1985,7 @@ msgid ""
 "You will not be able to undo this operation."
 msgstr ""
 
-#: src/gedit-file.c:638 src/gedit-ui.xml.h:97
+#: src/gedit-file.c:638 src/gedit-ui.xml.h:99
 msgid "_Revert"
 msgstr ""
 
@@ -2029,7 +2028,7 @@ msgid "RO"
 msgstr ""
 
 #. Add the detach tab button
-#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:87
+#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:89
 msgid "_Move to New Window"
 msgstr "_Gluais go Fuinneog Nua"
 
@@ -2126,23 +2125,23 @@ msgid ""
 "one of the required fonts."
 msgstr ""
 
-#: src/gedit-print.c:432
+#: src/gedit-print.c:435
 #, fuzzy, c-format
 msgid "File: %s"
 msgstr "_Comhad"
 
 #. Print right text
-#: src/gedit-print.c:439
+#: src/gedit-print.c:442
 #, fuzzy, c-format
 msgid "Page: %d"
 msgstr "Leathanach: %i/%i"
 
-#: src/gedit-print.c:580
+#: src/gedit-print.c:583
 #, fuzzy
 msgid "gedit - Print Preview"
 msgstr "gedit: Roghnachais..."
 
-#: src/gedit-print.c:658
+#: src/gedit-print.c:661
 #, c-format
 msgid ""
 "An error occurred while printing.\n"
@@ -2415,151 +2414,159 @@ msgid "Show _Overwrite Mode"
 msgstr ""
 
 #: src/gedit-ui.xml.h:68
-msgid "Show cursor position in the statusbar"
+msgid "Show both icons and texts in the toolbar"
 msgstr ""
 
 #: src/gedit-ui.xml.h:69
+msgid "Show cursor position in the statusbar"
+msgstr ""
+
+#: src/gedit-ui.xml.h:70
 msgid "Show overwrite mode in the statusbar"
 msgstr ""
 
 #: src/gedit-ui.xml.h:71
+msgid "Show prioritized text beside icons in the toolbar"
+msgstr ""
+
+#: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
 msgstr ""
 
-#: src/gedit-ui.xml.h:72
+#: src/gedit-ui.xml.h:74
 msgid "_About"
 msgstr "F_aoi"
 
-#: src/gedit-ui.xml.h:73
+#: src/gedit-ui.xml.h:75
 msgid "_Close"
 msgstr "_Dún"
 
-#: src/gedit-ui.xml.h:74
+#: src/gedit-ui.xml.h:76
 msgid "_Close All"
 msgstr "_Dún Gach Rud"
 
-#: src/gedit-ui.xml.h:75
+#: src/gedit-ui.xml.h:77
 #, fuzzy
 msgid "_Contents"
 msgstr "Capéiseanna"
 
-#: src/gedit-ui.xml.h:76
+#: src/gedit-ui.xml.h:78
 msgid "_Copy"
 msgstr "_Cóip"
 
-#: src/gedit-ui.xml.h:77
+#: src/gedit-ui.xml.h:79
 msgid "_Customize Toolbar"
 msgstr ""
 
-#: src/gedit-ui.xml.h:78
+#: src/gedit-ui.xml.h:80
 msgid "_Debug"
 msgstr ""
 
-#: src/gedit-ui.xml.h:79
+#: src/gedit-ui.xml.h:81
 msgid "_Delete"
 msgstr ""
 
-#: src/gedit-ui.xml.h:80
+#: src/gedit-ui.xml.h:82
 #, fuzzy
 msgid "_Desktop Default"
 msgstr "Cló gnáth: "
 
-#: src/gedit-ui.xml.h:81
+#: src/gedit-ui.xml.h:83
 #, fuzzy
 msgid "_Documents"
 msgstr "Capéiseanna"
 
-#: src/gedit-ui.xml.h:82
+#: src/gedit-ui.xml.h:84
 #, fuzzy
 msgid "_Edit"
 msgstr "Ealu"
 
-#: src/gedit-ui.xml.h:83
+#: src/gedit-ui.xml.h:85
 msgid "_File"
 msgstr "_Comhad"
 
-#: src/gedit-ui.xml.h:84
+#: src/gedit-ui.xml.h:86
 msgid "_Find..."
 msgstr "_Cuardaigh..."
 
-#: src/gedit-ui.xml.h:85
+#: src/gedit-ui.xml.h:87
 msgid "_Help"
 msgstr "Cab_hair"
 
-#: src/gedit-ui.xml.h:86
+#: src/gedit-ui.xml.h:88
 msgid "_Icon"
 msgstr ""
 
-#: src/gedit-ui.xml.h:88
+#: src/gedit-ui.xml.h:90
 msgid "_New"
 msgstr "_Nua"
 
-#: src/gedit-ui.xml.h:89
+#: src/gedit-ui.xml.h:91
 msgid "_Open..."
 msgstr "_Oscail..."
 
-#: src/gedit-ui.xml.h:90
+#: src/gedit-ui.xml.h:92
 msgid "_Output Window"
 msgstr ""
 
-#: src/gedit-ui.xml.h:91
+#: src/gedit-ui.xml.h:93
 #, fuzzy
 msgid "_Paste"
 msgstr "Greamaigh"
 
-#: src/gedit-ui.xml.h:92
+#: src/gedit-ui.xml.h:94
 msgid "_Print..."
 msgstr "_Priontáil..."
 
-#: src/gedit-ui.xml.h:93
+#: src/gedit-ui.xml.h:95
 msgid "_Priority Text beside Icons"
 msgstr ""
 
-#: src/gedit-ui.xml.h:94
+#: src/gedit-ui.xml.h:96
 msgid "_Quit"
 msgstr "_Ealu"
 
-#: src/gedit-ui.xml.h:95
+#: src/gedit-ui.xml.h:97
 msgid "_Redo"
 msgstr ""
 
-#: src/gedit-ui.xml.h:96
+#: src/gedit-ui.xml.h:98
 #, fuzzy
 msgid "_Replace..."
 msgstr "Sábháil gach rud"
 
-#: src/gedit-ui.xml.h:98
+#: src/gedit-ui.xml.h:100
 msgid "_Save"
 msgstr "_Sábháil"
 
-#: src/gedit-ui.xml.h:99
+#: src/gedit-ui.xml.h:101
 msgid "_Save All"
 msgstr "_Sábháil gach rud"
 
-#: src/gedit-ui.xml.h:100
+#: src/gedit-ui.xml.h:102
 msgid "_Search"
 msgstr "_Cuairdaigh"
 
-#: src/gedit-ui.xml.h:101
+#: src/gedit-ui.xml.h:103
 msgid "_Statusbar"
 msgstr ""
 
-#: src/gedit-ui.xml.h:102
+#: src/gedit-ui.xml.h:104
 #, fuzzy
 msgid "_Toolbar"
 msgstr "_Barr"
 
-#: src/gedit-ui.xml.h:103
+#: src/gedit-ui.xml.h:105
 #, fuzzy
 msgid "_Tools"
 msgstr "_Barr"
 
-#: src/gedit-ui.xml.h:104
+#: src/gedit-ui.xml.h:106
 #, fuzzy
 msgid "_Undo"
 msgstr "Leasú"
 
-#: src/gedit-ui.xml.h:105
+#: src/gedit-ui.xml.h:107
 #, fuzzy
 msgid "_View"
 msgstr "_Suimigh Radharc"

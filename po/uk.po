@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  gEdit 0.9.4\n"
-"POT-Creation-Date: 2003-03-06 21:48+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-13 17:48+0100\n"
 "PO-Revision-Date: 2003-03-06 10:55--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukraine <uk@li.org>\n"
@@ -25,14 +26,17 @@ msgstr "Фабрика gedit"
 msgid "Edit text files"
 msgstr "Редагувати текстові файли"
 
-#: data/gedit.desktop.in.h:2
-#: src/gedit2.c:342
+#: data/gedit.desktop.in.h:2 src/gedit2.c:342
 msgid "Text Editor"
 msgstr "Текстовий редактор"
 
 #: data/gedit.schemas.in.h:1
-msgid "A custom font that will be used for the editing area. This will only take effect if the \"Use Default Font\" option is turned off."
-msgstr "Нетиповий шрифт, що буде використано в області редагування. Це матиме ефект лише тоді, коли параметр \"Використовувати початковий шрифт\" буде вимкнуто."
+msgid ""
+"A custom font that will be used for the editing area. This will only take "
+"effect if the \"Use Default Font\" option is turned off."
+msgstr ""
+"Нетиповий шрифт, що буде використано в області редагування. Це матиме ефект "
+"лише тоді, коли параметр \"Використовувати початковий шрифт\" буде вимкнуто."
 
 #: data/gedit.schemas.in.h:2
 msgid "Auto Save"
@@ -51,12 +55,21 @@ msgid "Background Color"
 msgstr "Колір тла"
 
 #: data/gedit.schemas.in.h:6
-msgid "Background color for selected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "Колір тла вибраного тексту в області редагування. Це матиме ефект лише тоді, коли параметр \"Використовувати початковий набір кольорів\" буде вимкнуто."
+msgid ""
+"Background color for selected text in the editing area. This will only take "
+"effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Колір тла вибраного тексту в області редагування. Це матиме ефект лише тоді, "
+"коли параметр \"Використовувати початковий набір кольорів\" буде вимкнуто."
 
 #: data/gedit.schemas.in.h:7
-msgid "Background color for unselected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "Колір тла невибраного тексту в області редагування. Це матиме ефект лише тоді, коли параметр \"Використовувати початковий набір кольорів\" буде вимкнуто."
+msgid ""
+"Background color for unselected text in the editing area. This will only "
+"take effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Колір тла невибраного тексту в області редагування. Це матиме ефект лише "
+"тоді, коли параметр \"Використовувати початковий набір кольорів\" буде "
+"вимкнуто."
 
 #: data/gedit.schemas.in.h:8
 msgid "Backup Copy Extension"
@@ -82,32 +95,48 @@ msgstr "Шрифт редактора"
 msgid "Encoding for Saving"
 msgstr "Кодування для збереження"
 
-#: data/gedit.schemas.in.h:14
-#: src/dialogs/gedit-preferences-dialog.c:2296
+#: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2308
 #: src/dialogs/gedit-encodings-dialog.c:261
 #: src/dialogs/gedit-encodings-dialog.glade2.h:2
 msgid "Encodings"
 msgstr "Кодування"
 
 #: data/gedit.schemas.in.h:15
-msgid "Extension or suffix to use for backup file names. This will only take effect if the \"Create Backup Copies\" option is turned on."
-msgstr "Розширення чи суфікс для файлів резервних копій. Це матиме ефект лише тоді, коли параметр \"Створювати резервні копії\" буде увімкнено."
+msgid ""
+"Extension or suffix to use for backup file names. This will only take effect "
+"if the \"Create Backup Copies\" option is turned on."
+msgstr ""
+"Розширення чи суфікс для файлів резервних копій. Це матиме ефект лише тоді, "
+"коли параметр \"Створювати резервні копії\" буде увімкнено."
 
 #: data/gedit.schemas.in.h:16
-msgid "Foreground color for selected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "Колір вибраного тексту в області редагування. Це матиме ефект лише тоді, коли параметр \"Використовувати початковий набір кольорів\" буде вимкнуто."
+msgid ""
+"Foreground color for selected text in the editing area. This will only take "
+"effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Колір вибраного тексту в області редагування. Це матиме ефект лише тоді, "
+"коли параметр \"Використовувати початковий набір кольорів\" буде вимкнуто."
 
 #: data/gedit.schemas.in.h:17
-msgid "Foreground color for the unselected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "Колір невибраного тексту в області редагування. Це матиме ефект лише тоді, коли параметр \"Використовувати початковий набір кольорів\" буде вимкнуто."
+msgid ""
+"Foreground color for the unselected text in the editing area. This will only "
+"take effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Колір невибраного тексту в області редагування. Це матиме ефект лише тоді, "
+"коли параметр \"Використовувати початковий набір кольорів\" буде вимкнуто."
 
 #: data/gedit.schemas.in.h:18
 msgid "Header Font for Printing"
 msgstr "Шрифт заголовка для друку"
 
 #: data/gedit.schemas.in.h:19
-msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
-msgstr "Якщо значення встановлено в 0, номери рядків не буде вставлено, коли друкуватиметься документ. Інакше, номер друкуватимуться біля кожного рядка."
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+"Якщо значення встановлено в 0, номери рядків не буде вставлено, коли "
+"друкуватиметься документ. Інакше, номер друкуватимуться біля кожного рядка."
 
 #: data/gedit.schemas.in.h:20
 msgid "Insert spaces"
@@ -122,8 +151,12 @@ msgid "Line Wrapping Mode"
 msgstr "Режим загортання рядків"
 
 #: data/gedit.schemas.in.h:23
-msgid "List of encodings used by gedit for reading files not encoded in UTF-8 or in the current locale encoding."
-msgstr "Список кодувань, що використовує редактор для зчитування файлів, які не знаходяться у кодуванні поточної локалі чи  UTF-8."
+msgid ""
+"List of encodings used by gedit for reading files not encoded in UTF-8 or in "
+"the current locale encoding."
+msgstr ""
+"Список кодувань, що використовує редактор для зчитування файлів, які не "
+"знаходяться у кодуванні поточної локалі чи  UTF-8."
 
 #: data/gedit.schemas.in.h:24
 msgid "Maximum Recent Files"
@@ -134,8 +167,13 @@ msgid "Maximum number of actions that gedit will be able to undo or redo."
 msgstr "Максимальна кількість дій, які можна скасувати чи повторити."
 
 #: data/gedit.schemas.in.h:26
-msgid "Number of minutes after which gedit will automatically save modified files. This will only take effect if the \"Auto Save\" option is turned on."
-msgstr "Інтервал в хвилинах, після якого всі незбережені файли буде автоматично збережено. Матиме ефект лише тоді, коли параметр \"автозбереження\" буде увімкнено."
+msgid ""
+"Number of minutes after which gedit will automatically save modified files. "
+"This will only take effect if the \"Auto Save\" option is turned on."
+msgstr ""
+"Інтервал в хвилинах, після якого всі незбережені файли буде автоматично "
+"збережено. Матиме ефект лише тоді, коли параметр \"автозбереження\" буде "
+"увімкнено."
 
 #: data/gedit.schemas.in.h:27
 msgid "Print Header"
@@ -166,40 +204,87 @@ msgid "Show Overwrite Mode"
 msgstr "Показувати режим заміщення"
 
 #: data/gedit.schemas.in.h:34
-msgid "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and \"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "Визначає, як загортати довгі рядки під час друку. Використовуйте \"GTK_WRAP_NONE\" для вимкнення загортання, \"GTK_WRAP_WORD\" для загортання по границі слів і \"GTK_WRAP_CHAR\" для посимвольного загортання. Зауважте, що значення чутливі до регістру і мають з'являтися точно у вказаному вигляді."
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
+"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
+msgstr ""
+"Визначає, як загортати довгі рядки під час друку. Використовуйте "
+"\"GTK_WRAP_NONE\" для вимкнення загортання, \"GTK_WRAP_WORD\" для загортання "
+"по границі слів і \"GTK_WRAP_CHAR\" для посимвольного загортання. Зауважте, "
+"що значення чутливі до регістру і мають з'являтися точно у вказаному вигляді."
 
 #: data/gedit.schemas.in.h:35
-msgid "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and \"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "Визначає, як загортати довгі рядки в області редагування. Використовуйте \"GTK_WRAP_NONE\" для вимкнення загортання, \"GTK_WRAP_WORD\" для загортання по границі слів і \"GTK_WRAP_CHAR\" для посимвольного загортання. Зауважте, що значення чутливі до регістру і мають з'являтися точно у вказаному вигляді."
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
+"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
+msgstr ""
+"Визначає, як загортати довгі рядки в області редагування. Використовуйте "
+"\"GTK_WRAP_NONE\" для вимкнення загортання, \"GTK_WRAP_WORD\" для загортання "
+"по границі слів і \"GTK_WRAP_CHAR\" для посимвольного загортання. Зауважте, "
+"що значення чутливі до регістру і мають з'являтися точно у вказаному вигляді."
 
 #: data/gedit.schemas.in.h:36
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr "Визначає шрифт, що використовуватиметься для друку тіла документів."
 
 #: data/gedit.schemas.in.h:37
-msgid "Specifies the font to use for line numbers when printing. This will only take effect if the \"Print Line Numbers\" option is non-zero."
-msgstr "Визначає шрифт, що використовуватиметься для друку номерів рядків. Матиме ефект лише тоді, коли параметр \"Друкувати номерів рядків\" увімкнено."
+msgid ""
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr ""
+"Визначає шрифт, що використовуватиметься для друку номерів рядків. Матиме "
+"ефект лише тоді, коли параметр \"Друкувати номерів рядків\" увімкнено."
 
 #: data/gedit.schemas.in.h:38
-msgid "Specifies the font to use for page headers when printing a document. This will only take effect if the \"Print Header\" option is turned on."
-msgstr "Визначає шрифт, що використовуватиметься для друку заголовків сторінок. Матиме ефект лише тоді, коли параметр \"Друкувати заголовок\" увімкнено."
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+"Визначає шрифт, що використовуватиметься для друку заголовків сторінок. "
+"Матиме ефект лише тоді, коли параметр \"Друкувати заголовок\" увімкнено."
 
 #: data/gedit.schemas.in.h:39
-msgid "Specifies the maximum number of recently opened files that will be displayed in the \"Recent Files\" submenu."
-msgstr "Визначає кількість останніх використаних файлів, які відображатимуться в підменю \"Останні файли\"."
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"Визначає кількість останніх використаних файлів, які відображатимуться в "
+"підменю \"Останні файли\"."
 
 #: data/gedit.schemas.in.h:40
-msgid "Specifies the number of spaces that should be displayed instead of Tab characters."
-msgstr "Визначає кількість пропусків, які потрібно відображати замість символа табуляції."
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
+msgstr ""
+"Визначає кількість пропусків, які потрібно відображати замість символа "
+"табуляції."
 
 #: data/gedit.schemas.in.h:41
 msgid "Status Bar is Visible"
 msgstr "Панель стану видима"
 
 #: data/gedit.schemas.in.h:42
-msgid "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "Визначає стиль для кнопок пенала. Можливі варіанти: \"GEDIT_TOOLBAR_SYSTEM\" для використання системних значень, \"GEDIT_TOOLBAR_ICONS\" для відображення лише піктограм і \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" для відображення піктограм і тексту, \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" для відображення тексту за піктограмами. Зауважте, що значення чутливі до регістру і мають з'являтися точно у вказаному вигляді."
+msgid ""
+"Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" "
+"to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons "
+"only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
+"\"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
+msgstr ""
+"Визначає стиль для кнопок пенала. Можливі варіанти: \"GEDIT_TOOLBAR_SYSTEM\" "
+"для використання системних значень, \"GEDIT_TOOLBAR_ICONS\" для відображення "
+"лише піктограм і \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" для відображення піктограм "
+"і тексту, \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" для відображення тексту за "
+"піктограмами. Зауважте, що значення чутливі до регістру і мають з'являтися "
+"точно у вказаному вигляді."
 
 #: data/gedit.schemas.in.h:43
 msgid "Tab Size"
@@ -210,8 +295,30 @@ msgid "Text Color"
 msgstr "Колір тексту"
 
 #: data/gedit.schemas.in.h:45
-msgid "The encoding method to use for saving files. Possible values are \"GEDIT_SAVE_ALWAYS_UTF8\" for mandatory UTF-8 saving, \"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" if you want gedit to try to convert the document it is saving to your current locale's encoding, \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" if you want gedit to try to use the original file encoding (new files in UTF8) and \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" if you want gedit to try to use the original file encoding (new files in current locale's encoding). If the conversion is successful, it will be used. Otherwise, UTF-8 will be used. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "Визначає метод кодування для зберігання файлів. Можливі значення: \"GEDIT_SAVE_ALWAYS_UTF8\" для безумовного збереження у форматі UTF-8, \"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" для спроби перетворення документа в поточне кодування локалі, під час його запису, \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" для спроби збереження у початковому кодуванні файла (нові файли в кодуванні UTF-8) і \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" для спроби збереження в початковому кодуванні файла (нові файли в поточному кодуванні локалі). Якщо перетворення завершилось успішно, результат буде використано. В зворотньому випадку, буде використано кодування UTF-8. Зауважте, що значення чутливі до регістру і мають з'являтися точно у вказаному вигляді."
+msgid ""
+"The encoding method to use for saving files. Possible values are "
+"\"GEDIT_SAVE_ALWAYS_UTF8\" for mandatory UTF-8 saving, "
+"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" if you want gedit to try to "
+"convert the document it is saving to your current locale's encoding, "
+"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" if you want gedit to try "
+"to use the original file encoding (new files in UTF8) and "
+"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" if you want gedit to "
+"try to use the original file encoding (new files in current locale's "
+"encoding). If the conversion is successful, it will be used. Otherwise, UTF-"
+"8 will be used. Note that the values are case-sensitive, so make sure they "
+"appear exactly as mentioned here."
+msgstr ""
+"Визначає метод кодування для зберігання файлів. Можливі значення: "
+"\"GEDIT_SAVE_ALWAYS_UTF8\" для безумовного збереження у форматі UTF-8, "
+"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" для спроби перетворення документа "
+"в поточне кодування локалі, під час його запису, "
+"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" для спроби збереження у "
+"початковому кодуванні файла (нові файли в кодуванні UTF-8) і "
+"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" для спроби збереження "
+"в початковому кодуванні файла (нові файли в поточному кодуванні локалі). "
+"Якщо перетворення завершилось успішно, результат буде використано. В "
+"зворотньому випадку, буде використано кодування UTF-8. Зауважте, що значення "
+"чутливі до регістру і мають з'являтися точно у вказаному вигляді."
 
 #: data/gedit.schemas.in.h:46
 msgid "Toolbar Buttons Style"
@@ -234,12 +341,21 @@ msgid "Use Default Font"
 msgstr "Використовувати початковий шрифт"
 
 #: data/gedit.schemas.in.h:51
-msgid "Whether gedit should automatically save modified files after a time interval. You can set the time interval with the \"Auto Save Interval\" option."
-msgstr "Чи потрібно автоматично зберігати змінені файли з певним часом проміжком. Ви можете встановити величину проміжку параметром \"Інтервал автозбереження\""
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Auto Save Interval\" "
+"option."
+msgstr ""
+"Чи потрібно автоматично зберігати змінені файли з певним часом проміжком. Ви "
+"можете встановити величину проміжку параметром \"Інтервал автозбереження\""
 
 #: data/gedit.schemas.in.h:52
-msgid "Whether gedit should create backup copies for the files it saves. You can set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr "Чи мають створюватися резервні копії для файлів. Ви можете встановити розширення резервних файлів параметром \"Розширення резервних копій\"."
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+"Чи мають створюватися резервні копії для файлів. Ви можете встановити "
+"розширення резервних файлів параметром \"Розширення резервних копій\"."
 
 #: data/gedit.schemas.in.h:53
 msgid "Whether gedit should display line numbers in the editing area."
@@ -258,28 +374,55 @@ msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Чи має gedit вставляти пропуски замість знаків табуляції."
 
 #: data/gedit.schemas.in.h:57
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Чи має панель стану відображатися у вікнах редагування."
 
 #: data/gedit.schemas.in.h:58
-msgid "Whether the status bar should show the cursor position in editing windows. Make sure you turn on the \"Status Bar is Visible\" option for this to take effect."
-msgstr "Чи має позиція курсора відображатися у панелі стану у вікнах редагування. Переконайтеся, що ви увімкнули параметр \"Панель стану видима\", для того щоб цей параметр мав ефект."
+msgid ""
+"Whether the status bar should show the cursor position in editing windows. "
+"Make sure you turn on the \"Status Bar is Visible\" option for this to take "
+"effect."
+msgstr ""
+"Чи має позиція курсора відображатися у панелі стану у вікнах редагування. "
+"Переконайтеся, що ви увімкнули параметр \"Панель стану видима\", для того "
+"щоб цей параметр мав ефект."
 
 #: data/gedit.schemas.in.h:59
-msgid "Whether the status bar should show the insert/overwrite mode in editing windows. Make sure you turn on the \"Status Bar is Visible\" option for this to take effect."
-msgstr "Чи має стан режиму вставляння відображатися у панелі стану у вікнах редагування. Переконайтеся, що ви увімкнули параметр \"Панель стану видима\", для того щоб цей параметр мав ефект."
+msgid ""
+"Whether the status bar should show the insert/overwrite mode in editing "
+"windows. Make sure you turn on the \"Status Bar is Visible\" option for this "
+"to take effect."
+msgstr ""
+"Чи має стан режиму вставляння відображатися у панелі стану у вікнах "
+"редагування. Переконайтеся, що ви увімкнули параметр \"Панель стану видима"
+"\", для того щоб цей параметр мав ефект."
 
 #: data/gedit.schemas.in.h:60
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Чи має пенал відображатися у вікнах редагування."
 
 #: data/gedit.schemas.in.h:61
-msgid "Whether to use the system's default colors for the editing area. If this option is turned off, then the colors of the editing area will be those specified in the \"Background Color\", \"Text Color\", \"Selected Text Color\", and \"Selection Color\" options."
-msgstr "Чи використовувати системні кольори для області редагування. Якщо цей параметр вимкнуто, то для області редагування будуть використовуватися кольори, визначені в параметрах \"Колір тла\", \"Колір тексту\", \"Колір вібраного тексту\" і \"Колір вибору\"."
+msgid ""
+"Whether to use the system's default colors for the editing area. If this "
+"option is turned off, then the colors of the editing area will be those "
+"specified in the \"Background Color\", \"Text Color\", \"Selected Text Color"
+"\", and \"Selection Color\" options."
+msgstr ""
+"Чи використовувати системні кольори для області редагування. Якщо цей "
+"параметр вимкнуто, то для області редагування будуть використовуватися "
+"кольори, визначені в параметрах \"Колір тла\", \"Колір тексту\", \"Колір "
+"вібраного тексту\" і \"Колір вибору\"."
 
 #: data/gedit.schemas.in.h:62
-msgid "Whether to use the system's default font for editing text instead of a font specific to gedit. If this option is turned off, then the font named in the \"Editor Font\" option will be used instead of the system font."
-msgstr "Чи використовувати системний шрифт для області редагування. Якщо цей параметр вимкнуто, то для області редагування буде використовуватися шрифт, визначений в параметрі \"Шрифт редактора\"."
+msgid ""
+"Whether to use the system's default font for editing text instead of a font "
+"specific to gedit. If this option is turned off, then the font named in the "
+"\"Editor Font\" option will be used instead of the system font."
+msgstr ""
+"Чи використовувати системний шрифт для області редагування. Якщо цей "
+"параметр вимкнуто, то для області редагування буде використовуватися шрифт, "
+"визначений в параметрі \"Шрифт редактора\"."
 
 #: plugins/ASCII/ascii.c:43
 msgid "_ASCII Table"
@@ -309,8 +452,7 @@ msgstr "Назва"
 msgid "ASCII Table"
 msgstr "Таблиця ASCII"
 
-#: plugins/ASCII/ascii.c:382
-#: plugins/ASCII/asciitable.glade2.h:2
+#: plugins/ASCII/ascii.c:382 plugins/ASCII/asciitable.glade2.h:2
 msgid "_Insert char"
 msgstr "_Вставити символ"
 
@@ -334,7 +476,9 @@ msgstr "Шукає журнали змін у поточному докумен�
 
 #: plugins/cvschangelog/cvschangelog.gedit-plugin.desktop.in.h:1
 msgid "A plugin that opens ChangeLogs found in CVS commit messages."
-msgstr "Доповнення, що відкриває журнали змін (ChangeLog), знайдені у повідомленнях про запис CVS."
+msgstr ""
+"Доповнення, що відкриває журнали змін (ChangeLog), знайдені у повідомленнях "
+"про запис CVS."
 
 #: plugins/cvschangelog/cvschangelog.gedit-plugin.desktop.in.h:2
 msgid "CVS ChangeLog"
@@ -349,8 +493,7 @@ msgid "Makes a diff file from two documents or files"
 msgstr "Робить файл порівняння  з двох документів чи файлів"
 
 #. Create the dialog
-#: plugins/diff/diff.c:271
-#: plugins/diff/diff.gedit-plugin.desktop.in.h:1
+#: plugins/diff/diff.c:271 plugins/diff/diff.gedit-plugin.desktop.in.h:1
 msgid "Compare Files"
 msgstr "Порівняти файли"
 
@@ -409,8 +552,7 @@ msgstr ""
 "\n"
 "Не вдалося створити тимчасовий файл."
 
-#: plugins/diff/diff.c:780
-#: plugins/diff/diff.c:793
+#: plugins/diff/diff.c:780 plugins/diff/diff.c:793
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -434,12 +576,9 @@ msgstr ""
 "\n"
 "Результат містить неправильні дані UTF-8."
 
-#: plugins/diff/diff.glade2.h:1
-#: plugins/shell_output/shell_output.glade2.h:1
-#: plugins/time/time.glade2.h:2
-#: plugins/spell/spell-checker.glade2.h:1
-#: src/dialogs/replace.glade2.h:1
-#: src/dialogs/uri.glade2.h:1
+#: plugins/diff/diff.glade2.h:1 plugins/shell_output/shell_output.glade2.h:1
+#: plugins/time/time.glade2.h:2 plugins/spell/spell-checker.glade2.h:1
+#: src/dialogs/replace.glade2.h:1 src/dialogs/uri.glade2.h:1
 msgid "*"
 msgstr "*"
 
@@ -529,13 +668,17 @@ msgstr "Використовувати _уніфікований формат в
 
 #: plugins/diff/diff.gedit-plugin.desktop.in.h:2
 msgid ""
-"The Compare Files plugin uses the <tt>diff</tt> program to compare two documents or files on disk.\n"
+"The Compare Files plugin uses the <tt>diff</tt> program to compare two "
+"documents or files on disk.\n"
 "\n"
-"For more info on <tt>diff</tt> program, type <tt>man diff</tt> in a shell prompt."
+"For more info on <tt>diff</tt> program, type <tt>man diff</tt> in a shell "
+"prompt."
 msgstr ""
-"Доповнення, що робить файл відмінностей між двома документами чи файлами на диску за допомогою команди <tt>diff</tt>.\n"
+"Доповнення, що робить файл відмінностей між двома документами чи файлами на "
+"диску за допомогою команди <tt>diff</tt>.\n"
 "\n"
-"Для докладної інформації про команду <tt>diff</tt> наберіть <tt>man diff</tt> в командному рядку."
+"Для докладної інформації про команду <tt>diff</tt> наберіть <tt>man diff</"
+"tt> в командному рядку."
 
 #: plugins/docinfo/docinfo.c:46
 msgid "_Document Statistics"
@@ -574,8 +717,7 @@ msgstr "Символи (з пропусками)"
 msgid "File Name"
 msgstr "Назва файла"
 
-#: plugins/docinfo/docinfo.glade2.h:6
-#: src/gedit-print.c:373
+#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:376
 msgid "Lines"
 msgstr "Рядків"
 
@@ -592,8 +734,13 @@ msgid "gedit: Document Info plugin"
 msgstr "gedit: Доповнення інформації про документ"
 
 #: plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:2
-msgid "The Document Statistics plugin analyzes the current document and determines the number of words, lines, characters and non-space characters in it and displays the result."
-msgstr "Доповнення, що аналізує поточний документ і визначає кількість слів, рядків, символів і видимих символів у ньому, а потім відображає результат."
+msgid ""
+"The Document Statistics plugin analyzes the current document and determines "
+"the number of words, lines, characters and non-space characters in it and "
+"displays the result."
+msgstr ""
+"Доповнення, що аналізує поточний документ і визначає кількість слів, рядків, "
+"символів і видимих символів у ньому, а потім відображає результат."
 
 #: plugins/sample/sample.c:43
 msgid "Insert User Na_me"
@@ -689,7 +836,9 @@ msgid "gedit: Shell Output plugin"
 msgstr "gedit: Доповнення виводу оболонки"
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:1
-msgid "Execute an external program and eventually grabs its output in the output window."
+msgid ""
+"Execute an external program and eventually grabs its output in the output "
+"window."
 msgstr "Виконати зовнішню програму і надрукувати її вивід у вікні виводу."
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:2
@@ -736,8 +885,12 @@ msgid "Tag list"
 msgstr "Список тегів"
 
 #: plugins/taglist/taglist.gedit-plugin.desktop.in.h:2
-msgid "The tag list plugin provides a method to easily insert into a document commonly used tags/strings without having to type them."
-msgstr "Доповнення надає можливість простого вставляння в документ тегів чи рядків, що часто використовуються."
+msgid ""
+"The tag list plugin provides a method to easily insert into a document "
+"commonly used tags/strings without having to type them."
+msgstr ""
+"Доповнення надає можливість простого вставляння в документ тегів чи рядків, "
+"що часто використовуються."
 
 #: plugins/time/time.c:48
 msgid "In_sert Date and Time..."
@@ -755,8 +908,7 @@ msgstr "Доступні формати"
 msgid "Configure insert date/time plugin..."
 msgstr "Налаштувати доповнення вставляння дати й часу..."
 
-#: plugins/time/time.glade2.h:1
-#: src/dialogs/gedit-preferences.glade2.h:1
+#: plugins/time/time.glade2.h:1 src/dialogs/gedit-preferences.glade2.h:1
 msgid "    "
 msgstr "    "
 
@@ -832,8 +984,7 @@ msgstr "Вилу_чати повторення"
 msgid "S_tart at column:"
 msgstr "По_чинати з стовпчика:"
 
-#: plugins/sort/sort.glade2.h:3
-#: plugins/sort/sort.gedit-plugin.desktop.in.h:1
+#: plugins/sort/sort.glade2.h:3 plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sort"
 msgstr "Сортувати"
 
@@ -857,26 +1008,26 @@ msgstr "_Сортувати"
 msgid "Sorts a document or selected text."
 msgstr "Відсортувати поточний документ чи вибраний текст."
 
-#: plugins/spell/gedit-automatic-spell-checker.c:322
+#: plugins/spell/gedit-automatic-spell-checker.c:318
 #: plugins/spell/gedit-spell-checker-dialog.c:504
 msgid "(no suggested words)"
 msgstr "(немає можливих варіантів)"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:346
+#: plugins/spell/gedit-automatic-spell-checker.c:342
 msgid "_More..."
 msgstr "_Більше..."
 
 #. Ignore all
-#: plugins/spell/gedit-automatic-spell-checker.c:399
+#: plugins/spell/gedit-automatic-spell-checker.c:395
 msgid "_Ignore All"
 msgstr "_Пропустити все"
 
 #. + Add to Dictionary
-#: plugins/spell/gedit-automatic-spell-checker.c:412
+#: plugins/spell/gedit-automatic-spell-checker.c:408
 msgid "_Add"
 msgstr "_Додати"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:449
+#: plugins/spell/gedit-automatic-spell-checker.c:445
 msgid "_Spelling Suggestions..."
 msgstr "Мо_жливі варіанти..."
 
@@ -896,95 +1047,95 @@ msgstr "(правильне написання)"
 msgid "Completed spell checking"
 msgstr "Перевірку правопису завершено"
 
-#: plugins/spell/gedit-spell-checker.c:73
+#: plugins/spell/gedit-spell-checker.c:80
 msgid "Breton"
 msgstr "Бретонська"
 
-#: plugins/spell/gedit-spell-checker.c:74
+#: plugins/spell/gedit-spell-checker.c:81
 msgid "Catalan"
 msgstr "Каталонська"
 
-#: plugins/spell/gedit-spell-checker.c:75
+#: plugins/spell/gedit-spell-checker.c:82
 msgid "Czech"
 msgstr "Чеська"
 
-#: plugins/spell/gedit-spell-checker.c:76
+#: plugins/spell/gedit-spell-checker.c:83
 msgid "Danish"
 msgstr "Датська"
 
-#: plugins/spell/gedit-spell-checker.c:77
+#: plugins/spell/gedit-spell-checker.c:84
 msgid "German (Germany)"
 msgstr "Німецька (Німеччина)"
 
-#: plugins/spell/gedit-spell-checker.c:78
+#: plugins/spell/gedit-spell-checker.c:85
 msgid "German (Swiss)"
 msgstr "Німецька (Швейцарія)"
 
-#: plugins/spell/gedit-spell-checker.c:79
+#: plugins/spell/gedit-spell-checker.c:86
 msgid "English (American)"
 msgstr "Англійська (Америка)"
 
-#: plugins/spell/gedit-spell-checker.c:80
+#: plugins/spell/gedit-spell-checker.c:87
 msgid "English (British)"
 msgstr "Англійська (Британія)"
 
-#: plugins/spell/gedit-spell-checker.c:81
+#: plugins/spell/gedit-spell-checker.c:88
 msgid "English (Canadian)"
 msgstr "Англійська (Канада)"
 
-#: plugins/spell/gedit-spell-checker.c:82
+#: plugins/spell/gedit-spell-checker.c:89
 msgid "Esperanto"
 msgstr "Есперанто"
 
-#: plugins/spell/gedit-spell-checker.c:83
+#: plugins/spell/gedit-spell-checker.c:90
 msgid "Spanish"
 msgstr "Іспанська"
 
-#: plugins/spell/gedit-spell-checker.c:84
+#: plugins/spell/gedit-spell-checker.c:91
 msgid "Faroese"
 msgstr "Фарерська"
 
-#: plugins/spell/gedit-spell-checker.c:85
+#: plugins/spell/gedit-spell-checker.c:92
 msgid "French (France)"
 msgstr "Французька (Франція)"
 
-#: plugins/spell/gedit-spell-checker.c:86
+#: plugins/spell/gedit-spell-checker.c:93
 msgid "French (Swiss)"
 msgstr "Французька (Швейцарія)"
 
-#: plugins/spell/gedit-spell-checker.c:87
+#: plugins/spell/gedit-spell-checker.c:94
 msgid "Italian"
 msgstr "Італійська"
 
-#: plugins/spell/gedit-spell-checker.c:88
+#: plugins/spell/gedit-spell-checker.c:95
 msgid "Dutch"
 msgstr "Голландська"
 
-#: plugins/spell/gedit-spell-checker.c:89
+#: plugins/spell/gedit-spell-checker.c:96
 msgid "Norwegian"
 msgstr "Норвезька"
 
-#: plugins/spell/gedit-spell-checker.c:90
+#: plugins/spell/gedit-spell-checker.c:97
 msgid "Polish"
 msgstr "Польська"
 
-#: plugins/spell/gedit-spell-checker.c:91
+#: plugins/spell/gedit-spell-checker.c:98
 msgid "Portuguese (Portugal)"
 msgstr "Португальська (Португалія)"
 
-#: plugins/spell/gedit-spell-checker.c:92
+#: plugins/spell/gedit-spell-checker.c:99
 msgid "Portuguese (Brazilian)"
 msgstr "Португальська (Бразилія)"
 
-#: plugins/spell/gedit-spell-checker.c:93
+#: plugins/spell/gedit-spell-checker.c:100
 msgid "Russian"
 msgstr "Російська"
 
-#: plugins/spell/gedit-spell-checker.c:94
+#: plugins/spell/gedit-spell-checker.c:101
 msgid "Swedish"
 msgstr "Шведська"
 
-#: plugins/spell/gedit-spell-checker.c:653
+#: plugins/spell/gedit-spell-checker.c:734
 msgid "Default"
 msgstr "Початково"
 
@@ -1117,8 +1268,7 @@ msgstr "Вибраний текст не містить слів з помилк
 msgid "The document does not contain mispelled words."
 msgstr "Документ не містисть слів з помилками."
 
-#: src/bonobo-mdi.c:549
-#: src/bonobo-mdi.c:1962
+#: src/bonobo-mdi.c:549 src/bonobo-mdi.c:1962
 #, c-format
 msgid "Activate %s"
 msgstr "Активувати %s"
@@ -1133,14 +1283,12 @@ msgid "_Go to Line"
 msgstr "_Перейти на рядок"
 
 #: src/dialogs/gedit-dialog-replace.c:132
-#: src/dialogs/gedit-dialog-replace.c:1025
-#: src/gedit-commands.c:363
+#: src/dialogs/gedit-dialog-replace.c:1025 src/gedit-commands.c:363
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "Тексту \"%s\" не знайдено."
 
-#: src/dialogs/gedit-dialog-replace.c:240
-#: src/dialogs/replace.glade2.h:4
+#: src/dialogs/gedit-dialog-replace.c:240 src/dialogs/replace.glade2.h:4
 #: src/gedit-ui.xml.h:49
 msgid "Replace"
 msgstr "Замінити"
@@ -1150,13 +1298,11 @@ msgid "Replace _All"
 msgstr "Замінити _все"
 
 #. Add Replace button
-#: src/dialogs/gedit-dialog-replace.c:254
-#: src/gedit-file-selector-util.c:129
+#: src/dialogs/gedit-dialog-replace.c:254 src/gedit-file-selector-util.c:129
 msgid "_Replace"
 msgstr "Замінити"
 
-#: src/dialogs/gedit-dialog-replace.c:376
-#: src/gedit-ui.xml.h:20
+#: src/dialogs/gedit-dialog-replace.c:376 src/gedit-ui.xml.h:20
 msgid "Find"
 msgstr "Знайти"
 
@@ -1191,7 +1337,8 @@ msgstr "Не вдалося знайти plugin-manager.glade2, перевста
 
 #: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
-msgstr "Невірний файл glade для керування доповненнями -- не всі віджети знайдено.\n"
+msgstr ""
+"Невірний файл glade для керування доповненнями -- не всі віджети знайдено.\n"
 
 #: src/dialogs/gedit-plugin-program-location-dialog.c:78
 #: src/dialogs/program-location-dialog.glade2.h:2
@@ -1201,11 +1348,13 @@ msgstr "Встановити положення програми..."
 #: src/dialogs/gedit-plugin-program-location-dialog.c:106
 #, c-format
 msgid ""
-"The %s plugin uses an external program, called <tt>%s</tt>, to perform its task.\n"
+"The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
+"task.\n"
 "\n"
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr ""
-"Доповнення %s використовує зовнішню програму <tt>%s<tt> для виконання свого завдання.\n"
+"Доповнення %s використовує зовнішню програму <tt>%s<tt> для виконання свого "
+"завдання.\n"
 "\n"
 "Вкажіть положення програми <tt>%s<tt>."
 
@@ -1213,112 +1362,112 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "Вибраний файл не призначений для виконання."
 
-#: src/dialogs/gedit-preferences-dialog.c:233
+#: src/dialogs/gedit-preferences-dialog.c:236
 msgid "Font & Colors"
 msgstr "Шрифти й кольори"
 
-#: src/dialogs/gedit-preferences-dialog.c:235
+#: src/dialogs/gedit-preferences-dialog.c:238
 #: src/dialogs/gedit-preferences.glade2.h:47
 msgid "Tabs"
 msgstr "Вкладки"
 
-#: src/dialogs/gedit-preferences-dialog.c:236
+#: src/dialogs/gedit-preferences-dialog.c:239
 msgid "Wrap Mode"
 msgstr "Режим загортання"
 
-#: src/dialogs/gedit-preferences-dialog.c:237
+#: src/dialogs/gedit-preferences-dialog.c:240
 msgid "Auto Indent"
 msgstr "Автовідступ"
 
-#: src/dialogs/gedit-preferences-dialog.c:238
+#: src/dialogs/gedit-preferences-dialog.c:241
 msgid "Line Numbers"
 msgstr "Номери рядків"
 
-#: src/dialogs/gedit-preferences-dialog.c:240
-#: src/gedit-ui.xml.h:30
+#: src/dialogs/gedit-preferences-dialog.c:243 src/gedit-ui.xml.h:30
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/dialogs/gedit-preferences-dialog.c:241
-#: src/dialogs/gedit-preferences.glade2.h:42
-#: src/gedit-ui.xml.h:53
+#: src/dialogs/gedit-preferences-dialog.c:244
+#: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:53
 msgid "Save"
 msgstr "Зберегти"
 
-#: src/dialogs/gedit-preferences-dialog.c:242
-#: src/dialogs/gedit-preferences.glade2.h:50
-#: src/gedit-ui.xml.h:70
+#: src/dialogs/gedit-preferences-dialog.c:245
+#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:72
 msgid "Undo"
 msgstr "Відмінити"
 
-#: src/dialogs/gedit-preferences-dialog.c:250
+#: src/dialogs/gedit-preferences-dialog.c:253
 msgid "Page"
 msgstr "Сторінка"
 
-#: src/dialogs/gedit-preferences-dialog.c:252
+#: src/dialogs/gedit-preferences-dialog.c:255
 msgid "Fonts"
 msgstr "Шрифти"
 
-#: src/dialogs/gedit-preferences-dialog.c:259
+#: src/dialogs/gedit-preferences-dialog.c:262
 msgid "Manager"
 msgstr "Менеджер"
 
-#: src/dialogs/gedit-preferences-dialog.c:267
+#: src/dialogs/gedit-preferences-dialog.c:270
 msgid "Editor"
 msgstr "Редактор"
 
-#: src/dialogs/gedit-preferences-dialog.c:268
-#: src/dialogs/gedit-preferences.glade2.h:38
-#: src/gedit-print.c:364
+#: src/dialogs/gedit-preferences-dialog.c:271
+#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:367
 #: src/gedit-ui.xml.h:39
 msgid "Print"
 msgstr "Друк"
 
-#: src/dialogs/gedit-preferences-dialog.c:269
+#: src/dialogs/gedit-preferences-dialog.c:272
 msgid "Plugins"
 msgstr "Доповнення"
 
-#: src/dialogs/gedit-preferences-dialog.c:341
+#: src/dialogs/gedit-preferences-dialog.c:344
 msgid "Cat_egories:"
 msgstr "Кат_егорії:"
 
-#: src/dialogs/gedit-preferences-dialog.c:363
+#: src/dialogs/gedit-preferences-dialog.c:366
 msgid "Preferences"
 msgstr "Вподобання"
 
-#: src/dialogs/gedit-preferences-dialog.c:603
+#: src/dialogs/gedit-preferences-dialog.c:606
 msgid "Categories"
 msgstr "Категорії"
 
-#: src/dialogs/gedit-preferences-dialog.c:836
+#: src/dialogs/gedit-preferences-dialog.c:839
 msgid "Push this button to select the font to be used by the editor"
 msgstr "Натисніть цю кнопку для вибору шрифту редактора"
 
-#: src/dialogs/gedit-preferences-dialog.c:839
+#: src/dialogs/gedit-preferences-dialog.c:842
 msgid "Push this button to configure text color"
 msgstr "Натисніть цю кнопку для встановлення кольору тексту"
 
-#: src/dialogs/gedit-preferences-dialog.c:841
+#: src/dialogs/gedit-preferences-dialog.c:844
 msgid "Push this button to configure background color"
 msgstr "Натисніть цю кнопку для встановлення кольору тла"
 
-#: src/dialogs/gedit-preferences-dialog.c:843
-msgid "Push this button to configure the color in which the selected text should appear"
+#: src/dialogs/gedit-preferences-dialog.c:846
+msgid ""
+"Push this button to configure the color in which the selected text should "
+"appear"
 msgstr "Натисніть цю кнопку для встановлення кольору вибраного тексту"
 
-#: src/dialogs/gedit-preferences-dialog.c:846
-msgid "Push this button to configure the color in which the selected text should be marked"
+#: src/dialogs/gedit-preferences-dialog.c:849
+msgid ""
+"Push this button to configure the color in which the selected text should be "
+"marked"
 msgstr "Натисніть цю кнопку для встановлення кольору відмітки вибраного тексту"
 
-#: src/dialogs/gedit-preferences-dialog.c:1851
+#: src/dialogs/gedit-preferences-dialog.c:1863
 msgid "Push this button to select the font to be used to print the body"
 msgstr "Натисніть цю кнопку для встановлення шрифту друку основного тексту"
 
-#: src/dialogs/gedit-preferences-dialog.c:1853
+#: src/dialogs/gedit-preferences-dialog.c:1865
 msgid "Push this button to select the font to be used to print the headers"
 msgstr "Натисніть цю кнопку для встановлення шрифту друку заголовків"
 
-#: src/dialogs/gedit-preferences-dialog.c:1855
+#: src/dialogs/gedit-preferences-dialog.c:1867
 msgid "Push this button to select the font to be used to print line numbers"
 msgstr "Натисніть цю кнопку для встановлення шрифту друку номерів рядків"
 
@@ -1739,24 +1888,20 @@ msgstr "gedit"
 msgid "gedit is a small and lightweight text editor for Gnome"
 msgstr "gedit -- це малий і легкий текстовий редактор для GNOME"
 
-#: src/gedit-document.c:537
-#: src/gedit-document.c:555
+#: src/gedit-document.c:537 src/gedit-document.c:555
 #, c-format
 msgid "%s %d"
 msgstr "%s %d"
 
-#: src/gedit-document.c:537
-#: src/gedit-document.c:555
+#: src/gedit-document.c:537 src/gedit-document.c:555
 msgid "Untitled"
 msgstr "Неназваний"
 
-#: src/gedit-document.c:543
-#: src/gedit-document.c:590
+#: src/gedit-document.c:543 src/gedit-document.c:590
 msgid "Invalid file name"
 msgstr "Неправильна назва файла"
 
-#: src/gedit-document.c:702
-#: src/gedit-document.c:786
+#: src/gedit-document.c:702 src/gedit-document.c:786
 msgid "Invalid UTF-8 data"
 msgstr "Неправильні дані UTF-8"
 
@@ -1783,14 +1928,22 @@ msgid "Invalid filename."
 msgstr "Неправильна назва файла."
 
 #: src/gedit-document.c:1278
-msgid "There is not enough disk space to save the file.\n"
+msgid ""
+"There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
-msgstr "Недостатньо дискового простору для збереження файла.\n"
+msgstr ""
+"Недостатньо дискового простору для збереження файла.\n"
 "Звільніть, будь ласка, місце на диску і спробуйте знову."
 
 #: src/gedit-document.c:1283
-msgid "The disk where you are trying to save the file has a limitation on file sizes.  Please try saving a smaller file or saving it to a disk that does not have this limitation."
-msgstr "Диск, на якому ви намагаєтеся зберегти файл має обмеження на розмір файла. Спробуйте зберегти файл меншого розміру, чи скористуйтесь диском, що не має такого обмеження."
+msgid ""
+"The disk where you are trying to save the file has a limitation on file "
+"sizes.  Please try saving a smaller file or saving it to a disk that does "
+"not have this limitation."
+msgstr ""
+"Диск, на якому ви намагаєтеся зберегти файл має обмеження на розмір файла. "
+"Спробуйте зберегти файл меншого розміру, чи скористуйтесь диском, що не має "
+"такого обмеження."
 
 #: src/gedit-document.c:1327
 msgid "Could not create a backup file."
@@ -1802,16 +1955,20 @@ msgstr "Неможливо відновити документ Неназван�
 
 #: src/gedit-file-selector-util.c:147
 #, c-format
-msgid "A file named \"%s\" already exists.\n"
+msgid ""
+"A file named \"%s\" already exists.\n"
 "Do you want to replace it with the one you are saving?"
-msgstr "Файл \"%s\" вже існує.\n"
+msgstr ""
+"Файл \"%s\" вже існує.\n"
 "Чи хочете ви замінити його тим, що записуєте?"
 
 #: src/gedit-file-selector-util.c:158
 #, c-format
-msgid "The file \"%s\" is read-only.\n"
+msgid ""
+"The file \"%s\" is read-only.\n"
 "Do you want to try to replace it with the one you are saving?"
-msgstr "Файл \"%s\" позначений лише для зчитування.\n"
+msgstr ""
+"Файл \"%s\" позначений лише для зчитування.\n"
 "Чи хочете ви замінити його тим, що записуєте?"
 
 #: src/gedit-file-selector-util.c:544
@@ -1822,25 +1979,21 @@ msgstr "Оберіть назву файлу"
 msgid "Open File..."
 msgstr "Відкрити файл..."
 
-#: src/gedit-file.c:177
-#: src/gedit-file.c:887
+#: src/gedit-file.c:177 src/gedit-file.c:887
 #, c-format
 msgid "Loaded file '%s'"
 msgstr "Завантажено файл \"%s\""
 
-#: src/gedit-file.c:309
-#: src/gedit-file.c:455
+#: src/gedit-file.c:309 src/gedit-file.c:455
 #, c-format
 msgid "Saving file '%s'..."
 msgstr "Збереження файлу як \"%s\"..."
 
-#: src/gedit-file.c:337
-#: src/gedit-file.c:470
+#: src/gedit-file.c:337 src/gedit-file.c:470
 msgid "The document has not been saved."
 msgstr "Документ не було збережено."
 
-#: src/gedit-file.c:351
-#: src/gedit-file.c:467
+#: src/gedit-file.c:351 src/gedit-file.c:467
 #, c-format
 msgid "File '%s' saved."
 msgstr "Файл \"%s\" збережено."
@@ -1860,8 +2013,7 @@ msgstr ""
 "\n"
 "Ви не зможете скасувати цю операцію пізніше."
 
-#: src/gedit-file.c:638
-#: src/gedit-ui.xml.h:97
+#: src/gedit-file.c:638 src/gedit-ui.xml.h:99
 msgid "_Revert"
 msgstr "Від_новити"
 
@@ -1904,8 +2056,7 @@ msgid "RO"
 msgstr "ЛЗ"
 
 #. Add the detach tab button
-#: src/gedit-mdi-child.c:543
-#: src/gedit-ui.xml.h:87
+#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:89
 msgid "_Move to New Window"
 msgstr "Пере_нести у нове вікно"
 
@@ -1974,15 +2125,13 @@ msgstr "Помилка, неможливо ініціалізувати допо
 msgid "Error, impossible to destroy plugin '%s'"
 msgstr "Помилка, неможливо знищити доповнення \"%s\""
 
-#: src/gedit-plugins-engine.c:551
-#: src/gedit-plugins-engine.c:639
+#: src/gedit-plugins-engine.c:551 src/gedit-plugins-engine.c:639
 #: src/gedit-plugins-engine.c:764
 #, c-format
 msgid "Error, impossible to activate plugin '%s'"
 msgstr "Помилка, неможливо активувати доповнення \"%s\""
 
-#: src/gedit-plugins-engine.c:590
-#: src/gedit-plugins-engine.c:782
+#: src/gedit-plugins-engine.c:590 src/gedit-plugins-engine.c:782
 #, c-format
 msgid "Error, impossible to deactivate plugin '%s'"
 msgstr "Помилка, неможливо деактивувати доповнення \"%s\""
@@ -2002,27 +2151,29 @@ msgid "Expected `%s' got `%s' for key %s"
 msgstr "Очікувалось \"%s\", отримано \"%s\" для ключа %s"
 
 #: src/gedit-print.c:254
-msgid "gedit is unable to print since it cannot find\n"
+msgid ""
+"gedit is unable to print since it cannot find\n"
 "one of the required fonts."
-msgstr "Неможливо розпочати друк, через\n"
+msgstr ""
+"Неможливо розпочати друк, через\n"
 "неможливість віднайти необхідний шрифт."
 
-#: src/gedit-print.c:432
+#: src/gedit-print.c:435
 #, c-format
 msgid "File: %s"
 msgstr "Файл: %s"
 
 #. Print right text
-#: src/gedit-print.c:439
+#: src/gedit-print.c:442
 #, c-format
 msgid "Page: %d"
 msgstr "Сторінка: %d"
 
-#: src/gedit-print.c:580
+#: src/gedit-print.c:583
 msgid "gedit - Print Preview"
 msgstr "gedit - попередній перегляд друку"
 
-#: src/gedit-print.c:658
+#: src/gedit-print.c:661
 #, c-format
 msgid ""
 "An error occurred while printing.\n"
@@ -2267,7 +2418,8 @@ msgstr "Вибрати весь документ"
 
 #: src/gedit-ui.xml.h:64
 msgid "Set toolbar button style according to desktop default"
-msgstr "Встановити стиль кнопок пенала відповідно до типових налаштувань стільниці"
+msgstr ""
+"Встановити стиль кнопок пенала відповідно до типових налаштувань стільниці"
 
 #: src/gedit-ui.xml.h:65
 msgid "Setup the page settings for your current printer"
@@ -2282,142 +2434,152 @@ msgid "Show _Overwrite Mode"
 msgstr "Показувати режим _заміщення"
 
 #: src/gedit-ui.xml.h:68
+#, fuzzy
+msgid "Show both icons and texts in the toolbar"
+msgstr "Показувати в пеналі лише піктограми"
+
+#: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
 msgstr "Показувати позицію курсора в панелі стану"
 
-#: src/gedit-ui.xml.h:69
+#: src/gedit-ui.xml.h:70
 msgid "Show overwrite mode in the statusbar"
 msgstr "Показувати режим заміщення символів у панелі стану"
 
 #: src/gedit-ui.xml.h:71
+#, fuzzy
+msgid "Show prioritized text beside icons in the toolbar"
+msgstr "Показувати в пеналі лише піктограми"
+
+#: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
 msgstr "Відмінити останню операцію"
 
-#: src/gedit-ui.xml.h:72
+#: src/gedit-ui.xml.h:74
 msgid "_About"
 msgstr "_Про"
 
-#: src/gedit-ui.xml.h:73
+#: src/gedit-ui.xml.h:75
 msgid "_Close"
 msgstr "_Закрити"
 
-#: src/gedit-ui.xml.h:74
+#: src/gedit-ui.xml.h:76
 msgid "_Close All"
 msgstr "За_крити все"
 
-#: src/gedit-ui.xml.h:75
+#: src/gedit-ui.xml.h:77
 msgid "_Contents"
 msgstr "_Вміст"
 
-#: src/gedit-ui.xml.h:76
+#: src/gedit-ui.xml.h:78
 msgid "_Copy"
 msgstr "_Скопіювати"
 
-#: src/gedit-ui.xml.h:77
+#: src/gedit-ui.xml.h:79
 msgid "_Customize Toolbar"
 msgstr "На_лаштувати пенал"
 
-#: src/gedit-ui.xml.h:78
+#: src/gedit-ui.xml.h:80
 msgid "_Debug"
 msgstr "Від_лагодження"
 
-#: src/gedit-ui.xml.h:79
+#: src/gedit-ui.xml.h:81
 msgid "_Delete"
 msgstr "С_терти"
 
-#: src/gedit-ui.xml.h:80
+#: src/gedit-ui.xml.h:82
 msgid "_Desktop Default"
 msgstr "_Типово для стільниці"
 
-#: src/gedit-ui.xml.h:81
+#: src/gedit-ui.xml.h:83
 msgid "_Documents"
 msgstr "_Документи"
 
-#: src/gedit-ui.xml.h:82
+#: src/gedit-ui.xml.h:84
 msgid "_Edit"
 msgstr "_Редагування"
 
-#: src/gedit-ui.xml.h:83
+#: src/gedit-ui.xml.h:85
 msgid "_File"
 msgstr "_Файл"
 
-#: src/gedit-ui.xml.h:84
+#: src/gedit-ui.xml.h:86
 msgid "_Find..."
 msgstr "З_найти..."
 
-#: src/gedit-ui.xml.h:85
+#: src/gedit-ui.xml.h:87
 msgid "_Help"
 msgstr "_Довідка"
 
-#: src/gedit-ui.xml.h:86
+#: src/gedit-ui.xml.h:88
 msgid "_Icon"
 msgstr "_Піктограма"
 
-#: src/gedit-ui.xml.h:88
+#: src/gedit-ui.xml.h:90
 msgid "_New"
 msgstr "_Новий"
 
-#: src/gedit-ui.xml.h:89
+#: src/gedit-ui.xml.h:91
 msgid "_Open..."
 msgstr "_Відкрити..."
 
-#: src/gedit-ui.xml.h:90
+#: src/gedit-ui.xml.h:92
 msgid "_Output Window"
 msgstr "Вікно _виводу"
 
-#: src/gedit-ui.xml.h:91
+#: src/gedit-ui.xml.h:93
 msgid "_Paste"
 msgstr "_Вставити"
 
-#: src/gedit-ui.xml.h:92
+#: src/gedit-ui.xml.h:94
 msgid "_Print..."
 msgstr "На_друкувати..."
 
-#: src/gedit-ui.xml.h:93
+#: src/gedit-ui.xml.h:95
 msgid "_Priority Text beside Icons"
 msgstr "Текст за пі_ктограмами"
 
-#: src/gedit-ui.xml.h:94
+#: src/gedit-ui.xml.h:96
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: src/gedit-ui.xml.h:95
+#: src/gedit-ui.xml.h:97
 msgid "_Redo"
 msgstr "_Повернути"
 
-#: src/gedit-ui.xml.h:96
+#: src/gedit-ui.xml.h:98
 msgid "_Replace..."
 msgstr "_Замінити..."
 
-#: src/gedit-ui.xml.h:98
+#: src/gedit-ui.xml.h:100
 msgid "_Save"
 msgstr "_Зберегти"
 
-#: src/gedit-ui.xml.h:99
+#: src/gedit-ui.xml.h:101
 msgid "_Save All"
 msgstr "З_берегти все"
 
-#: src/gedit-ui.xml.h:100
+#: src/gedit-ui.xml.h:102
 msgid "_Search"
 msgstr "По_шук"
 
-#: src/gedit-ui.xml.h:101
+#: src/gedit-ui.xml.h:103
 msgid "_Statusbar"
 msgstr "Панель _стану"
 
-#: src/gedit-ui.xml.h:102
+#: src/gedit-ui.xml.h:104
 msgid "_Toolbar"
 msgstr "_Пенал"
 
-#: src/gedit-ui.xml.h:103
+#: src/gedit-ui.xml.h:105
 msgid "_Tools"
 msgstr "_Інструменти"
 
-#: src/gedit-ui.xml.h:104
+#: src/gedit-ui.xml.h:106
 msgid "_Undo"
 msgstr "Від_мінити"
 
-#: src/gedit-ui.xml.h:105
+#: src/gedit-ui.xml.h:107
 msgid "_View"
 msgstr "_Вигляд"
 
@@ -2435,12 +2597,16 @@ msgstr ""
 #: src/gedit-utils.c:804
 #, c-format
 msgid "Could not open the file \"%s\" because it contains corrupted data."
-msgstr "Не вдалося відкрити файл \"%s\" через те, що він містить зіпсовані дані."
+msgstr ""
+"Не вдалося відкрити файл \"%s\" через те, що він містить зіпсовані дані."
 
 #: src/gedit-utils.c:815
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
-msgstr "Не вдалось відкрити файл \"%s\" тому, що програма gedit не може опрацювати шлях %s."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgstr ""
+"Не вдалось відкрити файл \"%s\" тому, що програма gedit не може опрацювати "
+"шлях %s."
 
 #: src/gedit-utils.c:821
 #, c-format
@@ -2449,8 +2615,11 @@ msgstr "Неможливо відкрити файл: \"%s\"."
 
 #: src/gedit-utils.c:831
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
-msgstr "Не вдалося відкрити файл \"%s\" через те, що він містить дані у неправильному форматі."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
+msgstr ""
+"Не вдалося відкрити файл \"%s\" через те, що він містить дані у "
+"неправильному форматі."
 
 #: src/gedit-utils.c:838
 #, c-format
@@ -2480,7 +2649,8 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"Не вдалося відкрити файл \"%s\" через надто велику кількість відкритих файлів.\n"
+"Не вдалося відкрити файл \"%s\" через надто велику кількість відкритих "
+"файлів.\n"
 "\n"
 "Закрийте, будь ласка, кілька файлів і спробуйте знову."
 
@@ -2497,19 +2667,25 @@ msgstr ""
 
 #: src/gedit-utils.c:874
 #, c-format
-msgid "Not enough available memory to open the file \"%s\". Please, close some running application and try again."
-msgstr "Недостатньо доступної пам'яті для відкриття файлу \"%s\". Будь ласка, закрийте кілька запущених програм і спробуйте знову."
+msgid ""
+"Not enough available memory to open the file \"%s\". Please, close some "
+"running application and try again."
+msgstr ""
+"Недостатньо доступної пам'яті для відкриття файлу \"%s\". Будь ласка, "
+"закрийте кілька запущених програм і спробуйте знову."
 
 #: src/gedit-utils.c:900
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because no host \"%s\" could be found.\n"
 "\n"
-"Please, check that you typed the location correctly and that your proxy settings are correct and then try again."
+"Please, check that you typed the location correctly and that your proxy "
+"settings are correct and then try again."
 msgstr ""
 "Не вдалось відкрити \"%s\" тому, що вузла \"%s\" не знайдено.\n"
 "\n"
-"Переконайтесь, що введений шлях і параметри проксі правильні, та спробуйте ще раз."
+"Переконайтесь, що введений шлях і параметри проксі правильні, та спробуйте "
+"ще раз."
 
 #: src/gedit-utils.c:915
 #, c-format
@@ -2551,7 +2727,8 @@ msgid ""
 "\n"
 "Probably, you are trying to open a binary file."
 msgstr ""
-"Не вдалось відкрити файл \"%s\" тому, що він містить неправильну послідовність даних UTF-8.\n"
+"Не вдалось відкрити файл \"%s\" тому, що він містить неправильну "
+"послідовність даних UTF-8.\n"
 "\n"
 "Напевно, ви намагаєтеся відкрити двійковий файл."
 
@@ -2590,23 +2767,28 @@ msgstr ""
 #: src/gedit-utils.c:1090
 #, c-format
 msgid "Could not revert the file \"%s\" because it contains corrupted data."
-msgstr "Не вдалося відновити файл \"%s\" через те, що він містить зіпсовані дані."
+msgstr ""
+"Не вдалося відновити файл \"%s\" через те, що він містить зіпсовані дані."
 
 #: src/gedit-utils.c:1101
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "Не вдалось відновити файл \"%s\" тому, що gedit не може опрацювати %s."
 
-#: src/gedit-utils.c:1107
-#: src/gedit-utils.c:1247
+#: src/gedit-utils.c:1107 src/gedit-utils.c:1247
 #, c-format
 msgid "Could not revert the file \"%s\"."
 msgstr "Не вдалося відновити файл \"%s\"."
 
 #: src/gedit-utils.c:1117
 #, c-format
-msgid "Could not revert the file \"%s\" because it contains data in an invalid format."
-msgstr "Не вдалося відновити файл \"%s\" через те, що він містить дані у неправильному форматі."
+msgid ""
+"Could not revert the file \"%s\" because it contains data in an invalid "
+"format."
+msgstr ""
+"Не вдалося відновити файл \"%s\" через те, що він містить дані у "
+"неправильному форматі."
 
 #: src/gedit-utils.c:1124
 #, c-format
@@ -2625,14 +2807,19 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"Не вдалось відновити файл \"%s\" тому, що зараз відкрито надто багато файлів.\n"
+"Не вдалось відновити файл \"%s\" тому, що зараз відкрито надто багато "
+"файлів.\n"
 "\n"
 "Будь ласка, закрийте якийсь відкритий файл і спробуйте ще раз."
 
 #: src/gedit-utils.c:1146
 #, c-format
-msgid "Not enough available memory to revert the file \"%s\". Please, close some running application and try again."
-msgstr "Не вистачає пам'яті, щоб відновити файл \"%s\". Будь ласка, закрийте кілька програм, що виконуються, і спробуйте ще раз."
+msgid ""
+"Not enough available memory to revert the file \"%s\". Please, close some "
+"running application and try again."
+msgstr ""
+"Не вистачає пам'яті, щоб відновити файл \"%s\". Будь ласка, закрийте кілька "
+"програм, що виконуються, і спробуйте ще раз."
 
 #: src/gedit-utils.c:1172
 #, c-format
@@ -2643,7 +2830,8 @@ msgid ""
 msgstr ""
 "Не вдалось відновити файл \"%s\" тому, що не вдалося знайти вузла \"%s\" .\n"
 "\n"
-"Будь ласка, переконайтесь, що параметри проксі вказано правильно і спробуйте ще раз."
+"Будь ласка, переконайтесь, що параметри проксі вказано правильно і спробуйте "
+"ще раз."
 
 #: src/gedit-utils.c:1186
 #, c-format
@@ -2654,7 +2842,8 @@ msgid ""
 msgstr ""
 "Не вдалось відновити файл \"%s\" тому, що назву вузла порожня.\n"
 "\n"
-"Будь ласка, переконайтесь, що параметри проксі вказано правильно і спробуйте ще раз."
+"Будь ласка, переконайтесь, що параметри проксі вказано правильно і спробуйте "
+"ще раз."
 
 #: src/gedit-utils.c:1193
 #, c-format
@@ -2668,7 +2857,8 @@ msgid ""
 "\n"
 "Probably, you are trying to revert a binary file."
 msgstr ""
-"Не вдалось відновити файл \"%s\" тому, що він містить неправильну послідовність даних UTF-8.\n"
+"Не вдалось відновити файл \"%s\" тому, що він містить неправильну "
+"послідовність даних UTF-8.\n"
 "\n"
 "Напевно ви намагаєтесь відновити двійковий файл."
 
@@ -2719,11 +2909,13 @@ msgstr ""
 msgid ""
 "Cannot create the file \"%s\".\n"
 "\n"
-"A directory component in the file name does not exist or is a dangling symbolic link."
+"A directory component in the file name does not exist or is a dangling "
+"symbolic link."
 msgstr ""
 "Неможливо створити файл \"%s\".\n"
 "\n"
-"Каталогу, вказаного в назві файла не існує або це порушене символьне посилання."
+"Каталогу, вказаного в назві файла не існує або це порушене символьне "
+"посилання."
 
 #: src/gedit-utils.c:1336
 #, c-format
@@ -2848,15 +3040,12 @@ msgstr "Рядки виводу"
 msgid "Choose one or more e_ncodings:"
 msgstr "Виберіть одне чи кілька ко_дувань:"
 
-#: src/gedit-encodings.c:128
-#: src/gedit-encodings.c:154
-#: src/gedit-encodings.c:195
-#: src/gedit-encodings.c:236
+#: src/gedit-encodings.c:128 src/gedit-encodings.c:154
+#: src/gedit-encodings.c:195 src/gedit-encodings.c:236
 msgid "Western"
 msgstr "Західне"
 
-#: src/gedit-encodings.c:130
-#: src/gedit-encodings.c:197
+#: src/gedit-encodings.c:130 src/gedit-encodings.c:197
 #: src/gedit-encodings.c:232
 msgid "Central European"
 msgstr "Центральноєвропейське"
@@ -2865,28 +3054,23 @@ msgstr "Центральноєвропейське"
 msgid "South European"
 msgstr "Південноєвропейське"
 
-#: src/gedit-encodings.c:134
-#: src/gedit-encodings.c:150
+#: src/gedit-encodings.c:134 src/gedit-encodings.c:150
 #: src/gedit-encodings.c:246
 msgid "Baltic"
 msgstr "Балтійське"
 
-#: src/gedit-encodings.c:136
-#: src/gedit-encodings.c:199
-#: src/gedit-encodings.c:212
-#: src/gedit-encodings.c:216
+#: src/gedit-encodings.c:136 src/gedit-encodings.c:199
+#: src/gedit-encodings.c:212 src/gedit-encodings.c:216
 #: src/gedit-encodings.c:234
 msgid "Cyrillic"
 msgstr "Кирилиця"
 
-#: src/gedit-encodings.c:138
-#: src/gedit-encodings.c:205
+#: src/gedit-encodings.c:138 src/gedit-encodings.c:205
 #: src/gedit-encodings.c:244
 msgid "Arabic"
 msgstr "Арабське"
 
-#: src/gedit-encodings.c:140
-#: src/gedit-encodings.c:238
+#: src/gedit-encodings.c:140 src/gedit-encodings.c:238
 msgid "Greek"
 msgstr "Грецьке"
 
@@ -2894,14 +3078,12 @@ msgstr "Грецьке"
 msgid "Hebrew Visual"
 msgstr "Єврейське видиме"
 
-#: src/gedit-encodings.c:144
-#: src/gedit-encodings.c:203
+#: src/gedit-encodings.c:144 src/gedit-encodings.c:203
 #: src/gedit-encodings.c:242
 msgid "Hebrew"
 msgstr "Єврейське"
 
-#: src/gedit-encodings.c:146
-#: src/gedit-encodings.c:201
+#: src/gedit-encodings.c:146 src/gedit-encodings.c:201
 #: src/gedit-encodings.c:240
 msgid "Turkish"
 msgstr "Турецьке"
@@ -2918,10 +3100,8 @@ msgstr "Кельтське"
 msgid "Romanian"
 msgstr "Румунське"
 
-#: src/gedit-encodings.c:159
-#: src/gedit-encodings.c:161
-#: src/gedit-encodings.c:163
-#: src/gedit-encodings.c:165
+#: src/gedit-encodings.c:159 src/gedit-encodings.c:161
+#: src/gedit-encodings.c:163 src/gedit-encodings.c:165
 msgid "Unicode"
 msgstr "Юнікод"
 
@@ -2929,8 +3109,7 @@ msgstr "Юнікод"
 msgid "Armenian"
 msgstr "Американське"
 
-#: src/gedit-encodings.c:170
-#: src/gedit-encodings.c:172
+#: src/gedit-encodings.c:170 src/gedit-encodings.c:172
 #: src/gedit-encodings.c:181
 msgid "Chinese Traditional"
 msgstr "Китайське традиційне"
@@ -2939,23 +3118,18 @@ msgstr "Китайське традиційне"
 msgid "Cyrillic/Russian"
 msgstr "Кирилиця/російська"
 
-#: src/gedit-encodings.c:177
-#: src/gedit-encodings.c:208
+#: src/gedit-encodings.c:177 src/gedit-encodings.c:208
 #: src/gedit-encodings.c:221
 msgid "Japanese"
 msgstr "Японське"
 
-#: src/gedit-encodings.c:179
-#: src/gedit-encodings.c:210
-#: src/gedit-encodings.c:214
-#: src/gedit-encodings.c:227
+#: src/gedit-encodings.c:179 src/gedit-encodings.c:210
+#: src/gedit-encodings.c:214 src/gedit-encodings.c:227
 msgid "Korean"
 msgstr "Корейське"
 
-#: src/gedit-encodings.c:184
-#: src/gedit-encodings.c:186
-#: src/gedit-encodings.c:188
-#: src/gedit-encodings.c:192
+#: src/gedit-encodings.c:184 src/gedit-encodings.c:186
+#: src/gedit-encodings.c:188 src/gedit-encodings.c:192
 msgid "Chinese Simplified"
 msgstr "Китайське спрощене"
 
@@ -2967,8 +3141,7 @@ msgstr "Грузинське"
 msgid "Cyrillic/Ukrainian"
 msgstr "Кирилиця/українське"
 
-#: src/gedit-encodings.c:223
-#: src/gedit-encodings.c:229
+#: src/gedit-encodings.c:223 src/gedit-encodings.c:229
 #: src/gedit-encodings.c:248
 msgid "Vietnamese"
 msgstr "В'єтнамське"
@@ -2980,4 +3153,3 @@ msgstr "Таїландське"
 #: src/recent-files/egg-recent-vfs-utils.c:90
 msgid " (invalid Unicode)"
 msgstr "(неправильний знак Юнікоду)"
-

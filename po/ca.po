@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-11 13:16+0200\n"
+"POT-Creation-Date: 2003-06-13 17:48+0100\n"
 "PO-Revision-Date: 2003-06-11 13:17+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -1497,7 +1497,7 @@ msgid "Save"
 msgstr "Desa"
 
 #: src/dialogs/gedit-preferences-dialog.c:245
-#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:70
+#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:72
 msgid "Undo"
 msgstr "Desfés"
 
@@ -2183,7 +2183,7 @@ msgstr ""
 "\n"
 "No podreu desfer aquesta operació."
 
-#: src/gedit-file.c:638 src/gedit-ui.xml.h:97
+#: src/gedit-file.c:638 src/gedit-ui.xml.h:99
 msgid "_Revert"
 msgstr "_Recupera"
 
@@ -2228,7 +2228,7 @@ msgid "RO"
 msgstr "RO"
 
 #. Add the detach tab button
-#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:87
+#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:89
 msgid "_Move to New Window"
 msgstr "_Vés a la nova finestra"
 
@@ -2642,164 +2642,174 @@ msgid "Show _Overwrite Mode"
 msgstr "Mostra el mode de s_obreescriptura"
 
 #: src/gedit-ui.xml.h:68
+#, fuzzy
+msgid "Show both icons and texts in the toolbar"
+msgstr "Mostra només les icones a la barra d'eines"
+
+#: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
 msgstr "Mostra la posició del cursor a la barra d'estat"
 
-#: src/gedit-ui.xml.h:69
+#: src/gedit-ui.xml.h:70
 msgid "Show overwrite mode in the statusbar"
 msgstr "Mostra el mode de sobreescriptura a la barra d'estat"
 
-#
 #: src/gedit-ui.xml.h:71
+#, fuzzy
+msgid "Show prioritized text beside icons in the toolbar"
+msgstr "Mostra només les icones a la barra d'eines"
+
+#
+#: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
 msgstr "Desfés la darrera acció"
 
-#: src/gedit-ui.xml.h:72
+#: src/gedit-ui.xml.h:74
 msgid "_About"
 msgstr "_Quant a"
 
 #
-#: src/gedit-ui.xml.h:73
+#: src/gedit-ui.xml.h:75
 msgid "_Close"
 msgstr "_Tanca"
 
 #
-#: src/gedit-ui.xml.h:74
+#: src/gedit-ui.xml.h:76
 msgid "_Close All"
 msgstr "Tan_ca-ho tot"
 
 #
-#: src/gedit-ui.xml.h:75
+#: src/gedit-ui.xml.h:77
 msgid "_Contents"
 msgstr "_Continguts"
 
 #
-#: src/gedit-ui.xml.h:76
+#: src/gedit-ui.xml.h:78
 msgid "_Copy"
 msgstr "_Copia"
 
-#: src/gedit-ui.xml.h:77
+#: src/gedit-ui.xml.h:79
 msgid "_Customize Toolbar"
 msgstr "_Personalitza la barra d'eines"
 
-#: src/gedit-ui.xml.h:78
+#: src/gedit-ui.xml.h:80
 msgid "_Debug"
 msgstr "_Depura"
 
-#: src/gedit-ui.xml.h:79
+#: src/gedit-ui.xml.h:81
 msgid "_Delete"
 msgstr "_Esborra"
 
 #
-#: src/gedit-ui.xml.h:80
+#: src/gedit-ui.xml.h:82
 msgid "_Desktop Default"
 msgstr "_Escriptori predeterminat"
 
-#: src/gedit-ui.xml.h:81
+#: src/gedit-ui.xml.h:83
 msgid "_Documents"
 msgstr "_Documents"
 
 #
-#: src/gedit-ui.xml.h:82
+#: src/gedit-ui.xml.h:84
 msgid "_Edit"
 msgstr "_Edita"
 
-#: src/gedit-ui.xml.h:83
+#: src/gedit-ui.xml.h:85
 msgid "_File"
 msgstr "_Fitxer"
 
 #
-#: src/gedit-ui.xml.h:84
+#: src/gedit-ui.xml.h:86
 msgid "_Find..."
 msgstr "_Cerca..."
 
-#: src/gedit-ui.xml.h:85
+#: src/gedit-ui.xml.h:87
 msgid "_Help"
 msgstr "A_juda"
 
-#: src/gedit-ui.xml.h:86
+#: src/gedit-ui.xml.h:88
 msgid "_Icon"
 msgstr "_Icona"
 
-#: src/gedit-ui.xml.h:88
+#: src/gedit-ui.xml.h:90
 msgid "_New"
 msgstr "_Nou"
 
 #
-#: src/gedit-ui.xml.h:89
+#: src/gedit-ui.xml.h:91
 msgid "_Open..."
 msgstr "_Obre..."
 
-#: src/gedit-ui.xml.h:90
+#: src/gedit-ui.xml.h:92
 msgid "_Output Window"
 msgstr "Finestra de s_ortida"
 
 #
-#: src/gedit-ui.xml.h:91
+#: src/gedit-ui.xml.h:93
 msgid "_Paste"
 msgstr "_Enganxa"
 
 #
-#: src/gedit-ui.xml.h:92
+#: src/gedit-ui.xml.h:94
 msgid "_Print..."
 msgstr "_Imprimeix..."
 
-#: src/gedit-ui.xml.h:93
+#: src/gedit-ui.xml.h:95
 msgid "_Priority Text beside Icons"
 msgstr "Text _prioritari al costat de les icones"
 
 #
-#: src/gedit-ui.xml.h:94
+#: src/gedit-ui.xml.h:96
 msgid "_Quit"
 msgstr "_Surt"
 
 #
-#: src/gedit-ui.xml.h:95
+#: src/gedit-ui.xml.h:97
 msgid "_Redo"
 msgstr "_Refés"
 
 #
-#: src/gedit-ui.xml.h:96
+#: src/gedit-ui.xml.h:98
 msgid "_Replace..."
 msgstr "_Reemplaça..."
 
 #
-#: src/gedit-ui.xml.h:98
+#: src/gedit-ui.xml.h:100
 msgid "_Save"
 msgstr "_Desa"
 
 #
-#: src/gedit-ui.xml.h:99
+#: src/gedit-ui.xml.h:101
 msgid "_Save All"
 msgstr "De_sa-ho tot"
 
 #
-#: src/gedit-ui.xml.h:100
+#: src/gedit-ui.xml.h:102
 msgid "_Search"
 msgstr "_Cerca"
 
 #
-#: src/gedit-ui.xml.h:101
+#: src/gedit-ui.xml.h:103
 msgid "_Statusbar"
 msgstr "_Barra d'estat"
 
 #
-#: src/gedit-ui.xml.h:102
+#: src/gedit-ui.xml.h:104
 msgid "_Toolbar"
 msgstr "_Barra d'eines"
 
 #
-#: src/gedit-ui.xml.h:103
+#: src/gedit-ui.xml.h:105
 msgid "_Tools"
 msgstr "_Eines"
 
 #
-#: src/gedit-ui.xml.h:104
+#: src/gedit-ui.xml.h:106
 msgid "_Undo"
 msgstr "_Desfés"
 
 #
-#: src/gedit-ui.xml.h:105
+#: src/gedit-ui.xml.h:107
 msgid "_View"
 msgstr "_Veure"
 
