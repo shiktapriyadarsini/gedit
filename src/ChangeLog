@@ -1,3 +1,8 @@
+2000-11-20  Chema Celorio  <chema@celorio.com>
+
+	* gedit got branched. This is the gedit-1-0 branch.
+	This is a bug fix only branch.
+	
 2000-11-22  Paolo Maggi  <maggi@athena.polito.it>
 
 	* menus.c: litte menus and toolbar reorganization
