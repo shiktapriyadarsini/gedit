@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.7.1\n"
-"POT-Creation-Date: 2000-12-19 22:03+0100\n"
-"PO-Revision-Date: 2000-12-19 22:04+01:00\n"
+"POT-Creation-Date: 2000-12-25 18:19+0100\n"
+"PO-Revision-Date: 2000-12-25 18:19+01:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1011,11 +1011,11 @@ msgid "Error, init_plugin returned an error"
 msgstr "Feil, init_plugin returnerte en feil"
 
 #: src/plugin.c:349
-msgid "Error, the plugin did not specified a description"
+msgid "Error, the plugin did not specify a description"
 msgstr "Feil, tillegget spesifiserte ikke en beskrivelse"
 
 #: src/plugin.c:354
-msgid "Error, the plugin did not specified a long description"
+msgid "Error, the plugin did not specify a long description"
 msgstr "Feil, tillegget spesifiserte ikke en lang beskrivelse"
 
 #: src/plugin.c:391
