@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.2.1\n"
 "POT-Creation-Date: 2003-03-10 12:15+0100\n"
-"PO-Revision-Date: 2003-03-10 12:16+0100\n"
+"PO-Revision-Date: 2003-04-16 23:04+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -1227,7 +1227,7 @@ msgstr "Predeterminat"
 #: src/dialogs/gedit-encodings-dialog.c:242
 #, c-format
 msgid "Could not find the required widgets inside %s."
-msgstr "No s'han trobat els widgets necessaris dins de %s."
+msgstr "No s'han trobat els ginys necessaris dins de %s."
 
 #
 #: plugins/spell/gedit-spell-language-dialog.c:253
@@ -1404,7 +1404,7 @@ msgstr "Cerca"
 #: src/dialogs/gedit-dialog-replace.c:1034
 #, c-format
 msgid "Found and replaced %d occurences."
-msgstr "S'han trobat i reemplaçat %d esdeveniments."
+msgstr "S'han trobat i reemplaçat %d cadenes coincidents."
 
 #
 #: src/dialogs/gedit-dialog-uri.c:83
@@ -1436,9 +1436,7 @@ msgstr "No s'ha trobat el plugin-manager.glade2, reinstal·leu el gedit.\n"
 
 #: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
-msgstr ""
-"Fitxer glade no vàlid pel gestor de connectors -- no s'han trobat tots els "
-"widgets.\n"
+msgstr "Fitxer glade no vàlid pel gestor de connectors -- no s'han trobat tots els ginys.\n"
 
 #
 #: src/dialogs/gedit-plugin-program-location-dialog.c:78
@@ -3479,9 +3477,7 @@ msgstr " (Unicode invàlid)"
 #~ msgid ""
 #~ "Could not find the required widgets inside program-location-dialog."
 #~ "glade2.\n"
-#~ msgstr ""
-#~ "No s'ha pogut trobar els widgets necessaris a program-location-dialog."
-#~ "glade2.\n"
+#~ msgstr "No s'ha pogut trobar els ginys necessaris a program-location-dialog.glade2.\n"
 
 #~ msgid "Courier 9"
 #~ msgstr "Courier 9"
