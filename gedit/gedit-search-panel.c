@@ -32,8 +32,11 @@
 #include <config.h>
 #endif
 
+#include <stdlib.h>
+
 #include "gedit-search-panel.h"
 #include "gedit-utils.h"
+#include "gedit-window.h"
 
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
@@ -46,6 +49,10 @@ struct _GeditSearchPanelPrivate
 	
 	GtkWidget    *replace_expander;
 	GtkWidget    *goto_line_expander;
+	
+	GtkWidget    *search_entry;
+	GtkWidget    *replace_entry;
+	GtkWidget    *line_number_entry;
 };
 
 G_DEFINE_TYPE(GeditSearchPanel, gedit_search_panel, GTK_TYPE_VBOX)
@@ -156,6 +163,75 @@ gedit_search_panel_class_init (GeditSearchPanelClass *klass)
 	g_type_class_add_private (object_class, sizeof(GeditSearchPanelPrivate));
 }
 
+static void
+line_number_entry_insert_text (GtkEditable *editable, 
+			       const char *text, 
+			       gint length, 
+			       gint *position)
+{
+	gunichar c;
+	const gchar *p;
+ 	const gchar *end;
+
+	p = text;
+	end = text + length;
+
+	while (p != end) {
+		const gchar *next;
+		next = g_utf8_next_char (p);
+
+		c = g_utf8_get_char (p);
+
+		if (!g_unichar_isdigit (c)) {
+			g_signal_stop_emission_by_name (editable, "insert_text");
+			break;
+		}
+
+		p = next;
+	}
+}
+
+static void
+line_number_entry_changed (GtkEditable      *editable,
+			   GeditSearchPanel *panel)
+{
+	gchar     *line_str;
+	GeditView *active_view; 
+	
+	active_view = gedit_window_get_active_view (panel->priv->window);
+	if (active_view == NULL)
+		return;
+
+	line_str = gtk_editable_get_chars (editable, 0, -1);
+	
+	if ((line_str != NULL) && (line_str[0] != 0))
+	{
+		GeditDocument *active_document;
+		gint line;
+		
+		active_document = gedit_window_get_active_document (panel->priv->window);
+		
+		line = MAX (atoi (line_str) - 1, 0);
+		gedit_document_goto_line (active_document, line);
+		gedit_view_scroll_to_cursor (active_view);
+	}
+	
+	g_free (line_str);
+}
+
+static void
+line_number_entry_activate (GtkEntry         *entry,
+			    GeditSearchPanel *panel)
+{
+	GeditView *active_view; 
+	
+	active_view = gedit_window_get_active_view (panel->priv->window);	
+	if (active_view == NULL)
+		return;
+			
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+}
+
 #define GEDIT_GLADEDIR "./dialogs/"
 
 static void
@@ -196,10 +272,17 @@ gedit_search_panel_init (GeditSearchPanel *panel)
  	panel->priv->replace_expander = glade_xml_get_widget (gui, "replace_expander");
  	panel->priv->goto_line_expander = glade_xml_get_widget (gui, "goto_line_expander");
  	
+ 	panel->priv->search_entry = glade_xml_get_widget (gui, "search_entry");
+ 	panel->priv->replace_entry = glade_xml_get_widget (gui, "replace_entry");
+ 	panel->priv->line_number_entry = glade_xml_get_widget (gui, "line_number_entry");
+ 	
  	if (!find_vbox				||
  	    !search_panel_vbox			||
  	    !panel->priv->replace_expander 	||
- 	    !panel->priv->goto_line_expander)
+ 	    !panel->priv->goto_line_expander	||
+ 	    !panel->priv->search_entry		||
+ 	    !panel->priv->replace_entry		||
+ 	    !panel->priv->line_number_entry)
  	{
  		gchar *msg;
 		GtkWidget *label;		
@@ -221,12 +304,24 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 		return ;
  	}
  	
- 	g_print ("1");
  	gtk_box_pack_start (GTK_BOX (panel), 
 			    search_panel_vbox, 
 			    TRUE, 
 			    TRUE, 
 			    0);
+			    
+	g_signal_connect (G_OBJECT (panel->priv->line_number_entry), 
+			  "insert_text",
+			  G_CALLBACK (line_number_entry_insert_text), 
+			  NULL);
+	g_signal_connect (G_OBJECT (panel->priv->line_number_entry), 
+			  "changed",
+			  G_CALLBACK (line_number_entry_changed), 
+			  panel);
+	g_signal_connect (G_OBJECT (panel->priv->line_number_entry), 
+			  "activate",
+			  G_CALLBACK (line_number_entry_activate), 
+			  panel);			  
 }
 
 GtkWidget *
@@ -237,4 +332,63 @@ gedit_search_panel_new (GeditWindow *window)
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_SEARCH_PANEL, 
 					 "window", window,
 					 NULL));
+}
+
+static void
+show_side_pane (GeditSearchPanel *panel)
+{
+	GtkWidget *sp;
+	
+	sp = GTK_WIDGET (gedit_window_get_side_panel (panel->priv->window));
+	
+	if (!GTK_WIDGET_VISIBLE (sp))
+		_gedit_window_set_side_panel_visible (panel->priv->window,
+						      TRUE);
+}
+
+void
+gedit_search_panel_focus_search	(GeditSearchPanel *panel)
+{
+	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
+	
+	show_side_pane (panel);
+	
+	gtk_widget_grab_focus (panel->priv->search_entry);
+}
+
+void
+gedit_search_panel_focus_replace (GeditSearchPanel *panel)
+{
+	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
+	
+	show_side_pane (panel);
+	
+	gtk_expander_set_expanded (GTK_EXPANDER (panel->priv->replace_expander),
+				   TRUE);
+	
+	
+	 /* FIXME: set the focus on the replace entry only if the text in the
+	    search entry matches some text in the current document */			   
+	if (g_utf8_strlen (
+		gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry)), -1) > 0) 
+	{
+		gtk_widget_grab_focus (panel->priv->search_entry);
+	}
+	else
+	{
+		gtk_widget_grab_focus (panel->priv->replace_entry);
+	}
+}
+
+void 
+gedit_search_panel_focus_goto_line (GeditSearchPanel *panel)
+{
+	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
+	
+	show_side_pane (panel);
+	
+	gtk_expander_set_expanded (GTK_EXPANDER (panel->priv->goto_line_expander),
+				   TRUE);
+	
+	gtk_widget_grab_focus (panel->priv->line_number_entry);
 }

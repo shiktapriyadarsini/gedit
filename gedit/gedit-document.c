@@ -2250,9 +2250,8 @@ gedit_document_end_user_action (GeditDocument *doc)
 	gtk_text_buffer_end_user_action (GTK_TEXT_BUFFER (doc));
 }
 
-/* FIXME: line should be an "int" -- Paolo (Feb. 20, 2005) */
 void
-gedit_document_goto_line (GeditDocument* doc, guint line)
+gedit_document_goto_line (GeditDocument* doc, gint line)
 {
 	guint line_count;
 	GtkTextIter iter;

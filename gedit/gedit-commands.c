@@ -53,6 +53,7 @@
 #include "dialogs/gedit-close-confirmation-dialog.h"
 #include "gedit-notebook.h"
 #include "gedit-app.h"
+#include "gedit-search-panel.h"
 
 #if 0
 #include "gedit-file.h"
@@ -649,9 +650,13 @@ gedit_cmd_search_replace (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_search_goto_line (GtkAction *action, GeditWindow *window)
 {
+	GeditSearchPanel *sp;
+	
 	gedit_debug (DEBUG_COMMANDS, "");
-
-	gedit_dialog_goto_line (window);
+	
+	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
+	
+	gedit_search_panel_focus_goto_line (sp);
 }
 
 void

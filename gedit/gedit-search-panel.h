@@ -77,9 +77,13 @@ struct _GeditSearchPanelClass
 /*
  * Public methods
  */
-GType 		 gedit_search_panel_get_type	(void) G_GNUC_CONST;
+GType 		 gedit_search_panel_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*gedit_search_panel_new 	(GeditWindow *window);
+GtkWidget	*gedit_search_panel_new 		(GeditWindow      *window);
+
+void		 gedit_search_panel_focus_search	(GeditSearchPanel *panel);
+void		 gedit_search_panel_focus_replace	(GeditSearchPanel *panel);
+void		 gedit_search_panel_focus_goto_line	(GeditSearchPanel *panel);
 
 G_END_DECLS
 

@@ -34,6 +34,7 @@
 #include <gtk/gtk.h>
 
 #include <gedit/gedit-tab.h>
+#include <gedit/gedit-panel.h>
 
 G_BEGIN_DECLS
 
@@ -113,6 +114,8 @@ GList		*gedit_window_get_views			(GeditWindow *window);
 
 GtkWindowGroup  *gedit_window_get_group			(GeditWindow *window);
 
+GeditPanel	*gedit_window_get_side_panel		(GeditWindow *window);
+
 /*
  * Non exported functions
  */
@@ -129,6 +132,8 @@ GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow *window,
 gboolean	 _gedit_window_is_removing_all_tabs	(GeditWindow *window);
 
 GtkUIManager	*_gedit_window_get_ui_manager		(GeditWindow *window);
+
+GtkWidget	*_gedit_window_get_search_panel		(GeditWindow *window);
 
 G_END_DECLS
 

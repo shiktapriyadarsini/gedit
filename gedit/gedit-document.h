@@ -175,7 +175,7 @@ void		gedit_document_end_not_undoable_action		(GeditDocument *doc);
 void		gedit_document_begin_user_action (GeditDocument *doc);
 void		gedit_document_end_user_action	 (GeditDocument *doc);
 
-void		gedit_document_goto_line 	(GeditDocument* doc, guint line);
+void		gedit_document_goto_line 	(GeditDocument* doc, gint line);
 
 gchar* 		gedit_document_get_last_searched_text (GeditDocument* doc);
 gchar* 		gedit_document_get_last_replace_text  (GeditDocument* doc);

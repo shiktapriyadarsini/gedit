@@ -72,6 +72,8 @@ struct _GeditWindowPrivate
 	
 	GtkWidget      *hpaned;
 	GtkWidget      *vpaned;	
+	
+	GtkWidget      *search_panel;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;	
@@ -1461,7 +1463,6 @@ create_side_panel (GeditWindow *window)
 	GtkAction *action;
 	gboolean visible;
 	GtkWidget *documents_panel;
-	GtkWidget *search_panel;	
 	
 	window->priv->side_panel = gedit_panel_new ();
 
@@ -1486,10 +1487,16 @@ create_side_panel (GeditWindow *window)
 				
 
 	documents_panel = gedit_documents_panel_new (window);
-  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), documents_panel, "Documents", GTK_STOCK_FILE);
+  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), 
+  			      documents_panel, 
+  			      "Documents", 
+  			      GTK_STOCK_FILE);
 
-	search_panel = gedit_search_panel_new (window);
-	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), search_panel, "Search", GTK_STOCK_FIND);
+	window->priv->search_panel = gedit_search_panel_new (window);
+	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), 
+			      window->priv->search_panel, 
+			      "Search", 
+			      GTK_STOCK_FIND);
 	
 	visible = gedit_prefs_manager_get_side_pane_visible ();
 	
@@ -1803,8 +1810,14 @@ _gedit_window_set_statusbar_visible (GeditWindow *window,
 				     gboolean     visible)
 {
 	GtkAction *action;
+	static gboolean recursione_guard = FALSE;
 	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
+
+	if (recursione_guard)
+		return;
+		
+	recursione_guard = TRUE;
 
 	visible = (visible != FALSE);
 		
@@ -1821,6 +1834,8 @@ _gedit_window_set_statusbar_visible (GeditWindow *window,
 		
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+
+	recursione_guard = FALSE;		
 }
 
 void
@@ -1828,9 +1843,15 @@ _gedit_window_set_toolbar_visible (GeditWindow *window,
 				   gboolean     visible)
 {
 	GtkAction *action;
+	static gboolean recursione_guard = FALSE;
 	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
+	if (recursione_guard)
+		return;
+		
+	recursione_guard = TRUE;
+	
 	visible = (visible != FALSE);
 		
 	if (visible)
@@ -1845,7 +1866,9 @@ _gedit_window_set_toolbar_visible (GeditWindow *window,
 					      "ViewToolbar");		
 		
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);		
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+	
+	recursione_guard = FALSE;
 }
 
 void
@@ -1853,9 +1876,15 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 				      gboolean     visible)
 {
 	GtkAction *action;
+	static gboolean recursione_guard = FALSE;
 	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	
+	if (recursione_guard)
+		return;
+		
+	recursione_guard = TRUE;
+
 	visible = (visible != FALSE);
 	
 	if (visible && 
@@ -1863,7 +1892,7 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 		gtk_widget_show (window->priv->side_panel);
 	else
 		gtk_widget_hide (window->priv->side_panel);
-	
+		
 	if (gedit_prefs_manager_side_pane_visible_can_set ())
 		gedit_prefs_manager_set_side_pane_visible (visible);
 	
@@ -1872,6 +1901,8 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 		
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+
+	recursione_guard = FALSE;		
 }
 
 GeditWindow *
@@ -1939,3 +1970,18 @@ _gedit_window_get_ui_manager (GeditWindow *window)
 	return window->priv->manager;
 }
 
+GeditPanel *
+gedit_window_get_side_panel (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+
+	return GEDIT_PANEL (window->priv->side_panel);
+}
+
+GtkWidget *
+_gedit_window_get_search_panel (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+
+	return window->priv->search_panel;	
+}
