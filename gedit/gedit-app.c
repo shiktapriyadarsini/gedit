@@ -114,6 +114,25 @@ window_focus_in_event (GeditWindow   *window,
 	return FALSE;
 }
 
+static gboolean 
+window_delete_event (GeditWindow *window,
+                     GdkEvent    *event,
+                     GeditApp    *app)
+{
+
+	gedit_cmd_file_close_all (NULL, window);
+	
+	/* Check if all the tabs have been closed */
+	if (gedit_window_get_active_tab	(window) == NULL)
+	{
+		/* Return FALSE so GTK+ will emit the "destroy" signal */
+		return FALSE;
+	}
+	
+	/* Do not destroy the window */
+	return TRUE;
+}
+
 static void 
 window_destroy (GeditWindow *window, 
 		GeditApp    *app)
@@ -190,6 +209,10 @@ gedit_app_create_window	(GeditApp *app)
 			  "focus_in_event",
 			  G_CALLBACK (window_focus_in_event), 
 			  app);
+	g_signal_connect (window,
+			  "delete_event",
+			  G_CALLBACK (window_delete_event),
+			  app);			  
 	g_signal_connect (window, 
 			  "destroy",
 			  G_CALLBACK (window_destroy),

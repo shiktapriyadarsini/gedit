@@ -1213,6 +1213,8 @@ notebook_tab_removed (GeditNotebook *notebook,
 		windows = gedit_app_get_windows (app);		
 		g_return_if_fail (windows != NULL);
 		
+		window->priv->active_tab = NULL;
+		
 		if (windows->next != NULL)
 		{
 			/* the list has more than one item */
@@ -1223,7 +1225,6 @@ notebook_tab_removed (GeditNotebook *notebook,
 		}
 		else
 		{	
-			window->priv->active_tab = NULL;
 			set_title (window);
 		
 			/* Remove line and col info */
