@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.3.3\n"
-"POT-Creation-Date: 2004-03-22 19:26+0100\n"
-"PO-Revision-Date: 2004-01-27 08:00+1300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-04-22 00:04+1200\n"
+"PO-Revision-Date: 2004-04-22 00:11+1200\n"
 "Last-Translator: John C Barstow <jbowtie@amathaine.com>\n"
 "Language-Team: GNOME Māori Team <maori@nzlinux.org.nz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
@@ -58,9 +58,8 @@ msgid "Auto Detected Encodings"
 msgstr ""
 
 #: data/gedit.schemas.in.h:3
-#, fuzzy
 msgid "Auto Save"
-msgstr "Pupuri"
+msgstr ""
 
 #: data/gedit.schemas.in.h:4
 msgid "Auto Save Interval"
@@ -148,9 +147,8 @@ msgid ""
 msgstr ""
 
 #: data/gedit.schemas.in.h:22
-#, fuzzy
 msgid "Insert spaces"
-msgstr "_Kuhu"
+msgstr ""
 
 #: data/gedit.schemas.in.h:23
 msgid "Line Number Font for Printing"
@@ -181,9 +179,8 @@ msgid ""
 msgstr ""
 
 #: data/gedit.schemas.in.h:29
-#, fuzzy
 msgid "Print Header"
-msgstr "Tiro tānga"
+msgstr ""
 
 #: data/gedit.schemas.in.h:30
 msgid "Print Line Numbers"
@@ -286,9 +283,8 @@ msgid "Tab Size"
 msgstr ""
 
 #: data/gedit.schemas.in.h:48
-#, fuzzy
 msgid "Text Color"
-msgstr "_Kano"
+msgstr ""
 
 #: data/gedit.schemas.in.h:49
 msgid "Toolbar Buttons Style"
@@ -396,9 +392,8 @@ msgid "S_elect the documents you want to save:"
 msgstr ""
 
 #: gedit/dialogs/close_all_dialog.glade2.h:4
-#, fuzzy
 msgid "Save _None"
-msgstr "P_urihia pēneitia"
+msgstr ""
 
 #: gedit/dialogs/close_all_dialog.glade2.h:5
 msgid "_Save Selected"
@@ -406,18 +401,15 @@ msgstr ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:141
 msgid "Do_n't save"
-msgstr ""
+msgstr "Kaua _e purihia"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:361
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be definitively "
-"lost."
-msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be definitively "
-"lost."
-msgstr[0] ""
-msgstr[1] ""
+"lost.If you don't save, changes from the last %ld seconds will be "
+"definitively lost."
+msgstr ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:370
 msgid ""
@@ -428,23 +420,17 @@ msgstr ""
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
-"definitively lost."
-msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
-"definitively lost."
-msgstr[0] ""
-msgstr[1] ""
+"definitively lost.If you don't save, changes from the last minute and %ld "
+"seconds will be definitively lost."
+msgstr ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:386
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be definitively "
-"lost."
-msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be definitively "
-"lost."
-msgstr[0] ""
-msgstr[1] ""
+"lost.If you don't save, changes from the last %ld minutes will be "
+"definitively lost."
+msgstr ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:401
 msgid ""
@@ -455,21 +441,16 @@ msgstr ""
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
-"definitively lost."
-msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
-"definitively lost."
-msgstr[0] ""
-msgstr[1] ""
+"definitively lost.If you don't save, changes from the last hour and %d "
+"minutes will be definitively lost."
+msgstr ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:422
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be definitively lost."
-msgid_plural ""
 "If you don't save, changes from the last %d hours will be definitively lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:466
 #, c-format
@@ -496,7 +477,7 @@ msgid "_Go to Line"
 msgstr ""
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr ""
@@ -520,12 +501,10 @@ msgstr "_Whakakapia"
 msgid "Find"
 msgstr "Kitea"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
+#: gedit/dialogs/gedit-dialog-replace.c:1135
 #, c-format
 msgid "Found and replaced %d occurrence."
-msgid_plural "Found and replaced %d occurrences."
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
 #: gedit/dialogs/gedit-dialog-uri.c:91
 msgid "Open Location"
@@ -538,9 +517,8 @@ msgstr ""
 
 #: gedit/dialogs/gedit-encodings-dialog.c:381
 #: gedit/dialogs/gedit-encodings-dialog.c:449
-#, fuzzy
 msgid "_Description"
-msgstr "Pātai"
+msgstr ""
 
 #: gedit/dialogs/gedit-encodings-dialog.c:390
 #: gedit/dialogs/gedit-encodings-dialog.c:458
@@ -652,7 +630,7 @@ msgstr ""
 #: gedit/dialogs/page-setup-dialog.glade2.h:1
 #: plugins/docinfo/docinfo.glade2.h:1 plugins/time/time.glade2.h:1
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: gedit/dialogs/gedit-preferences.glade2.h:2
 msgid "<b>Auto Indentation</b>"
@@ -697,9 +675,8 @@ msgid "<span weight=\"bold\">Colors</span>"
 msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:12
-#, fuzzy
 msgid "Bold"
-msgstr "_Miramira"
+msgstr "Miramira"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:13
 msgid "Create a _backup copy of files before saving"
@@ -715,9 +692,8 @@ msgid "Do not _split words over two lines"
 msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:16
-#, fuzzy
 msgid "Editor"
-msgstr "_Whakatika"
+msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:17
 msgid "Editor _font: "
@@ -741,9 +717,8 @@ msgid "Insert _spaces instead of tabs"
 msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:22
-#, fuzzy
 msgid "Italic"
-msgstr "_Tītaha"
+msgstr "Tītaha"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:23
 msgid "Normal _text color:"
@@ -770,9 +745,8 @@ msgid "Pick the selected text color"
 msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:29
-#, fuzzy
 msgid "Pick the selection color"
-msgstr "Kotia te whiringa"
+msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:30
 msgid "Plugins"
@@ -835,9 +809,8 @@ msgid "_Enable syntax highlighting"
 msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:45
-#, fuzzy
 msgid "_Foreground:"
-msgstr "_Whakamua"
+msgstr ""
 
 #: gedit/dialogs/gedit-preferences.glade2.h:46
 msgid "_Limit to"
@@ -880,31 +853,28 @@ msgid "Modify preview phrase..."
 msgstr ""
 
 #: gedit/dialogs/gnome-print-font-dialog.c:171
-#, fuzzy
 msgid "Preview"
-msgstr "Tiro Tānga"
+msgstr "Kite wawe"
 
 #: gedit/dialogs/gnome-print-font-dialog.c:184
 msgid "_Modify preview phrase..."
 msgstr ""
 
 #: gedit/dialogs/gnome-print-font-dialog.c:245
-#, fuzzy
 msgid "Font Selection"
-msgstr "Tārua te whiringa"
+msgstr ""
 
 #: gedit/dialogs/gnome-print-font-picker.c:92
-#, fuzzy
 msgid "Sans Regular 12"
-msgstr "Sans 12"
+msgstr "Sans Regular 12"
 
 #: gedit/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr ""
+msgstr "AaĀāEeĒēHhIiĪīKkMmNnNgOoŌōPpQqRrTtUuŪūWwWh"
 
 #: gedit/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
-msgstr ""
+msgstr "Kōwhiri he momotuhi"
 
 #: gedit/dialogs/gnome-print-font-picker.c:179
 #, fuzzy
@@ -916,14 +886,12 @@ msgid "The title of the selection dialog box"
 msgstr ""
 
 #: gedit/dialogs/gnome-print-font-picker.c:200
-#, fuzzy
 msgid "Font name"
-msgstr "Momotuhi"
+msgstr ""
 
 #: gedit/dialogs/gnome-print-font-picker.c:201
-#, fuzzy
 msgid "Name of the selected font"
-msgstr "Tārua te whiringa"
+msgstr ""
 
 #: gedit/dialogs/gnome-print-font-picker.c:209
 msgid "Preview text"
@@ -971,9 +939,8 @@ msgid "_Line number:"
 msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:6
-#, fuzzy
 msgid "Fonts"
-msgstr "Momotuhi"
+msgstr "Ngā Momotuhi"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:7
 msgid "General"
@@ -984,9 +951,8 @@ msgid "He_aders and footers:"
 msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:9
-#, fuzzy
 msgid "Page Setup"
-msgstr "Whārangi %u"
+msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:10
 msgid "Print _line numbers"
@@ -997,9 +963,8 @@ msgid "Print s_yntax highlighting"
 msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:12
-#, fuzzy
 msgid "_Body:"
-msgstr "_Miramira"
+msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:13
 msgid "_Line numbers:"
@@ -1018,18 +983,16 @@ msgid "_Restore Default Fonts"
 msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:17
-#, fuzzy
 msgid "lines"
-msgstr "Ngā Kōnae"
+msgstr ""
 
 #: gedit/dialogs/plugin-manager.glade2.h:1
 msgid "C_onfigure Plugin"
 msgstr ""
 
 #: gedit/dialogs/plugin-manager.glade2.h:2
-#, fuzzy
 msgid "_About Plugin"
-msgstr "_Mo"
+msgstr ""
 
 #: gedit/dialogs/plugin-manager.glade2.h:3
 msgid "button1"
@@ -1055,26 +1018,23 @@ msgstr ""
 #: plugins/shell_output/shell_output.glade2.h:1
 #: plugins/spell/spell-checker.glade2.h:1 plugins/time/time.glade2.h:2
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: gedit/dialogs/replace.glade2.h:2 gedit/gedit-ui.xml.h:19
-#, fuzzy
 msgid "Find Next"
-msgstr "Kitea"
+msgstr ""
 
 #: gedit/dialogs/replace.glade2.h:3
 msgid "Match _entire word only"
 msgstr ""
 
 #: gedit/dialogs/replace.glade2.h:5
-#, fuzzy
 msgid "Replace All"
-msgstr "Whakakapia"
+msgstr ""
 
 #: gedit/dialogs/replace.glade2.h:6
-#, fuzzy
 msgid "Replace _with: "
-msgstr "Whakakapia"
+msgstr ""
 
 #: gedit/dialogs/replace.glade2.h:7
 msgid "Search _backwards"
@@ -1109,9 +1069,8 @@ msgid "translator_credits"
 msgstr ""
 
 #: gedit/gedit-commands.c:582
-#, fuzzy
 msgid "gedit"
-msgstr "_Whakatika"
+msgstr "gedit"
 
 #: gedit/gedit-commands.c:586
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
@@ -1120,11 +1079,11 @@ msgstr ""
 #: gedit/gedit-document.c:637 gedit/gedit-document.c:655
 #, c-format
 msgid "%s %d"
-msgstr ""
+msgstr "%s %d"
 
 #: gedit/gedit-document.c:637 gedit/gedit-document.c:655
 msgid "Untitled"
-msgstr ""
+msgstr "Ingoa kore"
 
 #: gedit/gedit-document.c:643 gedit/gedit-document.c:690
 msgid "Invalid file name"
@@ -1132,9 +1091,8 @@ msgstr ""
 
 #: gedit/gedit-document.c:841 gedit/gedit-document.c:1316
 #: viewer/gedit-persist-stream.c:120
-#, fuzzy
 msgid "Invalid UTF-8 data"
-msgstr "UTF-8 koremana"
+msgstr ""
 
 #: gedit/gedit-document.c:1643
 #, c-format
@@ -1255,7 +1213,7 @@ msgstr ""
 
 #: gedit/gedit-encodings.c:173
 msgid "Romanian"
-msgstr ""
+msgstr "Te reo Romeinia"
 
 #: gedit/gedit-encodings.c:185
 msgid "Armenian"
@@ -1273,12 +1231,12 @@ msgstr ""
 #: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:225
 #: gedit/gedit-encodings.c:240
 msgid "Japanese"
-msgstr ""
+msgstr "Te reo Nipono"
 
 #: gedit/gedit-encodings.c:196 gedit/gedit-encodings.c:227
 #: gedit/gedit-encodings.c:231 gedit/gedit-encodings.c:246
 msgid "Korean"
-msgstr ""
+msgstr "Te reo Kōrea"
 
 #: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:203
 #: gedit/gedit-encodings.c:205 gedit/gedit-encodings.c:209
@@ -1332,180 +1290,160 @@ msgstr ""
 msgid "Ch_aracter Coding:"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:506
 msgid "Select a file to open"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:532
 msgid "Select files to open"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:559
 msgid "Select a filename to save"
 msgstr ""
 
 #: gedit/gedit-file.c:216
-#, fuzzy
 msgid "Open File..."
-msgstr "_Huaki..."
+msgstr "Huaki he Kōnae..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:418
 #, c-format
 msgid "Saving document \"%s\"..."
 msgstr ""
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:439
 #, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr ""
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:431
 #, c-format
 msgid "The document \"%s\" has been saved."
 msgstr ""
 
-#: gedit/gedit-file.c:400
-#, fuzzy
+#: gedit/gedit-file.c:397
 msgid "Save as..."
-msgstr "P_urihia Pēneitia..."
+msgstr ""
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:597
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr ""
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:606
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
-"lost."
-msgid_plural ""
-"Changes made to the document in the last %ld seconds will be definitively "
-"lost."
-msgstr[0] ""
-msgstr[1] ""
+"lost.Changes made to the document in the last %ld seconds will be "
+"definitively lost."
+msgstr ""
 
-#: gedit/gedit-file.c:618
+#: gedit/gedit-file.c:615
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:621
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
-"definitively lost."
-msgid_plural ""
-"Changes made to the document in the last minute and %ld seconds will be "
-"definitively lost."
-msgstr[0] ""
-msgstr[1] ""
+"definitively lost.Changes made to the document in the last minute and %ld "
+"seconds will be definitively lost."
+msgstr ""
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:631
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
-"lost."
-msgid_plural ""
-"Changes made to the document in the last %ld minutes will be definitively "
-"lost."
-msgstr[0] ""
-msgstr[1] ""
+"lost.Changes made to the document in the last %ld minutes will be "
+"definitively lost."
+msgstr ""
 
-#: gedit/gedit-file.c:649
+#: gedit/gedit-file.c:646
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:652
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
-"definitively lost."
-msgid_plural ""
-"Changes made to the document in the last hour and %d minutes will be "
-"definitively lost."
-msgstr[0] ""
-msgstr[1] ""
+"definitively lost.Changes made to the document in the last hour and %d "
+"minutes will be definitively lost."
+msgstr ""
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:667
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
-msgid_plural ""
 "Changes made to the document in the last %d hours will be definitively lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:690 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Whakakāhoretia"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:735
 #, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr ""
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:742
 #, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr ""
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:746
 #, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr ""
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:774
 #, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr ""
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:909
 msgid "Could not read data from stdin."
 msgstr ""
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:959
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr ""
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1082
 msgid "Reverting file:"
 msgstr ""
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1086
 msgid "Loading file:"
 msgstr ""
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1255 gedit/gedit-file.c:1414
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr ""
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1276
 #, c-format
 msgid "Loaded file \"%s\""
 msgstr ""
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1353
 #, c-format
 msgid "Loaded %d file"
-msgid_plural "Loaded %d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1387
 #, c-format
 msgid "Loading file \"%s\"..."
 msgstr ""
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1534
 #, c-format
 msgid "Loading %d file..."
-msgid_plural "Loading %d files..."
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
 #. Read only
 #: gedit/gedit-mdi-child.c:248
@@ -1519,12 +1457,11 @@ msgstr ""
 
 #: gedit/gedit-mdi-child.c:755
 msgid "Unknown"
-msgstr ""
+msgstr "Kaore e mōhio"
 
 #: gedit/gedit-mdi-child.c:766
-#, fuzzy
 msgid "Unicode (UTF-8)"
-msgstr "UTF-8 koremana"
+msgstr ""
 
 #: gedit/gedit-mdi-child.c:773
 msgid "Name:"
@@ -1540,14 +1477,13 @@ msgstr ""
 
 #. Translators: %s is a URI
 #: gedit/gedit-mdi.c:284 gedit/gedit-mdi.c:444
-#, fuzzy, c-format
+#, c-format
 msgid "Open '%s'"
-msgstr "Huaki"
+msgstr "Huaki '%s'"
 
 #: gedit/gedit-mdi.c:519
-#, fuzzy
 msgid "Open a recently used file"
-msgstr "Huaki he kōnae"
+msgstr ""
 
 #: gedit/gedit-mdi.c:1291
 msgid "(modified)"
@@ -1575,9 +1511,8 @@ msgid "Close the output window"
 msgstr ""
 
 #: gedit/gedit-output-window.c:371
-#, fuzzy
 msgid "Copy selected lines"
-msgstr "Tārua te whiringa"
+msgstr ""
 
 #: gedit/gedit-output-window.c:391
 msgid "Clear the output window"
@@ -1647,9 +1582,8 @@ msgid "Print"
 msgstr "Tā"
 
 #: gedit/gedit-print.c:226 plugins/docinfo/docinfo.glade2.h:7
-#, fuzzy
 msgid "Lines"
-msgstr "Ngā Kōnae"
+msgstr ""
 
 #: gedit/gedit-print.c:331
 msgid "Preparing pages..."
@@ -1670,19 +1604,17 @@ msgid "Print preview"
 msgstr "Tiro tānga"
 
 #: gedit/gedit-print.c:550
-#, fuzzy, c-format
+#, c-format
 msgid "File: %s"
-msgstr "Ngā Kōnae"
+msgstr "Te Kōnae: %s"
 
 #: gedit/gedit-print.c:556
-#, fuzzy
 msgid "Page %N of %Q"
-msgstr "Whārangi %u"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:1
-#, fuzzy
 msgid "About this application"
-msgstr "Kotia te whiringa"
+msgstr "Mō pūmanawa tautono tēnei"
 
 #: gedit/gedit-ui.xml.h:2
 msgid "Change the visibility of the output window in the current window"
@@ -1709,9 +1641,8 @@ msgid "Close the current file"
 msgstr ""
 
 #: gedit/gedit-ui.xml.h:8
-#, fuzzy
 msgid "Configure the application"
-msgstr "Kotia te whiringa"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:9
 msgid "Copy"
@@ -1755,9 +1686,8 @@ msgid "Find Pre_vious"
 msgstr "T_iro Tānga"
 
 #: gedit/gedit-ui.xml.h:21
-#, fuzzy
 msgid "Find Previous"
-msgstr "Tiro Tānga"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:22
 msgid "Go to _Line..."
@@ -1804,9 +1734,8 @@ msgid "Open the gedit manual"
 msgstr ""
 
 #: gedit/gedit-ui.xml.h:33
-#, fuzzy
 msgid "Page Set_up"
-msgstr "Whārangi %u"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:34
 msgid "Paste"
@@ -1845,14 +1774,12 @@ msgid "Redo"
 msgstr "Mahi Anō"
 
 #: gedit/gedit-ui.xml.h:45
-#, fuzzy
 msgid "Redo the undone action"
-msgstr "Whakakore te mahi toenga"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:47
-#, fuzzy
 msgid "Revert"
-msgstr "_Whakakāhoretia"
+msgstr "Whakakāhoretia"
 
 #: gedit/gedit-ui.xml.h:48
 msgid "Revert to a saved version of the file"
@@ -1900,11 +1827,11 @@ msgstr ""
 
 #: gedit/gedit-ui.xml.h:59
 msgid "Select All"
-msgstr ""
+msgstr "Kōwhiria mea katoa"
 
 #: gedit/gedit-ui.xml.h:60
 msgid "Select _All"
-msgstr ""
+msgstr "_Kōwhiria·mea·katoa"
 
 #: gedit/gedit-ui.xml.h:61
 msgid "Select the entire document"
@@ -1952,14 +1879,12 @@ msgid "_Close"
 msgstr "_Kati"
 
 #: gedit/gedit-ui.xml.h:72
-#, fuzzy
 msgid "_Close All"
-msgstr "_Kati"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:73
-#, fuzzy
 msgid "_Contents"
-msgstr "_Huri"
+msgstr "_Ngā kai"
 
 #: gedit/gedit-ui.xml.h:74
 msgid "_Copy"
@@ -2014,9 +1939,8 @@ msgid "_Open..."
 msgstr "_Huaki..."
 
 #: gedit/gedit-ui.xml.h:88
-#, fuzzy
 msgid "_Output Window"
-msgstr "Matapihi"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:89
 msgid "_Paste"
@@ -2043,14 +1967,12 @@ msgid "_Save"
 msgstr "_Pupuri"
 
 #: gedit/gedit-ui.xml.h:96
-#, fuzzy
 msgid "_Save All"
-msgstr "P_urihia Pēneitia"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:97
-#, fuzzy
 msgid "_Search"
-msgstr "_Whakawātea"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:98
 msgid "_Statusbar"
@@ -2065,9 +1987,8 @@ msgid "_Toolbar"
 msgstr ""
 
 #: gedit/gedit-ui.xml.h:101
-#, fuzzy
 msgid "_Tools"
-msgstr "_Tihi"
+msgstr "Ngā _Pāraha"
 
 #: gedit/gedit-ui.xml.h:102
 msgid "_Undo"
@@ -2468,9 +2389,8 @@ msgid "Create a new document in an existing instance of gedit"
 msgstr ""
 
 #: plugins/docinfo/docinfo.c:46
-#, fuzzy
 msgid "_Document Statistics"
-msgstr "_Tuhinga"
+msgstr ""
 
 #: plugins/docinfo/docinfo.c:49
 msgid "Get statistic info on current document"
@@ -2478,14 +2398,12 @@ msgstr ""
 
 #: plugins/docinfo/docinfo.c:140
 #: plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid "Document Statistics"
-msgstr "_Tuhinga"
+msgstr ""
 
 #: plugins/docinfo/docinfo.c:154
-#, fuzzy
 msgid "_Update"
-msgstr "_Whakapiri"
+msgstr ""
 
 #: plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:2
 msgid ""
@@ -2520,7 +2438,7 @@ msgstr ""
 
 #: plugins/docinfo/docinfo.glade2.h:9
 msgid "Words"
-msgstr ""
+msgstr "Kupu"
 
 #: plugins/docinfo/docinfo.glade2.h:10
 msgid "gedit: Document Info plugin"
@@ -2535,18 +2453,16 @@ msgid "Indent selected lines"
 msgstr ""
 
 #: plugins/indent/indent.c:49
-#, fuzzy
 msgid "U_nindent"
-msgstr "_Nuku"
+msgstr ""
 
 #: plugins/indent/indent.c:51
 msgid "Unindent selected lines"
 msgstr ""
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid "Indent lines"
-msgstr "Rūritia"
+msgstr ""
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:2
 msgid "Indent or un-indent selected lines."
@@ -2578,9 +2494,8 @@ msgstr ""
 
 #: plugins/shell_output/shell_output.c:161
 #: plugins/shell_output/shell_output.c:502
-#, fuzzy
 msgid "Stopped"
-msgstr "Whaka_mutua"
+msgstr ""
 
 #: plugins/shell_output/shell_output.c:282
 msgid "Run Command"
@@ -2591,9 +2506,8 @@ msgid "_Run"
 msgstr ""
 
 #: plugins/shell_output/shell_output.c:508
-#, fuzzy
 msgid "Done"
-msgstr "kaore tētahi"
+msgstr "Oti"
 
 #: plugins/shell_output/shell_output.c:510
 #, fuzzy
@@ -2652,11 +2566,9 @@ msgstr ""
 msgid "gedit: Shell Output plugin"
 msgstr ""
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
-#, fuzzy
 msgid "S_ort..."
-msgstr "_Tā..."
+msgstr ""
 
 #: plugins/sort/sort.c:30
 msgid "Sort the current document or selection."
@@ -2691,9 +2603,8 @@ msgid "_Reverse order"
 msgstr ""
 
 #: plugins/sort/sort.glade2.h:7
-#, fuzzy
 msgid "_Sort"
-msgstr "_Huri"
+msgstr ""
 
 #: plugins/spell/gedit-automatic-spell-checker.c:351
 #: plugins/spell/gedit-spell-checker-dialog.c:504
@@ -2701,9 +2612,8 @@ msgid "(no suggested words)"
 msgstr ""
 
 #: plugins/spell/gedit-automatic-spell-checker.c:375
-#, fuzzy
 msgid "_More..."
-msgstr "_Huaki..."
+msgstr ""
 
 #. Ignore all
 #: plugins/spell/gedit-automatic-spell-checker.c:428
@@ -2724,18 +2634,16 @@ msgid "Check Spelling"
 msgstr ""
 
 #: plugins/spell/gedit-spell-checker-dialog.c:296
-#, fuzzy
 msgid "Suggestions"
-msgstr "Pātai"
+msgstr "Huatau"
 
 #: plugins/spell/gedit-spell-checker-dialog.c:608
 msgid "(correct spelling)"
 msgstr ""
 
 #: plugins/spell/gedit-spell-checker-dialog.c:785
-#, fuzzy
 msgid "Completed spell checking"
-msgstr "Tārua te whiringa"
+msgstr ""
 
 #: plugins/spell/gedit-spell-checker.c:80
 msgid "Breton"
@@ -2808,7 +2716,7 @@ msgstr ""
 
 #: plugins/spell/gedit-spell-checker.c:97
 msgid "Polish"
-msgstr ""
+msgstr "Te reo Pōrana"
 
 #: plugins/spell/gedit-spell-checker.c:98
 msgid "Portuguese (Portugal)"
@@ -2831,9 +2739,8 @@ msgid "Ukrainian"
 msgstr ""
 
 #: plugins/spell/gedit-spell-checker.c:735
-#, fuzzy
 msgid "Default"
-msgstr "Porowhiu"
+msgstr "Puta aunoa"
 
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
@@ -2842,7 +2749,7 @@ msgstr ""
 
 #: plugins/spell/gedit-spell-language-dialog.c:253
 msgid "Languages"
-msgstr ""
+msgstr "Ngā reo"
 
 #: plugins/spell/languages-dialog.glade2.h:1
 msgid "Select the _language of the current document."
@@ -2901,14 +2808,12 @@ msgid "User dictionary:"
 msgstr ""
 
 #: plugins/spell/spell-checker.glade2.h:14
-#, fuzzy
 msgid "_Ignore"
-msgstr "_Kuputohu"
+msgstr ""
 
 #: plugins/spell/spell-checker.glade2.h:15
-#, fuzzy
 msgid "_Suggestions:"
-msgstr "Pātai"
+msgstr ""
 
 #: plugins/spell/spell.c:51
 msgid "_Check Spelling"
@@ -2951,28 +2856,27 @@ msgid "Checks the spelling of the current document."
 msgstr ""
 
 #: plugins/spell/spell.gedit-plugin.desktop.in.h:2
-#, fuzzy
 msgid "Spell checker"
-msgstr "Pūmanawa tātaki kupu"
+msgstr ""
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr ""
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr ""
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 msgid "Available Tag Lists"
 msgstr ""
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr ""
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr ""
 
@@ -3062,6 +2966,5 @@ msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #: viewer/gedit-viewer-ui.xml.h:2
-#, fuzzy
 msgid "_Copy Text"
-msgstr "_Tārua"
+msgstr "_Tārua he Tuhinga"
