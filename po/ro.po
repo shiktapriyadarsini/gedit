@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.3.9\n"
-"POT-Creation-Date: 2004-03-22 19:26+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-05-03 11:18+0200\n"
 "PO-Revision-Date: 2004-03-07 00:59+0200\n"
 "Last-Translator: Mugurel Tudor <mugurelu@go.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
@@ -444,7 +444,7 @@ msgstr ""
 "atunci fontul specificat în opţiunea „Font editare“ va fi utilizat în locul "
 "fontului de sistem."
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr "Activează %s"
@@ -569,7 +569,7 @@ msgid "_Go to Line"
 msgstr "_Du-te la linia"
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "Textul „%s“ nu a fost găsit."
@@ -592,7 +592,7 @@ msgstr "Î_nlocuieşte"
 msgid "Find"
 msgstr "Caută"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
+#: gedit/dialogs/gedit-dialog-replace.c:1135
 #, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
@@ -726,7 +726,7 @@ msgid ""
 msgstr ""
 "Apasă acest buton pentru a configura culoarea de marcare a textului selectat"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr "Elemente"
 
@@ -1386,27 +1386,27 @@ msgstr "Fişierul „%s“ poate fi doar citit.\n"
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Doriţi să încercaţi să-l înlocuiţi cu cel pe care îl salvaţi?"
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr "Toate fişierele"
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 msgid "All Text Files"
 msgstr "Toate fişierele text"
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr "Codare c_aracter:"
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr "Selectaţi un fişier pentru deschidere"
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr "Selectaţi un fişier pentru deschidere"
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr "Selectaţi un nume de fişier pentru salvare"
 
@@ -1414,31 +1414,31 @@ msgstr "Selectaţi un nume de fişier pentru salvare"
 msgid "Open File..."
 msgstr "Deschide fişierul..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, c-format
 msgid "Saving document \"%s\"..."
 msgstr "Salvez documentul „%s“..."
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr "Documentul \"%s\" nu a fost salvat."
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, c-format
 msgid "The document \"%s\" has been saved."
 msgstr "Documentul \"%s\" a fost salvat."
 
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr "Salvează ca..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr "Doriţi să reveniţi la ultima salvare a documentului \"%s\"?"
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1449,12 +1449,12 @@ msgid_plural ""
 msgstr[0] "Modificările aduse documentului în ultima oră vor fi pierdute."
 msgstr[1] "Modificările aduse documentului în ultima oră vor fi pierdute."
 
-#: gedit/gedit-file.c:618
+#: gedit/gedit-file.c:622
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
 msgstr "Modificările aduse documentului în ultimul minut vor fi pierdute."
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1465,7 +1465,7 @@ msgid_plural ""
 msgstr[0] "Modificările aduse documentului în ultimul minut vor fi pierdute."
 msgstr[1] "Modificările aduse documentului în ultimul minut vor fi pierdute."
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1476,12 +1476,12 @@ msgid_plural ""
 msgstr[0] "Modificările aduse documentului în ultimul minut vor fi pierdute."
 msgstr[1] "Modificările aduse documentului în ultimul minut vor fi pierdute."
 
-#: gedit/gedit-file.c:649
+#: gedit/gedit-file.c:653
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
 msgstr "Modificările aduse documentului în ultima oră vor fi pierdute."
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1492,7 +1492,7 @@ msgid_plural ""
 msgstr[0] "Modificările aduse documentului în ultimul minut vor fi pierdute."
 msgstr[1] "Modificările aduse documentului în ultimul minut vor fi pierdute."
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:674
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
@@ -1501,70 +1501,70 @@ msgid_plural ""
 msgstr[0] "Modificările aduse documentului în ultima oră vor fi pierdute."
 msgstr[1] "Modificările aduse documentului în ultima oră vor fi pierdute."
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "Restaurea_ză"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:742
 #, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr "Nu am putut restaura documentul „%s“."
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:749
 #, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr "Documentul \"%s\" nu a fost restaurat."
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:753
 #, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr "Documentul \"%s\" a fost restaurat."
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:781
 #, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr "Restaurez documentul „%s“..."
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr "Nu am putut citi date de la stdin."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "Fişierul „%s“ nu există. Doriţi să-l creaţi?"
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1089
 msgid "Reverting file:"
 msgstr "Restaurez fişierul:"
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1093
 msgid "Loading file:"
 msgstr "Încarc fişierul:"
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr "Eroare la încărcarea fişierului \"%s\""
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1283
 #, c-format
 msgid "Loaded file \"%s\""
 msgstr "Am încărcat fişierul „%s“"
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1360
 #, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
 msgstr[0] "Am încărcat %d fişier"
 msgstr[1] "Am încărcat %d fişier"
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1394
 #, c-format
 msgid "Loading file \"%s\"..."
 msgstr "Încarc fişierul \"%s\"..."
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1541
 #, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
@@ -3087,24 +3087,24 @@ msgstr "Verifică ortografia documentului curent."
 msgid "Spell checker"
 msgstr "Verificare ortografică"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr "Modul „Listă etichete“"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr "Selectaţi grupul de etichete pe care doriţi să-l utilizaţi"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 msgid "Available Tag Lists"
 msgstr "Lista de etichete disponibile"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr "Etichete"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Daţi dublu-click pe o etichetă pentru a o insera în documentul curent"
 

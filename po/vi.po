@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit for gnome v.2.1.x\n"
-"POT-Creation-Date: 2004-03-22 19:26+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-05-03 11:18+0200\n"
 "PO-Revision-Date: 2003-09-06 17:23+0700\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
 "Language-Team: Gnome-Vi <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
@@ -422,7 +422,7 @@ msgstr ""
 "tùy chọn này thì sẽ dùng tùy chọn \"Font bộ biên soạn\" thay thế font hệ "
 "thống."
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr "Kích hoạt %s"
@@ -545,7 +545,7 @@ msgid "_Go to Line"
 msgstr "_Đi tới Dòng"
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "Không tìm thấy đoạn text \"%s\"."
@@ -568,7 +568,7 @@ msgstr "T_hay thế"
 msgid "Find"
 msgstr "_Tìm"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
+#: gedit/dialogs/gedit-dialog-replace.c:1135
 #, fuzzy, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
@@ -697,7 +697,7 @@ msgid ""
 "marked"
 msgstr "Nhấn nút này để cấy hình màu đánh dấu cho văn bản được chọn"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr ""
 
@@ -1385,28 +1385,28 @@ msgstr ""
 "Tập tin có tên \"%s\" chỉ được đọc.\n"
 "Bạn có muốn thay thế nó bằng tập tin bạn đang lưu?"
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 #, fuzzy
 msgid "All Text Files"
 msgstr "Hiệu chỉnh file text"
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr "Bảng _mã:"
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr "Chọn một tập tin để mở"
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr "Chọn các tập tin để mở"
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr "Chọn một tên tập tin để lưu"
 
@@ -1414,31 +1414,31 @@ msgstr "Chọn một tên tập tin để lưu"
 msgid "Open File..."
 msgstr "Mở tập tin..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, fuzzy, c-format
 msgid "Saving document \"%s\"..."
 msgstr "Đang lưu tập tin '%s'..."
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, fuzzy, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr "Tài liệu chưa được lưu."
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, fuzzy, c-format
 msgid "The document \"%s\" has been saved."
 msgstr "Tài liệu chưa được lưu."
 
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr "Lưu là ..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr ""
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1449,12 +1449,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:618
+#: gedit/gedit-file.c:622
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1465,7 +1465,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1476,12 +1476,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:649
+#: gedit/gedit-file.c:653
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1492,7 +1492,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:674
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
@@ -1501,72 +1501,72 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Chuyển đảo"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:742
 #, fuzzy, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr "Không thể hoàn nguyên tập tin \"%s\"."
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:749
 #, fuzzy, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr "Tài liệu chưa được hoàn nguyên."
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:753
 #, fuzzy, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr "Tài liệu chưa được hoàn nguyên."
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:781
 #, fuzzy, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr "Đang chuyển đảo tập tin '%s' ..."
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr "Không thể đọc dữ liệu từ stdin."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "Tập tin \"%s\" không tồn tại. Bạn có muốn tạo nó không?"
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1089
 #, fuzzy
 msgid "Reverting file:"
 msgstr "Đang chuyển đảo tập tin '%s' ..."
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1093
 #, fuzzy
 msgid "Loading file:"
 msgstr "Đang nạp %d tập tin..."
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr ""
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1283
 #, fuzzy, c-format
 msgid "Loaded file \"%s\""
 msgstr "Đã nạp tập tin '%s'"
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1360
 #, fuzzy, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
 msgstr[0] "Đã nạp %i tập tin"
 msgstr[1] "Đã nạp %i tập tin"
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1394
 #, fuzzy, c-format
 msgid "Loading file \"%s\"..."
 msgstr "Đang nạp %d tập tin..."
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1541
 #, fuzzy, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
@@ -3088,25 +3088,25 @@ msgstr "Kiểm tra chính tả của tài liệu hiện thời."
 msgid "Spell checker"
 msgstr "Trình kiểm tra chính tả"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr "Plugin danh sách tag"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr "Chọn nhóm các tag muốn dùng"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 #, fuzzy
 msgid "Available Tag Lists"
 msgstr "Dạng thức hỗ trợ"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr "Tag"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Nhấp đúp trên tag để chèn nó vào tài liệu hiện thời"
 

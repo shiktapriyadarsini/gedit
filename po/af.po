@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.6-branch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-30 14:33+0200\n"
+"POT-Creation-Date: 2004-05-03 11:18+0200\n"
 "PO-Revision-Date: 2004-03-30 17:02+0200\n"
 "Last-Translator: Zuza Software Foundation <info@translate.org.za>\n"
 "Language-Team: Afrikaans <translate-discuss-af@lists.sourceforge.net>\n"
@@ -438,7 +438,7 @@ msgstr ""
 "is, sal die font wat in die \"Redigeerderfont\"-opsie vermeld word, gebruik "
 "word in plaas van die stelselfont."
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr "Aktiveer %s"
@@ -746,7 +746,7 @@ msgstr ""
 "Druk dié knoppie om die kleur waarin die gemerkte teks gemerk moet word, op "
 "te stel"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr "Elemente"
 
@@ -1404,27 +1404,27 @@ msgstr "Die lêer \"%s\" is leesalleen.\n"
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Wil jy dit probeer vervang met die een wat jy tans stoor?"
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr "Alle lêers"
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 msgid "All Text Files"
 msgstr "Alle tekslêers"
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr "K_arakterkodering:"
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr "Kies 'n lêer om te open"
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr "Kies lêers om te open"
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr "Kies 'n lêernaam om te stoor"
 
@@ -1432,31 +1432,31 @@ msgstr "Kies 'n lêernaam om te stoor"
 msgid "Open File..."
 msgstr "Open Lêer..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, c-format
 msgid "Saving document \"%s\"..."
 msgstr "Stoor dokument \"%s\"..."
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr "Die dokument \"%s\" is nie gestoor nie."
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, c-format
 msgid "The document \"%s\" has been saved."
 msgstr "Die dokument \"%s\" is gestoor."
 
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr "Stoor as..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr "Keer ongestoorde wysigings in dokument \"%s\" terug?"
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1470,13 +1470,13 @@ msgstr[1] ""
 "Wysigings aan die dokument sedert %ld sekondes gelede sal beslis verlore "
 "gaan."
 
-#: gedit/gedit-file.c:618
+#: gedit/gedit-file.c:622
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
 msgstr ""
 "Wysigings aan die dokument in die laaste minuut sal beslis verlore gaan."
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1491,7 +1491,7 @@ msgstr[1] ""
 "Wysigings aan die dokument sedert 1 minuut en %ld sekondes gelede sal beslis "
 "verlore gaan."
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1504,12 +1504,12 @@ msgstr[0] ""
 msgstr[1] ""
 "Wysigings aan die dokument sedert %ld minute gelede sal beslis verlore gaan."
 
-#: gedit/gedit-file.c:649
+#: gedit/gedit-file.c:653
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
 msgstr "Wysigings aan die dokument in die laaste uur sal beslis verlore gaan."
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1524,7 +1524,7 @@ msgstr[1] ""
 "Wysigings aan die dokument sedert 1 uur en %d minute gelede sal beslis "
 "verlore gaan."
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:674
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
@@ -1535,70 +1535,70 @@ msgstr[0] ""
 msgstr[1] ""
 "Wysigings aan die dokument sedert %d ure gelede sal beslis verlore gaan."
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Keer terug"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:742
 #, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr "Fout by terugkering van dokument \"%s\"."
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:749
 #, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr "Daar is nie na die dokument \"%s\" teruggekeer nie."
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:753
 #, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr "Daar is na die dokument \"%s\" teruggekeer."
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:781
 #, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr "Keer terug tans terug na die dokument \"%s\"..."
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr "Kon nie data van stdin lees nie."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "Die lêer \"%s\" bestaan nie. Wil jy dit skep?"
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1089
 msgid "Reverting file:"
 msgstr "Keer terug tans terug na lêer:"
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1093
 msgid "Loading file:"
 msgstr "Laai tans lêer:"
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr "Kon nie lêer \"%s\" laai nie"
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1283
 #, c-format
 msgid "Loaded file \"%s\""
 msgstr "Het lêer \"%s\" gelaai"
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1360
 #, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
 msgstr[0] "Het lêer %d gelaai"
 msgstr[1] "Het lêers %d gelaai"
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1394
 #, c-format
 msgid "Loading file \"%s\"..."
 msgstr "Laai tans lêers \"%s\"..."
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1541
 #, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
@@ -2829,6 +2829,7 @@ msgstr "_Werksgids:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: dopafvoerinprop"
 
+#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "S_orteer..."

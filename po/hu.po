@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-23 03:32+0100\n"
+"POT-Creation-Date: 2004-05-03 11:18+0200\n"
 "PO-Revision-Date: 2004-04-14 16:08+0200\n"
 "Last-Translator: Laszlo Dvornik <dvornikl@mailbox.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
@@ -270,7 +270,8 @@ msgstr ""
 "úgy használja őket, ahogy itt vannak."
 
 #: data/gedit.schemas.in.h:39
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr "Meghatározza nyomtatáskor a dokumentum törzséhez használt betűtípust."
 
 #: data/gedit.schemas.in.h:40
@@ -293,7 +294,8 @@ msgstr ""
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
-msgstr "Meghatározza a \"Legutóbbi fájlok\" almenüben megjelenített fájlok számát."
+msgstr ""
+"Meghatározza a \"Legutóbbi fájlok\" almenüben megjelenített fájlok számát."
 
 #: data/gedit.schemas.in.h:43
 msgid ""
@@ -400,7 +402,8 @@ msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Nyomtatáskor a szintaxiskiemelés ki/bekapcsolása."
 
 #: data/gedit.schemas.in.h:63
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr "A szerkesztőablak alján található állapotsor ki/bekapcsolása."
 
 #: data/gedit.schemas.in.h:64
@@ -429,7 +432,7 @@ msgstr ""
 "gedit beállított fontja helyett. Ha ez a beállítás ki van kapcsolva, a "
 "\"Szerkesztő betűtípusa\" beállítást használja a rendszer betűtípusa helyett."
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr "%s aktiválása"
@@ -438,7 +441,8 @@ msgstr "%s aktiválása"
 msgid ""
 "<span weight=\"bold\" size=\"larger\">You have X documents with unsaved "
 "changes. </span>"
-msgstr "<span weight=\"bold\" size=\"larger\">X mentetlen dokumentuma van.</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">X mentetlen dokumentuma van.</span>"
 
 #: gedit/dialogs/close_all_dialog.glade2.h:2
 msgid "If you don't save your documents, all your changes will be lost."
@@ -469,11 +473,14 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be definitively "
 "lost."
-msgstr[0] "Ha nem menti, akkor az elmúlt %ld másodpercben történt változások elvesznek."
-msgstr[1] "Ha nem menti, akkor az elmúlt %ld másodpercben történt változások elvesznek."
+msgstr[0] ""
+"Ha nem menti, akkor az elmúlt %ld másodpercben történt változások elvesznek."
+msgstr[1] ""
+"Ha nem menti, akkor az elmúlt %ld másodpercben történt változások elvesznek."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:370
-msgid "If you don't save, changes from the last minute will be definitively lost."
+msgid ""
+"If you don't save, changes from the last minute will be definitively lost."
 msgstr "Ha nem menti, akkor az elmúlt percben történt változások elvesznek."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:376
@@ -499,11 +506,14 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be definitively "
 "lost."
-msgstr[0] "Ha nem menti, akkor az elmúlt %ld percben történt változások elvesznek."
-msgstr[1] "Ha nem menti, akkor az elmúlt %ld percben történt változások elvesznek."
+msgstr[0] ""
+"Ha nem menti, akkor az elmúlt %ld percben történt változások elvesznek."
+msgstr[1] ""
+"Ha nem menti, akkor az elmúlt %ld percben történt változások elvesznek."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:401
-msgid "If you don't save, changes from the last hour will be definitively lost."
+msgid ""
+"If you don't save, changes from the last hour will be definitively lost."
 msgstr "Ha nem menti, akkor az elmúlt órában történt változások elvesznek."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:407
@@ -523,10 +533,14 @@ msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:422
 #, c-format
-msgid "If you don't save, changes from the last %d hour will be definitively lost."
-msgid_plural "If you don't save, changes from the last %d hours will be definitively lost."
-msgstr[0] "Ha nem menti, akkor az elmúlt %d órában történt változások elvesznek."
-msgstr[1] "Ha nem menti, akkor az elmúlt %d órában történt változások elvesznek."
+msgid ""
+"If you don't save, changes from the last %d hour will be definitively lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be definitively lost."
+msgstr[0] ""
+"Ha nem menti, akkor az elmúlt %d órában történt változások elvesznek."
+msgstr[1] ""
+"Ha nem menti, akkor az elmúlt %d órában történt változások elvesznek."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:466
 #, c-format
@@ -535,7 +549,8 @@ msgstr "Menti a változásokat a(z) \"%s\" dokumentumba mielőtt bezárja?"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:640
 #, c-format
-msgid "There are %d documents with unsaved changes. Save changes before closing?"
+msgid ""
+"There are %d documents with unsaved changes. Save changes before closing?"
 msgstr "%d mentetlen dokumentum van. Menti a változásokat mielőtt bezárja?"
 
 #. Secondary label
@@ -552,7 +567,7 @@ msgid "_Go to Line"
 msgstr "_Ugrás sorra"
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "A \"%s\" szöveg nem található"
@@ -575,7 +590,7 @@ msgstr "_Csere"
 msgid "Find"
 msgstr "Keresés"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
+#: gedit/dialogs/gedit-dialog-replace.c:1135
 #, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
@@ -630,7 +645,8 @@ msgid "Page headers font picker"
 msgstr "Oldal fejléc"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:492
-msgid "Push this button to select the font to be used to print the page headers"
+msgid ""
+"Push this button to select the font to be used to print the page headers"
 msgstr ""
 "Nyomja meg ezt a gombot a fejléc nyomtatásakor használt betűkészlet "
 "kiválasztásához"
@@ -659,7 +675,8 @@ msgstr "Nem található a plugin-manager.glade2, telepítse újra a gedit-et.\n"
 
 #: gedit/dialogs/gedit-plugin-manager.c:525
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
-msgstr "Érvénytelen glade fájl a bővítménykezelőhöz -- nincs meg minden widget.\n"
+msgstr ""
+"Érvénytelen glade fájl a bővítménykezelőhöz -- nincs meg minden widget.\n"
 
 #: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
@@ -684,7 +701,8 @@ msgstr "A kiválasztott fájl nem futtatható."
 
 #: gedit/dialogs/gedit-preferences-dialog.c:666
 msgid "Push this button to select the font to be used by the editor"
-msgstr "Nyomja meg ezt a gombot a szerkesztőben használt betűkészlet kiválasztásához"
+msgstr ""
+"Nyomja meg ezt a gombot a szerkesztőben használt betűkészlet kiválasztásához"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:668
 msgid "Push this button to configure text color"
@@ -704,9 +722,10 @@ msgstr "Nyomja meg ezt a gombot a kiválasztott szöveg színének kiválasztás
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
-msgstr "Nyomja meg ezt a gombot a kiválasztott szöveg háttérszínének kiválasztásához"
+msgstr ""
+"Nyomja meg ezt a gombot a kiválasztott szöveg háttérszínének kiválasztásához"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr "Elemek"
 
@@ -990,7 +1009,8 @@ msgstr "Címke betűkészlete"
 
 #: gedit/dialogs/gnome-print-font-picker.c:219
 msgid "Use font in the label in font info mode"
-msgstr "Betűkészlet-információs módban ezt a betűkészletet használja a címkéken"
+msgstr ""
+"Betűkészlet-információs módban ezt a betűkészletet használja a címkéken"
 
 #: gedit/dialogs/gnome-print-font-picker.c:227
 msgid "Font size for label"
@@ -1369,27 +1389,27 @@ msgstr "A(z) \"%s\" nevű írásvédett.\n"
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Meg akarja próbálni lecserélni azzal, amit épp menteni készül?"
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 msgid "All Text Files"
 msgstr "Minden szövegfájl"
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr "K_arakterkódolás:"
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr "A megnyitandó fájl kiválasztása"
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr "A megnyitandó fájlok kiválasztása"
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr "A mentendő fájl nevének kiválasztása"
 
@@ -1397,31 +1417,31 @@ msgstr "A mentendő fájl nevének kiválasztása"
 msgid "Open File..."
 msgstr "Fájl megnyitása..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, c-format
 msgid "Saving document \"%s\"..."
 msgstr "\"%s\" dokumentum mentése..."
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr "A(z) \"%s\" dokumentum nincs elmentve."
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, c-format
 msgid "The document \"%s\" has been saved."
 msgstr "A(z) \"%s\" dokumentum el lett mentve."
 
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr "Mentés másként..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr "Visszaállítja a(z) \"%s\" dokumentum nem mentett változásait?"
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1432,11 +1452,12 @@ msgid_plural ""
 msgstr[0] "A dokumentum elmúlt %ld másodpercben történt változásai elvesznek."
 msgstr[1] "A dokumentum elmúlt %ld másodpercben történt változásai elvesznek."
 
-#: gedit/gedit-file.c:618
-msgid "Changes made to the document in the last minute will be definitively lost."
+#: gedit/gedit-file.c:622
+msgid ""
+"Changes made to the document in the last minute will be definitively lost."
 msgstr "A dokumentum elmúlt percben történt változásai elvesznek."
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1451,7 +1472,7 @@ msgstr[1] ""
 "A dokumentum elmúlt egy percben és %ld másodpercben történt változásai "
 "elvesznek."
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1462,11 +1483,12 @@ msgid_plural ""
 msgstr[0] "A dokumentum elmúlt %ld percben történt változásai elvesznek."
 msgstr[1] "A dokumentum elmúlt %ld percben történt változásai elvesznek."
 
-#: gedit/gedit-file.c:649
-msgid "Changes made to the document in the last hour will be definitively lost."
+#: gedit/gedit-file.c:653
+msgid ""
+"Changes made to the document in the last hour will be definitively lost."
 msgstr "A dokumentum elmúlt órában történt változásai elvesznek."
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1474,80 +1496,84 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "definitively lost."
-msgstr[0] "A dokumentum elmúlt egy órában és %d percben történt változásai elvesznek."
-msgstr[1] "A dokumentum elmúlt egy órában és %d percben történt változásai elvesznek."
+msgstr[0] ""
+"A dokumentum elmúlt egy órában és %d percben történt változásai elvesznek."
+msgstr[1] ""
+"A dokumentum elmúlt egy órában és %d percben történt változásai elvesznek."
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:674
 #, c-format
-msgid "Changes made to the document in the last %d hour will be definitively lost."
-msgid_plural "Changes made to the document in the last %d hours will be definitively lost."
+msgid ""
+"Changes made to the document in the last %d hour will be definitively lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be definitively lost."
 msgstr[0] "A dokumentum elmúlt %d órában történt változásai elvesznek."
 msgstr[1] "A dokumentum elmúlt %d órában történt változásai elvesznek."
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Visszaállítás"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:742
 #, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr "Hiba történt a(z) \"%s\" dokumentum visszaállításakor."
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:749
 #, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr "A(z) \"%s\" dokumentum nem lett visszaállítva."
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:753
 #, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr "A(z) \"%s\" dokumentum vissza lett állítva."
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:781
 #, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr "\"%s\" dokumentum visszaállítása..."
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr "Nem lehet adatokat olvasni az stdin-ről."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "A(z) \"%s\" fájl nem létezik. Létre szeretné hozni?"
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1089
 msgid "Reverting file:"
 msgstr "Fájl visszaállítása:"
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1093
 msgid "Loading file:"
 msgstr "Fájl betöltése:"
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr "Hiba a(z) \"%s\" fájl betöltése közben"
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1283
 #, c-format
 msgid "Loaded file \"%s\""
 msgstr "\"%s\" fájl betöltve"
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1360
 #, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
 msgstr[0] "%d fájl betöltve"
 msgstr[1] "%d fájl betöltve"
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1394
 #, c-format
 msgid "Loading file \"%s\"..."
 msgstr "\"%s\" fájl betöltése..."
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1541
 #, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
@@ -1946,7 +1972,8 @@ msgid "Select the entire document"
 msgstr "Teljes dokumentum kijelölése"
 
 #: gedit/gedit-ui.xml.h:62
-msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid ""
+"Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr ""
 "Eszköztár stílusának beállítása a munkaasztal Menük és eszköztárak "
 "beállításai alapján"
@@ -2125,7 +2152,8 @@ msgstr "Nem lehet megnyitni a(z) \"%s\" fájlt, mert sérült adatokat tartalmaz
 
 #: gedit/gedit-utils.c:426
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Nem lehet megnyitni a(z) \"%s\" fájlt, mert a gedit nem támogatja a(z) %s: "
 "típusú helyeket."
@@ -2137,7 +2165,8 @@ msgstr "Nem lehet megnyitni a(z) \"%s\" fájlt"
 
 #: gedit/gedit-utils.c:442
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 "Nem lehet megnyitni a(z) \"%s\" fájlt, mert érvénytelen formátumú adatokat "
 "tartalmaz."
@@ -2330,11 +2359,13 @@ msgstr ""
 #: gedit/gedit-utils.c:782
 #, c-format
 msgid "Could not revert the file \"%s\" because it contains corrupted data."
-msgstr "Nem lehet visszaállítani a(z) \"%s\" fájlt, mert sérült adatokat tartalmaz."
+msgstr ""
+"Nem lehet visszaállítani a(z) \"%s\" fájlt, mert sérült adatokat tartalmaz."
 
 #: gedit/gedit-utils.c:793
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Nem lehet visszaállítani a(z) \"%s\" fájlt, mert a gedit nem támogatja a(z) "
 "\"%s:\" típusú helyeket."
@@ -2361,7 +2392,8 @@ msgstr "Nem lehet visszaállítani a(z) \"%s\" fájlt, mert túl nagy."
 #: gedit/gedit-utils.c:823
 #, c-format
 msgid "Could not revert the file \"%s\" because access was denied."
-msgstr "Nem lehet visszaállítani a(z) \"%s\" fájlt jogosultsági problémák miatt."
+msgstr ""
+"Nem lehet visszaállítani a(z) \"%s\" fájlt jogosultsági problémák miatt."
 
 #: gedit/gedit-utils.c:830
 #, c-format
@@ -2409,7 +2441,8 @@ msgstr ""
 #: gedit/gedit-utils.c:885
 #, c-format
 msgid "Could not revert the file \"%s\" because the attempt to log in failed."
-msgstr "Nem lehet visszaállítani a(z) \"%s\" fájlt, mert a belépés nem sikerült."
+msgstr ""
+"Nem lehet visszaállítani a(z) \"%s\" fájlt, mert a belépés nem sikerült."
 
 #: gedit/gedit-utils.c:892
 #, c-format
@@ -2744,7 +2777,8 @@ msgstr "Hiba történt a kijelölt parancs futtatása közben."
 msgid ""
 "Execute an external program and eventually grabs its output in the output "
 "window."
-msgstr "Végrehajt egy külső programot, és annak kimenetét a kimeneti ablakra írja ki."
+msgstr ""
+"Végrehajt egy külső programot, és annak kimenetét a kimeneti ablakra írja ki."
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:2
 msgid "Shell command"
@@ -2770,6 +2804,7 @@ msgstr "_Munkakönyvtár:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: Héjkimenet bővítmény"
 
+#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "_Rendezés..."
@@ -3062,24 +3097,24 @@ msgstr "A jelenlegi dokumentum helyesírás-ellenőrzése."
 msgid "Spell checker"
 msgstr "Helyesírás-ellenőrző"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr "Elemlista bővítmény"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr "Válassza ki az elemcsoportok közül azt, amit használni szeretne"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 msgid "Available Tag Lists"
 msgstr "Elérhető elemlisták"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr "Elemek"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Shell kimenet beszúrása a dokumentumba"
 

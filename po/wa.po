@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 1.118.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-23 03:32+0100\n"
+"POT-Creation-Date: 2004-05-03 11:18+0200\n"
 "PO-Revision-Date: 2004-03-23 11:09+0100\n"
 "Last-Translator: Pablo Saratxaga <pablo@walon.org>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -264,7 +264,8 @@ msgid ""
 msgstr ""
 
 #: data/gedit.schemas.in.h:39
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr ""
 
 #: data/gedit.schemas.in.h:40
@@ -379,7 +380,8 @@ msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 
 #: data/gedit.schemas.in.h:63
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 
 #: data/gedit.schemas.in.h:64
@@ -401,7 +403,7 @@ msgid ""
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr "Activer %s"
@@ -410,11 +412,14 @@ msgstr "Activer %s"
 msgid ""
 "<span weight=\"bold\" size=\"larger\">You have X documents with unsaved "
 "changes. </span>"
-msgstr "<span weight=\"bold\" size=\"larger\">Vos avoz X documints avou des candjmints nén schapés. </span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Vos avoz X documints avou des "
+"candjmints nén schapés. </span>"
 
 #: gedit/dialogs/close_all_dialog.glade2.h:2
 msgid "If you don't save your documents, all your changes will be lost."
-msgstr "Si vos n' schapez nén vos documints, tos vos candjmints seront pierdous."
+msgstr ""
+"Si vos n' schapez nén vos documints, tos vos candjmints seront pierdous."
 
 #: gedit/dialogs/close_all_dialog.glade2.h:3
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:654
@@ -441,12 +446,19 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be definitively "
 "lost."
-msgstr[0] "Si vos n' schapez nén, les candjmints del dierinne segonde seront pierdous po todi."
-msgstr[1] "Si vos n' schapez nén, les candjmints des %ld dierinnès segondes seront pierdous po todi."
+msgstr[0] ""
+"Si vos n' schapez nén, les candjmints del dierinne segonde seront pierdous "
+"po todi."
+msgstr[1] ""
+"Si vos n' schapez nén, les candjmints des %ld dierinnès segondes seront "
+"pierdous po todi."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:370
-msgid "If you don't save, changes from the last minute will be definitively lost."
-msgstr "Si vos n' schapez nén, les candjmints del dierinne munute seront pierdous po todi."
+msgid ""
+"If you don't save, changes from the last minute will be definitively lost."
+msgstr ""
+"Si vos n' schapez nén, les candjmints del dierinne munute seront pierdous po "
+"todi."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:376
 #, c-format
@@ -456,8 +468,12 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "definitively lost."
-msgstr[0] "Si vos n' schapez nén, les candjmints del dierinne munute et %ld segonde seront pierdous po todi."
-msgstr[1] "Si vos n' schapez nén, les candjmints del dierinne munute et %ld segondes seront pierdous po todi."
+msgstr[0] ""
+"Si vos n' schapez nén, les candjmints del dierinne munute et %ld segonde "
+"seront pierdous po todi."
+msgstr[1] ""
+"Si vos n' schapez nén, les candjmints del dierinne munute et %ld segondes "
+"seront pierdous po todi."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:386
 #, c-format
@@ -467,12 +483,19 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be definitively "
 "lost."
-msgstr[0] "Si vos n' schapez nén, les candjmints del dierinne munute seront pierdous po todi."
-msgstr[1] "Si vos n' schapez nén, les candjmints des %ld dierinnès munutes seront pierdous po todi."
+msgstr[0] ""
+"Si vos n' schapez nén, les candjmints del dierinne munute seront pierdous po "
+"todi."
+msgstr[1] ""
+"Si vos n' schapez nén, les candjmints des %ld dierinnès munutes seront "
+"pierdous po todi."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:401
-msgid "If you don't save, changes from the last hour will be definitively lost."
-msgstr "Si vos n' schapez nén, les candjmints del dierinne eure seront pierdous po todi."
+msgid ""
+"If you don't save, changes from the last hour will be definitively lost."
+msgstr ""
+"Si vos n' schapez nén, les candjmints del dierinne eure seront pierdous po "
+"todi."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:407
 #, c-format
@@ -482,15 +505,25 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "definitively lost."
-msgstr[0] "Si vos n' schapez nén, les candjmints del dierinne eure et %d munute seront pierdous po todi."
-msgstr[1] "Si vos n' schapez nén, les candjmints del dierinne eure et %d munutes seront pierdous po todi."
+msgstr[0] ""
+"Si vos n' schapez nén, les candjmints del dierinne eure et %d munute seront "
+"pierdous po todi."
+msgstr[1] ""
+"Si vos n' schapez nén, les candjmints del dierinne eure et %d munutes seront "
+"pierdous po todi."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:422
 #, c-format
-msgid "If you don't save, changes from the last %d hour will be definitively lost."
-msgid_plural "If you don't save, changes from the last %d hours will be definitively lost."
-msgstr[0] "Si vos n' schapez nén, les candjmints del dierinne eure seront pierdous po todi."
-msgstr[1] "Si vos n' schapez nén, les candjmints des %d dierinnès eures seront pierdous po todi."
+msgid ""
+"If you don't save, changes from the last %d hour will be definitively lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be definitively lost."
+msgstr[0] ""
+"Si vos n' schapez nén, les candjmints del dierinne eure seront pierdous po "
+"todi."
+msgstr[1] ""
+"Si vos n' schapez nén, les candjmints des %d dierinnès eures seront pierdous "
+"po todi."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:466
 #, c-format
@@ -499,7 +532,8 @@ msgstr "Schaper les candjmints do documint «%s» divant del clôre?"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:640
 #, c-format
-msgid "There are %d documents with unsaved changes. Save changes before closing?"
+msgid ""
+"There are %d documents with unsaved changes. Save changes before closing?"
 msgstr ""
 
 #. Secondary label
@@ -516,7 +550,7 @@ msgid "_Go to Line"
 msgstr "_Potchî al roye"
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "Li tchinne «%s» n' a nén stî trovêye."
@@ -539,7 +573,7 @@ msgstr "_Mete el plaece"
 msgid "Find"
 msgstr "Trover"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
+#: gedit/dialogs/gedit-dialog-replace.c:1135
 #, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
@@ -586,15 +620,16 @@ msgid ""
 "Push this button to select the font to be used to print the body of the "
 "document"
 msgstr ""
-"Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po-z imprimer l' coir "
-"do tecse"
+"Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po-z imprimer "
+"l' coir do tecse"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:491
 msgid "Page headers font picker"
 msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:492
-msgid "Push this button to select the font to be used to print the page headers"
+msgid ""
+"Push this button to select the font to be used to print the page headers"
 msgstr ""
 "Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po-z imprimer les "
 "tiestires"
@@ -651,7 +686,8 @@ msgstr "Li fitchî tchoezi n' est nén enondåve."
 
 #: gedit/dialogs/gedit-preferences-dialog.c:666
 msgid "Push this button to select the font to be used by the editor"
-msgstr "Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po l' aspougneu."
+msgstr ""
+"Tchôkîz so ç' boton chal po tchoezi l' fonte a-z eployî po l' aspougneu."
 
 #: gedit/dialogs/gedit-preferences-dialog.c:668
 msgid "Push this button to configure text color"
@@ -677,7 +713,7 @@ msgstr ""
 "Tchôkîz so ç' boton chal po-z apontyî l' coleur ki l' tecse tchoezi dvreut "
 "esse marké"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr ""
 
@@ -925,7 +961,8 @@ msgstr ""
 
 #: gedit/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "Mi trûte a les balzins, co pés ki l' grijhe cawe di m' pôve fayé vexhåd!"
+msgstr ""
+"Mi trûte a les balzins, co pés ki l' grijhe cawe di m' pôve fayé vexhåd!"
 
 #: gedit/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
@@ -1168,7 +1205,8 @@ msgstr "gedit èn pout nén manaedjî les eplaeçmints «%s:» e môde sicrijhae
 
 #: gedit/gedit-document.c:1752
 msgid "gedit cannot handle this kind of location in write mode."
-msgstr "gedit èn pout nén manaedjî cisse sôre d' eplaeçmints e môde sicrijhaedje."
+msgstr ""
+"gedit èn pout nén manaedjî cisse sôre d' eplaeçmints e môde sicrijhaedje."
 
 #: gedit/gedit-document.c:1765
 msgid "Invalid filename."
@@ -1337,30 +1375,29 @@ msgstr "Li fitchî «%s» egzistêye dedja."
 
 #: gedit/gedit-file-selector-util.c:159
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr ""
-"Voloz vs sayî di mete e s' plaece li ci ki vos schapez pol moumint?"
+msgstr "Voloz vs sayî di mete e s' plaece li ci ki vos schapez pol moumint?"
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr "Tos les fitchîs"
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 msgid "All Text Files"
 msgstr "Tos les fitchîs tecses"
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr "Ecôdaedje des c_aracteres:"
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr "Tchoezixhoz li fitchî a drovi"
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr "Tchoezixhoz les fitchîs a drovi"
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr "Tchoezixhoz on no d' fitchî po schaper"
 
@@ -1368,31 +1405,31 @@ msgstr "Tchoezixhoz on no d' fitchî po schaper"
 msgid "Open File..."
 msgstr "Drovi on fitchî..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, c-format
 msgid "Saving document \"%s\"..."
 msgstr "Dji schape li documint «%s»..."
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr "Li documint «%s» n' a nén stî schapé."
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, c-format
 msgid "The document \"%s\" has been saved."
 msgstr "Li documint «%s» a stî schapé."
 
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr "Schaper et rlomer..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr ""
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1403,11 +1440,12 @@ msgid_plural ""
 msgstr[0] "Les candjmints del dierinne segonde seront pierdous po todi."
 msgstr[1] "Les candjmints des %ld dierinnès segondes seront pierdous po todi."
 
-#: gedit/gedit-file.c:618
-msgid "Changes made to the document in the last minute will be definitively lost."
+#: gedit/gedit-file.c:622
+msgid ""
+"Changes made to the document in the last minute will be definitively lost."
 msgstr "Les candjmints del dierinne munute seront pierdous po todi."
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1415,10 +1453,12 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "definitively lost."
-msgstr[0] "Les candjmints del dierinne munute et %ld segonde seront pierdous po todi."
-msgstr[1] "Les candjmints del dierinne munute et %ld segondes seront pierdous po todi."
+msgstr[0] ""
+"Les candjmints del dierinne munute et %ld segonde seront pierdous po todi."
+msgstr[1] ""
+"Les candjmints del dierinne munute et %ld segondes seront pierdous po todi."
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1429,11 +1469,12 @@ msgid_plural ""
 msgstr[0] "Les candjmints del dierinne munute seront pierdous po todi."
 msgstr[1] "Les candjmints des %ld dierinnès munutes seront pierdous po todi."
 
-#: gedit/gedit-file.c:649
-msgid "Changes made to the document in the last hour will be definitively lost."
+#: gedit/gedit-file.c:653
+msgid ""
+"Changes made to the document in the last hour will be definitively lost."
 msgstr "Les candjmints del dierinne eure seront pierdous po todi."
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1441,80 +1482,84 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "definitively lost."
-msgstr[0] "Les candjmints del dierinne eure et %d munute seront pierdous po todi."
-msgstr[1] "Les candjmints del dierinne eure et %d munutes seront pierdous po todi."
+msgstr[0] ""
+"Les candjmints del dierinne eure et %d munute seront pierdous po todi."
+msgstr[1] ""
+"Les candjmints del dierinne eure et %d munutes seront pierdous po todi."
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:674
 #, c-format
-msgid "Changes made to the document in the last %d hour will be definitively lost."
-msgid_plural "Changes made to the document in the last %d hours will be definitively lost."
+msgid ""
+"Changes made to the document in the last %d hour will be definitively lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be definitively lost."
 msgstr[0] "Les candjmints del dierinne eure seront pierdous po todi."
 msgstr[1] "Les candjmints des %d dierinnès eures seront pierdous po todi."
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Rimete come divant"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:742
 #, fuzzy, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr "Dji n' pout rimete come divant l' fitchî «%s»."
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:749
 #, fuzzy, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr "Li documint n' a nén stî rmetou come divant."
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:753
 #, fuzzy, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr "Li documint n' a nén stî rmetou come divant."
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:781
 #, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr "Dji rmete come divant l' documint «%s»..."
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr "Dji n' a savou lere les dnêyes del intrêye sitandård (stdin)."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "Li fitchî «%s» n' egzistêye nén. El voloz vs askepyî?"
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1089
 msgid "Reverting file:"
 msgstr "Dji rmete come divant l' fitchî:"
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1093
 msgid "Loading file:"
 msgstr "Dji tchedje li fitchî:"
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr "Åk n' a nén stî tot tcherdjant l' fitchî «%s»"
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1283
 #, c-format
 msgid "Loaded file \"%s\""
 msgstr "Fitchî «%s» tcherdjî"
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1360
 #, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
 msgstr[0] "%d fitchî tcherdjî"
 msgstr[1] "%d fitchîs tcherdjîs"
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1394
 #, c-format
 msgid "Loading file \"%s\"..."
 msgstr "Dji tchedje li fitchî «%s»..."
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1541
 #, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
@@ -1620,7 +1665,8 @@ msgstr ""
 #: gedit/gedit-plugins-engine.c:393
 #, c-format
 msgid "Error, plugin '%s' does not contain deactivate function."
-msgstr "Aroke, li tchoûke-didins «%s» n' a nole fonccion d' essoctaedje (deactivate)."
+msgstr ""
+"Aroke, li tchoûke-didins «%s» n' a nole fonccion d' essoctaedje (deactivate)."
 
 #: gedit/gedit-plugins-engine.c:418
 #, c-format
@@ -1924,7 +1970,8 @@ msgstr "Tchoezi tot l' documint en etir"
 
 #: gedit/gedit-ui.xml.h:62
 #, fuzzy
-msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid ""
+"Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr ""
 "Defini li stîle del bår ås usteyes sorlon les prémetowès valixhance do "
 "scribanne"
@@ -2104,11 +2151,13 @@ msgstr ""
 #: gedit/gedit-utils.c:415
 #, c-format
 msgid "Could not open the file \"%s\" because it contains corrupted data."
-msgstr "Dji n' a savou drovi l' fitchî «%s» ca il a å dvins des crombès dnêyes."
+msgstr ""
+"Dji n' a savou drovi l' fitchî «%s» ca il a å dvins des crombès dnêyes."
 
 #: gedit/gedit-utils.c:426
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Dji n' a savou drovi l' fitchî «%s» cåze ki gedit èn sait nén manaedjî les "
 "eplaeçmints «%s:»."
@@ -2120,7 +2169,8 @@ msgstr "Dji n' pout drovi l' fitchî «%s»"
 
 #: gedit/gedit-utils.c:442
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 "Dji n' a savou drovi l' fitchî «%s» ca i contént des dnêyes dins ene cogne "
 "nén valide."
@@ -2307,7 +2357,8 @@ msgstr ""
 
 #: gedit/gedit-utils.c:793
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 
 #: gedit/gedit-utils.c:799 gedit/gedit-utils.c:939
@@ -2718,6 +2769,7 @@ msgstr "_Ridant d' ovraedje:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: Tchôke-divins di rexhowe do shell"
 
+#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "_Relére..."
@@ -3010,24 +3062,24 @@ msgstr "Verifeye l' ortografeye do documint do moumint."
 msgid "Spell checker"
 msgstr "Coridjrece"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr "Tchôke-divins djivêye d' etiketes (tags)"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr "Tchoezixhoz li groupe d' etiketes ki vos vloz eployî"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 msgid "Available Tag Lists"
 msgstr "Djivêyes des etiketes k' i gn a"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr "Etiketes"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Dobe-clitchîz so ene etikete pol sititchî el documint do moumint"
 
@@ -3122,4 +3174,3 @@ msgstr "Copyî l' tecse tchoezi e l' tchapea emacralé"
 #: viewer/gedit-viewer-ui.xml.h:2
 msgid "_Copy Text"
 msgstr "_Copyî tecse"
-

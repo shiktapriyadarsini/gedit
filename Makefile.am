@@ -6,16 +6,16 @@ distcleancheck_listfiles = find . -type f -print | grep -v 'omf\.out'
 
 distuninstallcheck_listfiles = find . -type f -print | grep -v '^\./var/scrollkeeper' | grep -v 'omf' | grep -v 'figures'
 
-EXTRA_DIST = BUGS		\
+EXTRA_DIST = \
+	BUGS			\
 	ChangeLog  		\
-#	message-of-doom		\
 	README 			\
 	TODO 			\
 	xmldocs.make 		\
 	omf.make		\
 	intltool-extract.in 	\
 	intltool-merge.in 	\
-	intltool-update.in	
+	intltool-update.in
 
 DISTCLEANFILES = 		\
 	intltool-extract 	\

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-22 00:04+1200\n"
+"POT-Creation-Date: 2004-05-03 11:18+0200\n"
 "PO-Revision-Date: 2004-04-22 00:11+1200\n"
 "Last-Translator: John C Barstow <jbowtie@amathaine.com>\n"
 "Language-Team: GNOME Māori Team <maori@nzlinux.org.nz>\n"
@@ -371,7 +371,7 @@ msgid ""
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr ""
@@ -407,9 +407,12 @@ msgstr "Kaua _e purihia"
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be definitively "
-"lost.If you don't save, changes from the last %ld seconds will be "
-"definitively lost."
-msgstr ""
+"lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld seconds will be definitively "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:370
 msgid ""
@@ -420,17 +423,23 @@ msgstr ""
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
-"definitively lost.If you don't save, changes from the last minute and %ld "
-"seconds will be definitively lost."
-msgstr ""
+"definitively lost."
+msgid_plural ""
+"If you don't save, changes from the last minute and %ld seconds will be "
+"definitively lost."
+msgstr[0] ""
+msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:386
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be definitively "
-"lost.If you don't save, changes from the last %ld minutes will be "
-"definitively lost."
-msgstr ""
+"lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld minutes will be definitively "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:401
 msgid ""
@@ -441,16 +450,21 @@ msgstr ""
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
-"definitively lost.If you don't save, changes from the last hour and %d "
-"minutes will be definitively lost."
-msgstr ""
+"definitively lost."
+msgid_plural ""
+"If you don't save, changes from the last hour and %d minutes will be "
+"definitively lost."
+msgstr[0] ""
+msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:422
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be definitively lost."
+msgid_plural ""
 "If you don't save, changes from the last %d hours will be definitively lost."
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:466
 #, c-format
@@ -504,7 +518,9 @@ msgstr "Kitea"
 #: gedit/dialogs/gedit-dialog-replace.c:1135
 #, c-format
 msgid "Found and replaced %d occurrence."
-msgstr ""
+msgid_plural "Found and replaced %d occurrences."
+msgstr[0] ""
+msgstr[1] ""
 
 #: gedit/dialogs/gedit-dialog-uri.c:91
 msgid "Open Location"
@@ -622,7 +638,7 @@ msgid ""
 "marked"
 msgstr ""
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr ""
 
@@ -1278,27 +1294,27 @@ msgstr ""
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 msgid "All Text Files"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:506
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:532
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:559
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr ""
 
@@ -1306,144 +1322,162 @@ msgstr ""
 msgid "Open File..."
 msgstr "Huaki he Kōnae..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:418
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, c-format
 msgid "Saving document \"%s\"..."
 msgstr ""
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:439
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr ""
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:431
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, c-format
 msgid "The document \"%s\" has been saved."
 msgstr ""
 
-#: gedit/gedit-file.c:397
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr ""
 
-#: gedit/gedit-file.c:597
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr ""
 
-#: gedit/gedit-file.c:606
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
-"lost.Changes made to the document in the last %ld seconds will be "
-"definitively lost."
-msgstr ""
+"lost."
+msgid_plural ""
+"Changes made to the document in the last %ld seconds will be definitively "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
 
-#: gedit/gedit-file.c:615
+#: gedit/gedit-file.c:622
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:621
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
-"definitively lost.Changes made to the document in the last minute and %ld "
-"seconds will be definitively lost."
-msgstr ""
+"definitively lost."
+msgid_plural ""
+"Changes made to the document in the last minute and %ld seconds will be "
+"definitively lost."
+msgstr[0] ""
+msgstr[1] ""
 
-#: gedit/gedit-file.c:631
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
-"lost.Changes made to the document in the last %ld minutes will be "
-"definitively lost."
-msgstr ""
+"lost."
+msgid_plural ""
+"Changes made to the document in the last %ld minutes will be definitively "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
 
-#: gedit/gedit-file.c:646
+#: gedit/gedit-file.c:653
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:652
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
-"definitively lost.Changes made to the document in the last hour and %d "
-"minutes will be definitively lost."
-msgstr ""
+"definitively lost."
+msgid_plural ""
+"Changes made to the document in the last hour and %d minutes will be "
+"definitively lost."
+msgstr[0] ""
+msgstr[1] ""
 
-#: gedit/gedit-file.c:667
+#: gedit/gedit-file.c:674
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
+msgid_plural ""
 "Changes made to the document in the last %d hours will be definitively lost."
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
-#: gedit/gedit-file.c:690 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Whakakāhoretia"
 
-#: gedit/gedit-file.c:735
+#: gedit/gedit-file.c:742
 #, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr ""
 
-#: gedit/gedit-file.c:742
+#: gedit/gedit-file.c:749
 #, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr ""
 
-#: gedit/gedit-file.c:746
+#: gedit/gedit-file.c:753
 #, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr ""
 
-#: gedit/gedit-file.c:774
+#: gedit/gedit-file.c:781
 #, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr ""
 
-#: gedit/gedit-file.c:909
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr ""
 
-#: gedit/gedit-file.c:959
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr ""
 
-#: gedit/gedit-file.c:1082
+#: gedit/gedit-file.c:1089
 msgid "Reverting file:"
 msgstr ""
 
-#: gedit/gedit-file.c:1086
+#: gedit/gedit-file.c:1093
 msgid "Loading file:"
 msgstr ""
 
-#: gedit/gedit-file.c:1255 gedit/gedit-file.c:1414
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr ""
 
-#: gedit/gedit-file.c:1276
+#: gedit/gedit-file.c:1283
 #, c-format
 msgid "Loaded file \"%s\""
 msgstr ""
 
-#: gedit/gedit-file.c:1353
+#: gedit/gedit-file.c:1360
 #, c-format
 msgid "Loaded %d file"
-msgstr ""
+msgid_plural "Loaded %d files"
+msgstr[0] ""
+msgstr[1] ""
 
-#: gedit/gedit-file.c:1387
+#: gedit/gedit-file.c:1394
 #, c-format
 msgid "Loading file \"%s\"..."
 msgstr ""
 
-#: gedit/gedit-file.c:1534
+#: gedit/gedit-file.c:1541
 #, c-format
 msgid "Loading %d file..."
-msgstr ""
+msgid_plural "Loading %d files..."
+msgstr[0] ""
+msgstr[1] ""
 
 #. Read only
 #: gedit/gedit-mdi-child.c:248
@@ -2566,6 +2600,7 @@ msgstr ""
 msgid "gedit: Shell Output plugin"
 msgstr ""
 
+#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr ""

@@ -8,14 +8,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
-"POT-Creation-Date: 2004-03-22 19:26+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-05-03 11:18+0200\n"
 "PO-Revision-Date: 2003-07-15 08:38+0300\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.1\n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
@@ -425,7 +425,7 @@ msgstr ""
 "gedit. אם אפשרות זו לא נבחרה, הגופן באפשרות \"גופן העורך\" ישמש במקום גופן "
 "המערכת."
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr "הפעל %s"
@@ -548,7 +548,7 @@ msgid "_Go to Line"
 msgstr "_לך לשורה"
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "הטקסט \"%s\" לא נמצא."
@@ -571,7 +571,7 @@ msgstr "_החלף"
 msgid "Find"
 msgstr "מצא"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
+#: gedit/dialogs/gedit-dialog-replace.c:1135
 #, fuzzy, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
@@ -697,7 +697,7 @@ msgid ""
 "marked"
 msgstr "לחץ על כפתור זה כדי להגדיר את הצבע שבו הטקסט הנבחר יסומן"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr ""
 
@@ -1394,28 +1394,28 @@ msgstr ""
 "הקובץ \"%s\" הינו לקריאה בלבד.\n"
 "האם ברצונך להחליפו עם זה שאתה שומר?"
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr ""
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 #, fuzzy
 msgid "All Text Files"
 msgstr "ערוך קבצי טקסט"
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr "קוד _תו:"
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr "בחר קובץ לפתיחה"
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr "בחר קבצים לפתיחה"
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr "בחר שם קובץ לשמירה"
 
@@ -1423,31 +1423,31 @@ msgstr "בחר שם קובץ לשמירה"
 msgid "Open File..."
 msgstr "פתח קובץ..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, fuzzy, c-format
 msgid "Saving document \"%s\"..."
 msgstr "שומר את הקובץ '%s'..."
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, fuzzy, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr "המסמך אינו נשמר."
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, fuzzy, c-format
 msgid "The document \"%s\" has been saved."
 msgstr "המסמך אינו נשמר."
 
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr "שמירה בשם..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr ""
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1458,12 +1458,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:618
+#: gedit/gedit-file.c:622
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1474,7 +1474,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1485,12 +1485,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:649
+#: gedit/gedit-file.c:653
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
 msgstr ""
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1501,7 +1501,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:674
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
@@ -1510,72 +1510,72 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_שחזר"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:742
 #, fuzzy, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr "לא ניתן לשחזר את הקובץ \"%s\"."
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:749
 #, fuzzy, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr "המסמך לא שוחזר."
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:753
 #, fuzzy, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr "המסמך לא שוחזר."
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:781
 #, fuzzy, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr "משחזר קובץ '%s'..."
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr "לא ניתן לקרוא מידע מ stdin."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "הקובץ \"%s\" איננו קיים. האם ברצונך ליצור אותו?"
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1089
 #, fuzzy
 msgid "Reverting file:"
 msgstr "משחזר קובץ '%s'..."
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1093
 #, fuzzy
 msgid "Loading file:"
 msgstr "טוען %d קבצים..."
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr ""
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1283
 #, fuzzy, c-format
 msgid "Loaded file \"%s\""
 msgstr "נטען הקובץ '%s'"
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1360
 #, fuzzy, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
 msgstr[0] "נטענו %i קבצים"
 msgstr[1] "נטענו %i קבצים"
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1394
 #, fuzzy, c-format
 msgid "Loading file \"%s\"..."
 msgstr "טוען %d קבצים..."
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1541
 #, fuzzy, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
@@ -3090,25 +3090,25 @@ msgstr "בדיקת האיות במסמך הנוכחי."
 msgid "Spell checker"
 msgstr "בודק איות"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr "תוסף רשימת תגיות"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr "בחר בקבוצת התגיות שברצונך להשתמש"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 #, fuzzy
 msgid "Available Tag Lists"
 msgstr "תסדירים זמינים"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr "תגיות"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "לחיצה כפולה על תגית כדי להכניסה למסמך הנוכחי"
 
