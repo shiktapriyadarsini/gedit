@@ -32,14 +32,13 @@
 #endif
 
 #include <string.h>
+#include <time.h>
 
 #include <glade/glade-xml.h>
 #include <libgnome/gnome-i18n.h>
 #include <gconf/gconf-client.h>
 #include <libgnome/gnome-help.h>
 #include <libgnome/gnome-config.h>
-
-#include <time.h>
 
 #include <gedit/gedit-plugin.h>
 #include <gedit/gedit-debug.h>
@@ -63,14 +62,15 @@
 
 enum
 {
-  COLUMN_FORMATS = 0,
-  COLUMN_INDEX,
-  NUM_COLUMNS
+	COLUMN_FORMATS = 0,
+	COLUMN_INDEX,
+	NUM_COLUMNS
 };
 
 typedef struct _TimeConfigureDialog TimeConfigureDialog;
 
-struct _TimeConfigureDialog {
+struct _TimeConfigureDialog
+{
 	GtkWidget *dialog;
 
 	GtkWidget *list;
@@ -85,7 +85,8 @@ struct _TimeConfigureDialog {
 
 typedef struct _ChoseFormatDialog ChoseFormatDialog;
 
-struct _ChoseFormatDialog {
+struct _ChoseFormatDialog
+{
 	GtkWidget *dialog;
 
 	GtkWidget *list;
@@ -96,7 +97,6 @@ struct _ChoseFormatDialog {
         GtkWidget *custom_entry;
 	GtkWidget *custom_format_example;
 };
-
 
 static gchar *formats[] =
 {
@@ -133,7 +133,6 @@ static gchar *formats[] =
 #endif
 	NULL
 };
-
 
 typedef enum 
 {
@@ -294,8 +293,10 @@ get_time (const gchar* format)
   	struct tm *now;
   	size_t out_length = 0;
 	gchar *locale_format;
-  	
+
 	gedit_debug (DEBUG_PLUGINS, "");
+
+	g_return_val_if_fail (format != NULL, NULL);
 
 	if (strlen (format) == 0)
 		return g_strdup (" ");
@@ -351,9 +352,10 @@ create_model (GtkWidget *listview, const gchar *sel_format)
 {
 	gint i = 0;
 	GtkListStore *store;
+	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 	gchar *sf;
-	
+
 	gedit_debug (DEBUG_PLUGINS, "");
 
 	/* create list store */
@@ -364,6 +366,12 @@ create_model (GtkWidget *listview, const gchar *sel_format)
 				 GTK_TREE_MODEL (store));
 
 	g_object_unref (G_OBJECT (store));
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (listview));
+	g_return_val_if_fail (selection != NULL, GTK_TREE_MODEL (store));
+
+	/* there should always be one line selected */
+	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 
 	if (sel_format == NULL)
 		sf = get_selected_format ();
@@ -376,7 +384,7 @@ create_model (GtkWidget *listview, const gchar *sel_format)
 		gchar *str;
 
 		str = get_time (formats[i]);
-		
+
 		gedit_debug (DEBUG_PLUGINS, "%d : %s", i, str);
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -384,20 +392,21 @@ create_model (GtkWidget *listview, const gchar *sel_format)
 				    COLUMN_INDEX, i,
 				    -1);
 		g_free (str);	
-		
+
 		if (strncmp (formats[i], sf, strlen (sf)) == 0)
-		{
-			GtkTreeSelection *selection;
-						
-			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (listview));
-			g_return_val_if_fail (selection != NULL, GTK_TREE_MODEL (store));
 			gtk_tree_selection_select_iter (selection, &iter);
-		}	
 
 		++i;
 	}
-	
-	g_free (sf);	
+
+	/* fall back to selecting the first iter */
+	if (!gtk_tree_selection_get_selected (selection, NULL, NULL))
+	{
+		gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
+		gtk_tree_selection_select_iter (selection, &iter);
+	}
+
+	g_free (sf);
 
 	return GTK_TREE_MODEL (store);
 }
@@ -440,15 +449,15 @@ create_formats_list (GtkWidget *listview, const gchar* sel_format)
 	gedit_debug (DEBUG_PLUGINS, "");
 
 	g_return_if_fail (listview != NULL);
-
-	/* Create model, it also add model to the tree view */
-	create_model (listview, sel_format);
 	
 	/* the Available formats column */
 	cell = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes (_("Available formats"), cell, 
 			"text", COLUMN_FORMATS, NULL);
 	gtk_tree_view_append_column (GTK_TREE_VIEW (listview), column);
+
+	/* Create model, it also add model to the tree view */
+	create_model (listview, sel_format);
 
 	g_signal_connect (G_OBJECT (listview), "realize", 
 			G_CALLBACK (scroll_to_selected), NULL);
@@ -809,7 +818,6 @@ time_world_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname
 		gchar *cf = get_custom_format ();
 	        the_time = get_time (cf);
 		g_free (cf);
-
 	}
         else if (prompt_type == USE_SELECTED_FORMAT)
         {
@@ -899,8 +907,8 @@ time_world_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname
 	g_free (the_time);
 }
 
-static 
-gint get_format_from_list(GtkWidget *listview)
+static gint
+get_format_from_list (GtkWidget *listview)
 {
 	GtkTreeModel *model;
 	GtkTreeSelection *selection;
