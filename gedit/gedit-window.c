@@ -892,10 +892,9 @@ gedit_window_get_statusbar_visible (GeditWindow *window)
 void
 gedit_window_set_statusbar_visible (GeditWindow *window, gboolean visible)
 {
-	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	GtkAction *action;
 
-	if (visible == window->priv->statusbar_visible)
-		return;
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	window->priv->statusbar_visible = (visible != FALSE);
 
@@ -903,6 +902,11 @@ gedit_window_set_statusbar_visible (GeditWindow *window, gboolean visible)
 		gtk_widget_show (window->priv->statusbar);
 	else
 		gtk_widget_hide (window->priv->statusbar);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewStatusbar");
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 
 	if (gedit_prefs_manager_statusbar_visible_can_set ())
 		gedit_prefs_manager_set_statusbar_visible (visible);
