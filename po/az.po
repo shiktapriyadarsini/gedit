@@ -4,15 +4,23 @@
 # ---------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 0.9.8\n"
-"POT-Creation-Date: 2001-12-11 21:48-0500\n"
-"PO-Revision-Date: 2001-11-11 17:39GMT+0200\n"
+"Project-Id-Version: gedit1 0.99.0\n"
+"POT-Creation-Date: 2002-01-02 15:28+0100\n"
+"PO-Revision-Date: 2002-01-06 01:44GMT+0200\n"
 "Last-Translator: Vasif İsmayıloğlu MD <azerb_linux@hotmail.com>\n"
 "Language-Team: Azerbaijani Turkic <linuxaz@azerimail.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"X-Generator: KBabel 0.9.6\n"
+
+#: gedit.desktop.in.h:1
+msgid "Text editor"
+msgstr "Mətn editoru"
+
+#: gedit.desktop.in.h:2
+msgid "gedit"
+msgstr "gedit"
 
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
@@ -21,6 +29,40 @@ msgstr "ASCII cədvəli"
 #: plugins/ASCII/ascii.c:270
 msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
 msgstr "Bu əlavə ASCII cədvəli göstərən bir pəncərə meydana çıxardar."
+
+#: plugins/ASCII/asciitable.glade.h:1
+msgid "Char"
+msgstr "Xarakter"
+
+#: plugins/ASCII/asciitable.glade.h:2
+msgid "Dec#"
+msgstr "Dec#"
+
+#: plugins/ASCII/asciitable.glade.h:3
+msgid "Hex#"
+msgstr "Hex#"
+
+#: plugins/ASCII/asciitable.glade.h:4
+msgid ""
+"If you wish to insert any of the characters in to the active \n"
+"document, select the character and click the \"Insert Char\" \n"
+"button or double click the character in the table."
+msgstr ""
+"Fəal sənədə hər haznsı bir zarakter daxil etmək istəyirsinizsə,\n"
+"xarakteri seçin və \"Xarakteri Əlavə Et\" düyməsinə tıqlayın.\n"
+"Ya da xarakter cədvəlində iki dəfə tıqlayın."
+
+#: plugins/ASCII/asciitable.glade.h:7
+msgid "Insert char"
+msgstr "Xarakter əlavə et"
+
+#: plugins/ASCII/asciitable.glade.h:8
+msgid "Name"
+msgstr "Ad"
+
+#: plugins/ASCII/asciitable.glade.h:9
+msgid "gedit: ASCII table"
+msgstr "gedit: ASCII cədvəli"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -32,6 +74,28 @@ msgstr "Gəz"
 msgid "Web browse plugin"
 msgstr "Veb səhhayı əlavəsi"
 
+#: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
+#: plugins/email/email.glade.h:1
+msgid " _Change... "
+msgstr "_Dəyişdir ..."
+
+#: plugins/browse/browse.glade.h:2
+msgid "Enter the _URL to browse for:"
+msgstr "Gəzmək istədiyiniz _Urlni girin:"
+
+#: plugins/browse/browse.glade.h:3
+msgid "Lynx found at: "
+msgstr "Lynx bu cıǧırda tapıldı : "
+
+#: plugins/browse/browse.glade.h:4
+msgid "gedit: Web Browse plugin"
+msgstr "gedit: Veb Səhhayı Əlavəsi"
+
+#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
+#: plugins/email/email.glade.h:14
+msgid "location"
+msgstr "yeri"
+
 #: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "Dönüşdür"
@@ -39,6 +103,30 @@ msgstr "Dönüşdür"
 #: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
 msgstr "Rəqəm Dönüşdürücüsü"
+
+#: plugins/convert/convert.glade.h:1
+msgid " Decimal to _Hex "
+msgstr "Onluqdan On _Altılıǧa"
+
+#: plugins/convert/convert.glade.h:2
+msgid " Decimal to _Octal "
+msgstr "Onluqdan _Səkkizliyə"
+
+#: plugins/convert/convert.glade.h:3
+msgid " Hex to Decima_l "
+msgstr "On Altılıqdan On_luǧa"
+
+#: plugins/convert/convert.glade.h:4
+msgid "_Converted value:"
+msgstr "Dö_nüşdürülən Qiymət :"
+
+#: plugins/convert/convert.glade.h:5
+msgid "_Value to be converted:"
+msgstr "Dönüşdürüləcək _Qiymət:"
+
+#: plugins/convert/convert.glade.h:6
+msgid "gedit: Number Converter plugin"
+msgstr "gedit: Rəqəm Dönüşdürücüsü Əsalvəsi"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -109,6 +197,46 @@ msgstr ""
 "\"diff\" haqqında daha çox mə'lumat istəsəniz, əmr sətirində \"man diff\"i "
 "işə sal \n"
 
+#: plugins/diff/diff.glade.h:2
+msgid "Choose the files to compare"
+msgstr "Müqayisə ediləcək faylları seçin"
+
+#: plugins/diff/diff.glade.h:3
+msgid "Diff found at: "
+msgstr "Diff bu cıǧırda tapıldı : "
+
+#: plugins/diff/diff.glade.h:4
+msgid "First"
+msgstr "Birinci"
+
+#: plugins/diff/diff.glade.h:5
+msgid "From a file on disk"
+msgstr "Diskdəki fayldan"
+
+#: plugins/diff/diff.glade.h:6
+msgid "From document"
+msgstr "Sənəddən"
+
+#: plugins/diff/diff.glade.h:7
+msgid "Second"
+msgstr "İkinci"
+
+#: plugins/diff/diff.glade.h:8
+msgid "Select the \"first\" file..."
+msgstr "\"Birinci\" faylı seçin..."
+
+#: plugins/diff/diff.glade.h:9
+msgid "Select the \"second\" file..."
+msgstr "\"İkinci\" faylı seçin..."
+
+#: plugins/diff/diff.glade.h:10
+msgid "Use the _unified output format (-u option)"
+msgstr "_Unifiyǝ yekun şǝkli işlǝt (-u seçǝnǝk)"
+
+#: plugins/diff/diff.glade.h:11
+msgid "gedit: Diff plugin"
+msgstr "gedit : \"Diff\" əlavəsi"
+
 #: plugins/docinfo/docinfo.c:214
 msgid ""
 "No document exists.\n"
@@ -130,6 +258,50 @@ msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr "Bu əlavə sənəd haqqında əsas məlumatları göstərən pəncərəcik açar."
+
+#: plugins/docinfo/docinfo.glade.h:1
+msgid "0"
+msgstr "0"
+
+#: plugins/docinfo/docinfo.glade.h:2
+msgid "Characters (no spaces)"
+msgstr "Xarakterlər (boşluqsuz)"
+
+#: plugins/docinfo/docinfo.glade.h:3
+msgid "Characters (with spaces)"
+msgstr "Xarakterlər (boşluqlarla birlikdə)"
+
+#: plugins/docinfo/docinfo.glade.h:4
+msgid "Current column"
+msgstr "Hazırkı Sütun"
+
+#: plugins/docinfo/docinfo.glade.h:5
+msgid "Current line"
+msgstr "Hazırkı Sətir"
+
+#: plugins/docinfo/docinfo.glade.h:6
+msgid "File Name"
+msgstr "Fayl Adı"
+
+#: plugins/docinfo/docinfo.glade.h:7
+msgid "Lines"
+msgstr "Sətirlər"
+
+#: plugins/docinfo/docinfo.glade.h:8
+msgid "Paragraphs"
+msgstr "Paraqraflar"
+
+#: plugins/docinfo/docinfo.glade.h:9
+msgid "Update"
+msgstr "Güncəllə"
+
+#: plugins/docinfo/docinfo.glade.h:10
+msgid "Words"
+msgstr "Kəlmələr"
+
+#: plugins/docinfo/docinfo.glade.h:11
+msgid "gedit: Document Info plugin"
+msgstr "gedit: Sənəd İnfo Əlavəsi"
 
 #. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -157,6 +329,54 @@ msgid ""
 msgstr ""
 "Hazırkı sənədi göstərilən ünvana göndər \n"
 "gedit bu əlavəyi istifadə edə bilmek üçün sendmaili axtarar ."
+
+#: plugins/email/email.glade.h:2
+msgid "Change..."
+msgstr "Dəyişdir ..."
+
+#: plugins/email/email.glade.h:3
+msgid "F_rom:"
+msgstr "Gön_dərən :"
+
+#: plugins/email/email.glade.h:4
+msgid "File to use as body of message: "
+msgstr "Xəbərin əsas mətni olaraq istifadə ediləcək fayl: "
+
+#: plugins/email/email.glade.h:5
+msgid "From:"
+msgstr "Göndərən :"
+
+#: plugins/email/email.glade.h:6
+msgid "Sendmail found at:"
+msgstr "Sendmail bu cıǧırda tapıldı: "
+
+#: plugins/email/email.glade.h:7
+msgid "Subject:"
+msgstr "Mövzu :"
+
+#: plugins/email/email.glade.h:8
+msgid "To:"
+msgstr "Göndərilən :"
+
+#: plugins/email/email.glade.h:9
+msgid "_Subject:"
+msgstr "_Mövzu :"
+
+#: plugins/email/email.glade.h:10
+msgid "_To:"
+msgstr "_Göndərilən :"
+
+#: plugins/email/email.glade.h:11
+msgid "filename"
+msgstr "fayladı"
+
+#: plugins/email/email.glade.h:12
+msgid "gedit: E-mail plugin"
+msgstr "gedit : ePoçt əlavəsi"
+
+#: plugins/email/email.glade.h:13
+msgid "gedit: e-mail plugin"
+msgstr "gedit : ePoçt əlavəsi"
 
 #: plugins/reverse/reverse.c:69
 msgid "Reverse"
@@ -193,6 +413,26 @@ msgstr "Əmr Çıxışı"
 msgid "Insert the shell output in the document"
 msgstr "Sənədə bir əmr çıxışı əlavə et"
 
+#: plugins/shell_output/shell_output.glade.h:1
+msgid "Select the working directory..."
+msgstr "Fəal qovluǧu seçin..."
+
+#: plugins/shell_output/shell_output.glade.h:2
+msgid "Shell _command:"
+msgstr "Qabıq ə_mr.: "
+
+#: plugins/shell_output/shell_output.glade.h:3
+msgid "Specify the working directory and the command you want to run."
+msgstr "Fəal qovluǧu və işə salmaq istədiyiniz əmri bildirin."
+
+#: plugins/shell_output/shell_output.glade.h:4
+msgid "_Working directory:"
+msgstr "_Fəal qovluq:"
+
+#: plugins/shell_output/shell_output.glade.h:5
+msgid "gedit: Shell Output plugin"
+msgstr "gedit: Əmr Çıxış əlavəsi"
+
 #: plugins/sort/sort.c:192
 msgid "Sort"
 msgstr "Nizamla"
@@ -205,6 +445,22 @@ msgstr "Sənədi nizamla."
 msgid "Sort a document or selected text."
 msgstr "Seçili mətni ya da sənədi nəzamla."
 
+#: plugins/sort/sort.glade.h:1
+msgid "1"
+msgstr "1"
+
+#: plugins/sort/sort.glade.h:2
+msgid "Case Sensitive"
+msgstr "Böyük Kiçik Hərfə Həssas"
+
+#: plugins/sort/sort.glade.h:3
+msgid "Sort starting at column:"
+msgstr "Nizamlamanın başlama sütunu:"
+
+#: plugins/sort/sort.glade.h:4
+msgid "gedit: Sort plugin"
+msgstr "gedit: Nizamlama əlavəsi"
+
 #: plugins/time/time.c:83
 msgid "Insert Time"
 msgstr "Tarixi əlavə et"
@@ -212,6 +468,14 @@ msgstr "Tarixi əlavə et"
 #: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
 msgstr "İndiki tarixi və vaxtı əlavə et"
+
+#: src/dialogs/about.glade.h:1
+msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
+msgstr "(C) 1998, 1999, 2000 Alex Roberts və Evan Lawrence"
+
+#: src/dialogs/about.glade.h:2
+msgid "gedit is a small and lightweight text editor for GNOME."
+msgstr "gedit GNOME/Gtk+ üçün kiçik və istifadəsi asand bir düzəldicidir"
 
 #: src/dialogs/dialog-plugins.c:87
 #, c-format
@@ -224,7 +488,7 @@ msgstr ""
 msgid "gedit: Preferences"
 msgstr "gedit : Seçənəklər"
 
-#: src/dialogs/dialog-replace.c:130
+#: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
 msgid "Replace"
 msgstr "Dəyişdir"
 
@@ -253,6 +517,270 @@ msgstr "Hamısını Dəyişdir əməliyyatı üçün lazımi yaddaşı ayıra bi
 #, c-format
 msgid "Loaded file %s"
 msgstr "%s yükləndi"
+
+#: src/dialogs/goto-line.glade.h:1
+msgid "Goto Line"
+msgstr "Sətirə get"
+
+#: src/dialogs/goto-line.glade.h:2
+msgid "Line number:"
+msgstr "Sətir nömrəsi : "
+
+#: src/dialogs/plugin-manager.glade.h:1
+msgid "Author(s):"
+msgstr "Müəllif(lər):"
+
+#: src/dialogs/plugin-manager.glade.h:2
+msgid "De_scription"
+msgstr "İ_zahat"
+
+#: src/dialogs/plugin-manager.glade.h:3
+msgid "De_tails"
+msgstr "Tə_fsilat"
+
+#: src/dialogs/plugin-manager.glade.h:4
+msgid "File name:"
+msgstr "Fayl adı:"
+
+#: src/dialogs/plugin-manager.glade.h:5
+msgid "Plugins manager..."
+msgstr "Əlavəlar idarəçisi..."
+
+#: src/dialogs/plugin-manager.glade.h:6
+msgid "Select the plugins to activate:"
+msgstr "Fəallaşdırılacaq əlavələri seç:"
+
+#: src/dialogs/plugin-manager.glade.h:7
+msgid "_Activate all"
+msgstr "Hamısını _fəallaşdır"
+
+#: src/dialogs/plugin-manager.glade.h:8
+msgid "_Deactivate all"
+msgstr "Hamısını _yenidən fəallaşdır"
+
+#: src/dialogs/prefs.glade.h:1
+msgid "Add _header"
+msgstr "_Başlığı əlavə et"
+
+#: src/dialogs/prefs.glade.h:2
+msgid "Appearance"
+msgstr "Görünüş"
+
+#: src/dialogs/prefs.glade.h:3
+msgid "Bottom"
+msgstr "Alt"
+
+#: src/dialogs/prefs.glade.h:4
+msgid "Colors"
+msgstr "Rənglər"
+
+#: src/dialogs/prefs.glade.h:5
+msgid "Default"
+msgstr "Əsas"
+
+#: src/dialogs/prefs.glade.h:6
+msgid "Documents"
+msgstr "Sənədlər"
+
+#: src/dialogs/prefs.glade.h:7
+msgid "Editor Behavior"
+msgstr "Düzəldici Davranışı"
+
+#: src/dialogs/prefs.glade.h:8
+msgid "Enable _Auto-indent"
+msgstr "_Avtomatik aralamayı aç"
+
+#: src/dialogs/prefs.glade.h:9
+msgid "Enable word _wrapping"
+msgstr "Sətir _qırmasını aç"
+
+#: src/dialogs/prefs.glade.h:10
+msgid "Fonts"
+msgstr "Yazıtipləri"
+
+#: src/dialogs/prefs.glade.h:11
+msgid "Fonts/Colors"
+msgstr "Yazı növləri/Rənglər"
+
+#: src/dialogs/prefs.glade.h:12
+msgid "General"
+msgstr "Ümumi"
+
+#: src/dialogs/prefs.glade.h:13
+msgid "Left"
+msgstr "Sol"
+
+#: src/dialogs/prefs.glade.h:14
+msgid "MDI (Multiple Document Interface)"
+msgstr "ÇSA ( Çoxlu Sənəd Araüzü MDI)"
+
+#: src/dialogs/prefs.glade.h:15
+msgid "Modal"
+msgstr "Modal"
+
+#: src/dialogs/prefs.glade.h:16
+msgid "Notebook"
+msgstr "Qeyd dəftəri"
+
+#: src/dialogs/prefs.glade.h:17
+msgid "Notebook _tab position: "
+msgstr "Qeyd dəftəri _tab yeri: "
+
+#: src/dialogs/prefs.glade.h:18
+msgid "Orientation"
+msgstr "İstiqamǝt"
+
+#: src/dialogs/prefs.glade.h:19
+msgid "Paper"
+msgstr "Kağız"
+
+#: src/dialogs/prefs.glade.h:20
+msgid "Pick a Font"
+msgstr "Bir yazıtipini seç"
+
+#: src/dialogs/prefs.glade.h:21
+msgid "Pick a color"
+msgstr "Bir rəng seç"
+
+#: src/dialogs/prefs.glade.h:22
+msgid "Preferences"
+msgstr "Seçənəklər"
+
+#: src/dialogs/prefs.glade.h:23
+msgid "Print line _numbers every:"
+msgstr "Hər X sətir nömrəs_inı çap et: "
+
+#: src/dialogs/prefs.glade.h:24
+msgid "Printing"
+msgstr "Çap"
+
+#: src/dialogs/prefs.glade.h:25
+msgid "Right"
+msgstr "Sağ"
+
+#: src/dialogs/prefs.glade.h:26
+msgid "S_how statusbar"
+msgstr "Vəziyyət çubuğunu _göstər"
+
+#: src/dialogs/prefs.glade.h:27
+msgid "Set limit on _undo levels to:"
+msgstr "_Arxaya gedişlərə bir sərhəd qoy:"
+
+#: src/dialogs/prefs.glade.h:28
+msgid "Set toolbar according to _system settings"
+msgstr "Ləvazimat çubuğunu sistem qurğularına_görə düzəlt"
+
+#: src/dialogs/prefs.glade.h:29
+msgid "Set toolbar to _icons only"
+msgstr "Ləvazimat çubuğunda sırf_Timsallardan istifadə et"
+
+#: src/dialogs/prefs.glade.h:30
+msgid "Set toolbar to icons with _text"
+msgstr "Ləvazimat çubuğunda mətnli_Timsallardan istifadə et"
+
+#: src/dialogs/prefs.glade.h:31
+msgid "Tab _width: "
+msgstr "Təb _uzunluǧü "
+
+#: src/dialogs/prefs.glade.h:32
+msgid "Top"
+msgstr "Üst"
+
+#: src/dialogs/prefs.glade.h:33
+msgid "Toplevel"
+msgstr "Ən Üst"
+
+#: src/dialogs/prefs.glade.h:34 src/menus.c:276
+msgid "Undo"
+msgstr "Arxaya"
+
+#: src/dialogs/prefs.glade.h:35
+msgid "_Background: "
+msgstr "Ar_xa plan: "
+
+#: src/dialogs/prefs.glade.h:36
+msgid "_Default font: "
+msgstr "Ə_sas Yazı Növü : "
+
+#: src/dialogs/prefs.glade.h:37
+msgid "_Foreground: "
+msgstr "Ö_n plan: "
+
+#: src/dialogs/prefs.glade.h:38
+msgid "_Landscape"
+msgstr "_Mənzərə"
+
+#: src/dialogs/prefs.glade.h:39
+msgid "_Mode: "
+msgstr "_Mod: "
+
+#: src/dialogs/prefs.glade.h:40
+msgid "_Portrait"
+msgstr "_Portret"
+
+#: src/dialogs/prefs.glade.h:41
+msgid "_level(s)"
+msgstr "_səviyyə(lər)"
+
+#: src/dialogs/prefs.glade.h:42
+msgid "l_ine(s)"
+msgstr "_sətir(lər)"
+
+#: src/dialogs/program.glade.h:1
+msgid "_Location to search for:"
+msgstr "Axtarılacaq _Yer :"
+
+#: src/dialogs/program.glade.h:2
+msgid "gedit: Browse for program location..."
+msgstr "gedit: Proqram yerini axtarmaq üçün gəz..."
+
+#: src/dialogs/program.glade.h:3
+msgid "gedit: Set program location..."
+msgstr "gedit: Proqramın yerini bildirin..."
+
+#: src/dialogs/program.glade.h:4
+msgid "label"
+msgstr "etiket"
+
+#: src/dialogs/replace.glade.h:1
+msgid "Case _sensitive"
+msgstr "Böyük/Kiçik_Hərf Həssas"
+
+#: src/dialogs/replace.glade.h:2
+msgid "Find Next"
+msgstr "Sonrakını Tap"
+
+#: src/dialogs/replace.glade.h:4
+msgid "Replace All"
+msgstr "Hamısını Dəyişdir"
+
+#: src/dialogs/replace.glade.h:5
+msgid "Search from the _beginning of the document"
+msgstr "Faylın  _başından etibarən axtarmağa başla"
+
+#: src/dialogs/replace.glade.h:6
+msgid "Search from the _cursor position"
+msgstr "_ox yerindən etibarən axtarmağa başla"
+
+#: src/dialogs/replace.glade.h:7
+msgid "_Replace with: "
+msgstr "Bununla _dəyişdir:"
+
+#: src/dialogs/replace.glade.h:8
+msgid "_Search for: "
+msgstr "_Bunu axtar:"
+
+#: src/dialogs/uri.glade.h:1
+msgid "Enter the location (URI) of the file you would like to open:"
+msgstr "Açmaq istǝdiyiniz faylın yerini (URI) bildir:"
+
+#: src/dialogs/uri.glade.h:2 src/menus.c:259
+msgid "Open"
+msgstr "Aç"
+
+#: src/dialogs/uri.glade.h:3
+msgid "Open from URI"
+msgstr "URI-dən Aç"
 
 #: src/document.c:267 src/document.c:271
 msgid "RO - "
@@ -621,10 +1149,6 @@ msgid "New"
 msgstr "Təzə"
 
 #: src/menus.c:259
-msgid "Open"
-msgstr "Aç"
-
-#: src/menus.c:259
 msgid "Open a file"
 msgstr "Bir faylı aç"
 
@@ -651,10 +1175,6 @@ msgstr "Çap Et"
 #: src/menus.c:271
 msgid "Print the current file"
 msgstr "İndiki faylı çap et"
-
-#: src/menus.c:276
-msgid "Undo"
-msgstr "Arxaya"
 
 #: src/menus.c:276
 msgid "Undo last operation"
@@ -868,390 +1388,3 @@ msgstr ""
 #: src/view.c:949
 msgid "You can't remove the last view of a document."
 msgstr "Bir sənədin son görünüşünü də silə bilməzsən."
-
-#~ msgid "Char"
-#~ msgstr "Xarakter"
-
-#~ msgid "Dec#"
-#~ msgstr "Dec#"
-
-#~ msgid "Hex#"
-#~ msgstr "Hex#"
-
-#~ msgid ""
-#~ "If you wish to insert any of the characters in to the active \n"
-#~ "document, select the character and click the \"Insert Char\" \n"
-#~ "button or double click the character in the table."
-#~ msgstr ""
-#~ "Fəal sənədə hər haznsı bir zarakter daxil etmək istəyirsinizsə,\n"
-#~ "xarakteri seçin və \"Xarakteri Əlavə Et\" düyməsinə tıqlayın.\n"
-#~ "Ya da xarakter cədvəlində iki dəfə tıqlayın."
-
-#~ msgid "Insert char"
-#~ msgstr "Xarakter əlavə et"
-
-#~ msgid "Name"
-#~ msgstr "Ad"
-
-#~ msgid "gedit: ASCII table"
-#~ msgstr "gedit: ASCII cədvəli"
-
-#~ msgid " _Change... "
-#~ msgstr "_Dəyişdir ..."
-
-#~ msgid "Enter the _URL to browse for:"
-#~ msgstr "Gəzmək istədiyiniz _Urlni girin:"
-
-#~ msgid "Lynx found at: "
-#~ msgstr "Lynx bu cıǧırda tapıldı : "
-
-#~ msgid "gedit: Web Browse plugin"
-#~ msgstr "gedit: Veb Səhhayı Əlavəsi"
-
-#~ msgid "location"
-#~ msgstr "yeri"
-
-#~ msgid " Decimal to _Hex "
-#~ msgstr "Onluqdan On _Altılıǧa"
-
-#~ msgid " Decimal to _Octal "
-#~ msgstr "Onluqdan _Səkkizliyə"
-
-#~ msgid " Hex to Decima_l "
-#~ msgstr "On Altılıqdan On_luǧa"
-
-#~ msgid "_Converted value:"
-#~ msgstr "Dö_nüşdürülən Qiymət :"
-
-#~ msgid "_Value to be converted:"
-#~ msgstr "Dönüşdürüləcək _Qiymət:"
-
-#~ msgid "gedit: Number Converter plugin"
-#~ msgstr "gedit: Rəqəm Dönüşdürücüsü Əsalvəsi"
-
-#~ msgid "Choose the files to compare"
-#~ msgstr "Müqayisə ediləcək faylları seçin"
-
-#~ msgid "Diff found at: "
-#~ msgstr "Diff bu cıǧırda tapıldı : "
-
-#~ msgid "First"
-#~ msgstr "Birinci"
-
-#~ msgid "From a file on disk"
-#~ msgstr "Diskdəki fayldan"
-
-#~ msgid "From document"
-#~ msgstr "Sənəddən"
-
-#~ msgid "Second"
-#~ msgstr "İkinci"
-
-#~ msgid "Select the \"first\" file..."
-#~ msgstr "\"Birinci\" faylı seçin..."
-
-#~ msgid "Select the \"second\" file..."
-#~ msgstr "\"İkinci\" faylı seçin..."
-
-#~ msgid "Use the _unified output format (-u option)"
-#~ msgstr "_Unifiyǝ yekun şǝkli işlǝt (-u seçǝnǝk)"
-
-#~ msgid "gedit: Diff plugin"
-#~ msgstr "gedit : \"Diff\" əlavəsi"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "Characters (no spaces)"
-#~ msgstr "Xarakterlər (boşluqsuz)"
-
-#~ msgid "Characters (with spaces)"
-#~ msgstr "Xarakterlər (boşluqlarla birlikdə)"
-
-#~ msgid "Current column"
-#~ msgstr "Hazırkı Sütun"
-
-#~ msgid "Current line"
-#~ msgstr "Hazırkı Sətir"
-
-#~ msgid "File Name"
-#~ msgstr "Fayl Adı"
-
-#~ msgid "Lines"
-#~ msgstr "Sətirlər"
-
-#~ msgid "Paragraphs"
-#~ msgstr "Paraqraflar"
-
-#~ msgid "Update"
-#~ msgstr "Güncəllə"
-
-#~ msgid "Words"
-#~ msgstr "Kəlmələr"
-
-#~ msgid "gedit: Document Info plugin"
-#~ msgstr "gedit: Sənəd İnfo Əlavəsi"
-
-#~ msgid "Change..."
-#~ msgstr "Dəyişdir ..."
-
-#~ msgid "F_rom:"
-#~ msgstr "Gön_dərən :"
-
-#~ msgid "File to use as body of message: "
-#~ msgstr "Xəbərin əsas mətni olaraq istifadə ediləcək fayl: "
-
-#~ msgid "From:"
-#~ msgstr "Göndərən :"
-
-#~ msgid "Sendmail found at:"
-#~ msgstr "Sendmail bu cıǧırda tapıldı: "
-
-#~ msgid "Subject:"
-#~ msgstr "Mövzu :"
-
-#~ msgid "To:"
-#~ msgstr "Göndərilən :"
-
-#~ msgid "_Subject:"
-#~ msgstr "_Mövzu :"
-
-#~ msgid "_To:"
-#~ msgstr "_Göndərilən :"
-
-#~ msgid "filename"
-#~ msgstr "fayladı"
-
-#~ msgid "gedit: E-mail plugin"
-#~ msgstr "gedit : ePoçt əlavəsi"
-
-#~ msgid "gedit: e-mail plugin"
-#~ msgstr "gedit : ePoçt əlavəsi"
-
-#~ msgid "Select the working directory..."
-#~ msgstr "Fəal qovluǧu seçin..."
-
-#~ msgid "Shell _command:"
-#~ msgstr "Qabıq ə_mr.: "
-
-#~ msgid "Specify the working directory and the command you want to run."
-#~ msgstr "Fəal qovluǧu və işə salmaq istədiyiniz əmri bildirin."
-
-#~ msgid "_Working directory:"
-#~ msgstr "_Fəal qovluq:"
-
-#~ msgid "gedit: Shell Output plugin"
-#~ msgstr "gedit: Əmr Çıxış əlavəsi"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "Case Sensitive"
-#~ msgstr "Böyük Kiçik Hərfə Həssas"
-
-#~ msgid "Sort starting at column:"
-#~ msgstr "Nizamlamanın başlama sütunu:"
-
-#~ msgid "gedit: Sort plugin"
-#~ msgstr "gedit: Nizamlama əlavəsi"
-
-#~ msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
-#~ msgstr "(C) 1998, 1999, 2000 Alex Roberts və Evan Lawrence"
-
-#~ msgid "gedit is a small and lightweight text editor for GNOME."
-#~ msgstr "gedit GNOME/Gtk+ üçün kiçik və istifadəsi asand bir düzəldicidir"
-
-#~ msgid "Goto Line"
-#~ msgstr "Sətirə get"
-
-#~ msgid "Line number:"
-#~ msgstr "Sətir nömrəsi : "
-
-#~ msgid "Author(s):"
-#~ msgstr "Müəllif(lər):"
-
-#~ msgid "De_scription"
-#~ msgstr "İ_zahat"
-
-#~ msgid "De_tails"
-#~ msgstr "Tə_fsilat"
-
-#~ msgid "File name:"
-#~ msgstr "Fayl adı:"
-
-#~ msgid "Plugins manager..."
-#~ msgstr "Əlavəlar idarəçisi..."
-
-#~ msgid "Select the plugins to activate:"
-#~ msgstr "Fəallaşdırılacaq əlavələri seç:"
-
-#~ msgid "_Activate all"
-#~ msgstr "Hamısını _fəallaşdır"
-
-#~ msgid "_Deactivate all"
-#~ msgstr "Hamısını _yenidən fəallaşdır"
-
-#~ msgid "Add _header"
-#~ msgstr "_Başlığı əlavə et"
-
-#~ msgid "Appearance"
-#~ msgstr "Görünüş"
-
-#~ msgid "Bottom"
-#~ msgstr "Alt"
-
-#~ msgid "Colors"
-#~ msgstr "Rənglər"
-
-#~ msgid "Default"
-#~ msgstr "Əsas"
-
-#~ msgid "Documents"
-#~ msgstr "Sənədlər"
-
-#~ msgid "Editor Behavior"
-#~ msgstr "Düzəldici Davranışı"
-
-#~ msgid "Enable _Auto-indent"
-#~ msgstr "_Avtomatik aralamayı aç"
-
-#~ msgid "Enable word _wrapping"
-#~ msgstr "Sətir _qırmasını aç"
-
-#~ msgid "Fonts"
-#~ msgstr "Yazıtipləri"
-
-#~ msgid "Fonts/Colors"
-#~ msgstr "Yazı növləri/Rənglər"
-
-#~ msgid "General"
-#~ msgstr "Ümumi"
-
-#~ msgid "Left"
-#~ msgstr "Sol"
-
-#~ msgid "MDI (Multiple Document Interface)"
-#~ msgstr "ÇSA ( Çoxlu Sənəd Araüzü MDI)"
-
-#~ msgid "Modal"
-#~ msgstr "Modal"
-
-#~ msgid "Notebook"
-#~ msgstr "Qeyd dəftəri"
-
-#~ msgid "Notebook _tab position: "
-#~ msgstr "Qeyd dəftəri _tab yeri: "
-
-#~ msgid "Orientation"
-#~ msgstr "İstiqamǝt"
-
-#~ msgid "Paper"
-#~ msgstr "Kağız"
-
-#~ msgid "Pick a Font"
-#~ msgstr "Bir yazıtipini seç"
-
-#~ msgid "Pick a color"
-#~ msgstr "Bir rəng seç"
-
-#~ msgid "Preferences"
-#~ msgstr "Seçənəklər"
-
-#~ msgid "Print line _numbers every:"
-#~ msgstr "Hər X sətir nömrəs_inı çap et: "
-
-#~ msgid "Printing"
-#~ msgstr "Çap"
-
-#~ msgid "Right"
-#~ msgstr "Sağ"
-
-#~ msgid "S_how statusbar"
-#~ msgstr "Vəziyyət çubuğunu _göstər"
-
-#~ msgid "Set limit on _undo levels to:"
-#~ msgstr "_Arxaya gedişlərə bir sərhəd qoy:"
-
-#~ msgid "Set toolbar according to _system settings"
-#~ msgstr "Ləvazimat çubuğunu sistem qurğularına_görə düzəlt"
-
-#~ msgid "Set toolbar to _icons only"
-#~ msgstr "Ləvazimat çubuğunda sırf_Timsallardan istifadə et"
-
-#~ msgid "Set toolbar to icons with _text"
-#~ msgstr "Ləvazimat çubuğunda mətnli_Timsallardan istifadə et"
-
-#~ msgid "Tab _width: "
-#~ msgstr "Təb _uzunluǧü "
-
-#~ msgid "Top"
-#~ msgstr "Üst"
-
-#~ msgid "Toplevel"
-#~ msgstr "Ən Üst"
-
-#~ msgid "_Background: "
-#~ msgstr "Ar_xa plan: "
-
-#~ msgid "_Default font: "
-#~ msgstr "Ə_sas Yazı Növü : "
-
-#~ msgid "_Foreground: "
-#~ msgstr "Ö_n plan: "
-
-#~ msgid "_Landscape"
-#~ msgstr "_Mənzərə"
-
-#~ msgid "_Mode: "
-#~ msgstr "_Mod: "
-
-#~ msgid "_Portrait"
-#~ msgstr "_Portret"
-
-#~ msgid "_level(s)"
-#~ msgstr "_səviyyə(lər)"
-
-#~ msgid "l_ine(s)"
-#~ msgstr "_sətir(lər)"
-
-#~ msgid "_Location to search for:"
-#~ msgstr "Axtarılacaq _Yer :"
-
-#~ msgid "gedit: Browse for program location..."
-#~ msgstr "gedit: Proqram yerini axtarmaq üçün gəz..."
-
-#~ msgid "gedit: Set program location..."
-#~ msgstr "gedit: Proqramın yerini bildirin..."
-
-#~ msgid "label"
-#~ msgstr "etiket"
-
-#~ msgid "Case _sensitive"
-#~ msgstr "Böyük/Kiçik_Hərf Həssas"
-
-#~ msgid "Find Next"
-#~ msgstr "Sonrakını Tap"
-
-#~ msgid "Replace All"
-#~ msgstr "Hamısını Dəyişdir"
-
-#~ msgid "Search from the _beginning of the document"
-#~ msgstr "Faylın  _başından etibarən axtarmağa başla"
-
-#~ msgid "Search from the _cursor position"
-#~ msgstr "_ox yerindən etibarən axtarmağa başla"
-
-#~ msgid "_Replace with: "
-#~ msgstr "Bununla _dəyişdir:"
-
-#~ msgid "_Search for: "
-#~ msgstr "_Bunu axtar:"
-
-#~ msgid "Enter the location (URI) of the file you would like to open:"
-#~ msgstr "Açmaq istǝdiyiniz faylın yerini (URI) bildir:"
-
-#~ msgid "Open from URI"
-#~ msgstr "URI-dən Aç"
-
-#~ msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-#~ msgstr "AaBbCcÇçDdEeƏəFfGgĞğHhıIiJjKkLlMmNnOoÖöPpQqRrSsŞşTtUuÜüVvWwXxYyZz"
