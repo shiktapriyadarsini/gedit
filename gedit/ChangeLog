@@ -1,5 +1,11 @@
 2002-11-15  Paolo Maggi  <maggi@athena.polito.it>
 
+	* gedit-plugins-engine.c (gedit_plugins_engine_load_dir): 
+	use G_MODULE_SUFFIX, instead of the hardcoded string ".so"
+	(fix bug #93765, thanks to Benjamin Thery) - backported from HEAD
+
+2002-11-15  Paolo Maggi  <maggi@athena.polito.it>
+
 	* bonobo-mdi.c: fixed Documents menu - backported from HEAD
 
 2002-11-15  Paolo Maggi  <maggi@athena.polito.it>
