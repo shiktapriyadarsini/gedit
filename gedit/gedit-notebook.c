@@ -231,7 +231,7 @@ find_notebook_at_pointer (gint abs_x, gint abs_y)
 	if ((toplevel != NULL) && 
 	    GEDIT_IS_WINDOW (toplevel))
 	{
-		return GEDIT_NOTEBOOK (gedit_window_get_notebook
+		return GEDIT_NOTEBOOK (_gedit_window_get_notebook
 						(GEDIT_WINDOW (toplevel)));
 	}
 
@@ -1090,10 +1090,15 @@ gedit_notebook_add_tab (GeditNotebook *nb,
 
 	if (jump_to)
 	{
+		GeditView *view;
+		
 		gtk_notebook_set_current_page (GTK_NOTEBOOK (nb), position);
 		g_object_set_data (G_OBJECT (tab), 
 				   "jump_to",
 				   GINT_TO_POINTER (jump_to));
+		view = gedit_tab_get_view (tab);
+		
+		gtk_widget_grab_focus (GTK_WIDGET (view));
 	}
 }
 
@@ -1180,13 +1185,4 @@ gedit_notebook_remove_tab (GeditNotebook *nb,
 	g_signal_emit (G_OBJECT (nb), signals[TAB_REMOVED], 0, tab);
 
 	g_object_unref (tab);
-
-	// FIXME: modify this behavior 
-#if 0
-	/* if that was the last tab, destroy the window */
-	if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (nb)) == 0)
-	{
-		gtk_widget_destroy (gtk_widget_get_toplevel (GTK_WIDGET (nb)));
-	}
-#endif 
 }

@@ -53,7 +53,8 @@ INST_H_FILES =				\
 	gedit-window.h			\
 	gedit-panel.h			\
 	gedit-statusbar.h		\
-	gedit-print.h
+	gedit-print.h			\
+	gedit-app.h
 
 #	gedit2.h			\
 #	gedit-file.h			\
@@ -95,6 +96,7 @@ gedit_SOURCES = 			\
 	gedit-languages-manager.c	\
 	gedit-plugins-engine.c		\
 	gedit-print.c			\
+	gedit-app.c			\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 

@@ -24,6 +24,8 @@
  * Modified by the gedit Team, 2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifndef __GEDIT_TAB_H__
@@ -77,14 +79,7 @@ struct _GeditTabClass
 /*
  * Public methods
  */
-GType 		 gedit_tab_get_type 		(void);
-
-GtkWidget 	*gedit_tab_new 			(void);
-
-/* Whether create is TRUE, creates a new empty document if location does 
-   not refer to an existing file */
-GtkWidget	*gedit_tab_new_from_uri		(const gchar *location,
-						 gboolean     create);
+GType 		 gedit_tab_get_type 		(void) G_GNUC_CONST;
 
 GeditView	*gedit_tab_get_view		(GeditTab    *tab);
 
@@ -95,6 +90,12 @@ GeditDocument	*gedit_tab_get_document		(GeditTab    *tab);
 /*
  * Non exported methods
  */
+GtkWidget 	*_gedit_tab_new 			(void);
+
+/* Whether create is TRUE, creates a new empty document if location does 
+   not refer to an existing file */
+GtkWidget	*_gedit_tab_new_from_uri		(const gchar *location,
+						 gboolean     create);
 gchar 		*_gedit_tab_get_name		(GeditTab    *tab);
 gchar 		*_gedit_tab_get_tooltips	(GeditTab    *tab);
 GdkPixbuf 	*_gedit_tab_get_icon		(GeditTab    *tab);

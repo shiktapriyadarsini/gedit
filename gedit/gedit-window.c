@@ -46,6 +46,7 @@
 #include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-prefs-manager-app.h"
+#include "gedit-app.h"
 
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
 
@@ -336,8 +337,11 @@ static GeditWindow *
 clone_window (GeditWindow *origin)
 {
 	GtkWindow *window;
+	GeditApp  *app;
 	
-	window = GTK_WINDOW (g_object_new (GEDIT_TYPE_WINDOW, NULL));
+	app = gedit_app_get_default ();
+	
+	window = GTK_WINDOW (gedit_app_create_window (app));
 	
 	gtk_window_set_default_size (window, 
 				     origin->priv->width,
@@ -663,17 +667,32 @@ notebook_tab_removed (GeditNotebook *notebook,
 	g_return_if_fail (window->priv->num_tabs >= 0);
 	if (window->priv->num_tabs == 0)
 	{
-		window->priv->active_tab = NULL;
-		set_title (window);
+		GeditApp *app;
+		const GSList *windows;
+			
+		app = gedit_app_get_default ();
+		windows = gedit_app_get_windows (app);		
+		g_return_if_fail (windows != NULL);
 		
-		/* Remove line and col info */
-		gedit_statusbar_set_cursor_position (
-				GEDIT_STATUSBAR (window->priv->statusbar),
-				-1,
-				-1);
+		if (windows->next != NULL)
+		{
+			/* the list has more than one item */
+			gtk_widget_destroy (GTK_WIDGET (window));
+		}
+		else
+		{	
+			window->priv->active_tab = NULL;
+			set_title (window);
+		
+			/* Remove line and col info */
+			gedit_statusbar_set_cursor_position (
+					GEDIT_STATUSBAR (window->priv->statusbar),
+					-1,
+					-1);
 				
-		gedit_statusbar_clear_overwrite (
-				GEDIT_STATUSBAR (window->priv->statusbar));				
+			gedit_statusbar_clear_overwrite (
+					GEDIT_STATUSBAR (window->priv->statusbar));								
+		}
 	}
 }
 
@@ -687,7 +706,7 @@ notebook_tab_detached (GeditNotebook *notebook,
 	new_window = clone_window (window);
 		
 	gedit_notebook_move_tab (notebook,
-				 GEDIT_NOTEBOOK (gedit_window_get_notebook (new_window)),
+				 GEDIT_NOTEBOOK (_gedit_window_get_notebook (new_window)),
 				 tab, 0);
 				 
 	gtk_window_set_position (GTK_WINDOW (new_window), 
@@ -922,47 +941,6 @@ gedit_window_init (GeditWindow *window)
 	                  NULL);			  
 }
 
-GtkWidget *
-gedit_window_new (void)
-{
-	GtkWindow *window;
-	
-	window = GTK_WINDOW (g_object_new (GEDIT_TYPE_WINDOW, NULL));
-	
-	/* Set window state and size, but only if the session is not being restored */
-	// FIXME
-	// if (!bonobo_mdi_get_restoring_state (mdi))
-	{
-		GdkWindowState state;
-		
-		state = gedit_prefs_manager_get_window_state ();
-
-		if ((state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
-		{
-			gtk_window_set_default_size (window,
-						     gedit_prefs_manager_get_default_window_width (),
-						     gedit_prefs_manager_get_default_window_height ());
-
-			gtk_window_maximize (window);
-		}
-		else
-		{
-			gtk_window_set_default_size (window, 
-						     gedit_prefs_manager_get_window_width (),
-						     gedit_prefs_manager_get_window_height ());
-
-			gtk_window_unmaximize (window);
-		}
-
-		if ((state & GDK_WINDOW_STATE_STICKY ) != 0)
-			gtk_window_stick (window);
-		else
-			gtk_window_unstick (window);
-	}
-	
-	return GTK_WIDGET (window);
-}
-
 GeditView *
 gedit_window_get_active_view (GeditWindow *window)
 {
@@ -993,10 +971,37 @@ gedit_window_get_active_document (GeditWindow *window)
 }
 
 GtkWidget *
-gedit_window_get_notebook (GeditWindow *window)
+_gedit_window_get_notebook (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return window->priv->notebook;
 }
+
+GeditTab *
+gedit_window_create_tab (GeditWindow *window,
+			 gboolean     jump_to)
+{
+	GeditTab *tab;
+	
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
+	tab = GEDIT_TAB (_gedit_tab_new ());	
+	gtk_widget_show (GTK_WIDGET (tab));	
+	
+	gedit_notebook_add_tab (GEDIT_NOTEBOOK (window->priv->notebook),
+				tab,
+				-1,
+				jump_to);
+				
+	return tab;
+}
+
+GeditTab *
+gedit_window_get_active_tab (GeditWindow *window)
+{
+	return (window->priv->active_tab == NULL) ? 
+				NULL : GEDIT_TAB (window->priv->active_tab);
+}
+
 

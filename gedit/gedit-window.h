@@ -30,7 +30,8 @@
 #define __GEDIT_WINDOW_H__
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-view.h>
+
+#include <gedit/gedit-tab.h>
 
 G_BEGIN_DECLS
 
@@ -76,12 +77,19 @@ struct _GeditWindowClass
  */
 GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
 
-GtkWidget 	*gedit_window_new 			(void);
+GeditTab	*gedit_window_create_tab		(GeditWindow *window,
+							 gboolean     jump_to);
 
-GtkWidget	*gedit_window_get_notebook		(GeditWindow *window);
+GeditTab	*gedit_window_get_active_tab		(GeditWindow *window);
 
+/* Helper functions */
 GeditView	*gedit_window_get_active_view		(GeditWindow *window);
 GeditDocument	*gedit_window_get_active_document	(GeditWindow *window);
+
+/*
+ * Non exported functions
+ */
+GtkWidget	*_gedit_window_get_notebook		(GeditWindow *window);
 
 G_END_DECLS
 

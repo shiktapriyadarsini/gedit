@@ -49,23 +49,20 @@
 #include "gedit-plugins-engine.h"
 #include "gedit-convert.h"
 #include "gedit-window.h"
-#include "gedit-notebook.h"
-#include "gedit-tab.h"
+#include "gedit-app.h"
+#include "gedit-metadata-manager.h"
 
 static struct poptOption options[] =
 {
 	{ NULL, 0, 0, NULL, 0, NULL, NULL }
 };
 
-
-
 int
 main (int argc, char *argv[])
 {
 	GnomeProgram *program;
-	GtkWidget *window;
-	GtkWidget *notebook;
-	GtkWidget *tab;
+	GeditWindow *window;
+	GeditApp *app;
 
 	setlocale (LC_ALL, "");
 
@@ -122,30 +119,22 @@ main (int argc, char *argv[])
 
 	gedit_app_server = gedit_application_server_new (gdk_screen_get_default ());
 #endif
-
-	window = gedit_window_new ();
+	app = gedit_app_get_default ();
 	
-	notebook = gedit_window_get_notebook (GEDIT_WINDOW (window));
+	window = gedit_app_create_window (app);
+	gedit_window_create_tab (window, TRUE);
 	
-	tab = gedit_tab_new ();	
-	gtk_widget_show (tab);	
-	gedit_notebook_add_tab (GEDIT_NOTEBOOK (notebook),
-				GEDIT_TAB (tab),
-				-1,
-				FALSE);
-	tab = gedit_tab_new ();
-	gtk_widget_show (tab);
-	gedit_notebook_add_tab (GEDIT_NOTEBOOK (notebook),
-				GEDIT_TAB (tab),
-				-1,
-				FALSE);				 
-	gtk_widget_show (window);
+	gtk_widget_show (GTK_WIDGET (window));
 	
 	gtk_main();
 	
-	g_object_unref (window);
+	gedit_prefs_manager_app_shutdown ();
+	gedit_metadata_manager_shutdown ();
+	// gedit_plugins_engine_shutdown ();
 	
 	g_object_unref (program);
+	
+	g_print ("Quit!\n");
 	
 	return 0;
 }

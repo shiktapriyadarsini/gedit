@@ -144,6 +144,7 @@ gedit_tab_init (GeditTab *tab)
 	/* Create the view */
 	doc = gedit_document_new ();
 	tab->priv->view = gedit_view_new (doc);
+	g_object_unref (doc);
 	gtk_widget_show (tab->priv->view);
 	
 	gtk_box_pack_start (GTK_BOX (tab), sw, TRUE, TRUE, 0);
@@ -163,7 +164,7 @@ gedit_tab_init (GeditTab *tab)
 }
 
 GtkWidget *
-gedit_tab_new (void)
+_gedit_tab_new (void)
 {
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_TAB, NULL));
 }
@@ -171,7 +172,7 @@ gedit_tab_new (void)
 /* Whether create is TRUE, creates a new empty document if location does 
    not refer to an existing file */
 GtkWidget *
-gedit_tab_new_from_uri (const gchar *location,
+_gedit_tab_new_from_uri (const gchar *location,
 			gboolean     create)
 {
 	GeditTab *tab;
@@ -179,7 +180,7 @@ gedit_tab_new_from_uri (const gchar *location,
 	
 	g_return_val_if_fail (location != NULL, NULL);
 	
-	tab = GEDIT_TAB (gedit_tab_new ());
+	tab = GEDIT_TAB (_gedit_tab_new ());
 	
 	doc = gedit_tab_get_document (tab);
 

@@ -55,11 +55,7 @@
 void
 gedit_cmd_file_new (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	gedit_file_new ();
-#endif
+	gedit_window_create_tab (window, TRUE);
 }
 
 void
