@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-06 10:46+0200\n"
-"PO-Revision-Date: 2003-07-06 10:26+0200\n"
+"POT-Creation-Date: 2003-07-19 19:05+0200\n"
+"PO-Revision-Date: 2003-07-19 19:04+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -2524,7 +2524,7 @@ msgstr "Fermer _tout"
 
 #: src/gedit-ui.xml.h:77
 msgid "_Contents"
-msgstr "_Contenu"
+msgstr "_Sommaire"
 
 #: src/gedit-ui.xml.h:78
 msgid "_Copy"
