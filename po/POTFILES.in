@@ -1,3 +1,5 @@
+#src/dialogs/dialog-about.c
+#src/dialogs/dialog-goto-line.c
 gedit.desktop.in
 gedit.keys.in
 plugins/ASCII/ascii.c
@@ -6,6 +8,7 @@ plugins/browse/browse.c
 plugins/browse/browse.glade
 plugins/convert/convert.c
 plugins/convert/convert.glade
+plugins/cvschangelog/cvschangelog.c
 plugins/diff/diff.c
 plugins/diff/diff.glade
 plugins/docinfo/docinfo.c
@@ -20,8 +23,6 @@ plugins/sort/sort.c
 plugins/sort/sort.glade
 plugins/time/time.c
 src/dialogs/about.glade
-#src/dialogs/dialog-about.c
-#src/dialogs/dialog-goto-line.c
 src/dialogs/dialog-plugins.c
 src/dialogs/dialog-prefs.c
 src/dialogs/dialog-replace.c
@@ -38,9 +39,9 @@ src/gedit.c
 src/menus.c
 src/plugin.c
 src/prefs.c
-src/print.c
 src/print-doc.c
 src/print-util.c
+src/print.c
 src/recent.c
 src/search.c
 src/utils.h
