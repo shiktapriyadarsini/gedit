@@ -33,13 +33,15 @@
 #include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <string.h>
 
 #include <glib/gi18n.h>
  
 #include "gedit-window.h"
-#include "gedit-commands.h"
 #include "gedit-notebook.h"
 #include "gedit-statusbar.h"
+#include "gedit-utils.h"
+#include "gedit-commands.h"
  
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
 
@@ -55,6 +57,9 @@ struct _GeditWindowPrivate
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
 	GtkActionGroup *action_group;
+	
+	GeditTab       *active_tab;
+	gint            num_tabs;
 };
 
 G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
@@ -92,45 +97,45 @@ static GtkActionEntry gedit_menu_entries[] =
 
 	/* File menu */
 	{ "FileNew", GTK_STOCK_NEW, N_("_New"), "<control>N",
-	  N_("Create a new document"), G_CALLBACK (gedit_cmd_file_new) },
+	  N_("Create a new document"), /* G_CALLBACK (gedit_cmd_file_new) */ NULL },
 	{ "FileOpen", GTK_STOCK_OPEN, N_("_Open..."), "<control>O",
-	  N_("Open a file"), G_CALLBACK (gedit_cmd_file_open) },
+	  N_("Open a file"), /* G_CALLBACK (gedit_cmd_file_open)*/ NULL },
 	{ "FileOpenURI", NULL, N_("Open _Location..."), "<control>L",
-	  N_("Open a file from a specified location"), G_CALLBACK (gedit_cmd_file_open_uri) },
+	  N_("Open a file from a specified location"), /* G_CALLBACK (gedit_cmd_file_open_uri)*/ NULL },
 	{ "FileSave", GTK_STOCK_SAVE, N_("Save"), "<control>S",
-	  N_("Save the current file"), G_CALLBACK (gedit_cmd_file_save) },
+	  N_("Save the current file"), /* G_CALLBACK (gedit_cmd_file_save) */ NULL},
 	{ "FileSaveAs", GTK_STOCK_SAVE_AS, N_("Save _As..."), "<shift><control>S",
-	  N_("Save the current file with a different name"), G_CALLBACK (gedit_cmd_file_save_as) },
+	  N_("Save the current file with a different name"), /* G_CALLBACK (gedit_cmd_file_save_as)*/ NULL },
 	{ "FileRevert", GTK_STOCK_REVERT_TO_SAVED, N_("_Revert"), NULL,
-	  N_("Revert to a saved version of the file"), G_CALLBACK (gedit_cmd_file_revert) },
+	  N_("Revert to a saved version of the file"), /* G_CALLBACK (gedit_cmd_file_revert)*/ NULL },
 	{ "FilePageSetup", NULL, N_("Page Set_up..."), NULL,
-	  N_("Setup the page settings"), G_CALLBACK (gedit_cmd_file_page_setup) },
+	  N_("Setup the page settings"), /* G_CALLBACK (gedit_cmd_file_page_setup) */ NULL},
 	{ "FilePrintPreview", GTK_STOCK_PRINT_PREVIEW, N_("Print Previe_w"),"<control><shift>P",
-	  N_("Print preview"), G_CALLBACK (gedit_cmd_file_print_preview) },
+	  N_("Print preview"), /* G_CALLBACK (window_cmd_file_print_preview) */ NULL },
 	 { "FilePrint", GTK_STOCK_PRINT, N_("_Print..."), "<control>P",
-	  N_("Print the current page"), G_CALLBACK (gedit_cmd_file_print) },
+	  N_("Print the current page"), /* G_CALLBACK (window_cmd_file_print) */ NULL},
 	{ "FileClose", GTK_STOCK_CLOSE, N_("_Close"), "<control>W",
-	  N_("Close the current file"), G_CALLBACK (gedit_cmd_file_close) },
+	  N_("Close the current file"), /* G_CALLBACK (window_cmd_file_close_window) */ NULL},
 	{ "FileQuit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
-	  N_("Quit the program"), G_CALLBACK (gedit_cmd_file_quit) },
+	  N_("Quit the program"), /* G_CALLBACK (window_cmd_file_quit) */ NULL},
 
 	/* Edit menu */
 	{ "EditUndo", GTK_STOCK_UNDO, N_("_Undo"), "<control>Z",
-	  N_("Undo the last action"), G_CALLBACK (gedit_cmd_edit_undo) },
+	  N_("Undo the last action"), /* G_CALLBACK (window_cmd_edit_undo) */ NULL},
 	{ "EditRedo", GTK_STOCK_REDO, N_("_Redo"), "<shift><control>Z",
-	  N_("Redo the last undone action"), G_CALLBACK (gedit_cmd_edit_redo) },
+	  N_("Redo the last undone action"), /* G_CALLBACK (window_cmd_edit_redo) */ NULL},
 	{ "EditCut", GTK_STOCK_CUT, N_("Cu_t"), "<control>X",
-	  N_("Cut the selection"), G_CALLBACK (gedit_cmd_edit_cut) },
+	  N_("Cut the selection"), NULL},
 	{ "EditCopy", GTK_STOCK_COPY, N_("_Copy"), "<control>C",
-	  N_("Copy the selection"), G_CALLBACK (gedit_cmd_edit_copy) },
+	  N_("Copy the selection"), NULL},
 	{ "EditPaste", GTK_STOCK_PASTE, N_("_Paste"), "<control>V",
-	  N_("Paste the clipboard"), G_CALLBACK (gedit_cmd_edit_paste) },
+	  N_("Paste the clipboard"), NULL},
 	{ "EditDelete", GTK_STOCK_DELETE, N_("_Delete"), NULL,
-	  N_("Delete the selected text"), G_CALLBACK (gedit_cmd_edit_delete) },
+	  N_("Delete the selected text"), NULL},
 	{ "EditSelectAll", NULL, N_("Select _All"), "<control>A",
-	  N_("Select the entire document"), G_CALLBACK (gedit_cmd_edit_select_all) },
+	  N_("Select the entire document"), NULL},
 	{ "EditPreferences", GTK_STOCK_PREFERENCES, N_("Pr_eferences"), NULL,
-	  N_("Configure the application"), G_CALLBACK (gedit_cmd_edit_preferences) },
+	  N_("Configure the application"), NULL},
 
 	/* View menu */
 	{ "ViewToolbar", NULL, N_("_Toolbar"), NULL,
@@ -154,9 +159,9 @@ static GtkActionEntry gedit_menu_entries[] =
 
 	/* Help menu */
 	{"HelpContents", GTK_STOCK_HELP, N_("_Contents"), "F1",
-	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents) },
+	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents)},
 	{ "HelpAbout", GTK_STOCK_ABOUT, N_("_About"), NULL,
-	  N_("About this application"), G_CALLBACK (gedit_cmd_help_about) }  
+	  N_("About this application"), G_CALLBACK (gedit_cmd_help_about)}  
 };
 
 static guint gedit_n_menu_entries = G_N_ELEMENTS (gedit_menu_entries);
@@ -294,6 +299,187 @@ create_statusbar (GeditWindow *window,
 			  0);
 }
 
+#define MAX_TITLE_LENGTH 100
+
+static gchar *
+get_dirname (const gchar *uri)
+{
+	gchar *res;
+	gchar *str;
+
+	str = g_path_get_dirname (uri);
+	g_return_val_if_fail (str != NULL, ".");
+
+	if ((strlen (str) == 1) && (*str == '.'))
+	{
+		g_free (str);
+		
+		return NULL;
+	}
+
+	res = gedit_utils_replace_home_dir_with_tilde (str);
+
+	g_free (str);
+	
+	return res;
+}
+
+static void 
+set_title (GeditWindow *window)
+{
+	GeditDocument *doc = NULL;
+	gchar *short_name;
+	gchar *name;
+	gchar *dirname = NULL;
+	gchar *title = NULL;
+	gint len;
+
+	if (window->priv->active_tab == NULL)
+	{
+		gtk_window_set_title (GTK_WINDOW (window), "gedit");
+		return;
+	}
+
+	doc = gedit_tab_get_document (window->priv->active_tab);
+	g_return_if_fail (doc != NULL);
+
+	short_name = gedit_document_get_short_name (doc);
+	g_return_if_fail (short_name != NULL);
+
+	len = g_utf8_strlen (short_name, -1);
+
+	/* if the name is awfully long, truncate it and be done with it,
+	 * otherwise also show the directory (ellipsized if needed)
+	 */
+	if (len > MAX_TITLE_LENGTH)
+	{
+		name = gedit_utils_str_middle_truncate (short_name, 
+							MAX_TITLE_LENGTH);
+		g_free (short_name);
+	}
+	else
+	{
+		gchar *uri;
+		gchar *str;
+
+		name = short_name;
+
+		uri = gedit_document_get_uri (doc);
+		g_return_if_fail (uri != NULL);
+
+		str = get_dirname (uri);
+		g_free (uri);
+
+		if (str != NULL)
+		{
+			/* use the remaining space for the dir, but use a min of 20 chars
+			 * so that we do not end up with a dirname like "(a...b)".
+			 * This means that in the worst case when the filename is long 99
+			 * we have a title long 99 + 20, but I think it's a rare enough
+			 * case to be acceptable. It's justa darn title afterall :)
+			 */
+			dirname = gedit_utils_str_middle_truncate (str, 
+								   MAX (20, MAX_TITLE_LENGTH - len));
+			g_free (str);
+		}
+	}
+
+	if (gedit_document_get_modified (doc))
+	{
+		if (dirname != NULL)
+			title = g_strdup_printf ("*%s (%s) - gedit", 
+						 name, 
+						 dirname);
+		else
+			title = g_strdup_printf ("*%s - gedit", 
+						 name);
+	} 
+	else 
+	{
+		if (gedit_document_is_readonly (doc)) 
+		{
+			if (dirname != NULL)
+				title = g_strdup_printf ("%s [%s] (%s) - gedit", 
+							 name, 
+							 _("Read Only"), 
+							 dirname);
+			else
+				title = g_strdup_printf ("%s [%s] - gedit", 
+							 name, 
+							 _("Read Only"));
+		} 
+		else 
+		{
+			if (dirname != NULL)
+				title = g_strdup_printf ("%s (%s) - gedit", 
+							 name, 
+							 dirname);
+			else
+				title = g_strdup_printf ("%s - gedit", 
+							 name);
+		}
+	}
+
+	gtk_window_set_title (GTK_WINDOW (window), title);
+
+	g_free (dirname);
+	g_free (name);
+	g_free (title);
+}
+
+#undef MAX_TITLE_LENGTH
+
+static void 
+notebook_switch_page (GtkNotebook     *book, 
+		      GtkNotebookPage *pg,
+		      gint             page_num, 
+		      GeditWindow     *window)
+{
+	window->priv->active_tab = GEDIT_TAB (
+					gtk_notebook_get_nth_page (book, 
+								   page_num));
+
+	set_title (window);
+}
+
+static void
+sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
+{
+	set_title (window);
+}
+
+static void
+notebook_tab_added (GeditNotebook *notebook,
+		    GeditTab      *tab,
+		    GeditWindow   *window)
+{
+	
+	++window->priv->num_tabs;
+	g_signal_connect (tab, 
+			 "notify::name",
+			  G_CALLBACK (sync_name), 
+			  window);	
+}
+
+static void
+notebook_tab_removed (GeditNotebook *notebook,
+		      GeditTab      *tab,
+		      GeditWindow   *window)
+{
+	--window->priv->num_tabs;
+	
+	g_signal_handlers_disconnect_by_func (tab,
+					      G_CALLBACK (sync_name), 
+					      window);
+					
+	g_return_if_fail (window->priv->num_tabs >= 0);
+	if (window->priv->num_tabs == 0)
+	{
+		window->priv->active_tab = NULL;
+		set_title (window);
+	}
+}
+
 /* Generates a unique string for a window role.
  *
  * Taken from EOG.
@@ -342,7 +528,9 @@ gedit_window_init (GeditWindow *window)
 	GtkWidget *label2;
 
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
-
+	window->priv->active_tab = NULL;
+	window->priv->num_tabs = 0;
+	
 	main_box = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (window), main_box);
 
@@ -387,6 +575,20 @@ gedit_window_init (GeditWindow *window)
 		g_free (role);
 	}
 
+	/* Connect signals */
+	g_signal_connect (G_OBJECT (window->priv->notebook),
+			  "switch_page",
+			  G_CALLBACK (notebook_switch_page),
+			  window);
+	g_signal_connect (G_OBJECT (window->priv->notebook),
+			  "tab_added",
+			  G_CALLBACK (notebook_tab_added),
+			  window);
+	g_signal_connect (G_OBJECT (window->priv->notebook),
+			  "tab_removed",
+			  G_CALLBACK (notebook_tab_removed),
+			  window);
+			  
 	/* show the window */
 	gtk_widget_show_all (GTK_WIDGET (window));
 }

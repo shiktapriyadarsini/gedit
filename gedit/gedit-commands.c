@@ -558,7 +558,6 @@ gedit_cmd_documents_move_to_new_window (GtkAction *action, GeditWindow *window)
 void 
 gedit_cmd_help_contents (GtkAction *action, GeditWindow *window)
 {
-#if 0
 	GError *error = NULL;
 
 	gedit_debug (DEBUG_COMMANDS, "");
@@ -567,11 +566,10 @@ gedit_cmd_help_contents (GtkAction *action, GeditWindow *window)
 
 	if (error != NULL)
 	{
-		g_warning (error->message);
+		gedit_warning (window, error->message);
 
 		g_error_free (error);
 	}
-#endif
 }
 
 static void
