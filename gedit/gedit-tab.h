@@ -86,7 +86,7 @@ GtkWidget 	*gedit_tab_new 			(void);
 GtkWidget	*gedit_tab_new_from_uri		(const gchar *location,
 						 gboolean     create);
 
-GeditView	*gedit_tag_get_view		(GeditTab    *tab);
+GeditView	*gedit_tab_get_view		(GeditTab    *tab);
 
 /* This is only an helper function */
 GeditDocument	*gedit_tab_get_document		(GeditTab    *tab);

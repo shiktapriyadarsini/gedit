@@ -188,7 +188,7 @@ gedit_tab_new_from_uri (const gchar *location,
 }		
 
 GeditView *
-gedit_tag_get_view (GeditTab *tab)
+gedit_tab_get_view (GeditTab *tab)
 {
 	return GEDIT_VIEW (tab->priv->view);
 }

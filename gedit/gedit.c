@@ -126,7 +126,6 @@ main (int argc, char *argv[])
 	window = gedit_window_new ();
 	
 	notebook = gedit_window_get_notebook (GEDIT_WINDOW (window));
-	gtk_widget_show (notebook);
 	
 	tab = gedit_tab_new ();	
 	gtk_widget_show (tab);	
