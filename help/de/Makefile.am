@@ -1,8 +1,8 @@
 figs = \
 	figures/gedit_window.png
 docname = gedit
-lang = ja
-omffile = gedit-ja.omf
+lang = de
+omffile = gedit-de.omf
 entities = legal.xml
 include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
