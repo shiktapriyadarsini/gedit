@@ -183,8 +183,8 @@ gedit_convert_to_utf8   (const gchar          *content,
 			charset = gedit_encoding_get_charset (enc);
 			g_return_val_if_fail (charset != NULL, NULL);
 
-			gedit_debug_message (DEBUG_UTILS, "Trying to convert %ld bytes of data from ' %s'to 'UTF-8'.", 
-					len, charset);
+			gedit_debug_message (DEBUG_UTILS, "Trying to convert %lu bytes of data from '%s' to 'UTF-8'.", 
+					(unsigned long) len, charset);
 
 			utf8_content = gedit_convert_to_utf8_from_charset (content, len, charset, NULL);
 

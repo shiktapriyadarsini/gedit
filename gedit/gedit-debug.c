@@ -106,7 +106,7 @@ void gedit_debug (GeditDebugSection  section,
 {
 	if (debug & section)
 	{
-		g_print ("%s:%d (%s) %s\n", file, line, function);
+		g_print ("%s:%d (%s)\n", file, line, function);
 		fflush (stdout);
 	}
 }
