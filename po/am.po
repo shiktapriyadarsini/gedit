@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit VERSION\n"
+"Project-Id-Version: gedit 2.0\n"
 "POT-Creation-Date: 2002-10-09 05:13+0200\n"
 "PO-Revision-Date: 2002-10-29 09:00+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:26
 msgid "Selected Text Color"
-msgstr ""
+msgstr "የተመረጠው ጽሑፍ ቀለም"
 
 #: data/gedit.schemas.in.h:27
 msgid "Selection Color"
@@ -497,7 +497,7 @@ msgstr ""
 
 #: plugins/diff/diff.glade2.h:1
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: plugins/diff/diff.glade2.h:2
 msgid "Choose the files to compare."
@@ -617,6 +617,7 @@ msgstr "የቅጂ መብት (C) 2002 - Paolo Maggi"
 #: plugins/docinfo/docinfo.glade2.h:1
 msgid "0"
 msgstr "0"
+
 
 #: plugins/docinfo/docinfo.glade2.h:2
 msgid "Bytes"
@@ -953,7 +954,7 @@ msgstr "አትም"
 
 #: src/dialogs/gedit-preferences-dialog.c:241
 msgid "Plugins"
-msgstr "ተጨማሪ ፕሮግራሞች (ፕላግኢንስ)"
+msgstr "ተጨማሪ ፕሮግራሞች (Plugins)"
 
 #: src/dialogs/gedit-preferences-dialog.c:308
 msgid "Cat_egories:"
@@ -1247,7 +1248,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:61
 msgid "action(s)"
-msgstr ""
+msgstr "እንቅስቃሴ(ዎች)"
 
 #: src/dialogs/gedit-preferences.glade2.h:62
 msgid "minutes"
@@ -1271,7 +1272,7 @@ msgstr ""
 
 #: src/dialogs/gnome-print-font-dialog.c:243
 msgid "Font Selection"
-msgstr ""
+msgstr "የፊደል ቅርጽ ተመረጠው"
 
 #: src/dialogs/gnome-print-font-picker.c:89
 msgid "sans 12"
@@ -1372,7 +1373,7 @@ msgstr ""
 
 #: src/dialogs/program-location-dialog.glade2.h:3
 msgid "label"
-msgstr ""
+msgstr "መለያ"
 
 #: src/dialogs/replace.glade2.h:1
 msgid "Case sensi_tive"
@@ -1518,7 +1519,7 @@ msgstr "ፋይል ክፈት ..."
 #: src/gedit-file.c:176 src/gedit-file.c:831
 #, c-format
 msgid "Loaded file '%s'"
-msgstr "ፋይል '%s'  ተጭኗል"
+msgstr "ፋይል '%s' ተጭኗል"
 
 #: src/gedit-file.c:304 src/gedit-file.c:433
 #, c-format
@@ -1820,11 +1821,11 @@ msgstr "ክፈት"
 
 #: src/gedit-ui.xml.h:33
 msgid "Open Location..."
-msgstr ""
+msgstr "ቦታ ክፍት..."
 
 #: src/gedit-ui.xml.h:34
 msgid "Open _Location..."
-msgstr ""
+msgstr "ቦታ ክፍት... (_L)"
 
 #: src/gedit-ui.xml.h:35
 msgid "Open a file"
@@ -2080,7 +2081,7 @@ msgstr "_ቱልባር"
 
 #: src/gedit-ui.xml.h:104
 msgid "_Tools"
-msgstr "_መሣሪያዎች (ቱልስ)"
+msgstr "_መሣሪያዎች"
 
 #: src/gedit-ui.xml.h:105
 msgid "_Undo"
@@ -2112,7 +2113,7 @@ msgstr ""
 #: src/gedit-utils.c:816
 #, c-format
 msgid "Could not open the file \"%s\""
-msgstr ""
+msgstr "ፋይሉ \"%s\"ን መክፈት አልተቻለም"
 
 #: src/gedit-utils.c:826
 #, c-format
