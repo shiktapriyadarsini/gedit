@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit (gnome-2-2)\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-03-04 05:00+0300\n"
+"POT-Creation-Date: 2003-08-11 21:13+0300\n"
+"PO-Revision-Date: 2003-08-11 21:16+0300\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #: data/GNOME_Gedit.server.in.h:1
 msgid "gedit application"
@@ -1886,8 +1886,9 @@ msgstr "Avaa URI:stä"
 #: src/gedit-commands.c:472
 msgid "translator_credits"
 msgstr ""
-"Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
-"http://gnome-fi.sourceforge.net/"
+"Jarkko Ranta 2003\n"
+"\n"
+"http://gnome-fi.org/"
 
 #: src/gedit-commands.c:497
 msgid "gedit"
@@ -2444,9 +2445,8 @@ msgid "Show _Overwrite Mode"
 msgstr "Näytä _ylikirjoitustila"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Näytä vain kuvakkeet työkalupalkissa"
+msgstr "Näytä molemmat kuvakkeet ja teksti työkalupalkissa"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2457,9 +2457,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Näytä ylikirjoitustila tilarivillä"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Näytä vain kuvakkeet työkalupalkissa"
+msgstr "Näytä teksti kuvakkeiden vieressä työkalupalkissa"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
