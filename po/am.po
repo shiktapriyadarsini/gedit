@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.0\n"
 "POT-Creation-Date: 2002-11-24 14:36+0100\n"
-"PO-Revision-Date: 2002-10-29 09:00+EDT\n"
+"PO-Revision-Date: 2002-12-13 15:52+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:10
 msgid "Display Line Numbers"
-msgstr "የመስመር ቁጥሮች አሳይ"
+msgstr "የመስመር ቍጥሮች አሳይ"
 
 #: data/gedit.schemas.in.h:11
 msgid "Editor Font"
@@ -1340,7 +1340,7 @@ msgstr "መጠኑን አሳይ"
 
 #: src/dialogs/gnome-print-font-picker.c:236
 msgid "Show size in font info mode"
-msgstr "በመረጃው የፊደል ቅርጽ መንገድ ውስጥ መጠንም አሳይ"
+msgstr "በመረጃው የፊደል ቅርጽ መተላለፊያ ውስጥ መጠንም አሳይ"
 
 #. gnome_print_font_picker_update_font_info
 #: src/dialogs/goto-line.glade2.h:1
@@ -1691,7 +1691,7 @@ msgstr "ገጽ፦ %d"
 
 #: src/gedit-print.c:517
 msgid "gedit - Print Preview"
-msgstr "gedit - የህትመት ቅድመ ዕይታ"
+msgstr "gedit - ቅድመ ህትመት ዕይታ"
 
 #: src/gedit-print.c:595
 #, c-format
@@ -1866,7 +1866,7 @@ msgstr "የ_ቅድመ ህትመት ዕይታ"
 
 #: src/gedit-ui.xml.h:44
 msgid "Print Preview"
-msgstr "የቅድመ ህትመት ዕይታ"
+msgstr "ቅድመ ህትመት ዕይታ"
 
 #: src/gedit-ui.xml.h:45
 msgid "Print Setup"
@@ -1874,7 +1874,7 @@ msgstr "የህትመት ቅንጅት"
 
 #: src/gedit-ui.xml.h:46
 msgid "Print preview"
-msgstr "የቅድመ ህትመት ዕይታ"
+msgstr "ቅድመ ህትመት ዕይታ"
 
 #: src/gedit-ui.xml.h:47
 msgid "Print the current file"
@@ -2453,57 +2453,3 @@ msgstr ""
 #, c-format
 msgid "Open %s"
 msgstr "ክፈት %s"
-
-#~ msgid "Could not create the Plugin Manager dialog"
-#~ msgstr "የፕላግ ኢን ማናጀር ልውውጥን መፍጠር አልተቻለም"
-
-#~ msgid "Toolbar"
-#~ msgstr "ቱልባር"
-
-#~ msgid "Status bar"
-#~ msgstr "ስታተስ ባር"
-
-#~ msgid "MDI"
-#~ msgstr "MDI"
-
-#~ msgid "User interface"
-#~ msgstr "የተጠቃሚው እይታ"
-
-#~ msgid "Bottom"
-#~ msgstr "ወደ ታች"
-
-#~ msgid "Left"
-#~ msgstr "ግራ"
-
-#~ msgid "Modal"
-#~ msgstr "አዛምድ"
-
-#~ msgid "Notebook"
-#~ msgstr "መስታወሻ ደብተር"
-
-#~ msgid "Right"
-#~ msgstr "ቀኝ"
-
-#~ msgid "Top"
-#~ msgstr "ወደ ላይ"
-
-#~ msgid "_Show status bar"
-#~ msgstr "_ስታቱስ ባር አሳይ"
-
-#~ msgid "_Show toolbar"
-#~ msgstr "_ቱልባር አሳይ"
-
-#~ msgid "Impossible to update gedit settings."
-#~ msgstr " የgeditን ይዞታ ለማሻሻል አይቻልም።"
-
-#~ msgid "Add/Remove plugins"
-#~ msgstr "ተጨማሪ/አጋዥ ፕሮግራሞችን ጨምር/ሰርዝ"
-
-#~ msgid "Plugin _Manager"
-#~ msgstr "ተጨማሪ ፕሮግራም _አስተዳደር"
-
-#~ msgid "Plugin _Manager..."
-#~ msgstr "ተጨማሪ ፕሮግራም _አስተዳደር"
-
-#~ msgid "The GNOME text editor"
-#~ msgstr "የኖም የጽሑፍ አርታዒ"
