@@ -77,7 +77,7 @@ G_MODULE_EXPORT GeditPluginState init (GeditPlugin *pd);
 static void
 dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (dialog_pointer != NULL)
 	{
@@ -89,7 +89,7 @@ dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 static void
 dialog_response_handler (GtkDialog *dlg, gint res_id,  DocInfoDialog *dialog)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	switch (res_id) {
 		case GTK_RESPONSE_OK:
@@ -110,7 +110,7 @@ get_dialog ()
 	GtkWindow *window;
 	GtkWidget *content;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	window = GTK_WINDOW (gedit_get_active_window ());
 
@@ -197,7 +197,7 @@ get_dialog ()
 static void
 word_count_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	word_count_real ();
 }
@@ -220,7 +220,7 @@ word_count_real (void)
 	gchar		*tmp_str;
 	gchar 		*file_name;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	dialog = get_dialog ();
 	if (!dialog)
@@ -265,10 +265,10 @@ word_count_real (void)
 		lines = 0;
 
 	bytes = strlen (text);
-	gedit_debug (DEBUG_PLUGINS, "Chars: %d", chars);
-	gedit_debug (DEBUG_PLUGINS, "Lines: %d", lines);
-	gedit_debug (DEBUG_PLUGINS, "Words: %d", words);
-	gedit_debug (DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars);
+	gedit_debug_message (DEBUG_PLUGINS, "Chars: %d", chars);
+	gedit_debug_message (DEBUG_PLUGINS, "Lines: %d", lines);
+	gedit_debug_message (DEBUG_PLUGINS, "Words: %d", words);
+	gedit_debug_message (DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars);
 	
 	g_free (attrs);
 	g_free (text);
@@ -306,7 +306,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 	BonoboUIComponent *uic;
 	GeditDocument *doc;
 	
-	gedit_debug (DEBUG_PLUGINS, "");	
+	gedit_debug (DEBUG_PLUGINS);	
 	g_return_val_if_fail (window != NULL, PLUGIN_ERROR);
 
 	uic = gedit_get_ui_component_from_window (window);
@@ -325,7 +325,7 @@ G_MODULE_EXPORT GeditPluginState
 activate (GeditPlugin *pd)
 {
 	GList *top_windows;
-        gedit_debug (DEBUG_PLUGINS, "");
+        gedit_debug (DEBUG_PLUGINS);
 
         top_windows = gedit_get_top_windows ();
         g_return_val_if_fail (top_windows != NULL, PLUGIN_ERROR);
@@ -357,7 +357,7 @@ G_MODULE_EXPORT GeditPluginState
 init (GeditPlugin *pd)
 {
 	/* initialize */
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
      
 	pd->private_data = NULL;
 		

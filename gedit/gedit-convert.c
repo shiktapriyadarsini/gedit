@@ -62,7 +62,7 @@ gedit_convert_to_utf8_from_charset (const gchar  *content,
 	g_return_val_if_fail (len > 0, NULL);
 	g_return_val_if_fail (charset != NULL, NULL);
 
-	gedit_debug (DEBUG_UTILS, "Trying to convert from %s to UTF-8", charset);
+	gedit_debug_message (DEBUG_UTILS, "Trying to convert from %s to UTF-8", charset);
 			
 	converted_contents = g_convert (content, 
 					len, 
@@ -74,8 +74,8 @@ gedit_convert_to_utf8_from_charset (const gchar  *content,
 						
 	if ((conv_error != NULL) || !g_utf8_validate (converted_contents, bytes_written, NULL))
 	{
-		gedit_debug (DEBUG_UTILS, "Couldn't convert from %s to UTF-8.",
-			     charset);
+		gedit_debug_message (DEBUG_UTILS, "Couldn't convert from %s to UTF-8.",
+				     charset);
 				
 		if (converted_contents != NULL)
 			g_free (converted_contents);
@@ -84,9 +84,10 @@ gedit_convert_to_utf8_from_charset (const gchar  *content,
 			g_propagate_error (error, conv_error);		
 		else
 		{
-			gedit_debug (DEBUG_UTILS, "The file you are trying to open contains "
-					"an invalid byte sequence.");
-			
+			gedit_debug_message (DEBUG_UTILS,
+					     "The file you are trying to open contains "
+					     "an invalid byte sequence.");
+
 			g_set_error (error, GEDIT_CONVERT_ERROR, GEDIT_CONVERT_ERROR_ILLEGAL_SEQUENCE,
 				     _("The file you are trying to open contains an invalid byte sequence."));
 		}
@@ -95,7 +96,7 @@ gedit_convert_to_utf8_from_charset (const gchar  *content,
 	{
 		g_return_val_if_fail (converted_contents != NULL, NULL);
 
-		gedit_debug (DEBUG_UTILS, "Converted from %s to UTF-8.", charset);
+		gedit_debug_message (DEBUG_UTILS, "Converted from %s to UTF-8.", charset);
 	
 		utf8_content = converted_contents;
 	}
@@ -109,11 +110,11 @@ gedit_convert_to_utf8   (const gchar          *content,
 			 const GeditEncoding **encoding,
 			 GError              **error)
 {
-	gedit_debug (DEBUG_UTILS, "");
-	
+	gedit_debug (DEBUG_UTILS);
+
 	g_return_val_if_fail (content != NULL, NULL);
 	g_return_val_if_fail (encoding != NULL, NULL);
-	
+
 	if (len < 0)
 		len = strlen (content);
 
@@ -137,23 +138,24 @@ gedit_convert_to_utf8   (const gchar          *content,
 		GSList *encodings = NULL;
 		GSList *start;
 
-		gedit_debug (DEBUG_UTILS, "Automatically detect the encoding used");
+		gedit_debug_message (DEBUG_UTILS,
+				     "Automatically detect the encoding used");
 
 		encodings = gedit_prefs_manager_get_auto_detected_encodings ();
 
 		if (encodings == NULL)
 		{
-			gedit_debug (DEBUG_UTILS, "encodings == NULL");
+			gedit_debug_message (DEBUG_UTILS, "encodings == NULL");
 			
 			if (g_utf8_validate (content, len, NULL))
 			{
-				gedit_debug (DEBUG_UTILS, "validate OK.");
+				gedit_debug_message (DEBUG_UTILS, "validate OK.");
 
 				return g_strndup (content, len);
 			}
 			else
 			{
-				gedit_debug (DEBUG_UTILS, "validate failed.");
+				gedit_debug_message (DEBUG_UTILS, "validate failed.");
 
 				g_set_error (error, GEDIT_CONVERT_ERROR, 
 					     GEDIT_CONVERT_ERROR_AUTO_DETECTION_FAILED,
@@ -164,7 +166,7 @@ gedit_convert_to_utf8   (const gchar          *content,
 			}
 		}
 
-		gedit_debug (DEBUG_UTILS, "encodings != NULL");
+		gedit_debug_message (DEBUG_UTILS, "encodings != NULL");
 
 		start = encodings;
 		
@@ -176,12 +178,12 @@ gedit_convert_to_utf8   (const gchar          *content,
 
 			enc = (const GeditEncoding *)encodings->data;
 
-			gedit_debug (DEBUG_UTILS, "Get charset");
+			gedit_debug_message (DEBUG_UTILS, "Get charset");
 
 			charset = gedit_encoding_get_charset (enc);
 			g_return_val_if_fail (charset != NULL, NULL);
 
-			gedit_debug (DEBUG_UTILS, "Trying to convert %ld bytes of data from ' %s'to 'UTF-8'.", 
+			gedit_debug_message (DEBUG_UTILS, "Trying to convert %ld bytes of data from ' %s'to 'UTF-8'.", 
 					len, charset);
 
 			utf8_content = gedit_convert_to_utf8_from_charset (content, len, charset, NULL);
@@ -196,9 +198,9 @@ gedit_convert_to_utf8   (const gchar          *content,
 			encodings = g_slist_next (encodings);
 		}
 
-		gedit_debug (DEBUG_UTILS, "gedit has not been able to automatically determine the encoding of "
-			     "the file you want to open.");
-		
+		gedit_debug_message (DEBUG_UTILS, "gedit has not been able to automatically determine the encoding of "
+				     "the file you want to open.");
+
 		g_set_error (error, GEDIT_CONVERT_ERROR,
 			     GEDIT_CONVERT_ERROR_AUTO_DETECTION_FAILED,
 		 	     _("gedit was not able to automatically determine "
@@ -221,7 +223,7 @@ gedit_convert_from_utf8 (const gchar          *content,
 	gchar  *converted_contents = NULL;
 	gsize   bytes_written = 0;
 
-	gedit_debug (DEBUG_UTILS, "");
+	gedit_debug (DEBUG_UTILS);
 	
 	g_return_val_if_fail (content != NULL, NULL);
 	g_return_val_if_fail (g_utf8_validate (content, len, NULL), NULL);
@@ -243,8 +245,8 @@ gedit_convert_from_utf8 (const gchar          *content,
 
 	if (conv_error != NULL)
 	{
-		gedit_debug (DEBUG_UTILS, "Cannot convert from UTF-8 to %s",
-				gedit_encoding_get_charset (encoding));
+		gedit_debug_message (DEBUG_UTILS, "Cannot convert from UTF-8 to %s",
+				     gedit_encoding_get_charset (encoding));
 
 		if (converted_contents != NULL)
 		{

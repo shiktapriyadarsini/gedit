@@ -101,7 +101,7 @@ gedit_file_new (void)
 	gint ret;
 	GeditMDIChild* new_child = NULL;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	new_child = gedit_mdi_child_new ();
 
@@ -110,11 +110,11 @@ gedit_file_new (void)
 
 	ret = bonobo_mdi_add_child (BONOBO_MDI (gedit_mdi), BONOBO_MDI_CHILD (new_child));
 	g_return_if_fail (ret != FALSE);
-	gedit_debug (DEBUG_COMMANDS, "Child added.");
+	gedit_debug_message (DEBUG_COMMANDS, "Child added.");
 
 	ret = bonobo_mdi_add_view (BONOBO_MDI (gedit_mdi), BONOBO_MDI_CHILD (new_child));
 	g_return_if_fail (ret != FALSE);
-	gedit_debug (DEBUG_COMMANDS, "View added.");
+	gedit_debug_message (DEBUG_COMMANDS, "View added.");
 	
 	gtk_widget_grab_focus (gedit_get_active_view ());
 }
@@ -125,7 +125,7 @@ gedit_file_close (GtkWidget *view)
 	BonoboMDIChild* child;
 	gboolean closed;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	g_return_val_if_fail (view != NULL, FALSE);
 
@@ -135,12 +135,12 @@ gedit_file_close (GtkWidget *view)
 	if (g_list_length (bonobo_mdi_child_get_views (child)) > 1)
 	{		
 		closed = bonobo_mdi_remove_view (BONOBO_MDI (gedit_mdi), view, FALSE);
-		gedit_debug (DEBUG_COMMANDS, "View removed.");
+		gedit_debug_message (DEBUG_COMMANDS, "View removed.");
 	}
 	else
 	{
 		closed = bonobo_mdi_remove_child (BONOBO_MDI (gedit_mdi), child, FALSE);
-		gedit_debug (DEBUG_COMMANDS, "Child removed.");
+		gedit_debug_message (DEBUG_COMMANDS, "Child removed.");
 	}
 
 	gedit_mdi_set_active_window_verbs_sensitivity (BONOBO_MDI (gedit_mdi));
@@ -150,7 +150,7 @@ gedit_file_close (GtkWidget *view)
 		gedit_mdi_clear_active_window_statusbar (gedit_mdi);
 	}
 
-	gedit_debug (DEBUG_FILE, "END");
+	gedit_debug_message (DEBUG_FILE, "END");
 
 	return closed;
 }
@@ -162,7 +162,7 @@ gedit_file_open (GeditMDIChild *active_child)
 	GSList              *files;
 	gchar               *default_path;
 	
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	default_path = NULL;
 	
@@ -209,7 +209,7 @@ gedit_file_save (GeditMDIChild* child, gboolean force)
 	GError *error = NULL;
 	gchar *uri = NULL;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	g_return_val_if_fail (child != NULL, FALSE);
 	
@@ -218,7 +218,7 @@ gedit_file_save (GeditMDIChild* child, gboolean force)
 
 	if (gedit_document_is_untitled (doc))
 	{
-		gedit_debug (DEBUG_FILE, "Untitled");
+		gedit_debug_message (DEBUG_FILE, "Untitled");
 
 		return gedit_file_save_as (child);
 	}
@@ -228,7 +228,7 @@ gedit_file_save (GeditMDIChild* child, gboolean force)
 		gchar *raw_uri;
 		gboolean deleted = FALSE;
 		
-		gedit_debug (DEBUG_FILE, "Not modified");
+		gedit_debug_message (DEBUG_FILE, "Not modified");
 
 		raw_uri = gedit_document_get_raw_uri (doc);
 		if (raw_uri != NULL)
@@ -256,7 +256,7 @@ gedit_file_save (GeditMDIChild* child, gboolean force)
 		GtkWidget *view;
 
 		g_return_val_if_fail (error != NULL, FALSE);
-		gedit_debug (DEBUG_FILE, "FAILED");
+		gedit_debug_message (DEBUG_FILE, "FAILED");
 
 		view = GTK_WIDGET (g_list_nth_data (
 					bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (child)), 0));
@@ -282,7 +282,7 @@ gedit_file_save (GeditMDIChild* child, gboolean force)
 	{
 		gchar *raw_uri;
 
-		gedit_debug (DEBUG_FILE, "OK");
+		gedit_debug_message (DEBUG_FILE, "OK");
 
 		gedit_utils_flash_va (_("The document \"%s\" has been saved."), uri);
 
@@ -311,7 +311,7 @@ gedit_file_save_as (GeditMDIChild *child)
 	gchar *path = NULL;
 	const GeditEncoding *encoding;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	g_return_val_if_fail (child != NULL, FALSE);
 
@@ -424,7 +424,7 @@ gedit_file_save_as (GeditMDIChild *child)
 						      file_utf8);
 		}
 
-		gedit_debug (DEBUG_FILE, "File: %s", file_uri);
+		gedit_debug_message (DEBUG_FILE, "File: %s", file_uri);
 
 		g_free (uri);
 		g_free (file_uri);
@@ -438,7 +438,7 @@ gboolean
 gedit_file_close_all (void)
 {
 	gboolean ret;
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	ret = gedit_mdi_remove_all (gedit_mdi);
 
@@ -455,26 +455,26 @@ gedit_file_close_all (void)
 void
 gedit_file_exit (void)
 {
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 	
 	if (!gedit_file_close_all ())
 		return;
 
-	gedit_debug (DEBUG_FILE, "All files closed.");
+	gedit_debug_message (DEBUG_FILE, "All files closed.");
 	
 	bonobo_mdi_destroy (BONOBO_MDI (gedit_mdi));
 	
-	gedit_debug (DEBUG_FILE, "Unref gedit_mdi.");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_mdi.");
 
 	g_object_unref (G_OBJECT (gedit_mdi));
 
-	gedit_debug (DEBUG_FILE, "Unref gedit_mdi: DONE");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_mdi: DONE");
 
-	gedit_debug (DEBUG_FILE, "Unref gedit_app_server.");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_app_server.");
 
 	bonobo_object_unref (gedit_app_server);
 
-	gedit_debug (DEBUG_FILE, "Unref gedit_app_server: DONE");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_app_server: DONE");
 
 	gedit_prefs_manager_app_shutdown ();
 	gedit_metadata_manager_shutdown ();
@@ -490,7 +490,7 @@ gedit_file_save_all (void)
 	GeditMDIChild *child;
 	GtkWidget *view;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	view = gedit_get_active_view ();
 
@@ -663,7 +663,7 @@ document_reverted_cb (GeditDocument *document,
 	{
 		gedit_utils_flash_va (_("Error reverting the document \"%s\"."), uri_to_display);
 
-		gedit_debug (DEBUG_DOCUMENT, "Error reverting file %s", uri_to_display);
+		gedit_debug_message (DEBUG_DOCUMENT, "Error reverting file %s", uri_to_display);
 
 		gedit_error_reporting_reverting_file (raw_uri,
 						      error,
@@ -688,7 +688,7 @@ gedit_file_revert (GeditMDIChild *child)
 	GeditDocument *doc = NULL;
 	gchar *uri = NULL;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	g_return_if_fail (child != NULL);
 
@@ -728,7 +728,7 @@ gedit_file_open_recent (EggRecentView *view, EggRecentItem *item, gpointer data)
 	
 	uri_utf8 = egg_recent_item_get_uri_utf8 (item);
 
-	gedit_debug (DEBUG_FILE, "Open : %s", uri_utf8);
+	gedit_debug_message (DEBUG_FILE, "Open : %s", uri_utf8);
 
 	/* Note that gedit_file_open_single_uri takes a possibly mangled "uri", in UTF8 */
 
@@ -750,7 +750,7 @@ gedit_file_open_recent (EggRecentView *view, EggRecentItem *item, gpointer data)
 
 	g_free (uri_utf8);
 
-	gedit_debug (DEBUG_FILE, "END");
+	gedit_debug_message (DEBUG_FILE, "END");
 
 	return ret;
 }
@@ -764,7 +764,7 @@ gedit_file_open_single_uri (const gchar* uri, const GeditEncoding *encoding)
 	GSList *uri_list;
 	gchar *full_path;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 	
 	if (uri == NULL) 
 		return FALSE;
@@ -789,7 +789,7 @@ gedit_file_open_from_stdin (GeditMDIChild *active_child)
 	GeditMDIChild *child;
 	GeditMDIChild* new_child = NULL;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 	
 	fstat (STDIN_FILENO, &stats);
 	
@@ -808,7 +808,7 @@ gedit_file_open_from_stdin (GeditMDIChild *active_child)
 
 		ret = bonobo_mdi_add_child (BONOBO_MDI (gedit_mdi), BONOBO_MDI_CHILD (new_child));
 		g_return_val_if_fail (ret != FALSE, FALSE);
-		gedit_debug (DEBUG_FILE, "Child added.");
+		gedit_debug_message (DEBUG_FILE, "Child added.");
 
 		child= new_child;
 	}
@@ -850,7 +850,7 @@ gedit_file_open_from_stdin (GeditMDIChild *active_child)
 	{
 		ret = bonobo_mdi_add_view (BONOBO_MDI (gedit_mdi), BONOBO_MDI_CHILD (new_child));
 		g_return_val_if_fail (ret != FALSE, FALSE);
-		gedit_debug (DEBUG_FILE, "View added.");
+		gedit_debug_message (DEBUG_FILE, "View added.");
 	}
 	
 	return ret;
@@ -1093,7 +1093,7 @@ document_loaded_cb (GeditDocument *document,
 		gedit_utils_set_status (NULL);
 		gedit_utils_flash_va (_("Error loading file \"%s\""), uri_to_display);
 
-		gedit_debug (DEBUG_DOCUMENT, "Error loading file %s", uri_to_display);
+		gedit_debug_message (DEBUG_DOCUMENT, "Error loading file %s", uri_to_display);
 
 		gedit_recent_remove (uri);
 
@@ -1105,7 +1105,7 @@ document_loaded_cb (GeditDocument *document,
 		if (new_child != NULL)
 			children_to_unref = g_slist_prepend (children_to_unref, new_child);
 
-		gedit_debug (DEBUG_DOCUMENT, "Returning %s", uri_to_display);
+		gedit_debug_message (DEBUG_DOCUMENT, "Returning %s", uri_to_display);
 	}
 	else
 	{	
@@ -1117,7 +1117,7 @@ document_loaded_cb (GeditDocument *document,
 		if (new_child != NULL)
 		{
 			bonobo_mdi_add_child (BONOBO_MDI (gedit_mdi), BONOBO_MDI_CHILD (new_child));
-			gedit_debug (DEBUG_FILE, "Child added.");
+			gedit_debug_message (DEBUG_FILE, "Child added.");
 
 			new_children = g_slist_prepend (new_children, new_child);
 		}
@@ -1269,7 +1269,7 @@ open_files ()
 	uri = utl->uri;
 	g_return_if_fail (uri != NULL);
 
-	gedit_debug (DEBUG_FILE, "File name: %s", uri);
+	gedit_debug_message (DEBUG_FILE, "File name: %s", uri);
 
 	uri_to_display = gnome_vfs_format_uri_for_display (uri);
 
@@ -1400,7 +1400,7 @@ gedit_file_open_uri_list (GSList *uri_list,
 {
 	GSList *l;
 
-	gedit_debug (DEBUG_FILE, "");
+	gedit_debug (DEBUG_FILE);
 
 	if (uri_list == NULL)
 		return TRUE;
@@ -1430,7 +1430,7 @@ gedit_file_open_uri_list (GSList *uri_list,
 
 		uri = gnome_vfs_make_uri_canonical ((const gchar*)l->data);
 
-		gedit_debug (DEBUG_FILE, "URI: %s", uri);
+		gedit_debug_message (DEBUG_FILE, "URI: %s", uri);
 
 		if (!uri)
 		{

@@ -79,8 +79,8 @@ GtkWidget	*gedit_statusbar_get_progress		(GeditStatusbar *statusbar);
 
 void		 gedit_statusbar_flash_message		(GeditStatusbar *statusbar,
 							 guint           context_id,
-							 gchar          *format,
-							 ...);
+							 const gchar    *format,
+							 ...) G_GNUC_PRINTF(3, 4);
 /* FIXME: these would be nice for plugins...
 void		 gedit_statusbar_add_widget		(GeditStatusbar *statusbar,
 							 GtkWidget      *widget);

@@ -39,12 +39,8 @@
 #include <config.h>
 #endif
 
-#include "gedit-notebook.h"
-#include "gedit-marshal.h"
-#include "gedit-window.h"
-#include "gedit-tooltips.h"
-
 #include <glib-object.h>
+#include <glib/gi18n.h>
 #include <gtk/gtkeventbox.h>
 #include <gtk/gtknotebook.h>
 #include <gtk/gtkhbox.h>
@@ -56,8 +52,13 @@
 #include <gtk/gtkimage.h>
 #include <gtk/gtkbutton.h>
 #include <gtk/gtkiconfactory.h>
-#include <glib/gi18n.h>
 // #include <libgnomevfs/gnome-vfs-uri.h>
+
+#include "gedit-notebook.h"
+#include "gedit-marshal.h"
+#include "gedit-window.h"
+#include "gedit-tooltips.h"
+
 
 #define TAB_WIDTH_N_CHARS 15
 
@@ -212,7 +213,7 @@ is_in_notebook_window (GeditNotebook *notebook,
 		       gint           abs_y)
 {
 	GeditNotebook *nb_at_pointer;
-	
+
 	g_return_val_if_fail (notebook != NULL, FALSE);
 
 	nb_at_pointer = find_notebook_at_pointer (abs_x, abs_y);
@@ -360,7 +361,8 @@ drag_start (GeditNotebook *notebook,
 
 	/* get a new cursor, if necessary */
 	/* FIXME multi-head */
-	if (!cursor) cursor = gdk_cursor_new (GDK_FLEUR);
+	if (!cursor)
+		cursor = gdk_cursor_new (GDK_FLEUR);
 
 	/* grab the pointer */
 	gtk_grab_add (GTK_WIDGET (notebook));
@@ -480,7 +482,7 @@ move_current_tab_to_another_notebook (GeditNotebook  *src,
 	 * in another window of the same app, we move the tab
 	 * to that new notebook, and let this notebook handle the
 	 * drag
-	*/
+	 */
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (dest));
 	g_return_if_fail (dest != src);
 
@@ -519,8 +521,7 @@ button_release_cb (GeditNotebook  *notebook,
 		gint cur_page_num;
 		GtkWidget *cur_page;
 
-		cur_page_num =
-			gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
+		cur_page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
 		cur_page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook),
 						      cur_page_num);
 

@@ -113,7 +113,7 @@ gedit_was_wrap_around_quark (void)
 static void
 dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 {
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	if (dialog_pointer != NULL)
 	{
@@ -153,7 +153,7 @@ update_menu_items_sensitivity (void)
 	BonoboUIComponent *ui_component;
 	gchar *lst;
 	
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 	
 	active_window = gedit_get_active_window ();
 	g_return_if_fail (active_window != NULL);
@@ -174,7 +174,7 @@ update_menu_items_sensitivity (void)
 static void
 dialog_replace_response_handler (GtkDialog *dlg, gint res_id,  GeditDialogReplace *replace_dialog)
 {
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	switch (res_id) {
 		case GEDIT_RESPONSE_FIND:
@@ -196,7 +196,7 @@ dialog_replace_response_handler (GtkDialog *dlg, gint res_id,  GeditDialogReplac
 static void
 dialog_find_response_handler (GtkDialog *dlg, gint res_id,  GeditDialogFind *find_dialog)
 {
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	switch (res_id) {
 		case GEDIT_RESPONSE_FIND:
@@ -242,7 +242,7 @@ dialog_replace_get_dialog (GeditWindow *parent)
 	GtkWidget *content;
 	GtkWidget *replace_with_label;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	if (dialog != NULL)
 	{
@@ -371,7 +371,7 @@ dialog_find_get_dialog (GeditWindow *parent)
 	GtkWidget *replace_entry;
 	GtkWidget *table;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	if (dialog != NULL)
 	{
@@ -479,7 +479,7 @@ escape_search_text (const gchar* text)
 
   	g_return_val_if_fail (text != NULL, NULL);
 
-	gedit_debug (DEBUG_SEARCH, "Text: %s", text);
+	gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
 
     	length = strlen (text);
 
@@ -522,7 +522,7 @@ insert_text_handler (GtkEditable *editable, const gchar *text, gint length, gint
 	gchar *escaped_text;
 	gint new_len;
 
-	gedit_debug (DEBUG_SEARCH, "Text: %s", text);
+	gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
 
 	/* To avoid recursive behavior */
 	if (insert_text)
@@ -530,7 +530,7 @@ insert_text_handler (GtkEditable *editable, const gchar *text, gint length, gint
 
 	escaped_text = escape_search_text (text);
 
-	gedit_debug (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
+	gedit_debug_message (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
 
 	new_len = strlen (escaped_text);
 
@@ -589,7 +589,7 @@ gedit_dialog_find (GeditWindow *parent)
 	gboolean was_search_backwards;
 	gpointer data;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	dialog = dialog_find_get_dialog (parent);
 	if (!dialog)
@@ -686,7 +686,7 @@ gedit_dialog_replace (GeditWindow *parent)
 	gboolean was_search_backwards;
 	gpointer data;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	dialog = dialog_replace_get_dialog (parent);
 	if (!dialog)
@@ -792,7 +792,7 @@ find_dlg_find_button_pressed (GeditDialogFind *dialog)
 	gboolean search_backwards;
 	gint flags = 0;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 	active_view = gedit_window_get_active_view (dialog->gedit_win);
 	if (active_view == NULL)
 		return;
@@ -858,7 +858,7 @@ replace_dlg_find_button_pressed (GeditDialogReplace *dialog)
 	gboolean search_backwards;
 	gint flags = 0;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	active_view = gedit_window_get_active_view (dialog->gedit_win);
 	if (active_view == NULL)
@@ -930,7 +930,7 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 	gboolean search_backwards;
 	gint flags = 0;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	g_return_if_fail (dialog != NULL);
 
@@ -951,8 +951,8 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 	g_return_if_fail (search_string);
 	g_return_if_fail (replace_string);
 
-	gedit_debug (DEBUG_SEARCH, "Search string: %s", search_string);
-	gedit_debug (DEBUG_SEARCH, "Replace string: %s", replace_string);
+	gedit_debug_message (DEBUG_SEARCH, "Search string: %s", search_string);
+	gedit_debug_message (DEBUG_SEARCH, "Replace string: %s", replace_string);
 
 	if (strlen (search_string) <= 0)
 		return;
@@ -974,7 +974,7 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 
 	get_selected_text (GTK_TEXT_BUFFER (doc), &selected_text, NULL);
 
-	gedit_debug (DEBUG_SEARCH, "Sel text: %s", selected_text ? selected_text : "NULL");
+	gedit_debug_message (DEBUG_SEARCH, "Sel text: %s", selected_text ? selected_text : "NULL");
 
 	if ((selected_text == NULL) ||
 	    (case_sensitive && (strcmp (selected_text, converted_search_string) != 0)) || 
@@ -982,7 +982,7 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 						        strlen (selected_text), 
 						        strlen (search_string)) != 0))
 	{
-		gedit_debug (DEBUG_SEARCH, "selected_text (%s) != search_string (%s)", 
+		gedit_debug_message (DEBUG_SEARCH, "selected_text (%s) != search_string (%s)", 
 			     selected_text ? selected_text : "NULL",
 			     search_string ? search_string : "NULL");
 
@@ -1000,11 +1000,11 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 	g_free (selected_text);
 	g_free (converted_search_string);
 		
-	gedit_debug (DEBUG_SEARCH, "Replace string: %s", replace_string ? replace_string : "NULL");
+	gedit_debug_message (DEBUG_SEARCH, "Replace string: %s", replace_string ? replace_string : "NULL");
 
 	gedit_document_replace_selected_text (doc, replace_string);
 
-	gedit_debug (DEBUG_SEARCH, "Replaced");
+	gedit_debug_message (DEBUG_SEARCH, "Replaced");
 
 	/* setup search parameter bitfield */
 	GEDIT_SEARCH_SET_FROM_CURSOR (flags, TRUE);
@@ -1015,7 +1015,7 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 	/* run search */
 	found = gedit_document_find (doc, search_string, flags);
 
-	gedit_debug (DEBUG_SEARCH, "Found 1: %s", found ? "TRUE" : "FALSE");
+	gedit_debug_message (DEBUG_SEARCH, "Found 1: %s", found ? "TRUE" : "FALSE");
 
 	/* if we're able to wrap, don't use the cursor position */
 	if (!found && wrap_around)
@@ -1023,7 +1023,7 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 		GEDIT_SEARCH_SET_FROM_CURSOR (flags, FALSE);
 		found = gedit_document_find (doc, search_string, flags);
 
-		gedit_debug (DEBUG_SEARCH, "Found 2: %s", found ? "TRUE" : "FALSE");
+		gedit_debug_message (DEBUG_SEARCH, "Found 2: %s", found ? "TRUE" : "FALSE");
 	}
 
 	if (found)
@@ -1035,7 +1035,7 @@ replace_dlg_replace_button_pressed (GeditDialogReplace *dialog)
 
 	update_menu_items_sensitivity ();
 
-	gedit_debug (DEBUG_SEARCH, "END");
+	gedit_debug_message (DEBUG_SEARCH, "END");
 }
 
 static void
@@ -1051,7 +1051,7 @@ replace_dlg_replace_all_button_pressed (GeditDialogReplace *dialog)
 	gboolean entire_word;
 	gint flags = 0;
 
- 	gedit_debug (DEBUG_SEARCH, "");
+ 	gedit_debug (DEBUG_SEARCH);
 
 	active_view = gedit_window_get_active_view (dialog->gedit_win);
 	if (active_view == NULL)

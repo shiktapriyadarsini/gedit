@@ -92,7 +92,7 @@ doc_readonly_changed_handler (GeditDocument *document,
 			      gboolean       readonly,
 			      GeditView     *view)
 {
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
 				    !readonly);
@@ -215,7 +215,7 @@ gedit_view_expose (GtkTextView    *widget,
 {
 	GtkTextBuffer* buffer = NULL;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_val_if_fail (GEDIT_IS_VIEW (view), FALSE);
 	
@@ -242,7 +242,7 @@ gedit_view_init (GeditView *view)
 #if 0
 	GeditDocument *doc;
 #endif	
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 	
 	/*
 	 *  Set tab, fonts, wrap mode, colors, etc. according
@@ -357,7 +357,7 @@ gedit_view_new (GeditDocument *doc)
 {
 	GtkWidget *view;
 	
-	gedit_debug (DEBUG_VIEW, "START");
+	gedit_debug_message (DEBUG_VIEW, "START");
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	
@@ -374,7 +374,7 @@ gedit_view_new (GeditDocument *doc)
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
 				    !gedit_document_is_readonly (doc));					  
 				    
-	gedit_debug (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
+	gedit_debug_message (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
 
 	gtk_widget_show_all (view);
 
@@ -386,7 +386,7 @@ gedit_view_cut_clipboard (GeditView *view)
 {
 	GtkTextBuffer *buffer = NULL;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -412,7 +412,7 @@ gedit_view_copy_clipboard (GeditView *view)
 {
 	GtkTextBuffer *buffer = NULL;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -435,7 +435,7 @@ gedit_view_paste_clipboard (GeditView *view)
 {
   	GtkTextBuffer *buffer = NULL;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -462,7 +462,7 @@ gedit_view_delete_selection (GeditView *view)
 {
   	GtkTextBuffer *buffer = NULL;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -489,7 +489,7 @@ gedit_view_select_all (GeditView *view)
 	GtkTextBuffer *buffer = NULL;
 	GtkTextIter start, end;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -505,7 +505,7 @@ gedit_view_scroll_to_cursor (GeditView *view)
 {
 	GtkTextBuffer* buffer = NULL;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 	
@@ -564,7 +564,7 @@ modify_cursor_color (GtkWidget *textview,
 	const gchar *name;
 	gchar *rc_temp;
 
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	name = get_widget_name (textview);
 	g_return_if_fail (name != NULL);
@@ -604,7 +604,7 @@ gedit_view_set_colors (GeditView *view,
 		       GdkColor  *selection,
 		       GdkColor  *sel_text)
 {
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -664,7 +664,7 @@ gedit_view_set_font (GeditView   *view,
 		     gboolean     def, 
 		     const gchar *font_name)
 {
-	gedit_debug (DEBUG_VIEW, "");
+	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 

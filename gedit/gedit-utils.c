@@ -76,7 +76,7 @@ gedit_utils_flash (const gchar *msg)
  * @format:
  **/
 void
-gedit_utils_flash_va (gchar *format, ...)
+gedit_utils_flash_va (const gchar *format, ...)
 {
 	va_list args;
 	gchar *msg;
@@ -120,7 +120,7 @@ gedit_utils_set_status (const gchar *msg)
 }
 
 void
-gedit_utils_set_status_va (gchar *format, ...)
+gedit_utils_set_status_va (const gchar *format, ...)
 {
 	va_list args;
 	gchar *msg;
@@ -161,7 +161,7 @@ gedit_utils_is_uri_read_only (const gchar* uri)
 
 	g_return_val_if_fail (uri != NULL, TRUE);
 	
-	gedit_debug (DEBUG_FILE, "URI: %s", uri);
+	gedit_debug_message (DEBUG_FILE, "URI: %s", uri);
 
 	/* FIXME: all remote files are marked as readonly */
 	if (!gedit_utils_uri_has_file_scheme (uri))
@@ -170,12 +170,12 @@ gedit_utils_is_uri_read_only (const gchar* uri)
 	canonical_uri = gnome_vfs_make_uri_canonical (uri);
 	g_return_val_if_fail (canonical_uri != NULL, TRUE);
 
-	gedit_debug (DEBUG_FILE, "CANONICAL URI: %s", canonical_uri);
+	gedit_debug_message (DEBUG_FILE, "CANONICAL URI: %s", canonical_uri);
 
 	file_uri = gnome_vfs_get_local_path_from_uri (canonical_uri);
 	if (file_uri == NULL)
 	{
-		gedit_debug (DEBUG_FILE, "FILE URI: NULL");
+		gedit_debug_message (DEBUG_FILE, "FILE URI: NULL");
 
 		return TRUE;
 	}
@@ -367,7 +367,7 @@ gedit_utils_uri_exists (const gchar* text_uri)
 		
 	g_return_val_if_fail (text_uri != NULL, FALSE);
 	
-	gedit_debug (DEBUG_FILE, "text_uri: %s", text_uri);
+	gedit_debug_message (DEBUG_FILE, "text_uri: %s", text_uri);
 
 	uri = gnome_vfs_uri_new (text_uri);
 	g_return_val_if_fail (uri != NULL, FALSE);
@@ -376,7 +376,7 @@ gedit_utils_uri_exists (const gchar* text_uri)
 
 	gnome_vfs_uri_unref (uri);
 
-	gedit_debug (DEBUG_FILE, res ? "TRUE" : "FALSE");
+	gedit_debug_message (DEBUG_FILE, res ? "TRUE" : "FALSE");
 
 	return res;
 }
@@ -503,7 +503,7 @@ gedit_utils_get_stdin (void)
 }
 
 void 
-gedit_warning (GtkWindow *parent, gchar *format, ...)
+gedit_warning (GtkWindow *parent, const gchar *format, ...)
 {
 	va_list args;
 	gchar *str;

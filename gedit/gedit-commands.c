@@ -71,7 +71,7 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 #if 0
 	BonoboMDIChild *active_child;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	active_child = bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi));
 
@@ -86,7 +86,7 @@ gedit_cmd_file_save (GtkAction *action, GeditWindow *window)
 	GeditMDIChild *active_child;
 	GtkWidget *active_view;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_get_active_view ();
 
@@ -107,7 +107,7 @@ gedit_cmd_file_save_as (GtkAction *action, GeditWindow *window)
 #if 0
 	GeditMDIChild *active_child;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
 	if (active_child == NULL)
@@ -121,7 +121,7 @@ void
 gedit_cmd_file_save_all (GtkAction *action, GeditWindow *window)
 {
 #if 0
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_file_save_all ();
 #endif
@@ -133,7 +133,7 @@ gedit_cmd_file_revert (GtkAction *action, GeditWindow *window)
 #if 0
 	GeditMDIChild *active_child;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
 	if (active_child == NULL)
@@ -147,7 +147,7 @@ void
 gedit_cmd_file_open_uri (GtkAction *action, GeditWindow *window)
 {
 #if 0
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_dialog_open_uri ();
 #endif
@@ -156,7 +156,7 @@ gedit_cmd_file_open_uri (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_file_page_setup (GtkAction *action, GeditWindow *window)
 {
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_show_page_setup_dialog (GTK_WINDOW (window));
 }
@@ -166,7 +166,7 @@ gedit_cmd_file_print_preview (GtkAction *action, GeditWindow *window)
 {
 	GeditDocument *doc;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_window_get_active_document (window);
 	if (doc == NULL)	
@@ -180,7 +180,7 @@ gedit_cmd_file_print (GtkAction *action, GeditWindow *window)
 {
 	GeditDocument *doc;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_window_get_active_document (window);
 	if (doc == NULL)	
@@ -195,7 +195,7 @@ _gedit_cmd_file_can_close (GeditTab *tab, GtkWindow *window)
 	GeditDocument *doc;
 	gboolean       close = TRUE;
 	
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 	
 	doc = gedit_tab_get_document (tab);
 	
@@ -225,7 +225,7 @@ gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 {
 	GeditTab      *active_tab;
 	
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 	
 	active_tab = gedit_window_get_active_tab (window);
 	if (active_tab == NULL)
@@ -243,7 +243,7 @@ gedit_cmd_file_close_all (GtkAction *action, GeditWindow *window)
 	GList    *l;
 	gboolean  close = FALSE;
 	
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 	
 	unsaved_docs = NULL;
 	docs = gedit_window_get_documents (window);
@@ -345,7 +345,7 @@ void
 gedit_cmd_file_quit (GtkAction *action, GeditWindow *window)
 {
 #if 0
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_file_exit ();	
 #endif
@@ -457,7 +457,7 @@ gedit_cmd_edit_select_all (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_edit_preferences (GtkAction *action, GeditWindow *window)
 {
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_show_preferences_dialog (GTK_WINDOW (window));
 }
@@ -467,7 +467,7 @@ gedit_cmd_view_show_toolbar (GtkAction *action, GeditWindow *window)
 {
 	gboolean visible;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
@@ -479,7 +479,7 @@ gedit_cmd_view_show_statusbar (GtkAction *action, GeditWindow *window)
 {
 	gboolean visible;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
@@ -491,7 +491,7 @@ gedit_cmd_view_show_side_pane (GtkAction *action, GeditWindow *window)
 {
 	gboolean visible;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
@@ -503,7 +503,7 @@ gedit_cmd_view_show_bottom_panel (GtkAction *action, GeditWindow *window)
 {
 	gboolean visible;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
@@ -515,7 +515,7 @@ gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 {
 	GeditSearchPanel *sp;
 	
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 	
 	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
 	
@@ -592,7 +592,7 @@ gedit_cmd_search_find_next (GtkAction *action, GeditWindow *window)
 	GeditDocument *doc;
 	gchar* last_searched_text;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_window_get_active_document (window);
 	g_return_if_fail (doc);
@@ -613,7 +613,7 @@ gedit_cmd_search_find_prev (GtkAction *action, GeditWindow *window)
 	GeditDocument *doc;
 	gchar* last_searched_text;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_window_get_active_document (window);
 	if (doc == NULL)
@@ -634,7 +634,7 @@ gedit_cmd_search_replace (GtkAction *action, GeditWindow *window)
 {
 	GeditView *active_view;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
 
@@ -649,7 +649,7 @@ gedit_cmd_search_goto_line (GtkAction *action, GeditWindow *window)
 {
 	GeditSearchPanel *sp;
 	
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 	
 	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
 	
@@ -680,7 +680,7 @@ gedit_cmd_help_contents (GtkAction *action, GeditWindow *window)
 {
 	GError *error = NULL;
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	gnome_help_display ("gedit.xml", NULL, &error);
 
@@ -736,7 +736,7 @@ gedit_cmd_help_about (GtkAction *action, GeditWindow *window)
 	   lines seperated by newlines (\n). */
 	const gchar *translator_credits = _("translator-credits");
 
-	gedit_debug (DEBUG_COMMANDS, "");
+	gedit_debug (DEBUG_COMMANDS);
 
 	data = g_object_get_data (G_OBJECT (window), GEDIT_ABOUT_DIALOG_KEY);
 	

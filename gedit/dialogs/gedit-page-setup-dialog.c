@@ -82,7 +82,7 @@ static void dialog_destroyed (GtkObject *obj,  void **dialog_pointer);
 static void
 dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 {
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	if (dialog_pointer != NULL)
 	{
@@ -96,7 +96,7 @@ dialog_response_handler (GtkDialog *dlg, gint res_id,  GeditPageSetupDialog *dia
 {
 	GError *error = NULL;
 
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	switch (res_id) {
 		case GTK_RESPONSE_HELP:
@@ -115,7 +115,7 @@ dialog_response_handler (GtkDialog *dlg, gint res_id,  GeditPageSetupDialog *dia
 static void
 syntax_checkbutton_toggled (GtkToggleButton *button, GeditPageSetupDialog *dlg)
 {
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->syntax_checkbutton));
 	
@@ -125,7 +125,7 @@ syntax_checkbutton_toggled (GtkToggleButton *button, GeditPageSetupDialog *dlg)
 static void
 page_header_checkbutton_toggled (GtkToggleButton *button, GeditPageSetupDialog *dlg)
 {
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->page_header_checkbutton));
 	
@@ -135,7 +135,7 @@ page_header_checkbutton_toggled (GtkToggleButton *button, GeditPageSetupDialog *
 static void
 line_numbers_checkbutton_toggled (GtkToggleButton *button, GeditPageSetupDialog *dlg)
 {
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->line_numbers_checkbutton));
 	
@@ -345,7 +345,7 @@ static void
 body_font_button_font_set (GtkFontButton *fb, 
 			   GeditPageSetupDialog *dlg)
 {
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (fb == GTK_FONT_BUTTON (dlg->body_fontbutton));
 
@@ -356,7 +356,7 @@ static void
 headers_font_button_font_set (GtkFontButton *fb, 
 			      GeditPageSetupDialog *dlg)
 {
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (fb == GTK_FONT_BUTTON (dlg->headers_fontbutton));
 
@@ -367,7 +367,7 @@ static void
 numbers_font_button_font_set (GtkFontButton *fb,
 			      GeditPageSetupDialog *dlg)
 {
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (fb == GTK_FONT_BUTTON (dlg->numbers_fontbutton));
 
@@ -394,7 +394,7 @@ setup_font_page (GeditPageSetupDialog *dlg)
 	gboolean can_set;
 	gchar* font;
 
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	/* Body font button */
 	dlg->body_fontbutton = font_button_new ();
@@ -489,7 +489,7 @@ page_setup_get_dialog (GtkWindow *parent)
 	static GeditPageSetupDialog *dialog = NULL;
 	GladeXML *gui;
 	
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	if (dialog != NULL)
 	{
@@ -585,7 +585,7 @@ gedit_show_page_setup_dialog (GtkWindow *parent)
 {
 	GeditPageSetupDialog *dialog;
 
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (parent != NULL);
 

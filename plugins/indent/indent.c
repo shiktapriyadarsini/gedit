@@ -66,7 +66,7 @@ indent_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
 	gint i, start_line, end_line;
 	gchar *tab_buffer = NULL;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	doc = gedit_get_active_document ();
 	g_return_if_fail (doc != NULL);
@@ -112,7 +112,7 @@ unindent_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
 	GeditDocument *doc;
 	GtkTextIter start, end, iter, iter2;
 	gint i, start_line, end_line;
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	doc = gedit_get_active_document ();
 	g_return_if_fail (doc != NULL);
@@ -181,7 +181,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 	GeditDocument *doc;
 	GeditMDI *mdi;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	g_return_val_if_fail (window != NULL, PLUGIN_ERROR);
 
@@ -212,7 +212,7 @@ activate (GeditPlugin *pd)
 	GList *top_windows;
 	BonoboUIComponent *ui_component;
 
-        gedit_debug (DEBUG_PLUGINS, "");
+        gedit_debug (DEBUG_PLUGINS);
 
         top_windows = gedit_get_top_windows ();
         g_return_val_if_fail (top_windows != NULL, PLUGIN_ERROR);
@@ -258,7 +258,7 @@ G_MODULE_EXPORT GeditPluginState
 init (GeditPlugin *pd)
 {
 	/* initialize */
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
      
 	pd->private_data = NULL;
 		

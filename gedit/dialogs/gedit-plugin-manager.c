@@ -81,13 +81,13 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 	gchar **authors;
 	GdkPixbuf* pixbuf = NULL;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	info = plugin_manager_get_selected_plugin (pm);
 
 	g_return_if_fail (info != NULL);
 
-	gedit_debug (DEBUG_PLUGINS, "About: %s\n", info->plugin->name);
+	gedit_debug_message (DEBUG_PLUGINS, "About: %s\n", info->plugin->name);
 
 	authors = g_strsplit (info->plugin->author, ", ", 0); 
 
@@ -127,18 +127,18 @@ configure_button_cb (GtkWidget *button, gpointer data)
 	GeditPluginManager *pm = data;
 	GeditPluginInfo *info;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	info = plugin_manager_get_selected_plugin (pm);
 
 	g_return_if_fail (info != NULL);
 
-	gedit_debug (DEBUG_PLUGINS, "Configuring: %s\n", info->plugin->name);
+	gedit_debug_message (DEBUG_PLUGINS, "Configuring: %s\n", info->plugin->name);
 
 	gedit_plugins_engine_configure_plugin (info->plugin, 
 			gtk_widget_get_toplevel (pm->page));
 
-	gedit_debug (DEBUG_PLUGINS, "Done");	
+	gedit_debug_message (DEBUG_PLUGINS, "Done");	
 }
 
 static void
@@ -175,7 +175,7 @@ active_toggled_cb (GtkCellRendererToggle *cell,
 	GtkTreePath *path;
 	GtkTreeModel *model;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	path = gtk_tree_path_new_from_string (path_str);
 
@@ -199,7 +199,7 @@ cursor_changed_cb (GtkTreeView  *view, gpointer data)
 	GeditPluginManager *dialog = data;
 	GeditPluginInfo *info;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	info = plugin_manager_get_selected_plugin (dialog);
 	g_return_if_fail (info != NULL);
@@ -218,7 +218,7 @@ row_activated_cb (GtkTreeView *tree_view,
 	GtkTreeIter iter;
 	GtkTreeModel *model;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (dialog->tree));
 
@@ -236,7 +236,7 @@ column_clicked_cb (GtkTreeViewColumn *tree_column, gpointer data)
 {
 	GeditPluginManager *dialog = data;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (dialog != NULL);
 
@@ -250,7 +250,7 @@ plugin_manager_populate_lists (GeditPluginManager *dialog)
 	GtkListStore *model;
 	GtkTreeIter iter;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	plugins = dialog->plugins;
 
@@ -292,7 +292,7 @@ plugin_manager_set_active (GtkTreeIter *iter, GtkTreeModel *model, gboolean acti
 {
 	GeditPluginInfo *info;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	gtk_tree_model_get (model, iter, NAME_COLUMN, &info, -1);
 
@@ -302,7 +302,7 @@ plugin_manager_set_active (GtkTreeIter *iter, GtkTreeModel *model, gboolean acti
 	{
 		/* activate the plugin */
 		if (!gedit_plugins_engine_activate_plugin (info->plugin)) {
-			gedit_debug (DEBUG_PLUGINS, "Could not activate %s.\n", info->plugin->name);
+			gedit_debug_message (DEBUG_PLUGINS, "Could not activate %s.\n", info->plugin->name);
 			active ^= 1;
 		}
 	}
@@ -310,7 +310,7 @@ plugin_manager_set_active (GtkTreeIter *iter, GtkTreeModel *model, gboolean acti
 	{
 		/* deactivate the plugin */
 		if (!gedit_plugins_engine_deactivate_plugin (info->plugin)) {
-			gedit_debug (DEBUG_PLUGINS, "Could not deactivate %s.\n", info->plugin->name);
+			gedit_debug_message (DEBUG_PLUGINS, "Could not deactivate %s.\n", info->plugin->name);
 			active ^= 1;
 		}
 	}
@@ -325,7 +325,7 @@ plugin_manager_toggle_active (GtkTreeIter *iter, GtkTreeModel *model)
 {
 	gboolean active;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	gtk_tree_model_get (model, iter, ACTIVE_COLUMN, &active, -1);
 
@@ -342,7 +342,7 @@ plugin_manager_get_selected_plugin (GeditPluginManager *dialog)
 	GtkTreeIter iter;
 	GtkTreeSelection *selection;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (dialog->tree));
 	g_return_val_if_fail (model != NULL, NULL);
@@ -365,7 +365,7 @@ plugin_manager_toggle_all (GeditPluginManager *dialog)
 	GtkTreeIter iter;
 	static gboolean active;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	active ^= 1;
 
@@ -428,7 +428,7 @@ plugin_manager_construct_tree (GeditPluginManager *dialog)
 	GtkCellRenderer *cell;
 	GtkListStore *model;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_list_store_new (N_COLUMNS, G_TYPE_BOOLEAN, G_TYPE_POINTER);
 
@@ -475,7 +475,7 @@ plugin_manager_construct_tree (GeditPluginManager *dialog)
 static void
 plugin_manager_destroyed (GtkObject *obj, void *pm_pointer)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (pm_pointer != NULL)
 	{
@@ -492,7 +492,7 @@ gedit_plugin_manager_get_page (void)
 	GtkWidget *content;
 	GtkWidget *viewport;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	gui = glade_xml_new (GEDIT_GLADEDIR "plugin-manager.glade2",
 			     "plugin_manager_dialog_content", NULL);

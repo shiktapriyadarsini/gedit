@@ -161,7 +161,7 @@ update_shown_in_menu_tree_model (GtkListStore * store, GSList *list)
 {
 	GtkTreeIter iter;
 	
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	gtk_list_store_clear (store);
 
@@ -270,7 +270,7 @@ init_shown_in_menu_tree_model (GtkListStore * store)
 	GtkTreeIter iter;
 	GSList *list, *tmp;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	/* add data to the list store */
 	list = gedit_prefs_manager_get_shown_in_menu_encodings ();

@@ -54,7 +54,7 @@ interaction_function (GnomeClient *client, gint key, GnomeDialogType dialog_type
 {
 	const gchar *prefix;
 
-	gedit_debug (DEBUG_SESSION, "");
+	gedit_debug (DEBUG_SESSION);
 
 	/* Save all unsaved files */
 
@@ -65,7 +65,7 @@ interaction_function (GnomeClient *client, gint key, GnomeDialogType dialog_type
 
 	prefix = gnome_client_get_config_prefix (client);
 
-	gedit_debug (DEBUG_SESSION, "Prefix: %s", prefix);
+	gedit_debug_message (DEBUG_SESSION, "Prefix: %s", prefix);
 
 	gnome_config_push_prefix (prefix);
 
@@ -76,7 +76,7 @@ interaction_function (GnomeClient *client, gint key, GnomeDialogType dialog_type
 
 	gnome_interaction_key_return (key, FALSE);
 
-	gedit_debug (DEBUG_SESSION, "END");
+	gedit_debug_message (DEBUG_SESSION, "END");
 }
 
 /* save_yourself handler for the master client */
@@ -93,7 +93,7 @@ client_save_yourself_cb (GnomeClient *client,
 
 	char *argv[] = { "rm", "-r", NULL };
 
-	gedit_debug (DEBUG_SESSION, "");
+	gedit_debug (DEBUG_SESSION);
 
 	gnome_client_request_interaction (client, 
 					  GNOME_DIALOG_NORMAL, 
@@ -102,7 +102,7 @@ client_save_yourself_cb (GnomeClient *client,
 	
 	prefix = gnome_client_get_config_prefix (client);
 
-	gedit_debug (DEBUG_SESSION, "Prefix: %s", prefix);
+	gedit_debug_message (DEBUG_SESSION, "Prefix: %s", prefix);
 
 	/* Tell the session manager how to discard this save */
 
@@ -117,7 +117,7 @@ client_save_yourself_cb (GnomeClient *client,
 	gnome_client_set_clone_command (client, 1 /*2*/, argv);
 	gnome_client_set_restart_command (client, 1 /*2*/, argv);
 
-	gedit_debug (DEBUG_SESSION, "END");
+	gedit_debug_message (DEBUG_SESSION, "END");
 
 	return TRUE;
 }
@@ -126,26 +126,26 @@ client_save_yourself_cb (GnomeClient *client,
 static void
 client_die_cb (GnomeClient *client, gpointer data)
 {
-	gedit_debug (DEBUG_SESSION, "");
+	gedit_debug (DEBUG_SESSION);
 
 	if (!client->save_yourself_emitted)
 		gedit_file_close_all ();
 
-	gedit_debug (DEBUG_FILE, "All files closed.");
+	gedit_debug_message (DEBUG_FILE, "All files closed.");
 	
 	bonobo_mdi_destroy (BONOBO_MDI (gedit_mdi));
 	
-	gedit_debug (DEBUG_FILE, "Unref gedit_mdi.");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_mdi.");
 
 	g_object_unref (G_OBJECT (gedit_mdi));
 
-	gedit_debug (DEBUG_FILE, "Unref gedit_mdi: DONE");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_mdi: DONE");
 
-	gedit_debug (DEBUG_FILE, "Unref gedit_app_server.");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_app_server.");
 
 	bonobo_object_unref (gedit_app_server);
 
-	gedit_debug (DEBUG_FILE, "Unref gedit_app_server: DONE");
+	gedit_debug_message (DEBUG_FILE, "Unref gedit_app_server: DONE");
 
 	gedit_prefs_manager_app_shutdown ();
 	gedit_metadata_manager_shutdown ();
@@ -163,7 +163,7 @@ client_die_cb (GnomeClient *client, gpointer data)
 void
 gedit_session_init (const char *argv0)
 {
-	gedit_debug (DEBUG_SESSION, "");
+	gedit_debug (DEBUG_SESSION);
 	
 	if (master_client)
 		return;
@@ -194,14 +194,14 @@ gedit_session_is_restored (void)
 {
 	gboolean restored;
 	
-	gedit_debug (DEBUG_SESSION, "");
+	gedit_debug (DEBUG_SESSION);
 
 	if (!master_client)
 		return FALSE;
 
 	restored = (gnome_client_get_flags (master_client) & GNOME_CLIENT_RESTORED) != 0;
 
-	gedit_debug (DEBUG_SESSION, restored ? "RESTORED" : "NOT RESTORED");
+	gedit_debug_message (DEBUG_SESSION, restored ? "RESTORED" : "NOT RESTORED");
 
 	return restored;
 }
@@ -212,12 +212,12 @@ mdi_child_create_cb (const gchar *str)
 {
 	GeditMDIChild *child;
 
-	gedit_debug (DEBUG_SESSION, "");
+	gedit_debug (DEBUG_SESSION);
 
 	/* The config string is simply a filename */
 	if (str != NULL)
 	{
-		gedit_debug (DEBUG_SESSION, "URI: %s", str);
+		gedit_debug_message (DEBUG_SESSION, "URI: %s", str);
 
 		/* FIXME */
 		child = gedit_mdi_child_new_with_uri (str, NULL);
@@ -241,7 +241,7 @@ gedit_session_load (void)
 {
 	int retval;
 
-	gedit_debug (DEBUG_SESSION, "");
+	gedit_debug (DEBUG_SESSION);
 
 	gnome_config_push_prefix (gnome_client_get_config_prefix (master_client));
 

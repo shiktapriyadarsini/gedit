@@ -294,7 +294,7 @@ get_time (const gchar* format)
   	size_t out_length = 0;
 	gchar *locale_format;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (format != NULL, NULL);
 
@@ -335,7 +335,7 @@ get_time (const gchar* format)
 static void
 dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (dialog_pointer != NULL)
 	{
@@ -343,7 +343,7 @@ dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 		*dialog_pointer = NULL;
 	}
 
-	gedit_debug (DEBUG_PLUGINS, "END");
+	gedit_debug_message (DEBUG_PLUGINS, "END");
 	
 }
 
@@ -356,7 +356,7 @@ create_model (GtkWidget *listview, const gchar *sel_format)
 	GtkTreeIter iter;
 	gchar *sf;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	/* create list store */
 	store = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
@@ -385,7 +385,7 @@ create_model (GtkWidget *listview, const gchar *sel_format)
 
 		str = get_time (formats[i]);
 
-		gedit_debug (DEBUG_PLUGINS, "%d : %s", i, str);
+		gedit_debug_message (DEBUG_PLUGINS, "%d : %s", i, str);
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
 				    COLUMN_FORMATS, str,
@@ -418,7 +418,7 @@ scroll_to_selected (GtkTreeView *tree_view)
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (tree_view);
 	g_return_if_fail (model != NULL);
@@ -446,7 +446,7 @@ create_formats_list (GtkWidget *listview, const gchar* sel_format)
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (listview != NULL);
 	
@@ -473,7 +473,7 @@ updated_custom_format_example (GtkEntry *format_entry, GtkLabel *format_example)
 	gchar *str;
 	gchar *escaped_time;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (GTK_IS_ENTRY (format_entry));
 	g_return_if_fail (GTK_IS_LABEL (format_example));
@@ -495,7 +495,7 @@ updated_custom_format_example (GtkEntry *format_entry, GtkLabel *format_example)
 static void
 configure_dialog_button_toggled (GtkToggleButton *button, TimeConfigureDialog *dialog)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
 	{
@@ -536,7 +536,7 @@ get_configure_dialog (GtkWindow* parent)
 	GeditTimePluginPromptType prompt_type;
 	gchar *sf, *cf;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (dialog != NULL)
 	{
@@ -678,7 +678,7 @@ get_configure_dialog (GtkWindow* parent)
 static void
 chose_format_dialog_button_toggled (GtkToggleButton *button, ChoseFormatDialog *dialog)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
 	{
@@ -806,7 +806,7 @@ time_world_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname
 	gchar *the_time = NULL;
 	GeditTimePluginPromptType prompt_type;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	doc = gedit_get_active_document ();
 	g_return_if_fail (doc != NULL);
@@ -915,7 +915,7 @@ get_format_from_list (GtkWidget *listview)
 	GtkTreeIter iter;
         gint selected_value;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (listview));
 	g_return_val_if_fail (model != NULL, 0);
@@ -927,7 +927,7 @@ get_format_from_list (GtkWidget *listview)
 	{
 		gtk_tree_model_get (model, &iter, COLUMN_INDEX, &selected_value, -1);
 	}
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
         return selected_value;
 }
@@ -938,7 +938,7 @@ ok_button_pressed (TimeConfigureDialog *dialog)
 	gint sel_format;
 	const gchar *custom_format;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
    
 	sel_format = get_format_from_list (dialog->list);
    
@@ -962,7 +962,7 @@ ok_button_pressed (TimeConfigureDialog *dialog)
 			set_prompt_type (PROMPT_FOR_FORMAT);
 	}
 
-	gedit_debug (DEBUG_PLUGINS, "Sel: %d", sel_format);
+	gedit_debug_message (DEBUG_PLUGINS, "Sel: %d", sel_format);
 }
 
 static void
@@ -970,7 +970,7 @@ help_button_pressed (TimeConfigureDialog *dialog)
 {
 	GError *error = NULL;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	gnome_help_display ("gedit.xml", "gedit-date-time-configure", &error);
 
@@ -988,7 +988,7 @@ configure (GeditPlugin *p, GtkWidget *parent)
 	TimeConfigureDialog *dialog;
 	gint ret;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	dialog = get_configure_dialog (GTK_WINDOW (parent));
 	if (!dialog) 
@@ -1001,26 +1001,26 @@ configure (GeditPlugin *p, GtkWidget *parent)
 		switch (ret)
 		{
 			case GTK_RESPONSE_OK:
-				gedit_debug (DEBUG_PLUGINS, "Ok button pressed");
+				gedit_debug_message (DEBUG_PLUGINS, "Ok button pressed");
 				ok_button_pressed (dialog);
 				break;
 			
 			case GTK_RESPONSE_HELP:
-				gedit_debug (DEBUG_PLUGINS, "Help button pressed");
+				gedit_debug_message (DEBUG_PLUGINS, "Help button pressed");
 				help_button_pressed (dialog);
 				break;
 			
 			default:
-				gedit_debug (DEBUG_PLUGINS, "Default");
+				gedit_debug_message (DEBUG_PLUGINS, "Default");
 		}
 
 	} while (ret == GTK_RESPONSE_HELP);
 
-	gedit_debug (DEBUG_PLUGINS, "Destroying dialog");
+	gedit_debug_message (DEBUG_PLUGINS, "Destroying dialog");
 
 	gtk_widget_destroy (dialog->dialog);
 
-	gedit_debug (DEBUG_PLUGINS, "Done");
+	gedit_debug_message (DEBUG_PLUGINS, "Done");
 
 	return PLUGIN_OK;
 }
@@ -1032,7 +1032,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 	GeditDocument *doc;
 	GeditMDI *mdi;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	g_return_val_if_fail (window != NULL, PLUGIN_ERROR);
 
@@ -1055,7 +1055,7 @@ G_MODULE_EXPORT GeditPluginState
 activate (GeditPlugin *pd)
 {
 	GList *top_windows;
-        gedit_debug (DEBUG_PLUGINS, "");
+        gedit_debug (DEBUG_PLUGINS);
 
         top_windows = gedit_get_top_windows ();
         g_return_val_if_fail (top_windows != NULL, PLUGIN_ERROR);
@@ -1079,7 +1079,7 @@ activate (GeditPlugin *pd)
 G_MODULE_EXPORT GeditPluginState
 deactivate (GeditPlugin *pd)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	gedit_menus_remove_menu_item_all (MENU_ITEM_PATH, MENU_ITEM_NAME);
 
@@ -1089,7 +1089,7 @@ deactivate (GeditPlugin *pd)
 G_MODULE_EXPORT GeditPluginState
 destroy (GeditPlugin *pd)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (time_gconf_client != NULL, PLUGIN_ERROR);
 
@@ -1111,7 +1111,7 @@ G_MODULE_EXPORT GeditPluginState
 init (GeditPlugin *pd)
 {
 	/* initialize */
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	pd->private_data = NULL;
 		

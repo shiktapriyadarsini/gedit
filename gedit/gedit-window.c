@@ -99,9 +99,9 @@ struct _GeditWindowPrivate
 
 	gint		side_panel_size;
 	gint		bottom_panel_size;
-	
+
 	gboolean	removing_all_tabs;
-	
+
 	GtkWindowGroup *window_group;
 };
 
@@ -123,7 +123,7 @@ static void
 gedit_window_finalize (GObject *object)
 {
 	GeditWindow *window = GEDIT_WINDOW (object); 
-	
+
 	g_object_unref (window->priv->window_group);
 
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
@@ -206,7 +206,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);			      
-			      	
+
 	g_type_class_add_private (object_class, sizeof(GeditWindowPrivate));
 }
 
@@ -306,27 +306,27 @@ set_toolbar_style (GeditWindow *window,
 	switch (style)
 	{
 		case GEDIT_TOOLBAR_SYSTEM:
-			gedit_debug (DEBUG_MDI, "GEDIT: SYSTEM");
+			gedit_debug_message (DEBUG_MDI, "GEDIT: SYSTEM");
 			gtk_toolbar_unset_style (
 					GTK_TOOLBAR (window->priv->toolbar));
 			break;
 			
 		case GEDIT_TOOLBAR_ICONS:
-			gedit_debug (DEBUG_MDI, "GEDIT: ICONS");
+			gedit_debug_message (DEBUG_MDI, "GEDIT: ICONS");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (window->priv->toolbar),
 					GTK_TOOLBAR_ICONS);
 			break;
 			
 		case GEDIT_TOOLBAR_ICONS_AND_TEXT:
-			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_AND_TEXT");
+			gedit_debug_message (DEBUG_MDI, "GEDIT: ICONS_AND_TEXT");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (window->priv->toolbar),
 					GTK_TOOLBAR_BOTH);			
 			break;
 			
 		case GEDIT_TOOLBAR_ICONS_BOTH_HORIZ:
-			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_BOTH_HORIZ");
+			gedit_debug_message (DEBUG_MDI, "GEDIT: ICONS_BOTH_HORIZ");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (window->priv->toolbar),
 					GTK_TOOLBAR_BOTH_HORIZ);	
@@ -944,7 +944,7 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 	guint tab_size;
 	GeditView *view;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
   
  	if (buffer != GTK_TEXT_BUFFER (gedit_window_get_active_document (window)))
  		return;
@@ -1215,7 +1215,7 @@ notebook_tab_added (GeditNotebook *notebook,
 	GeditView *view;
 	GeditDocument *doc;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	++window->priv->num_tabs;
 
@@ -1254,7 +1254,7 @@ notebook_tab_removed (GeditNotebook *notebook,
 {
 	GeditDocument *doc;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	
 	--window->priv->num_tabs;
 	

@@ -323,7 +323,7 @@ search_text (GeditSearchPanel *panel)
 	gboolean search_backwards;
 	gint flags = 0;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 	
 	active_view = gedit_window_get_active_view (panel->priv->window);
 	if (active_view == NULL)
@@ -411,7 +411,7 @@ escape_search_text (const gchar* text)
 
   	g_return_val_if_fail (text != NULL, NULL);
 
-	gedit_debug (DEBUG_SEARCH, "Text: %s", text);
+	gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
 
     	length = strlen (text);
 
@@ -457,7 +457,7 @@ search_entry_insert_text (GtkEditable *editable,
 	gchar *escaped_text;
 	gint new_len;
 
-	gedit_debug (DEBUG_SEARCH, "Text: %s", text);
+	gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
 
 	/* To avoid recursive behavior */
 	if (insert_text)
@@ -465,7 +465,7 @@ search_entry_insert_text (GtkEditable *editable,
 
 	escaped_text = escape_search_text (text);
 
-	gedit_debug (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
+	gedit_debug_message (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
 
 	new_len = strlen (escaped_text);
 

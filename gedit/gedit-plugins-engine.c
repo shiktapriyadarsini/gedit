@@ -71,7 +71,7 @@ gedit_plugins_engine_load (const gchar *file)
 
 	g_return_val_if_fail (file != NULL, NULL);
 
-	gedit_debug (DEBUG_PLUGINS, "Loading plugin: %s", file);
+	gedit_debug_message (DEBUG_PLUGINS, "Loading plugin: %s", file);
 
 	plugin = g_new0 (GeditPlugin, 1);
 	plugin->file = g_strdup (file);
@@ -184,12 +184,12 @@ gedit_plugins_engine_load_dir (const gchar *dir)
 
 	g_return_if_fail (gedit_plugins_engine_gconf_client != NULL);
 
-	gedit_debug (DEBUG_PLUGINS, "DIR: %s", dir);
+	gedit_debug_message (DEBUG_PLUGINS, "DIR: %s", dir);
 
 	d = g_dir_open (dir, 0, &error);
 	if (!d)
 	{
-		gedit_debug (DEBUG_PLUGINS, "%s", error->message);
+		gedit_debug_message (DEBUG_PLUGINS, "%s", error->message);
 		g_error_free (error);
 		return;
 	}
@@ -227,7 +227,7 @@ gedit_plugins_engine_load_dir (const gchar *dir)
 
 			gedit_plugins_list = g_list_prepend (gedit_plugins_list, info);
 
-			gedit_debug (DEBUG_PLUGINS, "Plugin %s loaded", plugin->name);
+			gedit_debug_message (DEBUG_PLUGINS, "Plugin %s loaded", plugin->name);
 		}
 	}
 
@@ -258,7 +258,7 @@ gedit_plugins_engine_load_all (void)
 gboolean
 gedit_plugins_engine_init (void)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	if (!g_module_supported ())
 		return FALSE;
@@ -292,7 +292,7 @@ gedit_plugins_engine_shutdown (void)
 {
 	GList *pl;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (gedit_plugins_engine_gconf_client != NULL);
 
@@ -303,7 +303,7 @@ gedit_plugins_engine_shutdown (void)
 		if (info->plugin->destroy != NULL)
 		{
 			gint r;
-		       	gedit_debug (DEBUG_PLUGINS, "Destroy plugin %s", info->plugin->name);
+		       	gedit_debug_message (DEBUG_PLUGINS, "Destroy plugin %s", info->plugin->name);
 
 			r = info->plugin->destroy (info->plugin);
 			
@@ -344,7 +344,7 @@ gedit_plugins_engine_shutdown (void)
 const GList *
 gedit_plugins_engine_get_plugins_list (void)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	return gedit_plugins_list;
 }
@@ -354,7 +354,7 @@ gedit_plugins_engine_find_plugin_info (GeditPlugin *plugin)
 {
 	GList *pl;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	for (pl = gedit_plugins_list; pl; pl = pl->next)
 	{
@@ -497,7 +497,7 @@ gedit_plugins_engine_activate_plugin (GeditPlugin *plugin)
 {
 	GeditPluginInfo *info;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (plugin != NULL, FALSE);
 
@@ -570,7 +570,7 @@ gedit_plugins_engine_deactivate_plugin (GeditPlugin *plugin)
 {
 	GeditPluginInfo *info;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (plugin != NULL, FALSE);
 
@@ -630,7 +630,7 @@ gedit_plugins_engine_reactivate_all (void)
 {
 	GList *pl;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	for (pl = gedit_plugins_list; pl; pl = pl->next)
 	{
@@ -649,7 +649,7 @@ gedit_plugins_engine_update_plugins_ui (BonoboWindow* window, gboolean new_windo
 {
 	GList *pl;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (window != NULL);
 	g_return_if_fail (BONOBO_IS_WINDOW (window));
@@ -667,7 +667,7 @@ gedit_plugins_engine_update_plugins_ui (BonoboWindow* window, gboolean new_windo
 		    (info->plugin->update_ui == NULL))
 			continue;
 
-	       	gedit_debug (DEBUG_PLUGINS, "Updating UI of %s", info->plugin->name);
+	       	gedit_debug_message (DEBUG_PLUGINS, "Updating UI of %s", info->plugin->name);
 
 		r = info->plugin->update_ui (info->plugin, window);
 		if (r != PLUGIN_OK)
@@ -683,7 +683,7 @@ gedit_plugins_engine_is_a_configurable_plugin (GeditPlugin *plugin)
 {
 	GeditPluginInfo *info;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (plugin != NULL, FALSE);
 
@@ -696,7 +696,7 @@ gedit_plugins_engine_is_a_configurable_plugin (GeditPlugin *plugin)
 gboolean 	 
 gedit_plugins_engine_configure_plugin (GeditPlugin *plugin, GtkWidget* parent)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (plugin != NULL, FALSE);
 	g_return_val_if_fail (plugin->configure != NULL, FALSE);
@@ -713,7 +713,7 @@ gedit_plugins_engine_active_plugins_changed (GConfClient *client,
 	GList *pl;
 	gboolean to_activate;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);

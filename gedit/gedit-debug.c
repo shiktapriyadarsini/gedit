@@ -50,8 +50,6 @@ gedit_debug_init ()
 
 	if (g_getenv ("GEDIT_DEBUG_VIEW") != NULL)
 		debug = debug | GEDIT_DEBUG_VIEW;
-	if (g_getenv ("GEDIT_DEBUG_UNDO") != NULL)
-		debug = debug | GEDIT_DEBUG_UNDO;
 	if (g_getenv ("GEDIT_DEBUG_SEARCH") != NULL)
 		debug = debug | GEDIT_DEBUG_SEARCH;
 	if (g_getenv ("GEDIT_DEBUG_PREFS") != NULL)
@@ -66,8 +64,6 @@ gedit_debug_init ()
 		debug = debug | GEDIT_DEBUG_DOCUMENT;
 	if (g_getenv ("GEDIT_DEBUG_COMMANDS") != NULL)
 		debug = debug | GEDIT_DEBUG_COMMANDS;
-	if (g_getenv ("GEDIT_DEBUG_RECENT") != NULL)
-		debug = debug | GEDIT_DEBUG_RECENT;
 	if (g_getenv ("GEDIT_DEBUG_MDI") != NULL)
 		debug = debug | GEDIT_DEBUG_MDI;
 	if (g_getenv ("GEDIT_DEBUG_SESSION") != NULL)
@@ -79,10 +75,13 @@ gedit_debug_init ()
 }
 
 void
-gedit_debug (GeditDebugSection section, gchar *file,
-	     gint line, gchar* function, gchar* format, ...)
+gedit_debug_message (GeditDebugSection  section,
+		     const gchar       *file,
+		     gint               line,
+		     const gchar      *function,
+		     const gchar      *format, ...)
 {
-	if  (debug & section)
+	if (debug & section)
 	{
 		va_list args;
 		gchar *msg;
@@ -94,9 +93,20 @@ gedit_debug (GeditDebugSection section, gchar *file,
 		va_end (args);
 
 		g_print ("%s:%d (%s) %s\n", file, line, function, msg);
-		g_free (msg);
-
 		fflush (stdout);
+
+		g_free (msg);
 	}
 }
 
+void gedit_debug (GeditDebugSection  section,
+		  const gchar       *file,
+		  gint               line,
+		  const gchar       *function)
+{
+	if (debug & section)
+	{
+		g_print ("%s:%d (%s) %s\n", file, line, function);
+		fflush (stdout);
+	}
+}

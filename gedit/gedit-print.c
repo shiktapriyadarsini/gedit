@@ -103,7 +103,7 @@ load_gedit_print_config_from_file ()
 	gchar *contents;
 	GnomePrintConfig *gedit_print_config;
 	
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	file_name = gnome_util_home_file (GEDIT_PRINT_CONFIG_FILE);
 
@@ -130,7 +130,7 @@ save_gedit_print_config_to_file (GnomePrintConfig *gedit_print_config)
 	gchar *file_name;
 	gboolean res;
 
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (gedit_print_config != NULL);
 
@@ -171,7 +171,7 @@ gedit_print_job_info_destroy (GeditPrintJobInfo *pji, gboolean save_config)
 {
 	GnomePrintConfig *config = NULL;
 	
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (pji != NULL);
 
@@ -198,7 +198,7 @@ get_print_dialog (GtkWindow *parent, GeditPrintJobInfo *pji)
 	gint lines;
 	GnomePrintConfig *config;
 
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_val_if_fail (pji != NULL, NULL);
 	
@@ -267,14 +267,14 @@ gedit_print_dialog_response (GtkWidget *dialog, int response, GeditPrintJobInfo 
 	switch (response)
 	{
 	case GNOME_PRINT_DIALOG_RESPONSE_PRINT:
-		gedit_debug (DEBUG_PRINT, "Print button pressed.");
+		gedit_debug_message (DEBUG_PRINT, "Print button pressed.");
 		pji->preview = PREVIEW_NO;
 		gedit_print_real (pji, &start, &end, pji->parent);
 		gtk_widget_destroy (dialog);
 		break;
 
 	case GNOME_PRINT_DIALOG_RESPONSE_PREVIEW:
-		gedit_debug (DEBUG_PRINT, "Preview button pressed.");
+		gedit_debug_message (DEBUG_PRINT, "Preview button pressed.");
 		pji->preview = PREVIEW_FROM_DIALOG;
 		gedit_print_preview_real (pji, &start, &end, GTK_WINDOW (dialog));
 		break;
@@ -417,7 +417,7 @@ gedit_print (GtkWindow *parent, GeditDocument *doc)
 	GeditPrintJobInfo *pji;
 	GtkWidget *dialog;
 
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (doc != NULL);
 
@@ -481,7 +481,7 @@ gedit_print_preview (GtkWindow *parent, GeditDocument *doc)
 	GeditPrintJobInfo *pji;
 	GtkTextIter start, end;
 
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 
 	g_return_if_fail (doc != NULL);
 
@@ -508,7 +508,7 @@ gedit_print_job_info_new (GeditDocument* doc)
 	PangoFontDescription *print_font_header_desc;
 	PangoFontDescription *print_font_numbers_desc;
 	
-	gedit_debug (DEBUG_PRINT, "");
+	gedit_debug (DEBUG_PRINT);
 	
 	g_return_val_if_fail (doc != NULL, NULL);
 

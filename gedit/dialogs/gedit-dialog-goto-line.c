@@ -57,7 +57,7 @@ struct _GeditDialogGotoLine {
 static void
 dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 {
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	if (dialog_pointer != NULL)
 	{
@@ -73,7 +73,7 @@ goto_button_pressed (GeditDialogGotoLine *dialog)
 	GeditView *active_view;
 	GeditDocument *active_document;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	active_view = gedit_window_get_active_view (dialog->gedit_win);
 	g_return_if_fail (active_view);
@@ -95,7 +95,7 @@ goto_button_pressed (GeditDialogGotoLine *dialog)
 static void
 dialog_response_handler (GtkDialog *dlg, gint res_id, GeditDialogGotoLine *dialog)
 {
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	switch (res_id) {
 		case GTK_RESPONSE_OK:
@@ -155,7 +155,7 @@ dialog_goto_line_get_dialog (GeditWindow *parent)
 	GladeXML *gui;
 	GtkWidget *content;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	if (dialog != NULL)
 	{
@@ -238,7 +238,7 @@ gedit_dialog_goto_line (GeditWindow *parent)
 {
 	GeditDialogGotoLine *dialog;
 
-	gedit_debug (DEBUG_SEARCH, "");
+	gedit_debug (DEBUG_SEARCH);
 
 	dialog = dialog_goto_line_get_dialog (parent);
 	if (!dialog)

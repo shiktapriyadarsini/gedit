@@ -138,7 +138,7 @@ static void
 dialog_destroyed (GtkObject  *obj,  
 		  void      **dialog_pointer)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	if (dialog_pointer != NULL)
 	{
@@ -161,7 +161,7 @@ dialog_response_handler (GtkDialog              *dlg,
 {
 	GError *error = NULL;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	switch (res_id) {
 		case GTK_RESPONSE_HELP:
@@ -182,7 +182,7 @@ static void
 tabs_width_spinbutton_value_changed (GtkSpinButton          *spin_button,
 				     GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->tabs_width_spinbutton));
 
@@ -193,7 +193,7 @@ static void
 insert_spaces_checkbutton_toggled (GtkToggleButton        *button,
 				   GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->insert_spaces_checkbutton));
 
@@ -204,7 +204,7 @@ static void
 auto_indent_checkbutton_toggled (GtkToggleButton        *button,
 				 GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->auto_indent_checkbutton));
 
@@ -215,7 +215,7 @@ static void
 auto_save_checkbutton_toggled (GtkToggleButton        *button,
 			       GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->auto_save_checkbutton));
 	
@@ -237,7 +237,7 @@ static void
 backup_copy_checkbutton_toggled (GtkToggleButton        *button,
 				 GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->backup_copy_checkbutton));
 	
@@ -257,7 +257,7 @@ auto_save_spinbutton_value_changed (GtkSpinButton          *spin_button,
 static void
 limited_undo_radiobutton_toggled (GtkToggleButton *button, GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->limited_undo_radiobutton));
 
@@ -288,7 +288,7 @@ undo_levels_spinbutton_value_changed (GtkSpinButton          *spin_button,
 {
 	gint undo_levels;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->undo_levels_spinbutton));
 
@@ -307,7 +307,7 @@ setup_editor_page (GeditPreferencesDialog *dlg)
 	gboolean can_set;
 	gint auto_save_interval;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	/* Set initial state */
 	gtk_spin_button_set_value (GTK_SPIN_BUTTON (dlg->tabs_width_spinbutton),
@@ -499,7 +499,7 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	gboolean display_right_margin;
 	gboolean wrap_mode_can_set;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 	
 	/* Set initial state */
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->display_line_numbers_checkbutton),
@@ -602,7 +602,7 @@ static void
 default_font_font_checkbutton_toggled (GtkToggleButton        *button,
 				       GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->default_font_checkbutton));
 
@@ -623,7 +623,7 @@ static void
 default_font_colors_checkbutton_toggled (GtkToggleButton        *button,
 					 GeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->default_colors_checkbutton));
 
@@ -649,7 +649,7 @@ editor_font_button_font_set (GtkFontButton          *font_button,
 {
 	const gchar *font_name;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (font_button == GTK_FONT_BUTTON (dlg->font_button));
 
@@ -707,7 +707,7 @@ setup_font_colors_page (GeditPreferencesDialog *dlg)
 	gchar *editor_font = NULL;
 	GdkColor color;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	gtk_tooltips_set_tip (dlg->tooltips, dlg->font_button, 
 			_("Push this button to select the font to be used by the editor"), NULL);
@@ -1237,7 +1237,7 @@ setup_plugins_page (GeditPreferencesDialog *dlg)
 {
 	GtkWidget *page_content;
 	
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	page_content = gedit_plugin_manager_get_page ();
 	g_return_if_fail (page_content != NULL);
@@ -1252,7 +1252,7 @@ get_preferences_dialog (GtkWindow *parent)
 	static GeditPreferencesDialog *dialog = NULL;
 	GladeXML *gui;
 	
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	if (dialog != NULL)
 	{
@@ -1423,7 +1423,7 @@ gedit_show_preferences_dialog (GtkWindow *parent)
 {
 	GeditPreferencesDialog *dialog;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (parent != NULL);
 

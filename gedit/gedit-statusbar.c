@@ -113,7 +113,8 @@ gedit_statusbar_new (void)
  * Sets the overwrite mode on the statusbar.
  **/
 void
-gedit_statusbar_set_overwrite (GeditStatusbar *statusbar, gboolean overwrite)
+gedit_statusbar_set_overwrite (GeditStatusbar *statusbar,
+                               gboolean        overwrite)
 {
 	gchar *msg;
 
@@ -149,8 +150,8 @@ gedit_statusbar_clear_overwrite (GeditStatusbar *statusbar)
  **/
 void
 gedit_statusbar_set_cursor_position (GeditStatusbar *statusbar,
-				     gint line,
-				     gint col)
+				     gint            line,
+				     gint            col)
 {
 	gchar *msg;
 
@@ -213,9 +214,8 @@ remove_message_timeout (FlashInfo * fi)
  */
 void
 gedit_statusbar_flash_message (GeditStatusbar *statusbar,
-			       guint context_id,
-			       gchar *format,
-			       ...)
+			       guint           context_id,
+			       const gchar    *format, ...)
 {
 	va_list args;
 	FlashInfo *fi;

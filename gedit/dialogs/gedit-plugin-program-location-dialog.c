@@ -65,7 +65,7 @@ gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *pl
 
 	gint ret;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (program_name != NULL, NULL);
 	g_return_val_if_fail (plugin_name != NULL, NULL);

@@ -321,7 +321,7 @@ bonobo_mdi_finalize (GObject *object)
 {
     	BonoboMDI *mdi;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (BONOBO_IS_MDI (object));
 	
@@ -349,13 +349,13 @@ bonobo_mdi_finalize (GObject *object)
 	if (G_OBJECT_CLASS (parent_class)->finalize)
 		(* G_OBJECT_CLASS (parent_class)->finalize)(object);
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 void 
 bonobo_mdi_destroy (BonoboMDI *mdi)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (BONOBO_IS_MDI (mdi));
 	
@@ -371,7 +371,7 @@ bonobo_mdi_destroy (BonoboMDI *mdi)
 static void 
 bonobo_mdi_instance_init (BonoboMDI *mdi)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (BONOBO_IS_MDI (mdi));
 
@@ -397,7 +397,7 @@ bonobo_mdi_instance_init (BonoboMDI *mdi)
 	
 	mdi->priv->child_list_path 	= NULL;
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 /**
@@ -418,7 +418,7 @@ bonobo_mdi_new (const gchar *mdi_name, const gchar *title,
 {
 	BonoboMDI *mdi;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	
 	mdi = g_object_new (BONOBO_TYPE_MDI, NULL);
   
@@ -428,7 +428,7 @@ bonobo_mdi_new (const gchar *mdi_name, const gchar *title,
 	mdi->priv->default_window_width = default_window_width;
 	mdi->priv->default_window_height = default_window_height;
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 
 	return G_OBJECT (mdi);
 }
@@ -462,7 +462,7 @@ child_list_activated_cb (BonoboUIComponent *uic, gpointer user_data, const gchar
 	
 	g_return_if_fail (view != NULL);
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	child = bonobo_mdi_get_child_from_view (view);
 
@@ -479,7 +479,7 @@ child_list_activated_cb (BonoboUIComponent *uic, gpointer user_data, const gchar
 		bonobo_mdi_set_active_view (mdi, view);
 	}
 	
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 static gchar* 
@@ -994,7 +994,7 @@ book_create (BonoboMDI *mdi)
 	GtkWidget *vpaned;
 	GtkWidget *bp;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi->priv->active_window != NULL, NULL);
 	
@@ -1032,7 +1032,7 @@ book_create (BonoboMDI *mdi)
 
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (us), TRUE);
 	
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 
 	return us;
 }
@@ -1043,7 +1043,7 @@ book_add_view (BonoboMDI *mdi, GtkNotebook *book, GtkWidget *view, gboolean set_
 	BonoboMDIChild *child;
 	GtkWidget *title;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	child = bonobo_mdi_get_child_from_view (view);
 
@@ -1060,7 +1060,7 @@ book_add_view (BonoboMDI *mdi, GtkNotebook *book, GtkWidget *view, gboolean set_
 		set_active_view (mdi, view);
 	}
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 static void 
@@ -1069,7 +1069,7 @@ book_switch_page (GtkNotebook *book, GtkNotebookPage *pg, gint page_num, BonoboM
 	BonoboWindow *win;
 	GtkWidget *page;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	win = BONOBO_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (book)));
 
@@ -1083,7 +1083,7 @@ book_switch_page (GtkNotebook *book, GtkNotebookPage *pg, gint page_num, BonoboM
 	else 
 		app_set_view (mdi, win, NULL);  
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 
 }
 
@@ -1104,7 +1104,7 @@ toplevel_focus (BonoboWindow *win, GdkEventFocus *event, BonoboMDI *mdi)
 {
 	GtkWidget *contents;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	/* updates active_view and active_child when a new toplevel receives focus */
 	g_return_val_if_fail (BONOBO_IS_WINDOW (win), FALSE);
@@ -1128,7 +1128,7 @@ toplevel_focus (BonoboWindow *win, GdkEventFocus *event, BonoboMDI *mdi)
 	else 
 		set_active_view (mdi, NULL);
 	
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 
 	return FALSE;
 }
@@ -1172,7 +1172,7 @@ app_window_state_event_handler (GtkWidget *widget, GdkEventWindowState *event)
 static void 
 app_clone (BonoboMDI *mdi, BonoboWindow *win, const char *window_role)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	
 	app_create (mdi, NULL, window_role);
 
@@ -1198,7 +1198,7 @@ app_clone (BonoboMDI *mdi, BonoboWindow *win, const char *window_role)
 			gtk_window_unstick (GTK_WINDOW (mdi->priv->active_window));
 	}
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 
@@ -1209,7 +1209,7 @@ app_close_book (BonoboWindow *win, GdkEventAny *event, BonoboMDI *mdi)
 	GtkWidget *view;
 	gint handler_ret = TRUE;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (BONOBO_IS_WINDOW (win), FALSE);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), FALSE);
@@ -1224,7 +1224,7 @@ app_close_book (BonoboWindow *win, GdkEventAny *event, BonoboMDI *mdi)
 
 	if (handler_ret == FALSE) 
 	{
-		gedit_debug (DEBUG_MDI, "DON'T CLOSE BOOK");
+		gedit_debug_message (DEBUG_MDI, "DON'T CLOSE BOOK");
 
 		return TRUE;
 	}
@@ -1233,7 +1233,7 @@ app_close_book (BonoboWindow *win, GdkEventAny *event, BonoboMDI *mdi)
 	{		
 		if (!bonobo_mdi_remove_all (mdi, FALSE))
 		{
-			gedit_debug (DEBUG_MDI, "END1");
+			gedit_debug_message (DEBUG_MDI, "END1");
 
 			return TRUE;
 		}
@@ -1257,7 +1257,7 @@ app_close_book (BonoboWindow *win, GdkEventAny *event, BonoboMDI *mdi)
 			mdi->priv->windows = g_list_remove (mdi->priv->windows, win);
 			gtk_widget_destroy (GTK_WIDGET (win));
 
-			gedit_debug (DEBUG_MDI, "END2");
+			gedit_debug_message (DEBUG_MDI, "END2");
 
 			return FALSE;
 		}
@@ -1293,7 +1293,7 @@ app_close_book (BonoboWindow *win, GdkEventAny *event, BonoboMDI *mdi)
 				{
 					g_list_free (children);
 
-					gedit_debug (DEBUG_MDI, "END3");
+					gedit_debug_message (DEBUG_MDI, "END3");
 
 					return TRUE;
 				}
@@ -1317,7 +1317,7 @@ app_close_book (BonoboWindow *win, GdkEventAny *event, BonoboMDI *mdi)
 		g_list_free (children);
 	}
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 	
 	return FALSE;
 }
@@ -1325,7 +1325,7 @@ app_close_book (BonoboWindow *win, GdkEventAny *event, BonoboMDI *mdi)
 static void 
 app_set_view (BonoboMDI *mdi, BonoboWindow *win, GtkWidget *view)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	if (view == NULL)
 	{
@@ -1336,13 +1336,13 @@ app_set_view (BonoboMDI *mdi, BonoboWindow *win, GtkWidget *view)
 	
 	set_active_view (mdi, view);
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 static void 
 app_destroy (BonoboWindow *win, BonoboMDI *mdi)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	
 	if (mdi->priv->active_window == win)
 		mdi->priv->active_window = 
@@ -1350,7 +1350,7 @@ app_destroy (BonoboWindow *win, BonoboMDI *mdi)
 
 	g_signal_emit (G_OBJECT (mdi), mdi_signals [TOP_WINDOW_DESTROY], 0, win);
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 /* Generates a unique string for a window role.
@@ -1398,7 +1398,7 @@ app_create (BonoboMDI *mdi, gchar *layout_string, const char *window_role)
   	BonoboUIComponent *ui_component = NULL;
 	BonoboMDIWindowInfo *window_info = NULL;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	window = bonobo_window_new (mdi->priv->mdi_name, mdi->priv->title);
 	g_return_if_fail (window != NULL);
@@ -1477,7 +1477,7 @@ app_create (BonoboMDI *mdi, gchar *layout_string, const char *window_role)
 
 	g_signal_emit (G_OBJECT (mdi), mdi_signals [TOP_WINDOW_CREATED], 0, window);
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 static void 
@@ -1486,7 +1486,7 @@ set_active_view (BonoboMDI *mdi, GtkWidget *view)
 	BonoboMDIChild *old_child;
 	GtkWidget *old_view;
 		
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	old_child = mdi->priv->active_child;
 	old_view = mdi->priv->active_view;
@@ -1508,23 +1508,23 @@ set_active_view (BonoboMDI *mdi, GtkWidget *view)
 	
 	if (view == old_view)
 	{
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return;
 	}
 	
 	if (mdi->priv->active_child != old_child)
 	{
-		gedit_debug (DEBUG_MDI, "Emit child_changed");
+		gedit_debug_message (DEBUG_MDI, "Emit child_changed");
 
 		g_signal_emit (G_OBJECT (mdi), mdi_signals [CHILD_CHANGED], 0, old_child);
 	}
 
-	gedit_debug (DEBUG_MDI, "Emit view_changed");
+	gedit_debug_message (DEBUG_MDI, "Emit view_changed");
 	
 	g_signal_emit (G_OBJECT (mdi), mdi_signals [VIEW_CHANGED], 0, old_view);
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 }
 
 /**
@@ -1538,7 +1538,7 @@ set_active_view (BonoboMDI *mdi, GtkWidget *view)
 void 
 bonobo_mdi_set_active_view (BonoboMDI *mdi, GtkWidget *view)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (mdi != NULL);
 	g_return_if_fail (BONOBO_IS_MDI (mdi));
@@ -1549,7 +1549,7 @@ bonobo_mdi_set_active_view (BonoboMDI *mdi, GtkWidget *view)
 	
 	set_active_view (mdi, view);
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 static gboolean 
@@ -1559,7 +1559,7 @@ bonobo_mdi_add_view_real (BonoboMDI *mdi, BonoboMDIChild *child, gboolean set_vi
 	GtkWidget *book;
 	gint ret = TRUE;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	
 	view = bonobo_mdi_child_add_view (child);
 
@@ -1571,7 +1571,7 @@ bonobo_mdi_add_view_real (BonoboMDI *mdi, BonoboMDIChild *child, gboolean set_vi
 	{
 		bonobo_mdi_child_remove_view (child, view);
 		
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return FALSE;
 	}
@@ -1607,7 +1607,7 @@ bonobo_mdi_add_view_real (BonoboMDI *mdi, BonoboMDIChild *child, gboolean set_vi
 	/* rebuild the children menu */
 	child_list_menu_create_all (mdi);
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 
 	return TRUE;
 }
@@ -1633,7 +1633,7 @@ bonobo_mdi_add_view_real (BonoboMDI *mdi, BonoboMDIChild *child, gboolean set_vi
 gboolean 
 bonobo_mdi_add_view (BonoboMDI *mdi, BonoboMDIChild *child)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi != NULL, FALSE);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), FALSE);
@@ -1648,7 +1648,7 @@ bonobo_mdi_add_views (BonoboMDI *mdi, GSList *children, gboolean set_view)
 {
 	gint i = 0;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi != NULL, 0);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), 0);
@@ -1693,7 +1693,7 @@ bonobo_mdi_add_toplevel_view (BonoboMDI *mdi, BonoboMDIChild *child, const char 
 	GtkWidget *view;
 	gint ret = TRUE;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi != NULL, FALSE);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), FALSE);
@@ -1710,7 +1710,7 @@ bonobo_mdi_add_toplevel_view (BonoboMDI *mdi, BonoboMDIChild *child, const char 
 	{
 		bonobo_mdi_child_remove_view (child, view);
 
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return FALSE;
 	}
@@ -1740,7 +1740,7 @@ bonobo_mdi_add_toplevel_view (BonoboMDI *mdi, BonoboMDIChild *child, const char 
 	/* rebuild the children menu */
 	child_list_menu_create_all (mdi);
 	
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 
 	return TRUE;
 }
@@ -1770,7 +1770,7 @@ bonobo_mdi_remove_view (BonoboMDI *mdi, GtkWidget *view, gint force)
 	gint pn;
 	gboolean was_active_window = FALSE;
 		
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	
 	g_return_val_if_fail (mdi != NULL, FALSE);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), FALSE);
@@ -1782,7 +1782,7 @@ bonobo_mdi_remove_view (BonoboMDI *mdi, GtkWidget *view, gint force)
 
 	if (ret == FALSE)
 	{
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return FALSE;
 	}
@@ -1800,7 +1800,7 @@ bonobo_mdi_remove_view (BonoboMDI *mdi, GtkWidget *view, gint force)
 
 	if (was_active_window && (g_list_length (GTK_NOTEBOOK (book)->children) == 1))
 	{
-		gedit_debug (DEBUG_MDI, "Call app_set_view (1)");
+		gedit_debug_message (DEBUG_MDI, "Call app_set_view (1)");
 
 		app_set_view (mdi, window, NULL);
 	}
@@ -1815,7 +1815,7 @@ bonobo_mdi_remove_view (BonoboMDI *mdi, GtkWidget *view, gint force)
 		if ((g_list_length (mdi->priv->windows) > 1) || 
 		    (mdi->priv->registered != NULL)) 
 		{
-			gedit_debug (DEBUG_MDI, "Destroy window");
+			gedit_debug_message (DEBUG_MDI, "Destroy window");
 
 			/* if this is NOT the last toplevel or a registered object
 		   	exists, destroy the toplevel */
@@ -1825,7 +1825,7 @@ bonobo_mdi_remove_view (BonoboMDI *mdi, GtkWidget *view, gint force)
 			
 			if (was_active_window)
 			{
-				gedit_debug (DEBUG_MDI, "Call app_set_view (2)");
+				gedit_debug_message (DEBUG_MDI, "Call app_set_view (2)");
 
 				app_set_view (mdi, 
 					      mdi->priv->active_window,	
@@ -1836,7 +1836,7 @@ bonobo_mdi_remove_view (BonoboMDI *mdi, GtkWidget *view, gint force)
 	}
 	else
 	{
-		gedit_debug (DEBUG_MDI, "Call app_set_view (2)");
+		gedit_debug_message (DEBUG_MDI, "Call app_set_view (2)");
 
 		pn = gtk_notebook_get_current_page (GTK_NOTEBOOK (book));
 		app_set_view (mdi, window, gtk_notebook_get_nth_page (GTK_NOTEBOOK (book), pn));
@@ -1845,7 +1845,7 @@ bonobo_mdi_remove_view (BonoboMDI *mdi, GtkWidget *view, gint force)
 	/* rebuild the children menu */
 	child_list_menu_create_all (mdi);
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 
 	return TRUE;
 }
@@ -1877,7 +1877,7 @@ bonobo_mdi_add_child (BonoboMDI *mdi, BonoboMDIChild *child)
 {
 	gint ret = TRUE;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi != NULL, FALSE);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), FALSE);
@@ -1888,7 +1888,7 @@ bonobo_mdi_add_child (BonoboMDI *mdi, BonoboMDIChild *child)
 
 	if (ret == FALSE)
 	{
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return FALSE;
 	}
@@ -1902,7 +1902,7 @@ bonobo_mdi_add_child (BonoboMDI *mdi, BonoboMDIChild *child)
 
 	g_object_set_data (G_OBJECT (child), BONOBO_MDI_KEY, mdi);
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 
 	return TRUE;
 }
@@ -1929,7 +1929,7 @@ bonobo_mdi_remove_child (BonoboMDI *mdi, BonoboMDIChild *child, gint force)
 	GList *view_node;
 	GtkWidget *view;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	
 	g_return_val_if_fail (mdi != NULL, FALSE);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), FALSE);
@@ -1944,7 +1944,7 @@ bonobo_mdi_remove_child (BonoboMDI *mdi, BonoboMDIChild *child, gint force)
 
 	if (ret == FALSE)
 	{
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return FALSE;
 	}
@@ -1969,7 +1969,7 @@ bonobo_mdi_remove_child (BonoboMDI *mdi, BonoboMDIChild *child, gint force)
 
 	g_object_unref (G_OBJECT (child));
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 
 	return TRUE;
 }
@@ -1995,7 +1995,7 @@ bonobo_mdi_remove_all (BonoboMDI *mdi, gint force)
 	GList *child_node;
 	gint handler_ret = TRUE;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi != NULL, FALSE);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), FALSE);
@@ -2016,7 +2016,7 @@ bonobo_mdi_remove_all (BonoboMDI *mdi, gint force)
 			/* if any of the children may not be removed, none will be */
 			if (handler_ret == FALSE)
 			{
-				gedit_debug (DEBUG_MDI, "END1");
+				gedit_debug_message (DEBUG_MDI, "END1");
 
 				return FALSE;
 			}
@@ -2030,7 +2030,7 @@ bonobo_mdi_remove_all (BonoboMDI *mdi, gint force)
 	while (mdi->priv->children)
 		bonobo_mdi_remove_child (mdi, BONOBO_MDI_CHILD (mdi->priv->children->data), TRUE);
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 
 	return TRUE;
 }
@@ -2051,7 +2051,7 @@ bonobo_mdi_remove_all (BonoboMDI *mdi, gint force)
 void 
 bonobo_mdi_open_toplevel (BonoboMDI *mdi, const char *window_role)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (mdi != NULL);
 	g_return_if_fail (BONOBO_IS_MDI (mdi));
@@ -2062,7 +2062,7 @@ bonobo_mdi_open_toplevel (BonoboMDI *mdi, const char *window_role)
 		
 	gtk_widget_show (GTK_WIDGET (mdi->priv->active_window));
 
-	gedit_debug (DEBUG_MDI, "END1");
+	gedit_debug_message (DEBUG_MDI, "END1");
 }
 
 /**
@@ -2083,7 +2083,7 @@ bonobo_mdi_update_child (BonoboMDI *mdi, BonoboMDIChild *child)
 	GList *win_node;
 	gchar* child_name, *path, *path_cmd, *tip, *escaped_name;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (mdi != NULL);
 	g_return_if_fail (BONOBO_IS_MDI (mdi));
@@ -2110,7 +2110,7 @@ bonobo_mdi_update_child (BonoboMDI *mdi, BonoboMDIChild *child)
 	/* Update child list menus */	
 	if(mdi->priv->child_list_path == NULL)
 	{
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return;
 	}
@@ -2142,7 +2142,7 @@ bonobo_mdi_update_child (BonoboMDI *mdi, BonoboMDIChild *child)
 	g_free (tip);
 	g_free (child_name);
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 }
 
 /**
@@ -2162,7 +2162,7 @@ bonobo_mdi_find_child (BonoboMDI *mdi, const gchar *name)
 {
 	GList *child_node;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi != NULL, NULL);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), NULL);
@@ -2176,7 +2176,7 @@ bonobo_mdi_find_child (BonoboMDI *mdi, const gchar *name)
 		{
 			g_free (child_name);	
 
-			gedit_debug (DEBUG_MDI, "END1");
+			gedit_debug_message (DEBUG_MDI, "END1");
 
 			return BONOBO_MDI_CHILD (child_node->data);
 		}
@@ -2186,7 +2186,7 @@ bonobo_mdi_find_child (BonoboMDI *mdi, const gchar *name)
 		child_node = g_list_next (child_node);
 	}
 
-	gedit_debug (DEBUG_MDI, "END2");
+	gedit_debug_message (DEBUG_MDI, "END2");
 
 	return NULL;
 }
@@ -2394,7 +2394,7 @@ bonobo_mdi_get_view_from_window (BonoboMDI *mdi, BonoboWindow *win)
 {
 	GtkWidget *book;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (mdi != NULL, NULL);
 	g_return_val_if_fail (BONOBO_IS_MDI (mdi), NULL);
@@ -2408,13 +2408,13 @@ bonobo_mdi_get_view_from_window (BonoboMDI *mdi, BonoboWindow *win)
 	{
 		int cur_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (book));
 
-		gedit_debug (DEBUG_MDI, "END1");
+		gedit_debug_message (DEBUG_MDI, "END1");
 
 		return gtk_notebook_get_nth_page (GTK_NOTEBOOK (book), cur_page);
 	} 
 	else 
 	{
-		gedit_debug (DEBUG_MDI, "END2");
+		gedit_debug_message (DEBUG_MDI, "END2");
 
 		return NULL;
 	}

@@ -69,7 +69,7 @@ static void sort_document (SortDialog * dlg);
 static void
 dialog_destroyed (GtkObject * obj, void **dialog_pointer)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (dialog_pointer != NULL) {
 		g_free (*dialog_pointer);
@@ -82,7 +82,7 @@ dialog_response_handler (GtkDialog * dlg, gint res_id, SortDialog * dialog)
 {
 	GError *error = NULL;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	switch (res_id) {
 	case GTK_RESPONSE_OK:
@@ -114,7 +114,7 @@ get_dialog ()
 	GladeXML *gui;
 	GtkWindow *window;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	window = GTK_WINDOW (gedit_get_active_window ());
 
@@ -188,7 +188,7 @@ sort_cb (BonoboUIComponent * uic, gpointer user_data, const gchar *verbname)
 {
 	SortDialog *dialog = NULL;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	dialog = get_dialog ();
 	if (!dialog)
@@ -213,7 +213,7 @@ my_compare (const void *s1, const void *s2, gpointer data)
 	gchar *key2;
 	SortInfo *sort_info;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	sort_info = (SortInfo *)data;
 
@@ -281,7 +281,7 @@ my_compare (const void *s1, const void *s2, gpointer data)
 	}
 
 	/*
-	gedit_debug (DEBUG_PLUGINS, "\n%s\n%s\n%d\n\n", *((gchar **)s1), *((gchar **)s2), ret);
+	gedit_debug_message (DEBUG_PLUGINS, "\n%s\n%s\n%d\n\n", *((gchar **)s1), *((gchar **)s2), ret);
 	*/
 
 	return ret;
@@ -301,7 +301,7 @@ sort_document (SortDialog * dlg)
 	gint cont;
 	SortInfo *sort_info;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	doc = gedit_get_active_document ();
 	if (doc == NULL)
@@ -339,7 +339,7 @@ sort_document (SortDialog * dlg)
 
 	lines = g_new0 (gpointer, gtk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc)) + 1);
 
-	gedit_debug (DEBUG_PLUGINS, "Building list...");
+	gedit_debug_message (DEBUG_PLUGINS, "Building list...");
 
 	cont = 0;
 
@@ -367,11 +367,11 @@ sort_document (SortDialog * dlg)
 	lines [cont] = buffer; 
 	++cont;
 
-	gedit_debug (DEBUG_PLUGINS, "Sort list...");
+	gedit_debug_message (DEBUG_PLUGINS, "Sort list...");
 
 	g_qsort_with_data (lines, cont, sizeof (gpointer), my_compare, sort_info);
 
-	gedit_debug (DEBUG_PLUGINS, "Rebuilding document...");
+	gedit_debug_message (DEBUG_PLUGINS, "Rebuilding document...");
 
 	gedit_document_begin_not_undoable_action (doc);
 
@@ -412,7 +412,7 @@ sort_document (SortDialog * dlg)
 	g_free (buffer);
 	g_free (sort_info);
 
-	gedit_debug (DEBUG_PLUGINS, "Done.");
+	gedit_debug_message (DEBUG_PLUGINS, "Done.");
 }
 
 /*
@@ -424,7 +424,7 @@ activate (GeditPlugin * pd)
 {
 	GList *top_windows;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	top_windows = gedit_get_top_windows ();
 	g_return_val_if_fail (top_windows != NULL, PLUGIN_ERROR);
 
@@ -449,7 +449,7 @@ activate (GeditPlugin * pd)
 G_MODULE_EXPORT GeditPluginState
 deactivate (GeditPlugin * pd)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	gedit_menus_remove_menu_item_all (MENU_ITEM_PATH, MENU_ITEM_NAME);
 
@@ -463,7 +463,7 @@ update_ui (GeditPlugin * plugin, BonoboWindow * window)
 	GeditDocument *doc;
 	GeditMDI *mdi;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (window != NULL, PLUGIN_ERROR);
 
@@ -493,7 +493,7 @@ G_MODULE_EXPORT GeditPluginState
 init (GeditPlugin * pd)
 {
 	/* initialize */
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	pd->private_data = NULL;
 

@@ -154,7 +154,7 @@ gedit_document_get_untitled_number (void)
 {
 	gint i = 1;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	if (allocated_untitled_numbers == NULL)
 		allocated_untitled_numbers = g_hash_table_new (NULL, NULL);
@@ -183,7 +183,7 @@ gedit_document_release_untitled_number (gint n)
 	
 	g_return_if_fail (allocated_untitled_numbers != NULL);
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	ret = g_hash_table_remove (allocated_untitled_numbers, GINT_TO_POINTER (n));
 	g_return_if_fail (ret);	
@@ -305,7 +305,7 @@ gedit_document_init (GeditDocument *document)
 {
 	const GeditEncoding *enc;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	document->priv = g_new0 (GeditDocumentPrivate, 1);
 	
@@ -346,7 +346,7 @@ gedit_document_finalize (GObject *object)
 {
 	GeditDocument *document;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (object != NULL);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (object));
@@ -432,7 +432,7 @@ gedit_document_new (void)
 {
  	GeditDocument *document;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	document = GEDIT_DOCUMENT (g_object_new (GEDIT_TYPE_DOCUMENT, NULL));
 
@@ -459,7 +459,7 @@ gedit_document_new_with_uri (const gchar          *uri,
 {
  	GeditDocument *document;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (uri != NULL, NULL);
 	
@@ -483,7 +483,7 @@ gedit_document_new_with_uri (const gchar          *uri,
 void 		
 gedit_document_set_readonly (GeditDocument *document, gboolean readonly)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (document != NULL);
 	g_return_if_fail (document->priv != NULL);
@@ -492,7 +492,7 @@ gedit_document_set_readonly (GeditDocument *document, gboolean readonly)
 	{
 		if (document->priv->auto_save_timeout > 0)
 		{
-			gedit_debug (DEBUG_DOCUMENT, "Remove autosave timeout");
+			gedit_debug_message (DEBUG_DOCUMENT, "Remove autosave timeout");
 
 			g_source_remove (document->priv->auto_save_timeout);
 			document->priv->auto_save_timeout = 0;
@@ -504,7 +504,7 @@ gedit_document_set_readonly (GeditDocument *document, gboolean readonly)
 		    (document->priv->auto_save_timeout <= 0) && 
                     !gedit_document_is_untitled (document))
 		{
-			gedit_debug (DEBUG_DOCUMENT, "Install autosave timeout");
+			gedit_debug_message (DEBUG_DOCUMENT, "Install autosave timeout");
 
 			document->priv->auto_save_timeout = g_timeout_add 
 				(document->priv->auto_save_interval * 1000 * 60,
@@ -535,7 +535,7 @@ gedit_document_set_readonly (GeditDocument *document, gboolean readonly)
 gboolean
 gedit_document_is_readonly (GeditDocument *document)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (document != NULL, TRUE);
 	g_return_val_if_fail (document->priv != NULL, TRUE);
@@ -546,7 +546,7 @@ gedit_document_is_readonly (GeditDocument *document)
 static void 
 gedit_document_real_name_changed (GeditDocument *document)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (document != NULL);
 }
@@ -556,7 +556,7 @@ gedit_document_real_loaded (GeditDocument *document, const GError *error)
 {
 	gchar *data;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
 
@@ -620,7 +620,7 @@ gedit_document_real_loaded (GeditDocument *document, const GError *error)
 static void 
 gedit_document_real_saved (GeditDocument *document)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (document != NULL);
 }	
@@ -628,7 +628,7 @@ gedit_document_real_saved (GeditDocument *document)
 static void 
 gedit_document_real_readonly_changed (GeditDocument *document, gboolean readonly)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (document != NULL);
 }
@@ -636,7 +636,7 @@ gedit_document_real_readonly_changed (GeditDocument *document, gboolean readonly
 static void 
 gedit_document_real_can_find_again (GeditDocument *document)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (document != NULL);
 }
@@ -645,7 +645,7 @@ gedit_document_real_can_find_again (GeditDocument *document)
 gchar*
 gedit_document_get_raw_uri (const GeditDocument* doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->uri == NULL)
 		return NULL;
@@ -660,7 +660,7 @@ gedit_document_get_raw_uri (const GeditDocument* doc)
 gchar*
 gedit_document_get_uri (const GeditDocument* doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->uri == NULL)
 		return g_strdup_printf (_("%s %d"), _("Unsaved Document"), doc->priv->untitled_number);
@@ -678,7 +678,7 @@ gedit_document_get_uri (const GeditDocument* doc)
 gchar*
 gedit_document_get_short_name (const GeditDocument* doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->uri == NULL)
 		return g_strdup_printf (_("%s %d"), _("Unsaved Document"), doc->priv->untitled_number);
@@ -738,7 +738,7 @@ gedit_document_auto_save (GeditDocument *doc)
 	gboolean create_backup;
 	GError *error = NULL;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (!gedit_document_is_readonly (doc), FALSE);
@@ -928,7 +928,7 @@ file_loaded_cb (GnomeVFSResult    result,
 	gboolean ret;
 	GeditDocument *doc;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	doc = GEDIT_DOCUMENT (callback_data);
 	
@@ -1024,7 +1024,7 @@ get_info_cb (GnomeVFSAsyncHandle *handle,
 	GeditDocument *doc;
 	GnomeVFSGetFileInfoResult *info_result;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	/* assert that the list has one and only one item */
 	g_return_if_fail (results != NULL && results->next == NULL);
@@ -1039,7 +1039,7 @@ get_info_cb (GnomeVFSAsyncHandle *handle,
 	{
 		GError *error = NULL;
 		
-		gedit_debug (DEBUG_DOCUMENT, "Error reading %s : %s",
+		gedit_debug_message (DEBUG_DOCUMENT, "Error reading %s : %s",
 			     doc->priv->temp_uri,
 			     gnome_vfs_result_to_string (info_result->result));
 
@@ -1067,7 +1067,7 @@ get_info_cb (GnomeVFSAsyncHandle *handle,
 	{
 		GError *error = NULL;
 
-		gedit_debug (DEBUG_DOCUMENT, "File %s is of type: %d",
+		gedit_debug_message (DEBUG_DOCUMENT, "File %s is of type: %d",
 			     doc->priv->temp_uri, info_result->file_info->type);
 
 		reset_temp_data (doc);
@@ -1165,7 +1165,7 @@ load_local (GeditDocument *doc)
 	{
 		GError *error = NULL;
 
-		gedit_debug (DEBUG_DOCUMENT, "File %s is of type: %d",
+		gedit_debug_message (DEBUG_DOCUMENT, "File %s is of type: %d",
 			     doc->priv->temp_uri, info->type);
 
 		reset_temp_data (doc);
@@ -1303,7 +1303,7 @@ gedit_document_load (GeditDocument        *doc,
 		g_message ("Start loading %s", uri);
 	})
 
-	gedit_debug (DEBUG_DOCUMENT, "File to load: %s", uri);
+	gedit_debug_message (DEBUG_DOCUMENT, "File to load: %s", uri);
 
 	u = gnome_vfs_uri_new (uri);
 	if (u == NULL)
@@ -1366,7 +1366,7 @@ gedit_document_load_from_stdin (GeditDocument* doc, GError **error)
 	gchar *stdin_data;
 	GtkTextIter iter, end;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	
@@ -1454,7 +1454,7 @@ gedit_document_is_untouched (const GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	return (doc->priv->uri == NULL) && 
 		(!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)));
@@ -1466,7 +1466,7 @@ gedit_document_set_uri (GeditDocument* doc, const gchar* uri)
 	GtkSourceLanguage *language = NULL;
 	gchar *data;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (uri != NULL);
@@ -1489,7 +1489,7 @@ gedit_document_set_uri (GeditDocument* doc, const gchar* uri)
 
 	if (data != NULL)
 	{
-		gedit_debug (DEBUG_DOCUMENT, "Language: %s", data);
+		gedit_debug_message (DEBUG_DOCUMENT, "Language: %s", data);
 
 		if (strcmp (data, "_NORMAL_") != 0)
 			language = gedit_languages_manager_get_language_from_id (
@@ -1526,7 +1526,7 @@ gedit_document_save (GeditDocument *doc, GError **error)
 	
 	gboolean ret;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (doc != NULL, FALSE);
 	g_return_val_if_fail (doc->priv != NULL, FALSE);
@@ -1575,7 +1575,7 @@ gedit_document_save_as (GeditDocument* doc, const gchar *uri,
 
 	gboolean ret = FALSE;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (doc != NULL, FALSE);
 	g_return_val_if_fail (doc->priv != NULL, FALSE);
@@ -1626,7 +1626,7 @@ follow_symlinks (const gchar *filename, GError **error)
 
 	g_return_val_if_fail (filename != NULL, NULL);
 	
-	gedit_debug (DEBUG_DOCUMENT, "Filename: %s", filename); 
+	gedit_debug_message (DEBUG_DOCUMENT, "Filename: %s", filename); 
 	g_return_val_if_fail (strlen (filename) + 1 <= GEDIT_MAX_PATH_LEN, NULL);
 
 	followed_filename = g_strdup (filename);
@@ -1756,7 +1756,7 @@ gedit_document_save_as_real (GeditDocument* doc, const gchar *uri, const GeditEn
 	GtkTextIter end_iter;
 	gchar *detected_mime;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (doc != NULL, FALSE);
 	g_return_val_if_fail (doc->priv != NULL, FALSE);
@@ -2059,7 +2059,7 @@ gedit_document_save_as_real (GeditDocument* doc, const gchar *uri, const GeditEn
 const gchar *
 gedit_document_get_mime_type (const GeditDocument* doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (doc != NULL, FALSE);
 	g_return_val_if_fail (doc->priv != NULL, FALSE);
@@ -2072,7 +2072,7 @@ gedit_document_get_mime_type (const GeditDocument* doc)
 gboolean	
 gedit_document_is_untitled (const GeditDocument* doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (doc != NULL, FALSE);
 	g_return_val_if_fail (doc->priv != NULL, FALSE);
@@ -2083,7 +2083,7 @@ gedit_document_is_untitled (const GeditDocument* doc)
 gboolean	
 gedit_document_get_modified (const GeditDocument* doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (doc != NULL, FALSE);
 
@@ -2096,7 +2096,7 @@ gedit_document_get_deleted (GeditDocument *doc)
 	gchar *raw_uri;
 	gboolean deleted = FALSE;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (doc != NULL, FALSE);
 
@@ -2116,7 +2116,7 @@ gedit_document_get_deleted (GeditDocument *doc)
 void 
 gedit_document_revert (GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (doc != NULL);
 	g_return_if_fail (!gedit_document_is_untitled (doc));
@@ -2131,7 +2131,7 @@ gedit_document_insert_text (GeditDocument *doc, gint pos, const gchar *text, gin
 {
 	GtkTextIter iter;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (pos >= 0);
@@ -2146,7 +2146,7 @@ gedit_document_insert_text (GeditDocument *doc, gint pos, const gchar *text, gin
 void
 gedit_document_set_max_undo_levels (GeditDocument *doc, gint max_undo_levels)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -2157,7 +2157,7 @@ gedit_document_set_max_undo_levels (GeditDocument *doc, gint max_undo_levels)
 gboolean
 gedit_document_can_undo	(const GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
@@ -2167,7 +2167,7 @@ gedit_document_can_undo	(const GeditDocument *doc)
 gboolean
 gedit_document_can_redo (const GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
@@ -2181,7 +2181,7 @@ gedit_document_can_redo (const GeditDocument *doc)
 gboolean
 gedit_document_can_find_again (const GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
@@ -2191,7 +2191,7 @@ gedit_document_can_find_again (const GeditDocument *doc)
 void 
 gedit_document_undo (GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (gedit_document_can_undo (doc));
@@ -2202,7 +2202,7 @@ gedit_document_undo (GeditDocument *doc)
 void 
 gedit_document_redo (GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (gedit_document_can_redo (doc));
@@ -2213,7 +2213,7 @@ gedit_document_redo (GeditDocument *doc)
 void
 gedit_document_begin_not_undoable_action (GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -2223,7 +2223,7 @@ gedit_document_begin_not_undoable_action (GeditDocument *doc)
 void	
 gedit_document_end_not_undoable_action	(GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -2233,7 +2233,7 @@ gedit_document_end_not_undoable_action	(GeditDocument *doc)
 void		
 gedit_document_begin_user_action (GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -2243,7 +2243,7 @@ gedit_document_begin_user_action (GeditDocument *doc)
 void		
 gedit_document_end_user_action (GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -2256,7 +2256,7 @@ gedit_document_goto_line (GeditDocument* doc, gint line)
 	guint line_count;
 	GtkTextIter iter;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (doc->priv != NULL);
@@ -2273,7 +2273,7 @@ gedit_document_goto_line (GeditDocument* doc, gint line)
 gchar* 
 gedit_document_get_last_searched_text (GeditDocument* doc)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (doc->priv != NULL, FALSE);
@@ -2295,7 +2295,7 @@ gedit_document_get_last_replace_text (GeditDocument* doc)
 void 
 gedit_document_set_last_searched_text (GeditDocument* doc, const gchar *text)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (doc->priv != NULL);
@@ -2310,7 +2310,7 @@ gedit_document_set_last_searched_text (GeditDocument* doc, const gchar *text)
 void 
 gedit_document_set_last_replace_text (GeditDocument* doc, const gchar *text)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (doc->priv != NULL);
@@ -2331,7 +2331,7 @@ gedit_document_find (GeditDocument* doc, const gchar* str, gint flags)
 	gchar *converted_str;
 	gboolean is_first_find = FALSE;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (str != NULL, FALSE);
@@ -2339,8 +2339,8 @@ gedit_document_find (GeditDocument* doc, const gchar* str, gint flags)
 	converted_str = gedit_utils_convert_search_text (str);
 	g_return_val_if_fail (converted_str != NULL, FALSE);
 	
-	gedit_debug (DEBUG_DOCUMENT, "str: %s", str);
-	gedit_debug (DEBUG_DOCUMENT, "converted_str: %s", converted_str);
+	gedit_debug_message (DEBUG_DOCUMENT, "str: %s", str);
+	gedit_debug_message (DEBUG_DOCUMENT, "converted_str: %s", converted_str);
 
 	search_flags = GTK_SOURCE_SEARCH_VISIBLE_ONLY | GTK_SOURCE_SEARCH_TEXT_ONLY;
 
@@ -2459,7 +2459,7 @@ gedit_document_find_again (GeditDocument* doc, gint flags)
 	gchar* last_searched_text;
 	gboolean found;
 	
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (doc->priv != NULL, FALSE);
@@ -2484,7 +2484,7 @@ gedit_document_find_again (GeditDocument* doc, gint flags)
 gboolean 
 gedit_document_find_next (GeditDocument* doc, gint flags)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	GEDIT_SEARCH_SET_BACKWARDS (flags, FALSE);
 
@@ -2495,7 +2495,7 @@ gedit_document_find_next (GeditDocument* doc, gint flags)
 gboolean 
 gedit_document_find_prev (GeditDocument* doc, gint flags)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	/* pack bitflag array with the backwards searching operative */
 	GEDIT_SEARCH_SET_BACKWARDS (flags, TRUE);
@@ -2511,7 +2511,7 @@ gedit_document_replace_selected_text (GeditDocument *doc, const gchar *replace)
 	GtkTextIter sel_bound;
 	gchar *converted_replace;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (replace != NULL);
@@ -2520,7 +2520,7 @@ gedit_document_replace_selected_text (GeditDocument *doc, const gchar *replace)
 						   &iter,
 						   &sel_bound))
 	{
-		gedit_debug (DEBUG_DOCUMENT, "There is no selected text");
+		gedit_debug_message (DEBUG_DOCUMENT, "There is no selected text");
 
 		return;
 	}
@@ -2554,7 +2554,7 @@ gedit_document_replace_all (GeditDocument *doc,
 {
 	gboolean cont = 0;
 
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (find != NULL, FALSE);
@@ -2662,7 +2662,7 @@ gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 void
 gedit_document_enable_auto_save (GeditDocument *doc, gboolean enable)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -2678,7 +2678,7 @@ gedit_document_enable_auto_save (GeditDocument *doc, gboolean enable)
 	    !gedit_document_is_untitled (doc) &&
 	    !gedit_document_is_readonly (doc))
 	{
-		gedit_debug (DEBUG_DOCUMENT, "Install autosave timeout");
+		gedit_debug_message (DEBUG_DOCUMENT, "Install autosave timeout");
 
 		doc->priv->auto_save_timeout = g_timeout_add 
 							(doc->priv->auto_save_interval * 1000 * 60,
@@ -2690,7 +2690,7 @@ gedit_document_enable_auto_save (GeditDocument *doc, gboolean enable)
 	
 	if (!doc->priv->auto_save && (doc->priv->auto_save_timeout > 0))
 	{
-		gedit_debug (DEBUG_DOCUMENT, "Remove autosave timeout");
+		gedit_debug_message (DEBUG_DOCUMENT, "Remove autosave timeout");
 
 		g_source_remove (doc->priv->auto_save_timeout);
 		doc->priv->auto_save_timeout = 0;
@@ -2705,7 +2705,7 @@ gedit_document_enable_auto_save (GeditDocument *doc, gboolean enable)
 void
 gedit_document_set_auto_save_interval (GeditDocument *doc, gint interval)
 {
-	gedit_debug (DEBUG_DOCUMENT, "");
+	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (interval > 0);
@@ -2720,11 +2720,11 @@ gedit_document_set_auto_save_interval (GeditDocument *doc, gint interval)
 
 	if (doc->priv->auto_save_timeout > 0)
 	{
-		gedit_debug (DEBUG_DOCUMENT, "Remove autosave timeout");
+		gedit_debug_message (DEBUG_DOCUMENT, "Remove autosave timeout");
 
 		g_source_remove (doc->priv->auto_save_timeout);
 	
-		gedit_debug (DEBUG_DOCUMENT, "Install new autosave timeout");
+		gedit_debug_message (DEBUG_DOCUMENT, "Install new autosave timeout");
 
 		g_return_if_fail (!gedit_document_is_untitled (doc));
 		g_return_if_fail (!gedit_document_is_readonly (doc));

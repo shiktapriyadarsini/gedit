@@ -85,13 +85,13 @@ static gboolean tag_list_window_key_press_event_cb (GtkTreeView *tag_list, GdkEv
 static void
 window_destroyed (GtkObject *obj,  void **window_pointer)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (window_pointer != NULL)
 	{
 		GList *top_windows;
 
-        	gedit_debug (DEBUG_PLUGINS, "");
+        	gedit_debug (DEBUG_PLUGINS);
 
         	top_windows = gedit_get_top_windows ();
 
@@ -123,7 +123,7 @@ taglist_window_show (void)
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (tag_list_window != NULL)
 	{
@@ -241,7 +241,7 @@ taglist_window_show (void)
 void 
 taglist_window_close (void)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (tag_list_window != NULL)
 		gtk_widget_destroy (GTK_WIDGET (tag_list_window->window));
@@ -254,7 +254,7 @@ populate_tag_groups_combo (void)
 	GList *cbitems = NULL;
 	GtkCombo *combo;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	combo = GTK_COMBO (tag_list_window->tag_groups_combo);
 	
@@ -284,7 +284,7 @@ selected_group_changed (GtkEntry *entry, TagListWindow *w)
 {
 	const gchar* group_name;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	group_name = gtk_entry_get_text (entry);
 
@@ -297,7 +297,7 @@ selected_group_changed (GtkEntry *entry, TagListWindow *w)
 		w->selected_tag_group = find_tag_group (group_name);
 		g_return_if_fail (w->selected_tag_group != NULL);
 		
-		gedit_debug (DEBUG_PLUGINS, "New selected group: %s", 
+		gedit_debug_message (DEBUG_PLUGINS, "New selected group: %s", 
 				w->selected_tag_group->name);
 
 		populate_tags_list ();
@@ -309,7 +309,7 @@ find_tag_group (const gchar *name)
 {
 	GList *list;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	g_return_val_if_fail (taglist != NULL, NULL);
 
@@ -331,7 +331,7 @@ populate_tags_list (void)
 {
 	GtkTreeModel* model;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (taglist != NULL);
 
@@ -351,7 +351,7 @@ create_model (void)
 	GtkTreeIter iter;
 	GList *list;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	/* create list store */
 	store = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
@@ -365,7 +365,7 @@ create_model (void)
 
 		tag_name = ((Tag*)list->data)->name;
 
-		gedit_debug (DEBUG_PLUGINS, "%d : %s", i, tag_name);
+		gedit_debug_message (DEBUG_PLUGINS, "%d : %s", i, tag_name);
 		
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -377,7 +377,7 @@ create_model (void)
 		list = g_list_next (list);
 	}
 	
-	gedit_debug (DEBUG_PLUGINS, "Rows: %d ", 
+	gedit_debug_message (DEBUG_PLUGINS, "Rows: %d ", 
 			gtk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL));
 	
 	return GTK_TREE_MODEL (store);
@@ -391,7 +391,7 @@ tag_list_row_activated_cb (GtkTreeView *tag_list, GtkTreePath *path,
 	GtkTreeModel *model;
 	gint index;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (tag_list_window->tags_list));
 	g_return_if_fail (model != NULL);
@@ -401,7 +401,7 @@ tag_list_row_activated_cb (GtkTreeView *tag_list, GtkTreePath *path,
 
 	gtk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
 
-	gedit_debug (DEBUG_PLUGINS, "Index: %d", index);
+	gedit_debug_message (DEBUG_PLUGINS, "Index: %d", index);
 
 	insert_tag ((Tag*)g_list_nth_data (tag_list_window->selected_tag_group->tags, index),
 		    TRUE);
@@ -417,7 +417,7 @@ tag_list_key_press_event_cb (GtkTreeView *tag_list, GdkEventKey *event)
 		GtkTreeIter iter;
 		gint index;
 
-		gedit_debug (DEBUG_PLUGINS, "RETURN Pressed");
+		gedit_debug_message (DEBUG_PLUGINS, "RETURN Pressed");
 
 		model = gtk_tree_view_get_model (GTK_TREE_VIEW (tag_list_window->tags_list));
 		g_return_val_if_fail (model != NULL, FALSE);
@@ -429,7 +429,7 @@ tag_list_key_press_event_cb (GtkTreeView *tag_list, GdkEventKey *event)
 		{
 			gtk_tree_model_get (model, &iter, COLUMN_TAG_INDEX_IN_GROUP, &index, -1);
 
-			gedit_debug (DEBUG_PLUGINS, "Index: %d", index);
+			gedit_debug_message (DEBUG_PLUGINS, "Index: %d", index);
 
 			insert_tag ((Tag*)g_list_nth_data (tag_list_window->selected_tag_group->tags, index),
 				    event->state & GDK_CONTROL_MASK);
@@ -450,7 +450,7 @@ insert_tag (Tag *tag, gboolean focus_to_document)
 	GtkTextIter cursor;
 	gboolean sel = FALSE;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	view = gedit_get_active_view ();
 	if (view == NULL)
@@ -535,7 +535,7 @@ tag_list_window_key_press_event_cb (GtkTreeView *tag_list, GdkEventKey *event)
 	{
 		GError *error = NULL;
 
-		gedit_debug (DEBUG_PLUGINS, "F1 Pressed");
+		gedit_debug_message (DEBUG_PLUGINS, "F1 Pressed");
 
 		gnome_help_display ("gedit.xml", "gedit-use-plugins", &error);
 	

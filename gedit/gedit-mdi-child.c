@@ -181,13 +181,13 @@ gedit_mdi_child_class_init (GeditMDIChildClass *klass)
 static void 
 gedit_mdi_child_init (GeditMDIChild  *child)
 {
-	gedit_debug (DEBUG_MDI, "START");
+	gedit_debug_message (DEBUG_MDI, "START");
 
 	child->priv = g_new0 (GeditMDIChildPrivate, 1);
 
 	child->priv->closing = FALSE;
 	
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 static void 
@@ -195,7 +195,7 @@ gedit_mdi_child_finalize (GObject *obj)
 {
 	GeditMDIChild *child;
 
-	gedit_debug (DEBUG_MDI, "START");
+	gedit_debug_message (DEBUG_MDI, "START");
 
 	g_return_if_fail (obj != NULL);
 	
@@ -211,7 +211,7 @@ gedit_mdi_child_finalize (GObject *obj)
 	
 	G_OBJECT_CLASS (parent_class)->finalize (obj);
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 }
 
 #define MAX_DOC_NAME_LENGTH 40
@@ -223,7 +223,7 @@ gedit_mdi_child_real_state_changed (GeditMDIChild* child)
 	gchar* docname = NULL;
 	gchar* tab_name = NULL;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (child != NULL);
 	g_return_if_fail (child->document != NULL);
@@ -268,7 +268,7 @@ gedit_mdi_child_real_state_changed (GeditMDIChild* child)
 static void 
 gedit_mdi_child_document_state_changed_handler (GeditDocument *document, GeditMDIChild* child)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	g_return_if_fail (child->document == document);
 
 	g_signal_emit (G_OBJECT (child), mdi_child_signals [STATE_CHANGED], 0);
@@ -278,7 +278,7 @@ static void
 gedit_mdi_child_document_readonly_changed_handler (GeditDocument *document, gboolean readonly, 
 		               			   GeditMDIChild* child)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	g_return_if_fail (child->document == document);
 
 	g_signal_emit (G_OBJECT (child), mdi_child_signals [STATE_CHANGED], 0);
@@ -288,7 +288,7 @@ static void
 gedit_mdi_child_document_can_undo_redo_handler (GeditDocument *document, gboolean can, 
 		               			GeditMDIChild* child)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	g_return_if_fail (child->document == document);
 
 	g_signal_emit (G_OBJECT (child), mdi_child_signals [UNDO_REDO_STATE_CHANGED], 0);
@@ -297,7 +297,7 @@ gedit_mdi_child_document_can_undo_redo_handler (GeditDocument *document, gboolea
 static void 
 gedit_mdi_child_document_can_find_again_handler (GeditDocument *document, GeditMDIChild* child)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 	g_return_if_fail (child->document == document);
 
 	g_signal_emit (G_OBJECT (child), mdi_child_signals [FIND_STATE_CHANGED], 0);
@@ -358,7 +358,7 @@ gedit_mdi_child_new (void)
 	GeditMDIChild *child;
 	gchar* doc_name;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	child = GEDIT_MDI_CHILD (g_object_new (GEDIT_TYPE_MDI_CHILD, NULL));
   	g_return_val_if_fail (child != NULL, NULL);
@@ -372,7 +372,7 @@ gedit_mdi_child_new (void)
 
 	gedit_mdi_child_connect_signals (child);
 	
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 
 	g_object_set_data (G_OBJECT (child->document), "mdi-child", child);
 	
@@ -385,13 +385,13 @@ gedit_mdi_child_new_with_uri (const gchar *uri, const GeditEncoding *encoding)
 	GeditMDIChild *child;
 	GeditDocument* doc;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	doc = gedit_document_new_with_uri (uri, encoding);
 
 	if (doc == NULL)
 	{
-		gedit_debug (DEBUG_MDI, "ERROR");
+		gedit_debug_message (DEBUG_MDI, "ERROR");
 		return NULL;
 	}
 
@@ -405,7 +405,7 @@ gedit_mdi_child_new_with_uri (const gchar *uri, const GeditEncoding *encoding)
 	
 	gedit_mdi_child_connect_signals (child);
 
-	gedit_debug (DEBUG_MDI, "END");
+	gedit_debug_message (DEBUG_MDI, "END");
 
 	g_object_set_data (G_OBJECT (doc), "mdi-child", child);
 
@@ -428,7 +428,7 @@ gedit_mdi_child_create_view (BonoboMDIChild *child)
 {
 	GeditView  *new_view;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (child != NULL, NULL);
 	g_return_val_if_fail (GEDIT_IS_MDI_CHILD (child), NULL);
@@ -447,7 +447,7 @@ gedit_mdi_child_get_config_string (BonoboMDIChild *child, gpointer data)
 {
 	GeditMDIChild *c;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (child != NULL, NULL);
 	g_return_val_if_fail (GEDIT_IS_MDI_CHILD (child), NULL);
@@ -463,7 +463,7 @@ gedit_mdi_child_tab_close_clicked (GtkWidget *button, GtkWidget *view)
 	GtkWidget *active_view;
 	gboolean closed;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -487,7 +487,7 @@ gedit_mdi_child_tab_save_clicked (GtkWidget *button,  GtkWidget *view)
 {
 	BonoboMDIChild *child;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -504,7 +504,7 @@ gedit_mdi_child_tab_save_as_clicked (GtkWidget *button,  GtkWidget *view)
 {
 	BonoboMDIChild *child;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -521,7 +521,7 @@ gedit_mdi_child_tab_print_clicked (GtkWidget *button,  GtkWidget *view)
 {
 	GeditDocument *doc;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -536,7 +536,7 @@ gedit_mdi_child_tab_print_clicked (GtkWidget *button,  GtkWidget *view)
 static void
 gedit_mdi_child_tab_move_window_clicked (GtkWidget *button,  GtkWidget *view)
 {
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
@@ -673,7 +673,7 @@ set_tab_icon (GtkWidget *image, BonoboMDIChild *child)
 	const gchar *mime_type;
 	int icon_size;
 
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (GTK_IS_IMAGE (image), NULL);
 	g_return_val_if_fail (GEDIT_IS_MDI_CHILD (child), NULL);
@@ -716,7 +716,7 @@ set_tooltip (GeditTooltips *tooltips, GtkWidget *widget, BonoboMDIChild *child)
 	gchar *encoding;
 	const GeditEncoding *enc;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	uri = gedit_document_get_uri (GEDIT_MDI_CHILD (child)->document);
 	g_return_if_fail (uri != NULL);
@@ -773,7 +773,7 @@ gedit_mdi_child_set_label (BonoboMDIChild *child, GtkWidget *view,  GtkWidget *o
 
 	static GeditTooltips *tooltips = NULL;
 	
-	gedit_debug (DEBUG_MDI, "");
+	gedit_debug (DEBUG_MDI);
 
 	g_return_val_if_fail (child != NULL, NULL);
 	g_return_val_if_fail (GEDIT_IS_MDI_CHILD (child), NULL);

@@ -51,10 +51,10 @@ enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
 
 void	gedit_utils_flash     (const gchar *msg);
-void	gedit_utils_flash_va  (gchar *format, ...);
+void	gedit_utils_flash_va  (const gchar *format, ...) G_GNUC_PRINTF(1, 2);
 
 void	gedit_utils_set_status    (const gchar *msg);
-void	gedit_utils_set_status_va (gchar *format, ...);
+void	gedit_utils_set_status_va (const gchar *format, ...) G_GNUC_PRINTF(1, 2);
 
 
 gboolean gedit_utils_is_uri_read_only (const gchar* uri);
@@ -87,7 +87,7 @@ gchar *gedit_utils_convert_search_text (const gchar *text);
 
 gchar *gedit_utils_get_stdin (void);
 
-void gedit_warning (GtkWindow *parent, gchar *format, ...);
+void gedit_warning (GtkWindow *parent, const gchar *format, ...) G_GNUC_PRINTF(2, 3);
 
 gchar *gedit_utils_str_middle_truncate (const char *string,
 					guint truncate_length);

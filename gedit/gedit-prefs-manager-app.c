@@ -119,7 +119,7 @@ static gint bottom_panel_size = -1;
 gboolean
 gedit_prefs_manager_app_init (void)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_val_if_fail (gedit_prefs_manager == NULL, FALSE);
 	
@@ -206,7 +206,7 @@ gedit_prefs_manager_app_init (void)
 void
 gedit_prefs_manager_app_shutdown ()
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	gedit_prefs_manager_shutdown ();
 
@@ -380,7 +380,7 @@ gedit_prefs_manager_editor_font_changed (GConfClient *client,
 	gboolean def = TRUE;
 	gint ts;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -467,7 +467,7 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 	gchar *str_color;
 	GdkColor color;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -575,7 +575,7 @@ gedit_prefs_manager_tabs_size_changed (GConfClient *client,
 				       GConfEntry  *entry, 
 				       gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -659,7 +659,7 @@ gedit_prefs_manager_wrap_mode_changed (GConfClient *client,
 	                               GConfEntry  *entry, 
 	                               gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -697,7 +697,7 @@ gedit_prefs_manager_line_numbers_changed (GConfClient *client,
 					  GConfEntry  *entry, 
 					  gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -734,7 +734,7 @@ gedit_prefs_manager_hl_current_line_changed (GConfClient *client,
 					     GConfEntry  *entry, 
 					     gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -771,7 +771,7 @@ gedit_prefs_manager_bracket_matching_changed (GConfClient *client,
 					      GConfEntry  *entry, 
 					      gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -808,7 +808,7 @@ gedit_prefs_manager_auto_indent_changed (GConfClient *client,
 					 GConfEntry  *entry, 
 					 gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -845,7 +845,7 @@ gedit_prefs_manager_undo_changed (GConfClient *client,
 				  GConfEntry  *entry, 
 				  gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -884,7 +884,7 @@ gedit_prefs_manager_right_margin_changed (GConfClient *client,
 					  GConfEntry *entry,
 					  gpointer user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -947,7 +947,7 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 					      GConfEntry  *entry,
 					      gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -1006,7 +1006,7 @@ gedit_prefs_manager_max_recents_changed (GConfClient *client,
 					 GConfEntry  *entry,
 					 gpointer     user_data)
 {
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);
@@ -1041,7 +1041,7 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 	GList *docs;
 	GList *l;
 
-	gedit_debug (DEBUG_PREFS, "");
+	gedit_debug (DEBUG_PREFS);
 
 	g_return_if_fail (entry->key != NULL);
 	g_return_if_fail (entry->value != NULL);

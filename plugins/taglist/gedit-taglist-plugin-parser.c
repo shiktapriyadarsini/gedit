@@ -66,7 +66,7 @@ static gboolean
 parse_tag (Tag *tag, xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur) 
 {
 	/*
-	gedit_debug (DEBUG_PLUGINS, "  Tag name: %s", tag->name);
+	gedit_debug_message (DEBUG_PLUGINS, "  Tag name: %s", tag->name);
 	*/
 	/* We don't care what the top level element name is */
 	cur = cur->xmlChildrenNode;
@@ -78,7 +78,7 @@ parse_tag (Tag *tag, xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur)
 		{			
 			tag->begin = xmlNodeListGetString (doc, cur->xmlChildrenNode, 1);
 			/*
-			gedit_debug (DEBUG_PLUGINS, "    - Begin: %s", tag->begin);
+			gedit_debug_message (DEBUG_PLUGINS, "    - Begin: %s", tag->begin);
 			*/
 		}
 
@@ -87,7 +87,7 @@ parse_tag (Tag *tag, xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur)
 		{
 			tag->end = xmlNodeListGetString (doc, cur->xmlChildrenNode, 1);
 			/*
-			gedit_debug (DEBUG_PLUGINS, "    - End: %s", tag->end);
+			gedit_debug_message (DEBUG_PLUGINS, "    - End: %s", tag->end);
 			*/
 		}
 
@@ -104,7 +104,7 @@ static gboolean
 parse_tag_group (TagGroup *tg, const gchar* fn, xmlDocPtr doc, 
 		 xmlNsPtr ns, xmlNodePtr cur) 
 {
-	gedit_debug (DEBUG_PLUGINS, "Parse TagGroup: %s", tg->name);
+	gedit_debug_message (DEBUG_PLUGINS, "Parse TagGroup: %s", tg->name);
 
 	/* We don't care what the top level element name is */
     	cur = cur->xmlChildrenNode;
@@ -199,7 +199,7 @@ get_tag_group (const gchar* filename, xmlDocPtr doc,
 					
 					if (strcmp (tgn, (gchar*)tag_group->name) == 0)
 					{
-						gedit_debug (DEBUG_PLUGINS, 
+						gedit_debug_message (DEBUG_PLUGINS, 
 							     "Tag group '%s' already exists.", tgn);
 						
 						exists = TRUE;
@@ -380,7 +380,7 @@ parse_taglist_file (const gchar* filename)
 	xmlNsPtr ns;
 	xmlNodePtr cur;
 
-	gedit_debug (DEBUG_PLUGINS, "Parse file: %s", filename);
+	gedit_debug_message (DEBUG_PLUGINS, "Parse file: %s", filename);
 
 	xmlKeepBlanksDefault (0);
 
@@ -440,7 +440,7 @@ parse_taglist_file (const gchar* filename)
 
 	xmlFreeDoc (doc);
 
-	gedit_debug (DEBUG_PLUGINS, "END");
+	gedit_debug_message (DEBUG_PLUGINS, "END");
 
 	return taglist;
 }
@@ -450,7 +450,7 @@ static void
 free_tag (Tag *tag)
 {
 	/*
-	gedit_debug (DEBUG_PLUGINS, "Tag: %s", tag->name);
+	gedit_debug_message (DEBUG_PLUGINS, "Tag: %s", tag->name);
 	*/
 	g_return_if_fail (tag != NULL);
 
@@ -468,7 +468,7 @@ free_tag (Tag *tag)
 static void
 free_tag_group (TagGroup *tag_group)
 {
-	gedit_debug (DEBUG_PLUGINS, "Tag group: %s", tag_group->name);
+	gedit_debug_message (DEBUG_PLUGINS, "Tag group: %s", tag_group->name);
 
 	g_return_if_fail (tag_group != NULL);
 
@@ -485,13 +485,13 @@ free_tag_group (TagGroup *tag_group)
 	
 	g_free (tag_group);
 
-	gedit_debug (DEBUG_PLUGINS, "END");
+	gedit_debug_message (DEBUG_PLUGINS, "END");
 }
 
 void
 free_taglist (void)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	if (taglist == NULL)
 		return;
@@ -509,7 +509,7 @@ free_taglist (void)
 
 	taglist = NULL;
 
-	gedit_debug (DEBUG_PLUGINS, "END");
+	gedit_debug_message (DEBUG_PLUGINS, "END");
 }
 
 static TagList * 
@@ -518,13 +518,13 @@ parse_taglist_dir (const gchar *dir)
 	DIR *d;
 	struct dirent *e;
 
-	gedit_debug (DEBUG_PLUGINS, "DIR: %s", dir);
+	gedit_debug_message (DEBUG_PLUGINS, "DIR: %s", dir);
 
 	d = opendir (dir);
 	
 	if (d == NULL)
 	{		
-		gedit_debug (DEBUG_PLUGINS, "%s", strerror (errno));
+		gedit_debug_message (DEBUG_PLUGINS, "%s", strerror (errno));
 		return taglist;
 	}
 	
@@ -546,7 +546,7 @@ TagList* create_taglist (void)
 {
 	gchar const * const home = g_get_home_dir ();
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (taglist == NULL, taglist);
 

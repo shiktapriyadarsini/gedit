@@ -587,7 +587,7 @@ save_copy_cb (BonoboUIComponent *uic,
 	gchar *file_uri;
 	const GeditEncoding *encoding;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	doc = gedit_get_active_document ();
 	g_return_if_fail (doc != NULL);
@@ -632,7 +632,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 	GeditMDI *mdi;
 	GeditDocument *doc;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	g_return_val_if_fail (window != NULL, PLUGIN_ERROR);
 
 	mdi = gedit_get_mdi ();
@@ -659,7 +659,7 @@ G_MODULE_EXPORT GeditPluginState
 activate (GeditPlugin *plugin)
 {
 	GList *top_windows;
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	top_windows = gedit_get_top_windows ();
 	g_return_val_if_fail (top_windows != NULL, PLUGIN_ERROR);
@@ -690,7 +690,7 @@ deactivate (GeditPlugin *plugin)
 G_MODULE_EXPORT GeditPluginState
 init (GeditPlugin *plugin)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	return PLUGIN_OK;
 }
@@ -698,7 +698,7 @@ init (GeditPlugin *plugin)
 G_MODULE_EXPORT GeditPluginState
 destroy (GeditPlugin *plugin)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	return PLUGIN_OK;
 }

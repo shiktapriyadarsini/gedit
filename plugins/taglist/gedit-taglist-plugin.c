@@ -66,7 +66,7 @@ tag_list_cb (BonoboUIComponent           *ui_component,
 {
 	gboolean s;
 	
-	gedit_debug (DEBUG_PLUGINS, "%s toggled to '%s'", path, state);
+	gedit_debug_message (DEBUG_PLUGINS, "%s toggled to '%s'", path, state);
 
 	s = (strcmp (state, "1") == 0);
 
@@ -82,7 +82,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 {
 	BonoboUIComponent *uic;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	g_return_val_if_fail (window != NULL, PLUGIN_ERROR);
 
@@ -96,7 +96,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 G_MODULE_EXPORT GeditPluginState
 destroy (GeditPlugin *plugin)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	free_taglist ();
 
@@ -107,7 +107,7 @@ G_MODULE_EXPORT GeditPluginState
 activate (GeditPlugin *pd)
 {
 	GList *top_windows;
-        gedit_debug (DEBUG_PLUGINS, "");
+        gedit_debug (DEBUG_PLUGINS);
 
 	if (taglist == NULL)
 		if (create_taglist () == NULL)
@@ -155,7 +155,7 @@ G_MODULE_EXPORT GeditPluginState
 init (GeditPlugin *pd)
 {
 	/* initialize */
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	pd->private_data = NULL;
 		

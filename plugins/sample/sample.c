@@ -60,7 +60,7 @@ sample_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
 	gchar *user_name_utf8;
 	const gchar *temp;
 
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	doc = gedit_get_active_document ();
 	g_return_if_fail (doc != NULL);
@@ -104,7 +104,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 	GeditDocument *doc;
 	GeditMDI *mdi;
 	
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 	
 	g_return_val_if_fail (window != NULL, PLUGIN_ERROR);
 
@@ -126,7 +126,7 @@ update_ui (GeditPlugin *plugin, BonoboWindow *window)
 G_MODULE_EXPORT GeditPluginState
 destroy (GeditPlugin *plugin)
 {
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	return PLUGIN_OK;
 }
@@ -135,7 +135,7 @@ G_MODULE_EXPORT GeditPluginState
 activate (GeditPlugin *pd)
 {
 	GList *top_windows;
-        gedit_debug (DEBUG_PLUGINS, "");
+        gedit_debug (DEBUG_PLUGINS);
 
         top_windows = gedit_get_top_windows ();
         g_return_val_if_fail (top_windows != NULL, PLUGIN_ERROR);
@@ -167,7 +167,7 @@ G_MODULE_EXPORT GeditPluginState
 init (GeditPlugin *pd)
 {
 	/* initialize */
-	gedit_debug (DEBUG_PLUGINS, "");
+	gedit_debug (DEBUG_PLUGINS);
 
 	pd->private_data = NULL;
 		
