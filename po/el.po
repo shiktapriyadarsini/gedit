@@ -226,7 +226,7 @@ msgstr ""
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Καθορίζει την χρήση της γραμματοσειράς στο σώμα του εγγράφου κατά την "
+"Καθορίζει τη χρήση της γραμματοσειράς στο σώμα του εγγράφου κατά την "
 "εκτύπωση. "
 
 #: data/gedit.schemas.in.h:33
@@ -243,7 +243,7 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Καθορίζει την χρήσης της γραμματοσειράς στις κεφαλίδες σελίδας κατά την "
+"Καθορίζει τη χρήσης της γραμματοσειράς στις κεφαλίδες σελίδας κατά την "
 "εκτύπωση. Αυτό πραγματοποιείται μόνο αν είναι ενεργοποιημένη η \"Εκτύπωση "
 "Κεφαλίδας\" ."
 
@@ -252,7 +252,7 @@ msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
 msgstr ""
-"Καθορίζει τον μέγιστο αριθμό των πρόσφατα ανοιγμένων εγγράφων που θα "
+"Καθορίζει το μέγιστο αριθμό των πρόσφατα ανοιγμένων εγγράφων που θα "
 "εμφανίζονται στο υπομενού  \"Πρόσφατα Έγγραφα\"."
 
 #: data/gedit.schemas.in.h:36
@@ -276,7 +276,7 @@ msgid ""
 "mentioned here."
 msgstr ""
 "Στύλ για κουμπιά εργαλειοθήκης. Οι πιθανές τιμές είναι \"GEDIT_TOOLBAR_SYSTEM"
-"\" για χρήση του εξ'ορισμού στύλ του συστήματος, \"GEDIT_TOOLBAR_ICONS\" για "
+"\" για χρήση του εξ ορισμού στύλ του συστήματος, \"GEDIT_TOOLBAR_ICONS\" για "
 "την προβολή μόνο των εικονιδίων, και \"GEDIT_TOOLBAR_ICONS_AND_TEXT\"  για "
 "προβολή εικονιδίων και κειμένου. Σημειώστε ότι στις τιμές υπάρχει διάκριση "
 "πεζών-κεφαλαίων και πρέπει να εμφανιστούν όπως ακριβώς αναφέρονται εδώ."
@@ -376,7 +376,7 @@ msgid ""
 "Make sure you turn on the \"Status Bar is Visible\" option for this to take "
 "effect."
 msgstr ""
-"Αν η γραμμή κατάστασης θα δείχνει την θέση του δρομέα στα παράθυρα "
+"Αν η γραμμή κατάστασης θα δείχνει τη θέση του δρομέα στα παράθυρα "
 "επεξεργασίας. Βεβαιωθείτε ότι είναι ενεργοποιημένη η επιλογή \"Η Γραμμή "
 "Κατάστασης είναι Ορατή\" για να πραγματοποιηθεί."
 
@@ -386,7 +386,7 @@ msgid ""
 "windows. Make sure you turn on the \"Status Bar is Visible\" option for this "
 "to take effect."
 msgstr ""
-"Αν η γραμμή κατάστασης θα δείχνει την λειτουργία εισαγωγής/αντικατάστασης "
+"Αν η γραμμή κατάστασης θα δείχνει τη λειτουργία εισαγωγής/αντικατάστασης "
 "στα παράθυρα επεξεργασίας. Βεβαιωθείτε ότι είναι ενεργοποιημένη η επιλογή "
 "\"Η Γραμμή Κατάστασης είναι Ορατή\" για να πραγματοποιηθεί."
 
@@ -401,7 +401,7 @@ msgid ""
 "specified in the \"Background Color\", \"Text Color\", \"Selected Text Color"
 "\", and \"Selection Color\" options."
 msgstr ""
-"Αν θα χρησιμοποιούνται τα εξ'ορισμού χρώματα του συστήματος για την περιοχή "
+"Αν θα χρησιμοποιούνται τα εξ ορισμού χρώματα του συστήματος για την περιοχή "
 "επεξεργασίας. Αν αυτή η επιλογή απενεργοποιηθεί τότε τα χρώματα της περιοχής "
 "επεξεργασίας θα καθορίζονται από τις ρυθμίσεις των επιλογών \"Χρώμα "
 "Παρασκηνίου\", \"Χρώμα Κειμένου\", \"Χρώμα Επιλεγμένου Κειμένου\", και "
@@ -413,7 +413,7 @@ msgid ""
 "specific to gedit. If this option is turned off, then the font named in the "
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
-"Αν θα χρησιμοποιούνται οι εξ'ορισμού γραμματοσειρές του συστήματος για την "
+"Αν θα χρησιμοποιούνται οι εξ ορισμού γραμματοσειρές του συστήματος για την "
 "επεξεργασία κειμένου αντί για μια συγκεκριμένη γραμματοσειρά. Αν αυτή η "
 "επιλογή απενεργοποιηθεί τότε θα χρησιμοποιηθεί η γραμματοσειρά που ορίζεται "
 "στην επιλογή \"Γραμματοσειρά Επεξεργαστή\"."
@@ -467,9 +467,9 @@ msgid ""
 "button or double click the character in the table."
 msgstr ""
 "Αν θέλετε να εισάγετε κάποιο από τους χαρακτήρες στο ενεργό \n"
-"έγγραφο, επιλέξτε τον χαρακτήρα και πατήστε το κουμπί \"Εισαγωγή Χαρακτήρα"
+"έγγραφο, επιλέξτε το χαρακτήρα και πατήστε το κουμπί \"Εισαγωγή Χαρακτήρα"
 "\" \n"
-"ή κάντε διπλό κλίκ στον χαρακτήρα του πίνακα."
+"ή κάντε διπλό κλίκ στο χαρακτήρα του πίνακα."
 
 #: plugins/ASCII/asciitable.glade2.h:4
 msgid "Insert char"
@@ -582,7 +582,7 @@ msgstr ""
 
 #: plugins/diff/diff.c:660
 msgid "No differences were found between the selected documents."
-msgstr "Δεν βρέθηκαν διαφορές μεταξύ των επιλεγμένων εγγράφων."
+msgstr "Δε βρέθηκαν διαφορές μεταξύ των επιλεγμένων εγγράφων."
 
 #: plugins/diff/diff.c:701
 msgid ""
@@ -602,7 +602,7 @@ msgid ""
 msgstr ""
 "Δημιουργεί ένα έγγραφο διαφορών μεταξύ δύο εγγράφων ή αρχείων του δίσκου\n"
 "\n"
-"Για περισσότερες πληροφορίες για την diff, γράψτε \"man diff\" στη γραμμή "
+"Για περισσότερες πληροφορίες για τη diff, γράψτε \"man diff\" στη γραμμή "
 "εντολών\n"
 
 #: plugins/diff/diff.c:928
@@ -775,7 +775,7 @@ msgstr "Εισαγωγή_ονόματος χρήστη "
 
 #: plugins/sample/sample.c:46
 msgid "Insert the user name at the cursor position"
-msgstr "Εισαγωγή του ονόματος χρήστη στην θέση δρομέα"
+msgstr "Εισαγωγή του ονόματος χρήστη στη θέση δρομέα"
 
 #: plugins/sample/sample.c:172
 msgid "User name"
@@ -783,7 +783,7 @@ msgstr "Όνομα χρήστη"
 
 #: plugins/sample/sample.c:173
 msgid "Inserts the user name at the cursor position."
-msgstr "Εισαγωγή του ονόματος χρήστη στην θέση δρομέα."
+msgstr "Εισαγωγή του ονόματος χρήστη στη θέση δρομέα."
 
 #: plugins/shell_output/shell_output.c:49
 msgid "Insert Shell _Output"
@@ -907,7 +907,7 @@ msgstr "_Εισαγωγή Ώρας/Ημερομηνίας"
 
 #: plugins/time/time.c:48
 msgid "Insert current date and time at the cursor position"
-msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στην θέση του δρομέα"
+msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη θέση του δρομέα"
 
 #: plugins/time/time.c:274
 msgid "Available formats"
@@ -923,7 +923,7 @@ msgstr "Εισαγωγή Ώρας/Ημερομηνίας"
 
 #: plugins/time/time.c:569
 msgid "Inserts current date and time at the cursor position."
-msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στην θέση του δρομέα."
+msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη θέση του δρομέα."
 
 #: plugins/time/time.glade2.h:2
 msgid "Select the format to use when inserting date/time."
@@ -947,7 +947,7 @@ msgstr "_Μετάβαση σε γραμμή"
 #: src/dialogs/gedit-dialog-goto-line.c:165
 msgid "Could not find the required widgets inside goto-line.glade2.\n"
 msgstr ""
-"Αδυναμία εύρεσης απαιτούμενων γραφικών συστατικών μέσα στην μετάβαση "
+"Αδυναμία εύρεσης απαιτούμενων γραφικών συστατικών μέσα στη μετάβαση "
 "σε_γραμμή.glade2.\n"
 
 #: src/dialogs/gedit-dialog-replace.c:172 src/dialogs/replace.glade2.h:2
@@ -1010,7 +1010,7 @@ msgstr ""
 #: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
-"Μή έγκυρο αρχείο glade  για την διαχείριση πρόσθετων λειτουργιών -- δεν "
+"Μή έγκυρο αρχείο glade  για τη διαχείριση πρόσθετων λειτουργιών -- δεν "
 "βρέθηκαν όλα τα γραφικά συστατικά.\n"
 
 #: src/dialogs/gedit-plugin-program-location-dialog.c:74
@@ -1021,7 +1021,7 @@ msgstr "Καθορισμός θέσης προγράμματος..."
 msgid ""
 "Could not find the required widgets inside program-location-dialog.glade2.\n"
 msgstr ""
-"Αδυναμία εύρεσης απαιτούμενων γραφικών συστατικών μέσα στον διάλογο-"
+"Αδυναμία εύρεσης απαιτούμενων γραφικών συστατικών μέσα στο διάλογο-"
 "τοποθεσίας-προγράμματος.glade2.\n"
 
 #: src/dialogs/gedit-plugin-program-location-dialog.c:102
@@ -1111,7 +1111,7 @@ msgstr "Κατηγορίες"
 #: src/dialogs/gedit-preferences-dialog.c:800
 msgid "Push this button to select the font to be used by the editor"
 msgstr ""
-"Πατήστε αυτό το κουμπί για να επιλέξετε την γραμματοσειρά που θα "
+"Πατήστε αυτό το κουμπί για να επιλέξετε τη γραμματοσειρά που θα "
 "χρησιμοποιείται από τον επεξεργαστή"
 
 #: src/dialogs/gedit-preferences-dialog.c:803
@@ -1120,7 +1120,7 @@ msgstr "Πατήστε αυτό το κουμπί για να ρυθμίσετε
 
 #: src/dialogs/gedit-preferences-dialog.c:805
 msgid "Push this button to configure background color"
-msgstr "Πιέστε αυτό το κουμπί για την ρύθμιση χρώματος παρασκηνίου"
+msgstr "Πιέστε αυτό το κουμπί για τη ρύθμιση χρώματος παρασκηνίου"
 
 #: src/dialogs/gedit-preferences-dialog.c:807
 msgid ""
@@ -1156,7 +1156,7 @@ msgstr "Helvetica 8"
 #: src/dialogs/gedit-preferences-dialog.c:1733
 msgid "Push this button to select the font to be used to print the body"
 msgstr ""
-"Πατήστε αυτό το κουμπί για να επιλέξετε την γραμματοσειρά που θα "
+"Πατήστε αυτό το κουμπί για να επιλέξετε τη γραμματοσειρά που θα "
 "χρησιμοποιείται για την εκτύπωση του σώματος"
 
 #: src/dialogs/gedit-preferences-dialog.c:1735
@@ -1168,7 +1168,7 @@ msgstr ""
 #: src/dialogs/gedit-preferences-dialog.c:1737
 msgid "Push this button to select the font to be used to print line numbers"
 msgstr ""
-"Πατήστε αυτό το κουμπί για να επιλέξετε την γραμματοσειρά που θα "
+"Πατήστε αυτό το κουμπί για να επιλέξετε τη γραμματοσειρά που θα "
 "χρησιμοποιείται για την εκτύπωση αριθμών γραμμής"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
@@ -1186,7 +1186,7 @@ msgstr " γραμμή(ές)"
 #: src/dialogs/gedit-preferences.glade2.h:4
 msgid "Always use UTF-8 encoding (faster) when creating a new file"
 msgstr ""
-"Να γίνεται πάντα χρήση κωδικοποίησης UTF-8 (γρηγορότερο) κατά την δημιουργία "
+"Να γίνεται πάντα χρήση κωδικοποίησης UTF-8 (γρηγορότερο) κατά τη δημιουργία "
 "νέου αρχείου"
 
 #: src/dialogs/gedit-preferences.glade2.h:5
@@ -1334,7 +1334,7 @@ msgid ""
 "The undo settings let you set the maximum number of actions that gedit can "
 "undo."
 msgstr ""
-"Οι ρυθμίσεις λειτουργίας αναίρεσης σας επιτρέπουν να ρυθμίσετε τον μέγιστο "
+"Οι ρυθμίσεις λειτουργίας αναίρεσης σας επιτρέπουν να ρυθμίσετε το μέγιστο "
 "αριθμό των ενεργειών που η εφαρμογή μπορεί να αναιρέσει."
 
 #: src/dialogs/gedit-preferences.glade2.h:39
@@ -1345,7 +1345,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:40
 msgid "U_se default theme colors"
-msgstr "Χρή_ση εξ'ορισμού χρωμάτων θέματος"
+msgstr "Χρή_ση εξ ορισμού χρωμάτων θέματος"
 
 #: src/dialogs/gedit-preferences.glade2.h:41
 msgid "U_se original file encoding if possible"
@@ -1362,7 +1362,7 @@ msgstr "Χρήση της τρέχουσας_κωδικοποίησης locale �
 #: src/dialogs/gedit-preferences.glade2.h:45
 msgid "Use current locale's encoding if possible when creating a new file"
 msgstr ""
-"Χρήση της τρέχουσας κωδικοποίησης locale αν είναι δυνατόν κατά την "
+"Χρήση της τρέχουσας κωδικοποίησης locale αν είναι δυνατόν κατά τη "
 "δημιουργία νέου αρχείου"
 
 #: src/dialogs/gedit-preferences.glade2.h:46
@@ -1373,7 +1373,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:47
 msgid "When creating a new file..."
-msgstr "Κατά την δημιουργία ενός νέου αρχείου..."
+msgstr "Κατά τη δημιουργία ενός νέου αρχείου..."
 
 #: src/dialogs/gedit-preferences.glade2.h:48
 msgid "When saving..."
@@ -1409,11 +1409,11 @@ msgstr "_Γραμματοσειρά που χρησιμοποιείται για
 
 #: src/dialogs/gedit-preferences.glade2.h:57
 msgid "_Never wrap lines"
-msgstr "_Να μην γίνεται ποτέ αναδίπλωση γραμμών"
+msgstr "_Να μη γίνεται ποτέ αναδίπλωση γραμμών"
 
 #: src/dialogs/gedit-preferences.glade2.h:58
 msgid "_Restore default fonts"
-msgstr "_Επαναφορά εξ'ορισμού γραμματοσειρών: "
+msgstr "_Επαναφορά εξ ορισμού γραμματοσειρών: "
 
 #: src/dialogs/gedit-preferences.glade2.h:59
 msgid "_Text color:"
@@ -1421,7 +1421,7 @@ msgstr "_Χρώμα κειμένου"
 
 #: src/dialogs/gedit-preferences.glade2.h:60
 msgid "_Use default theme font"
-msgstr "_Χρήση εξ'ορισμού θέματος γραμματοσειράς: "
+msgstr "_Χρήση εξ ορισμού θέματος γραμματοσειράς: "
 
 #: src/dialogs/gedit-preferences.glade2.h:61
 msgid "action(s)"
@@ -1659,8 +1659,8 @@ msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
 msgstr ""
-"Δεν υπάρχει αρκετός χώρος στον δίσκο για την αποθήκευση του αρχείου.\n"
-"Ελευθερώστε κάποιο χώρο στον δίσκο και προσπαθήστε ξανά."
+"Δεν υπάρχει αρκετός χώρος στο δίσκο για την αποθήκευση του αρχείου.\n"
+"Ελευθερώστε κάποιο χώρο στο δίσκο και προσπαθήστε ξανά."
 
 #: src/gedit-document.c:1402
 msgid ""
@@ -1682,7 +1682,7 @@ msgstr "Δε μπορείτε να επαναφέρετε ένα Ανώνυμο 
 
 #: src/gedit-file-selector-util.c:125
 msgid "Do_n't replace"
-msgstr "Να_μην γίνει αντικατάσταση"
+msgstr "Να _μη γίνει αντικατάσταση"
 
 #: src/gedit-file-selector-util.c:147
 #, c-format
@@ -2166,11 +2166,11 @@ msgstr "Προβολή Λειτουργίας_Αντικατάστασης"
 
 #: src/gedit-ui.xml.h:74
 msgid "Show cursor position in the statusbar"
-msgstr "Προβολή εμφάνισης θέσης δρομέα στην γραμμή κατάστασης"
+msgstr "Προβολή εμφάνισης θέσης δρομέα στη γραμμή κατάστασης"
 
 #: src/gedit-ui.xml.h:75
 msgid "Show overwrite mode in the statusbar"
-msgstr "Προβολή λειτουργίας αντικατάστασης στην γραμμή κατάστασης"
+msgstr "Προβολή λειτουργίας αντικατάστασης στη γραμμή κατάστασης"
 
 #: src/gedit-ui.xml.h:77
 msgid "Undo the last action"
@@ -2394,7 +2394,7 @@ msgstr ""
 "Δεν είναι δυνατό το άνοιγμα του αρχείου \"%s\" επειδή δεν μπορεί να βρεθεί "
 "το σύστημα \"%s\".\n"
 "\n"
-"Βεβαιωθείτε ότι πληκτρολογήσατε την τοπθεσία σωστά και ότι οι ρυθμίσεις "
+"Βεβαιωθείτε ότι πληκτρολογήσατε την τοποθεσία σωστά και ότι οι ρυθμίσεις "
 "διαμεσολαβητή είναι σωστές και προσπαθείστε ξανά."
 
 #: src/gedit-utils.c:910
@@ -2650,9 +2650,9 @@ msgid ""
 "\n"
 "Please free some disk space and try again."
 msgstr ""
-"Δεν υπάρχει αρκετός ελεύθερος χώρος για την δημιουργία του αρχείου \"%s\".\n"
+"Δεν υπάρχει αρκετός ελεύθερος χώρος για τη δημιουργία του αρχείου \"%s\".\n"
 "\n"
-"Ελευθερώστε κάποιο χώρο στον δίσκο και προσπαθήστε ξανά."
+"Ελευθερώστε κάποιο χώρο στο δίσκο και προσπαθήστε ξανά."
 
 #: src/gedit-utils.c:1337
 #, c-format
