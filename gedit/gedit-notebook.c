@@ -34,7 +34,7 @@
  *  Copyright (C) 2003, 2004 Christian Persch
  *
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -57,7 +57,7 @@
 #include <gtk/gtkbutton.h>
 #include <gtk/gtkiconfactory.h>
 #include <glib/gi18n.h>
-#include <libgnomevfs/gnome-vfs-uri.h>
+// #include <libgnomevfs/gnome-vfs-uri.h>
 
 #define TAB_WIDTH_N_CHARS 15
 
@@ -79,14 +79,14 @@ struct _GeditNotebookPrivate
 	gboolean       always_show_tabs;
 };
 
-static void gedit_notebook_init           (GeditNotebook      *notebook);
-static void gedit_notebook_class_init     (GeditNotebookClass *klass);
-static void gedit_notebook_finalize       (GObject            *object);
-static void move_current_tab_to_another_notebook  (
-					   GeditNotebook      *src,
-			                   GeditNotebook      *dest,
-					   GdkEventMotion     *event,
-					   gint                dest_position);
+G_DEFINE_TYPE(GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
+
+static void gedit_notebook_finalize (GObject *object);
+
+static void move_current_tab_to_another_notebook  (GeditNotebook  *src,
+						   GeditNotebook  *dest,
+						   GdkEventMotion *event,
+						   gint            dest_position);
 
 /* Local variables */
 static GdkCursor *cursor = NULL;
@@ -113,43 +113,10 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static GtkNotebookClass *parent_class = NULL;
-
-GType
-gedit_notebook_get_type (void)
-{
-	static GType type = 0;
-
-	if (G_UNLIKELY (type == 0))
-	{
-		static const GTypeInfo our_info =
-		{
-			sizeof (GeditNotebookClass),
-			NULL, /* base_init */
-			NULL, /* base_finalize */
-			(GClassInitFunc) gedit_notebook_class_init,
-			NULL,
-			NULL, /* class_data */
-			sizeof (GeditNotebook),
-			0, /* n_preallocs */
-			(GInstanceInitFunc) gedit_notebook_init
-		};
-			
-
-		type = g_type_register_static (GTK_TYPE_NOTEBOOK,
-					       "GeditNotebook",
-					       &our_info, 0);
-	}
-
-	return type;
-}
-
 static void
 gedit_notebook_class_init (GeditNotebookClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-	parent_class = g_type_class_peek_parent (klass);
 
 	object_class->finalize = gedit_notebook_finalize;
 
@@ -797,7 +764,7 @@ gedit_notebook_finalize (GObject *object)
 		
 	g_object_unref (notebook->priv->title_tips);
 
-	G_OBJECT_CLASS (parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_notebook_parent_class)->finalize (object);
 }
 
 
