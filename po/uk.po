@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  gEdit 0.5.4\n"
-"POT-Creation-Date: 1999-11-16 16:42+0000\n"
+"POT-Creation-Date: 1999-11-26 14:35+0000\n"
 "PO-Revision-Date: 1999-09-20 17:36+0300\n"
 "Last-Translator: Yuri Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukraine <uk@li.org>\n"
@@ -25,29 +25,29 @@ msgstr "Доповненя gEdit - нав╕гатор Web"
 msgid "Could not save file!"
 msgstr "Неможливо зберегти файл!"
 
-#: src/commands.c:359
+#: src/commands.c:366
 msgid "Open File..."
 msgstr "В╕дкрити файл..."
 
-#: src/commands.c:413 src/commands.c:461
+#: src/commands.c:420 src/commands.c:468
 msgid "Read only file!"
 msgstr "Файл лише для зчитування!"
 
-#: src/commands.c:500 src/commands.c:570
+#: src/commands.c:507 src/commands.c:577
 msgid "Error saving file!"
 msgstr "Помилка при збереженн╕ файла!"
 
-#: src/commands.c:530
+#: src/commands.c:537
 #, c-format
 msgid "Save %s As..."
 msgstr "Записати %s як..."
 
-#: src/commands.c:603
+#: src/commands.c:610
 #, c-format
 msgid "Save %s As ..."
 msgstr "Записати %s як..."
 
-#: src/commands.c:689
+#: src/commands.c:696
 #, c-format
 msgid ""
 "Are you sure you wish to revert all changes?\n"
@@ -56,19 +56,19 @@ msgstr ""
 "Ви впевнен╕, що хочете в╕дм╕нити ус╕ зм╕ни?\n"
 "(%s)"
 
-#: src/commands.c:737
+#: src/commands.c:744
 msgid "Document Unchanged..."
 msgstr "Документ не зм╕нено..."
 
-#: src/commands.c:741
+#: src/commands.c:748
 msgid "Document Unsaved..."
 msgstr "Документ не збережено..."
 
-#: src/commands.c:924
+#: src/commands.c:932
 msgid "_File/"
 msgstr "_Файл/"
 
-#: src/commands.c:933 src/commands.c:934
+#: src/commands.c:941 src/commands.c:942
 msgid "_File"
 msgstr "_Файл"
 
