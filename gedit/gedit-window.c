@@ -87,7 +87,9 @@ struct _GeditWindowPrivate
 	GdkWindowState  state;
 
 	gint		side_panel_size;
-	gint		bottom_panel_size;	
+	gint		bottom_panel_size;
+	
+	gboolean	removing_all_tabs;
 };
 
 G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
@@ -437,6 +439,12 @@ create_languages_menu (GeditWindow *window)
 }
 
 static void
+set_non_homogeneus (GtkWidget *widget, gpointer data)
+{
+	gtk_tool_item_set_homogeneous (GTK_TOOL_ITEM (widget), FALSE);
+}
+                                             
+static void
 create_menu_bar_and_toolbar (GeditWindow *window, 
 			     GtkWidget   *main_box)
 {
@@ -519,8 +527,6 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 			    FALSE,
 			    0);
 
-	set_toolbar_style (window, NULL);
-
 	/* add the custom Open button to the toolbar */
 	open_button = gtk_menu_tool_button_new_from_stock (GTK_STOCK_OPEN);
 	gtk_tool_item_set_homogeneous (open_button, TRUE);
@@ -549,6 +555,13 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_action_connect_proxy (action, GTK_WIDGET (open_button));
 
 	gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), open_button, 1);
+	
+	set_toolbar_style (window, NULL);
+
+	gtk_container_foreach (GTK_CONTAINER (window->priv->toolbar),
+			       (GtkCallback)set_non_homogeneus,
+			       NULL);
+						
 }
 
 static void
@@ -1130,7 +1143,13 @@ notebook_tab_removed (GeditNotebook *notebook,
 		}
 	}
 
-	update_documents_list_menu (window);
+	if (!window->priv->removing_all_tabs)
+		update_documents_list_menu (window);
+	else
+	{
+		if (window->priv->num_tabs == 0)
+			update_documents_list_menu (window);
+	}
 }
 
 static void
@@ -1358,6 +1377,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
 	window->priv->active_tab = NULL;
 	window->priv->num_tabs = 0;
+	window->priv->removing_all_tabs = FALSE;
 	
 	main_box = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (window), main_box);
@@ -1572,6 +1592,18 @@ gedit_window_close_tab (GeditWindow *window,
 	
 	gedit_notebook_remove_tab (GEDIT_NOTEBOOK (window->priv->notebook),
 				   tab);
+}
+
+void 
+gedit_window_close_all_tabs (GeditWindow *window)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+
+	window->priv->removing_all_tabs = TRUE;
+	
+	gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (window->priv->notebook));
+	
+	window->priv->removing_all_tabs = FALSE;
 }
 
 void

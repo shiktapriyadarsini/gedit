@@ -237,11 +237,45 @@ gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 void 
 gedit_cmd_file_close_all (GtkAction *action, GeditWindow *window)
 {
-#if 0
+	GSList *unsaved_docs;
+	GList *docs;
+	GList *l;
+	
 	gedit_debug (DEBUG_COMMANDS, "");
+	
+	unsaved_docs = NULL;
+	docs = gedit_window_get_documents (window);
+	
+	l = docs;
+	
+	while (l != NULL)
+	{
+		GeditDocument *doc = GEDIT_DOCUMENT (l->data);
+		
+		if (gedit_document_get_modified (doc) || 
+		    gedit_document_get_deleted (doc))
+		{
+			unsaved_docs = g_slist_prepend (unsaved_docs, doc);
+		}
+		
+		l = g_list_next (l);
+	}
+	g_list_free (docs);
+	
+	if (unsaved_docs == NULL)
+	{
+		/* Close all documents */
+		gedit_window_close_all_tabs (window);
+		return;
+	}
+	
+	unsaved_docs = g_slist_reverse (unsaved_docs);
+	
+	if (unsaved_docs->next == NULL)
+	{
+		/* There is only one usaved doc */
+	}
 
-	gedit_file_close_all ();
-#endif
 }
 
 void

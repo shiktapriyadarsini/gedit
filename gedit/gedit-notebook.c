@@ -1070,28 +1070,15 @@ smart_tab_switching_on_closure (GeditNotebook *nb,
 	}
 }
 
-void
-gedit_notebook_remove_tab (GeditNotebook *nb,
-			   GeditTab *tab)
+static void
+remove_tab (GeditTab      *tab,
+	    GeditNotebook *nb)
 {
-	int position, curr;
 	GtkWidget *label, *ebox;
-
-	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
-	g_return_if_fail (GEDIT_IS_TAB (tab));
-
-	/* Remove the page from the focused pages list */
-	nb->priv->focused_pages =  g_list_remove (nb->priv->focused_pages,
-						  tab);
-
+	gint position;
+	
 	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
-	curr = gtk_notebook_get_current_page (GTK_NOTEBOOK (nb));
-
-	if (position == curr)
-	{
-		smart_tab_switching_on_closure (nb, tab);
-	}
-
+	
 	label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
 	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (label), "label-ebox"));
 	gedit_tooltips_set_tip (GEDIT_TOOLTIPS (nb->priv->title_tips), 
@@ -1123,5 +1110,42 @@ gedit_notebook_remove_tab (GeditNotebook *nb,
 
 	g_signal_emit (G_OBJECT (nb), signals[TAB_REMOVED], 0, tab);
 
-	g_object_unref (tab);
+	g_object_unref (tab);	
 }
+
+void
+gedit_notebook_remove_tab (GeditNotebook *nb,
+			   GeditTab      *tab)
+{
+	gint position, curr;
+
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+
+	/* Remove the page from the focused pages list */
+	nb->priv->focused_pages =  g_list_remove (nb->priv->focused_pages,
+						  tab);
+
+	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb), GTK_WIDGET (tab));
+	curr = gtk_notebook_get_current_page (GTK_NOTEBOOK (nb));
+
+	if (position == curr)
+	{
+		smart_tab_switching_on_closure (nb, tab);
+	}
+
+	remove_tab (tab, nb);
+}
+
+void
+gedit_notebook_remove_all_tabs (GeditNotebook *nb)
+{	
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
+	
+	g_list_free (nb->priv->focused_pages);
+	nb->priv->focused_pages = NULL;
+
+	gtk_container_foreach (GTK_CONTAINER (nb),
+			       (GtkCallback)remove_tab,
+			       nb);
+}	

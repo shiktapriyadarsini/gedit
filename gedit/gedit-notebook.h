@@ -106,6 +106,8 @@ void		gedit_notebook_add_tab		(GeditNotebook *nb,
 
 void		gedit_notebook_remove_tab	(GeditNotebook *nb,
 						 GeditTab      *tab);
+						 
+void		gedit_notebook_remove_all_tabs 	(GeditNotebook *nb);
 
 void		gedit_notebook_reorder_tab	(GeditNotebook *src,
 			    			 GeditTab      *tab,

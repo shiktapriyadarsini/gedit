@@ -85,6 +85,8 @@ GeditTab	*gedit_window_create_tab		(GeditWindow *window,
 void		 gedit_window_close_tab			(GeditWindow *window,
 							 GeditTab    *tab);
 							 
+void		 gedit_window_close_all_tabs		(GeditWindow *window);
+							 
 GeditTab	*gedit_window_get_active_tab		(GeditWindow *window);
 
 /* Helper functions */
