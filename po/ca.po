@@ -1213,7 +1213,7 @@ msgstr "C_onfigura el connector"
 #
 #: gedit/dialogs/plugin-manager.glade2.h:2
 msgid "_About Plugin"
-msgstr "Qu_an al Plugin"
+msgstr "Qu_an al connector"
 
 #: gedit/dialogs/plugin-manager.glade2.h:3
 msgid "button1"
