@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.9.4\n"
 "POT-Creation-Date: 2001-01-07 07:58+0100\n"
-"PO-Revision-Date: 2000-12-21 17:21+01:00\n"
+"PO-Revision-Date: 2001-01-24 15:15+0100\n"
 "Last-Translator: Emese KOVACS <emese@gnome.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -1004,7 +1004,7 @@ msgstr "hiba, nem tudom a %s modul fájlt megnyitni"
 
 #: src/plugin.c:332
 msgid "Error, plugin does not contain init_plugin function."
-msgstr "hiba, a plugin nem tartalmazza az init_plugin fügvényt."
+msgstr "Hiba, a bõvítmény nem tartalmazza az init_plugin fügvényt."
 
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
@@ -1020,7 +1020,7 @@ msgstr "Hiba, a bõvítményhez nem tartozik részletes leírás"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
-msgstr "Hiba, a plugint még mindig használja valami"
+msgstr "Hiba, a bõvítményt még mindig használja valami"
 
 #: src/print.c:295
 msgid "Pages"
