@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2000-12-20 20:16+0100\n"
-"PO-Revision-Date: 2000-12-20 20:17CET\n"
+"Project-Id-Version: 0.9.6\n"
+"POT-Creation-Date: 2001-01-02 13:51+0100\n"
+"PO-Revision-Date: 2001-01-02 13:57CET\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@rak.isternet.sk>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Modul pre prehliadanie WWW"
 #.
 #: plugins/browse/browse.glade.h:7
 msgid "gedit web browse plugin"
-msgstr "modul geditu pre prehliadanie webu"
+msgstr "modul geditu pre prehliadanie WWW"
 
 #: plugins/browse/browse.glade.h:8
 msgid "Enter the Url to browse for :"
@@ -69,7 +69,7 @@ msgstr "Prevod èísel"
 
 #: plugins/convert/convert.glade.h:8
 msgid "Converted Value:"
-msgstr "Prevádená hodnota:"
+msgstr "Prevádzaná hodnota:"
 
 #: plugins/convert/convert.glade.h:9
 msgid "Value to be converted:"
@@ -168,7 +168,7 @@ msgstr "Vykonávam príkaz: %s"
 
 #: plugins/email/email.c:267
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 #: plugins/email/email.c:268
 msgid "Email the current document"
@@ -179,7 +179,7 @@ msgid ""
 "Email the current document to a specified email address\n"
 "gedit searches for sendmail to use this plugin."
 msgstr ""
-"Odo¹le aktuálny dokument na nejakú e-mailovú adresu.\n"
+"Odo¹le aktuálny dokument na nejakú emailovú adresu.\n"
 "Pre pou¾itie tohoto modulu hµadá gedit program sendmail."
 
 #.
@@ -189,7 +189,7 @@ msgstr ""
 #.
 #: plugins/email/email.glade.h:7 src/dialogs/program.glade.h:7
 msgid "gedit: e-mail plugin"
-msgstr "modul e-mail pre gedit"
+msgstr "modul email pre gedit"
 
 #: plugins/email/email.glade.h:8 src/dialogs/program.glade.h:8
 msgid "From:"
@@ -373,7 +373,7 @@ msgstr "Nastavi» nástrojový pruh na ikony s textom"
 
 #: src/dialogs/prefs.glade.h:12
 msgid "Editor Behavior"
-msgstr "Chovanie editoru"
+msgstr "Chovanie editora"
 
 #: src/dialogs/prefs.glade.h:13
 msgid "Enable Auto-indent"
@@ -425,7 +425,7 @@ msgstr "Vráti»"
 
 #: src/dialogs/prefs.glade.h:29
 msgid "Set limit on undo levels to :"
-msgstr "Nastavi» poèet úrovní vrátenia na :"
+msgstr "Nastavi» poèet úrovení vrátenia na :"
 
 #: src/dialogs/prefs.glade.h:30
 msgid "level(s)"
@@ -638,7 +638,7 @@ msgstr ""
 "%s\n"
 "\n"
 "\n"
-"Prosím, overte, ¾e súbor nie je vyu¾ívaný inou aplikáciou\n"
+"Prosím, overte, ¾e súbor nie je pou¾ívaný inou aplikáciou\n"
 "a ¾e nie je prázdny."
 
 #: src/file.c:183 src/file.c:467
@@ -829,7 +829,7 @@ msgstr "_Informácie o súbore"
 
 #: src/menus.c:139
 msgid "Get the basic file info"
-msgstr "Zorazí základné informácie o súbore."
+msgstr "Zobrazí základné informácie o súbore."
 
 #: src/menus.c:151
 msgid "_Add View"
@@ -1012,11 +1012,11 @@ msgid "Error, init_plugin returned an error"
 msgstr "Chyba, init_plugin vrátil chybu"
 
 #: src/plugin.c:349
-msgid "Error, the plugin did not specified a description"
+msgid "Error, the plugin did not specify a description"
 msgstr "Chyba, modul neuviedol popis"
 
 #: src/plugin.c:354
-msgid "Error, the plugin did not specified a long description"
+msgid "Error, the plugin did not specify a long description"
 msgstr "Chyba, modul neuviedol dlhý popis"
 
 #: src/plugin.c:391
@@ -1069,7 +1069,7 @@ msgid ""
 "Can't count lines if another search operation is active, please close the "
 "search dialog."
 msgstr ""
-"Nô¾em spoèíta» riadky, ak prebieha iná vyhµadávacia operácia. Prosím, "
+"Nemô¾em spoèíta» riadky, ak prebieha iná vyhµadávacia operácia. Prosím, "
 "zatvorte vyhµadávací dialóg."
 
 #: src/search.c:410
@@ -1088,16 +1088,16 @@ msgid ""
 msgstr ""
 "Meno súboru: %s\n"
 "\n"
-"Celkovo znakov: %i\n"
-"Celkovo slov: %i\n"
-"Celkovo riadkov: %i\n"
-"Celkovo odstavcov: %i\n"
-"Celkovo bajtov: %i\n"
+"Celkom znakov: %i\n"
+"Celkom slov: %i\n"
+"Celkom riadkov: %i\n"
+"Celkom odstavcov: %i\n"
+"Celkom bajtov: %i\n"
 "\n"
 "Aktuálny riadok: %i\n"
 "Aktuálny ståpec: %i"
 
 #: src/view.c:963
 msgid "You can't remove the last view of a document."
-msgstr "Nemô6ete odstráni» posledný pohµad dokumentu."
+msgstr "Nemô¾ete odstráni» posledný pohµad dokumentu."
 
