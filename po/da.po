@@ -17,9 +17,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 0.7.1\n"
+"Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-22 13:01+0100\n"
+"POT-Creation-Date: 2004-11-23 15:58+0100\n"
 "PO-Revision-Date: 2004-11-22 13:03+0100\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -110,7 +110,7 @@ msgstr "Endelse for sikkerhedskopier"
 
 #: data/gedit.schemas.in.h:10
 msgid "Body Font for Printing"
-msgstr "Kropskrifttype ved udskrift"
+msgstr "Brødtekstskrifttype ved udskrift"
 
 #: data/gedit.schemas.in.h:11
 msgid "Create Backup Copies"
@@ -293,7 +293,7 @@ msgstr ""
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Angiver den skrifttype der benyttes for et dokuments krop ved udskrivning."
+"Angiver den skrifttype der benyttes for et dokuments brødtekst ved udskrivning."
 
 #: data/gedit.schemas.in.h:44
 msgid ""
@@ -663,7 +663,7 @@ msgstr "_Kodninger der vises i menu:"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:496
 msgid "Body font picker"
-msgstr "Kropskrifttypevælger"
+msgstr "Brødtekstskrifttypevælger"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:497
 msgid ""
@@ -671,7 +671,7 @@ msgid ""
 "document"
 msgstr ""
 "Tryk på denne knap for at vælge den skrifttype der bliver brugt til at "
-"udskrive kroppen af dokumentet"
+"udskrive brødteksten af dokumentet"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:498
 msgid "Page headers font picker"
@@ -1100,7 +1100,7 @@ msgstr "Udskriv syntaks_fremhævning"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:12
 msgid "_Body:"
-msgstr "_Krop:"
+msgstr "_Brødtekst:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:13
 msgid "_Line numbers:"
