@@ -41,7 +41,7 @@
 
 G_BEGIN_DECLS
 
-static GtkActionEntry gedit_menu_entries[] =
+static const GtkActionEntry gedit_menu_entries[] =
 {
 	/* Toplevel */
 	{ "File", NULL, N_("_File") },
@@ -126,10 +126,10 @@ static GtkActionEntry gedit_menu_entries[] =
 	{"HelpContents", GTK_STOCK_HELP, N_("_Contents"), "F1",
 	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents) },
 	{ "HelpAbout", GTK_STOCK_ABOUT, N_("_About"), NULL,
-	  N_("About this application"), G_CALLBACK (gedit_cmd_help_about) }
+	 N_("About this application"), G_CALLBACK (gedit_cmd_help_about) }
 };
 
-static guint gedit_n_menu_entries = G_N_ELEMENTS (gedit_menu_entries);
+static const guint gedit_n_menu_entries = G_N_ELEMENTS (gedit_menu_entries);
 
 G_END_DECLS
 

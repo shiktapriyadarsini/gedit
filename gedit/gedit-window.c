@@ -176,14 +176,15 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 			     GtkWidget   *main_box)
 {
 	GtkActionGroup *action_group;
-	GtkAction      *action;
-	GtkUIManager   *manager;
-	GtkWidget      *menubar;
-	GError         *error = NULL;
+	GtkAction *action;
+	GtkUIManager *manager;
+	GtkWidget *menubar;
+	GError *error = NULL;
 
 	manager = gtk_ui_manager_new ();
 	window->priv->manager = manager;
 
+	/* show tooltips in the statusbar */
 	g_signal_connect (manager, "connect_proxy",
 			  G_CALLBACK (connect_proxy_cb), window);
 	g_signal_connect (manager, "disconnect_proxy",
@@ -203,12 +204,17 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	/* set short labels to use in the toolbar */
 	action = gtk_action_group_get_action (action_group, "FileSave");
 	g_object_set (action, "short_label", _("Save"), NULL);
-	/* TODO more */
+	action = gtk_action_group_get_action (action_group, "SearchFind");
+	g_object_set (action, "short_label", _("Find"), NULL);
+	action = gtk_action_group_get_action (action_group, "SearchReplace");
+	g_object_set (action, "short_label", _("Replace"), NULL);
 
-	/* set which actions are important */
+	/* set which actions should have priority on the toolbar */
+	// CHECK: add open and maybe other (New?)
 	action = gtk_action_group_get_action (action_group, "FileSave");
 	g_object_set (action, "is_important", TRUE, NULL);
-	/* TODO more */
+	action = gtk_action_group_get_action (action_group, "EditUndo");
+	g_object_set (action, "is_important", TRUE, NULL);
 
 	gtk_window_add_accel_group (GTK_WINDOW (window),
 				    gtk_ui_manager_get_accel_group (manager));

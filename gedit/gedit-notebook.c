@@ -1017,8 +1017,6 @@ build_tab_label (GeditNotebook *nb,
 	return hbox;
 }
 
-
-
 void
 gedit_notebook_set_always_show_tabs (GeditNotebook *nb, 
 				     gboolean       show_tabs)
