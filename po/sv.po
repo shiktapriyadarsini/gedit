@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2000-12-19 00:45+0100\n"
-"PO-Revision-Date: 2000-12-19 00:58+0100\n"
+"POT-Creation-Date: 2001-01-04 00:34+0100\n"
+"PO-Revision-Date: 2001-01-04 00:36+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1014,11 +1014,11 @@ msgid "Error, init_plugin returned an error"
 msgstr "Fel, init_plugin retunerade ett fel"
 
 #: src/plugin.c:349
-msgid "Error, the plugin did not specified a description"
+msgid "Error, the plugin did not specify a description"
 msgstr "Fel, insticksprogrammet angav inte en beskrivning"
 
 #: src/plugin.c:354
-msgid "Error, the plugin did not specified a long description"
+msgid "Error, the plugin did not specify a long description"
 msgstr "Fel, insticksprogrammet angav inte en lång beskrivning"
 
 #: src/plugin.c:391
