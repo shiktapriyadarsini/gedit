@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.0\n"
 "POT-Creation-Date: 2002-11-24 14:36+0100\n"
-"PO-Revision-Date: 2002-12-21 22:37+EDT\n"
+"PO-Revision-Date: 2002-12-27 22:19+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -143,7 +143,7 @@ msgstr ""
 #
 #: data/gedit.schemas.in.h:24
 msgid "Print Line Numbers"
-msgstr "የመስመር ቁጥሮች አትም"
+msgstr "የመስመር ቍጥሮች አትም"
 
 #: data/gedit.schemas.in.h:25
 msgid "Printing Line Wrapping Mode"
@@ -918,7 +918,7 @@ msgstr "የመሸፈኛ ዘዴ"
 #: src/dialogs/gedit-preferences-dialog.c:211
 #: src/dialogs/gedit-preferences.glade2.h:19
 msgid "Line numbers"
-msgstr "የመስመር ቁጥሮች"
+msgstr "የመስመር ቍጥሮች"
 
 #: src/dialogs/gedit-preferences-dialog.c:213
 #: src/dialogs/gedit-preferences.glade2.h:29 src/gedit-ui.xml.h:58
@@ -1778,11 +1778,11 @@ msgstr "የተመረጠውን ቁረጥ"
 
 #: src/gedit-ui.xml.h:19
 msgid "Delete"
-msgstr "መሰረዣ"
+msgstr "አጥፉ"
 
 #: src/gedit-ui.xml.h:20
 msgid "Delete the selected text"
-msgstr ""
+msgstr "የተመረጠው ጽሑፍ አጥፉ"
 
 #: src/gedit-ui.xml.h:21
 msgid "Dump XML"
@@ -1802,7 +1802,7 @@ msgstr "የሚቀጥለዉን ፈልግ (_x)"
 
 #: src/gedit-ui.xml.h:26
 msgid "Go to a specific line number"
-msgstr "የተጠቀሰው የመስመር ቁጥር ጋር ሂድ"
+msgstr "የተጠቀሰው የመስመር ቍጥር ጋር ሂድ"
 
 #: src/gedit-ui.xml.h:27
 msgid "Goto _Line"
@@ -2006,7 +2006,7 @@ msgstr "_ቅጂ"
 
 #: src/gedit-ui.xml.h:82
 msgid "_Customize Toolbar"
-msgstr ""
+msgstr "_ቱልባር አስተካክል"
 
 #: src/gedit-ui.xml.h:83
 msgid "_Debug"
@@ -2014,11 +2014,11 @@ msgstr "_አስተካክል"
 
 #: src/gedit-ui.xml.h:84
 msgid "_Delete"
-msgstr "መ_ሰረዣ"
+msgstr "_አጥፍ"
 
 #: src/gedit-ui.xml.h:85
 msgid "_Desktop Default"
-msgstr ""
+msgstr "የነበረው _ሠሌዳ"
 
 #: src/gedit-ui.xml.h:86
 msgid "_Documents"
@@ -2082,7 +2082,7 @@ msgstr "_ፈልግ"
 
 #: src/gedit-ui.xml.h:102
 msgid "_Statusbar"
-msgstr "_ስታተስ ባር"
+msgstr "_ስታተስባር"
 
 #: src/gedit-ui.xml.h:103
 msgid "_Toolbar"
