@@ -996,10 +996,17 @@ msgstr ""
 "%s liitännäisen käyttämiseksi tarvitaan %s. \n"
 " Haluatko antaa %s:lle uuden sijainnin?"
 
+<<<<<<< fi.po
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "liitännäisen varausvirhe"
+
+=======
 #: src/plugin.c:312
 msgid "plugin allocation error"
 msgstr ""
 
+>>>>>>> 1.9.2.1
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1013,6 +1020,16 @@ msgstr "Virhe, liitännäinen ei sisällä init_plugin -funktiota."
 msgid "Error, init_plugin returned an error"
 msgstr "Virhe, init_plugin palautti virheen"
 
+<<<<<<< fi.po
+#: src/plugin.c:349
+msgid "Error, the plugin did not specify a description"
+msgstr "Virhe, liitännäinen ei antanut kuvausta"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specify a long description"
+msgstr "Virhe, liitännäinen ei antanut pitkää kuvausta"
+
+=======
 #: src/plugin.c:349
 msgid "Error, the plugin did not specify a description"
 msgstr ""
@@ -1021,6 +1038,7 @@ msgstr ""
 msgid "Error, the plugin did not specify a long description"
 msgstr ""
 
+>>>>>>> 1.9.2.1
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
 msgstr "Virhe, liitännäinen on yhä käytössä"
