@@ -33,10 +33,12 @@
 #endif
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "gedit-search-panel.h"
 #include "gedit-utils.h"
 #include "gedit-window.h"
+#include "gedit-debug.h"
 
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
@@ -53,6 +55,12 @@ struct _GeditSearchPanelPrivate
 	GtkWidget    *search_entry;
 	GtkWidget    *replace_entry;
 	GtkWidget    *line_number_entry;
+	
+	GtkWidget    *find_button;
+	GtkWidget    *replace_button;
+	GtkWidget    *replace_all_button;
+	
+	GtkWidget    *search_options_vbox;		
 };
 
 G_DEFINE_TYPE(GeditSearchPanel, gedit_search_panel, GTK_TYPE_VBOX)
@@ -63,6 +71,75 @@ enum
 	PROP_WINDOW,
 };
 
+static gboolean
+get_selected_text (GtkTextBuffer *doc, gchar **selected_text, gint *len)
+{
+	GtkTextIter start, end;
+
+	g_return_val_if_fail (selected_text != NULL, FALSE);
+	g_return_val_if_fail (*selected_text == NULL, FALSE);
+
+	if (!gtk_text_buffer_get_selection_bounds (doc, &start, &end))
+	{
+		if (len != NULL)
+			len = 0;
+
+		return FALSE;
+	}
+
+	*selected_text = gtk_text_buffer_get_slice (doc, &start, &end, TRUE);
+
+	if (len != NULL)
+		*len = g_utf8_strlen (*selected_text, -1);
+
+	return TRUE;
+}
+
+static void
+window_tab_removed (GeditWindow      *window,
+		    GeditTab         *tab,
+		    GeditSearchPanel *panel)
+{
+	if (gedit_window_get_active_tab (window) == NULL)
+	{
+		gtk_widget_set_sensitive (panel->priv->search_entry,
+					  FALSE);
+		gtk_widget_set_sensitive (panel->priv->replace_entry,
+					  FALSE);			  
+		gtk_widget_set_sensitive (panel->priv->line_number_entry,
+					  FALSE);	
+		gtk_widget_set_sensitive (panel->priv->find_button,
+					  FALSE);
+		gtk_widget_set_sensitive (panel->priv->replace_button,
+					  FALSE);			  
+		gtk_widget_set_sensitive (panel->priv->replace_all_button,
+					  FALSE);
+		gtk_widget_set_sensitive (panel->priv->search_options_vbox,
+					  FALSE);					  			  
+	}
+}
+
+static void
+window_tab_added (GeditWindow      *window,
+		  GeditTab         *tab,
+		  GeditSearchPanel *panel)
+{
+	gtk_widget_set_sensitive (panel->priv->search_entry,
+				  TRUE);
+	gtk_widget_set_sensitive (panel->priv->replace_entry,
+				  TRUE);
+	gtk_widget_set_sensitive (panel->priv->line_number_entry,
+				  TRUE);	
+	gtk_widget_set_sensitive (panel->priv->find_button,
+				  TRUE);
+	gtk_widget_set_sensitive (panel->priv->replace_button,
+				  TRUE);			  
+	gtk_widget_set_sensitive (panel->priv->replace_all_button,
+				  TRUE);
+	gtk_widget_set_sensitive (panel->priv->search_options_vbox,
+				  TRUE);				  
+}
+
 static void
 set_window (GeditSearchPanel *panel,
 	    GeditWindow      *window)
@@ -71,7 +148,7 @@ set_window (GeditSearchPanel *panel,
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	
 	panel->priv->window = window;
-/*	
+	
 	g_signal_connect (window,
 			  "tab_added",
 			  G_CALLBACK (window_tab_added),
@@ -80,6 +157,7 @@ set_window (GeditSearchPanel *panel,
 			  "tab_removed",
 			  G_CALLBACK (window_tab_removed),
 			  panel);
+/*			  
 	g_signal_connect (window,
 			  "tabs_reordered",
 			  G_CALLBACK (window_tabs_reordered),
@@ -165,9 +243,9 @@ gedit_search_panel_class_init (GeditSearchPanelClass *klass)
 
 static void
 line_number_entry_insert_text (GtkEditable *editable, 
-			       const char *text, 
-			       gint length, 
-			       gint *position)
+			       const char  *text, 
+			       gint         length, 
+			       gint        *position)
 {
 	gunichar c;
 	const gchar *p;
@@ -232,6 +310,182 @@ line_number_entry_activate (GtkEntry         *entry,
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
+static void
+search_text (GeditSearchPanel *panel)
+{
+	GeditView *active_view;
+	GeditDocument *doc;
+	const gchar *search_string = NULL;
+	gboolean found;
+	gboolean case_sensitive;
+	gboolean entire_word;
+	gboolean wrap_around;
+	gboolean search_backwards;
+	gint flags = 0;
+
+	gedit_debug (DEBUG_SEARCH, "");
+	
+	active_view = gedit_window_get_active_view (panel->priv->window);
+	if (active_view == NULL)
+		return;
+
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	g_return_if_fail (doc != NULL);
+			
+	search_string = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));		
+	g_return_if_fail (search_string != NULL);
+
+	if (strlen (search_string) <= 0)
+		return;
+		
+	/* retrieve search settings from the dialog */
+	case_sensitive = FALSE; //gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_case_checkbutton));
+	entire_word = FALSE; //gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->entire_word_checkbutton));
+	wrap_around = TRUE; //gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->wrap_around_checkbutton));
+	search_backwards = FALSE; //gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->search_backwards_checkbutton));
+
+	/* setup quarks for next invocation */
+	/*
+	g_object_set_qdata (G_OBJECT (doc), was_search_backwards_id, GBOOLEAN_TO_POINTER (search_backwards));
+	g_object_set_qdata (G_OBJECT (doc), was_wrap_around_id, GBOOLEAN_TO_POINTER (wrap_around));
+	g_object_set_qdata (G_OBJECT (doc), was_entire_word_id, GBOOLEAN_TO_POINTER (entire_word));
+	g_object_set_qdata (G_OBJECT (doc), was_case_sensitive_id, GBOOLEAN_TO_POINTER (case_sensitive));
+	*/
+
+	/* setup search parameter bitfield */
+	GEDIT_SEARCH_SET_FROM_CURSOR (flags, TRUE);
+	GEDIT_SEARCH_SET_CASE_SENSITIVE (flags, case_sensitive);
+	GEDIT_SEARCH_SET_BACKWARDS (flags, search_backwards);
+	GEDIT_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
+
+	/* run search */
+	found = gedit_document_find (doc, search_string, flags);
+
+	/* if we're able to wrap, don't use the cursor position */
+	if (!found && wrap_around)
+	{
+		GEDIT_SEARCH_SET_FROM_CURSOR (flags, FALSE);
+		found = gedit_document_find (doc, search_string, flags);
+	}
+
+	if (found)
+	{
+		gedit_view_scroll_to_cursor (active_view);
+		gtk_widget_set_sensitive (panel->priv->find_button, TRUE);
+		gtk_widget_modify_bg (panel->priv->search_entry,
+				      GTK_STATE_NORMAL,
+				      NULL);
+	}
+	else
+	{
+		GdkColor red;
+		
+		gdk_color_parse ("red", &red);
+		gtk_widget_set_sensitive (panel->priv->find_button, FALSE);
+		gtk_widget_modify_bg (panel->priv->search_entry,
+				      GTK_STATE_NORMAL,
+				      &red);
+	}	
+}
+
+static void
+search_entry_changed (GtkEditable      *editable,
+		      GeditSearchPanel *panel)
+{
+	GeditView *active_view; 
+	
+	active_view = gedit_window_get_active_view (panel->priv->window);
+	if (active_view == NULL)
+		return;
+		
+	search_text (panel);
+}
+
+static gchar* 
+escape_search_text (const gchar* text)
+{
+	GString *str;
+	gint length;
+	const gchar *p;
+ 	const gchar *end;
+
+  	g_return_val_if_fail (text != NULL, NULL);
+
+	gedit_debug (DEBUG_SEARCH, "Text: %s", text);
+
+    	length = strlen (text);
+
+	str = g_string_new ("");
+
+  	p = text;
+  	end = text + length;
+
+  	while (p != end)
+    	{
+      		const gchar *next;
+      		next = g_utf8_next_char (p);
+
+		switch (*p)
+        	{
+       			case '\n':
+          			g_string_append (str, "\\n");
+          			break;
+			case '\r':
+          			g_string_append (str, "\\r");
+          			break;
+			case '\t':
+          			g_string_append (str, "\\t");
+          			break;
+        		default:
+          			g_string_append_len (str, p, next - p);
+          			break;
+        	}
+
+      		p = next;
+    	}
+
+	return g_string_free (str, FALSE);
+}
+
+static void
+search_entry_insert_text (GtkEditable *editable, 
+			  const gchar *text, 
+			  gint         length, 
+			  gint        *position)
+{
+	static gboolean insert_text = FALSE;
+	gchar *escaped_text;
+	gint new_len;
+
+	gedit_debug (DEBUG_SEARCH, "Text: %s", text);
+
+	/* To avoid recursive behavior */
+	if (insert_text)
+		return;
+
+	escaped_text = escape_search_text (text);
+
+	gedit_debug (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
+
+	new_len = strlen (escaped_text);
+
+	if (new_len == length)
+	{
+		g_free (escaped_text);
+		return;
+	}
+
+	insert_text = TRUE;
+
+	g_signal_stop_emission_by_name (editable, "insert_text");
+	
+	gtk_editable_insert_text (editable, escaped_text, new_len, position);
+
+	insert_text = FALSE;
+
+	g_free (escaped_text);
+}
+
 #define GEDIT_GLADEDIR "./dialogs/"
 
 static void
@@ -276,13 +530,22 @@ gedit_search_panel_init (GeditSearchPanel *panel)
  	panel->priv->replace_entry = glade_xml_get_widget (gui, "replace_entry");
  	panel->priv->line_number_entry = glade_xml_get_widget (gui, "line_number_entry");
  	
+ 	panel->priv->find_button = glade_xml_get_widget (gui, "find_button");
+ 	panel->priv->replace_button = glade_xml_get_widget (gui, "replace_button");
+ 	panel->priv->replace_all_button = glade_xml_get_widget (gui, "replace_all_button");
+ 	panel->priv->search_options_vbox = glade_xml_get_widget (gui, "search_options_vbox");
+ 	 	 	 	
  	if (!find_vbox				||
  	    !search_panel_vbox			||
  	    !panel->priv->replace_expander 	||
  	    !panel->priv->goto_line_expander	||
  	    !panel->priv->search_entry		||
  	    !panel->priv->replace_entry		||
- 	    !panel->priv->line_number_entry)
+ 	    !panel->priv->line_number_entry	||
+ 	    !panel->priv->find_button		||
+ 	    !panel->priv->replace_button	||
+ 	    !panel->priv->replace_all_button	||
+ 	    !panel->priv->search_options_vbox)
  	{
  		gchar *msg;
 		GtkWidget *label;		
@@ -321,7 +584,15 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 	g_signal_connect (G_OBJECT (panel->priv->line_number_entry), 
 			  "activate",
 			  G_CALLBACK (line_number_entry_activate), 
-			  panel);			  
+			  panel);
+	g_signal_connect (G_OBJECT (panel->priv->search_entry), 
+			  "insert_text",
+			  G_CALLBACK (search_entry_insert_text), 
+			  NULL);
+	g_signal_connect (G_OBJECT (panel->priv->search_entry), 
+			  "changed",
+			  G_CALLBACK (search_entry_changed), 
+			  panel);	  			  
 }
 
 GtkWidget *
@@ -334,24 +605,86 @@ gedit_search_panel_new (GeditWindow *window)
 					 NULL));
 }
 
-static void
+
+
+static gboolean
 show_side_pane (GeditSearchPanel *panel)
 {
 	GtkWidget *sp;
+	gboolean was_visible;
 	
 	sp = GTK_WIDGET (gedit_window_get_side_panel (panel->priv->window));
-	
-	if (!GTK_WIDGET_VISIBLE (sp))
+		
+	was_visible = GTK_WIDGET_VISIBLE (sp);
+	if (!was_visible)
 		_gedit_window_set_side_panel_visible (panel->priv->window,
 						      TRUE);
+						      
+	if (!gedit_panel_item_is_active (GEDIT_PANEL (sp), GTK_WIDGET (panel)))
+	{
+		gedit_panel_activate_item (GEDIT_PANEL (sp), GTK_WIDGET (panel));
+		return FALSE;
+	}
+	
+	return was_visible;
 }
 
 void
 gedit_search_panel_focus_search	(GeditSearchPanel *panel)
 {
+	gboolean was_visible;
+	const gchar *text;
+	GeditDocument *doc;
+	gboolean selection_exists;
+	gchar *find_text = NULL;
+	gint sel_len = 0;
+		
 	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
+
+	doc = gedit_window_get_active_document (panel->priv->window);
 	
-	show_side_pane (panel);
+	if (doc == NULL)
+		return;
+
+	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc), 
+					      &find_text, 
+					      &sel_len);
+						      			
+	was_visible = show_side_pane (panel);
+				
+	text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	
+	if (!was_visible)
+		text = NULL;
+		
+	if ((text == NULL) || (text[0] == 0))
+	{		
+		if (!selection_exists   ||
+		    (find_text == NULL) ||
+		    (sel_len > 160))
+		{
+			gchar *lst;
+
+			lst = gedit_document_get_last_searched_text (doc);
+			
+			if (lst != NULL)
+			{
+				g_free (find_text);
+				find_text = lst;
+			}
+			else if (sel_len > 160)
+			{
+				g_free (find_text);
+				find_text = NULL;
+			}
+		}
+		
+		if (find_text != NULL)
+			gtk_entry_set_text (GTK_ENTRY (panel->priv->search_entry), 
+					    find_text);
+		
+		g_free (find_text);
+	}
 	
 	gtk_widget_grab_focus (panel->priv->search_entry);
 }
@@ -359,8 +692,15 @@ gedit_search_panel_focus_search	(GeditSearchPanel *panel)
 void
 gedit_search_panel_focus_replace (GeditSearchPanel *panel)
 {
-	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
+	GeditDocument *doc;
 	
+	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
+
+	doc = gedit_window_get_active_document (panel->priv->window);
+	
+	if (doc == NULL)
+		return;
+			
 	show_side_pane (panel);
 	
 	gtk_expander_set_expanded (GTK_EXPANDER (panel->priv->replace_expander),
@@ -383,8 +723,15 @@ gedit_search_panel_focus_replace (GeditSearchPanel *panel)
 void 
 gedit_search_panel_focus_goto_line (GeditSearchPanel *panel)
 {
+	GeditDocument *doc;
+	
 	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
 	
+	doc = gedit_window_get_active_document (panel->priv->window);
+	
+	if (doc == NULL)
+		return;
+		
 	show_side_pane (panel);
 	
 	gtk_expander_set_expanded (GTK_EXPANDER (panel->priv->goto_line_expander),

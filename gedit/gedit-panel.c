@@ -490,11 +490,43 @@ gedit_panel_remove_item (GeditPanel *panel, GtkWidget *item)
 gboolean
 gedit_panel_activate_item (GeditPanel *panel, GtkWidget *item)
 {
+	gint page_num;
+	
+	g_return_val_if_fail (GEDIT_IS_PANEL (panel), FALSE);
+	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
+
+	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
+					  item);
+					  
+	if (page_num == -1)
+		return FALSE;
+		
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (panel->priv->notebook),
+				       page_num);
+	
+	return TRUE;
+}
+
+gboolean
+gedit_panel_item_is_active (GeditPanel     *panel,
+			    GtkWidget      *item)
+{
+	gint cur_page;
+	gint page_num;
+	
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), FALSE);
 	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
 	
-	/* TODO */
-	return FALSE;
+	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
+					  item);
+					  
+	if (page_num == -1)
+		return FALSE;
+		
+	cur_page = gtk_notebook_get_current_page (
+				GTK_NOTEBOOK (panel->priv->notebook));
+
+	return (page_num == cur_page);
 }
 
 

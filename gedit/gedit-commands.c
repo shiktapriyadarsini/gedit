@@ -513,16 +513,13 @@ gedit_cmd_view_show_bottom_panel (GtkAction *action, GeditWindow *window)
 void 
 gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 {
-	GeditView *active_view;
-
+	GeditSearchPanel *sp;
+	
 	gedit_debug (DEBUG_COMMANDS, "");
-
-	active_view = gedit_window_get_active_view (window);
-
-	if (active_view != NULL)
-		gtk_widget_grab_focus (GTK_WIDGET (active_view));
-
-	gedit_dialog_find (window);
+	
+	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
+	
+	gedit_search_panel_focus_search (sp);
 }
 
 static void

@@ -88,6 +88,8 @@ gboolean	 gedit_panel_remove_item	(GeditPanel     *panel,
 					  	 
 gboolean	 gedit_panel_activate_item 	(GeditPanel     *panel,
 					    	 GtkWidget      *item);
+gboolean	 gedit_panel_item_is_active 	(GeditPanel     *panel,
+					    	 GtkWidget      *item);
 
 G_END_DECLS
 
