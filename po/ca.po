@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.3.3\n"
-"POT-Creation-Date: 2003-10-16 18:20+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-26 18:46+0100\n"
 "PO-Revision-Date: 2003-08-24 23:54+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
@@ -131,7 +131,7 @@ msgid ""
 "Extension or suffix to use for backup file names. This will only take effect "
 "if the \"Create Backup Copies\" option is turned on."
 msgstr ""
-"La extensió o sufix a utilitzar per als noms dels fitxers de còpia de "
+"L'extensió o sufix a utilitzar per als noms dels fitxers de còpia de "
 "seguretat. Això només tindrà efecte si l'opció «Crea còpies de seguretat» "
 "està habilitada."
 
@@ -214,7 +214,7 @@ msgstr "Imprimeix els números de línia"
 
 #: data/gedit.schemas.in.h:30
 msgid "Print Syntax Highlighting"
-msgstr "Imprimeix el resaltat de sintaxi"
+msgstr "Imprimeix el ressaltat de sintaxi"
 
 #: data/gedit.schemas.in.h:31
 msgid "Printing Line Wrapping Mode"
@@ -429,7 +429,7 @@ msgstr "Si gedit hauria d'inserir espais en comptes de tabuladors."
 #: data/gedit.schemas.in.h:58
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
-"Si gedit hauria d'imprimir el resaltat de sintaxi quan s'imprimeixen els "
+"Si gedit hauria d'imprimir el ressaltat de sintaxi quan s'imprimeixen els "
 "documents."
 
 #: data/gedit.schemas.in.h:59
@@ -1054,7 +1054,7 @@ msgstr "Imprimeix els números de _línia"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:11
 msgid "Print s_yntax highlighting"
-msgstr "Imprimeix el resaltat de s_intaxi"
+msgstr "Imprimeix el ressaltat de s_intaxi"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:12
 msgid "_Body:"
@@ -1558,12 +1558,12 @@ msgstr "Normal"
 
 #: gedit/gedit-mdi.c:1677
 msgid "Use Normal highlight mode"
-msgstr "Utilitza el mode de resaltat normal"
+msgstr "Utilitza el mode de ressaltat normal"
 
 #: gedit/gedit-mdi.c:1753
 #, c-format
 msgid "Use %s highlight mode"
-msgstr "Utilitza el mode de resaltat %s"
+msgstr "Utilitza el mode de ressaltat %s"
 
 #
 #: gedit/gedit-output-window.c:333
@@ -2024,7 +2024,7 @@ msgstr "A_juda"
 
 #: gedit/gedit-ui.xml.h:84
 msgid "_Highlight Mode"
-msgstr "Mode de _resaltat"
+msgstr "Mode de _ressaltat"
 
 #: gedit/gedit-ui.xml.h:85
 msgid "_Icons Only"
