@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.9.4\n"
-"POT-Creation-Date: 2002-10-27 18:53+0100\n"
+"POT-Creation-Date: 2002-10-30 14:52+0100\n"
 "PO-Revision-Date: 2002-10-27 18:50+0100\n"
 "Last-Translator: Emese KOVACS <emese@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -2625,7 +2625,7 @@ msgstr "Mutasd a beállítások hibakereső üzeneteit."
 
 #: src/gedit2.c:108
 msgid "Show session management debugging messages."
-msgstr "Mutasd a munkafolyamat-kezelő hibakereső üzeneteit."
+msgstr "Mutasd a munkamenet-kezelő hibakereső üzeneteit."
 
 #: src/gedit2.c:111
 msgid "Turn on all debugging messages."
@@ -2647,4 +2647,3 @@ msgstr "Új dokumentum létrehozása egy már megnyitott gedit példányban"
 #, c-format
 msgid "Open %s"
 msgstr "%s megnyitása"
-
