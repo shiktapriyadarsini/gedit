@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-05 20:11+0100\n"
+"POT-Creation-Date: 2005-01-11 20:36+0100\n"
 "PO-Revision-Date: 2003-11-15 01:43+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -857,7 +857,7 @@ msgstr "<b>Prawy margines</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:8
 msgid "<b>Tabs</b>"
-msgstr "<b>Zakładki</b>"
+msgstr "<b>Tabulacje</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:9
 #: gedit/dialogs/page-setup-dialog.glade2.h:3
@@ -1024,7 +1024,7 @@ msgstr "_Prawy margines od kolumny:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:49
 msgid "_Tabs width:"
-msgstr "_Szerokość zakładek:"
+msgstr "_Szerokość tabulacji:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:50
 msgid "_Unlimited undo"
