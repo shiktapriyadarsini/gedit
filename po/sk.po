@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2000-11-28 16:50+0100\n"
-"PO-Revision-Date: 2000-11-28 12:07CET\n"
+"POT-Creation-Date: 2000-12-20 20:16+0100\n"
+"PO-Revision-Date: 2000-12-20 20:17CET\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@rak.isternet.sk>\n"
 "MIME-Version: 1.0\n"
@@ -994,6 +994,10 @@ msgstr ""
 "%sModul %s nie je mo¾né pou¾íva» bez %s. \n"
 " Chcete uvies» nové umiestnenie %s?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "chyba pri alokácii modulu"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1006,6 +1010,14 @@ msgstr "Chyba, modul neobsahuje funkciu init_plugin"
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Chyba, init_plugin vrátil chybu"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specified a description"
+msgstr "Chyba, modul neuviedol popis"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specified a long description"
+msgstr "Chyba, modul neuviedol dlhý popis"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
@@ -1088,3 +1100,4 @@ msgstr ""
 #: src/view.c:963
 msgid "You can't remove the last view of a document."
 msgstr "Nemô6ete odstráni» posledný pohµad dokumentu."
+
