@@ -1,3 +1,7 @@
+2004-11-25  Paolo Borelli  <pborelli@katamail.com>
+
+	* dialogs/gedit-preferences-dialog.c: do not leak tooltips.
+
 2004-10-02  Paolo Maggi  <paolo@gnome.org>
 
 	* gedit-document.c: fix crash when failing to load remote
