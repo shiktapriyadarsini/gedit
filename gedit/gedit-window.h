@@ -77,11 +77,6 @@ struct _GeditWindowClass
  */
 GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
 
-gboolean	 gedit_window_get_statusbar_visible	(GeditWindow *window);
-
-void		 gedit_window_set_statusbar_visible	(GeditWindow *window,
-							 gboolean visible);
-
 GeditTab	*gedit_window_create_tab		(GeditWindow *window,
 							 gboolean     jump_to);
 
@@ -105,6 +100,8 @@ GList		*gedit_window_get_views			(GeditWindow *window);
  */
 GtkWidget	*_gedit_window_get_notebook		(GeditWindow *window);
 
+void		 _gedit_window_set_statusbar_visible	(GeditWindow *window,
+							 gboolean     visible);
 G_END_DECLS
 
 #endif  /* __GEDIT_WINDOW_H__  */

@@ -110,9 +110,12 @@ static void gedit_prefs_manager_auto_save_changed	(GConfClient *client,
 							 GConfEntry  *entry,
 							 gpointer     user_data);
 #endif							       
+
 static gint window_state = -1;
 static gint window_height = -1;
 static gint window_width = -1;
+static gint side_panel_size = -1;
+static gint bottom_panel_size = -1;
 
 
 gboolean
@@ -226,7 +229,7 @@ gint gedit_prefs_manager_get_window_state (void)
 void
 gedit_prefs_manager_set_window_state (gint ws)
 {
-	g_return_if_fail (ws != -1);
+	g_return_if_fail (ws > -1);
 	
 	window_state = ws;
 	gnome_config_set_int (GPM_WINDOW_STATE, ws);
@@ -257,7 +260,7 @@ gedit_prefs_manager_get_default_window_height (void)
 
 void gedit_prefs_manager_set_window_height (gint wh)
 {
-	g_return_if_fail (wh != -1);
+	g_return_if_fail (wh > -1);
 
 	window_height = wh;
 	gnome_config_set_int (GPM_WINDOW_HEIGHT, wh);
@@ -288,7 +291,7 @@ gedit_prefs_manager_get_default_window_width (void)
 void 
 gedit_prefs_manager_set_window_width (gint ww)
 {
-	g_return_if_fail (ww != -1);
+	g_return_if_fail (ww > -1);
 	
 	window_width = ww;
 	gnome_config_set_int (GPM_WINDOW_WIDTH, ww);
@@ -300,6 +303,73 @@ gedit_prefs_manager_window_width_can_set (void)
 	return TRUE;
 }
 
+/* Side panel size */
+gint
+gedit_prefs_manager_get_side_panel_size (void)
+{
+	if (side_panel_size == -1)
+		side_panel_size = gnome_config_get_int (GPM_SIDE_PANEL_SIZE "=" GPM_DEFAULT_SIDE_PANEL_SIZE_STR);
+
+	return side_panel_size;
+}
+
+gint 
+gedit_prefs_manager_get_default_side_panel_size (void)
+{
+	return GPM_DEFAULT_SIDE_PANEL_SIZE;
+}
+
+void 
+gedit_prefs_manager_set_side_panel_size (gint ps)
+{
+	g_return_if_fail (ps > -1);
+	
+	if (side_panel_size == ps)
+		return;
+		
+	side_panel_size = ps;
+	gnome_config_set_int (GPM_SIDE_PANEL_SIZE, ps);
+}
+
+gboolean 
+gedit_prefs_manager_side_panel_size_can_set (void)
+{
+	return TRUE;
+}
+
+/* Bottom panel size */
+gint
+gedit_prefs_manager_get_bottom_panel_size (void)
+{
+	if (bottom_panel_size == -1)
+		bottom_panel_size = gnome_config_get_int (GPM_BOTTOM_PANEL_SIZE "=" GPM_DEFAULT_BOTTOM_PANEL_SIZE_STR);
+
+	return bottom_panel_size;
+}
+
+gint 
+gedit_prefs_manager_get_default_bottom_panel_size (void)
+{
+	return GPM_DEFAULT_BOTTOM_PANEL_SIZE;
+}
+
+void 
+gedit_prefs_manager_set_bottom_panel_size (gint ps)
+{
+	g_return_if_fail (ps > -1);
+
+	if (bottom_panel_size == ps)
+		return;
+	
+	bottom_panel_size = ps;
+	gnome_config_set_int (GPM_BOTTOM_PANEL_SIZE, ps);
+}
+
+gboolean 
+gedit_prefs_manager_bottom_panel_size_can_set (void)
+{
+	return TRUE;
+}
 
 static void 
 gedit_prefs_manager_editor_font_changed (GConfClient *client,

@@ -58,12 +58,14 @@ struct _GeditWindowPrivate
 	
 	GtkWidget      *side_panel;
 	GtkWidget      *bottom_panel;
+	
+	GtkWidget      *hpaned;
+	GtkWidget      *vpaned;	
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;	
 	guint           generic_message_cid;
 	guint           tip_message_cid;
-	gboolean        statusbar_visible;
 
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
@@ -78,6 +80,9 @@ struct _GeditWindowPrivate
 	gint            width;
 	gint            height;	
 	GdkWindowState  state;
+	
+	gint		side_panel_size;
+	gint		bottom_panel_size;	
 };
 
 G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
@@ -105,7 +110,15 @@ gedit_window_destroy (GtkObject *object)
 
 	if (gedit_prefs_manager_window_state_can_set ())
 		gedit_prefs_manager_set_window_state (window->priv->state);
+		
+	if (gedit_prefs_manager_side_panel_size_can_set ())
+		gedit_prefs_manager_set_side_panel_size	(
+					window->priv->side_panel_size);
 	
+	if (gedit_prefs_manager_bottom_panel_size_can_set ())
+		gedit_prefs_manager_set_bottom_panel_size (
+					window->priv->bottom_panel_size);
+
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
 }
 
@@ -354,6 +367,34 @@ documents_list_menu_update (GeditWindow *window)
 	p->documents_list_menu_ui_id = id;
 }
 
+/* Returns TRUE if status bar is visible */
+static gboolean
+set_statusbar_style (GeditWindow *window,
+		     GeditWindow *origin)
+{
+	GtkAction *action;
+	
+	gboolean visible;
+
+	if (origin == NULL)
+		visible = gedit_prefs_manager_get_statusbar_visible ();
+	else
+		visible = GTK_WIDGET_VISIBLE (origin->priv->statusbar);
+
+	if (visible)
+		gtk_widget_show (window->priv->statusbar);
+	else
+		gtk_widget_hide (window->priv->statusbar);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewStatusbar");
+					      
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+		
+	return visible;
+}
+
 static void
 create_statusbar (GeditWindow *window, 
 		  GtkWidget   *main_box)
@@ -369,7 +410,9 @@ create_statusbar (GeditWindow *window,
 			  window->priv->statusbar,
 			  FALSE, 
 			  TRUE, 
-			  0);			
+			  0);	
+			  
+	set_statusbar_style (window, NULL);		
 }
 
 static GeditWindow *
@@ -408,7 +451,28 @@ clone_window (GeditWindow *origin)
 	else
 		gtk_window_unstick (window);
 
-	// FIXME: clone the visibility of panels
+	gtk_paned_set_position (GTK_PANED (GEDIT_WINDOW (window)->priv->hpaned),
+				gtk_paned_get_position (GTK_PANED (origin->priv->hpaned)));
+
+	gtk_paned_set_position (GTK_PANED (GEDIT_WINDOW (window)->priv->vpaned),
+				gtk_paned_get_position (GTK_PANED (origin->priv->vpaned)));
+				
+	if (GTK_WIDGET_VISIBLE (origin->priv->side_panel))
+		gtk_widget_show (GEDIT_WINDOW (window)->priv->side_panel);
+	else
+		gtk_widget_hide (GEDIT_WINDOW (window)->priv->side_panel);
+
+	if (GTK_WIDGET_VISIBLE (origin->priv->bottom_panel))
+		gtk_widget_show (GEDIT_WINDOW (window)->priv->bottom_panel);
+	else
+		gtk_widget_hide (GEDIT_WINDOW (window)->priv->bottom_panel);
+		
+	set_statusbar_style (GEDIT_WINDOW (window), origin);
+
+	if (GTK_WIDGET_VISIBLE (origin->priv->toolbar))
+		gtk_widget_show (GEDIT_WINDOW (window)->priv->toolbar);
+	else		
+		gtk_widget_hide (GEDIT_WINDOW (window)->priv->toolbar);				
 
 	return GEDIT_WINDOW (window);
 }
@@ -880,52 +944,7 @@ window_state_event_handler (GeditWindow *window, GdkEventWindowState *event)
 	return FALSE;
 }
 
-gboolean
-gedit_window_get_statusbar_visible (GeditWindow *window)
-{
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), FALSE);
 
-	// TODO: turn it into a property
-	return window->priv->statusbar_visible;
-}
-
-void
-gedit_window_set_statusbar_visible (GeditWindow *window, gboolean visible)
-{
-	GtkAction *action;
-
-	g_return_if_fail (GEDIT_IS_WINDOW (window));
-
-	window->priv->statusbar_visible = (visible != FALSE);
-
-	if (visible)
-		gtk_widget_show (window->priv->statusbar);
-	else
-		gtk_widget_hide (window->priv->statusbar);
-
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "ViewStatusbar");
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-
-	if (gedit_prefs_manager_statusbar_visible_can_set ())
-		gedit_prefs_manager_set_statusbar_visible (visible);
-}
-
-/* Returns TRUE if status bar is visible */
-static gboolean
-set_statusbar_style (GeditWindow *window)
-{
-	gboolean visible;
-
-	visible = gedit_prefs_manager_get_statusbar_visible ();
-
-	gedit_window_set_statusbar_visible (window, visible);
-
-	// TODO: show overwrite mode, etc. 
-		
-	return visible;
-}
 
 /* Returns TRUE if toolbar is visible */
 static gboolean
@@ -982,15 +1001,32 @@ set_toolbar_style (GeditWindow *window)
 }
 
 static void
-create_side_panel (GeditWindow *window, 
-		   GtkPaned    *hpaned)
+side_panel_size_allocate (GtkWidget     *widget,
+			  GtkAllocation *allocation,
+			  GeditWindow   *window)
+{
+	window->priv->side_panel_size = allocation->width;
+}
+
+static void
+create_side_panel (GeditWindow *window)
 {
 	window->priv->side_panel = gedit_panel_new ();
-  	gtk_paned_pack1 (hpaned, 
-  			 window->priv->side_panel, 
-  			 FALSE, 
-  			 TRUE);
 
+  	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned), 
+  			 window->priv->side_panel, 
+  			 TRUE, 
+  			 FALSE);
+	gtk_widget_set_size_request (window->priv->side_panel, 100, -1);  			 
+  			 
+  	g_signal_connect (window->priv->side_panel,
+  			  "size_allocate",
+  			  G_CALLBACK (side_panel_size_allocate),
+  			  window);
+
+	gtk_paned_set_position (GTK_PANED (window->priv->hpaned),
+				MAX (100, gedit_prefs_manager_get_side_panel_size ()));
+				
 	// FIXME
   	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_tree_view_new (), "Documents", GTK_STOCK_FILE);
   	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_label_new ("Project"), "Projects", GTK_STOCK_EXECUTE);
@@ -1000,14 +1036,17 @@ create_side_panel (GeditWindow *window,
 }
 
 static void
-create_bottom_panel (GeditWindow *window, 
-		     GtkPaned    *vpaned)
+create_bottom_panel (GeditWindow *window) 
 {
 	window->priv->bottom_panel = gedit_panel_new ();
-  	gtk_paned_pack2 (vpaned, 
+  	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned), 
   			 window->priv->bottom_panel, 
   			 FALSE, 
   			 TRUE);
+  			 
+	gtk_paned_set_position (GTK_PANED (window->priv->vpaned),
+				gedit_prefs_manager_get_bottom_panel_size ());
+				  			 
   	gtk_widget_hide_all (window->priv->bottom_panel);
 }
 
@@ -1051,8 +1090,6 @@ static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkWidget *main_box;
-	GtkWidget *hpaned;
-	GtkWidget *vpaned;
 
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
 	window->priv->active_tab = NULL;
@@ -1066,35 +1103,34 @@ gedit_window_init (GeditWindow *window)
 	create_menu_bar_and_toolbar (window, main_box);
 
 	/* Add the main area */
-	hpaned = gtk_hpaned_new ();
+	window->priv->hpaned = gtk_hpaned_new ();
   	gtk_box_pack_start (GTK_BOX (main_box), 
-  			    hpaned, 
+  			    window->priv->hpaned, 
   			    TRUE, 
   			    TRUE, 
   			    0);
-	gtk_paned_set_position (GTK_PANED (hpaned), 0);
-	gtk_widget_show (hpaned);
+	gtk_widget_show (window->priv->hpaned);
 
-  	create_side_panel (window, GTK_PANED (hpaned));
+  	create_side_panel (window);
   	  	
-	vpaned = gtk_vpaned_new ();
-  	gtk_paned_pack2 (GTK_PANED (hpaned), vpaned, TRUE, FALSE);
-  	gtk_widget_show (vpaned);
+	window->priv->vpaned = gtk_vpaned_new ();
+  	gtk_paned_pack2 (GTK_PANED (window->priv->hpaned), 
+  			 window->priv->vpaned, 
+  			 TRUE, 
+  			 FALSE);
+  	gtk_widget_show (window->priv->vpaned);
   	
 	window->priv->notebook = gedit_notebook_new ();
-  	gtk_paned_pack1 (GTK_PANED (vpaned), 
+  	gtk_paned_pack1 (GTK_PANED (window->priv->vpaned), 
   			 window->priv->notebook,
   			 TRUE, 
   			 TRUE);
   	gtk_widget_show (window->priv->notebook);  			 
 
-	create_bottom_panel (window, GTK_PANED (vpaned));
+	create_bottom_panel (window);
 	
 	/* Add status bar */
 	create_statusbar (window, main_box);
-
-	/* Set the statusbar style according to prefs */
-	set_statusbar_style (window);
 
 	/* Set the toolbar style according to prefs */
 	set_toolbar_style (window);
@@ -1275,5 +1311,20 @@ gedit_window_close_tab (GeditWindow *window,
 	
 	gedit_notebook_remove_tab (GEDIT_NOTEBOOK (window->priv->notebook),
 				   tab);
+}
+
+void
+_gedit_window_set_statusbar_visible (GeditWindow *window,
+				     gboolean     visible)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	
+	if (visible)
+		gtk_widget_show (window->priv->statusbar);
+	else
+		gtk_widget_hide (window->priv->statusbar);
+
+	if (gedit_prefs_manager_statusbar_visible_can_set ())
+		gedit_prefs_manager_set_statusbar_visible (visible);
 }
 

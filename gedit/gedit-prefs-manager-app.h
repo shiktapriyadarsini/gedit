@@ -61,5 +61,16 @@ gint	 	 gedit_prefs_manager_get_default_window_width	(void);
 void 		 gedit_prefs_manager_set_window_width		(gint ww);
 gboolean	 gedit_prefs_manager_window_width_can_set	(void);
 
+/* Side panel size */
+gint	 	 gedit_prefs_manager_get_side_panel_size	(void);
+gint	 	 gedit_prefs_manager_get_default_side_panel_size(void);
+void 		 gedit_prefs_manager_set_side_panel_size	(gint ps);
+gboolean	 gedit_prefs_manager_side_panel_size_can_set	(void);
+
+/* Bottom panel size */
+gint	 	 gedit_prefs_manager_get_bottom_panel_size	(void);
+gint	 	 gedit_prefs_manager_get_default_bottom_panel_size(void);
+void 		 gedit_prefs_manager_set_bottom_panel_size	(gint ps);
+gboolean	 gedit_prefs_manager_bottom_panel_size_can_set	(void);
 
 #endif /* __GEDIT_PREFS_MANAGER_APP_H__ */

@@ -369,7 +369,7 @@ gedit_cmd_view_show_statusbar (GtkAction *action, GeditWindow *window)
 
 	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
-	gedit_window_set_statusbar_visible (window, visible);
+	_gedit_window_set_statusbar_visible (window, visible);
 }
 
 void 

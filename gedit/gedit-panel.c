@@ -366,7 +366,7 @@ build_tab_label (GeditPanel  *panel,
         label = gtk_label_new (name);
 	gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-        gtk_misc_set_padding (GTK_MISC (label), 2, 0);
+        gtk_misc_set_padding (GTK_MISC (label), 0, 0);
 	gtk_box_pack_start (GTK_BOX (label_hbox), label, TRUE, TRUE, 0);
 
 	/* Set minimal size */
@@ -398,7 +398,8 @@ gedit_panel_add_item (GeditPanel  *panel,
 		      const gchar *stock_id)
 {
 	GeditPanelItem *data;
-	GtkWidget *label;
+	GtkWidget *tab_label;
+	GtkWidget *menu_label;
 
 	g_return_if_fail (GEDIT_IS_PANEL (panel));
 	g_return_if_fail (GTK_IS_WIDGET (item));
@@ -413,12 +414,15 @@ gedit_panel_add_item (GeditPanel  *panel,
 		           PANEL_ITEM_KEY,
 		           data);
 		      
-	label = build_tab_label (panel, item, name, stock_id);
+	tab_label = build_tab_label (panel, item, name, stock_id);
 					 
+	menu_label = gtk_label_new (name);
+	gtk_misc_set_alignment (GTK_MISC (menu_label), 0.0, 0.5);
+	
 	gtk_notebook_append_page_menu (GTK_NOTEBOOK (panel->priv->notebook),
 				       item,
-				       label,
-				       gtk_label_new (name));		
+				       tab_label,
+				       menu_label);		
 }
 
 gboolean
