@@ -380,9 +380,11 @@ gedit_view_new (GeditDocument *doc)
 void
 gedit_view_cut_clipboard (GeditView *view)
 {
-	GtkTextBuffer* buffer = NULL;
+	GtkTextBuffer *buffer = NULL;
 
 	gedit_debug (DEBUG_VIEW, "");
+
+	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -404,9 +406,11 @@ gedit_view_cut_clipboard (GeditView *view)
 void
 gedit_view_copy_clipboard (GeditView *view)
 {
-	GtkTextBuffer* buffer = NULL;
+	GtkTextBuffer *buffer = NULL;
 
 	gedit_debug (DEBUG_VIEW, "");
+
+	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -425,9 +429,11 @@ gedit_view_copy_clipboard (GeditView *view)
 void
 gedit_view_paste_clipboard (GeditView *view)
 {
-  	GtkTextBuffer* buffer = NULL;
+  	GtkTextBuffer *buffer = NULL;
 
 	gedit_debug (DEBUG_VIEW, "");
+
+	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -450,9 +456,11 @@ gedit_view_paste_clipboard (GeditView *view)
 void
 gedit_view_delete_selection (GeditView *view)
 {
-  	GtkTextBuffer* buffer = NULL;
+  	GtkTextBuffer *buffer = NULL;
 
 	gedit_debug (DEBUG_VIEW, "");
+
+	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
@@ -469,6 +477,23 @@ gedit_view_delete_selection (GeditView *view)
 				      FALSE,
 				      0.0,
 				      0.0);
+}
+
+void
+gedit_view_select_all (GeditView *view)
+{
+	GtkTextBuffer *buffer = NULL;
+	GtkTextIter start, end;
+
+	gedit_debug (DEBUG_VIEW, "");
+
+	g_return_if_fail (GEDIT_IS_VIEW (view));
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (buffer != NULL);
+
+	gtk_text_buffer_get_bounds (buffer, &start, &end);
+	gtk_text_buffer_select_range (buffer, &start, &end);
 }
 
 void

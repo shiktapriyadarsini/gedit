@@ -12,31 +12,34 @@ INCLUDES = 							\
 noinst_LTLIBRARIES = libdialogs.la
 
 libdialogs_la_SOURCES = 			\
-	gedit-dialog-uri.c		\
-	gedit-dialog-goto-line.c	\
-	gedit-dialog-replace.c		\
-	gedit-preferences-dialog.h	\
-	gedit-preferences-dialog.c	\
-	gedit-plugin-manager.c		\
-	gedit-plugin-manager.h	\
-	gedit-plugin-program-location-dialog.c \
-	gedit-encodings-dialog.c	\
-	gedit-encodings-dialog.h	\
-	gedit-page-setup-dialog.c	\
-	gedit-page-setup-dialog.h	\
-	gedit-close-confirmation-dialog.c \
-	gedit-close-confirmation-dialog.h \
-	gedit-dialogs.h		
+	gedit-dialog-goto-line.c		\
+	gedit-dialog-replace.c			\
+	gedit-dialogs.h
+
+#	gedit-dialog-uri.c		\
+#	gedit-preferences-dialog.h	\
+#	gedit-preferences-dialog.c	\
+#	gedit-plugin-manager.c		\
+#	gedit-plugin-manager.h	\
+#	gedit-plugin-program-location-dialog.c \
+#	gedit-encodings-dialog.c	\
+#	gedit-encodings-dialog.h	\
+#	gedit-page-setup-dialog.c	\
+#	gedit-page-setup-dialog.h	\
+#	gedit-close-confirmation-dialog.c \
+#	gedit-close-confirmation-dialog.h 
+
 
 glade_DATA =				\
-	uri.glade2			\
 	goto-line.glade2		\
-	replace.glade2			\
-	plugin-manager.glade2		\
-	gedit-preferences.glade2	\
-	program-location-dialog.glade2	\
-	gedit-encodings-dialog.glade2	\
-	page-setup-dialog.glade2
+	replace.glade2
+
+#	uri.glade2			\
+#	plugin-manager.glade2		\
+#	gedit-preferences.glade2	\
+#	program-location-dialog.glade2	\
+#	gedit-encodings-dialog.glade2	\
+#	page-setup-dialog.glade2
 
 EXTRA_DIST = $(glade_DATA) 
 

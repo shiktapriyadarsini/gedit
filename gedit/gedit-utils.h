@@ -38,6 +38,9 @@
 #include <atk/atk.h>
 #include <gedit/gedit-encodings.h>
 
+/* useful macro */
+#define GBOOLEAN_TO_POINTER(i) ((gpointer) ((i) ? 2 : 1))
+#define GPOINTER_TO_BOOLEAN(i) ((gboolean) ((((gint)(i)) == 2) ? TRUE : FALSE))
 
 /* some common error strings, %s must be a file path */
 #define MISSING_FILE    N_("Could not find \"%s\". Please, reinstall gedit.\n")

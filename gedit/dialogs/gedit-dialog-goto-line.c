@@ -37,19 +37,19 @@
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
 
-#include "gedit2.h"
-#include "gedit-mdi.h"
-#include "gedit-utils.h"
 #include "gedit-dialogs.h"
 #include "gedit-document.h"
 #include "gedit-view.h"
+#include "gedit-window.h"
 #include "gedit-debug.h"
+#include "gedit-utils.h"
 
 typedef struct _GeditDialogGotoLine GeditDialogGotoLine;
 
 struct _GeditDialogGotoLine {
 	GtkWidget *dialog;
 
+	GeditWindow *gedit_win;
 	GtkWidget *entry;
 };
 
@@ -75,17 +75,17 @@ goto_button_pressed (GeditDialogGotoLine *dialog)
 
 	gedit_debug (DEBUG_SEARCH, "");
 
-	active_view = GEDIT_VIEW (bonobo_mdi_get_active_view (BONOBO_MDI (gedit_mdi)));
+	active_view = gedit_window_get_active_view (dialog->gedit_win);
 	g_return_if_fail (active_view);
 
-	active_document = gedit_view_get_document (active_view);
+	active_document = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 	g_return_if_fail (active_document);
 
 	text = gtk_entry_get_text (GTK_ENTRY (dialog->entry));
 
 	if (text != NULL && text[0] != 0)
 	{
-		guint line = MAX (atoi (text) - 1, 0);		
+		guint line = MAX (atoi (text) - 1, 0);
 		gedit_document_goto_line (active_document, line);
 		gedit_view_scroll_to_cursor (active_view);
 		gtk_widget_grab_focus (GTK_WIDGET (active_view));
@@ -93,7 +93,7 @@ goto_button_pressed (GeditDialogGotoLine *dialog)
 }
 
 static void
-dialog_response_handler (GtkDialog *dlg, gint res_id,  GeditDialogGotoLine *dialog)
+dialog_response_handler (GtkDialog *dlg, gint res_id, GeditDialogGotoLine *dialog)
 {
 	gedit_debug (DEBUG_SEARCH, "");
 
@@ -101,7 +101,7 @@ dialog_response_handler (GtkDialog *dlg, gint res_id,  GeditDialogGotoLine *dial
 		case GTK_RESPONSE_OK:
 			goto_button_pressed (dialog);
 			break;
-			
+
 		default:
 			gtk_widget_destroy (dialog->dialog);
 	}
@@ -136,7 +136,7 @@ static void
 entry_changed (GtkEditable *editable, GeditDialogGotoLine *dialog)
 {
 	const gchar *line_string;
-	
+
 	line_string = gtk_entry_get_text (GTK_ENTRY (dialog->entry));		
 	g_return_if_fail (line_string != NULL);
 
@@ -149,21 +149,19 @@ entry_changed (GtkEditable *editable, GeditDialogGotoLine *dialog)
 }
 
 static GeditDialogGotoLine *
-dialog_goto_line_get_dialog (void)
+dialog_goto_line_get_dialog (GeditWindow *parent)
 {
 	static GeditDialogGotoLine *dialog = NULL;
 	GladeXML *gui;
-	GtkWindow *window;
 	GtkWidget *content;
 
 	gedit_debug (DEBUG_SEARCH, "");
 
-	window = GTK_WINDOW (gedit_get_active_window ());
-
 	if (dialog != NULL)
 	{
+		dialog->gedit_win = parent;
 		gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
-					      GTK_WINDOW (window));
+					      GTK_WINDOW (parent));
 		gtk_window_present (GTK_WINDOW (dialog->dialog));
 
 		return dialog;
@@ -173,7 +171,7 @@ dialog_goto_line_get_dialog (void)
 			     "goto_line_dialog_content", NULL);
 	if (!gui)
 	{
-		gedit_warning (window,
+		gedit_warning (GTK_WINDOW (parent),
 			       MISSING_FILE,
 			       GEDIT_GLADEDIR "goto-line.glade2");
 		return NULL;
@@ -181,8 +179,10 @@ dialog_goto_line_get_dialog (void)
 
 	dialog = g_new0 (GeditDialogGotoLine, 1);
 
+	dialog->gedit_win = parent;
+
 	dialog->dialog = gtk_dialog_new_with_buttons (_("Go to Line"),
-						      window,
+						      GTK_WINDOW (parent),
 						      GTK_DIALOG_DESTROY_WITH_PARENT,
 						      GTK_STOCK_CLOSE,
 						      GTK_RESPONSE_CANCEL,
@@ -203,7 +203,7 @@ dialog_goto_line_get_dialog (void)
 
 	if (!dialog->entry)
 	{
-		gedit_warning (window,
+		gedit_warning (GTK_WINDOW (parent),
 			       MISSING_WIDGETS,
 			       GEDIT_GLADEDIR "goto-line.glade2");
 		g_object_unref (gui);
@@ -216,19 +216,15 @@ dialog_goto_line_get_dialog (void)
 
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog->dialog), 
 					   GTK_RESPONSE_OK, FALSE);
-
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);
 
 	g_signal_connect (G_OBJECT (dialog->entry), "insert_text",
 			  G_CALLBACK (entry_insert_text), NULL);
-
 	g_signal_connect (G_OBJECT (dialog->entry), "changed",
 			  G_CALLBACK (entry_changed), dialog);
-
 	g_signal_connect (G_OBJECT (dialog->dialog), "destroy",
 			  G_CALLBACK (dialog_destroyed), &dialog);
-
 	g_signal_connect (G_OBJECT (dialog->dialog), "response",
 			  G_CALLBACK (dialog_response_handler), dialog);
 
@@ -238,13 +234,13 @@ dialog_goto_line_get_dialog (void)
 }
 
 void
-gedit_dialog_goto_line (void)
+gedit_dialog_goto_line (GeditWindow *parent)
 {
 	GeditDialogGotoLine *dialog;
 
 	gedit_debug (DEBUG_SEARCH, "");
 
-	dialog = dialog_goto_line_get_dialog ();
+	dialog = dialog_goto_line_get_dialog (parent);
 	if (!dialog)
 		return;
 

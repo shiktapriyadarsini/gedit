@@ -1,5 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 # SUBDIRS= dialogs recent-files
+SUBDIRS= dialogs
 
 bin_PROGRAMS = gedit
 
@@ -22,8 +23,8 @@ gedit_LDFLAGS = -export-dynamic
 
 gedit_LDADD =				\
 	$(GEDIT_LIBS)			\
-	libgedit.la
-#	dialogs/libdialogs.la		\
+	libgedit.la			\
+	dialogs/libdialogs.la
 #	recent-files/librecent.la
 
 BUILT_SOURCES = 			\

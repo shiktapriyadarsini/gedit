@@ -43,10 +43,11 @@
 #include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-view.h"
+#include "gedit-utils.h"
+#include "dialogs/gedit-dialogs.h"
 #if 0
 #include "gedit-file.h"
 #include "gedit-print.h"
-#include "dialogs/gedit-dialogs.h"
 #include "dialogs/gedit-preferences-dialog.h"
 #include "dialogs/gedit-page-setup-dialog.h"
 #endif
@@ -283,82 +284,66 @@ gedit_cmd_edit_redo (GtkAction *action, GeditWindow *window)
 void 
 gedit_cmd_edit_cut (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
+	GeditView *active_view;
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_cut_clipboard (GEDIT_VIEW (active_view)); 
+	gedit_view_cut_clipboard (active_view); 
 
-	gtk_widget_grab_focus (active_view);
-#endif
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void 
 gedit_cmd_edit_copy (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
+	GeditView *active_view;
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_copy_clipboard (GEDIT_VIEW (active_view));
+	gedit_view_copy_clipboard (active_view);
 
-	gtk_widget_grab_focus (active_view);
-#endif
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void 
 gedit_cmd_edit_paste (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
+	GeditView *active_view;
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_paste_clipboard (GEDIT_VIEW (active_view));
+	gedit_view_paste_clipboard (active_view);
 
-	gtk_widget_grab_focus (active_view);
-#endif
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void 
 gedit_cmd_edit_delete (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
+	GeditView *active_view;
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_delete_selection (GEDIT_VIEW (active_view));
+	gedit_view_delete_selection (active_view);
 
-	gtk_widget_grab_focus (active_view);
-#endif
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
 gedit_cmd_edit_select_all (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkTextIter start, end;
-	GtkWidget *active_view;
-	GeditDocument *active_doc;
+	GeditView *active_view;
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	active_doc = gedit_get_active_document ();
-	g_return_if_fail (active_doc);
+	gedit_view_select_all (active_view);
 
-	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (active_doc), &start, &end);
-	gtk_text_buffer_select_range (GTK_TEXT_BUFFER (active_doc), &start, &end);
-
-	gtk_widget_grab_focus (active_view);
-#endif
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
@@ -379,24 +364,24 @@ gedit_cmd_edit_preferences (GtkAction *action, GeditWindow *window)
 void 
 gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
+	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 
 	if (active_view != NULL)
-		gtk_widget_grab_focus (active_view);
+		gtk_widget_grab_focus (GTK_WIDGET (active_view));
 
-	gedit_dialog_find ();
-#endif
+	gedit_dialog_find (window);
 }
 
-static void 
-search_find_again (GeditDocument *doc, gchar *last_searched_text, gboolean backward)
+static void
+search_find_again (GeditWindow   *window,
+		   GeditDocument *doc,
+		   gchar         *last_searched_text,
+		   gboolean       backward)
 {
-#if 0
 	gpointer data;
 	gboolean found;
 	gboolean was_wrap_around;
@@ -404,16 +389,12 @@ search_find_again (GeditDocument *doc, gchar *last_searched_text, gboolean backw
 
 	data = g_object_get_qdata (G_OBJECT (doc), gedit_was_wrap_around_quark ());
 	if (data == NULL)
-	{
 		was_wrap_around = TRUE;
-	}
 	else
-	{
 		was_wrap_around = GPOINTER_TO_BOOLEAN (data);
-	}
 
 	GEDIT_SEARCH_SET_FROM_CURSOR (flags, TRUE);
-	
+
 	if (!backward)
 		found = gedit_document_find_next (doc, flags);
 	else
@@ -433,14 +414,15 @@ search_find_again (GeditDocument *doc, gchar *last_searched_text, gboolean backw
 	{	
 		GtkWidget *message_dlg;
 
-		message_dlg = gtk_message_dialog_new (
-			GTK_WINDOW (gedit_get_active_window ()),
-			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-			GTK_MESSAGE_INFO,
-			GTK_BUTTONS_OK,
-			_("The text \"%s\" was not found."), last_searched_text);
+		message_dlg = gtk_message_dialog_new (GTK_WINDOW (window),
+						      GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+						      GTK_MESSAGE_INFO,
+						      GTK_BUTTONS_OK,
+						      _("The text \"%s\" was not found."),
+						      last_searched_text);
 
-		gtk_dialog_set_default_response (GTK_DIALOG (message_dlg), GTK_RESPONSE_OK);
+		gtk_dialog_set_default_response (GTK_DIALOG (message_dlg),
+						 GTK_RESPONSE_OK);
 
 		gtk_window_set_resizable (GTK_WINDOW (message_dlg), FALSE);
 
@@ -449,95 +431,79 @@ search_find_again (GeditDocument *doc, gchar *last_searched_text, gboolean backw
 	}
 	else
 	{
-		GtkWidget *active_view;
+		GeditView *active_view;
 
-		active_view = gedit_get_active_view ();
+		active_view = gedit_window_get_active_view (window);
 		g_return_if_fail (active_view != NULL);
 
-		gedit_view_scroll_to_cursor (GEDIT_VIEW (active_view));
+		gedit_view_scroll_to_cursor (active_view);
 	}
-#endif
 }
 
 void 
 gedit_cmd_search_find_next (GtkAction *action, GeditWindow *window)
 {
-#if 0
 	GeditDocument *doc;
 	gchar* last_searched_text;
-	
+
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	doc = gedit_get_active_document ();
+	doc = gedit_window_get_active_document (window);
 	g_return_if_fail (doc);
 
 	last_searched_text = gedit_document_get_last_searched_text (doc);
 
 	if (last_searched_text != NULL)
-	{
-		search_find_again (doc, last_searched_text, FALSE);
-	}
+		search_find_again (window, doc, last_searched_text, FALSE);
 	else
-	{
-		gedit_dialog_find ();
-	}
+		gedit_dialog_find (window);
 
 	g_free (last_searched_text);
-#endif
 }
 
 void 
 gedit_cmd_search_find_prev (GtkAction *action, GeditWindow *window)
 {
-#if 0
 	GeditDocument *doc;
 	gchar* last_searched_text;
-	
+
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	doc = gedit_get_active_document ();
-	g_return_if_fail (doc);
+	doc = gedit_window_get_active_document (window);
+	if (doc == NULL)
+		return;
 
 	last_searched_text = gedit_document_get_last_searched_text (doc);
 
 	if (last_searched_text != NULL)
-	{
-		search_find_again (doc, last_searched_text, TRUE);
-	}
+		search_find_again (window, doc, last_searched_text, TRUE);
 	else
-	{
-		gedit_dialog_find ();
-	}
+		gedit_dialog_find (window);
 
 	g_free (last_searched_text);
-#endif
 }
 
 void 
 gedit_cmd_search_replace (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GtkWidget *active_view;
-	
+	GeditView *active_view;
+
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	active_view = gedit_get_active_view ();
+	active_view = gedit_window_get_active_view (window);
 
 	if (active_view != NULL)
-		gtk_widget_grab_focus (active_view);
+		gtk_widget_grab_focus (GTK_WIDGET (active_view));
 
-	gedit_dialog_replace ();
-#endif
+	gedit_dialog_replace (window);
 }
 
-void 
+void
 gedit_cmd_search_goto_line (GtkAction *action, GeditWindow *window)
 {
-#if 0
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	gedit_dialog_goto_line ();
-#endif
+	gedit_dialog_goto_line (window);
 }
 
 void
@@ -566,8 +532,7 @@ gedit_cmd_help_contents (GtkAction *action, GeditWindow *window)
 
 	if (error != NULL)
 	{
-		gedit_warning (window, error->message);
-
+		gedit_warning (GTK_WINDOW (window), error->message);
 		g_error_free (error);
 	}
 }

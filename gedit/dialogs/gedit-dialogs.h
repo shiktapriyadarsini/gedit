@@ -33,14 +33,14 @@
 #define __GEDIT_DIALOGS_H__
 
 #include <gtk/gtkwindow.h>
+#include <gedit/gedit-window.h>
 
 GQuark gedit_was_wrap_around_quark (void);
 
-void gedit_dialog_goto_line (void);
-void gedit_dialog_find 	    (void);
-void gedit_dialog_replace   (void);
-
-void gedit_dialog_open_uri  (void);
+void gedit_dialog_open_uri  (GeditWindow *parent);
+void gedit_dialog_goto_line (GeditWindow *parent);
+void gedit_dialog_find 	    (GeditWindow *parent);
+void gedit_dialog_replace   (GeditWindow *parent);
 
 gchar *gedit_plugin_program_location_dialog (const gchar *program_name, 
 					     const gchar *plugin_name, 
