@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.0\n"
-"POT-Creation-Date: 2002-10-09 05:13+0200\n"
+"POT-Creation-Date: 2002-11-24 14:36+0100\n"
 "PO-Revision-Date: 2002-10-29 09:00+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:2
 msgid "Auto Save"
-msgstr ""
+msgstr "በራሱ አስቀማጭ"
 
 #: data/gedit.schemas.in.h:3
 msgid "Auto Save Interval"
@@ -140,8 +140,8 @@ msgstr ""
 msgid "Print Header"
 msgstr ""
 
-#: data/gedit.schemas.in.h:24
 #
+#: data/gedit.schemas.in.h:24
 msgid "Print Line Numbers"
 msgstr "የመስመር ቁጥሮች አትም"
 
@@ -227,7 +227,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:39
 msgid "Tab Size"
-msgstr ""
+msgstr "የመክፈቻ መጠን"
 
 #: data/gedit.schemas.in.h:40
 msgid "Text Color"
@@ -616,7 +616,7 @@ msgstr "የቅጂ መብት (ም) 2002 - Paolo Maggi"
 
 #: plugins/docinfo/docinfo.glade2.h:1
 msgid "0"
-msgstr "0"
+msgstr ""
 
 
 #: plugins/docinfo/docinfo.glade2.h:2
@@ -625,11 +625,11 @@ msgstr "Bytes"
 
 #: plugins/docinfo/docinfo.glade2.h:3
 msgid "Characters (no spaces)"
-msgstr ""
+msgstr "አኃዞች (ክፍተት የለም)"
 
 #: plugins/docinfo/docinfo.glade2.h:4
 msgid "Characters (with spaces)"
-msgstr ""
+msgstr "አኃዞች (ከክፍተት ጋር)"
 
 #: plugins/docinfo/docinfo.glade2.h:5
 msgid "File Name"
@@ -653,7 +653,7 @@ msgstr ""
 
 #: plugins/sample/sample.c:43
 msgid "Insert User _Name"
-msgstr ""
+msgstr "የተጠቃሚ ስም _አስገባ"
 
 #: plugins/sample/sample.c:46
 msgid "Insert the user name at the cursor position"
@@ -661,7 +661,7 @@ msgstr ""
 
 #: plugins/sample/sample.c:172
 msgid "User name"
-msgstr ""
+msgstr "የተጠቃሚ ስም"
 
 #: plugins/sample/sample.c:173
 msgid "Inserts the user name at the cursor position."
@@ -802,7 +802,7 @@ msgstr ""
 msgid "Select the format to use when inserting date/time."
 msgstr ""
 
-#: src/bonobo-mdi.c:532 src/bonobo-mdi.c:622 src/bonobo-mdi.c:1858
+#: src/bonobo-mdi.c:534 src/bonobo-mdi.c:1857
 #, c-format
 msgid "Activate %s"
 msgstr "አስጀምር %s"
@@ -906,27 +906,27 @@ msgid "Font & Colors"
 msgstr "የፊደል አፃፃፍ ዓይነት እና ቀለማት"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
-#: src/dialogs/gedit-preferences.glade2.h:30
+#: src/dialogs/gedit-preferences.glade2.h:34
 msgid "Tabs"
-msgstr ""
+msgstr "መክፈቻዎች"
 
 #: src/dialogs/gedit-preferences-dialog.c:210
-#: src/dialogs/gedit-preferences.glade2.h:51
+#: src/dialogs/gedit-preferences.glade2.h:59
 msgid "Wrap mode"
 msgstr "የመሸፈኛ ዘዴ"
 
 #: src/dialogs/gedit-preferences-dialog.c:211
-#: src/dialogs/gedit-preferences.glade2.h:15
+#: src/dialogs/gedit-preferences.glade2.h:19
 msgid "Line numbers"
 msgstr "የመስመር ቁጥሮች"
 
 #: src/dialogs/gedit-preferences-dialog.c:213
-#: src/dialogs/gedit-preferences.glade2.h:25 src/gedit-ui.xml.h:58
+#: src/dialogs/gedit-preferences.glade2.h:29 src/gedit-ui.xml.h:58
 msgid "Save"
 msgstr "አስቀምጥ"
 
 #: src/dialogs/gedit-preferences-dialog.c:214
-#: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:76
+#: src/dialogs/gedit-preferences.glade2.h:46 src/gedit-ui.xml.h:76
 msgid "Undo"
 msgstr "ወደ ነበረበት መልስ"
 
@@ -947,7 +947,7 @@ msgid "Editor"
 msgstr "አርታዒ"
 
 #: src/dialogs/gedit-preferences-dialog.c:240
-#: src/dialogs/gedit-preferences.glade2.h:21 src/gedit-print.c:309
+#: src/dialogs/gedit-preferences.glade2.h:25 src/gedit-print.c:309
 #: src/gedit-ui.xml.h:42
 msgid "Print"
 msgstr "አትም"
@@ -1029,228 +1029,236 @@ msgstr "ፊደል(ሎች)"
 
 #: src/dialogs/gedit-preferences.glade2.h:3
 msgid " line(s)"
-msgstr "መስመር"
+msgstr "መስመር(ሮች)"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
-msgid "Always use UTF-8 encoding (faster) when creating a new file"
-msgstr ""
-
-#: src/dialogs/gedit-preferences.glade2.h:5
-msgid "Always use UTF-8 encoding (faster) when saving"
-msgstr ""
-
-#: src/dialogs/gedit-preferences.glade2.h:6
-msgid "Always use U_TF-8 encoding (faster)"
+msgid ""
+"Always use UTF-8 encoding (faster) when creating a new file\n"
+"\n"
 msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:7
-msgid "Always use _UTF-8 encoding (faster)"
-msgstr ""
-
-#: src/dialogs/gedit-preferences.glade2.h:8
-msgid "Colors"
-msgstr "ቀለማት"
-
-#: src/dialogs/gedit-preferences.glade2.h:9
-msgid "Create a _backup copy of files before saving"
+msgid ""
+"Always use UTF-8 encoding (faster) when saving\n"
+"\n"
 msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:10
+msgid "Always use U_TF-8 encoding (faster)"
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:11
+msgid "Always use _UTF-8 encoding (faster)"
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:12
+msgid "Colors"
+msgstr "ቀለማት"
+
+#: src/dialogs/gedit-preferences.glade2.h:13
+msgid "Create a _backup copy of files before saving"
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:14
 #: src/dialogs/gnome-print-font-picker.c:1014
 msgid "Font"
 msgstr "የፊደል ቅርጽ"
 
-#: src/dialogs/gedit-preferences.glade2.h:11
+#: src/dialogs/gedit-preferences.glade2.h:15
 msgid "Font used to print line _numbers:"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:12
+#: src/dialogs/gedit-preferences.glade2.h:16
 msgid "Font used to print the _body:"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:13
+#: src/dialogs/gedit-preferences.glade2.h:17
 msgid "Fonts & Colors"
 msgstr "የፊደል ቅርጾችና ቃላማት"
 
-#: src/dialogs/gedit-preferences.glade2.h:14
+#: src/dialogs/gedit-preferences.glade2.h:18
 msgid "LOGO"
 msgstr "አርማ"
 
-#: src/dialogs/gedit-preferences.glade2.h:16
+#: src/dialogs/gedit-preferences.glade2.h:20
 msgid "Pick the background color"
 msgstr "የመደቡ ቀለም ምረጡ"
 
-#: src/dialogs/gedit-preferences.glade2.h:17
+#: src/dialogs/gedit-preferences.glade2.h:21
 msgid "Pick the selected text color"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:18
+#: src/dialogs/gedit-preferences.glade2.h:22
 msgid "Pick the selection color"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:19
+#: src/dialogs/gedit-preferences.glade2.h:23
 msgid "Pick the text color"
 msgstr " የጽሑፉ ቀለም ምረጡ"
 
-#: src/dialogs/gedit-preferences.glade2.h:20
+#: src/dialogs/gedit-preferences.glade2.h:24
 msgid "Plugin manager"
 msgstr "የተጨማሪ ፕሮግራም አስተዳደር"
 
-#: src/dialogs/gedit-preferences.glade2.h:22
+#: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Print _line numbers every"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:23
+#: src/dialogs/gedit-preferences.glade2.h:27
 msgid "Print _page headers"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:24
+#: src/dialogs/gedit-preferences.glade2.h:28
 msgid "Print fonts"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:26
+#: src/dialogs/gedit-preferences.glade2.h:30
 msgid "Se_lection color:"
 msgstr "የ_ምርጫው ቀለም፦"
 
-#: src/dialogs/gedit-preferences.glade2.h:27
+#: src/dialogs/gedit-preferences.glade2.h:31
 msgid "Selecte_d text color:"
 msgstr "የተመረጠው ጽሑፍ ቀለም፦"
 
-#: src/dialogs/gedit-preferences.glade2.h:28
+#: src/dialogs/gedit-preferences.glade2.h:32
 msgid "Set _tabs width equivalent to  "
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:29
+#: src/dialogs/gedit-preferences.glade2.h:33
 msgid "Set limit on _undo actions to"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:31
+#: src/dialogs/gedit-preferences.glade2.h:35
 msgid ""
 "The font & colors settings let you choose the font and the colors to be used "
 "in the editor windows."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:32
+#: src/dialogs/gedit-preferences.glade2.h:36
 msgid ""
 "The line numbers setting lets you choose to display the line numbers on the "
 "left hand side of the window."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:33
+#: src/dialogs/gedit-preferences.glade2.h:37
 msgid ""
 "The plugin manager settings let you choose which plugins you want to have "
 "loaded."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:34
+#: src/dialogs/gedit-preferences.glade2.h:38
 msgid ""
 "The print fonts settings let you choose the fonts to be used to print "
 "documents."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:35
+#: src/dialogs/gedit-preferences.glade2.h:39
 msgid "The print page settings let you customize how gedit prints documents."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:36
+#: src/dialogs/gedit-preferences.glade2.h:40
 msgid "The save settings let you customize how gedit saves files."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:37
+#: src/dialogs/gedit-preferences.glade2.h:41
 msgid "The tabs settings let you customize the tabs width."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:38
+#: src/dialogs/gedit-preferences.glade2.h:42
 msgid ""
 "The undo settings let you set the maximum number of actions that gedit can "
 "undo."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:39
+#: src/dialogs/gedit-preferences.glade2.h:43
 msgid "The wrap mode settings let you customize how lines have to be wrapped."
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:40
+#: src/dialogs/gedit-preferences.glade2.h:44
 msgid "U_se default theme colors"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:41
+#: src/dialogs/gedit-preferences.glade2.h:45
 msgid "U_se original file encoding if possible"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:43
+#: src/dialogs/gedit-preferences.glade2.h:47
 msgid "Use cu_rrent locale's encoding if possible"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:44
+#: src/dialogs/gedit-preferences.glade2.h:48
 msgid "Use current _locale's encoding if possible"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:45
-msgid "Use current locale's encoding if possible when creating a new file"
-msgstr ""
-
-#: src/dialogs/gedit-preferences.glade2.h:46
-msgid "Use current locale's encoding if possible when saving"
-msgstr ""
-
-#: src/dialogs/gedit-preferences.glade2.h:47
-msgid "When creating a new file..."
-msgstr ""
-
-#: src/dialogs/gedit-preferences.glade2.h:48
-msgid "When saving..."
-msgstr ""
-
 #: src/dialogs/gedit-preferences.glade2.h:49
-msgid "Wrap lines at _word boundaries"
-msgstr ""
-
-#: src/dialogs/gedit-preferences.glade2.h:50
-msgid "Wrap lines at ch_aracter boundaries"
+msgid ""
+"Use current locale's encoding if possible when creating a new file\n"
+"\n"
 msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:52
-msgid "_Autosave current file every"
+msgid ""
+"Use current locale's encoding if possible when saving\n"
+"\n"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:53
-msgid "_Background color:"
-msgstr "የ_መደቡ ቀለም፦"
-
-#: src/dialogs/gedit-preferences.glade2.h:54
-msgid "_Display line numbers"
-msgstr " የ_መስመር ቍጥሮች አሳይ"
-
 #: src/dialogs/gedit-preferences.glade2.h:55
-msgid "_Font used by the editor: "
+msgid "When creating a new file..."
 msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:56
-msgid "_Font used to print headers:"
+msgid "When saving..."
 msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:57
-msgid "_Never wrap lines"
+msgid "Wrap lines at _word boundaries"
 msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:58
-msgid "_Restore default fonts"
+msgid "Wrap lines at ch_aracter boundaries"
 msgstr ""
 
-#: src/dialogs/gedit-preferences.glade2.h:59
-msgid "_Text color:"
-msgstr "የ_ጽሑፍ ቀለም፦"
-
 #: src/dialogs/gedit-preferences.glade2.h:60
-msgid "_Use default theme font"
+msgid "_Autosave current file every"
 msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:61
+msgid "_Background color:"
+msgstr "የ_መደቡ ቀለም፦"
+
+#: src/dialogs/gedit-preferences.glade2.h:62
+msgid "_Display line numbers"
+msgstr " የ_መስመር ቍጥሮች አሳይ"
+
+#: src/dialogs/gedit-preferences.glade2.h:63
+msgid "_Font used by the editor: "
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:64
+msgid "_Font used to print headers:"
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:65
+msgid "_Never wrap lines"
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:66
+msgid "_Restore default fonts"
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:67
+msgid "_Text color:"
+msgstr "የ_ጽሑፍ ቀለም፦"
+
+#: src/dialogs/gedit-preferences.glade2.h:68
+msgid "_Use default theme font"
+msgstr ""
+
+#: src/dialogs/gedit-preferences.glade2.h:69
 msgid "action(s)"
 msgstr "ትግባር(ኦች)"
 
-#: src/dialogs/gedit-preferences.glade2.h:62
+#: src/dialogs/gedit-preferences.glade2.h:70
 msgid "minutes"
 msgstr "ደቂቃዎች"
 
@@ -1381,7 +1389,7 @@ msgstr ""
 
 #: src/dialogs/replace.glade2.h:3
 msgid "Replace _with: "
-msgstr ""
+msgstr "በ... ተካ፦"
 
 #: src/dialogs/replace.glade2.h:4
 msgid "Search fro_m the beginning of the document"
@@ -1454,37 +1462,37 @@ msgstr ""
 msgid "The file has too many symbolic links."
 msgstr ""
 
-#: src/gedit-document.c:1249
+#: src/gedit-document.c:1251
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
 msgstr ""
 
-#: src/gedit-document.c:1256
+#: src/gedit-document.c:1258
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr ""
 
-#: src/gedit-document.c:1269
+#: src/gedit-document.c:1271
 msgid "Invalid filename."
 msgstr ""
 
-#: src/gedit-document.c:1397
+#: src/gedit-document.c:1411
 msgid ""
 "There is not enough disk space to save the file.\n"
 "Please free some disk space and try again."
 msgstr ""
 
-#: src/gedit-document.c:1402
+#: src/gedit-document.c:1416
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
 "not have this limitation."
 msgstr ""
 
-#: src/gedit-document.c:1441
+#: src/gedit-document.c:1455
 msgid "Could not create a backup file."
 msgstr ""
 
-#: src/gedit-document.c:1589
+#: src/gedit-document.c:1603
 msgid "It is not possible to revert an Untitled document"
 msgstr "ስያሜ ያልተሰጠውን ሰነድ ለመመለስ አይቻልም"
 
@@ -1493,6 +1501,7 @@ msgid "Do_n't replace"
 msgstr "_አትተካ"
 
 #: src/gedit-file-selector-util.c:147
+#, c-format
 msgid ""
 "A file named \"%s\" already exists.\n"
 "Do you want to replace it with the one you are saving?"
@@ -1501,12 +1510,11 @@ msgstr ""
 "በሚያስቀምጡት ፋይል መተካት ይፈልጋሉ?"
 
 #: src/gedit-file-selector-util.c:158
+#, c-format
 msgid ""
 "The file \"%s\" is read-only.\n"
 "Do you want to try to replace it with the one you are saving?"
 msgstr ""
-""
-""
 
 #: src/gedit-file-selector-util.c:544
 msgid "Select a filename to save"
@@ -1554,6 +1562,7 @@ msgid "File '%s' reverted."
 msgstr "ፋይል '%s' ተመልሷል።"
 
 #: src/gedit-file.c:675
+#, c-format
 msgid "Loading %d files..."
 msgstr "ፋይል %dን በመጫን ላይ..."
 
@@ -1602,52 +1611,52 @@ msgstr "(የተሻሻለ)"
 msgid "(readonly)"
 msgstr "(ለንባብ ብቻ)"
 
-#: src/gedit-plugins-engine.c:159
+#: src/gedit-plugins-engine.c:162
 #, c-format
 msgid "Error, unable to open module file '%s'\n"
 msgstr "ስህተት፦ የታቀደው ፋይል '%s'ን መክፈት አልተቻለም\n"
 
-#: src/gedit-plugins-engine.c:174
+#: src/gedit-plugins-engine.c:177
 #, c-format
 msgid "Error, plugin '%s' does not contain init function."
 msgstr ""
 
-#: src/gedit-plugins-engine.c:184
+#: src/gedit-plugins-engine.c:187
 #, c-format
 msgid "Error, plugin '%s' does not contain activate function."
 msgstr "ስህተት፦ ተጨማሪ የተደረገው ፕሮግራም '%s' ተግባሩን ማስጀመሪያውንአላካተተም።"
 
-#: src/gedit-plugins-engine.c:194
+#: src/gedit-plugins-engine.c:197
 #, c-format
 msgid "Error, plugin '%s' does not contain deactivate function."
 msgstr "ስህተት፦ የ '%s'  ተጨማሪ ፕሮግራም ሥራውን የሚያዘገየውን አላካተተም።"
 
-#: src/gedit-plugins-engine.c:224
+#: src/gedit-plugins-engine.c:227
 #, c-format
 msgid "Error, impossible to initialize plugin '%s'"
 msgstr "ስህተት፦ ተጨማሪው ፕሮግራም '%s'ን ማስጀመር አልተቻለም"
 
-#: src/gedit-plugins-engine.c:232
+#: src/gedit-plugins-engine.c:235
 #, c-format
 msgid "Error, the plugin '%s' did not specified a name"
 msgstr "ስህተት፦ ተጨማሪው/አጋዡ ፕሮግራም '%s' የተወሰነ ስም አልጠቀሰም"
 
-#: src/gedit-plugins-engine.c:312
+#: src/gedit-plugins-engine.c:315
 #, c-format
 msgid "Error, impossible to save settings of the plugin '%s'"
 msgstr "ስህተት፦ ተጨማሪው ፕሮግራም የ'%s'ን ይዞታ ለማስቀመጥ አልተቻለም"
 
-#: src/gedit-plugins-engine.c:384 src/gedit-plugins-engine.c:442
+#: src/gedit-plugins-engine.c:387 src/gedit-plugins-engine.c:445
 #, c-format
 msgid "Error, impossible to activate plugin '%s'"
 msgstr "ስህተት፦ ተጨማሪውን ፕሮግራም  '%s'ን ማስጀመር አልተቻለም"
 
-#: src/gedit-plugins-engine.c:411
+#: src/gedit-plugins-engine.c:414
 #, c-format
 msgid "Error, impossible to deactivate plugin '%s'"
 msgstr "ስህተት፦ አጋዡን ፕሮግራም '%s'ን ማዘግየት አልተቻለም"
 
-#: src/gedit-plugins-engine.c:486
+#: src/gedit-plugins-engine.c:489
 #, c-format
 msgid "Error, impossible to update ui of the plugin '%s'"
 msgstr "ስህተት፦ የአጋዥ ፕሮግራሙ የ'%s'ን ቋሻይን ማሻሻል አልተቻለም"
@@ -2359,6 +2368,7 @@ msgid ""
 msgstr ""
 
 #: src/gedit-utils.c:1337
+#, c-format
 msgid "Could not create the file \"%s\"."
 msgstr "ፋይሉ \"%s\"ን ማስፈጠር አልተቻለም።"
 
