@@ -385,7 +385,7 @@ msgstr "Obna¹anje urejevalnika"
 
 #: src/dialogs/prefs.glade.h:10
 msgid "Enable Auto-indent"
-msgstr "Vklopi samodejno oznaèevanje"
+msgstr "Vkljuèi samodejno oznaèevanje"
 
 #: src/dialogs/prefs.glade.h:11
 msgid "Enable word _wrapping"
@@ -591,7 +591,7 @@ msgid ""
 "Please make sure the file is not being used by another application\n"
 "and that the file is not empty."
 msgstr ""
-"Ob odpiranju datoteke se je zgodila napaka:\n"
+"Zgodila se je napaka ob odpiranju datoteke:\n"
 "\n"
 "%s\n"
 "\n"
@@ -699,7 +699,7 @@ msgstr "Odpri datoteko ..."
 #: src/file.c:799
 #, c-format
 msgid "``%s'' is about to be overwritten. Do you want to continue ?"
-msgstr "``%s'' bo prepisana. Ali ¾elite nadaljevati?"
+msgstr "Datoteka ``%s'' bo prepisana. ®elite nadaljevati?"
 
 #: src/file.c:811
 msgid "Document has not been saved."
@@ -1207,7 +1207,7 @@ msgstr "Ne morete razveljaviti neimenovanega dokumenta."
 #~ msgstr "Ka¾i razdeljeno povr¹ino"
 
 #~ msgid "Enable Wordwrap"
-#~ msgstr "Vklopi lom besed"
+#~ msgstr "Vkljuèi lom besed"
 
 #~ msgid "Find _In Files..."
 #~ msgstr "Poi¹èi _V Datotekah..."
