@@ -646,6 +646,7 @@ ephy_notebook_switch_page_cb (GtkNotebook     *notebook,
 {
 	GeditNotebook *nb = GEDIT_NOTEBOOK (notebook);
 	GtkWidget *child;
+	GeditView *view;
 
 	child = gtk_notebook_get_nth_page (notebook, page_num);
 
@@ -659,6 +660,10 @@ ephy_notebook_switch_page_cb (GtkNotebook     *notebook,
 
 	nb->priv->focused_pages = g_list_append (nb->priv->focused_pages,
 						 child);
+
+	/* give focus to the view */
+	view = gedit_tab_get_view (GEDIT_TAB (child));
+	gtk_widget_grab_focus (GTK_WIDGET (view));
 }
 
 #if 0
