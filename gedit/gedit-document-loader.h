@@ -31,6 +31,9 @@
 #ifndef __GEDIT_DOCUMENT_LOADER_H__
 #define __GEDIT_DOCUMENT_LOADER_H__
 
+#include <gedit/gedit-document.h>
+#include <libgnomevfs/gnome-vfs-file-size.h>
+
 G_BEGIN_DECLS
 
 /*
@@ -44,6 +47,38 @@ G_BEGIN_DECLS
 #define GEDIT_IS_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_DOCUMENT_LOADER))
 #define GEDIT_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_DOCUMENT_LOADER, GeditDocumentLoaderClass))
 
+/* This specifies the current phase in the loading operation.  Phases whose
+   comments are marked with `(*)' are always reported in "normal" (i.e. no
+   error) condition; the other ones are only reported if an error happens in
+   that specific phase.  */
+typedef enum {
+	/* Idle (not loading a file) */
+	GEDIT_DOCUMENT_LOADER_IDLE,
+	/* Initial phase */
+	GEDIT_DOCUMENT_LOADER_PHASE_INITIAL,
+	/* Ready to go (*) */
+	GEDIT_DOCUMENT_LOADER_PHASE_READY_TO_GO,
+	/* Getting info on the document to load */
+	GEDIT_DOCUMENT_LOADER_PHASE_GETTING_INFO,
+	/* Got info on the document to load (*) */
+	GEDIT_DOCUMENT_LOADER_PHASE_GOT_INFO,
+	/* Open the file to read */
+	GEDIT_DOCUMENT_LOADER_PHASE_OPEN,	
+	/* Loading the file (*) */
+	GEDIT_DOCUMENT_LOADER_PHASE_LOADING,
+	/* Reading the file */
+	GEDIT_DOCUMENT_LOADER_PHASE_READING,	
+	/* Converting file to UTF-8 */
+	GEDIT_DOCUMENT_LOADER_PHASE_CONVERTING,	
+	/* File loaded (*) */
+	GEDIT_DOCUMENT_LOADER_PHASE_LOADED,
+	/* File loading cancelled */
+	GEDIT_DOCUMENT_LOADER_PHASE_CANCELLED,
+	/* Operation finished (*) */
+	GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED,
+	GEDIT_DOCUMENT_LOADER_NUM_OF_PHASES
+} GeditDocumentLoaderPhase;
+	
 /* Private structure type */
 typedef struct _GeditDocumentLoaderPrivate GeditDocumentLoaderPrivate;
 
@@ -69,36 +104,44 @@ struct _GeditDocumentLoaderClass
 {
 	GObjectClass parent_class;
 	
-	// FIXME: signals
+	void loading (GeditDocumentLoader      *loader,
+		      GeditDocumentLoaderPhase  phase);
 };
 
 /*
  * Public methods
  */
-GType 		 	 gedit_document_loader_get_type	(void) G_GNUC_CONST;
+GType 		 	 gedit_document_loader_get_type		(void) G_GNUC_CONST;
 
-GeditDocumentLoader 	*gedit_document_loader_new 	(GeditDocument        *doc);
+GeditDocumentLoader 	*gedit_document_loader_new 		(GeditDocument        *doc);
 
 /* If enconding == NULL, the encoding will be autodetected */
-void			 gedit_document_loader_set_encoding
-							(GeditDocumentLoader  *loader,
-							 const GeditEncoding  *encoding);
-							 
-gboolean	 	*gedit_document_loader_is_loading
-							(GeditDocumentLoader  *loader);
+void			 gedit_document_loader_set_encoding 	(GeditDocumentLoader  *loader,
+								 const GeditEncoding  *encoding);
 
-gboolean		 gedit_document_loader_load	(GeditDocumentLoader  *loader,
-							 const gchar          *uri,
-							 GError              **error); // FIXME: Do we need it ?
+gboolean		 gedit_document_loader_load		(GeditDocumentLoader  *loader,
+							 	 const gchar          *uri);
 
-gboolean		 gedit_document_loader_load_from_stdin	
-							(GeditDocumentLoader  *loader,
-							 GError              **error); // FIXME: Do we need it ?
+gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader  *loader);
 							 
-void			 gedit_document_loader_cancel	(GeditDocumentLoader  *loader);
+void			 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
 
-// FIXME: do we need funciont to get the infos on the file is being loaded?
-							 
+const GeditEncoding	*gedit_document_loader_get_encoding 	(GeditDocumentLoader  *loader);
+
+gboolean	 	*gedit_document_loader_is_loading	(GeditDocumentLoader  *loader);
+
+GeditDocumentLoaderPhase gedit_document_loader_get_phase	(GeditDocumentLoader  *loader);
+
+gchar			*gedit_document_loader_get_message	(GeditDocumentLoader  *loader);
+
+/* Returns STDIN_URI if loading from stdin */
+#define STDIN_URI "stdin:" 
+const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader  *loader);
+
+/* Returns 0 if file size is unknown */
+GnomeVFSFileSize	*gedit_document_loader_get_file_size	(GeditDocumentLoader  *loader);									 
+
+GnomeVFSFileSize	*gedit_document_loader_get_bytes_read	(GeditDocumentLoader  *loader);									 
 
 G_END_DECLS
 

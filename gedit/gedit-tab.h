@@ -59,7 +59,6 @@ typedef struct _GeditTab GeditTab;
 
 struct _GeditTab 
 {
-	/* FIXME: do we really need to extends GtkBin - Paolo */
 	GtkVBox vbox;
 
 	/*< private > */

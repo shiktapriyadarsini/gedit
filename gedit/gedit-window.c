@@ -53,6 +53,7 @@
 #include "gedit-prefs-manager-app.h"
 #include "gedit-panel.h"
 #include "gedit-recent.h"
+#include "gedit-documents-panel.h"
 
 #include "recent-files/egg-recent-model.h"
 #include "recent-files/egg-recent-view.h"
@@ -1458,6 +1459,7 @@ create_side_panel (GeditWindow *window)
 {
 	GtkAction *action;
 	gboolean visible;
+	GtkWidget *documents_panel;
 	
 	window->priv->side_panel = gedit_panel_new ();
 
@@ -1480,10 +1482,9 @@ create_side_panel (GeditWindow *window)
 	gtk_paned_set_position (GTK_PANED (window->priv->hpaned),
 				MAX (100, gedit_prefs_manager_get_side_panel_size ()));
 				
-	// FIXME
-  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_tree_view_new (), "Documents", GTK_STOCK_FILE);
-  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_label_new ("Project"), "Projects", GTK_STOCK_EXECUTE);
-  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_label_new ("Selector"), "Selector", GTK_STOCK_HARDDISK);  	
+
+	documents_panel = gedit_documents_panel_new (window);
+  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), documents_panel, "Documents", GTK_STOCK_FILE);
 
 	visible = gedit_prefs_manager_get_side_pane_visible ();
 	
@@ -1916,3 +1917,20 @@ gedit_window_get_group (GeditWindow *window)
 	
 	return window->priv->window_group;
 }
+
+gboolean
+_gedit_window_is_removing_all_tabs (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), FALSE);
+	
+	return window->priv->removing_all_tabs;
+}
+
+GtkUIManager *
+_gedit_window_get_ui_manager (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
+	return window->priv->manager;
+}
+
