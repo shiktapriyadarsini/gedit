@@ -1176,7 +1176,7 @@ msgid "File '%s' reverted."
 msgstr "Файл \"%s\" відновлено."
 
 #: src/gedit-file.c:644
-#, c-format
+#, fuzzy, c-format
 msgid "Loading %d file..."
 msgstr "Завантаження файлу \"%s\""
 
@@ -1724,7 +1724,7 @@ msgid "Could not open the file \"%s\" because it contains corrupted data."
 msgstr "Не вдалося відкрити файл \"%s\" через те, що він містить зіпсовані дані."
 
 #: src/gedit-utils.c:860
-#, c-format
+#, fuzzy, c-format
 msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "Не вдалось відкрити файл \"%s\" тому, що він пошкоджений."
 
@@ -1744,7 +1744,7 @@ msgid "Could not open the file \"%s\" because it is too big."
 msgstr "Не вдалося відкрити файл \"%s\" через те, що він надто великий."
 
 #: src/gedit-utils.c:889
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "\"%s\" is not a valid location.\n"
 "\n"
