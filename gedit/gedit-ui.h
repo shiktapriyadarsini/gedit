@@ -95,6 +95,7 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Configure the application"), G_CALLBACK (gedit_cmd_edit_preferences) },
 
 	/* View menu */
+	{ "ViewHighlightMode", NULL, N_("_Highlight Mode") },
 
 	/* Search menu */
 	{ "SearchFind", GTK_STOCK_FIND, N_("_Find..."), "<control>F",

@@ -36,7 +36,12 @@
       <menuitem name="ViewToolbarMenu" action="ViewToolbar"/>
       <menuitem name="ViewStatusbarMenu" action="ViewStatusbar"/>
       <menuitem name="ViewSidePaneMenu" action="ViewSidePane"/>
-      <menuitem name="ViewBottomPanelMenu" action="ViewBottomPanel"/>      
+      <menuitem name="ViewBottomPanelMenu" action="ViewBottomPanel"/>
+      <separator/>
+      <menu name="ViewHighlightModeMenu" action="ViewHighlightMode">
+        <placeholder name="LanguagesMenuPlaceholder">
+        </placeholder>
+      </menu>
     </menu>
 
     <menu name="SearchMenu" action="Search">
@@ -53,8 +58,8 @@
       <menuitem action="FileCloseAll" />
       <separator name="DocumentSep1"/>       
       <menuitem action="DocumentsMoveToNewWindow"/>
-      <placeholder name="DocumentsList">
-      <separator name="DocumentSep2"/>
+      <placeholder name="DocumentsListPlaceholder">
+        <separator/>
       </placeholder>
     </menu>
 

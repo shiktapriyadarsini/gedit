@@ -38,16 +38,19 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
+#include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksourcelanguagesmanager.h>
  
 #include "gedit-ui.h"
 #include "gedit-window.h"
+#include "gedit-app.h"
 #include "gedit-notebook.h"
 #include "gedit-statusbar.h"
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-debug.h"
+#include "gedit-languages-manager.h"
 #include "gedit-prefs-manager-app.h"
-#include "gedit-app.h"
 #include "gedit-panel.h"
 
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
@@ -70,18 +73,19 @@ struct _GeditWindowPrivate
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
 	GtkActionGroup *action_group;
+	GtkActionGroup *languages_action_group;
 	GtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
 	GtkWidget      *toolbar;
 	GeditToolbarSetting toolbar_style;
-	
+
 	GeditTab       *active_tab;
 	gint            num_tabs;
-	
+
 	gint            width;
 	gint            height;	
 	GdkWindowState  state;
-	
+
 	gint		side_panel_size;
 	gint		bottom_panel_size;	
 };
@@ -262,6 +266,175 @@ set_toolbar_style (GeditWindow *window,
 }
 
 static void
+language_toggled  (GtkToggleAction *action,
+		   GeditWindow     *window)
+{
+	GeditDocument *doc;
+	const GSList *languages;
+	const GtkSourceLanguage *lang;
+	gint n;
+
+	if (gtk_toggle_action_get_active (action) == FALSE)
+		return;
+
+	doc = gedit_window_get_active_document (window);
+	if (doc == NULL)
+		return; // CHECK turn this into a g_return_if_fail when sensitivity is in place?
+
+	n = gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+
+	if (n < 0)
+	{
+		/* default language */
+		lang = NULL;
+	}
+	else
+	{
+		languages = gtk_source_languages_manager_get_available_languages (
+						gedit_get_languages_manager ());
+
+		lang = GTK_SOURCE_LANGUAGE (g_slist_nth_data ((GSList *) languages, n));
+	}
+
+	// FIXME: why doc_set/get_language do not take a const instead of casting here?
+	gedit_document_set_language (doc, (GtkSourceLanguage *) lang);
+}
+
+static void
+create_language_menu_item (GtkSourceLanguage *lang,
+			   gint               index,
+			   guint              ui_id,
+			   GeditWindow       *window)
+{
+	GtkAction *section_action;
+	GtkRadioAction *action;
+	GtkAction *normal_action;
+	GSList *group;
+	gchar *section;
+	gchar *lang_name;
+	gchar *tip;
+	gchar *path;
+
+	section = gtk_source_language_get_section (lang);
+
+	/* check if the section submenu exists or create it */
+	section_action = gtk_action_group_get_action (window->priv->languages_action_group,
+						      section);
+
+	if (section_action == NULL)
+	{
+		// CHECK: escaping strings
+		section_action = gtk_action_new (section,
+						 section,
+						 NULL,
+						 NULL);
+
+		gtk_action_group_add_action (window->priv->languages_action_group,
+					     section_action);
+		g_object_unref (section_action);
+
+		gtk_ui_manager_add_ui (window->priv->manager,
+				       ui_id,
+				       "/MenuBar/ViewMenu/ViewHighlightModeMenu/LanguagesMenuPlaceholder",
+				       section, section,
+				       GTK_UI_MANAGER_MENU,
+				       FALSE);
+	}
+
+	/* now add the language item to the section */
+	lang_name = gtk_source_language_get_name (lang);
+	tip = g_strdup_printf (_("Use %s highlight mode"), lang_name);
+	path = g_strdup_printf ("/MenuBar/ViewMenu/ViewHighlightModeMenu/LanguagesMenuPlaceholder/%s",
+				section);
+
+	// CHECK: escaping strings
+	action = gtk_radio_action_new (lang_name,
+				       lang_name,
+				       tip,
+				       NULL,
+				       index);
+
+	gtk_action_group_add_action (window->priv->languages_action_group,
+				     GTK_ACTION (action));
+	g_object_unref (action);
+
+	/* add the action to the same radio group of the "Normal" action */
+	normal_action = gtk_action_group_get_action (window->priv->languages_action_group,
+						     "LangNormal");
+	group = gtk_radio_action_get_group (GTK_RADIO_ACTION (normal_action));
+	gtk_radio_action_set_group (action, group);
+
+	g_signal_connect (action,
+			  "activate",
+			  G_CALLBACK (language_toggled),
+			  window);
+
+	gtk_ui_manager_add_ui (window->priv->manager,
+			       ui_id,
+			       path,
+			       lang_name, lang_name,
+			       GTK_UI_MANAGER_MENUITEM,
+			       FALSE);
+
+	g_free (path);
+	g_free (tip);
+	g_free (lang_name);
+	g_free (section);
+}
+
+static void
+create_languages_menu (GeditWindow *window)
+{
+	GtkRadioAction *action_normal;
+	const GSList *languages;
+	const GSList *l;
+	guint id;
+	gint i;
+
+	/* add the "Normal" item before all the others */
+	action_normal = gtk_radio_action_new ("LangNormal",
+					      _("Normal"),
+					      _("Use Normal highlight mode"),
+					      NULL,
+					      -1);
+
+	gtk_action_group_add_action (window->priv->languages_action_group,
+				     GTK_ACTION (action_normal));
+	g_object_unref (action_normal);
+
+	g_signal_connect (action_normal,
+			  "activate",
+			  G_CALLBACK (language_toggled),
+			  window);
+
+	id = gtk_ui_manager_new_merge_id (window->priv->manager);
+
+	gtk_ui_manager_add_ui (window->priv->manager,
+			       id,
+			       "/MenuBar/ViewMenu/ViewHighlightModeMenu/LanguagesMenuPlaceholder",
+			       "LangNormal", "LangNormal",
+			       GTK_UI_MANAGER_MENUITEM,
+			       TRUE);
+
+	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action_normal), TRUE);
+
+	/* now add all the known languages */
+	languages = gtk_source_languages_manager_get_available_languages (
+						gedit_get_languages_manager ());
+
+	i = 0;
+	for (l = languages; l != NULL; l = l->next)
+	{
+		create_language_menu_item (GTK_SOURCE_LANGUAGE (l->data),
+					    i,
+					    id,
+					    window);
+
+		i++;
+	}
+}
+
+static void
 create_menu_bar_and_toolbar (GeditWindow *window, 
 			     GtkWidget   *main_box)
 {
@@ -273,6 +446,17 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 
 	manager = gtk_ui_manager_new ();
 	window->priv->manager = manager;
+
+	gtk_window_add_accel_group (GTK_WINDOW (window),
+				    gtk_ui_manager_get_accel_group (manager));
+
+	/* now load the UI definition */
+	gtk_ui_manager_add_ui_from_file (manager, /* GEDIT_UI_DIR */ "gedit-ui.xml", &error);
+	if (error != NULL)
+	{
+		g_warning ("Could not merge gedit-ui.xml: %s", error->message);
+		g_error_free (error);
+	}
 
 	/* show tooltips in the statusbar */
 	g_signal_connect (manager, "connect_proxy",
@@ -310,22 +494,18 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	action = gtk_action_group_get_action (action_group, "EditUndo");
 	g_object_set (action, "is_important", TRUE, NULL);
 
+	/* the menu of languages */
+	action_group = gtk_action_group_new ("LanguagesActions");
+	gtk_action_group_set_translation_domain (action_group, NULL);
+	window->priv->languages_action_group = action_group;
+	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	create_languages_menu (window);
+
 	/* the menu with the list of open documents */
 	action_group = gtk_action_group_new ("DocumentsListActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->documents_list_action_group = action_group;
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-
-	gtk_window_add_accel_group (GTK_WINDOW (window),
-				    gtk_ui_manager_get_accel_group (manager));
-
-        /* now load the UI definition */
-	gtk_ui_manager_add_ui_from_file (manager, /* GEDIT_UI_DIR */ "gedit-ui.xml", &error);
-	if (error != NULL)
-	{
-		g_warning ("Could not merge gedit-ui.xml: %s", error->message);
-		g_error_free (error);
-	}
 
 	menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
 	gtk_box_pack_start (GTK_BOX (main_box), menubar, FALSE, FALSE, 0);
@@ -342,7 +522,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 
 static void
 documents_list_menu_activate (GtkToggleAction *action,
-			 GeditWindow     *window)
+			      GeditWindow     *window)
 {
 	gint n;
 
@@ -358,7 +538,7 @@ documents_list_menu_activate (GtkToggleAction *action,
 // This function should handle this case just fine, so what has to be checked
 // is when and how the TAB_ADDED and TAB_REMOVED signals are emitted in that case
 static void
-documents_list_menu_update (GeditWindow *window)
+update_documents_list_menu (GeditWindow *window)
 {
 	GeditWindowPrivate *p = window->priv;
 	GList *actions, *l;
@@ -427,7 +607,7 @@ documents_list_menu_update (GeditWindow *window)
 
 		gtk_ui_manager_add_ui (p->manager,
 				       id,
-				       "/MenuBar/DocumentsMenu/DocumentsList",
+				       "/MenuBar/DocumentsMenu/DocumentsListPlaceholder",
 				       action_name, action_name,
 				       GTK_UI_MANAGER_MENUITEM,
 				       FALSE);
@@ -852,7 +1032,7 @@ notebook_tab_added (GeditNotebook *notebook,
 			  G_CALLBACK (update_overwrite_mode_statusbar),
 			  window);
 
-	documents_list_menu_update (window);
+	update_documents_list_menu (window);
 }
 
 static void
@@ -909,7 +1089,7 @@ notebook_tab_removed (GeditNotebook *notebook,
 		}
 	}
 
-	documents_list_menu_update (window);
+	update_documents_list_menu (window);
 }
 
 static void
