@@ -1,4 +1,4 @@
-# Translations into the Amharic Language.
+
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
 # Ge'ez Frontier Foundation <locales@geez.org>, 2002.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.0\n"
 "POT-Creation-Date: 2002-11-24 14:36+0100\n"
-"PO-Revision-Date: 2002-12-27 22:19+EDT\n"
+"PO-Revision-Date: 2003-01-14 11:02+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: data/gedit.desktop.in.h:1
 msgid "Edit text files"
-msgstr ""
+msgstr "የጽሑፍ ፋይሎች ያስተካክሉ"
 
 #: data/gedit.desktop.in.h:2 src/gedit2.c:297
 msgid "Text Editor"
@@ -159,7 +159,7 @@ msgstr "የምርጫው ቀለም"
 
 #: data/gedit.schemas.in.h:28
 msgid "Show Cursor Position"
-msgstr ""
+msgstr "ጠቋሚው ባለበት ቦታ አሳይ"
 
 #: data/gedit.schemas.in.h:29
 msgid "Show Overwrite Mode"
@@ -262,11 +262,11 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:45
 msgid "Use Default Colors"
-msgstr ""
+msgstr "የነበረው ቀለሞችን ተጠቀም"
 
 #: data/gedit.schemas.in.h:46
 msgid "Use Default Font"
-msgstr ""
+msgstr "የነበረው ፊደል ቅርጽን ተጠቀም"
 
 #: data/gedit.schemas.in.h:47
 msgid ""
@@ -616,12 +616,11 @@ msgstr "የቅጂ መብት (ም) 2002 - Paolo Maggi"
 
 #: plugins/docinfo/docinfo.glade2.h:1
 msgid "0"
-msgstr ""
-
+msgstr "0"
 
 #: plugins/docinfo/docinfo.glade2.h:2
 msgid "Bytes"
-msgstr "Bytes"
+msgstr "ባይቶች"
 
 #: plugins/docinfo/docinfo.glade2.h:3
 msgid "Characters (no spaces)"
@@ -903,7 +902,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences-dialog.c:207
 msgid "Font & Colors"
-msgstr "የፊደል አፃፃፍ ዓይነት እና ቀለሞች"
+msgstr "የፊደል ቅርጾች እና ቀለሞች"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
 #: src/dialogs/gedit-preferences.glade2.h:34
@@ -940,7 +939,7 @@ msgstr "የፊደል ቅርጾች"
 
 #: src/dialogs/gedit-preferences-dialog.c:231
 msgid "Manager"
-msgstr "አስተዳደር"
+msgstr "መቆጣጠሪያ"
 
 #: src/dialogs/gedit-preferences-dialog.c:239
 msgid "Editor"
@@ -958,7 +957,7 @@ msgstr "ተጨማሪ ፕሮግራሞች (Plugins)"
 
 #: src/dialogs/gedit-preferences-dialog.c:308
 msgid "Cat_egories:"
-msgstr "_ምድብ"
+msgstr "_ምድቦች፦"
 
 #: src/dialogs/gedit-preferences-dialog.c:330 src/gedit-ui.xml.h:41
 msgid "Preferences"
@@ -966,7 +965,7 @@ msgstr "ምርጫዎች"
 
 #: src/dialogs/gedit-preferences-dialog.c:569
 msgid "Categories"
-msgstr "ምድብ"
+msgstr "ምድቦች"
 
 #: src/dialogs/gedit-preferences-dialog.c:800
 msgid "Push this button to select the font to be used by the editor"
@@ -1094,11 +1093,11 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:23
 msgid "Pick the text color"
-msgstr " የጽሑፉ ቀለም ምረጡ"
+msgstr "የጽሑፉ ቀለም ምረጡ"
 
 #: src/dialogs/gedit-preferences.glade2.h:24
 msgid "Plugin manager"
-msgstr "የተጨማሪ ፕሮግራም አስተዳደር"
+msgstr "የተጨማሪ ፕሮግራም መቆጣጠሪያ"
 
 #: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Print _line numbers every"
@@ -1110,7 +1109,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:28
 msgid "Print fonts"
-msgstr ""
+msgstr "የፊደል ቅርጾችን አትም"
 
 #: src/dialogs/gedit-preferences.glade2.h:30
 msgid "Se_lection color:"
@@ -1244,7 +1243,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:66
 msgid "_Restore default fonts"
-msgstr ""
+msgstr "የ_ነበረው የፊደል ቅርጾች ወደ መጀመሪያው መልስ"
 
 #: src/dialogs/gedit-preferences.glade2.h:67
 msgid "_Text color:"
@@ -1312,11 +1311,11 @@ msgstr "የተመረጠው የፊደል ቅርጽ ስም"
 
 #: src/dialogs/gnome-print-font-picker.c:206
 msgid "Preview text"
-msgstr "የጽሑፉ ቅድመ እይታ"
+msgstr "የጽሑፉ ቅድመ ዕይታ"
 
 #: src/dialogs/gnome-print-font-picker.c:207
 msgid "Preview text shown in the dialog"
-msgstr "በመምረጭው ውስጥ የጽሑፉ ቅድመ እይታው ይታያል"
+msgstr "በመምረጭው ውስጥ የጽሑፉ ቅድመ ዕይታው ይታያል"
 
 #: src/dialogs/gnome-print-font-picker.c:215
 msgid "Use font in label"
@@ -1447,11 +1446,11 @@ msgstr "ያልተሰየመ"
 
 #: src/gedit-document.c:579 src/gedit-document.c:626
 msgid "Invalid file name"
-msgstr ""
+msgstr "የማይሰራ የፋይል ስም"
 
 #: src/gedit-document.c:756 src/gedit-document.c:914
 msgid "Invalid UTF-8 data"
-msgstr ""
+msgstr "የማይሰራ የUTF-8 ዳታ"
 
 #: src/gedit-document.c:1149
 #, c-format
@@ -1473,7 +1472,7 @@ msgstr ""
 
 #: src/gedit-document.c:1271
 msgid "Invalid filename."
-msgstr ""
+msgstr "የማይሰራ የፋይል ስም።"
 
 #: src/gedit-document.c:1411
 msgid ""
@@ -1676,7 +1675,7 @@ msgid ""
 "one of the required fonts."
 msgstr ""
 "geditን እስካላገኘ ድረስ ማተም አይችልም\n"
-"ከአስፈላጊዎቹ የፊደል አፃፃፍ ዓይነቶች አንዱ።"
+"ከአስፈላጊዎቹ የፊደል ቅርጾች አንዱ።"
 
 #: src/gedit-print.c:377
 #, c-format
@@ -1691,7 +1690,7 @@ msgstr "ገጽ፦ %d"
 
 #: src/gedit-print.c:517
 msgid "gedit - Print Preview"
-msgstr "gedit - ቅድመ ህትመት ዕይታ"
+msgstr "gedit - የቅድመ ህትመት ዕይታ"
 
 #: src/gedit-print.c:595
 #, c-format
@@ -1742,7 +1741,7 @@ msgstr "የአሁኑን ፋይል ዝጋ"
 
 #: src/gedit-ui.xml.h:10
 msgid "Configure the application"
-msgstr "ፕሮግራሙን አስተካክል"
+msgstr "ፕሮግራሙን ልወጡ"
 
 #: src/gedit-ui.xml.h:11
 msgid "Copy"
@@ -1750,7 +1749,7 @@ msgstr "ቅጂ"
 
 #: src/gedit-ui.xml.h:12
 msgid "Copy the selection"
-msgstr "የተመረጠውን ቅዳ"
+msgstr "የተመረጠውን ቅጂ"
 
 #: src/gedit-ui.xml.h:13
 msgid "Create a new document"
@@ -1866,7 +1865,7 @@ msgstr "የ_ቅድመ ህትመት ዕይታ"
 
 #: src/gedit-ui.xml.h:44
 msgid "Print Preview"
-msgstr "ቅድመ ህትመት ዕይታ"
+msgstr "የቅድመ ህትመት ዕይታ"
 
 #: src/gedit-ui.xml.h:45
 msgid "Print Setup"
@@ -1874,7 +1873,7 @@ msgstr "የህትመት ቅንጅት"
 
 #: src/gedit-ui.xml.h:46
 msgid "Print preview"
-msgstr "ቅድመ ህትመት ዕይታ"
+msgstr "የቅድመ ህትመት ዕይታ"
 
 #: src/gedit-ui.xml.h:47
 msgid "Print the current file"
@@ -1970,7 +1969,7 @@ msgstr "የገጹን አቀማመጥ አሁን ላለው ማተሚያ አስተ�
 
 #: src/gedit-ui.xml.h:72
 msgid "Show _Cursor Position"
-msgstr ""
+msgstr "_ጠቋሚው ባለበት ቦታ አሳይ"
 
 #: src/gedit-ui.xml.h:73
 msgid "Show _Overwrite Mode"
@@ -2014,7 +2013,7 @@ msgstr "_አስተካክል"
 
 #: src/gedit-ui.xml.h:84
 msgid "_Delete"
-msgstr "_አጥፍ"
+msgstr "_አጥፉ"
 
 #: src/gedit-ui.xml.h:85
 msgid "_Desktop Default"
@@ -2324,7 +2323,7 @@ msgstr "ስያሜ ያልተሰጠውን ሰነድ ለመመለስ አይቻል�
 #: src/gedit-utils.c:1293
 #, c-format
 msgid "The file \"%s\" already exists."
-msgstr ""
+msgstr "ፋይሉ \"%s\"ን አሁንም አለ።"
 
 #: src/gedit-utils.c:1299
 #, c-format
