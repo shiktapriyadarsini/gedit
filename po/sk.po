@@ -4,261 +4,472 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2001-11-11 12:17+0100\n"
-"PO-Revision-Date: 2001-11-11 12:17CET\n"
+"Project-Id-Version: gedit 0.9.7\n"
+"POT-Creation-Date: 2001-12-07 06:16-0500\n"
+"PO-Revision-Date: 2001-12-07 21:18CET\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
-"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"X-Generator: KBabel 0.9.6\n"
 
 #: gedit.desktop.in.h:1
 msgid "Text editor"
-msgstr "Textov˝ editor"
+msgstr "Textov√Ω editor"
 
 #: gedit.desktop.in.h:2
 msgid "gedit"
 msgstr "gedit"
 
-#. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
-#. it is used to display "you can not use the [name] plugin without this program...
-#: plugins/browse/browse.c:38 plugins/email/email.c:21
-msgid "email"
-msgstr "email"
+#: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
+msgid "ASCII table"
+msgstr "Tabuƒæka ASCII"
 
-#. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
-#. it is used to display "you can not use the [name] plugin without this program...
-#: plugins/browse/browse.c:189
-msgid "browse"
-msgstr "prehliadaË"
+#: plugins/ASCII/ascii.c:270
+msgid "This plugin displays a pop-up dialog which contains an ASCII Table."
+msgstr "Tento modul zobrazuje dial√≥g s tabuƒækou znakov ASCII."
 
-#: plugins/browse/browse.c:246
+#: plugins/ASCII/asciitable.glade.h:1
+msgid "Char"
+msgstr "Znak"
+
+#: plugins/ASCII/asciitable.glade.h:2
+msgid "Dec#"
+msgstr "Des#"
+
+#: plugins/ASCII/asciitable.glade.h:3
+msgid "Hex#"
+msgstr "Hex#"
+
+#: plugins/ASCII/asciitable.glade.h:4
+msgid ""
+"If you wish to insert any of the characters in to the active \n"
+"document, select the character and click the \"Insert Char\" \n"
+"button or double click the character in the table."
+msgstr ""
+"Ak chcete vlo≈æi≈• ƒæubovoƒæn√Ω znak do akt√≠vneho dokumentu,\n"
+"vyberte znak stlaƒçte \"Vlo≈æi≈• znak\" alebo na znak dvakr√°t\n"
+"kliknite v tabuƒæke."
+
+#: plugins/ASCII/asciitable.glade.h:7
+msgid "Insert char"
+msgstr "Vlo≈æi≈• znak"
+
+#: plugins/ASCII/asciitable.glade.h:8
+msgid "Name"
+msgstr "Meno"
+
+#: plugins/ASCII/asciitable.glade.h:9
+msgid "gedit: ASCII table"
+msgstr "gedit: tabuƒæka ASCII"
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/browse/browse.c:38 plugins/browse/browse.c:250
 msgid "Browse"
-msgstr "PrehliadaË"
+msgstr "Prehliadaƒç"
 
-#: plugins/browse/browse.c:247 plugins/browse/browse.c:248
+#: plugins/browse/browse.c:251 plugins/browse/browse.c:252
 msgid "Web browse plugin"
 msgstr "Modul pre prehliadanie WWW"
 
 #: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
-msgid "Change"
-msgstr "Zmeniª"
+#: plugins/email/email.glade.h:1
+msgid " _Change... "
+msgstr "_Zmeni≈•..."
 
 #: plugins/browse/browse.glade.h:2
-msgid "Enter the Url to browse for :"
-msgstr "Zadajte URL, ktorÈ chcete zobraziª:"
+msgid "Enter the _URL to browse for:"
+msgstr "Zadajte _URL, ktor√© chcete zobrazi≈•:"
 
 #: plugins/browse/browse.glade.h:3
-msgid "gedit web browse plugin"
-msgstr "modul geditu pre prehliadanie WWW"
+msgid "Lynx found at: "
+msgstr "Lynx n√°jden√Ω v: "
 
-#: plugins/browse/browse.glade.h:4 plugins/diff/diff.glade.h:7
+#: plugins/browse/browse.glade.h:4
+msgid "gedit: Web Browse plugin"
+msgstr "gedit: Modul pre prehliadanie WWW"
+
+#: plugins/browse/browse.glade.h:5 plugins/diff/diff.glade.h:12
+#: plugins/email/email.glade.h:14
 msgid "location"
 msgstr "umiestnenie"
 
-#: plugins/browse/browse.glade.h:5
-msgid "lynx was found at : "
-msgstr "lynx n·jden˝ na : "
-
-#: plugins/convert/convert.c:150
+#: plugins/convert/convert.c:179
 msgid "Convert"
 msgstr "Prevod"
 
-#: plugins/convert/convert.c:151 plugins/convert/convert.c:152
-#: plugins/convert/convert.glade.h:5
+#: plugins/convert/convert.c:180 plugins/convert/convert.c:181
 msgid "Number Converter"
-msgstr "Prevod ËÌsel"
+msgstr "Prevod ƒç√≠sel"
 
 #: plugins/convert/convert.glade.h:1
-msgid "Converted Value:"
-msgstr "Prev·dzan· hodnota:"
+msgid " Decimal to _Hex "
+msgstr " Desiatkov√° do ≈°estn√°stkovej "
 
 #: plugins/convert/convert.glade.h:2
-msgid "Decimal to Hex"
-msgstr "z desiatkovej do πestn·stkovej"
+msgid " Decimal to _Octal "
+msgstr " Desiatkov√° do _osmiƒçkovej"
 
 #: plugins/convert/convert.glade.h:3
-msgid "Decimal to Octal"
-msgstr "z desiatkovej do osmiËkovej"
+msgid " Hex to Decima_l "
+msgstr " ≈†estn√°stkov√° do _desiatkovej"
 
 #: plugins/convert/convert.glade.h:4
-msgid "Hex to Decimal"
-msgstr "zo πestn·stkovej do desiatkovej"
+msgid "_Converted value:"
+msgstr "_V√Ωsledn√° hodnota:"
+
+#: plugins/convert/convert.glade.h:5
+msgid "_Value to be converted:"
+msgstr "Prev√°dzan√° _hodnota:"
 
 #: plugins/convert/convert.glade.h:6
-msgid "Value to be converted:"
-msgstr "Hodnota m· byª preveden·:"
+msgid "gedit: Number Converter plugin"
+msgstr "gedit: Modul pre prevod ƒç√≠sel"
 
-#. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
-#: plugins/diff/diff.c:35
+#: plugins/diff/diff.c:36
 msgid "diff"
 msgstr "diff"
 
-#: plugins/diff/diff.c:109
-msgid "The two documents selected are the same"
-msgstr "VybranÈ dva dokumenty s˙ rovnakÈ"
+#: plugins/diff/diff.c:126
+msgid "The two documents you selected are the same."
+msgstr "Dva vybran√© dokumenty s√∫ rovnak√©."
 
-#: plugins/diff/diff.c:116
+#: plugins/diff/diff.c:132
 msgid ""
-"The file selected does not exists\n"
+"The \"first\" file you selected does not exist.\n"
 "\n"
-"Please provide a valid file"
+"Please provide a valid file."
 msgstr ""
-"Vybran˝ s˙bor neexistuje.\n"
+"Vybran√Ω \"prv√Ω\" s√∫bor neexistuje.\n"
 "\n"
-"ProsÌm, zadajte platn˝ s˙bor"
+"Pros√≠m, zadajte platn√Ω s√∫bor"
 
-#: plugins/diff/diff.c:127 plugins/diff/diff.c:139
-msgid "The document contains no text"
-msgstr "Dokument neobsahuje text"
+#: plugins/diff/diff.c:139
+msgid ""
+"The \"second\" file you selected does not exist.\n"
+"\n"
+"Please provide a valid file."
+msgstr ""
+"Vybran√Ω \"druh√Ω\" s√∫bor neexistuje.\n"
+"\n"
+"Pros√≠m, zadajte platn√Ω s√∫bor"
+
+#: plugins/diff/diff.c:150
+msgid "The \"first\" document contains no text."
+msgstr "\"Prv√Ω\" dokument neobsahuje text."
+
+#: plugins/diff/diff.c:162
+msgid "The \"second\" document contains no text."
+msgstr "\"Druh√Ω\" dokument neobsahuje text."
 
 #. FIXME: do better error reporting ... . Chema
-#: plugins/diff/diff.c:148
+#: plugins/diff/diff.c:171
 msgid ""
 "gedit could not create a temp file.\n"
 "\n"
 msgstr ""
-"gedit nemohol vytvoriª doËasn˝ s˙bor.\n"
+"gedit nemohol vytvori≈• doƒçasn√Ω s√∫bor.\n"
 "\n"
 
-#: plugins/diff/diff.c:262 plugins/email/email.c:224 plugins/email/email.c:230
-#: src/document.c:269 src/print.c:703
-msgid "Untitled"
-msgstr "Bez mena"
+#: plugins/diff/diff.c:295 plugins/email/email.c:229 src/document.c:669
+#, c-format
+msgid "Untitled %i"
+msgstr "Bez mena %i"
 
-#: plugins/diff/diff.c:423
+#: plugins/diff/diff.c:496
 msgid "Diff"
 msgstr "Diff"
 
-#: plugins/diff/diff.c:424
-msgid "Makes a diff file from 2 documents or files"
-msgstr "VytvorÌ diff s˙bor z dvoch dokumentov alebo s˙borov"
+#: plugins/diff/diff.c:497
+msgid "Makes a diff file from two documents or files"
+msgstr "Vytvor√≠ diff s√∫bor z dvoch dokumentov alebo s√∫borov"
 
-#: plugins/diff/diff.c:425
+#: plugins/diff/diff.c:498
 msgid ""
-"Makes a diff file from 2 documents or files on disk\n"
+"Makes a diff file from two documents or files on disk\n"
 "For more info on diff, type \"man diff\" in a shell prompt\n"
 msgstr ""
-"VytvorÌ diff s˙bor rozdielov z dvoch dokumentov alebo s˙borov na disku.\n"
-"Pre Ôalπie inform·cie o prÌkaze diff napÌπte \"man diff\" na prÌkazovom "
+"Vytvor√≠ diff s√∫bor rozdielov z dvoch dokumentov alebo s√∫borov na disku.\n"
+"Pre ƒèal≈°ie inform√°cie o pr√≠kaze diff nap√≠≈°te \"man diff\" na pr√≠kazovom "
 "riadku\n"
 
 #: plugins/diff/diff.glade.h:2
-msgid "Choose the files to diff"
-msgstr "Vyberte, ktorÈ s˙bory porovnaª"
+msgid "Choose the files to compare"
+msgstr "Vyberte, ktor√© s√∫bory porovna≈•"
 
 #: plugins/diff/diff.glade.h:3
-msgid "From a file on disk"
-msgstr "Zo s˙boru na disku"
+msgid "Diff found at: "
+msgstr "Diff n√°jden√Ω v: "
 
 #: plugins/diff/diff.glade.h:4
+msgid "First"
+msgstr "Prv√Ω"
+
+#: plugins/diff/diff.glade.h:5
+msgid "From a file on disk"
+msgstr "Zo s√∫boru na disku"
+
+#: plugins/diff/diff.glade.h:6
 msgid "From document"
 msgstr "Z dokumentu"
 
-#: plugins/diff/diff.glade.h:5
-msgid "diff found at : "
-msgstr "diff n·jden˝ na : "
+#: plugins/diff/diff.glade.h:7
+msgid "Second"
+msgstr "Druh√Ω"
 
-#: plugins/diff/diff.glade.h:6
-msgid "don't translate this"
-msgstr "toto neprekladaª"
+#: plugins/diff/diff.glade.h:8
+msgid "Select the \"first\" file..."
+msgstr "Vyberte \"prv√Ω\" s√∫bor..."
 
-#: plugins/email/email.c:64
+#: plugins/diff/diff.glade.h:9
+msgid "Select the \"second\" file..."
+msgstr "Vyberte \"Druh√Ω\" s√∫bor..."
+
+#: plugins/diff/diff.glade.h:10
+msgid "Use the _unified output format (-u option)"
+msgstr "Pou≈æi≈• _zjednoten√Ω v√Ωstupn√Ω form√°t (prep√≠naƒç -u)"
+
+#: plugins/diff/diff.glade.h:11
+msgid "gedit: Diff plugin"
+msgstr "gedit: modul diff"
+
+#: plugins/docinfo/docinfo.c:214
+msgid ""
+"No document exists.\n"
+"The Document Info plugin is going be closed."
+msgstr ""
+"Neexistuje dokument.\n"
+"Modul inform√°ci√≠ o dokumente bude zatvoren√Ω."
+
+#: plugins/docinfo/docinfo.c:369
+msgid "Document info"
+msgstr "Inform√°cie o dokumente"
+
+#: plugins/docinfo/docinfo.c:370
+msgid "Get info on current document."
+msgstr "Z√≠skanie inform√°ci√≠ o aktu√°lnom dokumente"
+
+#: plugins/docinfo/docinfo.c:371
+msgid ""
+"This plugin displays a pop-up dialog which contains basic information on "
+"current document."
+msgstr ""
+"Tento modul zobrazuje dial√≥g so z√°kladn√Ωmi inform√°ciami o aktu√°lnom "
+"dokumente."
+
+#: plugins/docinfo/docinfo.glade.h:1
+msgid "0"
+msgstr "0"
+
+#: plugins/docinfo/docinfo.glade.h:2
+msgid "Characters (no spaces)"
+msgstr "Znaky (bez medzier)"
+
+#: plugins/docinfo/docinfo.glade.h:3
+msgid "Characters (with spaces)"
+msgstr "Znaky (s medzerami)"
+
+#: plugins/docinfo/docinfo.glade.h:4
+msgid "Current column"
+msgstr "Aktu√°lny stƒ∫pec"
+
+#: plugins/docinfo/docinfo.glade.h:5
+msgid "Current line"
+msgstr "Aktu√°lny riadok"
+
+#: plugins/docinfo/docinfo.glade.h:6
+msgid "File Name"
+msgstr "Meno s√∫boru"
+
+#: plugins/docinfo/docinfo.glade.h:7
+msgid "Lines"
+msgstr "Riadky"
+
+#: plugins/docinfo/docinfo.glade.h:8
+msgid "Paragraphs"
+msgstr "Odstavce"
+
+#: plugins/docinfo/docinfo.glade.h:9
+msgid "Update"
+msgstr "Aktualizova≈•"
+
+#: plugins/docinfo/docinfo.glade.h:10
+msgid "Words"
+msgstr "Slov√°"
+
+#: plugins/docinfo/docinfo.glade.h:11
+msgid "gedit: Document Info plugin"
+msgstr "gedit: Modul inform√°ci√≠ o dokumente"
+
+#. xgettext translators: !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/email/email.c:22
+msgid "email"
+msgstr "e-mail"
+
+#: plugins/email/email.c:75
 #, c-format
-msgid "Executing command : %s"
-msgstr "Vykon·vam prÌkaz: %s"
+msgid "Executing command: %s"
+msgstr "Vykon√°vam pr√≠kaz: %s"
 
-#: plugins/email/email.c:267
+#: plugins/email/email.c:275
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
-#: plugins/email/email.c:268
+#: plugins/email/email.c:276
 msgid "Email the current document"
-msgstr "Poslaª aktu·lny dokument"
+msgstr "Posla≈• aktu√°lny dokument"
 
-#: plugins/email/email.c:269
+#: plugins/email/email.c:277
 msgid ""
 "Email the current document to a specified email address\n"
 "gedit searches for sendmail to use this plugin."
 msgstr ""
-"Odoπle aktu·lny dokument na nejak˙ emailov˙ adresu.\n"
-"Pre pouæitie tohoto modulu hµad· gedit program sendmail."
-
-#: plugins/email/email.glade.h:1
-msgid "Change..."
-msgstr "Zmeniª..."
+"Odo≈°le aktu√°lny dokument na nejak√∫ e-mailov√∫ adresu.\n"
+"Pre pou≈æitie tohoto modulu hƒæad√° gedit program sendmail."
 
 #: plugins/email/email.glade.h:2
-msgid "File to use as body of message : "
-msgstr "S˙bor, ktor˝ sa pouæije ako telo spr·vy: "
+msgid "Change..."
+msgstr "Zmeni≈•..."
 
 #: plugins/email/email.glade.h:3
+msgid "F_rom:"
+msgstr "_Od:"
+
+#: plugins/email/email.glade.h:4
+msgid "File to use as body of message: "
+msgstr "S√∫bor pou≈æit√Ω ako telo spr√°vy:"
+
+#: plugins/email/email.glade.h:5
 msgid "From:"
 msgstr "Od:"
 
-#: plugins/email/email.glade.h:4
-msgid "Sendmail found at :"
-msgstr "Sendmail n·jden˝ na : "
+#: plugins/email/email.glade.h:6
+msgid "Sendmail found at:"
+msgstr "Sendmail n√°jden√Ω v: "
 
-#: plugins/email/email.glade.h:5
+#: plugins/email/email.glade.h:7
 msgid "Subject:"
 msgstr "Predmet:"
 
-#: plugins/email/email.glade.h:6
+#: plugins/email/email.glade.h:8
 msgid "To:"
 msgstr "Komu:"
 
-#: plugins/email/email.glade.h:7
+#: plugins/email/email.glade.h:9
+msgid "_Subject:"
+msgstr "_Predmet:"
+
+#: plugins/email/email.glade.h:10
+msgid "_To:"
+msgstr "_Komu:"
+
+#: plugins/email/email.glade.h:11
+msgid "filename"
+msgstr "meno s√∫boru"
+
+#: plugins/email/email.glade.h:12
+msgid "gedit: E-mail plugin"
+msgstr "gedit: Modul pre po≈°tu"
+
+#: plugins/email/email.glade.h:13
 msgid "gedit: e-mail plugin"
-msgstr "modul email pre gedit"
+msgstr "gedit: modul e-mail"
 
-#: plugins/reverse/reverse.c:70
+#: plugins/reverse/reverse.c:69
 msgid "Reverse"
-msgstr "ObracaË"
+msgstr "Obracaƒç"
 
-#: plugins/reverse/reverse.c:71 plugins/reverse/reverse.c:72
+#: plugins/reverse/reverse.c:70 plugins/reverse/reverse.c:71
 msgid "Reverse text"
-msgstr "Obr·ti text"
+msgstr "Obr√°ti text"
 
-#: plugins/sample/sample.c:55
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Hello World"
 
-#: plugins/sample/sample.c:56 plugins/sample/sample.c:57
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
-msgstr "Uk·ækov˝ modul 'hello, world'."
+msgstr "Uk√°≈ækov√Ω modul 'hello, world'."
 
-#: plugins/shell_output/shell_output.c:191
+#: plugins/shell_output/shell_output.c:64
+msgid ""
+"The shell command entry is empty.\n"
+"\n"
+"Please, insert a valid shell command."
+msgstr ""
+"Pr√≠kaz shellu je pr√°zdny.\n"
+"\n"
+"Pros√≠m, zadajte platn√Ω pr√≠kaz."
+
+#: plugins/shell_output/shell_output.c:213
 msgid "Shell Output"
-msgstr "V˝stup shellu"
+msgstr "V√Ωstup shellu"
 
-#: plugins/shell_output/shell_output.c:192
-#: plugins/shell_output/shell_output.c:193
+#: plugins/shell_output/shell_output.c:214
+#: plugins/shell_output/shell_output.c:215
 msgid "Insert the shell output in the document"
-msgstr "VloæÌ v˝stup shellu do dokumentu"
+msgstr "Vlo≈æ√≠ v√Ωstup shellu do dokumentu"
 
 #: plugins/shell_output/shell_output.glade.h:1
-msgid "Directory  "
-msgstr "PrieËinok  "
+msgid "Select the working directory..."
+msgstr "V√Ωber pracovn√©ho prieƒçinku..."
 
 #: plugins/shell_output/shell_output.glade.h:2
-msgid "Enter shell command "
-msgstr "Zadajte prÌkaz shellu "
+msgid "Shell _command:"
+msgstr "_Pr√≠kaz shellu:"
 
 #: plugins/shell_output/shell_output.glade.h:3
-msgid "Shell Output plugin"
-msgstr "Modul V˝stup shellu"
+msgid "Specify the working directory and the command you want to run."
+msgstr "Zadajte pracovn√Ω prieƒçinok a pr√≠kaz, ktor√Ω chcete vykona≈•."
 
-#: plugins/time/time.c:84
+#: plugins/shell_output/shell_output.glade.h:4
+msgid "_Working directory:"
+msgstr "_Pracovn√Ω prieƒçinok:"
+
+#: plugins/shell_output/shell_output.glade.h:5
+msgid "gedit: Shell Output plugin"
+msgstr "gedit: Modul V√Ωstup shellu"
+
+#: plugins/sort/sort.c:192
+msgid "Sort"
+msgstr "Triedenie"
+
+#: plugins/sort/sort.c:193
+msgid "Sort a document."
+msgstr "Utriedi dokument"
+
+#: plugins/sort/sort.c:194
+msgid "Sort a document or selected text."
+msgstr "Utriedi dokument alebo vybran√Ω text."
+
+#: plugins/sort/sort.glade.h:1
+msgid "1"
+msgstr "1"
+
+#: plugins/sort/sort.glade.h:2
+msgid "Case Sensitive"
+msgstr "Rozli≈°ova≈• veƒækos≈• p√≠smen"
+
+#: plugins/sort/sort.glade.h:3
+msgid "Sort starting at column:"
+msgstr "Zaƒça≈• triedi≈• stƒ∫pec:"
+
+#: plugins/sort/sort.glade.h:4
+msgid "gedit: Sort plugin"
+msgstr "gedit: Modul triedenia"
+
+#: plugins/time/time.c:83
 msgid "Insert Time"
-msgstr "Vkladanie Ëasu"
+msgstr "Vkladanie ƒçasu"
 
-#: plugins/time/time.c:85 plugins/time/time.c:86
+#: plugins/time/time.c:84 plugins/time/time.c:85
 msgid "Inserts the current date and time"
-msgstr "VloæÌ aktu·lny d·tum a Ëas"
+msgstr "Vlo≈æ√≠ aktu√°lny d√°tum a ƒças"
 
 #: src/dialogs/about.glade.h:1
 msgid "(C) 1998, 1999, 2000 Alex Roberts and Evan Lawrence"
@@ -266,104 +477,99 @@ msgstr "(C) 1998, 1999, 2000 Alex Roberts a Evan Lawrence"
 
 #: src/dialogs/about.glade.h:2
 msgid "gedit is a small and lightweight text editor for GNOME."
-msgstr "gedit je mal˝ a jednoduch˝ textov˝ editor pre GNOME."
+msgstr "gedit je mal√Ω a nen√°roƒçn√Ω textov√Ω editor pre GNOME."
 
-#: src/dialogs/dialog-plugins.c:442
+#: src/dialogs/dialog-plugins.c:87
 #, c-format
-msgid ""
-"Plugin Name : %s\n"
-"Author : %s\n"
-"Description : %s\n"
-msgstr ""
-"Meno modulu : %s\n"
-"Autor : %s\n"
-"Popis : %s\n"
+msgid "To use the %s plugin, you need to specify a location for \"%s\"."
+msgstr "Pre pou≈æitie modulu %s mus√≠te zada≈• umiestnenie pre \"%s\"."
 
 #. glade won't let me set the title of the propertybox
-#: src/dialogs/dialog-prefs.c:560
+#: src/dialogs/dialog-prefs.c:578
 msgid "gedit: Preferences"
 msgstr "gedit: Nastavenie"
 
 #: src/dialogs/dialog-replace.c:130 src/dialogs/replace.glade.h:3
 msgid "Replace"
-msgstr "Nahradiª"
+msgstr "Nahradi≈•"
 
-#: src/dialogs/dialog-replace.c:135 src/menus.c:266
+#: src/dialogs/dialog-replace.c:135 src/menus.c:298
 msgid "Find"
-msgstr "N·jsª"
+msgstr "N√°js≈•"
 
 #: src/dialogs/dialog-replace.c:332
-msgid "Text not found"
-msgstr "Text nen·jden˝"
+msgid "Search string not found"
+msgstr "Hƒæadan√Ω text nen√°jden√Ω"
 
 #: src/dialogs/dialog-replace.c:337
-msgid "Text not found."
-msgstr "Text nen·jden˝."
+msgid "Search string not found."
+msgstr "Hƒæadan√Ω re≈•azec nen√°jden√Ω."
 
 #: src/dialogs/dialog-replace.c:362
 #, c-format
-msgid "found and replaced %i occurrences."
-msgstr "n·jden˝ch a nahraden˝ch %i v˝skytov."
+msgid "Found and replaced %i occurrences."
+msgstr "N√°jden√Ωch a nahraden√Ωch %i v√Ωskytov."
 
 #: src/dialogs/dialog-replace.c:373 src/dialogs/dialog-replace.c:376
 msgid "Could not allocate the memory for the Replace all request."
-msgstr "NemÙæem naalokovaª pam‰ª pre poæiadavku Nahradiª vπetky."
+msgstr "Nem√¥≈æem naalokova≈• pam√§≈• pre po≈æiadavku Nahradi≈• v≈°etky."
+
+#: src/dialogs/dialog-uri.c:143 src/file.c:823 src/file.c:830
+#, c-format
+msgid "Loaded file %s"
+msgstr "Naƒç√≠tan√Ω s√∫bor %s"
 
 #: src/dialogs/goto-line.glade.h:1
 msgid "Goto Line"
-msgstr "Prejsª na riadok"
+msgstr "Prejs≈• na riadok"
 
 #: src/dialogs/goto-line.glade.h:2
 msgid "Line number:"
-msgstr "»Ìslo riadku:"
+msgstr "ƒå√≠slo riadku:"
 
 #: src/dialogs/plugin-manager.glade.h:1
-msgid "< Remove"
-msgstr "< Odstr·niª"
+msgid "Author(s):"
+msgstr "Autori:"
 
 #: src/dialogs/plugin-manager.glade.h:2
-msgid "<< Remove All"
-msgstr "< Odstr·niª vπetky"
+msgid "De_scription"
+msgstr "_Popis"
 
 #: src/dialogs/plugin-manager.glade.h:3
-msgid "Add >"
-msgstr "Pridaª >"
+msgid "De_tails"
+msgstr "_Detaily"
 
 #: src/dialogs/plugin-manager.glade.h:4
-msgid "Add All >>"
-msgstr "Pridaª vπetky>"
+msgid "File name:"
+msgstr "Meno s√∫boru:"
 
 #: src/dialogs/plugin-manager.glade.h:5
-msgid "Available Plugins"
-msgstr "Moduly k dispozÌcii"
+msgid "Plugins manager..."
+msgstr "Spr√°vca modulov..."
 
 #: src/dialogs/plugin-manager.glade.h:6
-msgid "Installed Plugins"
-msgstr "NainπtalovanÈ moduly"
+msgid "Select the plugins to activate:"
+msgstr "Vyberte modul, ktor√Ω chcete aktivova≈•:"
 
 #: src/dialogs/plugin-manager.glade.h:7
-msgid "Plugin description"
-msgstr "Popis modulu"
+msgid "_Activate all"
+msgstr "_Aktivova≈• v≈°etky"
 
 #: src/dialogs/plugin-manager.glade.h:8
-msgid "Select the plugins to install"
-msgstr "Vyberte nainπtalovanÈ moduly"
-
-#: src/dialogs/plugin-manager.glade.h:9
-msgid "gedit Plugin Manager"
-msgstr "Spr·vca modulov gedit"
+msgid "_Deactivate all"
+msgstr "_Deaktivova≈• v≈°etky"
 
 #: src/dialogs/prefs.glade.h:1
-msgid "Add _header"
-msgstr "Pridaª _hlaviËku"
+msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+msgstr "Aa√Å√°√Ñ√§BbCcƒåƒçDdEe√â√©FfGgHhIi√ç√≠JjKkLlƒΩƒæMmNn≈á≈àOo√ì√≥√î√¥PpQqRrSs≈†≈°Tt≈§≈•Uu√ö√∫VvWwXxYyZz≈Ω≈æ"
 
 #: src/dialogs/prefs.glade.h:2
-msgid "Appearance"
-msgstr "Vzhµad"
+msgid "Add _header"
+msgstr "Prida≈• _hlaviƒçku"
 
 #: src/dialogs/prefs.glade.h:3
-msgid "Background: "
-msgstr "Pozadie:"
+msgid "Appearance"
+msgstr "Vzhƒæad"
 
 #: src/dialogs/prefs.glade.h:4
 msgid "Bottom"
@@ -375,111 +581,111 @@ msgstr "Farby"
 
 #: src/dialogs/prefs.glade.h:6
 msgid "Default"
-msgstr "©tandardnÈ"
+msgstr "≈†tandard"
 
 #: src/dialogs/prefs.glade.h:7
-msgid "Default Font: "
-msgstr "©tandardnÈ pÌsmo: "
-
-#: src/dialogs/prefs.glade.h:8
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: src/dialogs/prefs.glade.h:9
+#: src/dialogs/prefs.glade.h:8
 msgid "Editor Behavior"
 msgstr "Chovanie editora"
 
+#: src/dialogs/prefs.glade.h:9
+msgid "Enable _Auto-indent"
+msgstr "Povoli≈• _automatick√© odsadzovanie"
+
 #: src/dialogs/prefs.glade.h:10
-msgid "Enable Auto-indent"
-msgstr "Povoliª automatickÈ odsadzovanie"
+msgid "Enable word _wrapping"
+msgstr "Povoli≈• _zalamovanie slov"
 
 #: src/dialogs/prefs.glade.h:11
-msgid "Enable word _wrapping"
-msgstr "Povoliª _zalamovanie slov"
+msgid "Fonts"
+msgstr "P√≠sma"
 
 #: src/dialogs/prefs.glade.h:12
-msgid "Fonts"
-msgstr "PÌsma"
+msgid "Fonts/Colors"
+msgstr "P√≠sma/Farby"
 
 #: src/dialogs/prefs.glade.h:13
-msgid "Fonts/Colors"
-msgstr "PÌsma/Farby"
+msgid "General"
+msgstr "V≈°eobecn√©"
 
 #: src/dialogs/prefs.glade.h:14
-msgid "Foreground: "
-msgstr "Popredie:"
+msgid "Left"
+msgstr "Vƒæavo"
 
 #: src/dialogs/prefs.glade.h:15
-msgid "General"
-msgstr "VπeobecnÈ"
+msgid "MDI (Multiple Document Interface)"
+msgstr "MDI (Multiple Document Interface)"
 
 #: src/dialogs/prefs.glade.h:16
-msgid "Left"
-msgstr "Vµavo"
+msgid "Modal"
+msgstr "Mod√°lne"
 
 #: src/dialogs/prefs.glade.h:17
-msgid "MDI (Multiple Document Interface)"
-msgstr "MDI (Rozhranie pre viacero dokumentov)"
-
-#: src/dialogs/prefs.glade.h:18
-msgid "Modal"
-msgstr "Mod·lne"
-
-#: src/dialogs/prefs.glade.h:19
-msgid "Mode: "
-msgstr "MÛd: "
-
-#: src/dialogs/prefs.glade.h:20
 msgid "Notebook"
 msgstr "Notes"
 
-#: src/dialogs/prefs.glade.h:21
-msgid "Notebook Tab Position: "
-msgstr "Umiestnenie z·loæky:"
+#: src/dialogs/prefs.glade.h:18
+msgid "Notebook _tab position: "
+msgstr "Poz√≠cia _z√°lo≈æiek notesa:"
 
-#: src/dialogs/prefs.glade.h:22
+#: src/dialogs/prefs.glade.h:19
+msgid "Orientation"
+msgstr "Orient√°cia"
+
+#: src/dialogs/prefs.glade.h:20
 msgid "Paper"
 msgstr "Papier"
 
-#: src/dialogs/prefs.glade.h:23
+#: src/dialogs/prefs.glade.h:21
 msgid "Pick a Font"
-msgstr "Vyberte pÌsmo"
+msgstr "Vyberte p√≠smo"
 
-#: src/dialogs/prefs.glade.h:24
+#: src/dialogs/prefs.glade.h:22
 msgid "Pick a color"
 msgstr "Vyberte farbu"
 
+#: src/dialogs/prefs.glade.h:23
+msgid "Preferences"
+msgstr "Nastavenie"
+
+#: src/dialogs/prefs.glade.h:24
+msgid "Print line _numbers every:"
+msgstr "Tlaƒçi≈• ƒç√≠s_la riadkov ka≈æd√Ωch:"
+
 #: src/dialogs/prefs.glade.h:25
-msgid "Print _line numbers every:"
-msgstr "TlaËiª ËÌsla ria_dkov kaæd˝ch:"
+msgid "Printing"
+msgstr "Tlaƒç√≠m"
 
 #: src/dialogs/prefs.glade.h:26
-msgid "Printing"
-msgstr "TlaË"
-
-#: src/dialogs/prefs.glade.h:27
 msgid "Right"
 msgstr "Vpravo"
 
+#: src/dialogs/prefs.glade.h:27
+msgid "S_how statusbar"
+msgstr "Zobrazi≈• _stavov√Ω riadok"
+
 #: src/dialogs/prefs.glade.h:28
-msgid "Set limit on undo levels to :"
-msgstr "Nastaviª poËet ˙rovenÌ vr·tenia na :"
+msgid "Set limit on _undo levels to:"
+msgstr "Nastavi≈• limit _vr√°tenia oper√°ci√≠ na:"
 
 #: src/dialogs/prefs.glade.h:29
-msgid "Set toolbar according to system settings"
-msgstr "Nastaviª n·strojov˝ pruh podµa systÈmu"
+msgid "Set toolbar according to _system settings"
+msgstr "Nastavi≈• panel podƒæa _syst√©mu"
 
 #: src/dialogs/prefs.glade.h:30
-msgid "Set toolbar to Icons only"
-msgstr "Nastaviª n·strojov˝ pruh len na ikony"
+msgid "Set toolbar to _icons only"
+msgstr "Nastavi≈• panel na iba ikony"
 
 #: src/dialogs/prefs.glade.h:31
-msgid "Set toolbar to Icons with text"
-msgstr "Nastaviª n·strojov˝ pruh na ikony s textom"
+msgid "Set toolbar to icons with _text"
+msgstr "Nastavi≈• panel na ikony s _textom"
 
 #: src/dialogs/prefs.glade.h:32
-msgid "Show Statusbar"
-msgstr "Zobraziª stavov˝ riadok"
+msgid "Tab _width: "
+msgstr "≈†√≠_rka tabul√°tora:"
 
 #: src/dialogs/prefs.glade.h:33
 msgid "Top"
@@ -487,152 +693,219 @@ msgstr "Hore"
 
 #: src/dialogs/prefs.glade.h:34
 msgid "Toplevel"
-msgstr "Vrchn· ˙roveÚ"
+msgstr "Najvy≈°≈°ia √∫rove≈à"
 
-#: src/dialogs/prefs.glade.h:35 src/menus.c:245
+#: src/dialogs/prefs.glade.h:35 src/menus.c:276
 msgid "Undo"
-msgstr "Vr·tiª"
+msgstr "Vr√°ti≈•"
 
 #: src/dialogs/prefs.glade.h:36
-msgid "_Landscape"
-msgstr "Na πÌ_rku"
+msgid "_Background: "
+msgstr "_Pozadie: "
 
 #: src/dialogs/prefs.glade.h:37
-msgid "_Portrait"
-msgstr "Na _v˝πku"
+msgid "_Default font: "
+msgstr "≈†_tandardn√© p√≠smo: "
 
 #: src/dialogs/prefs.glade.h:38
-msgid "level(s)"
-msgstr " "
+msgid "_Foreground: "
+msgstr "_Popredie: "
 
 #: src/dialogs/prefs.glade.h:39
-msgid "line(s)"
-msgstr "riadkov"
+msgid "_Landscape"
+msgstr "Na ≈°√≠_rku"
+
+#: src/dialogs/prefs.glade.h:40
+msgid "_Mode: "
+msgstr "_M√≥d: "
+
+#: src/dialogs/prefs.glade.h:41
+msgid "_Portrait"
+msgstr "Na _v√Ω≈°ku"
+
+#: src/dialogs/prefs.glade.h:42
+msgid "_level(s)"
+msgstr "_√∫rovne"
+
+#: src/dialogs/prefs.glade.h:43
+msgid "l_ine(s)"
+msgstr "_riadky"
 
 #: src/dialogs/program.glade.h:1
-msgid "Location to search for :"
-msgstr "Kde hµadaª:"
+msgid "_Location to search for:"
+msgstr "ƒå_o hƒæada≈•:"
+
+#: src/dialogs/program.glade.h:2
+msgid "gedit: Browse for program location..."
+msgstr "gedit: Hƒæada≈• umiestnenie programu..."
+
+#: src/dialogs/program.glade.h:3
+msgid "gedit: Set program location..."
+msgstr "gedit: Nastavi≈• umiestnenie programu..."
+
+#: src/dialogs/program.glade.h:4
+msgid "label"
+msgstr "popis"
 
 #: src/dialogs/replace.glade.h:1
 msgid "Case _sensitive"
-msgstr "Rozliπovaª _veµkosª pÌsmen"
+msgstr "Rozli≈°ova≈• _veƒækos≈• p√≠smen"
 
 #: src/dialogs/replace.glade.h:2
 msgid "Find Next"
-msgstr "Hµadaª Ôalej"
+msgstr "Hƒæada≈• ƒèalej"
 
 #: src/dialogs/replace.glade.h:4
 msgid "Replace All"
-msgstr "Nahradiª vπetky"
+msgstr "Nahradi≈• v≈°etky"
 
 #: src/dialogs/replace.glade.h:5
 msgid "Search from the _beginning of the document"
-msgstr "N·jsª od _zaËiatku dokumentu"
+msgstr "Hƒæada≈• od _zaƒçiatku dokumentu"
 
 #: src/dialogs/replace.glade.h:6
 msgid "Search from the _cursor position"
-msgstr "N·jsª od _pozÌcie kurzoru"
+msgstr "Hƒæada≈• od poz√≠cie _kurzora:"
 
 #: src/dialogs/replace.glade.h:7
 msgid "_Replace with: "
-msgstr "Na_hradiª:"
+msgstr "_Nahradi≈•:"
 
 #: src/dialogs/replace.glade.h:8
 msgid "_Search for: "
-msgstr "_N·jsª: "
+msgstr "_Hƒæada≈•: "
 
-#: src/document.c:251
+#: src/dialogs/uri.glade.h:1
+msgid "Enter the location (URI) of the file you would like to open:"
+msgstr "Zadajte umiestnenie (URI) s√∫boru, ktor√Ω chcete otvori≈•:"
+
+#: src/dialogs/uri.glade.h:2 src/menus.c:259
+msgid "Open"
+msgstr "Otvori≈•"
+
+#: src/dialogs/uri.glade.h:3
+msgid "Open from URI"
+msgstr "Otvori≈• z URI"
+
+#: src/document.c:267 src/document.c:271
 msgid "RO - "
 msgstr "RO - "
 
-#: src/document.c:269
+#: src/document.c:295
 #, c-format
 msgid "%s %d"
 msgstr "%s %d"
 
-#: src/document.c:443
-#, c-format
-msgid "``%s'' has been modified.  Do you wish to save it?"
-msgstr "``%s'' bol zmenen˝.  Chcete ho uloæiª?"
+#: src/document.c:295 src/document.c:299
+msgid "Untitled"
+msgstr "Bez mena"
 
-#: src/document.c:652
+#: src/document.c:299
 #, c-format
-msgid "Untitled %i"
-msgstr "Bez mena %i"
+msgid "%s %d*"
+msgstr "%s %d*"
 
-#: src/document.c:658
+#: src/document.c:477
+#, c-format
+msgid "``%s'' has been modified.  Do you want to save the changes?"
+msgstr "``%s'' bol zmenen√Ω.  Chcete ho ulo≈æi≈•?"
+
+#: src/document.c:679 src/document.c:687
 msgid "(modified)"
-msgstr "(zmenenÈ)"
+msgstr "(zmenen√©)"
 
-#: src/document.c:660
+#: src/document.c:681 src/document.c:689
 msgid "(readonly)"
-msgstr "(len pre ËÌtanie)"
+msgstr "(len pre ƒç√≠tanie)"
 
-#: src/document.c:710 src/document.c:750
+#: src/document.c:740 src/document.c:780
 msgid "This file does not end with a valid extension\n"
-msgstr "Tento s˙bor nem· platn˙ prÌponu.\n"
+msgstr "Tento s√∫bor nem√° platn√∫ pr√≠ponu.\n"
 
-#: src/document.c:758
+#: src/document.c:788
 #, c-format
 msgid "The file %s was not found."
-msgstr "S˙bor %s nen·jden˝."
+msgstr "S√∫bor %s nen√°jden√Ω."
 
-#: src/file.c:161
+#: src/file.c:226
 #, c-format
 msgid ""
 "An error was encountered while opening the file \"%s\".\n"
 "Please make sure the file exists."
 msgstr ""
-"Nastala chyba pri otv·ranÌ s˙boru \"%s\".\n"
-"ProsÌm, overte, æe s˙bor existuje."
+"Nastala chyba pri otv√°ran√≠ s√∫boru \"%s\".\n"
+"Pros√≠m, overte, ≈æe s√∫bor existuje."
 
-#: src/file.c:172
+#: src/file.c:245
 #, c-format
 msgid ""
-"An error was encountered while opening the file:\n"
-"\n"
-"%s\n"
-"\n"
-"\n"
-"Please make sure the file is not being used by another application\n"
-"and that the file is not empty."
+"An error was encountered while opening the file \"%s\".\n"
+"Could not allocate the required memory."
 msgstr ""
-"Nastala chyba pri otv·ranÌ s˙boru:\n"
-"\n"
-"%s\n"
-"\n"
-"\n"
-"ProsÌm, overte, æe s˙bor nie je pouæÌvan˝ inou aplik·ciou\n"
-"a æe nie je pr·zdny."
+"Nastala chyba pri otv√°ran√≠ s√∫boru \"%s\".\n"
+"Nie je mo≈æn√© z√≠ska≈• dostatok pam√§te."
 
-#: src/file.c:183 src/file.c:467
-msgid "Could not allocate the required memory."
-msgstr "Nepodarilo sa naalokovaª poæadovan˙ pam‰ª."
-
-#: src/file.c:189
+#: src/file.c:257
 #, c-format
 msgid ""
-"gedit was unable to open the file: \n"
+"An error was encountered while reading the file: \n"
 "\n"
 "%s\n"
 "\n"
-"Make sure that you have permissions for opening the file."
+"Make sure that you have permissions for opening the file. "
 msgstr ""
-"gedit nemohol otvoriª s˙bor: \n"
+"Nastala chyba pri ƒç√≠tan√≠ s√∫boru: \n"
 "\n"
 "%s\n"
 "\n"
-"Overte, æe m·te pr·va pre otvorenie tohoto s˙boru."
+"Overte, ≈æe m√°te pr√°va pre otvorenie tohoto s√∫boru."
 
-#: src/file.c:306
+#: src/file.c:277
+#, c-format
+msgid ""
+"An error was encountered while reading the file: \n"
+"\n"
+"%s"
+msgstr ""
+"Nastala chyba pri ƒç√≠tan√≠ s√∫boru:\n"
+"\n"
+"%s"
+
+#: src/file.c:298
+#, c-format
+msgid ""
+"Internal error reading the file: \n"
+"\n"
+"%s\n"
+"\n"
+"Please, report this error to submit@bugs.gnome.org."
+msgstr ""
+"Intern√° chyba pri ƒç√≠tan√≠ s√∫boru: \n"
+"\n"
+"%s\n"
+"\n"
+"Pros√≠m, ozn√°mte tento probl√©m na submit@bugs.gnome.org."
+
+#: src/file.c:314
+#, c-format
+msgid ""
+"An error was encountered while closing the file: \n"
+"\n"
+"%s"
+msgstr ""
+"Nastala chyba pri zatv√°ran√≠ s√∫boru:\n"
+"\n"
+"%s"
+
+#: src/file.c:477
 msgid "Save As..."
-msgstr "Uloæiª ako..."
+msgstr "Ulo≈æi≈• ako..."
 
-#: src/file.c:365
+#: src/file.c:547
 msgid "The document contains no data."
-msgstr "Dokument neobsahuje niË."
+msgstr "Dokument neobsahuje niƒç."
 
-#: src/file.c:376
+#: src/file.c:558
 #, c-format
 msgid ""
 "gedit was unable to save the file: \n"
@@ -642,274 +915,326 @@ msgid ""
 "Make sure that the path you provided exists,and that you have the "
 "appropriate write permissions."
 msgstr ""
-"gedit nemohol uloæiª s˙bor: \n"
+"gedit nemohol ulo≈æi≈• s√∫bor: \n"
 "\n"
 " %s \n"
 "\n"
-"Overte, æe uveden· cesta existuje a æe m·te spr·vne pr·va pre z·pis."
+"Overte, ≈æe uveden√° cesta existuje a ≈æe m√°te spr√°vne pr√°va pre z√°pis."
 
-#: src/file.c:389
+#: src/file.c:572
 #, c-format
 msgid ""
-"gedit was unable to save the file :\n"
+"gedit was unable to save the file:\n"
 "\n"
 " %s \n"
 "\n"
 "Because of an unknown reason (1). Please report this Problem to submit@bugs."
 "gnome.org"
 msgstr ""
-"gedit nemohol uloæiª s˙bor: \n"
+"gedit nemohol ulo≈æi≈• s√∫bor:\n"
 "\n"
 " %s \n"
 "\n"
-"z nezn·meho dÙvodu (1). ProsÌm, ozn·mte tento problÈm na submit@bugs.gnome."
+"z nezn√°meho d√¥vodu (1). Pros√≠m, ozn√°mte tento probl√©m na submit@bugs.gnome."
 "org"
 
-#: src/file.c:406
+#: src/file.c:590
 #, c-format
 msgid ""
-"gedit was unable to save the file :\n"
+"gedit was unable to save the file:\n"
 "\n"
 " %s \n"
 "\n"
 "Because of an unknown reason (2). Please report this Problem to submit@bugs."
 "gnome.org"
 msgstr ""
-"gedit nemohol uloæiª s˙bor: \n"
+"gedit nemohol ulo≈æi≈• s√∫bor:\n"
 "\n"
 " %s \n"
 "\n"
-"z nezn·meho dÙvodu (2). ProsÌm, ozn·mte tento problÈm na submit@bugs.gnome."
+"z nezn√°meho d√¥vodu (2). Pros√≠m, ozn√°mte tento probl√©m na submit@bugs.gnome."
 "org"
 
-#: src/file.c:487
-msgid "Error in the pipe ."
-msgstr "Chyba v r˙re "
+#: src/file.c:692
+msgid "Could not allocate the required memory."
+msgstr "Nepodarilo sa naalokova≈• po≈æadovan√∫ pam√§≈•."
 
-#: src/file.c:598 src/file.c:605
-#, c-format
-msgid "Loaded file %s"
-msgstr "NaËÌtan˝ s˙bor %s"
+#: src/file.c:712
+msgid "Error in the pipe."
+msgstr "Chyba v r√∫re."
 
-#: src/file.c:612
+#: src/file.c:837
 #, c-format
 msgid "Loaded %i files"
-msgstr "NaËÌtan˝ch %i s˙borov"
+msgstr "Naƒç√≠tan√Ωch %i s√∫borov"
 
-#: src/file.c:668
+#: src/file.c:903
 msgid "Open File ..."
-msgstr "Otvoriª s˙bor..."
+msgstr "Otvori≈• s√∫bor..."
 
-#: src/file.c:799
+#: src/file.c:1036
 #, c-format
 msgid "``%s'' is about to be overwritten. Do you want to continue ?"
-msgstr "``%s'' bude prepÌsan˝. Chcete pokraËovaª?"
+msgstr "``%s'' bude prep√≠san√Ω. Chcete pokraƒçova≈•?"
 
-#: src/file.c:811
+#: src/file.c:1048
 msgid "Document has not been saved."
-msgstr "Dokument nebol uloæen˝."
+msgstr "Dokument nebol ulo≈æen√Ω."
 
-#: src/file.c:821
+#: src/file.c:1058
 msgid "Error saving file!"
-msgstr "Chyba pri ukladanÌ s˙boru!"
+msgstr "Chyba pri ukladan√≠ s√∫boru!"
 
-#: src/file.c:941
+#: src/file.c:1187
 msgid "You can't revert an Untitled document\n"
-msgstr "NemÙæete sa vr·tiª v dokumente bez mena.\n"
+msgstr "Nem√¥≈æete sa vr√°ti≈• v dokumente bez mena.\n"
 
-#: src/file.c:954
+#: src/file.c:1200
 #, c-format
 msgid ""
-"Are you sure you wish to revert all changes?\n"
+"Are you sure you want to revert all changes?\n"
 "(%s)"
 msgstr ""
-"Naozaj sa chcete vr·tiª k pÙvodnej verzii?\n"
+"Naozaj sa chcete vr√°ti≈• k p√¥vodnej verzii?\n"
 "(%s)"
 
-#: src/file.c:985
+#: src/file.c:1231
 #, c-format
 msgid "The file ``%s'' does not exist.  Would you like to create it?"
-msgstr "S˙bor ``%s'' neexistuje.  Chcete ho vytvoriª?"
+msgstr "S√∫bor ``%s'' neexistuje.  Chcete ho vytvori≈•?"
+
+#: src/gedit.c:47
+msgid "Show window debugging messages."
+msgstr "Uk√°za≈• okno s ladiacimi spr√°vami."
+
+#: src/gedit.c:50
+msgid "Show commands debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy pr√≠kazov."
+
+#: src/gedit.c:53
+msgid "Show document debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy dokumentu."
+
+#: src/gedit.c:56
+msgid "Show file debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy s√∫boru."
+
+#: src/gedit.c:59
+msgid "Show plugin debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy modulu."
+
+#: src/gedit.c:62
+msgid "Show prefs debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy nastavenia."
+
+#: src/gedit.c:65
+msgid "Show printing debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy tlaƒçe."
+
+#: src/gedit.c:68
+msgid "Show search debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy hƒæadania."
+
+#: src/gedit.c:71
+msgid "Show undo debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy vr√°tenia sp√§≈•."
+
+#: src/gedit.c:74
+msgid "Show view debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy pohƒæadu."
+
+#: src/gedit.c:77
+msgid "Show recent debugging messages."
+msgstr "Uk√°za≈• ladiace spr√°vy ned√°vnych s√∫borov."
+
+#: src/gedit.c:80
+msgid "Turn on all debugging messages."
+msgstr "Zapn√∫≈• v≈°etky ladiace spr√°vy."
+
+#: src/gedit.c:159
+msgid "Cannot initialize gnome-vfs."
+msgstr "Nie je mo≈æn√© inicializova≈• gnome-vfs."
 
 #: src/menus.c:54
 msgid "Open (swap) .c/.h file"
-msgstr "OtvorÌ (zamenÌ) .c/.h s˙bory"
+msgstr "Otvor√≠ (zamen√≠) .c/.h s√∫bory"
 
 #: src/menus.c:62
 msgid "_New"
-msgstr "_Nov˝"
+msgstr "_Nov√Ω"
 
-#: src/menus.c:63 src/menus.c:224
+#: src/menus.c:63 src/menus.c:255
 msgid "Create a new document"
-msgstr "VytvorÌ nov˝ dokument"
+msgstr "Vytvor√≠ nov√Ω dokument"
 
 #: src/menus.c:68
-msgid "Save All"
-msgstr "Uloæiª vπetky"
+msgid "Sav_e All"
+msgstr "Ulo≈æi≈• v≈°etk_y"
 
 #: src/menus.c:69
 msgid "Save All Open Files"
-msgstr "UloæÌ vπetky otvorenÈ s˙bory"
+msgstr "Ulo≈æ√≠ v≈°etky otvoren√© s√∫bory"
 
 #: src/menus.c:74
-msgid "Revert"
-msgstr "Vr·tiª sa k pÙvodnÈmu"
+msgid "_Revert"
+msgstr "_Vr√°ti≈•"
 
-#: src/menus.c:85
-msgid "Print pre_view"
-msgstr "_Uk·æka"
+#: src/menus.c:83
+msgid "Open from _URI..."
+msgstr "Otvori≈• z U_RI..."
 
-#: src/menus.c:85
-msgid "Print preview"
-msgstr "Uk·æka"
-
-#: src/menus.c:89
-msgid "Print preview..."
-msgstr "Uk·æka..."
-
-#: src/menus.c:90
-msgid "Preview data to be printed"
-msgstr "Uk·æka pred tlaËou"
-
-#: src/menus.c:97
-msgid "Close All"
-msgstr "Zavrieª vπetky"
+#: src/menus.c:84
+msgid "Open a file from a specified URI"
+msgstr "Otvor√≠ s√∫bor zo zadan√©ho URI"
 
 #: src/menus.c:98
+msgid "Print pre_view"
+msgstr "_Uk√°≈æka"
+
+#: src/menus.c:98
+msgid "Print preview"
+msgstr "Uk√°≈æka"
+
+#: src/menus.c:102
+msgid "Print pre_view..."
+msgstr "Uk√°≈æka p_red tlaƒçou..."
+
+#: src/menus.c:103
+msgid "Preview data to be printed"
+msgstr "Uk√°≈æka pred tlaƒçou"
+
+#: src/menus.c:110
+msgid "C_lose All"
+msgstr "Zavr_ie≈• v≈°etky"
+
+#: src/menus.c:111
 msgid "Close All Open Files"
-msgstr "Zavrie vπetky otvorenÈ s˙bory"
+msgstr "Zavrie v≈°etky otvoren√© s√∫bory"
 
-#: src/menus.c:122
+#: src/menus.c:150
 msgid "Goto _Line..."
-msgstr "Prejsª na _riadok..."
-
-#: src/menus.c:123
-msgid "Go to a specific line number"
-msgstr "Prejde na dan˝ riadok"
-
-#: src/menus.c:138
-msgid "File _Info"
-msgstr "_Inform·cie o s˙bore"
-
-#: src/menus.c:139
-msgid "Get the basic file info"
-msgstr "ZobrazÌ z·kladnÈ inform·cie o s˙bore."
+msgstr "Prejs≈• na _riadok..."
 
 #: src/menus.c:151
+msgid "Go to a specific line number"
+msgstr "Prejde na dan√Ω riadok"
+
+#: src/menus.c:173
 msgid "_Add View"
-msgstr "_Pridaª pohµad"
+msgstr "_Prida≈• pohƒæad"
 
-#: src/menus.c:152
+#: src/menus.c:174
 msgid "Add a new view of the document"
-msgstr "Prid· nov˝ pohµad dokumentu"
+msgstr "Prid√° nov√Ω pohƒæad dokumentu"
 
-#: src/menus.c:154
+#: src/menus.c:176
 msgid "_Remove View"
-msgstr "_Odstr·niª pohµad"
+msgstr "_Odstr√°ni≈• pohƒæad"
 
-#: src/menus.c:155
+#: src/menus.c:177
 msgid "Remove view of the document"
-msgstr "Odstr·ni pohµad dokumentu"
+msgstr "Odstr√°ni pohƒæad dokumentu"
 
-#: src/menus.c:198 src/plugin.c:90 src/plugin.c:401
+#: src/menus.c:220
+msgid "Se_arch"
+msgstr "_N√°js≈•"
+
+#: src/menus.c:229 src/plugin.c:90 src/plugin.c:402 src/window.c:499
+#: src/window.c:676
 msgid "_Plugins"
 msgstr "_Moduly"
 
-#: src/menus.c:210
+#: src/menus.c:241
 msgid "_Documents"
 msgstr "_Dokumenty"
 
-#: src/menus.c:224
+#: src/menus.c:255
 msgid "New"
-msgstr "Nov˝"
+msgstr "Nov√Ω"
 
-#: src/menus.c:228
-msgid "Open"
-msgstr "Otvoriª"
-
-#: src/menus.c:228
+#: src/menus.c:259
 msgid "Open a file"
-msgstr "OtvorÌ s˙bor"
+msgstr "Otvor√≠ s√∫bor"
 
-#: src/menus.c:232
+#: src/menus.c:263
 msgid "Save"
-msgstr "Uloæiª"
+msgstr "Ulo≈æi≈•"
 
-#: src/menus.c:232
+#: src/menus.c:263
 msgid "Save the current file"
-msgstr "UloæÌ aktu·lny s˙bor"
+msgstr "Ulo≈æ√≠ aktu√°lny s√∫bor"
 
-#: src/menus.c:236
+#: src/menus.c:267
 msgid "Close"
-msgstr "Zavrieª"
+msgstr "Zavrie≈•"
 
-#: src/menus.c:236
+#: src/menus.c:267
 msgid "Close the current file"
-msgstr "Zavrie aktu·lny s˙bor"
-
-#: src/menus.c:240
-msgid "Print"
-msgstr "TlaËiª"
-
-#: src/menus.c:240
-msgid "Print the current file"
-msgstr "VytlaËÌ aktu·lny s˙bor"
-
-#: src/menus.c:245
-msgid "Undo last operation"
-msgstr "Vr·ti posledn˙ akciu sp‰ª"
-
-#: src/menus.c:249
-msgid "Redo"
-msgstr "Opakovaª"
-
-#: src/menus.c:249
-msgid "Redo last operation"
-msgstr "Opakuje naposledy vr·ten˙ akciu"
-
-#: src/menus.c:254
-msgid "Cut"
-msgstr "Vystrihn˙ª"
-
-#: src/menus.c:254
-msgid "Cut the selection"
-msgstr "Vystrihne v˝ber"
-
-#: src/menus.c:258
-msgid "Copy"
-msgstr "KopÌrovaª"
-
-#: src/menus.c:258
-msgid "Copy the selection"
-msgstr "SkopÌruje v˝ber"
-
-#: src/menus.c:262
-msgid "Paste"
-msgstr "Vloæiª"
-
-#: src/menus.c:262
-msgid "Paste the clipboard"
-msgstr "VloæÌ obsah schr·nky"
-
-#: src/menus.c:266
-msgid "Search for a string"
-msgstr "N·jsª reªazec"
+msgstr "Zavrie aktu√°lny s√∫bor"
 
 #: src/menus.c:271
+msgid "Print"
+msgstr "Tlaƒçi≈•"
+
+#: src/menus.c:271
+msgid "Print the current file"
+msgstr "Vytlaƒç√≠ aktu√°lny s√∫bor"
+
+#: src/menus.c:276
+msgid "Undo last operation"
+msgstr "Vr√°ti posledn√∫ akciu sp√§≈•"
+
+#: src/menus.c:280
+msgid "Redo"
+msgstr "Opakova≈•"
+
+#: src/menus.c:280
+msgid "Redo last operation"
+msgstr "Opakuje naposledy vr√°ten√∫ akciu"
+
+#: src/menus.c:285
+msgid "Cut"
+msgstr "Vystrihn√∫≈•"
+
+#: src/menus.c:285
+msgid "Cut the selection"
+msgstr "Vystrihne v√Ωber"
+
+#: src/menus.c:289
+msgid "Copy"
+msgstr "Kop√≠rova≈•"
+
+#: src/menus.c:289
+msgid "Copy the selection"
+msgstr "Skop√≠ruje v√Ωber"
+
+#: src/menus.c:293
+msgid "Paste"
+msgstr "Vlo≈æi≈•"
+
+#: src/menus.c:293
+msgid "Paste the clipboard"
+msgstr "Vlo≈æ√≠ obsah schr√°nky"
+
+#: src/menus.c:298
+msgid "Search for a string"
+msgstr "N√°js≈• re≈•azec"
+
+#: src/menus.c:303
 msgid "Exit"
 msgstr "Koniec"
 
-#: src/menus.c:271
+#: src/menus.c:303
 msgid "Exit the program"
-msgstr "UkonËÌ program"
+msgstr "Ukonƒç√≠ program"
 
 #: src/plugin.c:107
-msgid "Manager ..."
-msgstr "Spr·vca ..."
+msgid "_Manager ..."
+msgstr "_Spr√°vca..."
 
 #: src/plugin.c:108
-msgid "Add/Remove installed plugins"
-msgstr "Prid·vanie/Odoberanie nainπtalovan˝ch modulov"
+msgid "Manage available plugin modules"
+msgstr "Spr√°va dostupn√Ωch modulov"
 
 #: src/plugin.c:195
 #, c-format
@@ -917,7 +1242,7 @@ msgid ""
 "The program %s could not be found.\n"
 "\n"
 msgstr ""
-"Program %s nebol n·jden˝.\n"
+"Program %s nebol n√°jden√Ω.\n"
 "\n"
 
 #: src/plugin.c:211
@@ -936,8 +1261,8 @@ msgid ""
 "but '%s' could not be found inside it.\n"
 "\n"
 msgstr ""
-"'%s' vyzer· ako prieËinok,\n"
-"ale '%s' v Úom nie je.\n"
+"'%s' vyzer√° ako prieƒçinok,\n"
+"ale '%s' v ≈àom nie je.\n"
 "\n"
 
 #: src/plugin.c:216
@@ -946,7 +1271,7 @@ msgid ""
 "'%s' doesn't seem to be a program.\n"
 "\n"
 msgstr ""
-"'%s' nevyzer· ako program.\n"
+"'%s' nevyzer√° ako program.\n"
 "\n"
 
 #: src/plugin.c:220
@@ -955,86 +1280,89 @@ msgid ""
 "%sYou won't be able to use the %s plugin without %s. \n"
 " Do you want to specify a new location for %s?"
 msgstr ""
-"%sModul %s nie je moænÈ pouæÌvaª bez %s. \n"
-" Chcete uviesª novÈ umiestnenie %s?"
-
-#: src/plugin.c:312
-msgid "plugin allocation error"
-msgstr "chyba pri alok·cii modulu"
+"%sModul %s nie je mo≈æn√© pou≈æ√≠va≈• bez %s. \n"
+" Chcete uvies≈• nov√© umiestnenie %s?"
 
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
-msgstr "Chyba, nemÙæem otvoriª s˙bor s modulom, %s"
+msgstr "Chyba, nem√¥≈æem otvori≈• s√∫bor s modulom, %s"
 
 #: src/plugin.c:332
 msgid "Error, plugin does not contain init_plugin function."
 msgstr "Chyba, modul neobsahuje funkciu init_plugin"
 
-#: src/plugin.c:344
+#: src/plugin.c:345
 msgid "Error, init_plugin returned an error"
-msgstr "Chyba, init_plugin vr·til chybu"
+msgstr "Chyba, init_plugin vr√°til chybu"
 
-#: src/plugin.c:349
-msgid "Error, the plugin did not specify a description"
-msgstr "Chyba, modul neuviedol popis"
-
-#: src/plugin.c:354
-msgid "Error, the plugin did not specify a long description"
-msgstr "Chyba, modul neuviedol dlh˝ popis"
-
-#: src/plugin.c:391
+#: src/plugin.c:392
 msgid "Error, plugin is still in use"
-msgstr "Chyba, modul sa eπte pouæÌva"
+msgstr "Chyba, modul sa e≈°te pou≈æ√≠va"
 
-#: src/print.c:295
+#: src/prefs.c:42
+msgid "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
+msgstr "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-2"
+
+#: src/print.c:230
+msgid "Print Document"
+msgstr "Tlaƒç dokumentu"
+
+#: src/print.c:238
 msgid "Pages"
 msgstr "Strany"
 
-#: src/print.c:353
-#, c-format
-msgid "gedit (%s): Print Preview"
-msgstr "gedit (%s): Uk·æka pred tlaËou"
+#: src/print.c:286
+msgid "gedit: Print Preview\n"
+msgstr "gedit: Uk√°≈æka pred tlaƒçou\n"
 
-#: src/print.c:652 src/print.c:667
+#: src/print-doc.c:505
+#, c-format
+msgid "Page: %i/%i"
+msgstr "Strana: %i/%i"
+
+#: src/print-util.c:222 src/print-util.c:237
 #, c-format
 msgid ""
 "gedit could not find the font \"%s\".\n"
 "gedit is unable to print without this font installed."
 msgstr ""
-"gedit nenaπiel pÌsmo \"%s\".\n"
-"gedit nie je schopn˝ tlaËiª, ak toto pÌsmo nie je nainπtalovanÈ."
+"gedit nena≈°iel p√≠smo \"%s\".\n"
+"gedit nie je schopn√Ω tlaƒçi≈•, ak toto p√≠smo nie je nain≈°talovan√©."
 
-#: src/print.c:960
-#, c-format
-msgid "Page: %i/%i"
-msgstr "Strana: %i/%i"
+#: src/print-util.c:278
+msgid "Printing .."
+msgstr "Tlaƒç√≠m..."
 
-#. xgettext translators : Use the name of the stock
+#: src/print-util.c:289
+msgid "Printing ..."
+msgstr "Tlaƒç√≠m..."
+
+#. xgettext translators: Use the name of the stock
 #. * Menu item for "File"	if it is not the same, we are going to
 #. * fail to insert the recent menu items.
-#: src/recent.c:246
+#: src/recent.c:549
 msgid "_File/"
-msgstr "_S˙bor/"
+msgstr "_S√∫bor/"
 
-#. xgettext translators : Use the name of the stock Menu item for "File"
+#. xgettext translators: Use the name of the stock Menu item for "File"
 #. if it is not the same, we are going to fail to insert the recent menu items.
-#: src/recent.c:255
+#: src/recent.c:558
 msgid "_File"
-msgstr "_S˙bor"
+msgstr "_S√∫bor"
 
-#: src/recent.c:277
+#: src/recent.c:580
 #, c-format
-msgid "Unable to open recent file : %s"
-msgstr "Nepodarilo sa otvoriª s˙bor : %s"
+msgid "Unable to open recent file: %s"
+msgstr "Nepodarilo sa otvori≈• ned√°vny s√∫bor: %s"
 
 #: src/search.c:393
 msgid ""
 "Can't count lines if another search operation is active, please close the "
 "search dialog."
 msgstr ""
-"NemÙæem spoËÌtaª riadky, ak prebieha in· vyhµad·vacia oper·cia. ProsÌm, "
-"zatvorte vyhµad·vacÌ dialÛg."
+"N√¥≈æem spoƒç√≠ta≈• riadky, ak prebieha in√° vyhƒæad√°vacia oper√°cia. Pros√≠m, "
+"zatvorte vyhƒæad√°vac√≠ dial√≥g."
 
 #: src/search.c:410
 #, c-format
@@ -1050,18 +1378,18 @@ msgid ""
 "Current Line: %i\n"
 "Current Column: %i"
 msgstr ""
-"Meno s˙boru: %s\n"
+"Meno s√∫boru: %s\n"
 "\n"
-"Celkom znakov: %i\n"
-"Celkom slov: %i\n"
-"Celkom riadkov: %i\n"
-"Celkom odstavcov: %i\n"
-"Celkom bajtov: %i\n"
+"Celkovo znakov: %i\n"
+"Celkovo slov: %i\n"
+"Celkovo riadkov: %i\n"
+"Celkovo odstavcov: %i\n"
+"Celkovo bajtov: %i\n"
 "\n"
-"Aktu·lny riadok: %i\n"
-"Aktu·lny stÂpec: %i"
+"Aktu√°lny riadok: %i\n"
+"Aktu√°lny stƒ∫pec: %i"
 
-#: src/view.c:978
+#: src/view.c:949
 msgid "You can't remove the last view of a document."
-msgstr "NemÙæete odstr·niª posledn˝ pohµad dokumentu."
+msgstr "Nem√¥6ete odstr√°ni≈• posledn√Ω pohƒæad dokumentu."
 
