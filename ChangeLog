@@ -1,6 +1,7 @@
 2005-02-12  Paolo Maggi  <paolo@gnome-prg>
 
-	* configure.in: release 2.8.3
+	* configure.in: release 2.8.3, removed version number from 
+	GETTEXT_PACKAGE (fixes bug #149988: Is gedit potfile versioning needed?)
 
 2005-02-12  Paolo Borelli  <pborelli@katamail.com>
 

@@ -5,6 +5,7 @@ gedit 2.8.3
 Fixes
 =====
 
+- Bug #149988 (Is gedit potfile versioning needed?) [Paolo Maggi]
 - Bug #144894 (Ortographic corrector doesn't work in commented 
   lines) [Paolo Maggi]
 - Fixed a crash that happens if you remove automatic spell checker 
