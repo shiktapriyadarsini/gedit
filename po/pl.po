@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "POT-Creation-Date: 2003-01-24 22:56+0100\n"
-"PO-Revision-Date: 2003-01-24 22:53+0100\n"
+"PO-Revision-Date: 2003-02-04 18:04+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -395,11 +395,9 @@ msgstr ""
 "drukowaniu."
 
 #: data/gedit.schemas.in.h:1
-#, fuzzy
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr ""
-"Określa, czy program gedit powinien wyświetlać numery wierszy w obszarze "
-"redagowania."
+"Określa, czy program gedit powinien wstawiać spacje zamiast znaków tabulacji."
 
 #: data/gedit.schemas.in.h:1
 msgid ""
@@ -701,7 +699,6 @@ msgid "Use the _unified output format (-u option)"
 msgstr "Używanie z_unifikowanego formatu wyjścia (opcja -u)"
 
 #: plugins/diff/diff.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid ""
 "The Compare Files plugin uses the <tt>diff</tt> program to compare two "
 "documents or files on disk.\n"
@@ -709,19 +706,19 @@ msgid ""
 "For more info on <tt>diff</tt> program, type <tt>man diff</tt> in a shell "
 "prompt."
 msgstr ""
-"Tworzy opis różnic (diff) pomiędzy dwoma dokumentami lub plikami na dysku.\n"
+"Wtyczka porównywania plików wykorzystuje program <tt>diff</tt> do "
+"porównywania dwóch dokumentów lub plików zapisanych na dysku.\n"
 "\n"
-"Aby uzyskać więcej informacji o programie diff, wpisz \"man diff\" w wierszu "
-"poleceń powłoki.\n"
+"Aby uzyskać więcej informacji o programie <tt>diff</tt>, wpisz <tt>man "
+"diff</tt> w wierszu poleceń powłoki."
 
 #: plugins/docinfo/docinfo.c:1
 msgid "_Document Statistics"
 msgstr "Statystyka _dokumentu"
 
 #: plugins/docinfo/docinfo.c:1
-#, fuzzy
 msgid "Get statistic info on current document"
-msgstr "Wyświetla informacje o bieżącym dokumencie."
+msgstr "Pobiera informacje statystyczne na temat bieżącego dokumentu."
 
 #: plugins/docinfo/docinfo.c:1
 #: plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:1
@@ -778,7 +775,6 @@ msgstr ""
 "słów, wierszy, znaków i znaków niepustych, a następnie wyświetla wynik."
 
 #: plugins/sample/sample.c:1
-#, fuzzy
 msgid "Insert User Na_me"
 msgstr "Wstaw na_zwę użytkownika"
 
@@ -800,7 +796,7 @@ msgstr "U_ruchom polecenie..."
 
 #: plugins/shell_output/shell_output.c:1
 msgid "Run a command"
-msgstr "Uruchomia polecenie"
+msgstr "Uruchamia polecenie"
 
 #: plugins/shell_output/shell_output.c:1
 #: plugins/shell_output/shell_output.c:1
@@ -924,18 +920,16 @@ msgid "Tag list"
 msgstr "Lista znaczników"
 
 #: plugins/taglist/taglist.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid ""
 "The tag list plugin provides a method to easily insert into a document "
 "commonly used tags/strings without having to type them."
 msgstr ""
 "Wtyczka listy znaczników pozwala na łatwe wstawianie do dokumentu często "
-"używanych znaczników lub napisów bez ich ręcznego wpisywania."
+"używanych znaczników lub napisów bez potrzeby ich ręcznego wpisywania."
 
 #: plugins/time/time.c:1
-#, fuzzy
 msgid "In_sert Date and Time..."
-msgstr "Wstaw datę/czas"
+msgstr "W_staw datę i czas..."
 
 #: plugins/time/time.c:1
 msgid "Insert current date and time at the cursor position"
@@ -1029,7 +1023,7 @@ msgstr "Dodaje/Usuwa wtyczki"
 
 #: plugins/sort/sort.glade2.h:1
 msgid "S_tart at column:"
-msgstr ""
+msgstr "R_ozpoczęcie od kolumny:"
 
 #: plugins/sort/sort.glade2.h:1 plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sort"
@@ -1052,9 +1046,8 @@ msgid "_Sort"
 msgstr "_Sortowanie"
 
 #: plugins/sort/sort.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid "Sorts a document or selected text."
-msgstr "Zaznaczone dokumenty są takie same."
+msgstr "Sortuje dokument lub zaznaczony tekst."
 
 #: plugins/spell/gedit-automatic-spell-checker.c:1
 #: plugins/spell/gedit-spell-checker-dialog.c:1
@@ -1093,7 +1086,7 @@ msgstr ""
 
 #: plugins/spell/gedit-spell-checker-dialog.c:1
 msgid "Completed spell checking"
-msgstr "Sprawdzanie skończone"
+msgstr "Sprawdzanie zakończone"
 
 #: plugins/spell/gedit-spell-checker.c:1
 msgid "Breton"
@@ -1191,27 +1184,25 @@ msgstr "Domyślny"
 #: src/dialogs/gedit-dialog-goto-line.c:1
 #: src/dialogs/gedit-plugin-program-location-dialog.c:1
 #: src/dialogs/gedit-encodings-dialog.c:1
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the required widgets inside %s."
-msgstr "Nie można odnaleźć w pliku goto-line.glade2 wymaganych widgetów.\n"
+msgstr "W pliku %s nie można odnaleźć wymaganych widgetów."
 
 #: plugins/spell/gedit-spell-language-dialog.c:1
 msgid "Languages"
 msgstr "Języki"
 
 #: plugins/spell/spell.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid "Checks the spelling of the current document."
-msgstr "Wstawia wynik działania powłoki do dokumentu"
+msgstr "Sprawdza pisownię bieżącego dokumentu."
 
 #: plugins/spell/spell.gedit-plugin.desktop.in.h:1
 msgid "Spell checker"
-msgstr ""
+msgstr "Sprawdzanie pisowni"
 
 #: plugins/spell/languages-dialog.glade2.h:1
-#, fuzzy
 msgid "Select the _language of the current document."
-msgstr "Zaznacza cały dokument"
+msgstr "Wybierz języ_k bieżącego dokumentu."
 
 #: plugins/spell/languages-dialog.glade2.h:1
 msgid "Set language"
@@ -1279,13 +1270,12 @@ msgid "S_ort..."
 msgstr "_Sortuj..."
 
 #: plugins/sort/sort.c:1
-#, fuzzy
 msgid "Sort the current document or selection."
-msgstr "Wybierz pierwszy plik spośród otwartych dokumentów"
+msgstr "Sortuje bieżący dokument lub zaznaczony tekst."
 
 #: plugins/spell/spell.c:1
 msgid "_Check Spelling"
-msgstr "_Sprawdź pisownie"
+msgstr "_Sprawdź pisownię"
 
 #: plugins/spell/spell.c:1
 msgid "Check the current document for incorrect spelling"
@@ -1293,36 +1283,31 @@ msgstr "Sprawdza bieżący dokument pod kątem poprawności pisowni"
 
 #: plugins/spell/spell.c:1
 msgid "_Autocheck Spelling"
-msgstr ""
+msgstr "_Automatyczne sprawdzanie pisowni"
 
 #: plugins/spell/spell.c:1
-#, fuzzy
 msgid "Automatically spell-check the current document"
-msgstr "Wstawia wynik działania powłoki do dokumentu"
+msgstr "Automatycznie sprawdza pisownię bieżącego dokumentu"
 
 #: plugins/spell/spell.c:1
 msgid "Set _Language"
 msgstr "_Ustaw język"
 
 #: plugins/spell/spell.c:1
-#, fuzzy
 msgid "Set the language of the current document"
-msgstr "Wstawia wynik działania powłoki do dokumentu"
+msgstr "Ustawia język bieżącego dokumentu"
 
 #: plugins/spell/spell.c:1
-#, fuzzy
 msgid "The document is empty."
-msgstr "\"Pierwszy\" dokument nie zawiera tekstu"
+msgstr "Dokument nie zawiera tekstu."
 
 #: plugins/spell/spell.c:1
-#, fuzzy
 msgid "The selected text does not contain mispelled words."
-msgstr "Wybrany plik nie jest wykonywalny."
+msgstr "Zaznaczony tekst nie zawiera niepoprawnie napisanych słów."
 
 #: plugins/spell/spell.c:1
-#, fuzzy
 msgid "The document does not contain mispelled words."
-msgstr "Dokument nie został przywrócony do wersji z pliku."
+msgstr "Dokument nie zawiera niepoprawnie zapisanych słów."
 
 #: src/bonobo-mdi.c:1 src/bonobo-mdi.c:1
 #, c-format
@@ -1331,7 +1316,7 @@ msgstr "Uaktywnij %s"
 
 #: src/dialogs/gedit-dialog-goto-line.c:1
 msgid "Go to Line"
-msgstr ""
+msgstr "Przejście do wiersza"
 
 #. Add Goto Line button
 #: src/dialogs/gedit-dialog-goto-line.c:1
@@ -1914,7 +1899,7 @@ msgstr "dialog1"
 
 #: src/dialogs/program-location-dialog.glade2.h:1
 msgid "_Location to search for:"
-msgstr "_Lokalizacja do przeszukania:"
+msgstr "P_rzeszukiwane położenie:"
 
 #: src/dialogs/program-location-dialog.glade2.h:1
 msgid "label"
@@ -1950,9 +1935,8 @@ msgid "_Wrap around"
 msgstr "Tryb zawijania"
 
 #: src/dialogs/uri.glade2.h:1
-#, fuzzy
 msgid "Enter the _location (URI) of the file you would like to open:"
-msgstr "Wprowadź lokalizację (URI) pliku, który chcesz otworzyć:"
+msgstr "Wprowadź położ_enie (URI) pliku, który chcesz otworzyć:"
 
 #: src/dialogs/uri.glade2.h:1
 msgid "Open from URI"
@@ -1999,11 +1983,11 @@ msgstr "Plik posiada zbyt wiele dowiązań symbolicznych."
 #: src/gedit-document.c:1
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
-msgstr "gedit nie obsługuje lokalizacji %s: w trybie zapisu."
+msgstr "gedit nie obsługuje położenia typu %s: w trybie zapisu."
 
 #: src/gedit-document.c:1
 msgid "gedit cannot handle this kind of location in write mode."
-msgstr "gedit nie może obsłużyć tego rodzaju lokalizacji w trybie zapisu."
+msgstr "gedit nie może obsłużyć tego rodzaju położenia w trybie zapisu."
 
 #: src/gedit-document.c:1
 msgid "Invalid filename."
@@ -2058,9 +2042,8 @@ msgid "Select a filename to save"
 msgstr "Wybór pliku do zapisu"
 
 #: src/gedit-file.c:1
-#, fuzzy
 msgid "Open File..."
-msgstr "Wybór pliku ..."
+msgstr "Wybór pliku do odczytu..."
 
 #: src/gedit-file.c:1 src/gedit-file.c:1
 #, c-format
@@ -2082,9 +2065,8 @@ msgid "File '%s' saved."
 msgstr "Plik \"%s\" został zapisany."
 
 #: src/gedit-file.c:1
-#, fuzzy
 msgid "Save as..."
-msgstr "Zapisz jako ..."
+msgstr "Wybór pliku do zapisu..."
 
 #: src/gedit-file.c:1
 #, fuzzy, c-format
@@ -2102,9 +2084,9 @@ msgid "_Revert"
 msgstr "_Przywróć"
 
 #: src/gedit-file.c:1
-#, fuzzy, c-format
+#, c-format
 msgid "Reverting file '%s'..."
-msgstr "Przywracanie pliku \"%s\" ..."
+msgstr "Przywracanie pliku \"%s\"..."
 
 #: src/gedit-file.c:1
 msgid "The document has not been reverted."
@@ -2145,9 +2127,8 @@ msgid "_Move to New Window"
 msgstr ""
 
 #: src/gedit-mdi.c:1
-#, fuzzy
 msgid "Open a file."
-msgstr "Otwiera plik"
+msgstr "Otwiera plik."
 
 #: src/gedit-mdi.c:1
 #, c-format
@@ -2206,7 +2187,7 @@ msgid "Error, impossible to initialize plugin '%s'"
 msgstr "Błąd, nie można zainicjować wtyczki \"%s\""
 
 #: src/gedit-plugins-engine.c:1
-#, fuzzy, c-format
+#, c-format
 msgid "Error, impossible to destroy plugin '%s'"
 msgstr "Błąd, nie można unieaktywnić wtyczki \"%s\""
 
@@ -2278,9 +2259,8 @@ msgid "C_ustomize Statusbar"
 msgstr "D_opasuj pasek stanu"
 
 #: src/gedit-ui.xml.h:1
-#, fuzzy
 msgid "Change the visibility of the output window in the current window"
-msgstr "Przełącza wyświetlanie paska narzędziowego w bieżącym oknie"
+msgstr "Przełącza wyświetlanie okna wyjściowego w bieżącym oknie"
 
 #: src/gedit-ui.xml.h:1
 msgid "Change the visibility of the statusbar in the current window"
@@ -2363,9 +2343,8 @@ msgid "Find Ne_xt"
 msgstr "Znajdź _następne"
 
 #: src/gedit-ui.xml.h:1
-#, fuzzy
 msgid "Go to _Line..."
-msgstr "Przejście do wiersza..."
+msgstr "Przejdź do _wiersza..."
 
 #: src/gedit-ui.xml.h:1
 msgid "Go to a specific line number"
@@ -2548,9 +2527,8 @@ msgid "_Close"
 msgstr "Za_mknij"
 
 #: src/gedit-ui.xml.h:1
-#, fuzzy
 msgid "_Close All"
-msgstr "Zamknij wszystko"
+msgstr "Za_mknij wszystko"
 
 #: src/gedit-ui.xml.h:1
 msgid "_Contents"
@@ -2633,18 +2611,16 @@ msgid "_Redo"
 msgstr "P_onów"
 
 #: src/gedit-ui.xml.h:1
-#, fuzzy
 msgid "_Replace..."
-msgstr "Z_mień"
+msgstr "Z_mień..."
 
 #: src/gedit-ui.xml.h:1
 msgid "_Save"
 msgstr "_Zapisz"
 
 #: src/gedit-ui.xml.h:1
-#, fuzzy
 msgid "_Save All"
-msgstr "Zapisz wszystko"
+msgstr "_Zapisz wszystko"
 
 #: src/gedit-ui.xml.h:1
 msgid "_Search"
@@ -2748,7 +2724,7 @@ msgid ""
 msgstr ""
 "\"%s\" jest katalogiem.\n"
 "\n"
-"Sprawdź czy wybrana została poprawna lokalizacja i spróbuj ponownie."
+"Sprawdź czy wybrane zostało poprawne położenie i spróbuj ponownie."
 
 #: src/gedit-utils.c:1
 #, c-format
@@ -2770,7 +2746,7 @@ msgstr ""
 "Nie można otworzyć pliku \"%s\" ponieważ nie można znaleźć komputera "
 "\"%s\".\n"
 "\n"
-"Upewnij się, że lokalizacja została wpisana poprawnie oraz czy ustawienia "
+"Upewnij się, że położenie zostało wpisane poprawnie oraz czy ustawienia "
 "pośrednika są poprawne, a następnie spróbuj ponownie."
 
 #: src/gedit-utils.c:1
@@ -2782,7 +2758,7 @@ msgid ""
 msgstr ""
 "Nie można otworzyć pliku \"%s\" ponieważ nazwa komputera jest niepoprawna.\n"
 "\n"
-"Sprawdź czy lokalizacja została wpisana poprawnie i spróbuj ponownie."
+"Sprawdź czy położenie zostało wpisane poprawnie i spróbuj ponownie."
 
 #: src/gedit-utils.c:1
 #, c-format
@@ -2804,7 +2780,7 @@ msgid ""
 msgstr ""
 "Nie można otworzyć pliku \"%s\" ponieważ nie można przeprowadzić logowania.\n"
 "\n"
-"Sprawdź czy lokalizacja została wpisana poprawnie i spróbuj ponownie."
+"Sprawdź czy położenie zostało wpisane poprawnie i spróbuj ponownie."
 
 #: src/gedit-utils.c:1
 #, c-format
@@ -2860,7 +2836,7 @@ msgid ""
 "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "Nie można przywrócić pliku \"%s\" ponieważ gedit nie potrafi obsługiwać "
-"lokalizacji %s."
+"położenia typu %s:."
 
 #: src/gedit-utils.c:1 src/gedit-utils.c:1
 #, c-format
@@ -3106,18 +3082,16 @@ msgid "Create a new document in an existing instance of gedit"
 msgstr "Tworzy nowy dokument w ramach istniejącej instancji programu gedit"
 
 #: src/gedit-output-window.c:1
-#, fuzzy
 msgid "Close the output window"
-msgstr "Wyświetla okno z listą znaczników"
+msgstr "Zamyka okno wyjściowe"
 
 #: src/gedit-output-window.c:1
-#, fuzzy
 msgid "Copy selected lines"
-msgstr "Kopiuje zaznaczenie"
+msgstr "Kopiuje zaznaczone wiersze"
 
 #: src/gedit-output-window.c:1
 msgid "Clear the output window"
-msgstr ""
+msgstr "Czyści okno wyjściowe"
 
 #: src/gedit-output-window.c:1
 msgid "Output Lines"
@@ -3125,43 +3099,43 @@ msgstr ""
 
 #: src/dialogs/gedit-encodings-dialog.glade2.h:1
 msgid "Choose one or more e_ncodings:"
-msgstr ""
+msgstr "Wybierz jeden lub więcej standardów _kodowania:"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
 msgid "Western"
-msgstr ""
+msgstr "Zachodni"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Central European"
-msgstr ""
+msgstr "Środkowoeuropejski"
 
 #: src/gedit-encodings.c:1
 msgid "South European"
-msgstr ""
+msgstr "Południowoeuropejski"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
 msgid "Baltic"
-msgstr ""
+msgstr "Bałtycki"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Cyrillic"
-msgstr ""
+msgstr "Cyrylica"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Arabic"
-msgstr ""
+msgstr "Arabski"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
 msgid "Greek"
-msgstr ""
+msgstr "Grecki"
 
 #: src/gedit-encodings.c:1
 msgid "Hebrew Visual"
@@ -3170,12 +3144,12 @@ msgstr ""
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrajski"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Turkish"
-msgstr ""
+msgstr "Turecki"
 
 #: src/gedit-encodings.c:1
 msgid "Nordic"
@@ -3192,16 +3166,16 @@ msgstr ""
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Unicode"
-msgstr ""
+msgstr "Unicode"
 
 #: src/gedit-encodings.c:1
 msgid "Armenian"
-msgstr ""
+msgstr "Armeński"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Chiński tradycyjny"
 
 #: src/gedit-encodings.c:1
 msgid "Cyrillic/Russian"
@@ -3210,17 +3184,17 @@ msgstr ""
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
 msgid "Japanese"
-msgstr ""
+msgstr "Japoński"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Korean"
-msgstr ""
+msgstr "Koreański"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Chiński uproszczony"
 
 #: src/gedit-encodings.c:1
 msgid "Georgian"
@@ -3232,17 +3206,15 @@ msgstr ""
 
 #: src/gedit-encodings.c:1
 msgid "Croatian"
+msgstr "Chorwacki"
+
+#: src/gedit-encodings.c:1
+msgid "Hindi"
 msgstr ""
 
 #: src/gedit-encodings.c:1
-#, fuzzy
-msgid "Hindi"
-msgstr "Znajdź"
-
-#: src/gedit-encodings.c:1
-#, fuzzy
 msgid "Farsi"
-msgstr "Pierwszy"
+msgstr "Farsi"
 
 #: src/gedit-encodings.c:1
 msgid "Gujarati"
@@ -3254,20 +3226,20 @@ msgstr ""
 
 #: src/gedit-encodings.c:1
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandzki"
 
 #: src/gedit-encodings.c:1 src/gedit-encodings.c:1
 #: src/gedit-encodings.c:1
 msgid "Vietnamese"
-msgstr ""
+msgstr "Wietnamski"
 
 #: src/gedit-encodings.c:1
 msgid "Thai"
-msgstr ""
+msgstr "Tajski"
 
 #: src/recent-files/egg-recent-vfs-utils.c:1
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (niepoprawny Unicode)"
 
 #~ msgid "Copyright (C) 2001-2002 Paolo Maggi"
 #~ msgstr "Copyright (C) 2001-2002 Paolo Maggi"
