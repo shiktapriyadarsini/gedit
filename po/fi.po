@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2002-08-04 23:24+0300\n"
-"PO-Revision-Date: 2002-08-04 23:23+0300\n"
+"POT-Creation-Date: 2002-08-28 13:39+0300\n"
+"PO-Revision-Date: 2002-08-28 13:31+0300\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,363 @@ msgstr "Muokkaa tekstitiedostoja"
 #: data/gedit.desktop.in.h:2 src/gedit2.c:297
 msgid "Text Editor"
 msgstr "Tekstieditori"
+
+#: data/gedit.schemas.in.h:1
+msgid ""
+"A custom font that will be used for the editing area. This will only take "
+"effect if the \"Use Default Font\" option is turned off."
+msgstr ""
+"Kirjasin jota käytetään muokkausalueella. Tämä toimii vain jos asetus "
+"\"Käytä oletuskirjasinta\" on pois päältä."
+
+#: data/gedit.schemas.in.h:2
+msgid "Auto Save"
+msgstr "Automaattitallennus"
+
+#: data/gedit.schemas.in.h:3
+msgid "Auto Save Interval"
+msgstr "Automaattitallennuksen aikaväli"
+
+#: data/gedit.schemas.in.h:4
+msgid "Background Color"
+msgstr "Taustaväri"
+
+#: data/gedit.schemas.in.h:5
+msgid ""
+"Background color for selected text in the editing area. This will only take "
+"effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Taustaväri valitulle tekstille muokkausalueella. Tämä toimii vain jos asetus "
+"\"Käytä oletusvärejä\" on pois päältä."
+
+#: data/gedit.schemas.in.h:6
+msgid ""
+"Background color for unselected text in the editing area. This will only "
+"take effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Taustaväri valitsemattomalle tekstille muokkausalueella. Tämä toimii vain "
+"jos asetus \"Käytä oletusvärejä\" on pois päältä."
+
+#: data/gedit.schemas.in.h:7
+msgid "Backup Copy Extension"
+msgstr "Varmuuskopion pääte"
+
+#: data/gedit.schemas.in.h:8
+msgid "Body Font for Printing"
+msgstr "Tulostuksen peruskirjasin"
+
+#: data/gedit.schemas.in.h:9
+msgid "Create Backup Copies"
+msgstr "Luo varmuuskopiot"
+
+#: data/gedit.schemas.in.h:10
+msgid "Display Line Numbers"
+msgstr "Näytä rivinumerot"
+
+#: data/gedit.schemas.in.h:11
+msgid "Editor Font"
+msgstr "Muokkaimen kirjasin"
+
+#: data/gedit.schemas.in.h:12
+msgid "Encoding for Saving"
+msgstr "Tallennuksessa käytettävä koodaus"
+
+#: data/gedit.schemas.in.h:13
+msgid ""
+"Extension or suffix to use for backup file names. This will only take effect "
+"if the \"Create Backup Copies\" option is turned on."
+msgstr ""
+"Pääte tai jälkiliite jota käytetään varmuuskopioiden tiedostonimissä. Toimii "
+"ainoastaan mikäli \"Luo varmuuskopiot\"-asetus on käytössä."
+
+#: data/gedit.schemas.in.h:14
+msgid ""
+"Foreground color for selected text in the editing area. This will only take "
+"effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Edustaväri valitulle tekstille muokkausalueella. Tämä toimii vain jos asetus "
+"\"Käytä oletusvärejä\" on pois päältä."
+
+#: data/gedit.schemas.in.h:15
+msgid ""
+"Foreground color for the unselected text in the editing area. This will only "
+"take effect if the \"Use Default Colors\" option is turned off."
+msgstr ""
+"Edustaväri valitsemattomalle tekstille muokkausalueella. Tämä toimii vain "
+"jos asetus \"Käytä oletusvärejä\" on pois päältä."
+
+#: data/gedit.schemas.in.h:16
+msgid "Header Font for Printing"
+msgstr "Otsikkotietojen tulostuskirjasin"
+
+#: data/gedit.schemas.in.h:17
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+"Jos tämä arvo on 0, rivinumeroita ei lisätä asiakirjaa tulostettaessa. "
+"Muussa tapauksessa annettu numero kertoo kuinka monen rivin välein "
+"rivinumero tulostetaan."
+
+#: data/gedit.schemas.in.h:18
+msgid "Line Number Font for Printing"
+msgstr "Tulostuksen rivinumerokirjasin"
+
+#: data/gedit.schemas.in.h:19
+msgid "Line Wrapping Mode"
+msgstr "Rivitystapa"
+
+#: data/gedit.schemas.in.h:20
+msgid "Maximum Recent Files"
+msgstr "Pikavalintojen määrä"
+
+#: data/gedit.schemas.in.h:21
+msgid "Maximum number of actions that gedit will be able to undo or redo."
+msgstr "Enimmäismäärä toimintoja jonka gedit voi kumota tai toistaa."
+
+#: data/gedit.schemas.in.h:22
+msgid ""
+"Number of minutes after which gedit will automatically save modified files. "
+"This will only take effect if the \"Auto Save\" option is turned on."
+msgstr ""
+"Minuuttiraja jonka jälkeen gedit tallentaa automaattisesti muutetut "
+"tiedostot. Tämä toimii ainoastaan mikäli asetus \"Automaattitallennus\" on "
+"päällä."
+
+#: data/gedit.schemas.in.h:23
+msgid "Print Header"
+msgstr "Tulosta otsikkotiedot"
+
+#: data/gedit.schemas.in.h:24
+msgid "Print Line Numbers"
+msgstr "Tulosta rivinumerot"
+
+#: data/gedit.schemas.in.h:25
+msgid "Printing Line Wrapping Mode"
+msgstr "Tulostuksen rivitystapa"
+
+#: data/gedit.schemas.in.h:26
+msgid "Selected Text Color"
+msgstr "Valitun tekstin väri"
+
+#: data/gedit.schemas.in.h:27
+msgid "Selection Color"
+msgstr "Valinnan väri"
+
+#: data/gedit.schemas.in.h:28
+msgid "Show Cursor Position"
+msgstr "Näytä kohdistimen sijainti"
+
+#: data/gedit.schemas.in.h:29
+msgid "Show Overwrite Mode"
+msgstr "Näytä ylikirjoitustila"
+
+#: data/gedit.schemas.in.h:30
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
+"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
+msgstr ""
+"Määrittää kuinka pitkät rivit rivitetään tulostettaessa. \"GTK_WRAP_NONE\" "
+"ei rivitä ollenkaan, \"GTK_WRAP_WORD\" rivittää sanojen reunoilta, ja "
+"\"GTK_WRAP_CHAR\" rivittää myös keskeltä sanaa. Huomaa että arvot tulee "
+"kirjoittaa täsmälleen kuten tässä on esitetty."
+
+#: data/gedit.schemas.in.h:31
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
+"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
+msgstr ""
+"Määrittää kuinka pitkät rivit rivitetään muokkausalueella. \"GTK_WRAP_NONE\" "
+"ei rivitä ollenkaan, \"GTK_WRAP_WORD\" rivittää sanojen reunoilta, ja "
+"\"GTK_WRAP_CHAR\" rivittää myös keskeltä sanaa. Huomaa että arvot tulee "
+"kirjoittaa täsmälleen kuten tässä on esitetty."
+
+#: data/gedit.schemas.in.h:32
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
+msgstr "Määrittää asiakirjassa tulostettaessa käytettävän kirjasimen."
+
+#: data/gedit.schemas.in.h:33
+msgid ""
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr ""
+"Määrittää rivinumeroissa tulostettaessa käytettävän kirjasimen. Tämä on "
+"voimassa ainoastaan jos asetus \"Tulosta rivinumerot\" on muu kuin nolla."
+
+#: data/gedit.schemas.in.h:34
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+"Määrittää tulostettaessa käytettävän otsikkotietokirjasimen. Asetus on "
+"voimassa ainoastaan mikäli \"Tulosta otsikkotiedot\"-asetus on päällä."
+
+#: data/gedit.schemas.in.h:35
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"Määrittää \"Pikavalinnat\"-alavalikossa näytettävien viimeksi avattujen "
+"tiedostojen enimmäismäärän."
+
+#: data/gedit.schemas.in.h:36
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
+msgstr "Määrittää välilyöntien määrän jolla korvataan sarkainmerkit."
+
+#: data/gedit.schemas.in.h:37
+msgid "Status Bar is Visible"
+msgstr "Tilarivi näytetään"
+
+#: data/gedit.schemas.in.h:38
+msgid ""
+"Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" "
+"to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons "
+"only, and \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
+msgstr ""
+"Työkalupalkin painikkeiden tyyli. Mahdolliset arvot ovat "
+"\"GEDIT_TOOLBAR_SYSTEM\" käyttääksesi järjestelmäsi oletusarvoa, "
+"\"GEDIT_TOOLBAR_ICONS\" näyttääksesi vain kuvakkeet, ja "
+"\"GEDIT_TOOLBARS_ICONS_AND_TEXT\" näyttääksesi sekä kuvakkeet että tekstit. "
+"Arvot täytyy kirjoittaa täsmälleen kuten tässä on esitetty."
+
+#: data/gedit.schemas.in.h:39
+msgid "Tab Size"
+msgstr "Välilehden painikekoko"
+
+#: data/gedit.schemas.in.h:40
+msgid "Text Color"
+msgstr "Tekstiväri"
+
+#: data/gedit.schemas.in.h:41
+msgid ""
+"The encoding method to use for saving files. Possible values are "
+"\"GEDIT_SAVE_ALWAYS_UTF8\" for mandatory UTF-8 saving, "
+"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" if you want gedit to try to "
+"convert the document it is saving to your current locale's encoding, "
+"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" if you want gedit to try "
+"to use the original file encoding (new files in UTF8) and "
+"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" if you want gedit to "
+"try to use the original file encoding (new files in current locale's "
+"encoding). If the conversion is successful, it will be used. Otherwise, UTF-"
+"8 will be used. Note that the values are case-sensitive, so make sure they "
+"appear exactly as mentioned here."
+msgstr ""
+"Tallennettaessa käytettävä koodaustapa. Mahdolliset arvot ovat "
+"\"GEDIT_SAVE_ALWAYS_UTF8\" jos haluat tallentaa aina UTF-8:na, "
+"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" jos haluat että gedit yrittää "
+"muuntaa asiakirjan nykyisten lokaaliasetuksiesi mukaiseksi, "
+"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" jos haluat että gedit "
+"yrittää säilyttää tiedoston alkuperäisen koodauksen (uudet tiedostot "
+"tallennetaan UTF-8:na) ja \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL"
+"\" jos haluat että gedit yrittää säilyttää tiedoston alkuperäisen koodauksen "
+"(uudet tiedostot tallennetaan lokaaliasetusten mukaisesti). Jos muunto "
+"onnistuu, sitä käytetään. Muutoin käytetään UTF-8:aa. Huomaa että arvot on "
+"kirjoitettava täsmälleen annetussa muodossa."
+
+#: data/gedit.schemas.in.h:42
+msgid "Toolbar Buttons Style"
+msgstr "Työkalupalkin painiketyyli"
+
+#: data/gedit.schemas.in.h:43
+msgid "Toolbar is Visible"
+msgstr "Näytetään työkalupalkki"
+
+#: data/gedit.schemas.in.h:44
+msgid "Undo Actions Limit"
+msgstr "Kumoamiskertojen määrä"
+
+#: data/gedit.schemas.in.h:45
+msgid "Use Default Colors"
+msgstr "Käytä oletusteeman värejä"
+
+#: data/gedit.schemas.in.h:46
+msgid "Use Default Font"
+msgstr "Käytä teeman oletuskirjasinta"
+
+#: data/gedit.schemas.in.h:47
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Auto Save Interval\" "
+"option."
+msgstr ""
+"Tallennetaanko muutetut tiedostot automaattisesti tietyin aikavälein. "
+"Aikavälin voi asettaa \"Automaattitallennuksen aikaväli\"-asetuksella."
+
+#: data/gedit.schemas.in.h:48
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+"Tehdäänkö tallennetuista tiedostoista varmuuskopiot. Varmuuskopion "
+"lisätunnisteen voi asettaa \"Varmuuskopion pääte\"-asetuksella."
+
+#: data/gedit.schemas.in.h:49
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr "Näytetäänkö rivinumerot muokkausalueessa"
+
+#: data/gedit.schemas.in.h:50
+msgid "Whether gedit should include a document header when printing documents."
+msgstr "Tulostetaanko asiakirjojen otsikkotiedot."
+
+#: data/gedit.schemas.in.h:51
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
+msgstr "Näytetäänkö muokkausikkunan alalaidassa oleva tilarivi."
+
+#: data/gedit.schemas.in.h:52
+msgid ""
+"Whether the status bar should show the cursor position in editing windows. "
+"Make sure you turn on the \"Status Bar is Visible\" option for this to take "
+"effect."
+msgstr ""
+"Näytetäänkö kohdistimen sijainti tilarivillä. Varmista että olet asettanut "
+"\"Tilarivi näytetään\"-asetuksen päälle."
+
+#: data/gedit.schemas.in.h:53
+msgid ""
+"Whether the status bar should show the insert/overwrite mode in editing "
+"windows. Make sure you turn on the \"Status Bar is Visible\" option for this "
+"to take effect."
+msgstr ""
+"Näytetäänkö ylikirjoitustilan tila muokkausikkunoissa. Toimii ainoastaan "
+"mikäli \"Tilarivi näytetään\"-asetus on päällä."
+
+#: data/gedit.schemas.in.h:54
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr "Näytetäänkö työkalurivi muokkausikkunoissa"
+
+#: data/gedit.schemas.in.h:55
+msgid ""
+"Whether to use the system's default colors for the editing area. If this "
+"option is turned off, then the colors of the editing area will be those "
+"specified in the \"Background Color\", \"Text Color\", \"Selected Text Color"
+"\", and \"Selection Color\" options."
+msgstr ""
+"Käytetäänkö järjestelmän oletusvärejä muokkausalueella. Jos tämä asetetaan "
+"pois päältä, muokkausalueen värit noudattavat asetuksissa \"Taustaväri\", "
+"\"Tekstiväri\", \"Valitun tekstin väri\" ja \"Valinnan väri\" määriteltyjä."
+
+#: data/gedit.schemas.in.h:56
+msgid ""
+"Whether to use the system's default font for editing text instead of a font "
+"specific to gedit. If this option is turned off, then the font named in the "
+"\"Editor Font\" option will be used instead of the system font."
+msgstr ""
+"Käytetäänkö järjestelmän oletuskirjasinta tekstin muokkaamiseen geditin "
+"oletuksen sijaan. Jos tämä valinta on pois päältä, käytetään \"Muokkaimen "
+"kirjasin\"-asetuksessa valittua kirjasinta järjestelmäkirjasimen sijaan."
 
 #: plugins/ASCII/ascii.c:43
 msgid "_ASCII Table"
@@ -110,32 +467,32 @@ msgstr "Liitännäinen joka avaa CVS-lähetyksissä esiintyviä muutoslokeja."
 msgid "Copyright (C) 2002 - James Willcox"
 msgstr "Copyright (C) 2002 - James Willcox"
 
-#: plugins/diff/diff.c:61
+#: plugins/diff/diff.c:62
 msgid "Co_mpare Files..."
 msgstr "Ve_rtaile tiedostoja..."
 
-#: plugins/diff/diff.c:64
+#: plugins/diff/diff.c:65
 msgid "Makes a diff file from two documents or files"
 msgstr "Luo diff-tiedoston kahdesta asiakirjasta tai tiedostosta"
 
-#: plugins/diff/diff.c:66
+#: plugins/diff/diff.c:67
 msgid "Compare files"
 msgstr "Vertaile tiedostoja"
 
 #. Create the dialog
-#: plugins/diff/diff.c:267
+#: plugins/diff/diff.c:268
 msgid "Compare two files..."
 msgstr "Vertaile kahta tiedostoa toisiinsa..."
 
-#: plugins/diff/diff.c:281
+#: plugins/diff/diff.c:282
 msgid "C_ompare"
 msgstr "_Vertaile"
 
-#: plugins/diff/diff.c:502
+#: plugins/diff/diff.c:503
 msgid "The two documents you selected are the same."
 msgstr "Valitut asiakirjat ovat samoja"
 
-#: plugins/diff/diff.c:510
+#: plugins/diff/diff.c:511
 msgid ""
 "The \"first\" file you selected does not exist.\n"
 "\n"
@@ -145,7 +502,7 @@ msgstr ""
 "\n"
 "Anna kelvollinen tiedosto."
 
-#: plugins/diff/diff.c:519
+#: plugins/diff/diff.c:520
 msgid ""
 "The \"second\" file you selected does not exist.\n"
 "\n"
@@ -155,20 +512,20 @@ msgstr ""
 "\n"
 "Anna kelvollinen tiedosto."
 
-#: plugins/diff/diff.c:527
+#: plugins/diff/diff.c:528
 msgid "The two files you selected are the same."
 msgstr "Valitsemasi kaksi tiedostoa ovat samoja."
 
-#: plugins/diff/diff.c:544
+#: plugins/diff/diff.c:546
 msgid "The \"first\" document contains no text."
 msgstr "Asiakirjoista ensimmäinen ei sisällä tekstiä."
 
-#: plugins/diff/diff.c:573
+#: plugins/diff/diff.c:581
 msgid "The \"second\" document contains no text."
 msgstr "Asiakirjoista jälkimmäinen ei sisällä tekstiä"
 
 #. FIXME: do better error reporting ... . Chema
-#: plugins/diff/diff.c:594
+#: plugins/diff/diff.c:607
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -178,7 +535,7 @@ msgstr ""
 "\n"
 "gedit ei onnistunut luomaan väliaikaistiedostoa."
 
-#: plugins/diff/diff.c:612 plugins/diff/diff.c:625
+#: plugins/diff/diff.c:625 plugins/diff/diff.c:638
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -188,11 +545,11 @@ msgstr ""
 "\n"
 "Virhe suoritettaessa diff-komentoa."
 
-#: plugins/diff/diff.c:647
+#: plugins/diff/diff.c:660
 msgid "No differences were found between the selected documents."
 msgstr "Valittujen asiakirjojen välillä ei huomattu eroja."
 
-#: plugins/diff/diff.c:688
+#: plugins/diff/diff.c:701
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -202,7 +559,7 @@ msgstr ""
 "\n"
 "Tulos sisältää viallista UTF-8 dataa."
 
-#: plugins/diff/diff.c:912
+#: plugins/diff/diff.c:925
 msgid ""
 "Makes a diff file from two documents or files on disk.\n"
 "\n"
@@ -212,7 +569,7 @@ msgstr ""
 "\n"
 "Halutessasi enemmän tietoa diffistä, kirjoita \"man diff\" komentotulkissa.\n"
 
-#: plugins/diff/diff.c:915
+#: plugins/diff/diff.c:928
 msgid ""
 "Copyright (C) 2000 - 2001 Chema Celorio \n"
 "Copyright (C) 2002 Paolo Maggi"
@@ -221,46 +578,90 @@ msgstr ""
 "Copyright (C) 2002 Paolo Maggi"
 
 #: plugins/diff/diff.glade2.h:1
+msgid "*"
+msgstr "*"
+
+#: plugins/diff/diff.glade2.h:2
 msgid "Choose the files to compare."
 msgstr "Valitse verrattavat tiedostot."
 
-#: plugins/diff/diff.glade2.h:2
+#: plugins/diff/diff.glade2.h:3
 msgid "Compare files..."
 msgstr "Vertaile tiedostoja..."
 
-#: plugins/diff/diff.glade2.h:3
+#: plugins/diff/diff.glade2.h:4
 msgid "F_rom document"
 msgstr "Asiaki_rjasta"
 
-#: plugins/diff/diff.glade2.h:4
+#: plugins/diff/diff.glade2.h:5
 msgid "First"
 msgstr "Ensimmäinen"
 
-#: plugins/diff/diff.glade2.h:5
+#: plugins/diff/diff.glade2.h:6
+msgid "First file from disk"
+msgstr "Ensimmäinen tiedosto levyltä"
+
+#: plugins/diff/diff.glade2.h:7
+msgid "First file from open document"
+msgstr "Ensimmäinen tiedosto avoimesta asiakirjasta"
+
+#: plugins/diff/diff.glade2.h:8
 msgid "From _document"
 msgstr "_Asiakirjasta"
 
-#: plugins/diff/diff.glade2.h:6
+#: plugins/diff/diff.glade2.h:9
 msgid "From a _file on disk"
 msgstr "_Levyllä olevasta tiedostosta"
 
-#: plugins/diff/diff.glade2.h:7
+#: plugins/diff/diff.glade2.h:10
 msgid "From a file o_n disk"
 msgstr "Lev_yllä olevasta tiedostosta"
 
-#: plugins/diff/diff.glade2.h:8
+#: plugins/diff/diff.glade2.h:11
 msgid "Ignore _blanks (-b option)"
 msgstr "Älä huomioi _tyhjeitä (-b valinta)"
 
-#: plugins/diff/diff.glade2.h:9
+#: plugins/diff/diff.glade2.h:12
 msgid "Note that this option is only supported by GNU diff"
 msgstr "Huomaa että tämä toiminto toimii vain GNU diffillä"
 
-#: plugins/diff/diff.glade2.h:10
+#: plugins/diff/diff.glade2.h:13
 msgid "Second"
 msgstr "Toinen"
 
-#: plugins/diff/diff.glade2.h:11
+#: plugins/diff/diff.glade2.h:14
+msgid "Second file from disk"
+msgstr "Toinen tiedosto levyltä"
+
+#: plugins/diff/diff.glade2.h:15
+msgid "Second file from open document"
+msgstr "Toinen tiedosto avoimesta asiakirjasta"
+
+#: plugins/diff/diff.glade2.h:16
+msgid "Select the \"first\" file..."
+msgstr "Valitse \"ensimmäinen\" tiedosto..."
+
+#: plugins/diff/diff.glade2.h:17
+msgid "Select the \"second\" file..."
+msgstr "Valitse \"toinen\" tiedosto..."
+
+#: plugins/diff/diff.glade2.h:18
+msgid "Select the first file to compare"
+msgstr "Valitse ensimmäinen verrattava tiedosto"
+
+#: plugins/diff/diff.glade2.h:19
+msgid "Select the first open document to compare"
+msgstr "Valitse ensimmäinen avoin asiakirja verrattavaksi"
+
+#: plugins/diff/diff.glade2.h:20
+msgid "Select the second file to compare"
+msgstr "Valitse toinen verrattava tiedosto"
+
+#: plugins/diff/diff.glade2.h:21
+msgid "Select the second open document to compare"
+msgstr "Valitse toinen avoin asiakirja verrattavaksi"
+
+#: plugins/diff/diff.glade2.h:22
 msgid "Use the _unified output format (-u option)"
 msgstr "Käytää _unified-tulostemuotoilua (-u valinta)"
 
@@ -487,7 +888,7 @@ msgstr "Lisää päiväys ja aika kohdistimen kohdalle."
 msgid "Select the format to use when inserting date/time."
 msgstr "Valitse päiväystä ja aikaa lisättäessä käytettävä muoto."
 
-#: src/bonobo-mdi.c:522 src/bonobo-mdi.c:612 src/bonobo-mdi.c:1850
+#: src/bonobo-mdi.c:532 src/bonobo-mdi.c:622 src/bonobo-mdi.c:1858
 #, c-format
 msgid "Activate %s"
 msgstr "Käynnistä %s"
@@ -515,7 +916,7 @@ msgid "Replace _All"
 msgstr "Korvaa k_aikki"
 
 #. Add Replace button
-#: src/dialogs/gedit-dialog-replace.c:186 src/gedit-file-selector-util.c:126
+#: src/dialogs/gedit-dialog-replace.c:186 src/gedit-file-selector-util.c:129
 #: src/gedit-ui.xml.h:98
 msgid "_Replace"
 msgstr "Ko_rvaa"
@@ -556,11 +957,11 @@ msgstr "Moduulin tiedostonimi"
 msgid "Author(s)"
 msgstr "Tekijä(t)"
 
-#: src/dialogs/gedit-plugin-manager.c:443
+#: src/dialogs/gedit-plugin-manager.c:488
 msgid "Could not find plugin-manager.glade2, reinstall gedit.\n"
 msgstr "plugin-manager.glade2:a ei löytynyt. Asenna gedit uudelleen.\n"
 
-#: src/dialogs/gedit-plugin-manager.c:466
+#: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
 "Epäkelpo glade-tiedosto liitännäistenhallinnalle -- kaikkia tarpeellisia "
@@ -599,27 +1000,27 @@ msgid "Font & Colors"
 msgstr "Kirjasimet & Värit"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
-#: src/dialogs/gedit-preferences.glade2.h:28
+#: src/dialogs/gedit-preferences.glade2.h:30
 msgid "Tabs"
 msgstr "Välilehdet"
 
 #: src/dialogs/gedit-preferences-dialog.c:210
-#: src/dialogs/gedit-preferences.glade2.h:47
+#: src/dialogs/gedit-preferences.glade2.h:51
 msgid "Wrap mode"
 msgstr "Rivitys"
 
 #: src/dialogs/gedit-preferences-dialog.c:211
-#: src/dialogs/gedit-preferences.glade2.h:13
+#: src/dialogs/gedit-preferences.glade2.h:15
 msgid "Line numbers"
 msgstr "Rivinumerot"
 
 #: src/dialogs/gedit-preferences-dialog.c:213
-#: src/dialogs/gedit-preferences.glade2.h:23 src/gedit-ui.xml.h:58
+#: src/dialogs/gedit-preferences.glade2.h:25 src/gedit-ui.xml.h:58
 msgid "Save"
 msgstr "Tallenna"
 
 #: src/dialogs/gedit-preferences-dialog.c:214
-#: src/dialogs/gedit-preferences.glade2.h:40 src/gedit-ui.xml.h:76
+#: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:76
 msgid "Undo"
 msgstr "Kumoa"
 
@@ -640,7 +1041,7 @@ msgid "Editor"
 msgstr "Muokkain"
 
 #: src/dialogs/gedit-preferences-dialog.c:240
-#: src/dialogs/gedit-preferences.glade2.h:19 src/gedit-print.c:309
+#: src/dialogs/gedit-preferences.glade2.h:21 src/gedit-print.c:309
 #: src/gedit-ui.xml.h:42
 msgid "Print"
 msgstr "Tulosta"
@@ -719,7 +1120,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid " _Wrap lines (at character boundaries)"
-msgstr "_Kiedo rivit (merkkien reunoilta)"
+msgstr "_Rivitä (merkkien reunoilta)"
 
 #: src/dialogs/gedit-preferences.glade2.h:2
 msgid " character(s)"
@@ -730,91 +1131,99 @@ msgid " line(s)"
 msgstr " rivi(ä)"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
+msgid "Always use UTF-8 encoding (faster) when creating a new file"
+msgstr "Käytä aina UTF-8 koodausta (nopeampi) luotaessa uutta tiedostoa"
+
+#: src/dialogs/gedit-preferences.glade2.h:5
+msgid "Always use UTF-8 encoding (faster) when saving"
+msgstr "Käytä aina UTF-8 koodausta (nopeampi) tallennettaessa"
+
+#: src/dialogs/gedit-preferences.glade2.h:6
 msgid "Always use U_TF-8 encoding (faster)"
 msgstr "Käytä aina U_TF-8 koodausta (nopeampi)"
 
-#: src/dialogs/gedit-preferences.glade2.h:5
+#: src/dialogs/gedit-preferences.glade2.h:7
 msgid "Always use _UTF-8 encoding (faster)"
 msgstr "Käytä aina _UTF-8 koodausta (nopeampi)"
 
-#: src/dialogs/gedit-preferences.glade2.h:6
+#: src/dialogs/gedit-preferences.glade2.h:8
 msgid "Colors"
 msgstr "Värit"
 
-#: src/dialogs/gedit-preferences.glade2.h:7
+#: src/dialogs/gedit-preferences.glade2.h:9
 msgid "Create a _backup copy of files before saving"
 msgstr "Luo tiedostoista _varmuuskopio ennen tallentamista"
 
-#: src/dialogs/gedit-preferences.glade2.h:8
+#: src/dialogs/gedit-preferences.glade2.h:10
 #: src/dialogs/gnome-print-font-picker.c:1014
 msgid "Font"
 msgstr "Kirjasin"
 
-#: src/dialogs/gedit-preferences.glade2.h:9
+#: src/dialogs/gedit-preferences.glade2.h:11
 msgid "Font used to print line _numbers:"
 msgstr "_Rivinumeroita tulostettaessa käytettävä kirjasin:"
 
-#: src/dialogs/gedit-preferences.glade2.h:10
+#: src/dialogs/gedit-preferences.glade2.h:12
 msgid "Font used to print the _body:"
 msgstr "_Viestirunkoa tulostettaessa käytettävä kirjasin:"
 
-#: src/dialogs/gedit-preferences.glade2.h:11
+#: src/dialogs/gedit-preferences.glade2.h:13
 msgid "Fonts & Colors"
 msgstr "Kirjasimet & Värit"
 
-#: src/dialogs/gedit-preferences.glade2.h:12
+#: src/dialogs/gedit-preferences.glade2.h:14
 msgid "LOGO"
 msgstr "LOGO"
 
-#: src/dialogs/gedit-preferences.glade2.h:14
+#: src/dialogs/gedit-preferences.glade2.h:16
 msgid "Pick the background color"
 msgstr "Valitse taustaväri"
 
-#: src/dialogs/gedit-preferences.glade2.h:15
+#: src/dialogs/gedit-preferences.glade2.h:17
 msgid "Pick the selected text color"
 msgstr "Valitse valitun tekstin väri"
 
-#: src/dialogs/gedit-preferences.glade2.h:16
+#: src/dialogs/gedit-preferences.glade2.h:18
 msgid "Pick the selection color"
 msgstr "Valitse valinnan väri"
 
-#: src/dialogs/gedit-preferences.glade2.h:17
+#: src/dialogs/gedit-preferences.glade2.h:19
 msgid "Pick the text color"
 msgstr "Valitse tekstin väri"
 
-#: src/dialogs/gedit-preferences.glade2.h:18
+#: src/dialogs/gedit-preferences.glade2.h:20
 msgid "Plugin manager"
 msgstr "Lliitännäistenhallinta"
 
-#: src/dialogs/gedit-preferences.glade2.h:20
+#: src/dialogs/gedit-preferences.glade2.h:22
 msgid "Print _line numbers every"
 msgstr "Tu_losta rivinumerot joka"
 
-#: src/dialogs/gedit-preferences.glade2.h:21
+#: src/dialogs/gedit-preferences.glade2.h:23
 msgid "Print _page headers"
 msgstr "Tulosta sivujen _otsikkotiedot"
 
-#: src/dialogs/gedit-preferences.glade2.h:22
+#: src/dialogs/gedit-preferences.glade2.h:24
 msgid "Print fonts"
 msgstr "Tulostuskirjasimet"
 
-#: src/dialogs/gedit-preferences.glade2.h:24
+#: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Se_lection color:"
 msgstr "V_alinnan väri:"
 
-#: src/dialogs/gedit-preferences.glade2.h:25
+#: src/dialogs/gedit-preferences.glade2.h:27
 msgid "Selecte_d text color:"
 msgstr "Valitun _tekstin väri:"
 
-#: src/dialogs/gedit-preferences.glade2.h:26
+#: src/dialogs/gedit-preferences.glade2.h:28
 msgid "Set _tabs width equivalent to  "
 msgstr "Aseta välilehtien _leveydeksi  "
 
-#: src/dialogs/gedit-preferences.glade2.h:27
+#: src/dialogs/gedit-preferences.glade2.h:29
 msgid "Set limit on _undo actions to"
 msgstr "Aseta k_umoamiskertojen rajaksi"
 
-#: src/dialogs/gedit-preferences.glade2.h:29
+#: src/dialogs/gedit-preferences.glade2.h:31
 msgid ""
 "The font & colors settings let you choose the font and the colors to be used "
 "in the editor windows."
@@ -822,7 +1231,7 @@ msgstr ""
 "Kirjasin- ja väriasetukset antavat sinun valita kirjasimen ja värit joita "
 "käytetään muokkausikkunassa."
 
-#: src/dialogs/gedit-preferences.glade2.h:30
+#: src/dialogs/gedit-preferences.glade2.h:32
 msgid ""
 "The line numbers setting lets you choose to display the line numbers on the "
 "left hand side of the window."
@@ -830,7 +1239,7 @@ msgstr ""
 "Rivinumeroasetus antaa sinun määrittää näytetäänkö rivinumerot ikkunan "
 "vasemmassa laidassa."
 
-#: src/dialogs/gedit-preferences.glade2.h:31
+#: src/dialogs/gedit-preferences.glade2.h:33
 msgid ""
 "The plugin manager settings let you choose which plugins you want to have "
 "loaded."
@@ -838,7 +1247,7 @@ msgstr ""
 "Liitännäistenhallinnassa voi määrittää mitkä liitännäiset haluat ottaa "
 "käyttöön."
 
-#: src/dialogs/gedit-preferences.glade2.h:32
+#: src/dialogs/gedit-preferences.glade2.h:34
 msgid ""
 "The print fonts settings let you choose the fonts to be used to print "
 "documents."
@@ -846,22 +1255,22 @@ msgstr ""
 "Tulostuskirjasimien asetukset antavat sinun valita asiakirjojen "
 "tulostuksessa käytettävät kirjasimet."
 
-#: src/dialogs/gedit-preferences.glade2.h:33
+#: src/dialogs/gedit-preferences.glade2.h:35
 msgid "The print page settings let you customize how gedit prints documents."
 msgstr ""
 "Sivun tulostusasetukset antavat sinun määrittää kuinka gedit tulostaa "
 "asiakirjoja."
 
-#: src/dialogs/gedit-preferences.glade2.h:34
+#: src/dialogs/gedit-preferences.glade2.h:36
 msgid "The save settings let you customize how gedit saves files."
 msgstr ""
 "Tallennusasetukset antavat sinun valita kuinka gedit tallentaa tiedostot."
 
-#: src/dialogs/gedit-preferences.glade2.h:35
+#: src/dialogs/gedit-preferences.glade2.h:37
 msgid "The tabs settings let you customize the tabs width."
 msgstr "Välilehtiasetukset antavat sinun asettaa välilehtien painikeleveyden."
 
-#: src/dialogs/gedit-preferences.glade2.h:36
+#: src/dialogs/gedit-preferences.glade2.h:38
 msgid ""
 "The undo settings let you set the maximum number of actions that gedit can "
 "undo."
@@ -869,83 +1278,91 @@ msgstr ""
 "Kumoamisasetuksista voit määrittää geditin suurimman mahdollisen "
 "kumoamiskertojen määrän."
 
-#: src/dialogs/gedit-preferences.glade2.h:37
+#: src/dialogs/gedit-preferences.glade2.h:39
 msgid "The wrap mode settings let you customize how lines have to be wrapped."
-msgstr "Kietomisasetukset antavat sinun mukauttaa tapaa jolla rivit kiedotaan."
+msgstr "Rivitysasetukset antavat sinun mukauttaa rivitystapaa."
 
-#: src/dialogs/gedit-preferences.glade2.h:38
+#: src/dialogs/gedit-preferences.glade2.h:40
 msgid "U_se default theme colors"
 msgstr "Käy_tä oletusteeman värejä"
 
-#: src/dialogs/gedit-preferences.glade2.h:39
+#: src/dialogs/gedit-preferences.glade2.h:41
 msgid "U_se original file encoding if possible"
 msgstr "Käytä alkuperäi_stä tiedoston koodausta mikäli mahdollista"
 
-#: src/dialogs/gedit-preferences.glade2.h:41
+#: src/dialogs/gedit-preferences.glade2.h:43
 msgid "Use cu_rrent locale's encoding if possible"
 msgstr "Käy_tä nykyistä lokaalia aina kun mahdollista"
 
-#: src/dialogs/gedit-preferences.glade2.h:42
+#: src/dialogs/gedit-preferences.glade2.h:44
 msgid "Use current _locale's encoding if possible"
 msgstr "Käytä _nykyistä lokaalia aina kun mahdollista"
 
-#: src/dialogs/gedit-preferences.glade2.h:43
+#: src/dialogs/gedit-preferences.glade2.h:45
+msgid "Use current locale's encoding if possible when creating a new file"
+msgstr "Käytä uutta tiedostoa luotaessa nykyistä lokaalia aina kun mahdollista"
+
+#: src/dialogs/gedit-preferences.glade2.h:46
+msgid "Use current locale's encoding if possible when saving"
+msgstr "Käytä tallennettaessa nykyistä lokaalia aina kun mahdollista"
+
+#: src/dialogs/gedit-preferences.glade2.h:47
 msgid "When creating a new file..."
 msgstr "Luotaessa uutta tiedostoa..."
 
-#: src/dialogs/gedit-preferences.glade2.h:44
+#: src/dialogs/gedit-preferences.glade2.h:48
 msgid "When saving..."
 msgstr "Tallennettaessa..."
 
-#: src/dialogs/gedit-preferences.glade2.h:45
+#: src/dialogs/gedit-preferences.glade2.h:49
 msgid "Wrap lines at _word boundaries"
-msgstr "Kiedo rivit _sanojen reunoilta"
+msgstr "Rivitä _sanojen reunoilta"
 
-#: src/dialogs/gedit-preferences.glade2.h:46
+#: src/dialogs/gedit-preferences.glade2.h:50
 msgid "Wrap lines at ch_aracter boundaries"
-msgstr "Kiedo rivit _merkkien reunoilta"
+msgstr "Rivitä _merkkien reunoilta"
 
-#: src/dialogs/gedit-preferences.glade2.h:48
+#: src/dialogs/gedit-preferences.glade2.h:52
 msgid "_Autosave current file every"
 msgstr "Tallenna aktiivinen tiedosto _automaattisesti joka"
 
-#: src/dialogs/gedit-preferences.glade2.h:49
+#: src/dialogs/gedit-preferences.glade2.h:53
 msgid "_Background color:"
 msgstr "_Taustaväri:"
 
-#: src/dialogs/gedit-preferences.glade2.h:50
+#: src/dialogs/gedit-preferences.glade2.h:54
 msgid "_Display line numbers"
 msgstr "Näytä rivi_numerot"
 
-#: src/dialogs/gedit-preferences.glade2.h:51
+#: src/dialogs/gedit-preferences.glade2.h:55
 msgid "_Font used by the editor: "
 msgstr "_Muokkaimen käyttämä kirjasin:"
 
-#: src/dialogs/gedit-preferences.glade2.h:52
+#: src/dialogs/gedit-preferences.glade2.h:56
 msgid "_Font used to print headers:"
 msgstr "Otsikkojen tulostuksessa käytettävä _kirjasin:"
 
-#: src/dialogs/gedit-preferences.glade2.h:53
+#: src/dialogs/gedit-preferences.glade2.h:57
 msgid "_Never wrap lines"
-msgstr "_Älä kiedo rivejä"
+msgstr "_Älä koskaan rivitä"
 
-#: src/dialogs/gedit-preferences.glade2.h:54
+#: src/dialogs/gedit-preferences.glade2.h:58
 msgid "_Restore default fonts"
 msgstr "_Palauta oletuskirjasimet"
 
-#: src/dialogs/gedit-preferences.glade2.h:55
+#: src/dialogs/gedit-preferences.glade2.h:59
 msgid "_Text color:"
 msgstr "_Tekstiväri:"
 
-#: src/dialogs/gedit-preferences.glade2.h:56
+#: src/dialogs/gedit-preferences.glade2.h:60
 msgid "_Use default theme font"
 msgstr "_Käytä teeman oletuskirjasinta"
 
-#: src/dialogs/gedit-preferences.glade2.h:57
+#: src/dialogs/gedit-preferences.glade2.h:61
 msgid "action(s)"
 msgstr "toiminto(a)"
 
-#: src/dialogs/gedit-preferences.glade2.h:58
+#: src/dialogs/gedit-preferences.glade2.h:62
 msgid "minutes"
 msgstr ":s minuutti"
 
@@ -1191,20 +1608,29 @@ msgstr "Tiedoston varmuuskopiointi ei onnistunut."
 msgid "It is not possible to revert an Untitled document"
 msgstr "Et voi palauttaa Nimetöntä asiakirjaa levyltä"
 
-#: src/gedit-file-selector-util.c:114
-#, c-format
-msgid ""
-"A file named ''%s'' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"Tiedosto nimeltä ''%s'' on jo olemassa.\n"
-"Haluatko korvata sen tiedostolla jonka olet tallentamassa?"
-
-#: src/gedit-file-selector-util.c:122
+#: src/gedit-file-selector-util.c:125
 msgid "Do_n't replace"
 msgstr "Ä_lä korvaa"
 
-#: src/gedit-file-selector-util.c:502
+#: src/gedit-file-selector-util.c:147
+#, c-format
+msgid ""
+"A file named \"%s\" already exists.\n"
+"Do you want to replace it with the one you are saving?"
+msgstr ""
+"Tiedosto nimeltä \"%s\" on jo olemassa.\n"
+"Haluatko korvata sen tiedostolla jota olet tallentamassa?"
+
+#: src/gedit-file-selector-util.c:158
+#, c-format
+msgid ""
+"The file \"%s\" is read-only.\n"
+"Do you want to try to replace it with the one you are saving?"
+msgstr ""
+"Tiedostoon nimeltä \"%s\" on vain lukuoikeudet.\n"
+"Haluatko yrittää korvata sen tiedostolla jota olet tallentamassa?"
+
+#: src/gedit-file-selector-util.c:544
 msgid "Select a filename to save"
 msgstr "Valitse tiedostonimi jolla tallennetaan"
 
@@ -1212,63 +1638,63 @@ msgstr "Valitse tiedostonimi jolla tallennetaan"
 msgid "Open File ..."
 msgstr "Avaa tiedosto ..."
 
-#: src/gedit-file.c:176 src/gedit-file.c:811
+#: src/gedit-file.c:176 src/gedit-file.c:831
 #, c-format
 msgid "Loaded file '%s'"
 msgstr "Ladattu tiedosto '%s'"
 
-#: src/gedit-file.c:304 src/gedit-file.c:420
+#: src/gedit-file.c:304 src/gedit-file.c:433
 #, c-format
 msgid "Saving file '%s' ..."
 msgstr "Tallennetaan tiedostoa '%s' ..."
 
-#: src/gedit-file.c:325 src/gedit-file.c:435
+#: src/gedit-file.c:332 src/gedit-file.c:448
 msgid "The document has not been saved."
 msgstr "Asiakirjaa ei ole tallennettu."
 
-#: src/gedit-file.c:338 src/gedit-file.c:432
+#: src/gedit-file.c:345 src/gedit-file.c:445
 #, c-format
 msgid "File '%s' saved."
 msgstr "Tiedosto '%s' tallennettu."
 
-#: src/gedit-file.c:399
+#: src/gedit-file.c:412
 msgid "Save as ..."
 msgstr "Tallenna nimellä..."
 
-#: src/gedit-file.c:606
+#: src/gedit-file.c:626
 #, c-format
 msgid "Reverting file '%s' ..."
 msgstr "Palautetaan tiedosto '%s' ..."
 
-#: src/gedit-file.c:619
+#: src/gedit-file.c:639
 msgid "The document has not been reverted."
 msgstr "Asiakirjaa ei palautettu."
 
-#: src/gedit-file.c:629
+#: src/gedit-file.c:649
 #, c-format
 msgid "File '%s' reverted."
 msgstr "Tiedosto '%s' palautettu."
 
-#: src/gedit-file.c:655
+#: src/gedit-file.c:675
 #, c-format
 msgid "Loading %d files..."
 msgstr "Ladataan %d tiedostoa..."
 
-#: src/gedit-file.c:687
+#: src/gedit-file.c:711
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "Tiedostoa \"%s\" ei ole olemassa. Haluatko luoda sen?"
 
-#: src/gedit-file.c:746
+#: src/gedit-file.c:766
 #, c-format
 msgid "Loaded %i files"
 msgstr "Ladattu %i tiedostoa"
 
-#: src/gedit-file.c:869
+#: src/gedit-file.c:889
 msgid "Could not read data from stdin."
 msgstr "Virhe luettaessa dataa stdin:istä."
 
-#: src/gedit-mdi.c:840
+#: src/gedit-mdi.c:850
 #, c-format
 msgid ""
 "Do you want to save the changes you made to the document \"%s\"? \n"
@@ -1279,23 +1705,23 @@ msgstr ""
 "\n"
 "Tekemäsi muutokset menetetään ellet tallenna niitä."
 
-#: src/gedit-mdi.c:845
+#: src/gedit-mdi.c:855
 msgid "Do_n't save"
 msgstr "Ä_lä tallenna"
 
-#: src/gedit-mdi.c:864
+#: src/gedit-mdi.c:874
 msgid "_Don't quit"
 msgstr "Älä l_opeta"
 
-#: src/gedit-mdi.c:868
+#: src/gedit-mdi.c:878
 msgid "_Don't close"
 msgstr "Älä _sulje"
 
-#: src/gedit-mdi.c:958
+#: src/gedit-mdi.c:968
 msgid "(modified)"
 msgstr "(muutettu)"
 
-#: src/gedit-mdi.c:964
+#: src/gedit-mdi.c:974
 msgid "(readonly)"
 msgstr "(vain luku)"
 
@@ -1381,7 +1807,7 @@ msgstr "Sivu: %d"
 msgid "gedit - Print Preview"
 msgstr "gedit: Tulostuksen esikatselu"
 
-#: src/gedit-print.c:591
+#: src/gedit-print.c:595
 #, c-format
 msgid ""
 "An error occurred while printing.\n"
@@ -2249,9 +2675,6 @@ msgstr "Avaa %s"
 #~ msgid "Bottom"
 #~ msgstr "Alhaalla"
 
-#~ msgid "Button style"
-#~ msgstr "Painiketyyli"
-
 #~ msgid "Icon and _text"
 #~ msgstr "Kuvake ja _teksti"
 
@@ -2303,9 +2726,6 @@ msgstr "Avaa %s"
 #~ msgstr ""
 #~ "Työkalupalkin asetukset antavat sinun valita näytetäänkö työkalupalkkia "
 #~ "ja minkä näköisenä."
-
-#~ msgid "Toolbars"
-#~ msgstr "Työkalupalkit"
 
 #~ msgid "Top"
 #~ msgstr "Ylhäällä"
@@ -2390,9 +2810,6 @@ msgstr "Avaa %s"
 
 #~ msgid "_Plugin Manager"
 #~ msgstr "_Liitännäistenhallinta"
-
-#~ msgid "_Status Bar"
-#~ msgstr "_Tilarivi"
 
 #~ msgid "Could not revert the file \"%s\""
 #~ msgstr "Tiedoston \"%s\" palauttaminen levyltä epäonnistui."
