@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  gEdit 0.9.4\n"
-"POT-Creation-Date: 2003-01-28 01:42+0200\n"
-"PO-Revision-Date: 2003-01-27 14:52--500\n"
+"POT-Creation-Date: 2003-01-31 16:47+0200\n"
+"PO-Revision-Date: 2003-01-31 10:24--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukraine <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -107,7 +107,7 @@ msgstr "Шрифт заголовка для друку"
 
 #: data/gedit.schemas.in.h:19
 msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
-msgstr ""
+msgstr "Якщо значення встановлено в 0, номери рядків не буде вставлено, коли друкуватиметься документ. Інакше, номер друкуватимуться біля кожного рядка."
 
 #: data/gedit.schemas.in.h:20
 #, fuzzy
@@ -124,19 +124,19 @@ msgstr "Режим загортання рядків"
 
 #: data/gedit.schemas.in.h:23
 msgid "List of encodings used by gedit for reading files not encoded in UTF-8 or in the current locale encoding."
-msgstr ""
+msgstr "Список кодувань, що використовує редактор для зчитування файлів, які не знаходяться у кодуванні поточної локалі чи  UTF-8."
 
 #: data/gedit.schemas.in.h:24
 msgid "Maximum Recent Files"
-msgstr ""
+msgstr "Максимальна кількість останніх файлів"
 
 #: data/gedit.schemas.in.h:25
 msgid "Maximum number of actions that gedit will be able to undo or redo."
-msgstr ""
+msgstr "Максимальна кількість дій, які можна скасувати чи повторити."
 
 #: data/gedit.schemas.in.h:26
 msgid "Number of minutes after which gedit will automatically save modified files. This will only take effect if the \"Auto Save\" option is turned on."
-msgstr ""
+msgstr "Інтервал в хвилинах, після якого всі незбережені файли буде автоматично збережено. Матиме ефект лише тоді, коли параметр \"автозбереження\" буде увімкнено."
 
 #: data/gedit.schemas.in.h:27
 msgid "Print Header"
@@ -148,7 +148,7 @@ msgstr "Друкувати номери рядків"
 
 #: data/gedit.schemas.in.h:29
 msgid "Printing Line Wrapping Mode"
-msgstr ""
+msgstr "Режим завертання рядків під час друку"
 
 #: data/gedit.schemas.in.h:30
 msgid "Selected Text Color"
@@ -3012,14 +3012,12 @@ msgid "Croatian"
 msgstr "Хорватське"
 
 #: src/gedit-encodings.c:250
-#, fuzzy
 msgid "Hindi"
-msgstr "Знайти"
+msgstr "Гінді"
 
 #: src/gedit-encodings.c:252
-#, fuzzy
 msgid "Farsi"
-msgstr "Перший"
+msgstr "Фарсі"
 
 #: src/gedit-encodings.c:256
 msgid "Gujarati"
