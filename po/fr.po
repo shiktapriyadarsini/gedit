@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-24 22:07+0200\n"
+"POT-Creation-Date: 2004-04-24 23:04+0200\n"
 "PO-Revision-Date: 2004-04-24 22:03+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -665,7 +665,7 @@ msgstr "_Description"
 #: gedit/dialogs/gedit-encodings-dialog.c:390
 #: gedit/dialogs/gedit-encodings-dialog.c:458
 msgid "_Encoding"
-msgstr "_Codages"
+msgstr "_Codage"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:1
 msgid "A_vailable encodings:"
@@ -1021,7 +1021,7 @@ msgstr "_Modifier la phrase d'aperçu..."
 
 #: gedit/dialogs/gnome-print-font-dialog.c:245
 msgid "Font Selection"
-msgstr "Sélection des polices"
+msgstr "Sélecteur de polices"
 
 #: gedit/dialogs/gnome-print-font-picker.c:92
 msgid "Sans Regular 12"
@@ -1303,7 +1303,7 @@ msgstr ""
 
 #: gedit/gedit-document.c:1926
 msgid "Could not create a backup file."
-msgstr "Impossible de créer une copie de sauvegarde."
+msgstr "Impossible de créer un fichier de sauvegarde."
 
 #: gedit/gedit-encodings-option-menu.c:203
 msgid "Auto Detected"
@@ -1342,7 +1342,7 @@ msgstr "Europe du Sud"
 #: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:167
 #: gedit/gedit-encodings.c:265
 msgid "Baltic"
-msgstr "Baltique"
+msgstr "Balte"
 
 #: gedit/gedit-encodings.c:153 gedit/gedit-encodings.c:216
 #: gedit/gedit-encodings.c:229 gedit/gedit-encodings.c:233
@@ -1833,15 +1833,15 @@ msgstr "À propos de cette application"
 
 #: gedit/gedit-ui.xml.h:2
 msgid "Change the visibility of the output window in the current window"
-msgstr "Change la visibilité de la fenêtre de sortie dans la fenêtre en cours"
+msgstr "Modifie la visibilité de la fenêtre de sortie dans la fenêtre courante"
 
 #: gedit/gedit-ui.xml.h:3
 msgid "Change the visibility of the statusbar in the current window"
-msgstr "Change la visibilité de la barre d'état dans la fenêtre en cours"
+msgstr "Modifie la visibilité de la barre d'état dans la fenêtre courante"
 
 #: gedit/gedit-ui.xml.h:4
 msgid "Change the visibility of the toolbar in the current window"
-msgstr "Change la visibilité de la barre d'outils dans la fenêtre en cours"
+msgstr "Modifie la visibilité de la barre d'outils dans la fenêtre courante"
 
 #: gedit/gedit-ui.xml.h:5
 msgid "Close"
