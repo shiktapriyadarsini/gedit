@@ -95,7 +95,7 @@ struct _GeditNotebookClass
 /*
  * Public methods
  */
-GType		gedit_notebook_get_type		(void);
+GType		gedit_notebook_get_type		(void) G_GNUC_CONST;
 
 GtkWidget      *gedit_notebook_new		(void);
 
