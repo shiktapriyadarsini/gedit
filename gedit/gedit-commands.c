@@ -237,9 +237,10 @@ gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 void 
 gedit_cmd_file_close_all (GtkAction *action, GeditWindow *window)
 {
-	GSList *unsaved_docs;
-	GList *docs;
-	GList *l;
+	GSList   *unsaved_docs;
+	GList    *docs;
+	GList    *l;
+	gboolean  close = FALSE;
 	
 	gedit_debug (DEBUG_COMMANDS, "");
 	
@@ -274,8 +275,69 @@ gedit_cmd_file_close_all (GtkAction *action, GeditWindow *window)
 	if (unsaved_docs->next == NULL)
 	{
 		/* There is only one usaved doc */
+		
+		GeditTab      *tab;
+		GtkWidget     *dlg;
+		GeditDocument *doc;
+		
+		doc = GEDIT_DOCUMENT (unsaved_docs->data);
+		
+		tab = gedit_tab_get_from_document (doc);
+		g_return_if_fail (tab != NULL);
+		
+		gedit_window_set_active_tab (window, tab);
+				
+		dlg = gedit_close_confirmation_dialog_new_single (
+					GTK_WINDOW (window), 
+					doc);
+				 
+		close = gedit_close_confirmation_dialog_run (
+					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
+		
+		gtk_widget_hide (dlg);
+		
+		if (close)
+		{
+			// TODO: salvare il documento se necessario
+		}
+		
+		gtk_widget_destroy (dlg);
 	}
+	else
+	{
+		/* There are more than one unsaved docs */
+		
+		GtkWidget *dlg;
+		
+		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window), 
+							   unsaved_docs);
 
+		close = gedit_close_confirmation_dialog_run (
+					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
+		
+		gtk_widget_hide (dlg);
+		
+		if (close)
+		{
+			GSList *sel_docs;
+
+			sel_docs = gedit_close_confirmation_dialog_get_selected_documents
+							(GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
+
+			if (sel_docs != NULL)
+			{
+				// TODO: salvare i documenti se necessario
+			}
+			
+			g_slist_free (sel_docs);
+		}
+		
+		gtk_widget_destroy (dlg);
+	}
+	
+	if (close)
+		/* Close all documents */
+		gedit_window_close_all_tabs (window);
 }
 
 void

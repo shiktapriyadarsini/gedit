@@ -1799,3 +1799,20 @@ _gedit_window_move_tab_to_new_window (GeditWindow *window,
 	
 	return new_window;
 }				      
+
+void
+gedit_window_set_active_tab (GeditWindow *window,
+			     GeditTab    *tab)
+{
+	gint page_num;
+	
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	
+	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook),
+					  GTK_WIDGET (tab));
+	g_return_if_fail (page_num != -1);
+	
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook),
+				       page_num);
+}

@@ -89,6 +89,9 @@ void		 gedit_window_close_all_tabs		(GeditWindow *window);
 							 
 GeditTab	*gedit_window_get_active_tab		(GeditWindow *window);
 
+void		 gedit_window_set_active_tab		(GeditWindow *window,
+							 GeditTab    *tab);
+
 /* Helper functions */
 GeditView	*gedit_window_get_active_view		(GeditWindow *window);
 GeditDocument	*gedit_window_get_active_document	(GeditWindow *window);

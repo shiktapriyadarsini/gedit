@@ -40,6 +40,8 @@
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
+#define GEDIT_TAB_KEY "GEDIT_TAB_KEY"
+
 struct _GeditTabPrivate
 {
 	GtkWidget *view;
@@ -143,9 +145,12 @@ gedit_tab_init (GeditTab *tab)
 					
 	/* Create the view */
 	doc = gedit_document_new ();
+	g_object_set_data (G_OBJECT (doc), GEDIT_TAB_KEY, tab);
+	
 	tab->priv->view = gedit_view_new (doc);
 	g_object_unref (doc);
 	gtk_widget_show (tab->priv->view);
+	g_object_set_data (G_OBJECT (tab->priv->view), GEDIT_TAB_KEY, tab);
 	
 	gtk_box_pack_start (GTK_BOX (tab), sw, TRUE, TRUE, 0);
 	gtk_container_add (GTK_CONTAINER (sw), tab->priv->view);
@@ -384,4 +389,16 @@ _gedit_tab_get_icon (GeditTab *tab)
 	pixbuf = get_icon (theme, raw_uri, mime_type, icon_size);
 
 	return pixbuf;	
+}
+
+GeditTab *
+gedit_tab_get_from_document (GeditDocument *doc)
+{
+	gpointer res;
+	
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
+	
+	res = g_object_get_data (G_OBJECT (doc), GEDIT_TAB_KEY);
+	
+	return (res != NULL) ? GEDIT_TAB (res) : NULL;
 }
