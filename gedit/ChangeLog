@@ -1,3 +1,8 @@
+2004-10-02  Paolo Maggi  <paolo@gnome.org>
+
+	* gedit-document.c: fix crash when failing to load remote
+	files. bug #156992.
+
 2004-11-08  Marco Pesenti Gritti  <marco@gnome.org>
 
 	* gedit-metadata-manager.c: (load_values):

@@ -992,7 +992,9 @@ file_loaded_cb (GnomeVFSResult    result,
 		g_timer_destroy (timer);
 	})
 
-	reset_temp_data (doc);
+	/* conservative hackish fix, see #156992 */
+	if (GEDIT_IS_DOCUMENT (doc))
+		reset_temp_data (doc);
 
 	g_free (file_contents);	
 }
