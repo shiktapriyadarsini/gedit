@@ -76,15 +76,15 @@ msgstr "Pretvorjena vrednost:"
 
 #: plugins/convert/convert.glade.h:2
 msgid "Decimal to Hex"
-msgstr "Deseti¹ko v ©estnajsti¹ko"
+msgstr "Deseti¹ko v ¹estnajsti¹ko"
 
 #: plugins/convert/convert.glade.h:3
 msgid "Decimal to Octal"
-msgstr "Decimalno v Oktalno"
+msgstr "Deseti¹ko v osmi¹ko"
 
 #: plugins/convert/convert.glade.h:4
 msgid "Hex to Decimal"
-msgstr "©estnajsti¹ko v Deseti¹ko"
+msgstr "©estnajsti¹ko v deseti¹ko"
 
 #: plugins/convert/convert.glade.h:6
 msgid "Value to be converted:"
