@@ -1,3 +1,21 @@
+2002-11-15  Paolo Maggi  <maggi@athena.polito.it>
+
+	* bonobo-mdi.c: fixed Documents menu - backported from HEAD
+
+2002-11-15  Paolo Maggi  <maggi@athena.polito.it>
+
+	Fix bug #91791 - backported from HEAD.
+
+	* gedit-undo-manager.c (GeditUndoActionType): removed a comma at the
+	end of the enums
+
+	* gnome-recent-model.c: removed a comma after PROP_LIMIT
+
+2002-11-15  Paolo Maggi  <maggi@athena.polito.it>
+
+	* gedit-document.c (gedit_document_save_as_real): add \n to end
+	of file if needed (fix bug #95676) - backported from HEAD
+
 2002-11-15  James Willcox  <jwillcox@gnome.org>
 
 	* gedit-document.c: (gedit_document_save_as_real):
@@ -20,6 +38,7 @@
 
 	* gedit-document.c: Preserve the group of the parent directory if
 	the S_ISGID flag is set.  Fixes #88699.
+
 
 2002-08-16  Paolo Maggi  <maggi@athena.polito.it>
 
