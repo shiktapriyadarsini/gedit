@@ -1,3 +1,8 @@
+2004-06-25  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit-encodings-option-menu.c: include config.h, patch from
+	Takao Fujiwara. Fixes 144525.
+
 2004-04-27  Paolo Maggi  <paolo.maggi@polito.it>
 
 	* bonobo-mdi.c (book_add_view): calls set_active_view (fixes 
