@@ -5,9 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.2.1\n"
-"POT-Creation-Date: 2003-03-10 12:15+0100\n"
-"PO-Revision-Date: 2003-04-16 23:04+0200\n"
+"Project-Id-Version: gedit 2.2.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-11 13:16+0200\n"
+"PO-Revision-Date: 2003-06-11 13:17+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -768,7 +769,7 @@ msgid "File Name"
 msgstr "Nom del fitxer"
 
 #
-#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:373
+#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:376
 msgid "Lines"
 msgstr "Línies"
 
@@ -1088,27 +1089,27 @@ msgstr "_Ordena"
 msgid "Sorts a document or selected text."
 msgstr "Ordena un document o el text seleccionat."
 
-#: plugins/spell/gedit-automatic-spell-checker.c:322
+#: plugins/spell/gedit-automatic-spell-checker.c:318
 #: plugins/spell/gedit-spell-checker-dialog.c:504
 msgid "(no suggested words)"
 msgstr "(cap paraula suggerida)"
 
 #
-#: plugins/spell/gedit-automatic-spell-checker.c:346
+#: plugins/spell/gedit-automatic-spell-checker.c:342
 msgid "_More..."
 msgstr "_Més..."
 
 #. Ignore all
-#: plugins/spell/gedit-automatic-spell-checker.c:399
+#: plugins/spell/gedit-automatic-spell-checker.c:395
 msgid "_Ignore All"
 msgstr "_Ignora-ho tot"
 
 #. + Add to Dictionary
-#: plugins/spell/gedit-automatic-spell-checker.c:412
+#: plugins/spell/gedit-automatic-spell-checker.c:408
 msgid "_Add"
 msgstr "_Afegeix"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:449
+#: plugins/spell/gedit-automatic-spell-checker.c:445
 msgid "_Spelling Suggestions..."
 msgstr "_Suggerències d'ortografia"
 
@@ -1129,95 +1130,95 @@ msgstr "(corregeix l'ortografia)"
 msgid "Completed spell checking"
 msgstr "S'ha completat la comprovació d'ortografia"
 
-#: plugins/spell/gedit-spell-checker.c:73
+#: plugins/spell/gedit-spell-checker.c:80
 msgid "Breton"
 msgstr "Bretó"
 
-#: plugins/spell/gedit-spell-checker.c:74
+#: plugins/spell/gedit-spell-checker.c:81
 msgid "Catalan"
 msgstr "Català"
 
-#: plugins/spell/gedit-spell-checker.c:75
+#: plugins/spell/gedit-spell-checker.c:82
 msgid "Czech"
 msgstr "Txec"
 
-#: plugins/spell/gedit-spell-checker.c:76
+#: plugins/spell/gedit-spell-checker.c:83
 msgid "Danish"
 msgstr "Danès"
 
-#: plugins/spell/gedit-spell-checker.c:77
+#: plugins/spell/gedit-spell-checker.c:84
 msgid "German (Germany)"
 msgstr "Alemany (Alemanya)"
 
-#: plugins/spell/gedit-spell-checker.c:78
+#: plugins/spell/gedit-spell-checker.c:85
 msgid "German (Swiss)"
 msgstr "Alemany (Suïssa)"
 
-#: plugins/spell/gedit-spell-checker.c:79
+#: plugins/spell/gedit-spell-checker.c:86
 msgid "English (American)"
 msgstr "Anglès (americà)"
 
-#: plugins/spell/gedit-spell-checker.c:80
+#: plugins/spell/gedit-spell-checker.c:87
 msgid "English (British)"
 msgstr "Anglès (Gran Bretanya)"
 
-#: plugins/spell/gedit-spell-checker.c:81
+#: plugins/spell/gedit-spell-checker.c:88
 msgid "English (Canadian)"
 msgstr "Anglès (Canadà)"
 
-#: plugins/spell/gedit-spell-checker.c:82
+#: plugins/spell/gedit-spell-checker.c:89
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: plugins/spell/gedit-spell-checker.c:83
+#: plugins/spell/gedit-spell-checker.c:90
 msgid "Spanish"
 msgstr "Castellà"
 
-#: plugins/spell/gedit-spell-checker.c:84
+#: plugins/spell/gedit-spell-checker.c:91
 msgid "Faroese"
 msgstr "Faroès"
 
-#: plugins/spell/gedit-spell-checker.c:85
+#: plugins/spell/gedit-spell-checker.c:92
 msgid "French (France)"
 msgstr "Francès (Frància)"
 
-#: plugins/spell/gedit-spell-checker.c:86
+#: plugins/spell/gedit-spell-checker.c:93
 msgid "French (Swiss)"
 msgstr "Francès (Suïssa)"
 
-#: plugins/spell/gedit-spell-checker.c:87
+#: plugins/spell/gedit-spell-checker.c:94
 msgid "Italian"
 msgstr "Italià"
 
-#: plugins/spell/gedit-spell-checker.c:88
+#: plugins/spell/gedit-spell-checker.c:95
 msgid "Dutch"
 msgstr "Holandès"
 
-#: plugins/spell/gedit-spell-checker.c:89
+#: plugins/spell/gedit-spell-checker.c:96
 msgid "Norwegian"
 msgstr "Noruec"
 
-#: plugins/spell/gedit-spell-checker.c:90
+#: plugins/spell/gedit-spell-checker.c:97
 msgid "Polish"
 msgstr "Polonès"
 
-#: plugins/spell/gedit-spell-checker.c:91
+#: plugins/spell/gedit-spell-checker.c:98
 msgid "Portuguese (Portugal)"
 msgstr "Portuguès (Portugal)"
 
-#: plugins/spell/gedit-spell-checker.c:92
+#: plugins/spell/gedit-spell-checker.c:99
 msgid "Portuguese (Brazilian)"
 msgstr "Portuguès (Brasil)"
 
-#: plugins/spell/gedit-spell-checker.c:93
+#: plugins/spell/gedit-spell-checker.c:100
 msgid "Russian"
 msgstr "Rus"
 
-#: plugins/spell/gedit-spell-checker.c:94
+#: plugins/spell/gedit-spell-checker.c:101
 msgid "Swedish"
 msgstr "Suec"
 
-#: plugins/spell/gedit-spell-checker.c:653
+#: plugins/spell/gedit-spell-checker.c:734
 msgid "Default"
 msgstr "Predeterminat"
 
@@ -1436,7 +1437,9 @@ msgstr "No s'ha trobat el plugin-manager.glade2, reinstal·leu el gedit.\n"
 
 #: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
-msgstr "Fitxer glade no vàlid pel gestor de connectors -- no s'han trobat tots els ginys.\n"
+msgstr ""
+"Fitxer glade no vàlid pel gestor de connectors -- no s'han trobat tots els "
+"ginys.\n"
 
 #
 #: src/dialogs/gedit-plugin-program-location-dialog.c:78
@@ -1519,7 +1522,7 @@ msgid "Editor"
 msgstr "Editor"
 
 #: src/dialogs/gedit-preferences-dialog.c:271
-#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:364
+#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:367
 #: src/gedit-ui.xml.h:39
 msgid "Print"
 msgstr "Imprimeix"
@@ -2330,23 +2333,23 @@ msgstr ""
 "gedit no pot imprimir, ja que no es troba\n"
 "un dels tipus de lletra demanada"
 
-#: src/gedit-print.c:432
+#: src/gedit-print.c:435
 #, c-format
 msgid "File: %s"
 msgstr "Fitxer: %s"
 
 #. Print right text
-#: src/gedit-print.c:439
+#: src/gedit-print.c:442
 #, c-format
 msgid "Page: %d"
 msgstr "Pàgina: %d"
 
 #
-#: src/gedit-print.c:580
+#: src/gedit-print.c:583
 msgid "gedit - Print Preview"
 msgstr "gedit - Visualització prèvia de la impressió"
 
-#: src/gedit-print.c:658
+#: src/gedit-print.c:661
 #, c-format
 msgid ""
 "An error occurred while printing.\n"
@@ -3386,6 +3389,14 @@ msgstr "Tailandès"
 msgid " (invalid Unicode)"
 msgstr " (Unicode invàlid)"
 
+#, fuzzy
+#~ msgid "Gedit viewer factory"
+#~ msgstr "factoria d'automatització de gedit"
+
+#, fuzzy
+#~ msgid "Source"
+#~ msgstr "Ordena"
+
 #~ msgid "Dump XML"
 #~ msgstr "Desfés el XML"
 
@@ -3477,7 +3488,9 @@ msgstr " (Unicode invàlid)"
 #~ msgid ""
 #~ "Could not find the required widgets inside program-location-dialog."
 #~ "glade2.\n"
-#~ msgstr "No s'ha pogut trobar els ginys necessaris a program-location-dialog.glade2.\n"
+#~ msgstr ""
+#~ "No s'ha pogut trobar els ginys necessaris a program-location-dialog."
+#~ "glade2.\n"
 
 #~ msgid "Courier 9"
 #~ msgstr "Courier 9"
