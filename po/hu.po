@@ -1,20 +1,23 @@
 # gEdit Hungarian translations.
-# Copyright (C) 2000 Free Software Foundation, Inc.
+# Copyright (C) 2000, 2003 Free Software Foundation, Inc.
 # Szabolcs (Shooby) Ban <bansz@szif.hu>, 2000.
 # Peter Doma <zelin@gnome.hu>, 2002.
 # Emese Kovacs <emese@gnome.hu>, 2002.
 # Andras Timar <timar@gnome.hu>, 2003.
+# Gabor Sari <saga@chello.hu>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.3.3\n"
-"POT-Creation-Date: 2003-10-16 18:20+0200\n"
-"PO-Revision-Date: 2003-08-07 00:20+0200\n"
-"Last-Translator: Andras Timar <timar@gnome.hu>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"Project-Id-Version: gedit.gnome-2-4\n"
+"POT-Creation-Date: 2003-10-28 14:14+0100\n"
+"PO-Revision-Date: 2003-10-28 14:23+0100\n"
+"Last-Translator: Gabor Sari <saga@chello.hu>\n"
+"Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: KBabel 1.0.2\n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
@@ -176,6 +179,8 @@ msgid ""
 "List of encodings shown in Character Coding menu in open/save file selector. "
 "Only recognized encodings are used."
 msgstr ""
+"A különböző kódolások listája megtekinthető a 'Fájl megnyitás/mentés' "
+"fájlkiválasztó ablakokban. Kizárólag az ismert kódolásokat használhatjuk."
 
 #: data/gedit.schemas.in.h:25
 msgid "Maximum Recent Files"
@@ -203,7 +208,7 @@ msgstr "Sorok számának kiírása"
 
 #: data/gedit.schemas.in.h:30
 msgid "Print Syntax Highlighting"
-msgstr ""
+msgstr "Szintaxiskiemelés nyomtatása"
 
 #: data/gedit.schemas.in.h:31
 msgid "Printing Line Wrapping Mode"
@@ -218,13 +223,12 @@ msgid "Selection Color"
 msgstr "Kiválasztás színe"
 
 #: data/gedit.schemas.in.h:34
-#, fuzzy
 msgid ""
 "Sorted list of encodings used by gedit for auto-detecting the encoding of a "
 "file. \"CURRENT\" is the current locale encoding. Only recognized encodings "
 "are used."
 msgstr ""
-"A gedit által használt kódolások listája, amelyeket az olyan fájlok "
+"A gedit által használt kódolások listája, melyeket az olyan fájlok "
 "beolvasására használ, amelyek se nem UTF-8-ban, se nem az aktuális locale "
 "kódolásában vannak."
 
@@ -399,9 +403,8 @@ msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Tabulátor helyett szóköz használatának ki/bekapcsolása."
 
 #: data/gedit.schemas.in.h:58
-#, fuzzy
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "Nyomtatáskor a dokumentumok fejlécének ki/bekapcsolása."
+msgstr "Nyomtatáskor a szintaxiskiemelés ki/bekapcsolása."
 
 #: data/gedit.schemas.in.h:59
 msgid ""
@@ -492,7 +495,7 @@ msgstr "Hely megnyitása"
 #: gedit/dialogs/gedit-encodings-dialog.c:76
 #, c-format
 msgid "There was an error displaying help: %s"
-msgstr ""
+msgstr "Hiba történt a \"%s\" súgó megjelenítése közben."
 
 #: gedit/dialogs/gedit-encodings-dialog.c:381
 #: gedit/dialogs/gedit-encodings-dialog.c:449
@@ -514,36 +517,32 @@ msgstr "Karakterkódolások"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:3
 msgid "E_ncodings shown in menu:"
-msgstr ""
+msgstr "A kódolás jelenjen meg a menüben:"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:490
 msgid "Body font picker"
-msgstr ""
+msgstr "Szövegtest betűjének kijelölése"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:491
-#, fuzzy
 msgid ""
 "Push this button to select the font to be used to print the body of the "
 "document"
 msgstr ""
-"Nyomd meg ezt a gombot a törzs nyomtatáskor használt betűtípusának "
+"Nyomd meg ezt a gombot a törzs nyomtatásakor használt betű típus "
 "kiválasztásához"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:492
-#, fuzzy
 msgid "Page headers font picker"
-msgstr "_Oldal fejléce:"
+msgstr "Oldal fejléc"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:493
-#, fuzzy
 msgid ""
 "Push this button to select the font to be used to print the page headers"
 msgstr ""
-"Nyomd meg ezt a gombot a fejléc nyomtatáskor használt betűtípusának "
+"Nyomd meg ezt a gombot a fejléc nyomtatásakor használt betűtípus "
 "kiválasztásához"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:494
-#, fuzzy
 msgid "Line numbers font picker"
 msgstr "Sorok számozása"
 
@@ -555,7 +554,7 @@ msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:587
 msgid "Could not find '"
-msgstr ""
+msgstr "Nem található "
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:587
 #: gedit/dialogs/gedit-page-setup-dialog.c:629
@@ -564,11 +563,13 @@ msgid ""
 "\n"
 "Reinstall gedit."
 msgstr ""
+"page-setup-dialog.glade2'.\n"
+"\n"
+"Telepítsd újra a gedit programot."
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:628
-#, fuzzy
 msgid "Could not find the required widgets inside '"
-msgstr "Nem találom a szükséges widgeteket a(z) %s belsejében."
+msgstr "Nem találom a szükséges widgeteket "
 
 #: gedit/dialogs/gedit-plugin-manager.c:53
 msgid "Plugin"
@@ -600,9 +601,9 @@ msgid ""
 "\n"
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr ""
-"A %s bővítmény a <tt>%s</tt> külső programot használja a működéshez.\n"
+"A(z) %s bővítmény a(z) <tt>%s</tt> külső programot használja a működéshez.\n"
 "\n"
-"Add meg a <tt>%s</tt> program pontos helyét."
+"Add meg a(z) <tt>%s</tt> program pontos helyét."
 
 #: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
@@ -919,7 +920,7 @@ msgstr "Címke betűmérete"
 
 #: gedit/dialogs/gnome-print-font-picker.c:228
 msgid "Font size for label in font info mode"
-msgstr "\"Betűkészletinfó módban ezt a betűméretet használja a címkéken"
+msgstr "Betűkészletinfó módban ezt a betűméretet használja a címkéken"
 
 #: gedit/dialogs/gnome-print-font-picker.c:238
 msgid "Show size"
@@ -940,7 +941,7 @@ msgstr "Ugrás sorra"
 
 #: gedit/dialogs/goto-line.glade2.h:2
 msgid "_Line number:"
-msgstr "_Sor száma: "
+msgstr "_Sorszám:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:2
 msgid "<b>Line Numbers</b>"
@@ -967,27 +968,24 @@ msgid "Page Setup"
 msgstr "Oldalbeállítás"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:10
-#, fuzzy
 msgid "Print _line numbers"
-msgstr "Sorok számának kiírása"
+msgstr "Sorszámok kiírása"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:11
 msgid "Print s_yntax highlighting"
-msgstr ""
+msgstr "Szintaxiskiemelések nyomtatása"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:12
 msgid "_Body:"
 msgstr "_Törzs:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:13
-#, fuzzy
 msgid "_Line numbers:"
-msgstr "_Sor száma: "
+msgstr "_Sorszámok:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:14
-#, fuzzy
 msgid "_Number every"
-msgstr "Kiírja a s_orok számát minden:"
+msgstr "S_orszám"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:15
 msgid "_Print page headers"
@@ -999,7 +997,7 @@ msgstr "_Alapértelmezett betűkészletek visszaállítása"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:17
 msgid "lines"
-msgstr "sor"
+msgstr "soronként"
 
 #: gedit/dialogs/plugin-manager.glade2.h:1
 msgid "About selected plugin"
@@ -1022,7 +1020,6 @@ msgid "dialog1"
 msgstr "dialog1"
 
 #: gedit/dialogs/program-location-dialog.glade2.h:1
-#, fuzzy
 msgid "Browse for program location..."
 msgstr "Program helyének megadása..."
 
@@ -1058,7 +1055,7 @@ msgstr "_Csere ezzel: "
 
 #: gedit/dialogs/replace.glade2.h:7
 msgid "Search _backwards"
-msgstr ""
+msgstr "Keresés _visszafelé"
 
 #: gedit/dialogs/replace.glade2.h:8
 msgid "_Match case"
@@ -1073,7 +1070,6 @@ msgid "_Wrap around"
 msgstr "_Körbe"
 
 #: gedit/dialogs/uri.glade2.h:2
-#, fuzzy
 msgid "Ch_aracter coding:"
 msgstr "_Támogatott kódolások:"
 
@@ -1090,6 +1086,7 @@ msgid "translator_credits"
 msgstr ""
 "Doma Péter <zelin@pointernet.hu>\n"
 "Kovács Emese <emese@gnome.hu>\n"
+"Sári Gábor <saga@chello.hu>\n"
 "Tímár András <timar@gnome.hu>"
 
 #: gedit/gedit-commands.c:589
@@ -1130,7 +1127,7 @@ msgstr "A fájl túl sok szimbolikus linkkel rendelkezik."
 #: gedit/gedit-document.c:1312
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
-msgstr "A gedit nem tudja a %s: típusú helyeket írásra használni."
+msgstr "A gedit nem tudja a(z) %s: típusú helyeket írásra használni."
 
 #: gedit/gedit-document.c:1319
 msgid "gedit cannot handle this kind of location in write mode."
@@ -1168,17 +1165,17 @@ msgstr "A Névtelen dokumentumot nem lehet visszaállítani"
 
 #: gedit/gedit-encodings-option-menu.c:203
 msgid "Auto Detected"
-msgstr ""
+msgstr "Automatikus felismerés"
 
 #: gedit/gedit-encodings-option-menu.c:223
 #: gedit/gedit-encodings-option-menu.c:245
 #, c-format
 msgid "Current Locale (%s)"
-msgstr ""
+msgstr "Az aktuális locale (%s)"
 
 #: gedit/gedit-encodings-option-menu.c:306
 msgid "Add or _Remove..."
-msgstr ""
+msgstr "Hozzáadás vagy _eltávolítás..."
 
 #: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
 #: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
@@ -1311,7 +1308,7 @@ msgstr ""
 
 #: gedit/gedit-file-selector-util.c:283
 msgid "Ch_aracter Coding:"
-msgstr ""
+msgstr "K_arakterkódolás:"
 
 #: gedit/gedit-file-selector-util.c:460
 msgid "Select a file to open"
@@ -1419,7 +1416,6 @@ msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
 #: gedit/gedit-mdi.c:450
-#, fuzzy
 msgid "Open a recently used file"
 msgstr "Fájl megnyitása"
 
@@ -1430,7 +1426,7 @@ msgid ""
 "\n"
 "Your changes will be lost if you don't save them."
 msgstr ""
-"El akarod menteni a \"%s\" fájlban történt változtatásokat?\n"
+"El akarod menteni a(z) \"%s\" nevű fájlban történt változtatásokat?\n"
 "\n"
 "Ha nem mented el, a változtatások elvesznek."
 
@@ -1460,12 +1456,12 @@ msgstr "Normál"
 
 #: gedit/gedit-mdi.c:1677
 msgid "Use Normal highlight mode"
-msgstr ""
+msgstr "Normál szintaxiskiemelés használata"
 
 #: gedit/gedit-mdi.c:1753
 #, c-format
 msgid "Use %s highlight mode"
-msgstr ""
+msgstr "A(z) %s kiemelési mód használata"
 
 #: gedit/gedit-output-window.c:333
 msgid "Close the output window"
@@ -1486,27 +1482,27 @@ msgstr "Kimenet sorai"
 #: gedit/gedit-plugins-engine.c:362
 #, c-format
 msgid "Error, unable to open module file '%s'\n"
-msgstr "Hiba, nem tudom a %s modulfájlt megnyitni\n"
+msgstr "Hiba, nem tudom a(z) %s modulfájlt megnyitni\n"
 
 #: gedit/gedit-plugins-engine.c:372
 #, c-format
 msgid "Error, plugin '%s' does not contain init function."
-msgstr "Hiba, a '%s' bővítmény nem tartalmazza az init függvényt."
+msgstr "Hiba, a(z) '%s' bővítmény nem tartalmazza az init függvényt."
 
 #: gedit/gedit-plugins-engine.c:382
 #, c-format
 msgid "Error, plugin '%s' does not contain activate function."
-msgstr "Hiba, a '%s' bővítmény nem tartalmazza az activate függvényt."
+msgstr "Hiba, a(z) '%s' bővítmény nem tartalmazza az activate függvényt."
 
 #: gedit/gedit-plugins-engine.c:392
 #, c-format
 msgid "Error, plugin '%s' does not contain deactivate function."
-msgstr "Hiba, a '%s' bővítmény nem tartalmazza az deactivate függvényt."
+msgstr "Hiba, a(z) '%s' bővítmény nem tartalmazza a deactivate függvényt."
 
 #: gedit/gedit-plugins-engine.c:417
 #, c-format
 msgid "Error, impossible to initialize plugin '%s'"
-msgstr "Hiba, lehetetlen a '%s' bővítmény indítása"
+msgstr "Hiba, lehetetlen a(z) '%s' bővítmény indítása"
 
 #: gedit/gedit-plugins-engine.c:468
 #, c-format
@@ -1517,26 +1513,26 @@ msgstr "Hiba, lehetetlen a(z) '%s' bővítményt kilőni"
 #: gedit/gedit-plugins-engine.c:764
 #, c-format
 msgid "Error, impossible to activate plugin '%s'"
-msgstr "Hiba, lehetetlen a '%s' bővítményt bekapcsolni"
+msgstr "Hiba, lehetetlen a(z) '%s' bővítményt bekapcsolni"
 
 #: gedit/gedit-plugins-engine.c:590 gedit/gedit-plugins-engine.c:782
 #, c-format
 msgid "Error, impossible to deactivate plugin '%s'"
-msgstr "Hiba, lehetetlen a '%s' bővítményt kikapcsolni"
+msgstr "Hiba, lehetetlen a(z) '%s' bővítményt kikapcsolni"
 
 #: gedit/gedit-plugins-engine.c:683
 #, c-format
 msgid "Error, impossible to update ui of the plugin '%s'"
-msgstr "Hiba, lehetetlen a '%s' bővítmény ui-ját frissíteni"
+msgstr "Hiba, lehetetlen a(z) '%s' bővítmény ui-ját frissíteni"
 
 #: gedit/gedit-prefs-manager.c:177
 msgid "Cannot initialize preferences manager."
-msgstr "Nem lehet indítani a beállításkezelőt."
+msgstr "Nem lehet elindítani a beállításkezelőt."
 
 #: gedit/gedit-prefs-manager.c:1136
 #, c-format
 msgid "Expected `%s' got `%s' for key %s"
-msgstr "A %s kulcs várt `%s' értéke helyett a jelenlegi érték `%s'"
+msgstr "A(z) %s kulcs várt `%s' értéke helyett a jelenlegi érték `%s'"
 
 #: gedit/gedit-print.c:217 gedit/gedit-ui.xml.h:37
 msgid "Print"
@@ -1548,17 +1544,17 @@ msgstr "Sor"
 
 #: gedit/gedit-print.c:331
 msgid "Preparing pages..."
-msgstr ""
+msgstr "Oldalak feldolgozása..."
 
 #: gedit/gedit-print.c:358
 #, c-format
 msgid "Rendering page %d of %d..."
-msgstr ""
+msgstr "A(z) %d oldal leképezése %d oldalból..."
 
 #: gedit/gedit-print.c:360
 #, c-format
 msgid "Printing page %d of %d..."
-msgstr ""
+msgstr "A(z) %d oldal nyomtatása %d oldalból..."
 
 #: gedit/gedit-print.c:382 gedit/gedit-ui.xml.h:40
 msgid "Print preview"
@@ -1571,7 +1567,7 @@ msgstr "Fájl: %s"
 
 #: gedit/gedit-print.c:556
 msgid "Page %N of %Q"
-msgstr ""
+msgstr "%N. / %Q oldal"
 
 #: gedit/gedit-ui.xml.h:1
 msgid "About this application"
@@ -1655,7 +1651,7 @@ msgstr "Sorra ugrás..."
 
 #: gedit/gedit-ui.xml.h:23
 msgid "Go to a specific line number"
-msgstr "Ugrás a megdott számú sorra"
+msgstr "Ugrás a megadott számú sorra"
 
 #: gedit/gedit-ui.xml.h:24
 msgid "Main toolbar"
@@ -1794,34 +1790,29 @@ msgid "Select the entire document"
 msgstr "Teljes dokumentum kijelölése"
 
 #: gedit/gedit-ui.xml.h:62
-#, fuzzy
 msgid ""
 "Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr "Eszköztár beállítása az asztal alapértelmezett beállításai alapján"
 
 #: gedit/gedit-ui.xml.h:63
-#, fuzzy
 msgid "Setup the page settings"
-msgstr "Az oldalak beállítása a jelenlegi nyomtatódhoz."
+msgstr "Az oldalak beállítása a jelenlegi nyomtatóhoz"
 
 #: gedit/gedit-ui.xml.h:64
-#, fuzzy
 msgid "Show only icons in the toolbar"
-msgstr "Csak ikonok megjelenítése az eszköztárakban"
+msgstr "Csak az ikonok megjelenítése az eszköztárakban"
 
 #: gedit/gedit-ui.xml.h:65
-#, fuzzy
 msgid "Show text below every icon in the toolbar"
-msgstr "Csak ikonok megjelenítése az eszköztárakban"
+msgstr "Szövegek megjelenítése az ikonok alatt"
 
 #: gedit/gedit-ui.xml.h:66
-#, fuzzy
 msgid "Show text only beside important icons in the toolbar"
-msgstr "Csak ikonok megjelenítése az eszköztárakban"
+msgstr "Szövegek megjelenítése a fontosabb ikonok alatt"
 
 #: gedit/gedit-ui.xml.h:67
 msgid "T_ext for Important Icons"
-msgstr ""
+msgstr "_Szöveg csak a fontosabb ikonokhoz"
 
 #: gedit/gedit-ui.xml.h:69
 msgid "Undo the last action"
@@ -1885,7 +1876,7 @@ msgstr "_Súgó"
 
 #: gedit/gedit-ui.xml.h:84
 msgid "_Highlight Mode"
-msgstr ""
+msgstr "_Kiemelési üzemmód"
 
 #: gedit/gedit-ui.xml.h:85
 msgid "_Icons Only"
@@ -1941,7 +1932,7 @@ msgstr "Á_llapotsor"
 
 #: gedit/gedit-ui.xml.h:100
 msgid "_Text for All Icons"
-msgstr ""
+msgstr "S_zöveg minden ikonhoz"
 
 #: gedit/gedit-ui.xml.h:101
 msgid "_Toolbar"
@@ -1981,8 +1972,8 @@ msgstr ""
 msgid ""
 "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
-"Nem lehet a \"%s\" fájlt megnyitni, mert a gedit nem támogatja a %s: típusú "
-"helyeket."
+"Nem lehet a(z) \"%s\" fájlt megnyitni, mert a gedit nem támogatja a(z) %s: "
+"típusú helyeket."
 
 #: gedit/gedit-utils.c:437
 #, c-format
@@ -2059,7 +2050,7 @@ msgid ""
 msgstr ""
 "Nem tudom a \"%s\" fájlt megnyitni, mert a \"%s\" nevű gépet nem találom.\n"
 "\n"
-"Ellenőrizd a proxybeállításaidat és próbáld újra."
+"Ellenőrizd a proxy beállításaidat és próbáld újra."
 
 #: gedit/gedit-utils.c:533
 #, c-format
@@ -2081,7 +2072,7 @@ msgid ""
 msgstr ""
 "Nem tudom megnyitni a \"%s\" fájlt, mert a megadott gépnév üres.\n"
 "\n"
-"Ellenőrizd a proxybeállításaidat és próbáld újra."
+"Ellenőrizd a proxy beállításaidat és próbáld újra."
 
 #: gedit/gedit-utils.c:551
 #, c-format
@@ -2095,13 +2086,13 @@ msgstr ""
 "Ellenőrizd, hogy helyesen írtad-e be a helyet és próbáld újra."
 
 #: gedit/gedit-utils.c:560 gedit/gedit-utils.c:628
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the file \"%s\" because it contains invalid data.\n"
 "\n"
 "Probably, you are trying to open a binary file."
 msgstr ""
-"Nem tudom a \"%s\" fájlt megnyitni, mert érvénytelen UTF-8 adatokat "
+"Nem tudom a(z) \"%s\" fájlt megnyitni, mert érvénytelen UTF-8 adatokat "
 "tartalmaz.\n"
 "\n"
 "Valószínűleg egy bináris fájlt próbálsz megnyitni."
@@ -2116,9 +2107,15 @@ msgid ""
 "selecting a character coding in the 'Open File...' (or 'Open Location') "
 "dialog."
 msgstr ""
+"Nem tudom a(z) \"%s\" fájlt megnyitni, mert nem sikerült meghatározni "
+"automatikusan a fájl karakterkódolását.\n"
+"\n"
+"Lehet hogy egy bináris fájlt próbálsz megnyitni.\n"
+"Próbálkozz a 'Fájl megnyitása...' (Hely megnyitása) ablakban a 'Támogatott "
+"kódolások' menüben másik kódolást kiválasztani."
 
 #: gedit/gedit-utils.c:616 gedit/gedit-utils.c:646
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the file \"%s\" using the %s character coding.\n"
 "\n"
@@ -2126,9 +2123,10 @@ msgid ""
 "selected the right character coding in the 'Open File...' (or 'Open "
 "Location') dialog and try again."
 msgstr ""
-"Nem tudom a \"%s\" fájlt megnyitni, mert a \"%s\" nevű gépet nem találom.\n"
+"Nem tudom a(z) \"%s\" fájlt megnyitni, mert a(z) \"%s\" nevű gépet nem "
+"találom.\n"
 "\n"
-"Ellenőrizd a proxybeállításaidat és próbáld újra."
+"Ellenőrizd a proxy beállításokat és próbáld újra."
 
 #: gedit/gedit-utils.c:662
 #, c-format
@@ -2136,12 +2134,15 @@ msgid "Could not open the file \"%s\"."
 msgstr "Nem tudom megnyitni a \"%s\" fájlt."
 
 #: gedit/gedit-utils.c:666
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the file \"%s\".\n"
 "\n"
 "%s"
-msgstr "Nem tudom megnyitni a \"%s\" fájlt."
+msgstr ""
+"Nem tudom megnyitni a(z) \"%s\" fájlt.\n"
+"\n"
+"%s"
 
 #: gedit/gedit-utils.c:718
 #, c-format
@@ -2182,8 +2183,8 @@ msgstr ""
 msgid ""
 "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
-"Nem tudom a \"%s\" fájlt visszaállítani, mert a gedit nem támogatja a %s: "
-"típusú helyeket."
+"Nem tudom a(z) \"%s\" fájlt visszaállítani, mert a gedit nem támogatja a(z) "
+"\"%s:\" típusú helyeket."
 
 #: gedit/gedit-utils.c:799 gedit/gedit-utils.c:939
 #, c-format
@@ -2239,7 +2240,7 @@ msgstr ""
 "Nem tudom a \"%s\" fájlt visszaállítani, mert a \"%s\" nevű gépet nem "
 "találom.\n"
 "\n"
-"Ellenőrizd a proxybeállításaidat és próbáld újra."
+"Ellenőrizd a proxy beállításaidat és próbáld újra."
 
 #: gedit/gedit-utils.c:878
 #, c-format
@@ -2250,7 +2251,7 @@ msgid ""
 msgstr ""
 "Nem tudom visszaállítani a \"%s\" fájlt, mert a megadott gépnév üres.\n"
 "\n"
-"Ellenőrizd a proxybeállításaidat és próbáld újra."
+"Ellenőrizd a proxy beállításaidat és próbáld újra."
 
 #: gedit/gedit-utils.c:885
 #, c-format
@@ -2364,7 +2365,6 @@ msgid "Show utility debugging messages."
 msgstr "Mutasd a segédprogram hibakereső üzeneteit."
 
 #: gedit/gedit2.c:85
-#, fuzzy
 msgid "Show metadata debugging messages."
 msgstr "Mutasd az mdi hibakereső üzeneteit."
 
@@ -3012,7 +3012,7 @@ msgstr "_Egyéni formátum használata"
 
 #: viewer/gedit-persist-stream.c:44
 msgid "Save method not implemented for gedit viewer"
-msgstr ""
+msgstr "A mentés eljárás nincs megvalósítva a gedit megjelenítőben"
 
 #: viewer/gedit-viewer-ui.xml.h:1
 msgid "Copy the selected text to the clipboard"
