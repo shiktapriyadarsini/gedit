@@ -49,6 +49,7 @@ struct _GeditViewPrivate
 
 static void gedit_view_class_init		(GeditViewClass *klass);
 static void gedit_view_init 			(GeditView      *view);
+static void gedit_view_destroy			(GtkObject        *object);
 static void gedit_view_finalize			(GObject        *object);
 
 static void doc_readonly_changed_handler 	(GeditDocument  *document, 
@@ -101,12 +102,14 @@ static void
 gedit_view_class_init (GeditViewClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkObjectClass *gtkobject_class = GTK_OBJECT_CLASS (klass);
 
 	/* Note: it is commented out since we don't use it - Paolo */
 	/* g_type_class_add_private (klass, sizeof (GeditViewPrivate)); */
-	
+
   	parent_class = g_type_class_peek_parent (klass);
 
+  	gtkobject_class->destroy = gedit_view_destroy;
   	object_class->finalize = gedit_view_finalize;
 }
 
@@ -312,32 +315,33 @@ gedit_view_init (GeditView *view)
 #endif				   
 }
 
-static void 
-gedit_view_finalize (GObject *object)
+static void
+gedit_view_destroy (GtkObject *object)
 {
 	GeditView *view;
 	GtkTextBuffer *doc;
 
-	gedit_debug (DEBUG_VIEW, "%d", object->ref_count);
-
-	g_return_if_fail (GEDIT_IS_VIEW (object));
-
-   	view = GEDIT_VIEW (object);
+	view = GEDIT_VIEW (object);
 
 	doc = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (doc != NULL);
-	
+
 	g_signal_handlers_disconnect_by_func (G_OBJECT (doc),
 					      G_CALLBACK (gedit_view_move_cursor),
 					      view);
 
-//	g_object_unref (doc);
-						      					      
-	G_OBJECT_CLASS (parent_class)->finalize (object);
-
-	gedit_debug (DEBUG_VIEW, "END");
+	(* GTK_OBJECT_CLASS (parent_class)->destroy) (object);
 }
 
+static void
+gedit_view_finalize (GObject *object)
+{
+	GeditView *view;
+
+	view = GEDIT_VIEW (object);
+
+	(* G_OBJECT_CLASS (parent_class)->finalize) (object);
+}
 
 /**
  * gedit_view_new:
