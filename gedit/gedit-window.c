@@ -444,6 +444,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	GtkAction *action;
 	GtkUIManager *manager;
 	GtkWidget *menubar;
+	GtkToolItem *open_button;
 	GError *error = NULL;
 
 	manager = gtk_ui_manager_new ();
@@ -490,7 +491,6 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	g_object_set (action, "short_label", _("Replace"), NULL);
 
 	/* set which actions should have priority on the toolbar */
-	// CHECK: add open and maybe other (New?)
 	action = gtk_action_group_get_action (action_group, "FileSave");
 	g_object_set (action, "is_important", TRUE, NULL);
 	action = gtk_action_group_get_action (action_group, "EditUndo");
@@ -513,13 +513,42 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_box_pack_start (GTK_BOX (main_box), menubar, FALSE, FALSE, 0);
 
 	window->priv->toolbar = gtk_ui_manager_get_widget (manager, "/ToolBar");
-	gtk_box_pack_start (GTK_BOX (main_box), 
-			    window->priv->toolbar, 
-			    FALSE, 
-			    FALSE, 
-			    0);	
-			    
-	set_toolbar_style (window, NULL);			 
+	gtk_box_pack_start (GTK_BOX (main_box),
+			    window->priv->toolbar,
+			    FALSE,
+			    FALSE,
+			    0);
+
+	set_toolbar_style (window, NULL);
+
+	/* add the custom Open button to the toolbar */
+	open_button = gtk_menu_tool_button_new_from_stock (GTK_STOCK_OPEN);
+	gtk_tool_item_set_homogeneous (open_button, TRUE);
+
+	// TODO set the recent menu
+	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (open_button), NULL);
+
+	// CHECK: not very nice the way we access the tooltops object
+	// but I can't see a better way and I don't want a differen GtkTooltip
+	// just for this tool button.
+	gtk_tool_item_set_tooltip (open_button,
+				   GTK_TOOLBAR (window->priv->toolbar)->tooltips,
+				   _("Open a file"),
+				   NULL);
+	gtk_menu_tool_button_set_arrow_tooltip (GTK_MENU_TOOL_BUTTON (open_button),
+						GTK_TOOLBAR (window->priv->toolbar)->tooltips,
+						_("Open a recently used file"),
+						NULL);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FileOpen");
+	g_object_set (action,
+		      "is_important", TRUE,
+		      "short_label", _("Open"),
+		      NULL);
+	gtk_action_connect_proxy (action, GTK_WIDGET (open_button));
+
+	gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), open_button, 1);
 }
 
 static void
