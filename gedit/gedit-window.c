@@ -353,6 +353,10 @@ documents_list_menu_activate (GtkToggleAction *action,
 	gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), n);
 }
 
+// FIXME does't work properly when detaching a tab, for instance if you have
+// 13 doc open and detach the 7th.
+// This function should handle this case just fine, so what has to be checked
+// is when and how the TAB_ADDED and TAB_REMOVED signals are emitted in that case
 static void
 documents_list_menu_update (GeditWindow *window)
 {
@@ -386,21 +390,23 @@ documents_list_menu_update (GeditWindow *window)
 	{
 		GtkWidget *tab;
 		GtkRadioAction *action;
-		gchar *tab_name; //CHECK: must escape underscores and gmarkup
 		gchar *action_name;
+		gchar *tab_name; //CHECK: must escape underscores and gmarkup
+		gchar *tip;	 // ditto as above
 		gchar *accel;
 
 		tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (p->notebook), i);
 
-		tab_name = _gedit_tab_get_name (GEDIT_TAB (tab));
 		action_name = g_strdup_printf ("Tab_%p", tab);
+		tab_name = _gedit_tab_get_name (GEDIT_TAB (tab));
+		tip =  g_strdup_printf (_("Activate %s"), tab_name);
 
 		/* alt + 1, 2, 3... 0 to switch to the first ten tabs */
 		accel = (i < 10) ? g_strdup_printf ("<alt>%d", (i + 1) % 10) : NULL;
 
 		action = gtk_radio_action_new (action_name,
 					       tab_name,
-					       _("Switch to this tab"), //FIXME "activate %s"
+					       tip,
 					       NULL,
 					       i);
 
@@ -431,8 +437,9 @@ documents_list_menu_update (GeditWindow *window)
 
 		g_object_unref (action);
 
-		g_free (tab_name);
 		g_free (action_name);
+		g_free (tab_name);
+		g_free (tip);
 		g_free (accel);
 	}
 
