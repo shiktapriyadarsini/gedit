@@ -54,6 +54,7 @@
 #include "gedit-panel.h"
 #include "gedit-recent.h"
 #include "gedit-documents-panel.h"
+#include "gedit-search-panel.h"
 
 #include "recent-files/egg-recent-model.h"
 #include "recent-files/egg-recent-view.h"
@@ -1460,6 +1461,7 @@ create_side_panel (GeditWindow *window)
 	GtkAction *action;
 	gboolean visible;
 	GtkWidget *documents_panel;
+	GtkWidget *search_panel;	
 	
 	window->priv->side_panel = gedit_panel_new ();
 
@@ -1486,6 +1488,9 @@ create_side_panel (GeditWindow *window)
 	documents_panel = gedit_documents_panel_new (window);
   	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), documents_panel, "Documents", GTK_STOCK_FILE);
 
+	search_panel = gedit_search_panel_new (window);
+	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), search_panel, "Search", GTK_STOCK_FIND);
+	
 	visible = gedit_prefs_manager_get_side_pane_visible ();
 	
 	action = gtk_action_group_get_action (window->priv->action_group,

@@ -38,7 +38,8 @@ NON_INST_H_FILS =			\
 	gedit-languages-manager.h	\
 	gedit-plugins-engine.h		\
 	gedit-ui.h			\
-	gedit-documents-panel.h
+	gedit-documents-panel.h		\
+	gedit-search-panel.h
 
 #	gedit-session.h
 
@@ -99,6 +100,7 @@ gedit_SOURCES = 			\
 	gedit-recent.c			\
 	gedit-app.c			\
 	gedit-documents-panel.c		\
+	gedit-search-panel.c		\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 

@@ -154,10 +154,13 @@ refresh_list (GeditDocumentsPanel *panel)
 	GList *l;
 	GtkWidget *nb;
 	GtkListStore *list_store;
+	GeditTab *active_tab;
 	
 	list_store = GTK_LIST_STORE (panel->priv->model);
 	
 	gtk_list_store_clear (list_store);
+	
+	active_tab = gedit_window_get_active_tab (panel->priv->window);
 	
 	nb = _gedit_window_get_notebook (panel->priv->window);
 	
@@ -184,6 +187,16 @@ refresh_list (GeditDocumentsPanel *panel)
 		
 		g_free (name);
 		g_object_unref (pixbuf);
+		
+		if (l->data == active_tab)
+		{
+			GtkTreeSelection *selection;
+					       
+			selection = gtk_tree_view_get_selection (
+					GTK_TREE_VIEW (panel->priv->treeview));
+			
+			gtk_tree_selection_select_iter (selection, &iter);
+		}
 		
 		l = g_list_next (l);
 	}
@@ -414,31 +427,63 @@ gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 	g_type_class_add_private (object_class, sizeof(GeditDocumentsPanelPrivate));
 }
 
-static void
-menu_position (GtkMenu  *menu,
-	       gint     *x,
-	       gint     *y,
-	       gboolean *push_in,
-	       gpointer  user_data)
+static GtkTreePath *
+get_current_path (GeditDocumentsPanel *panel)
 {
-	// FIXME: uses coordinates of the selected item
+	gint num;
+	GtkWidget *nb;
+	GtkTreePath *path;
 	
-	GtkWidget *w = GTK_WIDGET (user_data);
-	GtkRequisition requisition;
+	nb = _gedit_window_get_notebook (panel->priv->window);
+	num = gtk_notebook_get_current_page (GTK_NOTEBOOK (nb));
 
+	path = gtk_tree_path_new_from_indices (num, -1);
+	
+	return path;
+}
+
+static void
+menu_position (GtkMenu             *menu,
+	       gint                *x,
+	       gint                *y,
+	       gboolean            *push_in,
+	       GeditDocumentsPanel *panel)
+{
+	GtkTreePath *path;
+	GdkRectangle rect;
+	gint wx, wy;
+	GtkRequisition requisition;
+	GtkWidget *w;
+	
+	w = panel->priv->treeview;
+	
+	path = get_current_path (panel);
+
+	gtk_tree_view_get_cell_area (GTK_TREE_VIEW (w),
+				     path,
+				     NULL,
+				     &rect);
+
+	wx = rect.x;
+	wy = rect.y;
+	
 	gdk_window_get_origin (w->window, x, y);
+	
 	gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
 
 	if (gtk_widget_get_direction (w) == GTK_TEXT_DIR_RTL)
 	{
-		*x += w->allocation.x + w->allocation.width - requisition.width;
+		*x += w->allocation.x + w->allocation.width - requisition.width - 10;
 	}
 	else
 	{
-		*x += w->allocation.x;
+		*x += w->allocation.x + 10 ;
 	}
 
-	*y += w->allocation.y; /* + (w->allocation.height / 2); */
+	wy = MAX (*y + 5, *y + wy + 5);
+	wy = MIN (wy, *y + w->allocation.height - requisition.height - 5);
+	
+	*y = wy;
 
 	*push_in = TRUE;
 }
@@ -448,20 +493,11 @@ show_popup_menu (GeditDocumentsPanel *panel,
 		 GdkEventButton      *event)
 {
 	GtkWidget *menu;
-//	GtkAction *action;
 
 	menu = gtk_ui_manager_get_widget (_gedit_window_get_ui_manager (panel->priv->window),
 					 "/NotebookPopup");
 	g_return_val_if_fail (menu != NULL, FALSE);
 
-// CHECK do we need this?
-#if 0
-	/* allow extensions to sync when showing the popup */
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "NotebookPopupAction");
-	g_return_val_if_fail (action != NULL, FALSE);
-	gtk_action_activate (action);
-#endif
 	if (event != NULL)
 	{
 		gtk_menu_popup (GTK_MENU (menu), 
@@ -477,8 +513,8 @@ show_popup_menu (GeditDocumentsPanel *panel,
 		gtk_menu_popup (GTK_MENU (menu), 
 				NULL, 
 				NULL,
-				menu_position, 
-				panel->priv->treeview,
+				(GtkMenuPositionFunc) menu_position, 
+				panel,
 				0, 
 				gtk_get_current_event_time ());
 
@@ -489,18 +525,39 @@ show_popup_menu (GeditDocumentsPanel *panel,
 }
 
 static gboolean
-panel_button_press_event (GtkWidget           *treeview,
+panel_button_press_event (GtkTreeView         *treeview,
 			  GdkEventButton      *event,
 			  GeditDocumentsPanel *panel)
 {
 	if ((GDK_BUTTON_PRESS == event->type) && (3 == event->button))
 	{
-		g_print ("pippo\n");
-		return show_popup_menu (panel, event);
+		GtkTreePath* path = NULL;
+		
+		if (event->window == gtk_tree_view_get_bin_window (treeview))
+		{
+			/* Change the cursor position */
+			if (gtk_tree_view_get_path_at_pos (treeview,
+							   event->x,
+							   event->y,
+							   &path,
+							   NULL,
+							   NULL,
+							   NULL))
+			{				
+			
+				gtk_tree_view_set_cursor (treeview,
+							  path,
+							  NULL,
+							  FALSE);
+					
+				gtk_tree_path_free (path);
+							   
+				/* A row exists at mouse position */
+				return show_popup_menu (panel, event);
+			}
+		}
 	}
 	
-	g_print ("pippo noooo\n");
-
 	return FALSE;
 }
 
