@@ -96,6 +96,15 @@ gedit_window_destroy (GtkObject *object)
 	GeditWindow *window;
 	
 	window = GEDIT_WINDOW (object);
+
+	if (gedit_prefs_manager_window_height_can_set ())
+		gedit_prefs_manager_set_window_height (window->priv->height);
+
+	if (gedit_prefs_manager_window_width_can_set ())
+		gedit_prefs_manager_set_window_width (window->priv->width);
+
+	if (gedit_prefs_manager_window_state_can_set ())
+		gedit_prefs_manager_set_window_state (window->priv->state);
 	
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
 }
