@@ -55,7 +55,6 @@ static void gedit_prefs_manager_editor_colors_changed 	(GConfClient *client,
 			   				 GConfEntry  *entry,
 			   				 gpointer     user_data);
 
-
 static void gedit_prefs_manager_tabs_size_changed 	(GConfClient *client,
 						       	 guint        cnxn_id, 
 						       	 GConfEntry  *entry, 
@@ -65,25 +64,26 @@ static void gedit_prefs_manager_wrap_mode_changed 	(GConfClient *client,
 							 guint        cnxn_id, 
 							 GConfEntry  *entry, 
 							 gpointer     user_data);
-								 
-static void 		gedit_prefs_manager_line_numbers_changed (GConfClient *client,
-								  guint cnxn_id, 
-								  GConfEntry *entry, 
-								  gpointer user_data);
-								  
-#if 0		
-static void 		gedit_prefs_manager_auto_indent_changed (GConfClient *client,
-								 guint cnxn_id, 
-								 GConfEntry *entry, 
-								 gpointer user_data);
-static void 		gedit_prefs_manager_undo_changed (GConfClient *client,
-							  guint cnxn_id, 
-							  GConfEntry *entry, 
-							  gpointer user_data);
-static void 		gedit_prefs_manager_right_margin_changed (GConfClient *client,
-								  guint cnxn_id, 
-								  GConfEntry *entry, 
-								  gpointer user_data);
+
+static void gedit_prefs_manager_line_numbers_changed 	(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+
+static void gedit_prefs_manager_auto_indent_changed 	(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+
+static void gedit_prefs_manager_undo_changed 		(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+#if 0							 
+static void gedit_prefs_manager_right_margin_changed 	(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
 #endif								  
 static void gedit_prefs_manager_hl_current_line_changed	(GConfClient *client,
 							 guint        cnxn_id, 
@@ -95,18 +95,20 @@ static void gedit_prefs_manager_bracket_matching_changed(GConfClient *client,
 							 GConfEntry  *entry, 
 							 gpointer     user_data);
 #if 0		
-static void 		gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
-								      guint cnxn_id, 
-								      GConfEntry *entry, 
-								      gpointer user_data);
-static void 		gedit_prefs_manager_max_recents_changed (GConfClient *client,
-								 guint cnxn_id, 
-								 GConfEntry *entry, 
-								 gpointer user_data);
-static void		gedit_prefs_manager_auto_save_changed (GConfClient *client,
-							       guint cnxn_id,
-							       GConfEntry *entry,
-							       gpointer user_data);
+static void gedit_prefs_manager_syntax_hl_enable_changed(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+							 
+static void gedit_prefs_manager_max_recents_changed 	(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+							 
+static void gedit_prefs_manager_auto_save_changed	(GConfClient *client,
+							 guint        cnxn_id,
+							 GConfEntry  *entry,
+							 gpointer     user_data);
 #endif							       
 static gint window_state = -1;
 static gint window_height = -1;
@@ -154,7 +156,7 @@ gedit_prefs_manager_app_init (void)
 				GPM_LINE_NUMBERS_DIR,
 				gedit_prefs_manager_line_numbers_changed,
 				NULL, NULL, NULL);
-#if 0
+
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_AUTO_INDENT_DIR,
 				gedit_prefs_manager_auto_indent_changed,
@@ -164,7 +166,7 @@ gedit_prefs_manager_app_init (void)
 				GPM_UNDO_DIR,
 				gedit_prefs_manager_undo_changed,
 				NULL, NULL, NULL);
-
+#if 0
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_RIGHT_MARGIN_DIR,
 				gedit_prefs_manager_right_margin_changed,
@@ -744,11 +746,12 @@ gedit_prefs_manager_bracket_matching_changed (GConfClient *client,
 	}
 }
 
-#if 0
 
 static void 
 gedit_prefs_manager_auto_indent_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+					 guint        cnxn_id, 
+					 GConfEntry  *entry, 
+					 gpointer     user_data)
 {
 	gedit_debug (DEBUG_PREFS, "");
 
@@ -759,38 +762,36 @@ gedit_prefs_manager_auto_indent_changed (GConfClient *client,
 	{
 		gboolean enable;
 			
-		GList *children;
+		GList *views;
+		GList *list;
 		
 		if (entry->value->type == GCONF_VALUE_BOOL)
 			enable = gconf_value_get_bool (entry->value);	
 		else
 			enable = GPM_DEFAULT_AUTO_INDENT;
 	
-		children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
+		views = gedit_app_get_views (gedit_app_get_default ());
+		list = views;
 
-		while (children != NULL)
-		{
-			GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
-
-			while (views != NULL)
-			{
-				GeditView *v =	GEDIT_VIEW (views->data);
+		while (views != NULL)
+		{		
+			gtk_source_view_set_auto_indent (
+					GTK_SOURCE_VIEW (views->data), 
+					enable);
 			
-				gedit_view_set_auto_indent (v, enable);
-			
-				views = views->next;
-			}
-		
-			children = children->next;
+			views = g_list_next (views);
 		}
+		
+		g_list_free (list);
 	}
 }
 
 static void 
 gedit_prefs_manager_undo_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+				  guint        cnxn_id, 
+				  GConfEntry  *entry, 
+				  gpointer     user_data)
 {
-
 	gedit_debug (DEBUG_PREFS, "");
 
 	g_return_if_fail (entry->key != NULL);
@@ -809,13 +810,14 @@ gedit_prefs_manager_undo_changed (GConfClient *client,
 	
 		ul = CLAMP (ul, -1, 250);
 
-		docs = gedit_get_open_documents ();
+		docs = gedit_app_get_documents (gedit_app_get_default ());
 		l = docs;
+		
 		while (l != NULL)
 		{
-			GeditDocument *d = GEDIT_DOCUMENT (l->data);
-
-			gedit_document_set_max_undo_levels (d, ul);
+			gtk_source_buffer_set_max_undo_levels (
+					GTK_SOURCE_BUFFER (l->data), 
+					ul);
 		
 			l = g_list_next (l);
 		}
@@ -823,6 +825,9 @@ gedit_prefs_manager_undo_changed (GConfClient *client,
 		g_list_free (docs);
 	}
 }
+
+#if 0
+
 
 static void 
 gedit_prefs_manager_right_margin_changed (GConfClient *client,
