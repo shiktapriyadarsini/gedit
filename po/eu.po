@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2001 Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Josu Waliño <josu@elhuyar.com>, 2002
 #
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr "Testu-editorea"
 
 #: gedit.desktop.in.h:2
 msgid "gedit"
-msgstr "gedit:"
+msgstr "gedit"
 
 #: plugins/ASCII/ascii.c:268 plugins/ASCII/ascii.c:269
 msgid "ASCII table"
@@ -76,7 +76,7 @@ msgstr "Web arakatzailearen plugin-a"
 #: plugins/browse/browse.glade.h:1 plugins/diff/diff.glade.h:1
 #: plugins/email/email.glade.h:1
 msgid " _Change... "
-msgstr "_Aldatu..."
+msgstr " _Aldatu... "
 
 #: plugins/browse/browse.glade.h:2
 msgid "Enter the _URL to browse for:"
@@ -105,15 +105,15 @@ msgstr "Zenbaki-bihurgailua"
 
 #: plugins/convert/convert.glade.h:1
 msgid " Decimal to _Hex "
-msgstr "Hamartarra _hamaseitar  "
+msgstr " Hamartarra _hamaseitar "
 
 #: plugins/convert/convert.glade.h:2
 msgid " Decimal to _Octal "
-msgstr "Hamartarra _zortzitar "
+msgstr " Hamartarra _zortzitar "
 
 #: plugins/convert/convert.glade.h:3
 msgid " Hex to Decima_l "
-msgstr "Hamaseitarra h_amartar "
+msgstr " Hamaseitarra h_amartar "
 
 #: plugins/convert/convert.glade.h:4
 msgid "_Converted value:"
@@ -185,7 +185,7 @@ msgstr "Diff"
 
 #: plugins/diff/diff.c:497
 msgid "Makes a diff file from two documents or files"
-msgstr "Bi dokumentu edo fitxategietatik diff fitxategia sortzen du "
+msgstr "Bi dokumentu edo fitxategietatik diff fitxategia sortzen du"
 
 #: plugins/diff/diff.c:498
 msgid ""
@@ -257,8 +257,8 @@ msgid ""
 "This plugin displays a pop-up dialog which contains basic information on "
 "current document."
 msgstr ""
-"Plugin honek uneko dokumentuari buruzko oinarrizko informazioa "
-"duenelkarrizketa-koadroa bistaratzen du."
+"Plugin honek uneko dokumentuari buruzko oinarrizko informazioa duen "
+"elkarrizketa-koadroa bistaratzen du."
 
 #: plugins/docinfo/docinfo.glade.h:1
 msgid "0"
@@ -321,7 +321,7 @@ msgstr "Posta elektronikoa"
 
 #: plugins/email/email.c:276
 msgid "Email the current document"
-msgstr "Uneko dokumentua posta elektronikoz bidali "
+msgstr "Uneko dokumentua posta elektronikoz bidali"
 
 #: plugins/email/email.c:277
 msgid ""
@@ -444,7 +444,7 @@ msgstr "Ordenatu dokumentua."
 
 #: plugins/sort/sort.c:194
 msgid "Sort a document or selected text."
-msgstr "Ordenatu dokumentua edo hautatutako testua. "
+msgstr "Ordenatu dokumentua edo hautatutako testua."
 
 #: plugins/sort/sort.glade.h:1
 msgid "1"
@@ -672,7 +672,7 @@ msgstr "Konfiguratu egoera-barra _sistemako ezarpenen arabera"
 
 #: src/dialogs/prefs.glade.h:29
 msgid "Set toolbar to _icons only"
-msgstr "Konfiguratu tresna-barra _ikonoen arabera bakarrik "
+msgstr "Konfiguratu tresna-barra _ikonoen arabera bakarrik"
 
 #: src/dialogs/prefs.glade.h:30
 msgid "Set toolbar to icons with _text"
@@ -801,7 +801,7 @@ msgid "%s %d*"
 msgstr "%s %d*"
 
 #: src/document.c:477
-#, fuzzy, c-format
+#, c-format
 msgid "``%s'' has been modified.  Do you want to save the changes?"
 msgstr "``%s'' aldatu egin da. Aldaketak gorde nahi dituzu?"
 
@@ -853,7 +853,7 @@ msgstr ""
 "\n"
 "%s\n"
 "\n"
-"Ziurtatu fitxategia irekitzeko baimenak badituzula."
+"Ziurtatu fitxategia irekitzeko baimenak badituzula. "
 
 #: src/file.c:277
 #, c-format
@@ -986,7 +986,7 @@ msgid "You can't revert an Untitled document\n"
 msgstr "Ezin duzu dokumentu izengabe bat itzuli\n"
 
 #: src/file.c:1200
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to revert all changes?\n"
 "(%s)"
@@ -1290,11 +1290,11 @@ msgstr "Errorea, plugin-ak ez du init_plugin funtziorik."
 
 #: src/plugin.c:345
 msgid "Error, init_plugin returned an error"
-msgstr "Errorea, init_plugin-ak errorea itzuli du "
+msgstr "Errorea, init_plugin-ak errorea itzuli du"
 
 #: src/plugin.c:392
 msgid "Error, plugin is still in use"
-msgstr "Errorea, plugin-a oraindik erabiltzen ari da "
+msgstr "Errorea, plugin-a oraindik erabiltzen ari da"
 
 #: src/prefs.c:42
 msgid "-adobe-courier-medium-r-normal-*-*-120-*-*-m-*-iso8859-1"
@@ -1358,7 +1358,7 @@ msgid ""
 "search dialog."
 msgstr ""
 "Ezin dira lerroak kontatu, beste bilaketa-eragiketa bat aktibaturik badago,"
-"itxi bilaketaren elkarrizketa."
+" itxi bilaketaren elkarrizketa."
 
 #: src/search.c:410
 #, c-format
