@@ -329,7 +329,7 @@ msgstr ""
 
 #: plugins/ASCII/ascii.c:43
 msgid "_ASCII Table"
-msgstr ""
+msgstr "የ_ASCII ሠንጠረዥ"
 
 #: plugins/ASCII/ascii.c:46
 msgid "Pop-up a dialog containing an ASCII Table"
@@ -1248,7 +1248,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:61
 msgid "action(s)"
-msgstr "እንቅስቃሴ(ዎች)"
+msgstr "ትግባር(ኦች)"
 
 #: src/dialogs/gedit-preferences.glade2.h:62
 msgid "minutes"
@@ -1272,7 +1272,7 @@ msgstr ""
 
 #: src/dialogs/gnome-print-font-dialog.c:243
 msgid "Font Selection"
-msgstr "የፊደል ቅርጽ ተመረጠው"
+msgstr "የፊደል ቅርጽ ምርጫ"
 
 #: src/dialogs/gnome-print-font-picker.c:89
 msgid "sans 12"
@@ -1749,7 +1749,7 @@ msgstr "አዲስ ሰነድ ፍጠር"
 
 #: src/gedit-ui.xml.h:14
 msgid "Cu_t"
-msgstr "_ቁረጥ"
+msgstr "ቁረጥ (_t)"
 
 #: src/gedit-ui.xml.h:15
 msgid "Customize"
@@ -1789,7 +1789,7 @@ msgstr "እንደገና ፈልግ"
 
 #: src/gedit-ui.xml.h:25
 msgid "Find Ne_xt"
-msgstr "_የሚቀጥለዉን ፈልግ"
+msgstr "የሚቀጥለዉን ፈልግ (_x)"
 
 #: src/gedit-ui.xml.h:26
 msgid "Go to a specific line number"
@@ -1797,11 +1797,11 @@ msgstr "የተጠቀሰው የመስመር ቁጥር ጋር ሂድ"
 
 #: src/gedit-ui.xml.h:27
 msgid "Goto _Line"
-msgstr "ወደ _መስመር ሂድ"
+msgstr "ወደ መስመር ሂድ (_L)"
 
 #: src/gedit-ui.xml.h:28
 msgid "Icon and _Text"
-msgstr " _ምልክት እና ጽሑፍ"
+msgstr "ምልክት እና ጽሑፍ (_T)"
 
 #: src/gedit-ui.xml.h:29
 msgid "Main toolbar"
@@ -1849,7 +1849,7 @@ msgstr "ክሊፕቦርዱን ለጥፍ"
 
 #: src/gedit-ui.xml.h:40
 msgid "Pr_eferences..."
-msgstr "_ምርጫዎች..."
+msgstr "ምርጫዎች... (_e)"
 
 #: src/gedit-ui.xml.h:43
 msgid "Print Previe_w"
@@ -1881,7 +1881,7 @@ msgstr "ከፕሮግራሙ ውጣ"
 
 #: src/gedit-ui.xml.h:50
 msgid "Recent _Files"
-msgstr "የቅርብ ጊዜ _ፋይሎች"
+msgstr "የቅርብ ጊዜ ፋይሎች (_F)"
 
 #: src/gedit-ui.xml.h:51
 msgid "Redo"
@@ -1905,7 +1905,7 @@ msgstr "መጀመሪያ ተቀምጦ ወደ ነበረው የፋይሉ ቅጂ መ
 
 #: src/gedit-ui.xml.h:57
 msgid "Sa_ve All"
-msgstr "_ሁሉንም አስቀምጥ"
+msgstr "_ሁሉንም አስቀምጥ (_v)"
 
 #: src/gedit-ui.xml.h:59
 msgid "Save All"
@@ -1917,7 +1917,7 @@ msgstr "በሌላ ስም አስቀምጥ"
 
 #: src/gedit-ui.xml.h:61
 msgid "Save _As..."
-msgstr "_በሌላ ስም አስቀምጥ..."
+msgstr "_በሌላ ስም አስቀምጥ... (_A)"
 
 #: src/gedit-ui.xml.h:62
 msgid "Save all open files"
@@ -1945,7 +1945,7 @@ msgstr "ሁሉንም ምረጥ"
 
 #: src/gedit-ui.xml.h:68
 msgid "Select _All"
-msgstr "ሁሉንም ምረጥ"
+msgstr "ሁሉንም ምረጥ (_A)"
 
 #: src/gedit-ui.xml.h:69
 msgid "Select the entire document"
