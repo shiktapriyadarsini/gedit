@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.5.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-03-05 04:20-0200\n"
+"POT-Creation-Date: 2003-07-05 11:28+0200\n"
+"PO-Revision-Date: 2003-07-05 15:10-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>, Debian-"
 "BR <debian-l10n-portuguese@lists.debian.org>\n"
@@ -2461,9 +2461,8 @@ msgid "Show _Overwrite Mode"
 msgstr "Mostrar Modo de _Sobrescrita"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Mostrar apenas ícones na barra de ferramentas"
+msgstr "Mostrar ícones e legenda na barra de ferramentas"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2474,9 +2473,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Mostrar o modo de sobrescrita na barra de status"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Mostrar apenas ícones na barra de ferramentas"
+msgstr "Mostrar legenda priorizada com os ícones na barra de ferramentas"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
