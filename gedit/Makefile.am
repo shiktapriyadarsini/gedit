@@ -1,6 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# SUBDIRS= dialogs recent-files
-SUBDIRS= dialogs
+SUBDIRS= dialogs recent-files
 
 bin_PROGRAMS = gedit
 
@@ -24,13 +23,12 @@ gedit_LDFLAGS = -export-dynamic
 gedit_LDADD =				\
 	$(GEDIT_LIBS)			\
 	libgedit.la			\
-	dialogs/libdialogs.la
-#	recent-files/librecent.la
+	dialogs/libdialogs.la		\
+	recent-files/librecent.la
 
 BUILT_SOURCES = 			\
 	gedit-marshal.c			\
 	gedit-marshal.h              
-
 
 NON_INST_H_FILS =			\
 	gedit-commands.h		\
@@ -97,6 +95,7 @@ gedit_SOURCES = 			\
 	gedit-languages-manager.c	\
 	gedit-plugins-engine.c		\
 	gedit-print.c			\
+	gedit-recent.c			\
 	gedit-app.c			\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
@@ -109,7 +108,6 @@ gedit_SOURCES = 			\
 #	gedit-file-selector-util.c 	\
 #	gedit-io-error-dialogs.c	\
 #	gedit-plugin.c			\
-#	gedit-recent.c			\
 #	gedit-output-window.c		\
 #	gedit-encodings-option-menu.c
 

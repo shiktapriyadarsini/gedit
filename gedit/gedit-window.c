@@ -40,7 +40,7 @@
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksourcelanguage.h>
 #include <gtksourceview/gtksourcelanguagesmanager.h>
- 
+
 #include "gedit-ui.h"
 #include "gedit-window.h"
 #include "gedit-app.h"
@@ -52,6 +52,12 @@
 #include "gedit-languages-manager.h"
 #include "gedit-prefs-manager-app.h"
 #include "gedit-panel.h"
+#include "gedit-recent.h"
+
+#include "recent-files/egg-recent-model.h"
+#include "recent-files/egg-recent-view.h"
+#include "recent-files/egg-recent-view-gtk.h"
+#include "recent-files/egg-recent-view-uimanager.h"
 
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
 
@@ -77,6 +83,7 @@ struct _GeditWindowPrivate
 	GtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
 	GtkWidget      *toolbar;
+	GtkWidget      *toolbar_recent_menu;
 	GeditToolbarSetting toolbar_style;
 
 	GeditTab       *active_tab;
@@ -439,6 +446,76 @@ create_languages_menu (GeditWindow *window)
 }
 
 static void
+recent_tooltip_func_gtk (GtkTooltips   *tooltips,
+			 GtkWidget     *menu,
+			 EggRecentItem *item,
+			 gpointer       user_data)
+{
+	gchar *tip;
+	gchar *uri_for_display;
+
+	uri_for_display = egg_recent_item_get_uri_for_display (item);
+	g_return_if_fail (uri_for_display != NULL);
+
+	/* Translators: %s is a URI */
+	tip = g_strdup_printf (_("Open '%s'"), uri_for_display);
+
+	g_free (uri_for_display);
+
+	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (menu), tip, NULL);
+
+	g_free (tip);
+}
+
+static char *
+recent_tooltip_func_uim (EggRecentItem *item,
+			 gpointer       user_data)
+{
+	gchar *tip;
+	gchar *uri_for_display;
+
+	uri_for_display = egg_recent_item_get_uri_for_display (item);
+	g_return_val_if_fail (uri_for_display != NULL, NULL);
+
+	/* Translators: %s is a URI */
+	tip = g_strdup_printf (_("Open '%s'"), uri_for_display);
+
+	g_free (uri_for_display);
+
+	return tip;
+}
+
+static void
+build_recent_tool_menu (GtkMenuToolButton *button,
+			GeditWindow       *window)
+{
+	EggRecentViewGtk *view;
+	EggRecentModel *model;
+
+	model = gedit_recent_get_model ();
+	view = egg_recent_view_gtk_new (window->priv->toolbar_recent_menu,
+					NULL);
+
+	egg_recent_view_gtk_show_icons (view, TRUE);
+	egg_recent_view_gtk_show_numbers (view, FALSE);
+	egg_recent_view_gtk_set_tooltip_func (view, recent_tooltip_func_gtk, NULL);
+
+	egg_recent_view_set_model (EGG_RECENT_VIEW (view), model);
+
+//	g_signal_connect (view, "activate",
+//			  G_CALLBACK (gedit_file_open_recent), NULL);
+
+	gtk_widget_show (window->priv->toolbar_recent_menu);
+
+	/* this callback must run just once for lazy initialization:
+	 * we can now disconnect it
+	 */
+	g_signal_handlers_disconnect_by_func (button,
+					      G_CALLBACK (build_recent_tool_menu),
+					      window);
+}
+
+static void
 set_non_homogeneus (GtkWidget *widget, gpointer data)
 {
 	gtk_tool_item_set_homogeneous (GTK_TOOL_ITEM (widget), FALSE);
@@ -452,6 +529,8 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	GtkAction *action;
 	GtkUIManager *manager;
 	GtkWidget *menubar;
+	EggRecentModel *recent_model;
+	EggRecentViewUIManager *recent_view;
 	GtkToolItem *open_button;
 	GError *error = NULL;
 
@@ -504,14 +583,26 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	action = gtk_action_group_get_action (action_group, "EditUndo");
 	g_object_set (action, "is_important", TRUE, NULL);
 
-	/* the menu of languages */
+	/* recent files menu */
+	recent_model = gedit_recent_get_model ();
+	recent_view = egg_recent_view_uimanager_new (manager,
+						     "/MenuBar/FileMenu/FileRecentsPlaceholder",
+						     NULL, // TODO
+						     window);
+	egg_recent_view_uimanager_show_icons (recent_view, FALSE);
+	egg_recent_view_uimanager_set_tooltip_func (recent_view,
+						    recent_tooltip_func_uim,
+						    window);
+	egg_recent_view_set_model (EGG_RECENT_VIEW (recent_view), recent_model);
+
+	/* languages menu */
 	action_group = gtk_action_group_new ("LanguagesActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->languages_action_group = action_group;
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
 	create_languages_menu (window);
 
-	/* the menu with the list of open documents */
+	/* list of open documents menu */
 	action_group = gtk_action_group_new ("DocumentsListActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->documents_list_action_group = action_group;
@@ -529,10 +620,14 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 
 	/* add the custom Open button to the toolbar */
 	open_button = gtk_menu_tool_button_new_from_stock (GTK_STOCK_OPEN);
-	gtk_tool_item_set_homogeneous (open_button, TRUE);
+//	gtk_tool_item_set_homogeneous (open_button, TRUE);
 
-	// TODO set the recent menu
-	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (open_button), NULL);
+	/* the popup menu is actually built the first time it's showed */
+	window->priv->toolbar_recent_menu = gtk_menu_new ();
+	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (open_button),
+				       window->priv->toolbar_recent_menu);
+	g_signal_connect (open_button, "show-menu",
+			  G_CALLBACK (build_recent_tool_menu), window);
 
 	// CHECK: not very nice the way we access the tooltops object
 	// but I can't see a better way and I don't want a differen GtkTooltip
@@ -561,7 +656,6 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_container_foreach (GTK_CONTAINER (window->priv->toolbar),
 			       (GtkCallback)set_non_homogeneus,
 			       NULL);
-						
 }
 
 static void

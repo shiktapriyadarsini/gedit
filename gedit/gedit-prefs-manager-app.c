@@ -101,12 +101,12 @@ static void gedit_prefs_manager_syntax_hl_enable_changed(GConfClient *client,
 							 guint        cnxn_id, 
 							 GConfEntry  *entry, 
 							 gpointer     user_data);
-#if 0							 
+
 static void gedit_prefs_manager_max_recents_changed 	(GConfClient *client,
 							 guint        cnxn_id, 
 							 GConfEntry  *entry, 
 							 gpointer     user_data);
-							 
+#if 0							 
 static void gedit_prefs_manager_auto_save_changed	(GConfClient *client,
 							 guint        cnxn_id,
 							 GConfEntry  *entry,
@@ -190,12 +190,12 @@ gedit_prefs_manager_app_init (void)
 				GPM_SYNTAX_HL_ENABLE,
 				gedit_prefs_manager_syntax_hl_enable_changed,
 				NULL, NULL, NULL);
-#if 0
+
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_MAX_RECENTS,
 				gedit_prefs_manager_max_recents_changed,
 				NULL, NULL, NULL);
-
+#if 0
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_SAVE_DIR,
 				gedit_prefs_manager_auto_save_changed,
@@ -1002,10 +1002,11 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 	}
 }
 
-#if 0
 static void
 gedit_prefs_manager_max_recents_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+					 guint        cnxn_id,
+					 GConfEntry  *entry,
+					 gpointer     user_data)
 {
 	gedit_debug (DEBUG_PREFS, "");
 
@@ -1032,7 +1033,7 @@ gedit_prefs_manager_max_recents_changed (GConfClient *client,
 		egg_recent_model_set_limit (model, max);
 	}
 }
-
+#if 0
 static void
 gedit_prefs_manager_auto_save_changed (GConfClient *client,
 	guint cnxn_id, GConfEntry *entry, gpointer user_data)

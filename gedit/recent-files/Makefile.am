@@ -10,6 +10,7 @@ header_DATA =				\
         egg-recent-view.h		\
         egg-recent-view-bonobo.h	\
         egg-recent-view-gtk.h		\
+        egg-recent-view-uimanager.h	\
 	egg-recent-util.h
 
 EGG_FILES =				\
@@ -18,6 +19,7 @@ EGG_FILES =				\
         egg-recent-view.c		\
         egg-recent-view-bonobo.c	\
         egg-recent-view-gtk.c		\
+        egg-recent-view-uimanager.c	\
         egg-recent-util.c		\
 	$(header_DATA)
 
