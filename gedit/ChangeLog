@@ -1,5 +1,10 @@
 2004-06-25  Paolo Borelli  <pborelli@katamail.com>
 
+	* dialogs/replace.glade2: fix bug #143410.
+	Patch by <padraig.obriain@sun.com>
+
+2004-06-25  Paolo Borelli  <pborelli@katamail.com>
+
 	* gedit-encodings-option-menu.c: include config.h, patch from
 	Takao Fujiwara. Fixes 144525.
 
