@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # Sanlig Badral <badral@chinggis.com>, 2003
+# Sanlig Badral <badral@users.sf.net>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.gnome-2-2.mn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-05-07 10:33+0200\n"
-"Last-Translator: Sanlig Badral <badral@chinggis.com>\n"
-"Language-Team: Mongolian <openmn-gnome@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2003-06-20 03:27+0200\n"
+"PO-Revision-Date: 2003-06-20 18:30+0200\n"
+"Last-Translator: Sanlig Badral <badral@users.sf.net>\n"
+"Language-Team: Mongolian <openmn-kdemn@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -233,8 +234,7 @@ msgstr ""
 "үү."
 
 #: data/gedit.schemas.in.h:36
-msgid ""
-"Specifies the font to use for a document's body when printing documents."
+msgid "Specifies the font to use for a document's body when printing documents."
 msgstr "Баримтын эх биеийг хэвлэхэд хэрэглэгдэх бичгийг өгнө үү."
 
 #: data/gedit.schemas.in.h:37
@@ -379,8 +379,7 @@ msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "gedit хоосон тэмдэгт ТАВ-ын оронд хэрэглэх үү?"
 
 #: data/gedit.schemas.in.h:57
-msgid ""
-"Whether the status bar at the bottom of editing windows should be visible."
+msgid "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Боловсруулах мужийн цонхны доод хэсэг төлвийн самбарыг харуулах уу ?"
 
 #: data/gedit.schemas.in.h:58
@@ -841,8 +840,7 @@ msgstr "gedit: Shell-гаралтын plugin"
 msgid ""
 "Execute an external program and eventually grabs its output in the output "
 "window."
-msgstr ""
-"Тусгай программ ажиллуулах болон боломжит гаралтыг гаралтын цонхонд харуулах."
+msgstr "Тусгай программ ажиллуулах болон боломжит гаралтыг гаралтын цонхонд харуулах."
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:2
 msgid "Shell command"
@@ -1340,8 +1338,7 @@ msgstr "plugin-manager.glade2 олдсонгүй; Та gedit -г шинээр с
 
 #: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
-msgstr ""
-"Plugin менежерийн хүчингүй Glade-Файл  -- бүх үзэмж(widgets) олдсонгүй.\n"
+msgstr "Plugin менежерийн хүчингүй Glade-Файл  -- бүх үзэмж(widgets) олдсонгүй.\n"
 
 #: src/dialogs/gedit-plugin-program-location-dialog.c:78
 #: src/dialogs/program-location-dialog.glade2.h:2
@@ -1440,8 +1437,7 @@ msgstr "Ангилалууд"
 
 #: src/dialogs/gedit-preferences-dialog.c:839
 msgid "Push this button to select the font to be used by the editor"
-msgstr ""
-"Боловсруулагчийн хэрэглэх бичгийг сонгохдоо та энэ товчин дээр дарна уу"
+msgstr "Боловсруулагчийн хэрэглэх бичгийг сонгохдоо та энэ товчин дээр дарна уу"
 
 #: src/dialogs/gedit-preferences-dialog.c:842
 msgid "Push this button to configure text color"
@@ -1455,20 +1451,17 @@ msgstr "Дэвсгэрийн өнгө тохируулахдаа энэ товч
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
-msgstr ""
-"Сонгосон текстийн харагдах өнгийг тохируулахдаа энэ товчин дээр дарна уу"
+msgstr "Сонгосон текстийн харагдах өнгийг тохируулахдаа энэ товчин дээр дарна уу"
 
 #: src/dialogs/gedit-preferences-dialog.c:849
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
-msgstr ""
-"Сонгосон текстийн тэмдэглэгдсэн өнгийг тохируулахдаа энэ товчин дээр дарна уу"
+msgstr "Сонгосон текстийн тэмдэглэгдсэн өнгийг тохируулахдаа энэ товчин дээр дарна уу"
 
 #: src/dialogs/gedit-preferences-dialog.c:1863
 msgid "Push this button to select the font to be used to print the body"
-msgstr ""
-"Биеийг хэвлэхэд хэрэглэгдэх бичгийг тохируулахдаа та энэ товчин дээр дарна уу"
+msgstr "Биеийг хэвлэхэд хэрэглэгдэх бичгийг тохируулахдаа та энэ товчин дээр дарна уу"
 
 #: src/dialogs/gedit-preferences-dialog.c:1865
 msgid "Push this button to select the font to be used to print the headers"
@@ -2444,9 +2437,8 @@ msgid "Show _Overwrite Mode"
 msgstr "_Дарж бичих горим харуулах"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Зөвхөн дүрсүүдийг багаж самбарт харуулах"
+msgstr "Дүрс болон текстийг цуг багаж самбарт харуулах"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2457,9 +2449,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Дарж бичих горимыг төлвийн хүснэгтэд харуулах"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Зөвхөн дүрсүүдийг багаж самбарт харуулах"
+msgstr "Дүрсийн хоёр талаар эрэмбэт текст багаж самбарт харуулах"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
@@ -2611,10 +2602,8 @@ msgstr "»%s« файл нээгдсэнгүй, учир нь тэр гэмтс�
 
 #: src/gedit-utils.c:815
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because gedit cannot handle %s: locations."
-msgstr ""
-"»%s« файл нээгдсэнгүй , учир нь gedit %s:-байрлалыг боловсруулж чадахгүй."
+msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgstr "»%s« файл нээгдсэнгүй , учир нь gedit %s:-байрлалыг боловсруулж чадахгүй."
 
 #: src/gedit-utils.c:821
 #, c-format
@@ -2623,10 +2612,8 @@ msgstr "»%s« файл нээгдсэнгүй"
 
 #: src/gedit-utils.c:831
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because it contains data in an invalid format."
-msgstr ""
-"»%s« файл нээгдсэнгүй, учир нь тэр хүчингүй форматтай өгөгдөл агуулж байна."
+msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgstr "»%s« файл нээгдсэнгүй, учир нь тэр хүчингүй форматтай өгөгдөл агуулж байна."
 
 #: src/gedit-utils.c:838
 #, c-format
@@ -2771,13 +2758,11 @@ msgstr ""
 #: src/gedit-utils.c:1090
 #, c-format
 msgid "Could not revert the file \"%s\" because it contains corrupted data."
-msgstr ""
-"»%s« файлыг урвуулж чадсангүй учир нь тэр гэмтэлтэй өгөгдөл агуулж байна."
+msgstr "»%s« файлыг урвуулж чадсангүй учир нь тэр гэмтэлтэй өгөгдөл агуулж байна."
 
 #: src/gedit-utils.c:1101
 #, c-format
-msgid ""
-"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "»%s« файлыг урвуулж чадсангүй учир нь gedit %s:-байрлалыг боловсруулж "
 "чадахгүй."
@@ -2792,8 +2777,7 @@ msgstr "»%s« файлыг урвуулж чадсангүй."
 msgid ""
 "Could not revert the file \"%s\" because it contains data in an invalid "
 "format."
-msgstr ""
-"»%s« файлыг урвуулж чадсангүй учир нь тэр хүчингүй формат агуулсан байна."
+msgstr "»%s« файлыг урвуулж чадсангүй учир нь тэр хүчингүй формат агуулсан байна."
 
 #: src/gedit-utils.c:1124
 #, c-format
@@ -3232,3 +3216,4 @@ msgstr " (хүчингүй юникод)"
 
 #~ msgid "Icelandic"
 #~ msgstr "Исланд"
+
