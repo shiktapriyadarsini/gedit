@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.2.1\n"
+"Project-Id-Version: gedit 2.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 17:48+0100\n"
-"PO-Revision-Date: 2003-05-07 00:14+0200\n"
+"POT-Creation-Date: 2003-07-06 10:46+0200\n"
+"PO-Revision-Date: 2003-07-06 10:26+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -600,7 +600,7 @@ msgid ""
 msgstr ""
 "Impossible de comparer les documents sélectionnés.\n"
 "\n"
-"Le résultat contient des données UTF-8 invalides."
+"Le résultat contient des données UTF-8 non valides."
 
 #: plugins/diff/diff.glade2.h:1 plugins/shell_output/shell_output.glade2.h:1
 #: plugins/time/time.glade2.h:2 plugins/spell/spell-checker.glade2.h:1
@@ -700,8 +700,8 @@ msgid ""
 "For more info on <tt>diff</tt> program, type <tt>man diff</tt> in a shell "
 "prompt."
 msgstr ""
-"Le greffon de comparaison de fichier utilise le programme <tt>diff</tt> pour "
-"comparer deux documents ou fichiers à partir du disque.\n"
+"Le greffon de comparaison de fichiers utilise le programme <tt>diff</tt> "
+"pour comparer deux documents ou fichiers à partir du disque.\n"
 "\n"
 "Pour plus d'informations sur le programme <tt>diff</tt>, saisissez <tt>man "
 "diff</tt> à l'invite d'un shell."
@@ -1357,7 +1357,7 @@ msgstr "Charger"
 
 #: src/dialogs/gedit-plugin-manager.c:320
 msgid "Module file name"
-msgstr "Nom de fichier du module"
+msgstr "Nom du fichier du module"
 
 #: src/dialogs/gedit-plugin-manager.c:321
 msgid "Author(s)"
@@ -1371,8 +1371,8 @@ msgstr ""
 #: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
-"Fichier glade invalide pour le gestionnaire de greffons -- certains widgets "
-"sont introuvables.\n"
+"Fichier glade non valide pour le gestionnaire de greffons -- certains "
+"widgets sont introuvables.\n"
 
 #: src/dialogs/gedit-plugin-program-location-dialog.c:78
 #: src/dialogs/program-location-dialog.glade2.h:2
@@ -1591,7 +1591,7 @@ msgstr "Toujours utiliser le codage _UTF-8 (plus rapide)"
 
 #: src/dialogs/gedit-preferences.glade2.h:20
 msgid "Create a _backup copy of files before saving"
-msgstr "Créer une copie de sauvegarde des fichiers avant l'enregistrement"
+msgstr "Créer une copie de _sauvegarde des fichiers avant l'enregistrement"
 
 #: src/dialogs/gedit-preferences.glade2.h:21
 msgid "Do not _split words over two lines"
@@ -1603,7 +1603,7 @@ msgstr "_Police de l'éditeur : "
 
 #: src/dialogs/gedit-preferences.glade2.h:23
 msgid "Enable _auto indentation"
-msgstr "Activer l'auto-indentation"
+msgstr "Activer l'_auto-indentation"
 
 #: src/dialogs/gedit-preferences.glade2.h:24
 msgid "Enable text _wrapping"
@@ -1687,7 +1687,7 @@ msgstr "Spécifier la largeur des _tabulations à"
 
 #: src/dialogs/gedit-preferences.glade2.h:46
 msgid "Set limit on _undo actions to"
-msgstr "Spécifier la limite d'annulation d'action à"
+msgstr "Spécifier la limite d'_annulation d'action à"
 
 #: src/dialogs/gedit-preferences.glade2.h:48
 msgid "U_se default theme colors"
@@ -1695,7 +1695,7 @@ msgstr "Utili_ser les couleurs du thème par défaut"
 
 #: src/dialogs/gedit-preferences.glade2.h:49
 msgid "U_se original file encoding if possible"
-msgstr "Utiliser le codage du fichier original si possible"
+msgstr "Utili_ser le codage du fichier original si possible"
 
 #: src/dialogs/gedit-preferences.glade2.h:51
 msgid "Use cu_rrent locale's encoding if possible"
@@ -1723,7 +1723,7 @@ msgstr "_Corps : "
 
 #: src/dialogs/gedit-preferences.glade2.h:57
 msgid "_Display line numbers"
-msgstr "Afficher les numéros de ligne"
+msgstr "_Afficher les numéros de ligne"
 
 #: src/dialogs/gedit-preferences.glade2.h:58
 msgid "_Print page headers"
@@ -1892,7 +1892,7 @@ msgstr "Rechercher le suivant"
 
 #: src/dialogs/replace.glade2.h:3
 msgid "Match _entire word only"
-msgstr "Mots entiers seulement"
+msgstr "Mots _entiers seulement"
 
 #: src/dialogs/replace.glade2.h:5
 msgid "Replace All"
@@ -1952,11 +1952,11 @@ msgstr "SansTitre"
 
 #: src/gedit-document.c:543 src/gedit-document.c:590
 msgid "Invalid file name"
-msgstr "Nom de fichier invalide"
+msgstr "Nom de fichiers non valide"
 
 #: src/gedit-document.c:702 src/gedit-document.c:786
 msgid "Invalid UTF-8 data"
-msgstr "Donnée UTF-8 invalide"
+msgstr "Donnée UTF-8 non valide"
 
 #: src/gedit-document.c:1016
 #, c-format
@@ -1978,7 +1978,7 @@ msgstr "gedit ne peut pas gérer ce type d'emplacement en mode écriture."
 
 #: src/gedit-document.c:1138
 msgid "Invalid filename."
-msgstr "Nom de fichier invalide."
+msgstr "Nom de fichiers non valide."
 
 #: src/gedit-document.c:1278
 msgid ""
@@ -2004,7 +2004,7 @@ msgstr "Impossible de créer une copie de sauvegarde."
 
 #: src/gedit-document.c:1447
 msgid "It is not possible to revert an Untitled document"
-msgstr "Vous ne pouvez pas récupérer à un document SansTitre"
+msgstr "Vous ne pouvez pas récupérer un document SansTitre"
 
 #: src/gedit-file-selector-util.c:147
 #, c-format
@@ -2134,11 +2134,11 @@ msgstr "_Ne pas enregistrer"
 
 #: src/gedit-mdi.c:1044
 msgid "_Don't quit"
-msgstr "Ne pas quitter"
+msgstr "_Ne pas quitter"
 
 #: src/gedit-mdi.c:1048
 msgid "_Don't close"
-msgstr "Ne pas fermer"
+msgstr "_Ne pas fermer"
 
 #: src/gedit-mdi.c:1138
 msgid "(modified)"
@@ -2386,7 +2386,7 @@ msgstr "Préfér_ences"
 
 #: src/gedit-ui.xml.h:40
 msgid "Print Previe_w..."
-msgstr "Aperçu avant impression..."
+msgstr "_Aperçu avant impression..."
 
 #: src/gedit-ui.xml.h:41
 msgid "Print Preview"
@@ -2466,7 +2466,7 @@ msgstr "Sélectionner tout"
 
 #: src/gedit-ui.xml.h:62
 msgid "Select _All"
-msgstr "Sélectionner tout"
+msgstr "Sélectionner _tout"
 
 #: src/gedit-ui.xml.h:63
 msgid "Select the entire document"
@@ -2491,9 +2491,8 @@ msgid "Show _Overwrite Mode"
 msgstr "Afficher le m_ode d'écrasement"
 
 #: src/gedit-ui.xml.h:68
-#, fuzzy
 msgid "Show both icons and texts in the toolbar"
-msgstr "Afficher les bulles d'aide dans la barre d'outils"
+msgstr "Afficher les icônes et le texte dans la barre d'outils"
 
 #: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
@@ -2504,9 +2503,8 @@ msgid "Show overwrite mode in the statusbar"
 msgstr "Afficher le mode d'écrasement dans la barre d'état"
 
 #: src/gedit-ui.xml.h:71
-#, fuzzy
 msgid "Show prioritized text beside icons in the toolbar"
-msgstr "Afficher les bulles d'aide dans la barre d'outils"
+msgstr "Afficher le texte à coté des icônes dans la barre d'outils"
 
 #: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
@@ -2542,7 +2540,7 @@ msgstr "_Déboguer"
 
 #: src/gedit-ui.xml.h:81
 msgid "_Delete"
-msgstr "Supprimer"
+msgstr "_Supprimer"
 
 #: src/gedit-ui.xml.h:82
 msgid "_Desktop Default"
@@ -2594,7 +2592,7 @@ msgstr "_Imprimer..."
 
 #: src/gedit-ui.xml.h:95
 msgid "_Priority Text beside Icons"
-msgstr "Texte de priorité à côté des icônes"
+msgstr "_Texte à côté des icônes"
 
 #: src/gedit-ui.xml.h:96
 msgid "_Quit"
@@ -2677,7 +2675,7 @@ msgid ""
 "Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 "Impossible d'ouvrir le fichier « %s » car il contient des données dans un "
-"format invalide."
+"format non valide."
 
 #: src/gedit-utils.c:838
 #, c-format
@@ -2753,9 +2751,10 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"Impossible d'ouvrir le fichier « %s » car le nom d'hôte est invalide.\n"
+"Impossible d'ouvrir le fichier « %s » car le nom d'hôte n'est pas valide.\n"
 "\n"
-"Veuillez vérifier que vous avez tapé l'emplacement correctement et réessayez."
+"Veuillez vérifier que vous avez correctement saisi l'emplacement et "
+"réessayez."
 
 #: src/gedit-utils.c:922
 #, c-format
@@ -2787,8 +2786,8 @@ msgid ""
 "\n"
 "Probably, you are trying to open a binary file."
 msgstr ""
-"Impossible d'ouvrir le fichier « %s » car il contient des données UTF-8 "
-"invalides.\n"
+"Impossible d'ouvrir le fichier « %s » car il contient des données UTF-8 non "
+"valides.\n"
 "\n"
 "Vous essayez probablement d'ouvrir un fichier binaire."
 
@@ -2851,7 +2850,7 @@ msgid ""
 "format."
 msgstr ""
 "Impossible de récupérer le fichier « %s » car il contient des données dans "
-"un format invalide."
+"un format non valide."
 
 #: src/gedit-utils.c:1124
 #, c-format
@@ -2922,7 +2921,7 @@ msgid ""
 "Probably, you are trying to revert a binary file."
 msgstr ""
 "Impossible de récupérer le fichier « %s » car il contient des données UTF-8 "
-"invalides.\n"
+"non valides.\n"
 "\n"
 "Vous essayez probablement de récupérer un fichier binaire."
 
@@ -2966,7 +2965,7 @@ msgid ""
 msgstr ""
 "Impossible de créer le fichier « %s ».\n"
 "\n"
-"Le nom de fichier est trop long."
+"Le nom du fichier est trop long."
 
 #: src/gedit-utils.c:1327
 #, c-format
@@ -2978,7 +2977,7 @@ msgid ""
 msgstr ""
 "Impossible de créer le fichier « %s ».\n"
 "\n"
-"Un composant du répertoire dans le nom de fichier n'existe pas ou est un "
+"Un composant du répertoire dans le nom du fichier n'existe pas ou est un "
 "lien symbolique miroitant."
 
 #: src/gedit-utils.c:1336
@@ -3055,15 +3054,15 @@ msgstr "Afficher les messages de débogage des recherches."
 
 #: src/gedit2.c:106
 msgid "Show undo debugging messages."
-msgstr "Afficher les messages de débogage des annulations"
+msgstr "Afficher les messages de débogage des annulations."
 
 #: src/gedit2.c:109
 msgid "Show view debugging messages."
-msgstr "Afficher les messages de débogage des visualisations"
+msgstr "Afficher les messages de débogage des visualisations."
 
 #: src/gedit2.c:112
 msgid "Show recent debugging messages."
-msgstr "Afficher les messages de débogage récents"
+msgstr "Afficher les messages de débogage récents."
 
 #: src/gedit2.c:115
 msgid "Show session management debugging messages."
@@ -3105,7 +3104,7 @@ msgstr "Lignes de sorties"
 
 #: src/dialogs/gedit-encodings-dialog.glade2.h:1
 msgid "Choose one or more e_ncodings:"
-msgstr "Choisir u_n ou plusieurs codages:"
+msgstr "Choisir u_n ou plusieurs codages :"
 
 #: src/gedit-encodings.c:128 src/gedit-encodings.c:154
 #: src/gedit-encodings.c:195 src/gedit-encodings.c:236
@@ -3219,7 +3218,7 @@ msgstr "Thaïlandais"
 
 #: src/recent-files/egg-recent-vfs-utils.c:90
 msgid " (invalid Unicode)"
-msgstr " (Unicode invalide)"
+msgstr " (Unicode non valide)"
 
 #~ msgid "Dump XML"
 #~ msgstr "Obtenir XML"
