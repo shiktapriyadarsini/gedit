@@ -47,6 +47,14 @@
       <menuitem name="SearchGoToLineMenu" action="SearchGoToLine"/>
     </menu>
 
+    <menu name="DocumentsMenu" action="Documents">
+      <menuitem action="FileSaveAll" />
+      <menuitem action="FileCloseAll" />
+      <separator name="DocumentSep1"/>       
+      <menuitem action="DocumentsMoveToNewWindow" />
+      <separator name="DocumentSep2" />               
+    </menu>
+    
     <menu name="HelpMenu" action="Help">
       <menuitem name="HelpContentsMenu" action="HelpContents"/>
       <menuitem name="HelpAboutMenu" action="HelpAbout"/>

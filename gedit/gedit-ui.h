@@ -99,7 +99,7 @@ static GtkActionEntry gedit_menu_entries[] =
 	  N_("Show or hide the toolbar in the current window"), NULL},
 	{ "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
 	  N_("Show or hide the statusbar in the current window"), NULL},
-	{ "ViewOutputWindow", NULL, N_("_OutputWindow"), "<control><alt>O",
+	{ "ViewOutputWindow", NULL, N_("_Output Window"), "<control><alt>O",
 	  N_("Show or hide the output window in the current window"), NULL},
 
 	/* Search menu */
@@ -114,6 +114,14 @@ static GtkActionEntry gedit_menu_entries[] =
 	{ "SearchGoToLine", GTK_STOCK_JUMP_TO, N_("Go to _Line..."), "<control>I",
 	  N_("Go to a specific line"), G_CALLBACK (gedit_cmd_search_goto_line) },
 
+	/* Documents menu */
+	{ "FileSaveAll", GTK_STOCK_SAVE, N_("_Save All"), "<shift><control>L",
+	  N_("Save all open files"), G_CALLBACK (gedit_cmd_file_save_all) },
+	{ "FileCloseAll", GTK_STOCK_CLOSE, N_("_Close All"), "<shift><control>W",
+	  N_("Close all open files"), G_CALLBACK (gedit_cmd_file_close_all) },
+	{ "DocumentsMoveToNewWindow", NULL, N_("_Move to New Window"), NULL,
+	  N_("Move the current document to a new window"), G_CALLBACK (gedit_cmd_documents_move_to_new_window) },
+	  
 	/* Help menu */
 	{"HelpContents", GTK_STOCK_HELP, N_("_Contents"), "F1",
 	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents) },
