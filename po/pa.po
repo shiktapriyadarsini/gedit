@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-03 11:18+0200\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2004-01-31 23:28+0530\n"
 "Last-Translator: Amanpreet Singh Alam <amanlinux@netscape.net>\n"
 "Language-Team: Punjabi <en@li.org>\n"
@@ -1204,17 +1204,17 @@ msgstr ""
 msgid "Could not create a backup file."
 msgstr " ਬੈਕਅਪ ਫਾਇਲ ਬਣ ਨਹੀ ਸਕੀ ਹੈ"
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr "ਆਪਣੇ·ਆਪ·ਕੀਤੀ ਖੋਜੀ "
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "ਮੌਜੂਦੀ ਲੋਕੇਲ (%s)"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr "ਜੋਡ਼ੋ ਜਾਂ ਹਟਾਉ...."
 
@@ -2737,7 +2737,6 @@ msgstr " ਕੰਮ ਕਾਜ ਵਾਲੀ ਡਾਇਕਰੈਕਟਰੀ"
 msgid "gedit: Shell Output plugin"
 msgstr "ਜੀਆਡਿਟ ਸੈਲ ਨਤੀਜਾ ਪਲਗਇਨ"
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "ਕ੍ਰਮ ਅਨੁਸਾਰ...."

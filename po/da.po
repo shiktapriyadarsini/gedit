@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.7.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-03 11:18+0200\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2004-02-24 19:50+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -1243,17 +1243,17 @@ msgstr ""
 msgid "Could not create a backup file."
 msgstr "Kunne ikke oprette en sikkerhedskopi."
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr "Automatisk gættet"
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Aktuel region (%s)"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr "Tilføj eller _fjern..."
 
@@ -2798,7 +2798,6 @@ msgstr "_Arbejdsmappe:"
 msgid "gedit: Shell Output plugin"
 msgstr "Terminaluddatamodul"
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "Sor_tér..."

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-03 11:18+0200\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2004-02-20 12:30+0000\n"
 "Last-Translator: Rhys Jones <rhys@sucs.org>\n"
 "Language-Team: Cymraeg <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -1304,17 +1304,17 @@ msgstr ""
 msgid "Could not create a backup file."
 msgstr "Ni allwyd creu ffeil wrth gefn."
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr "Canfodwyd yn Awtomatig"
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Locale Cyfredol (%s)"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr "Ychwannegu new _Dynnu..."
 
@@ -2914,7 +2914,6 @@ msgstr "Cyfeiriadur _gweithio:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: Ategyn Allbwn Cragen"
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "_Trefnu"

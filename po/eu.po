@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.99.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-03 11:18+0200\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2001-05-25 13:35+0200\n"
 "Last-Translator: Unmantained\n"
 "Language-Team: Euskara\n"
@@ -1231,17 +1231,17 @@ msgstr ""
 "gedit-ek ezin izan du temp fitxategia sortu.\n"
 "\n"
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr ""
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, fuzzy, c-format
 msgid "Current Locale (%s)"
 msgstr "Uneko lerroa"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr ""
 
@@ -2786,7 +2786,6 @@ msgstr "_Oraingo direktorioa:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: Shell irteeraren plugin-a"
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 #, fuzzy
 msgid "S_ort..."

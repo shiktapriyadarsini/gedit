@@ -1,4 +1,24 @@
 ============
+gedit 2.6.2
+============
+
+Fixes
+=====
+- Bug #143410 (problem with GOK and Find dialog) (padraig.obriain@sun.com)
+- Bug #144525 (include config.h) (Takao Fujiwara)
+- Update recent-files stuff (Frederic Crozat)
+
+New and updated translations
+============================
+
+- Evgeni Boevski (bg)
+- Jordi Mallach (ca)
+- Gurban Mühemmet Tewekgeli (tk)
+- Ahmad Riza H Nst (id)
+- Raphael Higino (pt_BR)
+
+
+============
 gedit 2.6.1
 ============
 

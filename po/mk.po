@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-03 11:18+0200\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2003-06-15 09:42+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <mk@li.org>\n"
@@ -1273,17 +1273,17 @@ msgstr ""
 msgid "Could not create a backup file."
 msgstr "Не можам да креирам сигурносна копија."
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr "Авто-детектирано"
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Моментално локале (%s)"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr "Додај или одстрани..."
 
@@ -2855,7 +2855,6 @@ msgstr "_Работен директориум:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: Shell излезен додаток"
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "П_одреди..."

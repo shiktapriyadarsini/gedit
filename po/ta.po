@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 1.99\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-03 11:18+0200\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2004-03-15 21:12-0600\n"
 "Last-Translator: Dinesh Nadarajah <dinesh_list@sbcglobal.net>\n"
 "Language-Team: Tamil <tamillinux-users@lists.sourceforge.net>\n"
@@ -1158,17 +1158,17 @@ msgstr ""
 msgid "Could not create a backup file."
 msgstr "கோப்பின் காப்பு-நகல் படைக்க முடியவில்லை."
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr "தன்னாக கண்டுபிடிக்கப்பட்டது"
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "தற்போதைய மொழி (%s)"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr "சேர்க்கவும் அல்லது கழட்டுக..."
 
@@ -2651,7 +2651,6 @@ msgstr "_பணியிடும்  அடைவு:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: முனைய வெளியீடு செருகி"
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "ஒழுங்குப_டுத்துக..."

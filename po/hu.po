@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-03 11:18+0200\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2004-04-14 16:08+0200\n"
 "Last-Translator: Laszlo Dvornik <dvornikl@mailbox.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
@@ -1246,17 +1246,17 @@ msgstr ""
 msgid "Could not create a backup file."
 msgstr "A biztonsági mentés létrehozása nem sikerült."
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr "Automatikus felismerés"
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "A jelenlegi locale (%s)"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr "Hozzáadás vagy _eltávolítás..."
 
@@ -2804,7 +2804,6 @@ msgstr "_Munkakönyvtár:"
 msgid "gedit: Shell Output plugin"
 msgstr "gedit: Héjkimenet bővítmény"
 
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "_Rendezés..."

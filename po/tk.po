@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-23 03:32+0100\n"
+"POT-Creation-Date: 2004-06-25 15:43+0200\n"
 "PO-Revision-Date: 2004-05-25 17:48+0330\n"
 "Last-Translator: Gurban Mühemmet Tewekgeli <gmtavakkoli@yahoo.com>\n"
 "Language-Team: Turkmen <kakilikgroup@yahoo.com>\n"
@@ -138,16 +138,16 @@ msgid ""
 "Foreground color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Edit meýdançasynda saýlanan metiniň öňplan renki. Bu eger \"Use Default Colors\" "
-"söndürilen bölsa eser goyar."
+"Edit meýdançasynda saýlanan metiniň öňplan renki. Bu eger \"Use Default "
+"Colors\" söndürilen bölsa eser goyar."
 
 #: data/gedit.schemas.in.h:19
 msgid ""
 "Foreground color for the unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Edit meýdançasynda saýlanmadyk metiniň öňplan renki. Bu eger \"Use Default Colors\" "
-"söndürilen bölsa eser goyar."
+"Edit meýdançasynda saýlanmadyk metiniň öňplan renki. Bu eger \"Use Default "
+"Colors\" söndürilen bölsa eser goyar."
 
 #: data/gedit.schemas.in.h:20
 msgid "Header Font for Printing"
@@ -159,8 +159,8 @@ msgid ""
 "document. Otherwise, gedit will print line numbers every such number of "
 "lines."
 msgstr ""
-"Eger bu mykdar 0 bolsa, çapda hat sanlary çaplanmar. Ýogsa gedit "
-"her hat üçin hat sany çaplar."
+"Eger bu mykdar 0 bolsa, çapda hat sanlary çaplanmar. Ýogsa gedit her hat "
+"üçin hat sany çaplar."
 
 #: data/gedit.schemas.in.h:22
 msgid "Insert spaces"
@@ -179,8 +179,8 @@ msgid ""
 "List of encodings shown in Character Coding menu in open/save file selector. "
 "Only recognized encodings are used."
 msgstr ""
-"Aç/gaýd et  saýlawçysynda görkezilen Karakter Ködlemeler. Diňe taniş"
-"kodlemeler ullanylar."
+"Aç/gaýd et  saýlawçysynda görkezilen Karakter Ködlemeler. Diňe "
+"tanişkodlemeler ullanylar."
 
 #: data/gedit.schemas.in.h:26
 msgid "Maximum Recent Files"
@@ -195,8 +195,8 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Auto Save\" option is turned on."
 msgstr ""
-"Gedit faýllary üýtgemekinden näçe minut soň otomatik gaýd etsin. "
-"Bu eger \"Auto Save\" işeldilen bölsa eser goyar."
+"Gedit faýllary üýtgemekinden näçe minut soň otomatik gaýd etsin. Bu eger "
+"\"Auto Save\" işeldilen bölsa eser goyar."
 
 #: data/gedit.schemas.in.h:29
 msgid "Print Header"
@@ -244,11 +244,11 @@ msgid ""
 "the values are case-sensitive, so make sure they appear exactly as mentioned "
 "here."
 msgstr ""
-"Çap üçin uzin hat lariň nähilli dolanşi. dolanmasyzlyk üçin "
-"\"GTK_WRAP_NONE\"'den, sözleriň söňinda dolamak üçin \"GTK_WRAP_WORD\"'den, "
-"we bellei harplariň söňinda dolamak üçin \"GTK_WRAP_CHAR\"'den ullanyň. "
-"Mykdarlar kiçi/beýik harpa eserdeň, onsoň harplary edil bu ýerde agzalan "
-"ýaly görünşine ytmynan tapiň."
+"Çap üçin uzin hat lariň nähilli dolanşi. dolanmasyzlyk üçin \"GTK_WRAP_NONE"
+"\"'den, sözleriň söňinda dolamak üçin \"GTK_WRAP_WORD\"'den, we bellei "
+"harplariň söňinda dolamak üçin \"GTK_WRAP_CHAR\"'den ullanyň. Mykdarlar kiçi/"
+"beýik harpa eserdeň, onsoň harplary edil bu ýerde agzalan ýaly görünşine "
+"ytmynan tapiň."
 
 #: data/gedit.schemas.in.h:38
 msgid ""
@@ -267,8 +267,7 @@ msgstr ""
 #: data/gedit.schemas.in.h:39
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
-msgstr ""
-"Sened çaplananda oniň beden üçin ullanyljak kalamy takyklaýar."
+msgstr "Sened çaplananda oniň beden üçin ullanyljak kalamy takyklaýar."
 
 #: data/gedit.schemas.in.h:40
 msgid ""
@@ -298,8 +297,7 @@ msgstr ""
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
-msgstr ""
-"Täb karakterleriň ýerine görközilmeli seleňleri takyklaýar."
+msgstr "Täb karakterleriň ýerine görközilmeli seleňleri takyklaýar."
 
 #: data/gedit.schemas.in.h:44
 msgid "Specifies the position of the right margin."
@@ -359,17 +357,16 @@ msgid ""
 "interval. You can set the time interval with the \"Auto Save Interval\" "
 "option."
 msgstr ""
-"Geditiň üýgetedik faýllary bir zamandan soň otomatik gaýd edişi. "
-"Siz zaman aralygyny \"Otomatik Gaýd etmegiň Aralygy\" seçgisi bilen "
-"düzip bilersiňiz."
+"Geditiň üýgetedik faýllary bir zamandan soň otomatik gaýd edişi. Siz zaman "
+"aralygyny \"Otomatik Gaýd etmegiň Aralygy\" seçgisi bilen düzip bilersiňiz."
 
 #: data/gedit.schemas.in.h:55
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Geditiň gaýd eden faýllary üçin zapas bejerşi. Siz zapas faýllarynyň "
-"??? \"Zapas Nusga ???\" seçgisi bilen düzip bilersiňiz."
+"Geditiň gaýd eden faýllary üçin zapas bejerşi. Siz zapas faýllarynyň ??? "
+"\"Zapas Nusga ???\" seçgisi bilen düzip bilersiňiz."
 
 #: data/gedit.schemas.in.h:56
 msgid "Whether gedit should display line numbers in the editing area."
@@ -402,8 +399,7 @@ msgstr "Geditiň sened aplananda syntaks ýagtylygny çaplaşi."
 #: data/gedit.schemas.in.h:63
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
-msgstr ""
-"Durum zolaky etitlenýän äpişge siniň astynda görkezilşi."
+msgstr "Durum zolaky etitlenýän äpişge siniň astynda görkezilşi."
 
 #: data/gedit.schemas.in.h:64
 msgid "Whether the toolbar should be visible in editing windows."
@@ -416,10 +412,10 @@ msgid ""
 "specified in the \"Background Color\", \"Text Color\", \"Selected Text Color"
 "\", and \"Selection Color\" options."
 msgstr ""
-"Edit meýdançasynda sistemiň ön bellenen renklerini ullanylşy. Eger bu "
-"seçgi söndürilen bolsa, onsoň edit meýdançasyniň renkleri "
-"\"Arkaplan Renki\", \"Metin Renki\", \"Saýlanan Metiniň Renki\", we "
-"\"Saýlaw Renki\" seçgileri bolar."
+"Edit meýdançasynda sistemiň ön bellenen renklerini ullanylşy. Eger bu seçgi "
+"söndürilen bolsa, onsoň edit meýdançasyniň renkleri \"Arkaplan Renki\", "
+"\"Metin Renki\", \"Saýlanan Metiniň Renki\", we \"Saýlaw Renki\" seçgileri "
+"bolar."
 
 #: data/gedit.schemas.in.h:66
 msgid ""
@@ -428,11 +424,10 @@ msgid ""
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
 "Editlenýan metin üçin sistemiň ön bellenen kalamlarny geditiň has "
-"kalamlarniň ýeryne ullanylşy. Eger bu seçgi söndürilen bolsa, onsoň "
-"sistem kalamlarnyň ýeryne \"Editçi Kalamy\" seçgisinde adlanan kalamdan "
-"ullan."
+"kalamlarniň ýeryne ullanylşy. Eger bu seçgi söndürilen bolsa, onsoň sistem "
+"kalamlarnyň ýeryne \"Editçi Kalamy\" seçgisinde adlanan kalamdan ullan."
 
-#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
+#: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2060
 #, c-format
 msgid "Activate %s"
 msgstr "%s'i janlaşdyr"
@@ -442,12 +437,13 @@ msgid ""
 "<span weight=\"bold\" size=\"larger\">You have X documents with unsaved "
 "changes. </span>"
 msgstr ""
-"<span weight=\"bold\" size=\"larger\"> Siziň X sani gaýd edilmedik "
-"senediňiz bar.</span>"
+"<span weight=\"bold\" size=\"larger\"> Siziň X sani gaýd edilmedik senediňiz "
+"bar.</span>"
+
 #: gedit/dialogs/close_all_dialog.glade2.h:2
 msgid "If you don't save your documents, all your changes will be lost."
-msgstr "Eger siz senedlariňizi gaýd edilmedik bolsoňiz, siziň ehli "
-"işlriňiz ýiter."
+msgstr ""
+"Eger siz senedlariňizi gaýd edilmedik bolsoňiz, siziň ehli işlriňiz ýiter."
 
 #: gedit/dialogs/close_all_dialog.glade2.h:3
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:654
@@ -475,8 +471,7 @@ msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be definitively "
 "lost."
 msgstr[0] ""
-"Eger siz gaýd edilmedik bolsoňiz, soňky %ld sanýadaky işleriňiz ymykly "
-"ýiter."
+"Eger siz gaýd edilmedik bolsoňiz, soňky %ld sanýadaky işleriňiz ymykly ýiter."
 msgstr[1] ""
 "Eger siz gaýd edilmedik bolsoňiz, soňky %ld sanýalardaky işleriňiz ymykly "
 "ýiter."
@@ -496,11 +491,11 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "definitively lost."
 msgstr[0] ""
-"Eger siz gaýd edilmedik bolsoňiz, soňky minut we %ld sanýadaky "
-"işleriňiz ymykly ýiter."
+"Eger siz gaýd edilmedik bolsoňiz, soňky minut we %ld sanýadaky işleriňiz "
+"ymykly ýiter."
 msgstr[1] ""
-"Eger siz gaýd edilmedik bolsoňiz, soňky minut we %ld sanýalardaky "
-"işleriňiz ymykly ýiter."
+"Eger siz gaýd edilmedik bolsoňiz, soňky minut we %ld sanýalardaky işleriňiz "
+"ymykly ýiter."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:386
 #, c-format
@@ -511,8 +506,7 @@ msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be definitively "
 "lost."
 msgstr[0] ""
-"Eger siz gaýd edilmedik bolsoňiz, soňky %ld minutdaky işleriňiz ymykly "
-"ýiter."
+"Eger siz gaýd edilmedik bolsoňiz, soňky %ld minutdaky işleriňiz ymykly ýiter."
 msgstr[1] ""
 "Eger siz gaýd edilmedik bolsoňiz, soňky %ld minutlardaky işleriňiz ymykly "
 "ýiter."
@@ -521,8 +515,7 @@ msgstr[1] ""
 msgid ""
 "If you don't save, changes from the last hour will be definitively lost."
 msgstr ""
-"Eger siz gaýd edilmedik bolsoňiz, soňky %ld sagatdaky işleriňiz ymykly "
-"ýiter."
+"Eger siz gaýd edilmedik bolsoňiz, soňky %ld sagatdaky işleriňiz ymykly ýiter."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:407
 #, c-format
@@ -536,8 +529,8 @@ msgstr[0] ""
 "Eger siz gaýd edilmedik bolsoňiz, soňky sagat we %d minutdaky işleriňiz "
 "ymykly ýiter."
 msgstr[1] ""
-"Eger siz gaýd edilmedik bolsoňiz, soňky sagat we %d minutlardaky "
-"işleriňiz ymykly ýiter."
+"Eger siz gaýd edilmedik bolsoňiz, soňky sagat we %d minutlardaky işleriňiz "
+"ymykly ýiter."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:422
 #, c-format
@@ -578,7 +571,7 @@ msgid "_Go to Line"
 msgstr "_Hat'a Git"
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "\"%s\" metini tapilmady."
@@ -601,7 +594,7 @@ msgstr "E_wez Et"
 msgid "Find"
 msgstr "_Tap"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
+#: gedit/dialogs/gedit-dialog-replace.c:1135
 #, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
@@ -668,8 +661,9 @@ msgstr "Hat sanynyň kalam ýygnaýçysy"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:494
 msgid "Push this button to select the font to be used to print line numbers"
-msgstr "Hat sanlary çaplanmak üçin ullanyljak kalamy saýlajak bölsöňiz bu "
-"batuny itekläň"
+msgstr ""
+"Hat sanlary çaplanmak üçin ullanyljak kalamy saýlajak bölsöňiz bu batuny "
+"itekläň"
 
 #: gedit/dialogs/gedit-plugin-manager.c:53
 msgid "Plugin"
@@ -685,8 +679,8 @@ msgstr "plugin-manager.glade2 tapylmady, gedit ýene gurulmaly.\n"
 
 #: gedit/dialogs/gedit-plugin-manager.c:525
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
-msgstr "Baglanç müdiri üçin maýyp glade faýly -- ehli widget'ler tapili "
-"bilmedi.\n"
+msgstr ""
+"Baglanç müdiri üçin maýyp glade faýly -- ehli widget'ler tapili bilmedi.\n"
 
 #: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
@@ -734,7 +728,7 @@ msgid ""
 "marked"
 msgstr ""
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1082
+#: gedit/dialogs/gedit-preferences-dialog.c:1089
 msgid "Elements"
 msgstr "Elementler"
 
@@ -1241,25 +1235,25 @@ msgid ""
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
 "not have this limitation."
 msgstr ""
-"Siziň faýly gaýd etjek diskiňiz faýl ululykna mehdutçiliki bar. Lütfen "
-"a kiçiräk faýly gaýd etmek üçin yada bu mehdutçiliki ýok bir diske gaýd "
-"etmek üçin synaniň."
+"Siziň faýly gaýd etjek diskiňiz faýl ululykna mehdutçiliki bar. Lütfen a "
+"kiçiräk faýly gaýd etmek üçin yada bu mehdutçiliki ýok bir diske gaýd etmek "
+"üçin synaniň."
 
 #: gedit/gedit-document.c:1926
 msgid "Could not create a backup file."
 msgstr "Zapas faýly bejerip bilmedi."
 
-#: gedit/gedit-encodings-option-menu.c:203
+#: gedit/gedit-encodings-option-menu.c:207
 msgid "Auto Detected"
 msgstr "Otomatik Aňlandy"
 
-#: gedit/gedit-encodings-option-menu.c:223
-#: gedit/gedit-encodings-option-menu.c:245
+#: gedit/gedit-encodings-option-menu.c:227
+#: gedit/gedit-encodings-option-menu.c:249
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Häzirki ýerleşdirim (%s)"
 
-#: gedit/gedit-encodings-option-menu.c:306
+#: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
 msgstr "Goş ýada _Çykar..."
 
@@ -1392,27 +1386,27 @@ msgstr "\"%s\" faýly diňe-okamalýan.\n"
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Siz ony gaýd edip duraniňiz bilen ewez edmeg synanjakmi?"
 
-#: gedit/gedit-file-selector-util.c:356
+#: gedit/gedit-file-selector-util.c:357
 msgid "All Files"
 msgstr "Ehli Faýllar"
 
-#: gedit/gedit-file-selector-util.c:364
+#: gedit/gedit-file-selector-util.c:365
 msgid "All Text Files"
 msgstr "Ehli Metin Faýllar"
 
-#: gedit/gedit-file-selector-util.c:382
+#: gedit/gedit-file-selector-util.c:383
 msgid "Ch_aracter Coding:"
 msgstr "_Karakter Ködleme:"
 
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:529
 msgid "Select a file to open"
 msgstr "Açmak üçin bir faýly saýla"
 
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:555
 msgid "Select files to open"
 msgstr "Açmak üçin bir faýllary saýla"
 
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:587
 msgid "Select a filename to save"
 msgstr "Gaýd etmek üçin bir ad saýla"
 
@@ -1420,31 +1414,31 @@ msgstr "Gaýd etmek üçin bir ad saýla"
 msgid "Open File..."
 msgstr "Faýly Aç..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:425
 #, c-format
 msgid "Saving document \"%s\"..."
 msgstr "\"%s\" senedi gaýd etmek..."
 
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:446
 #, c-format
 msgid "The document \"%s\" has not been saved."
 msgstr "\"%s\" senedi gaýd etilenak."
 
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:438
 #, c-format
 msgid "The document \"%s\" has been saved."
 msgstr "\"%s\" senedi gaýd etildi."
 
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:405
 msgid "Save as..."
 msgstr "Aýry gaýd et..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:604
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
 msgstr "Gaýd edilmedik üýtgewleri \"%s\" senedine ewirilsin mi?"
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:613
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1452,18 +1446,15 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be definitively "
 "lost."
-msgstr[0] ""
-"Soňki %ld sanýada senediň üýtgewleri ymykly ýiter."
-msgstr[1] ""
-"Soňki %ld sanýalarda senediň üýtgewleri ymykly ýiter."
+msgstr[0] "Soňki %ld sanýada senediň üýtgewleri ymykly ýiter."
+msgstr[1] "Soňki %ld sanýalarda senediň üýtgewleri ymykly ýiter."
 
-#: gedit/gedit-file.c:618
+#: gedit/gedit-file.c:622
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
-msgstr ""
-"Soňki minutda senediň üýtgewleri ymykly ýiter."
+msgstr "Soňki minutda senediň üýtgewleri ymykly ýiter."
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:628
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1471,12 +1462,10 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "definitively lost."
-msgstr[0] ""
-"Soňki minut we %ld sanýada senediň üýtgewleri ymykly ýiter."
-msgstr[1] ""
-"Soňki minut we %ld sanýalarda senediň üýtgewleri ymykly ýiter."
+msgstr[0] "Soňki minut we %ld sanýada senediň üýtgewleri ymykly ýiter."
+msgstr[1] "Soňki minut we %ld sanýalarda senediň üýtgewleri ymykly ýiter."
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:638
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1484,18 +1473,15 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be definitively "
 "lost."
-msgstr[0] ""
-"Soňki %ld minutda senediň üýtgewleri ymykly ýiter."
-msgstr[1] ""
-"Soňki %ld minutlarda senediň üýtgewleri ymykly ýiter."
+msgstr[0] "Soňki %ld minutda senediň üýtgewleri ymykly ýiter."
+msgstr[1] "Soňki %ld minutlarda senediň üýtgewleri ymykly ýiter."
 
-#: gedit/gedit-file.c:649
+#: gedit/gedit-file.c:653
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
-msgstr ""
-"Soňki sagatda senediň üýtgewleri ymykly ýiter."
+msgstr "Soňki sagatda senediň üýtgewleri ymykly ýiter."
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:659
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1503,95 +1489,87 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "definitively lost."
-msgstr[0] ""
-"Soňki sagat we %d minutda senediň üýtgewleri ymykly ýiter."
-msgstr[1] ""
-"Soňki sagat we %d minutlarda senediň üýtgewleri ymykly ýiter."
+msgstr[0] "Soňki sagat we %d minutda senediň üýtgewleri ymykly ýiter."
+msgstr[1] "Soňki sagat we %d minutlarda senediň üýtgewleri ymykly ýiter."
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:674
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be definitively lost."
-msgstr[0] ""
-"Soňki %d sagatda senediň üýtgewleri ymykly ýiter."
-msgstr[1] ""
-"Soňki %d sagatlarda senediň üýtgewleri ymykly ýiter."
+msgstr[0] "Soňki %d sagatda senediň üýtgewleri ymykly ýiter."
+msgstr[1] "Soňki %d sagatlarda senediň üýtgewleri ymykly ýiter."
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:697 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Ewir"
 
-#: gedit/gedit-file.c:738
+#: gedit/gedit-file.c:742
 #, c-format
 msgid "Error reverting the document \"%s\"."
 msgstr "\"%s\" senedi ewirmede hata tapyldy."
 
-#: gedit/gedit-file.c:745
+#: gedit/gedit-file.c:749
 #, c-format
 msgid "The document \"%s\" has not been reverted."
 msgstr "\"%s\" senedi heniz ewirilinak."
 
-#: gedit/gedit-file.c:749
+#: gedit/gedit-file.c:753
 #, c-format
 msgid "The document \"%s\" has been reverted."
 msgstr "\"%s\" senedi heniz ewiridi."
 
-#: gedit/gedit-file.c:777
+#: gedit/gedit-file.c:781
 #, c-format
 msgid "Reverting the document \"%s\"..."
 msgstr "\"%s\" senediň ewirilmeki..."
 
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:916
 msgid "Could not read data from stdin."
 msgstr "Maglumaty stdin'den okamak mümkin dal."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:966
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "\"%s\" faýly mewjüd dal. Bejerilsinmi?"
 
-#: gedit/gedit-file.c:1085
+#: gedit/gedit-file.c:1089
 msgid "Reverting file:"
 msgstr "Bu faýl ewirilýişde:"
 
-#: gedit/gedit-file.c:1089
+#: gedit/gedit-file.c:1093
 msgid "Loading file:"
 msgstr "Bu faýl ýüklenişde:"
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
+#: gedit/gedit-file.c:1262 gedit/gedit-file.c:1421
 #, c-format
 msgid "Error loading file \"%s\""
 msgstr "\"%s\" faýlyň ýüklenşinde hata tapyldy"
 
-#: gedit/gedit-file.c:1279
+#: gedit/gedit-file.c:1283
 #, c-format
 msgid "Loaded file \"%s\""
 msgstr "\"%s\" faýly ýüklendi"
 
-#: gedit/gedit-file.c:1356
+#: gedit/gedit-file.c:1360
 #, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
-msgstr[0] ""
-"\"%d\" faýly ýüklendi"
-msgstr[1] ""
-"\"%d\" faýllar ýüklendiler"
+msgstr[0] "\"%d\" faýly ýüklendi"
+msgstr[1] "\"%d\" faýllar ýüklendiler"
 
-#: gedit/gedit-file.c:1390
+#: gedit/gedit-file.c:1394
 #, c-format
 msgid "Loading file \"%s\"..."
 msgstr "\"%s\" faýly ýüklenilýär..."
 
-#: gedit/gedit-file.c:1537
+#: gedit/gedit-file.c:1541
 #, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
-msgstr[0] ""
-"\"%d\" faýly ýüklenilýär..."
-msgstr[1] ""
-"\"%d\" faýllar ýüklenilýärler..."
+msgstr[0] "\"%d\" faýly ýüklenilýär..."
+msgstr[1] "\"%d\" faýllar ýüklenilýärler..."
 
 #. Read only
 #: gedit/gedit-mdi-child.c:248
@@ -1987,8 +1965,9 @@ msgstr "Senediň ehlini saýla"
 #: gedit/gedit-ui.xml.h:62
 msgid ""
 "Set toolbar button style according to desktop Menu and Toolbar Preferences"
-msgstr "Esbap zolakiň batunlarniň biçimini desktapiň Menü we Esbap "
-"zolakiniň seçenekleri ýaly düz"
+msgstr ""
+"Esbap zolakiň batunlarniň biçimini desktapiň Menü we Esbap zolakiniň "
+"seçenekleri ýaly düz"
 
 #: gedit/gedit-ui.xml.h:63
 msgid "Setup the page settings"
@@ -2168,6 +2147,7 @@ msgid ""
 "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 "\"%1$s\" faýly açylyp başarmady çünki gedit %2$s ýerlerni ellap bilmedi."
+
 #: gedit/gedit-utils.c:432
 #, c-format
 msgid "Could not open the file \"%s\""
@@ -2177,8 +2157,7 @@ msgstr "\"%s\" faýly açylyp başarmady."
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because it contains data in an invalid format."
-msgstr ""
-"\"%s\" faýly açylyp başarmady çünki ol maýyp kadaly maglumaty ekleýä."
+msgstr "\"%s\" faýly açylyp başarmady çünki ol maýyp kadaly maglumaty ekleýä."
 
 #: gedit/gedit-utils.c:449
 #, c-format
@@ -2208,8 +2187,7 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"\"%s\" faýly açylyp başarmady çünki açik faýllar beter kän."
-"\n"
+"\"%s\" faýly açylyp başarmady çünki açik faýllar beter kän.\n"
 "ütfen bir näçe açik faýly baglaň we ýene synanyň."
 
 #: gedit/gedit-utils.c:479
@@ -2240,8 +2218,8 @@ msgid ""
 msgstr ""
 "\"%1$s\" faýly açylyp başarmady çünki \"%2$s\" hojaýyny tapylmady.\n"
 "\n"
-"Lütfen ýery dogry ýazşyňy we wekiliň düzümlerniň dogrylygny barlaň "
-"we ýene synanyň."
+"Lütfen ýery dogry ýazşyňy we wekiliň düzümlerniň dogrylygny barlaň we ýene "
+"synanyň."
 
 #: gedit/gedit-utils.c:528
 #, c-format
@@ -2302,11 +2280,11 @@ msgid ""
 "selecting a character coding in the 'Open File...' (or 'Open Location') "
 "dialog."
 msgstr ""
-"\"%s\" faýly açylyp başarmady çünki gedit karakter ködlemeni "
-"otomatik aňlap bilmedi.\n"
+"\"%s\" faýly açylyp başarmady çünki gedit karakter ködlemeni otomatik aňlap "
+"bilmedi.\n"
 "\n"
-"Siziň bir baýnary faýly açmagyňiz ahmal we karakter ködlemeni "
-"'Faýly Aç...' (ýada 'Ýery Aç...') dýalogdan saýlap ýene synanyň."
+"Siziň bir baýnary faýly açmagyňiz ahmal we karakter ködlemeni 'Faýly "
+"Aç...' (ýada 'Ýery Aç...') dýalogdan saýlap ýene synanyň."
 
 #: gedit/gedit-utils.c:616 gedit/gedit-utils.c:646
 #, c-format
@@ -2319,8 +2297,8 @@ msgid ""
 msgstr ""
 "\"%1$s\" faýly %2$s karakter ködleme bilen açylyp başarmady.\n"
 "\n"
-"Siziň bir baýnary faýly açmagyňiz ahmal we dogry karakter ködlemeni "
-"'Faýly Aç...' (ýada 'Ýery Aç...') dýalogdan saýlap ýene synanyň."
+"Siziň bir baýnary faýly açmagyňiz ahmal we dogry karakter ködlemeni 'Faýly "
+"Aç...' (ýada 'Ýery Aç...') dýalogdan saýlap ýene synanyň."
 
 #: gedit/gedit-utils.c:666
 #, c-format
@@ -2402,8 +2380,7 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"\"%s\" faýly ewirilip başarmady çünki açik faýllar beter kän."
-"\n"
+"\"%s\" faýly ewirilip başarmady çünki açik faýllar beter kän.\n"
 "ütfen bir näçe açik faýly baglaň we ýene synanyň."
 
 #: gedit/gedit-utils.c:838
@@ -2422,8 +2399,8 @@ msgid ""
 msgstr ""
 "\"%1$s\" faýly ewirilip başarmady çünki \"%2$s\" hojaýyny tapylmady.\n"
 "\n"
-"Lütfen ýery dogry ýazşyňy we wekiliň düzümlerniň dogrylygny barlaň "
-"we ýene synanyň."
+"Lütfen ýery dogry ýazşyňy we wekiliň düzümlerniň dogrylygny barlaň we ýene "
+"synanyň."
 
 #: gedit/gedit-utils.c:878
 #, c-format
@@ -3095,24 +3072,24 @@ msgstr "Häzirki sendiň ymlasyny barlaýa."
 msgid "Spell checker"
 msgstr "Ymlany Barlaýan"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr "Tägler list baglançy"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr "Tägleriň arasyndan isleýan toparyňzy saýlaň"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 msgid "Available Tag Lists"
 msgstr "Nagt täg listleri"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr "Tägler"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Tägi senediň içine girdirmek üçin üstine iki-tiklaň"
 
@@ -3136,8 +3113,8 @@ msgid ""
 "The tag list plugin provides a method to easily insert into a document "
 "commonly used tags/strings without having to type them."
 msgstr ""
-"Tägler list baglançy tiz tiz işledilýan tägleri/düzmekleri senede "
-"aňsatjag girdirmek üçin bir tär üpjün edýär."
+"Tägler list baglançy tiz tiz işledilýan tägleri/düzmekleri senede aňsatjag "
+"girdirmek üçin bir tär üpjün edýär."
 
 #: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
