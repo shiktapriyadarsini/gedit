@@ -1,0 +1,17 @@
+gedit/dialogs/dialog-plugins.c
+gedit/dialogs/dialog-prefs.c
+gedit/dialogs/dialog-replace.c
+gedit/dialogs/dialog-uri.c
+gedit/document.c
+gedit/file.c
+gedit/gedit.c
+gedit/menus.c
+gedit/plugin.c
+gedit/print-doc.c
+gedit/print-util.c
+gedit/print.c
+gedit/recent.c
+gedit/search.c
+gedit/view.c
+gedit/window.c
+plugins/spell/spell.c
