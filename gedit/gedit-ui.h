@@ -133,7 +133,7 @@ static const GtkToggleActionEntry gedit_toggle_menu_entries[] =
 	  NULL, TRUE },
 	{ "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
 	  N_("Show or hide the statusbar in the current window"),
-	  NULL, TRUE },
+	  G_CALLBACK (gedit_cmd_view_show_statusbar), TRUE },
 	{ "ViewOutputWindow", NULL, N_("_Output Window"), "<control><alt>O",
 	  N_("Show or hide the output window in the current window"),
 	  NULL, FALSE }

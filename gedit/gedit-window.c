@@ -63,6 +63,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *statusbar;	
 	guint           generic_message_cid;
 	guint           tip_message_cid;
+	gboolean        statusbar_visible;
 
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
@@ -95,15 +96,6 @@ gedit_window_destroy (GtkObject *object)
 	GeditWindow *window;
 	
 	window = GEDIT_WINDOW (object);
-	
-	if (gedit_prefs_manager_window_height_can_set ())
-		gedit_prefs_manager_set_window_height (window->priv->height);
-
-	if (gedit_prefs_manager_window_width_can_set ())
-		gedit_prefs_manager_set_window_width (window->priv->width);
-
-	if (gedit_prefs_manager_window_state_can_set ())
-		gedit_prefs_manager_set_window_state (window->priv->state);
 	
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
 }
@@ -879,19 +871,44 @@ window_state_event_handler (GeditWindow *window, GdkEventWindowState *event)
 	return FALSE;
 }
 
+gboolean
+gedit_window_get_statusbar_visible (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), FALSE);
+
+	// TODO: turn it into a property
+	return window->priv->statusbar_visible;
+}
+
+void
+gedit_window_set_statusbar_visible (GeditWindow *window, gboolean visible)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+
+	if (visible == window->priv->statusbar_visible)
+		return;
+
+	window->priv->statusbar_visible = (visible != FALSE);
+
+	if (visible)
+		gtk_widget_show (window->priv->statusbar);
+	else
+		gtk_widget_hide (window->priv->statusbar);
+
+	if (gedit_prefs_manager_statusbar_visible_can_set ())
+		gedit_prefs_manager_set_statusbar_visible (visible);
+}
+
 /* Returns TRUE if status bar is visible */
 static gboolean
 set_statusbar_style (GeditWindow *window)
 {
 	gboolean visible;
-	
+
 	visible = gedit_prefs_manager_get_statusbar_visible ();
-	
-	if (visible)
-		gtk_widget_show (window->priv->statusbar);
-	else
-		gtk_widget_hide (window->priv->statusbar);	
-		
+
+	gedit_window_set_statusbar_visible (window, visible);
+
 	// TODO: show overwrite mode, etc. 
 		
 	return visible;
@@ -1065,7 +1082,7 @@ gedit_window_init (GeditWindow *window)
 
 	/* Set the statusbar style according to prefs */
 	set_statusbar_style (window);
-	
+
 	/* Set the toolbar style according to prefs */
 	set_toolbar_style (window);
 	

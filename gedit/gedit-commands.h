@@ -59,6 +59,8 @@ void gedit_cmd_edit_delete		(GtkAction *action, GeditWindow *window);
 void gedit_cmd_edit_select_all		(GtkAction *action, GeditWindow *window);
 void gedit_cmd_edit_preferences		(GtkAction *action, GeditWindow *window);
 
+void gedit_cmd_view_show_statusbar	(GtkAction *action, GeditWindow *window);
+
 void gedit_cmd_search_find		(GtkAction *action, GeditWindow *window);
 void gedit_cmd_search_find_next		(GtkAction *action, GeditWindow *window);
 void gedit_cmd_search_find_prev		(GtkAction *action, GeditWindow *window);

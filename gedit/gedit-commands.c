@@ -360,6 +360,18 @@ gedit_cmd_edit_preferences (GtkAction *action, GeditWindow *window)
 	gedit_show_preferences_dialog (GTK_WINDOW (window));
 }
 
+void
+gedit_cmd_view_show_statusbar (GtkAction *action, GeditWindow *window)
+{
+	gboolean visible;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+	gedit_window_set_statusbar_visible (window, visible);
+}
+
 void 
 gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 {
