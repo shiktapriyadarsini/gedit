@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit CVS20000908\n"
-"POT-Creation-Date: 2001-11-13 15:17+0100\n"
+"POT-Creation-Date: 2001-12-10 18:20-0500\n"
 "PO-Revision-Date: 2001-06-27 17:50+09:00\n"
 "Last-Translator: Yukihiro Nakai <nakai@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: gedit.desktop.in.h:1
 msgid "Text editor"
-msgstr ""
+msgstr "テキストエディタ"
 
 #: gedit.desktop.in.h:2
 msgid "gedit"
@@ -389,11 +389,11 @@ msgstr "リバース"
 msgid "Reverse text"
 msgstr "テキストをリバースします"
 
-#: plugins/sample/sample.c:53
+#: plugins/sample/sample.c:69
 msgid "Hello World"
 msgstr "Hello World"
 
-#: plugins/sample/sample.c:54 plugins/sample/sample.c:55
+#: plugins/sample/sample.c:70 plugins/sample/sample.c:71
 msgid "Sample 'hello world' plugin."
 msgstr "'hello world'を出力するサンプルプラグインです。"
 
@@ -561,172 +561,174 @@ msgid "_Deactivate all"
 msgstr "すべて無効にする(_D)"
 
 #: src/dialogs/prefs.glade.h:1
+msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+
+#: src/dialogs/prefs.glade.h:2
 msgid "Add _header"
 msgstr "ヘッダの追加(_H)"
 
-#: src/dialogs/prefs.glade.h:2
-msgid "Appearance"
-msgstr "外見"
-
 #: src/dialogs/prefs.glade.h:3
-msgid "Bottom"
-msgstr ""
+msgid "Appearance"
+msgstr "外観"
 
 #: src/dialogs/prefs.glade.h:4
+msgid "Bottom"
+msgstr "下"
+
+#: src/dialogs/prefs.glade.h:5
 msgid "Colors"
 msgstr "色"
 
-#: src/dialogs/prefs.glade.h:5
-#, fuzzy
-msgid "Default"
-msgstr "デフォルトフォント(_D): "
-
 #: src/dialogs/prefs.glade.h:6
+msgid "Default"
+msgstr "デフォルト"
+
+#: src/dialogs/prefs.glade.h:7
 msgid "Documents"
 msgstr "ドキュメント"
 
-#: src/dialogs/prefs.glade.h:7
+#: src/dialogs/prefs.glade.h:8
 msgid "Editor Behavior"
 msgstr "エディタの動作"
 
-#: src/dialogs/prefs.glade.h:8
+#: src/dialogs/prefs.glade.h:9
 msgid "Enable _Auto-indent"
 msgstr "自動字下げを有効にする(_A)"
 
-#: src/dialogs/prefs.glade.h:9
+#: src/dialogs/prefs.glade.h:10
 msgid "Enable word _wrapping"
 msgstr "文字を折り返す(_W)"
 
-#: src/dialogs/prefs.glade.h:10
+#: src/dialogs/prefs.glade.h:11
 msgid "Fonts"
 msgstr "フォント"
 
-#: src/dialogs/prefs.glade.h:11
+#: src/dialogs/prefs.glade.h:12
 msgid "Fonts/Colors"
 msgstr "フォント/色"
 
-#: src/dialogs/prefs.glade.h:12
+#: src/dialogs/prefs.glade.h:13
 msgid "General"
 msgstr "一般"
 
-#: src/dialogs/prefs.glade.h:13
-msgid "Left"
-msgstr ""
-
 #: src/dialogs/prefs.glade.h:14
+msgid "Left"
+msgstr "左"
+
+#: src/dialogs/prefs.glade.h:15
 msgid "MDI (Multiple Document Interface)"
 msgstr "MDI (マルチ・ドキュメント・インターフェース)"
 
-#: src/dialogs/prefs.glade.h:15
-msgid "Modal"
-msgstr ""
-
 #: src/dialogs/prefs.glade.h:16
-msgid "Notebook"
-msgstr ""
+msgid "Modal"
+msgstr "モーダル"
 
 #: src/dialogs/prefs.glade.h:17
+msgid "Notebook"
+msgstr "ノートブック"
+
+#: src/dialogs/prefs.glade.h:18
 msgid "Notebook _tab position: "
 msgstr "ノートのタブの位置(_T): "
 
-#: src/dialogs/prefs.glade.h:18
+#: src/dialogs/prefs.glade.h:19
 msgid "Orientation"
 msgstr "方向"
 
-#: src/dialogs/prefs.glade.h:19
+#: src/dialogs/prefs.glade.h:20
 msgid "Paper"
 msgstr "用紙"
 
-#: src/dialogs/prefs.glade.h:20
+#: src/dialogs/prefs.glade.h:21
 msgid "Pick a Font"
 msgstr "フォントを選択"
 
-#: src/dialogs/prefs.glade.h:21
+#: src/dialogs/prefs.glade.h:22
 msgid "Pick a color"
 msgstr "色を選択"
 
-#: src/dialogs/prefs.glade.h:22
+#: src/dialogs/prefs.glade.h:23
 msgid "Preferences"
 msgstr "設定"
 
-#: src/dialogs/prefs.glade.h:23
+#: src/dialogs/prefs.glade.h:24
 msgid "Print line _numbers every:"
 msgstr "行数の表示は(_N):"
 
-#: src/dialogs/prefs.glade.h:24
+#: src/dialogs/prefs.glade.h:25
 msgid "Printing"
 msgstr "印刷"
 
-#: src/dialogs/prefs.glade.h:25
-msgid "Right"
-msgstr ""
-
 #: src/dialogs/prefs.glade.h:26
+msgid "Right"
+msgstr "右"
+
+#: src/dialogs/prefs.glade.h:27
 msgid "S_how statusbar"
 msgstr "ステータスバーを表示(_S)"
 
-#: src/dialogs/prefs.glade.h:27
+#: src/dialogs/prefs.glade.h:28
 msgid "Set limit on _undo levels to:"
 msgstr "元に戻せる回数は(_U):"
 
-#: src/dialogs/prefs.glade.h:28
+#: src/dialogs/prefs.glade.h:29
 msgid "Set toolbar according to _system settings"
 msgstr "ツールバーはシステム設定通りにする(_S)"
 
-#: src/dialogs/prefs.glade.h:29
+#: src/dialogs/prefs.glade.h:30
 msgid "Set toolbar to _icons only"
 msgstr "ツールバーはアイコンのみにする(_I)"
 
-#: src/dialogs/prefs.glade.h:30
+#: src/dialogs/prefs.glade.h:31
 msgid "Set toolbar to icons with _text"
 msgstr "ツールバーはアイコンとテキストにする(_T)"
 
-#: src/dialogs/prefs.glade.h:31
+#: src/dialogs/prefs.glade.h:32
 msgid "Tab _width: "
 msgstr "タブの幅(_W): "
 
-#: src/dialogs/prefs.glade.h:32
-#, fuzzy
-msgid "Top"
-msgstr "宛先:"
-
 #: src/dialogs/prefs.glade.h:33
-msgid "Toplevel"
-msgstr ""
+msgid "Top"
+msgstr "上"
 
-#: src/dialogs/prefs.glade.h:34 src/menus.c:276
+#: src/dialogs/prefs.glade.h:34
+msgid "Toplevel"
+msgstr "トップレベル"
+
+#: src/dialogs/prefs.glade.h:35 src/menus.c:276
 msgid "Undo"
 msgstr "元に戻す"
 
-#: src/dialogs/prefs.glade.h:35
+#: src/dialogs/prefs.glade.h:36
 msgid "_Background: "
 msgstr "背景色(_B): "
 
-#: src/dialogs/prefs.glade.h:36
+#: src/dialogs/prefs.glade.h:37
 msgid "_Default font: "
 msgstr "デフォルトフォント(_D): "
 
-#: src/dialogs/prefs.glade.h:37
+#: src/dialogs/prefs.glade.h:38
 msgid "_Foreground: "
 msgstr "文字色(_F): "
 
-#: src/dialogs/prefs.glade.h:38
+#: src/dialogs/prefs.glade.h:39
 msgid "_Landscape"
 msgstr "横(_L)"
 
-#: src/dialogs/prefs.glade.h:39
+#: src/dialogs/prefs.glade.h:40
 msgid "_Mode: "
 msgstr "モード(_M): "
 
-#: src/dialogs/prefs.glade.h:40
+#: src/dialogs/prefs.glade.h:41
 msgid "_Portrait"
 msgstr "縦(_P)"
 
-#: src/dialogs/prefs.glade.h:41
+#: src/dialogs/prefs.glade.h:42
 msgid "_level(s)"
 msgstr "レベル(_L)"
 
-#: src/dialogs/prefs.glade.h:42
+#: src/dialogs/prefs.glade.h:43
 msgid "l_ine(s)"
 msgstr "行毎に表示(_I)"
 
@@ -805,9 +807,9 @@ msgid "%s %d*"
 msgstr "%s %d*"
 
 #: src/document.c:477
-#, fuzzy, c-format
+#, c-format
 msgid "``%s'' has been modified.  Do you want to save the changes?"
-msgstr "``%s'' は変更されています。保存しますか？"
+msgstr "``%s'' は変更されています。変更を保存しますか？"
 
 #: src/document.c:679 src/document.c:687
 msgid "(modified)"
@@ -989,12 +991,12 @@ msgid "You can't revert an Untitled document\n"
 msgstr "無題のドキュメントを元には戻せません。\n"
 
 #: src/file.c:1200
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to revert all changes?\n"
 "(%s)"
 msgstr ""
-"変更を全て取り消していいですか？\n"
+"変更を全て取り消してよろしいですか？\n"
 "(%s)"
 
 #: src/file.c:1231
@@ -1416,6 +1418,3 @@ msgstr "ドキュメントの最後のビューは削除できません。"
 #~ "トップレベル\n"
 #~ "モーダル\n"
 #~ "デフォルト\n"
-
-#~ msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-#~ msgstr "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
