@@ -198,6 +198,10 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 				      gedit_menu_entries,
 				      gedit_n_menu_entries,
 				      window);
+	gtk_action_group_add_toggle_actions (action_group,
+					     gedit_toggle_menu_entries,
+					     gedit_n_toggle_menu_entries,
+					     window);
         /* TODO: add more action groups... toggles etc */
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);

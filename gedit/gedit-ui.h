@@ -95,12 +95,6 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Configure the application"), G_CALLBACK (gedit_cmd_edit_preferences) },
 
 	/* View menu */
-	{ "ViewToolbar", NULL, N_("_Toolbar"), NULL,
-	  N_("Show or hide the toolbar in the current window"), NULL},
-	{ "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
-	  N_("Show or hide the statusbar in the current window"), NULL},
-	{ "ViewOutputWindow", NULL, N_("_Output Window"), "<control><alt>O",
-	  N_("Show or hide the output window in the current window"), NULL},
 
 	/* Search menu */
 	{ "SearchFind", GTK_STOCK_FIND, N_("_Find..."), "<control>F",
@@ -130,6 +124,22 @@ static const GtkActionEntry gedit_menu_entries[] =
 };
 
 static const guint gedit_n_menu_entries = G_N_ELEMENTS (gedit_menu_entries);
+
+
+static const GtkToggleActionEntry gedit_toggle_menu_entries[] =
+{
+	{ "ViewToolbar", NULL, N_("_Toolbar"), NULL,
+	  N_("Show or hide the toolbar in the current window"),
+	  NULL, TRUE },
+	{ "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
+	  N_("Show or hide the statusbar in the current window"),
+	  NULL, TRUE },
+	{ "ViewOutputWindow", NULL, N_("_Output Window"), "<control><alt>O",
+	  N_("Show or hide the output window in the current window"),
+	  NULL, FALSE }
+};
+
+static const guint gedit_n_toggle_menu_entries = G_N_ELEMENTS (gedit_toggle_menu_entries);
 
 G_END_DECLS
 
