@@ -1,9 +1,13 @@
+2002-06-22  Daniel Yacob  <locales@geez.org>
+
+	* am.po: Updated Amharic translation.
+
 2002-06-21  Changwoo Ryu  <cwryu@debian.org>
 
 	* ko.po: Updated Korean translation from Young-Ho Cha
 	<ganadist@chollian.net>.
 
-2002-06-17  Daniel Yacob  <yacob@geez.org>
+2002-06-17  Daniel Yacob  <locales@geez.org>
 
 	* am.po: New file for Amharic.
 
