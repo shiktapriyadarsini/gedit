@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "POT-Creation-Date: 2003-03-05 16:39+0100\n"
-"PO-Revision-Date: 2003-03-05 18:53+0100\n"
+"PO-Revision-Date: 2003-03-11 01:12+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1604,7 +1604,7 @@ msgstr "C_zcionka w edytorze: "
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Enable _auto indentation"
-msgstr "_Automatyczne tworzenei wcięć"
+msgstr "_Automatyczne tworzenie wcięć"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Enable text _wrapping"
