@@ -1,20 +1,21 @@
+# translation of gedit.gedit-2-8.gu.po to Gujarati
 # translation of gedit.HEAD.gu.po to Gujarati
 # Copyright (C) 2004 Free Software Foundation, Inc.
 # MagNet <magnet@magnet-i.com>, 2004.
 # Ankit Patel <ankit@redhat.com>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.HEAD.gu\n"
+"Project-Id-Version: gedit.gedit-2-8.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-10 13:49+0200\n"
-"PO-Revision-Date: 2004-08-17 16:35+0530\n"
+"POT-Creation-Date: 2004-10-26 04:24+0200\n"
+"PO-Revision-Date: 2004-10-26 11:30+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "<magnet@magnet-i.com>\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
 "\n"
 "\n"
 "\n"
@@ -56,9 +57,7 @@ msgstr "લખાણ સંપાદક"
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
-msgstr ""
-"કસ્ટમ ફોન્ટ જે સંપાદક વિસ્તારમાં વપરાશે. જો \"Use Default Font\" વિકલ્પ બંધ હશે તો જ "
-"આની અસર થશે."
+msgstr "કસ્ટમ ફોન્ટ જે સંપાદક વિસ્તારમાં વપરાશે. જો \"મૂળભુત ફોન્ટ વાપરો\" વિકલ્પ બંધ હશે તો જ આની અસર થશે."
 
 #: data/gedit.schemas.in.h:2
 msgid "Auto Detected Encodings"
@@ -85,16 +84,14 @@ msgid ""
 "Background color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"ફેરફાર વિસ્તારમાં પસંદ કરેલ લખાણ માટે પાશ્વ ભાગનો રંગ. આ જ્યારે \"Use Default Colors\" "
+"ફેરફાર વિસ્તારમાં પસંદ કરેલ લખાણ માટે પાશ્વ ભાગનો રંગ. આ જ્યારે \"મૂળભુત રંગો વાપરો\" "
 "વિકલ્પ બંધ હશે ત્યારે જ અસર કરશે."
 
 #: data/gedit.schemas.in.h:8
 msgid ""
 "Background color for unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
-msgstr ""
-"ફેરફાર વિસ્તાર માટે પસંદ કર્યા સિવાયના લખાણ માટે પાશ્વ ભાગ રંગ. આ જ્યારે \"Use Default "
-"Colors\" વિકલ્પ બંધ હશે ત્યારે જ અસર કરશે."
+msgstr "ફેરફાર વિસ્તાર માટે પસંદ કર્યા સિવાયના લખાણ માટે પાશ્વ ભાગ રંગ. આ જ્યારે \"મૂળભુત રંગો વાપરો\" વિકલ્પ બંધ હશે ત્યારે જ અસર કરશે."
 
 #: data/gedit.schemas.in.h:9
 msgid "Backup Copy Extension"
@@ -133,24 +130,20 @@ msgid ""
 "Extension or suffix to use for backup file names. This will only take effect "
 "if the \"Create Backup Copies\" option is turned on."
 msgstr ""
-"બેક-અપ ફાઇલ નામ માટે ઉપયોગી વિસ્તારક અથવા પ્રત્યય. આ જ્યારે\"Create Backup Copies\" "
+"બેક-અપ ફાઇલ નામ માટે ઉપયોગી વિસ્તારક અથવા પ્રત્યય. આ જ્યારે \"બેકઅપ નકલો બનાવો\" "
 "વિકલ્પ વર્તમાન હશે ત્યારે જ અસર કરશે."
 
 #: data/gedit.schemas.in.h:18
 msgid ""
 "Foreground color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
-msgstr ""
-"સંપાદક વિસ્તારમા અગ્ર ભાગ રંગ જે પસંદગી ની લખાણ માટે છે. જ્યારે \"Use Default Colors"
-"\"વિકલ્પ બંધ હશે ત્યારે જ અસર કરશે."
+msgstr "સંપાદક વિસ્તારમા અગ્ર ભાગ રંગ જે પસંદગી ની લખાણ માટે છે. જ્યારે \"મૂળભુત રંગો વાપરો\" વિકલ્પ બંધ હશે ત્યારે જ અસર કરશે."
 
 #: data/gedit.schemas.in.h:19
 msgid ""
 "Foreground color for the unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
-msgstr ""
-"સંપાદક વિસ્તાર માં પસંદગી ન કરેલ હોય લેવી લખાણ માટે અગ્ર ભાગ રંગ. જ્યારે \"Use Default "
-"Colors\" વિકલ્પ બંધ હશે ત્યારે જ અસર કરશે."
+msgstr "સંપાદક વિસ્તાર માં પસંદગી ન કરેલ હોય લેવી લખાણ માટે અગ્ર ભાગ રંગ. જ્યારે \"મૂળભુત રંગો વાપરો\" વિકલ્પ બંધ હશે ત્યારે જ અસર કરશે."
 
 #: data/gedit.schemas.in.h:20
 msgid "Header Font for Printing"
@@ -205,9 +198,7 @@ msgstr "નિયમિત મોનોસ્પેસ ૯"
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Auto Save\" option is turned on."
-msgstr ""
-"મિનિટ સંખ્યા જેના પછી જીએડીટ સ્વયં ફેરફાર કરેલ ફાઇલોનો સંગ્રહ કરે છે. જ્યારે \"Auto Save"
-"\" વિકલ્પ વર્તમાન હશે ત્યારે જ આની અસર થશે."
+msgstr "મિનિટ સંખ્યા જેના પછી જીએડીટ સ્વયં ફેરફાર કરેલ ફાઇલોનો સંગ્રહ કરે છે. જ્યારે \"આપોઆપ સંગ્રહો\" વિકલ્પ વર્તમાન હશે ત્યારે જ આની અસર થશે."
 
 #: data/gedit.schemas.in.h:31
 msgid "Print Header"
@@ -281,8 +272,7 @@ msgstr ""
 "આથી અહીં દર્શાવ્યા પ્રમાણે જ તે લખો."
 
 #: data/gedit.schemas.in.h:43
-msgid ""
-"Specifies the font to use for a document's body when printing documents."
+msgid "Specifies the font to use for a document's body when printing documents."
 msgstr "દસ્તાવેજ છાપતી વખતે દસ્તાવેજ ના બોડી માટે ઉપયોગ માં આવનાર ફોન્ટ દર્શાવો."
 
 #: data/gedit.schemas.in.h:44
@@ -290,7 +280,7 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"છાપતી વખતે લીટી ક્રમાંક માટે ઉપયોગ માં આવનાર ફોન્ટ દર્શાવો \"Print Line Numbers\" "
+"છાપતી વખતે લીટી ક્રમાંક માટે ઉપયોગ માં આવનાર ફોન્ટ દર્શાવો \"લીટી ક્રમાંકો છાપો\" "
 "વિકલ્પ શુન્ય ન હોય ત્યારેજ તેની અસર થશે."
 
 #: data/gedit.schemas.in.h:45
@@ -298,15 +288,14 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"દસ્તાવેજ છાપતી વખતે પાના હેડર માટે ઉપયોગી ફોન્ટ દર્શાવો. જ્યારે \"Print Header\" "
+"દસ્તાવેજ છાપતી વખતે પાના હેડર માટે ઉપયોગી ફોન્ટ દર્શાવો. જ્યારે \"પ્રિન્ટ હેડર\" "
 "વિકલ્પ વર્તમાન હશે ત્યારે જ તેની અસર થશે."
 
 #: data/gedit.schemas.in.h:46
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
-msgstr ""
-"\"Recent Files\" સબમેનુમાં પ્રદર્શિત થનાર હાલની મહત્તમ ખુલ્લી ફાઇલની સંખ્યા દર્શાવો."
+msgstr "\"છેલ્લી ફાઈલો\" સબમેનુમાં પ્રદર્શિત થનાર હાલની મહત્તમ ખુલ્લી ફાઇલની સંખ્યા દર્શાવો."
 
 #: data/gedit.schemas.in.h:47
 msgid ""
@@ -370,16 +359,14 @@ msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Auto Save Interval\" "
 "option."
-msgstr ""
-"શું થોડા સમળગાળા પછી જીએડીટ ફેરફાર થયેલ ફાઇલો નો આપોઆપ સંગ્રહ કરશે? તમે \"Auto Save "
-"Interval\" દ્રશ્ય સમયગાળો આપી શકો છો."
+msgstr "શું થોડા સમળગાળા પછી જીએડીટ ફેરફાર થયેલ ફાઇલો નો આપોઆપ સંગ્રહ કરશે? તમે \"અંતરાલ આપોઆપ સંગ્રહો\" દ્રશ્ય સમયગાળો આપી શકો છો."
 
 #: data/gedit.schemas.in.h:59
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"શું જીએડીટ તેણે સંગ્રહ કરેલ ફાઇલની બેક-અપ નકલ બનાવે છે? તમે \"Backup Copy Extension\" "
+"શું જીએડીટ તેણે સંગ્રહ કરેલ ફાઇલની બેક-અપ નકલ બનાવે છે? તમે \"બેકઅપ નકલ એક્સટેન્સન\" "
 "વિકલ્પ દ્વારા બેક-અપ ફાઇલ નો વિસ્તારક નક્કી કરી શકો છો."
 
 #: data/gedit.schemas.in.h:60
@@ -408,11 +395,10 @@ msgstr "શું જીએડીટ ટેબની જગ્યાએ ખા�
 
 #: data/gedit.schemas.in.h:66
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "શંુ જીએડીટ દસ્તાવેજો છાપતી વખતે પ્રકાશિત વાક્યરચના છાપશે."
+msgstr "શું જીએડીટ દસ્તાવેજો છાપતી વખતે પ્રકાશિત વાક્યરચના છાપશે."
 
 #: data/gedit.schemas.in.h:67
-msgid ""
-"Whether the status bar at the bottom of editing windows should be visible."
+msgid "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "શું સંપાદક વિન્ડો નીચેની સ્થિતિદર્શકપટ્ટી દ્રશ્યમાન થઈ શકે."
 
 #: data/gedit.schemas.in.h:68
@@ -427,8 +413,8 @@ msgid ""
 "\", and \"Selection Color\" options."
 msgstr ""
 "શું ફેરફાર વિસ્તારમાં સિસ્ટમના મૂળભુત રંગ વાપરી શકીએ? જો આ વિકલ્પ બંધ હશે તો ફેરફાર "
-"વિસ્તારના રંગ \"Background Color\", \"Text Color\", \"Selected Text Color\", "
-"and \"Selection Color\" વિકલ્પમાં બતાવ્યા મુજબ હશે."
+"વિસ્તારના રંગ \"પાશ્વ ભાગનો રંગ\", \"લખાણ રંગ\", \"પસંદિત લખાણ રંગ\", "
+"અને \"પસંદગી રંગ\" વિકલ્પમાં બતાવ્યા મુજબ હશે."
 
 #: data/gedit.schemas.in.h:70
 msgid ""
@@ -437,7 +423,7 @@ msgid ""
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
 "જીએડીટમાં દર્શાવ્યા મુજબના ફોન્ટની જગ્યાએ સિસ્ટમના મૂળભુત ફોન્ટ વાપરી શકાય? જો આ વિકલ્પ "
-"બંધ હોય તો \"Editor Font\" વિકલ્પમાં આવેલા ફોન્ટ સિસ્ટમ ફોન્ટની જગ્યાએ વપરાશે."
+"બંધ હોય તો \"સંપાદક ફોન્ટ\" વિકલ્પમાં આવેલા ફોન્ટ સિસ્ટમ ફોન્ટની જગ્યાએ વપરાશે."
 
 #: data/gedit.schemas.in.h:71
 msgid "[ISO-8859-15]"
@@ -467,7 +453,7 @@ msgstr "જો તમે તમારા દસ્તાવેજો નો સ�
 #: gedit/dialogs/close_all_dialog.glade2.h:3
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:660
 msgid "S_elect the documents you want to save:"
-msgstr "તમે સંગ્રહવા માગતા હોય તે દસ્તાવેજ પસંદ કરોઃ  (_e)"
+msgstr "તમે સંગ્રહવા માગતા હોય તે દસ્તાવેજ પસંદ કરો (_e):"
 
 #: gedit/dialogs/close_all_dialog.glade2.h:4
 msgid "Save _None"
@@ -488,8 +474,7 @@ msgstr "પ્રશ્ન"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:364
 #, c-format
-msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+msgid "If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
@@ -497,8 +482,7 @@ msgstr[0] "જો તમે સંગ્રહ કરો નહિ, તો છ�
 msgstr[1] "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લી %ld સેકન્ડોના બદલાવો કાયમ માટે ખોવાઈ જશે."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:373
-msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
+msgid "If you don't save, changes from the last minute will be permanently lost."
 msgstr "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લી મિનિટના બદલાવો કાયમ માટે ખોવાઈ જશે."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:379
@@ -509,15 +493,12 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] ""
-"જો તમે સંગ્રહ કરો નહિ, તો છેલ્લી મિનિટ અને %ld સેકન્ડના બદલાવો કાયમ માટે ખોવાઈ જશે."
-msgstr[1] ""
-"જો તમે સંગ્રહ કરો નહિ, તો છેલ્લી મિનિટ અને %ld સેકન્ડોના બદલાવો કાયમ માટે ખોવાઈ જશે."
+msgstr[0] "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લી મિનિટ અને %ld સેકન્ડના બદલાવો કાયમ માટે ખોવાઈ જશે."
+msgstr[1] "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લી મિનિટ અને %ld સેકન્ડોના બદલાવો કાયમ માટે ખોવાઈ જશે."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:389
 #, c-format
-msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+msgid "If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
@@ -536,34 +517,27 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] ""
-"જો તમે સંગ્રહ કરો નહિ, તો છેલ્લા કલાક અને %d મિનિટના બદલાવો કાયમ માટે ખોવાઈ જશે."
-msgstr[1] ""
-"જો તમે સંગ્રહ કરો નહિ, તો છેલ્લા કલાક અને %d મિનિટોના બદલાવો કાયમ માટે ખોવાઈ જશે."
+msgstr[0] "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લા કલાક અને %d મિનિટના બદલાવો કાયમ માટે ખોવાઈ જશે."
+msgstr[1] "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લા કલાક અને %d મિનિટોના બદલાવો કાયમ માટે ખોવાઈ જશે."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:425
 #, c-format
-msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
+msgid "If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લા %d કલાકના બદલાવો કાયમ માટે ખોવાઈ જશે."
 msgstr[1] "જો તમે સંગ્રહ કરો નહિ, તો છેલ્લા %d કલાકોના બદલાવો કાયમ માટે ખોવાઈ જશે."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:469
 #, c-format
 msgid "Save the changes to document \"%s\" before closing?"
-msgstr "દસ્તાવેજ \"%s\" ને બંધ કરવા પહેલા અેના બદલાવોનો સંગ્રહ કરવો છે?"
+msgstr "દસ્તાવેજ \"%s\" ને બંધ કરવા પહેલા એના બદલાવોનો સંગ્રહ કરવો છે?"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:643
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural ""
-"There are %d documents with unsaved changes. Save changes before closing?"
-msgstr[0] ""
-"ત્યાં %d દસ્તાવેજ અસંગ્રહિત બદલાવો સાથે છે. બંધ કરવા પહેલા બદલાવો સંગ્રહવા માંગો છો?"
-msgstr[1] ""
-"ત્યાં %d દસ્તાવેજો અસંગ્રહિત બદલાવો સાથે છે. બંધ કરવા પહેલા બદલાવો સંગ્રહવા માંગો છો?"
+msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] "ત્યાં %d દસ્તાવેજ અસંગ્રહિત બદલાવો સાથે છે. બંધ કરવા પહેલા બદલાવો સંગ્રહવા માંગો છો?"
+msgstr[1] "ત્યાં %d દસ્તાવેજો અસંગ્રહિત બદલાવો સાથે છે. બંધ કરવા પહેલા બદલાવો સંગ્રહવા માંગો છો?"
 
 #. Secondary label
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:677
@@ -606,8 +580,8 @@ msgstr "શોધો"
 #, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
-msgstr[0] "%d વખત શબ્દ મળ્યો અને બદલાયાે."
-msgstr[1] "%d વખત શબ્દ મળ્યો અને બદલાયાે."
+msgstr[0] "%d વખત શબ્દ મળ્યો અને બદલાયો."
+msgstr[1] "%d વખત શબ્દ મળ્યો અને બદલાયો."
 
 #: gedit/dialogs/gedit-dialog-uri.c:91
 msgid "Open Location"
@@ -616,7 +590,7 @@ msgstr "જગ્યા ખોલો"
 #: gedit/dialogs/gedit-encodings-dialog.c:76
 #, c-format
 msgid "There was an error displaying help: %s"
-msgstr "મદદ પ્રદર્શિત કરવામાં ભૂલઃ  %s"
+msgstr "મદદ પ્રદર્શિત કરવામાં ભૂલ: %s"
 
 #: gedit/dialogs/gedit-encodings-dialog.c:381
 #: gedit/dialogs/gedit-encodings-dialog.c:449
@@ -630,7 +604,7 @@ msgstr "સંગ્રહપદ્ધતિ (_E)"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:1
 msgid "A_vailable encodings:"
-msgstr "ઉપ્લબ્ધ સંગ્રહપદ્ધતિઃ  (_v)"
+msgstr "ઉપ્લબ્ધ સંગ્રહપદ્ધતિ (_v):"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:2
 msgid "Character codings"
@@ -638,7 +612,7 @@ msgstr "અક્ષર માટેના કોડ"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:3
 msgid "E_ncodings shown in menu:"
-msgstr "મેનુમાં દર્શાવેલી સંગ્રહપદ્ધતિઓઃ  (_n)"
+msgstr "મેનુમાં દર્શાવેલી સંગ્રહપદ્ધતિઓ (_n):"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:496
 msgid "Body font picker"
@@ -655,8 +629,7 @@ msgid "Page headers font picker"
 msgstr "પાનાની હેડરો માટેના ફોન્ટ પસંદ કરનાર"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:499
-msgid ""
-"Push this button to select the font to be used to print the page headers"
+msgid "Push this button to select the font to be used to print the page headers"
 msgstr "પાનાની હેડરો છાપવા માટે વાપરવાના ફોન્ટ પસંદ કરાવા આ બટન દબાવો"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:500
@@ -698,7 +671,7 @@ msgid ""
 msgstr ""
 "%s પ્લગઈન બહારનો કાર્યક્રમ વાપરે છે જે <tt>%s</tt> તરીકે ઓળખાય છે અને તેનું કામ કરે છે.\n"
 " \n"
-" મહેરબાની કરીને <tt>%s</tt> કાર્યક્રમ નું સ્થાન દર્શાવો."
+"મહેરબાની કરીને <tt>%s</tt> કાર્યક્રમ નું સ્થાન દર્શાવો."
 
 #: gedit/dialogs/gedit-plugin-program-location-dialog.c:169
 msgid "The selected file is not executable."
@@ -778,7 +751,7 @@ msgstr "<b>છેલ્લુ રદ કરો</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:11
 msgid "<span weight=\"bold\">Colors</span>"
-msgstr "<span weight=\"bold\">રંગો</span"
+msgstr "<span weight=\"bold\">રંગો</span>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:12
 msgid "Bold"
@@ -803,7 +776,7 @@ msgstr "સંપાદક"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:17
 msgid "Editor _font: "
-msgstr "સંપાદક ફોન્ટઃ  (_f)"
+msgstr "સંપાદક ફોન્ટ (_f): "
 
 #: gedit/dialogs/gedit-preferences.glade2.h:18
 #: gedit/dialogs/page-setup-dialog.glade2.h:5
@@ -816,7 +789,7 @@ msgstr "ફોન્ટ અને રંગો"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:20
 msgid "Highlight _mode:"
-msgstr "પ્રકાશિત સ્થિતિઃ  (_m)"
+msgstr "પ્રકાશિત સ્થિતિ (_m):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:21
 msgid "Insert _spaces instead of tabs"
@@ -828,7 +801,7 @@ msgstr "ઇટાલીયાઈ"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:23
 msgid "Normal _text color:"
-msgstr "સામાન્ય લખાણ રંગઃ  (_t)"
+msgstr "સામાન્ય લખાણ રંગ (_t):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:24
 msgid "Pick a color"
@@ -836,7 +809,7 @@ msgstr "રંગ પસંદ કરો"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:25
 msgid "Pick the background color"
-msgstr "પાશ્વ ભાગનાે રંગ પસંદ કરો"
+msgstr "પાશ્વ ભાગનો રંગ પસંદ કરો"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:26
 msgid "Pick the editor font"
@@ -864,11 +837,11 @@ msgstr "પસંદગીઓ"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:32
 msgid "Se_lection color:"
-msgstr "પસંદ કરવા માટેનો રંગઃ  (_l)"
+msgstr "પસંદ કરવા માટેનો રંગ (_l):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:33
 msgid "Selecte_d text color:"
-msgstr "પસંદ કરેલ લખાણનો રંગઃ  (_d)"
+msgstr "પસંદ કરેલ લખાણનો રંગ (_d):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:34
 msgid "Strikethrough"
@@ -896,11 +869,11 @@ msgstr "દરેક ફાઇલોનો આપોઆપ સંગ્રહ �
 
 #: gedit/dialogs/gedit-preferences.glade2.h:40
 msgid "_Background color:"
-msgstr "પાશ્વ ભાગનાે રંગઃ  (_B)"
+msgstr "પાશ્વ ભાગનો રંગ (_B):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:41
 msgid "_Background:"
-msgstr "પાશ્વ ભાગઃ  (_B)"
+msgstr "પાશ્વ ભાગ (_B):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:42
 msgid "_Display line numbers"
@@ -916,7 +889,7 @@ msgstr "વાક્યરચનાને પ્રકાશિત કરીવ�
 
 #: gedit/dialogs/gedit-preferences.glade2.h:45
 msgid "_Foreground:"
-msgstr "અગ્ર ભાગઃ  (_F)"
+msgstr "અગ્ર ભાગ (_F):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:46
 msgid "_Limit to"
@@ -928,11 +901,11 @@ msgstr "મૂળભુત પર ફરી સુયોજિત કરો (_R)
 
 #: gedit/dialogs/gedit-preferences.glade2.h:48
 msgid "_Right margin at column:"
-msgstr "સ્તંભમાં જમણો હાંસિયોઃ  (_R)"
+msgstr "સ્તંભમાં જમણો હાંસિયો (_R):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:49
 msgid "_Tabs width:"
-msgstr "ટેબની પહોળાઈઃ  (_T)"
+msgstr "ટેબની પહોળાઈ (_T):"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:50
 msgid "_Unlimited undo"
@@ -952,7 +925,7 @@ msgstr "ક્રીયાઓ (_i)"
 
 #: gedit/dialogs/gnome-print-font-dialog.c:111
 msgid "_Insert a new preview phrase."
-msgstr "નવો પૂર્વદર્શન મહાવરો ઊમેરો. (_I)"
+msgstr "નવો પૂર્વદર્શન મહાવરો ઊમેરો (_I)."
 
 #: gedit/dialogs/gnome-print-font-dialog.c:117
 msgid "Modify preview phrase..."
@@ -964,7 +937,7 @@ msgstr "પૂર્વદર્શન"
 
 #: gedit/dialogs/gnome-print-font-dialog.c:184
 msgid "_Modify preview phrase..."
-msgstr "પૂર્વદર્શન મહાવરાને બદલો... (_M)"
+msgstr "પૂર્વદર્શન મહાવરાને બદલો (_M)..."
 
 #: gedit/dialogs/gnome-print-font-dialog.c:245
 msgid "Font Selection"
@@ -976,7 +949,7 @@ msgstr "નિયમિત સાન્સ ૧૨"
 
 #: gedit/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "કખગઘચ"
+msgstr "કખગઘચછજઝતથટડઢ"
 
 #: gedit/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
@@ -1041,7 +1014,7 @@ msgstr "લીટી પર જાઓ"
 
 #: gedit/dialogs/goto-line.glade2.h:2
 msgid "_Line number:"
-msgstr "લીટી ક્રમાંકઃ  (_L)"
+msgstr "લીટી ક્રમાંક (_L):"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:6
 msgid "Fonts"
@@ -1053,7 +1026,7 @@ msgstr "સામાન્ય"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:8
 msgid "He_aders and footers:"
-msgstr "હેડરો અને ફૂટરોઃ  (_a)"
+msgstr "હેડરો અને ફૂટરો (_a):"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:9
 msgid "Page Setup"
@@ -1069,11 +1042,11 @@ msgstr "વાક્યરચના પ્રકાશિત કરીને છ
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:12
 msgid "_Body:"
-msgstr "ધડઃ  (_B)"
+msgstr "ધડ (_B):"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:13
 msgid "_Line numbers:"
-msgstr "લીટી ક્રમાંકોઃ  (_L)"
+msgstr "લીટી ક્રમાંકો (_L):"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:14
 msgid "_Number every"
@@ -1113,7 +1086,7 @@ msgstr "કાર્યક્રમના સ્થાન માટે શોધ
 
 #: gedit/dialogs/program-location-dialog.glade2.h:3
 msgid "_Location to search for:"
-msgstr "શોધવા માટેનું સ્થાનઃ  (_L)"
+msgstr "શોધવા માટેનું સ્થાન (_L):"
 
 #: gedit/dialogs/program-location-dialog.glade2.h:4
 msgid "label"
@@ -1139,7 +1112,7 @@ msgstr "બધુ બદલો"
 
 #: gedit/dialogs/replace.glade2.h:6
 msgid "Replace _with: "
-msgstr "થી બદલોઃ  (_w)"
+msgstr "થી બદલો (_w): "
 
 #: gedit/dialogs/replace.glade2.h:7
 msgid "Search _backwards"
@@ -1151,7 +1124,7 @@ msgstr "જોડણી સરખાવો (_M)"
 
 #: gedit/dialogs/replace.glade2.h:9
 msgid "_Search for: "
-msgstr "ના માટે શોધોઃ  (_S)"
+msgstr "ના માટે શોધો (_S): "
 
 #: gedit/dialogs/replace.glade2.h:10
 msgid "_Wrap around"
@@ -1159,11 +1132,11 @@ msgstr "ફરતે લપેટો (_W)"
 
 #: gedit/dialogs/uri.glade2.h:2
 msgid "Ch_aracter coding:"
-msgstr "અક્ષર માટેનો કોડઃ  (_a)"
+msgstr "અક્ષર માટેનો કોડ (_a):"
 
 #: gedit/dialogs/uri.glade2.h:3
 msgid "Enter the _location (URI) of the file you would like to open:"
-msgstr "તમે ખોલવા ઈચ્છતા હોય તે ફાઇલનું સ્થાન (URI) આપો (_l)"
+msgstr "તમે ખોલવા ઈચ્છતા હોય તે ફાઇલનું સ્થાન (URI) આપો (_l):"
 
 #: gedit/dialogs/uri.glade2.h:4
 msgid "Open from URI"
@@ -1173,7 +1146,7 @@ msgstr "URI માંથી ખોલો"
 msgid "translator_credits"
 msgstr ""
 "નીરવ <nirav@magnet-i.com>\n"
-"અંકિત <ankit644@linux.net>\n"
+"અંકિત <ankit644@yahoo.com>\n"
 "અંકુર <ankur_surti@linux.net>\n"
 "અતિત <shahatit_84@linux.net>\n"
 "ભાવિન <bhavinshah@linux.net>\n"
@@ -1187,7 +1160,7 @@ msgstr "જીએડીટ"
 
 #: gedit/gedit-commands.c:553
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "જીએડીટ એ જીનાેમ ડેસ્કટોપ માટેનું નાનુ અને હલકુ લખાણ સંપાદક છે"
+msgstr "જીએડીટ એ જીનોમ ડેસ્કટોપ માટેનું નાનુ અને હલકુ લખાણ સંપાદક છે"
 
 #: gedit/gedit-document.c:634 gedit/gedit-document.c:652
 #, c-format
@@ -1210,7 +1183,7 @@ msgstr "અયોગ્ય UTF-8 માહિતી"
 #: gedit/gedit-document.c:1725
 #, c-format
 msgid "Could not read symbolic link information for %s"
-msgstr "%s માટે સાंકેતીક કડી માટેની જાણકારી વાંચી શકતું નથી"
+msgstr "%s માટે સાંકેતીક કડી માટેની જાણકારી વાંચી શકતું નથી"
 
 #: gedit/gedit-document.c:1771
 msgid "The file has too many symbolic links."
@@ -1219,7 +1192,7 @@ msgstr "ફાઇલ પાસે ઘણી બધી સાંકેતીક �
 #: gedit/gedit-document.c:1827
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
-msgstr "જીએડીટ %s ને સંભાળી શકતું નથીઃ  સ્થાન લખી શકાય તેવી સ્થિતિમાં છે."
+msgstr "જીએડીટ %s ને સંભાળી શકતું નથી: સ્થાન લખી શકાય તેવી સ્થિતિમાં છે."
 
 #: gedit/gedit-document.c:1834
 msgid "gedit cannot handle this kind of location in write mode."
@@ -1235,7 +1208,7 @@ msgid ""
 "Please free some disk space and try again."
 msgstr ""
 "ફાઇલના સંગ્રહ માટે પર્યાત્પ જગ્યા નથી.\n"
-" મહેરબાની કરીને ડિસ્ક પર થોડી જગ્યા કરો અને પછી ફરીથી પ્રયત્ન કરો."
+"મહેરબાની કરીને ડિસ્ક પર થોડી જગ્યા કરો અને પછી ફરીથી પ્રયત્ન કરો."
 
 #: gedit/gedit-document.c:1964
 msgid ""
@@ -1263,7 +1236,7 @@ msgstr "વર્તમાન લોકેલ (%s)"
 
 #: gedit/gedit-encodings-option-menu.c:310
 msgid "Add or _Remove..."
-msgstr "ઉમેરો અથવા દૂર કરો... (_R)"
+msgstr "ઉમેરો અથવા દૂર કરો (_R)..."
 
 #: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
 #: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
@@ -1362,7 +1335,7 @@ msgstr "સાદુ ચીની"
 
 #: gedit/gedit-encodings.c:207
 msgid "Georgian"
-msgstr "જ્યાેર્જિયાઈ"
+msgstr "જ્યોર્જિયાઈ"
 
 #: gedit/gedit-encodings.c:237
 msgid "Cyrillic/Ukrainian"
@@ -1384,20 +1357,16 @@ msgstr "\"%s\" ફાઇલ પહેલાથી હાજર છે.\n"
 
 #: gedit/gedit-file-selector-util.c:153
 msgid "Do you want to replace it with the one you are saving?"
-msgstr ""
-"\"%s\" નામવાળી ફાઇલ પહેલેથી જ હાજર છે.\n"
-" શું તમે તેને સંગ્રહ થઈ રહેલ ફાઇલ સાથે બદલવા માગો છો?"
+msgstr "શું તમે તેને સંગ્રહ થઈ રહેલ ફાઇલ સાથે બદલવા માગો છો?"
 
 #: gedit/gedit-file-selector-util.c:162
 #, c-format
 msgid "The file \"%s\" is read-only.\n"
-msgstr "\"%s\" ફાઇલ પહેલાથી હાજર છે.\n"
+msgstr "\"%s\" ફાઇલ માત્ર વાંચી શકાય તેવી જ છે.\n"
 
 #: gedit/gedit-file-selector-util.c:163
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr ""
-"\"%s\" ફાઇલ ફક્ત વાંચી શકાય તેવી છે.\n"
-" શું તમે તેને સંગ્રહ થઈ રહેલ ફાઇલ સાથે બદલવાનો પ્રયાસ કરવા માગો છો?"
+msgstr "શું તમે તેને સંગ્રહ થઈ રહેલ ફાઇલ સાથે બદલવાનો પ્રયાસ કરવા માગો છો?"
 
 #: gedit/gedit-file-selector-util.c:361
 msgid "All Files"
@@ -1409,7 +1378,7 @@ msgstr "બધી લખાણ ફાઇલો"
 
 #: gedit/gedit-file-selector-util.c:387
 msgid "Ch_aracter Coding:"
-msgstr "અક્ષર માટેનો કોડઃ  (_a)"
+msgstr "અક્ષર માટેનો કોડ (_a):"
 
 #: gedit/gedit-file-selector-util.c:533
 msgid "Select a file to open"
@@ -1430,7 +1399,7 @@ msgstr "ફાઇલ ખોલો..."
 #: gedit/gedit-file.c:271 gedit/gedit-file.c:424
 #, c-format
 msgid "Saving document \"%s\"..."
-msgstr "\"%s\" ફાઇલ સંગ્રહાઈ રહી છે..."
+msgstr "દસ્તાવેજ \"%s\" સંગ્રહી રહ્યા છીએ..."
 
 #: gedit/gedit-file.c:299 gedit/gedit-file.c:445
 #, c-format
@@ -1440,7 +1409,7 @@ msgstr "દસ્તાવેજ \"%s\" નો હજુ સુધી સંગ�
 #: gedit/gedit-file.c:313 gedit/gedit-file.c:437
 #, c-format
 msgid "The document \"%s\" has been saved."
-msgstr "દસ્તાવેજ \"%s\" નો હજુ સુધી સંગ્રહ થયો નથી."
+msgstr "દસ્તાવેજ \"%s\" સંગ્રહાઈ ગઈ."
 
 #: gedit/gedit-file.c:404
 msgid "Save as..."
@@ -1453,8 +1422,7 @@ msgstr "દસ્તાવેજ \"%s\" ના અસંગ્રહિત બ�
 
 #: gedit/gedit-file.c:614
 #, c-format
-msgid ""
-"Changes made to the document in the last %ld second will be permanently lost."
+msgid "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1462,8 +1430,7 @@ msgstr[0] "દસ્તાવેજમાં છેલ્લી %ld સેકન
 msgstr[1] "દસ્તાવેજમાં છેલ્લી %ld સેકન્ડોમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
 #: gedit/gedit-file.c:623
-msgid ""
-"Changes made to the document in the last minute will be permanently lost."
+msgid "Changes made to the document in the last minute will be permanently lost."
 msgstr "દસ્તાવેજમાં છેલ્લી મિનિટમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
 #: gedit/gedit-file.c:629
@@ -1479,8 +1446,7 @@ msgstr[1] "દસ્તાવેજમાં છેલ્લી મિનિટ 
 
 #: gedit/gedit-file.c:639
 #, c-format
-msgid ""
-"Changes made to the document in the last %ld minute will be permanently lost."
+msgid "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1504,10 +1470,8 @@ msgstr[1] "દસ્તાવેજમાં છેલ્લા કલાક અ
 
 #: gedit/gedit-file.c:675
 #, c-format
-msgid ""
-"Changes made to the document in the last %d hour will be permanently lost."
-msgid_plural ""
-"Changes made to the document in the last %d hours will be permanently lost."
+msgid "Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "દસ્તાવેજમાં છેલ્લા %d કલાકમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 msgstr[1] "દસ્તાવેજમાં છેલ્લા %d કલાકોમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
@@ -1518,7 +1482,7 @@ msgstr "પહેલાની સ્થિતિમાં લાવો (_R)"
 #: gedit/gedit-file.c:747
 #, c-format
 msgid "Error reverting the document \"%s\"."
-msgstr "\"%s\" ફાઇલને પહેલાની સ્થિતિમાં પાછી લાવી શકાઈ નથી."
+msgstr "દસ્તાવેજ \"%s\" ને પહેલાની સ્થિતિમાં પાછુ લાવવામાં ભૂલ."
 
 #: gedit/gedit-file.c:754
 #, c-format
@@ -1528,7 +1492,7 @@ msgstr "દસ્તાવેજ \"%s\" ને પહેલાની સ્થ�
 #: gedit/gedit-file.c:758
 #, c-format
 msgid "The document \"%s\" has been reverted."
-msgstr "દસ્તાવેજ \"%s\" ને પહેલાની સ્થિતિમાં લાવી શકાયુ નહિ."
+msgstr "દસ્તાવેજ \"%s\" ને પહેલાની સ્થિતિમાં પાછું લવાઈ ગયું."
 
 #: gedit/gedit-file.c:786
 #, c-format
@@ -1541,11 +1505,11 @@ msgstr "stdin માંથી માહિતી વાંચી શકાઈ �
 
 #: gedit/gedit-file.c:1060
 msgid "Reverting file:"
-msgstr "ફાઇલને પહેલાની સ્થિતિમાં લાવી રહ્યા છેઃ "
+msgstr "ફાઇલને પહેલાની સ્થિતિમાં લાવી રહ્યા છે:"
 
 #: gedit/gedit-file.c:1060
 msgid "Loading file:"
-msgstr "ફાઇલ લાવી રહ્યા છેઃ "
+msgstr "ફાઇલ લાવી રહ્યા છે:"
 
 #: gedit/gedit-file.c:1233 gedit/gedit-file.c:1392
 #, c-format
@@ -1596,7 +1560,7 @@ msgstr "યુનિકોડ (UTF-8)"
 
 #: gedit/gedit-mdi-child.c:786
 msgid "Name:"
-msgstr "નામઃ "
+msgstr "નામ:"
 
 #: gedit/gedit-mdi-child.c:787
 msgid "MIME Type:"
@@ -1604,7 +1568,7 @@ msgstr "MIME પ્રકાર:"
 
 #: gedit/gedit-mdi-child.c:788
 msgid "Encoding:"
-msgstr "સંગ્રહપદ્ધતિઃ "
+msgstr "સંગ્રહપદ્ધતિ:"
 
 #. Translators: %s is a URI
 #: gedit/gedit-mdi.c:291 gedit/gedit-mdi.c:451
@@ -1737,7 +1701,7 @@ msgstr "છાપવા માટેનુ પૂર્વદર્શન"
 #: gedit/gedit-print.c:547
 #, c-format
 msgid "File: %s"
-msgstr "ફાઇલઃ  %s"
+msgstr "ફાઇલ: %s"
 
 #: gedit/gedit-print.c:553
 msgid "Page %N of %Q"
@@ -1821,7 +1785,7 @@ msgstr "પહેલાનું શોધો"
 
 #: gedit/gedit-ui.xml.h:22
 msgid "Go to _Line..."
-msgstr "લીટી પર જાઓ... (_L)"
+msgstr "લીટી પર જાઓ (_L)..."
 
 #: gedit/gedit-ui.xml.h:23
 msgid "Go to a specific line"
@@ -1837,7 +1801,7 @@ msgstr "વર્તમાન દસ્તાવેજને નવી વિન
 
 #: gedit/gedit-ui.xml.h:26
 msgid "New"
-msgstr "નવુ"
+msgstr "નવું"
 
 #: gedit/gedit-ui.xml.h:27
 msgid "Open"
@@ -1849,7 +1813,7 @@ msgstr "સ્થાન ખોલો..."
 
 #: gedit/gedit-ui.xml.h:29
 msgid "Open _Location..."
-msgstr "સ્થાન ખોલો... (_L)"
+msgstr "સ્થાન ખોલો (_L)..."
 
 #: gedit/gedit-ui.xml.h:30
 msgid "Open a file"
@@ -1881,7 +1845,7 @@ msgstr "પસંદગીઓ (_e)"
 
 #: gedit/gedit-ui.xml.h:38
 msgid "Print Previe_w..."
-msgstr "છાપવા માટેનું પૂર્વદર્શન... (_w)"
+msgstr "છાપવા માટેનું પૂર્વદર્શન (_w)..."
 
 #: gedit/gedit-ui.xml.h:39
 msgid "Print Preview"
@@ -1925,7 +1889,7 @@ msgstr "આ રીતે સંગ્રહ કરો"
 
 #: gedit/gedit-ui.xml.h:51
 msgid "Save _As..."
-msgstr "આ રીતે સંગ્રહ કરો... (_A)"
+msgstr "આ રીતે સંગ્રહ કરો (_A)..."
 
 #: gedit/gedit-ui.xml.h:52
 msgid "Save all open files"
@@ -1968,8 +1932,7 @@ msgid "Select the entire document"
 msgstr "સંપૂર્ણ દસ્તાવેજ પસંદ કરો"
 
 #: gedit/gedit-ui.xml.h:62
-msgid ""
-"Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr "ડેસ્કટોપ મેનુ અને સાધનપટ્ટી પસંદગીઓ પ્રમાણે સાધનપટ્ટી બટન શૈલીને સુયોજિત કરો"
 
 #: gedit/gedit-ui.xml.h:63
@@ -2046,7 +2009,7 @@ msgstr "ફાઇલ (_F)"
 
 #: gedit/gedit-ui.xml.h:81
 msgid "_Find..."
-msgstr "શોધો... (_F)"
+msgstr "શોધો (_F)..."
 
 #: gedit/gedit-ui.xml.h:82
 msgid "_Help"
@@ -2066,7 +2029,7 @@ msgstr "નવું (_N)"
 
 #: gedit/gedit-ui.xml.h:87
 msgid "_Open..."
-msgstr "ખોલો... (_O)"
+msgstr "ખોલો (_O)..."
 
 #: gedit/gedit-ui.xml.h:88
 msgid "_Output Window"
@@ -2078,7 +2041,7 @@ msgstr "ચોંટાડો (_P)"
 
 #: gedit/gedit-ui.xml.h:90
 msgid "_Print..."
-msgstr "છાપો... (_P)"
+msgstr "છાપો (_P)..."
 
 #: gedit/gedit-ui.xml.h:91
 msgid "_Quit"
@@ -2090,7 +2053,7 @@ msgstr "ફરીથી કરો (_R)"
 
 #: gedit/gedit-ui.xml.h:93
 msgid "_Replace..."
-msgstr "બદલો... (_R)"
+msgstr "બદલો (_R)..."
 
 #: gedit/gedit-ui.xml.h:95
 msgid "_Save"
@@ -2135,7 +2098,7 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"\"%s\" ફાઇલ મળ શકી નથી.\n"
+"\"%s\" ફાઇલ મળી શકી નથી.\n"
 "\n"
 "મહેરબાની કરીને તમે સ્થાન બરાબર લખ્યું છે તે તપાસો અને ફરીથી પ્રયત્ન કરો."
 
@@ -2146,8 +2109,7 @@ msgstr "\"%s\" ફાઇલ ખોલી શકાઈ નહિ કારણક�
 
 #: gedit/gedit-utils.c:444
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "\"%s\" ફાઇલ ખોલી શકાઈ નહિ કારણકે જીએડીટ %s સ્થાન સંભાળી શકતુ નથી."
 
 #: gedit/gedit-utils.c:450
@@ -2157,8 +2119,7 @@ msgstr "\"%s\" ફાઇલ ખોલી શકાઈ નહિ"
 
 #: gedit/gedit-utils.c:460
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because it contains data in an invalid format."
+msgid "Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr "\"%s\" ફાઇલ ખોલી શકાઈ નહિ કારણકે તે અયોગ્ય બંધારણવાળી માહિતી ધરાવે છે."
 
 #: gedit/gedit-utils.c:467
@@ -2232,7 +2193,7 @@ msgid ""
 "Please, check that you typed the location correctly and that your proxy "
 "settings are correct and then try again."
 msgstr ""
-"\"%s\" ફાઇલ મળતી નથી કારણકે કાેઈ યજમાન \"%s\" મળી શક્યાે નહિ.\n"
+"\"%s\" ફાઇલ મળતી નથી કારણકે કોઈ યજમાન \"%s\" મળી શક્યો નહિ.\n"
 "\n"
 "મહેરબાની કરીને, ચકાસો કે તમે લખેલું સ્થાન અને પ્રોક્સી સુયોજના સાચા છે અને ફરીથી પ્રયત્ન કરો."
 
@@ -2284,7 +2245,7 @@ msgid ""
 "selecting a character coding in the 'Open File...' (or 'Open Location') "
 "dialog."
 msgstr ""
-"ફાઈલ \"%s\" ખોલી શકાઈ નહિ કારણકે જીઅેડીટ અક્ષર માટેના કોડને આપોઆપ શોધી શક્યુ નહિ.\n"
+"ફાઈલ \"%s\" ખોલી શકાઈ નહિ કારણકે જીએડીટ અક્ષર માટેના કોડને આપોઆપ શોધી શક્યુ નહિ.\n"
 "\n"
 "મહેરબાની કરીને, ચકાસો કે તમે બાયનરી ફાઈલ ખોલવાનો પ્રયાસ કરી રહ્યા નથી અને 'ફાઈલ "
 "ખોલો...' (અથવા 'સ્થાન ખોલો') સંવાદમાં અક્ષર માટેનો કોડ પસંદ કરી ફરીથી પ્રયાસ કરો."
@@ -2313,7 +2274,7 @@ msgid ""
 msgstr ""
 "\"%s\" ફાઇલ ખોલી શકાઈ નહિ.\n"
 "\n"
-"%s"
+"%s."
 
 #: gedit/gedit-utils.c:756
 #, c-format
@@ -2340,7 +2301,7 @@ msgid ""
 msgstr ""
 "\"%s\" ફાઇલને પહેલાની સ્થિતિમાં લાવી શકાઈ નથી કારણકે જીએડીટને તે મળતી નથી.\n"
 "\n"
-"તે કદાચ હમાણા જ કાઢી નખાઈ છે."
+"તે કદાચ હમાણાં જ કાઢી નંખાઈ છે."
 
 #: gedit/gedit-utils.c:817
 #, c-format
@@ -2349,11 +2310,8 @@ msgstr "\"%s\" ફાઇલને પહેલાની સ્થિતિમા
 
 #: gedit/gedit-utils.c:828
 #, c-format
-msgid ""
-"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
-msgstr ""
-"\"%s\" ફાઇલને પહેલાની સ્થિતિમાં લાવી શકાઈ નથી કારણકે જીએડીટ %s સ્થાન સંભાળી શકતુ "
-"નથીઃ  જગ્યાઓ."
+msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgstr "\"%s\" ફાઇલને પહેલાની સ્થિતિમાં લાવી શકાઈ નથી કારણકે જીએડીટ %s સ્થાન સંભાળી શકતુ નથી: જગ્યાઓ."
 
 #: gedit/gedit-utils.c:834 gedit/gedit-utils.c:893 gedit/gedit-utils.c:904
 #: gedit/gedit-utils.c:988
@@ -2378,8 +2336,7 @@ msgstr "\"%s\" ફાઇલને પહેલાની સ્થિતિમા
 #: gedit/gedit-utils.c:858
 #, c-format
 msgid "Could not revert the file \"%s\" because access was denied."
-msgstr ""
-"\"%s\" ફાઇલને પહેલાની સ્થિતિમાં લાવી શકાઈ નથી કારણકે તેને પ્રાપ્ત કરવા માટે મનાઈ હતી."
+msgstr "\"%s\" ફાઇલને પહેલાની સ્થિતિમાં લાવી શકાઈ નથી કારણકે તેને પ્રાપ્ત કરવા માટે મનાઈ હતી."
 
 #: gedit/gedit-utils.c:865
 #, c-format
@@ -2470,7 +2427,7 @@ msgid ""
 msgstr ""
 "\"%s\" ફાઇલ બનાવી શકાઈ નથી.\n"
 "\n"
-"તમારી પાસે લખવાની યાેગ્ય પરવાનગી છે તેની ખાતરી કરો."
+"તમારી પાસે લખવાની યોગ્ય પરવાનગી છે તેની ખાતરી કરો."
 
 #: gedit/gedit-utils.c:1061
 #, c-format
@@ -2534,8 +2491,7 @@ msgstr "  INS"
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
-msgstr ""
-"આદેશ વાક્યમાં યાદી કરેલ ફાઈલોને ખોલવા માટે વપરાતી અક્ષરોની સંગ્રહપદ્ધતિ સુયોજિત કરો"
+msgstr "આદેશ વાક્યમાં યાદી કરેલ ફાઈલોને ખોલવા માટે વપરાતી અક્ષરોની સંગ્રહપદ્ધતિ સુયોજિત કરો"
 
 #: gedit/gedit2.c:89
 msgid "Quit an existing instance of gedit"
@@ -2620,7 +2576,7 @@ msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
 msgstr ""
-"વર્તમાન દસ્તાવેજનું  વિશ્લેષણ કરે છે અને તેમાંના શબ્દો, લીટીઓ, અક્ષરો અને જગ્યાવિહીન અક્ષરોની "
+"વર્તમાન દસ્તાવેજનું વિશ્લેષણ કરે છે અને તેમાંના શબ્દો, લીટીઓ, અક્ષરો અને જગ્યાવિહીન અક્ષરોની "
 "સંખ્યાનો તેને અહેવાલ આપે છે."
 
 #: plugins/docinfo/docinfo.glade2.h:2
@@ -2697,34 +2653,34 @@ msgstr "વપરાશકર્તા નામ"
 
 #: plugins/shell_output/shell_output.c:56
 msgid "_Run Command..."
-msgstr "આદેશ ચલાવો... (_R)"
+msgstr "આદેશ ચલાવો (_R)..."
 
 #: plugins/shell_output/shell_output.c:59
 msgid "Run a command"
 msgstr "આદેશ ચલાવો"
 
-#: plugins/shell_output/shell_output.c:161
-#: plugins/shell_output/shell_output.c:502
+#: plugins/shell_output/shell_output.c:160
+#: plugins/shell_output/shell_output.c:490
 msgid "Stopped"
 msgstr "બંધ થયેલ"
 
-#: plugins/shell_output/shell_output.c:282
+#: plugins/shell_output/shell_output.c:271
 msgid "Run Command"
 msgstr "આદેશ ચલાવો"
 
-#: plugins/shell_output/shell_output.c:301
+#: plugins/shell_output/shell_output.c:290
 msgid "_Run"
 msgstr "ચલાવો (_R)"
 
-#: plugins/shell_output/shell_output.c:508
+#: plugins/shell_output/shell_output.c:496
 msgid "Done"
-msgstr "પુર્ણ થયુ"
+msgstr "પુર્ણ થયું"
 
-#: plugins/shell_output/shell_output.c:510
+#: plugins/shell_output/shell_output.c:498
 msgid "Failed"
 msgstr "નિષ્ફળ ગયું"
 
-#: plugins/shell_output/shell_output.c:676
+#: plugins/shell_output/shell_output.c:658
 msgid ""
 "The shell command entry is empty.\n"
 "\n"
@@ -2734,7 +2690,7 @@ msgstr ""
 "\n"
 "મહેરબાની કરીને, યોગ્ય શેલ આદેશ આપો."
 
-#: plugins/shell_output/shell_output.c:695
+#: plugins/shell_output/shell_output.c:677
 msgid ""
 "Error parsing the shell command.\n"
 "\n"
@@ -2744,11 +2700,11 @@ msgstr ""
 "\n"
 "મહેરબાની કરીને, યોગ્ય શેલ આદેશ આપો."
 
-#: plugins/shell_output/shell_output.c:773
+#: plugins/shell_output/shell_output.c:755
 msgid "Executing command"
 msgstr "આદેશ ચલાવી રહ્યા છે"
 
-#: plugins/shell_output/shell_output.c:841
+#: plugins/shell_output/shell_output.c:823
 msgid "An error occurred while running the selected command."
 msgstr "પસંદ કરેલ આદેશ ચલાવતી વખતે ભૂલ ઉદ્ભવી હતી."
 
@@ -2766,7 +2722,7 @@ msgstr "શેલ આદેશ"
 
 #: plugins/shell_output/shell_output.glade2.h:2
 msgid "Co_mmand:"
-msgstr "આદેશઃ  (_m)"
+msgstr "આદેશ (_m):"
 
 #: plugins/shell_output/shell_output.glade2.h:3
 msgid "Select the working directory..."
@@ -2778,7 +2734,7 @@ msgstr "આઉટપુટ વિન્ડોમાં પરિણામ દર
 
 #: plugins/shell_output/shell_output.glade2.h:5
 msgid "_Working directory:"
-msgstr "કાર્યકારી ડિરેક્ટરીઃ  (_W)"
+msgstr "કાર્યકારી ડિરેક્ટરી (_W):"
 
 #: plugins/shell_output/shell_output.glade2.h:6
 msgid "gedit: Shell Output plugin"
@@ -2786,7 +2742,7 @@ msgstr "જીએડીટ: શેલ આઉટપુટ પ્લગઈન"
 
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
-msgstr "ક્રમમાં ગોઠવો... (_o)"
+msgstr "ક્રમમાં ગોઠવો (_o)..."
 
 #: plugins/sort/sort.c:30
 msgid "Sort the current document or selection."
@@ -2806,7 +2762,7 @@ msgstr "નકલો દુર કરો (_e)"
 
 #: plugins/sort/sort.glade2.h:2
 msgid "S_tart at column:"
-msgstr "ઊભી હરોળથી શરુઆત કરોઃ  (_t)"
+msgstr "ઊભી હરોળથી શરુઆત કરો (_t):"
 
 #: plugins/sort/sort.glade2.h:4
 msgid "You cannot undo a sort operation"
@@ -2831,7 +2787,7 @@ msgstr "(કોઈ શબ્દો માટેની સલાહ નથી)"
 
 #: plugins/spell/gedit-automatic-spell-checker.c:374
 msgid "_More..."
-msgstr "વધારે... (_M)"
+msgstr "વધારે (_M)..."
 
 #. Ignore all
 #: plugins/spell/gedit-automatic-spell-checker.c:427
@@ -2845,7 +2801,7 @@ msgstr "ઊમેરો (_A)"
 
 #: plugins/spell/gedit-automatic-spell-checker.c:477
 msgid "_Spelling Suggestions..."
-msgstr "જોડણી માટેના સુચનો... (_S)"
+msgstr "જોડણી માટેના સુચનો (_S)..."
 
 #: plugins/spell/gedit-spell-checker-dialog.c:289
 msgid "Check Spelling"
@@ -3002,7 +2958,7 @@ msgstr "ભાષાઓ"
 
 #: plugins/spell/languages-dialog.glade2.h:1
 msgid "Select the _language of the current document."
-msgstr "ચાલુ દસ્તાવેજની ભાષા પસંદ કરો (_l)"
+msgstr "ચાલુ દસ્તાવેજની ભાષા પસંદ કરો (_l)."
 
 #: plugins/spell/languages-dialog.glade2.h:2
 msgid "Set language"
@@ -3030,7 +2986,7 @@ msgstr "બધુ બદલો (_l)"
 
 #: plugins/spell/spell-checker.glade2.h:7
 msgid "Change _to:"
-msgstr "ને બદલોઃ  (_t)"
+msgstr "ને બદલો (_t):"
 
 #: plugins/spell/spell-checker.glade2.h:8
 msgid "Check _Word"
@@ -3046,15 +3002,15 @@ msgstr "બધુ અવગણો (_A)"
 
 #: plugins/spell/spell-checker.glade2.h:11
 msgid "Language:"
-msgstr "ભાષાઃ "
+msgstr "ભાષા:"
 
 #: plugins/spell/spell-checker.glade2.h:12
 msgid "Mispelled word:"
-msgstr "ખોટો શબ્દઃ "
+msgstr "ખોટો શબ્દ:"
 
 #: plugins/spell/spell-checker.glade2.h:13
 msgid "User dictionary:"
-msgstr "વપરાશકર્તા શબ્દકોષઃ "
+msgstr "વપરાશકર્તા શબ્દકોષ:"
 
 #: plugins/spell/spell-checker.glade2.h:14
 msgid "_Ignore"
@@ -3062,7 +3018,7 @@ msgstr "અવગણો (_I)"
 
 #: plugins/spell/spell-checker.glade2.h:15
 msgid "_Suggestions:"
-msgstr "સુચનોઃ  (_S)"
+msgstr "સુચનો (_S):"
 
 #: plugins/spell/spell.c:51
 msgid "_Check Spelling"
@@ -3154,7 +3110,7 @@ msgstr "ટેગ યાદી"
 
 #: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
-msgstr "તારીખ/સમય ઉમેરો... (_s)"
+msgstr "તારીખ/સમય ઉમેરો (_s)..."
 
 #: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
@@ -3219,3 +3175,4 @@ msgstr "પસંદ કરેલ લખાણ ક્લિપબોર્ડમ
 #: viewer/gedit-viewer-ui.xml.h:2
 msgid "_Copy Text"
 msgstr "લખાણની નકલ કરો (_C)"
+
