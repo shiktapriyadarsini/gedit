@@ -1,3 +1,10 @@
+2004-12-10  Balamurali Viswanathan  <balamurali.viswanathan@wipro.com>
+
+	Patch from Srirama Sharma  <srirama.sharma@wipro.com>
+
+	* dialogs/uri.glade2: Remove the explicit call to set AtkRelation
+	since the widget is set as mnemonic widget. Fixes the Bug #160593.
+
 2004-12-05  Paolo Borelli  <pborelli@katamail.com>
 
 	* gedit-encodings.c: comment out UTF-16, UCS-2 e UCS-8 since
