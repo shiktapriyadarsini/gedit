@@ -61,16 +61,25 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 {
 	statusbar->priv = GEDIT_STATUSBAR_GET_PRIVATE (statusbar);
 
-	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar), TRUE);
+	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar), FALSE);
 
 	statusbar->priv->overwrite_mode_statusbar = gtk_statusbar_new ();
+	gtk_widget_show (statusbar->priv->overwrite_mode_statusbar);
+	gtk_widget_set_size_request (statusbar->priv->overwrite_mode_statusbar, 
+				     80, 
+				     10);
+	
 	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar->priv->overwrite_mode_statusbar),
-					   FALSE);
+					   TRUE);
 	gtk_box_pack_end (GTK_BOX (statusbar),
 			  statusbar->priv->overwrite_mode_statusbar,
 			  FALSE, TRUE, 0);
 
 	statusbar->priv->cursor_position_statusbar = gtk_statusbar_new ();
+	gtk_widget_show (statusbar->priv->cursor_position_statusbar);	
+	gtk_widget_set_size_request (statusbar->priv->cursor_position_statusbar, 
+				     160, 
+				     10);	
 	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar->priv->cursor_position_statusbar),
 					   FALSE);
 	gtk_box_pack_end (GTK_BOX (statusbar),
@@ -141,6 +150,9 @@ gedit_statusbar_set_cursor_position (GeditStatusbar *statusbar,
 
 	gtk_statusbar_pop (GTK_STATUSBAR (statusbar->priv->cursor_position_statusbar), 0); 
 
+	if ((line == -1) && (col == -1))
+		return;
+		
 	/* Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 	use abbreviations if possible to avoid space problems. */
 	msg = g_strdup_printf (_("  Ln %d, Col %d"), line, col);

@@ -26,7 +26,6 @@
  * See the ChangeLog files for a list of changes. 
  *
  * $Id$
- *
  */
 
 #ifdef HAVE_CONFIG_H
@@ -62,6 +61,7 @@ struct _GeditWindowPrivate
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
 	GtkActionGroup *action_group;
+	GtkWidget      *toolbar;
 	
 	GeditTab       *active_tab;
 	gint            num_tabs;
@@ -261,7 +261,6 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	GtkAction      *action;
 	GtkUIManager   *manager;
 	GtkWidget      *menubar;
-	GtkWidget      *toolbar;
 	GError         *error = NULL;
 
 	manager = gtk_ui_manager_new ();
@@ -307,8 +306,12 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
 	gtk_box_pack_start (GTK_BOX (main_box), menubar, FALSE, FALSE, 0);
 
-	toolbar = gtk_ui_manager_get_widget (manager, "/ToolBar");
-	gtk_box_pack_start (GTK_BOX (main_box), toolbar, FALSE, FALSE, 0);	
+	window->priv->toolbar = gtk_ui_manager_get_widget (manager, "/ToolBar");
+	gtk_box_pack_start (GTK_BOX (main_box), 
+			    window->priv->toolbar, 
+			    FALSE, 
+			    FALSE, 
+			    0);	
 }
 
 static void
@@ -326,7 +329,7 @@ create_statusbar (GeditWindow *window,
 			  window->priv->statusbar,
 			  FALSE, 
 			  TRUE, 
-			  0);
+			  0);			
 }
 
 static GeditWindow *
@@ -365,6 +368,75 @@ clone_window (GeditWindow *origin)
 	// FIXME: clone the visibility of panels
 
 	return GEDIT_WINDOW (window);
+}
+
+static void
+update_cursor_position_statusbar (GtkTextBuffer *buffer, 
+				  GeditWindow   *window)
+{
+	gint row, col;
+	GtkTextIter iter;
+	GtkTextIter start;
+	guint tab_size;
+	GeditView *view;
+
+	gedit_debug (DEBUG_MDI, "");
+  
+ 	if (buffer != GTK_TEXT_BUFFER (gedit_window_get_active_document (window)))
+ 		return;
+ 		
+ 	view = gedit_window_get_active_view (window);
+ 	
+	gtk_text_buffer_get_iter_at_mark (buffer,
+					  &iter,
+					  gtk_text_buffer_get_insert (buffer));
+	
+	row = gtk_text_iter_get_line (&iter);
+	
+	start = iter;
+	gtk_text_iter_set_line_offset (&start, 0);
+	col = 0;
+
+	tab_size = gtk_source_view_get_tabs_width (GTK_SOURCE_VIEW (view));
+
+	while (!gtk_text_iter_equal (&start, &iter))
+	{
+		/* FIXME: Are we Unicode compliant here? */
+		if (gtk_text_iter_get_char (&start) == '\t')
+					
+			col += (tab_size - (col  % tab_size));
+		else
+			++col;
+
+		gtk_text_iter_forward_char (&start);
+	}
+	
+	gedit_statusbar_set_cursor_position (
+				GEDIT_STATUSBAR (window->priv->statusbar),
+				row + 1,
+				col + 1);
+}
+
+static void
+cursor_moved (GtkTextBuffer     *buffer,
+	      const GtkTextIter *new_location,
+	      GtkTextMark       *mark,
+	      GeditWindow       *window)
+{
+	if (mark == gtk_text_buffer_get_insert (buffer))
+		update_cursor_position_statusbar (buffer, window);
+}
+
+static void
+update_overwrite_mode_statusbar (GtkTextView *view, 
+				 GeditWindow *window)
+{
+	if (view != GTK_TEXT_VIEW (gedit_window_get_active_view (window)))
+		return;
+		
+	gedit_statusbar_set_overwrite (
+			GEDIT_STATUSBAR (window->priv->statusbar),
+			gtk_text_view_get_overwrite (view));
 }
 
 #define MAX_TITLE_LENGTH 100
@@ -508,6 +580,13 @@ notebook_switch_page (GtkNotebook     *book,
 								   page_num));
 
 	set_title (window);
+	
+	update_cursor_position_statusbar (
+			GTK_TEXT_BUFFER (gedit_tab_get_document (window->priv->active_tab)),
+			window);
+	update_overwrite_mode_statusbar (
+			GTK_TEXT_VIEW (gedit_tab_get_view (window->priv->active_tab)),
+			window);
 }
 
 static void
@@ -521,13 +600,34 @@ notebook_tab_added (GeditNotebook *notebook,
 		    GeditTab      *tab,
 		    GeditWindow   *window)
 {
+	GeditView *view;
+	GeditDocument *doc;
+	
 	gedit_debug (DEBUG_MDI, "");
 	
 	++window->priv->num_tabs;
 	g_signal_connect (tab, 
 			 "notify::name",
 			  G_CALLBACK (sync_name), 
-			  window);	
+			  window);
+			  
+	view = gedit_tab_get_view (tab);
+	doc = gedit_tab_get_document (tab);
+	
+	/* CHECK: in the old gedit-view we also connected doc "changed" */
+
+	g_signal_connect (doc, 
+			  "changed",
+			  G_CALLBACK (update_cursor_position_statusbar),
+			  window);
+	g_signal_connect (doc,
+			  "mark_set",/* cursor moved */
+			  G_CALLBACK (cursor_moved),
+			  window);			  
+	g_signal_connect (view,
+			  "toggle_overwrite",
+			  G_CALLBACK (update_overwrite_mode_statusbar),
+			  window);			  
 }
 
 static void
@@ -535,19 +635,35 @@ notebook_tab_removed (GeditNotebook *notebook,
 		      GeditTab      *tab,
 		      GeditWindow   *window)
 {
+	GeditDocument *doc;
+	
 	gedit_debug (DEBUG_MDI, "");
 	
 	--window->priv->num_tabs;
 	
+	doc = gedit_tab_get_document (tab);
+	
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_name), 
 					      window);
-					
+	g_signal_handlers_disconnect_by_func (doc,
+					      G_CALLBACK (cursor_moved), 
+					      window);					
+	g_signal_handlers_disconnect_by_func (doc, 
+					      G_CALLBACK (update_cursor_position_statusbar),
+					      window);
+					      
 	g_return_if_fail (window->priv->num_tabs >= 0);
 	if (window->priv->num_tabs == 0)
 	{
 		window->priv->active_tab = NULL;
 		set_title (window);
+		
+		/* Remove line and col info */
+		gedit_statusbar_set_cursor_position (
+				GEDIT_STATUSBAR (window->priv->statusbar),
+				-1,
+				-1);
 	}
 }
 
@@ -585,6 +701,78 @@ window_state_event_handler (GeditWindow *window, GdkEventWindowState *event)
 	window->priv->state = event->new_window_state;
 	
 	return FALSE;
+}
+
+/* Returns TRUE if status bar is visible */
+static gboolean
+set_statusbar_style (GeditWindow *window)
+{
+	gboolean visible;
+	
+	visible = gedit_prefs_manager_get_statusbar_visible ();
+	
+	if (visible)
+		gtk_widget_show (window->priv->statusbar);
+	else
+		gtk_widget_hide (window->priv->statusbar);	
+		
+	// TODO: show overwrite mode, etc. 
+		
+	return visible;
+}
+
+/* Returns TRUE if toolbar is visible */
+static gboolean
+set_toolbar_style (GeditWindow *window)
+{
+	gboolean visible;
+	GeditToolbarSetting style;
+	
+	visible = gedit_prefs_manager_get_toolbar_visible ();
+	
+	/* Set visibility */
+	if (visible)
+		gtk_widget_show (window->priv->toolbar);
+	else
+	{
+		gtk_widget_hide (window->priv->toolbar);
+	
+		return FALSE;
+	}
+	
+	/* Set style */
+	style = gedit_prefs_manager_get_toolbar_buttons_style ();
+	switch (style)
+	{
+		case GEDIT_TOOLBAR_SYSTEM:
+			gedit_debug (DEBUG_MDI, "GEDIT: SYSTEM");
+			gtk_toolbar_unset_style (
+					GTK_TOOLBAR (window->priv->toolbar));
+			break;
+			
+		case GEDIT_TOOLBAR_ICONS:
+			gedit_debug (DEBUG_MDI, "GEDIT: ICONS");
+			gtk_toolbar_set_style (
+					GTK_TOOLBAR (window->priv->toolbar),
+					GTK_TOOLBAR_ICONS);
+			break;
+			
+		case GEDIT_TOOLBAR_ICONS_AND_TEXT:
+			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_AND_TEXT");
+			gtk_toolbar_set_style (
+					GTK_TOOLBAR (window->priv->toolbar),
+					GTK_TOOLBAR_BOTH);			
+			break;
+			
+		case GEDIT_TOOLBAR_ICONS_BOTH_HORIZ:
+			gedit_debug (DEBUG_MDI, "GEDIT: ICONS_BOTH_HORIZ");
+			gtk_toolbar_set_style (
+					GTK_TOOLBAR (window->priv->toolbar),
+					GTK_TOOLBAR_BOTH_HORIZ);	
+			break;       
+	}
+	
+	return visible;
 }
 
 /* Generates a unique string for a window role.
@@ -640,6 +828,7 @@ gedit_window_init (GeditWindow *window)
 	
 	main_box = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (window), main_box);
+	gtk_widget_show (main_box);
 
 	/* Add menu bar and toolbar bar */
 	create_menu_bar_and_toolbar (window, main_box);
@@ -652,26 +841,40 @@ gedit_window_init (GeditWindow *window)
   			    TRUE, 
   			    0);
 	gtk_paned_set_position (GTK_PANED (hpaned), 0);
+	gtk_widget_show (hpaned);
 
 	/* FIXME */
 	label1 = gtk_label_new ("Side Panel");
   	gtk_paned_pack1 (GTK_PANED (hpaned), label1, TRUE, TRUE);
+  	gtk_widget_show (label1);
 
 	vpaned = gtk_vpaned_new ();
   	gtk_paned_pack2 (GTK_PANED (hpaned), vpaned, TRUE, FALSE);
-
+  	gtk_widget_show (vpaned);
+  	
 	window->priv->notebook = gedit_notebook_new ();
   	gtk_paned_pack1 (GTK_PANED (vpaned), 
   			 window->priv->notebook,
   			 TRUE, 
   			 TRUE);
+  	gtk_widget_show (window->priv->notebook);  			 
 
 	/* FIXME */
 	label2 = gtk_label_new ("Bottom Panel");
   	gtk_paned_pack2 (GTK_PANED (vpaned), label2, TRUE, TRUE);
-
+	gtk_widget_show (label2);
+	
 	/* Add status bar */
 	create_statusbar (window, main_box);
+
+	/* Set the statusbar style according to prefs */
+	set_statusbar_style (window);
+	
+	/* Set the toolbar style according to prefs */
+	set_toolbar_style (window);
+	
+	/* Set visibility of panels */
+	// TODO
 
 	if (gtk_window_get_role (GTK_WINDOW (window)) == NULL)
 	{
@@ -706,11 +909,7 @@ gedit_window_init (GeditWindow *window)
 	g_signal_connect (G_OBJECT (window), 
 			  "window_state_event",
 	                  G_CALLBACK (window_state_event_handler), 
-	                  NULL);
-			  
-	/* show the window */
-	// FIXME
-	gtk_widget_show_all (GTK_WIDGET (main_box));
+	                  NULL);			  
 }
 
 GtkWidget *
