@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit VERSION\n"
 "POT-Creation-Date: 2002-10-09 05:13+0200\n"
-"PO-Revision-Date: 2002-10-09 23:53+EDT\n"
+"PO-Revision-Date: 2002-10-29 09:00+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -907,7 +907,7 @@ msgstr "የፊደል አፃፃፍ ዓይነት እና ቀለማት"
 #: src/dialogs/gedit-preferences-dialog.c:209
 #: src/dialogs/gedit-preferences.glade2.h:30
 msgid "Tabs"
-msgstr "ህዳጎች"
+msgstr ""
 
 #: src/dialogs/gedit-preferences-dialog.c:210
 #: src/dialogs/gedit-preferences.glade2.h:51
@@ -1536,7 +1536,7 @@ msgstr "ፋይል '%s' ተቀምጧል።"
 
 #: src/gedit-file.c:412
 msgid "Save as ..."
-msgstr "በ ... ስም አስቀምጥ ..."
+msgstr "በሌላ ስም አስቀምጥ ..."
 
 #: src/gedit-file.c:626
 #, c-format
@@ -1872,7 +1872,7 @@ msgstr "የአሁኑን ፋይል አትም"
 
 #: src/gedit-ui.xml.h:48
 msgid "Quit"
-msgstr "ማቆሚያ"
+msgstr "ወጣ"
 
 #: src/gedit-ui.xml.h:49
 msgid "Quit the program"
@@ -1880,7 +1880,7 @@ msgstr "ከፕሮግራሙ ውጣ"
 
 #: src/gedit-ui.xml.h:50
 msgid "Recent _Files"
-msgstr "ፋይሎችን _እንደገና እመሐል አድርጉ"
+msgstr "የቅርብ ጊዜ _ፋይሎች"
 
 #: src/gedit-ui.xml.h:51
 msgid "Redo"
@@ -1912,11 +1912,11 @@ msgstr "ሁሉንም አስቀምጥ"
 
 #: src/gedit-ui.xml.h:60
 msgid "Save As"
-msgstr "በ...ስም አስቀምጥ"
+msgstr "በሌላ ስም አስቀምጥ"
 
 #: src/gedit-ui.xml.h:61
 msgid "Save _As..."
-msgstr "_በ...ስም አስቀምጥ..."
+msgstr "_በሌላ ስም አስቀምጥ..."
 
 #: src/gedit-ui.xml.h:62
 msgid "Save all open files"
@@ -2028,7 +2028,7 @@ msgstr "_ፈልግ"
 
 #: src/gedit-ui.xml.h:90
 msgid "_Help"
-msgstr "_ረዳት"
+msgstr "_መረጃ"
 
 #: src/gedit-ui.xml.h:91
 msgid "_Icon"
@@ -2052,7 +2052,7 @@ msgstr "_አትም..."
 
 #: src/gedit-ui.xml.h:96
 msgid "_Quit"
-msgstr "ማ_ቆሚያ"
+msgstr "_ውጣ"
 
 #: src/gedit-ui.xml.h:97
 msgid "_Redo"
