@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2003-03-03 18:36+0100\n"
-"PO-Revision-Date: 2003-03-03 18:37+0100\n"
+"POT-Creation-Date: 2003-06-11 00:09+0200\n"
+"PO-Revision-Date: 2003-06-11 00:09+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Redigerartypsnitt"
 msgid "Encoding for Saving"
 msgstr "Kodning vid sparande"
 
-#: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2296
+#: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2308
 #: src/dialogs/gedit-encodings-dialog.c:261
 #: src/dialogs/gedit-encodings-dialog.glade2.h:2
 msgid "Encodings"
@@ -729,7 +729,7 @@ msgstr "Tecken (inklusive blanksteg)"
 msgid "File Name"
 msgstr "Filnamn"
 
-#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:373
+#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:376
 msgid "Lines"
 msgstr "Rader"
 
@@ -1021,26 +1021,26 @@ msgstr "_Sortera"
 msgid "Sorts a document or selected text."
 msgstr "Sorterar ett dokument eller markerad text."
 
-#: plugins/spell/gedit-automatic-spell-checker.c:322
+#: plugins/spell/gedit-automatic-spell-checker.c:318
 #: plugins/spell/gedit-spell-checker-dialog.c:504
 msgid "(no suggested words)"
 msgstr "(inga föreslagna ord)"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:346
+#: plugins/spell/gedit-automatic-spell-checker.c:342
 msgid "_More..."
 msgstr "_Mer..."
 
 #. Ignore all
-#: plugins/spell/gedit-automatic-spell-checker.c:399
+#: plugins/spell/gedit-automatic-spell-checker.c:395
 msgid "_Ignore All"
 msgstr "_Ignorera alla"
 
 #. + Add to Dictionary
-#: plugins/spell/gedit-automatic-spell-checker.c:412
+#: plugins/spell/gedit-automatic-spell-checker.c:408
 msgid "_Add"
 msgstr "_Lägg till"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:449
+#: plugins/spell/gedit-automatic-spell-checker.c:445
 msgid "_Spelling Suggestions..."
 msgstr "_Stavningsförslag..."
 
@@ -1060,95 +1060,95 @@ msgstr "(korrigera stavning)"
 msgid "Completed spell checking"
 msgstr "Stavningskontrollen färdig"
 
-#: plugins/spell/gedit-spell-checker.c:73
+#: plugins/spell/gedit-spell-checker.c:80
 msgid "Breton"
 msgstr "Bretonska"
 
-#: plugins/spell/gedit-spell-checker.c:74
+#: plugins/spell/gedit-spell-checker.c:81
 msgid "Catalan"
 msgstr "Katalanska"
 
-#: plugins/spell/gedit-spell-checker.c:75
+#: plugins/spell/gedit-spell-checker.c:82
 msgid "Czech"
 msgstr "Tjeckiska"
 
-#: plugins/spell/gedit-spell-checker.c:76
+#: plugins/spell/gedit-spell-checker.c:83
 msgid "Danish"
 msgstr "Danska"
 
-#: plugins/spell/gedit-spell-checker.c:77
+#: plugins/spell/gedit-spell-checker.c:84
 msgid "German (Germany)"
 msgstr "Tyska (Tyskland)"
 
-#: plugins/spell/gedit-spell-checker.c:78
+#: plugins/spell/gedit-spell-checker.c:85
 msgid "German (Swiss)"
 msgstr "Tyska (Schweiz)"
 
-#: plugins/spell/gedit-spell-checker.c:79
+#: plugins/spell/gedit-spell-checker.c:86
 msgid "English (American)"
 msgstr "Engelska (amerikansk)"
 
-#: plugins/spell/gedit-spell-checker.c:80
+#: plugins/spell/gedit-spell-checker.c:87
 msgid "English (British)"
 msgstr "Engelska (brittisk)"
 
-#: plugins/spell/gedit-spell-checker.c:81
+#: plugins/spell/gedit-spell-checker.c:88
 msgid "English (Canadian)"
 msgstr "Engelska (kanadensisk)"
 
-#: plugins/spell/gedit-spell-checker.c:82
+#: plugins/spell/gedit-spell-checker.c:89
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: plugins/spell/gedit-spell-checker.c:83
+#: plugins/spell/gedit-spell-checker.c:90
 msgid "Spanish"
 msgstr "Spanska"
 
-#: plugins/spell/gedit-spell-checker.c:84
+#: plugins/spell/gedit-spell-checker.c:91
 msgid "Faroese"
 msgstr "Färöiska"
 
-#: plugins/spell/gedit-spell-checker.c:85
+#: plugins/spell/gedit-spell-checker.c:92
 msgid "French (France)"
 msgstr "Franska (Frankrike)"
 
-#: plugins/spell/gedit-spell-checker.c:86
+#: plugins/spell/gedit-spell-checker.c:93
 msgid "French (Swiss)"
 msgstr "Franska (Schweiz)"
 
-#: plugins/spell/gedit-spell-checker.c:87
+#: plugins/spell/gedit-spell-checker.c:94
 msgid "Italian"
 msgstr "Italienska"
 
-#: plugins/spell/gedit-spell-checker.c:88
+#: plugins/spell/gedit-spell-checker.c:95
 msgid "Dutch"
 msgstr "Holländska"
 
-#: plugins/spell/gedit-spell-checker.c:89
+#: plugins/spell/gedit-spell-checker.c:96
 msgid "Norwegian"
 msgstr "Norska"
 
-#: plugins/spell/gedit-spell-checker.c:90
+#: plugins/spell/gedit-spell-checker.c:97
 msgid "Polish"
 msgstr "Polska"
 
-#: plugins/spell/gedit-spell-checker.c:91
+#: plugins/spell/gedit-spell-checker.c:98
 msgid "Portuguese (Portugal)"
 msgstr "Portugisiska (Portugal)"
 
-#: plugins/spell/gedit-spell-checker.c:92
+#: plugins/spell/gedit-spell-checker.c:99
 msgid "Portuguese (Brazilian)"
 msgstr "Portugisiska (brasiliansk)"
 
-#: plugins/spell/gedit-spell-checker.c:93
+#: plugins/spell/gedit-spell-checker.c:100
 msgid "Russian"
 msgstr "Ryska"
 
-#: plugins/spell/gedit-spell-checker.c:94
+#: plugins/spell/gedit-spell-checker.c:101
 msgid "Swedish"
 msgstr "Svenska"
 
-#: plugins/spell/gedit-spell-checker.c:653
+#: plugins/spell/gedit-spell-checker.c:734
 msgid "Default"
 msgstr "Standard"
 
@@ -1376,93 +1376,93 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "Den valda filen är inte körbar."
 
-#: src/dialogs/gedit-preferences-dialog.c:233
+#: src/dialogs/gedit-preferences-dialog.c:236
 msgid "Font & Colors"
 msgstr "Typsnitt och färger"
 
-#: src/dialogs/gedit-preferences-dialog.c:235
+#: src/dialogs/gedit-preferences-dialog.c:238
 #: src/dialogs/gedit-preferences.glade2.h:47
 msgid "Tabs"
 msgstr "Flikar"
 
-#: src/dialogs/gedit-preferences-dialog.c:236
+#: src/dialogs/gedit-preferences-dialog.c:239
 msgid "Wrap Mode"
 msgstr "Radbrytningsläge"
 
-#: src/dialogs/gedit-preferences-dialog.c:237
+#: src/dialogs/gedit-preferences-dialog.c:240
 msgid "Auto Indent"
 msgstr "Automatiskt indrag"
 
-#: src/dialogs/gedit-preferences-dialog.c:238
+#: src/dialogs/gedit-preferences-dialog.c:241
 msgid "Line Numbers"
 msgstr "Radnummer"
 
-#: src/dialogs/gedit-preferences-dialog.c:240 src/gedit-ui.xml.h:30
+#: src/dialogs/gedit-preferences-dialog.c:243 src/gedit-ui.xml.h:30
 msgid "Open"
 msgstr "Öppna"
 
-#: src/dialogs/gedit-preferences-dialog.c:241
+#: src/dialogs/gedit-preferences-dialog.c:244
 #: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:53
 msgid "Save"
 msgstr "Spara"
 
-#: src/dialogs/gedit-preferences-dialog.c:242
-#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:70
+#: src/dialogs/gedit-preferences-dialog.c:245
+#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:72
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/dialogs/gedit-preferences-dialog.c:250
+#: src/dialogs/gedit-preferences-dialog.c:253
 msgid "Page"
 msgstr "Sida"
 
-#: src/dialogs/gedit-preferences-dialog.c:252
+#: src/dialogs/gedit-preferences-dialog.c:255
 msgid "Fonts"
 msgstr "Typsnitt"
 
-#: src/dialogs/gedit-preferences-dialog.c:259
+#: src/dialogs/gedit-preferences-dialog.c:262
 msgid "Manager"
 msgstr "Hanterare"
 
-#: src/dialogs/gedit-preferences-dialog.c:267
+#: src/dialogs/gedit-preferences-dialog.c:270
 msgid "Editor"
 msgstr "Redigerare"
 
-#: src/dialogs/gedit-preferences-dialog.c:268
-#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:364
+#: src/dialogs/gedit-preferences-dialog.c:271
+#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:367
 #: src/gedit-ui.xml.h:39
 msgid "Print"
 msgstr "Skriv ut"
 
-#: src/dialogs/gedit-preferences-dialog.c:269
+#: src/dialogs/gedit-preferences-dialog.c:272
 msgid "Plugins"
 msgstr "Insticksmoduler"
 
-#: src/dialogs/gedit-preferences-dialog.c:341
+#: src/dialogs/gedit-preferences-dialog.c:344
 msgid "Cat_egories:"
 msgstr "Kat_egorier:"
 
-#: src/dialogs/gedit-preferences-dialog.c:363
+#: src/dialogs/gedit-preferences-dialog.c:366
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/dialogs/gedit-preferences-dialog.c:603
+#: src/dialogs/gedit-preferences-dialog.c:606
 msgid "Categories"
 msgstr "Kategorier"
 
-#: src/dialogs/gedit-preferences-dialog.c:836
+#: src/dialogs/gedit-preferences-dialog.c:839
 msgid "Push this button to select the font to be used by the editor"
 msgstr ""
 "Tryck på denna knapp för att välja det typsnitt som används av redigeraren"
 
-#: src/dialogs/gedit-preferences-dialog.c:839
+#: src/dialogs/gedit-preferences-dialog.c:842
 msgid "Push this button to configure text color"
 msgstr "Tryck på denna knapp för att konfigurera textfärg"
 
-#: src/dialogs/gedit-preferences-dialog.c:841
+#: src/dialogs/gedit-preferences-dialog.c:844
 msgid "Push this button to configure background color"
 msgstr "Tryck på denna knapp för att konfigurera bakgrundsfärg"
 
-#: src/dialogs/gedit-preferences-dialog.c:843
+#: src/dialogs/gedit-preferences-dialog.c:846
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
@@ -1470,7 +1470,7 @@ msgstr ""
 "Tryck på denna knapp för att konfigurera den färg som markerad text ska "
 "visas med"
 
-#: src/dialogs/gedit-preferences-dialog.c:846
+#: src/dialogs/gedit-preferences-dialog.c:849
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
@@ -1478,19 +1478,19 @@ msgstr ""
 "Tryck på denna knapp för att konfigurera den färg som markerad text ska vara "
 "markerad med"
 
-#: src/dialogs/gedit-preferences-dialog.c:1851
+#: src/dialogs/gedit-preferences-dialog.c:1863
 msgid "Push this button to select the font to be used to print the body"
 msgstr ""
 "Tryck på denna knapp för att välja det typsnitt som ska användas för "
 "utskrift av kroppen."
 
-#: src/dialogs/gedit-preferences-dialog.c:1853
+#: src/dialogs/gedit-preferences-dialog.c:1865
 msgid "Push this button to select the font to be used to print the headers"
 msgstr ""
 "Tryck på denna knapp för att välja det typsnitt som används för utskrift av "
 "huvudena"
 
-#: src/dialogs/gedit-preferences-dialog.c:1855
+#: src/dialogs/gedit-preferences-dialog.c:1867
 msgid "Push this button to select the font to be used to print line numbers"
 msgstr ""
 "Tryck på denna knapp för att välja det typsnitt som används för att skriva "
@@ -2044,7 +2044,7 @@ msgstr ""
 "\n"
 "Du kommer inte att kunna ångra denna åtgärd."
 
-#: src/gedit-file.c:638 src/gedit-ui.xml.h:97
+#: src/gedit-file.c:638 src/gedit-ui.xml.h:99
 msgid "_Revert"
 msgstr "_Återgå"
 
@@ -2087,15 +2087,15 @@ msgid "RO"
 msgstr "SKRIVSK"
 
 #. Add the detach tab button
-#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:87
+#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:89
 msgid "_Move to New Window"
 msgstr "_Flytta till nytt fönster"
 
-#: src/gedit-mdi.c:446
+#: src/gedit-mdi.c:434
 msgid "Open a file."
 msgstr "Öppna en fil."
 
-#: src/gedit-mdi.c:1032
+#: src/gedit-mdi.c:1020
 #, c-format
 msgid ""
 "Do you want to save the changes you made to the document \"%s\"? \n"
@@ -2106,23 +2106,23 @@ msgstr ""
 "\n"
 "Dina ändringar kommer att gå förlorade om du inte sparar dem."
 
-#: src/gedit-mdi.c:1037
+#: src/gedit-mdi.c:1025
 msgid "Do_n't save"
 msgstr "Spara i_nte"
 
-#: src/gedit-mdi.c:1056
+#: src/gedit-mdi.c:1044
 msgid "_Don't quit"
 msgstr "Avsluta in_te"
 
-#: src/gedit-mdi.c:1060
+#: src/gedit-mdi.c:1048
 msgid "_Don't close"
 msgstr "St_äng inte"
 
-#: src/gedit-mdi.c:1150
+#: src/gedit-mdi.c:1138
 msgid "(modified)"
 msgstr "(ändrad)"
 
-#: src/gedit-mdi.c:1156
+#: src/gedit-mdi.c:1144
 msgid "(readonly)"
 msgstr "(skrivskyddad)"
 
@@ -2190,22 +2190,22 @@ msgstr ""
 "gedit kan inte skriva ut eftersom det inte kan\n"
 "hitta en av de nödvändiga typsnitten."
 
-#: src/gedit-print.c:432
+#: src/gedit-print.c:435
 #, c-format
 msgid "File: %s"
 msgstr "Fil: %s"
 
 #. Print right text
-#: src/gedit-print.c:439
+#: src/gedit-print.c:442
 #, c-format
 msgid "Page: %d"
 msgstr "Sida: %d"
 
-#: src/gedit-print.c:580
+#: src/gedit-print.c:583
 msgid "gedit - Print Preview"
 msgstr "gedit - Förhandsgranskning"
 
-#: src/gedit-print.c:658
+#: src/gedit-print.c:661
 #, c-format
 msgid ""
 "An error occurred while printing.\n"
@@ -2465,142 +2465,150 @@ msgid "Show _Overwrite Mode"
 msgstr "Visa _överskrivningsläge"
 
 #: src/gedit-ui.xml.h:68
+msgid "Show both icons and texts in the toolbar"
+msgstr "Visa både ikoner och text i verktygsraden"
+
+#: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
 msgstr "Visa markörposition i statusraden"
 
-#: src/gedit-ui.xml.h:69
+#: src/gedit-ui.xml.h:70
 msgid "Show overwrite mode in the statusbar"
 msgstr "Visa översrivningsläge i statusraden"
 
 #: src/gedit-ui.xml.h:71
+msgid "Show prioritized text beside icons in the toolbar"
+msgstr "Visa prioriterad text bredvid ikoner i verktygsraden"
+
+#: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
 msgstr "Ångra den senaste åtgärden"
 
-#: src/gedit-ui.xml.h:72
+#: src/gedit-ui.xml.h:74
 msgid "_About"
 msgstr "_Om"
 
-#: src/gedit-ui.xml.h:73
+#: src/gedit-ui.xml.h:75
 msgid "_Close"
 msgstr "S_täng"
 
-#: src/gedit-ui.xml.h:74
+#: src/gedit-ui.xml.h:76
 msgid "_Close All"
 msgstr "S_täng alla"
 
-#: src/gedit-ui.xml.h:75
+#: src/gedit-ui.xml.h:77
 msgid "_Contents"
 msgstr "_Innehåll"
 
-#: src/gedit-ui.xml.h:76
+#: src/gedit-ui.xml.h:78
 msgid "_Copy"
 msgstr "_Kopiera"
 
-#: src/gedit-ui.xml.h:77
+#: src/gedit-ui.xml.h:79
 msgid "_Customize Toolbar"
 msgstr "_Anpassa verktygsrad"
 
-#: src/gedit-ui.xml.h:78
+#: src/gedit-ui.xml.h:80
 msgid "_Debug"
 msgstr "_Felsök"
 
-#: src/gedit-ui.xml.h:79
+#: src/gedit-ui.xml.h:81
 msgid "_Delete"
 msgstr "_Ta bort"
 
-#: src/gedit-ui.xml.h:80
+#: src/gedit-ui.xml.h:82
 msgid "_Desktop Default"
 msgstr "_Systemstandard"
 
-#: src/gedit-ui.xml.h:81
+#: src/gedit-ui.xml.h:83
 msgid "_Documents"
 msgstr "_Dokument"
 
-#: src/gedit-ui.xml.h:82
+#: src/gedit-ui.xml.h:84
 msgid "_Edit"
 msgstr "_Redigera"
 
-#: src/gedit-ui.xml.h:83
+#: src/gedit-ui.xml.h:85
 msgid "_File"
 msgstr "_Arkiv"
 
-#: src/gedit-ui.xml.h:84
+#: src/gedit-ui.xml.h:86
 msgid "_Find..."
 msgstr "_Sök..."
 
-#: src/gedit-ui.xml.h:85
+#: src/gedit-ui.xml.h:87
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/gedit-ui.xml.h:86
+#: src/gedit-ui.xml.h:88
 msgid "_Icon"
 msgstr "_Ikon"
 
-#: src/gedit-ui.xml.h:88
+#: src/gedit-ui.xml.h:90
 msgid "_New"
 msgstr "_Ny"
 
-#: src/gedit-ui.xml.h:89
+#: src/gedit-ui.xml.h:91
 msgid "_Open..."
 msgstr "_Öppna..."
 
-#: src/gedit-ui.xml.h:90
+#: src/gedit-ui.xml.h:92
 msgid "_Output Window"
 msgstr "_Utdatafönster"
 
-#: src/gedit-ui.xml.h:91
+#: src/gedit-ui.xml.h:93
 msgid "_Paste"
 msgstr "Klistra _in"
 
-#: src/gedit-ui.xml.h:92
+#: src/gedit-ui.xml.h:94
 msgid "_Print..."
 msgstr "Skriv _ut..."
 
-#: src/gedit-ui.xml.h:93
+#: src/gedit-ui.xml.h:95
 msgid "_Priority Text beside Icons"
 msgstr "_Prioritetstext bredvid ikoner"
 
-#: src/gedit-ui.xml.h:94
+#: src/gedit-ui.xml.h:96
 msgid "_Quit"
 msgstr "_Avsluta"
 
-#: src/gedit-ui.xml.h:95
+#: src/gedit-ui.xml.h:97
 msgid "_Redo"
 msgstr "_Gör om"
 
-#: src/gedit-ui.xml.h:96
+#: src/gedit-ui.xml.h:98
 msgid "_Replace..."
 msgstr "_Ersätt..."
 
-#: src/gedit-ui.xml.h:98
+#: src/gedit-ui.xml.h:100
 msgid "_Save"
 msgstr "_Spara"
 
-#: src/gedit-ui.xml.h:99
+#: src/gedit-ui.xml.h:101
 msgid "_Save All"
 msgstr "_Spara alla"
 
-#: src/gedit-ui.xml.h:100
+#: src/gedit-ui.xml.h:102
 msgid "_Search"
 msgstr "_Sök"
 
-#: src/gedit-ui.xml.h:101
+#: src/gedit-ui.xml.h:103
 msgid "_Statusbar"
 msgstr "_Statusrad"
 
-#: src/gedit-ui.xml.h:102
+#: src/gedit-ui.xml.h:104
 msgid "_Toolbar"
 msgstr "_Verktygsrad"
 
-#: src/gedit-ui.xml.h:103
+#: src/gedit-ui.xml.h:105
 msgid "_Tools"
 msgstr "Verkty_g"
 
-#: src/gedit-ui.xml.h:104
+#: src/gedit-ui.xml.h:106
 msgid "_Undo"
 msgstr "_Ångra"
 
-#: src/gedit-ui.xml.h:105
+#: src/gedit-ui.xml.h:107
 msgid "_View"
 msgstr "_Visa"
 
@@ -3749,9 +3757,6 @@ msgstr " (ogiltig Unicode)"
 
 #~ msgid "Show _Tooltips"
 #~ msgstr "Visa _verktygstips"
-
-#~ msgid "Show tooltips in the toolbar"
-#~ msgstr "Visa verktygstips i verktygsraden"
 
 #~ msgid "_Plugin Manager"
 #~ msgstr "_Insticksmodulhanterare"

@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.7.1\n"
-"POT-Creation-Date: 2003-03-11 18:25+0100\n"
-"PO-Revision-Date: 2003-03-17 15:41+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-11 23:11+0200\n"
+"PO-Revision-Date: 2003-06-11 23:21+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -93,9 +94,9 @@ msgstr "Skrift for redigering"
 msgid "Encoding for Saving"
 msgstr "Koding ved lagring"
 
-#: data/gedit.schemas.in.h:14 src/dialogs/gedit-encodings-dialog.c:261
+#: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2308
+#: src/dialogs/gedit-encodings-dialog.c:261
 #: src/dialogs/gedit-encodings-dialog.glade2.h:2
-#: src/dialogs/gedit-preferences-dialog.c:2308
 msgid "Encodings"
 msgstr "Kodinger"
 
@@ -451,8 +452,8 @@ msgstr "ASCII-tabell"
 msgid "_Insert char"
 msgstr "Sett _inn tegn"
 
-#: plugins/ASCII/ascii.gedit-plugin.desktop.in.h:1
 #: plugins/ASCII/asciitable.glade2.h:1
+#: plugins/ASCII/ascii.gedit-plugin.desktop.in.h:1
 msgid "ASCII table"
 msgstr "ASCII-tabell"
 
@@ -573,7 +574,7 @@ msgstr ""
 "Resultatet inneholder ugyldige UTF-8 data."
 
 #: plugins/diff/diff.glade2.h:1 plugins/shell_output/shell_output.glade2.h:1
-#: plugins/spell/spell-checker.glade2.h:1 plugins/time/time.glade2.h:2
+#: plugins/time/time.glade2.h:2 plugins/spell/spell-checker.glade2.h:1
 #: src/dialogs/replace.glade2.h:1 src/dialogs/uri.glade2.h:1
 msgid "*"
 msgstr "*"
@@ -713,7 +714,7 @@ msgstr "Tegn (med mellomrom)"
 msgid "File Name"
 msgstr "Filnavn"
 
-#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:373
+#: plugins/docinfo/docinfo.glade2.h:6 src/gedit-print.c:376
 msgid "Lines"
 msgstr "Linjer"
 
@@ -981,7 +982,7 @@ msgstr "Fj_ern duplikater"
 msgid "S_tart at column:"
 msgstr "S_tart ved kolonne:"
 
-#: plugins/sort/sort.gedit-plugin.desktop.in.h:1 plugins/sort/sort.glade2.h:3
+#: plugins/sort/sort.glade2.h:3 plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sort"
 msgstr "Sorter"
 
@@ -1005,26 +1006,26 @@ msgstr "_Sorter"
 msgid "Sorts a document or selected text."
 msgstr "Sorter et dokument eller valgt tekst."
 
-#: plugins/spell/gedit-automatic-spell-checker.c:322
+#: plugins/spell/gedit-automatic-spell-checker.c:318
 #: plugins/spell/gedit-spell-checker-dialog.c:504
 msgid "(no suggested words)"
 msgstr "(ingen foreslåtte ord)"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:346
+#: plugins/spell/gedit-automatic-spell-checker.c:342
 msgid "_More..."
 msgstr "_Mer..."
 
 #. Ignore all
-#: plugins/spell/gedit-automatic-spell-checker.c:399
+#: plugins/spell/gedit-automatic-spell-checker.c:395
 msgid "_Ignore All"
 msgstr "_Ignorer alle"
 
 #. + Add to Dictionary
-#: plugins/spell/gedit-automatic-spell-checker.c:412
+#: plugins/spell/gedit-automatic-spell-checker.c:408
 msgid "_Add"
 msgstr "_Legg til"
 
-#: plugins/spell/gedit-automatic-spell-checker.c:449
+#: plugins/spell/gedit-automatic-spell-checker.c:445
 msgid "_Spelling Suggestions..."
 msgstr "_Forslag til staving..."
 
@@ -1044,102 +1045,102 @@ msgstr "(korrekt staving)"
 msgid "Completed spell checking"
 msgstr "Stavekontroll fullført"
 
-#: plugins/spell/gedit-spell-checker.c:73
+#: plugins/spell/gedit-spell-checker.c:80
 msgid "Breton"
 msgstr "Breton"
 
-#: plugins/spell/gedit-spell-checker.c:74
+#: plugins/spell/gedit-spell-checker.c:81
 msgid "Catalan"
 msgstr "Katalansk"
 
-#: plugins/spell/gedit-spell-checker.c:75
+#: plugins/spell/gedit-spell-checker.c:82
 msgid "Czech"
 msgstr "Tsjekkisk"
 
-#: plugins/spell/gedit-spell-checker.c:76
+#: plugins/spell/gedit-spell-checker.c:83
 msgid "Danish"
 msgstr "Dansk"
 
-#: plugins/spell/gedit-spell-checker.c:77
+#: plugins/spell/gedit-spell-checker.c:84
 msgid "German (Germany)"
 msgstr "Tysk (Tyskland)"
 
-#: plugins/spell/gedit-spell-checker.c:78
+#: plugins/spell/gedit-spell-checker.c:85
 msgid "German (Swiss)"
 msgstr "Tysk (Sveits)"
 
-#: plugins/spell/gedit-spell-checker.c:79
+#: plugins/spell/gedit-spell-checker.c:86
 msgid "English (American)"
 msgstr "Engelsk (USA)"
 
-#: plugins/spell/gedit-spell-checker.c:80
+#: plugins/spell/gedit-spell-checker.c:87
 msgid "English (British)"
 msgstr "Engelsk (Storbritannia)"
 
-#: plugins/spell/gedit-spell-checker.c:81
+#: plugins/spell/gedit-spell-checker.c:88
 msgid "English (Canadian)"
 msgstr "Engelsk (Canada)"
 
-#: plugins/spell/gedit-spell-checker.c:82
+#: plugins/spell/gedit-spell-checker.c:89
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: plugins/spell/gedit-spell-checker.c:83
+#: plugins/spell/gedit-spell-checker.c:90
 msgid "Spanish"
 msgstr "Spansk"
 
-#: plugins/spell/gedit-spell-checker.c:84
+#: plugins/spell/gedit-spell-checker.c:91
 msgid "Faroese"
 msgstr "Færøysk"
 
-#: plugins/spell/gedit-spell-checker.c:85
+#: plugins/spell/gedit-spell-checker.c:92
 msgid "French (France)"
 msgstr "Fransk (Frankrike)"
 
-#: plugins/spell/gedit-spell-checker.c:86
+#: plugins/spell/gedit-spell-checker.c:93
 msgid "French (Swiss)"
 msgstr "Fransk (Sveits)"
 
-#: plugins/spell/gedit-spell-checker.c:87
+#: plugins/spell/gedit-spell-checker.c:94
 msgid "Italian"
 msgstr "Italiensk"
 
-#: plugins/spell/gedit-spell-checker.c:88
+#: plugins/spell/gedit-spell-checker.c:95
 msgid "Dutch"
 msgstr "Belgisk"
 
-#: plugins/spell/gedit-spell-checker.c:89
+#: plugins/spell/gedit-spell-checker.c:96
 msgid "Norwegian"
 msgstr "Norsk"
 
-#: plugins/spell/gedit-spell-checker.c:90
+#: plugins/spell/gedit-spell-checker.c:97
 msgid "Polish"
 msgstr "Polsk"
 
-#: plugins/spell/gedit-spell-checker.c:91
+#: plugins/spell/gedit-spell-checker.c:98
 msgid "Portuguese (Portugal)"
 msgstr "Portugisisk (Portugal)"
 
-#: plugins/spell/gedit-spell-checker.c:92
+#: plugins/spell/gedit-spell-checker.c:99
 msgid "Portuguese (Brazilian)"
 msgstr "Portugisisk (Brasil)"
 
-#: plugins/spell/gedit-spell-checker.c:93
+#: plugins/spell/gedit-spell-checker.c:100
 msgid "Russian"
 msgstr "Russisk"
 
-#: plugins/spell/gedit-spell-checker.c:94
+#: plugins/spell/gedit-spell-checker.c:101
 msgid "Swedish"
 msgstr "Svensk"
 
-#: plugins/spell/gedit-spell-checker.c:653
+#: plugins/spell/gedit-spell-checker.c:734
 msgid "Default"
 msgstr "Forvalg"
 
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #: src/dialogs/gedit-dialog-goto-line.c:169
-#: src/dialogs/gedit-encodings-dialog.c:242
 #: src/dialogs/gedit-plugin-program-location-dialog.c:100
+#: src/dialogs/gedit-encodings-dialog.c:242
 #, c-format
 msgid "Could not find the required widgets inside %s."
 msgstr "Kunne ikke finne nødvendige widgeter i %s."
@@ -1390,7 +1391,7 @@ msgid "Save"
 msgstr "Lagre"
 
 #: src/dialogs/gedit-preferences-dialog.c:245
-#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:70
+#: src/dialogs/gedit-preferences.glade2.h:50 src/gedit-ui.xml.h:72
 msgid "Undo"
 msgstr "Angre"
 
@@ -1411,7 +1412,7 @@ msgid "Editor"
 msgstr "Editor"
 
 #: src/dialogs/gedit-preferences-dialog.c:271
-#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:364
+#: src/dialogs/gedit-preferences.glade2.h:38 src/gedit-print.c:367
 #: src/gedit-ui.xml.h:39
 msgid "Print"
 msgstr "Skriv ut"
@@ -2019,7 +2020,7 @@ msgstr ""
 "\n"
 "Du vil ikke kunne gjøre om denne operasjonen."
 
-#: src/gedit-file.c:638 src/gedit-ui.xml.h:97
+#: src/gedit-file.c:638 src/gedit-ui.xml.h:99
 msgid "_Revert"
 msgstr "Fo_rkast"
 
@@ -2062,7 +2063,7 @@ msgid "RO"
 msgstr "Skrivebeskyttet"
 
 #. Add the detach tab button
-#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:87
+#: src/gedit-mdi-child.c:543 src/gedit-ui.xml.h:89
 msgid "_Move to New Window"
 msgstr "_Flytt til nytt vindu"
 
@@ -2164,22 +2165,22 @@ msgstr ""
 "gedit kan ikke skrive ut fordi en av skriftene\n"
 "ikke kan finnes."
 
-#: src/gedit-print.c:432
+#: src/gedit-print.c:435
 #, c-format
 msgid "File: %s"
 msgstr "Fil: %s"
 
 #. Print right text
-#: src/gedit-print.c:439
+#: src/gedit-print.c:442
 #, c-format
 msgid "Page: %d"
 msgstr "Side: %d"
 
-#: src/gedit-print.c:580
+#: src/gedit-print.c:583
 msgid "gedit - Print Preview"
 msgstr "gedit: Forhåndsvisning"
 
-#: src/gedit-print.c:658
+#: src/gedit-print.c:661
 #, c-format
 msgid ""
 "An error occurred while printing.\n"
@@ -2439,142 +2440,150 @@ msgid "Show _Overwrite Mode"
 msgstr "Vis _overskrivingsmodus"
 
 #: src/gedit-ui.xml.h:68
+msgid "Show both icons and texts in the toolbar"
+msgstr "Vis både ikoner og tekst på verktøylinjen"
+
+#: src/gedit-ui.xml.h:69
 msgid "Show cursor position in the statusbar"
 msgstr "Vis markørposisjon i statuslinjen"
 
-#: src/gedit-ui.xml.h:69
+#: src/gedit-ui.xml.h:70
 msgid "Show overwrite mode in the statusbar"
 msgstr "Vis overskrivingsmodus i statuslinjen"
 
 #: src/gedit-ui.xml.h:71
+msgid "Show prioritized text beside icons in the toolbar"
+msgstr "Vis prioritert tekst ved siden av ikoner på verktøylinjen"
+
+#: src/gedit-ui.xml.h:73
 msgid "Undo the last action"
 msgstr "Angre forrige handling"
 
-#: src/gedit-ui.xml.h:72
+#: src/gedit-ui.xml.h:74
 msgid "_About"
 msgstr "_Om"
 
-#: src/gedit-ui.xml.h:73
+#: src/gedit-ui.xml.h:75
 msgid "_Close"
 msgstr "_Lukk"
 
-#: src/gedit-ui.xml.h:74
+#: src/gedit-ui.xml.h:76
 msgid "_Close All"
 msgstr "_Lukk alle"
 
-#: src/gedit-ui.xml.h:75
+#: src/gedit-ui.xml.h:77
 msgid "_Contents"
 msgstr "_Innhold"
 
-#: src/gedit-ui.xml.h:76
+#: src/gedit-ui.xml.h:78
 msgid "_Copy"
 msgstr "_Kopier"
 
-#: src/gedit-ui.xml.h:77
+#: src/gedit-ui.xml.h:79
 msgid "_Customize Toolbar"
 msgstr "_Tilpass verktøylinjen"
 
-#: src/gedit-ui.xml.h:78
+#: src/gedit-ui.xml.h:80
 msgid "_Debug"
 msgstr "_Feilsøk"
 
-#: src/gedit-ui.xml.h:79
+#: src/gedit-ui.xml.h:81
 msgid "_Delete"
 msgstr "_Slett"
 
-#: src/gedit-ui.xml.h:80
+#: src/gedit-ui.xml.h:82
 msgid "_Desktop Default"
 msgstr "_Forvalgt verdi for skrivebord"
 
-#: src/gedit-ui.xml.h:81
+#: src/gedit-ui.xml.h:83
 msgid "_Documents"
 msgstr "_Dokumenter"
 
-#: src/gedit-ui.xml.h:82
+#: src/gedit-ui.xml.h:84
 msgid "_Edit"
 msgstr "R_ediger"
 
-#: src/gedit-ui.xml.h:83
+#: src/gedit-ui.xml.h:85
 msgid "_File"
 msgstr "_Fil"
 
-#: src/gedit-ui.xml.h:84
+#: src/gedit-ui.xml.h:86
 msgid "_Find..."
 msgstr "_Finn..."
 
-#: src/gedit-ui.xml.h:85
+#: src/gedit-ui.xml.h:87
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: src/gedit-ui.xml.h:86
+#: src/gedit-ui.xml.h:88
 msgid "_Icon"
 msgstr "_Ikon"
 
-#: src/gedit-ui.xml.h:88
+#: src/gedit-ui.xml.h:90
 msgid "_New"
 msgstr "_Ny"
 
-#: src/gedit-ui.xml.h:89
+#: src/gedit-ui.xml.h:91
 msgid "_Open..."
 msgstr "_Åpne..."
 
-#: src/gedit-ui.xml.h:90
+#: src/gedit-ui.xml.h:92
 msgid "_Output Window"
 msgstr "_Utdatavindu"
 
-#: src/gedit-ui.xml.h:91
+#: src/gedit-ui.xml.h:93
 msgid "_Paste"
 msgstr "Li_m inn"
 
-#: src/gedit-ui.xml.h:92
+#: src/gedit-ui.xml.h:94
 msgid "_Print..."
 msgstr "S_kriv ut..."
 
-#: src/gedit-ui.xml.h:93
+#: src/gedit-ui.xml.h:95
 msgid "_Priority Text beside Icons"
 msgstr "_Prioritetstekst ved siden av ikoner"
 
-#: src/gedit-ui.xml.h:94
+#: src/gedit-ui.xml.h:96
 msgid "_Quit"
 msgstr "_Avslutt"
 
-#: src/gedit-ui.xml.h:95
+#: src/gedit-ui.xml.h:97
 msgid "_Redo"
 msgstr "_Gjenopprett"
 
-#: src/gedit-ui.xml.h:96
+#: src/gedit-ui.xml.h:98
 msgid "_Replace..."
 msgstr "E_rstatt..."
 
-#: src/gedit-ui.xml.h:98
+#: src/gedit-ui.xml.h:100
 msgid "_Save"
 msgstr "_Lagre"
 
-#: src/gedit-ui.xml.h:99
+#: src/gedit-ui.xml.h:101
 msgid "_Save All"
 msgstr "L_agre alle"
 
-#: src/gedit-ui.xml.h:100
+#: src/gedit-ui.xml.h:102
 msgid "_Search"
 msgstr "_Søk"
 
-#: src/gedit-ui.xml.h:101
+#: src/gedit-ui.xml.h:103
 msgid "_Statusbar"
 msgstr "_Statuslinje"
 
-#: src/gedit-ui.xml.h:102
+#: src/gedit-ui.xml.h:104
 msgid "_Toolbar"
 msgstr "Verk_tøylinje"
 
-#: src/gedit-ui.xml.h:103
+#: src/gedit-ui.xml.h:105
 msgid "_Tools"
 msgstr "_Verktøy"
 
-#: src/gedit-ui.xml.h:104
+#: src/gedit-ui.xml.h:106
 msgid "_Undo"
 msgstr "_Angre"
 
-#: src/gedit-ui.xml.h:105
+#: src/gedit-ui.xml.h:107
 msgid "_View"
 msgstr "_Vis"
 
@@ -3136,378 +3145,3 @@ msgstr "Thai"
 #: src/recent-files/egg-recent-vfs-utils.c:90
 msgid " (invalid Unicode)"
 msgstr " (ugyldig Unicode)"
-
-#~ msgid "Copyright (C) 2001-2002 Paolo Maggi"
-#~ msgstr "Opphavsrett © 2001-2002 Paolo Maggi"
-
-#~ msgid "Paolo Maggi <maggi@athena.polito.it>"
-#~ msgstr "Paolo Maggi <maggi@athena.polito.it>"
-
-#~ msgid "Copyright (C) 2002 James Willcox"
-#~ msgstr "Opphavsrett © 2002 James Willcox"
-
-#~ msgid "James Willcox <jwillcox@cs.indiana.edu>"
-#~ msgstr "James Willcox <jwillcox@cs.indiana.edu>"
-
-#~ msgid ""
-#~ "Chema Celorio <chema@celorio.com> and Paolo Maggi <maggi@athena.polito.it>"
-#~ msgstr ""
-#~ "Chema Celorio <chema@celorio.com> og Paolo Maggi <maggi@athena.polito.it>"
-
-#~ msgid ""
-#~ "Copyright (C) 2000 - 2001 Chema Celorio\n"
-#~ "Copyright (C) 2002 Paolo Maggi"
-#~ msgstr ""
-#~ "Opphavsrett © 2000 - 2001 Chema Celorio\n"
-#~ "Opphavsrett © 2002 Paolo Maggi"
-
-#~ msgid "Copyright (C) 2002 Paolo Maggi"
-#~ msgstr "Opphavsrett © 2002 Paolo Maggi"
-
-#~ msgid "Paolo Maggi <paolo.maggi@polito.it>"
-#~ msgstr "Paolo Maggi <paolo.maggi@polito.it>"
-
-#~ msgid "Copyright (C) 2002 - Paolo Maggi"
-#~ msgstr "Opphavsrett © 2002 - Paolo Maggi"
-
-#~ msgid ""
-#~ "Paolo Maggi <maggi@athena.polito.it> and Lee Mallabone <gnome@fonicmonkey."
-#~ "net>"
-#~ msgstr ""
-#~ "Paolo Maggi <maggi@athena.polito.it> og Lee Mallabone <gnome@fonicmonkey."
-#~ "net>"
-
-#~ msgid ""
-#~ "Carlo Borreo <borreo@softhome.net>, Lee Mallabone <gnome@fonicmonkey.net> "
-#~ "and Paolo Maggi <maggi@athena.polito.it>"
-#~ msgstr ""
-#~ "Carlo Borreo <borreo@softhome.net>, Lee Mallabone <gnome@fonicmonkey.net> "
-#~ "og Paolo Maggi <maggi@athena.polito.it>"
-
-#~ msgid ""
-#~ "Copyright (C) 2001 Carlo Borreo\n"
-#~ "Copyright (C) 2002 Lee Mallabone and Paolo Maggi"
-#~ msgstr ""
-#~ "Opphavsrett © 2001 Carlo Borreo\n"
-#~ "Opphavsrett © 2002 Lee Mallabone og Paolo Maggi"
-
-#~ msgid "Dump XML"
-#~ msgstr "Dump XML"
-
-#~ msgid "Dump the UI Xml description"
-#~ msgstr "Dump UI-beskrivelse i XML"
-
-#~ msgid "Croatian"
-#~ msgstr "Kroatisk"
-
-#~ msgid "Hindi"
-#~ msgstr "Hindi"
-
-#~ msgid "Farsi"
-#~ msgstr "Farsi"
-
-#~ msgid "Gujarati"
-#~ msgstr "Gujarati"
-
-#~ msgid "Gurmukhi"
-#~ msgstr "Gurmukhi"
-
-#~ msgid "Icelandic"
-#~ msgstr "Islandsk"
-
-#~ msgid "Compare two files..."
-#~ msgstr "Sammenlign to filer..."
-
-#~ msgid "_Word Count"
-#~ msgstr "_Ordteller"
-
-#~ msgid "Word count"
-#~ msgstr "Ordteller"
-
-#~ msgid "Execute a shell command"
-#~ msgstr "Kjør en skallkommando"
-
-#~ msgid "Shell output"
-#~ msgstr "Skallutskrift"
-
-#~ msgid "Capture the command _output"
-#~ msgstr "Fang opp utdata fra k_ommando"
-
-#~ msgid "Specify the working directory and the command you want to run."
-#~ msgstr "Spesifiser arbeidskatalogen og kommandoen du ønsker å kjøre."
-
-#~ msgid "_Shell command:"
-#~ msgstr "_Skallkommando:"
-
-#~ msgid "%d/%m/%Y %H:%M:%S"
-#~ msgstr "%d.%m.%Y %H:%M%:%S"
-
-#~ msgid "Select a format"
-#~ msgstr "Velg et format"
-
-#~ msgid "<span weight=\"bold\">Sort Order</span>"
-#~ msgstr "<span weight\"bold\">Sorteringsrekkefølge</span>"
-
-#~ msgid "Cas_e sensitive"
-#~ msgstr "Skiller mellom _store/små bokstaver"
-
-#~ msgid "_Ascending"
-#~ msgstr "_Stigende"
-
-#~ msgid "_Descending"
-#~ msgstr "S_ynkende"
-
-#~ msgid ""
-#~ "Could not find the required widgets inside languages-dialog.glade2.\n"
-#~ msgstr "Kunne ikke finne nødvendige widgeter i languages-dialog.glade2.\n"
-
-#~ msgid "_Spelling..."
-#~ msgstr "_Staving..."
-
-#~ msgid "_Check Spelling..."
-#~ msgstr "_Sjekk staving..."
-
-#~ msgid "_Auto Spellcheck"
-#~ msgstr "_Automatisk stavekontroll"
-
-#~ msgid "_Goto line"
-#~ msgstr "_Gå til linje"
-
-#~ msgid "Set program location ..."
-#~ msgstr "Sett programlokasjon..."
-
-#~ msgid ""
-#~ "Could not find the required widgets inside program-location-dialog."
-#~ "glade2.\n"
-#~ msgstr ""
-#~ "Kunne ikke finne nødvendige widgeter i program-location-dialog.glade2.\n"
-
-#~ msgid " _Wrap lines (at character boundaries)"
-#~ msgstr "_Bryt linjer (ved tegngrensene)"
-
-#~ msgid "<span weight=\"bold\" size=\"x-large\">Load</span>"
-#~ msgstr "<span weight=\"bold\" size=\"x-large\">Last</span>"
-
-#~ msgid "<span weight=\"bold\">When saving...</span>"
-#~ msgstr "<span weight\"bold\">Ved lagring...</span>"
-
-#~ msgid "Font used to print line _numbers:"
-#~ msgstr "Skrift som brukes til å skrive linje_nummer:"
-
-#~ msgid "Font used to print the _body:"
-#~ msgstr "Skrift som brukes til å skrive _kroppen:"
-
-#~ msgid "_Font used by the editor: "
-#~ msgstr "Skri_ft som brukes ved redigering: "
-
-#~ msgid "_Font used to print headers:"
-#~ msgstr "Skri_ft som brukes ved utskrift av topptekst:"
-
-#~ msgid "sans 12"
-#~ msgstr "sans 12"
-
-#~ msgid "<span weight=\"bold\">Search from</span>"
-#~ msgstr "<span weight\"bold\">Søk fra</span>"
-
-#~ msgid "C_ursor position"
-#~ msgstr "Mark_ørposisjonen"
-
-#~ msgid "Case sensi_tive"
-#~ msgstr "Skiller mellom s_tore/små bokstaver"
-
-#~ msgid "_Beginning of the document"
-#~ msgstr "_Begynnelsen av dokumentet"
-
-#~ msgid "Not yet implemented."
-#~ msgstr "Ikke implementert ennå."
-
-#~ msgid "The string \"%s\" has not been found."
-#~ msgstr "Strengen «%s» ble ikke funnet."
-
-#~ msgid ""
-#~ "(C) 1998-2000 Evan Lawrence and Alex Robert\n"
-#~ "(C) 2000-2002 Chema Celorio and Paolo Maggi"
-#~ msgstr ""
-#~ "© 1998-2000 Evan Lawrence og Alex Robert\n"
-#~ "© 2000-2002 Chema Celorio og Paolo Maggi"
-
-#~ msgid "Close All"
-#~ msgstr "Lukk alle"
-
-#~ msgid "Goto _Line"
-#~ msgstr "Gå til _linje"
-
-#~ msgid "Pr_eferences..."
-#~ msgstr "Bruk_ervalg..."
-
-#~ msgid "Save All"
-#~ msgstr "Lagre alle"
-
-#~ msgid ""
-#~ "Could not find the required widgets inside gedit-encodings-dialog."
-#~ "glade2.\n"
-#~ msgstr ""
-#~ "Kunne ikke finne nødvendige widgeter i gedit-encodings-dialog.glade2.\n"
-
-#~ msgid "_From:"
-#~ msgstr "_Fra:"
-
-#~ msgid "_Subject:"
-#~ msgstr "_Emne:"
-
-#~ msgid "_To:"
-#~ msgstr "_Til:"
-
-#~ msgid "E_mail..."
-#~ msgstr "E-_post..."
-
-#~ msgid "Email a file."
-#~ msgstr "Send en fil."
-
-#~ msgid "Email"
-#~ msgstr "E-post"
-
-#~ msgid "Email current document..."
-#~ msgstr "Send dette dokumentet..."
-
-#~ msgid "Se_nd"
-#~ msgstr "Se_nd"
-
-#~ msgid "Error, the plugin '%s' did not specified a name"
-#~ msgstr "Feil. Tillegg «%s» spesifiserte ikke et navn"
-
-#~ msgid "Error, impossible to save settings of the plugin '%s'"
-#~ msgstr "Feil. Uulig å lagre innstillinger for tillegg «%s»"
-
-#~ msgid ""
-#~ "If you wish to insert any of the characters in to the active \n"
-#~ "document, select the character and click the \"Insert Char\" \n"
-#~ "button or double click the character in the table."
-#~ msgstr ""
-#~ "Hvis du ønsker å sette inn noen av tegnene i det aktive\n"
-#~ "dokumentet velger du tegnet og klikker «Sett inn tegn»-\n"
-#~ "knappen eller dobbeltklikker på tegnet i tabellen."
-
-#~ msgid "Insert char"
-#~ msgstr "Sett inn tegn"
-
-#~ msgid "gedit: ASCII table"
-#~ msgstr "gedit: ASCII-tabell"
-
-#~ msgid "Insert Shell _Output"
-#~ msgstr "Sett inn _utskrift fra skallet"
-
-#~ msgid "Select the format to use when inserting date/time."
-#~ msgstr "Velg format som skal brukes når du setter inn dato/klokkeslett."
-
-#~ msgid "Open %s"
-#~ msgstr "Åpne %s"
-
-#~ msgid "_Insert Date/Time"
-#~ msgstr "Sett _inn dato/klokkeslett"
-
-#~ msgid "Courier 9"
-#~ msgstr "Courier 9"
-
-#~ msgid "Helvetica 11"
-#~ msgstr "Helvetica 11"
-
-#~ msgid "Helvetica 8"
-#~ msgstr "Helvetica 8"
-
-#~ msgid "Always use UTF-8 encoding (faster) when creating a new file"
-#~ msgstr "Alltid bruk UTF-8-koding (raskere) ved oppretting av en ny fil"
-
-#~ msgid "Always use UTF-8 encoding (faster) when saving"
-#~ msgstr "Alltid bruk UTF-8-koding (raskere) ved lagring"
-
-#~ msgid "Colors"
-#~ msgstr "Farger"
-
-#~ msgid ""
-#~ "The font & colors settings let you choose the font and the colors to be "
-#~ "used in the editor windows."
-#~ msgstr ""
-#~ "Innstillinger for skrift og farge lar deg velge skrift og farger som skal "
-#~ "brukes i redigeringsvinduene."
-
-#~ msgid ""
-#~ "The line numbers setting lets you choose to display the line numbers on "
-#~ "the left hand side of the window."
-#~ msgstr ""
-#~ "Innstillingen for linjenummer lar deg velge om du vil vise linjenummer på "
-#~ "venstre side av vinduet."
-
-#~ msgid ""
-#~ "The plugin manager settings let you choose which plugins you want to have "
-#~ "loaded."
-#~ msgstr ""
-#~ "Innstillinger for tilleggshåndterer lar deg velge hvilke tillegg du vil "
-#~ "laste."
-
-#~ msgid ""
-#~ "The print fonts settings let you choose the fonts to be used to print "
-#~ "documents."
-#~ msgstr ""
-#~ "Innstillinger for skriftvalg ved utskrift lar deg velge skrifter som skal "
-#~ "brukes ved utskrift av dokumenter."
-
-#~ msgid ""
-#~ "The print page settings let you customize how gedit prints documents."
-#~ msgstr ""
-#~ "Innstillinger for utskrift lar deg tilpasse hvordan gedit skriver ut "
-#~ "dokumenter."
-
-#~ msgid "The save settings let you customize how gedit saves files."
-#~ msgstr ""
-#~ "Innstillinger for lagring lar deg tilpasse hvordan gedit lagrer filer."
-
-#~ msgid "The tabs settings let you customize the tabs width."
-#~ msgstr "Innstillinger for faner lar deg tilpasse bredden på fanene."
-
-#~ msgid ""
-#~ "The undo settings let you set the maximum number of actions that gedit "
-#~ "can undo."
-#~ msgstr ""
-#~ "Innstillinger for angring lar deg sette maksimalt antall handlinger som "
-#~ "gedit kan angre."
-
-#~ msgid ""
-#~ "The wrap mode settings let you customize how lines have to be wrapped."
-#~ msgstr ""
-#~ "Innstillinger for brytningsmodus lar deg tilpasse hvordan linjer skal "
-#~ "brytes."
-
-#~ msgid "Use current locale's encoding if possible when creating a new file"
-#~ msgstr ""
-#~ "Hvis mulig, bruk koding for aktivt locale ved oppretting av en ny fil."
-
-#~ msgid "Use current locale's encoding if possible when saving"
-#~ msgstr "Bruk koding for aktivt locale ved lagring hvis mulig"
-
-#~ msgid "When saving..."
-#~ msgstr "Ved lagring..."
-
-#~ msgid "Wrap lines at _word boundaries"
-#~ msgstr "_Bryt linjer ved ordgrenser"
-
-#~ msgid "Wrap lines at ch_aracter boundaries"
-#~ msgstr "_Bryt linjer ved tegngrensene"
-
-#~ msgid "_Never wrap lines"
-#~ msgstr "_Aldri bryt linjer"
-
-#~ msgid "Search from the c_ursor position"
-#~ msgstr "Søk fra mar_kørposisjonen"
-
-#~ msgid "Do_n't replace"
-#~ msgstr "I_kke erstatt"
-
-#~ msgid "Clos_e All"
-#~ msgstr "Lukk all_e"
-
-#~ msgid "Recent _Files"
-#~ msgstr "Sist åpnede _filer"
-
-#~ msgid "Sa_ve All"
-#~ msgstr "La_gre alle"
