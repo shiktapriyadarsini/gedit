@@ -535,10 +535,6 @@ documents_list_menu_activate (GtkToggleAction *action,
 	gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), n);
 }
 
-// FIXME does't work properly when detaching a tab, for instance if you have
-// 13 doc open and detach the 7th.
-// This function should handle this case just fine, so what has to be checked
-// is when and how the TAB_ADDED and TAB_REMOVED signals are emitted in that case
 static void
 update_documents_list_menu (GeditWindow *window)
 {
@@ -580,7 +576,14 @@ update_documents_list_menu (GeditWindow *window)
 
 		tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (p->notebook), i);
 
-		action_name = g_strdup_printf ("Tab_%p", tab);
+		/* NOTE: the action is associated to the position of the tab in
+		 * the notebook not to the tab itself! This is needed to work
+		 * around the gtk+ bug #170727: gtk leaves around the accels
+		 * of the action. Since the accel depends on the tab position
+		 * the problem is worked around, action with the same name always
+		 * get the same accel.
+		 */
+		action_name = g_strdup_printf ("Tab_%d", i);
 		tab_name = _gedit_tab_get_name (GEDIT_TAB (tab));
 		tip =  g_strdup_printf (_("Activate %s"), tab_name);
 
@@ -956,7 +959,7 @@ notebook_switch_page (GtkNotebook     *book,
 	set_title (window);
 
 	/* activate the right item in the documents menu */
-	action_name = g_strdup_printf ("Tab_%p", tab);
+	action_name = g_strdup_printf ("Tab_%d", page_num);
 	action = gtk_action_group_get_action (window->priv->documents_list_action_group,
 					      action_name);
 
@@ -984,11 +987,14 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 	GtkAction *action;
 	gchar *action_name;
 	gchar *tab_name; // CHECK escaping
+	gint n;
 
 	set_title (window);
 
 	/* sync the item in the documents list menu */
-	action_name = g_strdup_printf ("Tab_%p", tab);
+	n = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook),
+				   GTK_WIDGET (tab));
+	action_name = g_strdup_printf ("Tab_%d", n);
 	action = gtk_action_group_get_action (window->priv->documents_list_action_group,
 					      action_name);
 	g_return_if_fail (action != NULL);
