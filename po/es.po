@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.7.1\n"
-"POT-Creation-Date: 2001-01-25 01:41+0200\n"
-"PO-Revision-Date: 2001-01-25 01:44+0200\n"
+"POT-Creation-Date: 2001-05-27 02:26+0200\n"
+"PO-Revision-Date: 2001-05-27 02:26+0200\n"
 "Last-Translator: Carlos Perelló Marín <carlos@gnome-db.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,12 @@ msgstr "Editor de texto"
 #: gedit.desktop.in.h:2
 msgid "gedit"
 msgstr "gedit"
+
+#. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/browse/browse.c:38 plugins/email/email.c:21
+msgid "email"
+msgstr "Correo electrónico"
 
 #. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
 #. it is used to display "you can not use the [name] plugin without this program...
@@ -85,6 +91,12 @@ msgstr "Hexadecimal a decimal"
 #: plugins/convert/convert.glade.h:6
 msgid "Value to be converted:"
 msgstr "Valor a ser convertido:"
+
+#. xgettext translators : !!!!!!!!!!!---------> the name of the plugin only.
+#. it is used to display "you can not use the [name] plugin without this program...
+#: plugins/diff/diff.c:35
+msgid "diff"
+msgstr "diff"
 
 #: plugins/diff/diff.c:109
 msgid "The two documents selected are the same"
@@ -203,14 +215,6 @@ msgstr "Para:"
 #: plugins/email/email.glade.h:7
 msgid "gedit: e-mail plugin"
 msgstr "gedit: extensión correo electrónico"
-
-#: plugins/email/email.glade.h:8
-msgid "label12"
-msgstr "label12"
-
-#: plugins/email/email.glade.h:9
-msgid "label13"
-msgstr "label13"
 
 #: plugins/reverse/reverse.c:70
 msgid "Reverse"
@@ -636,8 +640,8 @@ msgid ""
 "\n"
 " %s \n"
 "\n"
-"Make sure that the path you provided exists,and that you have the appropriate "
-"write permissions."
+"Make sure that the path you provided exists,and that you have the "
+"appropriate write permissions."
 msgstr ""
 "gedit no fue capaz de guardar el archivo: \n"
 "\n"
@@ -653,8 +657,8 @@ msgid ""
 "\n"
 " %s \n"
 "\n"
-"Because of an unknown reason (1). Please report this Problem to "
-"submit@bugs.gnome.org"
+"Because of an unknown reason (1). Please report this Problem to submit@bugs."
+"gnome.org"
 msgstr ""
 "gedit no fue capaz de guardar el archivo :\n"
 "\n"
@@ -670,8 +674,8 @@ msgid ""
 "\n"
 " %s \n"
 "\n"
-"Because of an unknown reason (2). Please report this Problem to "
-"submit@bugs.gnome.org"
+"Because of an unknown reason (2). Please report this Problem to submit@bugs."
+"gnome.org"
 msgstr ""
 "gedit no fue capaz de guardar el archivo :\n"
 "\n"
@@ -1060,7 +1064,12 @@ msgstr ""
 "Linea actual : %i\n"
 "Columna Actual: %i"
 
-#: src/view.c:963
+#: src/view.c:978
 msgid "You can't remove the last view of a document."
 msgstr "No puede revertir un documento Sin título."
 
+#~ msgid "label12"
+#~ msgstr "label12"
+
+#~ msgid "label13"
+#~ msgstr "label13"
