@@ -86,7 +86,13 @@ GeditWindow	*gedit_app_create_window	(GeditApp *app);
 
 const GSList	*gedit_app_get_windows		(GeditApp *app);
 GeditWindow	*gedit_app_get_active_window	(GeditApp *app);
-						 
+
+/* Returns a newly allocated list with all the documents */
+GList		*gedit_app_get_documents	(GeditApp *app);
+
+/* Returns a newly allocated list with all the views */
+GList		*gedit_app_get_views		(GeditApp *app);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_APP_H__  */

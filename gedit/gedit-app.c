@@ -199,3 +199,47 @@ gedit_app_get_active_window (GeditApp *app)
 	
 	return app->priv->active_window;
 }
+
+/* Returns a newly allocated list with all the documents */
+GList *
+gedit_app_get_documents	(GeditApp *app)
+{
+	GList *res = NULL;
+	GSList *windows;
+	
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+	
+	windows = app->priv->windows;
+	
+	while (windows != NULL)
+	{
+		res = g_list_concat (res,
+				     gedit_window_get_documents (GEDIT_WINDOW (windows->data)));
+				     
+		windows = g_slist_next (windows);
+	}
+	
+	return res;
+}
+
+/* Returns a newly allocated list with all the views */
+GList *
+gedit_app_get_views (GeditApp *app)
+{
+	GList *res = NULL;
+	GSList *windows;
+	
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+	
+	windows = app->priv->windows;
+	
+	while (windows != NULL)
+	{
+		res = g_list_concat (res,
+				     gedit_window_get_views (GEDIT_WINDOW (windows->data)));
+				     
+		windows = g_slist_next (windows);
+	}
+	
+	return res;
+}

@@ -1003,8 +1003,64 @@ gedit_window_create_tab (GeditWindow *window,
 GeditTab *
 gedit_window_get_active_tab (GeditWindow *window)
 {
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
 	return (window->priv->active_tab == NULL) ? 
 				NULL : GEDIT_TAB (window->priv->active_tab);
+}
+
+static void
+add_document (GeditTab *tab, GList **res)
+{
+	GeditDocument *doc;
+	
+	doc = gedit_tab_get_document (tab);
+	
+	*res = g_list_prepend (*res, doc);
+}
+
+/* Returns a newly allocated list with all the documents in the window */
+GList *
+gedit_window_get_documents (GeditWindow *window)
+{
+	GList *res = NULL;
+
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
+	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+			       (GtkCallback)add_document,
+			       &res);
+			       
+	res = g_list_reverse (res);
+	
+	return res;
+}
+
+static void
+add_view (GeditTab *tab, GList **res)
+{
+	GeditView *view;
+	
+	view = gedit_tab_get_view (tab);
+	
+	*res = g_list_prepend (*res, view);
+}
+
+/* Returns a newly allocated list with all the views in the window */
+GList *
+gedit_window_get_views (GeditWindow *window)
+{
+	GList *res = NULL;
+
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
+	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+			       (GtkCallback)add_view,
+			       &res);
+			       
+	res = g_list_reverse (res);
+	
+	return res;
 }
 
 

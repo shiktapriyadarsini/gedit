@@ -43,30 +43,35 @@
 #include "gedit-mdi.h"
 #include "gedit-recent.h"
 #include "gedit2.h"
-#include <gtksourceview/gtksourceview.h>
+#include "gedit-app.h"
 
-#if 0
-static void		gedit_prefs_manager_editor_font_changed	(GConfClient *client,
-				   				 guint cnxn_id,
-				   				 GConfEntry *entry,
-				   				 gpointer user_data);
+static void gedit_prefs_manager_editor_font_changed	(GConfClient *client,
+		   				 	 guint        cnxn_id,
+			   				 GConfEntry  *entry,
+			   				 gpointer     user_data);
 
-static void		gedit_prefs_manager_editor_colors_changed (GConfClient *client,
-				   				   guint cnxn_id,
-				   				   GConfEntry *entry,
-				   				   gpointer user_data);
-static void 		gedit_prefs_manager_tabs_size_changed 	(GConfClient *client,
-							       	 guint cnxn_id, 
-							       	 GConfEntry *entry, 
-							       	 gpointer user_data);
-static void 		gedit_prefs_manager_wrap_mode_changed 	(GConfClient *client,
-								 guint cnxn_id, 
-								 GConfEntry *entry, 
-								 gpointer user_data);
+static void gedit_prefs_manager_editor_colors_changed 	(GConfClient *client,
+			   				 guint        cnxn_id,
+			   				 GConfEntry  *entry,
+			   				 gpointer     user_data);
+
+
+static void gedit_prefs_manager_tabs_size_changed 	(GConfClient *client,
+						       	 guint        cnxn_id, 
+						       	 GConfEntry  *entry, 
+						       	 gpointer     user_data);
+				       	 
+static void gedit_prefs_manager_wrap_mode_changed 	(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+								 
 static void 		gedit_prefs_manager_line_numbers_changed (GConfClient *client,
 								  guint cnxn_id, 
 								  GConfEntry *entry, 
 								  gpointer user_data);
+								  
+#if 0		
 static void 		gedit_prefs_manager_auto_indent_changed (GConfClient *client,
 								 guint cnxn_id, 
 								 GConfEntry *entry, 
@@ -79,14 +84,17 @@ static void 		gedit_prefs_manager_right_margin_changed (GConfClient *client,
 								  guint cnxn_id, 
 								  GConfEntry *entry, 
 								  gpointer user_data);
-static void 		gedit_prefs_manager_hl_current_line_changed (GConfClient *client,
-								  guint cnxn_id, 
-								  GConfEntry *entry, 
-								  gpointer user_data);
-static void 		gedit_prefs_manager_bracket_matching_changed (GConfClient *client,
-								      guint cnxn_id, 
-								      GConfEntry *entry, 
-								      gpointer user_data);
+#endif								  
+static void gedit_prefs_manager_hl_current_line_changed	(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+							 
+static void gedit_prefs_manager_bracket_matching_changed(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
+							 gpointer     user_data);
+#if 0		
 static void 		gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 								      guint cnxn_id, 
 								      GConfEntry *entry, 
@@ -121,7 +129,7 @@ gedit_prefs_manager_app_init (void)
 				GPM_PREFS_DIR,
 				GCONF_CLIENT_PRELOAD_RECURSIVE,
 				NULL);
-#if 0		
+		
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_FONT_DIR,
 				gedit_prefs_manager_editor_font_changed,
@@ -136,17 +144,17 @@ gedit_prefs_manager_app_init (void)
 				GPM_TABS_DIR,
 				gedit_prefs_manager_tabs_size_changed,
 				NULL, NULL, NULL);
-		
+
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_WRAP_MODE_DIR,
 				gedit_prefs_manager_wrap_mode_changed,
 				NULL, NULL, NULL);
-
+		
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_LINE_NUMBERS_DIR,
 				gedit_prefs_manager_line_numbers_changed,
 				NULL, NULL, NULL);
-
+#if 0
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_AUTO_INDENT_DIR,
 				gedit_prefs_manager_auto_indent_changed,
@@ -161,7 +169,7 @@ gedit_prefs_manager_app_init (void)
 				GPM_RIGHT_MARGIN_DIR,
 				gedit_prefs_manager_right_margin_changed,
 				NULL, NULL, NULL);
-
+#endif
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_CURRENT_LINE_DIR,
 				gedit_prefs_manager_hl_current_line_changed,
@@ -171,7 +179,7 @@ gedit_prefs_manager_app_init (void)
 				GPM_BRACKET_MATCHING_DIR,
 				gedit_prefs_manager_bracket_matching_changed,
 				NULL, NULL, NULL);
-
+#if 0
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_SYNTAX_HL_ENABLE,
 				gedit_prefs_manager_syntax_hl_enable_changed,
@@ -290,14 +298,18 @@ gedit_prefs_manager_window_width_can_set (void)
 	return TRUE;
 }
 
-#if 0
+
 static void 
 gedit_prefs_manager_editor_font_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+					 guint        cnxn_id, 
+					 GConfEntry  *entry, 
+					 gpointer     user_data)
 {
-	GList *children;
+	GList *views;
+	GList *list;
 	gchar *font = NULL;
 	gboolean def = TRUE;
+	gint ts;
 	
 	gedit_debug (DEBUG_PREFS, "");
 
@@ -329,67 +341,63 @@ gedit_prefs_manager_editor_font_changed (GConfClient *client,
 	if ((font == NULL) && !def)
 		font = gedit_prefs_manager_get_editor_font ();
 	
-	children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
-
-	while (children != NULL)
+	views = gedit_app_get_views (gedit_app_get_default ());
+	list = views;
+	
+	ts = gedit_prefs_manager_get_tabs_size ();
+	
+	while (views != NULL)
 	{
-		gint ts;
-		
-		GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
+		gedit_view_set_font (GEDIT_VIEW (views->data), 
+				     def, 
+				     font);
+		gtk_source_view_set_tabs_width (GTK_SOURCE_VIEW (views->data), 
+						ts);
 
-		ts = gedit_prefs_manager_get_tabs_size ();
-		while (views != NULL)
-		{
-			GeditView *v =	GEDIT_VIEW (views->data);
-			
-			gedit_view_set_font (v, def, font);
-			gedit_view_set_tab_size (v, ts);
-
-			views = views->next;
-		}
-		
-		children = children->next;
+		views = g_list_next (views);
 	}
 
-	if (font != NULL)
-		g_free (font);
+	g_free (font);
+	
+	g_list_free (list);
 }
 
 
+
 static void 
-set_colors (gboolean def, GdkColor* backgroud, GdkColor* text,
-		GdkColor* selection, GdkColor* sel_text)
+set_colors (gboolean  def, 
+	    GdkColor *backgroud, 
+	    GdkColor *text,
+	    GdkColor *selection, 
+	    GdkColor *sel_text)
 {
-	GList *children;
-
-	children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
-
-	while (children != NULL)
-	{
-		GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
-
-		while (views != NULL)
-		{
-			GeditView *v =	GEDIT_VIEW (views->data);
-			
-			gedit_view_set_colors (v, 
-					       def,
-					       backgroud,
-					       text,
-					       selection,
-					       sel_text);
-			views = views->next;
-		}
+	GList *views;
+	GList *list;
+	
+	views = gedit_app_get_views (gedit_app_get_default ());
+	list = views;
 		
-		children = children->next;
+	while (views != NULL)
+	{
+		gedit_view_set_colors (GEDIT_VIEW (views->data), 
+				       def,
+				       backgroud,
+				       text,
+				       selection,
+				       sel_text);
+
+		views = g_list_next (views);
 	}
+	
+	g_list_free (list);
 }
 
 static void 
 gedit_prefs_manager_editor_colors_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
-{
-	gboolean def = TRUE;
+					   guint        cnxn_id, 
+					   GConfEntry  *entry, 
+					   gpointer     user_data)
+{	
 	gchar *str_color;
 	GdkColor color;
 
@@ -400,6 +408,8 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 
 	if (strcmp (entry->key, GPM_USE_DEFAULT_COLORS) == 0)
 	{
+		gboolean def = TRUE;
+		
 		if (entry->value->type == GCONF_VALUE_BOOL)
 			def = gconf_value_get_bool (entry->value);
 		else
@@ -426,6 +436,12 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 		return;
 	}
 	
+	if (gedit_prefs_manager_get_use_default_colors ())
+	{
+		set_colors (TRUE, NULL, NULL, NULL, NULL);
+		return;
+	}
+		
 	if (strcmp (entry->key, GPM_BACKGROUND_COLOR) == 0)
 	{
 		if (entry->value->type == GCONF_VALUE_STRING)
@@ -433,12 +449,10 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 		else
 			str_color = g_strdup (GPM_DEFAULT_BACKGROUND_COLOR);
 				
-		def = gedit_prefs_manager_get_use_default_colors ();
-
 		gdk_color_parse (str_color, &color);	
 		g_free (str_color);
 
-		set_colors (def, &color, NULL, NULL, NULL);
+		set_colors (FALSE, &color, NULL, NULL, NULL);
 	
 		return;
 	}
@@ -450,12 +464,10 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 		else
 			str_color = g_strdup (GPM_DEFAULT_TEXT_COLOR);
 				
-		def = gedit_prefs_manager_get_use_default_colors ();
-
 		gdk_color_parse (str_color, &color);	
 		g_free (str_color);
 
-		set_colors (def, NULL, &color, NULL, NULL);
+		set_colors (FALSE, NULL, &color, NULL, NULL);
 	
 		return;
 	}
@@ -467,12 +479,10 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 		else
 			str_color = g_strdup (GPM_DEFAULT_SELECTION_COLOR);
 				
-		def = gedit_prefs_manager_get_use_default_colors ();
-
 		gdk_color_parse (str_color, &color);	
 		g_free (str_color);
 
-		set_colors (def, NULL, NULL, &color, NULL);
+		set_colors (FALSE, NULL, NULL, &color, NULL);
 	
 		return;
 	}
@@ -484,12 +494,10 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 		else
 			str_color = g_strdup (GPM_DEFAULT_SELECTED_TEXT_COLOR);
 
-		def = gedit_prefs_manager_get_use_default_colors ();
-
 		gdk_color_parse (str_color, &color);	
 		g_free (str_color);
 
-		set_colors (def, NULL, NULL, NULL, &color);
+		set_colors (FALSE, NULL, NULL, NULL, &color);
 	
 		return;
 	}
@@ -497,9 +505,10 @@ gedit_prefs_manager_editor_colors_changed (GConfClient *client,
 
 static void 
 gedit_prefs_manager_tabs_size_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+				       guint        cnxn_id,
+				       GConfEntry  *entry, 
+				       gpointer     user_data)
 {
-
 	gedit_debug (DEBUG_PREFS, "");
 
 	g_return_if_fail (entry->key != NULL);
@@ -508,7 +517,8 @@ gedit_prefs_manager_tabs_size_changed (GConfClient *client,
 	if (strcmp (entry->key, GPM_TABS_SIZE) == 0)
 	{
 		gint tabs_size;
-		GList *children;
+		GList *views;
+		GList *list;
 		
 		if (entry->value->type == GCONF_VALUE_INT)
 			tabs_size = gconf_value_get_int (entry->value);
@@ -517,55 +527,44 @@ gedit_prefs_manager_tabs_size_changed (GConfClient *client,
 	
 		tabs_size = CLAMP (tabs_size, 1, 24);
 
-		children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
-
-		while (children != NULL)
-		{
-			GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
-
-			while (views != NULL)
-			{
-				GeditView *v =	GEDIT_VIEW (views->data);
-			
-				gedit_view_set_tab_size (v, tabs_size);
-			
-				views = views->next;
-			}
+		views = gedit_app_get_views (gedit_app_get_default ());
+		list = views;
 		
-			children = children->next;
+		while (views != NULL)
+		{
+			gtk_source_view_set_tabs_width (GTK_SOURCE_VIEW (views->data), 
+							tabs_size);
+			
+			views = g_list_next (views);
 		}
-
+		
+		g_list_free (list);
 	}
 	else if (strcmp (entry->key, GPM_INSERT_SPACES) == 0)
 	{
 		gboolean enable;
-			
-		GList *children;
+		GList *views;
+		GList *list;
 		
 		if (entry->value->type == GCONF_VALUE_BOOL)
 			enable = gconf_value_get_bool (entry->value);	
 		else
 			enable = GPM_DEFAULT_INSERT_SPACES;
 	
-		children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
-
-		while (children != NULL)
-		{
-			GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
-
-			while (views != NULL)
-			{
-				GeditView *v =	GEDIT_VIEW (views->data);
-			
-				gedit_view_set_insert_spaces_instead_of_tabs (v, enable);
-			
-				views = views->next;
-			}
+		views = gedit_app_get_views (gedit_app_get_default ());
+		list = views;
 		
-			children = children->next;
+		while (views != NULL)
+		{
+			gtk_source_view_set_insert_spaces_instead_of_tabs (
+					GTK_SOURCE_VIEW (views->data), 
+					enable);
+			
+			views = g_list_next (views);
 		}
+		
+		g_list_free (list);
 	}
-
 }
 
 static GtkWrapMode 
@@ -590,7 +589,9 @@ get_wrap_mode_from_string (const gchar* str)
 
 static void 
 gedit_prefs_manager_wrap_mode_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+	                               guint        cnxn_id, 
+	                               GConfEntry  *entry, 
+	                               gpointer     user_data)
 {
 	gedit_debug (DEBUG_PREFS, "");
 
@@ -601,38 +602,35 @@ gedit_prefs_manager_wrap_mode_changed (GConfClient *client,
 	{
 		GtkWrapMode wrap_mode;
 			
-		GList *children;
+		GList *views;
+		GList *list;
 		
 		if (entry->value->type == GCONF_VALUE_STRING)
 			wrap_mode = 
 				get_wrap_mode_from_string (gconf_value_get_string (entry->value));	
 		else
 			wrap_mode = get_wrap_mode_from_string (GPM_DEFAULT_WRAP_MODE);
-	
-		children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
 
-		while (children != NULL)
+		views = gedit_app_get_views (gedit_app_get_default ());
+		list = views;
+
+		while (views != NULL)
 		{
-			GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
-
-			while (views != NULL)
-			{
-				GeditView *v =	GEDIT_VIEW (views->data);
+			gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (views->data),
+						     wrap_mode);
 			
-				gedit_view_set_wrap_mode (v, wrap_mode);
-			
-				views = views->next;
-			}
-		
-			children = children->next;
+			views = g_list_next (views);
 		}
+		
+		g_list_free (list);
 	}
-
 }
 
 static void 
 gedit_prefs_manager_line_numbers_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+					  guint        cnxn_id, 
+					  GConfEntry  *entry, 
+					  gpointer     user_data)
 {
 	gedit_debug (DEBUG_PREFS, "");
 
@@ -643,36 +641,35 @@ gedit_prefs_manager_line_numbers_changed (GConfClient *client,
 	{
 		gboolean dln;
 			
-		GList *children;
+		GList *views;
+		GList *list;
 		
 		if (entry->value->type == GCONF_VALUE_BOOL)
 			dln = gconf_value_get_bool (entry->value);	
 		else
 			dln = GPM_DEFAULT_DISPLAY_LINE_NUMBERS;
 	
-		children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
+		views = gedit_app_get_views (gedit_app_get_default ());
+		list = views;
 
-		while (children != NULL)
+		while (views != NULL)
 		{
-			GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
-
-			while (views != NULL)
-			{
-				GeditView *v =	GEDIT_VIEW (views->data);
+			gtk_source_view_set_show_line_numbers (
+					GTK_SOURCE_VIEW (views->data), 
+					dln);
 			
-				gedit_view_show_line_numbers (v, dln);
-			
-				views = views->next;
-			}
-		
-			children = children->next;
+			views = g_list_next (views);
 		}
+		
+		g_list_free (list);
 	}
 }
 
 static void 
 gedit_prefs_manager_hl_current_line_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+					     guint        cnxn_id, 
+					     GConfEntry  *entry, 
+					     gpointer     user_data)
 {
 	gedit_debug (DEBUG_PREFS, "");
 
@@ -683,38 +680,37 @@ gedit_prefs_manager_hl_current_line_changed (GConfClient *client,
 	{
 		gboolean hl;
 			
-		GList *children;
+		GList *views;
+		GList *list;
 
 		if (entry->value->type == GCONF_VALUE_BOOL)
 			hl = gconf_value_get_bool (entry->value);	
 		else
 			hl = GPM_DEFAULT_HIGHLIGHT_CURRENT_LINE;
-	
-		children = bonobo_mdi_get_children (BONOBO_MDI (gedit_mdi));
 
-		while (children != NULL)
+		views = gedit_app_get_views (gedit_app_get_default ());
+		list = views;
+
+		while (views != NULL)
 		{
-			GList *views = bonobo_mdi_child_get_views (BONOBO_MDI_CHILD (children->data));
-
-			while (views != NULL)
-			{
-				GtkSourceView *v = GTK_SOURCE_VIEW (
-						gedit_view_get_gtk_text_view (GEDIT_VIEW (views->data)));
 			
-				gtk_source_view_set_highlight_current_line (v, hl);
+			gtk_source_view_set_highlight_current_line (
+					GTK_SOURCE_VIEW (views->data), 
+					hl);
 			
-				views = views->next;
-			}
-		
-			children = children->next;
+			views = g_list_next (views);
 		}
+		
+		g_list_free (list);
 	}
 }
 
 
 static void 
 gedit_prefs_manager_bracket_matching_changed (GConfClient *client,
-	guint cnxn_id, GConfEntry *entry, gpointer user_data)
+					      guint        cnxn_id, 
+					      GConfEntry  *entry, 
+					      gpointer     user_data)
 {
 	gedit_debug (DEBUG_PREFS, "");
 
@@ -732,24 +728,23 @@ gedit_prefs_manager_bracket_matching_changed (GConfClient *client,
 		else
 			enable = GPM_DEFAULT_BRACKET_MATCHING;
 
-		docs = gedit_get_open_documents ();
+		docs = gedit_app_get_documents (gedit_app_get_default ());
 		
 		l = docs;
 		while (l != NULL)
 		{
-			g_return_if_fail (GTK_IS_SOURCE_BUFFER (l->data));
-
-			gtk_source_buffer_set_check_brackets (GTK_SOURCE_BUFFER (l->data),
-							      enable);
-
+			gtk_source_buffer_set_check_brackets (
+					GTK_SOURCE_BUFFER (l->data),
+					enable);
 
 			l = g_list_next (l);		
 		}
 
 		g_list_free (docs);
 	}
-	
 }
+
+#if 0
 
 static void 
 gedit_prefs_manager_auto_indent_changed (GConfClient *client,

@@ -86,6 +86,12 @@ GeditTab	*gedit_window_get_active_tab		(GeditWindow *window);
 GeditView	*gedit_window_get_active_view		(GeditWindow *window);
 GeditDocument	*gedit_window_get_active_document	(GeditWindow *window);
 
+/* Returns a newly allocated list with all the documents in the window */
+GList		*gedit_window_get_documents		(GeditWindow *window);
+
+/* Returns a newly allocated list with all the views in the window */
+GList		*gedit_window_get_views			(GeditWindow *window);
+
 /*
  * Non exported functions
  */
