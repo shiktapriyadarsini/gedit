@@ -72,6 +72,15 @@ typedef struct _GeditWindowClass GeditWindowClass;
 struct _GeditWindowClass 
 {
 	GtkWindowClass parent_class;
+	
+	/* Signals */
+	void	 (* tab_added)      	(GeditWindow *window,
+				     	 GeditTab    *tab);
+	void	 (* tab_removed)    	(GeditWindow *window,
+				     	 GeditTab    *tab);
+	void	 (* tabs_reordered) 	(GeditWindow *window);
+	void	 (* active_tab_changed)	(GeditWindow *window,
+				     	 GeditTab    *tab);
 };
 
 /*
@@ -101,6 +110,8 @@ GList		*gedit_window_get_documents		(GeditWindow *window);
 
 /* Returns a newly allocated list with all the views in the window */
 GList		*gedit_window_get_views			(GeditWindow *window);
+
+GtkWindowGroup  *gedit_window_get_group			(GeditWindow *window);
 
 /*
  * Non exported functions

@@ -97,14 +97,30 @@ struct _GeditWindowPrivate
 	gint		bottom_panel_size;
 	
 	gboolean	removing_all_tabs;
+	
+	GtkWindowGroup *window_group;
 };
+
+/* Signals */
+enum
+{
+	TAB_ADDED,
+	TAB_REMOVED,
+	TABS_REORDERED,
+	ACTIVE_TAB_CHANGED,
+	LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
 
 static void
 gedit_window_finalize (GObject *object)
 {
-	/* GeditWindow *window = GEDIT_WINDOW (object); */
+	GeditWindow *window = GEDIT_WINDOW (object); 
+	
+	g_object_unref (window->priv->window_group);
 
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
@@ -134,7 +150,7 @@ gedit_window_destroy (GtkObject *object)
 		gedit_prefs_manager_bottom_panel_size_can_set ())
 			gedit_prefs_manager_set_bottom_panel_size (
 					window->priv->bottom_panel_size);
-
+					
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
 }
 
@@ -147,6 +163,46 @@ gedit_window_class_init (GeditWindowClass *klass)
 	object_class->finalize = gedit_window_finalize;
 	gobject_class->destroy = gedit_window_destroy;
 	
+	signals[TAB_ADDED] =
+		g_signal_new ("tab_added",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_FIRST,
+			      G_STRUCT_OFFSET (GeditWindowClass, tab_added),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__OBJECT,
+			      G_TYPE_NONE,
+			      1,
+			      GEDIT_TYPE_TAB);
+	signals[TAB_REMOVED] =
+		g_signal_new ("tab_removed",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_FIRST,
+			      G_STRUCT_OFFSET (GeditWindowClass, tab_removed),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__OBJECT,
+			      G_TYPE_NONE,
+			      1,
+			      GEDIT_TYPE_TAB);
+	signals[TABS_REORDERED] =
+		g_signal_new ("tabs_reordered",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_FIRST,
+			      G_STRUCT_OFFSET (GeditWindowClass, tabs_reordered),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__VOID,
+			      G_TYPE_NONE,
+			      0);
+	signals[ACTIVE_TAB_CHANGED] =
+		g_signal_new ("active_tab_changed",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_FIRST,
+			      G_STRUCT_OFFSET (GeditWindowClass, active_tab_changed),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__OBJECT,
+			      G_TYPE_NONE,
+			      1,
+			      GEDIT_TYPE_TAB);			      
+			      	
 	g_type_class_add_private (object_class, sizeof(GeditWindowPrivate));
 }
 
@@ -1115,6 +1171,11 @@ notebook_switch_page (GtkNotebook     *book,
 					  window);
 	gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
 				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
+				       
+	g_signal_emit (G_OBJECT (window), 
+		       signals[ACTIVE_TAB_CHANGED], 
+		       0, 
+		       window->priv->active_tab);				       
 }
 
 static void
@@ -1178,6 +1239,8 @@ notebook_tab_added (GeditNotebook *notebook,
 			  window);
 
 	update_documents_list_menu (window);
+	
+	g_signal_emit (G_OBJECT (window), signals[TAB_ADDED], 0, tab);
 }
 
 static void
@@ -1214,9 +1277,19 @@ notebook_tab_removed (GeditNotebook *notebook,
 		g_return_if_fail (windows != NULL);
 		
 		window->priv->active_tab = NULL;
-		
+			       
 		if (windows->next != NULL)
 		{
+			g_signal_emit (G_OBJECT (window), 
+				       signals[TAB_REMOVED], 
+				       0, 
+				       tab);
+				       
+			g_signal_emit (G_OBJECT (window), 
+				       signals[ACTIVE_TAB_CHANGED], 
+				       0, 
+				       NULL);
+	
 			/* the list has more than one item */
 			gtk_widget_destroy (GTK_WIDGET (window));
 
@@ -1245,6 +1318,17 @@ notebook_tab_removed (GeditNotebook *notebook,
 		if (window->priv->num_tabs == 0)
 			update_documents_list_menu (window);
 	}
+	
+	g_signal_emit (G_OBJECT (window), signals[TAB_REMOVED], 0, tab);
+}
+
+static void
+notebook_tabs_reordered (GeditNotebook *notebook,
+			 GeditWindow   *window)
+{
+	update_documents_list_menu (window);
+	
+	g_signal_emit (G_OBJECT (window), signals[TABS_REORDERED], 0);
 }
 
 static void
@@ -1474,6 +1558,9 @@ gedit_window_init (GeditWindow *window)
 	window->priv->num_tabs = 0;
 	window->priv->removing_all_tabs = FALSE;
 	
+	window->priv->window_group = gtk_window_group_new ();
+	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
+	
 	main_box = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (window), main_box);
 	gtk_widget_show (main_box);
@@ -1536,6 +1623,10 @@ gedit_window_init (GeditWindow *window)
 			  "tab_removed",
 			  G_CALLBACK (notebook_tab_removed),
 			  window);
+	g_signal_connect (G_OBJECT (window->priv->notebook),
+			  "tabs_reordered",
+			  G_CALLBACK (notebook_tabs_reordered),
+			  window);			  
 	g_signal_connect (G_OBJECT (window->priv->notebook),
 			  "tab_detached",
 			  G_CALLBACK (notebook_tab_detached),
@@ -1816,4 +1907,12 @@ gedit_window_set_active_tab (GeditWindow *window,
 	
 	gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook),
 				       page_num);
+}
+
+GtkWindowGroup *
+gedit_window_get_group (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
+	return window->priv->window_group;
 }

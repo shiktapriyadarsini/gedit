@@ -34,6 +34,7 @@
 
 #include "gedit-close-confirmation-dialog.h"
 #include <gedit/gedit-utils.h>
+#include <gedit/gedit-window.h>
 
 /* Properties */
 enum 
@@ -331,7 +332,10 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent, GSList *unsaved_document
 
 	if (parent != NULL)
 	{
-		gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);
+		gtk_window_group_add_window (gedit_window_get_group (GEDIT_WINDOW (parent)),
+					     GTK_WINDOW (dlg));
+		
+		gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);					     
 	}
 
 	return dlg;

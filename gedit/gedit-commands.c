@@ -695,14 +695,17 @@ activate_url (GtkAboutDialog *about, const gchar *url, gpointer data)
 	gnome_url_show (url, NULL);
 }
 
+#define GEDIT_ABOUT_DIALOG_KEY "GEDIT_ABOUT_DIALOG_KEY"
+
 void
 gedit_cmd_help_about (GtkAction *action, GeditWindow *window)
 {
-	static GtkWidget *about = NULL;
+	GtkWidget *about;
+	gpointer   data;
 
 	GdkPixbuf *logo;
 
-	const gchar *authors[] = {
+	static const gchar *authors[] = {
 		"Paolo Maggi <paolo@gnome.org>",
 		"Paolo Borelli <pborelli@katamail.com>",
 		"James Willcox <jwillcox@gnome.org>",
@@ -711,13 +714,13 @@ gedit_cmd_help_about (GtkAction *action, GeditWindow *window)
 		NULL
 	};
 
-	const gchar *documenters[] = {
+	static const gchar *documenters[] = {
 		"Sun GNOME Documentation Team <gdocteam@sun.com>",
 		"Eric Baudais <baudais@okstate.edu>",
 		NULL
 	};
 
-	const gchar *copyright = "Copyright \xc2\xa9 1998-2000 Evan Lawrence, Alex Robert\n"
+	static const gchar *copyright = "Copyright \xc2\xa9 1998-2000 Evan Lawrence, Alex Robert\n"
 				 "Copyright \xc2\xa9 2000-2002 Chema Celorio, Paolo Maggi\n"
 				 "Copyright \xc2\xa9 2003-2005 Paolo Maggi";
 
@@ -733,10 +736,12 @@ gedit_cmd_help_about (GtkAction *action, GeditWindow *window)
 
 	gedit_debug (DEBUG_COMMANDS, "");
 
-	if (about != NULL)
-	{
-		gtk_window_set_transient_for (GTK_WINDOW (about), GTK_WINDOW (window));
-		gtk_window_present (GTK_WINDOW (about));
+	data = g_object_get_data (G_OBJECT (window), GEDIT_ABOUT_DIALOG_KEY);
+	
+	if ((data != NULL) && GTK_IS_WINDOW (data))
+	{		
+		gtk_window_set_transient_for (GTK_WINDOW (data), GTK_WINDOW (window));
+		gtk_window_present (GTK_WINDOW (data));
 
 		return;
 	}
@@ -767,5 +772,7 @@ gedit_cmd_help_about (GtkAction *action, GeditWindow *window)
 
 	if (logo)
 		g_object_unref (logo);
+		
+	g_object_set_data (G_OBJECT (window), GEDIT_ABOUT_DIALOG_KEY, about);
 }
 
