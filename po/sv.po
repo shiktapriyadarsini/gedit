@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2000-11-29 17:07+0100\n"
-"PO-Revision-Date: 2000-10-30 02:05+0100\n"
+"POT-Creation-Date: 2000-12-19 00:45+0100\n"
+"PO-Revision-Date: 2000-12-19 00:58+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -996,6 +996,10 @@ msgstr ""
 "%sDu kommer inte att kunna använda insticksprogrammet %s utan %s. \n"
 " Vill du ange en ny plats för %s?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "fel vid allokering av insticksprogram"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1008,6 +1012,14 @@ msgstr "Fel, insticksprogrammet innehåller inte funktionen init_plugin."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Fel, init_plugin retunerade ett fel"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specified a description"
+msgstr "Fel, insticksprogrammet angav inte en beskrivning"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specified a long description"
+msgstr "Fel, insticksprogrammet angav inte en lång beskrivning"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
