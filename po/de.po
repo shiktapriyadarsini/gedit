@@ -6,11 +6,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 0.9.3\n"
-"POT-Creation-Date: 2000-11-26 11:52+0100\n"
-"PO-Revision-Date: 2000-11-26 11:54+0100\n"
-"Last-Translator: Kai Lahmann <kl@linuxfaqs.de>\n"
-"Language-Team: deutsch <gnome-de@gnome.org>\n"
+"Project-Id-Version: gedit 0.9.4\n"
+"POT-Creation-Date: 2000-12-27 14:33+0100\n"
+"PO-Revision-Date: 2000-12-27 14:21+0100\n"
+"Last-Translator: Kai Lahmnn <kl@linuxfaqs.de>\n"
+"Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -585,6 +585,11 @@ msgstr "Plugin-Beschreibung"
 msgid "RO - "
 msgstr "SS - "
 
+#: src/document.c:269
+#, c-format
+msgid "%s %d"
+msgstr "%s%d"
+
 #: src/document.c:443
 #, c-format
 msgid "``%s'' has been modified.  Do you wish to save it?"
@@ -675,8 +680,8 @@ msgid ""
 "\n"
 " %s \n"
 "\n"
-"Make sure that the path you provided exists,and that you have the appropriate "
-"write permissions."
+"Make sure that the path you provided exists,and that you have the "
+"appropriate write permissions."
 msgstr ""
 "gedit konnte die Datei\n"
 "\n"
@@ -998,6 +1003,10 @@ msgstr ""
 "%sEs ist nicht möglich das Plugin %s ohne %s zu nutzen.\n"
 "Wollen die einen Pfad für %s angeben?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr "Plugin-Zuteilungsfehler"
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1010,6 +1019,14 @@ msgstr "Fehler, Plugin enthält keine Funktion init_plugin"
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Fehler, init_plugin gab einen Fehler zurück"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specify a description"
+msgstr "Fehler, das Plugin hat keine Bescheibung"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specify a long description"
+msgstr "Fehler, das Plugin hat keine genaue Beschreibung"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
@@ -1061,8 +1078,8 @@ msgid ""
 "Can't count lines if another search operation is active, please close the "
 "search dialog."
 msgstr ""
-"Zeilen können nicht gezählt werden, wenn ein anderer Suchvorgang läuft. Bitte "
-"schließen Sie das Suchdialogfenster."
+"Zeilen können nicht gezählt werden, wenn ein anderer Suchvorgang läuft. "
+"Bitte schließen Sie das Suchdialogfenster."
 
 #: src/search.c:410
 #, c-format
@@ -1092,4 +1109,3 @@ msgstr ""
 #: src/view.c:963
 msgid "You can't remove the last view of a document."
 msgstr "Sie können die letzte Ansicht eines Dokuments nicht entfernen"
-
