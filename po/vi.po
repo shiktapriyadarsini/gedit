@@ -5,21 +5,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit VERSION\n"
-"POT-Creation-Date: 2002-07-03 09:19+0200\n"
-"PO-Revision-Date: 2002-06-13 14:15+0700\n"
+"POT-Creation-Date: 2002-06-12 21:05+0200\n"
+"PO-Revision-Date: 2002-09-19 09:31+0700\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
-"Language-Team: Gnome-Vi <gnomevi-list@lists.sourceforge.net>\n"
+"Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: gedit.desktop.in.h:1
 msgid "Edit text files"
-msgstr "Biên soạn tập tin văn bản"
+msgstr "Hiệu chỉnh file text"
 
 #: gedit.desktop.in.h:2
 msgid "Text Editor"
-msgstr "Trình biên soạn văn bản"
+msgstr "Trình hiệu chỉnh text"
 
 #: plugins/ASCII/ascii.c:43
 msgid "_ASCII Table"
@@ -27,7 +27,7 @@ msgstr "Bảng _ASCII"
 
 #: plugins/ASCII/ascii.c:46
 msgid "Pop-up a dialog containing an ASCII Table"
-msgstr "Bật lên hộp thoại chứa bảng mã ASCII"
+msgstr "Hiện hộp thoại chứa bảng mã ASCII"
 
 #: plugins/ASCII/ascii.c:336
 msgid "Char"
@@ -59,7 +59,7 @@ msgstr "Plugin này hiển thị bảng mã ASCII"
 
 #: plugins/ASCII/ascii.c:526
 msgid "Copyright (C) 2001-2002 Paolo Maggi"
-msgstr "Bản quyền (C) 2001-2002 Paolo Maggi"
+msgstr "Copyright (C) 2001-2002 Paolo Maggi"
 
 #: plugins/ASCII/asciitable.glade2.h:1
 msgid ""
@@ -82,23 +82,23 @@ msgstr "gedit: Bảng ASCII"
 #. AFAIK, all cvs commit messages start with this
 #: plugins/cvschangelog/cvschangelog.c:48
 msgid "Open CVS Chan_geLogs"
-msgstr "Mở Bản _Ghi Thay Đổi của CVS"
+msgstr "Mở CVS ChangeLog"
 
 #: plugins/cvschangelog/cvschangelog.c:51
 msgid "Searches for ChangeLogs in the current document and opens them"
-msgstr "Tìm các Bản-Ghi-Thay-Đổi trong tài liệu hiện thời và mở chúng"
+msgstr "Tìm các ChangeLog trong tài liệu hiện thời và mở chúng"
 
 #: plugins/cvschangelog/cvschangelog.c:263
 msgid "CVS ChangeLog"
-msgstr "Bản Ghi Thay Đổi của CVS"
+msgstr "CVS ChangeLog"
 
 #: plugins/cvschangelog/cvschangelog.c:264
 msgid "A plugin that opens ChangeLogs found in CVS commit messages."
-msgstr "Plugin mở các BảnGhiThayĐổi được tìm thấy trong thông báo ủy nhiệm của CVS."
+msgstr "Plugin mở các ChangeLog được tìm thấy trong thông báo commit của CVS."
 
 #: plugins/cvschangelog/cvschangelog.c:266
 msgid "Copyright (C) 2002 - James Willcox"
-msgstr "Bản quyền (C) 2002 - James Willcox"
+msgstr "Copyright (C) 2002 - James Willcox"
 
 #: plugins/diff/diff.c:61
 msgid "Co_mpare Files..."
@@ -414,7 +414,7 @@ msgstr "Chọn nhóm tab muốn dùng"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:176
 msgid "Tag Groups Combo"
-msgstr "Combo của các nhóm thẻ"
+msgstr ""
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:178
 msgid "Tags Name List"
@@ -479,7 +479,7 @@ msgstr "Chèn ngày, giờ hiện thời vào vị trí con trỏ hiện thời.
 msgid "Select the format to use when inserting date/time."
 msgstr "Chọn dạng thức được dùng khi chèn ngày/giờ."
 
-#: src/bonobo-mdi.c:491 src/bonobo-mdi.c:571 src/bonobo-mdi.c:1774
+#: src/bonobo-mdi.c:489 src/bonobo-mdi.c:569 src/bonobo-mdi.c:1721
 #, c-format
 msgid "Activate %s"
 msgstr "Kích hoạt %s"
@@ -571,8 +571,10 @@ msgid "Set program location ..."
 msgstr "Định vị trí chương trình..."
 
 #: src/dialogs/gedit-plugin-program-location-dialog.c:96
-msgid "Could not find the required widgets inside program-location-dialog.glade2.\n"
-msgstr "Không thể tìm thấy widget yêu cầu trong program-location-dialog.glade2.\n"
+msgid ""
+"Could not find the required widgets inside program-location-dialog.glade2.\n"
+msgstr ""
+"Không thể tìm thấy widget yêu cầu trong program-location-dialog.glade2.\n"
 
 #: src/dialogs/gedit-plugin-program-location-dialog.c:102
 #, c-format
@@ -681,11 +683,13 @@ msgid "Push this button to configure background color"
 msgstr "Nhấn nút này để cấu hình màu nền"
 
 #: src/dialogs/gedit-preferences-dialog.c:913
-msgid "Push this button to configure color in which selected text should appear"
+msgid ""
+"Push this button to configure color in which selected text should appear"
 msgstr "Nhấn nút này để cấu hình màu chữ được chọn"
 
 #: src/dialogs/gedit-preferences-dialog.c:915
-msgid "Push this button to configure color in which selected text should be marked"
+msgid ""
+"Push this button to configure color in which selected text should be marked"
 msgstr "Nhấn nút này để cấy hình màu chữ đánh dấu"
 
 #: src/dialogs/gedit-preferences-dialog.c:1313
@@ -767,11 +771,11 @@ msgstr "Modal"
 
 #: src/dialogs/gedit-preferences.glade2.h:19
 msgid "Notebook"
-msgstr "Sổ ghi chép"
+msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:20
 msgid "Notebook _tab position:"
-msgstr "Vị trí _tab của sổ ghi chép:"
+msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:21
 msgid "Pick the background color"
@@ -815,7 +819,7 @@ msgstr "Màu _vùng chọn:"
 
 #: src/dialogs/gedit-preferences.glade2.h:33
 msgid "Set _tabs width equivalent to  "
-msgstr "Lập bề rộng của _tabs tương đương với  "
+msgstr "Đặt độ rộng _tab bằng  "
 
 #: src/dialogs/gedit-preferences.glade2.h:34
 msgid "Set limit on _undo actions to"
@@ -857,7 +861,8 @@ msgstr ""
 msgid ""
 "The line numbers setting lets you choose to display the line numbers on the "
 "left hand side of the window."
-msgstr "Thông số về số dòng cho phép bạn chọn hiển thị số dòng ở bên trái cửa sổ."
+msgstr ""
+"Thông số về số dòng cho phép bạn chọn hiển thị số dòng ở bên trái cửa sổ."
 
 #: src/dialogs/gedit-preferences.glade2.h:44
 msgid ""
@@ -867,7 +872,8 @@ msgstr "Tham số font in cho phép bạn chọn font được dùng để in t�
 
 #: src/dialogs/gedit-preferences.glade2.h:45
 msgid "The print page settings let you customize how gedit prints documents."
-msgstr "Thông số trang in cho phép bạn xác định gedit sẽ in tài liệu như thế nào."
+msgstr ""
+"Thông số trang in cho phép bạn xác định gedit sẽ in tài liệu như thế nào."
 
 #: src/dialogs/gedit-preferences.glade2.h:46
 msgid "The save settings let you customize how gedit saves files."
@@ -903,7 +909,8 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:51
 msgid "The wrap mode settings let you customize how lines have to be wrapped."
-msgstr "Thông số chế độ cuộn cho phép bạn xác định các dòng sẽ được cuộn như thế nào."
+msgstr ""
+"Thông số chế độ cuộn cho phép bạn xác định các dòng sẽ được cuộn như thế nào."
 
 #: src/dialogs/gedit-preferences.glade2.h:52
 msgid "Toolbars"
@@ -915,7 +922,7 @@ msgstr "Đỉnh"
 
 #: src/dialogs/gedit-preferences.glade2.h:54
 msgid "Toplevel"
-msgstr "Mức cao nhất"
+msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:55
 msgid "U_se current locale only if the file already use it"
@@ -1007,11 +1014,11 @@ msgstr "phút"
 
 #: src/dialogs/gnome-print-font-dialog.c:107
 msgid "_Insert a new preview phrase."
-msgstr "_Chèn một nhóm từ xem trước mới."
+msgstr "_Chèn pha xem trước mới."
 
 #: src/dialogs/gnome-print-font-dialog.c:113
 msgid "Modify preview phrase..."
-msgstr "Thay đổi nhóm từ xem trước..."
+msgstr "Sửa pha xem trước..."
 
 #: src/dialogs/gnome-print-font-dialog.c:167
 msgid "Preview"
@@ -1019,11 +1026,11 @@ msgstr "Xem trước"
 
 #: src/dialogs/gnome-print-font-dialog.c:180
 msgid "_Modify preview phrase..."
-msgstr "T_hay đổi nhóm từ xem trước..."
+msgstr "_Sửa pha xem trước..."
 
 #: src/dialogs/gnome-print-font-dialog.c:243
 msgid "Font Selection"
-msgstr "Chọn Phông Chữ"
+msgstr "Chọn font"
 
 #: src/dialogs/gnome-print-font-picker.c:89
 msgid "sans 12"
@@ -1067,7 +1074,7 @@ msgstr "Dùng font trong nhãn"
 
 #: src/dialogs/gnome-print-font-picker.c:216
 msgid "Use font in the label in font info mode"
-msgstr "Dùng phông trong nhãn trong chế độ thông tin về phông chữ"
+msgstr ""
 
 #: src/dialogs/gnome-print-font-picker.c:224
 msgid "Font size for label"
@@ -1075,7 +1082,7 @@ msgstr "Cỡ font của nhãn"
 
 #: src/dialogs/gnome-print-font-picker.c:225
 msgid "Font size for label in font info mode"
-msgstr "Cỡ phông cho nhãn trong chế độ thông tin về phông"
+msgstr ""
 
 #: src/dialogs/gnome-print-font-picker.c:235
 msgid "Show size"
@@ -1320,7 +1327,7 @@ msgstr "Đã nạp %i tập tin"
 msgid "Could not read data from stdin."
 msgstr "Không thể đọc dữ liệu từ stdin."
 
-#: src/gedit-mdi.c:719
+#: src/gedit-mdi.c:759
 #, c-format
 msgid ""
 "Do you want to save the changes you made to the document \"%s\"? \n"
@@ -1331,23 +1338,23 @@ msgstr ""
 "\n"
 "Các thay đổi sẽ bị mất nếu bạn không lưu chúng lại."
 
-#: src/gedit-mdi.c:724
+#: src/gedit-mdi.c:764
 msgid "Do_n't save"
 msgstr "_Không lưu"
 
-#: src/gedit-mdi.c:743
+#: src/gedit-mdi.c:783
 msgid "_Don't quit"
 msgstr "Không _thoát"
 
-#: src/gedit-mdi.c:747
+#: src/gedit-mdi.c:787
 msgid "_Don't close"
 msgstr "Không đón_g"
 
-#: src/gedit-mdi.c:837
+#: src/gedit-mdi.c:877
 msgid "(modified)"
 msgstr "(đã thay đổi)"
 
-#: src/gedit-mdi.c:843
+#: src/gedit-mdi.c:883
 msgid "(readonly)"
 msgstr "(chỉ đọc)"
 
@@ -1855,7 +1862,8 @@ msgstr "Không thể mở tập tin \"%s\" vì chứa dữ liệu hỏng."
 
 #: src/gedit-utils.c:860
 #, c-format
-msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid ""
+"Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "Không thể mỡ tập tin \"%s\" vì gedit không thể xử lý %s: vị trí."
 
 #: src/gedit-utils.c:868
@@ -1865,7 +1873,8 @@ msgstr "Không thể mở tập tin \"%s\""
 
 #: src/gedit-utils.c:875
 #, c-format
-msgid "Could not open the file \"%s\" because it contains data in an invalid format."
+msgid ""
+"Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr "Không thể mở tập tin \"%s\" vì nó chứa dữ liệu ở dạng thức sai."
 
 #: src/gedit-utils.c:882
@@ -2016,8 +2025,10 @@ msgstr "Không thể hoàn nguyên tập tin \"%s\" vì nó chứa dữ liệu h
 
 #: src/gedit-utils.c:1130
 #, c-format
-msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
-msgstr "Không thể hoàn nguyên tập tin \"%s\" vì gedit không thể xử lý %s: địa điểm."
+msgid ""
+"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgstr ""
+"Không thể hoàn nguyên tập tin \"%s\" vì gedit không thể xử lý %s: địa điểm."
 
 #: src/gedit-utils.c:1138 src/gedit-utils.c:1260
 #, c-format
@@ -2200,4 +2211,3 @@ msgstr "Mở %s"
 
 #~ msgid "_Status Bar"
 #~ msgstr "Thanh T_rạng thái"
-
