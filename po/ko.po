@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AC_PACKAGE_NAME AC_PACKAGE_VERSION\n"
-"POT-Creation-Date: 2002-08-16 17:11+0900\n"
-"PO-Revision-Date: 2002-08-16 08:14+0900\n"
+"POT-Creation-Date: 2002-08-23 15:46+0900\n"
+"PO-Revision-Date: 2002-08-26 05:59+0900\n"
 "Last-Translator: Young-Ho, Cha <ganadist@chollian.net>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
@@ -458,32 +458,32 @@ msgstr "CVS 적용 메세지에서 변경사항을 열어 보는 플러그인."
 msgid "Copyright (C) 2002 - James Willcox"
 msgstr "Copyright (C) 2002 - James Willcox"
 
-#: plugins/diff/diff.c:61
+#: plugins/diff/diff.c:62
 msgid "Co_mpare Files..."
 msgstr "파일 비교(_M)..."
 
-#: plugins/diff/diff.c:64
+#: plugins/diff/diff.c:65
 msgid "Makes a diff file from two documents or files"
 msgstr "두개의 문서나 파일에서 diff파일을 만듭니다"
 
-#: plugins/diff/diff.c:66
+#: plugins/diff/diff.c:67
 msgid "Compare files"
 msgstr "파일 비교"
 
 #. Create the dialog
-#: plugins/diff/diff.c:267
+#: plugins/diff/diff.c:268
 msgid "Compare two files..."
 msgstr "두 파일 비교..."
 
-#: plugins/diff/diff.c:281
+#: plugins/diff/diff.c:282
 msgid "C_ompare"
 msgstr "비교(_O)"
 
-#: plugins/diff/diff.c:502
+#: plugins/diff/diff.c:503
 msgid "The two documents you selected are the same."
 msgstr "선택된 두 문서가 같습니다"
 
-#: plugins/diff/diff.c:510
+#: plugins/diff/diff.c:511
 msgid ""
 "The \"first\" file you selected does not exist.\n"
 "\n"
@@ -493,7 +493,7 @@ msgstr ""
 "\n"
 "올바른 파일을 입력하십시오"
 
-#: plugins/diff/diff.c:519
+#: plugins/diff/diff.c:520
 msgid ""
 "The \"second\" file you selected does not exist.\n"
 "\n"
@@ -503,20 +503,20 @@ msgstr ""
 "\n"
 "올바른 파일을 입력하십시오"
 
-#: plugins/diff/diff.c:527
+#: plugins/diff/diff.c:528
 msgid "The two files you selected are the same."
 msgstr "선택된 두 문서가 같습니다"
 
-#: plugins/diff/diff.c:544
+#: plugins/diff/diff.c:546
 msgid "The \"first\" document contains no text."
 msgstr "첫번째 문서가 글자를 포함하지 않습니다"
 
-#: plugins/diff/diff.c:573
+#: plugins/diff/diff.c:581
 msgid "The \"second\" document contains no text."
 msgstr "두번째 문서가 글자를 포함하지 않습니다"
 
 #. FIXME: do better error reporting ... . Chema
-#: plugins/diff/diff.c:594
+#: plugins/diff/diff.c:607
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -526,7 +526,7 @@ msgstr ""
 "\n"
 "gedit가 임시 파일을 만들 수 없습니다."
 
-#: plugins/diff/diff.c:612 plugins/diff/diff.c:625
+#: plugins/diff/diff.c:625 plugins/diff/diff.c:638
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -536,11 +536,11 @@ msgstr ""
 "\n"
 "diff 명령을 실행하는 중 오류가 생겼습니다."
 
-#: plugins/diff/diff.c:647
+#: plugins/diff/diff.c:660
 msgid "No differences were found between the selected documents."
 msgstr "선택한 문서들 사이에서 다른 부분이 없습니다."
 
-#: plugins/diff/diff.c:688
+#: plugins/diff/diff.c:701
 msgid ""
 "Impossible to compare the selected documents.\n"
 "\n"
@@ -550,7 +550,7 @@ msgstr ""
 "\n"
 "결과에 잘못된 UTF-8 데이터가 포함되어 있습니다."
 
-#: plugins/diff/diff.c:912
+#: plugins/diff/diff.c:925
 msgid ""
 "Makes a diff file from two documents or files on disk.\n"
 "\n"
@@ -560,7 +560,7 @@ msgstr ""
 "\n"
 "\"diff\"에 대한 자세한 내용은 쉘 프롬프트에서 \"man diff\"라고 입력하십시오\n"
 
-#: plugins/diff/diff.c:915
+#: plugins/diff/diff.c:928
 msgid ""
 "Copyright (C) 2000 - 2001 Chema Celorio \n"
 "Copyright (C) 2002 Paolo Maggi"
@@ -569,46 +569,90 @@ msgstr ""
 "Copyright (C) 2002 Paolo Maggi"
 
 #: plugins/diff/diff.glade2.h:1
+msgid "*"
+msgstr "*"
+
+#: plugins/diff/diff.glade2.h:2
 msgid "Choose the files to compare."
 msgstr "비교할 파일 선택"
 
-#: plugins/diff/diff.glade2.h:2
+#: plugins/diff/diff.glade2.h:3
 msgid "Compare files..."
 msgstr "파일 비교..."
 
-#: plugins/diff/diff.glade2.h:3
+#: plugins/diff/diff.glade2.h:4
 msgid "F_rom document"
 msgstr "문서에서(_R)"
 
-#: plugins/diff/diff.glade2.h:4
+#: plugins/diff/diff.glade2.h:5
 msgid "First"
 msgstr "첫번째"
 
-#: plugins/diff/diff.glade2.h:5
+#: plugins/diff/diff.glade2.h:6
+msgid "First file from disk"
+msgstr "첫번째 파일이 디스크에 있습니다"
+
+#: plugins/diff/diff.glade2.h:7
+msgid "First file from open document"
+msgstr "첫번째 파일이 열려 있습니다"
+
+#: plugins/diff/diff.glade2.h:8
 msgid "From _document"
 msgstr "문서에서(_D)"
 
-#: plugins/diff/diff.glade2.h:6
+#: plugins/diff/diff.glade2.h:9
 msgid "From a _file on disk"
 msgstr "디스크의 파일에서(_F)"
 
-#: plugins/diff/diff.glade2.h:7
+#: plugins/diff/diff.glade2.h:10
 msgid "From a file o_n disk"
 msgstr "디스크의 파일에서(_N)"
 
-#: plugins/diff/diff.glade2.h:8
+#: plugins/diff/diff.glade2.h:11
 msgid "Ignore _blanks (-b option)"
 msgstr "공백 무시(-b 옵션) (_B)"
 
-#: plugins/diff/diff.glade2.h:9
+#: plugins/diff/diff.glade2.h:12
 msgid "Note that this option is only supported by GNU diff"
 msgstr "이 옵션은 GNU diff에서만 지원됩니다"
 
-#: plugins/diff/diff.glade2.h:10
+#: plugins/diff/diff.glade2.h:13
 msgid "Second"
 msgstr "두번째"
 
-#: plugins/diff/diff.glade2.h:11
+#: plugins/diff/diff.glade2.h:14
+msgid "Second file from disk"
+msgstr "두번째 파일이 디스크에 있습니다"
+
+#: plugins/diff/diff.glade2.h:15
+msgid "Second file from open document"
+msgstr "두번째 파일이 열려 있습니다"
+
+#: plugins/diff/diff.glade2.h:16
+msgid "Select the \"first\" file..."
+msgstr "\"첫번째\"파일 선택..."
+
+#: plugins/diff/diff.glade2.h:17
+msgid "Select the \"second\" file..."
+msgstr "\"두번째\"파일 선택"
+
+#: plugins/diff/diff.glade2.h:18
+msgid "Select the first file to compare"
+msgstr "비교할 첫번째 파일을 선택합니다"
+
+#: plugins/diff/diff.glade2.h:19
+msgid "Select the first open document to compare"
+msgstr "비교할 첫번째 문서를 선택합니다"
+
+#: plugins/diff/diff.glade2.h:20
+msgid "Select the second file to compare"
+msgstr "비교할 두번째 파일을 선택합니다"
+
+#: plugins/diff/diff.glade2.h:21
+msgid "Select the second open document to compare"
+msgstr "비교할 두번째 문서를 선택합니다"
+
+#: plugins/diff/diff.glade2.h:22
 msgid "Use the _unified output format (-u option)"
 msgstr "통합 출력 형식 사용(-u 옵션) (_U)"
 
@@ -835,7 +879,7 @@ msgstr "커서 위치에 현재의 날짜와 시간을 끼워넣습니다"
 msgid "Select the format to use when inserting date/time."
 msgstr "날짜/시간 입력할 때 사용할 형식을 선택하십시오"
 
-#: src/bonobo-mdi.c:522 src/bonobo-mdi.c:612 src/bonobo-mdi.c:1850
+#: src/bonobo-mdi.c:532 src/bonobo-mdi.c:622 src/bonobo-mdi.c:1858
 #, c-format
 msgid "Activate %s"
 msgstr "%s 활성"
@@ -906,8 +950,7 @@ msgstr "만든이"
 
 #: src/dialogs/gedit-plugin-manager.c:488
 msgid "Could not find plugin-manager.glade2, reinstall gedit.\n"
-msgstr ""
-"plugin-manager.glade2를 찾을 수 없습니다, gedit를 다시 설치하십시오.\n"
+msgstr "plugin-manager.glade2를 찾을 수 없습니다, gedit를 다시 설치하십시오.\n"
 
 #: src/dialogs/gedit-plugin-manager.c:511
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
@@ -946,27 +989,27 @@ msgid "Font & Colors"
 msgstr "글꼴 & 색상"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
-#: src/dialogs/gedit-preferences.glade2.h:28
+#: src/dialogs/gedit-preferences.glade2.h:30
 msgid "Tabs"
 msgstr "탭"
 
 #: src/dialogs/gedit-preferences-dialog.c:210
-#: src/dialogs/gedit-preferences.glade2.h:47
+#: src/dialogs/gedit-preferences.glade2.h:51
 msgid "Wrap mode"
 msgstr "줄 바꿈"
 
 #: src/dialogs/gedit-preferences-dialog.c:211
-#: src/dialogs/gedit-preferences.glade2.h:13
+#: src/dialogs/gedit-preferences.glade2.h:15
 msgid "Line numbers"
 msgstr "줄 번호"
 
 #: src/dialogs/gedit-preferences-dialog.c:213
-#: src/dialogs/gedit-preferences.glade2.h:23 src/gedit-ui.xml.h:58
+#: src/dialogs/gedit-preferences.glade2.h:25 src/gedit-ui.xml.h:58
 msgid "Save"
 msgstr "저장"
 
 #: src/dialogs/gedit-preferences-dialog.c:214
-#: src/dialogs/gedit-preferences.glade2.h:40 src/gedit-ui.xml.h:76
+#: src/dialogs/gedit-preferences.glade2.h:42 src/gedit-ui.xml.h:76
 msgid "Undo"
 msgstr "실행 취소"
 
@@ -987,7 +1030,7 @@ msgid "Editor"
 msgstr "편집기"
 
 #: src/dialogs/gedit-preferences-dialog.c:240
-#: src/dialogs/gedit-preferences.glade2.h:19 src/gedit-print.c:309
+#: src/dialogs/gedit-preferences.glade2.h:21 src/gedit-print.c:309
 #: src/gedit-ui.xml.h:42
 msgid "Print"
 msgstr "인쇄"
@@ -1072,209 +1115,225 @@ msgid " line(s)"
 msgstr "줄 마다 줄번호 인쇄"
 
 #: src/dialogs/gedit-preferences.glade2.h:4
+msgid "Always use UTF-8 encoding (faster) when creating a new file"
+msgstr "새 파일을 만들 때 항상 UTF-8 인코딩을 사용합니다(빠름)"
+
+#: src/dialogs/gedit-preferences.glade2.h:5
+msgid "Always use UTF-8 encoding (faster) when saving"
+msgstr "저장할 때 항상 UTF-8 인코딩을 사용합니다(빠름)"
+
+#: src/dialogs/gedit-preferences.glade2.h:6
 msgid "Always use U_TF-8 encoding (faster)"
 msgstr "항상 UTF-8 인코딩 사용(빠름) (_T)"
 
-#: src/dialogs/gedit-preferences.glade2.h:5
+#: src/dialogs/gedit-preferences.glade2.h:7
 msgid "Always use _UTF-8 encoding (faster)"
 msgstr "항상 UTF-8 인코딩 사용(빠름) (_U)"
 
-#: src/dialogs/gedit-preferences.glade2.h:6
+#: src/dialogs/gedit-preferences.glade2.h:8
 msgid "Colors"
 msgstr "색상"
 
-#: src/dialogs/gedit-preferences.glade2.h:7
+#: src/dialogs/gedit-preferences.glade2.h:9
 msgid "Create a _backup copy of files before saving"
 msgstr "저장하기 전에 백업을 만듭니다(_B)"
 
-#: src/dialogs/gedit-preferences.glade2.h:8
+#: src/dialogs/gedit-preferences.glade2.h:10
 #: src/dialogs/gnome-print-font-picker.c:1014
 msgid "Font"
 msgstr "글꼴"
 
-#: src/dialogs/gedit-preferences.glade2.h:9
+#: src/dialogs/gedit-preferences.glade2.h:11
 msgid "Font used to print line _numbers:"
 msgstr "줄 번호 인쇄할 때 사용될 글꼴(_N):"
 
-#: src/dialogs/gedit-preferences.glade2.h:10
+#: src/dialogs/gedit-preferences.glade2.h:12
 msgid "Font used to print the _body:"
 msgstr "본문 인쇄할 때 사용될 글꼴(_B):"
 
-#: src/dialogs/gedit-preferences.glade2.h:11
+#: src/dialogs/gedit-preferences.glade2.h:13
 msgid "Fonts & Colors"
 msgstr "글꼴 & 색상"
 
-#: src/dialogs/gedit-preferences.glade2.h:12
+#: src/dialogs/gedit-preferences.glade2.h:14
 msgid "LOGO"
 msgstr "로고"
 
-#: src/dialogs/gedit-preferences.glade2.h:14
+#: src/dialogs/gedit-preferences.glade2.h:16
 msgid "Pick the background color"
 msgstr "배경 색상 고르기"
 
-#: src/dialogs/gedit-preferences.glade2.h:15
+#: src/dialogs/gedit-preferences.glade2.h:17
 msgid "Pick the selected text color"
 msgstr "선택한 문자 색상 고르기"
 
-#: src/dialogs/gedit-preferences.glade2.h:16
+#: src/dialogs/gedit-preferences.glade2.h:18
 msgid "Pick the selection color"
 msgstr "선택 색상 고르기"
 
-#: src/dialogs/gedit-preferences.glade2.h:17
+#: src/dialogs/gedit-preferences.glade2.h:19
 msgid "Pick the text color"
 msgstr "문자 색상 고르기"
 
-#: src/dialogs/gedit-preferences.glade2.h:18
+#: src/dialogs/gedit-preferences.glade2.h:20
 msgid "Plugin manager"
 msgstr "플러그인 관리자"
 
-#: src/dialogs/gedit-preferences.glade2.h:20
+#: src/dialogs/gedit-preferences.glade2.h:22
 msgid "Print _line numbers every"
 msgstr "매 "
 
-#: src/dialogs/gedit-preferences.glade2.h:21
+#: src/dialogs/gedit-preferences.glade2.h:23
 msgid "Print _page headers"
 msgstr "글머리 인쇄(_P)"
 
-#: src/dialogs/gedit-preferences.glade2.h:22
+#: src/dialogs/gedit-preferences.glade2.h:24
 msgid "Print fonts"
 msgstr "글꼴 인쇄"
 
-#: src/dialogs/gedit-preferences.glade2.h:24
+#: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Se_lection color:"
 msgstr "선택 색상(_L):"
 
-#: src/dialogs/gedit-preferences.glade2.h:25
+#: src/dialogs/gedit-preferences.glade2.h:27
 msgid "Selecte_d text color:"
 msgstr "선택된 글자 색상(_D):"
 
-#: src/dialogs/gedit-preferences.glade2.h:26
+#: src/dialogs/gedit-preferences.glade2.h:28
 msgid "Set _tabs width equivalent to  "
 msgstr "탭 간격을 "
 
-#: src/dialogs/gedit-preferences.glade2.h:27
+#: src/dialogs/gedit-preferences.glade2.h:29
 msgid "Set limit on _undo actions to"
 msgstr "최대 실행 취소 단계 설정 :"
 
-#: src/dialogs/gedit-preferences.glade2.h:29
+#: src/dialogs/gedit-preferences.glade2.h:31
 msgid ""
 "The font & colors settings let you choose the font and the colors to be used "
 "in the editor windows."
 msgstr "편집기 창의 글꼴과 색상을 선택할 수 있습니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:30
+#: src/dialogs/gedit-preferences.glade2.h:32
 msgid ""
 "The line numbers setting lets you choose to display the line numbers on the "
 "left hand side of the window."
 msgstr "창의 왼쪽 기준으로 줄 번호를 표시합니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:31
+#: src/dialogs/gedit-preferences.glade2.h:33
 msgid ""
 "The plugin manager settings let you choose which plugins you want to have "
 "loaded."
 msgstr "플러그인 관리자 설정에서 사용하려는 플러그인을 선택할 수 있습니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:32
+#: src/dialogs/gedit-preferences.glade2.h:34
 msgid ""
 "The print fonts settings let you choose the fonts to be used to print "
 "documents."
 msgstr "문서를 인쇄할 때 사용할 글꼴을 선택할 수 있습니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:33
+#: src/dialogs/gedit-preferences.glade2.h:35
 msgid "The print page settings let you customize how gedit prints documents."
 msgstr "gedit에서 문서를 인쇄하는 방법을 설정합니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:34
+#: src/dialogs/gedit-preferences.glade2.h:36
 msgid "The save settings let you customize how gedit saves files."
 msgstr "gedit에서 파일을 저장하는 방법을 설정합니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:35
+#: src/dialogs/gedit-preferences.glade2.h:37
 msgid "The tabs settings let you customize the tabs width."
 msgstr "탭 크기를 설정합니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:36
+#: src/dialogs/gedit-preferences.glade2.h:38
 msgid ""
 "The undo settings let you set the maximum number of actions that gedit can "
 "undo."
 msgstr "gedit에서 사용 할 수 있는 최대 실행 취소 단계를 설정합니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:37
+#: src/dialogs/gedit-preferences.glade2.h:39
 msgid "The wrap mode settings let you customize how lines have to be wrapped."
 msgstr "줄 바꿈 설정을 합니다."
 
-#: src/dialogs/gedit-preferences.glade2.h:38
+#: src/dialogs/gedit-preferences.glade2.h:40
 msgid "U_se default theme colors"
 msgstr "기본 테마 색상 사용(_S)"
 
-#: src/dialogs/gedit-preferences.glade2.h:39
+#: src/dialogs/gedit-preferences.glade2.h:41
 msgid "U_se original file encoding if possible"
 msgstr "가능하면 원래 파일의 인코딩 사용(_S)"
 
-#: src/dialogs/gedit-preferences.glade2.h:41
+#: src/dialogs/gedit-preferences.glade2.h:43
 msgid "Use cu_rrent locale's encoding if possible"
 msgstr "가능하면 현재 로케일 사용(_R)"
 
-#: src/dialogs/gedit-preferences.glade2.h:42
+#: src/dialogs/gedit-preferences.glade2.h:44
 msgid "Use current _locale's encoding if possible"
 msgstr "가능하면 현재 로케일 사용(_L)"
 
-#: src/dialogs/gedit-preferences.glade2.h:43
+#: src/dialogs/gedit-preferences.glade2.h:45
+msgid "Use current locale's encoding if possible when creating a new file"
+msgstr "새 파일을 만들 때 가능하면 현재 로케일 사용합니다"
+
+#: src/dialogs/gedit-preferences.glade2.h:46
+msgid "Use current locale's encoding if possible when saving"
+msgstr "저장할 때 가능하면 현재 로케일을 사용합니다"
+
+#: src/dialogs/gedit-preferences.glade2.h:47
 msgid "When creating a new file..."
 msgstr "새로운 파일을 만들때..."
 
-#: src/dialogs/gedit-preferences.glade2.h:44
+#: src/dialogs/gedit-preferences.glade2.h:48
 msgid "When saving..."
 msgstr "저장할 때..."
 
-#: src/dialogs/gedit-preferences.glade2.h:45
+#: src/dialogs/gedit-preferences.glade2.h:49
 msgid "Wrap lines at _word boundaries"
 msgstr "단어끝에서 줄 바꿈(_W)"
 
-#: src/dialogs/gedit-preferences.glade2.h:46
+#: src/dialogs/gedit-preferences.glade2.h:50
 msgid "Wrap lines at ch_aracter boundaries"
 msgstr "글자끝에서 줄 바꿈(_A)"
 
-#: src/dialogs/gedit-preferences.glade2.h:48
+#: src/dialogs/gedit-preferences.glade2.h:52
 msgid "_Autosave current file every"
-msgstr "현재 파일을 매"
+msgstr "현재(_A) 파일을 매 "
 
-#: src/dialogs/gedit-preferences.glade2.h:49
+#: src/dialogs/gedit-preferences.glade2.h:53
 msgid "_Background color:"
 msgstr "배경색(_B):"
 
-#: src/dialogs/gedit-preferences.glade2.h:50
+#: src/dialogs/gedit-preferences.glade2.h:54
 msgid "_Display line numbers"
-msgstr "줄 번호 보기"
+msgstr "줄 번호 보기(_D)"
 
-#: src/dialogs/gedit-preferences.glade2.h:51
+#: src/dialogs/gedit-preferences.glade2.h:55
 msgid "_Font used by the editor: "
 msgstr "편집기에서 사용할 글꼴(_F): "
 
-#: src/dialogs/gedit-preferences.glade2.h:52
+#: src/dialogs/gedit-preferences.glade2.h:56
 msgid "_Font used to print headers:"
 msgstr "인쇄할 때 글머리에 사용될 글꼴(_F):"
 
-#: src/dialogs/gedit-preferences.glade2.h:53
+#: src/dialogs/gedit-preferences.glade2.h:57
 msgid "_Never wrap lines"
 msgstr "줄바꾸지 않음(_N)"
 
-#: src/dialogs/gedit-preferences.glade2.h:54
+#: src/dialogs/gedit-preferences.glade2.h:58
 msgid "_Restore default fonts"
 msgstr "기본 글꼴 저장(_R)"
 
-#: src/dialogs/gedit-preferences.glade2.h:55
+#: src/dialogs/gedit-preferences.glade2.h:59
 msgid "_Text color:"
 msgstr "글자 색상(_T):"
 
-#: src/dialogs/gedit-preferences.glade2.h:56
+#: src/dialogs/gedit-preferences.glade2.h:60
 msgid "_Use default theme font"
 msgstr "기본 테마 글꼴 사용(_U)"
 
-#: src/dialogs/gedit-preferences.glade2.h:57
+#: src/dialogs/gedit-preferences.glade2.h:61
 msgid "action(s)"
 msgstr "단계"
 
-#: src/dialogs/gedit-preferences.glade2.h:58
+#: src/dialogs/gedit-preferences.glade2.h:62
 msgid "minutes"
 msgstr "분마다 저장"
 
@@ -1436,8 +1495,8 @@ msgstr "문자열 \"%s\"이(가) 발견되지않음"
 msgid "translator_credits"
 msgstr ""
 "남성현 <namsh@lgic.co.kr>, 1998\n"
-"황치덕 <hwang@mizi.co.kr>, 2000, 20001\n"
-"차영호 <ganadist@chollian.net>, 2001"
+"황치덕 <hwang@mizi.co.kr>, 2000, 2001\n"
+"차영호 <ganadist@chollian.net>, 2001,2002"
 
 #: src/gedit-commands.c:462
 msgid "gedit"
@@ -1549,63 +1608,63 @@ msgstr "저장할 파일이름 선택"
 msgid "Open File ..."
 msgstr "파일 열기..."
 
-#: src/gedit-file.c:176 src/gedit-file.c:806
+#: src/gedit-file.c:176 src/gedit-file.c:831
 #, c-format
 msgid "Loaded file '%s'"
 msgstr "파일 '%s' 읽음"
 
-#: src/gedit-file.c:304 src/gedit-file.c:420
+#: src/gedit-file.c:304 src/gedit-file.c:433
 #, c-format
 msgid "Saving file '%s' ..."
 msgstr "파일 '%s' 저장..."
 
-#: src/gedit-file.c:325 src/gedit-file.c:435
+#: src/gedit-file.c:332 src/gedit-file.c:448
 msgid "The document has not been saved."
 msgstr "문서가 저장되지 않음"
 
-#: src/gedit-file.c:338 src/gedit-file.c:432
+#: src/gedit-file.c:345 src/gedit-file.c:445
 #, c-format
 msgid "File '%s' saved."
 msgstr "파일 '%s' 저장됨."
 
-#: src/gedit-file.c:399
+#: src/gedit-file.c:412
 msgid "Save as ..."
 msgstr "다른 이름으로 저장..."
 
-#: src/gedit-file.c:606
+#: src/gedit-file.c:626
 #, c-format
 msgid "Reverting file '%s' ..."
 msgstr "파일 '%s' 되돌리는 중..."
 
-#: src/gedit-file.c:619
+#: src/gedit-file.c:639
 msgid "The document has not been reverted."
 msgstr "문서를 되돌리지 못함"
 
-#: src/gedit-file.c:629
+#: src/gedit-file.c:649
 #, c-format
 msgid "File '%s' reverted."
 msgstr "파일 '%s' 되돌렸음."
 
-#: src/gedit-file.c:655
+#: src/gedit-file.c:675
 #, c-format
 msgid "Loading %d files..."
 msgstr "%d개의 파일을 읽어들임..."
 
-#: src/gedit-file.c:691
+#: src/gedit-file.c:711
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "파일 \"%s\"이(가) 없습니다. 만들까요?"
 
-#: src/gedit-file.c:741
+#: src/gedit-file.c:766
 #, c-format
 msgid "Loaded %i files"
 msgstr "%i개의 파일을 읽어들임"
 
-#: src/gedit-file.c:864
+#: src/gedit-file.c:889
 msgid "Could not read data from stdin."
 msgstr "표준 입력에서 데이터를 읽을 수 없습니다."
 
-#: src/gedit-mdi.c:840
+#: src/gedit-mdi.c:850
 #, c-format
 msgid ""
 "Do you want to save the changes you made to the document \"%s\"? \n"
@@ -1616,23 +1675,23 @@ msgstr ""
 "\n"
 "저장하지 않으면 변경점을 잃어버리게 됩니다."
 
-#: src/gedit-mdi.c:845
+#: src/gedit-mdi.c:855
 msgid "Do_n't save"
 msgstr "저장하지 않음(_N)"
 
-#: src/gedit-mdi.c:864
+#: src/gedit-mdi.c:874
 msgid "_Don't quit"
 msgstr "마치지 않음(_D)"
 
-#: src/gedit-mdi.c:868
+#: src/gedit-mdi.c:878
 msgid "_Don't close"
 msgstr "닫지 않음(_D)"
 
-#: src/gedit-mdi.c:958
+#: src/gedit-mdi.c:968
 msgid "(modified)"
 msgstr "(변경됨)"
 
-#: src/gedit-mdi.c:964
+#: src/gedit-mdi.c:974
 msgid "(readonly)"
 msgstr "(읽기 전용)"
 
