@@ -188,6 +188,33 @@ gedit_utils_is_uri_read_only (const gchar* uri)
 	return res;	
 }
 
+void
+gedit_utils_menu_position_under_widget (GtkMenu  *menu,
+					gint     *x,
+					gint     *y,
+					gboolean *push_in,
+					gpointer  user_data)
+{
+	GtkWidget *w = GTK_WIDGET (user_data);
+	GtkRequisition requisition;
+
+	gdk_window_get_origin (w->window, x, y);
+	gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
+
+	if (gtk_widget_get_direction (w) == GTK_TEXT_DIR_RTL)
+	{
+		*x += w->allocation.x + w->allocation.width - requisition.width;
+	}
+	else
+	{
+		*x += w->allocation.x;
+	}
+
+	*y += w->allocation.y + w->allocation.height;
+
+	*push_in = TRUE;
+}
+
 /* lifted from eel */
 static GtkWidget *
 gedit_gtk_button_new_with_stock_icon (const gchar *label, const gchar *stock_id)

@@ -715,6 +715,77 @@ notebook_tab_detached (GeditNotebook *notebook,
 	gtk_widget_show (GTK_WIDGET (new_window));
 }		      
 
+static gboolean
+show_notebook_popup_menu (GtkNotebook    *notebook,
+			  GeditWindow    *window,
+			  GdkEventButton *event)
+{
+	GtkWidget *menu;
+//	GtkAction *action;
+
+	menu = gtk_ui_manager_get_widget (window->priv->manager, "/NotebookPopup");
+	g_return_val_if_fail (menu != NULL, FALSE);
+
+// CHECK do we need this?
+#if 0
+	/* allow extensions to sync when showing the popup */
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "NotebookPopupAction");
+	g_return_val_if_fail (action != NULL, FALSE);
+	gtk_action_activate (action);
+#endif
+	if (event != NULL)
+	{
+		gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
+				NULL, NULL,
+				event->button, event->time);
+	}
+	else
+	{
+		GtkWidget *tab;
+		GtkWidget *tab_label;
+
+		tab = GTK_WIDGET (gedit_window_get_active_tab (window));
+		g_return_val_if_fail (tab != NULL, FALSE);
+
+		tab_label = gtk_notebook_get_tab_label (notebook, tab);
+
+		gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
+				gedit_utils_menu_position_under_widget, tab_label,
+				0, gtk_get_current_event_time ());
+
+		gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+	}
+
+	return TRUE;
+}
+
+static gboolean
+notebook_button_press_event (GtkNotebook    *notebook,
+			     GdkEventButton *event,
+			     GeditWindow    *window)
+{
+	if (GDK_BUTTON_PRESS == event->type && 3 == event->button)
+	{
+		return show_notebook_popup_menu (notebook, window, event);
+	}
+
+	return FALSE;
+}
+
+static gboolean
+notebook_popup_menu (GtkNotebook *notebook,
+		     GeditWindow *window)
+{
+	/* Only respond if the notebook is the actual focus */
+	if (GEDIT_IS_NOTEBOOK (gtk_window_get_focus (GTK_WINDOW (window))))
+	{
+		return show_notebook_popup_menu (notebook, window, NULL);
+	}
+
+	return FALSE;
+}
+
 static gboolean 
 configure_event_handler (GeditWindow *window, GdkEventConfigure *event)
 {	
@@ -930,7 +1001,16 @@ gedit_window_init (GeditWindow *window)
 	g_signal_connect (G_OBJECT (window->priv->notebook),
 			  "tab_detached",
 			  G_CALLBACK (notebook_tab_detached),
-			  window);			  
+			  window);
+	g_signal_connect (G_OBJECT (window->priv->notebook),
+			  "button-press-event",
+			  G_CALLBACK (notebook_button_press_event),
+			  window);
+	g_signal_connect (G_OBJECT (window->priv->notebook),
+			  "popup-menu",
+			  G_CALLBACK (notebook_popup_menu),
+			  window);
+
 	g_signal_connect (G_OBJECT (window), 
 			  "configure_event",
 	                  G_CALLBACK (configure_event_handler), 

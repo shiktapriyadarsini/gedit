@@ -34,6 +34,7 @@
 #include <glib.h>
 #include <gtk/gtkwidget.h>
 #include <gtk/gtkdialog.h>
+#include <gtk/gtkmenu.h>
 #include <gtk/gtktextiter.h>
 #include <atk/atk.h>
 #include <gedit/gedit-encodings.h>
@@ -58,6 +59,12 @@ void	gedit_utils_set_status_va (gchar *format, ...);
 
 gboolean gedit_utils_is_uri_read_only (const gchar* uri);
 gboolean gedit_utils_uri_has_file_scheme (const gchar *uri);
+
+void gedit_utils_menu_position_under_widget (GtkMenu  *menu,
+					     gint     *x,
+					     gint     *y,
+					     gboolean *push_in,
+					     gpointer  user_data);
 
 GtkWidget *gedit_dialog_add_button (GtkDialog *dialog, 
 				    const gchar* text, 
