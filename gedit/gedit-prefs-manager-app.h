@@ -1,9 +1,8 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-prefs-manager-app.h
  * This file is part of gedit
  *
- * Copyright (C) 2002-2003  Paolo Maggi 
+ * Copyright (C) 2002-2005  Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +21,12 @@
  */
  
 /*
- * Modified by the gedit Team, 2002-2003. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
+ *
  */
 
 #ifndef __GEDIT_PREFS_MANAGER_APP_H__
@@ -59,6 +61,5 @@ gint	 	 gedit_prefs_manager_get_default_window_width	(void);
 void 		 gedit_prefs_manager_set_window_width		(gint ww);
 gboolean	 gedit_prefs_manager_window_width_can_set	(void);
 
-void		 gedit_prefs_manager_save_window_size_and_state	(BonoboWindow *window);
 
 #endif /* __GEDIT_PREFS_MANAGER_APP_H__ */

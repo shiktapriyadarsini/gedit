@@ -291,30 +291,6 @@ gedit_prefs_manager_window_width_can_set (void)
 }
 
 #if 0
-void
-gedit_prefs_manager_save_window_size_and_state (BonoboWindow *window)
-{
-	const BonoboMDIWindowInfo *window_info;
-
-	gedit_debug (DEBUG_PREFS, "");
-	
-	g_return_if_fail (window != NULL);
-	g_return_if_fail (BONOBO_IS_WINDOW (window));
-
-	window_info = bonobo_mdi_get_window_info (window);
-	g_return_if_fail (window_info != NULL);
-	
-	if (gedit_prefs_manager_window_height_can_set ())
-		gedit_prefs_manager_set_window_height (window_info->height);
-
-	if (gedit_prefs_manager_window_width_can_set ())
-		gedit_prefs_manager_set_window_width (window_info->width);
-
-	if (gedit_prefs_manager_window_state_can_set ())
-		gedit_prefs_manager_set_window_state (window_info->state);
-}
-
-
 static void 
 gedit_prefs_manager_editor_font_changed (GConfClient *client,
 	guint cnxn_id, GConfEntry *entry, gpointer user_data)

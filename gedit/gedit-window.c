@@ -24,6 +24,9 @@
  * Modified by the gedit Team, 2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
+ *
  */
 
 #ifdef HAVE_CONFIG_H
@@ -42,7 +45,9 @@
 #include "gedit-statusbar.h"
 #include "gedit-utils.h"
 #include "gedit-commands.h"
- 
+#include "gedit-debug.h"
+#include "gedit-prefs-manager-app.h"
+
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
 
 struct _GeditWindowPrivate
@@ -60,6 +65,10 @@ struct _GeditWindowPrivate
 	
 	GeditTab       *active_tab;
 	gint            num_tabs;
+	
+	gint            width;
+	gint            height;	
+	GdkWindowState  state;
 };
 
 G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
@@ -72,12 +81,33 @@ gedit_window_finalize (GObject *object)
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
 
+static void
+gedit_window_destroy (GtkObject *object)
+{
+	GeditWindow *window;
+	
+	window = GEDIT_WINDOW (object);
+	
+	if (gedit_prefs_manager_window_height_can_set ())
+		gedit_prefs_manager_set_window_height (window->priv->height);
+
+	if (gedit_prefs_manager_window_width_can_set ())
+		gedit_prefs_manager_set_window_width (window->priv->width);
+
+	if (gedit_prefs_manager_window_state_can_set ())
+		gedit_prefs_manager_set_window_state (window->priv->state);
+	
+	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
+}
+
 static void 
 gedit_window_class_init (GeditWindowClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkObjectClass *gobject_class = GTK_OBJECT_CLASS (klass);	
 
 	object_class->finalize = gedit_window_finalize;
+	gobject_class->destroy = gedit_window_destroy;
 	
 	g_type_class_add_private (object_class, sizeof(GeditWindowPrivate));
 }
@@ -299,6 +329,44 @@ create_statusbar (GeditWindow *window,
 			  0);
 }
 
+static GeditWindow *
+clone_window (GeditWindow *origin)
+{
+	GtkWindow *window;
+	
+	window = GTK_WINDOW (g_object_new (GEDIT_TYPE_WINDOW, NULL));
+	
+	gtk_window_set_default_size (window, 
+				     origin->priv->width,
+				     origin->priv->height);
+				     
+	if ((origin->priv->state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
+	{
+		gtk_window_set_default_size (window, 
+					     gedit_prefs_manager_get_default_window_width (),
+					     gedit_prefs_manager_get_default_window_height ());
+					     
+		gtk_window_maximize (window);
+	}
+	else
+	{
+		gtk_window_set_default_size (window, 
+				     origin->priv->width,
+				     origin->priv->height);
+
+		gtk_window_unmaximize (window);
+	}		
+
+	if ((origin->priv->state & GDK_WINDOW_STATE_STICKY ) != 0)
+		gtk_window_stick (window);
+	else
+		gtk_window_unstick (window);
+
+	// FIXME: clone the visibility of panels
+
+	return GEDIT_WINDOW (window);
+}
+
 #define MAX_TITLE_LENGTH 100
 
 static gchar *
@@ -453,6 +521,7 @@ notebook_tab_added (GeditNotebook *notebook,
 		    GeditTab      *tab,
 		    GeditWindow   *window)
 {
+	gedit_debug (DEBUG_MDI, "");
 	
 	++window->priv->num_tabs;
 	g_signal_connect (tab, 
@@ -466,6 +535,8 @@ notebook_tab_removed (GeditNotebook *notebook,
 		      GeditTab      *tab,
 		      GeditWindow   *window)
 {
+	gedit_debug (DEBUG_MDI, "");
+	
 	--window->priv->num_tabs;
 	
 	g_signal_handlers_disconnect_by_func (tab,
@@ -478,6 +549,42 @@ notebook_tab_removed (GeditNotebook *notebook,
 		window->priv->active_tab = NULL;
 		set_title (window);
 	}
+}
+
+static void
+notebook_tab_detached (GeditNotebook *notebook,
+		       GeditTab      *tab,
+		       GeditWindow   *window)
+{
+	GeditWindow *new_window;
+	
+	new_window = clone_window (window);
+		
+	gedit_notebook_move_tab (notebook,
+				 GEDIT_NOTEBOOK (gedit_window_get_notebook (new_window)),
+				 tab, 0);
+				 
+	gtk_window_set_position (GTK_WINDOW (new_window), 
+				 GTK_WIN_POS_MOUSE);
+					 
+	gtk_widget_show (GTK_WIDGET (new_window));
+}		      
+
+static gboolean 
+configure_event_handler (GeditWindow *window, GdkEventConfigure *event)
+{	
+	window->priv->width = event->width;
+	window->priv->height = event->height;
+
+	return FALSE;
+}
+
+static gboolean 
+window_state_event_handler (GeditWindow *window, GdkEventWindowState *event)
+{	
+	window->priv->state = event->new_window_state;
+	
+	return FALSE;
 }
 
 /* Generates a unique string for a window role.
@@ -588,15 +695,63 @@ gedit_window_init (GeditWindow *window)
 			  "tab_removed",
 			  G_CALLBACK (notebook_tab_removed),
 			  window);
+	g_signal_connect (G_OBJECT (window->priv->notebook),
+			  "tab_detached",
+			  G_CALLBACK (notebook_tab_detached),
+			  window);			  
+	g_signal_connect (G_OBJECT (window), 
+			  "configure_event",
+	                  G_CALLBACK (configure_event_handler), 
+	                  NULL);
+	g_signal_connect (G_OBJECT (window), 
+			  "window_state_event",
+	                  G_CALLBACK (window_state_event_handler), 
+	                  NULL);
 			  
 	/* show the window */
-	gtk_widget_show_all (GTK_WIDGET (window));
+	// FIXME
+	gtk_widget_show_all (GTK_WIDGET (main_box));
 }
 
 GtkWidget *
 gedit_window_new (void)
 {
-	return GTK_WIDGET (g_object_new (GEDIT_TYPE_WINDOW, NULL));
+	GtkWindow *window;
+	
+	window = GTK_WINDOW (g_object_new (GEDIT_TYPE_WINDOW, NULL));
+	
+	/* Set window state and size, but only if the session is not being restored */
+	// FIXME
+	// if (!bonobo_mdi_get_restoring_state (mdi))
+	{
+		GdkWindowState state;
+		
+		state = gedit_prefs_manager_get_window_state ();
+
+		if ((state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
+		{
+			gtk_window_set_default_size (window,
+						     gedit_prefs_manager_get_default_window_width (),
+						     gedit_prefs_manager_get_default_window_height ());
+
+			gtk_window_maximize (window);
+		}
+		else
+		{
+			gtk_window_set_default_size (window, 
+						     gedit_prefs_manager_get_window_width (),
+						     gedit_prefs_manager_get_window_height ());
+
+			gtk_window_unmaximize (window);
+		}
+
+		if ((state & GDK_WINDOW_STATE_STICKY ) != 0)
+			gtk_window_stick (window);
+		else
+			gtk_window_unstick (window);
+	}
+	
+	return GTK_WIDGET (window);
 }
 
 GeditView *
