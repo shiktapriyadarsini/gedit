@@ -1,8 +1,20 @@
 <ui>
 
   <menubar name='MenuBar'>
-    <menu name="FileMenu" action="File">  
+    <menu name="FileMenu" action="File">
       <menuitem name="FileNewMenu" action="FileNew"/>
+      <menuitem name="FileOpenMenu" action="FileOpen"/>
+      <menuitem name="FileOpenURIMenu" action="FileOpenURI"/>
+      <separator name="FileSep1"/>
+      <menuitem name="FileSaveMenu" action="FileSave"/>
+      <menuitem name="FileSaveAsMenu" action="FileSaveAs"/>
+      <menuitem name="FileRevertMenu" action="FileRevert"/>
+      <separator name="FileSep2"/>
+    </menu>
+
+    <menu name="EditMenu" action="Edit">
+      <menuitem name="EditUndoMenu" action="EditUndo"/>
+      <menuitem name="EditRedoMenu" action="EditRedo"/>
     </menu>
 
     <menu name="HelpMenu" action="Help">
