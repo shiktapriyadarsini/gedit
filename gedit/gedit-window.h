@@ -74,14 +74,14 @@ struct _GeditWindowClass
 /*
  * Public methods
  */
-GType 		 gedit_window_get_type 		(void) G_GNUC_CONST;
+GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
 
-GtkWidget 	*gedit_window_new 		(void);
+GtkWidget 	*gedit_window_new 			(void);
 
-GtkWidget	*gedit_window_get_notebook	(GeditWindow *window);
+GtkWidget	*gedit_window_get_notebook		(GeditWindow *window);
 
-GeditView	*gedit_tag_get_active_view	(GeditWindow *window);
-GeditDocument	*gedit_tag_get_active_document	(GeditWindow *window);
+GeditView	*gedit_window_get_active_view		(GeditWindow *window);
+GeditDocument	*gedit_window_get_active_document	(GeditWindow *window);
 
 G_END_DECLS
 

@@ -600,35 +600,28 @@ gedit_window_new (void)
 }
 
 GeditView *
-gedit_tag_get_active_view (GeditWindow *window)
+gedit_window_get_active_view (GeditWindow *window)
 {
-	gint cur_page_num;
-	GtkWidget *cur_tab;
 	GeditView *view;
 	
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	
-	cur_page_num = gtk_notebook_get_current_page (
-				GTK_NOTEBOOK (window->priv->notebook));
-	if (cur_page_num < 0)
+	if (window->priv->active_tab == NULL)
 		return NULL;
-
-	cur_tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook),
-					     cur_page_num);
-	g_return_val_if_fail (cur_tab != NULL, NULL);				     
 		
-	view = gedit_tab_get_view (GEDIT_TAB (cur_tab));
+	view = gedit_tab_get_view (GEDIT_TAB (window->priv->active_tab));
 	
 	return view;
 }
 
 GeditDocument *
-gedit_tag_get_active_document (GeditWindow *window)
+gedit_window_get_active_document (GeditWindow *window)
 {
 	GeditView *view;
+	
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	
-	view = gedit_tag_get_active_view (window);
+	view = gedit_window_get_active_view (window);
 	if (view == NULL)
 		return NULL;
 	
