@@ -38,7 +38,8 @@ NON_INST_H_FILS =			\
 	gedit-io-error-dialogs.h	\
 	gedit-tooltips.h		\
 	gedit-languages-manager.h	\
-	gedit-plugins-engine.h
+	gedit-plugins-engine.h		\
+	gedit-ui.h
 
 #	gedit-session.h
 
