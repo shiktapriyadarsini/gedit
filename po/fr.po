@@ -12,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.6.0\n"
+"Project-Id-Version: gedit 2.6.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-25 15:43+0200\n"
-"PO-Revision-Date: 2004-04-30 01:01+0200\n"
+"POT-Creation-Date: 2004-07-29 01:02+0200\n"
+"PO-Revision-Date: 2004-07-29 01:02+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -485,7 +485,7 @@ msgstr ""
 "perdues."
 
 #: gedit/dialogs/close_all_dialog.glade2.h:3
-#: gedit/dialogs/gedit-close-confirmation-dialog.c:654
+#: gedit/dialogs/gedit-close-confirmation-dialog.c:653
 msgid "S_elect the documents you want to save:"
 msgstr "_Sélectionnez les documents que vous souhaitez enregistrer :"
 
@@ -595,7 +595,7 @@ msgstr ""
 "Voulez-vous enregistrer les modifications dans le document « %s » avant de "
 "le fermer ?"
 
-#: gedit/dialogs/gedit-close-confirmation-dialog.c:640
+#: gedit/dialogs/gedit-close-confirmation-dialog.c:639
 #, c-format
 msgid ""
 "There are %d documents with unsaved changes. Save changes before closing?"
@@ -603,8 +603,7 @@ msgstr ""
 "Il y a %d documents avec des modifications non enregistrées. Enregistrer les "
 "modifications avant de fermer ?"
 
-#. Secondary label
-#: gedit/dialogs/gedit-close-confirmation-dialog.c:671
+#: gedit/dialogs/gedit-close-confirmation-dialog.c:670
 msgid "If you don't save, all your changes will be definitively lost."
 msgstr ""
 "Si vous n'enregistrez pas, toutes vos modifications seront définitivement "
@@ -680,11 +679,11 @@ msgstr "Codages des caractères"
 msgid "E_ncodings shown in menu:"
 msgstr "_Codages affichés dans le menu :"
 
-#: gedit/dialogs/gedit-page-setup-dialog.c:489
+#: gedit/dialogs/gedit-page-setup-dialog.c:496
 msgid "Body font picker"
 msgstr "Sélecteur de polices pour le corps"
 
-#: gedit/dialogs/gedit-page-setup-dialog.c:490
+#: gedit/dialogs/gedit-page-setup-dialog.c:497
 msgid ""
 "Push this button to select the font to be used to print the body of the "
 "document"
@@ -692,22 +691,22 @@ msgstr ""
 "Cliquez sur ce bouton pour choisir la police à utiliser pour imprimer le "
 "corps du document"
 
-#: gedit/dialogs/gedit-page-setup-dialog.c:491
+#: gedit/dialogs/gedit-page-setup-dialog.c:498
 msgid "Page headers font picker"
 msgstr "Sélecteur de polices d'en-têtes de page"
 
-#: gedit/dialogs/gedit-page-setup-dialog.c:492
+#: gedit/dialogs/gedit-page-setup-dialog.c:499
 msgid ""
 "Push this button to select the font to be used to print the page headers"
 msgstr ""
 "Cliquez sur ce bouton pour choisir la police à utiliser pour imprimer les en-"
 "têtes de la page"
 
-#: gedit/dialogs/gedit-page-setup-dialog.c:493
+#: gedit/dialogs/gedit-page-setup-dialog.c:500
 msgid "Line numbers font picker"
 msgstr "Sélecteur de polices pour les numéros de ligne"
 
-#: gedit/dialogs/gedit-page-setup-dialog.c:494
+#: gedit/dialogs/gedit-page-setup-dialog.c:501
 msgid "Push this button to select the font to be used to print line numbers"
 msgstr ""
 "Cliquez sur ce bouton pour choisir la police à utiliser pour imprimer les "
@@ -754,19 +753,19 @@ msgstr ""
 msgid "The selected file is not executable."
 msgstr "Le fichier choisi n'est pas exécutable."
 
-#: gedit/dialogs/gedit-preferences-dialog.c:666
+#: gedit/dialogs/gedit-preferences-dialog.c:673
 msgid "Push this button to select the font to be used by the editor"
 msgstr "Cliquez sur ce bouton pour choisir la police à utiliser par l'éditeur"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:668
+#: gedit/dialogs/gedit-preferences-dialog.c:675
 msgid "Push this button to configure text color"
 msgstr "Cliquez sur ce bouton pour choisir la couleur du texte"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:670
+#: gedit/dialogs/gedit-preferences-dialog.c:677
 msgid "Push this button to configure background color"
 msgstr "Cliquez sur ce bouton pour choisir la couleur d'arrière-plan"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:672
+#: gedit/dialogs/gedit-preferences-dialog.c:679
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
@@ -774,7 +773,7 @@ msgstr ""
 "Cliquez sur ce bouton pour choisir la couleur à utiliser pour le texte "
 "sélectionné"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:675
+#: gedit/dialogs/gedit-preferences-dialog.c:682
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
@@ -782,7 +781,7 @@ msgstr ""
 "Cliquez sur ce bouton pour choisir la couleur à utiliser pour surligner le "
 "texte sélectionné"
 
-#: gedit/dialogs/gedit-preferences-dialog.c:1089
+#: gedit/dialogs/gedit-preferences-dialog.c:1132
 msgid "Elements"
 msgstr "Éléments"
 
@@ -1826,7 +1825,7 @@ msgstr "Fichier : %s"
 
 #: gedit/gedit-print.c:556
 msgid "Page %N of %Q"
-msgstr "Page %N sur %O"
+msgstr "Page %N sur %Q"
 
 #: gedit/gedit-ui.xml.h:1
 msgid "About this application"
