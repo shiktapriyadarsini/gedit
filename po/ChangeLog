@@ -1,3 +1,8 @@
+2002-11-18  Simos Xenitellis  <simos74@gmx.net>
+
+	* el.po: Fixed a typo regarding 'Ej orismoy'. No accent
+	is required.
+
 2002-11-18  Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>
 
 	* sk.po: Updated Slovak translation.
