@@ -697,84 +697,55 @@ activate_url (GtkAboutDialog *about, const gchar *url, gpointer data)
 	gnome_url_show (url, NULL);
 }
 
-#define GEDIT_ABOUT_DIALOG_KEY "GEDIT_ABOUT_DIALOG_KEY"
-
 void
 gedit_cmd_help_about (GtkAction *action, GeditWindow *window)
 {
-	GtkWidget *about;
-	gpointer   data;
-
-	GdkPixbuf *logo;
-
-	static const gchar *authors[] = {
+	static const gchar * const authors[] = {
 		"Paolo Maggi <paolo@gnome.org>",
 		"Paolo Borelli <pborelli@katamail.com>",
 		"James Willcox <jwillcox@gnome.org>",
-		"Chema Celorio", 
+		"Chema Celorio",
 		"Federico Mena Quintero <federico@ximian.com>",
 		NULL
 	};
 
-	static const gchar *documenters[] = {
+	static const gchar * const documenters[] = {
 		"Sun GNOME Documentation Team <gdocteam@sun.com>",
 		"Eric Baudais <baudais@okstate.edu>",
 		NULL
 	};
 
-	static const gchar *copyright = "Copyright \xc2\xa9 1998-2000 Evan Lawrence, Alex Robert\n"
-				 "Copyright \xc2\xa9 2000-2002 Chema Celorio, Paolo Maggi\n"
-				 "Copyright \xc2\xa9 2003-2005 Paolo Maggi";
+	static const gchar copyright[] = \
+		"Copyright \xc2\xa9 1998-2000 Evan Lawrence, Alex Robert\n"
+		"Copyright \xc2\xa9 2000-2002 Chema Celorio, Paolo Maggi\n"
+		"Copyright \xc2\xa9 2003-2005 Paolo Maggi";
 
-	const gchar *comments = _("gedit is a small and lightweight text editor for the GNOME Desktop");
+	static const gchar comments[] = \
+		N_("gedit is a small and lightweight text editor for the "
+		   "GNOME Desktop");
 
-	/* Translators: This is a special message that shouldn't be translated
-	   literally. It is used in the about box to give credits to the translators.
-	   Thus, you should translate it to your name and email address.
-	   You can also include other translators who have contributed to
-	   this translation; in that case, please write them on separate
-	   lines seperated by newlines (\n). */
-	const gchar *translator_credits = _("translator-credits");
+	static GdkPixbuf *logo = NULL;
 
-	gedit_debug (DEBUG_COMMANDS);
+	if(!logo) {
+		logo = gdk_pixbuf_new_from_file (
+			GNOME_ICONDIR "/gedit-logo.png",
+			NULL);
 
-	data = g_object_get_data (G_OBJECT (window), GEDIT_ABOUT_DIALOG_KEY);
-	
-	if ((data != NULL) && GTK_IS_WINDOW (data))
-	{		
-		gtk_window_set_transient_for (GTK_WINDOW (data), GTK_WINDOW (window));
-		gtk_window_present (GTK_WINDOW (data));
-
-		return;
+		gtk_about_dialog_set_url_hook (activate_url, NULL, NULL);
 	}
 
-	logo = gdk_pixbuf_new_from_file (GNOME_ICONDIR "/gedit-logo.png", NULL);
-
-	gtk_about_dialog_set_url_hook (activate_url, NULL, NULL);
-
-	about = g_object_new (GTK_TYPE_ABOUT_DIALOG,
-			      "name", _("gedit"),
-			      "version", VERSION,
-			      "copyright", copyright,
-			      "comments", comments,
-			      "website", "http://www.gedit.org",
-			      "authors", authors,
-			      "documenters", documenters,
-			      "translator_credits", translator_credits,
-			      "logo", logo,
-			      NULL);
-
-	gtk_window_set_destroy_with_parent (GTK_WINDOW (about), TRUE);
-
-	g_signal_connect (about, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-	g_signal_connect (about, "destroy", G_CALLBACK (gtk_widget_destroyed), &about);
-
-	gtk_window_set_transient_for (GTK_WINDOW (about), GTK_WINDOW (window));
-	gtk_window_present (GTK_WINDOW (about));
-
-	if (logo)
-		g_object_unref (logo);
-		
-	g_object_set_data (G_OBJECT (window), GEDIT_ABOUT_DIALOG_KEY, about);
+	gtk_show_about_dialog (
+		GTK_WINDOW (window),
+		"authors",		authors,
+		"comments",		_(comments),
+		"copyright",		copyright,
+		"documenters",		documenters,
+		"logo",			logo,
+		"translator-credits",   _("translator-credits"),
+		"version",		VERSION,
+		"website",		"http://www.gedit.org",
+		"name",			_("gedit"),
+		NULL
+		);
 }
 
