@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.6.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-29 01:02+0200\n"
+"POT-Creation-Date: 2004-09-11 01:26+0200\n"
 "PO-Revision-Date: 2004-07-29 01:02+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -1197,11 +1197,11 @@ msgstr "Remplacer _avec : "
 
 #: gedit/dialogs/replace.glade2.h:7
 msgid "Search _backwards"
-msgstr "Rechercher en a_rrière"
+msgstr "Rechercher en _arrière"
 
 #: gedit/dialogs/replace.glade2.h:8
 msgid "_Match case"
-msgstr "Respecter la _casse"
+msgstr "Res_pecter la casse"
 
 #: gedit/dialogs/replace.glade2.h:9
 msgid "_Search for: "
@@ -1209,7 +1209,7 @@ msgstr "_Rechercher : "
 
 #: gedit/dialogs/replace.glade2.h:10
 msgid "_Wrap around"
-msgstr "Retour à la _ligne"
+msgstr "Recherche _circulaire"
 
 #: gedit/dialogs/uri.glade2.h:2
 msgid "Ch_aracter coding:"
