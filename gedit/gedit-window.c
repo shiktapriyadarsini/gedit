@@ -34,6 +34,7 @@
  
 #include "gedit-window.h"
 #include "gedit-notebook.h"
+#include "gedit-statusbar.h"
 
 #include <time.h>
 #include <sys/types.h>
@@ -344,38 +345,36 @@ static void
 create_statusbar (GeditWindow *window, 
 		  GtkWidget   *main_box)
 {
-	// TODO
-	window->priv->statusbar = gtk_statusbar_new ();
-	
+	window->priv->statusbar = gedit_statusbar_new ();
+
 	gtk_box_pack_end (GTK_BOX (main_box),
 			  window->priv->statusbar,
 			  FALSE, 
 			  TRUE, 
 			  0);
 }
+
 static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkWidget *main_box;
 	GtkWidget *hpaned;
 	GtkWidget *vpaned;
-	
+
 	/* FIXME */
 	GtkWidget *label1;
-	GtkWidget *label2;	
-	
+	GtkWidget *label2;
+
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
-	
+
 	main_box = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (window), main_box);
-	gtk_widget_show (main_box);
-	
+
 	/* Add menu bar and toolbar bar */
 	create_menu_bar_and_toolbar (window, main_box);
-	
+
 	/* Add the main area */
 	hpaned = gtk_hpaned_new ();
-  	gtk_widget_show (hpaned);
   	gtk_box_pack_start (GTK_BOX (main_box), 
   			    hpaned, 
   			    TRUE, 
@@ -385,15 +384,12 @@ gedit_window_init (GeditWindow *window)
 
 	/* FIXME */
 	label1 = gtk_label_new ("Side Panel");
-	gtk_widget_hide (label1);
   	gtk_paned_pack1 (GTK_PANED (hpaned), label1, TRUE, TRUE);
 
 	vpaned = gtk_vpaned_new ();
-  	gtk_widget_show (vpaned);
   	gtk_paned_pack2 (GTK_PANED (hpaned), vpaned, TRUE, FALSE);
 
 	window->priv->notebook = gedit_notebook_new ();
-  	gtk_widget_show (window->priv->notebook);
   	gtk_paned_pack1 (GTK_PANED (vpaned), 
   			 window->priv->notebook,
   			 TRUE, 
@@ -401,12 +397,11 @@ gedit_window_init (GeditWindow *window)
 
 	/* FIXME */
 	label2 = gtk_label_new ("Bottom Panel");
-	gtk_widget_hide (label2);
   	gtk_paned_pack2 (GTK_PANED (vpaned), label2, TRUE, TRUE);
-  	
+
 	/* Add status bar */
 	create_statusbar (window, main_box);
-	
+
 	if (gtk_window_get_role (GTK_WINDOW (window)) == NULL)
 	{
 		gchar *role;
@@ -415,6 +410,9 @@ gedit_window_init (GeditWindow *window)
 		gtk_window_set_role (GTK_WINDOW (window), role);
 		g_free (role);
 	}
+
+	/* show the window */
+	gtk_widget_show_all (GTK_WIDGET (window));
 }
 
 GtkWidget *
@@ -436,7 +434,7 @@ GtkWidget *
 gedit_window_get_notebook (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
-	
+
 	return window->priv->notebook;
 }
 

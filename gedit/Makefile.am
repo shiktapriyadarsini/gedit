@@ -50,7 +50,8 @@ INST_H_FILES =				\
 	gedit-prefs-manager-app.h	\
 	gedit-recent.h			\
 	gedit-window.h			\
-	gedit-panel.h
+	gedit-panel.h			\
+	gedit-statusbar.h
 
 #	gedit2.h			\
 #	gedit-file.h			\
@@ -87,6 +88,7 @@ gedit_SOURCES = 			\
 	gedit-tooltips.c		\
 	gedit-window.c			\
 	gedit-panel.c			\
+	gedit-statusbar.c		\
 	gedit-utils.c 			\
 	gedit-languages-manager.c	\
 	$(NON_INST_H_FILS)		\
@@ -109,13 +111,12 @@ gedit_SOURCES = 			\
 
 libgedit_la_SOURCES = 			\
 	gedit-debug.c			\
+	gedit-convert.c			\
+	gedit-encodings.c		\
 	gedit-prefs-manager.c		\
 	gedit-prefs-manager-private.h	\
 	gedit-metadata-manager.c	\
 	$(LIB_H_FILES)
-
-#	gedit-convert.c			\
-#	gedit-encodings.c
 
 gedit-marshal.h: gedit-marshal.list $(GLIB_GENMARSHAL)
 	$(GLIB_GENMARSHAL) $< --header --prefix=gedit_marshal > $@
