@@ -6,11 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gedit.Gnome-2.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-07 11:36+0200\n"
-"PO-Revision-Date: 2002-12-27 17:06+0530\n"
-"Last-Translator: Yogeesh MB <yogeeshappa.mathighatta@wipro.com>\n"
-"Language-Team: Gnome Kannada Team <LL@li.org>\n"
+"POT-Creation-Date: 2003-10-12 02:41+0200\n"
+"PO-Revision-Date: 2002-05-29 23:20+0530\n"
+"Last-Translator: Pramod.R <rpramod@postmasterr.co.uk>\n"
+"Language-Team: Gnome Kannada Team <Kannada@sharma-home.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,14 +22,14 @@ msgstr ""
 msgid "Gedit View."
 msgstr "ಗೆಡಿಟ್ ನೋಟ"
 
-#: data/GNOME_Gedit.server.in.in.h:3 viewer/gedit-factory.c:53
+#: data/GNOME_Gedit.server.in.in.h:3
+#: viewer/gedit-factory.c:53
 msgid "Gedit viewer factory"
 msgstr "ಗೆಡಿಟ್ ನೋಟದ ಕಾರ್ಖಾನೆ"
 
 #: data/GNOME_Gedit.server.in.in.h:4
-#, fuzzy
 msgid "Source"
-msgstr "ವಿಂಗಡಿಸು"
+msgstr ""
 
 #: data/GNOME_Gedit.server.in.in.h:5
 msgid "gedit application"
@@ -44,14 +43,13 @@ msgstr "ಗೆಡಿಟ್ ಸ್ವಯಂಚಾಲನ ಕಾರ್ಖಾನೆ"
 msgid "Edit text files"
 msgstr "ಪಠ್ಯ ಕಡತಗಳನ್ನು ಸಂಪಾದಿಸು"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2
+#: gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "ಪಠ್ಯ ಸಂಪಾದಕ"
 
 #: data/gedit.schemas.in.h:1
-msgid ""
-"A custom font that will be used for the editing area. This will only take "
-"effect if the \"Use Default Font\" option is turned off."
+msgid "A custom font that will be used for the editing area. This will only take effect if the \"Use Default Font\" option is turned off."
 msgstr ""
 
 #: data/gedit.schemas.in.h:2
@@ -66,7 +64,8 @@ msgstr "ಸ್ವಯಂ ಉಳಿಸುವಿಕೆ"
 msgid "Auto Save Interval"
 msgstr "ಸ್ವಯಂ ಉಳಿಸುವಿಕೆ ಅಂತರ"
 
-#: data/gedit.schemas.in.h:5 gedit/dialogs/gedit-preferences.glade2.h:12
+#: data/gedit.schemas.in.h:5
+#: gedit/dialogs/gedit-preferences.glade2.h:12
 msgid "Auto indent"
 msgstr ""
 
@@ -75,15 +74,11 @@ msgid "Background Color"
 msgstr "ಹಿಂಬಾಗದ ಬಣ್ಣ"
 
 #: data/gedit.schemas.in.h:7
-msgid ""
-"Background color for selected text in the editing area. This will only take "
-"effect if the \"Use Default Colors\" option is turned off."
+msgid "Background color for selected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 
 #: data/gedit.schemas.in.h:8
-msgid ""
-"Background color for unselected text in the editing area. This will only "
-"take effect if the \"Use Default Colors\" option is turned off."
+msgid "Background color for unselected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 
 #: data/gedit.schemas.in.h:9
@@ -115,21 +110,15 @@ msgid "Encodings shown in menu"
 msgstr ""
 
 #: data/gedit.schemas.in.h:16
-msgid ""
-"Extension or suffix to use for backup file names. This will only take effect "
-"if the \"Create Backup Copies\" option is turned on."
+msgid "Extension or suffix to use for backup file names. This will only take effect if the \"Create Backup Copies\" option is turned on."
 msgstr ""
 
 #: data/gedit.schemas.in.h:17
-msgid ""
-"Foreground color for selected text in the editing area. This will only take "
-"effect if the \"Use Default Colors\" option is turned off."
+msgid "Foreground color for selected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 
 #: data/gedit.schemas.in.h:18
-msgid ""
-"Foreground color for the unselected text in the editing area. This will only "
-"take effect if the \"Use Default Colors\" option is turned off."
+msgid "Foreground color for the unselected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
 
 #: data/gedit.schemas.in.h:19
@@ -137,10 +126,7 @@ msgid "Header Font for Printing"
 msgstr ""
 
 #: data/gedit.schemas.in.h:20
-msgid ""
-"If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
-"lines."
+msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
 msgstr ""
 
 #: data/gedit.schemas.in.h:21
@@ -156,9 +142,7 @@ msgid "Line Wrapping Mode"
 msgstr ""
 
 #: data/gedit.schemas.in.h:24
-msgid ""
-"List of encodings shown in Character Coding menu in open/save file selector. "
-"Only recognized encodings are used."
+msgid "List of encodings shown in Character Coding menu in open/save file selector. Only recognized encodings are used."
 msgstr ""
 
 #: data/gedit.schemas.in.h:25
@@ -170,9 +154,7 @@ msgid "Maximum number of actions that gedit will be able to undo or redo."
 msgstr ""
 
 #: data/gedit.schemas.in.h:27
-msgid ""
-"Number of minutes after which gedit will automatically save modified files. "
-"This will only take effect if the \"Auto Save\" option is turned on."
+msgid "Number of minutes after which gedit will automatically save modified files. This will only take effect if the \"Auto Save\" option is turned on."
 msgstr ""
 
 #: data/gedit.schemas.in.h:28
@@ -200,57 +182,35 @@ msgid "Selection Color"
 msgstr "ಆಯ್ಕೆಯ ಬಣ್ಣ"
 
 #: data/gedit.schemas.in.h:34
-msgid ""
-"Sorted list of encodings used by gedit for auto-detecting the encoding of a "
-"file. \"CURRENT\" is the current locale encoding. Only recognized encodings "
-"are used."
+msgid "Sorted list of encodings used by gedit for auto-detecting the encoding of a file. \"CURRENT\" is the current locale encoding. Only recognized encodings are used."
 msgstr ""
 
 #: data/gedit.schemas.in.h:35
-msgid ""
-"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
-"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
-"the values are case-sensitive, so make sure they appear exactly as mentioned "
-"here."
+msgid "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and \"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
 msgstr ""
 
 #: data/gedit.schemas.in.h:36
-msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
-"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
-"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
-"the values are case-sensitive, so make sure they appear exactly as mentioned "
-"here."
+msgid "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and \"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
 msgstr ""
 
 #: data/gedit.schemas.in.h:37
-msgid ""
-"Specifies the font to use for a document's body when printing documents."
+msgid "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 
 #: data/gedit.schemas.in.h:38
-msgid ""
-"Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+msgid "Specifies the font to use for line numbers when printing. This will only take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
 
 #: data/gedit.schemas.in.h:39
-msgid ""
-"Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
+msgid "Specifies the font to use for page headers when printing a document. This will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
 
 #: data/gedit.schemas.in.h:40
-msgid ""
-"Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
+msgid "Specifies the maximum number of recently opened files that will be displayed in the \"Recent Files\" submenu."
 msgstr ""
 
 #: data/gedit.schemas.in.h:41
-msgid ""
-"Specifies the number of spaces that should be displayed instead of Tab "
-"characters."
+msgid "Specifies the number of spaces that should be displayed instead of Tab characters."
 msgstr ""
 
 #: data/gedit.schemas.in.h:42
@@ -258,13 +218,7 @@ msgid "Status Bar is Visible"
 msgstr "ಸ್ಥಿತಿ ಪಟ್ಟಿ ಕಾಣಿಸುತ್ತಿದೆ"
 
 #: data/gedit.schemas.in.h:43
-msgid ""
-"Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" "
-"to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons "
-"only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
-"\"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
-"Note that the values are case-sensitive, so make sure they appear exactly as "
-"mentioned here."
+msgid "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
 msgstr ""
 
 #: data/gedit.schemas.in.h:44
@@ -276,18 +230,7 @@ msgid "Text Color"
 msgstr "ಪಠ್ಯ ಬಣ್ಣ"
 
 #: data/gedit.schemas.in.h:46
-msgid ""
-"The encoding method to use for saving files. Possible values are "
-"\"GEDIT_SAVE_ALWAYS_UTF8\" for mandatory UTF-8 saving, "
-"\"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" if you want gedit to try to "
-"convert the document it is saving to your current locale's encoding, "
-"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" if you want gedit to try "
-"to use the original file encoding (new files in UTF8) and "
-"\"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" if you want gedit to "
-"try to use the original file encoding (new files in current locale's "
-"encoding). If the conversion is successful, it will be used. Otherwise, UTF-"
-"8 will be used. Note that the values are case-sensitive, so make sure they "
-"appear exactly as mentioned here."
+msgid "The encoding method to use for saving files. Possible values are \"GEDIT_SAVE_ALWAYS_UTF8\" for mandatory UTF-8 saving, \"GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE\" if you want gedit to try to convert the document it is saving to your current locale's encoding, \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE\" if you want gedit to try to use the original file encoding (new files in UTF8) and \"GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL\" if you want gedit to try to use the original file encoding (new files in current locale's encoding). If the conversion is successful, it will be used. Otherwise, UTF-8 will be used. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
 msgstr ""
 
 #: data/gedit.schemas.in.h:47
@@ -311,16 +254,11 @@ msgid "Use Default Font"
 msgstr "ಪೂರ್ವನಿಯೋಜಿತವಾದ ಅಕ್ಷರ ಶೈಲಿಯನ್ನು ಉಪಯೋಗಿಸು"
 
 #: data/gedit.schemas.in.h:52
-msgid ""
-"Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Auto Save Interval\" "
-"option."
+msgid "Whether gedit should automatically save modified files after a time interval. You can set the time interval with the \"Auto Save Interval\" option."
 msgstr ""
 
 #: data/gedit.schemas.in.h:53
-msgid ""
-"Whether gedit should create backup copies for the files it saves. You can "
-"set the backup file extension with the \"Backup Copy Extension\" option."
+msgid "Whether gedit should create backup copies for the files it saves. You can set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
 
 #: data/gedit.schemas.in.h:54
@@ -344,8 +282,7 @@ msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 
 #: data/gedit.schemas.in.h:59
-msgid ""
-"Whether the status bar at the bottom of editing windows should be visible."
+msgid "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "ಸ್ಥಿತಿ ಪಟ್ಟಿಯು ಸಂಪಾದನ ಕಿಟಕಿಯ ಕೆಳಭಾಗದಲ್ಲಿ ಕಾಣಿಸಬೇಕೆ"
 
 #: data/gedit.schemas.in.h:60
@@ -353,21 +290,15 @@ msgid "Whether the toolbar should be visible in editing windows."
 msgstr "ಉಪಕರಣಪಟ್ಟಿಯು ಸಂಪಾದನ ಕಿಟಕಿಯಲ್ಲಿ ಕಾಣಿಸಬೇಕೆ"
 
 #: data/gedit.schemas.in.h:61
-msgid ""
-"Whether to use the system's default colors for the editing area. If this "
-"option is turned off, then the colors of the editing area will be those "
-"specified in the \"Background Color\", \"Text Color\", \"Selected Text Color"
-"\", and \"Selection Color\" options."
+msgid "Whether to use the system's default colors for the editing area. If this option is turned off, then the colors of the editing area will be those specified in the \"Background Color\", \"Text Color\", \"Selected Text Color\", and \"Selection Color\" options."
 msgstr ""
 
 #: data/gedit.schemas.in.h:62
-msgid ""
-"Whether to use the system's default font for editing text instead of a font "
-"specific to gedit. If this option is turned off, then the font named in the "
-"\"Editor Font\" option will be used instead of the system font."
+msgid "Whether to use the system's default font for editing text instead of a font specific to gedit. If this option is turned off, then the font named in the \"Editor Font\" option will be used instead of the system font."
 msgstr ""
 
-#: gedit/bonobo-mdi.c:551 gedit/bonobo-mdi.c:1964
+#: gedit/bonobo-mdi.c:551
+#: gedit/bonobo-mdi.c:1964
 #, c-format
 msgid "Activate %s"
 msgstr "ಸಕ್ರೀಯಗೊಳಿಸು %s"
@@ -382,19 +313,21 @@ msgid "_Go to Line"
 msgstr "ಸಾಲಿಗೆ ಹೋಗು"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
 msgstr ""
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1140 gedit/gedit-commands.c:402
+#: gedit/dialogs/gedit-dialog-replace.c:1140
+#: gedit/gedit-commands.c:402
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "ಈ ಪಠ್ಯ \"%s\" ಸಿಕ್ಕಲಿಲ್ಲ"
 
-#: gedit/dialogs/gedit-dialog-replace.c:268 gedit/dialogs/replace.glade2.h:4
+#: gedit/dialogs/gedit-dialog-replace.c:268
+#: gedit/dialogs/replace.glade2.h:4
 #: gedit/gedit-ui.xml.h:46
 msgid "Replace"
 msgstr "ಬದಲಾಯಿಸು"
@@ -409,7 +342,8 @@ msgstr "ಎಲ್ಲಾ ಬದಲಾಯಿಸು"
 msgid "_Replace"
 msgstr "ಬದಲಾಯಿಸು"
 
-#: gedit/dialogs/gedit-dialog-replace.c:406 gedit/gedit-ui.xml.h:17
+#: gedit/dialogs/gedit-dialog-replace.c:406
+#: gedit/gedit-ui.xml.h:17
 msgid "Find"
 msgstr "ಹುಡುಕು"
 
@@ -434,18 +368,16 @@ msgstr "ವ ರ್ಣನೆ "
 
 #: gedit/dialogs/gedit-encodings-dialog.c:390
 #: gedit/dialogs/gedit-encodings-dialog.c:458
-#, fuzzy
 msgid "_Encoding"
-msgstr "ಸಂಕೇತೀಕರಣಗಳು"
+msgstr "ಸಂಕೇತೀಕರಣ"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:1
 msgid "A_vailable encodings:"
 msgstr " ಲಭ್ಯವಿರುವ ಸಂಕೇತೀಕರಣಗಳು"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:2
-#, fuzzy
 msgid "Character codings"
-msgstr "ಅಕ್ಷರ(ಗಳು)"
+msgstr "ಸಂಕೇತೀಕರಣಗಳು"
 
 #: gedit/dialogs/gedit-encodings-dialog.glade2.h:3
 msgid "E_ncodings shown in menu:"
@@ -456,9 +388,7 @@ msgid "Body font picker"
 msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:491
-msgid ""
-"Push this button to select the font to be used to print the body of the "
-"document"
+msgid "Push this button to select the font to be used to print the body of the document"
 msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:492
@@ -466,14 +396,12 @@ msgid "Page headers font picker"
 msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:493
-msgid ""
-"Push this button to select the font to be used to print the page headers"
+msgid "Push this button to select the font to be used to print the page headers"
 msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:494
-#, fuzzy
 msgid "Line numbers font picker"
-msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಗಳು"
+msgstr ""
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:495
 msgid "Push this button to select the font to be used to print line numbers"
@@ -500,9 +428,8 @@ msgid "Plugin"
 msgstr ""
 
 #: gedit/dialogs/gedit-plugin-manager.c:54
-#, fuzzy
 msgid "Enabled"
-msgstr "ಸಮರ್ಥಗೊಳಿಸಿದೆ"
+msgstr ""
 
 #: gedit/dialogs/gedit-plugin-manager.c:507
 msgid "Could not find plugin-manager.glade2, reinstall gedit.\n"
@@ -512,21 +439,20 @@ msgstr ""
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr ""
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
-"The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
-"task.\n"
+"The %s plugin uses an external program, called <tt>%s</tt>, to perform its task.\n"
 "\n"
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr ""
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "ಆಯ್ಕೆಯಾದ ಕಡತ ಕಾರ್ಯ ನಿರ್ವಾಹಕವಲ್ಲ"
 
@@ -552,12 +478,14 @@ msgid "Line Numbers"
 msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಗಳು"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:203
-#: gedit/dialogs/gedit-preferences.glade2.h:27 gedit/gedit-ui.xml.h:50
+#: gedit/dialogs/gedit-preferences.glade2.h:27
+#: gedit/gedit-ui.xml.h:50
 msgid "Save"
 msgstr "ಉಳಿಸು"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:204
-#: gedit/dialogs/gedit-preferences.glade2.h:34 gedit/gedit-ui.xml.h:68
+#: gedit/dialogs/gedit-preferences.glade2.h:34
+#: gedit/gedit-ui.xml.h:68
 msgid "Undo"
 msgstr "ರದ್ದುಪಡಿಸು"
 
@@ -598,20 +526,17 @@ msgid "Push this button to configure background color"
 msgstr "ಹಿಂಬದಿಯ ಬಣ್ಣ ಸಂರಚನೆಗಾಗಿ ಈ ಗುಂಡಿ ಒತ್ತಿ"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:794
-msgid ""
-"Push this button to configure the color in which the selected text should "
-"appear"
+msgid "Push this button to configure the color in which the selected text should appear"
 msgstr "ಆಯ್ಕೆಯಾದ ಪಠ್ಯ ಕಾಣಬೇಕಾದ ಬಣ್ಣ ಸಂರಚನೆಗಾಗಿ ಈ ಗುಂಡಿ ಒತ್ತಿ"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:797
-msgid ""
-"Push this button to configure the color in which the selected text should be "
-"marked"
+msgid "Push this button to configure the color in which the selected text should be marked"
 msgstr "ಆಯ್ಕೆಯಾದ ಪಠ್ಯದ ಗುರುತಿನ ಬಣ್ಣ ಸಂರಚನೆಗಾಗಿ ಈ ಗುಂಡಿ ಒತ್ತಿ"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:1
 #: gedit/dialogs/page-setup-dialog.glade2.h:1
-#: plugins/docinfo/docinfo.glade2.h:1 plugins/time/time.glade2.h:1
+#: plugins/docinfo/docinfo.glade2.h:1
+#: plugins/time/time.glade2.h:1
 msgid "    "
 msgstr "    "
 
@@ -795,8 +720,7 @@ msgstr ""
 
 #: gedit/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr ""
-"ಅಆ ಇಈ ಉಊ ಋೠ ಎಏಐ ಒಓಔ ಅಂಅಃ ಕಖಗಘಙ ಛಜಝಞ ಠಡಢಣ ಥದಧನ ಫಬಭಮ ಯರಱಲಳವಶಷಸಹ ೦೧೨೩೪೫೬೭೮೯"
+msgstr "ಅಆ ಇಈ ಉಊ ಋೠ ಎಏಐ ಒಓಔ ಅಂಅಃ ಕಖಗಘಙ ಛಜಝಞ ಠಡಢಣ ಥದಧನ ಫಬಭಮ ಯರಱಲಳವಶಷಸಹ ೦೧೨೩೪೫೬೭೮೯"
 
 #: gedit/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
@@ -864,9 +788,8 @@ msgid "_Line number:"
 msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆ:"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:2
-#, fuzzy
 msgid "<b>Line Numbers</b>"
-msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಗಳು"
+msgstr "<b>ಸಾಲಿನ ಸಂಖ್ಯೆಗಳು</b>"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:3
 msgid "<b>Text Wrapping</b>"
@@ -885,14 +808,12 @@ msgid "He_aders and footers:"
 msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:9
-#, fuzzy
 msgid "Page Setup"
-msgstr "ಮುದ್ರಕನ ಪರಿಸ್ಥಿತಿ"
+msgstr ""
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:10
-#, fuzzy
 msgid "Print _line numbers"
-msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಗಳು"
+msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಯನ್ನು ಮುದ್ರಿಸು"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:11
 msgid "Print s_yntax highlighting"
@@ -903,9 +824,8 @@ msgid "_Body:"
 msgstr "ಮುಖ್ಯ ಭಾಗ"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:13
-#, fuzzy
 msgid "_Line numbers:"
-msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆ:"
+msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಗಳು"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:14
 msgid "_Number every"
@@ -920,7 +840,6 @@ msgid "_Restore Default Fonts"
 msgstr "ಪೂರ್ವಯೋಜಿತ ಅಕ್ಷರಶೈಲಿಯನ್ನು ಪುನಃಸ್ಥಾಪಿಸು"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:17
-#, fuzzy
 msgid "lines"
 msgstr "ಸಾಲುಗಳು"
 
@@ -956,13 +875,16 @@ msgstr "ಹುಡುಕಲು ಬೇಕಾದ ಜಾಗ"
 msgid "label"
 msgstr ""
 
-#: gedit/dialogs/replace.glade2.h:1 gedit/dialogs/uri.glade2.h:1
+#: gedit/dialogs/replace.glade2.h:1
+#: gedit/dialogs/uri.glade2.h:1
 #: plugins/shell_output/shell_output.glade2.h:1
-#: plugins/spell/spell-checker.glade2.h:1 plugins/time/time.glade2.h:2
+#: plugins/spell/spell-checker.glade2.h:1
+#: plugins/time/time.glade2.h:2
 msgid "*"
 msgstr "*"
 
-#: gedit/dialogs/replace.glade2.h:2 gedit/gedit-ui.xml.h:19
+#: gedit/dialogs/replace.glade2.h:2
+#: gedit/gedit-ui.xml.h:19
 msgid "Find Next"
 msgstr "ಮುಂದಕ್ಕೆ ಹುಡುಕು"
 
@@ -1008,7 +930,7 @@ msgstr ""
 
 #: gedit/gedit-commands.c:564
 msgid "translator_credits"
-msgstr "ಅನುವಾದಕರು - ಪ್ರಮೋದ್.ಆರ್, ಯೋಗೀಶ್ ಎಂ.ಬಿ"
+msgstr "ಪ್ರಮೋದ್.ಆರ್/nಯೋಗೀಶ್ ಎಂ.ಬಿ"
 
 #: gedit/gedit-commands.c:589
 msgid "gedit"
@@ -1018,20 +940,24 @@ msgstr "ಗೆಡಿತ್"
 msgid "gedit is a small and lightweight text editor for Gnome"
 msgstr "ಗೆಡಿಟ್ ಒಂದು ಚಿಕ್ಕದಾದ ಮತ್ತು ಸರಳವಾದ ಪಠ್ಯ ಕಡತಗಳ ಸಂಪಾದಕ"
 
-#: gedit/gedit-document.c:595 gedit/gedit-document.c:613
+#: gedit/gedit-document.c:595
+#: gedit/gedit-document.c:613
 #, c-format
 msgid "%s %d"
 msgstr "%s %d"
 
-#: gedit/gedit-document.c:595 gedit/gedit-document.c:613
+#: gedit/gedit-document.c:595
+#: gedit/gedit-document.c:613
 msgid "Untitled"
 msgstr "ಹೆಸರಿಲ್ಲದ"
 
-#: gedit/gedit-document.c:601 gedit/gedit-document.c:648
+#: gedit/gedit-document.c:601
+#: gedit/gedit-document.c:648
 msgid "Invalid file name"
 msgstr "ಸಿಂಧುವಲ್ಲದ ಕಡತದ ಹೆಸರು"
 
-#: gedit/gedit-document.c:814 gedit/gedit-document.c:918
+#: gedit/gedit-document.c:814
+#: gedit/gedit-document.c:918
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
 msgstr ""
@@ -1065,10 +991,7 @@ msgid ""
 msgstr ""
 
 #: gedit/gedit-document.c:1449
-msgid ""
-"The disk where you are trying to save the file has a limitation on file "
-"sizes.  Please try saving a smaller file or saving it to a disk that does "
-"not have this limitation."
+msgid "The disk where you are trying to save the file has a limitation on file sizes.  Please try saving a smaller file or saving it to a disk that does not have this limitation."
 msgstr ""
 
 #: gedit/gedit-document.c:1493
@@ -1093,18 +1016,23 @@ msgstr " ಪ್ರಸಕ್ತ  ಸ್ಥಳ"
 msgid "Add or _Remove..."
 msgstr "ಸೇರಿಸು ಅಥವ ತೆಗೆ"
 
-#: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
-#: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
+#: gedit/gedit-encodings.c:132
+#: gedit/gedit-encodings.c:176
+#: gedit/gedit-encodings.c:178
+#: gedit/gedit-encodings.c:180
 #: gedit/gedit-encodings.c:182
 msgid "Unicode"
 msgstr "ಯೂನಿಕೋಡ್"
 
-#: gedit/gedit-encodings.c:145 gedit/gedit-encodings.c:171
-#: gedit/gedit-encodings.c:212 gedit/gedit-encodings.c:255
+#: gedit/gedit-encodings.c:145
+#: gedit/gedit-encodings.c:171
+#: gedit/gedit-encodings.c:212
+#: gedit/gedit-encodings.c:255
 msgid "Western"
 msgstr "ಪಾಶ್ಚಾತ್ಯ"
 
-#: gedit/gedit-encodings.c:147 gedit/gedit-encodings.c:214
+#: gedit/gedit-encodings.c:147
+#: gedit/gedit-encodings.c:214
 #: gedit/gedit-encodings.c:251
 msgid "Central European"
 msgstr "ಕೇಂದ್ರ ಯುರೋಪಿಯನ್"
@@ -1113,23 +1041,29 @@ msgstr "ಕೇಂದ್ರ ಯುರೋಪಿಯನ್"
 msgid "South European"
 msgstr " ದಕ್ಷಿಣ ಯುರೋಪಿಯನ್"
 
-#: gedit/gedit-encodings.c:151 gedit/gedit-encodings.c:167
+#: gedit/gedit-encodings.c:151
+#: gedit/gedit-encodings.c:167
 #: gedit/gedit-encodings.c:265
 msgid "Baltic"
 msgstr "ಬಾಲ್ಟಿಕ್"
 
-#: gedit/gedit-encodings.c:153 gedit/gedit-encodings.c:216
-#: gedit/gedit-encodings.c:229 gedit/gedit-encodings.c:233
-#: gedit/gedit-encodings.c:235 gedit/gedit-encodings.c:253
+#: gedit/gedit-encodings.c:153
+#: gedit/gedit-encodings.c:216
+#: gedit/gedit-encodings.c:229
+#: gedit/gedit-encodings.c:233
+#: gedit/gedit-encodings.c:235
+#: gedit/gedit-encodings.c:253
 msgid "Cyrillic"
 msgstr "ಸಿರಿಲಿಕ್"
 
-#: gedit/gedit-encodings.c:155 gedit/gedit-encodings.c:222
+#: gedit/gedit-encodings.c:155
+#: gedit/gedit-encodings.c:222
 #: gedit/gedit-encodings.c:263
 msgid "Arabic"
 msgstr "ಅರಬಿಕ್"
 
-#: gedit/gedit-encodings.c:157 gedit/gedit-encodings.c:257
+#: gedit/gedit-encodings.c:157
+#: gedit/gedit-encodings.c:257
 msgid "Greek"
 msgstr "ಗ್ರೀಕ್"
 
@@ -1137,12 +1071,14 @@ msgstr "ಗ್ರೀಕ್"
 msgid "Hebrew Visual"
 msgstr "ಹೆಬ್ರೀವ್ ಕಾಣುವ"
 
-#: gedit/gedit-encodings.c:161 gedit/gedit-encodings.c:220
+#: gedit/gedit-encodings.c:161
+#: gedit/gedit-encodings.c:220
 #: gedit/gedit-encodings.c:261
 msgid "Hebrew"
 msgstr "ಹೆಬ್ರೀವ್"
 
-#: gedit/gedit-encodings.c:163 gedit/gedit-encodings.c:218
+#: gedit/gedit-encodings.c:163
+#: gedit/gedit-encodings.c:218
 #: gedit/gedit-encodings.c:259
 msgid "Turkish"
 msgstr "ಟರ್ಕಿಷ್"
@@ -1163,7 +1099,8 @@ msgstr "ರೊಮಾನಿಯನ್"
 msgid "Armenian"
 msgstr "ಅರ್ಮೇನಿಯನ್"
 
-#: gedit/gedit-encodings.c:187 gedit/gedit-encodings.c:189
+#: gedit/gedit-encodings.c:187
+#: gedit/gedit-encodings.c:189
 #: gedit/gedit-encodings.c:198
 msgid "Chinese Traditional"
 msgstr "ಸಾಂಪ್ರದಾಯಿಕ ಚಿನೀ"
@@ -1172,18 +1109,23 @@ msgstr "ಸಾಂಪ್ರದಾಯಿಕ ಚಿನೀ"
 msgid "Cyrillic/Russian"
 msgstr "ಸಿರಿಲಿಕ್/ರಷ್ಯನ್"
 
-#: gedit/gedit-encodings.c:194 gedit/gedit-encodings.c:225
+#: gedit/gedit-encodings.c:194
+#: gedit/gedit-encodings.c:225
 #: gedit/gedit-encodings.c:240
 msgid "Japanese"
 msgstr "ಜಪಾನಿ"
 
-#: gedit/gedit-encodings.c:196 gedit/gedit-encodings.c:227
-#: gedit/gedit-encodings.c:231 gedit/gedit-encodings.c:246
+#: gedit/gedit-encodings.c:196
+#: gedit/gedit-encodings.c:227
+#: gedit/gedit-encodings.c:231
+#: gedit/gedit-encodings.c:246
 msgid "Korean"
 msgstr "ಕೊರಿಯನ್"
 
-#: gedit/gedit-encodings.c:201 gedit/gedit-encodings.c:203
-#: gedit/gedit-encodings.c:205 gedit/gedit-encodings.c:209
+#: gedit/gedit-encodings.c:201
+#: gedit/gedit-encodings.c:203
+#: gedit/gedit-encodings.c:205
+#: gedit/gedit-encodings.c:209
 msgid "Chinese Simplified"
 msgstr "ಸರಳ ಚಿನೀ"
 
@@ -1195,7 +1137,8 @@ msgstr "ಜಾರ್ಜಿಯನ್"
 msgid "Cyrillic/Ukrainian"
 msgstr "ಸಿರಿಲಿಕ್/ಉಕ್ರೆನಿಯನ್"
 
-#: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:248
+#: gedit/gedit-encodings.c:242
+#: gedit/gedit-encodings.c:248
 #: gedit/gedit-encodings.c:267
 msgid "Vietnamese"
 msgstr "ವಿಯೆಟ್ನಾಮೀಸ್"
@@ -1227,9 +1170,8 @@ msgid "Select a file to open"
 msgstr "ತೆಗೆಯಲು ಕಡತವನ್ನು ಆಯ್ಕೆಮಾಡು"
 
 #: gedit/gedit-file-selector-util.c:489
-#, fuzzy
 msgid "Select files to open"
-msgstr "ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಎಲ್ಲ ಅಯ್ಕೆಮಾಡು"
+msgstr ""
 
 #: gedit/gedit-file-selector-util.c:519
 msgid "Select a filename to save"
@@ -1239,21 +1181,25 @@ msgstr "ಉಳಿಸಲು ಕಡತವನ್ನು ಆಯ್ಕೆಮಾಡು"
 msgid "Open File..."
 msgstr "ಕಡತವನ್ನು ತೆಗೆ..."
 
-#: gedit/gedit-file.c:182 gedit/gedit-file.c:899
+#: gedit/gedit-file.c:182
+#: gedit/gedit-file.c:899
 #, c-format
 msgid "Loaded file '%s'"
 msgstr "ಕಡತವನ್ನು ತುಂಬಾಯಿತು '%s'"
 
-#: gedit/gedit-file.c:316 gedit/gedit-file.c:466
+#: gedit/gedit-file.c:316
+#: gedit/gedit-file.c:466
 #, c-format
 msgid "Saving file '%s'..."
 msgstr "ಕಡತವನ್ನು ಉಳಿಸುತ್ತಿದೆ  '%s'..."
 
-#: gedit/gedit-file.c:344 gedit/gedit-file.c:481
+#: gedit/gedit-file.c:344
+#: gedit/gedit-file.c:481
 msgid "The document has not been saved."
 msgstr "ದಸ್ತಾವೇಜನ್ನು ಉಳಿಸಿಲ್ಲ"
 
-#: gedit/gedit-file.c:358 gedit/gedit-file.c:478
+#: gedit/gedit-file.c:358
+#: gedit/gedit-file.c:478
 #, c-format
 msgid "File '%s' saved."
 msgstr "%s' ಕಡತವನ್ನು ಉಳಿಸಾಯಿತು."
@@ -1270,7 +1216,8 @@ msgid ""
 "You will not be able to undo this operation."
 msgstr ""
 
-#: gedit/gedit-file.c:649 gedit/gedit-ui.xml.h:95
+#: gedit/gedit-file.c:649
+#: gedit/gedit-ui.xml.h:95
 msgid "_Revert"
 msgstr "ಹಿಂದಿನ ಸ್ಥಿತಿಗೆ ತರು"
 
@@ -1313,7 +1260,8 @@ msgid "RO"
 msgstr "ಒದಲು ಮಾತ್ರ"
 
 #. Add the detach tab button
-#: gedit/gedit-mdi-child.c:574 gedit/gedit-ui.xml.h:86
+#: gedit/gedit-mdi-child.c:574
+#: gedit/gedit-ui.xml.h:86
 msgid "_Move to New Window"
 msgstr "ಹೊಸ ಕಿಟಕಿಗೆ ಹಾಕು"
 
@@ -1322,14 +1270,12 @@ msgid "Unknown"
 msgstr "ಅಜ್ಞಾತ"
 
 #: gedit/gedit-mdi-child.c:672
-#, fuzzy
 msgid "Unicode (UTF-8)"
-msgstr "ಯೂನಿಕೋಡ್"
+msgstr "ಯೂನಿಕೋಡ್ (ಯು.ಟಿ.ಎಫ್ - 8)"
 
 #: gedit/gedit-mdi.c:450
-#, fuzzy
 msgid "Open a recently used file"
-msgstr "ಇತ್ತೀಚಿಗೆ ಬಳಕೆಯಾದ ಕಡತವನ್ನು ತೆಗೆ"
+msgstr "ಹಿಂದೆ ವೀಕ್ಷಿಸಿದ ಕಡತವನ್ನು ತೆಗೆ"
 
 #: gedit/gedit-mdi.c:954
 #, c-format
@@ -1341,23 +1287,23 @@ msgstr ""
 
 #: gedit/gedit-mdi.c:959
 msgid "Do_n't save"
-msgstr "ಉಳಿಸ ಬೇಡ"
+msgstr "ಕಡತವನ್ನು ಉಳಿಸದೆ ಮುಚ್ಚು"
 
 #: gedit/gedit-mdi.c:978
 msgid "_Don't quit"
-msgstr "ಆಚೆ ಬರಬೇಡ"
+msgstr "ಅನ್ವಯವನ್ನು ನಿರ್ಗಮಿಸ ಬೇಡ"
 
 #: gedit/gedit-mdi.c:982
 msgid "_Don't close"
-msgstr "ಮುಚ್ಚ ಬೇಡ"
+msgstr "ಕಡತವನ್ನು ಮುಚ್ಚ ಬೇಡ"
 
 #: gedit/gedit-mdi.c:1075
 msgid "(modified)"
-msgstr "(ಬದಲಾಯಿಸಲಾಗಿದೆ)"
+msgstr "(ಕಡತವನ್ನು ಬದಲಾಯಿಸಲಾಗಿದೆ)"
 
 #: gedit/gedit-mdi.c:1081
 msgid "(readonly)"
-msgstr "(ಒದಲು ಮಾತ್ರ ಹಕ್ಕಿದೆ)"
+msgstr "(ಕಡತವನ್ನು ಒದಲು ಮಾತ್ರ ಹಕ್ಕಿದೆ)"
 
 #: gedit/gedit-mdi.c:1676
 msgid "Normal"
@@ -1418,13 +1364,15 @@ msgstr ""
 msgid "Error, impossible to destroy plugin '%s'"
 msgstr ""
 
-#: gedit/gedit-plugins-engine.c:551 gedit/gedit-plugins-engine.c:639
+#: gedit/gedit-plugins-engine.c:551
+#: gedit/gedit-plugins-engine.c:639
 #: gedit/gedit-plugins-engine.c:764
 #, c-format
 msgid "Error, impossible to activate plugin '%s'"
 msgstr ""
 
-#: gedit/gedit-plugins-engine.c:590 gedit/gedit-plugins-engine.c:782
+#: gedit/gedit-plugins-engine.c:590
+#: gedit/gedit-plugins-engine.c:782
 #, c-format
 msgid "Error, impossible to deactivate plugin '%s'"
 msgstr ""
@@ -1443,11 +1391,13 @@ msgstr " ವ್ಯವಸ್ಥಾಪಕ ಇಚ್ಛೆಗಳ ಪ್ರಸ್ತ
 msgid "Expected `%s' got `%s' for key %s"
 msgstr ""
 
-#: gedit/gedit-print.c:217 gedit/gedit-ui.xml.h:37
+#: gedit/gedit-print.c:217
+#: gedit/gedit-ui.xml.h:37
 msgid "Print"
 msgstr "ಮುದ್ರಿಸು"
 
-#: gedit/gedit-print.c:226 plugins/docinfo/docinfo.glade2.h:7
+#: gedit/gedit-print.c:226
+#: plugins/docinfo/docinfo.glade2.h:7
 msgid "Lines"
 msgstr "ಸಾಲುಗಳು"
 
@@ -1465,7 +1415,8 @@ msgstr "ಪುಟ%d ದ %dಭಾಷಾಂತರ..."
 msgid "Printing page %d of %d..."
 msgstr "ಪುಟ %d ದ %d ಮುದ್ರಣ..."
 
-#: gedit/gedit-print.c:382 gedit/gedit-ui.xml.h:40
+#: gedit/gedit-print.c:382
+#: gedit/gedit-ui.xml.h:40
 msgid "Print preview"
 msgstr "ಮುದ್ರಣ ಮುನ್ನೋಟ"
 
@@ -1551,9 +1502,8 @@ msgid "Find Pre_vious"
 msgstr "ಹಿಂದಿನದನ್ನು ಹುಡುಕು"
 
 #: gedit/gedit-ui.xml.h:21
-#, fuzzy
 msgid "Find Previous"
-msgstr "ಮುದ್ರಣ ಮುನ್ನೋಟ"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:22
 msgid "Go to _Line..."
@@ -1600,9 +1550,8 @@ msgid "Open the gedit manual"
 msgstr "ಗೆಡಿಟ್ ನ ಕೈ ಪಿಡಿ ತೆಗೆ"
 
 #: gedit/gedit-ui.xml.h:33
-#, fuzzy
 msgid "Page Set_up"
-msgstr "ಮುದ್ರಕನ ಪರಿಸ್ಥಿತಿ"
+msgstr ""
 
 #: gedit/gedit-ui.xml.h:34
 msgid "Paste"
@@ -1630,11 +1579,11 @@ msgstr "ಪ್ರಸಕ್ತ ಕಡತವನ್ನು ಮುದ್ರಿಸು"
 
 #: gedit/gedit-ui.xml.h:42
 msgid "Quit"
-msgstr "ಆಚೆ ಬಾ"
+msgstr "ನಿರ್ಗಮಿಸು"
 
 #: gedit/gedit-ui.xml.h:43
 msgid "Quit the program"
-msgstr "ತಂತ್ರಾಂಶದಿಂದ ಅಚೆ ಬಾ"
+msgstr "ತಂತ್ರಾಂಶದಿಂದ ನಿರ್ಗಮಿಸು"
 
 #: gedit/gedit-ui.xml.h:44
 msgid "Redo"
@@ -1701,8 +1650,7 @@ msgid "Select the entire document"
 msgstr "ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಎಲ್ಲ ಅಯ್ಕೆಮಾಡು"
 
 #: gedit/gedit-ui.xml.h:62
-msgid ""
-"Set toolbar button style according to desktop Menu and Toolbar Preferences"
+msgid "Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr ""
 
 #: gedit/gedit-ui.xml.h:63
@@ -1790,9 +1738,8 @@ msgid "_Highlight Mode"
 msgstr "ಸುಪ್ರಕಾಶ ವಿಧಾನ"
 
 #: gedit/gedit-ui.xml.h:85
-#, fuzzy
 msgid "_Icons Only"
-msgstr "ಲಾಂಛನಗಳು ಮಾತ್ರ"
+msgstr "ಪ್ರತಿಮೆಗಳು ಮಾತ್ರ"
 
 #: gedit/gedit-ui.xml.h:87
 msgid "_New"
@@ -1877,8 +1824,7 @@ msgstr ""
 
 #: gedit/gedit-utils.c:431
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because gedit cannot handle %s: locations."
+msgid "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
 
 #: gedit/gedit-utils.c:437
@@ -1888,8 +1834,7 @@ msgstr "ಕಡತ ತೆಗೆಯಲಾಗಲಿಲ್ಲ"
 
 #: gedit/gedit-utils.c:447
 #, c-format
-msgid ""
-"Could not open the file \"%s\" because it contains data in an invalid format."
+msgid "Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 
 #: gedit/gedit-utils.c:454
@@ -1928,9 +1873,7 @@ msgstr "\"%s\"ಇದು ನಿರ್ದೇಶಿಕೆ.  ದಯವಿಟ್ಟ�
 
 #: gedit/gedit-utils.c:492
 #, c-format
-msgid ""
-"Not enough available memory to open the file \"%s\". Please, close some "
-"running application and try again."
+msgid "Not enough available memory to open the file \"%s\". Please, close some running application and try again."
 msgstr ""
 
 #: gedit/gedit-utils.c:518
@@ -1938,8 +1881,7 @@ msgstr ""
 msgid ""
 "Could not open the file \"%s\" because no host \"%s\" could be found.\n"
 "\n"
-"Please, check that you typed the location correctly and that your proxy "
-"settings are correct and then try again."
+"Please, check that you typed the location correctly and that your proxy settings are correct and then try again."
 msgstr ""
 
 #: gedit/gedit-utils.c:533
@@ -1966,7 +1908,8 @@ msgid ""
 "Please, check that you typed the location correctly and try again."
 msgstr ""
 
-#: gedit/gedit-utils.c:560 gedit/gedit-utils.c:628
+#: gedit/gedit-utils.c:560
+#: gedit/gedit-utils.c:628
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because it contains invalid data.\n"
@@ -1977,22 +1920,18 @@ msgstr ""
 #: gedit/gedit-utils.c:604
 #, c-format
 msgid ""
-"Could not open the file \"%s\" because gedit has not been able to "
-"automatically detect the character coding.\n"
+"Could not open the file \"%s\" because gedit has not been able to automatically detect the character coding.\n"
 "\n"
-"Please, check that you are not trying to open a binary file and try again "
-"selecting a character coding in the 'Open File...' (or 'Open Location') "
-"dialog."
+"Please, check that you are not trying to open a binary file and try again selecting a character coding in the 'Open File...' (or 'Open Location') dialog."
 msgstr ""
 
-#: gedit/gedit-utils.c:616 gedit/gedit-utils.c:646
+#: gedit/gedit-utils.c:616
+#: gedit/gedit-utils.c:646
 #, c-format
 msgid ""
 "Could not open the file \"%s\" using the %s character coding.\n"
 "\n"
-"Please, check that you are not trying to open a binary file and that you "
-"selected the right character coding in the 'Open File...' (or 'Open "
-"Location') dialog and try again."
+"Please, check that you are not trying to open a binary file and that you selected the right character coding in the 'Open File...' (or 'Open Location') dialog and try again."
 msgstr ""
 
 #: gedit/gedit-utils.c:662
@@ -2036,20 +1975,18 @@ msgstr ""
 
 #: gedit/gedit-utils.c:793
 #, c-format
-msgid ""
-"Could not revert the file \"%s\" because gedit cannot handle %s: locations."
+msgid "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr "\"%s\"ಕಡತವನ್ನು ಹಿಂದಿನ ಸ್ಥಿತಿಗೆ ತರಲಾಗುತ್ತಿಲ್ಲ, ಕಾರಣ ಗೆಡಿಟ್ ನಿಂದ ಸ್ಥಲಗಳ ನಿರ್ವಹಣೆ ಆಗದು"
 
-#: gedit/gedit-utils.c:799 gedit/gedit-utils.c:939
+#: gedit/gedit-utils.c:799
+#: gedit/gedit-utils.c:939
 #, c-format
 msgid "Could not revert the file \"%s\"."
 msgstr "ಕಡತವನ್ನು ಹಿಂದಿನ ಸ್ಥಿತಿಗೆ ತರಲಾಗದು"
 
 #: gedit/gedit-utils.c:809
 #, c-format
-msgid ""
-"Could not revert the file \"%s\" because it contains data in an invalid "
-"format."
+msgid "Could not revert the file \"%s\" because it contains data in an invalid format."
 msgstr ""
 
 #: gedit/gedit-utils.c:816
@@ -2072,9 +2009,7 @@ msgstr ""
 
 #: gedit/gedit-utils.c:838
 #, c-format
-msgid ""
-"Not enough available memory to revert the file \"%s\". Please, close some "
-"running application and try again."
+msgid "Not enough available memory to revert the file \"%s\". Please, close some running application and try again."
 msgstr ""
 
 #: gedit/gedit-utils.c:864
@@ -2144,8 +2079,7 @@ msgstr ""
 msgid ""
 "Cannot create the file \"%s\".\n"
 "\n"
-"A directory component in the file name does not exist or is a dangling "
-"symbolic link."
+"A directory component in the file name does not exist or is a dangling symbolic link."
 msgstr ""
 
 #: gedit/gedit-utils.c:1028
@@ -2180,75 +2114,75 @@ msgstr ""
 msgid "  INS"
 msgstr ""
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "ಸೌಲಭ್ಯಗಳ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "metadata ದ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr " mdi ದ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "ಆದೇಶಗಳ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "ದಸ್ತಾವೇಜಿನ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "ಕಡತದ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "ಇಚ್ಚೆಗ಴ಳ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "ಮುದ್ರಣ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "ಶೋಧದ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "ರದ್ದುಪಡಿಸುವ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "ನೋಟದ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "ಇತ್ತೀಚಿನ ದೋಷ ಹುಡುಕಾಟ ಸಂದೇಶವನ್ನು ತೋರಿಸು"
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr ""
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr ""
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr ""
 
@@ -2274,10 +2208,7 @@ msgid "_Update"
 msgstr "ಪರಿಷ್ಕರಿಸು"
 
 #: plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:2
-msgid ""
-"The Document Statistics plugin analyzes the current document and determines "
-"the number of words, lines, characters and non-space characters in it and "
-"displays the result."
+msgid "The Document Statistics plugin analyzes the current document and determines the number of words, lines, characters and non-space characters in it and displays the result."
 msgstr ""
 
 #: plugins/docinfo/docinfo.glade2.h:2
@@ -2314,7 +2245,7 @@ msgstr ""
 
 #: plugins/indent/indent.c:45
 msgid "_Indent"
-msgstr ""
+msgstr "ಪದಜಾಗಾ ಹೆಚ್ಚಿಸು"
 
 #: plugins/indent/indent.c:47
 msgid "Indent selected lines"
@@ -2330,11 +2261,11 @@ msgstr ""
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:1
 msgid "Indent lines"
-msgstr ""
+msgstr "ಸಾಲುಗಳ ಪದಜಾಗಾವನ್ನು ಹೆಚ್ಚಿಸು"
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:2
 msgid "Indent or un-indent selected lines."
-msgstr ""
+msgstr "ಆಯ್ದ ಸಾಲುಗಳ ಪದಜಾಗಾವನ್ನು ಹೆಚ್ಚು ಅಥವ ಕಮ್ಮಿ ಮಾಡು"
 
 #: plugins/sample/sample.c:43
 msgid "Insert User Na_me"
@@ -2404,15 +2335,12 @@ msgid "Executing command"
 msgstr "ಆದೇಶ ನಿರ್ವಹಣೆ"
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:1
-msgid ""
-"Execute an external program and eventually grabs its output in the output "
-"window."
+msgid "Execute an external program and eventually grabs its output in the output window."
 msgstr ""
 
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:2
-#, fuzzy
 msgid "Shell command"
-msgstr "ಕೋಶಾದೇಶ"
+msgstr ""
 
 #: plugins/shell_output/shell_output.glade2.h:2
 msgid "Co_mmand:"
@@ -2443,7 +2371,8 @@ msgstr "ವಿಂಗಡಿಸು"
 msgid "Sort the current document or selection."
 msgstr "ಪ್ರಸಕ್ತ ದಸ್ತಾವೇಜನ್ನು ವಿಂಗಡಿಸು ಅಥವ ಆಯ್ಕೆಮಾಡು "
 
-#: plugins/sort/sort.gedit-plugin.desktop.in.h:1 plugins/sort/sort.glade2.h:3
+#: plugins/sort/sort.gedit-plugin.desktop.in.h:1
+#: plugins/sort/sort.glade2.h:3
 msgid "Sort"
 msgstr "ವಿಂಗಡಿಸು"
 
@@ -2469,7 +2398,7 @@ msgstr ""
 
 #: plugins/sort/sort.glade2.h:6
 msgid "_Reverse order"
-msgstr ""
+msgstr "ತಲೆಕೆಳಗಾದ ಕ್ರಮ"
 
 #: plugins/sort/sort.glade2.h:7
 msgid "_Sort"
@@ -2711,9 +2640,8 @@ msgid "The document does not contain mispelled words."
 msgstr "ದಸ್ತಾವೇಜಿನಲ್ಲಿ ತಪ್ಪು ಕಾಗುಣಿತ ಪದಗಳಿಲ್ಲ"
 
 #: plugins/spell/spell.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid "Checks the spelling of the current document."
-msgstr "ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಎಲ್ಲ ಅಯ್ಕೆಮಾಡು"
+msgstr "ಪ್ರಸಕ್ತ ದಸ್ತಾವೇಜಿನ ಭಾಷೆಯನ್ನು ತಿಳಿಸು"
 
 #: plugins/spell/spell.gedit-plugin.desktop.in.h:2
 msgid "Spell checker"
@@ -2759,29 +2687,26 @@ msgid "Tag list"
 msgstr ""
 
 #: plugins/taglist/taglist.gedit-plugin.desktop.in.h:2
-msgid ""
-"The tag list plugin provides a method to easily insert into a document "
-"commonly used tags/strings without having to type them."
+msgid "The tag list plugin provides a method to easily insert into a document commonly used tags/strings without having to type them."
 msgstr ""
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "ಸಮಯ ಮತ್ತು ದಿನಾಂಕವನ್ನು ಸೇರಿಸು"
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr "ಪ್ರಸಕ್ತ ದಿನಾಂಕ ಮತ್ತು ಸಮಯವನ್ನು ಸೂಚಕದ ಸ್ಥಾನದಲ್ಲಿ ಸೇರಿಸು"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "ಲಭ್ಯ ನಮೂನೆಗಳು"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr ""
 
 #: plugins/time/time.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid "Insert Date/Time"
 msgstr "ಸಮಯ ಮತ್ತು ದಿನಾಂಕವನ್ನು ಸೇರಿಸು"
 
@@ -2791,11 +2716,11 @@ msgstr "ಪ್ರಸಕ್ತ ದಿನಾಂಕ ಮತ್ತು ಸಮಯವನ
 
 #: plugins/time/time.glade2.h:3
 msgid "<span size=\"small\">01/11/2002 17:52:00</span>"
-msgstr ""
+msgstr "<span size=\"small\">01/11/2002 17:52:00</span>"
 
 #: plugins/time/time.glade2.h:4
 msgid "<span weight=\"bold\"> When inserting date/time...</span>"
-msgstr ""
+msgstr "<span weight=\"bold\"> When inserting date/time...</span>"
 
 #: plugins/time/time.glade2.h:5
 msgid "Configure date/time plugin"
@@ -2826,113 +2751,10 @@ msgid "Save method not implemented for gedit viewer"
 msgstr ""
 
 #: viewer/gedit-viewer-ui.xml.h:1
-#, fuzzy
 msgid "Copy the selected text to the clipboard"
-msgstr "ಅಯ್ಕೆಮಾಡಿದ ಪಠ್ಯದ ಬಣ್ಣವನ್ನು ತಗೊ"
+msgstr "ಅಯ್ದ ಪಠ್ಯವನ್ನು ನಕಲುಮಾಡು"
 
 #: viewer/gedit-viewer-ui.xml.h:2
-#, fuzzy
 msgid "_Copy Text"
-msgstr "ನಕಲುಮಾಡು"
+msgstr "ಪಠ್ಯವನ್ನು ನಕಲುಮಾಡು"
 
-#~ msgid "_ASCII Table"
-#~ msgstr "ಮಾ.ವಿ.ಅ.ಶಿ.ಸಂ.(ASCII) ಪಟ್ಟಿ"
-
-#~ msgid "Name"
-#~ msgstr "ಹೆಸರು"
-
-#~ msgid "ASCII Table"
-#~ msgstr "ಮಾ.ವಿ.ಅ.ಶಿ.ಸಂ.(ASCII) ಪಟ್ಟಿ"
-
-#~ msgid "_Insert char"
-#~ msgstr "ಅಕ್ಷರವನ್ನು ಸೇರಿಸು"
-
-#~ msgid "ASCII table"
-#~ msgstr "ಮಾ.ವಿ.ಅ.ಶಿ.ಸಂ.(ASCII) ಪಟ್ಟಿ"
-
-#~ msgid "Executed command"
-#~ msgstr "ನಿರ್ವಹಿಸಿದ ಆದೇಶ"
-
-#~ msgid "F_rom document"
-#~ msgstr "ದಸ್ತಾವೇಜಿನಿಂದ"
-
-#~ msgid "First"
-#~ msgstr "ಮೊದಲನೆಯ"
-
-#~ msgid "From _document"
-#~ msgstr "ದಸ್ತಾವೇಜಿನಿಂದ"
-
-#~ msgid "File Name"
-#~ msgstr "ಕಡತದ ಹೆಸರು"
-
-#~ msgid "Load"
-#~ msgstr "ಒದು"
-
-#~ msgid "Author(s)"
-#~ msgstr "ಕರ್ತೃ(ಗಳು)"
-
-#~ msgid "Page"
-#~ msgstr "ಪುಟ"
-
-#~ msgid "Line _numbers:"
-#~ msgstr "ಸಾಲಿನ ಸಂಖ್ಯೆಗಳು:"
-
-#~ msgid "Move down"
-#~ msgstr "ಕಳಗೆ ಹೋಗು"
-
-#~ msgid "Move up"
-#~ msgstr "ಮೇಲೆ  ಹೋಗು"
-
-#~ msgid "Print fonts"
-#~ msgstr "ಅಕ್ಷರ ಶೈಲಿಗಳನ್ನು ಮುದ್ರಿಸು"
-
-#~ msgid "_line(s)"
-#~ msgstr "ಸಾಲು(ಗಳು)"
-
-#~ msgid "sans 12"
-#~ msgstr "ಸ್ಯಾನ್ನ 12"
-
-#~ msgid "De_tails"
-#~ msgstr "ವಿವರಗಳು"
-
-#~ msgid "Open a file."
-#~ msgstr "ಒಂದು ಕಡತವನ್ನು ತೆಗೆ."
-
-#~ msgid "Page: %d"
-#~ msgstr "ಪುಟ:  %d"
-
-#~ msgid "gedit - Print Preview"
-#~ msgstr "ಗೆಡಿಟ್ - ಮುದ್ರಣ ಮುನ್ನೋಟ"
-
-#~ msgid "C_ustomize Statusbar"
-#~ msgstr "ಸ್ಥಿತಿ ಪಟ್ಟಿಕೆಯನ್ನು ಗ್ರಾಹಕೀಯಗೊಳಿಸು"
-
-#~ msgid "Customize"
-#~ msgstr "ಗ್ರಾಹಕೀಯಗೊಳಿಸಿ"
-
-#~ msgid "Customize toolbars"
-#~ msgstr "ಉಪಕರಣ ಪಟ್ಟಿಯನ್ನು ಗ್ರಾಹಕೀಯಗೊಳಿಸಿ"
-
-#~ msgid "Find Again"
-#~ msgstr "ಮತ್ತೆ ಹುಡುಕು"
-
-#~ msgid "Icon and _Text"
-#~ msgstr "ಪ್ರತಿಮೆ ಮತ್ತು ಪಠ್ಯ"
-
-#~ msgid "Croatian"
-#~ msgstr "ಕ್ರೊಯೇಶಿಯನ್"
-
-#~ msgid "Hindi"
-#~ msgstr "ಹಿಂದಿ"
-
-#~ msgid "Farsi"
-#~ msgstr "ಫಾರ್ಸೀ"
-
-#~ msgid "Gujarati"
-#~ msgstr "ಗುಜರಾತಿ"
-
-#~ msgid "Gurmukhi"
-#~ msgstr "ಗುರುಮುಖಿ"
-
-#~ msgid "Icelandic"
-#~ msgstr "ಐಸಲ್ಯಾಂಡಿಕ್"
