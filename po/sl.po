@@ -301,7 +301,7 @@ msgstr "na¹el in zamenjal %i pojavitev."
 
 #: src/dialogs/dialog-replace.c:373 src/dialogs/dialog-replace.c:376
 msgid "Could not allocate the memory for the Replace all request."
-msgstr "Nisem mogel rezervirati spomina za Zamenjaj vse pojavitve."
+msgstr "Nisem mogel rezervirati pomnilnika za Zamenjaj vse pojavitve."
 
 #: src/dialogs/goto-line.glade.h:1
 msgid "Goto Line"
@@ -601,7 +601,7 @@ msgstr ""
 
 #: src/file.c:183 src/file.c:467
 msgid "Could not allocate the required memory."
-msgstr "Nisem mogel rezervirati ¾elenega spomina."
+msgstr "Nisem mogel rezervirati ¾elenega pomnilnika."
 
 #: src/file.c:189
 #, c-format
