@@ -902,7 +902,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences-dialog.c:207
 msgid "Font & Colors"
-msgstr "የፊደል አፃፃፍ ዓይነት እና ቀለሞች"
+msgstr "የፊደል አፃፃፍ ዓይነት እና ቀለማት"
 
 #: src/dialogs/gedit-preferences-dialog.c:209
 #: src/dialogs/gedit-preferences.glade2.h:30
@@ -1048,7 +1048,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:8
 msgid "Colors"
-msgstr "ቀለሞች"
+msgstr "ቀለማት"
 
 #: src/dialogs/gedit-preferences.glade2.h:9
 msgid "Create a _backup copy of files before saving"
@@ -2028,7 +2028,7 @@ msgstr "_ፈልግ"
 
 #: src/gedit-ui.xml.h:90
 msgid "_Help"
-msgstr "_መረጃ"
+msgstr "_ረዳት"
 
 #: src/gedit-ui.xml.h:91
 msgid "_Icon"
