@@ -353,7 +353,7 @@ msgstr "ስም"
 
 #: plugins/ASCII/ascii.c:402 plugins/ASCII/ascii.c:523
 msgid "ASCII table"
-msgstr ""
+msgstr "የASCII ሠንጠረዥ"
 
 #: plugins/ASCII/ascii.c:415
 msgid "_Insert char"
@@ -365,7 +365,7 @@ msgstr ""
 
 #: plugins/ASCII/ascii.c:526
 msgid "Copyright (C) 2001-2002 Paolo Maggi"
-msgstr "የቅጂ መብት (C) 2002 - Paolo Maggi"
+msgstr "የቅጂ መብት (ም) 2002 - Paolo Maggi"
 
 #: plugins/ASCII/asciitable.glade2.h:1
 msgid ""
@@ -380,7 +380,7 @@ msgstr "ፊደል አስገባ"
 
 #: plugins/ASCII/asciitable.glade2.h:5
 msgid "gedit: ASCII table"
-msgstr ""
+msgstr "gedit: የASCII ሠንጠረዥ"
 
 #. AFAIK, all cvs commit messages start with this
 #: plugins/cvschangelog/cvschangelog.c:49
@@ -401,7 +401,7 @@ msgstr "ChangeLogsን የሚከፍተው ተጨማሪው ፕሮግራም መል�
 
 #: plugins/cvschangelog/cvschangelog.c:272
 msgid "Copyright (C) 2002 - James Willcox"
-msgstr "የቅጂው መብት (C) 2002 - James Willcox"
+msgstr "የቅጂው መብት (ም) 2002 - James Willcox"
 
 #: plugins/diff/diff.c:62
 msgid "Co_mpare Files..."
@@ -492,8 +492,8 @@ msgid ""
 "Copyright (C) 2000 - 2001 Chema Celorio \n"
 "Copyright (C) 2002 Paolo Maggi"
 msgstr ""
-"የቅጂው መብት (C) 2000 - 2001 Chema Celorio- \n"
-"የቅጂው መብት (C) 2002 - Paolo Maggi"
+"የቅጂው መብት (ም) 2000 - 2001 Chema Celorio- \n"
+"የቅጂው መብት (ም) 2002 - Paolo Maggi"
 
 #: plugins/diff/diff.glade2.h:1
 msgid "*"
@@ -612,7 +612,7 @@ msgstr ""
 #: plugins/shell_output/shell_output.c:553
 #: plugins/taglist/gedit-taglist-plugin.c:164 plugins/time/time.c:571
 msgid "Copyright (C) 2002 - Paolo Maggi"
-msgstr "የቅጂ መብት (C) 2002 - Paolo Maggi"
+msgstr "የቅጂ መብት (ም) 2002 - Paolo Maggi"
 
 #: plugins/docinfo/docinfo.glade2.h:1
 msgid "0"
@@ -1410,7 +1410,7 @@ msgstr "\"%s\" የተባለው ሐረግ አልተገኘም"
 
 #: src/gedit-commands.c:437
 msgid "translator_credits"
-msgstr "የግዕዝ Frontier Foundation"
+msgstr "ዘግዕዝ Frontier Foundation"
 
 #: src/gedit-commands.c:462
 msgid "gedit"
