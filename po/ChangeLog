@@ -1,3 +1,7 @@
+2001-01-25  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* no.po: Updated Norwegian translation.
+	
 2001-01-25  Gediminas Paulauskas <menesis@delfi.lt>
 
 	* POTFILES.in: replaced *.glade.h with *.glade, and gedit.desktop.in.
