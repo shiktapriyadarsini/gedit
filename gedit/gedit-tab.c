@@ -90,6 +90,7 @@ gedit_tab_get_property (GObject    *object,
 			break;			
 	}
 }
+
 static void
 gedit_tab_finalize (GObject *object)
 {

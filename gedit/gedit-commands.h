@@ -23,7 +23,7 @@
  */
  
 /*
- * Modified by the gedit Team, 1998-2001. See the AUTHORS file for a 
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
  */
@@ -31,44 +31,45 @@
 #ifndef __GEDIT_COMMANDS_H__
 #define __GEDIT_COMMANDS_H__
 
-#include <bonobo/bonobo-ui-component.h>
+#include <gtk/gtkaction.h>
+#include "gedit-window.h"
 
-void gedit_cmd_file_new 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_open 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_save 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_save_as     (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_save_all    (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_revert      (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_open_uri    (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_page_setup  (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_print       (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_print_preview 
-				(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_close       (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_close_all   (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_file_exit        (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
+G_BEGIN_DECLS
 
-void gedit_cmd_edit_undo 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_edit_redo 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_edit_cut 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_edit_copy 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_edit_paste 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_edit_clear 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_edit_select_all 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
+void gedit_cmd_file_new			(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_open		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_save		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_save_as		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_save_all		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_revert		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_open_uri		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_page_setup		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_print_preview	(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_print		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_close		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_close_all		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_file_quit		(GtkAction *action, GeditWindow *window);
 
-void gedit_cmd_search_find      (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_search_find_next	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_search_find_prev	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_search_replace   (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_search_goto_line (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
+void gedit_cmd_edit_undo		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_edit_redo		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_edit_cut			(GtkAction *action, GeditWindow *window);
+void gedit_cmd_edit_copy		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_edit_paste		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_edit_delete		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_edit_select_all		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_edit_preferences		(GtkAction *action, GeditWindow *window);
 
-void gedit_cmd_settings_preferences 
-				(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
+void gedit_cmd_search_find		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_search_find_next		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_search_find_prev		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_search_replace		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_search_goto_line		(GtkAction *action, GeditWindow *window);
 
-void gedit_cmd_documents_move_to_new_window 
-				(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
+void gedit_cmd_documents_move_to_new_window	(GtkAction *action, GeditWindow *window);
 
-void gedit_cmd_help_contents 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
-void gedit_cmd_help_about 	(BonoboUIComponent *uic, gpointer user_data, const gchar* verbname);
+void gedit_cmd_help_contents		(GtkAction *action, GeditWindow *window);
+void gedit_cmd_help_about		(GtkAction *action, GeditWindow *window);
+
+G_END_DECLS
 
 #endif /* __GEDIT_COMMANDS_H__ */ 

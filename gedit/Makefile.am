@@ -32,12 +32,12 @@ BUILT_SOURCES = 			\
 
 
 NON_INST_H_FILS =			\
+	gedit-commands.h		\
 	gedit-file-selector-util.h 	\
 	gedit-io-error-dialogs.h	\
 	gedit-tooltips.h		\
 	gedit-languages-manager.h
 
-#	gedit-commands.h		\
 #	gedit-plugins-engine.h		\
 #	gedit-session.h
 
@@ -80,6 +80,7 @@ header_DATA = 				\
 gedit_SOURCES = 			\
 	$(BUILT_SOURCES)		\
 	gedit.c				\
+	gedit-commands.c		\
 	gedit-document.c 		\
 	gedit-view.c 			\
 	gedit-tab.c 			\
@@ -97,7 +98,6 @@ gedit_SOURCES = 			\
 
 #	gedit2.c			\
 #	gedit-menus.c			\
-#	gedit-commands.c		\
 #	gedit-file.c			\
 #	gedit-print.c			\
 #	gedit-session.c			\

@@ -41,39 +41,44 @@
 #include <libgnome/gnome-url.h>
 
 #include "gedit-commands.h"
-#include "gedit2.h"
-#include "gedit-mdi-child.h"
 #include "gedit-debug.h"
 #include "gedit-view.h"
+#if 0
 #include "gedit-file.h"
 #include "gedit-print.h"
 #include "dialogs/gedit-dialogs.h"
 #include "dialogs/gedit-preferences-dialog.h"
 #include "dialogs/gedit-page-setup-dialog.h"
+#endif
 
-void 
-gedit_cmd_file_new (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+void
+gedit_cmd_file_new (GtkAction *action, GeditWindow *window)
 {
-	gedit_debug (DEBUG_COMMANDS, "verbname: %s", verbname);
+#if 0
+	gedit_debug (DEBUG_COMMANDS, "");
 
 	gedit_file_new ();
+#endif
 }
 
-void 
-gedit_cmd_file_open (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+void
+gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	BonoboMDIChild *active_child;
-	
+
 	gedit_debug (DEBUG_COMMANDS, "");
 
 	active_child = bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi));
 
 	gedit_file_open ((GeditMDIChild*) active_child);
+#endif
 }
 
-void 
-gedit_cmd_file_save (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+void
+gedit_cmd_file_save (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GeditMDIChild *active_child;
 	GtkWidget *active_view;
 
@@ -84,60 +89,70 @@ gedit_cmd_file_save (BonoboUIComponent *uic, gpointer user_data, const gchar* ve
 	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
 	if (active_child == NULL)
 		return;
-	
+
 	if (active_view != NULL)
 		gtk_widget_grab_focus (active_view);
 
 	gedit_file_save (active_child, TRUE);
-}
-
-void 
-gedit_cmd_file_save_as (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
-{
-	GeditMDIChild *active_child;
-	
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
-	if (active_child == NULL)
-		return;
-	
-	gedit_file_save_as (active_child);
-}
-
-void 
-gedit_cmd_file_save_all (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
-{
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	gedit_file_save_all ();
-}
-
-void 
-gedit_cmd_file_revert (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
-{
-	GeditMDIChild *active_child;
-	
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
-	if (active_child == NULL)
-		return;
-	
-	gedit_file_revert (active_child);
-}
-
-void 
-gedit_cmd_file_open_uri (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
-{
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	gedit_dialog_open_uri ();
+#endif
 }
 
 void
-gedit_cmd_file_page_setup (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_file_save_as (GtkAction *action, GeditWindow *window)
 {
+#if 0
+	GeditMDIChild *active_child;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
+	if (active_child == NULL)
+		return;
+
+	gedit_file_save_as (active_child);
+#endif
+}
+
+void
+gedit_cmd_file_save_all (GtkAction *action, GeditWindow *window)
+{
+#if 0
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	gedit_file_save_all ();
+#endif
+}
+
+void
+gedit_cmd_file_revert (GtkAction *action, GeditWindow *window)
+{
+#if 0
+	GeditMDIChild *active_child;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
+	if (active_child == NULL)
+		return;
+
+	gedit_file_revert (active_child);
+#endif
+}
+
+void
+gedit_cmd_file_open_uri (GtkAction *action, GeditWindow *window)
+{
+#if 0
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	gedit_dialog_open_uri ();
+#endif
+}
+
+void
+gedit_cmd_file_page_setup (GtkAction *action, GeditWindow *window)
+{
+#if 0
 	BonoboWindow *active_window;
 
 	gedit_debug (DEBUG_COMMANDS, "");
@@ -146,31 +161,13 @@ gedit_cmd_file_page_setup (BonoboUIComponent *uic, gpointer user_data, const gch
 	g_return_if_fail (active_window != NULL);
 
 	gedit_show_page_setup_dialog (GTK_WINDOW (active_window));
+#endif
 }
 
 void
-gedit_cmd_file_print (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_file_print_preview (GtkAction *action, GeditWindow *window)
 {
-	GeditDocument *doc;
-	GtkWidget *active_view;
-	
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	doc = gedit_get_active_document ();
-	if (doc == NULL)	
-		return;
-	
-	active_view = gedit_get_active_view ();
-
-	if (active_view != NULL)
-		gtk_widget_grab_focus (active_view);
-
-	gedit_print (doc);
-}
-
-void
-gedit_cmd_file_print_preview (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
-{
+#if 0
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_COMMANDS, "");
@@ -180,13 +177,37 @@ gedit_cmd_file_print_preview (BonoboUIComponent *uic, gpointer user_data, const 
 		return;
 	
 	gedit_print_preview (doc);
+#endif
+}
+
+void
+gedit_cmd_file_print (GtkAction *action, GeditWindow *window)
+{
+#if 0
+	GeditDocument *doc;
+	GtkWidget *active_view;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	doc = gedit_get_active_document ();
+	if (doc == NULL)	
+		return;
+
+	active_view = gedit_get_active_view ();
+
+	if (active_view != NULL)
+		gtk_widget_grab_focus (active_view);
+
+	gedit_print (doc);
+#endif
 }
 
 void 
-gedit_cmd_file_close (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_file_close (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
-	
+
 	gedit_debug (DEBUG_COMMANDS, "");
 
 	active_view = gedit_get_active_view ();
@@ -194,27 +215,33 @@ gedit_cmd_file_close (BonoboUIComponent *uic, gpointer user_data, const gchar* v
 		return;
 
 	gedit_file_close (active_view);
+#endif
 }
 
 void 
-gedit_cmd_file_close_all (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_file_close_all (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	gedit_debug (DEBUG_COMMANDS, "");
 
 	gedit_file_close_all ();
+#endif
 }
 
-void 
-gedit_cmd_file_exit (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+void
+gedit_cmd_file_quit (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	gedit_debug (DEBUG_COMMANDS, "");
 
 	gedit_file_exit ();	
+#endif
 }
 
 void 
-gedit_cmd_edit_undo (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_edit_undo (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 	GeditDocument *active_document;
 
@@ -229,11 +256,13 @@ gedit_cmd_edit_undo (BonoboUIComponent *uic, gpointer user_data, const gchar* ve
 	gedit_view_scroll_to_cursor (GEDIT_VIEW (active_view));
 
 	gtk_widget_grab_focus (active_view);
+#endif
 }
 
 void 
-gedit_cmd_edit_redo (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_edit_redo (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 	GeditDocument *active_document;
 
@@ -248,11 +277,13 @@ gedit_cmd_edit_redo (BonoboUIComponent *uic, gpointer user_data, const gchar* ve
 	gedit_view_scroll_to_cursor (GEDIT_VIEW (active_view));
 
 	gtk_widget_grab_focus (active_view);
+#endif
 }
 
 void 
-gedit_cmd_edit_cut (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_edit_cut (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 
 	active_view = gedit_get_active_view ();
@@ -261,11 +292,13 @@ gedit_cmd_edit_cut (BonoboUIComponent *uic, gpointer user_data, const gchar* ver
 	gedit_view_cut_clipboard (GEDIT_VIEW (active_view)); 
 
 	gtk_widget_grab_focus (active_view);
+#endif
 }
 
 void 
-gedit_cmd_edit_copy (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_edit_copy (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 
 	active_view = gedit_get_active_view ();
@@ -274,11 +307,13 @@ gedit_cmd_edit_copy (BonoboUIComponent *uic, gpointer user_data, const gchar* ve
 	gedit_view_copy_clipboard (GEDIT_VIEW (active_view));
 
 	gtk_widget_grab_focus (active_view);
+#endif
 }
 
 void 
-gedit_cmd_edit_paste (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_edit_paste (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 
 	active_view = gedit_get_active_view ();
@@ -287,11 +322,13 @@ gedit_cmd_edit_paste (BonoboUIComponent *uic, gpointer user_data, const gchar* v
 	gedit_view_paste_clipboard (GEDIT_VIEW (active_view));
 
 	gtk_widget_grab_focus (active_view);
+#endif
 }
 
 void 
-gedit_cmd_edit_clear (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_edit_delete (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 
 	active_view = gedit_get_active_view ();
@@ -300,11 +337,13 @@ gedit_cmd_edit_clear (BonoboUIComponent *uic, gpointer user_data, const gchar* v
 	gedit_view_delete_selection (GEDIT_VIEW (active_view));
 
 	gtk_widget_grab_focus (active_view);
+#endif
 }
 
 void
-gedit_cmd_edit_select_all (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_edit_select_all (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkTextIter start, end;
 	GtkWidget *active_view;
 	GeditDocument *active_doc;
@@ -319,11 +358,28 @@ gedit_cmd_edit_select_all (BonoboUIComponent *uic, gpointer user_data, const gch
 	gtk_text_buffer_select_range (GTK_TEXT_BUFFER (active_doc), &start, &end);
 
 	gtk_widget_grab_focus (active_view);
+#endif
+}
+
+void
+gedit_cmd_edit_preferences (GtkAction *action, GeditWindow *window)
+{
+#if 0
+	BonoboWindow *active_window;
+
+	gedit_debug (DEBUG_COMMANDS, "");
+
+	active_window = gedit_get_active_window ();
+	g_return_if_fail (active_window != NULL);
+
+	gedit_show_preferences_dialog (GTK_WINDOW (active_window));
+#endif
 }
 
 void 
-gedit_cmd_search_find (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 
 	gedit_debug (DEBUG_COMMANDS, "");
@@ -334,11 +390,13 @@ gedit_cmd_search_find (BonoboUIComponent *uic, gpointer user_data, const gchar* 
 		gtk_widget_grab_focus (active_view);
 
 	gedit_dialog_find ();
+#endif
 }
 
 static void 
 search_find_again (GeditDocument *doc, gchar *last_searched_text, gboolean backward)
 {
+#if 0
 	gpointer data;
 	gboolean found;
 	gboolean was_wrap_around;
@@ -398,11 +456,13 @@ search_find_again (GeditDocument *doc, gchar *last_searched_text, gboolean backw
 
 		gedit_view_scroll_to_cursor (GEDIT_VIEW (active_view));
 	}
+#endif
 }
 
 void 
-gedit_cmd_search_find_next (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_search_find_next (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GeditDocument *doc;
 	gchar* last_searched_text;
 	
@@ -423,11 +483,13 @@ gedit_cmd_search_find_next (BonoboUIComponent *uic, gpointer user_data, const gc
 	}
 
 	g_free (last_searched_text);
+#endif
 }
 
 void 
-gedit_cmd_search_find_prev (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_search_find_prev (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GeditDocument *doc;
 	gchar* last_searched_text;
 	
@@ -448,11 +510,13 @@ gedit_cmd_search_find_prev (BonoboUIComponent *uic, gpointer user_data, const gc
 	}
 
 	g_free (last_searched_text);
+#endif
 }
 
 void 
-gedit_cmd_search_replace (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_search_replace (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GtkWidget *active_view;
 	
 	gedit_debug (DEBUG_COMMANDS, "");
@@ -463,32 +527,23 @@ gedit_cmd_search_replace (BonoboUIComponent *uic, gpointer user_data, const gcha
 		gtk_widget_grab_focus (active_view);
 
 	gedit_dialog_replace ();
+#endif
 }
 
 void 
-gedit_cmd_search_goto_line (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_search_goto_line (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	gedit_debug (DEBUG_COMMANDS, "");
 
 	gedit_dialog_goto_line ();
+#endif
 }
 
 void
-gedit_cmd_settings_preferences (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_documents_move_to_new_window (GtkAction *action, GeditWindow *window)
 {
-	BonoboWindow *active_window;
-
-	gedit_debug (DEBUG_COMMANDS, "");
-
-	active_window = gedit_get_active_window ();
-	g_return_if_fail (active_window != NULL);
-
-	gedit_show_preferences_dialog (GTK_WINDOW (active_window));
-}
-
-void
-gedit_cmd_documents_move_to_new_window (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
-{
+#if 0
 	GtkWidget *view;
 
 	gedit_debug (DEBUG_COMMANDS, "");
@@ -497,23 +552,26 @@ gedit_cmd_documents_move_to_new_window (BonoboUIComponent *uic, gpointer user_da
 	g_return_if_fail (view != NULL);
 
 	bonobo_mdi_move_view_to_new_window (BONOBO_MDI (gedit_mdi), view);
+#endif
 }
 
 void 
-gedit_cmd_help_contents (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+gedit_cmd_help_contents (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GError *error = NULL;
 
 	gedit_debug (DEBUG_COMMANDS, "");
 
 	gnome_help_display ("gedit.xml", NULL, &error);
-	
+
 	if (error != NULL)
 	{
 		g_warning (error->message);
 
 		g_error_free (error);
 	}
+#endif
 }
 
 static void
@@ -522,8 +580,8 @@ activate_url (GtkAboutDialog *about, const gchar *url, gpointer data)
 	gnome_url_show (url, NULL);
 }
 
-void 
-gedit_cmd_help_about (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+void
+gedit_cmd_help_about (GtkAction *action, GeditWindow *window)
 {
 	static GtkWidget *about = NULL;
 
@@ -551,20 +609,18 @@ gedit_cmd_help_about (BonoboUIComponent *uic, gpointer user_data, const gchar* v
 	const gchar *comments = _("gedit is a small and lightweight text editor for the GNOME Desktop");
 
 	/* Translators: This is a special message that shouldn't be translated
-                literally. It is used in the about box to give credits to
-                the translators.
-                Thus, you should translate it to your name and email address.
-                You can also include other translators who have contributed to
-                this translation; in that case, please write them on separate
-                lines seperated by newlines (\n). */
+	   literally. It is used in the about box to give credits to the translators.
+	   Thus, you should translate it to your name and email address.
+	   You can also include other translators who have contributed to
+	   this translation; in that case, please write them on separate
+	   lines seperated by newlines (\n). */
 	const gchar *translator_credits = _("translator-credits");
 
 	gedit_debug (DEBUG_COMMANDS, "");
 
 	if (about != NULL)
 	{
-		gtk_window_set_transient_for (GTK_WINDOW (about),
-					      GTK_WINDOW (gedit_get_active_window ()));
+		gtk_window_set_transient_for (GTK_WINDOW (about), GTK_WINDOW (window));
 		gtk_window_present (GTK_WINDOW (about));
 
 		return;
@@ -574,7 +630,6 @@ gedit_cmd_help_about (BonoboUIComponent *uic, gpointer user_data, const gchar* v
 
 	gtk_about_dialog_set_url_hook (activate_url, NULL, NULL);
 
-	
 	about = g_object_new (GTK_TYPE_ABOUT_DIALOG,
 			      "name", _("gedit"),
 			      "version", VERSION,
@@ -592,8 +647,7 @@ gedit_cmd_help_about (BonoboUIComponent *uic, gpointer user_data, const gchar* v
 	g_signal_connect (about, "response", G_CALLBACK (gtk_widget_destroy), NULL);
 	g_signal_connect (about, "destroy", G_CALLBACK (gtk_widget_destroyed), &about);
 
-	gtk_window_set_transient_for (GTK_WINDOW (about),
-				      GTK_WINDOW (gedit_get_active_window ()));
+	gtk_window_set_transient_for (GTK_WINDOW (about), GTK_WINDOW (window));
 	gtk_window_present (GTK_WINDOW (about));
 
 	if (logo)
