@@ -1873,7 +1873,7 @@ msgstr "የአሁኑን ፋይል አትም"
 
 #: src/gedit-ui.xml.h:48
 msgid "Quit"
-msgstr "ወጣ"
+msgstr "ውጣ"
 
 #: src/gedit-ui.xml.h:49
 msgid "Quit the program"
