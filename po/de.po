@@ -6,15 +6,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.4.x\n"
-"POT-Creation-Date: 2003-08-26 23:48+0200\n"
-"PO-Revision-Date: 2003-06-28 13:02+0200\n"
+"Project-Id-Version: gedit 2.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-26 23:34+0200\n"
+"PO-Revision-Date: 2003-09-26 23:48+0200\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
@@ -30,7 +30,7 @@ msgstr "gedit-Ansichtsfabrik"
 
 #: data/GNOME_Gedit.server.in.in.h:4
 msgid "Source"
-msgstr "Quelle"
+msgstr "Quelltext"
 
 #: data/GNOME_Gedit.server.in.in.h:5
 msgid "gedit application"
@@ -44,7 +44,7 @@ msgstr "gedit-Automatisierungsfabrik"
 msgid "Edit text files"
 msgstr "Textdateien bearbeiten"
 
-#: data/gedit.desktop.in.h:2 gedit/gedit2.c:364
+#: data/gedit.desktop.in.h:2 gedit/gedit2.c:365
 msgid "Text Editor"
 msgstr "Texteditor"
 
@@ -474,7 +474,7 @@ msgid "_Go to Line"
 msgstr "_Gehe zu Zeile"
 
 #: gedit/dialogs/gedit-dialog-goto-line.c:186
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:100
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:108
 #: plugins/spell/gedit-spell-language-dialog.c:233
 #, c-format
 msgid "Could not find the required widgets inside %s."
@@ -613,12 +613,12 @@ msgstr ""
 "Ungültige Glade-Datei für Pluginverwaltung -- nicht alle Widgets wurden "
 "gefunden.\n"
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:78
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
 #: gedit/dialogs/program-location-dialog.glade2.h:2
 msgid "Set program location..."
 msgstr "Programmort angeben..."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:106
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:115
 #, c-format
 msgid ""
 "The %s plugin uses an external program, called <tt>%s</tt>, to perform its "
@@ -631,7 +631,7 @@ msgstr ""
 "\n"
 "Bitte geben Sie den Ort des Programms <tt>%s</tt> an."
 
-#: gedit/dialogs/gedit-plugin-program-location-dialog.c:152
+#: gedit/dialogs/gedit-plugin-program-location-dialog.c:167
 msgid "The selected file is not executable."
 msgstr "Die gewählte Datei ist nicht ausführbar."
 
@@ -2422,76 +2422,76 @@ msgstr "  ÜBS"
 msgid "  INS"
 msgstr "  EIN"
 
-#: gedit/gedit2.c:81
+#: gedit/gedit2.c:82
 msgid "Show utility debugging messages."
 msgstr "Fehlerdiagnosemeldungen zum Werkzeug anzeigen."
 
-#: gedit/gedit2.c:84
+#: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
 msgstr "Fehlerdiagnosemeldungen zu den Metadaten anzeigen."
 
-#: gedit/gedit2.c:87
+#: gedit/gedit2.c:88
 msgid "Show mdi debugging messages."
 msgstr "MDI-Fehlerdiagnosemeldungen anzeigen."
 
-#: gedit/gedit2.c:90
+#: gedit/gedit2.c:91
 msgid "Show commands debugging messages."
 msgstr "Fehlerdiagnosemeldungen zu Befehlen anzeigen."
 
-#: gedit/gedit2.c:93
+#: gedit/gedit2.c:94
 msgid "Show document debugging messages."
 msgstr "Fehlerdiagnosemeldungen zu Dokumenten anzeigen."
 
-#: gedit/gedit2.c:96
+#: gedit/gedit2.c:97
 msgid "Show file debugging messages."
 msgstr "Datei-Diagnosemeldungen anzeigen."
 
-#: gedit/gedit2.c:99
+#: gedit/gedit2.c:100
 msgid "Show plugin debugging messages."
 msgstr "Fehlerdiagnosemeldungen zu Dateien anzeigen."
 
-#: gedit/gedit2.c:102
+#: gedit/gedit2.c:103
 msgid "Show prefs debugging messages."
 msgstr "Fehlerdiagnosemeldungen zu den Einstellungen anzeigen."
 
-#: gedit/gedit2.c:105
+#: gedit/gedit2.c:106
 msgid "Show printing debugging messages."
 msgstr "Fehlerdiagnosemeldungen zum Drucken anzeigen."
 
-#: gedit/gedit2.c:108
+#: gedit/gedit2.c:109
 msgid "Show search debugging messages."
 msgstr "Fehlerdiagnosemeldungen zur Suche anzeigen."
 
-#: gedit/gedit2.c:111
+#: gedit/gedit2.c:112
 msgid "Show undo debugging messages."
 msgstr "Fehlerdiagnosemeldungen zum rückgängig Machen anzeigen."
 
-#: gedit/gedit2.c:114
+#: gedit/gedit2.c:115
 msgid "Show view debugging messages."
 msgstr "Fehlerdiagnosemeldungen zur Ansicht anzeigen."
 
-#: gedit/gedit2.c:117
+#: gedit/gedit2.c:118
 msgid "Show recent debugging messages."
 msgstr "Fehlerdiagnosemeldungen zur Liste zuletzt geöffneter Dateien anzeigen."
 
-#: gedit/gedit2.c:120
+#: gedit/gedit2.c:121
 msgid "Show session management debugging messages."
 msgstr "Fehlerdiagnosemeldungen zur Sitzungsverwaltung anzeigen."
 
-#: gedit/gedit2.c:123
+#: gedit/gedit2.c:124
 msgid "Turn on all debugging messages."
 msgstr "Alle Fehlerdiagnosemeldungen anzeigen."
 
-#: gedit/gedit2.c:126
+#: gedit/gedit2.c:127
 msgid "Quit an existing instance of gedit"
 msgstr "Eine existierende Instanz von gedit beenden"
 
-#: gedit/gedit2.c:129
+#: gedit/gedit2.c:130
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr ""
 "Ein neues Hauptfenster in einer existierenden Instanz von gedit erstellen"
 
-#: gedit/gedit2.c:132
+#: gedit/gedit2.c:133
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Ein neues Dokument in einer existierenden Instanz von gedit erstellen"
 
@@ -3025,20 +3025,20 @@ msgstr ""
 "Das Floskellisten-Plugin bietet die Möglichkeit, häufig verwendete Floskeln "
 "und Zeichenketten in ein Dokument einzufügen, ohne sie eingeben zu müssen."
 
-#: plugins/time/time.c:48
+#: plugins/time/time.c:50
 msgid "In_sert Date and Time..."
 msgstr "_Datum und Uhrzeit einfügen..."
 
-#: plugins/time/time.c:51
+#: plugins/time/time.c:53
 msgid "Insert current date and time at the cursor position"
 msgstr ""
 "Das heutige Datum und die aktuelle Uhrzeit an der Cursorposition einfügen"
 
-#: plugins/time/time.c:448
+#: plugins/time/time.c:450
 msgid "Available formats"
 msgstr "Verfügbare Formate"
 
-#: plugins/time/time.c:552
+#: plugins/time/time.c:554
 msgid "Configure insert date/time plugin..."
 msgstr "Das Plugin »Datum/Uhrzeit einfügen« konfigurieren..."
 
