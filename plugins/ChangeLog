@@ -1,3 +1,7 @@
+2004-10-17  Paolo Borelli  <pborelli@katamail.com>
+
+	* shell_output/shell_output.c: use proper help section.
+
 2004-09-15  Vinay M R  <vinay.mandyakoppal@wipro.com>
 
 	* time/time.c: Help invocation for "Insert date and time" is
