@@ -59,7 +59,7 @@
       <menuitem name="EditDeleteMenu" action="EditDelete"/>
       <separator/>
       <menuitem name="EditSelectAllMenu" action="EditSelectAll"/>
-      <separator name="EditSep3"/>
+      <separator/>
       <menuitem name="EditPreferencesMenu" action="EditPreferences"/>
     </menu>
 
@@ -87,7 +87,7 @@
     <menu name="DocumentsMenu" action="Documents">
       <menuitem action="FileSaveAll" />
       <menuitem action="FileCloseAll" />
-      <separator name="DocumentSep1"/>       
+      <separator/>       
       <menuitem action="DocumentsMoveToNewWindow"/>
       <placeholder name="DocumentsListPlaceholder">
         <separator/>
