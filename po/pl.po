@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2003-01-24 22:56+0100\n"
-"PO-Revision-Date: 2003-02-04 18:04+0100\n"
+"POT-Creation-Date: 2003-02-21 22:05+0100\n"
+"PO-Revision-Date: 2003-02-21 22:13+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -50,9 +50,8 @@ msgid "Auto Save Interval"
 msgstr "Okres pomiędzy automatycznymi zapisami"
 
 #: data/gedit.schemas.in.h:1
-#, fuzzy
 msgid "Auto indent"
-msgstr "Przejdź do wiersza"
+msgstr "Automatyczne wcięcia"
 
 #: data/gedit.schemas.in.h:1
 msgid "Background Color"
@@ -146,9 +145,8 @@ msgstr ""
 "wierszy, ile wynosi podana wartość."
 
 #: data/gedit.schemas.in.h:1
-#, fuzzy
 msgid "Insert spaces"
-msgstr "Wstaw na_zwę użytkownika"
+msgstr "Wstawianie spacji"
 
 #: data/gedit.schemas.in.h:1
 msgid "Line Number Font for Printing"
@@ -284,7 +282,6 @@ msgid "Status Bar is Visible"
 msgstr "Wyświetlanie paska stanu"
 
 #: data/gedit.schemas.in.h:1
-#, fuzzy
 msgid ""
 "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" "
 "to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons "
@@ -293,13 +290,14 @@ msgid ""
 "Note that the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"Ustawienie określa styl przycisków na pasku narzędziowym. Akceptowane "
-"wartości to: \"GEDIT_TOOLBAR_SYSTEM\", powodująca użycie domyślnego stylu w "
-"systemie, \"GEDIT_TOOLBAR_ICONS\", powodująca wyświetlanie wyłącznie ikon "
-"oraz \"GEDIT_TOOLBAR_ICONS_AND_TEXT\", która oznacza wyświetlanie ikon wraz "
-"z tekstem. Należy pamiętać o tym, że przy odczytywaniu wartości rozpoznawane "
-"są małe i wielkie litery, więc powinny być one wpisane dokładnie w podanej "
-"postaci."
+"Ustawienie określa styl przycisków na pasku narzędziowym. Dopuszczalnymi "
+"wartościami są: \"GEDIT_TOOLBAR_SYSTEM\", powodująca użycie domyślnego stylu "
+"w systemie, \"GEDIT_TOOLBAR_ICONS\", powodująca wyświetlanie wyłącznie ikon, "
+"\"GEDIT_TOOLBAR_ICONS_AND_TEXT\", która oznacza wyświetlanie ikon wraz z "
+"tekstem oraz \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\", po użyciu której obok ikon "
+"wyświetlane są najważniejsze napisy. Należy pamiętać o tym, że przy "
+"odczytywaniu wartości rozpoznawane są małe i wielkie litery, więc powinny "
+"być one wpisane dokładnie w podanej postaci."
 
 #: data/gedit.schemas.in.h:1
 msgid "Tab Size"
@@ -382,11 +380,8 @@ msgstr ""
 "redagowania."
 
 #: data/gedit.schemas.in.h:1
-#, fuzzy
 msgid "Whether gedit should enable auto indentation."
-msgstr ""
-"Określa, czy program gedit powinien dołączać nagłówek dokumentu przy "
-"drukowaniu."
+msgstr "Określa, czy program gedit powinien automatycznie tworzyć wcięcia"
 
 #: data/gedit.schemas.in.h:1
 msgid "Whether gedit should include a document header when printing documents."
@@ -853,7 +848,7 @@ msgstr "Po_lecenie:"
 
 #: plugins/shell_output/shell_output.glade2.h:1
 msgid "Select the working directory..."
-msgstr ""
+msgstr "Wybór katalogu roboczego..."
 
 #: plugins/shell_output/shell_output.glade2.h:1
 msgid "_Show results in Output Window"
@@ -884,9 +879,8 @@ msgid "Tag list plugin"
 msgstr "Wtyczka listy znaczników"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:1
-#, fuzzy
 msgid "Select the group of tags you want to use"
-msgstr "Wybierz grupę znaczników do użycia"
+msgstr "Określa wyświetlaną grupę znaczników"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:1
 msgid "Tag Groups Combo"
@@ -940,9 +934,8 @@ msgid "Available formats"
 msgstr "Dostępne formaty"
 
 #: plugins/time/time.c:1
-#, fuzzy
 msgid "Configure insert date/time plugin..."
-msgstr "Konfiguracja wtyczki wstawiania daty/czasu"
+msgstr "Konfiguracja wtyczki wstawiania daty/czasu..."
 
 #: plugins/time/time.glade2.h:1 src/dialogs/gedit-preferences.glade2.h:1
 msgid "    "
@@ -989,37 +982,32 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Wstawia na pozycji kursora bieżącą datę i czas."
 
 #: plugins/indent/indent.c:1
-#, fuzzy
 msgid "_Indent"
-msgstr "_Zawartość"
+msgstr ""
 
 #: plugins/indent/indent.c:1
-#, fuzzy
 msgid "Indent selected lines"
-msgstr "Konfiguruje wybraną wtyczkę"
+msgstr ""
 
 #: plugins/indent/indent.c:1
 msgid "U_nindent"
 msgstr ""
 
 #: plugins/indent/indent.c:1
-#, fuzzy
 msgid "Unindent selected lines"
-msgstr "Konfiguruje wybraną wtyczkę"
+msgstr ""
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:1
-#, fuzzy
 msgid "Indent lines"
-msgstr " wierszy"
+msgstr ""
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:1
 msgid "Indent or un-indent selected lines."
 msgstr ""
 
 #: plugins/sort/sort.glade2.h:1
-#, fuzzy
 msgid "R_emove duplicates"
-msgstr "Dodaje/Usuwa wtyczki"
+msgstr ""
 
 #: plugins/sort/sort.glade2.h:1
 msgid "S_tart at column:"
@@ -1082,7 +1070,7 @@ msgstr "Podpowiedzi"
 
 #: plugins/spell/gedit-spell-checker-dialog.c:1
 msgid "(correct spelling)"
-msgstr ""
+msgstr "(poprawna pisownia)"
 
 #: plugins/spell/gedit-spell-checker-dialog.c:1
 msgid "Completed spell checking"
@@ -1353,9 +1341,8 @@ msgid "Found and replaced %d occurences."
 msgstr "Znaleziono i zmieniono %d wystąpień."
 
 #: src/dialogs/gedit-dialog-uri.c:1
-#, fuzzy
 msgid "Open Location"
-msgstr "Otwórz z położenia..."
+msgstr ""
 
 #: src/dialogs/gedit-plugin-manager.c:1
 msgid "Plugin"
@@ -1421,9 +1408,8 @@ msgid "Wrap Mode"
 msgstr "Tryb zawijania"
 
 #: src/dialogs/gedit-preferences-dialog.c:1
-#, fuzzy
 msgid "Auto Indent"
-msgstr "Automatyczny zapis"
+msgstr ""
 
 #: src/dialogs/gedit-preferences-dialog.c:1
 msgid "Line Numbers"
@@ -1538,19 +1524,19 @@ msgstr "<b>Czcionka</b>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Auto Indent</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Automatyczne wcięcia</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Font &amp; Colors</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Czcionki i kolory</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Fonts</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Czcionki</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Line Numbers</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Numery wierszy</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Manager</span>"
@@ -1562,7 +1548,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Page</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Strona</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Save</span>"
@@ -1570,7 +1556,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Tabs</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"x-large\">Zakładki</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\" size=\"x-large\">Undo</span>"
@@ -1582,7 +1568,7 @@ msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\">Colors</span>"
-msgstr ""
+msgstr "<span weight=\"bold\">Kolory</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "<span weight=\"bold\">When saving a new file...</span>"
@@ -1630,7 +1616,7 @@ msgstr "Czcionki i kolory"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Insert _spaces instead of tabs"
-msgstr ""
+msgstr "Wstawianie _spacji zamiast tabulacji"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "LOGO"
@@ -1646,11 +1632,11 @@ msgstr "Numery wierszy"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Move down"
-msgstr ""
+msgstr "W dół"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Move up"
-msgstr ""
+msgstr "W górę"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Page he_aders:"
@@ -1697,9 +1683,8 @@ msgid "Selecte_d text color:"
 msgstr "Kolor zaznaczonego t_ekstu:"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
-#, fuzzy
 msgid "Set _tabs width equivalent to"
-msgstr "Traktowanie znaku _tabulacji jako odpowiednika "
+msgstr "Znak _tabulacji jako odpowiednik "
 
 #: src/dialogs/gedit-preferences.glade2.h:1
 msgid "Set limit on _undo actions to"
@@ -1762,24 +1747,20 @@ msgid "_Use default theme font"
 msgstr "Używanie _domyślnej czcionki motywu"
 
 #: src/dialogs/gedit-preferences.glade2.h:1
-#, fuzzy
 msgid "_action(s)"
-msgstr "operacji"
+msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:1
-#, fuzzy
 msgid "_minutes"
-msgstr "minuty"
+msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:1
-#, fuzzy
 msgid "character(s)"
-msgstr " znaków"
+msgstr ""
 
 #: src/dialogs/gedit-preferences.glade2.h:1
-#, fuzzy
 msgid "li_ne(s)"
-msgstr " wierszy"
+msgstr ""
 
 #: src/dialogs/gnome-print-font-dialog.c:1
 msgid "_Insert a new preview phrase."
@@ -1803,7 +1784,7 @@ msgstr "Wybór czcionki"
 
 #: src/dialogs/gnome-print-font-picker.c:1
 msgid "Sans Regular 12"
-msgstr ""
+msgstr "Sans Regular 12"
 
 #: src/dialogs/gnome-print-font-picker.c:1
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
@@ -1930,9 +1911,8 @@ msgid "_Search for: "
 msgstr "Wyszukiwany _tekst: "
 
 #: src/dialogs/replace.glade2.h:1
-#, fuzzy
 msgid "_Wrap around"
-msgstr "Tryb zawijania"
+msgstr ""
 
 #: src/dialogs/uri.glade2.h:1
 msgid "Enter the _location (URI) of the file you would like to open:"
@@ -2051,9 +2031,9 @@ msgid "Loaded file '%s'"
 msgstr "Wczytano plik \"%s\""
 
 #: src/gedit-file.c:1 src/gedit-file.c:1
-#, fuzzy, c-format
+#, c-format
 msgid "Saving file '%s'..."
-msgstr "Zapisywanie pliku \"%s\" ..."
+msgstr "Zapisywanie pliku \"%s\"..."
 
 #: src/gedit-file.c:1 src/gedit-file.c:1
 msgid "The document has not been saved."
@@ -2069,15 +2049,15 @@ msgid "Save as..."
 msgstr "Wybór pliku do zapisu..."
 
 #: src/gedit-file.c:1
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Do you want to revert to saved the document '%s'?\n"
 "\n"
 "You will not be able to undo this operation."
 msgstr ""
-"Czy chcesz zapisać zmiany naniesione w dokumencie \"%s\"?\n"
+"Czy chcesz przywrócić zapisaną wersję dokumentu \"%s\"?\n"
 "\n"
-"Niezapisane zmiany zostaną utracone."
+"Cofnięcie tej operacji nie będzie możliwe."
 
 #: src/gedit-file.c:1 src/gedit-ui.xml.h:1
 msgid "_Revert"
@@ -3013,9 +2993,8 @@ msgid "  INS"
 msgstr "  WST"
 
 #: src/gedit2.c:1
-#, fuzzy
 msgid "Show utility debugging messages."
-msgstr "Komunikaty debugowania pliku."
+msgstr "Komunikaty debugowania narzędzi."
 
 #: src/gedit2.c:1
 msgid "Show mdi debugging messages."
