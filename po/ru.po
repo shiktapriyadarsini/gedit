@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-0.5.5\n"
-"POT-Creation-Date: 2000-12-18 17:34+0300\n"
-"PO-Revision-Date: 2000-12-18 17:35+03:00\n"
+"POT-Creation-Date: 2001-01-09 17:35+0300\n"
+"PO-Revision-Date: 2001-01-09 17:36+03:00\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -581,11 +581,6 @@ msgstr "Описание дополнения"
 msgid "RO - "
 msgstr "Только чтение - "
 
-#: src/document.c:269
-#, c-format
-msgid "%s %d"
-msgstr "%s %d"
-
 #: src/document.c:443
 #, c-format
 msgid "``%s'' has been modified.  Do you wish to save it?"
@@ -1013,11 +1008,11 @@ msgid "Error, init_plugin returned an error"
 msgstr "Ошибка, init_plugin вернула ошибку"
 
 #: src/plugin.c:349
-msgid "Error, the plugin did not specified a description"
+msgid "Error, the plugin did not specify a description"
 msgstr "Ошибка, у дополнения не указано описание"
 
 #: src/plugin.c:354
-msgid "Error, the plugin did not specified a long description"
+msgid "Error, the plugin did not specify a long description"
 msgstr "Ошибка, у дополнения не указано подробное описание"
 
 #: src/plugin.c:391
@@ -1101,3 +1096,6 @@ msgstr ""
 #: src/view.c:963
 msgid "You can't remove the last view of a document."
 msgstr "Вы не можете удалить последнее окно документа."
+
+#~ msgid "%s %d"
+#~ msgstr "%s %d"
