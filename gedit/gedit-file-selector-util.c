@@ -415,7 +415,11 @@ create_gtk_selector (GtkWindow *parent,
 		gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (filesel), default_path);
 
 	if (default_filename)
-		gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (filesel), default_filename);
+	{
+		/* This is a sort of hack but should work quite well */
+		if (!gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (filesel), default_filename))
+			gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (filesel), default_filename);
+	}
 
 	if (mode == FILESEL_OPEN_MULTI) 
 		gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (filesel), TRUE);
@@ -448,6 +452,9 @@ run_file_selector (GtkWindow  *parent,
 	SET_MODE (dialog, mode);
 	SET_ENABLE_VFS (dialog, enable_vfs);
 	
+	gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (dialog), 
+					 !enable_vfs);
+
 	gtk_window_set_modal (dialog, TRUE);
 
 	gtk_widget_show_all (GTK_WIDGET (dialog));

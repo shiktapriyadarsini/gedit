@@ -370,12 +370,9 @@ gedit_file_save_as (GeditMDIChild *child)
 		path = (gedit_default_path != NULL) ? 
 			g_strdup (gedit_default_path) : NULL;
 
-		tmpstr = gedit_document_get_uri (doc);
-		fname = g_filename_from_utf8 (tmpstr, -1, NULL, NULL, NULL);
+		fname = gedit_document_get_uri (doc);
 		if (!fname)
-			/* FIXME: should fname remain NULL in this case? - Paolo */		
 			fname = g_strdup ("Untitled"); /* Use ASCII */
-		g_free (tmpstr);
 	}
 	else
 	{
