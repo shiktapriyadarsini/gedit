@@ -1,3 +1,37 @@
+====================================
+gedit 2.2.2 - "It's that time again"
+====================================
+
+Fixes
+=====
+
+- Show correct number of copies when printing. (Paolo)
+- Bug #108703 (Shift+F8 does not close taglist if focus
+  is on taglist window)
+- Fixes to the spellcheck plugin
+
+New and updated translations
+============================
+- Azerbaijani (Metin Amiroff)
+- Belarusian (i18n@mova.org, Dmitry G. Mastrukov)
+- Catalan (Jordi Mallach)
+- Chinese (Taiwan) (Abel Cheung)
+- Estonian (Toivo Leedjarv)
+- French (Christophe Merlet)
+- German (Christian Neumair)
+- Hindi (Guntupalli Karunakar)
+- Irish (Paul Duffy)
+- Korean (Changwoo Ryu)
+- Mongolian (Sanlig Badral)
+- Norwegian/bokmal (Kjartan Maraas)
+- Polish (Zbigniew Chyla, translators@gnome.pl)
+- Serbian and sr@Latn (Daniel Segan)
+- Slovak (Stanislav Visnovsky)
+- Swedish (Christian Rose)
+- Tamil (Fix by Abel Cheung)
+
+
+
 =========================
 gedit 2.2.1 - "More time"
 =========================
