@@ -1,32 +1,34 @@
 # gedit translation to Catalan.
-# Copyright (C) 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
+# Copyright (C) 2004 Free Software Foundation, Inc.
 # Quico Llach <quico@softcatala.org>, 2000, 2001, 2002.
 # Jordi Mallach <jordi@sindominio.net>, 2002, 2003.
 # Jordi Mas i Hernàndez <jmas@softcatala.org>, 2003. 
+# Aleix Badia i Bosch <abadia@ica.es>, 2004
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.3.3\n"
-"POT-Creation-Date: 2004-03-22 19:26+0100\n"
-"PO-Revision-Date: 2003-08-24 23:54+0200\n"
-"Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-04-18 21:48+0200\n"
+"PO-Revision-Date: 2004-04-18 21:50+0200\n"
+"Last-Translator: Aleix Badia i Bosch <abadia@ica.es>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
+"Plural-Forms: nplurals=2; plural=n!=1;"
 
 #: data/GNOME_Gedit.server.in.in.h:1
 msgid "Gedit View"
-msgstr "Vista del Gedit"
+msgstr "Vista del gedit"
 
 #: data/GNOME_Gedit.server.in.in.h:2
 msgid "Gedit View."
-msgstr "Vista del Gedit."
+msgstr "Vista del gedit."
 
 #: data/GNOME_Gedit.server.in.in.h:3 viewer/gedit-factory.c:53
 msgid "Gedit viewer factory"
-msgstr "factoria de vista del gedit"
+msgstr "Factoria del visor del Gedit"
 
 #: data/GNOME_Gedit.server.in.in.h:4
 msgid "Source"
@@ -55,25 +57,25 @@ msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"Un tipus de lletra personalitzat que s'utilitzarà en l'àrea d'edició. Això "
-"només tindrà efecte si l'opció «Usa el tipus de lletra per defecte» està "
+"Un tipus de lletra personalitzat que s'utilitzarà en l'àrea d'edició. Només "
+"efectarà si l'opció «Utilitza el tipus de lletra predeterminat» està "
 "inhabilitada."
 
 #: data/gedit.schemas.in.h:2
 msgid "Auto Detected Encodings"
-msgstr "Codificacions autodetectades"
+msgstr "Codificacions detectades automàticament"
 
 #: data/gedit.schemas.in.h:3
 msgid "Auto Save"
-msgstr "Desament automàtic"
+msgstr "Desa automàticament"
 
 #: data/gedit.schemas.in.h:4
 msgid "Auto Save Interval"
-msgstr "Interval de desament automàtic"
+msgstr "Interval de desat automàtic"
 
 #: data/gedit.schemas.in.h:5
 msgid "Auto indent"
-msgstr "Autosagnar"
+msgstr "Sagna automàticament"
 
 #
 #: data/gedit.schemas.in.h:6
@@ -85,16 +87,16 @@ msgid ""
 "Background color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"El color de fons per al text seleccionat en l'àrea d'edició. Açò només "
-"tindrà efecte si l'opció «Usa els colors per defecte» està inhabilitada."
+"El color de fons pel text seleccionat en l'àrea d'edició. Només efectarà si "
+"l'opció «Utilitza els colors predeterminats» està inhabilitada."
 
 #: data/gedit.schemas.in.h:8
 msgid ""
 "Background color for unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Color de fons per al text no seleccionat en l'àrea d'edició. Això només "
-"tindrà efecte si l'opció «Usa els colors per defecte» està inhabilitada."
+"Color de fons per al text no seleccionat en l'àrea d'edició. Només efectarà "
+"si l'opció «Utilitza els colors predeterminats» està inhabilitada."
 
 #: data/gedit.schemas.in.h:9
 msgid "Backup Copy Extension"
@@ -102,7 +104,7 @@ msgstr "Extensió de les còpies de seguretat"
 
 #: data/gedit.schemas.in.h:10
 msgid "Body Font for Printing"
-msgstr "Tipus de lletra del cos per a imprimir"
+msgstr "Tipus de lletra del cos per imprimir"
 
 #: data/gedit.schemas.in.h:11
 msgid "Create Backup Copies"
@@ -115,7 +117,7 @@ msgstr "Mostra els números de línia"
 
 #: data/gedit.schemas.in.h:13
 msgid "Display Right Margin"
-msgstr ""
+msgstr "Mostra el marge dret"
 
 #
 #: data/gedit.schemas.in.h:14
@@ -123,9 +125,8 @@ msgid "Editor Font"
 msgstr "Tipus de lletra de l'editor"
 
 #: data/gedit.schemas.in.h:15
-#, fuzzy
 msgid "Enable Syntax Highlighting"
-msgstr "Imprimeix el resaltat de sintaxi"
+msgstr "Habilita el ressaltat de la sintaxi"
 
 #: data/gedit.schemas.in.h:16
 msgid "Encodings shown in menu"
@@ -137,29 +138,28 @@ msgid ""
 "if the \"Create Backup Copies\" option is turned on."
 msgstr ""
 "La extensió o sufix a utilitzar per als noms dels fitxers de còpia de "
-"seguretat. Això només tindrà efecte si l'opció «Crea còpies de seguretat» "
-"està habilitada."
+"seguretat. Només efectarà si l'opció «Crea còpies de seguretat» està "
+"habilitada."
 
 #: data/gedit.schemas.in.h:18
 msgid ""
 "Foreground color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Color en primer pla per al text seleccionat en l'àrea d'edició. Això només "
-"tindrà efecte si l'opció «Usa els colors per defecte» està inhabilitada."
+"Color en primer pla per al text seleccionat en l'àrea d'edició. Només "
+"efectarà si l'opció «Utilitza els colors predeterminats» està inhabilitada."
 
 #: data/gedit.schemas.in.h:19
 msgid ""
 "Foreground color for the unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Color en primer pla per al text no seleccionat en l'àrea d'edició. Això "
-"només tindrà efecte si l'opció «Usa els colors per defecte» està "
-"inhabilitada."
+"Color en primer pla per al text no seleccionat en l'àrea d'edició. Només "
+"efectarà si l'opció «Utilitza els colors predeterminats» està inhabilitada."
 
 #: data/gedit.schemas.in.h:20
 msgid "Header Font for Printing"
-msgstr "Tipus de lletra de les capçaleres per a imprimir"
+msgstr "Tipus de lletra de les capçaleres per imprimir"
 
 #: data/gedit.schemas.in.h:21
 msgid ""
@@ -167,7 +167,7 @@ msgid ""
 "document. Otherwise, gedit will print line numbers every such number of "
 "lines."
 msgstr ""
-"Si aquest valor és 0, no s'inserirà cap número de línia quan s'imprimeixi un "
+"No s'inserirà cap número de línia si el valor és 0 quan s'imprimeixi un "
 "document. D'altra manera, el gedit imprimirà els números de línia cada tants "
 "números de línia."
 
@@ -177,7 +177,7 @@ msgstr "Insereix espais"
 
 #: data/gedit.schemas.in.h:23
 msgid "Line Number Font for Printing"
-msgstr "Tipus de lletra dels números de línia per a imprimir"
+msgstr "Tipus de lletra dels números de línia per imprimir"
 
 #: data/gedit.schemas.in.h:24
 msgid "Line Wrapping Mode"
@@ -189,7 +189,7 @@ msgid ""
 "Only recognized encodings are used."
 msgstr ""
 "Llista de les codificacions mostrades al menú Codificació de caràcters al "
-"selector d'obre/desa fitxer. Només s'utilitzen codificacions reconegudes."
+"diàleg obre/desa fitxer. Només s'utilitzen codificacions reconegudes."
 
 #: data/gedit.schemas.in.h:26
 msgid "Maximum Recent Files"
@@ -205,8 +205,7 @@ msgid ""
 "This will only take effect if the \"Auto Save\" option is turned on."
 msgstr ""
 "Número de minuts després dels quals gedit desarà automàticament els fitxers "
-"modificats. Això només tindrà efecte si l'opció «Desament automàtic» està "
-"habilitada."
+"modificats. Només efectarà si l'opció «Desa automàticament» està habilitada."
 
 #: data/gedit.schemas.in.h:29
 msgid "Print Header"
@@ -219,7 +218,7 @@ msgstr "Imprimeix els números de línia"
 
 #: data/gedit.schemas.in.h:31
 msgid "Print Syntax Highlighting"
-msgstr "Imprimeix el resaltat de sintaxi"
+msgstr "Imprimeix el ressaltat de sintaxi"
 
 #: data/gedit.schemas.in.h:32
 msgid "Printing Line Wrapping Mode"
@@ -227,7 +226,7 @@ msgstr "Mode d'ajustament de línia en l'impressió"
 
 #: data/gedit.schemas.in.h:33
 msgid "Right Margin Position"
-msgstr ""
+msgstr "Posició del marge dret"
 
 #: data/gedit.schemas.in.h:34
 msgid "Selected Text Color"
@@ -243,9 +242,9 @@ msgid ""
 "file. \"CURRENT\" is the current locale encoding. Only recognized encodings "
 "are used."
 msgstr ""
-"Llista ordenada de codificacions usades per gedit per a autodetectar la "
-"codificació d'un fitxer. «CURRENT» és la codificació del locale actual. "
-"Només s'utilitzen les codificacions reconegudes."
+"Llista ordenada de codificacions utilitzades pel gedit per detectar "
+"automàticament la codificació d'un fitxer. «CURRENT» és la codificació del "
+"locale actual. Només s'utilitzen les codificacions reconegudes."
 
 #: data/gedit.schemas.in.h:37
 msgid ""
@@ -255,12 +254,11 @@ msgid ""
 "the values are case-sensitive, so make sure they appear exactly as mentioned "
 "here."
 msgstr ""
-"Especifica com ajustar les línies llargues per a imprimir. Utilitzeu "
-"«GTK_WRAP_NONE» per a no ajustar, «GTK_WRAP_WORD» per a ajustar en els "
-"límits de les paraules i «GTK_WRAP_CHAR» per a ajustar en els límits de "
-"caràcters individuals. Teniu en compte que els valors són sensibles a "
-"majúscules i minúscules, així que assegureu-vos que apareixen exactament com "
-"es mencionen aquí."
+"Especifica com ajustar les línies llargues per imprimir. Utilitzeu "
+"«GTK_WRAP_NONE» per no ajustar, «GTK_WRAP_WORD» per ajustar als límits de "
+"les paraules i «GTK_WRAP_CHAR» per ajustar als límits de caràcters "
+"individuals. Recordeu que els valors són sensibles a majúscules i "
+"minúscules, assegureu-vos que apareixen exactament com es mencionen aquí."
 
 #: data/gedit.schemas.in.h:38
 msgid ""
@@ -271,27 +269,26 @@ msgid ""
 "here."
 msgstr ""
 "Especifica com ajustar les línies llargues en l'àrea d'edició. Utilitzeu "
-"«GTK_WRAP_NONE» per a no ajustar, «GTK_WRAP_WORD» per a ajustar en els "
-"límits de les paraules i «GTK_WRAP_CHAR» per a ajustar en els límits de "
-"caràcters individuals. Teniu en compte que els valors són sensibles a "
-"majúscules i minúscules, així que assegureu-vos que apareixen exactament com "
-"es mencionen aquí.\""
+"«GTK_WRAP_NONE» per no ajustar, «GTK_WRAP_WORD» per ajustar als límits de "
+"les paraules i «GTK_WRAP_CHAR» per ajustar als límits de caràcters "
+"individuals. Teniu en compte que els valors són sensibles a majúscules i "
+"minúscules, així que assegureu-vos que apareixen exactament com es mencionen "
+"aquí.\""
 
 #: data/gedit.schemas.in.h:39
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Especifica el tipus de lletra a utilitzar per al cos d'un document a "
-"l'imprimir documents."
+"Especifica el tipus de lletra a utilitzar pel cos d'un document a l'imprimir "
+"documents."
 
 #: data/gedit.schemas.in.h:40
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Especifica el tipus de lletra per als números de línia a l'imprimir. Això "
-"només té efecte si l'opció «Imprimeix els números de línia» no equival a "
-"zero."
+"Especifica el tipus de lletra dels números de línia a l'imprimir. Només "
+"efectarà si l'opció «Imprimeix els números de línia» no equival a zero."
 
 #: data/gedit.schemas.in.h:41
 msgid ""
@@ -299,8 +296,8 @@ msgid ""
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
 "Especifica el tipus de lletra per a les capçaleres de les pàgines al "
-"imprimir un document. Això només tindrà efecte si l'opció «Imprimeix "
-"capçaleres» està habilitada."
+"imprimir un document. Només efectarà si l'opció «Imprimeix capçaleres» està "
+"habilitada."
 
 #: data/gedit.schemas.in.h:42
 msgid ""
@@ -320,7 +317,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:44
 msgid "Specifies the position of the right margin."
-msgstr ""
+msgstr "Especifica la posició del marge dret"
 
 #
 #: data/gedit.schemas.in.h:45
@@ -336,14 +333,13 @@ msgid ""
 "Note that the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
-"L'estil per als botons de la barra d'eines. Els valors possibles són "
-"«GEDIT_TOOLBAR_SYSTEM» per a utilitzar l'estil per defecte del sistema, "
-"«GEDIT_TOOLBAR_ICONS» per a mostrar només icones, "
-"«GEDIT_TOOLBAR_ICONS_AND_TEXT» per a mostrar tant les icones com el text i "
-"«GEDIT_TOOLBAR_ICONS_BOTH_HORIZ» per a mostrar el text prioritari al costat "
-"de les icones. Teniu en compte que els valors són sensibles a majúscules i "
-"minúscules, així que assegureu-vos de que apareixen exactament com es "
-"mencionen aquí."
+"L'estil dels botons de la barra d'eines. Els valors possibles són "
+"«GEDIT_TOOLBAR_SYSTEM» per utilitzar l'estil predeterminat del sistema, "
+"«GEDIT_TOOLBAR_ICONS» per mostrar només icones, "
+"«GEDIT_TOOLBAR_ICONS_AND_TEXT» per mostrar icones i text i "
+"«GEDIT_TOOLBAR_ICONS_BOTH_HORIZ» per mostrar el text prioritari al costat de "
+"les icones. Recordeu que els valors són sensibles a majúscules i minúscules, "
+"així que assegureu-vos de que apareixen exactament com es mencionen aquí."
 
 #: data/gedit.schemas.in.h:47
 msgid "Tab Size"
@@ -369,12 +365,12 @@ msgstr "Límit d'accions a desfer"
 
 #: data/gedit.schemas.in.h:52
 msgid "Use Default Colors"
-msgstr "Usa els colors per defecte"
+msgstr "Utilitza els colors predeterminats"
 
 #
 #: data/gedit.schemas.in.h:53
 msgid "Use Default Font"
-msgstr "Usa el tipus de lletra per defecte "
+msgstr "Utilitza el tipus de lletra predeterminat "
 
 #: data/gedit.schemas.in.h:54
 msgid ""
@@ -382,9 +378,9 @@ msgid ""
 "interval. You can set the time interval with the \"Auto Save Interval\" "
 "option."
 msgstr ""
-"Si gedit hauria de desar automàticament els fitxers modificats després d'un "
-"interval de temps. Podeu establir l'interval de temps amb l'opció «Interval "
-"de desament automàtic»."
+"Si el gedit hauria de desar automàticament els fitxers modificats després "
+"d'un interval de temps. Podeu establir l'interval de temps a l'opció "
+"«Interval de desament automàtic»."
 
 #: data/gedit.schemas.in.h:55
 msgid ""
@@ -392,40 +388,39 @@ msgid ""
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
 "Si gedit hauria de crear còpies de seguretat per als fitxers que desa. Podeu "
-"establir l'extensió del fitxer de còpia de seguretat amb l'opció «Extensió "
-"de les còpies de seguretat»."
+"establir l'extensió del fitxer de còpia de seguretat a l'opció «Extensió de "
+"les còpies de seguretat»."
 
 #: data/gedit.schemas.in.h:56
 msgid "Whether gedit should display line numbers in the editing area."
-msgstr "Si gedit hauria de mostrar números de línies en l'àrea d'edició."
+msgstr "Si el gedit hauria de mostrar números de línies en l'àrea d'edició."
 
 #: data/gedit.schemas.in.h:57
-#, fuzzy
 msgid "Whether gedit should display the right margin in the editing area."
-msgstr "Si gedit hauria de mostrar números de línies en l'àrea d'edició."
+msgstr "Si el gedit hauria de mostrar el marge dret en l'àrea d'edició."
 
 #: data/gedit.schemas.in.h:58
 msgid "Whether gedit should enable auto indentation."
-msgstr "Si gedit hauria d'habilitar el sagnat automàtic."
+msgstr "Si el gedit hauria d'habilitar el sagnat automàtic."
 
 #: data/gedit.schemas.in.h:59
-#, fuzzy
 msgid "Whether gedit should enable syntax highlighting."
-msgstr "Si gedit hauria d'habilitar el sagnat automàtic."
+msgstr "Si el gedit hauria d'habilitar el ressaltat de la sintaxi."
 
 #: data/gedit.schemas.in.h:60
 msgid "Whether gedit should include a document header when printing documents."
 msgstr ""
-"Si gedit hauria d'incloure una capçalera del document al imprimir documents."
+"Si el gedit hauria d'incloure una capçalera del document al imprimir "
+"documents."
 
 #: data/gedit.schemas.in.h:61
 msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Si gedit hauria d'inserir espais en comptes de tabuladors."
+msgstr "Si el gedit hauria d'inserir espais en comptes de tabuladors."
 
 #: data/gedit.schemas.in.h:62
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
-"Si gedit hauria d'imprimir el resaltat de sintaxi quan s'imprimeixen els "
+"Si el gedit hauria d'imprimir el ressaltat de sintaxi quan s'imprimeixen els "
 "documents."
 
 #: data/gedit.schemas.in.h:63
@@ -446,10 +441,10 @@ msgid ""
 "specified in the \"Background Color\", \"Text Color\", \"Selected Text Color"
 "\", and \"Selection Color\" options."
 msgstr ""
-"Si usar els colors per defecte del sistema per a l'àrea d'edició. Si aquesta "
-"opció és inhabilitada, els colors de l'àrea d'edició seran aquells "
-"especificats en les opcions «Color de fons», «Color del text», «Color del "
-"text seleccionat» i «Color de la selecció»"
+"Si utilitzar els colors predeterminats del sistema en l'àrea d'edició. Si "
+"s'inhabilita, els colors de l'àrea d'edició seran els especificats a les "
+"opcions «Color de fons», «Color del text», «Color del text seleccionat» i "
+"«Color de la selecció»"
 
 #: data/gedit.schemas.in.h:66
 msgid ""
@@ -457,10 +452,10 @@ msgid ""
 "specific to gedit. If this option is turned off, then the font named in the "
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
-"Si utilitzar el tipus de lletra per defecte del sistema per al text d'edició "
-"en comptes d'un tipus de lletra específic per a gedit. Si aquesta opció es "
-"inhabilita, s'utilitzarà el tipus de lletra fixat en l'opció «Tipus de "
-"lletra de l'editor» en comptes del tipus de lletra del sistema."
+"Si utilitzar el tipus de lletra predeterminat del sistema en el text "
+"d'edició en comptes d'un tipus de lletra específic per al gedit. Si "
+"s'inhabilita, s'utilitzarà el tipus de lletra especificat a l'opció «Tipus "
+"de lletra de l'editor» en comptes del tipus de lletra del sistema."
 
 #: gedit/bonobo-mdi.c:564 gedit/bonobo-mdi.c:2061
 #, c-format
@@ -468,31 +463,30 @@ msgid "Activate %s"
 msgstr "Activa %s"
 
 #: gedit/dialogs/close_all_dialog.glade2.h:1
-#, fuzzy
 msgid ""
 "<span weight=\"bold\" size=\"larger\">You have X documents with unsaved "
 "changes. </span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Gestor</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Hi ha X documents amb modificacions no "
+"desades. </span>"
 
 #: gedit/dialogs/close_all_dialog.glade2.h:2
 msgid "If you don't save your documents, all your changes will be lost."
-msgstr ""
+msgstr "Si no deseu els documents es perdran totes les modificacions."
 
 #: gedit/dialogs/close_all_dialog.glade2.h:3
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:654
-#, fuzzy
 msgid "S_elect the documents you want to save:"
-msgstr "Selecciona el grup de marcadors que voleu utilitzar"
+msgstr "S_eleccioneu els documents que voleu desar:"
 
 #: gedit/dialogs/close_all_dialog.glade2.h:4
 msgid "Save _None"
-msgstr ""
+msgstr "_No desis res"
 
 #
 #: gedit/dialogs/close_all_dialog.glade2.h:5
-#, fuzzy
 msgid "_Save Selected"
-msgstr "De_sa-ho tot"
+msgstr "De_sa els seleccionats"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:141
 msgid "Do_n't save"
@@ -507,12 +501,16 @@ msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be definitively "
 "lost."
 msgstr[0] ""
+"Si no ho deseu, es perdran les modificacions realitzades l'últim %ld segon."
 msgstr[1] ""
+"Si no ho deseu, es perdran les modificacions realitzades els últims %ld "
+"segons."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:370
 msgid ""
 "If you don't save, changes from the last minute will be definitively lost."
 msgstr ""
+"Si no ho deseu, es perdran les modificacions realitzades en l'últim minut."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:376
 #, c-format
@@ -523,7 +521,11 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "definitively lost."
 msgstr[0] ""
+"Si no ho deseu, es perdran les modificacions realitzades l'últim minut i %ld "
+"segon."
 msgstr[1] ""
+"Si no ho deseu, es perdran les modificacions realitzades l'últim inut i %ld "
+"segons."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:386
 #, c-format
@@ -534,12 +536,15 @@ msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be definitively "
 "lost."
 msgstr[0] ""
+"Si no ho deseu es perdran les modificacions realitzades l'últim %ld minut."
 msgstr[1] ""
+"Si no ho deseu es perdran les modificacions realitzades els últims %ld minut."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:401
 msgid ""
 "If you don't save, changes from the last hour will be definitively lost."
 msgstr ""
+"Si no ho deseu, es perdran les modificacions realitzades en l'última hora."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:407
 #, c-format
@@ -550,7 +555,11 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "definitively lost."
 msgstr[0] ""
+"Si no ho deseu, es perdran les modificacions realitzades l'última hora i %d "
+"minut."
 msgstr[1] ""
+"Si no ho deseu, es perdran les modificacions realitzades l'última hora i %d "
+"minuts."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:422
 #, c-format
@@ -559,23 +568,27 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be definitively lost."
 msgstr[0] ""
+"Si no ho deseu es perdran les modificacions realitzades l'última %d hora."
 msgstr[1] ""
+"Si no ho deseu es perdran les modificacions realitzades les últimes %d hores."
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:466
 #, c-format
 msgid "Save the changes to document \"%s\" before closing?"
-msgstr ""
+msgstr "Voleu desar les modificacions del document \"%s\" abans de tancar?"
 
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:640
 #, c-format
 msgid ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr ""
+"%d documents tenen modificacions i no s'han desat. Voleu desar les "
+"modificacions abans de tancar?"
 
 #. Secondary label
 #: gedit/dialogs/gedit-close-confirmation-dialog.c:671
 msgid "If you don't save, all your changes will be definitively lost."
-msgstr ""
+msgstr "Si no ho deseu es perdran tots les modificacions."
 
 #
 #: gedit/dialogs/gedit-dialog-goto-line.c:160
@@ -588,7 +601,7 @@ msgid "_Go to Line"
 msgstr "_Vés a la línia"
 
 #: gedit/dialogs/gedit-dialog-replace.c:136
-#: gedit/dialogs/gedit-dialog-replace.c:1121 gedit/gedit-commands.c:405
+#: gedit/dialogs/gedit-dialog-replace.c:1126 gedit/gedit-commands.c:405
 #, c-format
 msgid "The text \"%s\" was not found."
 msgstr "No s'ha trobat el text \"%s\"."
@@ -614,11 +627,11 @@ msgstr "_Reemplaça"
 msgid "Find"
 msgstr "Cerca"
 
-#: gedit/dialogs/gedit-dialog-replace.c:1130
-#, fuzzy, c-format
+#: gedit/dialogs/gedit-dialog-replace.c:1135
+#, c-format
 msgid "Found and replaced %d occurrence."
 msgid_plural "Found and replaced %d occurrences."
-msgstr[0] "S'han trobat i reemplaçat %d cadenes coincidents."
+msgstr[0] "S'ha trobat i reemplaçat %d cadena coincident."
 msgstr[1] "S'han trobat i reemplaçat %d cadenes coincidents."
 
 #
@@ -656,38 +669,38 @@ msgstr "Codificacio_ns mostrades al menú:"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:489
 msgid "Body font picker"
-msgstr "Seleccionador de tipus de lletra del cos"
+msgstr "Seleccionador del tipus de lletra del cos"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:490
 msgid ""
 "Push this button to select the font to be used to print the body of the "
 "document"
 msgstr ""
-"Premeu aquest botó per a seleccionar el tipus de lletra que s'utilitzarà per "
-"a imprimir el cos del document"
+"Premeu el botó per seleccionar el tipus de lletra que s'utilitzarà per "
+"imprimir el cos del document"
 
 #
 #: gedit/dialogs/gedit-page-setup-dialog.c:491
 msgid "Page headers font picker"
-msgstr "Seleccionador de tipus de lletra per a les capçaleres de les pàgines"
+msgstr "Seleccionador de tipus de lletra de les  capçaleres de les pàgines"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:492
 msgid ""
 "Push this button to select the font to be used to print the page headers"
 msgstr ""
-"Premeu aquest botó per a seleccionar el tipus de lletra amb el que "
-"s'imprimeixen les capçaleres de les pàgines"
+"Premeu el botó per seleccionar el tipus de lletra que s'utilitzarà per "
+"imprimir les capçaleres de les pàgines"
 
 #
 #: gedit/dialogs/gedit-page-setup-dialog.c:493
 msgid "Line numbers font picker"
-msgstr "Seleccionador de tipus de lletra per als números de línia"
+msgstr "Seleccionador de tipus de lletra dels  números de línia"
 
 #: gedit/dialogs/gedit-page-setup-dialog.c:494
 msgid "Push this button to select the font to be used to print line numbers"
 msgstr ""
-"Premeu aquest botó per a seleccionar el tipus de lletra amb el que es "
-"mostren els números de línia"
+"Premeu el botó per seleccionar el tipus de lletra amb el que es mostren els "
+"números de línia"
 
 #
 #: gedit/dialogs/gedit-plugin-manager.c:53
@@ -705,8 +718,8 @@ msgstr "No s'ha trobat el plugin-manager.glade2, reinstal·leu el gedit.\n"
 #: gedit/dialogs/gedit-plugin-manager.c:525
 msgid "Invalid glade file for plugin manager -- not all widgets found.\n"
 msgstr ""
-"Fitxer glade no vàlid pel gestor de connectors -- no s'han trobat tots els "
-"ginys.\n"
+"El fitxer glade no és vàlid pel gestor de connectors -- no s'han trobat tots "
+"els ginys.\n"
 
 #
 #: gedit/dialogs/gedit-plugin-program-location-dialog.c:86
@@ -722,7 +735,7 @@ msgid ""
 "\n"
 "Please, specify the location of the <tt>%s</tt> program."
 msgstr ""
-"El connector %s utilitza un programa extern, anomenat <tt>%s</tt>, per a "
+"El connector %s utilitza un programa extern, anomenat <tt>%s</tt>, per "
 "realitzar la seva tasca.\n"
 "\n"
 "Si us plau, especifica la situació del programa <tt>%s</tt>."
@@ -734,37 +747,32 @@ msgstr "El fitxer seleccionat no és executable."
 #: gedit/dialogs/gedit-preferences-dialog.c:666
 msgid "Push this button to select the font to be used by the editor"
 msgstr ""
-"Premeu aquest botó per a seleccionar el tipus de lletra a utilitzar per "
-"l'editor"
+"Premeu el botó per seleccionar el tipus de lletra a utilitzar per l'editor"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:668
 msgid "Push this button to configure text color"
-msgstr "Premeu aquest botó per a configurar el text en color"
+msgstr "Premeu el botó per configurar el text en color"
 
 #
 #: gedit/dialogs/gedit-preferences-dialog.c:670
 msgid "Push this button to configure background color"
-msgstr "Premeu aquest botó per a configurar el color de fons"
+msgstr "Premeu el botó per configurar el color de fons"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:672
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
-msgstr ""
-"Premeu aquest botó per a configurar el color amb el que apareix el text "
-"seleccionat"
+msgstr "Premeu el botó per configurar el color del text seleccionat"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:675
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
-msgstr ""
-"Premeu aquest botó per a configurar el color amb el que es marca el text "
-"seleccionat"
+msgstr "Premeu el botó per configurar el color del text seleccionat"
 
 #: gedit/dialogs/gedit-preferences-dialog.c:1082
 msgid "Elements"
-msgstr ""
+msgstr "Elements"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:1
 #: gedit/dialogs/page-setup-dialog.glade2.h:1
@@ -773,19 +781,16 @@ msgid "    "
 msgstr "    "
 
 #: gedit/dialogs/gedit-preferences.glade2.h:2
-#, fuzzy
 msgid "<b>Auto Indentation</b>"
-msgstr "Autosagnat"
+msgstr "<b>Sagnat automàtic</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:3
-#, fuzzy
 msgid "<b>Elements</b>"
-msgstr "<b>Tipus de lletra</b>"
+msgstr "<b>Elements</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:4
-#, fuzzy
 msgid "<b>File Saving</b>"
-msgstr "<b>Ajustament del text</b>"
+msgstr "<b>Emmagatzematge de fitxers</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:5
 msgid "<b>Font</b>"
@@ -798,14 +803,12 @@ msgid "<b>Line Numbers</b>"
 msgstr "<b>Números de línia</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:7
-#, fuzzy
 msgid "<b>Right Margin</b>"
-msgstr "<b>Ajustament del text</b>"
+msgstr "<b>Marge dret</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:8
-#, fuzzy
 msgid "<b>Tabs</b>"
-msgstr "<b>paraula</b>"
+msgstr "<b>Tabulacions</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:9
 #: gedit/dialogs/page-setup-dialog.glade2.h:3
@@ -813,18 +816,16 @@ msgid "<b>Text Wrapping</b>"
 msgstr "<b>Ajustament del text</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:10
-#, fuzzy
 msgid "<b>Undo</b>"
-msgstr "<b>Tipus de lletra</b>"
+msgstr "<b>Desfés</b>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:11
 msgid "<span weight=\"bold\">Colors</span>"
 msgstr "<span weight=\"bold\">Colors</span>"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:12
-#, fuzzy
 msgid "Bold"
-msgstr "_Cos:"
+msgstr "Negreta"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:13
@@ -833,12 +834,12 @@ msgstr "Crea una cò_pia de seguretat dels fitxers abans de desar-los"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:14
 msgid "D_isplay right margin"
-msgstr ""
+msgstr "Mostra el marg_e dret"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:15
 #: gedit/dialogs/page-setup-dialog.glade2.h:4
 msgid "Do not _split words over two lines"
-msgstr "No _separa les paraules en dues línies"
+msgstr "No _separis les paraules en dues línies"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:16
@@ -860,30 +861,26 @@ msgid "Font & Colors"
 msgstr "Tipus de lletra i colors"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:20
-#, fuzzy
 msgid "Highlight _mode:"
-msgstr "Mode de _resaltat"
+msgstr "_Mode de ressaltat:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:21
 msgid "Insert _spaces instead of tabs"
 msgstr "Insereix e_spais en comptes de tabulacions"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:22
-#, fuzzy
 msgid "Italic"
-msgstr "Italià"
+msgstr "Itàlic"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:23
-#, fuzzy
 msgid "Normal _text color:"
-msgstr "Color del _text:"
+msgstr "Color del _text normal:"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:24
-#, fuzzy
 msgid "Pick a color"
-msgstr "Agafa el color del text"
+msgstr "Escolliu un color"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:25
@@ -892,25 +889,23 @@ msgstr "Agafa el color de fons"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:26
-#, fuzzy
 msgid "Pick the editor font"
-msgstr "Agafa el color del text"
+msgstr "Escolliu el tipus de lletra de l'editor"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:27
-#, fuzzy
 msgid "Pick the normal text color"
-msgstr "Agafa el color del text"
+msgstr "Escolliu el color del text normal"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:28
 msgid "Pick the selected text color"
-msgstr "Agafa el color del text seleccionat"
+msgstr "Escolliu el color del text seleccionat"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:29
 msgid "Pick the selection color"
-msgstr "Agafa el color de la selecció"
+msgstr "Escolliu el color de la selecció"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:30
 msgid "Plugins"
@@ -922,7 +917,7 @@ msgstr "Preferències"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:32
 msgid "Se_lection color:"
-msgstr "Color de la selecció"
+msgstr "Color de la se_lecció"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:33
 msgid "Selecte_d text color:"
@@ -930,34 +925,30 @@ msgstr "Color del text selecciona_t:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:34
 msgid "Strikethrough"
-msgstr ""
+msgstr "Ratllat"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:35
-#, fuzzy
 msgid "Syntax Highlighting"
-msgstr "Imprimeix el resaltat de sintaxi"
+msgstr "Ressaltat de la sintaxi"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:36
 msgid "U_se default theme colors"
-msgstr "Utilit_za els colors del tema predeterminat"
+msgstr "Utilitza el_s colors del tema predeterminat"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:37
-#, fuzzy
 msgid "Underline"
-msgstr "Sagna les línies"
+msgstr "Subratllat"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:38
-#, fuzzy
 msgid "View"
-msgstr "_Vista"
+msgstr "Visualització"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:39
-#, fuzzy
 msgid "_Autosave files every"
-msgstr "Desa _automàticament el fitxer actual cada"
+msgstr "Desa els fitxers _automàticament cada"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:40
@@ -966,59 +957,52 @@ msgstr "Color de _fons:"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:41
-#, fuzzy
 msgid "_Background:"
-msgstr "Color de _fons:"
+msgstr "_Fons:"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:42
 msgid "_Display line numbers"
-msgstr "Mostra els números de línia"
+msgstr "Mostra els números _de línia"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:43
-#, fuzzy
 msgid "_Enable auto indentation"
-msgstr "Habilita el sagnat _automàtic"
+msgstr "Habilita _el sagnat automàtic"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:44
-#, fuzzy
 msgid "_Enable syntax highlighting"
-msgstr "Imprimeix el resaltat de s_intaxi"
+msgstr "Habilita el r_esaltat de la sintaxi"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:45
-#, fuzzy
 msgid "_Foreground:"
-msgstr "_Primer pla: "
+msgstr "_Primer pla:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:46
 msgid "_Limit to"
-msgstr ""
+msgstr "_Limita a"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:47
-#, fuzzy
 msgid "_Reset to Default "
-msgstr "_Escriptori predeterminat"
+msgstr "_Reinicia als valors predeterminats "
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:48
-#, fuzzy
 msgid "_Right margin at column:"
-msgstr "_Comença per la columna:"
+msgstr "Marge d_ret a la columna:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:49
-#, fuzzy
 msgid "_Tabs width:"
-msgstr "_Amplada de la tabulació: "
+msgstr "Amplada de la _tabulació:"
 
 #: gedit/dialogs/gedit-preferences.glade2.h:50
 msgid "_Unlimited undo"
-msgstr ""
+msgstr "Acci_ons de desfer il·limitades"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:51
 msgid "_Use default theme font"
-msgstr "Usa la lletra del tema per defecte "
+msgstr "_Utilitza el tipus de lletra del tema predeterminat "
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:52
@@ -1027,13 +1011,12 @@ msgstr "_minuts"
 
 #
 #: gedit/dialogs/gedit-preferences.glade2.h:53
-#, fuzzy
 msgid "act_ions"
-msgstr "_acció(ns)"
+msgstr "acc_ions"
 
 #: gedit/dialogs/gnome-print-font-dialog.c:111
 msgid "_Insert a new preview phrase."
-msgstr "_Insereix una nova vista preliminar de la frase."
+msgstr "_Insereix una nova visualització prèvia de la frase."
 
 #: gedit/dialogs/gnome-print-font-dialog.c:117
 msgid "Modify preview phrase..."
@@ -1046,7 +1029,7 @@ msgstr "Visualització prèvia"
 
 #: gedit/dialogs/gnome-print-font-dialog.c:184
 msgid "_Modify preview phrase..."
-msgstr "_Modifica la vista preliminar de la frase..."
+msgstr "_Modifica la visualització prèvia de la frase..."
 
 #
 #: gedit/dialogs/gnome-print-font-dialog.c:245
@@ -1087,19 +1070,19 @@ msgstr "Nom de la lletra seleccionada"
 #
 #: gedit/dialogs/gnome-print-font-picker.c:209
 msgid "Preview text"
-msgstr "Previsualitza el text"
+msgstr "Text de la visualització prèvia"
 
 #: gedit/dialogs/gnome-print-font-picker.c:210
 msgid "Preview text shown in the dialog"
-msgstr "Previsualitza el text mostrat al diàleg"
+msgstr "Text de la visualització prèvia mostrat al diàleg"
 
 #: gedit/dialogs/gnome-print-font-picker.c:218
 msgid "Use font in label"
-msgstr "Usa la lletra a l'etiqueta"
+msgstr "Utilitza la lletra de l'etiqueta"
 
 #: gedit/dialogs/gnome-print-font-picker.c:219
 msgid "Use font in the label in font info mode"
-msgstr "Usa la lletra a l'etiqueta en el mode d'informació de lletres"
+msgstr "Utilitza la lletra de l'etiqueta en el mode d'informació de lletres"
 
 #: gedit/dialogs/gnome-print-font-picker.c:227
 msgid "Font size for label"
@@ -1107,7 +1090,7 @@ msgstr "Mida de la lletra per a l'etiqueta"
 
 #: gedit/dialogs/gnome-print-font-picker.c:228
 msgid "Font size for label in font info mode"
-msgstr "Mida de la lletra per a l'etiqueta al mode d'informació de lletres"
+msgstr "Mida de la lletra de l'etiqueta del mode d'informació de lletres"
 
 #
 #: gedit/dialogs/gnome-print-font-picker.c:238
@@ -1132,7 +1115,7 @@ msgstr "Vés a la línia"
 #
 #: gedit/dialogs/goto-line.glade2.h:2
 msgid "_Line number:"
-msgstr "Línia número:"
+msgstr "_Línia número:"
 
 #
 #: gedit/dialogs/page-setup-dialog.glade2.h:6
@@ -1159,7 +1142,7 @@ msgstr "Imprimeix els números de _línia"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:11
 msgid "Print s_yntax highlighting"
-msgstr "Imprimeix el resaltat de s_intaxi"
+msgstr "Imprimeix el ressaltat de la s_intaxi"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:12
 msgid "_Body:"
@@ -1181,7 +1164,7 @@ msgstr "Im_primeix les capçaleres de la pàgina"
 #
 #: gedit/dialogs/page-setup-dialog.glade2.h:16
 msgid "_Restore Default Fonts"
-msgstr "_Restaura els tipus de lletra per defecte"
+msgstr "_Restaura els tipus de lletra predeterminats"
 
 #: gedit/dialogs/page-setup-dialog.glade2.h:17
 msgid "lines"
@@ -1194,9 +1177,8 @@ msgstr "C_onfigura el connector"
 
 #
 #: gedit/dialogs/plugin-manager.glade2.h:2
-#, fuzzy
 msgid "_About Plugin"
-msgstr "C_onfigura el connector"
+msgstr "Qu_an al Plugin"
 
 #: gedit/dialogs/plugin-manager.glade2.h:3
 msgid "button1"
@@ -1231,7 +1213,7 @@ msgstr "Cerca el següent"
 
 #: gedit/dialogs/replace.glade2.h:3
 msgid "Match _entire word only"
-msgstr "Només coincideixen paraules s_enceres"
+msgstr "Només coincid_eixi la paraula sencera"
 
 #
 #: gedit/dialogs/replace.glade2.h:5
@@ -1241,7 +1223,7 @@ msgstr "Reemplaça-ho tot"
 #
 #: gedit/dialogs/replace.glade2.h:6
 msgid "Replace _with: "
-msgstr "Reemplaça amb: "
+msgstr "Reemplaça per: "
 
 #: gedit/dialogs/replace.glade2.h:7
 msgid "Search _backwards"
@@ -1275,16 +1257,17 @@ msgstr "Obre des de l'URI"
 msgid "translator_credits"
 msgstr ""
 "Quico Llach <quico@softcatala.org>\n"
-"Jordi Mallach <jordi@sindominio.net>"
+"Jordi Mallach <jordi@sindominio.net>\n"
+"Jordi Mas <jordi@softcatala.org>\n"
+"Aleix Badia i Bosch <abadia@ica.es>"
 
 #: gedit/gedit-commands.c:582
 msgid "gedit"
 msgstr "gedit"
 
 #: gedit/gedit-commands.c:586
-#, fuzzy
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "El gedit és un editor de text petit i lleuger per al GNOME/Gtk+"
+msgstr "El gedit és un editor de text petit i lleuger pel GNOME Desktop"
 
 #: gedit/gedit-document.c:637 gedit/gedit-document.c:655
 #, c-format
@@ -1298,12 +1281,12 @@ msgstr "Sense títol"
 #
 #: gedit/gedit-document.c:643 gedit/gedit-document.c:690
 msgid "Invalid file name"
-msgstr "Nom de fitxer invàlid"
+msgstr "El nom del fitxer no és vàlid"
 
 #: gedit/gedit-document.c:841 gedit/gedit-document.c:1316
 #: viewer/gedit-persist-stream.c:120
 msgid "Invalid UTF-8 data"
-msgstr "Dades UTF-8 invàlides"
+msgstr "Les dades UTF-8 no són vàlides"
 
 #: gedit/gedit-document.c:1643
 #, c-format
@@ -1317,17 +1300,17 @@ msgstr "El fitxer té massa enllaços simbòlics."
 #: gedit/gedit-document.c:1745
 #, c-format
 msgid "gedit cannot handle %s: locations in write mode."
-msgstr "No es pot treballar amb %s: ubicacions en el mode d'escriptura."
+msgstr "El gedit no pot gestionar %s: ubicacions en el mode d'escriptura."
 
 #: gedit/gedit-document.c:1752
 msgid "gedit cannot handle this kind of location in write mode."
 msgstr ""
-"No es pot treballar amb aquest tipus de ubicacions en el mode d'escriptura."
+"El gedit no pot gestionar aquest tipus d'ubicació en el mode d'escriptura."
 
 #
 #: gedit/gedit-document.c:1765
 msgid "Invalid filename."
-msgstr "Nom del fitxer invàlid."
+msgstr "El nom del fitxer no és vàlid."
 
 #: gedit/gedit-document.c:1877
 msgid ""
@@ -1335,7 +1318,7 @@ msgid ""
 "Please free some disk space and try again."
 msgstr ""
 "No hi ha suficient espai al disc per desar el fitxer.\n"
-"Si us plau, allibereu espai al disc i torneu-ho a intentar."
+"Allibereu espai de disc i torneu-ho a intentar."
 
 #: gedit/gedit-document.c:1882
 msgid ""
@@ -1343,9 +1326,9 @@ msgid ""
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
 "not have this limitation."
 msgstr ""
-"El disc en el que esteu intentant desar el fitxer té una limitació en la "
-"mida dels fitxers. Intenteu desar un fitxer més petit o desar-ho en un disc "
-"que no tinga aquesta limitació."
+"El disc on esteu intentant desar el fitxer té una limitació en la mida dels "
+"fitxers. Intenteu desar un fitxer més petit o desar-ho en un disc que no "
+"tingui aquesta limitació."
 
 #
 #: gedit/gedit-document.c:1926
@@ -1354,7 +1337,7 @@ msgstr "No s'ha pogut crear una còpia de seguretat."
 
 #: gedit/gedit-encodings-option-menu.c:203
 msgid "Auto Detected"
-msgstr "Autodetectat"
+msgstr "Detectat automàticament"
 
 #
 #: gedit/gedit-encodings-option-menu.c:223
@@ -1365,7 +1348,7 @@ msgstr "Locale actual (%s)"
 
 #: gedit/gedit-encodings-option-menu.c:306
 msgid "Add or _Remove..."
-msgstr "Afegeix o e_limina..."
+msgstr "Afegeix o sup_rimeix..."
 
 #: gedit/gedit-encodings.c:132 gedit/gedit-encodings.c:176
 #: gedit/gedit-encodings.c:178 gedit/gedit-encodings.c:180
@@ -1467,7 +1450,7 @@ msgstr "Georgià"
 
 #: gedit/gedit-encodings.c:237
 msgid "Cyrillic/Ukrainian"
-msgstr "Ciríl·lic/ucrainès"
+msgstr "Ciríl·lic/ucraïnès"
 
 #: gedit/gedit-encodings.c:242 gedit/gedit-encodings.c:248
 #: gedit/gedit-encodings.c:267
@@ -1479,54 +1462,47 @@ msgid "Thai"
 msgstr "Tailandès"
 
 #: gedit/gedit-file-selector-util.c:148
-#, fuzzy, c-format
+#, c-format
 msgid "A file named \"%s\" already exists.\n"
-msgstr "El fitxer «%s» ja existeix."
+msgstr "El fitxer \"%s\" ja existeix.\n"
 
 #: gedit/gedit-file-selector-util.c:149
-#, fuzzy
 msgid "Do you want to replace it with the one you are saving?"
-msgstr ""
-"Ja existeix un fitxer anomenat «%s».\n"
-"Voleu reemplaçar-lo amb el fitxer que esteu desant?"
+msgstr "Voleu reemplaçar-lo pel que esteu desant?"
 
 #: gedit/gedit-file-selector-util.c:158
-#, fuzzy, c-format
+#, c-format
 msgid "The file \"%s\" is read-only.\n"
-msgstr "El fitxer «%s» ja existeix."
+msgstr "El fitxer \"%s\" és només de lectura.\n"
 
 #: gedit/gedit-file-selector-util.c:159
-#, fuzzy
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr ""
-"El fitxer «%s» és de només-lectura.\n"
-"Voleu tractar de reemplaçar-lo amb el que esteu desant?"
+msgstr "Voleu intentar reemplaçar-lo pel que esteu desant?"
 
 #: gedit/gedit-file-selector-util.c:356
 msgid "All Files"
-msgstr ""
+msgstr "Tots els fitxers"
 
 #: gedit/gedit-file-selector-util.c:364
-#, fuzzy
 msgid "All Text Files"
-msgstr "Edita fitxers de text"
+msgstr "Tots els fitxers de text"
 
 #: gedit/gedit-file-selector-util.c:382
 msgid "Ch_aracter Coding:"
 msgstr "Codificació de c_aràcter:"
 
 #
-#: gedit/gedit-file-selector-util.c:499
+#: gedit/gedit-file-selector-util.c:506
 msgid "Select a file to open"
-msgstr "Seleccioneu un fitxer per a obrir"
+msgstr "Seleccioneu un fitxer a obrir"
 
 #
-#: gedit/gedit-file-selector-util.c:525
+#: gedit/gedit-file-selector-util.c:532
 msgid "Select files to open"
-msgstr "Seleccioneu fitxers per a obrir"
+msgstr "Seleccioneu els fitxers a obrir"
 
 #
-#: gedit/gedit-file-selector-util.c:552
+#: gedit/gedit-file-selector-util.c:559
 msgid "Select a filename to save"
 msgstr "Seleccioneu el nom del fitxer a desar"
 
@@ -1534,34 +1510,34 @@ msgstr "Seleccioneu el nom del fitxer a desar"
 msgid "Open File..."
 msgstr "Obre el fitxer..."
 
-#: gedit/gedit-file.c:272 gedit/gedit-file.c:421
-#, fuzzy, c-format
+#: gedit/gedit-file.c:272 gedit/gedit-file.c:418
+#, c-format
 msgid "Saving document \"%s\"..."
-msgstr "S'està desant el fitxer «%s»..."
+msgstr "S'està desant el document \"%s\"..."
 
 #
-#: gedit/gedit-file.c:300 gedit/gedit-file.c:442
-#, fuzzy, c-format
+#: gedit/gedit-file.c:300 gedit/gedit-file.c:439
+#, c-format
 msgid "The document \"%s\" has not been saved."
-msgstr "No s'ha desat el document."
+msgstr "No s'ha desat el document \"%s\"."
 
 #
-#: gedit/gedit-file.c:314 gedit/gedit-file.c:434
-#, fuzzy, c-format
+#: gedit/gedit-file.c:314 gedit/gedit-file.c:431
+#, c-format
 msgid "The document \"%s\" has been saved."
-msgstr "No s'ha desat el document."
+msgstr "No s'ha desat el document \"%s\"."
 
 #
-#: gedit/gedit-file.c:400
+#: gedit/gedit-file.c:397
 msgid "Save as..."
 msgstr "Anomena i desa..."
 
-#: gedit/gedit-file.c:600
+#: gedit/gedit-file.c:597
 #, c-format
 msgid "Revert unsaved changes to document \"%s\"?"
-msgstr ""
+msgstr "Voleu recuperar els canvis no desats al document \"%s\"?"
 
-#: gedit/gedit-file.c:609
+#: gedit/gedit-file.c:606
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be definitively "
@@ -1569,15 +1545,15 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be definitively "
 "lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Es perdran les modificacions realitzades l'últim %ld segon."
+msgstr[1] "Es perdran les modificacions realitzades els últims %ld segons."
 
-#: gedit/gedit-file.c:618
+#: gedit/gedit-file.c:615
 msgid ""
 "Changes made to the document in the last minute will be definitively lost."
-msgstr ""
+msgstr "Es perdran les modificacions realitzades al fitxer en l'últim minut."
 
-#: gedit/gedit-file.c:624
+#: gedit/gedit-file.c:621
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1586,9 +1562,13 @@ msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "definitively lost."
 msgstr[0] ""
+"Es perdran les modificacions del document realitzades l'últim minut i %ld "
+"segon."
 msgstr[1] ""
+"Es perdran les modificacions del document realitzades l'últim minut i %ld "
+"segons."
 
-#: gedit/gedit-file.c:634
+#: gedit/gedit-file.c:631
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be definitively "
@@ -1597,14 +1577,16 @@ msgid_plural ""
 "Changes made to the document in the last %ld minutes will be definitively "
 "lost."
 msgstr[0] ""
+"Es perdran les modificacions del document realitzades l'últim %ld minut."
 msgstr[1] ""
+"Es perdran les modificacions del document realitzades els últims %ld minuts."
 
-#: gedit/gedit-file.c:649
+#: gedit/gedit-file.c:646
 msgid ""
 "Changes made to the document in the last hour will be definitively lost."
-msgstr ""
+msgstr "Es perdran les modificacions realitzades al fitxer en l'última hora."
 
-#: gedit/gedit-file.c:655
+#: gedit/gedit-file.c:652
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1613,91 +1595,93 @@ msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "definitively lost."
 msgstr[0] ""
+"Es perdran les modificacions del document realitzades l'última hora i %d "
+"minut."
 msgstr[1] ""
+"Es perdran les modificacions del document realitzades l'última hora i %d "
+"minuts."
 
-#: gedit/gedit-file.c:670
+#: gedit/gedit-file.c:667
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be definitively lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be definitively lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Es perdran les modificacions realitzades l'última %d hora."
+msgstr[1] "Es perdran les modificacions realitzades les últimes %d hores."
 
-#: gedit/gedit-file.c:693 gedit/gedit-ui.xml.h:94
+#: gedit/gedit-file.c:690 gedit/gedit-ui.xml.h:94
 msgid "_Revert"
 msgstr "_Recupera"
 
-#: gedit/gedit-file.c:738
-#, fuzzy, c-format
+#: gedit/gedit-file.c:735
+#, c-format
 msgid "Error reverting the document \"%s\"."
-msgstr "No s'ha pogut recuperar el fitxer \"%s\"."
+msgstr "S'ha produït un error en recuperar el document \"%s\"."
 
 #
-#: gedit/gedit-file.c:745
-#, fuzzy, c-format
+#: gedit/gedit-file.c:742
+#, c-format
 msgid "The document \"%s\" has not been reverted."
-msgstr "No s'ha recuperat el document."
+msgstr "No s'ha recuperat el document \"%s\"."
 
 #
-#: gedit/gedit-file.c:749
-#, fuzzy, c-format
+#: gedit/gedit-file.c:746
+#, c-format
 msgid "The document \"%s\" has been reverted."
-msgstr "No s'ha recuperat el document."
+msgstr "S'ha recuperat el document \"%s\"."
 
-#: gedit/gedit-file.c:777
-#, fuzzy, c-format
+#: gedit/gedit-file.c:774
+#, c-format
 msgid "Reverting the document \"%s\"..."
-msgstr "S'està recuperant el fitxer «%s»..."
+msgstr "S'està recuperant el document \"%s\"..."
 
 #
-#: gedit/gedit-file.c:912
+#: gedit/gedit-file.c:909
 msgid "Could not read data from stdin."
-msgstr "No es poden llegir les dades des de stdin."
+msgstr "No s'han pogut llegir les dades des d'stdin."
 
-#: gedit/gedit-file.c:962
+#: gedit/gedit-file.c:959
 #, c-format
 msgid "The file \"%s\" does not exist. Would you like to create it?"
 msgstr "El fitxer «%s» no existeix. Voleu crear-lo?"
 
-#: gedit/gedit-file.c:1085
-#, fuzzy
+#: gedit/gedit-file.c:1082
 msgid "Reverting file:"
-msgstr "S'està recuperant el fitxer «%s»..."
+msgstr "S'està recuperant el fitxer:"
 
-#: gedit/gedit-file.c:1089
-#, fuzzy
+#: gedit/gedit-file.c:1086
 msgid "Loading file:"
-msgstr "S'estan carregant %d fitxers..."
+msgstr "S'està carregant el fitxer:"
 
-#: gedit/gedit-file.c:1258 gedit/gedit-file.c:1417
-#, fuzzy, c-format
+#: gedit/gedit-file.c:1255 gedit/gedit-file.c:1414
+#, c-format
 msgid "Error loading file \"%s\""
-msgstr "Hi ha hagut un error en desar el fitxer!"
+msgstr "S'ha produït un error en carregar el fitxer \"%s\""
 
 #
-#: gedit/gedit-file.c:1279
-#, fuzzy, c-format
+#: gedit/gedit-file.c:1276
+#, c-format
 msgid "Loaded file \"%s\""
-msgstr "S'ha carregat el fitxer %s"
+msgstr "S'ha carregat el fitxer \"%s\""
 
-#: gedit/gedit-file.c:1356
-#, fuzzy, c-format
+#: gedit/gedit-file.c:1353
+#, c-format
 msgid "Loaded %d file"
 msgid_plural "Loaded %d files"
-msgstr[0] "S'han carregat %i fitxers"
+msgstr[0] "S'ha carregat %i fitxer"
 msgstr[1] "S'han carregat %i fitxers"
 
-#: gedit/gedit-file.c:1390
-#, fuzzy, c-format
+#: gedit/gedit-file.c:1387
+#, c-format
 msgid "Loading file \"%s\"..."
-msgstr "S'estan carregant %d fitxers..."
+msgstr "S'està carregant el fitxer \"%s\"..."
 
-#: gedit/gedit-file.c:1537
-#, fuzzy, c-format
+#: gedit/gedit-file.c:1534
+#, c-format
 msgid "Loading %d file..."
 msgid_plural "Loading %d files..."
-msgstr[0] "S'estan carregant %d fitxers..."
+msgstr[0] "S'està carregant %d fitxer..."
 msgstr[1] "S'estan carregant %d fitxers..."
 
 #. Read only
@@ -1708,7 +1692,7 @@ msgstr "RO"
 #. Add the detach tab button
 #: gedit/gedit-mdi-child.c:636 gedit/gedit-ui.xml.h:85
 msgid "_Move to New Window"
-msgstr "_Vés a la nova finestra"
+msgstr "_Mou a una nova finestra"
 
 #: gedit/gedit-mdi-child.c:755
 msgid "Unknown"
@@ -1719,24 +1703,22 @@ msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
 #: gedit/gedit-mdi-child.c:773
-#, fuzzy
 msgid "Name:"
-msgstr "Nom"
+msgstr "Nom:"
 
 #: gedit/gedit-mdi-child.c:774
 msgid "MIME Type:"
-msgstr ""
+msgstr "Tipus de MIME:"
 
 #: gedit/gedit-mdi-child.c:775
-#, fuzzy
 msgid "Encoding:"
-msgstr "Codificacions"
+msgstr "Codificació:"
 
 #. Translators: %s is a URI
 #: gedit/gedit-mdi.c:284 gedit/gedit-mdi.c:444
-#, fuzzy, c-format
+#, c-format
 msgid "Open '%s'"
-msgstr "Obre %s"
+msgstr "Obre '%s'"
 
 #
 #: gedit/gedit-mdi.c:519
@@ -1757,12 +1739,12 @@ msgstr "Normal"
 
 #: gedit/gedit-mdi.c:1927
 msgid "Use Normal highlight mode"
-msgstr "Utilitza el mode de resaltat normal"
+msgstr "Utilitza el mode de ressaltat normal"
 
 #: gedit/gedit-mdi.c:2003
 #, c-format
 msgid "Use %s highlight mode"
-msgstr "Utilitza el mode de resaltat %s"
+msgstr "Utilitza el mode de ressaltat %s"
 
 #
 #: gedit/gedit-output-window.c:333
@@ -1863,7 +1845,7 @@ msgstr "S'està imprimint la pàgina %d de %d..."
 
 #: gedit/gedit-print.c:382 gedit/gedit-ui.xml.h:40
 msgid "Print preview"
-msgstr "Vista preliminar de la impressió"
+msgstr "Visualització prèvia de la impressió"
 
 #: gedit/gedit-print.c:550
 #, c-format
@@ -1877,19 +1859,19 @@ msgstr "Pàgina %N de %Q"
 #
 #: gedit/gedit-ui.xml.h:1
 msgid "About this application"
-msgstr "En quant a l'aplicació"
+msgstr "Quant a l'aplicació"
 
 #: gedit/gedit-ui.xml.h:2
 msgid "Change the visibility of the output window in the current window"
-msgstr "Canvia la visibilitat de la finestra de sortida en la finestra actual"
+msgstr "Canvia la visibilitat de la finestra de sortida de la finestra actual"
 
 #: gedit/gedit-ui.xml.h:3
 msgid "Change the visibility of the statusbar in the current window"
-msgstr "Canvia la visibilitat de la barra d'estat en la finestra actual"
+msgstr "Canvia la visibilitat de la barra d'estat de la finestra actual"
 
 #: gedit/gedit-ui.xml.h:4
 msgid "Change the visibility of the toolbar in the current window"
-msgstr "Canvia la visibilitat de la barra d'eines en la finestra actual"
+msgstr "Canvia la visibilitat de la barra d'eines de la finestra actual"
 
 #: gedit/gedit-ui.xml.h:5
 msgid "Close"
@@ -1936,12 +1918,12 @@ msgstr "Retalla la selecció"
 
 #: gedit/gedit-ui.xml.h:15
 msgid "Delete"
-msgstr "Esborra"
+msgstr "Suprimeix"
 
 #
 #: gedit/gedit-ui.xml.h:16
 msgid "Delete the selected text"
-msgstr "Esborra el text seleccionat"
+msgstr "Suprimeix el text seleccionat"
 
 #
 #: gedit/gedit-ui.xml.h:18
@@ -1951,12 +1933,12 @@ msgstr "Cerca el següe_nt"
 #
 #: gedit/gedit-ui.xml.h:20
 msgid "Find Pre_vious"
-msgstr "Troba l'an_terior"
+msgstr "Cerca l'an_terior"
 
 #
 #: gedit/gedit-ui.xml.h:21
 msgid "Find Previous"
-msgstr "Troba l'anterior"
+msgstr "Cerca l'anterior"
 
 #
 #: gedit/gedit-ui.xml.h:22
@@ -1964,13 +1946,12 @@ msgid "Go to _Line..."
 msgstr "Vés a la _línia..."
 
 #: gedit/gedit-ui.xml.h:23
-#, fuzzy
 msgid "Go to a specific line"
-msgstr "Vés al número de línia"
+msgstr "Vés a una línia específica"
 
 #: gedit/gedit-ui.xml.h:24
 msgid "Main toolbar"
-msgstr "Barra d'eines principals"
+msgstr "Barra d'eines principal"
 
 #: gedit/gedit-ui.xml.h:25
 msgid "Move the current document to a new window"
@@ -2028,16 +2009,16 @@ msgstr "Pr_eferències"
 #
 #: gedit/gedit-ui.xml.h:38
 msgid "Print Previe_w..."
-msgstr "_Vista preliminar de la impressió..."
+msgstr "_Vista prèvia de la impressió..."
 
 #
 #: gedit/gedit-ui.xml.h:39
 msgid "Print Preview"
-msgstr "Vista preliminar de la impressió"
+msgstr "Visualització prèvia de la impressió"
 
 #: gedit/gedit-ui.xml.h:41
 msgid "Print the current file"
-msgstr "Imprimeix aquest fitxer"
+msgstr "Imprimeix el fitxer"
 
 #: gedit/gedit-ui.xml.h:42
 msgid "Quit"
@@ -2087,34 +2068,30 @@ msgstr "Desa tots els fitxers oberts"
 
 #: gedit/gedit-ui.xml.h:53
 msgid "Save the current file"
-msgstr "Desa aquest fitxer"
+msgstr "Desa el fitxer"
 
 #
 #: gedit/gedit-ui.xml.h:54
 msgid "Save the current file with a different name"
-msgstr "Desa aquest fitxer amb un altre nom"
+msgstr "Desa el fitxer amb un altre nom"
 
 #
 #: gedit/gedit-ui.xml.h:55
-#, fuzzy
 msgid "Search backwards for the same text"
-msgstr "Cerca cap enrere la mateixa cadena"
+msgstr "Cerca la mateixa cadena cap enrere"
 
 #: gedit/gedit-ui.xml.h:56
-#, fuzzy
 msgid "Search for and replace text"
-msgstr "Cerca una cadena"
+msgstr "Cerca i reemplaça el text"
 
 #: gedit/gedit-ui.xml.h:57
-#, fuzzy
 msgid "Search for text"
-msgstr "_Cerca: "
+msgstr "Cerca el text"
 
 #
 #: gedit/gedit-ui.xml.h:58
-#, fuzzy
 msgid "Search forwards for the same text"
-msgstr "Cerca cap enrere la mateixa cadena"
+msgstr "Cerca el mateix text cap enrere"
 
 #
 #: gedit/gedit-ui.xml.h:59
@@ -2136,8 +2113,8 @@ msgstr "Selecciona el document sencer"
 msgid ""
 "Set toolbar button style according to desktop Menu and Toolbar Preferences"
 msgstr ""
-"Estableix l'estil dels botons de la barra d'eines segons les preferències de "
-"Menú i barra d'eines de l'escriptori"
+"Especifica l'estil dels botons de la barra d'eines segons les preferències "
+"de Menú i barra d'eines de l'escriptori"
 
 #
 #: gedit/gedit-ui.xml.h:63
@@ -2177,7 +2154,7 @@ msgstr "_Quant a"
 #
 #: gedit/gedit-ui.xml.h:71
 msgid "_Close"
-msgstr "_Tanca"
+msgstr "Tan_ca"
 
 #
 #: gedit/gedit-ui.xml.h:72
@@ -2200,7 +2177,7 @@ msgstr "_Personalitza la barra d'eines"
 
 #: gedit/gedit-ui.xml.h:76
 msgid "_Delete"
-msgstr "_Esborra"
+msgstr "_Suprimeix"
 
 #
 #: gedit/gedit-ui.xml.h:77
@@ -2231,7 +2208,7 @@ msgstr "A_juda"
 
 #: gedit/gedit-ui.xml.h:83
 msgid "_Highlight Mode"
-msgstr "Mode de _resaltat"
+msgstr "Mode de _ressaltat"
 
 #: gedit/gedit-ui.xml.h:84
 msgid "_Icons Only"
@@ -2258,7 +2235,7 @@ msgstr "_Enganxa"
 #
 #: gedit/gedit-ui.xml.h:90
 msgid "_Print..."
-msgstr "_Imprimeix..."
+msgstr "Im_primeix..."
 
 #
 #: gedit/gedit-ui.xml.h:91
@@ -2293,7 +2270,7 @@ msgstr "_Cerca"
 #
 #: gedit/gedit-ui.xml.h:98
 msgid "_Statusbar"
-msgstr "_Barra d'estat"
+msgstr "Barra d'e_stat"
 
 #: gedit/gedit-ui.xml.h:99
 msgid "_Text for All Icons"
@@ -2326,22 +2303,21 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"No s'ha trobat el fitxer \"%s\".\n"
+"No s'ha pogut trobat el fitxer \"%s\".\n"
 "\n"
-"Si us plau, comproveu que s'hagi escrit correctament la ubicació i torneu-ho "
-"a intentar."
+"Comproveu que s'hagi escrit correctament la ubicació i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:415
 #, c-format
 msgid "Could not open the file \"%s\" because it contains corrupted data."
-msgstr "No s'ha pogut obrir el fitxer \"%s\" ja que conté dades corrompudes."
+msgstr "No s'ha pogut obrir el fitxer \"%s\" perquè conté dades corrompudes."
 
 #: gedit/gedit-utils.c:426
 #, c-format
 msgid ""
 "Could not open the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
-"No s'ha pogut obrir el fitxer \"%s\" ja que el gedit no pot gestionar "
+"No s'ha pogut obrir el fitxer \"%s\" perquè el gedit no pot gestionar "
 "ubicacions %s:."
 
 #: gedit/gedit-utils.c:432
@@ -2354,13 +2330,13 @@ msgstr "No s'ha pogut obrir el fitxer \"%s\""
 msgid ""
 "Could not open the file \"%s\" because it contains data in an invalid format."
 msgstr ""
-"No s'ha pogut obrir el fitxer \"%s\" ja que conté dades en un format no "
+"No s'ha pogut obrir el fitxer \"%s\" perquè conté dades en un format no "
 "vàlid."
 
 #: gedit/gedit-utils.c:449
 #, c-format
 msgid "Could not open the file \"%s\" because it is too big."
-msgstr "No s'ha pogut obrir el fitxer \"%s\" ja que és massa gran."
+msgstr "No s'ha pogut obrir el fitxer \"%s\" perquè és massa gran."
 
 #: gedit/gedit-utils.c:456
 #, c-format
@@ -2371,13 +2347,12 @@ msgid ""
 msgstr ""
 "\"%s\" no és una ubicació vàlida.\n"
 "\n"
-"Si us plau, comproveu que la ubicació estigui ben escrita i torneu-ho a "
-"intentar."
+"Comproveu que la ubicació estigui ben escrita i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:464
 #, c-format
 msgid "Could not open the file \"%s\" because access was denied."
-msgstr "No s'ha pogut obrir el fitxer \"%s\" ja que s'ha negat l'accés."
+msgstr "No s'ha pogut obrir el fitxer \"%s\" perquè s'ha negat l'accés."
 
 #: gedit/gedit-utils.c:471
 #, c-format
@@ -2386,8 +2361,8 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"No s'ha pogut obrir el fitxer \"%s\" ja que hi ha massa fitxers oberts.\n"
-"Si us plau, tanqueu alguns fitxers oberts i torneu-ho a intentar."
+"No s'ha pogut obrir el fitxer \"%s\" perquè hi ha massa fitxers oberts.\n"
+"Tanqueu alguns fitxers oberts i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:479
 #, c-format
@@ -2398,8 +2373,7 @@ msgid ""
 msgstr ""
 "\"%s\" és un directori.\n"
 "\n"
-"Si us plau, comproveu que la ubicació estigui ben escrita i torneu-ho a "
-"intentar."
+"Comproveu que la ubicació estigui ben escrita i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:487
 #, c-format
@@ -2407,8 +2381,8 @@ msgid ""
 "Not enough available memory to open the file \"%s\". Please, close some "
 "running application and try again."
 msgstr ""
-"No hi ha prou memòria disponible per obrir el fitxer \"%s\". Si us plau, "
-"tanqueu algunes de les aplicacions en marxa i torneu-ho a intentar."
+"No hi ha prou memòria disponible per obrir el fitxer \"%s\". Tanqueu algunes "
+"de les aplicacions en marxa i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:513
 #, c-format
@@ -2418,11 +2392,11 @@ msgid ""
 "Please, check that you typed the location correctly and that your proxy "
 "settings are correct and then try again."
 msgstr ""
-"No s'ha pogut obrir el fitxer \"%s\" ja que no s'ha trobat cap ordinador "
+"No s'ha pogut obrir el fitxer \"%s\" perquè no s'ha trobat cap ordinador "
 "central \"%s\".\n"
 "\n"
-"Si us plau, comproveu que la ubicació estigui ben escrita i que els "
-"paràmetres del servidor intermediari siguin correctes i torneu-ho a intentar."
+"Comproveu que la ubicació estigui ben escrita i que els paràmetres del "
+"servidor intermediari siguin correctes i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:528
 #, c-format
@@ -2431,11 +2405,10 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"No s'ha pogut obrir el fitxer \"%s\" ja que el nom de l'ordinador central no "
+"No s'ha pogut obrir el fitxer \"%s\" perquè el nom de l'ordinador central no "
 "és vàlid.\n"
 "\n"
-"Si us plau, comproveu que la ubicació estigui ben escrita i torneu-ho a "
-"intentar."
+"Comproveu que la ubicació estigui ben escrita i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:537
 #, c-format
@@ -2444,11 +2417,11 @@ msgid ""
 "\n"
 "Please, check that your proxy settings are correct and try again."
 msgstr ""
-"No s'ha pogut obrir el fitxer \"%s\" ja que no hi ha nom per l'ordinador "
+"No s'ha pogut obrir el fitxer \"%s\" perquè no hi ha nom per l'ordinador "
 "central.\n"
 "\n"
-"Si us plau, comproveu que els paràmetres del servidor intermediari siguin "
-"correctes i torneu-ho a intentar."
+"Comproveu que els paràmetres del servidor intermediari siguin correctes i "
+"torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:546
 #, c-format
@@ -2457,10 +2430,10 @@ msgid ""
 "\n"
 "Please, check that you typed the location correctly and try again."
 msgstr ""
-"No s'ha pogut trobar el fitxer \"%s\" ja que ha fallat l'intent d'entrada.\n"
+"No s'ha pogut trobar el fitxer \"%s\" perquè s'ha produït un error a "
+"l'intentar entrar.\n"
 "\n"
-"Si us plau, comproveu que la ubicació estigui ben escrita i torneu-ho a "
-"intentar."
+"Comproveu que la ubicació estigui ben escrita i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:555 gedit/gedit-utils.c:628
 #, c-format
@@ -2469,9 +2442,9 @@ msgid ""
 "\n"
 "Probably, you are trying to open a binary file."
 msgstr ""
-"No s'ha pogut obrir el fitxer «%s» ja que conté dades invàlides.\n"
+"No s'ha pogut obrir el fitxer «%s» perquè conté dades invàlides.\n"
 "\n"
-"Probablement, esteu intentant obrir un fitxer binari."
+"Probablement esteu intentant obrir un fitxer binari."
 
 #: gedit/gedit-utils.c:564 gedit/gedit-utils.c:662
 #, c-format
@@ -2488,12 +2461,12 @@ msgid ""
 "selecting a character coding in the 'Open File...' (or 'Open Location') "
 "dialog."
 msgstr ""
-"No s'ha pogut obrir el fitxer «%s» perque gedit no ha pogut detectar "
+"No s'ha pogut obrir el fitxer «%s» perquè el gedit no ha pogut detectar "
 "automàticament la codificació de caràcters.\n"
 "\n"
-"Si us plau, comproveu que no esteu tractant d'obrir un fitxer binari i "
-"proveu de nou seleccionant una codificació de caràcters al diàleg «Obre un "
-"fitxer...» (o «Obre una ubicació»)."
+"Comproveu que no esteu intentant obrir un fitxer binari i torneu-ho a provar "
+"seleccionant una codificació de caràcters al diàleg «Obre un fitxer...» (o "
+"«Obre una ubicació»)."
 
 #: gedit/gedit-utils.c:616 gedit/gedit-utils.c:646
 #, c-format
@@ -2507,18 +2480,18 @@ msgstr ""
 "No s'ha pogut obrir el fitxer «%s» utilitzant la codificació de caràcter %"
 "s.\n"
 "\n"
-"Si us plau, comproveu que no esteu tractant d'obrir un fitxer binari i "
-"proveu de nou seleccionant una codificació de caràcters al diàleg «Obre un "
-"fitxer...» (o «Obre una ubicació»)."
+"Comproveu que no esteu intentant obrir un fitxer binari i torneu-ho a provar "
+"seleccionant una codificació de caràcters al diàleg «Obre un fitxer...» (o "
+"«Obre una ubicació»)."
 
 #: gedit/gedit-utils.c:666
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the file \"%s\".\n"
 "\n"
 "%s."
 msgstr ""
-"No s'ha pogut obrir el fitxer «%s».\n"
+"No s'ha pogut obrir el fitxer \"%s\".\n"
 "\n"
 "%s"
 
@@ -2545,22 +2518,22 @@ msgid ""
 "\n"
 "Perhaps, it has recently been deleted."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que el gedit no l'ha trobat.\n"
+"No s'ha pogut recuperar el fitxer \"%s\" perquè el gedit no l'ha trobat.\n"
 "\n"
-"Potser, s'ha esborrat recentment."
+"Potser s'ha suprimit recentment."
 
 #: gedit/gedit-utils.c:782
 #, c-format
 msgid "Could not revert the file \"%s\" because it contains corrupted data."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que conté dades corrompudes."
+"No s'ha pogut recuperar el fitxer \"%s\" perquè conté dades corrompudes."
 
 #: gedit/gedit-utils.c:793
 #, c-format
 msgid ""
 "Could not revert the file \"%s\" because gedit cannot handle %s: locations."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que el gedit no pot treballar "
+"No s'ha pogut recuperar el fitxer \"%s\" perquè el gedit no pot treballar "
 "amb ubicacions %s:."
 
 #: gedit/gedit-utils.c:799 gedit/gedit-utils.c:939
@@ -2574,18 +2547,18 @@ msgid ""
 "Could not revert the file \"%s\" because it contains data in an invalid "
 "format."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que conté dades en un format no "
+"No s'ha pogut recuperar el fitxer \"%s\" perquè conté dades en un format no "
 "vàlid."
 
 #: gedit/gedit-utils.c:816
 #, c-format
 msgid "Could not revert the file \"%s\" because it is too big."
-msgstr "No s'ha pogut trobar el fitxer \"%s\" ja que és massa gran."
+msgstr "No s'ha pogut recuperar el fitxer \"%s\" perquè és massa gran."
 
 #: gedit/gedit-utils.c:823
 #, c-format
 msgid "Could not revert the file \"%s\" because access was denied."
-msgstr "No s'ha pogut recuperar el fitxer \"%s\" ja que s'ha negat l'accés."
+msgstr "No s'ha pogut recuperar el fitxer \"%s\" perquè s'ha negat l'accés."
 
 #: gedit/gedit-utils.c:830
 #, c-format
@@ -2594,10 +2567,9 @@ msgid ""
 "\n"
 "Please, close some open file and try again."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que hi ha masses fitxers "
-"oberts.\n"
+"No s'ha pogut recuperar el fitxer \"%s\" perquè hi ha massa fitxers oberts.\n"
 "\n"
-"Si us plau, tanca'n algun i torneu-ho a intentar."
+"Tanqueu-ne algun i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:838
 #, c-format
@@ -2605,8 +2577,8 @@ msgid ""
 "Not enough available memory to revert the file \"%s\". Please, close some "
 "running application and try again."
 msgstr ""
-"No hi ha suficient memòria per recuperar el fitxer \"%s\". Si us plau, tanca "
-"alguna aplicació en marxa i torneu-ho a intentar."
+"No hi ha suficient memòria per recuperar el fitxer \"%s\". Tanqueu alguna "
+"aplicació en marxa i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:864
 #, c-format
@@ -2615,11 +2587,11 @@ msgid ""
 "\n"
 "Please, check that your proxy settings are correct and try again."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que no s'ha trobat l'ordinador "
+"No s'ha pogut recuperar el fitxer \"%s\" perquè no s'ha trobat l'ordinador "
 "central \"%s\".\n"
 "\n"
-"Si us plau, comproveu que els paràmetres del servidor intermediari siguin "
-"correctes i torneu-ho a intentar."
+"Comproveu que els paràmetres del servidor intermediari siguin correctes i "
+"torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:878
 #, c-format
@@ -2628,17 +2600,18 @@ msgid ""
 "\n"
 "Please, check that your proxy settings are correct and try again."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que no hi ha nom de l'ordinador "
-"central.\n"
+"No s'ha pogut recuperar el fitxer \"%s\" perquè no hi ha el nom de "
+"l'ordinador central.\n"
 "\n"
-"Si us plau, comproveu que els paràmetres del proxy siguin correctes i torneu-"
-"ho a intentar."
+"Comproveu que els paràmetres del servidor intermediari siguin correctes i "
+"torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:885
 #, c-format
 msgid "Could not revert the file \"%s\" because the attempt to log in failed."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que ha fallat l'intent d'entrada."
+"No s'ha pogut recuperar el fitxer \"%s\" perquè s'ha produït un error a "
+"l'intentar entrar."
 
 #: gedit/gedit-utils.c:892
 #, c-format
@@ -2647,10 +2620,10 @@ msgid ""
 "\n"
 "Probably, you are trying to revert a binary file."
 msgstr ""
-"No s'ha pogut recuperar el fitxer \"%s\" ja que conté dades UTF-8 no "
+"No s'ha pogut recuperar el fitxer \"%s\" perquè conté dades UTF-8 no "
 "vàlides.\n"
 "\n"
-"Probablement, esteu intentant recuperar un fitxer binari."
+"Probablement esteu intentant recuperar un fitxer binari."
 
 #
 #: gedit/gedit-utils.c:901
@@ -2671,7 +2644,7 @@ msgid ""
 msgstr ""
 "\"%s\" és un directori.\n"
 "\n"
-"Si us plau, comproveu que la ubicació estigui ben escrita."
+"Comproveu que la ubicació estigui ben escrita."
 
 #
 #: gedit/gedit-utils.c:1005
@@ -2706,7 +2679,7 @@ msgid ""
 msgstr ""
 "No es pot crear el fitxer «%s».\n"
 "\n"
-"Un component directori en el nom del fitxer no existeix o és un enllaç "
+"Un component del directori  del nom del fitxer no existeix o és un enllaç "
 "simbòlic trencat."
 
 #: gedit/gedit-utils.c:1028
@@ -2718,7 +2691,7 @@ msgid ""
 msgstr ""
 "No hi ha suficient espai al disc per desar el fitxer «%s».\n"
 "\n"
-"Si us plau, allibereu espai al disc i torneu-ho a intentar."
+"Allibereu espai al disc i torneu-ho a intentar."
 
 #: gedit/gedit-utils.c:1034
 #, c-format
@@ -2751,7 +2724,7 @@ msgstr "Mostra els missatges de depuració de les utilitats."
 #
 #: gedit/gedit2.c:85
 msgid "Show metadata debugging messages."
-msgstr "Mostra els missatges de depuració de metadata."
+msgstr "Mostra els missatges de depuració de les metadades."
 
 #
 #: gedit/gedit2.c:88
@@ -2764,7 +2737,7 @@ msgstr "Mostra els missatges de depuració d'ordres."
 
 #: gedit/gedit2.c:94
 msgid "Show document debugging messages."
-msgstr "Mostra els missatges de depuració de documents."
+msgstr "Mostra els missatges de depuració del documents."
 
 #: gedit/gedit2.c:97
 msgid "Show file debugging messages."
@@ -2826,7 +2799,7 @@ msgstr "Estadístiques del _document"
 #
 #: plugins/docinfo/docinfo.c:49
 msgid "Get statistic info on current document"
-msgstr "Aconsegueix informació d'estadístiques sobre el document actual"
+msgstr "Obté informació d'estadístiques sobre el document actual"
 
 #: plugins/docinfo/docinfo.c:140
 #: plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:1
@@ -2877,7 +2850,7 @@ msgstr "Paraules"
 
 #: plugins/docinfo/docinfo.glade2.h:10
 msgid "gedit: Document Info plugin"
-msgstr "gedit: Connector d'informació del document"
+msgstr "gedit: connector d'informació del document"
 
 #: plugins/indent/indent.c:45
 msgid "_Indent"
@@ -2971,9 +2944,9 @@ msgid ""
 "\n"
 "Please, insert a valid shell command."
 msgstr ""
-"Errada en analitzar l'ordre de l'intèrpret.\n"
+"S'ha produït un error en analitzar l'ordre de l'intèrpret.\n"
 "\n"
-"Si us plau, inseriu'n una de vàlida."
+"Inseriu-ne una de vàlida."
 
 #: plugins/shell_output/shell_output.c:773
 msgid "Executing command"
@@ -2981,9 +2954,8 @@ msgstr "S'està executant l'ordre"
 
 #
 #: plugins/shell_output/shell_output.c:841
-#, fuzzy
 msgid "An error occured while running the selected command."
-msgstr "S'ha produït un error mentre s'executava l'ordre seleccionada."
+msgstr "S'ha produït un error en executar l'ordre seleccionada."
 
 #
 #: plugins/shell_output/shell_output.gedit-plugin.desktop.in.h:1
@@ -2991,7 +2963,7 @@ msgid ""
 "Execute an external program and eventually grabs its output in the output "
 "window."
 msgstr ""
-"Executa un programa extern i eventualment captura la seva sortida en la "
+"Executa un programa extern i, eventualment, captura la seva sortida en la "
 "finestra de sortida."
 
 #
@@ -3017,10 +2989,9 @@ msgstr "_Directori de treball:"
 
 #: plugins/shell_output/shell_output.glade2.h:6
 msgid "gedit: Shell Output plugin"
-msgstr "gedit: Connector de la sortida de l'intèrpret d'ordres"
+msgstr "gedit: connector de la sortida de l'intèrpret d'ordres"
 
 #
-#. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:27
 msgid "S_ort..."
 msgstr "_Ordena..."
@@ -3042,7 +3013,7 @@ msgstr "Ordena un document o el text seleccionat."
 #
 #: plugins/sort/sort.glade2.h:1
 msgid "R_emove duplicates"
-msgstr "_Elimina els duplicats"
+msgstr "Suprim_eix els duplicats"
 
 #
 #: plugins/sort/sort.glade2.h:2
@@ -3195,9 +3166,8 @@ msgid "Swedish"
 msgstr "Suec"
 
 #: plugins/spell/gedit-spell-checker.c:102
-#, fuzzy
 msgid "Ukrainian"
-msgstr "Ciríl·lic/ucrainès"
+msgstr "Ucraïnès"
 
 #: plugins/spell/gedit-spell-checker.c:735
 msgid "Default"
@@ -3211,20 +3181,20 @@ msgstr "No s'han trobat els ginys necessaris dins de %s."
 #
 #: plugins/spell/gedit-spell-language-dialog.c:253
 msgid "Languages"
-msgstr "Llengües"
+msgstr "Idiomes"
 
 #
 #: plugins/spell/languages-dialog.glade2.h:1
 msgid "Select the _language of the current document."
-msgstr "Selecciona la _llengua per al document actual."
+msgstr "Se_lecciona l'idioma del document actual."
 
 #: plugins/spell/languages-dialog.glade2.h:2
 msgid "Set language"
-msgstr "Estableix la llengua"
+msgstr "Especifica l'idioma"
 
 #: plugins/spell/spell-checker.glade2.h:2
 msgid "<b>Language</b>"
-msgstr "<b>Llengua</b>"
+msgstr "<b>Idioma</b>"
 
 #: plugins/spell/spell-checker.glade2.h:3
 msgid "<b>word</b>"
@@ -3232,7 +3202,7 @@ msgstr "<b>paraula</b>"
 
 #: plugins/spell/spell-checker.glade2.h:4
 msgid "Add w_ord"
-msgstr "Afegeix la _paraula"
+msgstr "Afegeix una _paraula"
 
 #: plugins/spell/spell-checker.glade2.h:5
 msgid "Cha_nge"
@@ -3262,7 +3232,7 @@ msgstr "Ignora-ho tot"
 
 #: plugins/spell/spell-checker.glade2.h:11
 msgid "Language:"
-msgstr "Llengua:"
+msgstr "Idioma:"
 
 #: plugins/spell/spell-checker.glade2.h:12
 msgid "Mispelled word:"
@@ -3298,12 +3268,12 @@ msgstr "Comprova l'ortografia del document actual automàticament"
 
 #: plugins/spell/spell.c:61
 msgid "Set _Language"
-msgstr "Estableix la _llengua"
+msgstr "Especifica _l'idioma"
 
 #
 #: plugins/spell/spell.c:64
 msgid "Set the language of the current document"
-msgstr "Estableix la llengua del document actual"
+msgstr "Especifica l'idioma del document actual"
 
 #: plugins/spell/spell.c:553
 msgid "The document is empty."
@@ -3327,26 +3297,25 @@ msgid "Spell checker"
 msgstr "Comprovador d'ortografia"
 
 #
-#: plugins/taglist/gedit-taglist-plugin-window.c:136
+#: plugins/taglist/gedit-taglist-plugin-window.c:139
 msgid "Tag list plugin"
 msgstr "Connector del llistat de marcadors"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:154
+#: plugins/taglist/gedit-taglist-plugin-window.c:157
 msgid "Select the group of tags you want to use"
 msgstr "Selecciona el grup de marcadors que voleu utilitzar"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:176
-#, fuzzy
+#: plugins/taglist/gedit-taglist-plugin-window.c:179
 msgid "Available Tag Lists"
-msgstr "Formats disponibles"
+msgstr "Llistes dels marcadors disponibles"
 
-#: plugins/taglist/gedit-taglist-plugin-window.c:178
-#: plugins/taglist/gedit-taglist-plugin-window.c:199
+#: plugins/taglist/gedit-taglist-plugin-window.c:181
+#: plugins/taglist/gedit-taglist-plugin-window.c:202
 msgid "Tags"
 msgstr "Marcadors"
 
 #
-#: plugins/taglist/gedit-taglist-plugin-window.c:188
+#: plugins/taglist/gedit-taglist-plugin-window.c:191
 msgid "Double-click on a tag to insert it in the current document"
 msgstr "Feu doble clic en un marcador per inserir-lo al document actual"
 
@@ -3372,7 +3341,8 @@ msgid ""
 "commonly used tags/strings without having to type them."
 msgstr ""
 "El connector del llistat de marcadors ofereix un mètode senzill per inserir "
-"en un document els marcadors/cadenes més usades sense haver de teclejar-les."
+"en un document els marcadors/cadenes més utilitzades sense haver de teclejar-"
+"les."
 
 #
 #: plugins/time/time.c:50
@@ -3422,7 +3392,7 @@ msgstr "Insereix la data i hora"
 #
 #: plugins/time/time.glade2.h:7
 msgid "Use the _selected format"
-msgstr "Usa el format _seleccionat"
+msgstr "Utilitza el format _seleccionat"
 
 #
 #: plugins/time/time.glade2.h:8
@@ -3435,7 +3405,7 @@ msgstr "_Pregunta per un format"
 
 #: plugins/time/time.glade2.h:10
 msgid "_Use custom format"
-msgstr "_Usa un format personalitzat"
+msgstr "_Utilitza un format personalitzat"
 
 #: viewer/gedit-persist-stream.c:44
 msgid "Save method not implemented for gedit viewer"
