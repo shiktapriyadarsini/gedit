@@ -285,7 +285,7 @@ language_toggled  (GtkToggleAction *action,
 
 	if (n < 0)
 	{
-		/* default language */
+		/* Normal (no highlighting) */
 		lang = NULL;
 	}
 	else
