@@ -203,6 +203,21 @@ notebook_page_changed (GtkNotebook     *notebook,
 	}
 }
 
+
+static void
+panel_show (GeditPanel *panel,
+	    gpointer    user_data)
+{
+	gint page;
+	GtkNotebook *nb;
+
+	nb = GTK_NOTEBOOK (panel->priv->notebook);
+	
+	page = gtk_notebook_get_current_page (nb);
+	
+	notebook_page_changed (nb, NULL, page, panel);
+}
+
 static void
 close_button_clicked_cb (GtkWidget *widget, GtkWidget *panel)
 {
@@ -299,6 +314,8 @@ gedit_panel_init (GeditPanel *panel)
 			  "clicked",
                           G_CALLBACK (close_button_clicked_cb),
                           panel);
+                          
+	gtk_widget_show_all (GTK_WIDGET (title_hbox));                          
                                 
 	/* Create the notebook */
 	panel->priv->notebook = gtk_notebook_new ();
@@ -312,12 +329,17 @@ gedit_panel_init (GeditPanel *panel)
   	gtk_notebook_set_scrollable (GTK_NOTEBOOK (panel->priv->notebook), TRUE);
   	gtk_notebook_popup_enable (GTK_NOTEBOOK (panel->priv->notebook));
   	
-  	gtk_widget_show_all (GTK_WIDGET (panel));
+  	gtk_widget_show (GTK_WIDGET (panel->priv->notebook));
   	
-  	g_signal_connect (G_OBJECT (panel->priv->notebook),
+  	g_signal_connect (panel->priv->notebook,
   			  "switch-page",
   			  G_CALLBACK (notebook_page_changed),
   			  panel);
+  			  
+	g_signal_connect (panel,
+			  "show",
+			  G_CALLBACK (panel_show),
+			  NULL);
 }
 
 GtkWidget *
@@ -378,11 +400,7 @@ build_tab_label (GeditPanel  *panel,
 			      name,
 			      NULL);
 			      
-	gtk_widget_show (hbox);
-	gtk_widget_show (label_ebox);
-	gtk_widget_show (label_hbox);
-	gtk_widget_show (label);
-	gtk_widget_show (icon);
+	gtk_widget_show_all (hbox);
 	
 	g_object_set_data (G_OBJECT (item), "label", label);
 	g_object_set_data (G_OBJECT (item), "hbox", hbox);
@@ -419,6 +437,9 @@ gedit_panel_add_item (GeditPanel  *panel,
 	menu_label = gtk_label_new (name);
 	gtk_misc_set_alignment (GTK_MISC (menu_label), 0.0, 0.5);
 	
+	if (!GTK_WIDGET_VISIBLE (item))
+		gtk_widget_show (item);
+		
 	gtk_notebook_append_page_menu (GTK_NOTEBOOK (panel->priv->notebook),
 				       item,
 				       tab_label,

@@ -1208,8 +1208,18 @@ side_panel_size_allocate (GtkWidget     *widget,
 }
 
 static void
+side_panel_hide (GtkWidget   *panel,
+		 GeditWindow *window)
+{
+	_gedit_window_set_side_panel_visible (window, FALSE);
+}
+		 
+static void
 create_side_panel (GeditWindow *window)
 {
+	GtkAction *action;
+	gboolean visible;
+	
 	window->priv->side_panel = gedit_panel_new ();
 
   	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned), 
@@ -1223,6 +1233,11 @@ create_side_panel (GeditWindow *window)
   			  G_CALLBACK (side_panel_size_allocate),
   			  window);
 
+	g_signal_connect (window->priv->side_panel,
+  			  "hide",
+  			  G_CALLBACK (side_panel_hide),
+  			  window);
+  			  
 	gtk_paned_set_position (GTK_PANED (window->priv->hpaned),
 				MAX (100, gedit_prefs_manager_get_side_panel_size ()));
 				
@@ -1230,8 +1245,17 @@ create_side_panel (GeditWindow *window)
   	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_tree_view_new (), "Documents", GTK_STOCK_FILE);
   	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_label_new ("Project"), "Projects", GTK_STOCK_EXECUTE);
   	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), gtk_label_new ("Selector"), "Selector", GTK_STOCK_HARDDISK);  	
-  	
-  	gtk_widget_show_all (window->priv->side_panel);
+
+	visible = gedit_prefs_manager_get_side_pane_visible ();
+	
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewSidePane");		
+		
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+
+	if (visible)
+		gtk_widget_show (window->priv->side_panel);
 }
 
 static void
@@ -1516,7 +1540,9 @@ _gedit_window_set_statusbar_visible (GeditWindow *window,
 	GtkAction *action;
 	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	
+
+	visible = (visible != FALSE);
+		
 	if (visible)
 		gtk_widget_show (window->priv->statusbar);
 	else
@@ -1539,7 +1565,9 @@ _gedit_window_set_toolbar_visible (GeditWindow *window,
 	GtkAction *action;
 	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	
+
+	visible = (visible != FALSE);
+		
 	if (visible)
 		gtk_widget_show (window->priv->toolbar);
 	else
@@ -1563,16 +1591,16 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 	
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	
-	if (visible)
+	visible = (visible != FALSE);
+	
+	if (visible && 
+	    (GTK_WIDGET_VISIBLE (window->priv->side_panel) != visible))
 		gtk_widget_show (window->priv->side_panel);
 	else
 		gtk_widget_hide (window->priv->side_panel);
-
-	// FIXME
-	/*
-	if (gedit_prefs_manager_toolbar_visible_can_set ())
-		gedit_prefs_manager_set_toolbar_visible (visible);
-	*/		
+	
+	if (gedit_prefs_manager_side_pane_visible_can_set ())
+		gedit_prefs_manager_set_side_pane_visible (visible);
 	
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewSidePane");		
