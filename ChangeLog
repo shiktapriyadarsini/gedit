@@ -1,9 +1,10 @@
-2003-01-31  James Willcox  <jwillcox@gnome.org>
+2003-02-04  Paolo Maggi <paolo.maggi@polito.it>
 
-	* src/recent-files/egg-recent-model.c: (egg_recent_model_changed):
+	* configure.in: bump version to 2.2.0.1,
 
-	Update to latest libegg recent-files.  Fixes Red Hat bug #81777 and
-	#83280.  Fixes GNOME bug #104988.
+	* README: bump version to 2.2.0.1
+
+	* NEW: updated
 
 2003-01-27  Paolo Maggi <paolo.maggi@polito.it>
 
