@@ -63,8 +63,10 @@ struct _GeditWindowPrivate
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
 	GtkActionGroup *action_group;
+	GtkActionGroup *documents_list_action_group;
+	guint           documents_list_menu_ui_id;
 	GtkWidget      *toolbar;
-	
+
 	GeditTab       *active_tab;
 	gint            num_tabs;
 	
@@ -216,6 +218,12 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	action = gtk_action_group_get_action (action_group, "EditUndo");
 	g_object_set (action, "is_important", TRUE, NULL);
 
+	/* the menu with the list of open documents */
+	action_group = gtk_action_group_new ("DocumentsListActions");
+	gtk_action_group_set_translation_domain (action_group, NULL);
+	window->priv->documents_list_action_group = action_group;
+	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+
 	gtk_window_add_accel_group (GTK_WINDOW (window),
 				    gtk_ui_manager_get_accel_group (manager));
 
@@ -236,6 +244,105 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 			    FALSE, 
 			    FALSE, 
 			    0);	
+}
+
+static void
+documents_list_menu_activate (GtkToggleAction *action,
+			 GeditWindow     *window)
+{
+	gint n;
+
+	if (gtk_toggle_action_get_active (action) == FALSE)
+		return;
+
+	n = gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), n);
+}
+
+static void
+documents_list_menu_update (GeditWindow *window)
+{
+	GeditWindowPrivate *p = window->priv;
+	GList *actions, *l;
+	gint n, i;
+	guint id;
+	GSList *group = NULL;
+
+	g_return_if_fail (p->documents_list_action_group != NULL);
+
+	if (p->documents_list_menu_ui_id != 0)
+		gtk_ui_manager_remove_ui (p->manager,
+					  p->documents_list_menu_ui_id);
+
+	actions = gtk_action_group_list_actions (p->documents_list_action_group);
+	for (l = actions; l != NULL; l = l->next)
+	{
+		g_signal_handlers_disconnect_by_func (GTK_ACTION (l->data),
+						      G_CALLBACK (documents_list_menu_activate),
+						      window);
+ 		gtk_action_group_remove_action (p->documents_list_action_group,
+						GTK_ACTION (l->data));
+	}
+
+	n = gtk_notebook_get_n_pages (GTK_NOTEBOOK (p->notebook));
+
+	id = (n > 0) ? gtk_ui_manager_new_merge_id (p->manager) : 0;
+
+	for (i = 0; i < n; i++)
+	{
+		GtkWidget *tab;
+		GtkRadioAction *action;
+		gchar *tab_name; //CHECK: must escape underscores and gmarkup
+		gchar *action_name;
+		gchar *accel;
+
+		tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (p->notebook), i);
+
+		tab_name = _gedit_tab_get_name (GEDIT_TAB (tab));
+		action_name = g_strdup_printf ("Tab_%p", tab);
+
+		/* alt + 1, 2, 3... 0 to switch to the first ten tabs */
+		accel = (i < 10) ? g_strdup_printf ("<alt>%d", (i + 1) % 10) : NULL;
+
+		action = gtk_radio_action_new (action_name,
+					       tab_name,
+					       _("Switch to this tab"), //FIXME "activate %s"
+					       NULL,
+					       i);
+
+		if (group != NULL)
+			gtk_radio_action_set_group (action, group);
+
+		/* note that group changes each time we add an action, so it must be updated */
+		group = gtk_radio_action_get_group (action);
+
+		gtk_action_group_add_action_with_accel (p->documents_list_action_group,
+							GTK_ACTION (action),
+							accel);
+
+		g_signal_connect (action,
+				  "activate",
+				  G_CALLBACK (documents_list_menu_activate),
+				  window);
+
+		gtk_ui_manager_add_ui (p->manager,
+				       id,
+				       "/MenuBar/DocumentsMenu/DocumentsList",
+				       action_name, action_name,
+				       GTK_UI_MANAGER_MENUITEM,
+				       FALSE);
+
+		if (GEDIT_TAB (tab) == p->active_tab)
+			gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+
+		g_object_unref (action);
+
+		g_free (tab_name);
+		g_free (action_name);
+		g_free (accel);
+	}
+
+	p->documents_list_menu_ui_id = id;
 }
 
 static void
@@ -507,26 +614,59 @@ notebook_switch_page (GtkNotebook     *book,
 		      GeditWindow     *window)
 {
 	GeditView *view;
-	window->priv->active_tab = GEDIT_TAB (
-					gtk_notebook_get_nth_page (book, 
-								   page_num));
+	GeditTab *tab;
+	GtkAction *action;
+	gchar *action_name;
+
+	/* set the active tab */
+	tab = GEDIT_TAB (gtk_notebook_get_nth_page (book, page_num));
+	window->priv->active_tab = tab;
 
 	set_title (window);
-	
-	view = gedit_tab_get_view (window->priv->active_tab);
-	
-	update_cursor_position_statusbar (
-			GTK_TEXT_BUFFER (gedit_tab_get_document (window->priv->active_tab)),
-			window);
-	gedit_statusbar_set_overwrite (
-			GEDIT_STATUSBAR (window->priv->statusbar),
-			gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
+
+	/* activate the right item in the documents menu */
+	action_name = g_strdup_printf ("Tab_%p", tab);
+	action = gtk_action_group_get_action (window->priv->documents_list_action_group,
+					      action_name);
+
+	/* sometimes the action doesn't exist yet, and the proper action
+	 * is set active during the documents list menu creation
+	 * CHECK: would it be nicer if active_tab was a property and we monitored the notify signal?
+	 */
+	if (action != NULL)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+
+	g_free (action_name);
+
+	view = gedit_tab_get_view (tab);
+
+	/* sync the statusbar */
+	update_cursor_position_statusbar (GTK_TEXT_BUFFER (gedit_tab_get_document (tab)),
+					  window);
+	gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
+				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
 }
 
 static void
 sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 {
+	GtkAction *action;
+	gchar *action_name;
+	gchar *tab_name; // CHECK escaping
+
 	set_title (window);
+
+	/* sync the item in the documents list menu */
+	action_name = g_strdup_printf ("Tab_%p", tab);
+	action = gtk_action_group_get_action (window->priv->documents_list_action_group,
+					      action_name);
+	g_return_if_fail (action != NULL);
+
+	tab_name = _gedit_tab_get_name (tab);
+	g_object_set (action, "label", tab_name, NULL);
+
+	g_free (action_name);
+	g_free (tab_name);
 }
 
 static void
@@ -538,8 +678,9 @@ notebook_tab_added (GeditNotebook *notebook,
 	GeditDocument *doc;
 	
 	gedit_debug (DEBUG_MDI, "");
-	
+
 	++window->priv->num_tabs;
+
 	g_signal_connect (tab, 
 			 "notify::name",
 			  G_CALLBACK (sync_name), 
@@ -561,7 +702,9 @@ notebook_tab_added (GeditNotebook *notebook,
 	g_signal_connect (view,
 			  "toggle_overwrite",
 			  G_CALLBACK (update_overwrite_mode_statusbar),
-			  window);			  
+			  window);
+
+	documents_list_menu_update (window);
 }
 
 static void
@@ -617,6 +760,8 @@ notebook_tab_removed (GeditNotebook *notebook,
 					GEDIT_STATUSBAR (window->priv->statusbar));								
 		}
 	}
+
+	documents_list_menu_update (window);
 }
 
 static void
@@ -1073,3 +1218,4 @@ gedit_window_close_tab (GeditWindow *window,
 	gedit_notebook_remove_tab (GEDIT_NOTEBOOK (window->priv->notebook),
 				   tab);
 }
+

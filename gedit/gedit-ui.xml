@@ -1,6 +1,6 @@
 <ui>
 
-  <menubar name='MenuBar'>
+  <menubar name="MenuBar">
     <menu name="FileMenu" action="File">
       <menuitem name="FileNewMenu" action="FileNew"/>
       <menuitem name="FileOpenMenu" action="FileOpen"/>
@@ -51,10 +51,12 @@
       <menuitem action="FileSaveAll" />
       <menuitem action="FileCloseAll" />
       <separator name="DocumentSep1"/>       
-      <menuitem action="DocumentsMoveToNewWindow" />
-      <separator name="DocumentSep2" />               
+      <menuitem action="DocumentsMoveToNewWindow"/>
+      <placeholder name="DocumentsList">
+      <separator name="DocumentSep2"/>
+      </placeholder>
     </menu>
-    
+
     <menu name="HelpMenu" action="Help">
       <menuitem name="HelpContentsMenu" action="HelpContents"/>
       <menuitem name="HelpAboutMenu" action="HelpAbout"/>
