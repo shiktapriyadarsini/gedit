@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0.7.1\n"
-"POT-Creation-Date: 2001-01-20 23:56+0100\n"
+"POT-Creation-Date: 2001-01-21 02:29+0100\n"
 "PO-Revision-Date: 2000-06-08 23:34+0200\n"
 "Last-Translator: Andraz Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -614,23 +614,7 @@ msgstr "Ime te datoteke nima velajvne pripone\n"
 msgid "The file %s was not found."
 msgstr "Datoteka %s ni bila najdena."
 
-#: src/file.c:79
-msgid ""
-"Hello Dear Translator :\n"
-"This is the unstable branch of gedit. \n"
-"I think you should be translating the gedit-1-0 branch. To get it from cvs "
-"type : \n"
-"cvs -z3 co -r gedit-1-0 gedit\n"
-"Thank you. Chema"
-msgstr ""
-"Hello Dear Translator :\n"
-"This is the unstable branch of gedit. \n"
-"I think you should be translating the gedit-1-0 branch. To get it from cvs "
-"type : \n"
-"cvs -z3 co -r gedit-1-0 gedit\n"
-"Thank you. Chema"
-
-#: src/file.c:169
+#: src/file.c:161
 #, c-format
 msgid ""
 "An error was encountered while opening the file \"%s\".\n"
@@ -639,7 +623,7 @@ msgstr ""
 "Ob odpiranju datoteke \"%s\" se je zgodila napaka.\n"
 "Prosim preverite ali datoteka obstaja."
 
-#: src/file.c:180
+#: src/file.c:172
 #, c-format
 msgid ""
 "An error was encountered while opening the file:\n"
@@ -658,11 +642,11 @@ msgstr ""
 "Prosim preverite ali datoteke ne uporablja drug program\n"
 "in ali datoteka ni prazna."
 
-#: src/file.c:191 src/file.c:475
+#: src/file.c:183 src/file.c:467
 msgid "Could not allocate the required memory."
 msgstr "Nisem mogel rezervirati ¾elenega spomina."
 
-#: src/file.c:197
+#: src/file.c:189
 #, c-format
 msgid ""
 "gedit was unable to open the file: \n"
@@ -677,15 +661,15 @@ msgstr ""
 "\n"
 "Preprièajte se, da imate dovoljenje za odprtje datoteke."
 
-#: src/file.c:314
+#: src/file.c:306
 msgid "Save As..."
 msgstr "Shrani Kot..."
 
-#: src/file.c:373
+#: src/file.c:365
 msgid "The document contains no data."
 msgstr "Dokument ne vsebuje podatkov."
 
-#: src/file.c:384
+#: src/file.c:376
 #, c-format
 msgid ""
 "gedit was unable to save the file: \n"
@@ -702,7 +686,7 @@ msgstr ""
 "Preprièajte se, èe pot, ki ste jo navedli obstaja in ali imate ustrezno "
 "dovoljenje za pisanje."
 
-#: src/file.c:397
+#: src/file.c:389
 #, c-format
 msgid ""
 "gedit was unable to save the file :\n"
@@ -720,7 +704,7 @@ msgstr ""
 "submit@bugs.gnome.org"
 
 # c-format
-#: src/file.c:414
+#: src/file.c:406
 #, c-format
 msgid ""
 "gedit was unable to save the file :\n"
@@ -737,42 +721,42 @@ msgstr ""
 "Zaradi neznanega razloga (2). Prosim sporoèite ta problem na naslov: "
 "submit@bugs.gnome.org"
 
-#: src/file.c:495
+#: src/file.c:487
 msgid "Error in the pipe ."
 msgstr "Napaka v cevi ."
 
-#: src/file.c:606 src/file.c:613
+#: src/file.c:598 src/file.c:605
 #, c-format
 msgid "Loaded file %s"
 msgstr "Nalo¾ena datoteka %s"
 
-#: src/file.c:620
+#: src/file.c:612
 #, c-format
 msgid "Loaded %i files"
 msgstr "Nalo¾enih %i datotek"
 
-#: src/file.c:676
+#: src/file.c:668
 msgid "Open File ..."
 msgstr "Odpri datoteko ..."
 
-#: src/file.c:807
+#: src/file.c:799
 #, c-format
 msgid "``%s'' is about to be overwritten. Do you want to continue ?"
 msgstr "``%s'' bo prepisana. Ali ¾elite nadaljevati?"
 
-#: src/file.c:819
+#: src/file.c:811
 msgid "Document has not been saved."
 msgstr "Dokument ¹e ni bil shranjen."
 
-#: src/file.c:829
+#: src/file.c:821
 msgid "Error saving file!"
 msgstr "Napaka pri shranjevanju datoteke!"
 
-#: src/file.c:949
+#: src/file.c:941
 msgid "You can't revert an Untitled document\n"
 msgstr "Ne morete razveljaviti neimenovanega dokumenta\n"
 
-#: src/file.c:962
+#: src/file.c:954
 #, c-format
 msgid ""
 "Are you sure you wish to revert all changes?\n"
@@ -781,7 +765,7 @@ msgstr ""
 "Ste preprièani, da ¾elite razveljaviti vse spremembe?\n"
 "(%s)"
 
-#: src/file.c:993
+#: src/file.c:985
 #, c-format
 msgid "The file ``%s'' does not exist.  Would you like to create it?"
 msgstr "Datoteka ``%s'' ne obstaja. Ali jo ¾elite ustvariti?"
@@ -1013,6 +997,10 @@ msgstr ""
 "%sVtiènika %s ne boste mogli uporabiti brez %s. \n"
 " ®elite navesti imenik v katerem se nahaja %s?"
 
+#: src/plugin.c:312
+msgid "plugin allocation error"
+msgstr ""
+
 #: src/plugin.c:322
 #, c-format
 msgid "Error, unable to open module file, %s"
@@ -1025,6 +1013,14 @@ msgstr "Napaka, vtiènik ne vsebuje init_plugin funkcije."
 #: src/plugin.c:344
 msgid "Error, init_plugin returned an error"
 msgstr "Napaka, funkcija init_plugin je vrnila napako"
+
+#: src/plugin.c:349
+msgid "Error, the plugin did not specify a description"
+msgstr "Napaka, vtiènik ni navedel opisa"
+
+#: src/plugin.c:354
+msgid "Error, the plugin did not specify a long description"
+msgstr "Napaka, vtiènik ni navedel dolgega opisa"
 
 #: src/plugin.c:391
 msgid "Error, plugin is still in use"
@@ -1108,6 +1104,21 @@ msgstr ""
 msgid "You can't remove the last view of a document."
 msgstr "Ne morete razveljaviti neimenovanega dokumenta."
 
+#~ msgid ""
+#~ "Hello Dear Translator :\n"
+#~ "This is the unstable branch of gedit. \n"
+#~ "I think you should be translating the gedit-1-0 branch. To get it from cvs "
+#~ "type : \n"
+#~ "cvs -z3 co -r gedit-1-0 gedit\n"
+#~ "Thank you. Chema"
+#~ msgstr ""
+#~ "Hello Dear Translator :\n"
+#~ "This is the unstable branch of gedit. \n"
+#~ "I think you should be translating the gedit-1-0 branch. To get it from cvs "
+#~ "type : \n"
+#~ "cvs -z3 co -r gedit-1-0 gedit\n"
+#~ "Thank you. Chema"
+
 #~ msgid "b_eginning of document"
 #~ msgstr "z_aèetka dokumenta"
 
@@ -1165,12 +1176,6 @@ msgstr "Ne morete razveljaviti neimenovanega dokumenta."
 
 #~ msgid "Turn on all debugging messages."
 #~ msgstr "Vklopi prikazovanje vseh sporoèil za razhro¹èevanje."
-
-#~ msgid "Error, the plugin did not specified a description"
-#~ msgstr "Napaka, vtiènik ni navedel opisa"
-
-#~ msgid "Error, the plugin did not specified a long description"
-#~ msgstr "Napaka, vtiènik ni navedel dolgega opisa"
 
 #~ msgid "diff plugin"
 #~ msgstr "diff vtiènik"
