@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.2.1\n"
-"POT-Creation-Date: 2003-05-13 18:34+0800\n"
-"PO-Revision-Date: 2003-05-13 17:42+0800\n"
+"POT-Creation-Date: 2003-06-12 10:25+0800\n"
+"PO-Revision-Date: 2003-06-12 08:44+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +91,7 @@ msgstr "編輯器字型"
 
 #: data/gedit.schemas.in.h:13
 msgid "Encoding for Saving"
-msgstr "儲存時使用的文字編碼"
+msgstr "儲存時使用的字符編碼"
 
 #: data/gedit.schemas.in.h:14 src/dialogs/gedit-preferences-dialog.c:2308
 #: src/dialogs/gedit-encodings-dialog.c:261
@@ -209,7 +209,7 @@ msgid ""
 "here."
 msgstr ""
 "指定列印時如何換行。使用“GTK_WRAP_NONE”代表不會換行，“GTK_WRAP_WORD”代表在字"
-"詞間換行，及“GTK_WRAP_CHAR”代表在個別字元間換行。請注意，設定值是會分辨大小寫"
+"詞間換行，及“GTK_WRAP_CHAR”代表在個別字符間換行。請注意，設定值是會分辨大小寫"
 "的，所以請確保設定值和上面所列出的完全一致。"
 
 #: data/gedit.schemas.in.h:35
@@ -221,7 +221,7 @@ msgid ""
 "here."
 msgstr ""
 "指定編輯區域如何換行。使用“GTK_WRAP_NONE”代表不會換行，“GTK_WRAP_WORD”代表在"
-"字詞間換行，及“GTK_WRAP_CHAR”代表在個別字元間換行。請注意，設定值是會分辨大小"
+"字詞間換行，及“GTK_WRAP_CHAR”代表在個別字符間換行。請注意，設定值是會分辨大小"
 "寫的，所以請確保設定值和上面所列出的完全一致。"
 
 #: data/gedit.schemas.in.h:36
@@ -254,7 +254,7 @@ msgstr "指定在「最近使用的檔案」副選單中，可以顯示多少個
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
-msgstr "指定顯示 Tab(定位) 字元時會以多少個空格代替。"
+msgstr "指定顯示 Tab(定位) 字符時會以多少個空格代替。"
 
 #: data/gedit.schemas.in.h:41
 msgid "Status Bar is Visible"
@@ -278,7 +278,7 @@ msgstr ""
 
 #: data/gedit.schemas.in.h:43
 msgid "Tab Size"
-msgstr "Tab 字元寬度"
+msgstr "Tab 字符寬度"
 
 #: data/gedit.schemas.in.h:44
 msgid "Text Color"
@@ -298,11 +298,11 @@ msgid ""
 "8 will be used. Note that the values are case-sensitive, so make sure they "
 "appear exactly as mentioned here."
 msgstr ""
-"儲存檔案時使用的文字編碼。可接受的值為：\n"
+"儲存檔案時使用的字符編碼。可接受的值為：\n"
 "“GEDIT_SAVE_ALWAYS_UTF8”表示強制使用 UTF-8，\n"
 "“GEDIT_SAVE_CURRENT_LOCALE_IF_POSSIBLE”表示會將儲存的文件的編碼轉換為目前語系"
 "的編碼，\n"
-"“GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE”表示會使用文件原來的文字編碼 "
+"“GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE”表示會使用文件原來的字符編碼 "
 "(但新的檔案會以 UTF-8 編碼儲存)，及\n"
 "“GEDIT_SAVE_ORIGINAL_FILE_ENCODING_IF_POSSIBLE_NCL”表示會使用文件原來的文字編"
 "碼 (新的檔案會以目前語系的編碼儲存)。如果轉換成功，就會使用該編碼，否則會使"
@@ -360,7 +360,7 @@ msgstr "gedit 應否在列印文件時加上頁首。"
 
 #: data/gedit.schemas.in.h:56
 msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "gedit 應否使用空格來代替 tab 字元。"
+msgstr "gedit 應否使用空格來代替 tab 字符。"
 
 #: data/gedit.schemas.in.h:57
 msgid ""
@@ -373,8 +373,8 @@ msgid ""
 "Make sure you turn on the \"Status Bar is Visible\" option for this to take "
 "effect."
 msgstr ""
-"編輯器視窗中的狀態列會否顯示游標目前的位置。請確在本選項生效前先開啟「顯示狀"
-"態列」選項。"
+"編輯視窗中的狀態列會否顯示游標目前的位置。請確在本選項生效前先開啟「顯示狀態"
+"列」選項。"
 
 #: data/gedit.schemas.in.h:59
 msgid ""
@@ -382,7 +382,7 @@ msgid ""
 "windows. Make sure you turn on the \"Status Bar is Visible\" option for this "
 "to take effect."
 msgstr ""
-"編輯器視窗中的狀態列會否顯示插入/覆寫模式。請確在本選項生效前先開啟「顯示狀態"
+"編輯視窗中的狀態列會否顯示插入/覆寫模式。請確在本選項生效前先開啟「顯示狀態"
 "列」選項。"
 
 #: data/gedit.schemas.in.h:60
@@ -460,7 +460,7 @@ msgstr "搜尋並開啟目前文件中的 ChangeLog"
 
 #: plugins/cvschangelog/cvschangelog.gedit-plugin.desktop.in.h:1
 msgid "A plugin that opens ChangeLogs found in CVS commit messages."
-msgstr "本增效模組可開啟 CVS commit 訊息中的 ChangeLog。"
+msgstr "一個可開啟 CVS commit 訊息中的 ChangeLog 的增效模組。"
 
 #: plugins/cvschangelog/cvschangelog.gedit-plugin.desktop.in.h:2
 msgid "CVS ChangeLog"
@@ -472,7 +472,7 @@ msgstr "比較檔案(_M)..."
 
 #: plugins/diff/diff.c:68
 msgid "Makes a diff file from two documents or files"
-msgstr "從兩份文件或檔案產生 diff 檔"
+msgstr "由兩份文件或檔案產生 diff 檔"
 
 #. Create the dialog
 #: plugins/diff/diff.c:271 plugins/diff/diff.gedit-plugin.desktop.in.h:1
@@ -489,7 +489,7 @@ msgstr "執行的指令"
 
 #: plugins/diff/diff.c:654
 msgid "The two documents you selected are the same."
-msgstr "選定的兩份文件是相同的。"
+msgstr "已選取的兩份文件是相同的。"
 
 #: plugins/diff/diff.c:662
 msgid ""
@@ -497,7 +497,7 @@ msgid ""
 "\n"
 "Please provide a valid file."
 msgstr ""
-"選定的第一個檔案不存在。\n"
+"選取的第一個檔案不存在。\n"
 "\n"
 "請提供正確的檔案。"
 
@@ -507,13 +507,13 @@ msgid ""
 "\n"
 "Please provide a valid file."
 msgstr ""
-"選定的第二個檔案不存在。\n"
+"選取的第二個檔案不存在。\n"
 "\n"
 "請提供正確的檔案。"
 
 #: plugins/diff/diff.c:679
 msgid "The two files you selected are the same."
-msgstr "選定的兩個檔案是相同的。"
+msgstr "已選取的兩個檔案是相同的。"
 
 #: plugins/diff/diff.c:696
 msgid "The \"first\" document contains no text."
@@ -530,9 +530,9 @@ msgid ""
 "\n"
 "gedit could not create a temporary file."
 msgstr ""
-"無法比較選定的文件。\n"
+"無法比較已選取的文件。\n"
 "\n"
-"gedit 無法產生暫存檔。"
+"gedit 無法建立暫存檔。"
 
 #: plugins/diff/diff.c:780 plugins/diff/diff.c:793
 msgid ""
@@ -540,13 +540,13 @@ msgid ""
 "\n"
 "Error executing the diff command."
 msgstr ""
-"無法比較選定的文件。\n"
+"無法比較已選取的文件。\n"
 "\n"
 "執行 diff 指令時出現錯誤。"
 
 #: plugins/diff/diff.c:815
 msgid "No differences were found between the selected documents."
-msgstr "選定的文件之間沒有任何差異。"
+msgstr "已選取的文件之間沒有任何差異。"
 
 #: plugins/diff/diff.c:856
 msgid ""
@@ -554,9 +554,9 @@ msgid ""
 "\n"
 "The result contains invalid UTF-8 data."
 msgstr ""
-"無法比較選定的文件。\n"
+"無法比較已選取的文件。\n"
 "\n"
-"結果中出現無效的 UTF-8 資料。"
+"結果中出現無效的 UTF-8 數據。"
 
 #: plugins/diff/diff.glade2.h:1 plugins/shell_output/shell_output.glade2.h:1
 #: plugins/time/time.glade2.h:2 plugins/spell/spell-checker.glade2.h:1
@@ -622,27 +622,27 @@ msgstr "從已開啟的文件作為第二個檔案的來源"
 
 #: plugins/diff/diff.glade2.h:16
 msgid "Select the \"first\" file..."
-msgstr "請選取第一個檔案..."
+msgstr "請選擇第一個檔案..."
 
 #: plugins/diff/diff.glade2.h:17
 msgid "Select the \"second\" file..."
-msgstr "請選取第二個檔案..."
+msgstr "請選擇第二個檔案..."
 
 #: plugins/diff/diff.glade2.h:18
 msgid "Select the first file to compare"
-msgstr "請選取第一個準備比較的檔案"
+msgstr "請選擇第一個準備比較的檔案"
 
 #: plugins/diff/diff.glade2.h:19
 msgid "Select the first open document to compare"
-msgstr "請選取第一份已開啟的文件作比較"
+msgstr "請選擇第一份已開啟的文件作比較"
 
 #: plugins/diff/diff.glade2.h:20
 msgid "Select the second file to compare"
-msgstr "請選取第二個準備比較的檔案"
+msgstr "請選擇第二個準備比較的檔案"
 
 #: plugins/diff/diff.glade2.h:21
 msgid "Select the second open document to compare"
-msgstr "請選取第二份已開啟的文件作比較"
+msgstr "請選擇第二份已開啟的文件作比較"
 
 #: plugins/diff/diff.glade2.h:22
 msgid "Use the _unified output format (-u option)"
@@ -688,11 +688,11 @@ msgstr "位元組"
 
 #: plugins/docinfo/docinfo.glade2.h:3
 msgid "Characters (no spaces)"
-msgstr "字元 (不包括空格)"
+msgstr "字符 (不包括空格)"
 
 #: plugins/docinfo/docinfo.glade2.h:4
 msgid "Characters (with spaces)"
-msgstr "字元 (包括空格)"
+msgstr "字符 (包括空格)"
 
 #: plugins/docinfo/docinfo.glade2.h:5
 msgid "File Name"
@@ -720,7 +720,7 @@ msgid ""
 "the number of words, lines, characters and non-space characters in it and "
 "displays the result."
 msgstr ""
-"「文件統計」增效模組可分析目前的文件並計算字數、行數、字元數目及非空格的字元"
+"「文件統計」增效模組可分析目前的文件並計算字數、行數、字符數目及非空格的字符"
 "數目，並顯示結果。"
 
 #: plugins/sample/sample.c:43
@@ -754,7 +754,7 @@ msgstr "停止"
 
 #: plugins/shell_output/shell_output.c:246
 msgid "An error occurs while running the selected command."
-msgstr "執行選定的指令時出現錯誤。"
+msgstr "執行選取的指令時出現錯誤。"
 
 #: plugins/shell_output/shell_output.c:302
 msgid "Run Command"
@@ -844,7 +844,7 @@ msgstr "速成標記名稱清單"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:188
 msgid "Double-click on a tag to insert it in the current document"
-msgstr "雙擊標記可在文件中加入該標記"
+msgstr "在標記上 double-click 可在文件中加入該標記"
 
 #: plugins/taglist/gedit-taglist-plugin-window.c:199
 msgid "Tags"
@@ -870,7 +870,8 @@ msgid ""
 "The tag list plugin provides a method to easily insert into a document "
 "commonly used tags/strings without having to type them."
 msgstr ""
-"「速成標記」增效模組可簡易地加入常用的標記或字串，而且不需要使用鍵盤輸入。"
+"「速成標記」增效模組提供一種不需使用鍵盤的簡易方式來在文件中加入常用的標記或"
+"字串。"
 
 #: plugins/time/time.c:48
 msgid "In_sert Date and Time..."
@@ -938,7 +939,7 @@ msgstr "增加縮排(_I)"
 
 #: plugins/indent/indent.c:47
 msgid "Indent selected lines"
-msgstr "將選定的行數增加縮排程度"
+msgstr "增加選定的行數的縮排程度"
 
 #: plugins/indent/indent.c:49
 msgid "U_nindent"
@@ -946,7 +947,7 @@ msgstr "減少縮排(_N)"
 
 #: plugins/indent/indent.c:51
 msgid "Unindent selected lines"
-msgstr "將選定的行數減少縮排程度"
+msgstr "減少選定的行數的縮排程度"
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:1
 msgid "Indent lines"
@@ -954,7 +955,7 @@ msgstr "縮排"
 
 #: plugins/indent/indent.gedit-plugin.desktop.in.h:2
 msgid "Indent or un-indent selected lines."
-msgstr "將選定的行數增加或減少縮排程度。"
+msgstr "增加或減少選定的行數的縮排程度。"
 
 #: plugins/sort/sort.glade2.h:1
 msgid "R_emove duplicates"
@@ -962,7 +963,7 @@ msgstr "刪除所有重複的內容(_E)"
 
 #: plugins/sort/sort.glade2.h:2
 msgid "S_tart at column:"
-msgstr "由指定字元開始排序(_T)："
+msgstr "由指定字符開始排序(_T)："
 
 #: plugins/sort/sort.glade2.h:3 plugins/sort/sort.gedit-plugin.desktop.in.h:1
 msgid "Sort"
@@ -970,7 +971,7 @@ msgstr "排序"
 
 #: plugins/sort/sort.glade2.h:4
 msgid "You cannot undo a sort operation"
-msgstr "您不可以將排列後的內容復原"
+msgstr "您不可以將排序後的內容復原"
 
 #: plugins/sort/sort.glade2.h:5
 msgid "_Ignore case"
@@ -982,11 +983,11 @@ msgstr "相反次序排列(_R)"
 
 #: plugins/sort/sort.glade2.h:7
 msgid "_Sort"
-msgstr "排序(_S)"
+msgstr "排列(_S)"
 
 #: plugins/sort/sort.gedit-plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
-msgstr "將整份文件或將選定的文字排序。"
+msgstr "將整份文件或將已選定的文字排序。"
 
 #: plugins/spell/gedit-automatic-spell-checker.c:318
 #: plugins/spell/gedit-spell-checker-dialog.c:504
@@ -1206,7 +1207,7 @@ msgstr "建議(_S)："
 #. Key in case the plugin ever needs any settings
 #: plugins/sort/sort.c:26
 msgid "S_ort..."
-msgstr "排序(_O)..."
+msgstr "排列(_O)..."
 
 #: plugins/sort/sort.c:29
 msgid "Sort the current document or selection."
@@ -1347,7 +1348,7 @@ msgstr "字型及顏色"
 #: src/dialogs/gedit-preferences-dialog.c:238
 #: src/dialogs/gedit-preferences.glade2.h:47
 msgid "Tabs"
-msgstr "Tab 字元"
+msgstr "Tab 字符"
 
 #: src/dialogs/gedit-preferences-dialog.c:239
 msgid "Wrap Mode"
@@ -1487,7 +1488,7 @@ msgstr "<span weight=\"bold\" size=\"x-large\">儲存</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:11
 msgid "<span weight=\"bold\" size=\"x-large\">Tabs</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Tab 字元</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Tab 字符</span>"
 
 #: src/dialogs/gedit-preferences.glade2.h:12
 msgid "<span weight=\"bold\" size=\"x-large\">Undo</span>"
@@ -1547,7 +1548,7 @@ msgstr "字型及顏色"
 
 #: src/dialogs/gedit-preferences.glade2.h:26
 msgid "Insert _spaces instead of tabs"
-msgstr "插入空格代替 Tab 字元(_S)"
+msgstr "插入空格代替 Tab 字符(_S)"
 
 #: src/dialogs/gedit-preferences.glade2.h:27
 msgid "LOGO"
@@ -1615,7 +1616,7 @@ msgstr "選擇區域的文字顏色(_D)："
 
 #: src/dialogs/gedit-preferences.glade2.h:45
 msgid "Set _tabs width equivalent to"
-msgstr "_Tab 字元的寬度為"
+msgstr "_Tab 字符的寬度為"
 
 #: src/dialogs/gedit-preferences.glade2.h:46
 msgid "Set limit on _undo actions to"
@@ -1627,7 +1628,7 @@ msgstr "使用預設的佈景主題色彩(_S)"
 
 #: src/dialogs/gedit-preferences.glade2.h:49
 msgid "U_se original file encoding if possible"
-msgstr "盡可能使用檔案原有的文字編碼(_S)"
+msgstr "盡可能使用檔案原有的字符編碼(_S)"
 
 #: src/dialogs/gedit-preferences.glade2.h:51
 msgid "Use cu_rrent locale's encoding if possible"
@@ -1687,7 +1688,7 @@ msgstr "分鐘(_M)"
 
 #: src/dialogs/gedit-preferences.glade2.h:65
 msgid "character(s)"
-msgstr "字元"
+msgstr "字符"
 
 #: src/dialogs/gedit-preferences.glade2.h:66
 msgid "li_ne(s)"
@@ -1695,11 +1696,11 @@ msgstr "行(_N)"
 
 #: src/dialogs/gnome-print-font-dialog.c:111
 msgid "_Insert a new preview phrase."
-msgstr "加入新的預覽字串(_I)"
+msgstr "加入新的預覽文字字句(_I)"
 
 #: src/dialogs/gnome-print-font-dialog.c:117
 msgid "Modify preview phrase..."
-msgstr "修改預覽所用的字串..."
+msgstr "修改預覽文字字句..."
 
 #: src/dialogs/gnome-print-font-dialog.c:171
 msgid "Preview"
@@ -1719,7 +1720,7 @@ msgstr "AR PL KaitiM Big5 14"
 
 #: src/dialogs/gnome-print-font-picker.c:93
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-msgstr "The following is chinese: '中文測試'"
+msgstr "The following is Chinese: '中文測試'"
 
 #: src/dialogs/gnome-print-font-picker.c:94
 msgid "Pick a Font"
@@ -1739,7 +1740,7 @@ msgstr "字型名稱"
 
 #: src/dialogs/gnome-print-font-picker.c:201
 msgid "Name of the selected font"
-msgstr "選定字型的名稱"
+msgstr "選定的字型名稱"
 
 #: src/dialogs/gnome-print-font-picker.c:209
 msgid "Preview text"
@@ -1751,23 +1752,23 @@ msgstr "對話方塊中顯示的預覽文字"
 
 #: src/dialogs/gnome-print-font-picker.c:218
 msgid "Use font in label"
-msgstr "字型本身反映在標籤內"
+msgstr "字型本身反映在名稱內"
 
 #: src/dialogs/gnome-print-font-picker.c:219
 msgid "Use font in the label in font info mode"
-msgstr "在字型資訊模式中，使用字型本身來繪畫代表該字型的標籤"
+msgstr "在字型資訊模式中，字型本身的形狀反映在字型名稱內"
 
 #: src/dialogs/gnome-print-font-picker.c:227
 msgid "Font size for label"
-msgstr "字型大小反映在標籤內"
+msgstr "字型大小反映在名稱內"
 
 #: src/dialogs/gnome-print-font-picker.c:228
 msgid "Font size for label in font info mode"
-msgstr "在字型資訊模式中，使用選定的字型大小來繪畫代表該字型的標籤"
+msgstr "在字型資訊模式中，字型大小直接反映在字型名稱內"
 
 #: src/dialogs/gnome-print-font-picker.c:238
 msgid "Show size"
-msgstr "顯示大小"
+msgstr "顯示字型大小"
 
 #: src/dialogs/gnome-print-font-picker.c:239
 msgid "Show size in font info mode"
@@ -1800,7 +1801,7 @@ msgstr "詳細資料(_T)"
 
 #: src/dialogs/plugin-manager.glade2.h:4
 msgid "_Description"
-msgstr "描述(_D)"
+msgstr "說明(_D)"
 
 #: src/dialogs/plugin-manager.glade2.h:5
 msgid "dialog1"
@@ -3053,7 +3054,7 @@ msgstr "北歐"
 
 #: src/gedit-encodings.c:152
 msgid "Celtic"
-msgstr "凱爾特文"
+msgstr "凱爾特語支"
 
 #: src/gedit-encodings.c:156
 msgid "Romanian"
@@ -3062,7 +3063,7 @@ msgstr "羅馬尼亞文"
 #: src/gedit-encodings.c:159 src/gedit-encodings.c:161
 #: src/gedit-encodings.c:163 src/gedit-encodings.c:165
 msgid "Unicode"
-msgstr "Unicode"
+msgstr "統一碼"
 
 #: src/gedit-encodings.c:168
 msgid "Armenian"
@@ -3125,17 +3126,107 @@ msgstr " (無效的統一碼)"
 #~ msgid "Source"
 #~ msgstr "原始內容"
 
+#~ msgid "Auto Detected Encodings"
+#~ msgstr "自動偵測編碼"
+
+#~ msgid "Encodings shown in menu"
+#~ msgstr "選單中顯示的編碼"
+
+#~ msgid ""
+#~ "List of encodings shown in Character Coding menu in open/save file "
+#~ "selector. Only recognized encodings are used."
+#~ msgstr ""
+#~ "在開啟/儲存檔案對話方塊中的「字符編碼」選單，會顯示這裡列出的編碼。無法識"
+#~ "別的編碼將不會使用。"
+
+#~ msgid ""
+#~ "Sorted list of encodings used by gedit for auto-detecting the encoding of "
+#~ "a file. \"CURRENT\" is the current locale encoding. Only recognized "
+#~ "encodings are used."
+#~ msgstr ""
+#~ "這裡是一系列已排序的編碼，gedit 會根據這個清單自動偵測檔案的字符編"
+#~ "碼。“CURRENT”表示使用目前地區設定的編碼。所有無法識別的編碼將不會使用。"
+
 #~ msgid "Found and replaced %d occurrences."
 #~ msgstr "要搜尋的字串出現了 %d 次，而且全部都以您指定的字串取代了。"
 
-#~ msgid "Description"
-#~ msgstr "說明"
+#~ msgid "There was an error displaying help: %s"
+#~ msgstr "顯示說明文件時發生錯誤：%s"
 
-#~ msgid "Details"
-#~ msgstr "詳細資料"
+#~ msgid "_Encoding"
+#~ msgstr "編碼(_E)"
+
+#~ msgid "A_vailable encodings:"
+#~ msgstr "可使用的編碼(_V)："
+
+#~ msgid "Character codings"
+#~ msgstr "字符編碼"
+
+#~ msgid "E_ncodings shown in menu:"
+#~ msgstr "選單中顯示的編碼(_N)："
+
+#~ msgid "Enabled"
+#~ msgstr "啟用"
+
+#~ msgid "About selected plugin"
+#~ msgstr "關於選定的增效模組"
+
+#~ msgid "C_onfigure Plugin"
+#~ msgstr "設定增效模組(_O)"
+
+#~ msgid "button1"
+#~ msgstr "button1"
+
+#~ msgid "Search _backwards"
+#~ msgstr "向後搜尋(_B)"
+
+#~ msgid "Ch_aracter coding:"
+#~ msgstr "字符編碼(_A)："
+
+#~ msgid "Auto Detected"
+#~ msgstr "自動偵測"
+
+#~ msgid "Current Locale (%s)"
+#~ msgstr "目前的地區設定 (%s)"
+
+#~ msgid "Add or _Remove..."
+#~ msgstr "加入或移除(_R)..."
+
+#~ msgid "Ch_aracter Coding:"
+#~ msgstr "字符編碼(_A)："
+
+#~ msgid "Select a file to open"
+#~ msgstr "選取準備開啟的檔案"
+
+#~ msgid "Select files to open"
+#~ msgstr "選取準備開啟的檔案"
+
+#~ msgid "Unknown"
+#~ msgstr "不明"
+
+#~ msgid "Unicode (UTF-8)"
+#~ msgstr "統一碼 (UTF-8)"
 
 #~ msgid "Open a recently used file"
 #~ msgstr "開啟最近使用的檔案"
+
+#~ msgid "Normal"
+#~ msgstr "一般"
+
+#~ msgid "Use Normal highlight mode"
+#~ msgstr "使用一般加強顯示模式"
+
+#~ msgid "Use %s highlight mode"
+#~ msgstr "使用 %s 加強顯示模式"
+
+#~ msgid "Find Pre_vious"
+#~ msgstr "找上一個(_V)"
+
+#~ msgid "Find Previous"
+#~ msgstr "找上一個"
+
+#~ msgid "Search backwards for the same string"
+#~ msgstr "向後尋找同一個字串"
 
 #~ msgid ""
 #~ "Set toolbar button style according to desktop Menu and Toolbar Preferences"
@@ -3153,14 +3244,66 @@ msgstr " (無效的統一碼)"
 #~ msgid "T_ext for Important Icons"
 #~ msgstr "重要圖示旁邊顯示文字(_E)"
 
+#~ msgid "_Highlight Mode"
+#~ msgstr "加強顯示模式(_H)"
+
 #~ msgid "_Icons Only"
 #~ msgstr "只顯示圖示(_I)"
 
 #~ msgid "_Text for All Icons"
 #~ msgstr "所有圖示都配合文字顯示(_T)"
 
+#~ msgid ""
+#~ "Could not open the file \"%s\" because it contains invalid data.\n"
+#~ "\n"
+#~ "Probably, you are trying to open a binary file."
+#~ msgstr ""
+#~ "無法開啟檔案“%s”，因為它含有無效的資料。\n"
+#~ "\n"
+#~ "您可能是在嘗試開啟二元碼檔案。"
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" because gedit has not been able to "
+#~ "automatically detect the character coding.\n"
+#~ "\n"
+#~ "Please, check that you are not trying to open a binary file and try again "
+#~ "selecting a character coding in the 'Open File...' (or 'Open Location') "
+#~ "dialog."
+#~ msgstr ""
+#~ "無法開啟檔案“%s”，因為 gedit 無法自動偵測字符編碼。\n"
+#~ "\n"
+#~ "請確定您不是在開啟二元碼檔案。另外，請您在「開啟檔案...」(或者「開啟位"
+#~ "置...」)中指定字符編碼。"
+
+#~ msgid ""
+#~ "Could not open the file \"%s\" using the %s character coding.\n"
+#~ "\n"
+#~ "Please, check that you are not trying to open a binary file and that you "
+#~ "selected the right character coding in the 'Open File...' (or 'Open "
+#~ "Location') dialog and try again."
+#~ msgstr ""
+#~ "無法以 %2$s 字符編碼開啟檔案“%1$s”。\n"
+#~ "\n"
+#~ "請確定您不是在開啟二元碼檔案。另外，請您在「開啟檔案...」(或者「開啟位"
+#~ "置...」)中指定正確的字符編碼。"
+
+#~ msgid ""
+#~ "Could not open the file \"%s\".\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "無法開啟檔案“%s”。\n"
+#~ "\n"
+#~ "%s"
+
 #~ msgid "  Ln %d, Col %d"
 #~ msgstr "第 %d 行第 %d 字"
+
+#~ msgid "Show metadata debugging messages."
+#~ msgstr "顯示有關 metadata 的偵錯訊息。"
+
+#~ msgid "<span weight=\"bold\">File Name</span>"
+#~ msgstr "<span weight=\"bold\">檔案名稱</span>"
 
 #~ msgid "Save method not implemented for gedit viewer"
 #~ msgstr "gedit 顯示模式中仍未有儲存的功能"
@@ -3170,3 +3313,99 @@ msgstr " (無效的統一碼)"
 
 #~ msgid "_Copy Text"
 #~ msgstr "複製文字(_C)"
+
+#~ msgid "Details"
+#~ msgstr "詳細資料"
+
+#~ msgid ""
+#~ "Chema Celorio <chema@celorio.com> and Paolo Maggi <maggi@athena.polito.it>"
+#~ msgstr ""
+#~ "Chema Celorio <chema@celorio.com> 及 Paolo Maggi <maggi@athena.polito.it>"
+
+#~ msgid ""
+#~ "Copyright (C) 2000 - 2001 Chema Celorio\n"
+#~ "Copyright (C) 2002 Paolo Maggi"
+#~ msgstr ""
+#~ "版權所有 (C) 2000 - 2001 Chema Celorio\n"
+#~ "版權所有 (C) 2002 Paolo Maggi"
+
+#~ msgid "Copyright (C) 2002 Paolo Maggi"
+#~ msgstr "版權所有 (C) 2002 Paolo Maggi"
+
+#~ msgid "Paolo Maggi <paolo.maggi@polito.it>"
+#~ msgstr "Paolo Maggi <paolo.maggi@polito.it>"
+
+#~ msgid "Copyright (C) 2002 - Paolo Maggi"
+#~ msgstr "版權所有 (C) 2002 - Paolo Maggi"
+
+#~ msgid ""
+#~ "Paolo Maggi <maggi@athena.polito.it> and Lee Mallabone <gnome@fonicmonkey."
+#~ "net>"
+#~ msgstr ""
+#~ "Paolo Maggi <maggi@athena.polito.it> 及 Lee Mallabone <gnome@fonicmonkey."
+#~ "net>"
+
+#~ msgid ""
+#~ "Carlo Borreo <borreo@softhome.net>, Lee Mallabone <gnome@fonicmonkey.net> "
+#~ "and Paolo Maggi <maggi@athena.polito.it>"
+#~ msgstr ""
+#~ "Carlo Borreo <borreo@softhome.net>、Lee Mallabone <gnome@fonicmonkey.net> "
+#~ "及 Paolo Maggi <maggi@athena.polito.it>"
+
+#~ msgid ""
+#~ "Copyright (C) 2001 Carlo Borreo\n"
+#~ "Copyright (C) 2002 Lee Mallabone and Paolo Maggi"
+#~ msgstr ""
+#~ "版權所有 (C) 2001 Carlo Borreo\n"
+#~ "版權所有 (C) 2002 Lee Mallabone 及 Paolo Maggi"
+
+#~ msgid "Dump XML"
+#~ msgstr "傾印 XML"
+
+#~ msgid "Dump the UI Xml description"
+#~ msgstr "傾印使用者介面的 XML 描述"
+
+#~ msgid "Sho_w tooltips"
+#~ msgstr "顯示工具列(_W)"
+
+#~ msgid "Show cursor _position"
+#~ msgstr "顯示游標位置(_P)"
+
+#~ msgid "Show overwrite _mode"
+#~ msgstr "顯示覆寫模式(_M)"
+
+#~ msgid "Top"
+#~ msgstr "頂"
+
+#~ msgid "Case sensi_tive"
+#~ msgstr "區分大小寫(_T)"
+
+#~ msgid "Search fro_m the beginning of the document"
+#~ msgstr "由文件的開頭開始搜尋(_M)"
+
+#~ msgid "Search from the c_ursor position"
+#~ msgstr "由游標位置開始搜尋(_U)"
+
+#~ msgid "Error, the plugin '%s' did not specified a name"
+#~ msgstr "錯誤，增效模組‘%s’沒有指定名稱"
+
+#~ msgid "Error, impossible to save settings of the plugin '%s'"
+#~ msgstr "錯誤，無法儲存有關增效模組‘%s’的設定"
+
+#~ msgid "Show _Tooltips"
+#~ msgstr "顯示工具列提示(_T)"
+
+#~ msgid "Could not open backup file %s."
+#~ msgstr "無法開啟備份檔 %s。"
+
+#~ msgid "Could not open file %s."
+#~ msgstr "無法開啟檔案 %s。"
+
+#~ msgid "Could not write backup file."
+#~ msgstr "無法寫入備份檔。"
+
+#~ msgid "Error when creating backup file."
+#~ msgstr "建立備份檔時發生錯誤。"
+
+#~ msgid "Could not save the file."
+#~ msgstr "無法儲存檔案。"
