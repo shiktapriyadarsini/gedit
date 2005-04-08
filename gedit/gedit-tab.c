@@ -214,7 +214,7 @@ gchar *
 _gedit_tab_get_name (GeditTab *tab)
 {
 	GeditDocument *doc;
-	gchar* name = NULL;
+	const gchar* name = NULL;
 	gchar* docname = NULL;
 	gchar* tab_name = NULL;
 
@@ -222,13 +222,12 @@ _gedit_tab_get_name (GeditTab *tab)
 
 	doc = gedit_tab_get_document (tab);
 	
-	name = gedit_document_get_short_name (doc);
+	name = gedit_document_get_short_name_for_display (doc);
 
 	/* Truncate the name so it doesn't get insanely wide. */
 	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
-	g_free (name);
 
-	if (gedit_document_get_modified (doc))
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
 		tab_name = g_strdup_printf ("*%s", docname);
 	} 
@@ -259,7 +258,7 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 {
 	GeditDocument *doc;
 	gchar *tip;
-	gchar *uri;
+	const gchar *uri;
 	gchar *ruri;
 	const gchar *mime_type;
 	const gchar *mime_description = NULL;
@@ -271,7 +270,7 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 
 	doc = gedit_tab_get_document (tab);
 	
-	uri = gedit_document_get_uri (doc);
+	uri = gedit_document_get_uri_for_display (doc);
 	g_return_val_if_fail (uri != NULL, NULL);
 
 	mime_type = gedit_document_get_mime_type (doc);
@@ -291,7 +290,6 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 		encoding = gedit_encoding_to_string (enc);
 	
 	ruri = 	gedit_utils_replace_home_dir_with_tilde (uri);
-	g_free (uri);
 
 	tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
 				       "<b>%s</b> %s\n"
@@ -365,7 +363,7 @@ _gedit_tab_get_icon (GeditTab *tab)
 	GtkIconTheme *theme;
 	GdkScreen *screen;
 	GdkPixbuf *pixbuf;
-	gchar *raw_uri;
+	const gchar *raw_uri;
 	const gchar *mime_type;
 	gint icon_size;
 	GeditDocument *doc;
@@ -379,7 +377,7 @@ _gedit_tab_get_icon (GeditTab *tab)
 	theme = gtk_icon_theme_get_for_screen (screen);
 	g_return_val_if_fail (theme != NULL, NULL);
 
-	raw_uri = gedit_document_get_raw_uri (doc);
+	raw_uri = gedit_document_get_uri_ (doc);
 	mime_type = gedit_document_get_mime_type (doc);
 
 	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (GTK_WIDGET (tab)),

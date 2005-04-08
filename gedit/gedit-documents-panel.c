@@ -61,7 +61,7 @@ static gchar *
 tab_get_name (GeditTab *tab)
 {
 	GeditDocument *doc;
-	gchar* name = NULL;
+	const gchar* name = NULL;
 	gchar* docname = NULL;
 	gchar* tab_name = NULL;
 
@@ -69,13 +69,12 @@ tab_get_name (GeditTab *tab)
 
 	doc = gedit_tab_get_document (tab);
 	
-	name = gedit_document_get_short_name (doc);
+	name = gedit_document_get_short_name_for_display (doc);
 
 	/* Truncate the name so it doesn't get insanely wide. */
 	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
-	g_free (name);
 
-	if (gedit_document_get_modified (doc))
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
 		tab_name = g_strdup_printf ("<i>%s</i>", docname);
 	} 

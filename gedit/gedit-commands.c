@@ -5,7 +5,7 @@
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi 
- * Copyright (C) 2002, 2003 Paolo Maggi 
+ * Copyright (C) 2002-2005 Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
  */
  
 /*
- * Modified by the gedit Team, 1998-2003. See the AUTHORS file for a 
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
  *
@@ -199,7 +199,7 @@ _gedit_cmd_file_can_close (GeditTab *tab, GtkWindow *window)
 	
 	doc = gedit_tab_get_document (tab);
 	
-	if (gedit_document_get_modified (doc) || 
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) || 
 	    gedit_document_get_deleted (doc))
 	{
 		GtkWidget *dlg;
@@ -254,7 +254,7 @@ gedit_cmd_file_close_all (GtkAction *action, GeditWindow *window)
 	{
 		GeditDocument *doc = GEDIT_DOCUMENT (l->data);
 		
-		if (gedit_document_get_modified (doc) || 
+		if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) || 
 		    gedit_document_get_deleted (doc))
 		{
 			unsaved_docs = g_slist_prepend (unsaved_docs, doc);
@@ -355,15 +355,14 @@ void
 gedit_cmd_edit_undo (GtkAction *action, GeditWindow *window)
 {
 	GeditView *active_view;
-	GeditDocument *active_document;
+	GtkSourceBuffer *active_document;
 
 	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	active_document = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
-	g_return_if_fail (active_document);
+	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
-	gedit_document_undo (active_document);
+	gtk_source_buffer_undo (active_document);
 
 	gedit_view_scroll_to_cursor (active_view);
 
@@ -374,15 +373,14 @@ void
 gedit_cmd_edit_redo (GtkAction *action, GeditWindow *window)
 {
 	GeditView *active_view;
-	GeditDocument *active_document;
+	GtkSourceBuffer *active_document;
 
 	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	active_document = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
-	g_return_if_fail (active_document);
+	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
-	gedit_document_redo (active_document);
+	gtk_source_buffer_redo (active_document);
 
 	gedit_view_scroll_to_cursor (active_view);
 
@@ -522,12 +520,14 @@ gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 	gedit_search_panel_focus_search (sp);
 }
 
+#if 0
 static void
 search_find_again (GeditWindow   *window,
 		   GeditDocument *doc,
 		   gchar         *last_searched_text,
 		   gboolean       backward)
 {
+
 	gpointer data;
 	gboolean found;
 	gboolean was_wrap_around;
@@ -585,10 +585,12 @@ search_find_again (GeditWindow   *window,
 		gedit_view_scroll_to_cursor (active_view);
 	}
 }
+#endif
 
 void 
 gedit_cmd_search_find_next (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GeditDocument *doc;
 	gchar* last_searched_text;
 
@@ -605,11 +607,13 @@ gedit_cmd_search_find_next (GtkAction *action, GeditWindow *window)
 		gedit_dialog_find (window);
 
 	g_free (last_searched_text);
+#endif
 }
 
 void 
 gedit_cmd_search_find_prev (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GeditDocument *doc;
 	gchar* last_searched_text;
 
@@ -627,11 +631,13 @@ gedit_cmd_search_find_prev (GtkAction *action, GeditWindow *window)
 		gedit_dialog_find (window);
 
 	g_free (last_searched_text);
+#endif
 }
 
 void 
 gedit_cmd_search_replace (GtkAction *action, GeditWindow *window)
 {
+#if 0
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -642,6 +648,7 @@ gedit_cmd_search_replace (GtkAction *action, GeditWindow *window)
 		gtk_widget_grab_focus (GTK_WIDGET (active_view));
 
 	gedit_dialog_replace (window);
+#endif
 }
 
 void

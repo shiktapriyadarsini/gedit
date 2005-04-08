@@ -51,7 +51,6 @@ struct _GeditAppPrivate
 
 G_DEFINE_TYPE(GeditApp, gedit_app, G_TYPE_OBJECT)
 
-
 static void
 gedit_app_finalize (GObject *object)
 {

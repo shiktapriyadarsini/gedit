@@ -313,6 +313,7 @@ line_number_entry_activate (GtkEntry         *entry,
 static void
 search_text (GeditSearchPanel *panel)
 {
+#if 0
 	GeditView *active_view;
 	GeditDocument *doc;
 	const gchar *search_string = NULL;
@@ -385,7 +386,8 @@ search_text (GeditSearchPanel *panel)
 		gtk_widget_modify_bg (panel->priv->search_entry,
 				      GTK_STATE_NORMAL,
 				      &red);
-	}	
+	}
+#endif	
 }
 
 static void
@@ -665,7 +667,9 @@ gedit_search_panel_focus_search	(GeditSearchPanel *panel)
 		{
 			gchar *lst;
 
-			lst = gedit_document_get_last_searched_text (doc);
+			// FIXME
+			// lst = gedit_document_get_last_searched_text (doc);
+			lst = g_strup ("FIXME");
 			
 			if (lst != NULL)
 			{

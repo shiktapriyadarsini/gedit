@@ -19,13 +19,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. * *
+ * Boston, MA 02111-1307, USA. *
  */
  
 /*
  * Modified by the gedit Team, 1998-2001. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifndef __GEDIT_UTILS_H__
@@ -85,7 +87,9 @@ void gedit_utils_set_atk_relation (GtkWidget *obj1, GtkWidget *obj2,
 
 gboolean gedit_utils_uri_exists (const gchar* text_uri);
 
-gchar *gedit_utils_convert_search_text (const gchar *text);
+gchar *gedit_utils_escape_search_text (const gchar *text);
+
+gchar *gedit_utils_unescape_search_text (const gchar *text);
 
 gchar *gedit_utils_get_stdin (void);
 

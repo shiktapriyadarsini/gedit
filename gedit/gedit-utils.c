@@ -381,8 +381,55 @@ gedit_utils_uri_exists (const gchar* text_uri)
 	return res;
 }
 
+gchar* 
+gedit_utils_escape_search_text (const gchar* text)
+{
+	GString *str;
+	gint length;
+	const gchar *p;
+ 	const gchar *end;
+
+	if (text == NULL)
+		return NULL;
+
+	gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
+
+    	length = strlen (text);
+
+	str = g_string_new ("");
+
+  	p = text;
+  	end = text + length;
+
+  	while (p != end)
+    	{
+      		const gchar *next;
+      		next = g_utf8_next_char (p);
+
+		switch (*p)
+        	{
+       			case '\n':
+          			g_string_append (str, "\\n");
+          			break;
+			case '\r':
+          			g_string_append (str, "\\r");
+          			break;
+			case '\t':
+          			g_string_append (str, "\\t");
+          			break;
+        		default:
+          			g_string_append_len (str, p, next - p);
+          			break;
+        	}
+
+      		p = next;
+    	}
+
+	return g_string_free (str, FALSE);
+}
+
 gchar *
-gedit_utils_convert_search_text (const gchar *text)
+gedit_utils_unescape_search_text (const gchar *text)
 {
 	GString *str;
 	gint length;
@@ -390,8 +437,9 @@ gedit_utils_convert_search_text (const gchar *text)
 	const gchar *cur;
 	const gchar *end;
 	const gchar *prev;
-
-	g_return_val_if_fail (text != NULL, NULL);
+	
+	if (text == NULL)
+		return NULL;
 
 	length = strlen (text);
 
@@ -614,7 +662,8 @@ gedit_utils_make_valid_utf8 (const char *name)
 	}
 
 	g_string_append (string, remainder);
-	g_string_append (string, _(" (invalid Unicode)"));
+	g_string_append (string, " (invalid encoding)");
+	
 	g_assert (g_utf8_validate (string->str, -1, NULL));
 
 	return g_string_free (string, FALSE);

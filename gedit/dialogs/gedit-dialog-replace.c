@@ -469,52 +469,6 @@ dialog_find_get_dialog (GeditWindow *parent)
 	return dialog;
 }
 
-static gchar* 
-escape_search_text (const gchar* text)
-{
-	GString *str;
-	gint length;
-	const gchar *p;
- 	const gchar *end;
-
-  	g_return_val_if_fail (text != NULL, NULL);
-
-	gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
-
-    	length = strlen (text);
-
-	str = g_string_new ("");
-
-  	p = text;
-  	end = text + length;
-
-  	while (p != end)
-    	{
-      		const gchar *next;
-      		next = g_utf8_next_char (p);
-
-		switch (*p)
-        	{
-       			case '\n':
-          			g_string_append (str, "\\n");
-          			break;
-			case '\r':
-          			g_string_append (str, "\\r");
-          			break;
-			case '\t':
-          			g_string_append (str, "\\t");
-          			break;
-        		default:
-          			g_string_append_len (str, p, next - p);
-          			break;
-        	}
-
-      		p = next;
-    	}
-
-	return g_string_free (str, FALSE);
-}
-
 static void
 insert_text_handler (GtkEditable *editable, const gchar *text, gint length, gint *position)
 {
@@ -528,7 +482,7 @@ insert_text_handler (GtkEditable *editable, const gchar *text, gint length, gint
 	if (insert_text)
 		return;
 
-	escaped_text = escape_search_text (text);
+	escaped_text = gedit_utils_escape_search_text (text);
 
 	gedit_debug_message (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
 

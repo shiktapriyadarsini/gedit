@@ -1036,7 +1036,7 @@ static void
 set_title (GeditWindow *window)
 {
 	GeditDocument *doc = NULL;
-	gchar *short_name;
+	const gchar *short_name;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *title = NULL;
@@ -1051,8 +1051,7 @@ set_title (GeditWindow *window)
 	doc = gedit_tab_get_document (window->priv->active_tab);
 	g_return_if_fail (doc != NULL);
 
-	short_name = gedit_document_get_short_name (doc);
-	g_return_if_fail (short_name != NULL);
+	short_name = gedit_document_get_short_name_for_display (doc);
 
 	len = g_utf8_strlen (short_name, -1);
 
@@ -1063,20 +1062,16 @@ set_title (GeditWindow *window)
 	{
 		name = gedit_utils_str_middle_truncate (short_name, 
 							MAX_TITLE_LENGTH);
-		g_free (short_name);
 	}
 	else
 	{
-		gchar *uri;
+		const gchar *uri;
 		gchar *str;
 
-		name = short_name;
+		name = g_strdup (short_name);
 
-		uri = gedit_document_get_uri (doc);
-		g_return_if_fail (uri != NULL);
-
+		uri = gedit_document_get_uri_for_display (doc);
 		str = get_dirname (uri);
-		g_free (uri);
 
 		if (str != NULL)
 		{
@@ -1092,7 +1087,7 @@ set_title (GeditWindow *window)
 		}
 	}
 
-	if (gedit_document_get_modified (doc))
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
 		if (dirname != NULL)
 			title = g_strdup_printf ("*%s (%s) - gedit", 
