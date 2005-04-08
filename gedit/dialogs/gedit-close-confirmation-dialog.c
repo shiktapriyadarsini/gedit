@@ -23,7 +23,9 @@
 /*
  * Modified by the gedit Team, 2004. See the AUTHORS file for a 
  * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -363,7 +365,7 @@ get_text_secondary_label (GeditDocument *doc)
 	glong  seconds;
 	gchar *secondary_msg;
 	
-	seconds = MAX (1, gedit_document_get_seconds_since_last_save_or_load (doc));
+	seconds = MAX (1, _gedit_document_get_seconds_since_last_save_or_load (doc));
 
 	if (seconds < 55)	
 	{
@@ -450,7 +452,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	GtkWidget     *secondary_label;
 	GtkWidget     *image;
 	GeditDocument *doc;
-	gchar         *doc_name;
+	const gchar   *doc_name;
 	gchar         *str;
 	gchar         *markup_str;
 	
@@ -472,10 +474,9 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
 	gtk_misc_set_alignment (GTK_MISC (primary_label), 0.0, 0.5);
 
-	doc_name = gedit_document_get_short_name (doc);
+	doc_name = gedit_document_get_short_name_for_display (doc);
 	str = g_strdup_printf (_("Save the changes to document \"%s\" before closing?"),
 			       doc_name);
-	g_free (doc_name);
 	
 	markup_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
 	g_free (str);
@@ -520,11 +521,11 @@ populate_model (GtkTreeModel *store, GSList *docs)
 	while (docs != NULL)
 	{
 		GeditDocument *doc;
-		gchar *name;
+		const gchar *name;
 
 		doc = GEDIT_DOCUMENT (docs->data);
 
-		name = gedit_document_get_short_name (doc);
+		name = gedit_document_get_short_name_for_display (doc);
 		g_return_if_fail (name != NULL);
 
 		gtk_list_store_append (GTK_LIST_STORE (store), &iter);
@@ -533,8 +534,6 @@ populate_model (GtkTreeModel *store, GSList *docs)
 				    NAME_COLUMN, name,
 				    DOC_COLUMN, doc,
 			            -1);
-
-		g_free (name);
 
 		docs = g_slist_next (docs);
 	}

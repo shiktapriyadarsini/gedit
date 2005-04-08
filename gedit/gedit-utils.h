@@ -43,6 +43,8 @@
 #define GBOOLEAN_TO_POINTER(i) ((gpointer) ((i) ? 2 : 1))
 #define GPOINTER_TO_BOOLEAN(i) ((gboolean) ((((gint)(i)) == 2) ? TRUE : FALSE))
 
+#define IS_VALID_BOOLEAN(v) (((v == TRUE) || (v == FALSE)) ? TRUE : FALSE)
+
 /* some common error strings, %s must be a file path */
 #define MISSING_FILE    N_("Could not find \"%s\". Please, reinstall gedit.\n")
 #define MISSING_WIDGETS N_("Could not find the required widgets inside\"%s\". Please, reinstall gedit.\n")

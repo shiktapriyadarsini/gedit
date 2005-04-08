@@ -538,15 +538,15 @@ gedit_print_job_info_new (GeditDocument* doc)
 	
 	if (gedit_prefs_manager_get_print_header ())
 	{
-		gchar *doc_name;
+		const gchar *doc_name;
 		gchar *name_to_display;
 		gchar *left;
 
-		doc_name = gedit_document_get_uri (doc);
+		doc_name = gedit_document_get_uri_for_display (doc);
 		name_to_display = gedit_utils_str_middle_truncate (doc_name, 60);
 
 		left = g_strdup_printf (_("File: %s"), name_to_display);
-		
+
 		/* Translators: %N is the current page number, %Q is the total
 		 * number of pages (ex. Page 2 of 10) 
 		 */
@@ -555,12 +555,13 @@ gedit_print_job_info_new (GeditDocument* doc)
 
 		gtk_source_print_job_set_print_header (pjob, TRUE);
 
-		g_free (doc_name);
 		g_free (name_to_display);
 		g_free (left);
 	}	
 	else
+	{
 		gtk_source_print_job_set_print_header (pjob, FALSE);
+	}
 
 	gtk_source_print_job_set_print_footer (pjob, FALSE);
 

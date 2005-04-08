@@ -19,12 +19,12 @@ libdialogs_la_SOURCES = 			\
 	gedit-preferences-dialog.h		\
 	gedit-preferences-dialog.c		\
 	gedit-dialog-goto-line.c		\
-	gedit-dialog-replace.c			\
 	gedit-close-confirmation-dialog.c 	\
 	gedit-close-confirmation-dialog.h 	\
 	gedit-dialogs.h
 
 #	gedit-dialog-uri.c		\
+#	gedit-dialog-replace.c			\
 #	gedit-plugin-program-location-dialog.c \
 #	gedit-encodings-dialog.c	\
 #	gedit-encodings-dialog.h	\
