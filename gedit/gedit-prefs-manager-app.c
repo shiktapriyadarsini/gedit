@@ -1062,7 +1062,7 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 		{
 			GeditDocument *doc = GEDIT_DOCUMENT (l->data);
 
-			gedit_document_enable_auto_save (doc, auto_save);
+			gedit_document_set_auto_save_enabled (doc, auto_save);
 
 			l = l->next;
 		}
