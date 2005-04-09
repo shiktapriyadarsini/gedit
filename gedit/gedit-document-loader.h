@@ -58,12 +58,12 @@ typedef enum {
 	GEDIT_DOCUMENT_LOADER_PHASE_INITIAL,
 	/* Ready to go (*) */
 	GEDIT_DOCUMENT_LOADER_PHASE_READY_TO_GO,
+	/* Open the file to read */
+	GEDIT_DOCUMENT_LOADER_PHASE_OPEN,
 	/* Getting info on the document to load */
 	GEDIT_DOCUMENT_LOADER_PHASE_GETTING_INFO,
 	/* Got info on the document to load (*) */
-	GEDIT_DOCUMENT_LOADER_PHASE_GOT_INFO,
-	/* Open the file to read */
-	GEDIT_DOCUMENT_LOADER_PHASE_OPEN,	
+	GEDIT_DOCUMENT_LOADER_PHASE_GOT_INFO,	
 	/* Loading the file (*) */
 	GEDIT_DOCUMENT_LOADER_PHASE_LOADING,
 	/* Reading the file */
@@ -104,8 +104,8 @@ struct _GeditDocumentLoaderClass
 {
 	GObjectClass parent_class;
 	
-	void loading (GeditDocumentLoader      *loader,
-		      GeditDocumentLoaderPhase  phase);
+	void (* loading) (GeditDocumentLoader *loader,
+			  gboolean             isError);
 };
 
 /*
@@ -121,14 +121,12 @@ void			 gedit_document_loader_set_encoding 	(GeditDocumentLoader  *loader,
 
 gboolean		 gedit_document_loader_load		(GeditDocumentLoader  *loader,
 							 	 const gchar          *uri);
-
+#if 0
 gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader  *loader);
 							 
 void			 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
 
 const GeditEncoding	*gedit_document_loader_get_encoding 	(GeditDocumentLoader  *loader);
-
-gboolean	 	*gedit_document_loader_is_loading	(GeditDocumentLoader  *loader);
 
 GeditDocumentLoaderPhase gedit_document_loader_get_phase	(GeditDocumentLoader  *loader);
 
@@ -142,6 +140,7 @@ const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader  *loader);
 GnomeVFSFileSize	*gedit_document_loader_get_file_size	(GeditDocumentLoader  *loader);									 
 
 GnomeVFSFileSize	*gedit_document_loader_get_bytes_read	(GeditDocumentLoader  *loader);									 
+#endif
 
 G_END_DECLS
 

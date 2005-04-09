@@ -39,6 +39,7 @@ NON_INST_H_FILS =			\
 	gedit-plugins-engine.h		\
 	gedit-ui.h			\
 	gedit-documents-panel.h		\
+	gedit-document-loader.h		\
 	gedit-search-panel.h
 
 #	gedit-session.h
@@ -101,6 +102,7 @@ gedit_SOURCES = 			\
 	gedit-app.c			\
 	gedit-documents-panel.c		\
 	gedit-search-panel.c		\
+	gedit-document-loader.c		\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 
