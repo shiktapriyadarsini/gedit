@@ -125,22 +125,22 @@ gboolean		 gedit_document_loader_load		(GeditDocumentLoader  *loader,
 gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader  *loader);
 							 
 void			 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
-
+#endif
 const GeditEncoding	*gedit_document_loader_get_encoding 	(GeditDocumentLoader  *loader);
 
 GeditDocumentLoaderPhase gedit_document_loader_get_phase	(GeditDocumentLoader  *loader);
-
+#if 0
 gchar			*gedit_document_loader_get_message	(GeditDocumentLoader  *loader);
-
+#endif
 /* Returns STDIN_URI if loading from stdin */
 #define STDIN_URI "stdin:" 
 const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader  *loader);
 
 /* Returns 0 if file size is unknown */
-GnomeVFSFileSize	*gedit_document_loader_get_file_size	(GeditDocumentLoader  *loader);									 
+GnomeVFSFileSize	 gedit_document_loader_get_file_size	(GeditDocumentLoader  *loader);									 
 
-GnomeVFSFileSize	*gedit_document_loader_get_bytes_read	(GeditDocumentLoader  *loader);									 
-#endif
+GnomeVFSFileSize	 gedit_document_loader_get_bytes_read	(GeditDocumentLoader  *loader);									 
+
 
 G_END_DECLS
 

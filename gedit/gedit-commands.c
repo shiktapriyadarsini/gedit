@@ -77,6 +77,18 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 
 	gedit_file_open ((GeditMDIChild*) active_child);
 #endif
+	GeditDocument *doc;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	doc = gedit_window_get_active_document (window);
+	if (doc == NULL)	
+		return;
+
+	gedit_document_load (doc, 
+			     "file:///opt/gnome/test_files/generated.txt",
+			     NULL,
+			     FALSE);
 }
 
 void

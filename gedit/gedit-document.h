@@ -116,9 +116,7 @@ GType		 gedit_document_get_type      	(void) G_GNUC_CONST;
 GeditDocument   *gedit_document_new 		(void);
 
 gboolean	 gedit_document_is_readonly 	(GeditDocument       *doc);
-
-void		 gedit_document_set_uri		(GeditDocument       *doc,
-						 const gchar         *uri);						 
+						 
 const gchar	*gedit_document_get_uri_ 	(GeditDocument       *doc);
 
 const gchar	*gedit_document_get_uri_for_display
@@ -130,7 +128,9 @@ const gchar	*gedit_document_get_mime_type 	(GeditDocument       *doc);
 
 gboolean	 gedit_document_load 		(GeditDocument       *doc, 
 						 const gchar         *uri, 
-						 const GeditEncoding *encoding);
+						 const GeditEncoding *encoding,
+						 gboolean             create); 
+						 
 gboolean	 gedit_document_insert_file	(GeditDocument       *doc,
 						 GtkTextIter         *iter, 
 						 const gchar         *uri, 
@@ -189,9 +189,6 @@ void 		 gedit_document_set_language 	(GeditDocument       *doc,
 GtkSourceLanguage 
 		*gedit_document_get_language 	(GeditDocument       *doc);
 
-// CHECK: do we need it?
-void		 gedit_document_set_encoding	(GeditDocument       *doc, 
-			     			 const GeditEncoding *encoding);
 const GeditEncoding 
 		*gedit_document_get_encoding	(GeditDocument       *doc);
 

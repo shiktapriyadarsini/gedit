@@ -106,7 +106,7 @@ gedit_document_loader_set_property (GObject      *object,
 		case PROP_DOCUMENT:
 			g_return_if_fail (dl->priv->document == NULL);
 			dl->priv->document = g_value_get_object (value);
-		
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -352,6 +352,9 @@ reset_local (GeditDocumentLoader *loader)
 static void
 emit_error_signal_and_reset_local (GeditDocumentLoader *loader)
 {
+	g_print ("emit_error_signal_and_reset_local: %s\n",
+		gnome_vfs_result_to_string (loader->priv->last_result));
+	
 	g_signal_emit (loader, 
 		       signals[LOADING],
 		       0,
@@ -428,6 +431,7 @@ load_local_file_real (GeditDocumentLoader *loader)
 	struct stat statbuf;
 	gint ret;	
 	
+	g_print ("load_local_file_real\n");
 	if (loader->priv->fd == -1)
 	{
 		/* loader->priv->last_result was already be set */
@@ -464,11 +468,12 @@ load_local_file_real (GeditDocumentLoader *loader)
 		gchar *mapped_file;
 		
 		/* CHECK: should we lock the file */
+		g_print ("load_local_file_real: before mmap\n");
 		
-		mapped_file = mmap (0 /* start */ , 
+		mapped_file = mmap (0, /* start */
 				    loader->priv->info->size, 
 				    PROT_READ,
-				    0 /* flags */,
+				    MAP_PRIVATE, /* flags */
 				    loader->priv->fd,
 				    0 /* offset */);
 				    
@@ -554,8 +559,11 @@ load_local_file (GeditDocumentLoader *loader,
 		       
 	loader->priv->fd = open (fname, O_RDONLY);
 	if (loader->priv->fd == -1)
+	{
+		g_print ("Error opening file");
 		/* The error signal will be emitted later */
 		loader->priv->last_result = gnome_vfs_result_from_errno ();
+	}
 	
 	g_timeout_add_full (G_PRIORITY_HIGH,
 			    0,
@@ -587,3 +595,52 @@ gedit_document_loader_load (GeditDocumentLoader *loader,
 		
 	return TRUE;
 }
+
+const GeditEncoding *
+gedit_document_loader_get_encoding (GeditDocumentLoader  *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
+	
+	return (loader->priv->encoding == NULL) ?  
+			loader->priv->auto_detected_encoding:
+			loader->priv->encoding;
+}
+
+GeditDocumentLoaderPhase 
+gedit_document_loader_get_phase (GeditDocumentLoader  *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 
+			      GEDIT_DOCUMENT_LOADER_IDLE);
+
+	return loader->priv->phase;
+}
+
+/* Returns STDIN_URI if loading from stdin */
+const gchar *
+gedit_document_loader_get_uri (GeditDocumentLoader  *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
+	
+	return loader->priv->uri;
+}
+
+/* Returns 0 if file size is unknown */
+GnomeVFSFileSize 
+gedit_document_loader_get_file_size (GeditDocumentLoader  *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
+	
+	if (loader->priv->info == NULL)
+		return 0;
+		
+	return loader->priv->info->size;
+}									 
+
+GnomeVFSFileSize
+gedit_document_loader_get_bytes_read (GeditDocumentLoader  *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
+	
+	return loader->priv->bytes_read;
+}
+

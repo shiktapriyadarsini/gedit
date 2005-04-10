@@ -45,6 +45,8 @@
 struct _GeditTabPrivate
 {
 	GtkWidget *view;
+	
+	GtkWidget *message_area;
 };
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
@@ -127,6 +129,265 @@ document_name_modified_changed (GeditDocument *document, GeditTab *tab)
 	g_object_notify (G_OBJECT (tab), "name");
 }
 
+#if 0
+static GtkWidget *
+create_progress_message_area_content ()
+{
+  GtkWidget *hbox1;
+  GtkWidget *vbox1;
+  GtkWidget *hbox2;
+  GtkWidget *image1;
+  GtkWidget *label1;
+  GtkWidget *progressbar1;
+  GtkWidget *vbox2;
+  GtkWidget *button1;
+  
+  hbox1 = gtk_hbox_new (FALSE, 16);
+  gtk_widget_show (hbox1);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox1), 6);
+
+  vbox1 = gtk_vbox_new (FALSE, 4);
+  gtk_widget_show (vbox1);
+  gtk_box_pack_start (GTK_BOX (hbox1), vbox1, TRUE, TRUE, 0);
+
+  hbox2 = gtk_hbox_new (FALSE, 8);
+  gtk_widget_show (hbox2);
+  gtk_box_pack_start (GTK_BOX (vbox1), hbox2, FALSE, FALSE, 0);
+
+  image1 = gtk_image_new_from_icon_name (GTK_STOCK_OPEN, GTK_ICON_SIZE_SMALL_TOOLBAR);
+  gtk_widget_show (image1);
+  gtk_box_pack_start (GTK_BOX (hbox2), image1, FALSE, FALSE, 0);
+
+  label1 = gtk_label_new (_("Loading <b>pippo.txt</b> from <b>http://www.gnome.org/~paolo/</b>"));
+  gtk_widget_show (label1);
+  gtk_box_pack_start (GTK_BOX (hbox2), label1, TRUE, TRUE, 0);
+  gtk_label_set_use_markup (GTK_LABEL (label1), TRUE);
+  gtk_misc_set_alignment (GTK_MISC (label1), 0, 0.5);
+  gtk_label_set_ellipsize (GTK_LABEL (label1), PANGO_ELLIPSIZE_END);
+  gtk_label_set_single_line_mode (GTK_LABEL (label1), TRUE);
+
+  progressbar1 = gtk_progress_bar_new ();
+  gtk_widget_show (progressbar1);
+  gtk_box_pack_start (GTK_BOX (vbox1), progressbar1, TRUE, FALSE, 0);
+  gtk_widget_set_size_request (progressbar1, -1, 15);
+  gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progressbar1), 0.5);
+  gtk_progress_bar_set_ellipsize (GTK_PROGRESS_BAR (progressbar1), PANGO_ELLIPSIZE_MIDDLE);
+
+  vbox2 = gtk_vbox_new (TRUE, 0);
+  gtk_widget_show (vbox2);
+  gtk_box_pack_start (GTK_BOX (hbox1), vbox2, FALSE, TRUE, 0);
+
+  button1 = gtk_button_new_from_stock ("gtk-cancel");
+  gtk_widget_show (button1);
+  gtk_box_pack_start (GTK_BOX (vbox2), button1, FALSE, FALSE, 0);
+  gtk_button_set_relief (GTK_BUTTON (button1), GTK_RELIEF_NONE);
+  
+  return hbox1;
+}
+
+#endif
+#if 0
+static GtkWidget *
+create_error_message_area_content (void)
+{
+  GtkWidget *hbox3;
+  GtkWidget *hbox4;
+  GtkWidget *image2;
+  GtkWidget *vbox5;
+  GtkWidget *label2;
+  GtkWidget *label3;
+  GtkWidget *vbox4;
+  GtkWidget *button2;
+
+  hbox3 = gtk_hbox_new (FALSE, 16);
+  gtk_widget_show (hbox3);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox3), 6);
+
+  hbox4 = gtk_hbox_new (FALSE, 8);
+  gtk_widget_show (hbox4);
+  gtk_box_pack_start (GTK_BOX (hbox3), hbox4, TRUE, TRUE, 0);
+
+  image2 = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
+  gtk_widget_show (image2);
+  gtk_box_pack_start (GTK_BOX (hbox4), image2, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (image2), 0.5, 0);
+
+  vbox5 = gtk_vbox_new (FALSE, 6);
+  gtk_widget_show (vbox5);
+  gtk_box_pack_start (GTK_BOX (hbox4), vbox5, TRUE, TRUE, 0);
+
+  label2 = gtk_label_new (_("<b>Could not find the file <i>http://www.gnome.org/pippo.txt</i></b>"));
+  gtk_widget_show (label2);
+  gtk_box_pack_start (GTK_BOX (vbox5), label2, TRUE, TRUE, 0);
+  gtk_label_set_use_markup (GTK_LABEL (label2), TRUE);
+  gtk_label_set_line_wrap (GTK_LABEL (label2), TRUE);
+  gtk_misc_set_alignment (GTK_MISC (label2), 0, 0.5);
+  GTK_WIDGET_SET_FLAGS (label2, GTK_CAN_FOCUS);
+  gtk_label_set_selectable (GTK_LABEL (label2), TRUE);
+  
+  label3 = gtk_label_new (_("<small>Please, check that you typed the location correctly and try again.</small>"));
+  gtk_widget_show (label3);
+  gtk_box_pack_start (GTK_BOX (vbox5), label3, TRUE, TRUE, 0);
+  GTK_WIDGET_SET_FLAGS (label3, GTK_CAN_FOCUS);
+  gtk_label_set_use_markup (GTK_LABEL (label3), TRUE);
+  gtk_label_set_line_wrap (GTK_LABEL (label3), TRUE);
+  gtk_label_set_selectable (GTK_LABEL (label3), TRUE);
+  gtk_misc_set_alignment (GTK_MISC (label3), 0, 0.5);
+
+  vbox4 = gtk_vbox_new (TRUE, 0);
+  gtk_widget_show (vbox4);
+  gtk_box_pack_start (GTK_BOX (hbox3), vbox4, FALSE, TRUE, 0);
+
+  button2 = gtk_button_new_from_stock ("gtk-close");
+  gtk_widget_show (button2);
+  gtk_box_pack_start (GTK_BOX (vbox4), button2, FALSE, FALSE, 0);
+  gtk_button_set_relief (GTK_BUTTON (button2), GTK_RELIEF_NONE);
+
+  return hbox3;
+}
+#endif
+
+static GtkWidget *
+create_retry_message_area_content (void)
+{
+  GtkWidget *hbox5;
+  GtkWidget *hbox6;
+  GtkWidget *image3;
+  GtkWidget *vbox6;
+  GtkWidget *label4;
+  GtkWidget *label5;
+  GtkWidget *hbox9;
+  GtkWidget *label8;
+  GtkWidget *combobox1;
+  GtkWidget *vbox7;
+  GtkWidget *button3;
+  GtkWidget *alignment1;
+  GtkWidget *hbox10;
+  GtkWidget *image4;
+  GtkWidget *label9;
+  GtkWidget *button4;
+
+  hbox5 = gtk_hbox_new (FALSE, 16);
+  gtk_widget_show (hbox5);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox5), 6);
+  gtk_container_set_resize_mode (GTK_CONTAINER (hbox5), GTK_RESIZE_QUEUE);
+  
+  hbox6 = gtk_hbox_new (FALSE, 8);
+  gtk_widget_show (hbox6);
+  gtk_box_pack_start (GTK_BOX (hbox5), hbox6, TRUE, TRUE, 0);
+
+  image3 = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
+  gtk_widget_show (image3);
+  gtk_box_pack_start (GTK_BOX (hbox6), image3, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (image3), 0.5, 0);
+
+  vbox6 = gtk_vbox_new (FALSE, 6);
+  gtk_widget_show (vbox6);
+  gtk_box_pack_start (GTK_BOX (hbox6), vbox6, TRUE, TRUE, 0);
+
+  label4 = gtk_label_new (_("<b>Could not open the file <i>/gnome/gnome-210/\342\200\246/stock_about_16.png\"</i></b>"));
+  gtk_widget_show (label4);
+  gtk_box_pack_start (GTK_BOX (vbox6), label4, TRUE, TRUE, 0);
+  GTK_WIDGET_SET_FLAGS (label4, GTK_CAN_FOCUS);
+  gtk_label_set_use_markup (GTK_LABEL (label4), TRUE);
+  gtk_label_set_line_wrap (GTK_LABEL (label4), TRUE);
+  gtk_label_set_selectable (GTK_LABEL (label4), TRUE);
+  gtk_misc_set_alignment (GTK_MISC (label4), 0, 0.5);
+
+  label5 = gtk_label_new (_("<small>gedit was not able to automatically detect the character coding. Do you want to retry using the specified character coding?</small>"));
+  gtk_widget_show (label5);
+  gtk_box_pack_start (GTK_BOX (vbox6), label5, TRUE, TRUE, 0);
+  GTK_WIDGET_SET_FLAGS (label5, GTK_CAN_FOCUS);
+  gtk_label_set_use_markup (GTK_LABEL (label5), TRUE);
+  gtk_label_set_line_wrap (GTK_LABEL (label5), TRUE);
+  gtk_label_set_selectable (GTK_LABEL (label5), TRUE);
+  gtk_misc_set_alignment (GTK_MISC (label5), 0, 0.5);
+
+  hbox9 = gtk_hbox_new (FALSE, 8);
+  gtk_widget_show (hbox9);
+  gtk_box_pack_start (GTK_BOX (vbox6), hbox9, TRUE, TRUE, 0);
+
+  label8 = gtk_label_new_with_mnemonic (_("<small>Ch_aracter coding:</small>"));
+  gtk_widget_show (label8);
+  gtk_box_pack_start (GTK_BOX (hbox9), label8, FALSE, FALSE, 0);
+  gtk_label_set_use_markup (GTK_LABEL (label8), TRUE);
+  gtk_misc_set_alignment (GTK_MISC (label8), 0, 0.5);
+
+  combobox1 = gtk_combo_box_new_text ();
+  gtk_widget_show (combobox1);
+  gtk_box_pack_start (GTK_BOX (hbox9), combobox1, TRUE, TRUE, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1), _("Western (ISO-8859-15)"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1), _("Unicode (UTF-16)"));
+
+  vbox7 = gtk_vbox_new (FALSE, 8);
+  gtk_widget_show (vbox7);
+  gtk_box_pack_start (GTK_BOX (hbox5), vbox7, FALSE, TRUE, 0);
+
+  button3 = gtk_button_new ();
+  gtk_widget_show (button3);
+  gtk_box_pack_start (GTK_BOX (vbox7), button3, FALSE, FALSE, 0);
+  gtk_button_set_relief (GTK_BUTTON (button3), GTK_RELIEF_NONE);
+
+  alignment1 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment1);
+  gtk_container_add (GTK_CONTAINER (button3), alignment1);
+
+  hbox10 = gtk_hbox_new (TRUE, 2);
+  gtk_widget_show (hbox10);
+  gtk_container_add (GTK_CONTAINER (alignment1), hbox10);
+
+  image4 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image4);
+  gtk_box_pack_start (GTK_BOX (hbox10), image4, FALSE, FALSE, 0);
+
+  label9 = gtk_label_new_with_mnemonic ("_Retry");
+  gtk_widget_show (label9);
+  gtk_box_pack_start (GTK_BOX (hbox10), label9, FALSE, FALSE, 0);
+
+  button4 = gtk_button_new_from_stock ("gtk-close");
+  gtk_widget_show (button4);
+  gtk_box_pack_start (GTK_BOX (vbox7), button4, FALSE, FALSE, 0);
+  gtk_button_set_relief (GTK_BUTTON (button4), GTK_RELIEF_NONE);
+  
+  return hbox5;
+}
+
+static void
+create_test_message_area (GeditTab *tab)
+{
+	GdkColor color;
+	GtkWidget *eb;
+	
+	gdk_color_parse ("#E1C43A", &color);
+
+	eb = gtk_event_box_new ();
+	gtk_widget_modify_bg (eb, GTK_STATE_NORMAL, &color);
+	gtk_container_set_border_width (GTK_CONTAINER (eb), 
+					1);		
+					
+	gtk_box_pack_start (GTK_BOX (tab), 
+			    eb, 
+			    FALSE, 
+			    FALSE, 
+			    0);		
+			    			
+	tab->priv->message_area = gtk_event_box_new ();
+	gdk_color_parse ("#FFF1BE", &color);
+	gtk_widget_modify_bg (tab->priv->message_area, GTK_STATE_NORMAL, &color);
+	
+	gtk_container_set_border_width (GTK_CONTAINER (tab->priv->message_area), 
+					1);
+
+	gtk_container_add (GTK_CONTAINER (eb), tab->priv->message_area);
+	
+
+	gtk_container_add (GTK_CONTAINER (tab->priv->message_area),
+			   create_retry_message_area_content ());
+
+			    
+	gtk_widget_show_all (eb);
+}
+
 static void
 gedit_tab_init (GeditTab *tab)
 {
@@ -135,9 +396,10 @@ gedit_tab_init (GeditTab *tab)
 	
 	tab->priv = GEDIT_TAB_GET_PRIVATE (tab);
 	
+	create_test_message_area (tab);
+			  
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
-	g_return_if_fail (sw != NULL);
 	
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
 					GTK_POLICY_AUTOMATIC,

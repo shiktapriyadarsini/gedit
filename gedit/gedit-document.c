@@ -46,6 +46,7 @@
 #include "gedit-convert.h"
 #include "gedit-metadata-manager.h"
 #include "gedit-languages-manager.h"
+#include "gedit-document-loader.h"
 
 #include "gedit-marshal.h"
 
@@ -81,6 +82,8 @@ struct _GeditDocumentPrivate
 	gchar	    *uri;
 	gint 	     untitled_number;
 	
+	GeditDocumentLoader *loader;
+	
 	/* Cached data */
 	GnomeVFSURI *vfs_uri;
 	gchar	    *uri_for_display;
@@ -97,6 +100,11 @@ struct _GeditDocumentPrivate
 	
 	gint         search_flags;
 	gchar       *search_text;
+	
+	/* Temp data while loading */
+	gboolean     create; /* Create file if uri points 
+	                        to a non existing file */
+	const GeditEncoding *requested_encoding;                   
 };
 
 enum {
@@ -198,6 +206,8 @@ gedit_document_finalize (GObject *object)
 		}
 	}
 
+	g_object_unref (doc->priv->loader);
+	
 	g_free (doc->priv->uri);
 
 	g_free (doc->priv->search_text);
@@ -421,6 +431,8 @@ gedit_document_init (GeditDocument *doc)
 	
 	doc->priv = GEDIT_DOCUMENT_GET_PRIVATE (doc);
 
+	doc->priv->loader = gedit_document_loader_new (doc);
+	
 	doc->priv->uri = NULL;
 	doc->priv->vfs_uri = NULL;
 	doc->priv->untitled_number = get_untitled_number ();
@@ -511,9 +523,9 @@ is_valid_uri (const gchar *uri)
 
 #endif /* G_DISABLE_CHECKS */
 
-void
-gedit_document_set_uri (GeditDocument *doc,
-			const gchar   *uri)
+static void
+set_uri (GeditDocument *doc,
+	 const gchar   *uri)
 {
 	GtkSourceLanguage *language = NULL;
 	gchar *data;
@@ -551,7 +563,7 @@ gedit_document_set_uri (GeditDocument *doc,
 	   if no match. */
 	base_name = gnome_vfs_uri_extract_short_path_name (doc->priv->vfs_uri);
 	if (base_name != NULL) 
-		doc->priv->mime_type = "text/plain"; // FIXMR
+		doc->priv->mime_type = "text/plain"; // FIXME
 //			gnome_vfs_mime_type_from_name_or_default (base_name,
 //								  "text/plain");
 	else
@@ -642,13 +654,21 @@ gedit_document_is_readonly (GeditDocument *doc)
 gboolean
 gedit_document_load (GeditDocument       *doc,
 		     const gchar         *uri,
-		     const GeditEncoding *encoding)
+		     const GeditEncoding *encoding,
+		     gboolean             create)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+	g_return_val_if_fail (uri != NULL, FALSE);
+	g_return_val_if_fail (is_valid_uri (uri), FALSE);
 	
-	// TODO
+	doc->priv->create = create;
+	doc->priv->requested_encoding = encoding;
 	
-	return FALSE;
+	gedit_document_loader_set_encoding (doc->priv->loader,
+					    doc->priv->requested_encoding);
+	
+	return gedit_document_loader_load (doc->priv->loader,
+					   uri);			      
 }
 
 gboolean
@@ -830,16 +850,6 @@ gedit_document_get_encoding (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
 	return gedit_encoding_get_from_charset (doc->priv->encoding);
-}
-
-void
-gedit_document_set_encoding (GeditDocument       *doc, 
-			     const GeditEncoding *encoding)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (encoding != NULL);
-	
-	set_encoding (doc, encoding, TRUE, TRUE);
 }
 
 void
