@@ -51,13 +51,12 @@
 #include "dialogs/gedit-dialogs.h"
 #include "dialogs/gedit-preferences-dialog.h"
 #include "dialogs/gedit-close-confirmation-dialog.h"
+#include "gedit-file-chooser-dialog.h"
 #include "gedit-notebook.h"
 #include "gedit-app.h"
 #include "gedit-search-panel.h"
 
-#if 0
-#include "gedit-file.h"
-#endif
+#define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
 
 void
 gedit_cmd_file_new (GtkAction *action, GeditWindow *window)
@@ -68,6 +67,32 @@ gedit_cmd_file_new (GtkAction *action, GeditWindow *window)
 void
 gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 {
+	GtkWidget *open_dialog;
+	gpointer data;
+	
+	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
+	
+	if ((data != NULL) && (GEDIT_IS_FILE_CHOOSER_DIALOG (data)))
+	{
+		gtk_window_present (GTK_WINDOW (data));
+		
+		return;
+	}
+
+	open_dialog = gedit_file_chooser_dialog_new (_("Open Files..."),
+						     GTK_WINDOW (window),
+						     GTK_FILE_CHOOSER_ACTION_OPEN,
+						     NULL,
+						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						     GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+						     NULL);
+
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_OPEN_DIALOG_KEY,
+			   open_dialog);
+			   						     
+	gtk_widget_show (open_dialog);
+
 #if 0
 	BonoboMDIChild *active_child;
 
@@ -77,6 +102,7 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 
 	gedit_file_open ((GeditMDIChild*) active_child);
 #endif
+#if 0
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -86,9 +112,10 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 		return;
 
 	gedit_document_load (doc, 
-			     "file:///opt/gnome/test_files/generated.txt",
+			     "file:///mnt/nslu2/paolo/gnome/gnome-210/cvs/gedit/ChangeLog",
 			     NULL,
 			     FALSE);
+#endif			     
 }
 
 void

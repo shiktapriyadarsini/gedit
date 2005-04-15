@@ -3,7 +3,7 @@
  * gedit-encodings-option-menu.c
  * This file is part of gedit
  *
- * Copyright (C) 2003 - Paolo Maggi
+ * Copyright (C) 2003-2005 - Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +22,11 @@
  */
  
 /*
- * Modified by the gedit Team, 2003. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -34,9 +36,9 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "gedit-encodings-option-menu.h"
-#include "gedit-prefs-manager.h"
-#include "dialogs/gedit-encodings-dialog.h"
+#include <gedit/gedit-encodings-option-menu.h>
+#include <gedit/gedit-prefs-manager.h>
+#include <gedit/dialogs/gedit-encodings-dialog.h>
 
 #define ENCODING_KEY "Enconding"
 
@@ -154,7 +156,7 @@ gedit_encodings_option_menu_class_init (GeditEncodingsOptionMenuClass *klass)
 							       ("Save Mode"),
 							       FALSE,
 					 		       (G_PARAM_READWRITE | 
-							        G_PARAM_CONSTRUCT_ONLY)));
+							        G_PARAM_CONSTRUCT)));
 }
 
 static void

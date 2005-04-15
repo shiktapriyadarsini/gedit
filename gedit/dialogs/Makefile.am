@@ -21,15 +21,13 @@ libdialogs_la_SOURCES = 			\
 	gedit-dialog-goto-line.c		\
 	gedit-close-confirmation-dialog.c 	\
 	gedit-close-confirmation-dialog.h 	\
+	gedit-encodings-dialog.c		\
+	gedit-encodings-dialog.h		\
 	gedit-dialogs.h
 
 #	gedit-dialog-uri.c		\
-#	gedit-dialog-replace.c			\
 #	gedit-plugin-program-location-dialog.c \
-#	gedit-encodings-dialog.c	\
-#	gedit-encodings-dialog.h	\
-#	gedit-close-confirmation-dialog.c \
-#	gedit-close-confirmation-dialog.h 
+#	gedit-dialog-replace.c
 
 
 glade_DATA =				\

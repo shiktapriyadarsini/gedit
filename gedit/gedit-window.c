@@ -123,9 +123,9 @@ static void
 gedit_window_finalize (GObject *object)
 {
 	GeditWindow *window = GEDIT_WINDOW (object); 
-
+	
 	g_object_unref (window->priv->window_group);
-
+		
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
 
@@ -154,7 +154,7 @@ gedit_window_destroy (GtkObject *object)
 		gedit_prefs_manager_bottom_panel_size_can_set ())
 			gedit_prefs_manager_set_bottom_panel_size (
 					window->priv->bottom_panel_size);
-					
+										
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
 }
 

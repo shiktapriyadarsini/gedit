@@ -56,11 +56,12 @@ INST_H_FILES =				\
 	gedit-panel.h			\
 	gedit-statusbar.h		\
 	gedit-print.h			\
+	gedit-encodings-option-menu.h	\
+	gedit-file-chooser-dialog.h	\
 	gedit-app.h
 
 #	gedit2.h			\
 #	gedit-file.h			\
-#	gedit-encodings-option-menu.h	\
 #	gedit-menus.h			\
 #	bonobo-mdi.h			\
 #	gedit-plugin.h			\
@@ -103,6 +104,8 @@ gedit_SOURCES = 			\
 	gedit-documents-panel.c		\
 	gedit-search-panel.c		\
 	gedit-document-loader.c		\
+	gedit-file-chooser-dialog.c	\
+	gedit-encodings-option-menu.c	\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 
@@ -114,8 +117,7 @@ gedit_SOURCES = 			\
 #	gedit-file-selector-util.c 	\
 #	gedit-io-error-dialogs.c	\
 #	gedit-plugin.c			\
-#	gedit-output-window.c		\
-#	gedit-encodings-option-menu.c
+#	gedit-output-window.c
 
 libgedit_la_SOURCES = 			\
 	gedit-debug.c			\
