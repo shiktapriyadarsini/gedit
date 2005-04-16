@@ -80,12 +80,12 @@ struct _GeditTabClass
  */
 GType 		 gedit_tab_get_type 		(void) G_GNUC_CONST;
 
-GeditView	*gedit_tab_get_view		(GeditTab      *tab);
+GeditView	*gedit_tab_get_view		(GeditTab            *tab);
 
 /* This is only an helper function */
-GeditDocument	*gedit_tab_get_document		(GeditTab      *tab);
+GeditDocument	*gedit_tab_get_document		(GeditTab            *tab);
 
-GeditTab	*gedit_tab_get_from_document	(GeditDocument *doc);
+GeditTab	*gedit_tab_get_from_document	(GeditDocument       *doc);
 
 /*
  * Non exported methods
@@ -94,11 +94,12 @@ GtkWidget 	*_gedit_tab_new 		(void);
 
 /* Whether create is TRUE, creates a new empty document if location does 
    not refer to an existing file */
-GtkWidget	*_gedit_tab_new_from_uri	(const gchar   *location,
-						 gboolean       create);
-gchar 		*_gedit_tab_get_name		(GeditTab      *tab);
-gchar 		*_gedit_tab_get_tooltips	(GeditTab      *tab);
-GdkPixbuf 	*_gedit_tab_get_icon		(GeditTab      *tab);
+GtkWidget	*_gedit_tab_new_from_uri	(const gchar         *uri,
+						 const GeditEncoding *encoding,
+						 gboolean             create);
+gchar 		*_gedit_tab_get_name		(GeditTab            *tab);
+gchar 		*_gedit_tab_get_tooltips	(GeditTab            *tab);
+GdkPixbuf 	*_gedit_tab_get_icon		(GeditTab            *tab);
 
 G_END_DECLS
 

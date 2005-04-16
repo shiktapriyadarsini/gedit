@@ -439,21 +439,32 @@ _gedit_tab_new (void)
 /* Whether create is TRUE, creates a new empty document if location does 
    not refer to an existing file */
 GtkWidget *
-_gedit_tab_new_from_uri (const gchar *location,
-			gboolean     create)
+_gedit_tab_new_from_uri (const gchar         *uri,
+			 const GeditEncoding *encoding,				
+			 gboolean             create)
 {
 	GeditTab *tab;
 	GeditDocument *doc;
+	gboolean ret;
 	
-	g_return_val_if_fail (location != NULL, NULL);
+	g_return_val_if_fail (uri != NULL, NULL);
 	
 	tab = GEDIT_TAB (_gedit_tab_new ());
 	
 	doc = gedit_tab_get_document (tab);
 
-	// TODO
+	ret = gedit_document_load (doc, 
+				   uri,
+				   encoding,
+				   create);
 	
-	return NULL;
+	if (!ret)
+	{
+		g_object_unref (tab);
+		return NULL;
+	}
+			   
+	return GTK_WIDGET (tab);
 }		
 
 GeditView *

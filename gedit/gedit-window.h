@@ -89,51 +89,64 @@ struct _GeditWindowClass
  */
 GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
 
-GeditTab	*gedit_window_create_tab		(GeditWindow *window,
-							 gboolean     jump_to);
-
-void		 gedit_window_close_tab			(GeditWindow *window,
-							 GeditTab    *tab);
+GeditTab	*gedit_window_create_tab		(GeditWindow         *window,
+							 gboolean             jump_to);
 							 
-void		 gedit_window_close_all_tabs		(GeditWindow *window);
+GeditTab	*gedit_window_create_tab_from_uri	(GeditWindow         *window,
+							 const gchar         *uri,
+							 const GeditEncoding *encoding,
+							 gboolean             create,
+							 gboolean             jump_to);
 							 
-GeditTab	*gedit_window_get_active_tab		(GeditWindow *window);
+void		 gedit_window_close_tab			(GeditWindow         *window,
+							 GeditTab            *tab);
+							 
+void		 gedit_window_close_all_tabs		(GeditWindow         *window);
+							 
+GeditTab	*gedit_window_get_active_tab		(GeditWindow         *window);
 
-void		 gedit_window_set_active_tab		(GeditWindow *window,
-							 GeditTab    *tab);
+void		 gedit_window_set_active_tab		(GeditWindow         *window,
+							 GeditTab            *tab);
 
 /* Helper functions */
-GeditView	*gedit_window_get_active_view		(GeditWindow *window);
-GeditDocument	*gedit_window_get_active_document	(GeditWindow *window);
+GeditView	*gedit_window_get_active_view		(GeditWindow         *window);
+GeditDocument	*gedit_window_get_active_document	(GeditWindow         *window);
 
 /* Returns a newly allocated list with all the documents in the window */
-GList		*gedit_window_get_documents		(GeditWindow *window);
+GList		*gedit_window_get_documents		(GeditWindow         *window);
 
 /* Returns a newly allocated list with all the views in the window */
-GList		*gedit_window_get_views			(GeditWindow *window);
+GList		*gedit_window_get_views			(GeditWindow         *window);
 
-GtkWindowGroup  *gedit_window_get_group			(GeditWindow *window);
+GtkWindowGroup  *gedit_window_get_group			(GeditWindow         *window);
 
-GeditPanel	*gedit_window_get_side_panel		(GeditWindow *window);
+GeditPanel	*gedit_window_get_side_panel		(GeditWindow         *window);
+
+gint		 gedit_window_load_files		(GeditWindow         *window,
+							 GSList              *uris,
+							 const GeditEncoding *encoding,
+							 gboolean             create);
+
+GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 
 /*
  * Non exported functions
  */
-GtkWidget	*_gedit_window_get_notebook		(GeditWindow *window);
+GtkWidget	*_gedit_window_get_notebook		(GeditWindow         *window);
 
-void		 _gedit_window_set_statusbar_visible	(GeditWindow *window,
-							 gboolean     visible);
-void		 _gedit_window_set_toolbar_visible	(GeditWindow *window,
-							 gboolean     visible);
-void		 _gedit_window_set_side_panel_visible	(GeditWindow *window,
-							 gboolean     visible);							 							 
-GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow *window,
-							 GeditTab    *tab);								 
-gboolean	 _gedit_window_is_removing_all_tabs	(GeditWindow *window);
+void		 _gedit_window_set_statusbar_visible	(GeditWindow         *window,
+							 gboolean             visible);
+void		 _gedit_window_set_toolbar_visible	(GeditWindow         *window,
+							 gboolean             visible);
+void		 _gedit_window_set_side_panel_visible	(GeditWindow         *window,
+							 gboolean             visible);							 							 
+GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
+							 GeditTab            *tab);								 
+gboolean	 _gedit_window_is_removing_all_tabs	(GeditWindow         *window);
 
-GtkUIManager	*_gedit_window_get_ui_manager		(GeditWindow *window);
+GtkUIManager	*_gedit_window_get_ui_manager		(GeditWindow         *window);
 
-GtkWidget	*_gedit_window_get_search_panel		(GeditWindow *window);
+GtkWidget	*_gedit_window_get_search_panel		(GeditWindow         *window);
 
 G_END_DECLS
 

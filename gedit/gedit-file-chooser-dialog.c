@@ -267,7 +267,7 @@ gedit_file_chooser_dialog_set_encoding (GeditFileChooserDialog *dialog,
 				encoding);		  
 }
 							 
-const GeditEncoding  *
+const GeditEncoding *
 gedit_file_chooser_dialog_get_encoding (GeditFileChooserDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), NULL);

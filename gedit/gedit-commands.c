@@ -74,9 +74,15 @@ open_dialog_destroyed (GeditWindow *window, GeditFileChooserDialog *dialog)
 
 static void
 open_dialog_response_cb (GeditFileChooserDialog *dialog,
-                         gint response_id,
-                         GeditWindow *window)
+                         gint                    response_id,
+                         GeditWindow            *window)
 {
+	GSList *uris;
+	const GeditEncoding *encoding;
+	gint n;
+
+	gedit_debug (DEBUG_COMMANDS);
+	
 	if (response_id != GTK_RESPONSE_OK)
 	{
 		gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -84,7 +90,20 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 		return;
 	}
 	
-	g_print ("Response: OK\n");
+	uris = gtk_file_chooser_get_uris (GTK_FILE_CHOOSER (dialog));
+	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
+	
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+	
+	g_return_if_fail (uris != NULL); /* CHECK */
+			
+	n = gedit_window_load_files (window,
+		 		     uris,
+				     encoding,
+				     FALSE);
+
+	g_slist_foreach (uris, (GFunc) g_free, NULL);
+	g_slist_free (uris);
 }        
                  
 void

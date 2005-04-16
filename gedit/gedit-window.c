@@ -40,6 +40,7 @@
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksourcelanguage.h>
 #include <gtksourceview/gtksourcelanguagesmanager.h>
+#include <libgnomevfs/gnome-vfs-utils.h>
 
 #include "gedit-ui.h"
 #include "gedit-window.h"
@@ -1715,6 +1716,31 @@ gedit_window_create_tab (GeditWindow *window,
 }
 
 GeditTab *
+gedit_window_create_tab_from_uri (GeditWindow         *window,
+				  const gchar         *uri,
+				  const GeditEncoding *encoding,
+				  gboolean             create,
+				  gboolean             jump_to)
+{
+	GtkWidget *tab;
+	
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
+	tab = _gedit_tab_new_from_uri (uri, encoding, create);	
+	if (tab == NULL)
+		return NULL;
+		
+	gtk_widget_show (tab);	
+	
+	gedit_notebook_add_tab (GEDIT_NOTEBOOK (window->priv->notebook),
+				GEDIT_TAB (tab),
+				-1,
+				jump_to);
+				
+	return GEDIT_TAB (tab);
+}				  
+
+GeditTab *
 gedit_window_get_active_tab (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
@@ -1979,4 +2005,103 @@ _gedit_window_get_search_panel (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return window->priv->search_panel;	
+}
+
+gint
+gedit_window_load_files	(GeditWindow         *window,
+			 GSList              *uris,
+			 const GeditEncoding *encoding,
+			 gboolean             create)
+{
+	gint loaded_files = 0;
+	gboolean ret;
+	GeditDocument *doc;
+	gboolean jump_to = TRUE;
+	gboolean flash = TRUE;
+	
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
+	g_return_val_if_fail (uris != NULL, 0);
+	
+	doc = gedit_window_get_active_document (window);
+	if (doc != NULL)
+	{
+		if (gedit_document_is_untouched (doc))
+		{
+			const gchar * uri;
+			
+			g_return_val_if_fail (uris->data != NULL, 0);
+			
+			uri = (const gchar *)uris->data;
+			ret = gedit_document_load (doc,
+						   uri,
+						   encoding,
+						   create);
+			
+			uris = g_slist_next (uris);
+			jump_to = FALSE;
+			
+			if (ret)
+			{
+				if (uris == NULL)
+				{
+					/* There is only a single file to load */
+					gchar *uri_for_display;
+					
+					uri_for_display = gnome_vfs_format_uri_for_display (uri);
+								
+					gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+								       window->priv->generic_message_cid,
+								       _("Loading file \"%s\"..."),
+								       uri_for_display);
+								       
+					g_free (uri_for_display);
+					
+					flash = FALSE;								       
+				}
+				
+				++loaded_files;
+			}
+		}
+	}
+	
+	while (uris != NULL)
+	{
+		GeditTab *tab;
+		
+		g_return_val_if_fail (uris->data != NULL, 0);
+		
+		tab = gedit_window_create_tab_from_uri (window,
+							(const gchar *)uris->data,
+							encoding,
+							create,
+							jump_to);
+							
+		if (tab != NULL)
+		{
+			jump_to = FALSE;
+			++loaded_files;	
+		}
+		
+		uris = g_slist_next (uris);
+	}
+	
+	if (flash)
+	{
+		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+					       window->priv->generic_message_cid,
+					       ngettext("Loading %d file...",
+							"Loading %d files...", 
+							loaded_files),
+					       loaded_files);
+	}					     
+	
+	return loaded_files;
+}
+
+GtkWidget *
+gedit_window_get_statusbar (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
+	
+	return window->priv->statusbar;
 }
