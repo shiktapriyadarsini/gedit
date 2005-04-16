@@ -76,9 +76,12 @@ typedef enum {
 	GEDIT_DOCUMENT_LOADER_PHASE_CANCELLED,
 	/* Operation finished (*) */
 	GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED,
+	/* Loader has been used. Reset or destroy */
+	GEDIT_DOCUMENT_LOADER_PHASE_END,
+
 	GEDIT_DOCUMENT_LOADER_NUM_OF_PHASES
 } GeditDocumentLoaderPhase;
-	
+
 /* Private structure type */
 typedef struct _GeditDocumentLoaderPrivate GeditDocumentLoaderPrivate;
 
@@ -103,9 +106,10 @@ typedef struct _GeditDocumentLoaderClass GeditDocumentLoaderClass;
 struct _GeditDocumentLoaderClass 
 {
 	GObjectClass parent_class;
-	
-	void (* loading) (GeditDocumentLoader *loader,
-			  gboolean             isError);
+
+	void (* loading) (GeditDocumentLoader      *loader,
+			  GeditDocumentLoaderPhase  current_phase,
+			  gboolean                  is_error);
 };
 
 /*
@@ -116,17 +120,14 @@ GType 		 	 gedit_document_loader_get_type		(void) G_GNUC_CONST;
 GeditDocumentLoader 	*gedit_document_loader_new 		(GeditDocument        *doc);
 
 /* If enconding == NULL, the encoding will be autodetected */
-void			 gedit_document_loader_set_encoding 	(GeditDocumentLoader  *loader,
-								 const GeditEncoding  *encoding);
-
 gboolean		 gedit_document_loader_load		(GeditDocumentLoader  *loader,
-							 	 const gchar          *uri);
+							 	 const gchar          *uri,
+								 const GeditEncoding  *encoding);
 #if 0
 gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader  *loader);
 							 
 void			 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
 #endif
-const GeditEncoding	*gedit_document_loader_get_encoding 	(GeditDocumentLoader  *loader);
 
 GeditDocumentLoaderPhase gedit_document_loader_get_phase	(GeditDocumentLoader  *loader);
 #if 0

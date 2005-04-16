@@ -81,9 +81,7 @@ struct _GeditDocumentPrivate
 	
 	gchar	    *uri;
 	gint 	     untitled_number;
-	
-	GeditDocumentLoader *loader;
-	
+
 	/* Cached data */
 	GnomeVFSURI *vfs_uri;
 	gchar	    *uri_for_display;
@@ -100,8 +98,9 @@ struct _GeditDocumentPrivate
 	
 	gint         search_flags;
 	gchar       *search_text;
-	
+
 	/* Temp data while loading */
+	GeditDocumentLoader *loader;
 	gboolean     create; /* Create file if uri points 
 	                        to a non existing file */
 	const GeditEncoding *requested_encoding;                   
@@ -206,12 +205,12 @@ gedit_document_finalize (GObject *object)
 		}
 	}
 
-	g_object_unref (doc->priv->loader);
+	if (doc->priv->loader)
+		g_object_unref (doc->priv->loader);
 	
 	g_free (doc->priv->uri);
-
 	g_free (doc->priv->search_text);
-	
+
 	G_OBJECT_CLASS (gedit_document_parent_class)->finalize (object);
 }
 
@@ -255,7 +254,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_TYPE_ULONG,
 			      G_TYPE_ULONG);
 
-	
 	document_signals[SAVED] =
    		g_signal_new ("saved",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -346,7 +344,7 @@ set_encoding (GeditDocument       *doc,
 		gedit_metadata_manager_set (doc->priv->uri,
 					    "encoding",
 					    doc->priv->encoding);
-	
+
 	if (emit_signal)
 		/* FIXME: do we need a encoding changed signal ? - Paolo */
 		g_signal_emit (G_OBJECT (doc), document_signals[NAME_CHANGED], 0);
@@ -361,7 +359,6 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 	gboolean validated;
 	const char *method;
 
-	
 	validated = FALSE;
 	name = gnome_vfs_uri_extract_short_name (uri);
 	if (name == NULL) {
@@ -420,18 +417,14 @@ update_uri_for_display (GeditDocument *doc)
 		
 		doc->priv->short_name_for_display = get_uri_shortname_for_display (doc->priv->vfs_uri);
 	}
-	
 }
 
 static void
 gedit_document_init (GeditDocument *doc)
 {
-
 	gedit_debug (DEBUG_DOCUMENT);
 	
 	doc->priv = GEDIT_DOCUMENT_GET_PRIVATE (doc);
-
-	doc->priv->loader = gedit_document_loader_new (doc);
 	
 	doc->priv->uri = NULL;
 	doc->priv->vfs_uri = NULL;
@@ -651,6 +644,36 @@ gedit_document_is_readonly (GeditDocument *doc)
 	return doc->priv->readonly;	
 }
 
+static void
+load_finished (GeditDocument *doc)
+{
+	g_object_unref (doc->priv->loader);
+	doc->priv->loader = NULL;
+}
+
+static void
+document_loader_loading (GeditDocumentLoader      *loader,
+			 GeditDocumentLoaderPhase  phase,
+			 gboolean                  is_error,
+			 GeditDocument            *doc)
+{
+	if (is_error)
+	{
+		g_print ("error loading!\n");
+
+		load_finished (doc);
+
+		return;
+	}
+
+	if (phase == GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED)
+	{
+		g_print ("load completed!\n");
+
+		load_finished (doc);
+	}
+}
+
 gboolean
 gedit_document_load (GeditDocument       *doc,
 		     const gchar         *uri,
@@ -660,15 +683,23 @@ gedit_document_load (GeditDocument       *doc,
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (uri != NULL, FALSE);
 	g_return_val_if_fail (is_valid_uri (uri), FALSE);
-	
+
+	g_return_val_if_fail (doc->priv->loader == NULL, FALSE);
+
+	/* create a loader. It will be destroyed when loading is completed */
+	doc->priv->loader = gedit_document_loader_new (doc);
+
+	g_signal_connect (doc->priv->loader,
+			  "loading",
+			  G_CALLBACK (document_loader_loading),
+			  doc);
+
 	doc->priv->create = create;
 	doc->priv->requested_encoding = encoding;
-	
-	gedit_document_loader_set_encoding (doc->priv->loader,
-					    doc->priv->requested_encoding);
-	
+
 	return gedit_document_loader_load (doc->priv->loader,
-					   uri);			      
+					   uri,
+					   doc->priv->requested_encoding);
 }
 
 gboolean
@@ -767,7 +798,6 @@ gedit_document_get_search_text (GeditDocument *doc,
 	return gedit_utils_escape_search_text (doc->priv->search_text);
 }
 
-
 gboolean
 gedit_document_search_forward (GeditDocument *doc,
 			       GtkTextIter   *start,
@@ -843,7 +873,6 @@ gedit_document_get_language (GeditDocument *doc)
 	return gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
 }
 
-
 const GeditEncoding *
 gedit_document_get_encoding (GeditDocument *doc)
 {
@@ -866,6 +895,7 @@ gedit_document_set_auto_save_enabled (GeditDocument *doc,
 	
 	return;
 }
+
 void
 gedit_document_set_auto_save_interval (GeditDocument *doc, 
 				       gint           interval)

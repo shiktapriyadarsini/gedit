@@ -82,7 +82,7 @@ enum {
 	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] 	= { 0 };
+static guint signals[LAST_SIGNAL] = { 0 };
 
 /* Properties */
 
@@ -101,7 +101,6 @@ gedit_document_loader_set_property (GObject      *object,
 	GeditDocumentLoader *dl = GEDIT_DOCUMENT_LOADER (object);
 
 	switch (prop_id)
-
 	{
 		case PROP_DOCUMENT:
 			g_return_if_fail (dl->priv->document == NULL);
@@ -129,9 +128,10 @@ gedit_document_loader_get_property (GObject    *object,
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;			
+			break;		
 	}
 }
+
 static void
 gedit_document_loader_finalize (GObject *object)
 {
@@ -146,7 +146,7 @@ gedit_document_loader_class_init (GeditDocumentLoaderClass *klass)
 	object_class->finalize = gedit_document_loader_finalize;
 	object_class->get_property = gedit_document_loader_get_property;
 	object_class->set_property = gedit_document_loader_set_property;
-	
+
 	g_object_class_install_property (object_class,
 					 PROP_DOCUMENT,
 					 g_param_spec_object ("document",
@@ -155,18 +155,19 @@ gedit_document_loader_class_init (GeditDocumentLoaderClass *klass)
 							 GEDIT_TYPE_DOCUMENT,
 							 G_PARAM_READWRITE |
 							 G_PARAM_CONSTRUCT_ONLY));
-	
+
 	signals[LOADING] =
    		g_signal_new ("loading",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentLoaderClass, loading),
 			      NULL, NULL,
-			      gedit_marshal_VOID__BOOLEAN,
+			      gedit_marshal_VOID__INT_BOOLEAN,
 			      G_TYPE_NONE,
-			      1,
+			      2,
+			      G_TYPE_INT,
 			      G_TYPE_BOOLEAN);
-			      
+
 	g_type_class_add_private (object_class, sizeof(GeditDocumentLoaderPrivate));
 }
 
@@ -194,17 +195,6 @@ gedit_document_loader_new (GeditDocument *doc)
 	return dl;						  
 }
 
-/* If enconding == NULL, the encoding will be autodetected */
-void
-gedit_document_loader_set_encoding (GeditDocumentLoader *loader,
-				    const GeditEncoding *encoding)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader));
-	g_return_if_fail (loader->priv->phase == GEDIT_DOCUMENT_LOADER_IDLE);
-	
-	loader->priv->encoding = encoding;	
-}
-
 static void
 insert_text_in_document (GeditDocumentLoader *loader,
 			 const gchar         *text,
@@ -220,9 +210,8 @@ insert_text_in_document (GeditDocumentLoader *loader,
 
 	gtk_source_buffer_end_not_undoable_action (
 				GTK_SOURCE_BUFFER (loader->priv->document));
-
 }
-			 
+
 static gboolean
 update_document_contents (GeditDocumentLoader  *loader, 
 		          const gchar          *file_contents,
@@ -316,51 +305,12 @@ update_document_contents (GeditDocumentLoader  *loader,
 			insert_text_in_document (loader,
 						 converted_text,
 						 -1);
-		
+
 			return TRUE;
 		}
 	}
 
 	g_return_val_if_reached (FALSE);
-}
-
-
-static void
-reset_local (GeditDocumentLoader *loader)
-{
-	if (loader->priv->fd != -1)
-		close (loader->priv->fd);
-		       
-	loader->priv->fd = -1;
-	loader->priv->last_result = GNOME_VFS_OK;
-	loader->priv->phase = GEDIT_DOCUMENT_LOADER_IDLE;
-	
-	loader->priv->auto_detected_encoding = NULL;
-	
-	if (loader->priv->info != NULL)
-		gnome_vfs_file_info_unref (loader->priv->info);
-		
-	if (loader->priv->last_error != NULL)
-		g_error_free (loader->priv->last_error);
-		
-	loader->priv->bytes_read = 0;
-	
-	g_free (loader->priv->uri);
-	loader->priv->uri = NULL;
-}
-
-static void
-emit_error_signal_and_reset_local (GeditDocumentLoader *loader)
-{
-	g_print ("emit_error_signal_and_reset_local: %s\n",
-		gnome_vfs_result_to_string (loader->priv->last_result));
-	
-	g_signal_emit (loader, 
-		       signals[LOADING],
-		       0,
-		       TRUE);
-
-	reset_local (loader);    
 }
 
 /* The following function has been copied from gnome-vfs 
@@ -429,27 +379,26 @@ static gboolean
 load_local_file_real (GeditDocumentLoader *loader)
 {
 	struct stat statbuf;
-	gint ret;	
-	
+	gboolean error = FALSE;
+	gint ret;
+
 	g_print ("load_local_file_real\n");
 	if (loader->priv->fd == -1)
 	{
 		/* loader->priv->last_result was already be set */
 		loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_OPEN;
-		
-		emit_error_signal_and_reset_local (loader);
-	
-		return FALSE;
+
+		error = TRUE;
+		goto done;
 	}
-	
+
 	if (fstat (loader->priv->fd, &statbuf) != 0) 
 	{
 		loader->priv->last_result = gnome_vfs_result_from_errno ();
 		loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_GETTING_INFO;
-		
-		emit_error_signal_and_reset_local (loader);
-	
-		return FALSE;
+
+		error = TRUE;
+		goto done;
 	}
 	
 	loader->priv->info = gnome_vfs_file_info_new ();
@@ -481,10 +430,9 @@ load_local_file_real (GeditDocumentLoader *loader)
 		{
 			loader->priv->last_result = gnome_vfs_result_from_errno ();
 			loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_READING;
-			
-			emit_error_signal_and_reset_local (loader);
-		
-			return FALSE;
+
+			error = TRUE;
+			goto done;
 		}
 		
 		loader->priv->bytes_read = loader->priv->info->size;
@@ -498,19 +446,17 @@ load_local_file_real (GeditDocumentLoader *loader)
 			loader->priv->last_result = GNOME_VFS_OK; /* Reset */
 			g_return_val_if_fail (loader->priv->last_error != NULL,
 					      FALSE);
-								
+
 			ret = munmap (mapped_file, loader->priv->info->size);
-			
 			if (ret != 0)
 				g_warning ("File '%s' has not been correctly unmapped: %s",
 					   loader->priv->uri,
 					   strerror (errno));
 					   
-			emit_error_signal_and_reset_local (loader);
-		
-			return FALSE;
+			error = TRUE;
+			goto done;
 		}
-				
+
 		ret = munmap (mapped_file, loader->priv->info->size);
 			
 		if (ret != 0)
@@ -529,17 +475,30 @@ load_local_file_real (GeditDocumentLoader *loader)
 	loader->priv->fd = -1;
 	
 	g_return_val_if_fail (loader->priv->last_error == NULL, FALSE);
-		
-	loader->priv->phase = 	GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED;
+
+	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED;
 	loader->priv->last_result = GNOME_VFS_OK;
-		
+
+ done:
+	/* the object will be unrefed in the callback of the loading
+	 * signal, so we need to prevent finalization.
+	 */
+	g_object_ref (loader);
+
 	g_signal_emit (loader, 
 		       signals[LOADING],
 		       0,
-		       FALSE);
-		       
-	reset_local (loader);
-	
+		       loader->priv->phase,
+		       error);
+
+	/* each loader can be used only once: put the loader in 
+	 * phase END so that we can check if a loader has already
+	 * been used in case it is still alive after the unref
+	 */
+	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_END;
+
+	g_object_unref (loader);
+
 	return FALSE;
 }
 
@@ -548,15 +507,14 @@ load_local_file (GeditDocumentLoader *loader,
 		 const gchar         *uri,
 		 const gchar         *fname)
 {
-	loader->priv->uri = g_strdup (uri);
-
 	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_READY_TO_GO;
-	
-	g_signal_emit (loader, 
+
+	g_signal_emit (loader,
 		       signals[LOADING],
 		       0,
+		       loader->priv->phase,
 		       FALSE);
-		       
+
 	loader->priv->fd = open (fname, O_RDONLY);
 	if (loader->priv->fd == -1)
 	{
@@ -564,46 +522,41 @@ load_local_file (GeditDocumentLoader *loader,
 		/* The error signal will be emitted later */
 		loader->priv->last_result = gnome_vfs_result_from_errno ();
 	}
-	
+
 	g_timeout_add_full (G_PRIORITY_HIGH,
 			    0,
 			    (GSourceFunc)load_local_file_real,
 			    loader,
-			    NULL);			    
+			    NULL);		    
 }
 
+/* If enconding == NULL, the encoding will be autodetected */
 gboolean
 gedit_document_loader_load (GeditDocumentLoader *loader,
-			    const gchar         *uri)
+			    const gchar         *uri,
+			    const GeditEncoding *encoding)
 {
 	gchar *local_path;
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
 	g_return_val_if_fail (loader->priv->phase == GEDIT_DOCUMENT_LOADER_IDLE, FALSE);
 	g_return_val_if_fail (uri != NULL, FALSE);
-	
+
+	loader->priv->encoding = encoding;
+
+	loader->priv->uri = g_strdup (uri);
+
 	// TODO: returns FALSE if uri is not valid?
-	
+
 	local_path = gnome_vfs_get_local_path_from_uri (uri);
 	if (local_path != NULL)
 		load_local_file (loader, uri, local_path);
 	else
 		// TODO
 		g_return_val_if_reached (FALSE);
-		
-		
-	g_free (local_path);
-		
-	return TRUE;
-}
-
-const GeditEncoding *
-gedit_document_loader_get_encoding (GeditDocumentLoader  *loader)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
 	
-	return (loader->priv->encoding == NULL) ?  
-			loader->priv->auto_detected_encoding:
-			loader->priv->encoding;
+	g_free (local_path);
+
+	return TRUE;
 }
 
 GeditDocumentLoaderPhase 
@@ -620,7 +573,7 @@ const gchar *
 gedit_document_loader_get_uri (GeditDocumentLoader  *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
-	
+
 	return loader->priv->uri;
 }
 
