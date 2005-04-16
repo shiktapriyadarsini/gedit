@@ -65,6 +65,14 @@ gedit_cmd_file_new (GtkAction *action, GeditWindow *window)
 }
 
 static void
+open_dialog_destroyed (GeditWindow *window, GeditFileChooserDialog *dialog)
+{
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_OPEN_DIALOG_KEY,
+			   NULL);
+}
+
+static void
 open_dialog_response_cb (GeditFileChooserDialog *dialog,
                          gint response_id,
                          GeditWindow *window)
@@ -72,6 +80,7 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 	if (response_id != GTK_RESPONSE_OK)
 	{
 		gtk_widget_destroy (GTK_WIDGET (dialog));
+
 		return;
 	}
 }        
@@ -102,6 +111,10 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 	g_object_set_data (G_OBJECT (window),
 			   GEDIT_OPEN_DIALOG_KEY,
 			   open_dialog);
+
+	g_object_weak_ref (G_OBJECT (open_dialog),
+			   (GWeakNotify) open_dialog_destroyed,
+			   window);
 		
 	/* TODO: set the default path */
 		   
