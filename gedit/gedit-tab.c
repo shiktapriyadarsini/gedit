@@ -245,7 +245,7 @@ create_error_message_area_content (void)
 
   return hbox3;
 }
-#endif
+
 
 static GtkWidget *
 create_retry_message_area_content (void)
@@ -387,7 +387,7 @@ create_test_message_area (GeditTab *tab)
 			    
 	gtk_widget_show_all (eb);
 }
-
+#endif
 static void
 gedit_tab_init (GeditTab *tab)
 {
@@ -395,9 +395,9 @@ gedit_tab_init (GeditTab *tab)
 	GeditDocument *doc;
 	
 	tab->priv = GEDIT_TAB_GET_PRIVATE (tab);
-	
+#if 0	
 	create_test_message_area (tab);
-			  
+#endif			  
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	

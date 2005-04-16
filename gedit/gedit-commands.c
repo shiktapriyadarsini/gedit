@@ -83,6 +83,8 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 		return;
 	}
+	
+	g_print ("Response: OK\n");
 }        
                  
 void

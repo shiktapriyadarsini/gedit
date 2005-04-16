@@ -52,19 +52,11 @@ struct _GeditFileChooserDialogPrivate
 
 G_DEFINE_TYPE(GeditFileChooserDialog, gedit_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
 
-static void
-gedit_file_chooser_dialog_finalize (GObject *object)
-{
-	G_OBJECT_CLASS (gedit_file_chooser_dialog_parent_class)->finalize (object);
-}
-
 static void 
 gedit_file_chooser_dialog_class_init (GeditFileChooserDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-	object_class->finalize = gedit_file_chooser_dialog_finalize;
-							      
+					      
 	g_type_class_add_private (object_class, sizeof(GeditFileChooserDialogPrivate));
 }
 
@@ -207,12 +199,11 @@ gedit_file_chooser_dialog_new_valist (const gchar          *title,
 				    NULL, 
 				    NULL);
 	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (result), filter);			  
-				
+	/* TODO: Add filters for all supported languages - Paolo - Feb 21, 2004 */
+					
 	gtk_window_set_transient_for (GTK_WINDOW (result), parent);
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (result), TRUE);
 
-
-	/* TODO: Add filters for all supported languages - Paolo - Feb 21, 2004 */
 	while (button_text)
 	{
 		response_id = va_arg (varargs, gint);
