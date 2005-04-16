@@ -64,6 +64,18 @@ gedit_cmd_file_new (GtkAction *action, GeditWindow *window)
 	gedit_window_create_tab (window, TRUE);
 }
 
+static void
+open_dialog_response_cb (GeditFileChooserDialog *dialog,
+                         gint response_id,
+                         GeditWindow *window)
+{
+	if (response_id != GTK_RESPONSE_OK)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+		return;
+	}
+}        
+                 
 void
 gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 {
@@ -90,6 +102,13 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 	g_object_set_data (G_OBJECT (window),
 			   GEDIT_OPEN_DIALOG_KEY,
 			   open_dialog);
+		
+	/* TODO: set the default path */
+		   
+	g_signal_connect (open_dialog,
+			  "response",
+			  G_CALLBACK (open_dialog_response_cb),
+			  window);
 			   						     
 	gtk_widget_show (open_dialog);
 

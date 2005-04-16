@@ -3,7 +3,7 @@
  * gedit-encodings-dialog.h
  * This file is part of gedit
  *
- * Copyright (C) 2002 Paolo Maggi 
+ * Copyright (C) 2002-2005 Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,17 +22,27 @@
  */
 
 /*
- * Modified by the gedit Team, 2002. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifndef __GEDIT_ENCODINGS_DIALOG_H__
 #define __GEDIT_ENCODINGS_DIALOG_H__
 
-#include <gtk/gtkwindow.h>
+#include <gtk/gtkdialog.h>
 
-gboolean gedit_encodings_dialog_run (GtkWindow *parent);
+G_BEGIN_DECLS
+
+/*
+ * A GeditEncodingsDialog _is_ a GtkDialog
+ */
+
+GtkWidget *gedit_encodings_dialog_new (void);
+
+G_END_DECLS
 
 #endif /* __GEDIT_ENCODINGS_DIALOG_H__ */
 

@@ -51,7 +51,7 @@ enum {
 	N_COLUMNS
 };
 
-GSList *show_in_menu_list = NULL;
+#define SHOW_IN_MENU_LIST_KEY "gedit_enc_dlg_show_in_menu_list"
 
 static void
 show_help (GtkWidget *window)
@@ -86,9 +86,10 @@ show_help (GtkWidget *window)
 }
 
 static void
-count_selected_items_func (GtkTreeModel * model,
-			   GtkTreePath * path,
-			   GtkTreeIter * iter, gpointer data)
+count_selected_items_func (GtkTreeModel *model,
+			   GtkTreePath  *path,
+			   GtkTreeIter  *iter, 
+			   gpointer      data)
 {
 	int *count = data;
 
@@ -96,8 +97,8 @@ count_selected_items_func (GtkTreeModel * model,
 }
 
 static void
-available_selection_changed_callback (GtkTreeSelection * selection,
-				      void *data)
+available_selection_changed_callback (GtkTreeSelection *selection,
+				      gpointer          data)
 {
 	int count;
 	GtkWidget *add_button;
@@ -117,8 +118,8 @@ available_selection_changed_callback (GtkTreeSelection * selection,
 }
 
 static void
-displayed_selection_changed_callback (GtkTreeSelection * selection,
-				      void *data)
+displayed_selection_changed_callback (GtkTreeSelection *selection,
+				      gpointer          data)
 {
 	int count;
 	GtkWidget *remove_button;
@@ -140,8 +141,9 @@ displayed_selection_changed_callback (GtkTreeSelection * selection,
 
 static void
 get_selected_encodings_func (GtkTreeModel *model,
-			     GtkTreePath *path,
-			     GtkTreeIter *iter, gpointer data)
+			     GtkTreePath  *path,
+			     GtkTreeIter  *iter, 
+			     gpointer      data)
 {
 	GSList **list = data;
 	gchar *charset;
@@ -157,7 +159,7 @@ get_selected_encodings_func (GtkTreeModel *model,
 }
 
 static void
-update_shown_in_menu_tree_model (GtkListStore * store, GSList *list)
+update_shown_in_menu_tree_model (GtkListStore *store, GSList *list)
 {
 	GtkTreeIter iter;
 	
@@ -167,7 +169,7 @@ update_shown_in_menu_tree_model (GtkListStore * store, GSList *list)
 
 	while (list != NULL)
 	{
-		const GeditEncoding* enc;
+		const GeditEncoding *enc;
 
 		enc = (const GeditEncoding*) list->data;
 		
@@ -183,15 +185,16 @@ update_shown_in_menu_tree_model (GtkListStore * store, GSList *list)
 }
 
 static void
-add_button_clicked_callback (GtkWidget * button, void *data)
+add_button_clicked_callback (GtkWidget *button, gpointer data)
 {
 	GtkWidget *dialog;
 	GtkWidget *treeview;
 	GtkTreeSelection *selection;
 	GSList *encodings;
 	GSList *tmp;
+	GSList *show_in_menu_list;
 
-	dialog = data;
+	dialog = GTK_WIDGET (data);
 
 	treeview = g_object_get_data (G_OBJECT (dialog),
 				      "encoding-dialog-available-treeview");
@@ -202,6 +205,9 @@ add_button_clicked_callback (GtkWidget * button, void *data)
 					     get_selected_encodings_func,
 					     &encodings);
 
+	show_in_menu_list = (GSList *)g_object_steal_data (G_OBJECT (dialog),
+							   SHOW_IN_MENU_LIST_KEY);
+	
 	tmp = encodings;
 	while (tmp != NULL)
 	{
@@ -217,18 +223,24 @@ add_button_clicked_callback (GtkWidget * button, void *data)
 			GTK_LIST_STORE (
 				g_object_get_data (G_OBJECT (dialog), "encoding-dialog-displayed-liststore")),
 			show_in_menu_list);
+			
+	g_object_set_data_full (G_OBJECT (dialog), 
+				SHOW_IN_MENU_LIST_KEY, 
+				show_in_menu_list,
+				(GDestroyNotify)g_slist_free);			
 }
 
 static void
-remove_button_clicked_callback (GtkWidget * button, void *data)
+remove_button_clicked_callback (GtkWidget *button, gpointer data)
 {
 	GtkWidget *dialog;
 	GtkWidget *treeview;
 	GtkTreeSelection *selection;
 	GSList *encodings;
 	GSList *tmp;
-
-	dialog = data;
+	GSList *show_in_menu_list;
+	
+	dialog = GTK_WIDGET (data);
 
 	treeview = g_object_get_data (G_OBJECT (dialog),
 				      "encoding-dialog-displayed-treeview");
@@ -239,6 +251,9 @@ remove_button_clicked_callback (GtkWidget * button, void *data)
 					     get_selected_encodings_func,
 					     &encodings);
 
+	show_in_menu_list = (GSList *)g_object_steal_data (G_OBJECT (dialog),
+							   SHOW_IN_MENU_LIST_KEY);
+	
 	tmp = encodings;
 	while (tmp != NULL) 
 	{
@@ -253,23 +268,20 @@ remove_button_clicked_callback (GtkWidget * button, void *data)
 			GTK_LIST_STORE (
 				g_object_get_data (G_OBJECT (dialog), "encoding-dialog-displayed-liststore")),
 			show_in_menu_list);
+
+	g_object_set_data_full (G_OBJECT (dialog), 
+				SHOW_IN_MENU_LIST_KEY, 
+				show_in_menu_list,
+				(GDestroyNotify)g_slist_free);			
 }
 
 static void
-dialog_destroyed (void *data, GObject * where_object_was)
-{
-	if (show_in_menu_list != NULL)
-		g_slist_free (show_in_menu_list);
-
-	show_in_menu_list = NULL;
-}
-
-static void
-init_shown_in_menu_tree_model (GtkListStore * store)
+init_shown_in_menu_tree_model (GtkWidget *dialog, GtkListStore *store)
 {
 	GtkTreeIter iter;
 	GSList *list, *tmp;
-
+	GSList *show_in_menu_list = NULL;
+	
 	gedit_debug (DEBUG_PREFS);
 
 	/* add data to the list store */
@@ -296,10 +308,43 @@ init_shown_in_menu_tree_model (GtkListStore * store)
 	}
 
 	g_slist_free (list);
+	
+	g_object_set_data_full (G_OBJECT (dialog), 
+				SHOW_IN_MENU_LIST_KEY, 
+				show_in_menu_list,
+				(GDestroyNotify)g_slist_free);
 }
 
-static GtkWidget *
-gedit_encoding_dialog_new (GtkWindow *transient_parent)
+static void
+update_list (GtkWidget *dialog)
+{
+	GSList *show_in_menu_list;
+	
+	g_return_if_fail (gedit_prefs_manager_shown_in_menu_encodings_can_set ());
+	
+	show_in_menu_list = (GSList *)g_object_get_data (G_OBJECT (dialog), 
+							 SHOW_IN_MENU_LIST_KEY);
+	
+	gedit_prefs_manager_set_shown_in_menu_encodings (show_in_menu_list);
+}
+
+static void 
+response_cb (GtkDialog *dialog,
+	     gint       response_id)
+{
+	if (response_id == GTK_RESPONSE_HELP)
+	{
+		show_help (GTK_WIDGET (dialog));
+		g_signal_stop_emission_by_name (dialog, "response");
+		return;
+	}
+	
+	if (response_id == GTK_RESPONSE_OK)
+		update_list (GTK_WIDGET (dialog));
+}	     
+
+GtkWidget *
+gedit_encodings_dialog_new (void)
 {
 	GladeXML *xml;
 	GtkWidget *w;
@@ -324,9 +369,6 @@ gedit_encoding_dialog_new (GtkWindow *transient_parent)
 
 	/* The dialog itself */
 	dialog = glade_xml_get_widget (xml, "encodings-dialog");
-
-	if (transient_parent != NULL)
-		gtk_window_set_transient_for (GTK_WINDOW (dialog), transient_parent);
 
 	/* buttons */
 	w = glade_xml_get_widget (xml, "add-button");
@@ -439,7 +481,7 @@ gedit_encoding_dialog_new (GtkWindow *transient_parent)
 	gtk_tree_view_column_set_sort_column_id (column, COLUMN_CHARSET);
 
 	/* Add the data */
-	init_shown_in_menu_tree_model (tree);
+	init_shown_in_menu_tree_model (dialog, tree);
 	
 	/* Sort model */
 	sort_model =
@@ -464,50 +506,13 @@ gedit_encoding_dialog_new (GtkWindow *transient_parent)
 
 	g_object_unref (G_OBJECT (xml));
 
-	g_object_weak_ref (G_OBJECT (dialog), dialog_destroyed, NULL);
-
+	/* We want *our* handler to be run *first*, regardless of whether 
+	 * the user installs response handlers of his own.
+   	 */
+	g_signal_connect (dialog,
+			  "response",
+			  G_CALLBACK (response_cb),
+			  NULL);
+			  
 	return dialog;
 }
-
-static void
-update_list (void)
-{
-	g_return_if_fail (gedit_prefs_manager_shown_in_menu_encodings_can_set ());
-	
-	gedit_prefs_manager_set_shown_in_menu_encodings (show_in_menu_list);
-}
-
-gboolean
-gedit_encodings_dialog_run (GtkWindow *parent)
-{
-	gint id;
-	GtkWidget *dialog;
-       
-	dialog	= gedit_encoding_dialog_new (parent);
-
-	do
-	{
-		id = gtk_dialog_run (GTK_DIALOG (dialog));
-
-		switch (id) {
-			case GTK_RESPONSE_HELP:
-				show_help (dialog);
-				break;
-			
-			case GTK_RESPONSE_OK:
-				update_list ();
-				gtk_widget_hide (dialog);
-
-				break;
-
-			default:
-				gtk_widget_hide (dialog);
-		}
-		
-	} while (GTK_WIDGET_VISIBLE (dialog));
-
-	gtk_widget_destroy (dialog);
-
-	return (id == GTK_RESPONSE_OK);
-}
-

@@ -160,6 +160,16 @@ gedit_encodings_option_menu_class_init (GeditEncodingsOptionMenuClass *klass)
 }
 
 static void
+dialog_response_cb (GtkDialog                *dialog,
+                    gint                      response_id,
+                    GeditEncodingsOptionMenu *option_menu)
+{
+	update_menu (option_menu);
+	
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+static void
 add_or_remove (GtkMenuItem *menu_item, GeditEncodingsOptionMenu *option_menu)
 {
 
@@ -168,6 +178,7 @@ add_or_remove (GtkMenuItem *menu_item, GeditEncodingsOptionMenu *option_menu)
 			gtk_option_menu_get_history (GTK_OPTION_MENU (option_menu));
 	else
 	{
+		GtkWidget *dialog;
 		
 		GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (option_menu));
 		
@@ -177,8 +188,35 @@ add_or_remove (GtkMenuItem *menu_item, GeditEncodingsOptionMenu *option_menu)
 		gtk_option_menu_set_history (GTK_OPTION_MENU (option_menu),
 					     option_menu->priv->activated_item);
 
-		if (gedit_encodings_dialog_run ((toplevel != NULL) ? GTK_WINDOW (toplevel) : NULL))
-			update_menu (option_menu);
+		dialog = gedit_encodings_dialog_new();
+		
+		if (toplevel != NULL)
+		{
+			GtkWindowGroup *wg;
+			
+			gtk_window_set_transient_for (GTK_WINDOW (dialog),
+						      GTK_WINDOW (toplevel));
+
+			wg = GTK_WINDOW (toplevel)->group;		      
+			if (wg == NULL)
+			{
+				wg = gtk_window_group_new ();
+				gtk_window_group_add_window (wg,
+							     GTK_WINDOW (toplevel));
+			}
+			
+			gtk_window_group_add_window (wg,
+						     GTK_WINDOW (dialog));
+		}	      
+						      
+		gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+		
+		g_signal_connect (dialog,
+				  "response",
+				  G_CALLBACK (dialog_response_cb),
+				  option_menu);
+				  
+		gtk_widget_show (dialog);
 	}
 }
 
