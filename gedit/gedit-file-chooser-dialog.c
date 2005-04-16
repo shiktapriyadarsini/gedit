@@ -67,12 +67,11 @@ create_option_menu (GeditFileChooserDialog *dialog)
 	GtkWidget *label;
 	GtkWidget *menu;
 	
-	g_return_if_fail (gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_OPEN);
-
 	hbox = gtk_hbox_new (FALSE, 6);
 
 	label = gtk_label_new_with_mnemonic (_("C_haracter Coding:"));
-	menu = gedit_encodings_option_menu_new (FALSE);
+	menu = gedit_encodings_option_menu_new (
+		gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE);
 		
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), menu);				       		
 	gtk_box_pack_start (GTK_BOX (hbox), 

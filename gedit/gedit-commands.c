@@ -145,7 +145,7 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 			  window);
 			   						     
 	gtk_widget_show (open_dialog);
-
+	
 #if 0
 	BonoboMDIChild *active_child;
 
@@ -193,20 +193,53 @@ gedit_cmd_file_save (GtkAction *action, GeditWindow *window)
 #endif
 }
 
+static void
+save_dialog_response_cb (GeditFileChooserDialog *dialog,
+                         gint                    response_id,
+                         GeditWindow            *window)
+{
+	gedit_debug (DEBUG_COMMANDS);
+	
+	if (response_id != GTK_RESPONSE_OK)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+
+		return;
+	}
+	
+	g_print ("Save\n");
+}
+
+/* Save As dialog is modal to its main window */
 void
 gedit_cmd_file_save_as (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GeditMDIChild *active_child;
+	GtkWidget *save_dialog;
+	GtkWindowGroup *wg;
+	
+	save_dialog = gedit_file_chooser_dialog_new (_("Save As..."),
+						     GTK_WINDOW (window),
+						     GTK_FILE_CHOOSER_ACTION_SAVE,
+						     NULL,
+						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						     GTK_STOCK_SAVE, GTK_RESPONSE_OK,
+						     NULL);
 
-	gedit_debug (DEBUG_COMMANDS);
-
-	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
-	if (active_child == NULL)
-		return;
-
-	gedit_file_save_as (active_child);
-#endif
+	wg = gedit_window_get_group (window);
+	
+	gtk_window_group_add_window (wg,
+				     GTK_WINDOW (save_dialog));
+				     
+	gtk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
+				     
+	/* TODO: set the default path/name */
+	   
+	g_signal_connect (save_dialog,
+			  "response",
+			  G_CALLBACK (save_dialog_response_cb),
+			  window);
+		   						     
+	gtk_widget_show (save_dialog);
 }
 
 void
