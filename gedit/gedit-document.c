@@ -120,6 +120,17 @@ static guint document_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE(GeditDocument, gedit_document, GTK_TYPE_SOURCE_BUFFER)
 
+GQuark 
+gedit_document_error_quark (void)
+{
+	static GQuark quark;
+
+	if (!quark)
+		quark = g_quark_from_static_string ("gedit_io_load_error");
+
+	return quark;
+}
+
 static GHashTable* allocated_untitled_numbers = NULL;
 
 static gint
@@ -645,32 +656,42 @@ gedit_document_is_readonly (GeditDocument *doc)
 }
 
 static void
-load_finished (GeditDocument *doc)
+document_loader_loading (GeditDocumentLoader *loader,
+			 gboolean             completed,
+			 const GError        *error,
+			 GeditDocument       *doc)
 {
-	g_object_unref (doc->priv->loader);
-	doc->priv->loader = NULL;
-}
-
-static void
-document_loader_loading (GeditDocumentLoader      *loader,
-			 GeditDocumentLoaderPhase  phase,
-			 gboolean                  is_error,
-			 GeditDocument            *doc)
-{
-	if (is_error)
+	if (completed)
 	{
-		g_print ("error loading!\n");
+		if (doc->priv->create &&
+		    (error->code == GNOME_VFS_ERROR_NOT_FOUND))
+		{
+			g_print ("create new\n");
+		}
 
-		load_finished (doc);
+		g_signal_emit (doc, 
+			       document_signals[LOADED],
+			       0,
+			       error);
+
+		g_object_unref (doc->priv->loader);
+		doc->priv->loader = NULL;
 
 		return;
 	}
-
-	if (phase == GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED)
+	else
 	{
-		g_print ("load completed!\n");
+		GnomeVFSFileSize size;
+		GnomeVFSFileSize read;
 
-		load_finished (doc);
+		size = gedit_document_loader_get_file_size (loader);
+		read = gedit_document_loader_get_bytes_read (loader);
+
+		g_signal_emit (doc, 
+			       document_signals[LOADING],
+			       0,
+			       read,
+			       size);
 	}
 }
 

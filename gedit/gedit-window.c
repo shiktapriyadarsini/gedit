@@ -159,15 +159,33 @@ gedit_window_destroy (GtkObject *object)
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
 }
 
+static gboolean
+window_state_event (GtkWidget           *window,
+		    GdkEventWindowState *event)
+{
+	if (event->changed_mask & (GDK_WINDOW_STATE_MAXIMIZED |
+	                           GDK_WINDOW_STATE_FULLSCREEN))
+	{
+		GtkWidget *bar = GEDIT_WINDOW (window)->priv->statusbar;
+
+		gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (bar),
+						   !(event->new_window_state & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)));
+	}
+
+	return FALSE;
+}
+
 static void 
 gedit_window_class_init (GeditWindowClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkObjectClass *gobject_class = GTK_OBJECT_CLASS (klass);	
+	GtkObjectClass *gobject_class = GTK_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gedit_window_finalize;
 	gobject_class->destroy = gedit_window_destroy;
-	
+	widget_class->window_state_event = window_state_event;
+
 	signals[TAB_ADDED] =
 		g_signal_new ("tab_added",
 			      G_OBJECT_CLASS_TYPE (object_class),

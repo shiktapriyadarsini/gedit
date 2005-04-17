@@ -59,6 +59,29 @@ gedit_statusbar_class_init (GeditStatusbarClass *klass)
 }
 
 static void
+set_has_resize_grip (GObject    *object,
+		     GParamSpec *pspec,
+		     gpointer    data)
+{
+	static gboolean flag = TRUE; /* avoid recursion */
+
+	if (flag)
+	{
+		GtkWidget *bar = GEDIT_STATUSBAR (object)->priv->overwrite_mode_statusbar;
+		gboolean val = gtk_statusbar_get_has_resize_grip (GTK_STATUSBAR (object));
+
+		flag = FALSE;
+
+		gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (object), FALSE);
+		gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (bar), val);
+	}
+	else
+	{
+		flag = TRUE;
+	}
+}
+
+static void
 gedit_statusbar_init (GeditStatusbar *statusbar)
 {
 	statusbar->priv = GEDIT_STATUSBAR_GET_PRIVATE (statusbar);
@@ -81,7 +104,7 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 	gtk_widget_show (statusbar->priv->cursor_position_statusbar);	
 	gtk_widget_set_size_request (statusbar->priv->cursor_position_statusbar, 
 				     160, 
-				     10);	
+				     10);
 	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar->priv->cursor_position_statusbar),
 					   FALSE);
 	gtk_box_pack_end (GTK_BOX (statusbar),
@@ -92,6 +115,10 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 	gtk_box_pack_end (GTK_BOX (statusbar),
 			  statusbar->priv->progressbar,
 			  FALSE, TRUE, 0);
+
+	/* small hack to handle the has-resize-grip property */
+	g_signal_connect (statusbar, "notify::has-resize-grip",
+			  G_CALLBACK (set_has_resize_grip), NULL);
 }
 
 /**

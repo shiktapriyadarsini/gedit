@@ -33,7 +33,6 @@
 #ifndef __GEDIT_DOCUMENT_H__
 #define __GEDIT_DOCUMENT_H__
 
-
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksourcebuffer.h>
 #include <libgnomevfs/gnome-vfs-result.h>
@@ -110,6 +109,9 @@ struct _GeditDocumentClass
 	void (* can_find_again) 	(GeditDocument    *document);
 };
 
+#define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()
+
+GQuark		 gedit_document_error_quark	(void);
 
 GType		 gedit_document_get_type      	(void) G_GNUC_CONST;
 

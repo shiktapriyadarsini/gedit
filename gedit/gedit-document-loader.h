@@ -107,9 +107,9 @@ struct _GeditDocumentLoaderClass
 {
 	GObjectClass parent_class;
 
-	void (* loading) (GeditDocumentLoader      *loader,
-			  GeditDocumentLoaderPhase  current_phase,
-			  gboolean                  is_error);
+	void (* loading) (GeditDocumentLoader *loader,
+			  gboolean             completed,
+			  const GError        *error);
 };
 
 /*

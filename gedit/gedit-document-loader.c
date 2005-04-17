@@ -162,11 +162,11 @@ gedit_document_loader_class_init (GeditDocumentLoaderClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentLoaderClass, loading),
 			      NULL, NULL,
-			      gedit_marshal_VOID__INT_BOOLEAN,
+			      gedit_marshal_VOID__BOOLEAN_POINTER,
 			      G_TYPE_NONE,
 			      2,
-			      G_TYPE_INT,
-			      G_TYPE_BOOLEAN);
+			      G_TYPE_BOOLEAN,
+			      G_TYPE_POINTER);
 
 	g_type_class_add_private (object_class, sizeof(GeditDocumentLoaderPrivate));
 }
@@ -379,7 +379,7 @@ static gboolean
 load_local_file_real (GeditDocumentLoader *loader)
 {
 	struct stat statbuf;
-	gboolean error = FALSE;
+	GError *error = NULL;
 	gint ret;
 
 	g_print ("load_local_file_real\n");
@@ -388,7 +388,9 @@ load_local_file_real (GeditDocumentLoader *loader)
 		/* loader->priv->last_result was already be set */
 		loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_OPEN;
 
-		error = TRUE;
+		error = g_error_new (GEDIT_DOCUMENT_ERROR,
+				     loader->priv->last_result,
+				     gnome_vfs_result_to_string (loader->priv->last_result));
 		goto done;
 	}
 
@@ -397,14 +399,16 @@ load_local_file_real (GeditDocumentLoader *loader)
 		loader->priv->last_result = gnome_vfs_result_from_errno ();
 		loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_GETTING_INFO;
 
-		error = TRUE;
+		error = g_error_new (GEDIT_DOCUMENT_ERROR,
+				     loader->priv->last_result,
+				     gnome_vfs_result_to_string (loader->priv->last_result));
 		goto done;
 	}
 	
 	loader->priv->info = gnome_vfs_file_info_new ();
 	stat_to_file_info (loader->priv->info, &statbuf);
 	GNOME_VFS_FILE_INFO_SET_LOCAL (loader->priv->info, TRUE);
-	
+
 	/* TODO: get the mime_type */
 	
 	if (loader->priv->info->size == 0)
@@ -431,7 +435,9 @@ load_local_file_real (GeditDocumentLoader *loader)
 			loader->priv->last_result = gnome_vfs_result_from_errno ();
 			loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_READING;
 
-			error = TRUE;
+			error = g_error_new (GEDIT_DOCUMENT_ERROR,
+					     loader->priv->last_result,
+					     gnome_vfs_result_to_string (loader->priv->last_result));
 			goto done;
 		}
 		
@@ -440,8 +446,8 @@ load_local_file_real (GeditDocumentLoader *loader)
 		if (!update_document_contents (loader,
 					       mapped_file,
 					       loader->priv->info->size,
-					       &loader->priv->last_error))
-		{	
+					       &error))
+		{
 			loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_CONVERTING;
 			loader->priv->last_result = GNOME_VFS_OK; /* Reset */
 			g_return_val_if_fail (loader->priv->last_error != NULL,
@@ -452,8 +458,7 @@ load_local_file_real (GeditDocumentLoader *loader)
 				g_warning ("File '%s' has not been correctly unmapped: %s",
 					   loader->priv->uri,
 					   strerror (errno));
-					   
-			error = TRUE;
+
 			goto done;
 		}
 
@@ -488,7 +493,7 @@ load_local_file_real (GeditDocumentLoader *loader)
 	g_signal_emit (loader, 
 		       signals[LOADING],
 		       0,
-		       loader->priv->phase,
+		       TRUE, /* completed */
 		       error);
 
 	/* each loader can be used only once: put the loader in 
@@ -496,6 +501,9 @@ load_local_file_real (GeditDocumentLoader *loader)
 	 * been used in case it is still alive after the unref
 	 */
 	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_END;
+
+	if (error)
+		g_error_free (error);
 
 	g_object_unref (loader);
 
@@ -512,8 +520,8 @@ load_local_file (GeditDocumentLoader *loader,
 	g_signal_emit (loader,
 		       signals[LOADING],
 		       0,
-		       loader->priv->phase,
-		       FALSE);
+		       FALSE,
+		       NULL);
 
 	loader->priv->fd = open (fname, O_RDONLY);
 	if (loader->priv->fd == -1)
