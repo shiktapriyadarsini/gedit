@@ -137,6 +137,8 @@ gchar			*gedit_document_loader_get_message	(GeditDocumentLoader  *loader);
 #define STDIN_URI "stdin:" 
 const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader  *loader);
 
+const gchar		*gedit_document_loader_get_mime_type	(GeditDocumentLoader  *loader);
+
 /* Returns 0 if file size is unknown */
 GnomeVFSFileSize	 gedit_document_loader_get_file_size	(GeditDocumentLoader  *loader);									 
 

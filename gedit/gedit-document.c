@@ -527,54 +527,63 @@ is_valid_uri (const gchar *uri)
 
 #endif /* G_DISABLE_CHECKS */
 
+/* if mime type is null, we guess from the filename */
 static void
 set_uri (GeditDocument *doc,
-	 const gchar   *uri)
+	 const gchar   *uri,
+	 const gchar   *mime_type)
 {
 	GtkSourceLanguage *language = NULL;
 	gchar *data;
 	gchar *base_name;
 	gboolean lang_set_by_user = FALSE;
-	
+
 	gedit_debug (DEBUG_DOCUMENT);
-	
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (uri != NULL);
 	g_return_if_fail (is_valid_uri (uri));
-	
+
 	if (doc->priv->uri == uri)
 		return;
-		
+
 	g_free (doc->priv->uri);
 	doc->priv->uri = g_strdup (uri);
-	
+
 	if (doc->priv->vfs_uri != NULL)
 		gnome_vfs_uri_unref (doc->priv->vfs_uri);
-		
+
 	doc->priv->vfs_uri = gnome_vfs_uri_new (uri);
 	g_return_if_fail (doc->priv->vfs_uri != NULL);
-	
+
 	if (doc->priv->untitled_number > 0)
 	{
 		release_untitled_number (doc->priv->untitled_number);
 		doc->priv->untitled_number = 0;
 	}
-		
+
 	/* Update uri_for_display and short_name_for_display */
 	update_uri_for_display (doc);
-	
-	/* Set the mime type using the file extension or "text/plain" 
-	   if no match. */
-	base_name = gnome_vfs_uri_extract_short_path_name (doc->priv->vfs_uri);
-	if (base_name != NULL) 
-		doc->priv->mime_type = "text/plain"; // FIXME
+
+	if (mime_type != NULL)
+	{
+		doc->priv->mime_type = mime_type;
+	}
+	else
+	{
+		/* Set the mime type using the file extension or "text/plain" 
+	   	 * if no match. */
+		base_name = gnome_vfs_uri_extract_short_path_name (doc->priv->vfs_uri);
+		if (base_name != NULL) 
+			doc->priv->mime_type = "text/plain"; // FIXME
 //			gnome_vfs_mime_type_from_name_or_default (base_name,
 //								  "text/plain");
-	else
-		doc->priv->mime_type = "text/plain";
+		else
+			doc->priv->mime_type = "text/plain";
 		
-	g_free (base_name);
-	
+		g_free (base_name);
+	}
+
 	if (!doc->priv->language_set_by_user)
 	{
 		data = gedit_metadata_manager_get (uri, "language");
@@ -599,14 +608,15 @@ set_uri (GeditDocument *doc,
 							doc->priv->mime_type);
 			}
 		}
-		
+
 		g_free (data);
-		
+
 		set_language (doc, language, lang_set_by_user);		
 	}
-	
+
 	g_signal_emit (G_OBJECT (doc), 
-		       document_signals[NAME_CHANGED], 0);
+		       document_signals[NAME_CHANGED],
+		       0);
 }
 
 const gchar *
@@ -623,7 +633,7 @@ gedit_document_get_uri_for_display (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), "");
 	g_return_val_if_fail (doc->priv->uri_for_display != NULL, "");
-	
+
 	return doc->priv->uri_for_display;
 }
 
@@ -663,11 +673,21 @@ document_loader_loading (GeditDocumentLoader *loader,
 {
 	if (completed)
 	{
+		const gchar *uri;
+		const gchar *mime_type;
+
+		/* special case creating a named new doc */
 		if (doc->priv->create &&
 		    (error->code == GNOME_VFS_ERROR_NOT_FOUND))
 		{
+			// FIXME
 			g_print ("create new\n");
 		}
+
+		uri = gedit_document_loader_get_uri (loader);
+		mime_type = gedit_document_loader_get_mime_type (loader);
+
+		set_uri (doc, uri, mime_type);
 
 		g_signal_emit (doc, 
 			       document_signals[LOADED],

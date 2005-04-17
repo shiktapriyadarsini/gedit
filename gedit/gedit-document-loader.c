@@ -208,6 +208,9 @@ insert_text_in_document (GeditDocumentLoader *loader,
 				  text, 
 				  len);
 
+	gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (loader->priv->document),
+				      FALSE);
+	
 	gtk_source_buffer_end_not_undoable_action (
 				GTK_SOURCE_BUFFER (loader->priv->document));
 }
@@ -375,6 +378,32 @@ stat_to_file_info (GnomeVFSFileInfo *file_info,
 	  GNOME_VFS_FILE_INFO_FIELDS_CTIME;
 }
 
+/* FIXME: this is ugly for multple reasons: it refetches all the info,
+ * it doesn't use fd etc... we need something better, possibly in gnome-vfs
+ * public api.
+ */
+static gchar *
+get_slow_mime_type (const char *text_uri)
+{
+	GnomeVFSFileInfo *info;
+	char *mime_type;
+	GnomeVFSResult result;
+
+	info = gnome_vfs_file_info_new ();
+	result = gnome_vfs_get_file_info (text_uri, info,
+					  GNOME_VFS_FILE_INFO_GET_MIME_TYPE |
+					  GNOME_VFS_FILE_INFO_FORCE_SLOW_MIME_TYPE |
+					  GNOME_VFS_FILE_INFO_FOLLOW_LINKS);
+	if (info->mime_type == NULL || result != GNOME_VFS_OK) {
+		mime_type = NULL;
+	} else {
+		mime_type = g_strdup (info->mime_type);
+	}
+	gnome_vfs_file_info_unref (info);
+
+	return mime_type;
+}
+
 static gboolean
 load_local_file_real (GeditDocumentLoader *loader)
 {
@@ -409,8 +438,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 	stat_to_file_info (loader->priv->info, &statbuf);
 	GNOME_VFS_FILE_INFO_SET_LOCAL (loader->priv->info, TRUE);
 
-	/* TODO: get the mime_type */
-	
 	if (loader->priv->info->size == 0)
 	{
 		if (loader->priv->encoding == NULL)
@@ -471,7 +498,11 @@ load_local_file_real (GeditDocumentLoader *loader)
 	}
 	
 	ret = close (loader->priv->fd);
-	
+
+	/* mime type hack */
+	loader->priv->info->mime_type = get_slow_mime_type (loader->priv->uri);
+	loader->priv->info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE;
+
 	if (ret != 0)
 		g_warning ("File '%s' has not been correctly closed: %s",
 			   loader->priv->uri,
@@ -512,7 +543,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 
 static void
 load_local_file (GeditDocumentLoader *loader,
-		 const gchar         *uri,
 		 const gchar         *fname)
 {
 	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_READY_TO_GO;
@@ -557,7 +587,7 @@ gedit_document_loader_load (GeditDocumentLoader *loader,
 
 	local_path = gnome_vfs_get_local_path_from_uri (uri);
 	if (local_path != NULL)
-		load_local_file (loader, uri, local_path);
+		load_local_file (loader, local_path);
 	else
 		// TODO
 		g_return_val_if_reached (FALSE);
@@ -583,6 +613,19 @@ gedit_document_loader_get_uri (GeditDocumentLoader  *loader)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
 
 	return loader->priv->uri;
+}
+
+/* it may return NULL, it's up to gedit-document handle it */
+const gchar *
+gedit_document_loader_get_mime_type (GeditDocumentLoader  *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
+
+	if (loader->priv->info &&
+	    (loader->priv->info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE))
+		return loader->priv->info->mime_type;
+	else
+		return NULL;
 }
 
 /* Returns 0 if file size is unknown */
