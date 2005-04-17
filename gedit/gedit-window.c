@@ -184,7 +184,8 @@ gedit_window_class_init (GeditWindowClass *klass)
 
 	object_class->finalize = gedit_window_finalize;
 	gobject_class->destroy = gedit_window_destroy;
-	widget_class->window_state_event = window_state_event;
+//	FIXME, statusbar is buggy
+//	widget_class->window_state_event = window_state_event;
 
 	signals[TAB_ADDED] =
 		g_signal_new ("tab_added",
