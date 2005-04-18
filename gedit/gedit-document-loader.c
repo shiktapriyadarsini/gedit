@@ -69,7 +69,6 @@ struct _GeditDocumentLoaderPrivate
 	gint                      fd;
 	
 	GnomeVFSResult            last_result;
-	GError			 *last_error;
 	const GeditEncoding      *auto_detected_encoding;
 };
 
@@ -477,8 +476,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 		{
 			loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_CONVERTING;
 			loader->priv->last_result = GNOME_VFS_OK; /* Reset */
-			g_return_val_if_fail (loader->priv->last_error != NULL,
-					      FALSE);
 
 			ret = munmap (mapped_file, loader->priv->info->size);
 			if (ret != 0)
@@ -509,8 +506,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 			   strerror (errno));
 
 	loader->priv->fd = -1;
-	
-	g_return_val_if_fail (loader->priv->last_error == NULL, FALSE);
 
 	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED;
 	loader->priv->last_result = GNOME_VFS_OK;
