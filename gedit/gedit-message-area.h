@@ -56,7 +56,7 @@ typedef struct _GeditMessageArea GeditMessageArea;
 
 struct _GeditMessageArea 
 {
-	GObject object;
+	GtkHBox parent;
 
 	/*< private > */
 	GeditMessageAreaPrivate *priv;
@@ -69,7 +69,7 @@ typedef struct _GeditMessageAreaClass GeditMessageAreaClass;
 
 struct _GeditMessageAreaClass 
 {
-	GObjectClass parent_class;
+	GtkHBoxClass parent_class;
 
 	/* Signals */
 	void (* response) (GeditMessageArea *message_area, gint response_id);
@@ -90,25 +90,30 @@ GType 		 gedit_message_area_get_type 		(void) G_GNUC_CONST;
 GtkWidget	*gedit_message_area_new      		(void);
 
 GtkWidget	*gedit_message_area_new_with_buttons	(const gchar      *first_button_text,
-                                        		 ...) G_GNUC_NULL_TERMINATED;
+                                        		 ...);
 
 void		 gedit_message_area_set_contents	(GeditMessageArea *message_area,
                                              		 GtkWidget        *contents);
-                                             		 
+                              		 
 void		 gedit_message_area_add_action_widget	(GeditMessageArea *message_area,
                                          		 GtkWidget        *child,
                                          		 gint              response_id);
+                                         		 
 GtkWidget	*gedit_message_area_add_button        	(GeditMessageArea *message_area,
                                          		 const gchar      *button_text,
                                          		 gint              response_id);
+#if 0                                         		 
 GtkWidget	*gedit_message_area_add_stock_button_with_text 
 							(GeditMessageArea *message_area,, 
 				    			 const gchar      *text, 
 				    			 const gchar      *stock_id, 
-				    			 gint              response_id);  		 
+				    			 gint              response_id);
+#endif
+				    			 
+				    			 
 void       	 gedit_message_area_add_buttons 	(GeditMessageArea *message_area,
                                          		 const gchar      *first_button_text,
-                                         		 ...) G_GNUC_NULL_TERMINATED;
+                                         		 ...);
 
 void		 gedit_message_area_set_response_sensitive 
 							(GeditMessageArea *message_area,

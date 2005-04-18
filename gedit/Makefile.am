@@ -58,6 +58,7 @@ INST_H_FILES =				\
 	gedit-print.h			\
 	gedit-encodings-option-menu.h	\
 	gedit-file-chooser-dialog.h	\
+	gedit-message-area.h		\
 	gedit-app.h
 
 #	gedit2.h			\
@@ -106,6 +107,7 @@ gedit_SOURCES = 			\
 	gedit-document-loader.c		\
 	gedit-file-chooser-dialog.c	\
 	gedit-encodings-option-menu.c	\
+	gedit-message-area.c		\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 

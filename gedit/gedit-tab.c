@@ -37,6 +37,7 @@
 
 #include "gedit-tab.h"
 #include "gedit-utils.h"
+#include "gedit-message-area.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -351,43 +352,21 @@ create_retry_message_area_content (void)
   
   return hbox5;
 }
+#endif
 
 static void
-create_test_message_area (GeditTab *tab)
+set_message_area (GeditTab  *tab,
+		  GtkWidget *message_area)
 {
-	GdkColor color;
-	GtkWidget *eb;
-	
-	gdk_color_parse ("#E1C43A", &color);
+	tab->priv->message_area = message_area;
 
-	eb = gtk_event_box_new ();
-	gtk_widget_modify_bg (eb, GTK_STATE_NORMAL, &color);
-	gtk_container_set_border_width (GTK_CONTAINER (eb), 
-					1);		
-					
-	gtk_box_pack_start (GTK_BOX (tab), 
-			    eb, 
-			    FALSE, 
-			    FALSE, 
+	gtk_box_pack_start (GTK_BOX (tab),
+			    tab->priv->message_area,
+			    FALSE,
+			    FALSE,
 			    0);		
-			    			
-	tab->priv->message_area = gtk_event_box_new ();
-	gdk_color_parse ("#FFF1BE", &color);
-	gtk_widget_modify_bg (tab->priv->message_area, GTK_STATE_NORMAL, &color);
-	
-	gtk_container_set_border_width (GTK_CONTAINER (tab->priv->message_area), 
-					1);
+}		  
 
-	gtk_container_add (GTK_CONTAINER (eb), tab->priv->message_area);
-	
-
-	gtk_container_add (GTK_CONTAINER (tab->priv->message_area),
-			   create_retry_message_area_content ());
-
-			    
-	gtk_widget_show_all (eb);
-}
-#endif
 static void
 gedit_tab_init (GeditTab *tab)
 {
@@ -395,9 +374,7 @@ gedit_tab_init (GeditTab *tab)
 	GeditDocument *doc;
 	
 	tab->priv = GEDIT_TAB_GET_PRIVATE (tab);
-#if 0	
-	create_test_message_area (tab);
-#endif			  
+
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	
