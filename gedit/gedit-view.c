@@ -42,50 +42,17 @@
 
 #define GEDIT_VIEW_SCROLL_MARGIN 0.02
 
+#define GEDIT_VIEW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditViewPrivate))
+
 struct _GeditViewPrivate
 {
 	gint dummy;
 };
 
-static void gedit_view_class_init		(GeditViewClass *klass);
-static void gedit_view_init 			(GeditView      *view);
-static void gedit_view_destroy			(GtkObject        *object);
-static void gedit_view_finalize			(GObject        *object);
+static void	gedit_view_destroy	(GtkObject *object);
+static void	gedit_view_finalize	(GObject *object);
 
-static void doc_readonly_changed_handler 	(GeditDocument  *document, 
-						 gboolean        readonly, 
-						 GeditView      *view);
-
-static GtkSourceViewClass *parent_class = NULL;
-
-GType
-gedit_view_get_type (void)
-{
-	static GType view_type = 0;
-
-  	if (G_UNLIKELY (view_type == 0))
-    	{
-      		static const GTypeInfo our_info =
-      		{
-        		sizeof (GeditViewClass),
-        		NULL,		/* base_init */
-        		NULL,		/* base_finalize */
-        		(GClassInitFunc) gedit_view_class_init,
-        		NULL,           /* class_finalize */
-        		NULL,           /* class_data */
-        		sizeof (GeditView),
-        		0,              /* n_preallocs */
-        		(GInstanceInitFunc) gedit_view_init
-      		};
-
-      		view_type = g_type_register_static (GTK_TYPE_SOURCE_VIEW,
-                				    "GeditView",
-                                       	 	    &our_info,
-                                       		    0);
-    	}
-
-	return view_type;
-}
+G_DEFINE_TYPE(GeditView, gedit_view, GTK_TYPE_SOURCE_VIEW)
 
 static void
 doc_readonly_changed_handler (GeditDocument *document, 
@@ -104,13 +71,11 @@ gedit_view_class_init (GeditViewClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkObjectClass *gtkobject_class = GTK_OBJECT_CLASS (klass);
 
+	gtkobject_class->destroy = gedit_view_destroy;
+	object_class->finalize = gedit_view_finalize;
+
 	/* Note: it is commented out since we don't use it - Paolo */
 	/* g_type_class_add_private (klass, sizeof (GeditViewPrivate)); */
-
-  	parent_class = g_type_class_peek_parent (klass);
-
-  	gtkobject_class->destroy = gedit_view_destroy;
-  	object_class->finalize = gedit_view_finalize;
 }
 
 static void
@@ -121,7 +86,8 @@ move_cursor (GtkTextView       *text_view,
 	GtkTextBuffer *buffer = text_view->buffer;
 
 	if (extend_selection)
-		gtk_text_buffer_move_mark_by_name (buffer, "insert",
+		gtk_text_buffer_move_mark_by_name (buffer,
+						   "insert",
 						   new_location);
 	else
 		gtk_text_buffer_place_cursor (buffer, new_location);
@@ -136,9 +102,9 @@ move_cursor (GtkTextView       *text_view,
 
 /*
  * This feature is implemented in gedit and not in gtksourceview since the latter
- * has a similar feature called smart home/end that it is non-capatible with this 
- * one and is more "invasive". May be in the future we will move this feature in 
- * gtksourceview.
+ * has a similar feature called smart home/end that it is not compatible with this 
+ * one and is more "invasive". Maybe in the future we will move this feature in 
+ * gtksourceview or even better in gtktextview.
  */
 static void
 gedit_view_move_cursor (GtkTextView    *text_view,
@@ -299,7 +265,7 @@ gedit_view_init (GeditView *view)
 #if 0
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 	g_return_if_fail (doc != NULL);
-	
+
 	g_signal_connect (G_OBJECT (doc),
 			  "readonly_changed",
 			  G_CALLBACK (doc_readonly_changed_handler),
@@ -330,7 +296,7 @@ gedit_view_destroy (GtkObject *object)
 					      G_CALLBACK (gedit_view_move_cursor),
 					      view);
 
-	(* GTK_OBJECT_CLASS (parent_class)->destroy) (object);
+	(* GTK_OBJECT_CLASS (gedit_view_parent_class)->destroy) (object);
 }
 
 static void
@@ -340,7 +306,7 @@ gedit_view_finalize (GObject *object)
 
 	view = GEDIT_VIEW (object);
 
-	(* G_OBJECT_CLASS (parent_class)->finalize) (object);
+	(* G_OBJECT_CLASS (gedit_view_parent_class)->finalize) (object);
 }
 
 /**
@@ -356,24 +322,24 @@ GtkWidget *
 gedit_view_new (GeditDocument *doc)
 {
 	GtkWidget *view;
-	
+
 	gedit_debug_message (DEBUG_VIEW, "START");
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-	
+
 	view = GTK_WIDGET (g_object_new (GEDIT_TYPE_VIEW, NULL));
 	
 	gtk_text_view_set_buffer (GTK_TEXT_VIEW (view),
 				  GTK_TEXT_BUFFER (doc));
-				  		
+  		
 	g_signal_connect (G_OBJECT (doc),
 			  "readonly_changed",
 			  G_CALLBACK (doc_readonly_changed_handler),
 			  view);
-			  
+
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
 				    !gedit_document_is_readonly (doc));					  
-				    
+  
 	gedit_debug_message (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
 
 	gtk_widget_show_all (view);
@@ -418,16 +384,11 @@ gedit_view_copy_clipboard (GeditView *view)
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
-	
+
   	gtk_text_buffer_copy_clipboard (buffer,
   					gtk_clipboard_get (GDK_NONE));
 
-	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
-				      gtk_text_buffer_get_insert (buffer),
-				      GEDIT_VIEW_SCROLL_MARGIN,
-				      FALSE,
-				      0.0,
-				      0.0);
+	/* on copy do not scroll, we are already in screen */
 }
 
 void
@@ -621,7 +582,6 @@ gedit_view_set_colors (GeditView *view,
 		{
 			gtk_widget_modify_base (GTK_WIDGET (view), 
 						GTK_STATE_SELECTED, selection);
-
 			gtk_widget_modify_base (GTK_WIDGET (view), 
 						GTK_STATE_ACTIVE, selection);
 		}
@@ -630,7 +590,6 @@ gedit_view_set_colors (GeditView *view,
 		{
 			gtk_widget_modify_text (GTK_WIDGET (view), 
 						GTK_STATE_SELECTED, sel_text);		
-
 			gtk_widget_modify_text (GTK_WIDGET (view), 
 						GTK_STATE_ACTIVE, sel_text);		
 		}
