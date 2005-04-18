@@ -35,9 +35,11 @@
 #include <libgnomeui/libgnomeui.h>
 #include <libgnomevfs/gnome-vfs-mime-handlers.h>
 
+#include "gedit-notebook.h"
 #include "gedit-tab.h"
 #include "gedit-utils.h"
 #include "gedit-message-area.h"
+#include "gedit-io-error-message-area.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -189,66 +191,6 @@ create_progress_message_area_content ()
 #endif
 #if 0
 static GtkWidget *
-create_error_message_area_content (void)
-{
-  GtkWidget *hbox3;
-  GtkWidget *hbox4;
-  GtkWidget *image2;
-  GtkWidget *vbox5;
-  GtkWidget *label2;
-  GtkWidget *label3;
-  GtkWidget *vbox4;
-  GtkWidget *button2;
-
-  hbox3 = gtk_hbox_new (FALSE, 16);
-  gtk_widget_show (hbox3);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox3), 6);
-
-  hbox4 = gtk_hbox_new (FALSE, 8);
-  gtk_widget_show (hbox4);
-  gtk_box_pack_start (GTK_BOX (hbox3), hbox4, TRUE, TRUE, 0);
-
-  image2 = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
-  gtk_widget_show (image2);
-  gtk_box_pack_start (GTK_BOX (hbox4), image2, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (image2), 0.5, 0);
-
-  vbox5 = gtk_vbox_new (FALSE, 6);
-  gtk_widget_show (vbox5);
-  gtk_box_pack_start (GTK_BOX (hbox4), vbox5, TRUE, TRUE, 0);
-
-  label2 = gtk_label_new (_("<b>Could not find the file <i>http://www.gnome.org/pippo.txt</i></b>"));
-  gtk_widget_show (label2);
-  gtk_box_pack_start (GTK_BOX (vbox5), label2, TRUE, TRUE, 0);
-  gtk_label_set_use_markup (GTK_LABEL (label2), TRUE);
-  gtk_label_set_line_wrap (GTK_LABEL (label2), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (label2), 0, 0.5);
-  GTK_WIDGET_SET_FLAGS (label2, GTK_CAN_FOCUS);
-  gtk_label_set_selectable (GTK_LABEL (label2), TRUE);
-  
-  label3 = gtk_label_new (_("<small>Please, check that you typed the location correctly and try again.</small>"));
-  gtk_widget_show (label3);
-  gtk_box_pack_start (GTK_BOX (vbox5), label3, TRUE, TRUE, 0);
-  GTK_WIDGET_SET_FLAGS (label3, GTK_CAN_FOCUS);
-  gtk_label_set_use_markup (GTK_LABEL (label3), TRUE);
-  gtk_label_set_line_wrap (GTK_LABEL (label3), TRUE);
-  gtk_label_set_selectable (GTK_LABEL (label3), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (label3), 0, 0.5);
-
-  vbox4 = gtk_vbox_new (TRUE, 0);
-  gtk_widget_show (vbox4);
-  gtk_box_pack_start (GTK_BOX (hbox3), vbox4, FALSE, TRUE, 0);
-
-  button2 = gtk_button_new_from_stock ("gtk-close");
-  gtk_widget_show (button2);
-  gtk_box_pack_start (GTK_BOX (vbox4), button2, FALSE, FALSE, 0);
-  gtk_button_set_relief (GTK_BUTTON (button2), GTK_RELIEF_NONE);
-
-  return hbox3;
-}
-
-
-static GtkWidget *
 create_retry_message_area_content (void)
 {
   GtkWidget *hbox5;
@@ -365,7 +307,62 @@ set_message_area (GeditTab  *tab,
 			    FALSE,
 			    FALSE,
 			    0);		
-}		  
+			    
+	g_object_add_weak_pointer (G_OBJECT (tab->priv->message_area), 
+				   &tab->priv->message_area);
+}
+
+static void 
+unrecoverable_loading_error_message_area_response (GeditMessageArea *message_area,
+						   gint              response_id,
+						   GtkWidget         *tab)
+{
+	GeditNotebook *notebook;
+	gboolean can_close = TRUE;
+
+	notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (tab));
+	
+	g_signal_emit_by_name (G_OBJECT (notebook), "tab_delete", tab, &can_close);
+
+	if (can_close)
+		gedit_notebook_remove_tab (notebook, GEDIT_TAB (tab));
+}
+
+static void
+document_loaded (GeditDocument *document,
+		 const GError  *error,
+		 GeditTab      *tab)
+{
+	GtkWidget *emsg;
+	const GeditEncoding *encoding;
+	const gchar *uri;
+	
+	if (error != NULL)
+	{
+		// FIXME: in realtà durante il loading text_view dovrebbe essere
+		// non editabile
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
+		
+		uri = gedit_document_get_uri_ (document);
+		encoding = gedit_document_get_encoding (document);
+		
+		emsg = gedit_unrecoverable_loading_error_message_area (uri, 
+								       encoding,
+								       error);
+		
+		gtk_widget_show (emsg);
+		
+		set_message_area (tab, emsg);
+		gtk_widget_show (tab->priv->message_area);
+		
+		g_signal_connect (tab->priv->message_area,
+				  "response",
+				  G_CALLBACK (unrecoverable_loading_error_message_area_response),
+				  tab);
+	}
+}		 
+
+		  
 
 static void
 gedit_tab_init (GeditTab *tab)
@@ -391,7 +388,7 @@ gedit_tab_init (GeditTab *tab)
 	gtk_widget_show (tab->priv->view);
 	g_object_set_data (G_OBJECT (tab->priv->view), GEDIT_TAB_KEY, tab);
 	
-	gtk_box_pack_start (GTK_BOX (tab), sw, TRUE, TRUE, 0);
+	gtk_box_pack_end (GTK_BOX (tab), sw, TRUE, TRUE, 0);
 	gtk_container_add (GTK_CONTAINER (sw), tab->priv->view);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
                                              GTK_SHADOW_IN);	
@@ -404,7 +401,11 @@ gedit_tab_init (GeditTab *tab)
 	g_signal_connect (G_OBJECT (doc),
 			  "modified_changed",
 			  G_CALLBACK (document_name_modified_changed),
-			  tab);			                                   
+			  tab);
+	g_signal_connect (G_OBJECT (doc),
+			  "loaded",
+			  G_CALLBACK (document_loaded),
+			  tab);			  		                                   
 }
 
 GtkWidget *

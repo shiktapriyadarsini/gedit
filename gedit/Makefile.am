@@ -40,6 +40,7 @@ NON_INST_H_FILS =			\
 	gedit-ui.h			\
 	gedit-documents-panel.h		\
 	gedit-document-loader.h		\
+	gedit-io-error-message-area.h	\
 	gedit-search-panel.h
 
 #	gedit-session.h
@@ -108,6 +109,7 @@ gedit_SOURCES = 			\
 	gedit-file-chooser-dialog.c	\
 	gedit-encodings-option-menu.c	\
 	gedit-message-area.c		\
+	gedit-io-error-message-area.c	\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 

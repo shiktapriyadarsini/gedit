@@ -1,0 +1,401 @@
+/*
+ * gedit-io-error-message-area.c
+ * This file is part of gedit
+ *
+ * Copyright (C) 2005 - Paolo Maggi 
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Boston, MA 02111-1307, USA.
+ */
+ 
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a 
+ * list of people on the gedit Team.  
+ * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
+ */
+ 
+/*
+ * Verbose error reporting for file I/O operations (load, save, revert, create)
+ */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <errno.h>
+#include <string.h>
+
+#include <glib/gi18n.h>
+#include <libgnomevfs/gnome-vfs.h>
+
+#include "gedit-utils.h"
+#include "gedit-convert.h"
+#include "gedit-document.h"
+#include "gedit-io-error-message-area.h"
+#include "gedit-message-area.h"
+
+#define MAX_URI_IN_DIALOG_LENGTH 50
+
+static GtkWidget *
+create_unrecoverable_loading_error_message_area (const gchar *primary_text,
+						 const gchar *secondary_text)
+{
+	GtkWidget *message_area;
+	GtkWidget *hbox_content;
+	GtkWidget *image;
+	GtkWidget *vbox;
+	gchar *primary_markup;
+	gchar *secondary_markup;
+	GtkWidget *primary_label;
+	GtkWidget *secondary_label;
+	
+	message_area = gedit_message_area_new_with_buttons (
+					GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					NULL);
+					
+	hbox_content = gtk_hbox_new (FALSE, 8);
+	gtk_widget_show (hbox_content);				
+	
+	image = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
+	gtk_widget_show (image);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0);
+  
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_widget_show (vbox);
+	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
+	
+	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
+	primary_label = gtk_label_new (primary_markup);
+	g_free (primary_markup);
+	gtk_widget_show (primary_label);
+	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
+	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
+	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (primary_label), 0, 0.5);
+	GTK_WIDGET_SET_FLAGS (primary_label, GTK_CAN_FOCUS);
+	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
+  
+  	if (secondary_text != NULL)
+  	{
+  		secondary_markup = g_strdup_printf ("<small>%s</small>",
+  						    secondary_text);
+		secondary_label = gtk_label_new (secondary_markup);
+		g_free (secondary_markup);
+		gtk_widget_show (secondary_label);
+		gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
+		GTK_WIDGET_SET_FLAGS (secondary_label, GTK_CAN_FOCUS);
+		gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
+		gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
+		gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
+		gtk_misc_set_alignment (GTK_MISC (secondary_label), 0, 0.5);
+	}
+
+	gedit_message_area_set_contents (GEDIT_MESSAGE_AREA (message_area),
+					 hbox_content);
+	return message_area;
+}
+
+GtkWidget *
+gedit_unrecoverable_loading_error_message_area (const gchar         *uri,
+				    		const GeditEncoding *encoding,
+				    		const GError        *error)
+{
+	gchar *error_message = NULL;
+	gchar *message_details = NULL;
+	gchar *full_formatted_uri;
+	gchar *scheme_string;
+       	gchar *uri_for_display;
+       	gchar *temp_uri_for_display;
+	gchar *encoding_name;
+	
+	g_return_val_if_fail (uri != NULL, NULL);
+
+	full_formatted_uri = gnome_vfs_format_uri_for_display (uri);
+
+	/* Truncate the URI so it doesn't get insanely wide. Note that even
+	 * though the dialog uses wrapped text, if the URI doesn't contain
+	 * white space then the text-wrapping code is too stupid to wrap it.
+	 */
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+								MAX_URI_IN_DIALOG_LENGTH);								
+	g_free (full_formatted_uri);
+	
+	uri_for_display = g_strdup_printf ("<i>%s</i>", temp_uri_for_display);
+	g_free (temp_uri_for_display);
+
+	if (encoding != NULL)
+		encoding_name = gedit_encoding_to_string (encoding);
+	else
+		encoding_name = g_strdup ("UTF-8");
+
+	if ((error != NULL) && (error->domain == GEDIT_DOCUMENT_ERROR))
+	{
+		switch (error->code)
+		{
+			case GNOME_VFS_ERROR_NOT_FOUND:
+				error_message = g_strdup_printf (_("Could not find the file %s."),
+								 uri_for_display);
+				message_details = g_strdup (_("Please, check that you typed the "
+						      	      "location correctly and try again."));
+			break;
+
+			case GNOME_VFS_ERROR_CORRUPTED_DATA:
+				message_details = g_strdup (_("The file contains corrupted data."));
+				break;
+
+			case GNOME_VFS_ERROR_NOT_SUPPORTED:
+				scheme_string = gnome_vfs_get_uri_scheme (uri);
+
+				if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
+				{
+					/* Translators: %s is a URI scheme (like for example http, ftp, etc.) */
+					message_details = g_strdup_printf (_("gedit cannot handle <i>%s:</i> locations."),
+									   scheme_string);
+				}
+				else
+				{
+					message_details = g_strdup (_("gedit cannot handle this location."));
+				}
+
+				g_free (scheme_string);
+				break;
+
+			case GNOME_VFS_ERROR_WRONG_FORMAT:
+				message_details = g_strdup (_("The file contains data in an invalid format."));
+				break;
+
+			case GNOME_VFS_ERROR_TOO_BIG:
+				message_details = g_strdup (_("The file is too big."));
+				break;
+
+			case GNOME_VFS_ERROR_INVALID_URI:
+				error_message = g_strdup_printf (_("%s is not a valid location."),
+								 uri_for_display);
+				message_details = g_strdup (_("Please, check that you typed the "
+							      "location correctly and try again."));
+                		break;
+
+			case GNOME_VFS_ERROR_ACCESS_DENIED:
+				message_details = g_strdup (_("Access was denied."));
+				break;
+
+			case GNOME_VFS_ERROR_TOO_MANY_OPEN_FILES:
+				message_details = g_strdup (_("There are too many open files. Please, "
+							      "close some files and try again."));
+				break;
+
+			case GNOME_VFS_ERROR_IS_DIRECTORY:
+				error_message = g_strdup_printf (_("%s is a directory."),
+								 uri_for_display);
+				message_details = g_strdup (_("Please, check that you typed the "
+							      "location correctly and try again."));
+				break;
+
+			case GNOME_VFS_ERROR_NO_MEMORY:
+				message_details = g_strdup (_("Not enough available memory to open "
+							      "the file. Please, close some running "
+							      "applications and try again."));
+				break;
+
+			case GNOME_VFS_ERROR_HOST_NOT_FOUND:
+			/* This case can be hit for user-typed strings like "foo" due to
+			 * the code that guesses web addresses when there's no initial "/".
+			 * But this case is also hit for legitimate web addresses when
+			 * the proxy is set up wrong.
+			 */
+			{
+				GnomeVFSURI *vfs_uri;
+
+				vfs_uri = gnome_vfs_uri_new (uri);
+
+				if (vfs_uri != NULL)
+				{
+					const gchar *hn = gnome_vfs_uri_get_host_name (vfs_uri);
+
+					if (hn != NULL)
+					{
+						gchar *host_name = gedit_utils_make_valid_utf8 (hn);
+
+						/* Translators: %s is a host name */
+						message_details = g_strdup_printf (
+							_("Host <i>%s</i> could not be found. "
+        	        		  	  	"Please, check that your proxy settings "
+					  	  	"are correct and try again."),
+						  	host_name);
+
+						g_free (host_name);
+					}
+					else
+					{
+						/* use the same string as INVALID_HOST */
+						message_details = g_strdup_printf (
+							_("Host name was invalid. "
+							  "Please, check that you typed the location "
+							  "correctly and try again."));
+					}
+
+					gnome_vfs_uri_unref (vfs_uri);		
+				}
+				else
+				{
+					/* use the same string as INVALID_HOST */
+					message_details = g_strdup_printf (
+						_("Host name was invalid. "
+						  "Please, check that you typed the location "
+						  "correctly and try again."));
+				}
+				
+				break;
+			}
+
+			case GNOME_VFS_ERROR_INVALID_HOST_NAME:
+				message_details = g_strdup_printf (_("Host name was invalid. "
+								     "Please, check that you typed the location "
+								     "correctly and try again."));
+	               		break;
+
+			case GNOME_VFS_ERROR_HOST_HAS_NO_ADDRESS:
+				message_details = g_strdup (_("Host name was empty. "
+							      "Please, check that your proxy settings "
+							      "are correct and try again."));
+				break;
+
+			case GNOME_VFS_ERROR_LOGIN_FAILED:
+				message_details = g_strdup (_("Attempt to log in failed. "
+							      "Please, check that you typed the location "
+							      "correctly and try again."));
+				break;
+#if 0
+		case GEDIT_ERROR_INVALID_UTF8_DATA:
+			error_message = g_strdup_printf (_("Could not open the file \"%s\""),
+							 uri_for_display);
+			message_details = g_strdup (_("The file contains invalid data. "
+						      "Probably, you are trying to open a binary file."));
+			break;
+
+		case GEDIT_ERROR_NOT_REGULAR_FILE:
+			error_message = g_strdup_printf (_("Could not open the file \"%s\""),
+							 uri_for_display);
+			message_details = g_strdup (_("The file you are trying to open is not a regular file."));
+			break;
+#endif
+			case GNOME_VFS_ERROR_GENERIC:
+				break;
+
+			/*
+			case GNOME_VFS_ERROR_GENERIC:
+			case GNOME_VFS_ERROR_INTERNAL:
+			case GNOME_VFS_ERROR_BAD_PARAMETERS:
+			case GNOME_VFS_ERROR_IO:
+			case GNOME_VFS_ERROR_BAD_FILE:
+			case GNOME_VFS_ERROR_NO_SPACE:
+			case GNOME_VFS_ERROR_READ_ONLY:
+			case GNOME_VFS_ERROR_NOT_OPEN:
+			case GNOME_VFS_ERROR_INVALID_OPEN_MODE:
+			case GNOME_VFS_ERROR_EOF:
+			case GNOME_VFS_ERROR_NOT_A_DIRECTORY:
+			case GNOME_VFS_ERROR_IN_PROGRESS:
+			case GNOME_VFS_ERROR_INTERRUPTED:
+			case GNOME_VFS_ERROR_FILE_EXISTS:
+			case GNOME_VFS_ERROR_LOOP:
+			case GNOME_VFS_ERROR_NOT_PERMITTED:
+			case GNOME_VFS_ERROR_CANCELLED:
+			case GNOME_VFS_ERROR_DIRECTORY_BUSY:
+			case GNOME_VFS_ERROR_DIRECTORY_NOT_EMPTY:
+			case GNOME_VFS_ERROR_TOO_MANY_LINKS:
+			case GNOME_VFS_ERROR_READ_ONLY_FILE_SYSTEM:
+			case GNOME_VFS_ERROR_NOT_SAME_FILE_SYSTEM:
+			case GNOME_VFS_ERROR_NAME_TOO_LONG:
+			case GNOME_VFS_ERROR_SERVICE_NOT_AVAILABLE:
+			case GNOME_VFS_ERROR_SERVICE_OBSOLETE,
+			case GNOME_VFS_ERROR_PROTOCOL_ERROR,
+			case GNOME_VFS_NUM_ERRORS:
+			*/
+		
+			default: 
+				message_details = g_strdup_printf (_("Unexpected error: %s"), 
+								   gnome_vfs_result_to_string (error->code));								 
+				break;
+		}
+	}
+	/* FIXME: ancora da mettere a posto */
+	else if (error->domain == GEDIT_CONVERT_ERROR)
+	{
+		switch (error->code)
+		{
+		case GEDIT_CONVERT_ERROR_AUTO_DETECTION_FAILED:
+			error_message = g_strdup_printf (_("Could not open the file \"%s\""),
+							 uri_for_display);
+			message_details = g_strdup (_("gedit was not able to automatically detect "
+						      "the character coding. "
+						      "Please, check that you are not trying to open a binary file "
+						      "and try again selecting a character coding in the 'Open File...' "
+						      "(or 'Open Location') dialog."));
+			break;
+
+		case GEDIT_CONVERT_ERROR_ILLEGAL_SEQUENCE:
+			error_message = g_strdup_printf (_("Could not open the file \"%s\" using "
+							   "the %s character coding"),
+							 uri_for_display, encoding_name);
+			message_details = g_strdup (_("Please, check that you are not trying "
+						      "to open a binary file "
+						      "and that you selected the right "
+						      "character coding in the 'Open File... ' "
+						      "(or 'Open Location') dialog and try again."));
+			break;
+
+		case GEDIT_CONVERT_ERROR_BINARY_FILE:
+			error_message = g_strdup_printf (_("Could not open the file \"%s\""),
+							 uri_for_display);
+			message_details = g_strdup (_("The file contains data in an invalid format. "
+						      "Probably, you are trying to open a binary file."));
+			break;
+		}
+	}
+	else if (error->domain == G_CONVERT_ERROR)
+	{
+		switch (error->code)
+		{
+		case G_CONVERT_ERROR_NO_CONVERSION:
+		case G_CONVERT_ERROR_ILLEGAL_SEQUENCE:
+		case G_CONVERT_ERROR_FAILED:
+		case G_CONVERT_ERROR_PARTIAL_INPUT:
+			error_message = g_strdup_printf (_("Could not open the file \"%s\" using "
+							   "the %s character coding"),
+							 uri_for_display, encoding_name);
+			message_details = g_strdup (_("Please, check that you are not trying "
+						      "to open a binary file "
+						      "and that you selected the right "
+						      "character coding in the 'Open File... ' "
+						      "(or 'Open Location') dialog and try again."));
+			break;
+		}
+	}
+	
+	if (error_message == NULL)
+		error_message = g_strdup_printf (_("Could not open the file %s"),
+						 uri_for_display);
+
+/*
+	if ((message_details == NULL) && (error != NULL) && (error->message != NULL))
+			message_details = g_strdup (error->message);
+*/
+
+	return create_unrecoverable_loading_error_message_area (error_message,
+								message_details);
+}
