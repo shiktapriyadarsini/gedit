@@ -25,7 +25,9 @@
 /*
  * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$ 
  */
 
 #ifdef HAVE_CONFIG_H
@@ -388,7 +390,7 @@ gedit_view_copy_clipboard (GeditView *view)
   	gtk_text_buffer_copy_clipboard (buffer,
   					gtk_clipboard_get (GDK_NONE));
 
-	/* on copy do not scroll, we are already in screen */
+	/* on copy do not scroll, we are already on screen */
 }
 
 void
