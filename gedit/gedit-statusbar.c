@@ -51,9 +51,28 @@ struct _GeditStatusbarPrivate
 G_DEFINE_TYPE(GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
 
 static void
+gedit_statusbar_notify (GObject    *object,
+			GParamSpec *pspec)
+{
+	/* don't allow gtk_statusbar_set_has_resize_grip to mess with us.
+	 * See _gedit_statusbar_set_has_resize_grip for an explanation.
+	 */
+	if (strcmp (g_param_spec_get_name (pspec), "has-resize-grip") == 0)
+	{
+		gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (object), FALSE);
+		return;
+	}
+
+	if (G_OBJECT_CLASS (gedit_statusbar_parent_class)->notify)
+		G_OBJECT_CLASS (gedit_statusbar_parent_class)->notify (object, pspec);
+}
+
+static void
 gedit_statusbar_class_init (GeditStatusbarClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	object_class->notify = gedit_statusbar_notify;
 
 	g_type_class_add_private (object_class, sizeof (GeditStatusbarPrivate));
 }
@@ -108,8 +127,37 @@ gedit_statusbar_new (void)
 }
 
 /**
+ * gedit_set_has_resize_grip:
+ * @statusbar: a #GeditStatusbar
+ * @show: if the resize grip is shown
+ * 
+ * Sets if a resize grip showld be shown.
+ * 
+ **/
+ /*
+  * I don't like this much, in a perfect world it would have been
+  * possible to override the parent property and use
+  * gtk_statusbar_set_has_resize_grip. Unfortunately this is not
+  * possible and it's not even possible to intercept the notify signal
+  * since the parent property should always be set to false thus when
+  * using set_resize_grip (FALSE) the property doesn't change and the 
+  * notification is not emitted.
+  * For now just add this private method; if needed we can turn it into
+  * a property.
+  */
+void
+_gedit_statusbar_set_has_resize_grip (GeditStatusbar *bar,
+				      gboolean        show)
+{
+	g_return_if_fail (GEDIT_IS_STATUSBAR (bar));
+
+	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (bar->priv->overwrite_mode_statusbar),
+					   show);
+}
+
+/**
  * gedit_statusbar_set_overwrite:
- * @statusbar: an #GeditStatusbar
+ * @statusbar: a #GeditStatusbar
  * @overwrite: if the overwrite mode is set
  *
  * Sets the overwrite mode on the statusbar.

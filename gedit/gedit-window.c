@@ -166,10 +166,14 @@ window_state_event (GtkWidget           *window,
 	if (event->changed_mask & (GDK_WINDOW_STATE_MAXIMIZED |
 	                           GDK_WINDOW_STATE_FULLSCREEN))
 	{
-		GtkWidget *bar = GEDIT_WINDOW (window)->priv->statusbar;
+		gboolean show;
+		GtkWidget *bar;
 
-		gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (bar),
-						   !(event->new_window_state & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)));
+		show = !(event->new_window_state &
+		         (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN));
+		bar = GEDIT_WINDOW (window)->priv->statusbar;
+
+		_gedit_statusbar_set_has_resize_grip (GEDIT_STATUSBAR (bar), show);
 	}
 
 	return FALSE;
@@ -184,8 +188,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 
 	object_class->finalize = gedit_window_finalize;
 	gobject_class->destroy = gedit_window_destroy;
-//	FIXME, statusbar is buggy
-//	widget_class->window_state_event = window_state_event;
+	widget_class->window_state_event = window_state_event;
 
 	signals[TAB_ADDED] =
 		g_signal_new ("tab_added",

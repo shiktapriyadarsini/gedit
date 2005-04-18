@@ -88,6 +88,12 @@ void		 gedit_statusbar_remove_widget		(GeditStatusbar *statusbar,
 							 GtkWidget      *widget);
 */
 
+/*
+ * Non exported functions
+ */
+void		_gedit_statusbar_set_has_resize_grip	(GeditStatusbar *bar,
+							 gboolean        show);
+
 G_END_DECLS
 
 #endif
