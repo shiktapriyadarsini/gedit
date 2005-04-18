@@ -490,24 +490,24 @@ load_local_file_real (GeditDocumentLoader *loader)
 		}
 
 		ret = munmap (mapped_file, loader->priv->info->size);
-			
+
 		if (ret != 0)
 			g_warning ("File '%s' has not been correctly unmapped: %s",
 				   loader->priv->uri,
 				   strerror (errno));
 	}
-	
-	ret = close (loader->priv->fd);
 
-	/* mime type hack */
+	/* mime type hack. Do it before closing the fd to avoid race conditions */
 	loader->priv->info->mime_type = get_slow_mime_type (loader->priv->uri);
 	loader->priv->info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE;
+
+	ret = close (loader->priv->fd);
 
 	if (ret != 0)
 		g_warning ("File '%s' has not been correctly closed: %s",
 			   loader->priv->uri,
 			   strerror (errno));
-		
+
 	loader->priv->fd = -1;
 	
 	g_return_val_if_fail (loader->priv->last_error == NULL, FALSE);
