@@ -47,6 +47,7 @@
 #include "gedit-view.h"
 #include "gedit-utils.h"
 #include "gedit-print.h"
+#include "gedit-recent.h"
 #include "dialogs/gedit-page-setup-dialog.h"
 #include "dialogs/gedit-dialogs.h"
 #include "dialogs/gedit-preferences-dialog.h"
@@ -169,6 +170,33 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 			     NULL,
 			     FALSE);
 #endif			     
+}
+
+void
+gedit_cmd_file_open_recent (EggRecentItem *item, GeditWindow *window)
+{
+	GSList *uris = NULL;
+	gchar *uri;
+	gint n;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	uri = egg_recent_item_get_uri (item);
+
+	uris = g_slist_prepend (uris, uri);
+
+	n = gedit_window_load_files (window,
+		 		     uris,
+				     NULL,
+				     FALSE);
+
+	if (n != 1)
+	{
+		gedit_recent_remove (uri);
+	}
+
+	g_free (uri);
+	g_slist_free (uris);
 }
 
 void

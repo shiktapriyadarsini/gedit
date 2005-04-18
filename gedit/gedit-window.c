@@ -91,6 +91,8 @@ struct _GeditWindowPrivate
 	GtkWidget      *toolbar_recent_menu;
 	GeditToolbarSetting toolbar_style;
 
+	EggRecentViewUIManager *recent_view_uim;
+
 	GeditTab       *active_tab;
 	gint            num_tabs;
 
@@ -360,8 +362,8 @@ set_toolbar_style (GeditWindow *window,
 }
 
 static void
-language_toggled  (GtkToggleAction *action,
-		   GeditWindow     *window)
+language_toggled (GtkToggleAction *action,
+		  GeditWindow     *window)
 {
 	GeditDocument *doc;
 	const GSList *languages;
@@ -529,6 +531,27 @@ create_languages_menu (GeditWindow *window)
 }
 
 static void
+open_recent_gtk (EggRecentViewGtk *view, 
+		 EggRecentItem    *item,
+		 GeditWindow      *window)
+{
+	gedit_cmd_file_open_recent (item, window);
+}
+
+static void
+open_recent_uim (GtkAction   *action, 
+		 GeditWindow *window)
+{
+	EggRecentItem *item;
+
+	item = egg_recent_view_uimanager_get_item (window->priv->recent_view_uim,
+						   action);
+	g_return_if_fail (item != NULL);
+
+	gedit_cmd_file_open_recent (item, window);
+}
+
+static void
 recent_tooltip_func_gtk (GtkTooltips   *tooltips,
 			 GtkWidget     *menu,
 			 EggRecentItem *item,
@@ -585,8 +608,10 @@ build_recent_tool_menu (GtkMenuToolButton *button,
 
 	egg_recent_view_set_model (EGG_RECENT_VIEW (view), model);
 
-//	g_signal_connect (view, "activate",
-//			  G_CALLBACK (gedit_file_open_recent), NULL);
+	g_signal_connect (view,
+			  "activate",
+			  G_CALLBACK (open_recent_gtk),
+			  window);
 
 	gtk_widget_show (window->priv->toolbar_recent_menu);
 
@@ -670,8 +695,9 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	recent_model = gedit_recent_get_model ();
 	recent_view = egg_recent_view_uimanager_new (manager,
 						     "/MenuBar/FileMenu/FileRecentsPlaceholder",
-						     NULL, // TODO
+						     G_CALLBACK (open_recent_uim),
 						     window);
+	window->priv->recent_view_uim = recent_view;
 	egg_recent_view_uimanager_show_icons (recent_view, FALSE);
 	egg_recent_view_uimanager_set_tooltip_func (recent_view,
 						    recent_tooltip_func_uim,
