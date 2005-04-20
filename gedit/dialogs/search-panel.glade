@@ -102,7 +102,7 @@
 		      <child>
 			<widget class="GtkEntry" id="search_entry">
 			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Search for</property>
+			  <property name="tooltip" translatable="yes">Search for (Ctrl+F)</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
@@ -402,7 +402,7 @@
 		  <child>
 		    <widget class="GtkEntry" id="replace_entry">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Replace with</property>
+		      <property name="tooltip" translatable="yes">Replace with (Ctrl+R)</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
@@ -604,7 +604,7 @@
 		  <child>
 		    <widget class="GtkEntry" id="line_number_entry">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Line number</property>
+		      <property name="tooltip" translatable="yes">Line number (Ctrl+I)</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>

@@ -236,9 +236,9 @@ update_document_contents (GeditDocumentLoader  *loader,
 		else
 		{
 			g_set_error (error,
-				     GEDIT_CONVERT_ERROR, 
-				     GEDIT_CONVERT_ERROR_ILLEGAL_SEQUENCE,
-				     _("The file you are trying to open contains an invalid byte sequence."));
+				     G_CONVERT_ERROR, 
+				     G_CONVERT_ERROR_ILLEGAL_SEQUENCE,
+				     "The file you are trying to open contains an invalid byte sequence.");
 				     
 			return FALSE;
 		}
@@ -247,6 +247,7 @@ update_document_contents (GeditDocumentLoader  *loader,
 	{
 		GError *conv_error = NULL;
 		gchar *converted_text = NULL;
+		gsize new_len = file_size;
 		
 		if (loader->priv->encoding == NULL)
 		{
@@ -268,6 +269,7 @@ update_document_contents (GeditDocumentLoader  *loader,
 									file_contents,
 									file_size,
 									&enc,
+									&new_len,
 									NULL);
 
 					if (converted_text != NULL)
@@ -286,19 +288,15 @@ update_document_contents (GeditDocumentLoader  *loader,
 							file_contents,
 							file_size,
 							&loader->priv->auto_detected_encoding,
+							&new_len,
 							&conv_error);
 		}
 	
 		if (converted_text == NULL)
 		{
-			/* bail out */
-			if (conv_error == NULL)
-				g_set_error (error,
-					     GEDIT_CONVERT_ERROR, 
-					     GEDIT_CONVERT_ERROR_ILLEGAL_SEQUENCE,
-					     _("The file you are trying to open contains an invalid byte sequence."));
-			else
-				g_propagate_error (error, conv_error);
+			g_return_val_if_fail (conv_error != NULL, FALSE);
+			
+			g_propagate_error (error, conv_error);
 	
 			return FALSE;
 		}
@@ -306,7 +304,7 @@ update_document_contents (GeditDocumentLoader  *loader,
 		{
 			insert_text_in_document (loader,
 						 converted_text,
-						 -1);
+						 new_len);
 
 			return TRUE;
 		}

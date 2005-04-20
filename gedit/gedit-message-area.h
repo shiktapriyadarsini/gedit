@@ -102,15 +102,13 @@ void		 gedit_message_area_add_action_widget	(GeditMessageArea *message_area,
 GtkWidget	*gedit_message_area_add_button        	(GeditMessageArea *message_area,
                                          		 const gchar      *button_text,
                                          		 gint              response_id);
-#if 0                                         		 
+             		 
 GtkWidget	*gedit_message_area_add_stock_button_with_text 
-							(GeditMessageArea *message_area,, 
+							(GeditMessageArea *message_area, 
 				    			 const gchar      *text, 
 				    			 const gchar      *stock_id, 
 				    			 gint              response_id);
-#endif
-				    			 
-				    			 
+
 void       	 gedit_message_area_add_buttons 	(GeditMessageArea *message_area,
                                          		 const gchar      *first_button_text,
                                          		 ...);

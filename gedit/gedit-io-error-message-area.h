@@ -31,12 +31,21 @@
 #ifndef __GEDIT_IO_ERROR_MESSAGE_AREA_H__
 #define __GEDIT_IO_ERROR_MESSAGE_AREA_H__
 
+#include <glib.h>
+
 G_BEGIN_DECLS
 
-GtkWidget	*gedit_unrecoverable_loading_error_message_area (
+GtkWidget	*gedit_unrecoverable_loading_error_message_area_new (
 						const gchar         *uri,
-				    		const GeditEncoding *encoding,
 				    		const GError        *error);
+				    		
+GtkWidget	*gedit_conversion_error_while_loading_message_area_new (
+						const gchar         *uri,
+						const GeditEncoding *encoding,
+				    		const GError        *error);				    		
+const GeditEncoding 
+		*gedit_conversion_error_while_loading_message_area_get_encoding (
+						GtkWidget           *message_area);
 
 G_END_DECLS
 

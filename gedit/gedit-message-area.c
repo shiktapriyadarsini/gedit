@@ -507,3 +507,32 @@ gedit_message_area_response (GeditMessageArea *message_area,
 		       0,
 		       response_id);
 }
+
+GtkWidget *
+gedit_message_area_add_stock_button_with_text (GeditMessageArea *message_area, 
+				    	       const gchar      *text,
+				    	       const gchar      *stock_id,
+				    	       gint              response_id)
+{
+	GtkWidget *button;
+  
+	g_return_val_if_fail (GEDIT_IS_MESSAGE_AREA (message_area), NULL);
+	g_return_val_if_fail (text != NULL, NULL);
+	g_return_val_if_fail (stock_id != NULL, NULL);
+
+	button = gtk_button_new_with_mnemonic (text);
+        gtk_button_set_image (GTK_BUTTON (button),
+                              gtk_image_new_from_stock (stock_id,
+                                                        GTK_ICON_SIZE_BUTTON));
+
+	GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+  
+	gtk_widget_show (button);
+  
+	gedit_message_area_add_action_widget (message_area,
+					      button,
+					      response_id);
+
+	return button;
+}
+

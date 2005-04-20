@@ -353,19 +353,37 @@ document_loaded (GeditDocument *document,
 		uri = gedit_document_get_uri_ (document);
 		encoding = gedit_document_get_encoding (document);
 		
-		emsg = gedit_unrecoverable_loading_error_message_area (uri, 
-								       encoding,
-								       error);
-		
+		if (error->domain == GEDIT_DOCUMENT_ERROR)
+		{
+			emsg = gedit_unrecoverable_loading_error_message_area_new (
+									uri, 
+									error);
+			
+			set_message_area (tab, emsg);
+			
+			g_signal_connect (tab->priv->message_area,
+					  "response",
+					  G_CALLBACK (unrecoverable_loading_error_message_area_response),
+					  tab);
+		}					  
+		else
+		{
+			emsg = gedit_conversion_error_while_loading_message_area_new (
+									uri,
+									encoding,
+									error);
+									
+			set_message_area (tab, emsg);
+			
+			// FIXME
+			g_signal_connect (tab->priv->message_area,
+					  "response",
+					  G_CALLBACK (unrecoverable_loading_error_message_area_response),
+					  tab);
+		}
+							  
 		gtk_widget_show (emsg);
-		
-		set_message_area (tab, emsg);
 		gtk_widget_show (tab->priv->message_area);
-		
-		g_signal_connect (tab->priv->message_area,
-				  "response",
-				  G_CALLBACK (unrecoverable_loading_error_message_area_response),
-				  tab);
 	}
 }		 
 
