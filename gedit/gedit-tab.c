@@ -50,6 +50,8 @@ struct _GeditTabPrivate
 	GtkWidget *view;
 	
 	GtkWidget *message_area;
+	
+	gboolean load_error_state;
 };
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
@@ -309,7 +311,7 @@ set_message_area (GeditTab  *tab,
 			    0);		
 			    
 	g_object_add_weak_pointer (G_OBJECT (tab->priv->message_area), 
-				   &tab->priv->message_area);
+				   (gpointer *)&tab->priv->message_area);
 }
 
 static void 
@@ -339,9 +341,14 @@ document_loaded (GeditDocument *document,
 	
 	if (error != NULL)
 	{
+		tab->priv->load_error_state = TRUE;
+		
+		g_object_notify (G_OBJECT (tab), "name");
+		
 		// FIXME: in realtà durante il loading text_view dovrebbe essere
 		// non editabile
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
+		//gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
+		gtk_widget_hide (tab->priv->view);
 		
 		uri = gedit_document_get_uri_ (document);
 		encoding = gedit_document_get_encoding (document);
@@ -495,7 +502,7 @@ _gedit_tab_get_name (GeditTab *tab)
 			tab_name = g_strdup_printf ("%s", docname);
 		}
 #endif
-		tab_name = g_strdup_printf ("%s", docname);
+		tab_name = g_strdup (docname);
 
 	}
 	
@@ -524,59 +531,55 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 	uri = gedit_document_get_uri_for_display (doc);
 	g_return_val_if_fail (uri != NULL, NULL);
 
-	mime_type = gedit_document_get_mime_type (doc);
-	mime_description = gnome_vfs_mime_get_description (mime_type);
-
-	if (mime_description == NULL)
-		mime_full_description = g_strdup (mime_type);
-	else
-		mime_full_description = g_strdup_printf ("%s (%s)", 
-				mime_description, mime_type);
-
-	enc = gedit_document_get_encoding (doc);
-
-	if (enc == NULL)
-		encoding = g_strdup (_("Unicode (UTF-8)"));
-	else
-		encoding = gedit_encoding_to_string (enc);
-	
 	ruri = 	gedit_utils_replace_home_dir_with_tilde (uri);
+	
+	if (tab->priv->load_error_state)
+	{
+		tip =  g_markup_printf_escaped(_("Error opening file <i>%s</i>."),
+						ruri);
+	}
+	else
+	{
+		mime_type = gedit_document_get_mime_type (doc);
+		mime_description = gnome_vfs_mime_get_description (mime_type);
 
-	tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
-				       "<b>%s</b> %s\n"
-				       "<b>%s</b> %s",
-				       _("Name:"), ruri,
-				       _("MIME Type:"), mime_full_description,
-				       _("Encoding:"), encoding);
+		if (mime_description == NULL)
+			mime_full_description = g_strdup (mime_type);
+		else
+			mime_full_description = g_strdup_printf ("%s (%s)", 
+					mime_description, mime_type);
 
-	g_free (ruri);
-	g_free (encoding);
-	g_free (mime_full_description);
+		enc = gedit_document_get_encoding (doc);
+
+		if (enc == NULL)
+			encoding = g_strdup (_("Unicode (UTF-8)"));
+		else
+			encoding = gedit_encoding_to_string (enc);
+		
+		
+
+		tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
+					       "<b>%s</b> %s\n"
+					       "<b>%s</b> %s",
+					       _("Name:"), ruri,
+					       _("MIME Type:"), mime_full_description,
+					       _("Encoding:"), encoding);
+
+		g_free (encoding);
+		g_free (mime_full_description);
+	}
+	
+	g_free (ruri);	
 	
 	return tip;
 }
 
 static GdkPixbuf *
-get_icon (GtkIconTheme *theme, 
-	  const gchar  *uri,
-	  const gchar  *mime_type, 
-	  gint          size)
+resize_icon (GdkPixbuf *pixbuf,
+	     gint       size)
 {
-	gchar *icon;
-	GdkPixbuf *pixbuf;
 	guint width, height;
 	
-	icon = gnome_icon_lookup (theme, NULL, uri, NULL, NULL,
-				  mime_type, 0, NULL);
-	
-
-	g_return_val_if_fail (icon != NULL, NULL);
-
-	pixbuf = gtk_icon_theme_load_icon (theme, icon, size, 0, NULL);
-	g_free (icon);
-	if (pixbuf == NULL)
-		return NULL;
-		
 	width = gdk_pixbuf_get_width (pixbuf); 
 	height = gdk_pixbuf_get_height (pixbuf);
 	/* if the icon is larger than the nominal size, scale down */
@@ -606,37 +609,86 @@ get_icon (GtkIconTheme *theme,
 	return pixbuf;
 }
 
+static GdkPixbuf *
+get_icon (GtkIconTheme *theme, 
+	  const gchar  *uri,
+	  const gchar  *mime_type, 
+	  gint          size)
+{
+	gchar *icon;
+	GdkPixbuf *pixbuf;
+	
+	icon = gnome_icon_lookup (theme, NULL, uri, NULL, NULL,
+				  mime_type, 0, NULL);
+	
+
+	g_return_val_if_fail (icon != NULL, NULL);
+
+	pixbuf = gtk_icon_theme_load_icon (theme, icon, size, 0, NULL);
+	g_free (icon);
+	if (pixbuf == NULL)
+		return NULL;
+		
+	return resize_icon (pixbuf, size);
+}
+
+static GdkPixbuf *
+get_stock_icon (GtkIconTheme *theme, 
+		const gchar  *stock,
+		gint          size)
+{
+	GdkPixbuf *pixbuf;
+	
+	pixbuf = gtk_icon_theme_load_icon (theme, stock, size, 0, NULL);
+	if (pixbuf == NULL)
+		return NULL;
+		
+	return resize_icon (pixbuf, size);
+}
+
 /* FIXME: add support for theme changed. I think it should be as easy as
    call g_object_notify (tab, "name") when the icon theme changes */
 GdkPixbuf *
 _gedit_tab_get_icon (GeditTab *tab)
 {
+	GdkPixbuf *pixbuf;
 	GtkIconTheme *theme;
 	GdkScreen *screen;
-	GdkPixbuf *pixbuf;
-	const gchar *raw_uri;
-	const gchar *mime_type;
 	gint icon_size;
-	GeditDocument *doc;
-
+	
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
-	doc = gedit_tab_get_document (tab);
-	
 	screen = gtk_widget_get_screen (GTK_WIDGET (tab));
-	
+		
 	theme = gtk_icon_theme_get_for_screen (screen);
 	g_return_val_if_fail (theme != NULL, NULL);
-
-	raw_uri = gedit_document_get_uri_ (doc);
-	mime_type = gedit_document_get_mime_type (doc);
 
 	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (GTK_WIDGET (tab)),
 					   GTK_ICON_SIZE_MENU, 
 					   NULL,
 					   &icon_size);
-	pixbuf = get_icon (theme, raw_uri, mime_type, icon_size);
 
+	if (tab->priv->load_error_state)
+	{
+		pixbuf = get_stock_icon (theme, 
+					 GTK_STOCK_DIALOG_ERROR, 
+					 icon_size);
+	}
+	else
+	{
+	
+		const gchar *raw_uri;
+		const gchar *mime_type;
+		GeditDocument *doc;
+	
+		doc = gedit_tab_get_document (tab);
+		
+		raw_uri = gedit_document_get_uri_ (doc);
+		mime_type = gedit_document_get_mime_type (doc);
+
+		pixbuf = get_icon (theme, raw_uri, mime_type, icon_size);
+	}
+	
 	return pixbuf;	
 }
 

@@ -235,7 +235,7 @@ gedit_message_area_init (GeditMessageArea *message_area)
 	message_area->priv->main_hbox = gtk_hbox_new (FALSE, 16); /* FIXME: use style properties */
 	gtk_widget_show (message_area->priv->main_hbox);
 	gtk_container_set_border_width (GTK_CONTAINER (message_area->priv->main_hbox), 
-					6); /* FIXME: use style properties */
+					8); /* FIXME: use style properties */
 			    
 	message_area->priv->action_area = gtk_vbox_new (TRUE, 10); /* FIXME: use style properties */
 	gtk_widget_show (message_area->priv->action_area);
