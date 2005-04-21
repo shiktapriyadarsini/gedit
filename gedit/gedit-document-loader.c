@@ -59,6 +59,8 @@ struct _GeditDocumentLoaderPrivate
 	gchar			 *uri;
 	const GeditEncoding      *encoding;
 	
+	GnomeVFSURI              *vfs_uri;
+	
 	GnomeVFSFileInfo	 *info;
 	GnomeVFSFileSize	  bytes_read;
 	
@@ -134,6 +136,8 @@ gedit_document_loader_get_property (GObject    *object,
 static void
 gedit_document_loader_finalize (GObject *object)
 {
+	/* TODO */
+
 	G_OBJECT_CLASS (gedit_document_loader_parent_class)->finalize (object);
 }
 
@@ -561,6 +565,19 @@ load_local_file (GeditDocumentLoader *loader,
 			    NULL);		    
 }
 
+void
+load_remote_file (GeditDocumentLoader *loader)
+{
+/*
+	gnome_vfs_async_open_uri (&loader->priv->handle,
+				  loader->priv->vfs_uri,
+				  GNOME_VFS_OPEN_READ,
+				  GNOME_VFS_PRIORITY_MAX,
+				  (GnomeVFSAsyncOpenCallback)async_open_callback,
+				  loader);
+*/				  
+}
+
 /* If enconding == NULL, the encoding will be autodetected */
 gboolean
 gedit_document_loader_load (GeditDocumentLoader *loader,
@@ -572,18 +589,19 @@ gedit_document_loader_load (GeditDocumentLoader *loader,
 	g_return_val_if_fail (loader->priv->phase == GEDIT_DOCUMENT_LOADER_IDLE, FALSE);
 	g_return_val_if_fail (uri != NULL, FALSE);
 
+	loader->priv->vfs_uri = gnome_vfs_uri_new (uri);
+	if (loader->priv->vfs_uri == NULL)
+		return FALSE;
+
 	loader->priv->encoding = encoding;
 
 	loader->priv->uri = g_strdup (uri);
-
-	// TODO: returns FALSE if uri is not valid?
 
 	local_path = gnome_vfs_get_local_path_from_uri (uri);
 	if (local_path != NULL)
 		load_local_file (loader, local_path);
 	else
-		// TODO
-		g_return_val_if_reached (FALSE);
+		load_remote_file (loader);
 	
 	g_free (local_path);
 

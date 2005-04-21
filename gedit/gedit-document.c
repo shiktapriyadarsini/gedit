@@ -819,7 +819,10 @@ gedit_document_set_search_text (GeditDocument *doc,
 	g_return_if_fail ((text == NULL) || (doc->priv->search_text != text));
 	g_return_if_fail ((text == NULL) || g_utf8_validate (text, -1, NULL));
 
-	converted_text = gedit_utils_unescape_search_text (text);
+	gedit_debug_message (DEBUG_DOCUMENT, "text = %s", text);
+	
+	if (*text != '\0')		
+		converted_text = gedit_utils_unescape_search_text (text);
 
 	g_free (doc->priv->search_text);
 	
@@ -840,29 +843,80 @@ gedit_document_get_search_text (GeditDocument *doc,
 }
 
 gboolean
-gedit_document_search_forward (GeditDocument *doc,
-			       GtkTextIter   *start,
-			       GtkTextIter   *end,
-			       GtkTextIter   *match_start,
-			       GtkTextIter   *match_end)
+gedit_document_search_forward (GeditDocument     *doc,
+			       const GtkTextIter *start,
+			       const GtkTextIter *end,
+			       GtkTextIter       *match_start,
+			       GtkTextIter       *match_end)
 {
+	GtkTextIter iter;
+	GtkSourceSearchFlags search_flags;
+	gboolean found = FALSE;
+	GtkTextIter m_start;
+	GtkTextIter m_end;
+	
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail ((start == NULL) || 
 			      (gtk_text_iter_get_buffer (start) ==  GTK_TEXT_BUFFER (doc)), FALSE);
 	g_return_val_if_fail ((end == NULL) || 
 			      (gtk_text_iter_get_buffer (end) ==  GTK_TEXT_BUFFER (doc)), FALSE);
-			      
-	// TODO
 	
-	return FALSE;			      
+	if (doc->priv->search_text == NULL)
+	{
+		gedit_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == NULL\n");
+		return FALSE;
+	}
+	else
+		gedit_debug_message (DEBUG_DOCUMENT, "doc->priv->search_text == \"%s\"\n", doc->priv->search_text);
+				      
+	if (start == NULL)
+		gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
+	else
+		iter = *start;
+		
+	search_flags = GTK_SOURCE_SEARCH_VISIBLE_ONLY | GTK_SOURCE_SEARCH_TEXT_ONLY;
+
+	if (!GEDIT_SEARCH_IS_CASE_SENSITIVE (doc->priv->search_flags))
+	{
+		search_flags = search_flags | GTK_SOURCE_SEARCH_CASE_INSENSITIVE;
+	}
+		
+	while (!found)
+	{
+		found = gtk_source_iter_forward_search (&iter,
+							doc->priv->search_text, 
+							search_flags,
+                        	                	&m_start, 
+                        	                	&m_end,
+                                	               	end);
+      	               	
+		if (found && GEDIT_SEARCH_IS_ENTIRE_WORD (doc->priv->search_flags))
+		{
+			found = gtk_text_iter_starts_word (&m_start) && 
+					gtk_text_iter_ends_word (&m_end);
+
+			if (!found) 
+				iter = m_end;
+		}
+		else
+			break;
+	}
+	
+	if (found && (match_start != NULL))
+		*match_start = m_start;
+	
+	if (found && (match_end != NULL))
+		*match_end = m_end;
+	
+	return found;			      
 }
 						 
 gboolean
-gedit_document_search_backward (GeditDocument *doc,
-				GtkTextIter   *start,
-				GtkTextIter   *end,
-				GtkTextIter   *match_start,
-				GtkTextIter   *match_end)
+gedit_document_search_backward (GeditDocument     *doc,
+				const GtkTextIter *start,
+				const GtkTextIter *end,
+				GtkTextIter       *match_start,
+				GtkTextIter       *match_end)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail ((start == NULL) || 

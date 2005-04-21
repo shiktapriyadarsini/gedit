@@ -311,8 +311,93 @@ line_number_entry_activate (GtkEntry         *entry,
 }
 
 static void
-search_text (GeditSearchPanel *panel)
+run_search (GeditSearchPanel *panel,
+            GeditView        *view)
 {
+	GtkTextIter start_iter;
+	GtkTextIter match_start;
+	GtkTextIter match_end;	
+	gboolean found;
+	gboolean wrap_around;
+	const gchar *entry_text;
+	
+	GeditDocument *doc;
+
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	
+	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+					      &start_iter,
+					      &match_end);
+	
+	gtk_text_iter_order (&start_iter, &match_end);
+	
+	/* run search */
+	found = gedit_document_search_forward (doc,
+					       &start_iter,
+					       NULL,
+					       &match_start,
+					       &match_end);
+
+	/* FIXME */
+	wrap_around = TRUE;
+	
+	/* g_print ("Found: %s\n", found ? "TRUE" : "FALSE"); */
+	
+	if (!found && wrap_around)
+	{
+		found = gedit_document_search_forward (doc,
+					       NULL,
+					       NULL, /* FIXME: set the end_inter */
+					       &match_start,
+					       &match_end);
+	}
+	
+	if (found)
+	{
+		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
+					&match_start);
+
+		gtk_text_buffer_move_mark_by_name (GTK_TEXT_BUFFER (doc),
+					"selection_bound", &match_end);
+	}
+	
+	entry_text  = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+
+	if (!found)
+		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
+					      &start_iter);
+					      
+	if (found || (*entry_text == '\0'))
+	{
+		gedit_view_scroll_to_cursor (view);
+		gtk_widget_set_sensitive (panel->priv->find_button, TRUE);
+		gtk_widget_modify_base (panel->priv->search_entry,
+				        GTK_STATE_NORMAL,
+				        NULL);
+		gtk_widget_modify_text (panel->priv->search_entry,
+				        GTK_STATE_NORMAL,
+				        NULL);	
+				        
+			        
+	}
+	else
+	{
+		GdkColor red;
+		GdkColor white;
+		
+		/* FIXME: a11y */
+		
+					
+		gdk_color_parse ("#FF6666", &red);
+		gdk_color_parse ("white", &white);		
+		gtk_widget_set_sensitive (panel->priv->find_button, FALSE);
+		gtk_widget_modify_base (panel->priv->search_entry,
+				        GTK_STATE_NORMAL,
+				        &red);
+		gtk_widget_modify_text (panel->priv->search_entry,
+				        GTK_STATE_NORMAL,
+				        &white);				        
+	}
 #if 0
 	GeditView *active_view;
 	GeditDocument *doc;
@@ -395,14 +480,28 @@ search_entry_changed (GtkEditable      *editable,
 		      GeditSearchPanel *panel)
 {
 	GeditView *active_view; 
+	GeditDocument *doc;
+	gchar *search_text;
+	const gchar *entry_text;
 	
 	active_view = gedit_window_get_active_view (panel->priv->window);
 	if (active_view == NULL)
 		return;
+	
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+	
+	entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	
+	search_text = gedit_document_get_search_text (doc, NULL);
+	
+	if ((search_text == NULL) || (strcmp (search_text, entry_text) != 0))
+		/* FIXME: write get_search_flags */
+		gedit_document_set_search_text (doc, entry_text, 0);
 		
-	search_text (panel);
+	run_search (panel, active_view);
 }
 
+/* FIXME: I think we have the same function in gedit-utils */
 static gchar* 
 escape_search_text (const gchar* text)
 {
@@ -667,9 +766,7 @@ gedit_search_panel_focus_search	(GeditSearchPanel *panel)
 		{
 			gchar *lst;
 
-			// FIXME
-			// lst = gedit_document_get_last_searched_text (doc);
-			lst = g_strup ("FIXME");
+			lst = gedit_document_get_search_text (doc, NULL);
 			
 			if (lst != NULL)
 			{

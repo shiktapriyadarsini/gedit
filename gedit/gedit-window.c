@@ -2114,7 +2114,7 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 {
 	GtkAction *action;
 	static gboolean recursione_guard = FALSE;
-	
+	gboolean show = FALSE;
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	
 	if (recursione_guard)
@@ -2126,9 +2126,17 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 	
 	if (visible && 
 	    (GTK_WIDGET_VISIBLE (window->priv->side_panel) != visible))
+	{
 		gtk_widget_show (window->priv->side_panel);
+		show = TRUE;
+	}
 	else
+	{
 		gtk_widget_hide (window->priv->side_panel);
+		if (window->priv->active_tab)		
+			gtk_widget_grab_focus (GTK_WIDGET (
+					gedit_tab_get_view (GEDIT_TAB (window->priv->active_tab))));
+	}
 		
 	if (gedit_prefs_manager_side_pane_visible_can_set ())
 		gedit_prefs_manager_set_side_pane_visible (visible);
@@ -2139,6 +2147,12 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 
+
+	if (show)
+	{
+		g_print ("GRAB side panel\n");
+		gtk_widget_grab_focus (window->priv->side_panel);
+	}
 	recursione_guard = FALSE;		
 }
 

@@ -165,14 +165,14 @@ gchar		*gedit_document_get_search_text	(GeditDocument       *doc,
 						 gint                *flags);
 
 gboolean	 gedit_document_search_forward	(GeditDocument       *doc,
-						 GtkTextIter         *start,
-						 GtkTextIter         *end,
+						 const GtkTextIter   *start,
+						 const GtkTextIter   *end,
 						 GtkTextIter         *match_start,
 						 GtkTextIter         *match_end);
 						 
 gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
-						 GtkTextIter         *start,
-						 GtkTextIter         *end,
+						 const GtkTextIter   *start,
+						 const GtkTextIter   *end,
 						 GtkTextIter         *match_start,
 						 GtkTextIter         *match_end);
 

@@ -70,6 +70,9 @@ typedef struct _GeditPanelClass GeditPanelClass;
 struct _GeditPanelClass 
 {
 	GtkVBoxClass parent_class;
+	
+	/* Keybinding signals */
+	void (* close)    (GeditPanel     *panel);
 };
 
 /*

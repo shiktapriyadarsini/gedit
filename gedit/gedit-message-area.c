@@ -61,9 +61,9 @@ struct _ResponseData
 };
 
 enum {
-  RESPONSE,
-  CLOSE,
-  LAST_SIGNAL
+	RESPONSE,
+	CLOSE,
+	LAST_SIGNAL
 };
 
 static guint signals[LAST_SIGNAL];

@@ -31,6 +31,9 @@
 #include "gedit-panel.h"
 
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkkeysyms.h>
 
 #define PANEL_ITEM_KEY "GeditPanelItemKey"
 
@@ -58,6 +61,14 @@ struct _GeditPanelItem
 /* Local prototypes */
 static void gedit_panel_class_init (GeditPanelClass * c);
 static void gedit_panel_init (GeditPanel * panel);
+
+/* Signals */
+enum {
+	CLOSE,
+	LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL];
 
 /* Pointer to the parent class */
 static GtkVBoxClass *parent_class = NULL;
@@ -104,15 +115,59 @@ gedit_panel_finalize (GObject *obj)
 }
 
 static void
-gedit_panel_class_init (GeditPanelClass *c)
+gedit_panel_close (GeditPanel *panel)
 {
-	GObjectClass *g_object_class = G_OBJECT_CLASS (c);
+	gtk_widget_hide (GTK_WIDGET (panel));
+}
 
-	g_type_class_add_private (c, sizeof (GeditPanelPrivate));
+static void
+gedit_panel_grab_focus (GtkWidget *w)
+{
+	gint n;
+	GtkWidget *tab;
+	GeditPanel *panel = GEDIT_PANEL (w);
+	
+	g_print ("gedit_panel_grab_focus\n");
+	
+	n = gtk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
+	if (n == -1)
+		return;
+		
+	tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (panel->priv->notebook),
+					 n);
+	g_return_if_fail (tab != NULL);
+	
+	gtk_widget_grab_focus (tab);
+}
+
+static void
+gedit_panel_class_init (GeditPanelClass *klass)
+{
+	GtkBindingSet *binding_set;
+	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	
+	g_type_class_add_private (klass, sizeof (GeditPanelPrivate));
 
 	parent_class = g_type_class_ref (GTK_TYPE_VBOX);
 
 	g_object_class->finalize = gedit_panel_finalize;
+	
+	widget_class->grab_focus = gedit_panel_grab_focus;
+	
+	klass->close = gedit_panel_close;
+	
+	signals[CLOSE] =  g_signal_new ("close",
+					G_OBJECT_CLASS_TYPE (klass),
+					G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+					G_STRUCT_OFFSET (GeditPanelClass, close),
+		  			NULL, NULL,
+		  			g_cclosure_marshal_VOID__VOID,
+					G_TYPE_NONE, 0);
+					
+	binding_set = gtk_binding_set_by_class (klass);
+  
+	gtk_binding_entry_add_signal (binding_set, GDK_Escape, 0, "close", 0);
 }
 
 #define TAB_WIDTH_N_CHARS 10
