@@ -137,14 +137,13 @@ gboolean	 gedit_document_insert_file	(GeditDocument       *doc,
 						 GtkTextIter         *iter, 
 						 const gchar         *uri, 
 						 const GeditEncoding *encoding);
-/* Ancora da discutere
-gboolean	gedit_document_save 		(GeditDocument        *doc, 
-						 GError              **error);
-gboolean	gedit_document_save_as 		(GeditDocument        *doc,	
+
+void		gedit_document_save 		(GeditDocument        *doc);
+
+void		gedit_document_save_as 		(GeditDocument        *doc,	
 						 const gchar          *uri, 
-						 const GeditEncoding  *encoding,
-						 GError              **error);
-*/
+						 const GeditEncoding  *encoding);
+
 gboolean	 gedit_document_is_untouched 	(GeditDocument       *doc);
 gboolean	 gedit_document_is_untitled 	(GeditDocument       *doc);
 

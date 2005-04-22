@@ -123,7 +123,7 @@ GtkWindowGroup  *gedit_window_get_group			(GeditWindow         *window);
 GeditPanel	*gedit_window_get_side_panel		(GeditWindow         *window);
 
 gint		 gedit_window_load_files		(GeditWindow         *window,
-							 GSList              *uris,
+							 const GSList        *uris,
 							 const GeditEncoding *encoding,
 							 gboolean             create);
 

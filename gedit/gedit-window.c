@@ -1288,10 +1288,10 @@ drag_data_received_cb (GtkWidget        *widget,
 		       guint             time,
 		       gpointer          data)
 {
-	GList *list = NULL;
-	GSList *uris = NULL;
-	GList *l = NULL;
 	GtkWidget *target_window;
+	gchar **uris;
+	GSList *uri_list = NULL;
+	gint i;
 
 	if (info != TARGET_URI_LIST)
 		return;
@@ -1301,29 +1301,25 @@ drag_data_received_cb (GtkWidget        *widget,
 	target_window = gtk_widget_get_toplevel (widget);
 	g_return_if_fail (GEDIT_IS_WINDOW (target_window));
 
-	list = gnome_vfs_uri_list_parse (selection_data->data);
+	uris = g_uri_list_extract_uris (selection_data->data);
 
-	for (l = list; l != NULL; l = l->next)
-	{
-		uris = g_slist_prepend (uris, 
-				gnome_vfs_uri_to_string ((const GnomeVFSURI*)(l->data), 
-				GNOME_VFS_URI_HIDE_NONE));
-	}
+	for (i = 0; uris[i] != NULL; i++)
+		uri_list = g_slist_prepend (uri_list, g_strdup (uris[i]));
 
-	gnome_vfs_uri_list_free (list);
+	g_strfreev (uris);
 
-	if (uris == NULL)
+	if (uri_list == NULL)
 		return;
 
-	uris = g_slist_reverse (uris);
-	
-	gedit_window_load_files (GEDIT_WINDOW (target_window),
-				 uris,
-				 NULL,
-				 FALSE);	
+	uri_list = g_slist_reverse (uri_list);
 
-	g_slist_foreach (uris, (GFunc)g_free, NULL);	
-	g_slist_free (uris);
+	gedit_window_load_files (GEDIT_WINDOW (target_window),
+				 uri_list,
+				 NULL,
+				 FALSE);
+
+	g_slist_foreach (uri_list, (GFunc) g_free, NULL);	
+	g_slist_free (uri_list);
 }
 
 /*
@@ -2238,8 +2234,8 @@ _gedit_window_get_search_panel (GeditWindow *window)
 }
 
 gint
-gedit_window_load_files	(GeditWindow         *window,
-			 GSList              *uris,
+gedit_window_load_files (GeditWindow         *window,
+			 const GSList        *uris,
 			 const GeditEncoding *encoding,
 			 gboolean             create)
 {
@@ -2323,7 +2319,7 @@ gedit_window_load_files	(GeditWindow         *window,
 							"Loading %d files...", 
 							loaded_files),
 					       loaded_files);
-	}					     
+	}				     
 	
 	return loaded_files;
 }

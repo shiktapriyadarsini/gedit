@@ -47,7 +47,7 @@
 #include "gedit-metadata-manager.h"
 #include "gedit-languages-manager.h"
 #include "gedit-document-loader.h"
-
+#include "gedit-document-saver.h"
 #include "gedit-marshal.h"
 
 #include <gtksourceview/gtksourceiter.h>
@@ -103,7 +103,10 @@ struct _GeditDocumentPrivate
 	GeditDocumentLoader *loader;
 	gboolean     create; /* Create file if uri points 
 	                        to a non existing file */
-	const GeditEncoding *requested_encoding;                   
+	const GeditEncoding *requested_encoding;
+
+	/* Saving stuff */
+	GeditDocumentSaver *saver;             
 };
 
 enum {
@@ -741,6 +744,67 @@ gedit_document_load (GeditDocument       *doc,
 	return gedit_document_loader_load (doc->priv->loader,
 					   uri,
 					   doc->priv->requested_encoding);
+}
+
+static void
+document_saver_saving (GeditDocumentSaver *saver,
+		       gboolean            completed,
+		       const GError       *error,
+		       GeditDocument      *doc)
+{
+	if (error)
+		g_print ("error saving: %s\n", error->message);
+}
+
+static void
+document_save_real (GeditDocument       *doc,
+		    const gchar         *uri,
+		    const GeditEncoding *encoding)
+{
+	/* create a saver.
+	 * Differently from the loader, the saver will live until
+	 * the document itself is destroyed, since saving usually
+	 * occurs more than once. If a saver already exist, reset it.
+	 */
+	// CHECK: or do we want to keep it simple and create and throw away?
+	if (doc->priv->saver == NULL)
+	{
+		doc->priv->saver = gedit_document_saver_new (doc);
+
+		g_signal_connect (doc->priv->saver,
+				  "saving",
+				  G_CALLBACK (document_saver_saving),
+				  doc);
+	}
+	else
+	{
+		if (!gedit_document_saver_reset (doc->priv->saver))
+			return; //TODO assert it
+	}
+
+	gedit_document_saver_save (doc->priv->saver, uri, encoding);
+}
+
+void
+gedit_document_save (GeditDocument *doc)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	g_return_if_fail (doc->priv->uri != NULL);
+
+	document_save_real (doc,
+			    doc->priv->uri,
+			    doc->priv->encoding);
+}
+
+void
+gedit_document_save_as (GeditDocument       *doc,
+			const gchar         *uri,
+			const GeditEncoding *encoding)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	g_return_if_fail (uri != NULL);
+
+	document_save_real (doc, uri, encoding);
 }
 
 gboolean

@@ -112,13 +112,13 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 {
 	GtkWidget *open_dialog;
 	gpointer data;
-	
+
 	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
-	
+
 	if ((data != NULL) && (GEDIT_IS_FILE_CHOOSER_DIALOG (data)))
 	{
 		gtk_window_present (GTK_WINDOW (data));
-		
+
 		return;
 	}
 
@@ -137,7 +137,7 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 	g_object_weak_ref (G_OBJECT (open_dialog),
 			   (GWeakNotify) open_dialog_destroyed,
 			   window);
-		
+
 	/* TODO: set the default path */
 		   
 	g_signal_connect (open_dialog,
@@ -202,6 +202,24 @@ gedit_cmd_file_open_recent (EggRecentItem *item, GeditWindow *window)
 void
 gedit_cmd_file_save (GtkAction *action, GeditWindow *window)
 {
+	GeditDocument *doc;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	doc = gedit_window_get_active_document (window);
+	if (doc == NULL)
+		return;
+
+	if (gedit_document_is_untitled (doc))
+	{
+		gedit_debug_message (DEBUG_COMMANDS, "Untitled");
+
+		// CHECK ok action NULL?
+		return gedit_cmd_file_save_as (NULL, window);
+	}
+
+	gedit_document_save (doc);
+
 #if 0
 	GeditMDIChild *active_child;
 	GtkWidget *active_view;
@@ -226,16 +244,33 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
                          gint                    response_id,
                          GeditWindow            *window)
 {
+	gchar *uri;
+	const GeditEncoding *encoding;
+	GeditDocument *doc;
+
 	gedit_debug (DEBUG_COMMANDS);
-	
+
 	if (response_id != GTK_RESPONSE_OK)
 	{
 		gtk_widget_destroy (GTK_WIDGET (dialog));
 
 		return;
 	}
-	
-	g_print ("Save\n");
+
+	uri = gtk_file_chooser_get_uri (GTK_FILE_CHOOSER (dialog));
+	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
+
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+
+	g_return_if_fail (uri != NULL); /* CHECK */
+
+	doc = gedit_window_get_active_document (window);
+	if (doc != NULL)
+	{
+		gedit_document_save_as (doc, uri, encoding);	
+	}
+
+	g_free (uri);
 }
 
 /* Save As dialog is modal to its main window */

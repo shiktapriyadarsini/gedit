@@ -36,12 +36,11 @@
 #include <libgnome/gnome-help.h>
 #include <libgnomeui/gnome-entry.h>
 
-#include "gedit2.h"
-#include "gedit-mdi.h"
 #include "gedit-utils.h"
-#include "gedit-file.h"
-#include "gedit-dialogs.h"
 #include "gedit-encodings-option-menu.h"
+#include "gedit-dialogs.h"
+
+#define GEDIT_OPEN_URI_DIALOG_KEY "gedit-open-uri-dialog-key"
 
 typedef struct _GeditDialogOpenUri GeditDialogOpenUri;
 
@@ -53,9 +52,43 @@ struct _GeditDialogOpenUri {
 	GtkWidget *encoding_menu;
 };
 
-static void open_button_pressed (GeditDialogOpenUri * dialog);
-static void help_button_pressed (GeditDialogOpenUri * dialog);
-static GeditDialogOpenUri *dialog_open_uri_get_dialog (void);
+static void
+open_button_pressed (GeditDialogOpenUri * dialog)
+{
+	gchar *file_name = NULL;
+	const GeditEncoding *encoding;
+
+	g_return_if_fail (dialog != NULL);
+
+	file_name = gtk_editable_get_chars (GTK_EDITABLE (dialog->uri),
+					    0, -1);
+
+	gnome_entry_prepend_history (GNOME_ENTRY (dialog->uri_list), 
+				     TRUE,
+				     file_name);
+
+	encoding = gedit_encodings_option_menu_get_selected_encoding (
+			GEDIT_ENCODINGS_OPTION_MENU (dialog->encoding_menu));
+
+	gedit_file_open_single_uri (file_name, encoding);
+
+	g_free (file_name);
+}
+
+static void
+help_button_pressed (GeditDialogOpenUri * dialog)
+{
+	GError *error = NULL;
+
+	gnome_help_display ("gedit.xml", "gedit-open-from-uri", &error);
+
+	if (error != NULL)
+	{
+		g_warning (error->message);
+
+		g_error_free (error);
+	}
+}
 
 static GeditDialogOpenUri *
 dialog_open_uri_get_dialog (void)
@@ -143,19 +176,67 @@ dialog_open_uri_get_dialog (void)
 	return dialog;
 }
 
+static void
+dialog_destroyed (GeditWindow *window, GeditFileChooserDialog *dialog)
+{
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_OPEN_URI_DIALOG_KEY,
+			   NULL);
+}
+
 void
-gedit_dialog_open_uri (void)
+gedit_dialog_open_uri (GtkWindow *parent)
 {
 	GeditDialogOpenUri *dialog;
+	gpointer data;
 	gint response;
+
+	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_URI_DIALOG_KEY);
+
+	if ((data != NULL) && (GTK_IS_DIALOG (data)))
+	{
+		gtk_window_present (GTK_WINDOW (data));
+
+		return;
+	}
 
 	dialog = dialog_open_uri_get_dialog ();
 	if (!dialog)
 		return;
 
+	g_object_set_data (G_OBJECT (parent),
+			   GEDIT_OPEN_DIALOG_KEY,
+			   dialog);
+
+	g_object_weak_ref (G_OBJECT (dialog),
+			   (GWeakNotify) dialog_destroyed,
+			   parent);
+
+	if (parent != NULL)
+	{
+		GtkWindowGroup *wg;
+
+		gtk_window_set_transient_for (GTK_WINDOW (dialog),
+					      parent);
+  	 
+  	                         wg = GTK_WINDOW (toplevel)->group;
+  	                         if (wg == NULL)
+  	                         {
+  	                                 wg = gtk_window_group_new ();
+  	                                 gtk_window_group_add_window (wg,
+  	                                                              GTK_WINDOW (toplevel));
+  	                         }
+  	 
+  	                         gtk_window_group_add_window (wg,
+  	                                                      GTK_WINDOW (dialog));
+  	                 }
+
+
+
+
 	gedit_encodings_option_menu_set_selected_encoding (
 		GEDIT_ENCODINGS_OPTION_MENU (dialog->encoding_menu),
-		NULL);	
+		NULL);
 
 	gtk_widget_grab_focus (dialog->uri);
 
@@ -180,43 +261,3 @@ gedit_dialog_open_uri (void)
 	} while (response == GTK_RESPONSE_HELP);
 }
 
-static void
-open_button_pressed (GeditDialogOpenUri * dialog)
-{
-	gchar *file_name = NULL;
-	const GeditEncoding *encoding;
-	
-	g_return_if_fail (dialog != NULL);
-
-	file_name =
-	    gtk_editable_get_chars (GTK_EDITABLE (dialog->uri), 0, -1);
-
-	gnome_entry_prepend_history (GNOME_ENTRY (dialog->uri_list), 
-				     TRUE,
-				     file_name);
-
-	gtk_widget_hide (dialog->dialog);
-
-	encoding = gedit_encodings_option_menu_get_selected_encoding (
-			GEDIT_ENCODINGS_OPTION_MENU (dialog->encoding_menu));
-	
-	gedit_file_open_single_uri (file_name, encoding);
-
-	g_free (file_name);
-}
-
-static void
-help_button_pressed (GeditDialogOpenUri * dialog)
-{
-	GError *error = NULL;
-
-	gnome_help_display ("gedit.xml", "gedit-open-from-uri", &error);
-	
-	if (error != NULL)
-	{
-		g_warning (error->message);
-
-		g_error_free (error);
-	}
-
-}
