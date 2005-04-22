@@ -23,18 +23,18 @@ libdialogs_la_SOURCES = 			\
 	gedit-close-confirmation-dialog.h 	\
 	gedit-encodings-dialog.c		\
 	gedit-encodings-dialog.h		\
+	gedit-dialog-uri.c			\
 	gedit-dialogs.h
 
-#	gedit-dialog-uri.c		\
 #	gedit-plugin-program-location-dialog.c \
 #	gedit-dialog-replace.c
 
 
 glade_DATA =				\
+	uri.glade2			\
 	goto-line.glade2		\
 	replace.glade2
 
-#	uri.glade2			\
 #	plugin-manager.glade2		\
 #	gedit-preferences.glade2	\
 #	program-location-dialog.glade2	\

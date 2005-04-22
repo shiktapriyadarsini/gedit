@@ -115,8 +115,10 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 
 	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
 
-	if ((data != NULL) && (GEDIT_IS_FILE_CHOOSER_DIALOG (data)))
+	if (data != NULL)
 	{
+		g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (data));
+
 		gtk_window_present (GTK_WINDOW (data));
 
 		return;
@@ -139,12 +141,12 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 			   window);
 
 	/* TODO: set the default path */
-		   
+
 	g_signal_connect (open_dialog,
 			  "response",
 			  G_CALLBACK (open_dialog_response_cb),
 			  window);
-			   						     
+
 	gtk_widget_show (open_dialog);
 	
 #if 0
@@ -170,6 +172,12 @@ gedit_cmd_file_open (GtkAction *action, GeditWindow *window)
 			     NULL,
 			     FALSE);
 #endif			     
+}
+
+void
+gedit_cmd_file_open_uri (GtkAction *action, GeditWindow *window)
+{
+	gedit_dialog_open_uri (window);
 }
 
 void
@@ -328,16 +336,6 @@ gedit_cmd_file_revert (GtkAction *action, GeditWindow *window)
 		return;
 
 	gedit_file_revert (active_child);
-#endif
-}
-
-void
-gedit_cmd_file_open_uri (GtkAction *action, GeditWindow *window)
-{
-#if 0
-	gedit_debug (DEBUG_COMMANDS);
-
-	gedit_dialog_open_uri ();
 #endif
 }
 

@@ -3,7 +3,7 @@
  * gedit-dialog-uri.c
  * This file is part of gedit
  *
- * Copyright (C) 2001 Paolo Maggi 
+ * Copyright (C) 2001-2005 Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,8 @@
  * Modified by the gedit Team, 1998-2001. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -36,9 +38,10 @@
 #include <libgnome/gnome-help.h>
 #include <libgnomeui/gnome-entry.h>
 
-#include "gedit-utils.h"
-#include "gedit-encodings-option-menu.h"
 #include "gedit-dialogs.h"
+#include "gedit-encodings-option-menu.h"
+#include "gedit-window.h"
+#include "gedit-utils.h"
 
 #define GEDIT_OPEN_URI_DIALOG_KEY "gedit-open-uri-dialog-key"
 
@@ -50,80 +53,87 @@ struct _GeditDialogOpenUri {
 	GtkWidget *uri;
 	GtkWidget *uri_list;
 	GtkWidget *encoding_menu;
+
+	GeditWindow *gedit_window;
 };
 
 static void
-open_button_pressed (GeditDialogOpenUri * dialog)
-{
-	gchar *file_name = NULL;
-	const GeditEncoding *encoding;
-
-	g_return_if_fail (dialog != NULL);
-
-	file_name = gtk_editable_get_chars (GTK_EDITABLE (dialog->uri),
-					    0, -1);
-
-	gnome_entry_prepend_history (GNOME_ENTRY (dialog->uri_list), 
-				     TRUE,
-				     file_name);
-
-	encoding = gedit_encodings_option_menu_get_selected_encoding (
-			GEDIT_ENCODINGS_OPTION_MENU (dialog->encoding_menu));
-
-	gedit_file_open_single_uri (file_name, encoding);
-
-	g_free (file_name);
-}
-
-static void
-help_button_pressed (GeditDialogOpenUri * dialog)
+dialog_response_cb (GtkDialog          *dialog,
+                    gint                response_id,
+                    GeditDialogOpenUri *dlg)
 {
 	GError *error = NULL;
+	gchar *uri = NULL;
+	GSList *uris = NULL;
+	const GeditEncoding *encoding;
+	gint n;
 
-	gnome_help_display ("gedit.xml", "gedit-open-from-uri", &error);
-
-	if (error != NULL)
+	switch (response_id)
 	{
-		g_warning (error->message);
+	case GTK_RESPONSE_HELP:
+		gnome_help_display ("gedit.xml", "gedit-open-from-uri", &error);
 
-		g_error_free (error);
+		if (error != NULL)
+		{
+			g_warning (error->message);
+
+			g_error_free (error);
+		}
+
+		break;
+
+	case GTK_RESPONSE_OK:
+		uri = gtk_editable_get_chars (GTK_EDITABLE (dlg->uri),
+					      0,
+					      -1);
+
+		uris = g_slist_prepend (uris, uri);
+
+		gnome_entry_prepend_history (GNOME_ENTRY (dlg->uri_list), 
+					     TRUE,
+					     uri);
+
+		encoding = gedit_encodings_option_menu_get_selected_encoding (
+				GEDIT_ENCODINGS_OPTION_MENU (dlg->encoding_menu));
+
+		n = gedit_window_load_files (dlg->gedit_window,
+			 		     uris,
+					     encoding,
+					     FALSE);
+		g_free (uri);
+		g_slist_free (uris);
+
+		/* fall through */
+	default:
+		gtk_widget_destroy (GTK_WIDGET (dialog));
 	}
 }
 
 static GeditDialogOpenUri *
-dialog_open_uri_get_dialog (void)
+dialog_open_uri_get_dialog (GtkWindow *parent)
 {
-	static GeditDialogOpenUri *dialog = NULL;
+	GeditDialogOpenUri *dialog;
 	GladeXML *gui;
-	GtkWindow *window;
 	GtkWidget *content;
 	GtkWidget *encoding_label;
 	GtkWidget *encoding_hbox;
-	
-	window = GTK_WINDOW (gedit_get_active_window ());
-
-	if (dialog != NULL)
-	{
-		gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
-					      GTK_WINDOW (window));
-		return dialog;
-	}
 
 	gui = glade_xml_new (GEDIT_GLADEDIR "uri.glade2",
 			     "open_uri_dialog_content", NULL);
 	if (!gui)
 	{
-		gedit_warning (window,
+		gedit_warning (parent,
 			       MISSING_FILE,
 		    	       GEDIT_GLADEDIR "uri.glade2");
+
 		return NULL;
 	}
 
 	dialog = g_new0 (GeditDialogOpenUri, 1);
 
 	dialog->dialog = gtk_dialog_new_with_buttons (_("Open Location"),
-						      window,
-						      GTK_DIALOG_MODAL,
+						      parent,
+						      GTK_DIALOG_DESTROY_WITH_PARENT,
 						      GTK_STOCK_CANCEL,
 						      GTK_RESPONSE_CANCEL,
 						      GTK_STOCK_OPEN,
@@ -138,15 +148,18 @@ dialog_open_uri_get_dialog (void)
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog->dialog), FALSE);
 
 	content = glade_xml_get_widget (gui, "open_uri_dialog_content");
-
 	dialog->uri = glade_xml_get_widget (gui, "uri");
 	dialog->uri_list = glade_xml_get_widget (gui, "uri_list");
 	encoding_label = glade_xml_get_widget (gui, "encoding_label");
 	encoding_hbox = glade_xml_get_widget (gui, "encoding_hbox");
-	
-	if (!dialog->uri || !dialog->uri_list || !encoding_label || !encoding_hbox) 
+
+	if (!content          ||
+	    !dialog->uri      ||
+	    !dialog->uri_list ||
+	    !encoding_label   ||
+	    !encoding_hbox) 
 	{
-		gedit_warning (window,
+		gedit_warning (parent,
 			       MISSING_WIDGETS,
 			       GEDIT_GLADEDIR "uri.glade2");
 		return NULL;
@@ -177,62 +190,41 @@ dialog_open_uri_get_dialog (void)
 }
 
 static void
-dialog_destroyed (GeditWindow *window, GeditFileChooserDialog *dialog)
+dialog_destroyed (GtkObject          *obj,
+                  GeditDialogOpenUri *dialog)
 {
-	g_object_set_data (G_OBJECT (window),
+	g_object_set_data (G_OBJECT (dialog->gedit_window),
 			   GEDIT_OPEN_URI_DIALOG_KEY,
 			   NULL);
+
+	g_free (dialog);
 }
 
 void
-gedit_dialog_open_uri (GtkWindow *parent)
+gedit_dialog_open_uri (GeditWindow *parent)
 {
 	GeditDialogOpenUri *dialog;
-	gpointer data;
-	gint response;
 
-	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_URI_DIALOG_KEY);
-
-	if ((data != NULL) && (GTK_IS_DIALOG (data)))
+	dialog = (GeditDialogOpenUri *) g_object_get_data (G_OBJECT (parent),
+							   GEDIT_OPEN_URI_DIALOG_KEY);
+	if (dialog != NULL)
 	{
-		gtk_window_present (GTK_WINDOW (data));
+		g_return_if_fail (GTK_IS_DIALOG (dialog->dialog));
+
+		gtk_window_present (GTK_WINDOW (dialog->dialog));
 
 		return;
 	}
 
-	dialog = dialog_open_uri_get_dialog ();
+	dialog = dialog_open_uri_get_dialog (GTK_WINDOW (parent));
 	if (!dialog)
 		return;
 
+	dialog->gedit_window = parent;
+
 	g_object_set_data (G_OBJECT (parent),
-			   GEDIT_OPEN_DIALOG_KEY,
+			   GEDIT_OPEN_URI_DIALOG_KEY,
 			   dialog);
-
-	g_object_weak_ref (G_OBJECT (dialog),
-			   (GWeakNotify) dialog_destroyed,
-			   parent);
-
-	if (parent != NULL)
-	{
-		GtkWindowGroup *wg;
-
-		gtk_window_set_transient_for (GTK_WINDOW (dialog),
-					      parent);
-  	 
-  	                         wg = GTK_WINDOW (toplevel)->group;
-  	                         if (wg == NULL)
-  	                         {
-  	                                 wg = gtk_window_group_new ();
-  	                                 gtk_window_group_add_window (wg,
-  	                                                              GTK_WINDOW (toplevel));
-  	                         }
-  	 
-  	                         gtk_window_group_add_window (wg,
-  	                                                      GTK_WINDOW (dialog));
-  	                 }
-
-
-
 
 	gedit_encodings_option_menu_set_selected_encoding (
 		GEDIT_ENCODINGS_OPTION_MENU (dialog->encoding_menu),
@@ -242,22 +234,14 @@ gedit_dialog_open_uri (GtkWindow *parent)
 
 	gtk_entry_set_text (GTK_ENTRY (dialog->uri), "");
 
-	do {
-		response = gtk_dialog_run (GTK_DIALOG (dialog->dialog));
+	g_signal_connect (dialog->dialog,
+			  "response",
+			  G_CALLBACK (dialog_response_cb),
+			  dialog);
+	g_signal_connect (dialog->dialog,
+			  "destroy",
+			  G_CALLBACK (dialog_destroyed),
+			  dialog);
 
-		switch (response) {
-		case GTK_RESPONSE_OK:
-			open_button_pressed (dialog);
-			break;
-
-		case GTK_RESPONSE_HELP:
-			help_button_pressed (dialog);
-			break;
-
-		default:
-			gtk_widget_hide (dialog->dialog);
-		}
-
-	} while (response == GTK_RESPONSE_HELP);
+	gtk_widget_show (dialog->dialog);
 }
-

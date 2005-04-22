@@ -25,6 +25,8 @@
  * Modified by the gedit Team, 2002. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifndef __GEDIT_ENCODINGS_H__
@@ -47,5 +49,3 @@ const GeditEncoding 	*gedit_encoding_get_utf8	 (void);
 const GeditEncoding 	*gedit_encoding_get_current	 (void);
 
 #endif  /* __GEDIT_ENCODINGS_H__ */
-
-

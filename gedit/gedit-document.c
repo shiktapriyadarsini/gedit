@@ -86,8 +86,8 @@ struct _GeditDocumentPrivate
 	GnomeVFSURI *vfs_uri;
 	gchar	    *uri_for_display;
 	gchar	    *short_name_for_display;
-	
-	const gchar *encoding;
+
+	const GeditEncoding *encoding;
 
 	const gchar *mime_type;
 	
@@ -95,18 +95,18 @@ struct _GeditDocumentPrivate
 	guint	     auto_save_timeout;
 
 	GTimeVal     time_of_last_save_or_load;
-	
+
 	gint         search_flags;
 	gchar       *search_text;
 
 	/* Temp data while loading */
 	GeditDocumentLoader *loader;
-	gboolean     create; /* Create file if uri points 
-	                        to a non existing file */
+	gboolean             create; /* Create file if uri points 
+	                              * to a non existing file */
 	const GeditEncoding *requested_encoding;
 
 	/* Saving stuff */
-	GeditDocumentSaver *saver;             
+	GeditDocumentSaver *saver;
 };
 
 enum {
@@ -219,6 +219,9 @@ gedit_document_finalize (GObject *object)
 		}
 	}
 
+	g_free (doc->priv->uri_for_display);
+	g_free (doc->priv->short_name_for_display);
+
 	if (doc->priv->loader)
 		g_object_unref (doc->priv->loader);
 	
@@ -244,7 +247,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      gedit_marshal_VOID__VOID,
 			      G_TYPE_NONE,
 			      0);
-	
+
 	document_signals[LOADED] =
    		g_signal_new ("loaded",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -344,20 +347,16 @@ set_encoding (GeditDocument       *doc,
 	      const GeditEncoding *encoding,
 	      gboolean             set_by_user,
 	      gboolean             emit_signal)
-{	
-	const gchar *enc;
-	
-	enc = gedit_encoding_get_charset (encoding);
-
-	if (doc->priv->encoding == enc)
+{
+	if (doc->priv->encoding == encoding)
 		return;
-		
-	doc->priv->encoding = enc;
+
+	doc->priv->encoding = encoding;
 
 	if (set_by_user)
 		gedit_metadata_manager_set (doc->priv->uri,
 					    "encoding",
-					    doc->priv->encoding);
+					    gedit_encoding_get_charset (encoding));
 
 	if (emit_signal)
 		/* FIXME: do we need a encoding changed signal ? - Paolo */
@@ -416,19 +415,18 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 static void
 update_uri_for_display (GeditDocument *doc)
 {
+	g_free (doc->priv->uri_for_display);
+	g_free (doc->priv->short_name_for_display);
+
 	if (doc->priv->uri == NULL)
 	{
 		doc->priv->uri_for_display = g_strdup_printf (_("Unsaved Document %d"),  
-							      doc->priv->untitled_number);
-							      
+							      doc->priv->untitled_number);	      
 		doc->priv->short_name_for_display = g_strdup (doc->priv->uri_for_display);
 	}
 	else
 	{
-	
-
 		doc->priv->uri_for_display = gnome_vfs_format_uri_for_display (doc->priv->uri);
-		
 		doc->priv->short_name_for_display = get_uri_shortname_for_display (doc->priv->vfs_uri);
 	}
 }
@@ -437,26 +435,25 @@ static void
 gedit_document_init (GeditDocument *doc)
 {
 	gedit_debug (DEBUG_DOCUMENT);
-	
+
 	doc->priv = GEDIT_DOCUMENT_GET_PRIVATE (doc);
-	
+
 	doc->priv->uri = NULL;
 	doc->priv->vfs_uri = NULL;
 	doc->priv->untitled_number = get_untitled_number ();
 
 	update_uri_for_display (doc);
-	
+
 	doc->priv->mime_type = "text/plain";
 
 	doc->priv->readonly = FALSE;
 
 	doc->priv->last_save_was_manually = TRUE;
 	doc->priv->language_set_by_user = FALSE;
-	
+
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-	doc->priv->encoding = gedit_encoding_get_charset (
-						gedit_encoding_get_utf8 ());
+	doc->priv->encoding = gedit_encoding_get_utf8 ();
 
 	gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (doc), 
 					       gedit_prefs_manager_get_undo_actions_limit ());
@@ -676,6 +673,7 @@ document_loader_loading (GeditDocumentLoader *loader,
 {
 	if (completed)
 	{
+		GtkTextIter iter;
 		const gchar *uri;
 		const gchar *mime_type;
 
@@ -692,7 +690,15 @@ document_loader_loading (GeditDocumentLoader *loader,
 
 		set_uri (doc, uri, mime_type);
 
-		g_signal_emit (doc, 
+//		set_encoding (doc, doc->priv->requested_encoding);
+		
+		// FIXME: we should probably pass a requested_line to doc load
+		// for "gedit +42 life_and_everything.txt"
+		/* move the cursor to the top */
+		gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
+		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+
+		g_signal_emit (doc,
 			       document_signals[LOADED],
 			       0,
 			       error);
@@ -743,7 +749,7 @@ gedit_document_load (GeditDocument       *doc,
 
 	return gedit_document_loader_load (doc->priv->loader,
 					   uri,
-					   doc->priv->requested_encoding);
+					   encoding);
 }
 
 static void
@@ -1037,7 +1043,7 @@ gedit_document_get_encoding (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	return gedit_encoding_get_from_charset (doc->priv->encoding);
+	return doc->priv->encoding;
 }
 
 void

@@ -25,6 +25,8 @@
  * Modified by the gedit Team, 2002. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -433,4 +435,3 @@ gedit_encoding_get_name (const GeditEncoding* enc)
 
 	return (enc->name == NULL) ? _("Unknown") : enc->name;
 }
-
