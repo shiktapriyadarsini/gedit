@@ -693,11 +693,11 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
 				      gedit_menu_entries,
-				      gedit_n_menu_entries,
+				      G_N_ELEMENTS (gedit_menu_entries),
 				      window);
 	gtk_action_group_add_toggle_actions (action_group,
 					     gedit_toggle_menu_entries,
-					     gedit_n_toggle_menu_entries,
+					     G_N_ELEMENTS (gedit_toggle_menu_entries),
 					     window);
         /* TODO: add more action groups... toggles etc */
 
