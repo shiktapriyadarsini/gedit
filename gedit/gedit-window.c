@@ -1782,6 +1782,9 @@ gedit_window_init (GeditWindow *window)
 	/* Add menu bar and toolbar bar */
 	create_menu_bar_and_toolbar (window, main_box);
 
+	/* Add status bar */
+	create_statusbar (window, main_box);
+
 	/* Add the main area */
 	window->priv->hpaned = gtk_hpaned_new ();
   	gtk_box_pack_start (GTK_BOX (main_box), 
@@ -1808,9 +1811,6 @@ gedit_window_init (GeditWindow *window)
   	gtk_widget_show (window->priv->notebook);  			 
 
 	create_bottom_panel (window);
-	
-	/* Add status bar */
-	create_statusbar (window, main_box);
 	
 	/* Set visibility of panels */
 	// TODO

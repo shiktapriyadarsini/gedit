@@ -35,6 +35,8 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
+#include "gedit-window.h"
+
 #define PANEL_ITEM_KEY "GeditPanelItemKey"
 
 struct _GeditPanelPrivate 
@@ -65,6 +67,7 @@ static void gedit_panel_init (GeditPanel * panel);
 /* Signals */
 enum {
 	CLOSE,
+	FOCUS_DOCUMENT,
 	LAST_SIGNAL
 };
 
@@ -121,6 +124,21 @@ gedit_panel_close (GeditPanel *panel)
 }
 
 static void
+gedit_panel_focus_document (GeditPanel *panel)
+{
+	GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (panel));
+	if (GTK_WIDGET_TOPLEVEL (toplevel) && GEDIT_IS_WINDOW (toplevel))
+   	{
+		GeditView *view;
+		
+		view = gedit_window_get_active_view (GEDIT_WINDOW (toplevel));
+		if (view != NULL)
+			gtk_widget_grab_focus (GTK_WIDGET (view));
+			
+   	}
+}
+
+static void
 gedit_panel_grab_focus (GtkWidget *w)
 {
 	gint n;
@@ -156,6 +174,7 @@ gedit_panel_class_init (GeditPanelClass *klass)
 	widget_class->grab_focus = gedit_panel_grab_focus;
 	
 	klass->close = gedit_panel_close;
+	klass->focus_document = gedit_panel_focus_document;
 	
 	signals[CLOSE] =  g_signal_new ("close",
 					G_OBJECT_CLASS_TYPE (klass),
@@ -164,10 +183,25 @@ gedit_panel_class_init (GeditPanelClass *klass)
 		  			NULL, NULL,
 		  			g_cclosure_marshal_VOID__VOID,
 					G_TYPE_NONE, 0);
-					
+	signals[FOCUS_DOCUMENT] =  g_signal_new ("focus_document",
+					G_OBJECT_CLASS_TYPE (klass),
+					G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+					G_STRUCT_OFFSET (GeditPanelClass, focus_document),
+		  			NULL, NULL,
+		  			g_cclosure_marshal_VOID__VOID,
+					G_TYPE_NONE, 0);					
 	binding_set = gtk_binding_set_by_class (klass);
   
-	gtk_binding_entry_add_signal (binding_set, GDK_Escape, 0, "close", 0);
+	gtk_binding_entry_add_signal (binding_set, 
+				      GDK_Escape, 
+				      0, 
+				      "close", 
+				      0);
+	gtk_binding_entry_add_signal (binding_set, 
+				      GDK_Return, 
+				      GDK_CONTROL_MASK, 
+				      "focus_document", 
+				      0);	
 }
 
 #define TAB_WIDTH_N_CHARS 10

@@ -182,9 +182,6 @@ gint		 gedit_document_replace_all 	(GeditDocument       *doc,
 						 const gchar         *replace, 
 					    	 gint                 flags);
 
-// CHECK: serve? Come implementarla?
-gboolean	 gedit_document_can_find_again	(GeditDocument       *doc);
-
 void 		 gedit_document_set_language 	(GeditDocument       *doc,
 						 GtkSourceLanguage   *lang);
 GtkSourceLanguage 

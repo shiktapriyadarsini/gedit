@@ -72,7 +72,8 @@ struct _GeditPanelClass
 	GtkVBoxClass parent_class;
 	
 	/* Keybinding signals */
-	void (* close)    (GeditPanel     *panel);
+	void (* close)          (GeditPanel     *panel);
+	void (* focus_document) (GeditPanel     *panel);	
 };
 
 /*
