@@ -682,6 +682,7 @@ document_loader_loading (GeditDocumentLoader *loader,
 		    (error->code == GNOME_VFS_ERROR_NOT_FOUND))
 		{
 			// FIXME
+			
 			g_print ("create new\n");
 		}
 
@@ -962,8 +963,6 @@ gedit_document_search_forward (GeditDocument     *doc,
       	               	
 		if (found && GEDIT_SEARCH_IS_ENTIRE_WORD (doc->priv->search_flags))
 		{
-			g_print ("Entire word");
-			
 			found = gtk_text_iter_starts_word (&m_start) && 
 					gtk_text_iter_ends_word (&m_end);
 
@@ -1033,8 +1032,6 @@ gedit_document_search_backward (GeditDocument     *doc,
       	               	
 		if (found && GEDIT_SEARCH_IS_ENTIRE_WORD (doc->priv->search_flags))
 		{
-			g_print ("Entire word");
-			
 			found = gtk_text_iter_starts_word (&m_start) && 
 					gtk_text_iter_ends_word (&m_end);
 
@@ -1054,27 +1051,97 @@ gedit_document_search_backward (GeditDocument     *doc,
 	return found;		      
 }
 
-// CHECK: non sono sicuro sul da farsi... va cancellata? o può essere comoda averla qui?						 
 gint 
 gedit_document_replace_all (GeditDocument       *doc,
 			    const gchar         *find, 
 			    const gchar         *replace, 
 			    gint                 flags)
 {
-	// TODO
+	GtkTextIter iter;
+	GtkTextIter m_start;
+	GtkTextIter m_end;
+	GtkSourceSearchFlags search_flags = 0;
+	gboolean found = TRUE;
+	gint cont = 0;
+	gchar *search_text;
+	gchar *replace_text;
+	gint replace_text_len;
+	GtkTextBuffer *buffer;	
 	
-	return 0;
-}			    
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);
+	g_return_val_if_fail (replace != NULL, 0);
+	g_return_val_if_fail ((find != NULL) || (doc->priv->search_text != NULL), 0);
 
-gboolean
-gedit_document_can_find_again (GeditDocument *doc)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+	buffer = GTK_TEXT_BUFFER (doc);
+
+	if (find == NULL)
+		search_text = g_strdup (doc->priv->search_text);
+	else
+		search_text = gedit_utils_unescape_search_text (find);
+		
+	replace_text = gedit_utils_unescape_search_text (replace);
+		
+	gtk_text_buffer_get_start_iter (buffer, &iter);
+		
+	search_flags = GTK_SOURCE_SEARCH_VISIBLE_ONLY | GTK_SOURCE_SEARCH_TEXT_ONLY;
+
+	if (!GEDIT_SEARCH_IS_CASE_SENSITIVE (flags))
+	{
+		search_flags = search_flags | GTK_SOURCE_SEARCH_CASE_INSENSITIVE;
+	}
 	
-	// TODO
+	replace_text_len = strlen (replace_text);
 	
-	return FALSE;
-}
+	gtk_text_buffer_begin_user_action (buffer);
+	
+	do
+	{
+		found = gtk_source_iter_forward_search (&iter,
+							search_text, 
+							search_flags,
+                        	                	&m_start, 
+                        	                	&m_end,
+                                	               	NULL);
+								      	               	
+		if (found && GEDIT_SEARCH_IS_ENTIRE_WORD (flags))
+		{
+			gboolean word;
+						
+			word = gtk_text_iter_starts_word (&m_start) && 
+			       gtk_text_iter_ends_word (&m_end);
+				
+			if (!word)
+			{
+				iter = m_end;
+				continue;
+			}
+		}
+		
+		if (found)
+		{
+			++cont;
+			
+			gtk_text_buffer_delete (buffer, 
+						&m_start,
+						&m_end);
+		
+			gtk_text_buffer_insert (buffer,
+						&m_start,
+						replace_text,
+						replace_text_len);
+
+			iter = m_start;
+		}		
+
+	} while (found);
+		
+	gtk_text_buffer_end_user_action (buffer);
+		
+	g_free (search_text);
+	g_free (replace_text);	
+	
+	return cont;
+}			    
 
 void 
 gedit_document_set_language (GeditDocument     *doc, 

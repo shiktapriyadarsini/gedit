@@ -39,6 +39,7 @@
 #include "gedit-utils.h"
 #include "gedit-window.h"
 #include "gedit-debug.h"
+#include "gedit-statusbar.h"
 
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
@@ -107,6 +108,23 @@ get_selected_text (GtkTextBuffer *doc, gchar **selected_text, gint *len)
 }
 
 static void
+update_buttons_sensitivity (GeditSearchPanel *panel)
+{
+	const gchar *replace_text;
+	const gchar *search_text;
+	
+	search_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	replace_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
+
+	gtk_widget_set_sensitive (panel->priv->find_button, 
+				  (*search_text != '\0'));	
+	gtk_widget_set_sensitive (panel->priv->replace_button,
+				  (*replace_text != '\0') && (*search_text != '\0'));
+	gtk_widget_set_sensitive (panel->priv->replace_all_button, 
+				  (*replace_text != '\0') && (*search_text != '\0'));
+}
+
+static void
 window_tab_removed (GeditWindow      *window,
 		    GeditTab         *tab,
 		    GeditSearchPanel *panel)
@@ -126,7 +144,7 @@ window_tab_removed (GeditWindow      *window,
 		gtk_widget_set_sensitive (panel->priv->replace_all_button,
 					  FALSE);
 		gtk_widget_set_sensitive (panel->priv->search_options_vbox,
-					  FALSE);					  			  
+					  FALSE);
 	}
 }
 
@@ -141,14 +159,10 @@ window_tab_added (GeditWindow      *window,
 				  TRUE);
 	gtk_widget_set_sensitive (panel->priv->line_number_entry,
 				  TRUE);	
-	gtk_widget_set_sensitive (panel->priv->find_button,
-				  TRUE);
-	gtk_widget_set_sensitive (panel->priv->replace_button,
-				  TRUE);			  
-	gtk_widget_set_sensitive (panel->priv->replace_all_button,
-				  TRUE);
 	gtk_widget_set_sensitive (panel->priv->search_options_vbox,
-				  TRUE);				  
+				  TRUE);
+
+	update_buttons_sensitivity (panel);				  	  
 }
 
 static void
@@ -327,23 +341,32 @@ line_number_entry_activate (GtkEntry         *entry,
 
 /* FIXME: do we need to set a limit on the number of items? */
 static void
-add_search_entry_completion_entry (GeditSearchPanel *panel,
-				   GeditDocument    *doc)
+add_entry_completion_entry (GeditSearchPanel *panel,
+			    GeditDocument    *doc,
+			    gboolean          replace_entry)
 {
 	const gchar *text;
 	gboolean valid;
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 	
-	text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
-	
+	if (!replace_entry)
+		text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	else
+		text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
+		
 	/* g_print ("Text: %s\n", text); */
 	
 	if (g_utf8_strlen (text, -1) < MIN_KEY_LEN)
 		return;
 	
-	model = gtk_entry_completion_get_model (
-			gtk_entry_get_completion (GTK_ENTRY (panel->priv->search_entry)));
+	if (!replace_entry)
+		model = gtk_entry_completion_get_model (
+				gtk_entry_get_completion (GTK_ENTRY (panel->priv->search_entry)));
+	else
+		model = gtk_entry_completion_get_model (
+				gtk_entry_get_completion (GTK_ENTRY (panel->priv->replace_entry)));
+				
 	g_return_if_fail (model != NULL);		
 		
 	/* Get the first iter in the list */
@@ -384,7 +407,59 @@ add_search_entry_completion_entry (GeditSearchPanel *panel,
 			    -1);
 }				   
 
+/* Use occurences only for Replace All */
 static void
+phrase_found (GeditSearchPanel *panel,
+	      gint              occurrences)
+{
+	if (occurrences > 0)
+	{
+		gedit_statusbar_flash_message (GEDIT_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
+					       panel->priv->message_cid,
+					       ngettext("Found and replaced %d occurrence.",
+					     	        "Found and replaced %d occurrences.",
+					     	        occurrences),
+					       occurrences);
+	}
+	else
+	{
+		gedit_statusbar_flash_message (GEDIT_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
+					       panel->priv->message_cid, 
+					       " ");
+	}
+				   
+	gtk_widget_modify_base (panel->priv->search_entry,
+			        GTK_STATE_NORMAL,
+			        NULL);
+	gtk_widget_modify_text (panel->priv->search_entry,
+			        GTK_STATE_NORMAL,
+			        NULL);	
+}
+
+static void
+phrase_not_found (GeditSearchPanel *panel)
+{
+	GdkColor red;
+	GdkColor white;
+	
+	/* FIXME: a11y and theme */
+	
+	gedit_statusbar_flash_message (GEDIT_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
+				       panel->priv->message_cid,
+				       _("Phrase not found"));
+				
+	gdk_color_parse ("#FF6666", &red);
+	gdk_color_parse ("white", &white);		
+
+	gtk_widget_modify_base (panel->priv->search_entry,
+			        GTK_STATE_NORMAL,
+			        &red);
+	gtk_widget_modify_text (panel->priv->search_entry,
+			        GTK_STATE_NORMAL,
+			        &white);			
+}
+
+static gboolean
 run_search (GeditSearchPanel *panel,
             GeditView        *view,
             gboolean          button_pressed)
@@ -523,51 +598,26 @@ run_search (GeditSearchPanel *panel,
 					      &start_iter);
 						      
 	if (found || (*entry_text == '\0'))
-	{
-		gtk_statusbar_pop (GTK_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
-				   panel->priv->message_cid);
-				   
+	{				   
 		gedit_view_scroll_to_cursor (view);
-		gtk_widget_set_sensitive (panel->priv->find_button, TRUE);
-		gtk_widget_modify_base (panel->priv->search_entry,
-				        GTK_STATE_NORMAL,
-				        NULL);
-		gtk_widget_modify_text (panel->priv->search_entry,
-				        GTK_STATE_NORMAL,
-				        NULL);				       		        
+
+		phrase_found (panel, 0); 
 	}
 	else
 	{
-		GdkColor red;
-		GdkColor white;
-		
-		panel->priv->message_cid = gtk_statusbar_get_context_id
-					(GTK_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)), 
-					 "search_replace_message");
-		/* FIXME: a11y and theme */
-		gtk_statusbar_push (GTK_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
-				    panel->priv->message_cid,
-				    _("Phrase not found"));
-					
-		gdk_color_parse ("#FF6666", &red);
-		gdk_color_parse ("white", &white);		
-		gtk_widget_set_sensitive (panel->priv->find_button, FALSE);
-		gtk_widget_modify_base (panel->priv->search_entry,
-				        GTK_STATE_NORMAL,
-				        &red);
-		gtk_widget_modify_text (panel->priv->search_entry,
-				        GTK_STATE_NORMAL,
-				        &white);				        
+		phrase_not_found (panel);		        
 	}
-	
+		
 	if (found && panel->priv->new_search_text && button_pressed)
 	{
-		add_search_entry_completion_entry (panel, doc);
+		add_entry_completion_entry (panel, doc, FALSE);
 		panel->priv->new_search_text = FALSE;
 	}
+	
+	return found;
 }
 
-static void
+static gboolean
 search (GeditSearchPanel *panel, gboolean button_pressed)
 {
 	GeditView *active_view; 
@@ -581,7 +631,7 @@ search (GeditSearchPanel *panel, gboolean button_pressed)
 	
 	active_view = gedit_window_get_active_view (panel->priv->window);
 	if (active_view == NULL)
-		return;
+		return FALSE;
 	
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 	
@@ -605,9 +655,120 @@ search (GeditSearchPanel *panel, gboolean button_pressed)
 	{
 		gedit_document_set_search_text (doc, entry_text, flags);
 	}
-	
 		
-	run_search (panel, active_view,  button_pressed);
+	return run_search (panel, active_view,  button_pressed);
+}
+
+static void
+replace_selected_text (GtkTextBuffer *buffer, const gchar *replace)
+{
+	g_return_if_fail (gtk_text_buffer_get_selection_bounds (buffer, NULL, NULL));
+	g_return_if_fail (replace != NULL);
+	
+	gtk_text_buffer_begin_user_action (buffer);
+
+	gtk_text_buffer_delete_selection (buffer, FALSE, TRUE);
+
+	gtk_text_buffer_insert_at_cursor (buffer, replace, strlen (replace));
+
+	gtk_text_buffer_end_user_action (buffer);
+}
+
+static void
+replace (GeditSearchPanel *panel)
+{
+	GeditDocument *doc;
+	const gchar *search_entry_text;
+	const gchar *replace_entry_text;	
+	gchar *unescaped_search_text;
+	gchar *unescaped_replace_text;
+	gchar *selected_text = NULL;
+	gboolean case_sensitive;
+	gboolean search_backwards;
+	
+	doc = gedit_window_get_active_document (panel->priv->window);
+	if (doc == NULL)
+		return;
+			
+	replace_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
+	g_return_if_fail ((*replace_entry_text) != '\0');
+	search_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	g_return_if_fail ((*search_entry_text) != '\0');
+		
+	unescaped_search_text = gedit_utils_unescape_search_text (search_entry_text);
+	
+	get_selected_text (GTK_TEXT_BUFFER (doc), 
+			   &selected_text, 
+			   NULL);
+	
+	/* retrieve search settings from the toggle buttons */
+	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->match_case_checkbutton));	
+	search_backwards = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->search_backwards_checkbutton));
+	
+	if ((selected_text == NULL) ||
+	    (case_sensitive && (strcmp (selected_text, unescaped_search_text) != 0)) || 
+	    (!case_sensitive && !g_utf8_caselessnmatch (selected_text, unescaped_search_text, 
+						        strlen (selected_text), 
+						        strlen (unescaped_search_text)) != 0))
+	{
+		search (panel, search_backwards);
+		g_free (unescaped_search_text);
+		g_free (selected_text);	
+		
+		return;
+	}
+
+	unescaped_replace_text = gedit_utils_unescape_search_text (replace_entry_text);	
+	replace_selected_text (GTK_TEXT_BUFFER (doc), unescaped_replace_text);
+
+	add_entry_completion_entry (panel, doc, TRUE);
+	
+	g_free (unescaped_search_text);
+	g_free (selected_text);
+	g_free (unescaped_replace_text);
+	
+	search (panel, search_backwards);
+}
+
+static void
+replace_all (GeditSearchPanel *panel)
+{
+	GeditDocument *doc;
+	const gchar *search_entry_text;
+	const gchar *replace_entry_text;	
+	gboolean case_sensitive;
+	gboolean entire_word;
+	gint flags = 0;
+	gint cont;
+	
+	doc = gedit_window_get_active_document (panel->priv->window);
+	if (doc == NULL)
+		return;
+			
+	replace_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
+	g_return_if_fail ((*replace_entry_text) != '\0');
+	search_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	g_return_if_fail ((*search_entry_text) != '\0');
+		
+	/* retrieve search settings from the toggle buttons */
+	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->match_case_checkbutton));
+	entire_word = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->entire_word_checkbutton));
+	
+	GEDIT_SEARCH_SET_CASE_SENSITIVE (flags, case_sensitive);
+	GEDIT_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
+	
+	cont = gedit_document_replace_all (doc, 
+					   search_entry_text,
+					   replace_entry_text,
+					   flags);
+					   
+	if (cont > 0)
+	{
+		add_entry_completion_entry (panel, doc, TRUE);
+		phrase_found (panel, cont);
+	}
+	else
+		phrase_not_found (panel);
 }
 
 static void
@@ -616,12 +777,50 @@ find_button_clicked (GtkButton        *widget,
 {
 	search (panel, TRUE);
 }
+
+static void
+replace_button_clicked (GtkButton        *widget,
+			GeditSearchPanel *panel)
+{
+	replace (panel);
+}
+
+static void
+replace_all_button_clicked (GtkButton        *widget,
+			    GeditSearchPanel *panel)
+{
+	replace_all (panel);
+}
 		       
 static void
 search_entry_changed (GtkEditable      *editable,
 		      GeditSearchPanel *panel)
 {
 	search (panel, FALSE);
+	update_buttons_sensitivity (panel);
+}
+
+static void
+search_entry_activate (GtkEntry         *entry,
+		       GeditSearchPanel *panel)
+{
+	if (GTK_WIDGET_SENSITIVE (panel->priv->find_button))
+		gtk_widget_activate (panel->priv->find_button);
+}
+
+static void
+replace_entry_changed (GtkEditable      *editable,
+		       GeditSearchPanel *panel)
+{
+	update_buttons_sensitivity (panel);
+}
+
+static void
+replace_entry_activate (GtkEntry         *entry,
+		        GeditSearchPanel *panel)
+{
+	if (GTK_WIDGET_SENSITIVE (panel->priv->replace_button))
+		gtk_widget_activate (panel->priv->replace_button);		
 }
 
 static void
@@ -668,14 +867,6 @@ search_entry_insert_text (GtkEditable *editable,
 	insert_text = FALSE;
 
 	g_free (escaped_text);
-}
-
-static void
-search_entry_activate (GtkEntry         *entry,
-		       GeditSearchPanel *panel)
-{
-	if (GTK_WIDGET_SENSITIVE (panel->priv->find_button))
-		gtk_widget_activate (panel->priv->find_button);
 }
 
 #define GEDIT_GLADEDIR "./dialogs/"
@@ -775,7 +966,7 @@ gedit_search_panel_init (GeditSearchPanel *panel)
  	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (panel->priv->wrap_around_checkbutton),
  				      TRUE);
 
-	/* Create the completion object */
+	/* Create the completion object for the search entry */
 	completion = gtk_entry_completion_new ();
 
 	gtk_entry_completion_set_minimum_key_length (completion,
@@ -793,6 +984,25 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 		
 	/* Use model column 0 as the text column */
 	gtk_entry_completion_set_text_column (completion, 0);
+	
+	/* Create the completion object for the replace entry */
+	completion = gtk_entry_completion_new ();
+
+	gtk_entry_completion_set_minimum_key_length (completion,
+						     MIN_KEY_LEN);
+					     		    
+	/* Assign the completion to the entry */
+	gtk_entry_set_completion (GTK_ENTRY (panel->priv->replace_entry), 
+				  completion);
+	g_object_unref (completion);
+    
+	/* Create a tree model and use it as the completion model */
+	store = gtk_list_store_new (1, G_TYPE_STRING);
+	gtk_entry_completion_set_model (completion, GTK_TREE_MODEL (store));
+	g_object_unref (store);
+		
+	/* Use model column 0 as the text column */
+	gtk_entry_completion_set_text_column (completion, 0);	
 	
  	gtk_box_pack_start (GTK_BOX (panel), 
 			    search_panel_vbox, 
@@ -824,10 +1034,26 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 			  "activate",
 			  G_CALLBACK (search_entry_activate), 
 			  panel);
+	g_signal_connect (panel->priv->replace_entry, 
+			  "changed",
+			  G_CALLBACK (replace_entry_changed), 
+			  panel);
+	g_signal_connect (panel->priv->replace_entry, 
+			  "activate",
+			  G_CALLBACK (replace_entry_activate), 
+			  panel);			  
 	g_signal_connect (panel->priv->find_button, 
 			  "clicked",
 			  G_CALLBACK (find_button_clicked), 
-			  panel);		  
+			  panel);
+	g_signal_connect (panel->priv->replace_button, 
+			  "clicked",
+			  G_CALLBACK (replace_button_clicked), 
+			  panel);
+	g_signal_connect (panel->priv->replace_all_button, 
+			  "clicked",
+			  G_CALLBACK (replace_all_button_clicked), 
+			  panel);			  			  		  
 	g_signal_connect (panel->priv->match_case_checkbutton,
 			  "toggled",
 			  G_CALLBACK (option_button_toggled),
@@ -948,7 +1174,6 @@ gedit_search_panel_focus_replace (GeditSearchPanel *panel)
 	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
 
 	doc = gedit_window_get_active_document (panel->priv->window);
-	
 	if (doc == NULL)
 		return;
 			
@@ -957,18 +1182,7 @@ gedit_search_panel_focus_replace (GeditSearchPanel *panel)
 	gtk_expander_set_expanded (GTK_EXPANDER (panel->priv->replace_expander),
 				   TRUE);
 	
-	
-	 /* FIXME: set the focus on the replace entry only if the text in the
-	    search entry matches some text in the current document */			   
-	if (g_utf8_strlen (
-		gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry)), -1) > 0) 
-	{
-		gtk_widget_grab_focus (panel->priv->search_entry);
-	}
-	else
-	{
-		gtk_widget_grab_focus (panel->priv->replace_entry);
-	}
+	gtk_widget_grab_focus (panel->priv->replace_entry);
 }
 
 void 
@@ -979,7 +1193,6 @@ gedit_search_panel_focus_goto_line (GeditSearchPanel *panel)
 	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
 	
 	doc = gedit_window_get_active_document (panel->priv->window);
-	
 	if (doc == NULL)
 		return;
 		
