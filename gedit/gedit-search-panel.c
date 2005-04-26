@@ -54,6 +54,7 @@ struct _GeditSearchPanelPrivate
 	
 	GtkWidget    *replace_expander;
 	GtkWidget    *goto_line_expander;
+	GtkWidget    *search_options_expander;
 	
 	GtkWidget    *search_entry;
 	GtkWidget    *replace_entry;
@@ -186,16 +187,6 @@ set_window (GeditSearchPanel *panel,
 			  "tab_removed",
 			  G_CALLBACK (window_tab_removed),
 			  panel);
-/*			  
-	g_signal_connect (window,
-			  "tabs_reordered",
-			  G_CALLBACK (window_tabs_reordered),
-			  panel);
-	g_signal_connect (window,
-			  "active_tab_changed",
-			  G_CALLBACK (window_active_tab_changed),
-			  panel);		  
-*/
 }
 
 
@@ -462,26 +453,22 @@ phrase_not_found (GeditSearchPanel *panel)
 static gboolean
 run_search (GeditSearchPanel *panel,
             GeditView        *view,
+            const gchar      *entry_text,
+	    gboolean          wrap_around,
+	    gboolean          search_backwards,
             gboolean          button_pressed)
 {
 	GtkTextIter start_iter;
 	GtkTextIter match_start;
 	GtkTextIter match_end;	
 	gboolean found = FALSE;
-	gboolean wrap_around;
-	gboolean search_backwards;	
-	const gchar *entry_text;
+
 	GeditDocument *doc;
 
-	entry_text  = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 	
 	if (*entry_text != '\0')
-	{
-		/* retrieve search settings from the toggle buttons */
-		wrap_around = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->wrap_around_checkbutton));
-		search_backwards = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->search_backwards_checkbutton));
-			
+	{	
 		if (!search_backwards)
 		{
 			gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
@@ -626,6 +613,8 @@ search (GeditSearchPanel *panel, gboolean button_pressed)
 	const gchar *entry_text;
 	gboolean case_sensitive;
 	gboolean entire_word;
+	gboolean wrap_around;
+	gboolean search_backwards;	
 	gint flags = 0;
 	gint old_flags = 0;
 	
@@ -640,6 +629,8 @@ search (GeditSearchPanel *panel, gboolean button_pressed)
 	/* retrieve search settings from the toggle buttons */
 	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->match_case_checkbutton));
 	entire_word = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->entire_word_checkbutton));
+	wrap_around = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->wrap_around_checkbutton));
+	search_backwards = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->search_backwards_checkbutton));
 	
 	GEDIT_SEARCH_SET_CASE_SENSITIVE (flags, case_sensitive);
 	GEDIT_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
@@ -655,8 +646,15 @@ search (GeditSearchPanel *panel, gboolean button_pressed)
 	{
 		gedit_document_set_search_text (doc, entry_text, flags);
 	}
+	
+	g_free (search_text);
 		
-	return run_search (panel, active_view,  button_pressed);
+	return run_search (panel, 
+			   active_view,
+			   entry_text,
+			   wrap_around,
+			   search_backwards,
+			   button_pressed);
 }
 
 static void
@@ -910,6 +908,7 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 	
 	search_panel_vbox = glade_xml_get_widget (gui, "search_panel_vbox");
 	find_vbox = glade_xml_get_widget (gui, "find_vbox");
+	panel->priv->search_options_expander = glade_xml_get_widget (gui, "search_options_expander");
  	panel->priv->replace_expander = glade_xml_get_widget (gui, "replace_expander");
  	panel->priv->goto_line_expander = glade_xml_get_widget (gui, "goto_line_expander");
  	
@@ -930,6 +929,7 @@ gedit_search_panel_init (GeditSearchPanel *panel)
  	if (!find_vbox					||
  	    !search_panel_vbox				||
  	    !panel->priv->replace_expander		||
+ 	    !panel->priv->search_options_expander	||
  	    !panel->priv->goto_line_expander		||
  	    !panel->priv->search_entry			||
  	    !panel->priv->replace_entry			||
@@ -1082,8 +1082,6 @@ gedit_search_panel_new (GeditWindow *window)
 					 NULL));
 }
 
-
-
 static gboolean
 show_side_pane (GeditSearchPanel *panel)
 {
@@ -1203,3 +1201,111 @@ gedit_search_panel_focus_goto_line (GeditSearchPanel *panel)
 	
 	gtk_widget_grab_focus (panel->priv->line_number_entry);
 }
+
+void
+gedit_search_panel_search_again	(GeditSearchPanel *panel,
+				 gboolean          backward)
+{
+	GeditView *active_view;
+	GeditDocument *doc;
+	GtkWidget *sp;
+	gboolean is_visible;
+	gchar *old_search_text;
+	gint old_flags = 0;
+	
+	g_return_if_fail (GEDIT_IS_SEARCH_PANEL (panel));
+
+	active_view = gedit_window_get_active_view (panel->priv->window);
+	if (active_view == NULL)
+		return;
+	
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
+		
+	sp = GTK_WIDGET (gedit_window_get_side_panel (panel->priv->window));
+		
+	is_visible = GTK_WIDGET_VISIBLE (sp) &&
+		     gedit_panel_item_is_active (GEDIT_PANEL (sp), GTK_WIDGET (panel));
+		
+	old_search_text = gedit_document_get_search_text (doc, &old_flags);
+			
+	if (is_visible)			
+	{
+		const gchar *entry_text;
+		gboolean wrap_around;
+		gboolean case_sensitive;
+		gboolean entire_word;	
+		gint flags = 0;
+		
+		entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+		if ((*entry_text == 0))
+		{
+			g_free (old_search_text);
+			gtk_widget_grab_focus (panel->priv->search_entry);
+			return;
+		}
+			
+		/* retrieve search settings from the toggle buttons */
+		case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->match_case_checkbutton));
+		entire_word = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->entire_word_checkbutton));
+		wrap_around = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->wrap_around_checkbutton));
+		
+		flags = 0;
+		
+		GEDIT_SEARCH_SET_CASE_SENSITIVE (flags, case_sensitive);
+		GEDIT_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
+				
+		if ((old_search_text == NULL) || (strcmp (old_search_text, entry_text) != 0))
+		{
+			gedit_document_set_search_text (doc, entry_text, flags);
+		}
+		else if (flags != old_flags)
+		{
+			gedit_document_set_search_text (doc, entry_text, flags);
+		}
+				
+		run_search (panel, 
+		   	    active_view,
+		   	    entry_text,
+		   	    wrap_around,
+		   	    backward,
+		   	    TRUE);
+	}
+	else if (old_search_text != NULL)
+	{
+		run_search (panel, 
+		   	    active_view,
+		   	    old_search_text,
+		   	    TRUE,
+		   	    backward,
+		   	    TRUE);
+	}
+	else
+	{
+		gedit_search_panel_focus_search (panel);
+		
+		if (backward)
+		{
+			if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->search_backwards_checkbutton)))
+			{
+				gtk_expander_set_expanded (GTK_EXPANDER (panel->priv->search_options_expander),
+							   TRUE);
+			
+				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (panel->priv->search_backwards_checkbutton),
+							      TRUE);
+			}
+		}
+		else
+		{
+			if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->search_backwards_checkbutton)))
+			{
+				gtk_expander_set_expanded (GTK_EXPANDER (panel->priv->search_options_expander),
+							   TRUE);
+			
+				gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (panel->priv->search_backwards_checkbutton),
+							      FALSE);
+			}
+		}
+	}
+	
+	g_free (old_search_text);
+}				 

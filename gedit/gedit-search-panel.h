@@ -85,6 +85,9 @@ void		 gedit_search_panel_focus_search	(GeditSearchPanel *panel);
 void		 gedit_search_panel_focus_replace	(GeditSearchPanel *panel);
 void		 gedit_search_panel_focus_goto_line	(GeditSearchPanel *panel);
 
+void		 gedit_search_panel_search_again	(GeditSearchPanel *panel,
+							 gboolean          backward);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_SEARCH_PANEL_H__  */

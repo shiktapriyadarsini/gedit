@@ -706,118 +706,28 @@ gedit_cmd_search_find (GtkAction *action, GeditWindow *window)
 	gedit_search_panel_focus_search (sp);
 }
 
-#if 0
-static void
-search_find_again (GeditWindow   *window,
-		   GeditDocument *doc,
-		   gchar         *last_searched_text,
-		   gboolean       backward)
-{
-
-	gpointer data;
-	gboolean found;
-	gboolean was_wrap_around;
-	gint flags = 0;
-
-	data = g_object_get_qdata (G_OBJECT (doc), gedit_was_wrap_around_quark ());
-	if (data == NULL)
-		was_wrap_around = TRUE;
-	else
-		was_wrap_around = GPOINTER_TO_BOOLEAN (data);
-
-	GEDIT_SEARCH_SET_FROM_CURSOR (flags, TRUE);
-
-	if (!backward)
-		found = gedit_document_find_next (doc, flags);
-	else
-		found = gedit_document_find_prev (doc, flags);
-		
-	if (!found && was_wrap_around)
-	{
-		GEDIT_SEARCH_SET_FROM_CURSOR (flags, FALSE);
-		
-		if (!backward)
-			found = gedit_document_find_next (doc, flags);
-		else
-			found = gedit_document_find_prev (doc, flags);
-	}
-
-	if (!found)
-	{	
-		GtkWidget *message_dlg;
-
-		message_dlg = gtk_message_dialog_new (GTK_WINDOW (window),
-						      GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-						      GTK_MESSAGE_INFO,
-						      GTK_BUTTONS_OK,
-						      _("The text \"%s\" was not found."),
-						      last_searched_text);
-
-		gtk_dialog_set_default_response (GTK_DIALOG (message_dlg),
-						 GTK_RESPONSE_OK);
-
-		gtk_window_set_resizable (GTK_WINDOW (message_dlg), FALSE);
-
-		gtk_dialog_run (GTK_DIALOG (message_dlg));
-		gtk_widget_destroy (message_dlg);
-	}
-	else
-	{
-		GeditView *active_view;
-
-		active_view = gedit_window_get_active_view (window);
-		g_return_if_fail (active_view != NULL);
-
-		gedit_view_scroll_to_cursor (active_view);
-	}
-}
-#endif
-
 void 
 gedit_cmd_search_find_next (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GeditDocument *doc;
-	gchar* last_searched_text;
-
+	GeditSearchPanel *sp;
+	
 	gedit_debug (DEBUG_COMMANDS);
-
-	doc = gedit_window_get_active_document (window);
-	g_return_if_fail (doc);
-
-	last_searched_text = gedit_document_get_last_searched_text (doc);
-
-	if (last_searched_text != NULL)
-		search_find_again (window, doc, last_searched_text, FALSE);
-	else
-		gedit_dialog_find (window);
-
-	g_free (last_searched_text);
-#endif
+	
+	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
+	
+	gedit_search_panel_search_again (sp, FALSE);
 }
 
 void 
 gedit_cmd_search_find_prev (GtkAction *action, GeditWindow *window)
 {
-#if 0
-	GeditDocument *doc;
-	gchar* last_searched_text;
-
+	GeditSearchPanel *sp;
+	
 	gedit_debug (DEBUG_COMMANDS);
-
-	doc = gedit_window_get_active_document (window);
-	if (doc == NULL)
-		return;
-
-	last_searched_text = gedit_document_get_last_searched_text (doc);
-
-	if (last_searched_text != NULL)
-		search_find_again (window, doc, last_searched_text, TRUE);
-	else
-		gedit_dialog_find (window);
-
-	g_free (last_searched_text);
-#endif
+	
+	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
+	
+	gedit_search_panel_search_again (sp, TRUE);
 }
 
 void 
