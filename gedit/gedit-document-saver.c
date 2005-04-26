@@ -66,6 +66,10 @@ struct _GeditDocumentSaverPrivate
 	/* temp data for local files */
 	gchar			 *local_path;
 
+	/* temp data for remote files */
+	GnomeVFSURI		 *vfs_uri;
+	GnomeVFSAsyncHandle	 *handle;
+
 	GError                   *error;
 };
 
@@ -87,6 +91,9 @@ gedit_document_saver_finalize (GObject *object)
 
 	g_free (priv->uri);
 	g_free (priv->local_path);
+
+	if (priv->vfs_uri)
+		gnome_vfs_uri_unref (priv->vfs_uri);
 
 	if (priv->error)
 		g_error_free (priv->error);
@@ -677,6 +684,172 @@ save_local_file (GeditDocumentSaver *saver)
 			    NULL);
 }
 
+/* ----------- remote files ----------- */
+
+static gint
+async_transfer_ok (GnomeVFSXferProgressInfo *progress_info,
+		   GeditDocumentSaver       *saver)
+{
+	/* TODO: if cancelled && !completed */
+
+	switch (progress_info->phase)
+	{
+	case GNOME_VFS_XFER_PHASE_COMPLETED:
+		save_completed_or_failed (saver);
+		return 1;
+	/* case ?? update progress
+	case?? unexpected
+	*/
+	default:
+		return 1;
+	}
+}
+
+static gint
+async_transfer_error (GnomeVFSXferProgressInfo *progress_info,
+		      GeditDocumentSaver       *saver)
+{
+	// Is this ok??
+	g_set_error (&saver->priv->error,
+		     GEDIT_DOCUMENT_ERROR,
+		     progress_info->vfs_status,
+		     gnome_vfs_result_to_string (progress_info->vfs_status));
+
+	save_completed_or_failed (saver);
+
+	return GNOME_VFS_XFER_ERROR_ACTION_ABORT;
+}
+
+static gint
+async_xfer_progress (GnomeVFSAsyncHandle      *handle,
+		     GnomeVFSXferProgressInfo *progress_info,
+		     GeditDocumentSaver       *saver)
+{
+	switch (progress_info->status)
+	{
+	case GNOME_VFS_XFER_PROGRESS_STATUS_OK:
+		return async_transfer_ok (progress_info, saver);
+	case GNOME_VFS_XFER_PROGRESS_STATUS_VFSERROR:
+		return async_transfer_error (progress_info, saver);
+
+	/* we should never go in these */
+	case GNOME_VFS_XFER_PROGRESS_STATUS_OVERWRITE:
+	case GNOME_VFS_XFER_PROGRESS_STATUS_DUPLICATE:
+	default:
+		g_return_val_if_reached (1); // CHECK return what??
+	}
+}
+
+static gboolean
+save_remote_file_real (GeditDocumentSaver *saver)
+{
+	gint tmpfd;
+	gchar *tmp_fname;
+	gchar *tmp_uri;
+	GnomeVFSURI *tmp_vfs_uri;
+	GList *source_uri_list = NULL;
+	GList *dest_uri_list = NULL;
+	GnomeVFSResult result;
+
+	/* For remote files we use the following strategy:
+	 * we save to a local temp file and then transfer it
+	 * over to the requested location asyncronously.
+	 * There is no backup of the original remote file.
+	 */
+
+	tmpfd = g_file_open_tmp (".gedit-save-XXXXXX",
+				 &tmp_fname,
+				 &saver->priv->error);
+
+	if (tmpfd == -1)
+	{
+		GnomeVFSResult result = gnome_vfs_result_from_errno ();
+
+		g_set_error (&saver->priv->error,
+			     GEDIT_DOCUMENT_ERROR,
+			     result,
+			     gnome_vfs_result_to_string (result));
+
+		goto error;	
+	}
+
+	tmp_uri = g_filename_to_uri (tmp_fname, NULL, &saver->priv->error);
+	if (tmp_uri == NULL)
+	{
+		close (tmpfd);
+		unlink (tmp_fname); // do err check?
+
+		goto error;
+	}
+
+	tmp_vfs_uri = gnome_vfs_uri_new (tmp_uri);
+	//needs error checking?
+
+	g_free (tmp_uri);
+
+	source_uri_list = g_list_prepend (source_uri_list, tmp_vfs_uri);
+	dest_uri_list = g_list_prepend (dest_uri_list, saver->priv->vfs_uri);
+
+	if (!write_document_contents (tmpfd,
+				      GTK_TEXT_BUFFER (saver->priv->document),
+		 	 	      saver->priv->encoding,
+			 	      &saver->priv->error))
+	{
+		close (tmpfd);
+		unlink (tmp_fname); // do err check?
+
+		goto error;
+	}
+
+	result = gnome_vfs_async_xfer (&saver->priv->handle,
+				       source_uri_list,
+				       dest_uri_list,
+				       GNOME_VFS_XFER_DEFAULT, // need more thinking, follow symlinks etc... options are undocumented :(
+				       GNOME_VFS_XFER_ERROR_MODE_ABORT,  // lets keep it simple for now...
+				       GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE, // CHECK: We should have already checked in the filechooser (even if it is racy)
+				       GNOME_VFS_PRIORITY_DEFAULT,
+				       async_xfer_progress, saver,
+				       NULL, NULL);
+
+	if (result != GNOME_VFS_OK)
+	{
+		unlink (tmp_fname); // do err check?
+
+		g_set_error (&saver->priv->error,
+		    	     GEDIT_DOCUMENT_ERROR,
+		     	     result,
+			     gnome_vfs_result_to_string (result));	
+
+		goto error;
+	}
+
+	/* No errors: stop the timeout */
+	return FALSE;
+
+ error:
+	save_completed_or_failed (saver);
+
+	/* stop the timeout */
+	return FALSE;
+}
+
+static void
+save_remote_file (GeditDocumentSaver *saver)
+{
+	/* saving start */
+	g_signal_emit (saver,
+		       signals[SAVING],
+		       0,
+		       FALSE,
+		       NULL);
+
+	g_timeout_add_full (G_PRIORITY_HIGH,
+			    0,
+			    (GSourceFunc) save_remote_file_real,
+			    saver,
+			    NULL);
+}
+
 gboolean
 gedit_document_saver_save (GeditDocumentSaver  *saver,
 			   const gchar         *uri,
@@ -689,11 +862,12 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), FALSE);
 	g_return_val_if_fail ((uri != NULL) && (strlen (uri) > 0), FALSE);
 
-	// TODO: returns FALSE if uri is not valid?
-
 	// CHECK: sanity check a max len for the uri?
 
 	saver->priv->uri = g_strdup (uri); // needed?
+
+	// TODO: returns FALSE if uri is not valid?
+
 
 // provvisorio... still to decide if fetch prefs here or in gedit-document
 	saver->priv->backup_ext = g_strdup ("~"); // g_strdup (backup_extension);
@@ -712,11 +886,10 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 		save_local_file (saver);
 	}
 	else
-		// TODO: for remote files the plan is
-		// to save to a local file in /tmp
-		// and then xfer it to the remote location
-		// asyncronously.
-		g_return_val_if_reached (FALSE);
+	{
+		saver->priv->vfs_uri = gnome_vfs_uri_new (uri);
+		save_remote_file (saver);
+	}
 
 	return TRUE;
 }

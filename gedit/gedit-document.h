@@ -89,17 +89,21 @@ struct _GeditDocumentClass
 	/* File name (uri) changed */
 	void (* name_changed)		(GeditDocument    *document);
 
-	/* Connect to the following two signals for loading and reverting */
-	/* Document loaded */
-	void (* loaded)			(GeditDocument    *document,
-					 const GError     *error);
-
+	/* Document load */
 	void (* loading)		(GeditDocument    *document,
 					 gulong            size,
 					 gulong            total_size);
 
-	/* Document saved */
-	void (* saved)  		(GeditDocument    *document);	
+	void (* loaded)			(GeditDocument    *document,
+					 const GError     *error);
+
+	/* Document save */
+	void (* saving)			(GeditDocument    *document,
+					 gulong            size,
+					 gulong            total_size);
+
+	void (* saved)  		(GeditDocument    *document,
+					 const GError     *error);
 
 	/* Readonly flag changed */
 	void (* readonly_changed)	(GeditDocument    *document,

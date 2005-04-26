@@ -111,9 +111,10 @@ struct _GeditDocumentPrivate
 
 enum {
 	NAME_CHANGED,
-	SAVED,
-	LOADED,
 	LOADING,
+	LOADED,
+	SAVING,
+	SAVED,
 	READONLY_CHANGED,
 	CAN_FIND_AGAIN,
 	LAST_SIGNAL
@@ -248,6 +249,18 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_TYPE_NONE,
 			      0);
 
+	document_signals[LOADING] =
+   		g_signal_new ("loading",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_LAST,
+			      G_STRUCT_OFFSET (GeditDocumentClass, loading),
+			      NULL, NULL,
+			      gedit_marshal_VOID__ULONG_ULONG,
+			      G_TYPE_NONE,
+			      2,
+			      G_TYPE_ULONG,
+			      G_TYPE_ULONG);
+
 	document_signals[LOADED] =
    		g_signal_new ("loaded",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -259,11 +272,11 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      1,
 			      G_TYPE_POINTER);
 
-	document_signals[LOADING] =
-   		g_signal_new ("loading",
+	document_signals[SAVING] =
+   		g_signal_new ("saving",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, loading),
+			      G_STRUCT_OFFSET (GeditDocumentClass, saving),
 			      NULL, NULL,
 			      gedit_marshal_VOID__ULONG_ULONG,
 			      G_TYPE_NONE,
@@ -645,7 +658,7 @@ gedit_document_get_short_name_for_display (GeditDocument *doc)
 	g_return_val_if_fail (doc->priv->short_name_for_display != NULL, "");
 	
  	return doc->priv->short_name_for_display;
- }
+}
 
 /* Never returns NULL */
 const gchar *
@@ -653,7 +666,7 @@ gedit_document_get_mime_type (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), "text/plain");
 	g_return_val_if_fail (doc->priv->mime_type != NULL, "text/plain");
-	
+
  	return doc->priv->mime_type;
 }
 
@@ -661,8 +674,8 @@ gboolean
 gedit_document_is_readonly (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
-	
-	return doc->priv->readonly;	
+
+	return doc->priv->readonly;
 }
 
 static void
@@ -673,31 +686,35 @@ document_loader_loading (GeditDocumentLoader *loader,
 {
 	if (completed)
 	{
-		GtkTextIter iter;
-		const gchar *uri;
-		const gchar *mime_type;
-
 		/* special case creating a named new doc */
 		if (doc->priv->create &&
 		    (error->code == GNOME_VFS_ERROR_NOT_FOUND))
 		{
 			// FIXME
-			
+
 			g_print ("create new\n");
 		}
 
-		uri = gedit_document_loader_get_uri (loader);
-		mime_type = gedit_document_loader_get_mime_type (loader);
+		/* load was successful */
+		if (error == NULL)
+		{
+			GtkTextIter iter;
+			const gchar *uri;
+			const gchar *mime_type;
 
-		set_uri (doc, uri, mime_type);
+			uri = gedit_document_loader_get_uri (loader);
+			mime_type = gedit_document_loader_get_mime_type (loader);
 
-//		set_encoding (doc, doc->priv->requested_encoding);
+			set_uri (doc, uri, mime_type);
+
+//			set_encoding (doc, doc->priv->requested_encoding);
 		
-		// FIXME: we should probably pass a requested_line to doc load
-		// for "gedit +42 life_and_everything.txt"
-		/* move the cursor to the top */
-		gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
-		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+			// FIXME: we should probably pass a requested_line to doc load
+			// for "gedit +42 life_and_everything.txt"
+			/* move the cursor to the top */
+			gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
+			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+		}
 
 		g_signal_emit (doc,
 			       document_signals[LOADED],
@@ -761,6 +778,36 @@ document_saver_saving (GeditDocumentSaver *saver,
 {
 	if (error)
 		g_print ("error saving: %s\n", error->message);
+
+	if (completed)
+	{
+		/* save was successful */
+		if (error == NULL)
+		{
+			/* set uri etc */
+		}
+
+		g_signal_emit (doc,
+			       document_signals[SAVED],
+			       0,
+			       error);
+
+		return;
+	}
+	else
+	{
+		GnomeVFSFileSize size = 0;
+		GnomeVFSFileSize read = 0;
+
+//		size = gedit_document_saver_get_file_size (saver);
+//		read = gedit_document_saver_get_bytes_read (saver);
+
+		g_signal_emit (doc,
+			       document_signals[SAVING],
+			       0,
+			       read,
+			       size);
+	}
 }
 
 static void
