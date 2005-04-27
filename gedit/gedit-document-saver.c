@@ -410,6 +410,7 @@ copy_file_data (gint     sfd,
 static gboolean
 save_existing_local_file (GeditDocumentSaver *saver)
 {
+	mode_t saved_umask;
 	struct stat statbuf;
 	gchar *backup_filename = NULL;
 	gint bfd;
@@ -478,9 +479,14 @@ save_existing_local_file (GeditDocumentSaver *saver)
 		dirname = g_path_get_dirname (saver->priv->local_path);
 		tmp_filename = g_build_filename (dirname, ".gedit-save-XXXXXX", NULL);
 		g_free (dirname);
-
-		/* this modifies temp_filename to the used name */
+	
+		/* We set the umask because some (buggy) implementations
+		 * of mkstemp() use permissions 0666 and we want 0600.
+		 */
+		saved_umask = umask (0077);
 		tmpfd = g_mkstemp (tmp_filename);
+		umask (saved_umask);
+
 		if (tmpfd == -1)
 			goto fallback_strategy;
 
@@ -569,7 +575,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 			     gnome_vfs_result_to_string (result));
 
 		goto out;
-	}	
+	}
 
 	/* Try to set the group of the backup same as the
 	 * original file. If this fails, set the protection
@@ -743,6 +749,7 @@ async_xfer_progress (GnomeVFSAsyncHandle      *handle,
 static gboolean
 save_remote_file_real (GeditDocumentSaver *saver)
 {
+	mode_t saved_umask;
 	gint tmpfd;
 	gchar *tmp_fname;
 	gchar *tmp_uri;
@@ -757,9 +764,14 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	 * There is no backup of the original remote file.
 	 */
 
+	/* We set the umask because some (buggy) implementations
+	 * of mkstemp() use permissions 0666 and we want 0600.
+	 */
+	saved_umask = umask (0077);
 	tmpfd = g_file_open_tmp (".gedit-save-XXXXXX",
 				 &tmp_fname,
 				 &saver->priv->error);
+	umask (saved_umask);
 
 	if (tmpfd == -1)
 	{
@@ -772,6 +784,7 @@ save_remote_file_real (GeditDocumentSaver *saver)
 
 		goto error;	
 	}
+
 
 	tmp_uri = g_filename_to_uri (tmp_fname, NULL, &saver->priv->error);
 	if (tmp_uri == NULL)
