@@ -40,6 +40,7 @@
 #include "gedit-utils.h"
 #include "gedit-message-area.h"
 #include "gedit-io-error-message-area.h"
+#include "gedit-print-job-preview.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -48,8 +49,10 @@
 struct _GeditTabPrivate
 {
 	GtkWidget *view;
+	GtkWidget *view_scrolled_window;
 	
 	GtkWidget *message_area;
+	GtkWidget *print_preview;
 	
 	gboolean load_error_state;
 };
@@ -298,10 +301,18 @@ create_retry_message_area_content (void)
 }
 #endif
 
+
 static void
 set_message_area (GeditTab  *tab,
 		  GtkWidget *message_area)
 {
+	if (tab->priv->message_area == message_area)
+		return;
+		
+	if (tab->priv->message_area != NULL)
+		gtk_widget_destroy (tab->priv->message_area);
+		
+	
 	tab->priv->message_area = message_area;
 
 	gtk_box_pack_start (GTK_BOX (tab),
@@ -348,7 +359,7 @@ document_loaded (GeditDocument *document,
 		// FIXME: in realtà durante il loading text_view dovrebbe essere
 		// non editabile
 		//gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
-		gtk_widget_hide (tab->priv->view);
+		gtk_widget_hide (tab->priv->view_scrolled_window);
 		
 		uri = gedit_document_get_uri_ (document);
 		encoding = gedit_document_get_encoding (document);
@@ -399,6 +410,7 @@ gedit_tab_init (GeditTab *tab)
 
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
+	tab->priv->view_scrolled_window = sw;
 	
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
 					GTK_POLICY_AUTOMATIC,
@@ -720,4 +732,136 @@ gedit_tab_get_from_document (GeditDocument *doc)
 	res = g_object_get_data (G_OBJECT (doc), GEDIT_TAB_KEY);
 	
 	return (res != NULL) ? GEDIT_TAB (res) : NULL;
+}
+
+static void
+print_preview_destroyed (GtkWidget *preview,
+			 GeditTab  *tab)
+{
+	gtk_widget_show (tab->priv->view_scrolled_window);
+	
+	tab->priv->print_preview = NULL;
+}
+
+static void
+set_print_preview (GeditTab  *tab,
+		   GtkWidget *print_preview)
+{
+	if (tab->priv->print_preview == print_preview)
+		return;
+		
+	if (tab->priv->print_preview != NULL)
+		gtk_widget_destroy (tab->priv->print_preview);
+		
+	
+	tab->priv->print_preview = print_preview;
+
+	gtk_box_pack_end (GTK_BOX (tab),
+			  tab->priv->print_preview,
+			  TRUE,
+			  TRUE,
+			  0);		
+
+	gtk_widget_hide (tab->priv->view_scrolled_window);
+	
+	g_signal_connect (tab->priv->print_preview,
+			  "destroy",
+			  G_CALLBACK (print_preview_destroyed),
+			  tab);
+}
+
+static void
+preview_page_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
+{
+	gchar *str;
+	gint page_num = gtk_source_print_job_get_page (pjob);
+	gint total = gtk_source_print_job_get_page_count (pjob);
+
+	str = g_strdup_printf (_("Rendering page %d of %d..."), page_num, total);
+/*
+	gtk_label_set_label (GTK_LABEL (pji->label), str);
+	g_free (str);
+
+	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (pji->progressbar), 
+				       1.0 * page_num / total);
+
+*/
+	g_print (str);
+	g_print ("\n");
+	g_free (str);
+}
+
+static void
+preview_finished_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
+{
+	GnomePrintJob *gjob;
+	GtkWidget *preview = NULL;
+
+	gjob = gtk_source_print_job_get_print_job (pjob);
+
+	preview = gedit_print_job_preview_new (gjob);	
+ 	g_object_unref (gjob);
+	
+	set_print_preview (tab, preview);
+	
+	gtk_widget_show (preview);
+	g_object_unref (pjob);
+}
+
+void 
+_gedit_tab_print (GeditTab      *tab,
+		  GeditPrintJob *pjob,
+		  GtkTextIter   *start, 
+		  GtkTextIter   *end)
+{
+	GeditDocument *doc;
+	
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (GEDIT_IS_PRINT_JOB (pjob));
+	g_return_if_fail (start != NULL);
+	g_return_if_fail (end != NULL);	
+		
+	doc = GEDIT_DOCUMENT (gtk_source_print_job_get_buffer (GTK_SOURCE_PRINT_JOB (pjob)));
+	g_return_if_fail (doc != NULL);
+	g_return_if_fail (gedit_tab_get_document (tab) == doc);
+	g_return_if_fail (gtk_text_iter_get_buffer (start) == GTK_TEXT_BUFFER (doc));
+	g_return_if_fail (gtk_text_iter_get_buffer (end) == GTK_TEXT_BUFFER (doc));	
+	
+	
+}
+		  
+void
+_gedit_tab_print_preview (GeditTab      *tab,
+			  GeditPrintJob *pjob,
+			  GtkTextIter   *start, 
+			  GtkTextIter   *end)		  
+{
+	GeditDocument *doc;
+	
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (GEDIT_IS_PRINT_JOB (pjob));
+	g_return_if_fail (start != NULL);
+	g_return_if_fail (end != NULL);	
+		
+	doc = GEDIT_DOCUMENT (gtk_source_print_job_get_buffer (GTK_SOURCE_PRINT_JOB (pjob)));
+	g_return_if_fail (doc != NULL);
+	g_return_if_fail (gedit_tab_get_document (tab) == doc);
+	g_return_if_fail (gtk_text_iter_get_buffer (start) == GTK_TEXT_BUFFER (doc));
+	g_return_if_fail (gtk_text_iter_get_buffer (end) == GTK_TEXT_BUFFER (doc));	
+	
+	g_object_ref (pjob);
+//	show_printing_message_area (tab, pjob);
+
+	g_signal_connect (pjob, "begin_page", (GCallback) preview_page_cb, tab);
+	g_signal_connect (pjob, "finished", (GCallback) preview_finished_cb, tab);
+
+	gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
+	
+	if (!gtk_source_print_job_print_range_async (GTK_SOURCE_PRINT_JOB (pjob), start, end))
+	{
+		/* FIXME */
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), TRUE);
+		g_warning ("Async print preview failed");
+		g_object_unref (pjob);
+	}
 }

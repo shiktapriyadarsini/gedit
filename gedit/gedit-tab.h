@@ -35,6 +35,7 @@
 
 #include <gedit/gedit-view.h>
 #include <gedit/gedit-document.h>
+#include <gedit/gedit-print.h>
 
 G_BEGIN_DECLS
 
@@ -101,6 +102,14 @@ gchar 		*_gedit_tab_get_name		(GeditTab            *tab);
 gchar 		*_gedit_tab_get_tooltips	(GeditTab            *tab);
 GdkPixbuf 	*_gedit_tab_get_icon		(GeditTab            *tab);
 
+void		 _gedit_tab_print		(GeditTab            *tab,
+						 GeditPrintJob       *pjob,
+						 GtkTextIter         *start, 
+			  			 GtkTextIter         *end);
+void		 _gedit_tab_print_preview	(GeditTab            *tab,
+						 GeditPrintJob       *pjob,
+						 GtkTextIter         *start, 
+			  			 GtkTextIter         *end);
 G_END_DECLS
 
 #endif  /* __GEDIT_TAB_H__  */

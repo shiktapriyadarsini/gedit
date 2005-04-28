@@ -383,6 +383,8 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		}
 	}
 
+	/* FIXME: I don't like this code very much. I think we should pass a
+	 * GeditTab to the function */
 	doc = gedit_window_get_active_document (window);
 	if (doc != NULL && do_save)
 	{
@@ -469,33 +471,134 @@ gedit_cmd_file_print_preview (GtkAction   *action,
 			      GeditWindow *window)
 {
 	GeditDocument *doc;
-
+	GeditTab      *tab;
+	GeditPrintJob *pjob;
+	GtkTextIter    start;
+	GtkTextIter    end;	
+	
 	gedit_debug (DEBUG_COMMANDS);
 
-	doc = gedit_window_get_active_document (window);
-	if (doc == NULL)	
+	tab = gedit_window_get_active_tab (window);
+	if (tab == NULL)	
 		return;
 
-	gedit_print_preview (GTK_WINDOW (window), doc);
+	doc = gedit_tab_get_document (tab);
+	
+	pjob = gedit_print_job_new (doc);
+	
+	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc) , &start, &end);
+	
+	_gedit_tab_print_preview (tab, pjob, &start, &end);
+	g_object_unref (pjob);
 }
+
+static void
+print_dialog_response_cb (GtkWidget *dialog, 
+			  gint response, 
+			  GeditPrintJob *pjob)
+{
+	GtkTextIter start, end;
+	gint line_start, line_end;
+	GnomePrintRangeType range_type;
+	GtkTextBuffer *buffer;
+
+	range_type = gnome_print_dialog_get_range (GNOME_PRINT_DIALOG (dialog));
+	
+	buffer = GTK_TEXT_BUFFER (gtk_source_print_job_get_buffer (GTK_SOURCE_PRINT_JOB (pjob)));
+	
+	gtk_text_buffer_get_bounds (buffer, &start, &end);
+
+	switch (range_type)
+	{
+		case GNOME_PRINT_RANGE_ALL:
+			break;
+
+		case GNOME_PRINT_RANGE_SELECTION:
+			gtk_text_buffer_get_selection_bounds (buffer,
+							      &start, 
+							      &end);
+			break;
+
+		case GNOME_PRINT_RANGE_RANGE:
+			gnome_print_dialog_get_range_page (GNOME_PRINT_DIALOG (dialog),
+							   &line_start, 
+							   &line_end);
+
+			gtk_text_iter_set_line (&start, line_start - 1);
+			gtk_text_iter_set_line (&end, line_end - 1);
+			
+			gtk_text_iter_forward_to_line_end (&end);
+			break;
+
+		default:
+			g_return_if_reached ();
+	}
+
+	switch (response)
+	{
+		case GNOME_PRINT_DIALOG_RESPONSE_PRINT:
+			gedit_debug_message (DEBUG_PRINT, "Print button pressed.");			
+			gtk_widget_destroy (dialog);
+			gedit_print_job_save_config (pjob);
+			
+			/* TODO */
+			
+			break;
+
+		case GNOME_PRINT_DIALOG_RESPONSE_PREVIEW:
+			gedit_debug_message (DEBUG_PRINT, "Preview button pressed.");
+			gtk_widget_destroy (dialog);
+			gedit_print_job_save_config (pjob);
+			
+			/* TODO */
+			
+			break;
+
+		default:
+			gtk_widget_destroy (dialog);
+        }
+        
+        g_object_unref (pjob);
+} 
 
 void
 gedit_cmd_file_print (GtkAction   *action,
 		      GeditWindow *window)
 {
 	GeditDocument *doc;
-
+	GeditPrintJob *pjob;
+	GtkWidget *print_dialog;
+	GtkWindowGroup *wg;
+	
 	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_window_get_active_document (window);
 	if (doc == NULL)	
 		return;
 
-	gedit_print (GTK_WINDOW (window), doc);
+	pjob = gedit_print_job_new (doc);
+			
+	print_dialog = gedit_print_dialog_new (pjob);
+	
+	wg = gedit_window_get_group (window);
+
+	gtk_window_group_add_window (wg,
+				     GTK_WINDOW (print_dialog));
+				     
+	gtk_window_set_modal (GTK_WINDOW (print_dialog), TRUE);
+	     
+	/* TODO: set the default path/name */
+
+	g_signal_connect (print_dialog,
+			  "response",
+			  G_CALLBACK (print_dialog_response_cb),
+			  pjob);
+		   						     
+	gtk_widget_show (print_dialog);
 }
 
 gboolean
-_gedit_cmd_file_can_close (GeditTab   *tab,
+_gedit_cmd_file_can_close (GeditTab  *tab,
 			   GtkWindow *window)
 {
 	GeditDocument *doc;
