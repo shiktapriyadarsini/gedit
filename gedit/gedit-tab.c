@@ -744,8 +744,7 @@ print_preview_destroyed (GtkWidget *preview,
 }
 
 static void
-set_print_preview (GeditTab  *tab,
-		   GtkWidget *print_preview)
+set_print_preview (GeditTab  *tab, GtkWidget *print_preview)
 {
 	if (tab->priv->print_preview == print_preview)
 		return;
@@ -761,6 +760,8 @@ set_print_preview (GeditTab  *tab,
 			  TRUE,
 			  TRUE,
 			  0);		
+
+	gtk_widget_grab_focus (tab->priv->print_preview);
 
 	gtk_widget_hide (tab->priv->view_scrolled_window);
 	

@@ -1027,7 +1027,6 @@ static void
 gedit_print_job_preview_finalize (GObject *object)
 {
 	GeditPrintJobPreview *pmp;
-	GPMPPrivate *priv;
 
 	pmp = GEDIT_PRINT_JOB_PREVIEW (object);
 	g_free (pmp->priv);
@@ -1221,17 +1220,30 @@ gedit_print_job_preview_set_property (GObject *object, guint n,
 }
 
 static void
+grab_focus (GtkWidget *w)
+{
+	GeditPrintJobPreview *pmp;
+	
+	pmp = GEDIT_PRINT_JOB_PREVIEW (w);
+	
+	gtk_widget_grab_focus (GTK_WIDGET (pmp->priv->canvas));
+}
+
+static void
 gedit_print_job_preview_class_init (GeditPrintJobPreviewClass *klass)
 {
 	GtkObjectClass *object_class;
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	
 	object_class = (GtkObjectClass *) klass;
 
 	parent_class = gtk_type_class (GTK_TYPE_VBOX);
 
 	object_class->destroy = gedit_print_job_preview_destroy;
-
+	
+	widget_class->grab_focus = grab_focus;
+	
 	gobject_class->finalize     = gedit_print_job_preview_finalize;
 	gobject_class->set_property = gedit_print_job_preview_set_property;
 	gobject_class->get_property = gedit_print_job_preview_get_property;
@@ -1266,6 +1278,12 @@ gedit_print_job_preview_init (GeditPrintJobPreview *mp)
 	mp->page_array = g_ptr_array_new ();
 }
 
+static void
+realized (GtkWidget *widget, GeditPrintJobPreview *gpmp)
+{
+	preview_zoom_100_cmd (gpmp);
+}
+
 GtkWidget *
 gedit_print_job_preview_new (GnomePrintJob *gpm)
 {
@@ -1288,8 +1306,8 @@ gedit_print_job_preview_new (GnomePrintJob *gpm)
 	create_preview_canvas (gpmp);
 
 	/* this zooms to fit, once we know how big the window actually is */
-	g_signal_connect_swapped (G_OBJECT (priv->canvas), "realize",
-		(GCallback) preview_zoom_fit_cmd, gpmp);
+	g_signal_connect_after (priv->canvas, "realize",
+		(GCallback) realized, gpmp);
 
 	priv->pagecount = gnome_print_job_get_pages (gpm);
 	goto_page (gpmp, 0);
