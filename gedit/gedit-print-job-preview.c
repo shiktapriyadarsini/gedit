@@ -40,6 +40,10 @@
  *           Lauris Kaplinski <lauris@ximian.com>
  */
 
+/* TODO: this file needs to be cleaned up before merging to HEAD,
+   i.e. the unused functions and variables must be removed.
+   We should also merge the GPMPPrivate structure with GeditPrintJobPreview */
+
 #include <config.h>
 
 #include <math.h>
@@ -118,8 +122,6 @@ struct _GPMPPrivate {
 	/* Our GnomePrintPreview */
 	GnomePrintContext *preview;
 
-	GtkWidget *hbox;
-
 	GtkWidget *page_entry;
 	GtkWidget *scrolled_window;
 	GtkWidget *last;
@@ -192,6 +194,8 @@ change_page_cmd (GtkEntry *entry, GeditPrintJobPreview *pmp)
 
 	page = CLAMP (atoi (text), 1, priv->pagecount) - 1;
 
+	gtk_widget_grab_focus (GTK_WIDGET (pmp->priv->canvas));
+	
 	return goto_page (pmp, page);
 }
 
@@ -364,47 +368,37 @@ preview_close_cmd (gpointer unused, GeditPrintJobPreview *mp)
 }
 
 static void
-preview_file_print_cmd (void *unused, GeditPrintJobPreview *pmp)
-{
-	GPMPPrivate *priv;
-
-	priv = (GPMPPrivate *) pmp->priv;
-
-	gnome_print_job_print (priv->job);
-
-	/* fixme: should we clean ourselves up now? */
-}
-
-static void
-preview_first_page_cmd (void *unused, GeditPrintJobPreview *pmp)
-{
-	goto_page (pmp, 0);
-}
-
-static void
 preview_next_page_cmd (void *unused, GeditPrintJobPreview *pmp)
 {
+	GdkEvent *event;
 	GPMPPrivate *priv = (GPMPPrivate *) pmp->priv;
 
-	goto_page (pmp, MIN (priv->current_page + pmp->nx * pmp->ny,
-			     priv->pagecount - 1));
+	event = gtk_get_current_event ();
+	
+	if (event->button.state & GDK_SHIFT_MASK)
+		goto_page (pmp, priv->pagecount - 1);
+	else
+		goto_page (pmp, MIN (priv->current_page + pmp->nx * pmp->ny,
+			     	     priv->pagecount - 1));
+		   
+	gdk_event_free (event);
 }
 
 static void
 preview_prev_page_cmd (void *unused, GeditPrintJobPreview *pmp)
 {
+	GdkEvent *event;
 	GPMPPrivate *priv = (GPMPPrivate *) pmp->priv;
 
-	goto_page (pmp,
+	event = gtk_get_current_event ();
+	
+	if (event->button.state & GDK_SHIFT_MASK)
+		goto_page (pmp, 0);
+	else
+		goto_page (pmp,
 		   MAX ((gint) (priv->current_page - pmp->nx * pmp->ny), 0));
-}
-
-static void
-preview_last_page_cmd (void *unused, GeditPrintJobPreview *pmp)
-{
-	GPMPPrivate *priv = (GPMPPrivate *) pmp->priv;
-
-	goto_page (pmp, priv->pagecount - 1);
+		   
+	gdk_event_free (event);
 }
 
 static void
@@ -538,6 +532,20 @@ preview_canvas_key (GtkWidget *widget, GdkEventKey *event, gpointer data)
 		gtk_widget_destroy (GTK_WIDGET (pmp));
 		return TRUE;
 	        /* break skipped */
+	case 'c':
+		if (event->state & GDK_MOD1_MASK)
+		{
+			gtk_widget_destroy (GTK_WIDGET (pmp));
+			return TRUE;
+		}
+		break;
+	case 'p':
+		if (event->state & GDK_MOD1_MASK)
+		{
+			gtk_widget_grab_focus (GTK_WIDGET (pmp->priv->page_entry));
+			return TRUE;
+		}
+		break;		
 	default:
 		return FALSE;
 	}
@@ -635,24 +643,6 @@ entry_focus_out_event_cb (GtkWidget *widget, GdkEventFocus *event, GeditPrintJob
 }
 
 static void
-check_button_toggled_cb (GtkWidget *widget, GeditPrintJobPreview *mp)
-{
-	GPMPPrivate *priv;
-	gboolean use_theme;
-	guint i;
-	
-	priv = (GPMPPrivate *)mp->priv;
-	use_theme = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (widget));
-	priv->theme_compliance = use_theme;
-	for (i = 0; i < mp->page_array->len; i++) {
-		GnomePrintPreview *preview =
-			g_object_get_data (mp->page_array->pdata[i], "preview");
-		g_object_set (G_OBJECT (preview), "use_theme", use_theme, NULL);
-	}
-	g_signal_emit_by_name (G_OBJECT (priv->canvas), "style_set", NULL);
-}
-
-static void
 create_preview_canvas (GeditPrintJobPreview *mp)
 {
 	GPMPPrivate *priv;
@@ -689,8 +679,7 @@ create_preview_canvas (GeditPrintJobPreview *mp)
 	g_signal_connect (G_OBJECT (priv->canvas), "style_set",
 			  G_CALLBACK (canvas_style_changed_cb), mp);
 	
-	gtk_box_pack_start (GTK_BOX (mp), priv->hbox, TRUE, TRUE, 0);
-	gtk_box_pack_end (GTK_BOX (priv->hbox), priv->scrolled_window, TRUE, TRUE, 0);
+	gtk_box_pack_end (GTK_BOX (mp), priv->scrolled_window, TRUE, TRUE, 0);
 
 	gtk_widget_show_all (GTK_WIDGET (priv->scrolled_window));
 	gtk_widget_grab_focus (GTK_WIDGET (priv->canvas));
@@ -789,28 +778,14 @@ create_toplevel (GeditPrintJobPreview *mp)
 	GtkToolItem *i;
 	AtkObject *atko;
 	GtkWidget *status;
-	GtkWidget *l;
 	
 	priv = (GPMPPrivate *) mp->priv;
 
-	priv->hbox = gtk_hbox_new (FALSE, 0);
-	gtk_widget_show (priv->hbox);
-	
 	tb = gtk_toolbar_new ();
 	gtk_toolbar_set_style (GTK_TOOLBAR (tb), GTK_TOOLBAR_BOTH_HORIZ);
 	gtk_widget_show (tb);
 	gtk_box_pack_start (GTK_BOX (mp), tb, FALSE, FALSE, 0);
-	
-	i = gtk_tool_button_new_from_stock (GTK_STOCK_GOTO_FIRST);
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "_First Page");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
-	mp->bpf = GTK_WIDGET (i);
-	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
-				   _("Show the first page"), "");
-	g_signal_connect (i, "clicked",
-			  G_CALLBACK (preview_first_page_cmd), mp);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
+
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_GO_BACK);
 		gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "P_revious Page");
 	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
@@ -821,40 +796,7 @@ create_toplevel (GeditPrintJobPreview *mp)
 			  G_CALLBACK (preview_prev_page_cmd), mp);
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
-	
-	status = gtk_hbox_new (FALSE, 4);
-	l = gtk_label_new_with_mnemonic (_("_Page: "));
-	gtk_box_pack_start (GTK_BOX (status), l, FALSE, FALSE, 0);
-	priv->page_entry = gtk_entry_new ();
-	gtk_widget_set_size_request (priv->page_entry, 40, -1);
 
-	g_signal_connect (G_OBJECT (priv->page_entry), "activate", 
-			  G_CALLBACK (change_page_cmd), mp);
-	g_signal_connect (G_OBJECT (priv->page_entry), "insert_text",
-			  G_CALLBACK (entry_insert_text_cb), NULL);
-	g_signal_connect (G_OBJECT (priv->page_entry), "focus_out_event",
-			  G_CALLBACK (entry_focus_out_event_cb), mp);
-
-	gtk_box_pack_start (GTK_BOX (status), priv->page_entry, FALSE, FALSE, 0);
-	gtk_label_set_mnemonic_widget ((GtkLabel *) l, priv->page_entry);
-
-	/* We are displaying 'Page: XXX of XXX'. */
-	gtk_box_pack_start (GTK_BOX (status), gtk_label_new (_("of")),
-			    FALSE, FALSE, 0);
-
-	priv->last = gtk_label_new ("");
-	gtk_box_pack_start (GTK_BOX (status), priv->last, FALSE, FALSE, 0);
-	atko = gtk_widget_get_accessible (priv->last);
-	atk_object_set_name (atko, _("Page total"));
-	atk_object_set_description (atko, _("The total number of pages in the document"));
-
-	gtk_widget_show_all (status);
-	
-	i = gtk_tool_item_new ();
-	gtk_container_add (GTK_CONTAINER (i), status);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
-	
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_GO_FORWARD);
 	mp->bpn = GTK_WIDGET (i);
 	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "_Next Page");
@@ -865,14 +807,44 @@ create_toplevel (GeditPrintJobPreview *mp)
 			  G_CALLBACK (preview_next_page_cmd), mp);
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
-	i = gtk_tool_button_new_from_stock (GTK_STOCK_GOTO_LAST);
-	mp->bpl = GTK_WIDGET (i);
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "_Last Page");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
-	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
-				    _("Show the last page"), "");
-	g_signal_connect (i, "clicked",
-			  G_CALLBACK (preview_last_page_cmd), mp);
+
+	i = gtk_separator_tool_item_new ();
+	gtk_widget_show (GTK_WIDGET (i));
+	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
+
+	status = gtk_hbox_new (FALSE, 4);
+	priv->page_entry = gtk_entry_new ();
+	gtk_entry_set_width_chars (GTK_ENTRY (priv->page_entry), 3);
+	gtk_entry_set_max_length (GTK_ENTRY (priv->page_entry), 6);
+	gtk_tooltips_set_tip (GTK_TOOLBAR (tb)->tooltips,
+	                      priv->page_entry,
+	                      _("Current page (Alt+P)"),
+	                      NULL);
+	                      
+	g_signal_connect (G_OBJECT (priv->page_entry), "activate", 
+			  G_CALLBACK (change_page_cmd), mp);
+	g_signal_connect (G_OBJECT (priv->page_entry), "insert_text",
+			  G_CALLBACK (entry_insert_text_cb), NULL);
+	g_signal_connect (G_OBJECT (priv->page_entry), "focus_out_event",
+			  G_CALLBACK (entry_focus_out_event_cb), mp);
+
+	gtk_box_pack_start (GTK_BOX (status), priv->page_entry, FALSE, FALSE, 0);
+	/* gtk_label_set_mnemonic_widget ((GtkLabel *) l, priv->page_entry); */
+
+	/* We are displaying 'XXX of XXX'. */
+	gtk_box_pack_start (GTK_BOX (status), gtk_label_new (_("of")),
+			    FALSE, FALSE, 0);
+
+	priv->last = gtk_label_new ("");
+	gtk_box_pack_start (GTK_BOX (status), priv->last, FALSE, FALSE, 0);
+	atko = gtk_widget_get_accessible (priv->last);
+	atk_object_set_name (atko, _("Page total"));
+	atk_object_set_description (atko, _("The total number of pages in the document"));
+
+	gtk_widget_show_all (status);
+
+	i = gtk_tool_item_new ();
+	gtk_container_add (GTK_CONTAINER (i), status);
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 
@@ -880,37 +852,6 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 	
-	i = gtk_tool_button_new_from_stock (GTK_STOCK_PRINT);
-	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
-				   _("Print the current file"), "");
-	g_signal_connect (i, "clicked",
-			  G_CALLBACK (preview_file_print_cmd),mp);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
-
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
-	
-	i = gtk_tool_button_new_from_stock (GTK_STOCK_CLOSE);
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "_Close Preview");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
-	gtk_tool_item_set_is_important (i, TRUE);
-	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips, 
-				   _("Close print preview"), "");
-	g_signal_connect (i, "clicked",
-			  G_CALLBACK (preview_close_cmd), mp);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
-
-
-	/* Vertical toolbar */
-	tb = gtk_toolbar_new ();
-	gtk_toolbar_set_style (GTK_TOOLBAR (tb), GTK_TOOLBAR_ICONS);
-	gtk_toolbar_set_orientation (GTK_TOOLBAR (tb), GTK_ORIENTATION_VERTICAL);
-	gtk_widget_show (tb);
-	gtk_box_pack_start (GTK_BOX (mp->priv->hbox), tb, FALSE, FALSE, 0);
-
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_DND_MULTIPLE);
 	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "_Show Multiple Pages");
 	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
@@ -919,17 +860,7 @@ create_toplevel (GeditPrintJobPreview *mp)
 	g_signal_connect (i, "clicked", G_CALLBACK (gpmp_multi_cmd), mp);
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);	
-	
-	i = gtk_toggle_tool_button_new_from_stock (GTK_STOCK_COLOR_PICKER);
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "_Use Theme Colors");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
-	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
-				   _("Use theme colors for content"), "");
-	g_signal_connect (G_OBJECT (i), "toggled",
-			  G_CALLBACK (check_button_toggled_cb), mp);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
-	
+		
 	i = gtk_separator_tool_item_new ();
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
@@ -965,6 +896,20 @@ create_toplevel (GeditPrintJobPreview *mp)
 				   _("Zoom the page out"), "");
 	g_signal_connect (i, "clicked",
 			  G_CALLBACK (gpmp_zoom_out_cmd), mp);
+	gtk_widget_show (GTK_WIDGET (i));
+	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
+
+	i = gtk_separator_tool_item_new ();
+	gtk_widget_show (GTK_WIDGET (i));
+	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
+		
+	i = gtk_tool_button_new (NULL, "_Close Preview");
+	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
+	gtk_tool_item_set_is_important (i, TRUE);
+	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips, 
+				   _("Close print preview"), "");
+	g_signal_connect (i, "clicked",
+			  G_CALLBACK (preview_close_cmd), mp);
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 }
@@ -1401,3 +1346,10 @@ gpmp_parse_layout (GeditPrintJobPreview *mp)
 		gnome_print_layout_data_free (lyd);
 	}
 }
+
+GnomePrintJob *
+gedit_print_job_preview_get_print_job (GeditPrintJobPreview *pjp)
+{
+	return pjp->priv->job;
+}
+

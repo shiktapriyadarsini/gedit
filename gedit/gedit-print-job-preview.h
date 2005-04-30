@@ -60,8 +60,10 @@ typedef struct _GeditPrintJobPreviewClass GeditPrintJobPreviewClass;
 #include <libgnomeprint/gnome-print-job.h>
 #include <libgnomeprintui/gnome-print-preview.h>
 
-GtkType     gedit_print_job_preview_get_type (void);
-GtkWidget * gedit_print_job_preview_new (GnomePrintJob *gpm);
+GtkType		 gedit_print_job_preview_get_type 	(void);
+GtkWidget	*gedit_print_job_preview_new 		(GnomePrintJob        *gpm);
+
+GnomePrintJob	*gedit_print_job_preview_get_print_job	(GeditPrintJobPreview *pjp);
 
 G_END_DECLS
 

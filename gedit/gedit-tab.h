@@ -39,6 +39,19 @@
 
 G_BEGIN_DECLS
 
+typedef enum
+{
+	GEDIT_TAB_STATE_NORMAL = 0,
+	GEDIT_TAB_STATE_LOADING,
+	GEDIT_TAB_STATE_SAVING,	
+	GEDIT_TAB_STATE_PRINTING,
+	GEDIT_TAB_STATE_PRINT_PREVIEWING,
+	GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE,
+	GEDIT_TAB_STATE_LOADING_ERROR,
+	GEDIT_TAB_STATE_SAVING_ERROR,
+	GEDIT_TAB_STATE_GENERIC_ERROR,
+} GeditTabState;
+
 /*
  * Type checking and casting macros
  */
@@ -88,6 +101,10 @@ GeditDocument	*gedit_tab_get_document		(GeditTab            *tab);
 
 GeditTab	*gedit_tab_get_from_document	(GeditDocument       *doc);
 
+GeditTabState	 gedit_tab_get_state		(GeditTab	     *tab);
+
+void		 gedit_tab_set_state		(GeditTab	     *tab,
+						 GeditTabState	      state);
 /*
  * Non exported methods
  */
@@ -110,6 +127,8 @@ void		 _gedit_tab_print_preview	(GeditTab            *tab,
 						 GeditPrintJob       *pjob,
 						 GtkTextIter         *start, 
 			  			 GtkTextIter         *end);
+			  			 
+
 G_END_DECLS
 
 #endif  /* __GEDIT_TAB_H__  */

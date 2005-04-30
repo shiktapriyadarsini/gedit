@@ -41,6 +41,7 @@
 #include "gedit-message-area.h"
 #include "gedit-io-error-message-area.h"
 #include "gedit-print-job-preview.h"
+#include "gedit-progress-message-area.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -48,13 +49,12 @@
 
 struct _GeditTabPrivate
 {
-	GtkWidget *view;
-	GtkWidget *view_scrolled_window;
+	GeditTabState	 state;
+	GtkWidget 	*view;
+	GtkWidget 	*view_scrolled_window;
 	
-	GtkWidget *message_area;
-	GtkWidget *print_preview;
-	
-	gboolean load_error_state;
+	GtkWidget 	*message_area;
+	GtkWidget 	*print_preview;
 };
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
@@ -131,176 +131,35 @@ gedit_tab_class_init (GeditTabClass *klass)
 	g_type_class_add_private (object_class, sizeof(GeditTabPrivate));
 }
 
+void
+gedit_tab_set_state (GeditTab *tab,
+		     GeditTabState state)
+{
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	
+	if (tab->priv->state == state)
+		return;
+	
+	tab->priv->state = state;
+	
+	if (state == GEDIT_TAB_STATE_NORMAL)
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), TRUE);
+	else		
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
+	
+	if (state == GEDIT_TAB_STATE_LOADING_ERROR)	
+		gtk_widget_hide (tab->priv->view_scrolled_window);
+	else
+		gtk_widget_show (tab->priv->view_scrolled_window);
+		
+	g_object_notify (G_OBJECT (tab), "name");		
+}
+
 static void 
 document_name_modified_changed (GeditDocument *document, GeditTab *tab)
 {
 	g_object_notify (G_OBJECT (tab), "name");
 }
-
-#if 0
-static GtkWidget *
-create_progress_message_area_content ()
-{
-  GtkWidget *hbox1;
-  GtkWidget *vbox1;
-  GtkWidget *hbox2;
-  GtkWidget *image1;
-  GtkWidget *label1;
-  GtkWidget *progressbar1;
-  GtkWidget *vbox2;
-  GtkWidget *button1;
-  
-  hbox1 = gtk_hbox_new (FALSE, 16);
-  gtk_widget_show (hbox1);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox1), 6);
-
-  vbox1 = gtk_vbox_new (FALSE, 4);
-  gtk_widget_show (vbox1);
-  gtk_box_pack_start (GTK_BOX (hbox1), vbox1, TRUE, TRUE, 0);
-
-  hbox2 = gtk_hbox_new (FALSE, 8);
-  gtk_widget_show (hbox2);
-  gtk_box_pack_start (GTK_BOX (vbox1), hbox2, FALSE, FALSE, 0);
-
-  image1 = gtk_image_new_from_icon_name (GTK_STOCK_OPEN, GTK_ICON_SIZE_SMALL_TOOLBAR);
-  gtk_widget_show (image1);
-  gtk_box_pack_start (GTK_BOX (hbox2), image1, FALSE, FALSE, 0);
-
-  label1 = gtk_label_new (_("Loading <b>pippo.txt</b> from <b>http://www.gnome.org/~paolo/</b>"));
-  gtk_widget_show (label1);
-  gtk_box_pack_start (GTK_BOX (hbox2), label1, TRUE, TRUE, 0);
-  gtk_label_set_use_markup (GTK_LABEL (label1), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (label1), 0, 0.5);
-  gtk_label_set_ellipsize (GTK_LABEL (label1), PANGO_ELLIPSIZE_END);
-  gtk_label_set_single_line_mode (GTK_LABEL (label1), TRUE);
-
-  progressbar1 = gtk_progress_bar_new ();
-  gtk_widget_show (progressbar1);
-  gtk_box_pack_start (GTK_BOX (vbox1), progressbar1, TRUE, FALSE, 0);
-  gtk_widget_set_size_request (progressbar1, -1, 15);
-  gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progressbar1), 0.5);
-  gtk_progress_bar_set_ellipsize (GTK_PROGRESS_BAR (progressbar1), PANGO_ELLIPSIZE_MIDDLE);
-
-  vbox2 = gtk_vbox_new (TRUE, 0);
-  gtk_widget_show (vbox2);
-  gtk_box_pack_start (GTK_BOX (hbox1), vbox2, FALSE, TRUE, 0);
-
-  button1 = gtk_button_new_from_stock ("gtk-cancel");
-  gtk_widget_show (button1);
-  gtk_box_pack_start (GTK_BOX (vbox2), button1, FALSE, FALSE, 0);
-  gtk_button_set_relief (GTK_BUTTON (button1), GTK_RELIEF_NONE);
-  
-  return hbox1;
-}
-
-#endif
-#if 0
-static GtkWidget *
-create_retry_message_area_content (void)
-{
-  GtkWidget *hbox5;
-  GtkWidget *hbox6;
-  GtkWidget *image3;
-  GtkWidget *vbox6;
-  GtkWidget *label4;
-  GtkWidget *label5;
-  GtkWidget *hbox9;
-  GtkWidget *label8;
-  GtkWidget *combobox1;
-  GtkWidget *vbox7;
-  GtkWidget *button3;
-  GtkWidget *alignment1;
-  GtkWidget *hbox10;
-  GtkWidget *image4;
-  GtkWidget *label9;
-  GtkWidget *button4;
-
-  hbox5 = gtk_hbox_new (FALSE, 16);
-  gtk_widget_show (hbox5);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox5), 6);
-  gtk_container_set_resize_mode (GTK_CONTAINER (hbox5), GTK_RESIZE_QUEUE);
-  
-  hbox6 = gtk_hbox_new (FALSE, 8);
-  gtk_widget_show (hbox6);
-  gtk_box_pack_start (GTK_BOX (hbox5), hbox6, TRUE, TRUE, 0);
-
-  image3 = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
-  gtk_widget_show (image3);
-  gtk_box_pack_start (GTK_BOX (hbox6), image3, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (image3), 0.5, 0);
-
-  vbox6 = gtk_vbox_new (FALSE, 6);
-  gtk_widget_show (vbox6);
-  gtk_box_pack_start (GTK_BOX (hbox6), vbox6, TRUE, TRUE, 0);
-
-  label4 = gtk_label_new (_("<b>Could not open the file <i>/gnome/gnome-210/\342\200\246/stock_about_16.png\"</i></b>"));
-  gtk_widget_show (label4);
-  gtk_box_pack_start (GTK_BOX (vbox6), label4, TRUE, TRUE, 0);
-  GTK_WIDGET_SET_FLAGS (label4, GTK_CAN_FOCUS);
-  gtk_label_set_use_markup (GTK_LABEL (label4), TRUE);
-  gtk_label_set_line_wrap (GTK_LABEL (label4), TRUE);
-  gtk_label_set_selectable (GTK_LABEL (label4), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (label4), 0, 0.5);
-
-  label5 = gtk_label_new (_("<small>gedit was not able to automatically detect the character coding. Do you want to retry using the specified character coding?</small>"));
-  gtk_widget_show (label5);
-  gtk_box_pack_start (GTK_BOX (vbox6), label5, TRUE, TRUE, 0);
-  GTK_WIDGET_SET_FLAGS (label5, GTK_CAN_FOCUS);
-  gtk_label_set_use_markup (GTK_LABEL (label5), TRUE);
-  gtk_label_set_line_wrap (GTK_LABEL (label5), TRUE);
-  gtk_label_set_selectable (GTK_LABEL (label5), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (label5), 0, 0.5);
-
-  hbox9 = gtk_hbox_new (FALSE, 8);
-  gtk_widget_show (hbox9);
-  gtk_box_pack_start (GTK_BOX (vbox6), hbox9, TRUE, TRUE, 0);
-
-  label8 = gtk_label_new_with_mnemonic (_("<small>Ch_aracter coding:</small>"));
-  gtk_widget_show (label8);
-  gtk_box_pack_start (GTK_BOX (hbox9), label8, FALSE, FALSE, 0);
-  gtk_label_set_use_markup (GTK_LABEL (label8), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (label8), 0, 0.5);
-
-  combobox1 = gtk_combo_box_new_text ();
-  gtk_widget_show (combobox1);
-  gtk_box_pack_start (GTK_BOX (hbox9), combobox1, TRUE, TRUE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1), _("Western (ISO-8859-15)"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1), _("Unicode (UTF-16)"));
-
-  vbox7 = gtk_vbox_new (FALSE, 8);
-  gtk_widget_show (vbox7);
-  gtk_box_pack_start (GTK_BOX (hbox5), vbox7, FALSE, TRUE, 0);
-
-  button3 = gtk_button_new ();
-  gtk_widget_show (button3);
-  gtk_box_pack_start (GTK_BOX (vbox7), button3, FALSE, FALSE, 0);
-  gtk_button_set_relief (GTK_BUTTON (button3), GTK_RELIEF_NONE);
-
-  alignment1 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment1);
-  gtk_container_add (GTK_CONTAINER (button3), alignment1);
-
-  hbox10 = gtk_hbox_new (TRUE, 2);
-  gtk_widget_show (hbox10);
-  gtk_container_add (GTK_CONTAINER (alignment1), hbox10);
-
-  image4 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image4);
-  gtk_box_pack_start (GTK_BOX (hbox10), image4, FALSE, FALSE, 0);
-
-  label9 = gtk_label_new_with_mnemonic ("_Retry");
-  gtk_widget_show (label9);
-  gtk_box_pack_start (GTK_BOX (hbox10), label9, FALSE, FALSE, 0);
-
-  button4 = gtk_button_new_from_stock ("gtk-close");
-  gtk_widget_show (button4);
-  gtk_box_pack_start (GTK_BOX (vbox7), button4, FALSE, FALSE, 0);
-  gtk_button_set_relief (GTK_BUTTON (button4), GTK_RELIEF_NONE);
-  
-  return hbox5;
-}
-#endif
-
 
 static void
 set_message_area (GeditTab  *tab,
@@ -312,9 +171,11 @@ set_message_area (GeditTab  *tab,
 	if (tab->priv->message_area != NULL)
 		gtk_widget_destroy (tab->priv->message_area);
 		
-	
 	tab->priv->message_area = message_area;
 
+	if (message_area == NULL)
+		return;
+		
 	gtk_box_pack_start (GTK_BOX (tab),
 			    tab->priv->message_area,
 			    FALSE,
@@ -352,14 +213,7 @@ document_loaded (GeditDocument *document,
 	
 	if (error != NULL)
 	{
-		tab->priv->load_error_state = TRUE;
-		
-		g_object_notify (G_OBJECT (tab), "name");
-		
-		// FIXME: in realtà durante il loading text_view dovrebbe essere
-		// non editabile
-		//gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
-		gtk_widget_hide (tab->priv->view_scrolled_window);
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
 		
 		uri = gedit_document_get_uri_ (document);
 		encoding = gedit_document_get_encoding (document);
@@ -396,6 +250,8 @@ document_loaded (GeditDocument *document,
 		gtk_widget_show (emsg);
 		gtk_widget_show (tab->priv->message_area);
 	}
+	else
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 }		 
 
 		  
@@ -408,6 +264,8 @@ gedit_tab_init (GeditTab *tab)
 	
 	tab->priv = GEDIT_TAB_GET_PRIVATE (tab);
 
+	tab->priv->state = GEDIT_TAB_STATE_NORMAL;
+	
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	tab->priv->view_scrolled_window = sw;
@@ -563,40 +421,46 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 
 	ruri = 	gedit_utils_replace_home_dir_with_tilde (uri);
 	
-	if (tab->priv->load_error_state)
+	switch (tab->priv->state)
 	{
-		tip =  g_markup_printf_escaped(_("Error opening file <i>%s</i>."),
-						ruri);
-	}
-	else
-	{
-		mime_type = gedit_document_get_mime_type (doc);
-		mime_description = gnome_vfs_mime_get_description (mime_type);
+		case GEDIT_TAB_STATE_LOADING_ERROR:
+			tip =  g_markup_printf_escaped(_("Error opening file <i>%s</i>."),
+						       ruri);
+			break;
+		case GEDIT_TAB_STATE_SAVING_ERROR:
+			tip =  g_markup_printf_escaped(_("Error saving file <i>%s</i>."),
+						       ruri);
+			break;
+		default:
+			mime_type = gedit_document_get_mime_type (doc);
+			mime_description = gnome_vfs_mime_get_description (mime_type);
 
-		if (mime_description == NULL)
-			mime_full_description = g_strdup (mime_type);
-		else
-			mime_full_description = g_strdup_printf ("%s (%s)", 
-					mime_description, mime_type);
+			if (mime_description == NULL)
+				mime_full_description = g_strdup (mime_type);
+			else
+				mime_full_description = g_strdup_printf ("%s (%s)", 
+						mime_description, mime_type);
 
-		enc = gedit_document_get_encoding (doc);
+			enc = gedit_document_get_encoding (doc);
 
-		if (enc == NULL)
-			encoding = g_strdup (_("Unicode (UTF-8)"));
-		else
-			encoding = gedit_encoding_to_string (enc);
-		
-		
+			if (enc == NULL)
+				encoding = g_strdup (_("Unicode (UTF-8)"));
+			else
+				encoding = gedit_encoding_to_string (enc);
+			
+			
 
-		tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
-					       "<b>%s</b> %s\n"
-					       "<b>%s</b> %s",
-					       _("Name:"), ruri,
-					       _("MIME Type:"), mime_full_description,
-					       _("Encoding:"), encoding);
+			tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
+						       "<b>%s</b> %s\n"
+						       "<b>%s</b> %s",
+						       _("Name:"), ruri,
+						       _("MIME Type:"), mime_full_description,
+						       _("Encoding:"), encoding);
 
-		g_free (encoding);
-		g_free (mime_full_description);
+			g_free (encoding);
+			g_free (mime_full_description);
+			
+			break;
 	}
 	
 	g_free (ruri);	
@@ -698,25 +562,49 @@ _gedit_tab_get_icon (GeditTab *tab)
 					   NULL,
 					   &icon_size);
 
-	if (tab->priv->load_error_state)
+	switch (tab->priv->state)
 	{
-		pixbuf = get_stock_icon (theme, 
-					 GTK_STOCK_DIALOG_ERROR, 
-					 icon_size);
-	}
-	else
-	{
-	
-		const gchar *raw_uri;
-		const gchar *mime_type;
-		GeditDocument *doc;
-	
-		doc = gedit_tab_get_document (tab);
-		
-		raw_uri = gedit_document_get_uri_ (doc);
-		mime_type = gedit_document_get_mime_type (doc);
+		case GEDIT_TAB_STATE_LOADING:
+			pixbuf = get_stock_icon (theme, 
+						 GTK_STOCK_OPEN, 
+						 icon_size);
+			break;
+		case GEDIT_TAB_STATE_SAVING:
+			pixbuf = get_stock_icon (theme, 
+						 GTK_STOCK_SAVE, 
+						 icon_size);
+			break;
+		case GEDIT_TAB_STATE_PRINTING:
+			pixbuf = get_stock_icon (theme, 
+						 GTK_STOCK_PRINT, 
+						 icon_size);
+			break;
+		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
+			pixbuf = get_stock_icon (theme, 
+						 GTK_STOCK_PRINT_PREVIEW, 
+						 icon_size);
+			break;
 
-		pixbuf = get_icon (theme, raw_uri, mime_type, icon_size);
+		case GEDIT_TAB_STATE_LOADING_ERROR:
+		case GEDIT_TAB_STATE_SAVING_ERROR:
+		case GEDIT_TAB_STATE_GENERIC_ERROR:
+			pixbuf = get_stock_icon (theme, 
+						 GTK_STOCK_DIALOG_ERROR, 
+						 icon_size);
+			break;
+		default:
+		{	
+			const gchar *raw_uri;
+			const gchar *mime_type;
+			GeditDocument *doc;
+		
+			doc = gedit_tab_get_document (tab);
+			
+			raw_uri = gedit_document_get_uri_ (doc);
+			mime_type = gedit_document_get_mime_type (doc);
+
+			pixbuf = get_icon (theme, raw_uri, mime_type, icon_size);
+		}
 	}
 	
 	return pixbuf;	
@@ -738,7 +626,7 @@ static void
 print_preview_destroyed (GtkWidget *preview,
 			 GeditTab  *tab)
 {
-	gtk_widget_show (tab->priv->view_scrolled_window);
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	
 	tab->priv->print_preview = NULL;
 }
@@ -771,25 +659,36 @@ set_print_preview (GeditTab  *tab, GtkWidget *print_preview)
 			  tab);
 }
 
+#define MIN_PAGES 20
+
 static void
 preview_page_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
 {
 	gchar *str;
-	gint page_num = gtk_source_print_job_get_page (pjob);
-	gint total = gtk_source_print_job_get_page_count (pjob);
+	gint page_num;
+	gint total;
 
+	g_return_if_fail (GEDIT_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));	
+
+	total = gtk_source_print_job_get_page_count (pjob);
+	
+	if (total < MIN_PAGES)
+		return;
+
+	page_num = gtk_source_print_job_get_page (pjob);
+			
+	g_return_if_fail (GEDIT_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));	
+	
+	gtk_widget_show (tab->priv->message_area);
+	
 	str = g_strdup_printf (_("Rendering page %d of %d..."), page_num, total);
-/*
-	gtk_label_set_label (GTK_LABEL (pji->label), str);
+	/* sleep (1); */
+	gedit_progress_message_area_set_markup (GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
+						str);
 	g_free (str);
-
-	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (pji->progressbar), 
+	
+	gedit_progress_message_area_set_fraction (GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
 				       1.0 * page_num / total);
-
-*/
-	g_print (str);
-	g_print ("\n");
-	g_free (str);
 }
 
 static void
@@ -798,6 +697,9 @@ preview_finished_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
 	GnomePrintJob *gjob;
 	GtkWidget *preview = NULL;
 
+	g_return_if_fail (GEDIT_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
+	set_message_area (tab, NULL); /* destroy the message area */
+	
 	gjob = gtk_source_print_job_get_print_job (pjob);
 
 	preview = gedit_print_job_preview_new (gjob);	
@@ -830,7 +732,26 @@ _gedit_tab_print (GeditTab      *tab,
 	
 	
 }
-		  
+
+/* TODO: connect cancel button */
+
+static void
+show_printing_message_area (GeditTab      *tab,
+			    gboolean       preview)
+{
+	GtkWidget *area;
+	
+	/* CHECK: are the messages written in good english */
+	if (preview)
+		area = gedit_progress_message_area_new (GTK_STOCK_PRINT_PREVIEW,
+							"");
+	else
+		area = gedit_progress_message_area_new (GTK_STOCK_PRINT,
+							"");
+	
+	set_message_area (tab, area);
+}
+
 void
 _gedit_tab_print_preview (GeditTab      *tab,
 			  GeditPrintJob *pjob,
@@ -851,12 +772,12 @@ _gedit_tab_print_preview (GeditTab      *tab,
 	g_return_if_fail (gtk_text_iter_get_buffer (end) == GTK_TEXT_BUFFER (doc));	
 	
 	g_object_ref (pjob);
-//	show_printing_message_area (tab, pjob);
+	show_printing_message_area (tab, TRUE);
 
 	g_signal_connect (pjob, "begin_page", (GCallback) preview_page_cb, tab);
 	g_signal_connect (pjob, "finished", (GCallback) preview_finished_cb, tab);
 
-	gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINT_PREVIEWING);
 	
 	if (!gtk_source_print_job_print_range_async (GTK_SOURCE_PRINT_JOB (pjob), start, end))
 	{

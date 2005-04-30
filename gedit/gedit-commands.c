@@ -501,13 +501,16 @@ print_dialog_response_cb (GtkWidget *dialog,
 	gint line_start, line_end;
 	GnomePrintRangeType range_type;
 	GtkTextBuffer *buffer;
-
+	GeditTab *tab;
+	
 	range_type = gnome_print_dialog_get_range (GNOME_PRINT_DIALOG (dialog));
 	
 	buffer = GTK_TEXT_BUFFER (gtk_source_print_job_get_buffer (GTK_SOURCE_PRINT_JOB (pjob)));
 	
 	gtk_text_buffer_get_bounds (buffer, &start, &end);
 
+	tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (buffer));
+	
 	switch (range_type)
 	{
 		case GNOME_PRINT_RANGE_ALL:
@@ -538,7 +541,7 @@ print_dialog_response_cb (GtkWidget *dialog,
 	{
 		case GNOME_PRINT_DIALOG_RESPONSE_PRINT:
 			gedit_debug_message (DEBUG_PRINT, "Print button pressed.");			
-			gtk_widget_destroy (dialog);
+			
 			gedit_print_job_save_config (pjob);
 			
 			/* TODO */
@@ -547,18 +550,14 @@ print_dialog_response_cb (GtkWidget *dialog,
 
 		case GNOME_PRINT_DIALOG_RESPONSE_PREVIEW:
 			gedit_debug_message (DEBUG_PRINT, "Preview button pressed.");
-			gtk_widget_destroy (dialog);
-			gedit_print_job_save_config (pjob);
 			
-			/* TODO */
-			
-			break;
+			_gedit_tab_print_preview (tab, pjob, &start, &end);
 
-		default:
-			gtk_widget_destroy (dialog);
+			break;
         }
         
         g_object_unref (pjob);
+	gtk_widget_destroy (dialog);
 } 
 
 void

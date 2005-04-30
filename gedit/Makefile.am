@@ -62,6 +62,7 @@ INST_H_FILES =				\
 	gedit-file-chooser-dialog.h	\
 	gedit-message-area.h		\
 	gedit-print-job-preview.h	\
+	gedit-progress-message-area.h	\
 	gedit-app.h
 
 #	gedit2.h			\
@@ -114,6 +115,7 @@ gedit_SOURCES = 			\
 	gedit-message-area.c		\
 	gedit-io-error-message-area.c	\
 	gedit-print-job-preview.c	\
+	gedit-progress-message-area.c	\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 
