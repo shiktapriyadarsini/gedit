@@ -43,6 +43,7 @@
 #include "gedit-app.h"
 #include "gedit-debug.h"
 #include "gedit-view.h"
+#include "gedit-window.h"
 #include "gedit-recent.h"
 
 static void gedit_prefs_manager_editor_font_changed	(GConfClient *client,
@@ -957,6 +958,7 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 		gboolean enable;
 		GList *docs;
 		GList *l;
+		const GSList *windows;
 
 		if (entry->value->type == GCONF_VALUE_BOOL)
 			enable = gconf_value_get_bool (entry->value);
@@ -977,26 +979,23 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 		}
 
 		g_list_free (docs);
-#if 0
+
 		/* update the sensitivity of the Higlight Mode menu item */
-		l = gedit_get_top_windows ();
-		while (l != NULL)
+		windows = gedit_app_get_windows (gedit_app_get_default ());
+		while (windows != NULL)
 		{
-			BonoboUIComponent *ui_component;
+			GtkUIManager *ui;
+			GtkWidget *w;
 
-			g_return_if_fail (BONOBO_IS_WINDOW (l->data));
+			ui = _gedit_window_get_ui_manager (GEDIT_WINDOW (windows->data));
 
-			ui_component = bonobo_mdi_get_ui_component_from_window (l->data);
-			if (enable)
-				bonobo_ui_component_set_prop (ui_component, "/menu/View/HighlightMode",
-						      "sensitive", "1", NULL);
-			else
-				bonobo_ui_component_set_prop (ui_component, "/menu/View/HighlightMode",
-						      "sensitive", "0", NULL);
+			w = gtk_ui_manager_get_widget (ui,
+						       "/MenuBar/ViewMenu/ViewHighlightModeMenu");
 
-			l = l->next;
+			gtk_widget_set_sensitive (w, enable);
+
+			windows = windows->next;
 		}
-#endif
 	}
 }
 
