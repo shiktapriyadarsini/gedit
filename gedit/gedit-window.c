@@ -84,6 +84,7 @@ struct _GeditWindowPrivate
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
 	GtkActionGroup *action_group;
+	GtkActionGroup *always_sensitive_action_group;
 	GtkActionGroup *languages_action_group;
 	GtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
@@ -389,6 +390,54 @@ set_toolbar_style (GeditWindow *window,
 }
 
 static void
+set_sensitivity_according_to_tab (GeditWindow *window,
+				  GeditTab    *tab)
+{
+	GeditDocument *doc;
+	GeditView     *view;
+	GtkAction     *action;
+	gboolean       b;
+	
+	g_return_if_fail (GEDIT_TAB (tab));
+		
+	g_print ("set_sensitivity_according_to_tab\n");
+							
+	view = gedit_tab_get_view (tab);
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FileRevert");
+	gtk_action_set_sensitive (action, 
+				  !gedit_document_is_untitled (doc));
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditUndo");
+	gtk_action_set_sensitive (action, 
+				  gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditRedo");
+	gtk_action_set_sensitive (action, 
+				  gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
+
+	b = _gedit_document_can_find_again (doc);
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "SearchFindNext");
+	gtk_action_set_sensitive (action, b);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "SearchFindPrevious");
+	gtk_action_set_sensitive (action, b);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewHighlightMode");
+	gtk_action_set_sensitive (action, 
+				  gedit_prefs_manager_get_enable_syntax_highlighting ());
+
+	/* TODO: change sensitivity according to tab state */
+}
+
+static void
 language_toggled (GtkToggleAction *action,
 		  GeditWindow     *window)
 {
@@ -689,7 +738,17 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	g_signal_connect (manager, "disconnect_proxy",
 			 G_CALLBACK (disconnect_proxy_cb), window);
 
-	action_group = gtk_action_group_new ("WindowActions");
+	action_group = gtk_action_group_new ("GeditWindowAlwaysSensitiveActions");
+	gtk_action_group_set_translation_domain (action_group, NULL);
+	gtk_action_group_add_actions (action_group,
+				      gedit_always_sensitive_menu_entries,
+				      G_N_ELEMENTS (gedit_always_sensitive_menu_entries),
+				      window);
+
+	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	window->priv->always_sensitive_action_group = action_group;
+
+	action_group = gtk_action_group_new ("GeditWindowActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	gtk_action_group_add_actions (action_group,
 				      gedit_menu_entries,
@@ -699,7 +758,6 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 					     gedit_toggle_menu_entries,
 					     G_N_ELEMENTS (gedit_toggle_menu_entries),
 					     window);
-        /* TODO: add more action groups... toggles etc */
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
 	window->priv->action_group = action_group;
@@ -777,7 +835,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 						_("Open a recently used file"),
 						NULL);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "FileOpen");
 	g_object_set (action,
 		      "is_important", TRUE,
@@ -1063,6 +1121,9 @@ cursor_moved (GtkTextBuffer     *buffer,
 	      GtkTextMark       *mark,
 	      GeditWindow       *window)
 {
+	if (buffer != GTK_TEXT_BUFFER (gedit_window_get_active_document (window)))
+		return;
+			  
 	if (mark == gtk_text_buffer_get_insert (buffer))
 		update_cursor_position_statusbar (buffer, window);
 }
@@ -1219,11 +1280,18 @@ notebook_switch_page (GtkNotebook     *book,
 	GtkAction *action;
 	gchar *action_name;
 
-	/* set the active tab */
+	/* CHECK: I don't know why but it seems notebook_switch_page is called
+	two times every time the user change the active tab */
+	
 	tab = GEDIT_TAB (gtk_notebook_get_nth_page (book, page_num));
+	if (tab == window->priv->active_tab)
+		return;
+
+	/* set the active tab */		
 	window->priv->active_tab = tab;
 
 	set_title (window);
+	set_sensitivity_according_to_tab (window, tab);
 
 	/* activate the right item in the documents menu */
 	action_name = g_strdup_printf ("Tab_%d", page_num);
@@ -1260,6 +1328,10 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 	gchar *action_name;
 	gchar *tab_name; // CHECK escaping
 	gint n;
+	GeditDocument *doc;
+	
+	if (tab != window->priv->active_tab)
+		return;
 
 	set_title (window);
 
@@ -1276,6 +1348,12 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 
 	g_free (action_name);
 	g_free (tab_name);
+	
+	doc = gedit_tab_get_document (tab);
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FileRevert");
+	gtk_action_set_sensitive (action,
+				  !gedit_document_is_untitled (doc));
 }
 
 static void
@@ -1402,6 +1480,36 @@ drag_drop_cb (GtkWidget      *widget,
 }
 
 static void
+can_undo (GeditDocument *doc,
+          gboolean       can,
+          GeditWindow   *window)
+{
+	GtkAction *action;
+	
+	if (doc != gedit_window_get_active_document (window))
+		return;
+		
+	action = gtk_action_group_get_action (window->priv->action_group,
+					     "EditUndo");
+	gtk_action_set_sensitive (action, can);
+}
+
+static void
+can_redo (GeditDocument *doc,
+          gboolean       can,
+          GeditWindow   *window)
+{
+	GtkAction *action;
+
+	if (doc != gedit_window_get_active_document (window))
+		return;
+	
+	action = gtk_action_group_get_action (window->priv->action_group,
+					     "EditRedo");
+	gtk_action_set_sensitive (action, can);
+}
+
+static void
 notebook_tab_added (GeditNotebook *notebook,
 		    GeditTab      *tab,
 		    GeditWindow   *window)
@@ -1409,10 +1517,21 @@ notebook_tab_added (GeditNotebook *notebook,
 	GeditView *view;
 	GeditDocument *doc;
 	GtkTargetList *tl;
+	GtkAction *action;
 
 	gedit_debug (DEBUG_MDI);
 
 	++window->priv->num_tabs;
+
+	/* Set sensitivity */
+	if (!gtk_action_group_get_sensitive (window->priv->action_group))
+		gtk_action_group_set_sensitive (window->priv->action_group,
+						TRUE);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					     "DocumentsMoveToNewWindow");
+	gtk_action_set_sensitive (action,
+				  window->priv->num_tabs > 1);
 
 	g_signal_connect (tab, 
 			 "notify::name",
@@ -1432,6 +1551,14 @@ notebook_tab_added (GeditNotebook *notebook,
 			  "mark_set",/* cursor moved */
 			  G_CALLBACK (cursor_moved),
 			  window);			  
+	g_signal_connect (doc,
+			  "can-undo",
+			  G_CALLBACK (can_undo),
+			  window);
+	g_signal_connect (doc,
+			  "can-redo",
+			  G_CALLBACK (can_redo),
+			  window);
 	g_signal_connect (view,
 			  "toggle_overwrite",
 			  G_CALLBACK (update_overwrite_mode_statusbar),
@@ -1439,13 +1566,15 @@ notebook_tab_added (GeditNotebook *notebook,
 
 	update_documents_list_menu (window);
 
+	/* CHECK: it seems to me this does not work when tab are moved between
+	   windows */
 	/* Drag and drop support */
 	tl = gtk_drag_dest_get_target_list (GTK_WIDGET (view));
 	g_return_if_fail (tl != NULL);
 
 	gtk_target_list_add_table (tl, drag_types, G_N_ELEMENTS (drag_types));
 
-	g_signal_connect (G_OBJECT (view),
+	g_signal_connect (view,
 			  "drag_data_received",
 			  G_CALLBACK (drag_data_received_cb), 
 			  NULL);
@@ -1453,11 +1582,11 @@ notebook_tab_added (GeditNotebook *notebook,
 	/* Get signals before the standard text view functions to deal 
 	 * with uris for text files.
 	 */
-	g_signal_connect (G_OBJECT (view),
+	g_signal_connect (view,
 			  "drag_motion",
 			  G_CALLBACK (drag_motion_cb), 
 			  NULL);
-	g_signal_connect (G_OBJECT (view),
+	g_signal_connect (view,
 			  "drag_drop",
 			  G_CALLBACK (drag_drop_cb), 
 			  NULL);
@@ -1470,24 +1599,58 @@ notebook_tab_removed (GeditNotebook *notebook,
 		      GeditTab      *tab,
 		      GeditWindow   *window)
 {
+	GeditView     *view;
 	GeditDocument *doc;
+	GtkAction     *action;
 	
 	gedit_debug (DEBUG_MDI);
 	
 	--window->priv->num_tabs;
+
+	/* Set sensitivity */
+	if (window->priv->num_tabs == 0)
+		gtk_action_group_set_sensitive (window->priv->action_group,
+						FALSE);
+
+	if (window->priv->num_tabs <= 1)
+	{
+		action = gtk_action_group_get_action (window->priv->action_group,
+						     "DocumentsMoveToNewWindow");
+		gtk_action_set_sensitive (action,
+					  window->priv->num_tabs > 1);
+	}
 	
+	view = gedit_tab_get_view (tab);
 	doc = gedit_tab_get_document (tab);
 	
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_name), 
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
-					      G_CALLBACK (cursor_moved), 
-					      window);					
-	g_signal_handlers_disconnect_by_func (doc, 
-					      G_CALLBACK (update_cursor_position_statusbar),
+					      G_CALLBACK (update_cursor_position_statusbar), 
 					      window);
-					      
+	g_signal_handlers_disconnect_by_func (doc,
+					      G_CALLBACK (cursor_moved), 
+					      window);					      
+	g_signal_handlers_disconnect_by_func (doc, 
+					      G_CALLBACK (can_undo),
+					      window);
+	g_signal_handlers_disconnect_by_func (doc, 
+					      G_CALLBACK (can_redo),
+					      window);
+	g_signal_handlers_disconnect_by_func (view, 
+					      G_CALLBACK (update_overwrite_mode_statusbar),
+					      window);
+	g_signal_handlers_disconnect_by_func (view, 
+					      G_CALLBACK (drag_data_received_cb),
+					      NULL);
+	g_signal_handlers_disconnect_by_func (view, 
+					      G_CALLBACK (drag_motion_cb),
+					      NULL);
+	g_signal_handlers_disconnect_by_func (view, 
+					      G_CALLBACK (drag_drop_cb),
+					      NULL);
+
 	g_return_if_fail (window->priv->num_tabs >= 0);
 	if (window->priv->num_tabs == 0)
 	{
@@ -1521,7 +1684,7 @@ notebook_tab_removed (GeditNotebook *notebook,
 		else
 		{	
 			set_title (window);
-		
+			
 			/* Remove line and col info */
 			gedit_statusbar_set_cursor_position (
 					GEDIT_STATUSBAR (window->priv->statusbar),

@@ -1255,3 +1255,11 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 
 	return (current_time.tv_sec - doc->priv->time_of_last_save_or_load.tv_sec);
 }
+
+gboolean
+_gedit_document_can_find_again (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
+	
+	return (doc->priv->search_text != NULL);
+}

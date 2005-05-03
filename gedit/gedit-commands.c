@@ -542,9 +542,7 @@ print_dialog_response_cb (GtkWidget *dialog,
 		case GNOME_PRINT_DIALOG_RESPONSE_PRINT:
 			gedit_debug_message (DEBUG_PRINT, "Print button pressed.");			
 			
-			gedit_print_job_save_config (pjob);
-			
-			/* TODO */
+			_gedit_tab_print (tab, pjob, &start, &end);
 			
 			break;
 
@@ -583,11 +581,10 @@ gedit_cmd_file_print (GtkAction   *action,
 
 	gtk_window_group_add_window (wg,
 				     GTK_WINDOW (print_dialog));
-				     
+		
+	gtk_window_set_transient_for (GTK_WINDOW (print_dialog), GTK_WINDOW (window));
 	gtk_window_set_modal (GTK_WINDOW (print_dialog), TRUE);
 	     
-	/* TODO: set the default path/name */
-
 	g_signal_connect (print_dialog,
 			  "response",
 			  G_CALLBACK (print_dialog_response_cb),

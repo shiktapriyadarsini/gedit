@@ -41,7 +41,7 @@
 
 G_BEGIN_DECLS
 
-static const GtkActionEntry gedit_menu_entries[] =
+static const GtkActionEntry gedit_always_sensitive_menu_entries[] =
 {
 	/* Toplevel */
 	{ "File", NULL, N_("_File") },
@@ -59,22 +59,37 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Open a file"), G_CALLBACK (gedit_cmd_file_open) },
 	{ "FileOpenURI", NULL, N_("Open _Location..."), "<control>L",
 	  N_("Open a file from a specified location"), G_CALLBACK (gedit_cmd_file_open_uri) },
+	{ "FilePageSetup", NULL, N_("Page Set_up..."), NULL,
+	  N_("Setup the page settings"), G_CALLBACK (gedit_cmd_file_page_setup) },
+	{ "FileQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
+	  N_("Quit the program"), G_CALLBACK (gedit_cmd_file_quit) },
+
+	/* Edit menu */
+	{ "EditPreferences", GTK_STOCK_PREFERENCES, N_("Pr_eferences"), NULL,
+	  N_("Configure the application"), G_CALLBACK (gedit_cmd_edit_preferences) },
+
+	/* Help menu */
+	{"HelpContents", GTK_STOCK_HELP, N_("_Contents"), "F1",
+	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents) },
+	{ "HelpAbout", GTK_STOCK_ABOUT, NULL, NULL,
+	 N_("About this application"), G_CALLBACK (gedit_cmd_help_about) }
+};
+
+static const GtkActionEntry gedit_menu_entries[] =
+{
+	/* File menu */
 	{ "FileSave", GTK_STOCK_SAVE, NULL, "<control>S",
 	  N_("Save the current file"), G_CALLBACK (gedit_cmd_file_save) },
 	{ "FileSaveAs", GTK_STOCK_SAVE_AS, N_("Save _As..."), "<shift><control>S",
 	  N_("Save the current file with a different name"), G_CALLBACK (gedit_cmd_file_save_as) },
 	{ "FileRevert", GTK_STOCK_REVERT_TO_SAVED, NULL, NULL,
 	  N_("Revert to a saved version of the file"), G_CALLBACK (gedit_cmd_file_revert) },
-	{ "FilePageSetup", NULL, N_("Page Set_up..."), NULL,
-	  N_("Setup the page settings"), G_CALLBACK (gedit_cmd_file_page_setup) },
 	{ "FilePrintPreview", GTK_STOCK_PRINT_PREVIEW, N_("Print Previe_w"),"<control><shift>P",
 	  N_("Print preview"), G_CALLBACK (gedit_cmd_file_print_preview) },
 	 { "FilePrint", GTK_STOCK_PRINT, N_("_Print..."), "<control>P",
 	  N_("Print the current page"), G_CALLBACK (gedit_cmd_file_print) },
 	{ "FileClose", GTK_STOCK_CLOSE, NULL, "<control>W",
 	  N_("Close the current file"), G_CALLBACK (gedit_cmd_file_close) },
-	{ "FileQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
-	  N_("Quit the program"), G_CALLBACK (gedit_cmd_file_quit) },
 
 	/* Edit menu */
 	{ "EditUndo", GTK_STOCK_UNDO, NULL, "<control>Z",
@@ -91,8 +106,6 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Delete the selected text"), G_CALLBACK (gedit_cmd_edit_delete) },
 	{ "EditSelectAll", NULL, N_("Select _All"), "<control>A",
 	  N_("Select the entire document"), G_CALLBACK (gedit_cmd_edit_select_all) },
-	{ "EditPreferences", GTK_STOCK_PREFERENCES, N_("Pr_eferences"), NULL,
-	  N_("Configure the application"), G_CALLBACK (gedit_cmd_edit_preferences) },
 
 	/* View menu */
 	{ "ViewHighlightMode", NULL, N_("_Highlight Mode") },
@@ -116,12 +129,6 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Close all open files"), G_CALLBACK (gedit_cmd_file_close_all) },
 	{ "DocumentsMoveToNewWindow", NULL, N_("_Move to New Window"), NULL,
 	  N_("Move the current document to a new window"), G_CALLBACK (gedit_cmd_documents_move_to_new_window) },
-
-	/* Help menu */
-	{"HelpContents", GTK_STOCK_HELP, N_("_Contents"), "F1",
-	 N_("Open the gedit manual"), G_CALLBACK (gedit_cmd_help_contents) },
-	{ "HelpAbout", GTK_STOCK_ABOUT, NULL, NULL,
-	 N_("About this application"), G_CALLBACK (gedit_cmd_help_about) }
 };
 
 static const GtkToggleActionEntry gedit_toggle_menu_entries[] =

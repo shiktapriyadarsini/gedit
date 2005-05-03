@@ -142,9 +142,9 @@ gboolean	 gedit_document_insert_file	(GeditDocument       *doc,
 						 const gchar         *uri, 
 						 const GeditEncoding *encoding);
 
-void		gedit_document_save 		(GeditDocument        *doc);
+void		 gedit_document_save 		(GeditDocument        *doc);
 
-void		gedit_document_save_as 		(GeditDocument        *doc,	
+void		 gedit_document_save_as 		(GeditDocument        *doc,	
 						 const gchar          *uri, 
 						 const GeditEncoding  *encoding);
 
@@ -179,7 +179,6 @@ gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
 						 GtkTextIter         *match_start,
 						 GtkTextIter         *match_end);
 
-
 // CHECK: non sono sicuro sul da farsi... va cancellata? o può essere comoda averla qui?						 
 gint		 gedit_document_replace_all 	(GeditDocument       *doc,
 				            	 const gchar         *find, 
@@ -206,10 +205,11 @@ void		 gedit_document_set_auto_save_interval
  */
  
 // CHECK: va bene un gint?
-glong		_gedit_document_get_seconds_since_last_save_or_load 
+glong		 _gedit_document_get_seconds_since_last_save_or_load 
 						(GeditDocument       *doc);
 
- 
+gboolean	 _gedit_document_can_find_again	(GeditDocument       *doc);
+
 /* Search macros */
 
 #define GEDIT_SEARCH_IS_ENTIRE_WORD(sflags) ((sflags & GEDIT_SEARCH_ENTIRE_WORD) != 0)

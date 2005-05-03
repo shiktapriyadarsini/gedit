@@ -50,6 +50,7 @@ typedef enum
 	GEDIT_TAB_STATE_LOADING_ERROR,
 	GEDIT_TAB_STATE_SAVING_ERROR,
 	GEDIT_TAB_STATE_GENERIC_ERROR,
+	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
 } GeditTabState;
 
 /*

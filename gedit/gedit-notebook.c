@@ -1015,6 +1015,11 @@ gedit_notebook_add_tab (GeditNotebook *nb,
 			         G_CALLBACK (sync_name), 
 			         label, 
 			         0);
+	g_signal_connect_object (tab, 
+				 "notify::state",
+			         G_CALLBACK (sync_name), 
+			         label, 
+			         0);			         
 /*			         
 	g_signal_connect_object (tab, 
 				 "notify::load-status",
