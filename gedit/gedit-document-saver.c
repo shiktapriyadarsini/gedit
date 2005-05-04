@@ -907,3 +907,19 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 	return TRUE;
 }
 
+const gchar *
+gedit_document_saver_get_uri (GeditDocumentSaver *saver)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), NULL);
+
+	return saver->priv->uri;
+}
+
+const gchar *
+gedit_document_saver_get_mime_type (GeditDocumentSaver *saver)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), NULL);
+
+	//TODO, dummy implementation
+	return gedit_document_get_mime_type (saver->priv->document);
+}

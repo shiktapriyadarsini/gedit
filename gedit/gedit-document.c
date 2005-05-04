@@ -90,7 +90,7 @@ struct _GeditDocumentPrivate
 	const GeditEncoding *encoding;
 
 	const gchar *mime_type;
-	
+
 	gint	     auto_save_interval;
 	guint	     auto_save_timeout;
 
@@ -784,7 +784,18 @@ document_saver_saving (GeditDocumentSaver *saver,
 		/* save was successful */
 		if (error == NULL)
 		{
-			/* set uri etc */
+			const gchar *uri;
+			const gchar *mime_type;
+
+			uri = gedit_document_saver_get_uri (saver);
+			mime_type = gedit_document_saver_get_mime_type (saver);
+
+			set_uri (doc, uri, mime_type);
+
+//			set_encoding (doc, doc->priv->requested_encoding);
+
+			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
+						      FALSE);
 		}
 
 		g_signal_emit (doc,
@@ -835,6 +846,8 @@ document_save_real (GeditDocument       *doc,
 		if (!gedit_document_saver_reset (doc->priv->saver))
 			return; //TODO assert it
 	}
+
+	doc->priv->requested_encoding = encoding;
 
 	gedit_document_saver_save (doc->priv->saver, uri, encoding);
 }
