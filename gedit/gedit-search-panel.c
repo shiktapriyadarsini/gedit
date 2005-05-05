@@ -1070,6 +1070,8 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 			  "toggled",
 			  G_CALLBACK (option_button_toggled),
 			  panel);
+
+	g_object_unref (gui);
 }
 
 GtkWidget *

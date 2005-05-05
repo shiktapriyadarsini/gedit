@@ -547,7 +547,8 @@ is_valid_uri (const gchar *uri)
 
 #endif /* G_DISABLE_CHECKS */
 
-/* if mime type is null, we guess from the filename */
+/* If mime type is null, we guess from the filename */
+/* If uri is null, we only set the mime-type */
 static void
 set_uri (GeditDocument *doc,
 	 const gchar   *uri,
@@ -556,35 +557,37 @@ set_uri (GeditDocument *doc,
 	GtkSourceLanguage *language = NULL;
 	gchar *data;
 	gchar *base_name;
-	gboolean lang_set_by_user = FALSE;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (uri != NULL);
-	g_return_if_fail (is_valid_uri (uri));
+	g_return_if_fail ((uri == NULL) || is_valid_uri (uri));
 
-	if (doc->priv->uri == uri)
-		return;
-
-	g_free (doc->priv->uri);
-	doc->priv->uri = g_strdup (uri);
-
-	if (doc->priv->vfs_uri != NULL)
-		gnome_vfs_uri_unref (doc->priv->vfs_uri);
-
-	doc->priv->vfs_uri = gnome_vfs_uri_new (uri);
-	g_return_if_fail (doc->priv->vfs_uri != NULL);
-
-	if (doc->priv->untitled_number > 0)
+	if (uri != NULL)
 	{
-		release_untitled_number (doc->priv->untitled_number);
-		doc->priv->untitled_number = 0;
+		if (doc->priv->uri == uri)
+			return;
+
+		g_free (doc->priv->uri);
+		doc->priv->uri = g_strdup (uri);
+
+		if (doc->priv->vfs_uri != NULL)
+			gnome_vfs_uri_unref (doc->priv->vfs_uri);
+
+		doc->priv->vfs_uri = gnome_vfs_uri_new (uri);
+		g_return_if_fail (doc->priv->vfs_uri != NULL);
+
+		if (doc->priv->untitled_number > 0)
+		{
+			release_untitled_number (doc->priv->untitled_number);
+			doc->priv->untitled_number = 0;
+		}
+
+		/* Update uri_for_display and short_name_for_display */
+		update_uri_for_display (doc);
 	}
 
-	/* Update uri_for_display and short_name_for_display */
-	update_uri_for_display (doc);
-
+	g_return_if_fail (doc->priv->vfs_uri != NULL);
+		
 	if (mime_type != NULL)
 	{
 		doc->priv->mime_type = mime_type;
@@ -606,7 +609,7 @@ set_uri (GeditDocument *doc,
 
 	if (!doc->priv->language_set_by_user)
 	{
-		data = gedit_metadata_manager_get (uri, "language");
+		data = gedit_metadata_manager_get (doc->priv->uri, "language");
 
 		if (data != NULL)
 		{
@@ -631,7 +634,7 @@ set_uri (GeditDocument *doc,
 
 		g_free (data);
 
-		set_language (doc, language, lang_set_by_user);		
+		set_language (doc, language, FALSE);		
 	}
 
 	g_signal_emit (G_OBJECT (doc), 
@@ -706,17 +709,16 @@ document_loader_loading (GeditDocumentLoader *loader,
 		if (error == NULL)
 		{
 			GtkTextIter iter;
-			const gchar *uri;
 			const gchar *mime_type;
 
-			uri = gedit_document_loader_get_uri (loader);
 			mime_type = gedit_document_loader_get_mime_type (loader);
 
 			doc->priv->mtime = gedit_document_loader_get_mtime (loader);
 
 			g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-			set_uri (doc, uri, mime_type);
+			/* We already set the uri */
+			set_uri (doc, NULL, mime_type);
 
 //			set_encoding (doc, doc->priv->requested_encoding);
 
@@ -775,6 +777,8 @@ gedit_document_load (GeditDocument       *doc,
 
 	doc->priv->create = create;
 	doc->priv->requested_encoding = encoding;
+
+	set_uri (doc, uri, NULL);
 
 	return gedit_document_loader_load (doc->priv->loader,
 					   uri,
