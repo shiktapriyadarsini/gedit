@@ -47,6 +47,9 @@ const GeditEncoding
 		*gedit_conversion_error_while_loading_message_area_get_encoding (
 						GtkWidget           *message_area);
 
+GtkWidget	*gedit_file_already_open_warning_message_area_new (
+						const gchar         *uri);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_IO_ERROR_MESSAGE_AREA_H__  */

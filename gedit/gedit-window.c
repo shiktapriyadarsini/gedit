@@ -397,44 +397,117 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	GeditView     *view;
 	GtkAction     *action;
 	gboolean       b;
+	gboolean       state_normal;
+	GeditTabState  state;
 	
 	g_return_if_fail (GEDIT_TAB (tab));
 		
 	g_print ("set_sensitivity_according_to_tab\n");
+	
+	state = gedit_tab_get_state (tab);
+		
+	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
 							
 	view = gedit_tab_get_view (tab);
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 	
 	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FileSave");
+	gtk_action_set_sensitive (action,
+				  state_normal ||
+				  (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));					      
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FileSaveAs");
+	gtk_action_set_sensitive (action,
+				  state_normal ||
+				  (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
+				  	
+	action = gtk_action_group_get_action (window->priv->action_group,
 					      "FileRevert");
 	gtk_action_set_sensitive (action, 
-				  !gedit_document_is_untitled (doc));
+				  !gedit_document_is_untitled (doc) &&
+				  state_normal);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FilePrintPreview");
+	gtk_action_set_sensitive (action,
+				  state_normal);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FilePrint");
+	gtk_action_set_sensitive (action,
+				  state_normal ||
+				  (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
+				  
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "FileClose");
+
+	gtk_action_set_sensitive (action,
+				  (state != GEDIT_TAB_STATE_PRINTING) &&
+				  (state != GEDIT_TAB_STATE_LOADING)  &&
+				  (state != GEDIT_TAB_STATE_PRINTING) &&
+				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditUndo");
 	gtk_action_set_sensitive (action, 
+				  state_normal &&
 				  gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditRedo");
 	gtk_action_set_sensitive (action, 
+				  state_normal &&
 				  gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditCut");
+	gtk_action_set_sensitive (action,
+				  state_normal);
+				  
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditCopy");
+	gtk_action_set_sensitive (action,
+				  state_normal);
+				  
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditPaste");
+	gtk_action_set_sensitive (action,
+				  state_normal);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditDelete");
+	gtk_action_set_sensitive (action,
+				  state_normal);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "SearchFind");
+	gtk_action_set_sensitive (action,
+				  state_normal);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "SearchReplace");
+	gtk_action_set_sensitive (action,
+				  state_normal);
 
 	b = _gedit_document_can_find_again (doc);
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
-	gtk_action_set_sensitive (action, b);
+	gtk_action_set_sensitive (action, state_normal && b);
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindPrevious");
-	gtk_action_set_sensitive (action, b);
+	gtk_action_set_sensitive (action, state_normal && b);
 
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "SearchGoToLine");
+	gtk_action_set_sensitive (action, state_normal);
+	
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewHighlightMode");
 	gtk_action_set_sensitive (action, 
 				  gedit_prefs_manager_get_enable_syntax_highlighting ());
-
-	/* TODO: change sensitivity according to tab state */
 }
 
 static void
@@ -1322,6 +1395,15 @@ notebook_switch_page (GtkNotebook     *book,
 }
 
 static void
+sync_state (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
+{	
+	if (tab != window->priv->active_tab)
+		return;
+
+	set_sensitivity_according_to_tab (window, tab);			
+}
+
+static void
 sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 {
 	GtkAction *action;
@@ -1538,6 +1620,11 @@ notebook_tab_added (GeditNotebook *notebook,
 			  G_CALLBACK (sync_name), 
 			  window);
 			  
+	g_signal_connect (tab, 
+			 "notify::state",
+			  G_CALLBACK (sync_state), 
+			  window);
+			  
 	view = gedit_tab_get_view (tab);
 	doc = gedit_tab_get_document (tab);
 	
@@ -1625,6 +1712,9 @@ notebook_tab_removed (GeditNotebook *notebook,
 	
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_name), 
+					      window);
+	g_signal_handlers_disconnect_by_func (tab,
+					      G_CALLBACK (sync_state), 
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (update_cursor_position_statusbar), 

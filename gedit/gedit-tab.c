@@ -34,7 +34,9 @@
 
 #include <libgnomeui/libgnomeui.h>
 #include <libgnomevfs/gnome-vfs-mime-handlers.h>
+#include <libgnomevfs/gnome-vfs-utils.h>
 
+#include "gedit-app.h"
 #include "gedit-notebook.h"
 #include "gedit-tab.h"
 #include "gedit-utils.h"
@@ -178,7 +180,8 @@ gedit_tab_set_state (GeditTab *tab,
 	else		
 		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
 	
-	if (state == GEDIT_TAB_STATE_LOADING_ERROR)	
+	if ((state == GEDIT_TAB_STATE_LOADING_ERROR) ||
+	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))	
 		gtk_widget_hide (tab->priv->view_scrolled_window);
 	else
 		gtk_widget_show (tab->priv->view_scrolled_window);
@@ -220,7 +223,7 @@ set_message_area (GeditTab  *tab,
 static void 
 unrecoverable_loading_error_message_area_response (GeditMessageArea *message_area,
 						   gint              response_id,
-						   GtkWidget         *tab)
+						   GtkWidget        *tab)
 {
 	GeditNotebook *notebook;
 	gboolean can_close = TRUE;
@@ -233,6 +236,22 @@ unrecoverable_loading_error_message_area_response (GeditMessageArea *message_are
 		gedit_notebook_remove_tab (notebook, GEDIT_TAB (tab));
 }
 
+static void 
+file_already_open_warning_message_area_response (GtkWidget   *message_area,
+						 gint         response_id,
+						 GtkTextView *view)
+{
+	if (response_id == GTK_RESPONSE_YES)
+	{
+		gtk_text_view_set_editable (view,
+					    TRUE);
+	}
+
+	gtk_widget_destroy (message_area);
+
+	gtk_widget_grab_focus (GTK_WIDGET (view));	
+}
+
 static void
 document_loaded (GeditDocument *document,
 		 const GError  *error,
@@ -241,12 +260,13 @@ document_loaded (GeditDocument *document,
 	GtkWidget *emsg;
 	const GeditEncoding *encoding;
 	const gchar *uri;
+
+	uri = gedit_document_get_uri_ (document);
 	
 	if (error != NULL)
 	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
 		
-		uri = gedit_document_get_uri_ (document);
 		encoding = gedit_document_get_encoding (document);
 		
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
@@ -257,7 +277,7 @@ document_loaded (GeditDocument *document,
 			
 			set_message_area (tab, emsg);
 			
-			g_signal_connect (tab->priv->message_area,
+			g_signal_connect (emsg,
 					  "response",
 					  G_CALLBACK (unrecoverable_loading_error_message_area_response),
 					  tab);
@@ -272,17 +292,71 @@ document_loaded (GeditDocument *document,
 			set_message_area (tab, emsg);
 			
 			// FIXME
-			g_signal_connect (tab->priv->message_area,
+			g_signal_connect (emsg,
 					  "response",
 					  G_CALLBACK (unrecoverable_loading_error_message_area_response),
 					  tab);
 		}
+
+		gedit_message_area_set_default_response (GEDIT_MESSAGE_AREA (emsg),
+							 GTK_RESPONSE_CANCEL);
 							  
 		gtk_widget_show (emsg);
-		gtk_widget_show (tab->priv->message_area);
+		
+		return;
 	}
 	else
+	{
+		GList *all_documents;
+		GList *l;
+		
+		g_return_if_fail (uri != NULL);
+		
+		all_documents = gedit_app_get_documents (gedit_app_get_default ());
+		
+		for (l = all_documents; l != NULL; l = g_list_next (l))
+		{
+			GeditDocument *d = GEDIT_DOCUMENT (l->data);
+			
+			if (d != document)
+			{
+				const gchar *u;
+				
+				u = gedit_document_get_uri_ (d);
+								
+				if ((u != NULL) &&
+			    	    gnome_vfs_uris_match (uri, u))
+			    	{
+			    		GtkWidget *w;
+			    		GeditView *view;
+			    		
+			    		view = gedit_tab_get_view (tab);
+			    		
+			    		gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
+			    					    FALSE);
+			    					    
+			    		w = gedit_file_already_open_warning_message_area_new (uri);
+			    		
+					set_message_area (tab, w);
+			    		
+					gedit_message_area_set_default_response (GEDIT_MESSAGE_AREA (w),
+							 GTK_RESPONSE_CANCEL);
+
+					gtk_widget_show (w);
+					
+					g_signal_connect (w,
+							  "response",
+							  G_CALLBACK (file_already_open_warning_message_area_response),
+							  view);
+			    		break;
+			    	}
+			}
+		}
+		
+		g_list_free (all_documents);
+		
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	}
 }		 
 
 		  
@@ -611,6 +685,7 @@ _gedit_tab_get_icon (GeditTab *tab)
 						 icon_size);
 			break;
 		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
+		case GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW:		
 			pixbuf = get_stock_icon (theme, 
 						 GTK_STOCK_PRINT_PREVIEW, 
 						 icon_size);
@@ -682,8 +757,6 @@ set_print_preview (GeditTab  *tab, GtkWidget *print_preview)
 
 	gtk_widget_grab_focus (tab->priv->print_preview);
 
-	gtk_widget_hide (tab->priv->view_scrolled_window);
-	
 	g_signal_connect (tab->priv->print_preview,
 			  "destroy",
 			  G_CALLBACK (print_preview_destroyed),
@@ -740,6 +813,8 @@ preview_finished_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
 	
 	gtk_widget_show (preview);
 	g_object_unref (pjob);
+	
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
 }
 
 static void
@@ -819,8 +894,8 @@ _gedit_tab_print (GeditTab      *tab,
 	g_return_if_fail (gtk_text_iter_get_buffer (end) == GTK_TEXT_BUFFER (doc));	
 	
 	g_return_if_fail (tab->priv->print_job == NULL);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_PRINTING);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
+	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
+			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 	
 	g_object_ref (pjob);
 	tab->priv->print_job = pjob;
@@ -863,8 +938,7 @@ _gedit_tab_print_preview (GeditTab      *tab,
 	g_return_if_fail (gtk_text_iter_get_buffer (end) == GTK_TEXT_BUFFER (doc));	
 	
 	g_return_if_fail (tab->priv->print_job == NULL);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_PRINTING);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_PRINT_PREVIEWING);	
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 	
 	g_object_ref (pjob);
 	tab->priv->print_job = pjob;
