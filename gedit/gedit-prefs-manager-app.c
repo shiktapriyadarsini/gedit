@@ -985,14 +985,14 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 		while (windows != NULL)
 		{
 			GtkUIManager *ui;
-			GtkWidget *w;
+			GtkAction *a;
 
 			ui = _gedit_window_get_ui_manager (GEDIT_WINDOW (windows->data));
 
-			w = gtk_ui_manager_get_widget (ui,
+			a = gtk_ui_manager_get_action (ui,
 						       "/MenuBar/ViewMenu/ViewHighlightModeMenu");
 
-			gtk_widget_set_sensitive (w, enable);
+			gtk_action_set_sensitive (a, enable);
 
 			windows = windows->next;
 		}

@@ -124,7 +124,7 @@ static guint document_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE(GeditDocument, gedit_document, GTK_TYPE_SOURCE_BUFFER)
 
-GQuark 
+GQuark
 gedit_document_error_quark (void)
 {
 	static GQuark quark;
@@ -135,18 +135,18 @@ gedit_document_error_quark (void)
 	return quark;
 }
 
-static GHashTable* allocated_untitled_numbers = NULL;
+static GHashTable *allocated_untitled_numbers = NULL;
 
 static gint
 get_untitled_number (void)
 {
 	gint i = 1;
-	
+
 	if (allocated_untitled_numbers == NULL)
 		allocated_untitled_numbers = g_hash_table_new (NULL, NULL);
 
 	g_return_val_if_fail (allocated_untitled_numbers != NULL, -1);
-	
+
 	while (TRUE)
 	{
 		if (g_hash_table_lookup (allocated_untitled_numbers, GINT_TO_POINTER (i)) == NULL)
@@ -154,17 +154,17 @@ get_untitled_number (void)
 			g_hash_table_insert (allocated_untitled_numbers, 
 					     GINT_TO_POINTER (i),
 					     GINT_TO_POINTER (i));
-	
+
 			return i;
 		}
-		
+
 		++i;
-	}					
+	}
 }
 
 static void
 release_untitled_number (gint n)
-{	
+{
 	g_return_if_fail (allocated_untitled_numbers != NULL);
 
 	g_hash_table_remove (allocated_untitled_numbers, GINT_TO_POINTER (n));
@@ -387,9 +387,12 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 
 	validated = FALSE;
 	name = gnome_vfs_uri_extract_short_name (uri);
-	if (name == NULL) {
+	if (name == NULL)
+	{
 		name = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_PASSWORD);
-	} else if (g_ascii_strcasecmp (uri->method_string, "file") == 0) {
+	}
+	else if (g_ascii_strcasecmp (uri->method_string, "file") == 0)
+	{
 		text_uri = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_PASSWORD);
 		local_file = gnome_vfs_get_local_path_from_uri (text_uri);
 		name = g_filename_display_basename (local_file);
@@ -1253,7 +1256,7 @@ gedit_document_set_auto_save_interval (GeditDocument *doc,
 	g_return_if_fail (interval > 0);
 
 	// TODO
-	
+
 	return;
 }
 
