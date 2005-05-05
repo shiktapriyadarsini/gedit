@@ -116,6 +116,7 @@ enum
 	TAB_REMOVED,
 	TABS_REORDERED,
 	ACTIVE_TAB_CHANGED,
+	ACTIVE_TAB_STATE_CHANGED,
 	LAST_SIGNAL
 };
 
@@ -258,7 +259,16 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
-			      GEDIT_TYPE_TAB);			      
+			      GEDIT_TYPE_TAB);
+	signals[ACTIVE_TAB_STATE_CHANGED] =
+		g_signal_new ("active_tab_state_changed",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_FIRST,
+			      G_STRUCT_OFFSET (GeditWindowClass, active_tab_state_changed),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__VOID,
+			      G_TYPE_NONE,
+			      0);			      			      
 
 	g_type_class_add_private (object_class, sizeof(GeditWindowPrivate));
 }
@@ -1400,7 +1410,9 @@ sync_state (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 	if (tab != window->priv->active_tab)
 		return;
 
-	set_sensitivity_according_to_tab (window, tab);			
+	set_sensitivity_according_to_tab (window, tab);
+	
+	g_signal_emit (G_OBJECT (window), signals[ACTIVE_TAB_STATE_CHANGED], 0);		
 }
 
 static void
@@ -2504,7 +2516,8 @@ gedit_window_load_files (GeditWindow         *window,
 	doc = gedit_window_get_active_document (window);
 	if (doc != NULL)
 	{
-		if (gedit_document_is_untouched (doc))
+		if (gedit_document_is_untouched (doc) &&
+		    (gedit_tab_get_state (window->priv->active_tab) == GEDIT_TAB_STATE_NORMAL))
 		{
 			const gchar * uri;
 			

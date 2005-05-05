@@ -154,16 +154,50 @@ window_tab_added (GeditWindow      *window,
 		  GeditTab         *tab,
 		  GeditSearchPanel *panel)
 {
+	GeditTabState  state;
+	gboolean state_normal;
+	
+	state = gedit_tab_get_state (tab);
+		
+	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
+	
 	gtk_widget_set_sensitive (panel->priv->search_entry,
-				  TRUE);
+				  state_normal);
 	gtk_widget_set_sensitive (panel->priv->replace_entry,
-				  TRUE);
+				  state_normal);
 	gtk_widget_set_sensitive (panel->priv->line_number_entry,
-				  TRUE);	
+				  state_normal);	
 	gtk_widget_set_sensitive (panel->priv->search_options_vbox,
-				  TRUE);
+				  state_normal);
 
-	update_buttons_sensitivity (panel);				  	  
+	if (state_normal)
+		update_buttons_sensitivity (panel);
+	else
+	{
+		gtk_widget_set_sensitive (panel->priv->find_button,
+					  FALSE);
+		gtk_widget_set_sensitive (panel->priv->replace_button,
+					  FALSE);			  
+		gtk_widget_set_sensitive (panel->priv->replace_all_button,
+					  FALSE);
+	}
+}
+
+static void
+window_active_tab_changed (GeditWindow      *window,
+		  	   GeditTab         *tab,
+		  	   GeditSearchPanel *panel)
+{
+	window_tab_added (window, tab, panel);
+}
+
+static void
+window_active_tab_state_changed (GeditWindow      *window,
+		  	   	 GeditSearchPanel *panel)
+{
+	window_tab_added (window, 
+			  gedit_window_get_active_tab (window), 
+			  panel);
 }
 
 static void
@@ -187,6 +221,14 @@ set_window (GeditSearchPanel *panel,
 			  "tab_removed",
 			  G_CALLBACK (window_tab_removed),
 			  panel);
+	g_signal_connect (window,
+			  "active_tab_changed",
+			  G_CALLBACK (window_active_tab_changed),
+			  panel);
+	g_signal_connect (window,
+			  "active_tab_state_changed",
+			  G_CALLBACK (window_active_tab_state_changed),
+			  panel);			  			  
 }
 
 
