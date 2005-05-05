@@ -94,6 +94,8 @@ struct _GeditDocumentPrivate
 	gint	     auto_save_interval;
 	guint	     auto_save_timeout;
 
+	time_t       mtime;
+
 	GTimeVal     time_of_last_save_or_load;
 
 	gint         search_flags;
@@ -467,6 +469,8 @@ gedit_document_init (GeditDocument *doc)
 	doc->priv->last_save_was_manually = TRUE;
 	doc->priv->language_set_by_user = FALSE;
 
+	doc->priv->mtime = 0;
+
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->encoding = gedit_encoding_get_utf8 ();
@@ -708,10 +712,14 @@ document_loader_loading (GeditDocumentLoader *loader,
 			uri = gedit_document_loader_get_uri (loader);
 			mime_type = gedit_document_loader_get_mime_type (loader);
 
+			doc->priv->mtime = gedit_document_loader_get_mtime (loader);
+
+			g_get_current_time (&doc->priv->time_of_last_save_or_load);
+
 			set_uri (doc, uri, mime_type);
 
 //			set_encoding (doc, doc->priv->requested_encoding);
-		
+
 			// FIXME: we should probably pass a requested_line to doc load
 			// for "gedit +42 life_and_everything.txt"
 			/* move the cursor to the top */
@@ -793,6 +801,10 @@ document_saver_saving (GeditDocumentSaver *saver,
 			uri = gedit_document_saver_get_uri (saver);
 			mime_type = gedit_document_saver_get_mime_type (saver);
 
+			doc->priv->mtime = gedit_document_saver_get_mtime (saver);
+
+			g_get_current_time (&doc->priv->time_of_last_save_or_load);
+
 			set_uri (doc, uri, mime_type);
 
 //			set_encoding (doc, doc->priv->requested_encoding);
@@ -827,7 +839,8 @@ document_saver_saving (GeditDocumentSaver *saver,
 static void
 document_save_real (GeditDocument       *doc,
 		    const gchar         *uri,
-		    const GeditEncoding *encoding)
+		    const GeditEncoding *encoding,
+		    time_t               mtime)
 {
 	/* create a saver.
 	 * Differently from the loader, the saver will live until
@@ -852,7 +865,10 @@ document_save_real (GeditDocument       *doc,
 
 	doc->priv->requested_encoding = encoding;
 
-	gedit_document_saver_save (doc->priv->saver, uri, encoding);
+	gedit_document_saver_save (doc->priv->saver,
+				   uri,
+				   encoding,
+				   mtime);
 }
 
 void
@@ -863,7 +879,8 @@ gedit_document_save (GeditDocument *doc)
 
 	document_save_real (doc,
 			    doc->priv->uri,
-			    doc->priv->encoding);
+			    doc->priv->encoding,
+			    doc->priv->mtime);
 }
 
 void
@@ -874,7 +891,7 @@ gedit_document_save_as (GeditDocument       *doc,
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (uri != NULL);
 
-	document_save_real (doc, uri, encoding);
+	document_save_real (doc, uri, encoding, 0);
 }
 
 gboolean

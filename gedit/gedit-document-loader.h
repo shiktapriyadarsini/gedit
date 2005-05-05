@@ -139,6 +139,8 @@ const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader  *loader);
 
 const gchar		*gedit_document_loader_get_mime_type	(GeditDocumentLoader  *loader);
 
+time_t 			 gedit_document_loader_get_mtime 	(GeditDocumentLoader  *loader);
+
 /* Returns 0 if file size is unknown */
 GnomeVFSFileSize	 gedit_document_loader_get_file_size	(GeditDocumentLoader  *loader);									 
 

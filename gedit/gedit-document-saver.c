@@ -61,7 +61,10 @@ struct _GeditDocumentSaverPrivate
 	gchar			 *backup_ext;
 	gboolean                  backups_in_curr_dir;
 
-	gint			 fd;
+	time_t                    doc_mtime;
+	gchar                    *mime_type; //CHECK use FileInfo instead?
+
+	gint			  fd;
 
 	/* temp data for local files */
 	gchar			 *local_path;
@@ -407,11 +410,38 @@ copy_file_data (gint     sfd,
 	return ret;
 }
 
+/* FIXME: this is ugly for multple reasons: it refetches all the info,
+ * it doesn't use fd etc... we need something better, possibly in gnome-vfs
+ * public api.
+ */
+static gchar *
+get_slow_mime_type (const char *text_uri)
+{
+	GnomeVFSFileInfo *info;
+	char *mime_type;
+	GnomeVFSResult result;
+
+	info = gnome_vfs_file_info_new ();
+	result = gnome_vfs_get_file_info (text_uri, info,
+					  GNOME_VFS_FILE_INFO_GET_MIME_TYPE |
+					  GNOME_VFS_FILE_INFO_FORCE_SLOW_MIME_TYPE |
+					  GNOME_VFS_FILE_INFO_FOLLOW_LINKS);
+	if (info->mime_type == NULL || result != GNOME_VFS_OK) {
+		mime_type = NULL;
+	} else {
+		mime_type = g_strdup (info->mime_type);
+	}
+	gnome_vfs_file_info_unref (info);
+
+	return mime_type;
+}
+
 static gboolean
 save_existing_local_file (GeditDocumentSaver *saver)
 {
 	mode_t saved_umask;
 	struct stat statbuf;
+	struct stat new_statbuf;
 	gchar *backup_filename = NULL;
 	gint bfd;
 
@@ -432,7 +462,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 	{
 		GnomeVFSResult result = S_ISDIR (statbuf.st_mode) ?
 					GNOME_VFS_ERROR_IS_DIRECTORY :
-					GNOME_VFS_ERROR_GENERIC; // choose better err?
+					GNOME_VFS_ERROR_GENERIC; // FIXME choose better err?
 
 		g_set_error (&saver->priv->error,
 			     GEDIT_DOCUMENT_ERROR,
@@ -449,6 +479,17 @@ save_existing_local_file (GeditDocumentSaver *saver)
 			     GEDIT_DOCUMENT_ERROR,
 			     GNOME_VFS_ERROR_READ_ONLY,
 			     gnome_vfs_result_to_string (GNOME_VFS_ERROR_READ_ONLY));
+
+		goto out;
+	}
+
+	/* check if someone else modified the file externally */
+	if ((statbuf.st_mtime != saver->priv->doc_mtime))
+	{
+		g_set_error (&saver->priv->error,
+			     GEDIT_DOCUMENT_ERROR,
+			     GNOME_VFS_ERROR_GENERIC, //FIXME
+			     gnome_vfs_result_to_string (GNOME_VFS_ERROR_GENERIC));
 
 		goto out;
 	}
@@ -540,8 +581,28 @@ save_existing_local_file (GeditDocumentSaver *saver)
 			goto out;
 		}
 
+		/* restat and get the mime type */
+		if (fstat (tmpfd, &new_statbuf) != 0)
+		{
+			GnomeVFSResult result = gnome_vfs_result_from_errno ();
+
+			g_set_error (&saver->priv->error,
+				     GEDIT_DOCUMENT_ERROR,
+				     result,
+				     gnome_vfs_result_to_string (result));
+
+			close (tmpfd);
+			goto out;
+		}
+
+		saver->priv->doc_mtime = new_statbuf.st_mtime;
+
+		saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
+
 		if (!saver->priv->keep_backup)
 			unlink (backup_filename);
+
+		close (tmpfd);
 
 		goto out;
 	}
@@ -602,13 +663,40 @@ save_existing_local_file (GeditDocumentSaver *saver)
 		goto out;
 
 	/* finally overwrite the original */
-	write_document_contents (saver->priv->fd,
-				 GTK_TEXT_BUFFER (saver->priv->document),
-			 	 saver->priv->encoding,
-				 &saver->priv->error);	
+	if (!write_document_contents (saver->priv->fd,
+				      GTK_TEXT_BUFFER (saver->priv->document),
+			 	      saver->priv->encoding,
+				      &saver->priv->error))
+	{
+		goto out;
+	}
+
+	/* re stat the file and refetch the mime type */
+	if (fstat (saver->priv->fd, &new_statbuf) != 0)
+	{
+		GnomeVFSResult result = gnome_vfs_result_from_errno ();
+
+		g_set_error (&saver->priv->error,
+			     GEDIT_DOCUMENT_ERROR,
+			     result,
+			     gnome_vfs_result_to_string (result));
+
+		goto out;
+	}
+
+	saver->priv->doc_mtime = new_statbuf.st_mtime;
+
+	saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
 
  out:
 	save_completed_or_failed (saver);
+
+	if (close (saver->priv->fd))
+		g_warning ("File '%s' has not been correctly closed: %s",
+			   saver->priv->uri,
+			   strerror (errno));
+
+	saver->priv->fd = -1;
 
 	g_free (backup_filename);
 
@@ -619,12 +707,42 @@ save_existing_local_file (GeditDocumentSaver *saver)
 static gboolean
 save_new_local_file (GeditDocumentSaver *saver)
 {
-	write_document_contents (saver->priv->fd,
-				 GTK_TEXT_BUFFER (saver->priv->document),
-			 	 saver->priv->encoding,
-				 &saver->priv->error);
+	struct stat statbuf;
 
+	if (!write_document_contents (saver->priv->fd,
+				      GTK_TEXT_BUFFER (saver->priv->document),
+			 	      saver->priv->encoding,
+				      &saver->priv->error))
+	{
+		goto out;
+	}
+
+	/* stat the file and fetch the mime type */
+	if (fstat (saver->priv->fd, &statbuf) != 0)
+	{
+		GnomeVFSResult result = gnome_vfs_result_from_errno ();
+
+		g_set_error (&saver->priv->error,
+			     GEDIT_DOCUMENT_ERROR,
+			     result,
+			     gnome_vfs_result_to_string (result));
+
+		goto out;
+	}
+
+	saver->priv->doc_mtime = statbuf.st_mtime;
+
+	saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
+
+ out:
 	save_completed_or_failed (saver);
+
+	if (close (saver->priv->fd))
+		g_warning ("File '%s' has not been correctly closed: %s",
+			   saver->priv->uri,
+			   strerror (errno));
+
+	saver->priv->fd = -1;
 
 	/* stop the timeout */
 	return FALSE;
@@ -868,7 +986,8 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 			   const gchar         *uri,
 //			   const gchar         *uri,
 //			   gboolean	        keep_backup,
-			   const GeditEncoding *encoding)
+			   const GeditEncoding *encoding,
+			   time_t               mtime)
 {
 	gchar *local_path;
 
@@ -881,7 +1000,6 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 
 	// TODO: returns FALSE if uri is not valid?
 
-
 // provvisorio... still to decide if fetch prefs here or in gedit-document
 	saver->priv->backup_ext = g_strdup ("~"); // g_strdup (backup_extension);
 	saver->priv->keep_backup = TRUE; //keep_backup;
@@ -891,6 +1009,8 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 		saver->priv->encoding = encoding;
 	else
 		saver->priv->encoding = gedit_encoding_get_utf8 ();
+
+	saver->priv->doc_mtime = mtime;
 
 	local_path = gnome_vfs_get_local_path_from_uri (uri);
 	if (local_path != NULL)
@@ -920,6 +1040,13 @@ gedit_document_saver_get_mime_type (GeditDocumentSaver *saver)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), NULL);
 
-	//TODO, dummy implementation
-	return gedit_document_get_mime_type (saver->priv->document);
+	return saver->priv->mime_type;
+}
+
+time_t
+gedit_document_saver_get_mtime (GeditDocumentSaver *saver)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), 0);
+
+	return saver->priv->doc_mtime;
 }

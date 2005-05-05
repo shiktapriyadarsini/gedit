@@ -92,7 +92,8 @@ gboolean		 gedit_document_saver_save		(GeditDocumentSaver  *saver,
 //							 	 const gchar         *backup_dir,
 //							 	 const gchar         *backup_ext,
 //							 	 gboolean             keep_backup, 
-								 const GeditEncoding *encoding);
+								 const GeditEncoding *encoding,
+								 time_t               mtime);
 
 #if 0
 void			 gedit_document_saver_cancel		(GeditDocumentSaver  *saver);
@@ -106,6 +107,8 @@ void			*gedit_document_saver_set_backup_uri	(GeditDocumentSaver  *saver,
 							 	 const gchar         *backup_uri);
 
 const gchar		*gedit_document_saver_get_mime_type	(GeditDocumentSaver  *saver);
+
+time_t			 gedit_document_saver_get_mtime		(GeditDocumentSaver  *saver);
 
 /* Returns 0 if file size is unknown */
 GnomeVFSFileSize	 gedit_document_saver_get_file_size	(GeditDocumentSaver  *saver);									 

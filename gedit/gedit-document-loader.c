@@ -639,6 +639,18 @@ gedit_document_loader_get_mime_type (GeditDocumentLoader  *loader)
 		return NULL;
 }
 
+time_t
+gedit_document_loader_get_mtime (GeditDocumentLoader  *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
+
+	if (loader->priv->info &&
+	    (loader->priv->info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_MTIME))
+		return loader->priv->info->mtime;
+	else
+		return 0;
+}
+
 /* Returns 0 if file size is unknown */
 GnomeVFSFileSize 
 gedit_document_loader_get_file_size (GeditDocumentLoader  *loader)
