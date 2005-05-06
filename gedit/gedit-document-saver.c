@@ -75,6 +75,7 @@ struct _GeditDocumentSaverPrivate
 	/* temp data for remote files */
 	GnomeVFSURI		 *vfs_uri;
 	GnomeVFSAsyncHandle	 *handle;
+	GnomeVFSAsyncHandle      *info_handle;
 
 	GError                   *error;
 };
@@ -689,6 +690,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 
 	saver->priv->doc_mtime = new_statbuf.st_mtime;
 
+	g_free (saver->priv->mime_type);
 	saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
 
  out:
@@ -735,6 +737,7 @@ save_new_local_file (GeditDocumentSaver *saver)
 
 	saver->priv->doc_mtime = statbuf.st_mtime;
 
+	g_free (saver->priv->mime_type);
 	saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
 
  out:
@@ -813,6 +816,44 @@ save_local_file (GeditDocumentSaver *saver)
 
 /* ----------- remote files ----------- */
 
+static void
+remote_get_info_cb (GnomeVFSAsyncHandle *handle,
+		    GList               *results,
+		    gpointer             data)
+{
+	GeditDocumentSaver *saver = GEDIT_DOCUMENT_SAVER (data);
+	GnomeVFSGetFileInfoResult *info_result;
+
+	/* assert that the list has one and only one item */
+	g_return_if_fail (results != NULL && results->next == NULL);
+
+	info_result = (GnomeVFSGetFileInfoResult *)results->data;
+	g_return_if_fail (info_result != NULL);
+
+	if (info_result->result != GNOME_VFS_OK)
+	{
+		g_set_error (&saver->priv->error,
+			     GEDIT_DOCUMENT_ERROR,
+			     info_result->result,
+			     gnome_vfs_result_to_string (info_result->result));
+
+		save_completed_or_failed (saver);
+
+		return;
+	}
+
+	if (info_result->file_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_MTIME)
+		saver->priv->doc_mtime = info_result->file_info->mtime;
+
+	if (info_result->file_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_MIME_TYPE)
+	{
+		g_free (saver->priv->mime_type);
+		saver->priv->mime_type = g_strdup (info_result->file_info->mime_type);
+	}
+
+	save_completed_or_failed (saver);
+}
+
 static gint
 async_transfer_ok (GnomeVFSXferProgressInfo *progress_info,
 		   GeditDocumentSaver       *saver)
@@ -822,9 +863,25 @@ async_transfer_ok (GnomeVFSXferProgressInfo *progress_info,
 	switch (progress_info->phase)
 	{
 	case GNOME_VFS_XFER_PHASE_COMPLETED:
-		/* we are done! */
-		save_completed_or_failed (saver);
-		return 1;
+		/* transfer done! we now need to fetch info
+		 * on our just written file */
+		{
+			GList *uri_list = NULL;
+
+			uri_list = g_list_prepend (uri_list, saver->priv->vfs_uri);
+
+			gnome_vfs_async_get_file_info (&saver->priv->info_handle,
+						       uri_list,
+						       GNOME_VFS_FILE_INFO_DEFAULT |
+						       GNOME_VFS_FILE_INFO_GET_MIME_TYPE |
+						       GNOME_VFS_FILE_INFO_FORCE_SLOW_MIME_TYPE |
+						       GNOME_VFS_FILE_INFO_FOLLOW_LINKS,
+						       GNOME_VFS_PRIORITY_MAX,
+						       remote_get_info_cb,
+						       saver);
+			g_list_free (uri_list);
+		}
+		break;
 	case GNOME_VFS_XFER_PHASE_INITIAL:
 	case GNOME_VFS_XFER_PHASE_COLLECTING:
 	case GNOME_VFS_XFER_CHECKING_DESTINATION:
@@ -904,7 +961,7 @@ static gboolean
 save_remote_file_real (GeditDocumentSaver *saver)
 {
 	mode_t saved_umask;
-	gint tmpfd;
+	gint tmpfd;  // FIXME: we are leaking this!
 	gchar *tmp_fname;
 	gchar *tmp_uri;
 	GnomeVFSURI *tmp_vfs_uri;
@@ -967,6 +1024,8 @@ save_remote_file_real (GeditDocumentSaver *saver)
 		goto error;
 	}
 
+	/* TODO: we should retrieve and check the remote file mtime */
+
 	result = gnome_vfs_async_xfer (&saver->priv->handle,
 				       source_uri_list,
 				       dest_uri_list,
@@ -976,6 +1035,10 @@ save_remote_file_real (GeditDocumentSaver *saver)
 				       GNOME_VFS_PRIORITY_DEFAULT,
 				       async_xfer_progress, saver,
 				       NULL, NULL);
+
+	gnome_vfs_uri_unref (tmp_vfs_uri);
+	g_list_free (source_uri_list);
+	g_list_free (dest_uri_list);
 
 	if (result != GNOME_VFS_OK)
 	{
