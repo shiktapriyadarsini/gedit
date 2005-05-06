@@ -1708,8 +1708,15 @@ notebook_tab_removed (GeditNotebook *notebook,
 
 	/* Set sensitivity */
 	if (window->priv->num_tabs == 0)
+	{
 		gtk_action_group_set_sensitive (window->priv->action_group,
 						FALSE);
+
+		action = gtk_action_group_get_action (window->priv->action_group,
+						      "ViewHighlightMode");
+
+		gtk_action_set_sensitive (action, FALSE);
+	}
 
 	if (window->priv->num_tabs <= 1)
 	{
