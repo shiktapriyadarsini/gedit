@@ -113,7 +113,7 @@ time_t			 gedit_document_saver_get_mtime		(GeditDocumentSaver  *saver);
 /* Returns 0 if file size is unknown */
 GnomeVFSFileSize	 gedit_document_saver_get_file_size	(GeditDocumentSaver  *saver);									 
 
-GnomeVFSFileSize	 gedit_document_saver_get_bytes_read	(GeditDocumentSaver  *saver);									 
+GnomeVFSFileSize	 gedit_document_saver_get_bytes_written	(GeditDocumentSaver  *saver);									 
 
 
 G_END_DECLS

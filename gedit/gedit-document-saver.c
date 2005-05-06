@@ -66,6 +66,9 @@ struct _GeditDocumentSaverPrivate
 
 	gint			  fd;
 
+	GnomeVFSFileSize	  size;
+	GnomeVFSFileSize	  bytes_written;
+
 	/* temp data for local files */
 	gchar			 *local_path;
 
@@ -819,21 +822,52 @@ async_transfer_ok (GnomeVFSXferProgressInfo *progress_info,
 	switch (progress_info->phase)
 	{
 	case GNOME_VFS_XFER_PHASE_COMPLETED:
+		/* we are done! */
 		save_completed_or_failed (saver);
 		return 1;
-	/* case ?? update progress
-	case?? unexpected
-	*/
+	case GNOME_VFS_XFER_PHASE_INITIAL:
+	case GNOME_VFS_XFER_PHASE_COLLECTING:
+	case GNOME_VFS_XFER_CHECKING_DESTINATION:
+		break;
+	case GNOME_VFS_XFER_PHASE_READYTOGO:
+		saver->priv->size = progress_info->bytes_total;
+		break;
+	case GNOME_VFS_XFER_PHASE_OPENSOURCE:
+	case GNOME_VFS_XFER_PHASE_OPENTARGET:
+	case GNOME_VFS_XFER_PHASE_COPYING:
+	case GNOME_VFS_XFER_PHASE_WRITETARGET:
+	case GNOME_VFS_XFER_PHASE_CLOSETARGET:
+		if (progress_info->bytes_copied > 0)
+			saver->priv->bytes_written = MIN (progress_info->total_bytes_copied,
+							  progress_info->bytes_total);
+		break;
+	case GNOME_VFS_XFER_PHASE_FILECOMPLETED:
+	case GNOME_VFS_XFER_PHASE_CLEANUP:
+		break;
+	/* Phases we don't expect to see */
+	case GNOME_VFS_XFER_PHASE_SETATTRIBUTES:
+	case GNOME_VFS_XFER_PHASE_CLOSESOURCE:
+	case GNOME_VFS_XFER_PHASE_MOVING:
+	case GNOME_VFS_XFER_PHASE_DELETESOURCE:
+	case GNOME_VFS_XFER_PHASE_READSOURCE:
 	default:
-		return 1;
+		g_assert_not_reached ();
 	}
+
+	/* signal the progress */
+	g_signal_emit (saver,
+		       signals[SAVING],
+		       0,
+		       FALSE,
+		       NULL);
+
+	return 1;
 }
 
 static gint
 async_transfer_error (GnomeVFSXferProgressInfo *progress_info,
 		      GeditDocumentSaver       *saver)
 {
-	// Is this ok??
 	g_set_error (&saver->priv->error,
 		     GEDIT_DOCUMENT_ERROR,
 		     progress_info->vfs_status,
@@ -847,8 +881,10 @@ async_transfer_error (GnomeVFSXferProgressInfo *progress_info,
 static gint
 async_xfer_progress (GnomeVFSAsyncHandle      *handle,
 		     GnomeVFSXferProgressInfo *progress_info,
-		     GeditDocumentSaver       *saver)
+		     gpointer                  data)
 {
+	GeditDocumentSaver *saver = GEDIT_DOCUMENT_SAVER (data);
+
 	switch (progress_info->status)
 	{
 	case GNOME_VFS_XFER_PROGRESS_STATUS_OK:
@@ -900,9 +936,8 @@ save_remote_file_real (GeditDocumentSaver *saver)
 			     result,
 			     gnome_vfs_result_to_string (result));
 
-		goto error;	
+		goto error;
 	}
-
 
 	tmp_uri = g_filename_to_uri (tmp_fname, NULL, &saver->priv->error);
 	if (tmp_uri == NULL)
@@ -935,9 +970,9 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	result = gnome_vfs_async_xfer (&saver->priv->handle,
 				       source_uri_list,
 				       dest_uri_list,
-				       GNOME_VFS_XFER_DEFAULT, // need more thinking, follow symlinks etc... options are undocumented :(
-				       GNOME_VFS_XFER_ERROR_MODE_ABORT,  // lets keep it simple for now...
-				       GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE, // CHECK: We should have already checked in the filechooser (even if it is racy)
+				       GNOME_VFS_XFER_DEFAULT, // CHECK needs more thinking, follow symlinks etc... options are undocumented :(
+				       GNOME_VFS_XFER_ERROR_MODE_ABORT,       /* keep it simple, abort on any error */
+				       GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE, /* We have already asked confirm (even if it is racy) */
 				       GNOME_VFS_PRIORITY_DEFAULT,
 				       async_xfer_progress, saver,
 				       NULL, NULL);
@@ -1049,4 +1084,21 @@ gedit_document_saver_get_mtime (GeditDocumentSaver *saver)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), 0);
 
 	return saver->priv->doc_mtime;
+}
+
+/* Returns 0 if file size is unknown */
+GnomeVFSFileSize
+gedit_document_saver_get_file_size (GeditDocumentSaver *saver)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), 0);
+
+	return saver->priv->size;
+}
+
+GnomeVFSFileSize
+gedit_document_saver_get_bytes_written (GeditDocumentSaver *saver)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), 0);
+
+	return saver->priv->bytes_written;
 }

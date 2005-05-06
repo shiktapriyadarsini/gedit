@@ -827,10 +827,12 @@ document_saver_saving (GeditDocumentSaver *saver,
 	else
 	{
 		GnomeVFSFileSize size = 0;
-		GnomeVFSFileSize read = 0;
+		GnomeVFSFileSize written = 0;
 
-//		size = gedit_document_saver_get_file_size (saver);
-//		read = gedit_document_saver_get_bytes_read (saver);
+		size = gedit_document_saver_get_file_size (saver);
+		written = gedit_document_saver_get_bytes_written (saver);
+
+		g_print ("save progress: %Lu of %Lu", written, size);
 
 		g_signal_emit (doc,
 			       document_signals[SAVING],
