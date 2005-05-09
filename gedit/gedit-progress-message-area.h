@@ -78,14 +78,15 @@ struct _GeditProgressMessageAreaClass
 GType 		 gedit_progress_message_area_get_type 		(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_progress_message_area_new      		(const gchar              *stock_id,
-								 const gchar              *markup);
+								 const gchar              *markup,
+								 gboolean                  has_cancel);
 
 void		 gedit_progress_message_area_set_stock_image	(GeditProgressMessageArea *area,
 								 const gchar              *stock_id);
 
 void		 gedit_progress_message_area_set_markup		(GeditProgressMessageArea *area,
 								 const gchar              *markup);
-								 
+
 void		 gedit_progress_message_area_set_fraction	(GeditProgressMessageArea *area,
 								 gdouble                   fraction);
 

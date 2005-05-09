@@ -860,10 +860,12 @@ show_printing_message_area (GeditTab      *tab,
 	
 	if (preview)
 		area = gedit_progress_message_area_new (GTK_STOCK_PRINT_PREVIEW,
-							"");
+							"",
+							TRUE);
 	else
 		area = gedit_progress_message_area_new (GTK_STOCK_PRINT,
-							"");
+							"",
+							TRUE);
 	
 
 	g_signal_connect (area,
