@@ -2516,10 +2516,10 @@ gedit_window_load_files (GeditWindow         *window,
 	GeditDocument *doc;
 	gboolean jump_to = TRUE;
 	gboolean flash = TRUE;
-	
+
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
 	g_return_val_if_fail (uris != NULL, 0);
-	
+
 	doc = gedit_window_get_active_document (window);
 	if (doc != NULL)
 	{
@@ -2535,26 +2535,26 @@ gedit_window_load_files (GeditWindow         *window,
 						   uri,
 						   encoding,
 						   create);
-			
+
 			uris = g_slist_next (uris);
 			jump_to = FALSE;
-			
+
 			if (ret)
 			{
 				if (uris == NULL)
 				{
 					/* There is only a single file to load */
 					gchar *uri_for_display;
-					
+
 					uri_for_display = gnome_vfs_format_uri_for_display (uri);
-								
+
 					gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 								       window->priv->generic_message_cid,
 								       _("Loading file \"%s\"..."),
 								       uri_for_display);
-								       
+
 					g_free (uri_for_display);
-					
+
 					flash = FALSE;								       
 				}
 				
@@ -2562,28 +2562,28 @@ gedit_window_load_files (GeditWindow         *window,
 			}
 		}
 	}
-	
+
 	while (uris != NULL)
 	{
 		GeditTab *tab;
-		
+
 		g_return_val_if_fail (uris->data != NULL, 0);
-		
+
 		tab = gedit_window_create_tab_from_uri (window,
 							(const gchar *)uris->data,
 							encoding,
 							create,
 							jump_to);
-							
+
 		if (tab != NULL)
 		{
 			jump_to = FALSE;
 			++loaded_files;	
 		}
-		
+
 		uris = g_slist_next (uris);
 	}
-	
+
 	if (flash)
 	{
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
@@ -2593,14 +2593,60 @@ gedit_window_load_files (GeditWindow         *window,
 							loaded_files),
 					       loaded_files);
 	}				     
-	
+
 	return loaded_files;
+}
+
+void
+gedit_window_save_document (GeditWindow *window,
+			    GeditTab    *tab)
+{
+	GeditDocument *doc;
+
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+
+	/* FIXME: sanity check if tab is in window? */
+
+	doc = gedit_tab_get_document (tab);
+
+	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+				        window->priv->generic_message_cid,
+				       _("Saving file \"%s\"..."),
+				       gedit_document_get_uri_for_display (doc));
+
+	_gedit_tab_save (tab);
+}
+
+void
+gedit_window_save_document_as (GeditWindow         *window,
+			       GeditTab            *tab,
+			       const gchar         *uri,
+			       const GeditEncoding *encoding)
+{
+	GeditDocument *doc;
+	gchar *uri_for_display;
+
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+
+	/* FIXME: sanity check if tab is in window? */
+
+	doc = gedit_tab_get_document (tab);
+
+	uri_for_display = gnome_vfs_format_uri_for_display (uri);
+	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+				        window->priv->generic_message_cid,
+				       _("Saving file as \"%s\"..."),
+				       uri_for_display);
+
+	_gedit_tab_save_as (tab, uri, encoding);
 }
 
 GtkWidget *
 gedit_window_get_statusbar (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
-	
+
 	return window->priv->statusbar;
 }

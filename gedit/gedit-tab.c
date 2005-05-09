@@ -253,6 +253,17 @@ file_already_open_warning_message_area_response (GtkWidget   *message_area,
 }
 
 static void
+document_loading (GeditDocument *document,
+		  gint           size,
+		  gint           total_size,
+		  GeditTab      *tab)
+{
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
+
+
+}
+
+static void
 document_loaded (GeditDocument *document,
 		 const GError  *error,
 		 GeditTab      *tab)
@@ -261,8 +272,10 @@ document_loaded (GeditDocument *document,
 	const GeditEncoding *encoding;
 	const gchar *uri;
 
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
+
 	uri = gedit_document_get_uri_ (document);
-	
+
 	if (error != NULL)
 	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
@@ -359,41 +372,67 @@ document_loaded (GeditDocument *document,
 	}
 }		 
 
-		  
+static void
+document_saving (GeditDocument *document,
+		 gint           size,
+		 gint           total_size,
+		 GeditTab      *tab)
+{
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
+
+
+}
+
+static void
+document_saved (GeditDocument *document,
+		const GError  *error,
+		GeditTab      *tab)
+{
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
+
+	if (error != NULL)
+	{
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING_ERROR);
+
+		g_print ("TAB: error saving\n");
+	}
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+}
 
 static void
 gedit_tab_init (GeditTab *tab)
 {
 	GtkWidget *sw;
 	GeditDocument *doc;
-	
+
 	tab->priv = GEDIT_TAB_GET_PRIVATE (tab);
 
 	tab->priv->state = GEDIT_TAB_STATE_NORMAL;
-	
+
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	tab->priv->view_scrolled_window = sw;
-	
+
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
-					
+
 	/* Create the view */
 	doc = gedit_document_new ();
 	g_object_set_data (G_OBJECT (doc), GEDIT_TAB_KEY, tab);
-	
+
 	tab->priv->view = gedit_view_new (doc);
 	g_object_unref (doc);
 	gtk_widget_show (tab->priv->view);
 	g_object_set_data (G_OBJECT (tab->priv->view), GEDIT_TAB_KEY, tab);
-	
+
 	gtk_box_pack_end (GTK_BOX (tab), sw, TRUE, TRUE, 0);
 	gtk_container_add (GTK_CONTAINER (sw), tab->priv->view);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
                                              GTK_SHADOW_IN);	
 	gtk_widget_show (sw);
-	
+
 	g_signal_connect (G_OBJECT (doc),
 			  "name_changed",
 			  G_CALLBACK (document_name_modified_changed),
@@ -403,9 +442,21 @@ gedit_tab_init (GeditTab *tab)
 			  G_CALLBACK (document_name_modified_changed),
 			  tab);
 	g_signal_connect (G_OBJECT (doc),
+			  "loading",
+			  G_CALLBACK (document_loading),
+			  tab);
+	g_signal_connect (G_OBJECT (doc),
 			  "loaded",
 			  G_CALLBACK (document_loaded),
-			  tab);			  		                                   
+			  tab);
+	g_signal_connect (G_OBJECT (doc),
+			  "saving",
+			  G_CALLBACK (document_saving),
+			  tab);
+	g_signal_connect (G_OBJECT (doc),
+			  "saved",
+			  G_CALLBACK (document_saved),
+			  tab);
 }
 
 GtkWidget *
@@ -435,13 +486,13 @@ _gedit_tab_new_from_uri (const gchar         *uri,
 				   uri,
 				   encoding,
 				   create);
-	
+
 	if (!ret)
 	{
 		g_object_unref (tab);
 		return NULL;
 	}
-			   
+
 	return GTK_WIDGET (tab);
 }		
 
@@ -726,6 +777,43 @@ gedit_tab_get_from_document (GeditDocument *doc)
 	res = g_object_get_data (G_OBJECT (doc), GEDIT_TAB_KEY);
 	
 	return (res != NULL) ? GEDIT_TAB (res) : NULL;
+}
+
+void
+_gedit_tab_save (GeditTab *tab)		  
+{
+	GeditDocument *doc;
+
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	g_return_if_fail (!gedit_document_is_untitled);
+
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
+	
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+	gedit_document_save (doc);
+}
+
+void
+_gedit_tab_save_as (GeditTab            *tab,
+		    const gchar         *uri,
+		    const GeditEncoding *encoding)		  
+{
+	GeditDocument *doc;
+
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+	gedit_document_save_as (doc, uri, encoding);
 }
 
 static void

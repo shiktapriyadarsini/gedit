@@ -292,9 +292,10 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, saved),
 			      NULL, NULL,
-			      gedit_marshal_VOID__VOID,
+			      gedit_marshal_VOID__POINTER,
 			      G_TYPE_NONE,
-			      0);
+			      1,
+			      G_TYPE_POINTER);
 
 	document_signals[READONLY_CHANGED] =
    		g_signal_new ("readonly_changed",
@@ -1220,12 +1221,12 @@ gedit_document_replace_all (GeditDocument       *doc,
 		}		
 
 	} while (found);
-		
+
 	gtk_text_buffer_end_user_action (buffer);
-		
+
 	g_free (search_text);
 	g_free (replace_text);	
-	
+
 	return cont;
 }			    
 

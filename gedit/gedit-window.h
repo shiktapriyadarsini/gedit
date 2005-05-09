@@ -129,6 +129,14 @@ gint		 gedit_window_load_files		(GeditWindow         *window,
 							 const GeditEncoding *encoding,
 							 gboolean             create);
 
+void		 gedit_window_save_document		(GeditWindow         *window,
+							 GeditTab            *tab);
+
+void		 gedit_window_save_document_as		(GeditWindow         *window,
+							 GeditTab            *tab,
+							 const gchar         *uri,
+							 const GeditEncoding *encoding);
+
 GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 
 /*

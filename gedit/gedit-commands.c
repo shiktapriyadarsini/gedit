@@ -203,41 +203,26 @@ void
 gedit_cmd_file_save (GtkAction   *action,
 		     GeditWindow *window)
 {
+	GeditTab *tab;
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	doc = gedit_window_get_active_document (window);
-	if (doc == NULL)
+	tab = gedit_window_get_active_tab (window);
+	if (tab == NULL)
 		return;
+
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
 	if (gedit_document_is_untitled (doc))
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled");
 
-		// CHECK ok action NULL?
 		return gedit_cmd_file_save_as (NULL, window);
 	}
 
-	gedit_document_save (doc);
-
-#if 0
-	GeditMDIChild *active_child;
-	GtkWidget *active_view;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	active_view = gedit_get_active_view ();
-
-	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
-	if (active_child == NULL)
-		return;
-
-	if (active_view != NULL)
-		gtk_widget_grab_focus (active_view);
-
-	gedit_file_save (active_child, TRUE);
-#endif
+	gedit_window_save_document (window, tab);
 }
 
 // CHECK: move to utils? If so, do not include vfs.h
@@ -354,7 +339,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 {
 	gchar *uri;
 	const GeditEncoding *encoding;
-	GeditDocument *doc;
+	GeditTab *tab;
 	gboolean do_save = TRUE;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -383,12 +368,13 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		}
 	}
 
-	/* FIXME: I don't like this code very much. I think we should pass a
-	 * GeditTab to the function */
-	doc = gedit_window_get_active_document (window);
-	if (doc != NULL && do_save)
+	tab = gedit_window_get_active_tab (window);
+	if (tab != NULL && do_save)
 	{
-		gedit_document_save_as (doc, uri, encoding);	
+		gedit_window_save_document_as (window,
+					       tab,
+					       uri,
+					       encoding);	
 	}
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -416,16 +402,16 @@ gedit_cmd_file_save_as (GtkAction   *action,
 
 	gtk_window_group_add_window (wg,
 				     GTK_WINDOW (save_dialog));
-				     
+
 	gtk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
-	     
+
 	/* TODO: set the default path/name */
 
 	g_signal_connect (save_dialog,
 			  "response",
 			  G_CALLBACK (save_dialog_response_cb),
 			  window);
-		   						     
+
 	gtk_widget_show (save_dialog);
 }
 
@@ -483,11 +469,11 @@ gedit_cmd_file_print_preview (GtkAction   *action,
 		return;
 
 	doc = gedit_tab_get_document (tab);
-	
+
 	pjob = gedit_print_job_new (doc);
-	
+
 	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc) , &start, &end);
-	
+
 	_gedit_tab_print_preview (tab, pjob, &start, &end);
 	g_object_unref (pjob);
 }
@@ -570,26 +556,27 @@ gedit_cmd_file_print (GtkAction   *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_window_get_active_document (window);
-	if (doc == NULL)	
+	if (doc == NULL)
 		return;
 
 	pjob = gedit_print_job_new (doc);
-			
+
 	print_dialog = gedit_print_dialog_new (pjob);
-	
+
 	wg = gedit_window_get_group (window);
 
 	gtk_window_group_add_window (wg,
 				     GTK_WINDOW (print_dialog));
-		
-	gtk_window_set_transient_for (GTK_WINDOW (print_dialog), GTK_WINDOW (window));
+
+	gtk_window_set_transient_for (GTK_WINDOW (print_dialog),
+				      GTK_WINDOW (window));
 	gtk_window_set_modal (GTK_WINDOW (print_dialog), TRUE);
-	     
+
 	g_signal_connect (print_dialog,
 			  "response",
 			  G_CALLBACK (print_dialog_response_cb),
 			  pjob);
-		   						     
+
 	gtk_widget_show (print_dialog);
 }
 
@@ -718,9 +705,9 @@ gedit_cmd_file_close_all (GtkAction   *action,
 
 		close = gedit_close_confirmation_dialog_run (
 					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
-		
+
 		gtk_widget_hide (dlg);
-		
+
 		if (close)
 		{
 			GSList *sel_docs;
@@ -944,7 +931,7 @@ gedit_cmd_search_find_next (GtkAction   *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
-	
+
 	gedit_search_panel_search_again (sp, FALSE);
 }
 
@@ -953,11 +940,11 @@ gedit_cmd_search_find_prev (GtkAction   *action,
 			    GeditWindow *window)
 {
 	GeditSearchPanel *sp;
-	
+
 	gedit_debug (DEBUG_COMMANDS);
-	
+
 	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
-	
+
 	gedit_search_panel_search_again (sp, TRUE);
 }
 
@@ -966,11 +953,11 @@ gedit_cmd_search_replace (GtkAction   *action,
 			  GeditWindow *window)
 {
 	GeditSearchPanel *sp;
-	
+
 	gedit_debug (DEBUG_COMMANDS);
-	
+
 	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
-	
+
 	gedit_search_panel_focus_replace (sp);
 }
 
@@ -979,11 +966,11 @@ gedit_cmd_search_goto_line (GtkAction   *action,
 			    GeditWindow *window)
 {
 	GeditSearchPanel *sp;
-	
+
 	gedit_debug (DEBUG_COMMANDS);
-	
+
 	sp = GEDIT_SEARCH_PANEL (_gedit_window_get_search_panel (window));
-	
+
 	gedit_search_panel_focus_goto_line (sp);
 }
 
@@ -1007,7 +994,7 @@ gedit_cmd_documents_move_to_new_window (GtkAction   *action,
 	_gedit_window_move_tab_to_new_window (window, tab);			 
 }
 
-void 
+void
 gedit_cmd_help_contents (GtkAction   *action,
 			 GeditWindow *window)
 {
@@ -1041,7 +1028,7 @@ gedit_cmd_help_about (GtkAction   *action,
 		"Paolo Borelli <pborelli@katamail.com>",
 		"James Willcox <jwillcox@gnome.org>",
 		"Chema Celorio",
-		"Federico Mena Quintero <federico@ximian.com>",
+		"Federico Mena Quintero <federico@novell.com>",
 		NULL
 	};
 
