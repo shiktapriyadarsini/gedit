@@ -45,6 +45,7 @@
 
 #include "gedit-taglist-plugin-parser.h"
 
+// FIXME
 #define USER_GEDIT_TAGLIST_PLUGIN_LOCATION ".gedit-2/plugins/taglist/"
 
 TagList *taglist = NULL;

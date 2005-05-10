@@ -1,9 +1,9 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-plugin-manager.c
  * This file is part of gedit
  *
  * Copyright (C) 2002 Paolo Maggi and James Willcox
+ * Copyright (C) 2003-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +22,11 @@
  */
 
 /*
- * Modified by the gedit Team, 1998-2002. See the AUTHORS file for a 
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -52,8 +54,6 @@ enum
 #define PLUGIN_MANAGER_NAME_TITLE _("Plugin")
 #define PLUGIN_MANAGER_ACTIVE_TITLE _("Enabled")
 
-#define PLUGIN_MANAGER_LOGO "/gedit-plugin-manager.png"
-
 typedef struct _GeditPluginManager GeditPluginManager;
 
 struct _GeditPluginManager {
@@ -66,7 +66,7 @@ struct _GeditPluginManager {
 
 	GtkWidget *configure_button; /* a GtkButton, configures a plugin when clicked */
 
-	const GList *plugins; 	/* a list of type GeditPlugin  */
+	const GList *plugins; 	/* a list of type GeditPluginInfo  */
 };
 
 static GeditPluginInfo *plugin_manager_get_selected_plugin (GeditPluginManager *dialog);
@@ -78,7 +78,7 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 {
 	static GtkWidget *about;
 	GeditPluginInfo *info;
-	gchar **authors;
+	// gchar **authors;
 	GdkPixbuf* pixbuf = NULL;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -87,9 +87,7 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 
 	g_return_if_fail (info != NULL);
 
-	gedit_debug_message (DEBUG_PLUGINS, "About: %s\n", info->plugin->name);
-
-	authors = g_strsplit (info->plugin->author, ", ", 0); 
+	// FIXME authors = g_strsplit (info->plugin->author, ", ", 0); 
 
 	pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR "/gedit-plugin-manager.png", NULL);
 
@@ -98,10 +96,10 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 		gtk_widget_destroy (about);
 
 	about = g_object_new (GTK_TYPE_ABOUT_DIALOG,
-			      "name", info->plugin->name,
-			      "copyright", info->plugin->copyright,
-			      "authors", (const gchar**) authors,
-			      "comments", info->plugin->desc,
+			      "name", gedit_plugins_engine_get_plugin_name (info),
+			      "copyright", gedit_plugins_engine_get_plugin_copyright (info),
+			      // FIXME "authors", (const gchar**) authors,
+			      "comments", gedit_plugins_engine_get_plugin_description (info),
 			      "logo", pixbuf,
 			      NULL);
 
@@ -112,13 +110,13 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 
 	gtk_window_set_transient_for (GTK_WINDOW (about),
 				      GTK_WINDOW (gtk_widget_get_toplevel (pm->page)));
-	gtk_window_present (GTK_WINDOW (about));
+	gtk_widget_show (about);
 
 	if (pixbuf != NULL)
 		g_object_unref (pixbuf);
 
-	if (authors != NULL)
-		g_strfreev (authors);
+//	if (authors != NULL)
+//		g_strfreev (authors);
 }
 
 static void
@@ -133,23 +131,23 @@ configure_button_cb (GtkWidget *button, gpointer data)
 
 	g_return_if_fail (info != NULL);
 
-	gedit_debug_message (DEBUG_PLUGINS, "Configuring: %s\n", info->plugin->name);
+	gedit_debug_message (DEBUG_PLUGINS, "Configuring: %s\n", 
+			     gedit_plugins_engine_get_plugin_name (info));
 
-	gedit_plugins_engine_configure_plugin (info->plugin, 
-			gtk_widget_get_toplevel (pm->page));
+	/* TODO */
 
 	gedit_debug_message (DEBUG_PLUGINS, "Done");	
 }
 
 static void
 plugin_manager_view_cell_cb (GtkTreeViewColumn *tree_column,
-				    GtkCellRenderer   *cell,
-				    GtkTreeModel      *tree_model,
-				    GtkTreeIter       *iter,
-				    gpointer           data)
+			     GtkCellRenderer   *cell,
+			     GtkTreeModel      *tree_model,
+			     GtkTreeIter       *iter,
+			     gpointer           data)
 {
 	GeditPluginInfo *info;
-	const gchar *title;
+//	const gchar *title;
 	
 	g_return_if_fail (tree_model != NULL);
 	g_return_if_fail (tree_column != NULL);
@@ -159,11 +157,14 @@ plugin_manager_view_cell_cb (GtkTreeViewColumn *tree_column,
 	if (info == NULL)
 		return;
 
-	title = gtk_tree_view_column_get_title (tree_column);
+//	title = gtk_tree_view_column_get_title (tree_column);
 
 	/* FIXME: this string comparison stuff sucks.  is there a better way? */
-	if (!strcmp (title, PLUGIN_MANAGER_NAME_TITLE))
-		g_object_set (G_OBJECT (cell), "text", info->plugin->name, NULL);
+//	if (!strcmp (title, PLUGIN_MANAGER_NAME_TITLE))
+	g_object_set (G_OBJECT (cell), 
+		      "text", 
+		      gedit_plugins_engine_get_plugin_name (info), 
+		      NULL);
 }
 
 static void
@@ -205,7 +206,7 @@ cursor_changed_cb (GtkTreeView  *view, gpointer data)
 	g_return_if_fail (info != NULL);
 
 	gtk_widget_set_sensitive (GTK_WIDGET (dialog->configure_button),
-				  gedit_plugins_engine_is_a_configurable_plugin (info->plugin));
+				  gedit_plugins_engine_plugin_is_configurable (info));
 }
 
 static void
@@ -264,7 +265,7 @@ plugin_manager_populate_lists (GeditPluginManager *dialog)
 		gtk_list_store_append (model, &iter);
 		gtk_list_store_set (model, &iter,
 				    NAME_COLUMN, info,
-				    ACTIVE_COLUMN, (info->state == GEDIT_PLUGIN_ACTIVATED),
+				    ACTIVE_COLUMN, gedit_plugins_engine_plugin_is_active (info),
 				    -1);
 
 		plugins = plugins->next;
@@ -277,13 +278,14 @@ plugin_manager_populate_lists (GeditPluginManager *dialog)
 
 		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dialog->tree));
 		g_return_if_fail (selection != NULL);
+		
 		gtk_tree_selection_select_iter (selection, &iter);
 
 		gtk_tree_model_get (GTK_TREE_MODEL (model), &iter,
 				    NAME_COLUMN, &info, -1);
 
 		gtk_widget_set_sensitive (GTK_WIDGET (dialog->configure_button),
-				  gedit_plugins_engine_is_a_configurable_plugin (info->plugin));
+					  gedit_plugins_engine_plugin_is_configurable (info));
 	}
 }
 
@@ -301,23 +303,29 @@ plugin_manager_set_active (GtkTreeIter *iter, GtkTreeModel *model, gboolean acti
 	if (active)
 	{
 		/* activate the plugin */
-		if (!gedit_plugins_engine_activate_plugin (info->plugin)) {
-			gedit_debug_message (DEBUG_PLUGINS, "Could not activate %s.\n", info->plugin->name);
+		if (!gedit_plugins_engine_activate_plugin (info)) {
+			gedit_debug_message (DEBUG_PLUGINS, "Could not activate %s.\n", 
+					     gedit_plugins_engine_get_plugin_name (info));
 			active ^= 1;
 		}
 	}
 	else
 	{
 		/* deactivate the plugin */
-		if (!gedit_plugins_engine_deactivate_plugin (info->plugin)) {
-			gedit_debug_message (DEBUG_PLUGINS, "Could not deactivate %s.\n", info->plugin->name);
+		if (!gedit_plugins_engine_deactivate_plugin (info)) {
+			gedit_debug_message (DEBUG_PLUGINS, "Could not deactivate %s.\n", 
+					     gedit_plugins_engine_get_plugin_name (info));
+
 			active ^= 1;
 		}
 	}
   
 	/* set new value */
-	gtk_list_store_set (GTK_LIST_STORE (model), iter, ACTIVE_COLUMN,
-			    (info->state == GEDIT_PLUGIN_ACTIVATED), -1);
+	gtk_list_store_set (GTK_LIST_STORE (model), 
+			    iter, 
+			    ACTIVE_COLUMN,
+			    gedit_plugins_engine_plugin_is_active (info), 
+			    -1);
 }
 
 static void
@@ -384,10 +392,10 @@ plugin_manager_toggle_all (GeditPluginManager *dialog)
 /* Callback used as the interactive search comparison function */
 static gboolean
 name_search_cb (GtkTreeModel *model,
-		gint column,
-		const gchar *key,
-		GtkTreeIter *iter,
-		gpointer data)
+		gint          column,
+		const gchar  *key,
+		GtkTreeIter  *iter,
+		gpointer      data)
 {
 	GeditPluginInfo *info;
 	gchar *normalized_string;
@@ -401,7 +409,7 @@ name_search_cb (GtkTreeModel *model,
 	if (!info)
 		return FALSE;
 
-	normalized_string = g_utf8_normalize (info->plugin->name, -1, G_NORMALIZE_ALL);
+	normalized_string = g_utf8_normalize (gedit_plugins_engine_get_plugin_name (info), -1, G_NORMALIZE_ALL);
 	normalized_key = g_utf8_normalize (key, -1, G_NORMALIZE_ALL);
 	case_normalized_string = g_utf8_casefold (normalized_string, -1);
 	case_normalized_key = g_utf8_casefold (normalized_key, -1);
@@ -550,6 +558,12 @@ gedit_plugin_manager_get_page (void)
 	/* get the list of available plugins (or installed) */
 	pm->plugins = gedit_plugins_engine_get_plugins_list ();
 
+	if (pm->plugins == NULL)
+	{
+		gtk_widget_set_sensitive (pm->about_button, FALSE);
+		gtk_widget_set_sensitive (pm->configure_button, FALSE);		
+	}
+	
 	plugin_manager_populate_lists (pm);
 
 	return pm->page;

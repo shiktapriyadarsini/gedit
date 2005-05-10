@@ -1,9 +1,8 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-plugin-manager.h
  * This file is part of gedit
  *
- * Copyright (C) 2002 Paolo Maggi
+ * Copyright (C) 2002-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +21,11 @@
  */
 
 /*
- * Modified by the gedit Team, 2002. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifndef __GEDIT_PLUGIN_MANAGER_H__
@@ -32,6 +33,10 @@
 
 #include <gtk/gtkwidget.h>
 
+G_BEGIN_DECLS
+
 GtkWidget *gedit_plugin_manager_get_page (void);
+
+G_END_DECLS
 
 #endif  /* __GEDIT_PLUGIN_MANAGER_H__ */

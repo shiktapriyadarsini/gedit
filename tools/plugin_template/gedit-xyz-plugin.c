@@ -1,0 +1,152 @@
+/*
+ * gedit-xyz-plugin.h
+ * 
+ * Copyright (C) %YEAR% - %AUTHOR%
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ * $Id$
+ */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "gedit-xyz-plugin.h"
+
+#include <glib/gi18n-lib.h>
+#include <gmodule.h>
+
+#include <gedit/gedit-debug.h>"
+
+#define GEDIT_XYZ_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_XYZ_PLUGIN, GeditXyzPluginPrivate))
+
+struct _GeditXyzPluginPrivate
+{
+	gpointer dummy;
+};
+
+enum
+{
+	PROP_0
+};
+
+static GObjectClass *parent_class = NULL;
+
+static GType type = 0;
+
+static void
+gedit_xyz_plugin_init (GeditXyzPlugin *plugin)
+{
+	plugin->priv = GEDIT_XYZ_PLUGIN_GET_PRIVATE (plugin);
+
+	gedit_debug_message (DEBUG_PLUGINS, "GeditXyzPlugin initialising");
+}
+
+static void
+gedit_xyz_plugin_finalize (GObject *object)
+{
+/*
+	GeditXyzPlugin *plugin = GEDIT_XYZ_PLUGIN (object);
+*/
+	gedit_debug_message (DEBUG_PLUGINS, "GeditXyzPlugin finalising");
+
+	G_OBJECT_CLASS (parent_class)->finalize (object);
+}
+
+static void
+impl_activate (GeditPlugin *plugin,
+	       GeditWindow *window)
+{
+	gedit_debug (DEBUG_PLUGINS);
+}
+
+static void
+impl_deactivate	(GeditPlugin *plugin,
+		 GeditWindow *window)
+{
+	gedit_debug (DEBUG_PLUGINS);
+}
+		 
+static void
+impl_update_ui	(GeditPlugin *plugin,
+		 GeditWindow *window)
+{
+	gedit_debug (DEBUG_PLUGINS);
+}
+
+/*
+static GtkWidget *
+impl_create_configure_dialog (GeditPlugin *plugin)
+{	
+	* Implements this function only and only if the plugin
+	* is configurable. Otherwise you can safely remove it. *
+}
+*/
+
+static void
+gedit_xyz_plugin_class_init (GeditXyzPluginClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	parent_class = g_type_class_peek_parent (klass);
+
+	object_class->finalize = gedit_xyz_plugin_finalize;
+	
+	klass->activate = impl_activate;
+	klass->deactivate = impl_deactivate;
+	klass->update_ui = impl_update_ui;
+	
+	/* Only if the plugin is configurable */
+	/* klass->create_configure_dialog = impl_create_configure_dialog; */
+	
+	g_type_class_add_private (object_class, sizeof (GeditXyzPluginPrivate));
+}
+
+GType
+gedit_xyz_plugin_get_type (void)
+{
+	return type;
+}
+
+G_MODULE_EXPORT GType
+register_gedit_plugin (GTypeModule *module)
+{
+	static const GTypeInfo our_info =
+	{
+		sizeof (GeditXyzPluginClass),
+		NULL, /* base_init */
+		NULL, /* base_finalize */
+		(GClassInitFunc) gedit_xyz_plugin_class_init,
+		NULL,
+		NULL, /* class_data */
+		sizeof (GeditXyzPlugin),
+		0, /* n_preallocs */
+		(GInstanceInitFunc) gedit_xyz_plugin_init
+	};
+
+	gedit_debug_message (DEBUG_PLUGINS, "Registering GeditXyzPlugin");
+
+	/* Initialise the i18n stuff */
+	bindtextdomain (GETTEXT_PACKAGE, GEDIT_LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");	
+
+	type = g_type_module_register_type (module,
+					    GEDIT_TYPE_PLUGIN,
+					    "GeditXyzPlugin",
+					    &our_info, 
+					    0);
+	return type;
+}

@@ -94,7 +94,7 @@ main (int argc, char *argv[])
 	gedit_recent_init ();
 
 	/* Init plugins engine */
-//	gedit_plugins_engine_init ();
+	gedit_plugins_engine_init ();
 
 	gnome_authentication_manager_init ();
 

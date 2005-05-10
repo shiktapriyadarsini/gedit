@@ -2542,6 +2542,7 @@ gedit_window_load_files (GeditWindow         *window,
 
 	if (flash)
 	{
+		/* FIXME: show the URI of the file when a single file is being loaded - Paolo */
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
 					       ngettext("Loading %d file...",

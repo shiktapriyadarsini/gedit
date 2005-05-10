@@ -1,0 +1,6 @@
+[Gedit Plugin]
+Module=xyz
+_Name=Name of Xyz
+_Description=Description of
+Author=%AUTHORS% <%MAIL%>
+Copyright=Copyright © %YEAR% %AUTHOR%

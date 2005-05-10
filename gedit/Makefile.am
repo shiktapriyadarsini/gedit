@@ -37,6 +37,7 @@ NON_INST_H_FILS =			\
 	gedit-tooltips.h		\
 	gedit-languages-manager.h	\
 	gedit-plugins-engine.h		\
+	gedit-module.h			\
 	gedit-ui.h			\
 	gedit-window-private.h		\
 	gedit-documents-panel.h		\
@@ -64,6 +65,7 @@ INST_H_FILES =				\
 	gedit-message-area.h		\
 	gedit-print-job-preview.h	\
 	gedit-progress-message-area.h	\
+	gedit-plugin.h			\
 	gedit-app.h
 
 #	gedit2.h			\
@@ -103,7 +105,6 @@ gedit_SOURCES = 			\
 	gedit-statusbar.c		\
 	gedit-utils.c 			\
 	gedit-languages-manager.c	\
-	gedit-plugins-engine.c		\
 	gedit-print.c			\
 	gedit-recent.c			\
 	gedit-app.c			\
@@ -117,6 +118,9 @@ gedit_SOURCES = 			\
 	gedit-io-error-message-area.c	\
 	gedit-print-job-preview.c	\
 	gedit-progress-message-area.c	\
+	gedit-plugin.c			\
+	gedit-module.c			\
+	gedit-plugins-engine.c		\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 
@@ -127,7 +131,6 @@ gedit_SOURCES = 			\
 #	gedit-session.c			\
 #	gedit-file-selector-util.c 	\
 #	gedit-io-error-dialogs.c	\
-#	gedit-plugin.c			\
 #	gedit-output-window.c
 
 libgedit_la_SOURCES = 			\
