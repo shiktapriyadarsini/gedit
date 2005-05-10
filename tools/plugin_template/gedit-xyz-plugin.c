@@ -50,7 +50,7 @@ gedit_xyz_plugin_init (GeditXyzPlugin *plugin)
 {
 	plugin->priv = GEDIT_XYZ_PLUGIN_GET_PRIVATE (plugin);
 
-	gedit_debug_message (DEBUG_PLUGINS, "GeditXyzPlugin initialising");
+	gedit_debug_message (DEBUG_PLUGINS, "GeditXyzPlugin initializing");
 }
 
 static void
@@ -59,7 +59,7 @@ gedit_xyz_plugin_finalize (GObject *object)
 /*
 	GeditXyzPlugin *plugin = GEDIT_XYZ_PLUGIN (object);
 */
-	gedit_debug_message (DEBUG_PLUGINS, "GeditXyzPlugin finalising");
+	gedit_debug_message (DEBUG_PLUGINS, "GeditXyzPlugin finalizing");
 
 	G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -77,7 +77,7 @@ impl_deactivate	(GeditPlugin *plugin,
 {
 	gedit_debug (DEBUG_PLUGINS);
 }
-		 
+
 static void
 impl_update_ui	(GeditPlugin *plugin,
 		 GeditWindow *window)
