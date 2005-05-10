@@ -44,6 +44,7 @@
 
 #include "gedit-ui.h"
 #include "gedit-window.h"
+#include "gedit-window-private.h"
 #include "gedit-app.h"
 #include "gedit-notebook.h"
 #include "gedit-statusbar.h"
@@ -63,51 +64,6 @@
 #include "recent-files/egg-recent-view-uimanager.h"
 
 #define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditWindowPrivate))
-
-struct _GeditWindowPrivate
-{
-	GtkWidget      *notebook;
-	
-	GtkWidget      *side_panel;
-	GtkWidget      *bottom_panel;
-	
-	GtkWidget      *hpaned;
-	GtkWidget      *vpaned;	
-	
-	GtkWidget      *search_panel;
-
-	/* statusbar and context ids for statusbar messages */
-	GtkWidget      *statusbar;	
-	guint           generic_message_cid;
-	guint           tip_message_cid;
-
-	/* Menus & Toolbars */
-	GtkUIManager   *manager;
-	GtkActionGroup *action_group;
-	GtkActionGroup *always_sensitive_action_group;
-	GtkActionGroup *languages_action_group;
-	GtkActionGroup *documents_list_action_group;
-	guint           documents_list_menu_ui_id;
-	GtkWidget      *toolbar;
-	GtkWidget      *toolbar_recent_menu;
-	GeditToolbarSetting toolbar_style;
-
-	EggRecentViewUIManager *recent_view_uim;
-
-	GeditTab       *active_tab;
-	gint            num_tabs;
-
-	gint            width;
-	gint            height;	
-	GdkWindowState  state;
-
-	gint		side_panel_size;
-	gint		bottom_panel_size;
-
-	gboolean	removing_all_tabs;
-
-	GtkWindowGroup *window_group;
-};
 
 /* Signals */
 enum
@@ -2595,52 +2551,6 @@ gedit_window_load_files (GeditWindow         *window,
 	}				     
 
 	return loaded_files;
-}
-
-void
-gedit_window_save_document (GeditWindow *window,
-			    GeditTab    *tab)
-{
-	GeditDocument *doc;
-
-	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	g_return_if_fail (GEDIT_IS_TAB (tab));
-
-	/* FIXME: sanity check if tab is in window? */
-
-	doc = gedit_tab_get_document (tab);
-
-	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-				        window->priv->generic_message_cid,
-				       _("Saving file \"%s\"..."),
-				       gedit_document_get_uri_for_display (doc));
-
-	_gedit_tab_save (tab);
-}
-
-void
-gedit_window_save_document_as (GeditWindow         *window,
-			       GeditTab            *tab,
-			       const gchar         *uri,
-			       const GeditEncoding *encoding)
-{
-	GeditDocument *doc;
-	gchar *uri_for_display;
-
-	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	g_return_if_fail (GEDIT_IS_TAB (tab));
-
-	/* FIXME: sanity check if tab is in window? */
-
-	doc = gedit_tab_get_document (tab);
-
-	uri_for_display = gnome_vfs_format_uri_for_display (uri);
-	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-				        window->priv->generic_message_cid,
-				       _("Saving file as \"%s\"..."),
-				       uri_for_display);
-
-	_gedit_tab_save_as (tab, uri, encoding);
 }
 
 GtkWidget *

@@ -38,6 +38,7 @@ NON_INST_H_FILS =			\
 	gedit-languages-manager.h	\
 	gedit-plugins-engine.h		\
 	gedit-ui.h			\
+	gedit-window-private.h		\
 	gedit-documents-panel.h		\
 	gedit-document-loader.h		\
 	gedit-document-saver.h		\

@@ -34,7 +34,6 @@
 
 #include <glib.h>
 #include <gedit/gedit-prefs-manager.h>
-#include <bonobo/bonobo-window.h>
 
 /** LIFE CYCLE MANAGEMENT FUNCTIONS **/
 

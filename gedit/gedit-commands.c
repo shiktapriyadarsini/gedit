@@ -44,6 +44,9 @@
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "gedit-commands.h"
+#include "gedit-window.h"
+#include "gedit-window-private.h"
+#include "gedit-statusbar.h"
 #include "gedit-debug.h"
 #include "gedit-view.h"
 #include "gedit-utils.h"
@@ -222,7 +225,12 @@ gedit_cmd_file_save (GtkAction   *action,
 		return gedit_cmd_file_save_as (NULL, window);
 	}
 
-	gedit_window_save_document (window, tab);
+	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+				        window->priv->generic_message_cid,
+				       _("Saving file \"%s\"..."),
+				       gedit_document_get_uri_for_display (doc));
+
+	_gedit_tab_save (tab);
 }
 
 // CHECK: move to utils? If so, do not include vfs.h
@@ -371,10 +379,20 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 	tab = gedit_window_get_active_tab (window);
 	if (tab != NULL && do_save)
 	{
-		gedit_window_save_document_as (window,
-					       tab,
-					       uri,
-					       encoding);	
+		GeditDocument *doc;
+
+		gchar *uri_for_display;
+
+		doc = gedit_tab_get_document (tab);
+		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+		uri_for_display = gnome_vfs_format_uri_for_display (uri);
+		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+					        window->priv->generic_message_cid,
+					       _("Saving file as \"%s\"..."),
+					       uri_for_display);
+
+		_gedit_tab_save_as (tab, uri, encoding);	
 	}
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
