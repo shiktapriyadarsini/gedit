@@ -18,14 +18,13 @@ tmpl_files = (
     'gedit-xyz-plugin.h',
     'gedit-xyz-plugin.c',
     'xyz.gedit-plugin.desktop.in',
-    'Makefile.am'
+    'Makefile.am',
 )
-
 
 def copy_template_file(tmpl_file, replacements):
     dest_file = tmpl_file
 
-    for a, b in replacements.items():
+    for (a, b) in replacements:
         dest_file = dest_file.replace(a, b)
 
     print "generating " + dest_file + " from " + tmpl_file
@@ -39,7 +38,7 @@ def copy_template_file(tmpl_file, replacements):
     w = open(dest_file, 'w')
 
     for line in r:
-        for a, b in replacements.items():
+        for (a, b) in replacements:
             line = line.replace(a, b)
         w.write(line)
 
@@ -70,19 +69,13 @@ if len(args) != 1:
 
 new_name = args[0]
 
-replacements = {
-    'plugin_template': new_name,
-    'gedit-xyz-plugin.c': 'gedit-' + new_name + '-plugin.c',
-    'gedit-xyz-plugin.h': 'gedit-' + new_name + '-plugin.h',
-    'xyz.gedit-plugin.desktop.in': new_name + '.gedit-plugin.desktop.in',
-    'libxyz': 'lib' + new_name.replace('-', ''),
-    'xyz': new_name,
-    'xyz/': new_name + '/',
-    'xyz-': new_name + '-',
-    'xyz_': new_name.replace('-', '_') + '_',
-    'Xyz': new_name.title().replace('-', ''),
-    'XYZ': new_name.upper().replace('-', '_'),
-}
+replacements = [('plugin_template', new_name.replace('-', '')),
+                ('libxyz', 'lib' + new_name.replace('-', '')),
+                ('xyz_', new_name.replace('-', '_') + '_'),
+                ('Xyz', new_name.title().replace('-', '')),
+                ('XYZ', new_name.upper().replace('-', '_')),
+                ('xyz', new_name),
+]
 
 tmpl_paths = []
 

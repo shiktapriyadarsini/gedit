@@ -1,4 +1,4 @@
-# Xyz plugin
+# xyz plugin
 plugindir = $(libdir)/gedit-2/plugins
 
 INCLUDES = \
@@ -15,7 +15,7 @@ plugin_LTLIBRARIES = libxyz.la
 libxyz_la_SOURCES = \
 	gedit-xyz-plugin.h	\
 	gedit-xyz-plugin.c
-	
+
 libxyz_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 
 gladedir = $(datadir)/gedit-2/glade
