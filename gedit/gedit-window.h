@@ -131,6 +131,8 @@ gint		 gedit_window_load_files		(GeditWindow         *window,
 
 GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 
+GtkUIManager	*gedit_window_get_ui_manager		(GeditWindow         *window);
+
 /*
  * Non exported functions
  */
@@ -145,8 +147,6 @@ void		 _gedit_window_set_side_panel_visible	(GeditWindow         *window,
 GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
 							 GeditTab            *tab);								 
 gboolean	 _gedit_window_is_removing_all_tabs	(GeditWindow         *window);
-
-GtkUIManager	*_gedit_window_get_ui_manager		(GeditWindow         *window);
 
 GtkWidget	*_gedit_window_get_search_panel		(GeditWindow         *window);
 

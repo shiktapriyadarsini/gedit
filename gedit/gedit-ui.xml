@@ -57,8 +57,17 @@
       <menuitem name="EditCopyMenu" action="EditCopy"/>
       <menuitem name="EditPasteMenu" action="EditPaste"/>
       <menuitem name="EditDeleteMenu" action="EditDelete"/>
+      <placeholder name="EditOps_1" /> 
       <separator/>
+      <placeholder name="EditOps_2" /> 
       <menuitem name="EditSelectAllMenu" action="EditSelectAll"/>
+      <placeholder name="EditOps_3" />
+      <separator/>
+      <placeholder name="EditOps_4" />
+      <separator/>
+      <placeholder name="EditOps_5" />
+      <separator/>
+      <placeholder name="EditOps_6" />
       <separator/>
       <menuitem name="EditPreferencesMenu" action="EditPreferences"/>
     </menu>

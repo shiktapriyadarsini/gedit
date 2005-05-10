@@ -123,8 +123,7 @@ window_active_tab_changed (GeditWindow         *window,
 		  	   GeditTab            *tab,
 		  	   GeditDocumentsPanel *panel)
 {	
-	if (tab == NULL)
-		return;
+	g_return_if_fail (tab != NULL);
 		
 	if (!_gedit_window_is_removing_all_tabs (window))
 	{
@@ -493,7 +492,7 @@ show_popup_menu (GeditDocumentsPanel *panel,
 {
 	GtkWidget *menu;
 
-	menu = gtk_ui_manager_get_widget (_gedit_window_get_ui_manager (panel->priv->window),
+	menu = gtk_ui_manager_get_widget (gedit_window_get_ui_manager (panel->priv->window),
 					 "/NotebookPopup");
 	g_return_val_if_fail (menu != NULL, FALSE);
 

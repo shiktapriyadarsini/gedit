@@ -6,6 +6,7 @@ INCLUDES = \
 	$(GEDIT_CFLAGS) 				\
 	$(WARN_CFLAGS)					\
 	$(DISABLE_DEPRECATED_CFLAGS)			\
+	-DGEDIT_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-DGNOME_ICONDIR=\""$(datadir)/pixmaps"\" 	\
 	-DGEDIT_GLADEDIR=\""$(datadir)/gedit-2/glade/"\"
 
@@ -17,10 +18,7 @@ libxyz_la_SOURCES = \
 	
 libxyz_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 
-# Enable it if you need to install a glade file
-# gladedir = $(datadir)/gedit-2/glade
-# glade_DATA = xyz.glade2
-
+gladedir = $(datadir)/gedit-2/glade
 glade_DATA =
 
 plugin_in_files = xyz.gedit-plugin.desktop.in

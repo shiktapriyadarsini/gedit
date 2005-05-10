@@ -538,9 +538,14 @@ reactivate_all (GeditWindow *window)
 
 	for (pl = gedit_plugins_list; pl; pl = pl->next)
 	{
+		gboolean res = TRUE;
+		
 		GeditPluginInfo *info = (GeditPluginInfo*)pl->data;
 
-		if (info->active)
+		if (info->plugin == NULL)
+			res = load_plugin_module (info);
+			
+		if (info->active && res)
 		{
 			gedit_plugin_activate (info->plugin,
 					       window);

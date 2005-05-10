@@ -130,6 +130,8 @@ window_tab_removed (GeditWindow      *window,
 		    GeditTab         *tab,
 		    GeditSearchPanel *panel)
 {
+	gedit_debug_message (DEBUG_SEARCH, "Window: %p - Tab: %p", window, tab);
+
 	if (gedit_window_get_active_tab (window) == NULL)
 	{
 		gtk_widget_set_sensitive (panel->priv->search_entry,
@@ -156,6 +158,8 @@ window_tab_added (GeditWindow      *window,
 {
 	GeditTabState  state;
 	gboolean state_normal;
+	
+	gedit_debug_message (DEBUG_SEARCH, "Window: %p - Tab: %p", window, tab);
 	
 	state = gedit_tab_get_state (tab);
 		
@@ -188,6 +192,10 @@ window_active_tab_changed (GeditWindow      *window,
 		  	   GeditTab         *tab,
 		  	   GeditSearchPanel *panel)
 {
+	gedit_debug_message (DEBUG_SEARCH, "Window: %p - Tab: %p", window, tab);
+	
+	g_return_if_fail (tab != NULL);
+	
 	window_tab_added (window, tab, panel);
 }
 
@@ -195,6 +203,8 @@ static void
 window_active_tab_state_changed (GeditWindow      *window,
 		  	   	 GeditSearchPanel *panel)
 {
+	gedit_debug_message (DEBUG_SEARCH, "Window: %p", window);
+	
 	window_tab_added (window, 
 			  gedit_window_get_active_tab (window), 
 			  panel);

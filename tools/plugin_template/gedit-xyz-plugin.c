@@ -29,7 +29,7 @@
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
 
-#include <gedit/gedit-debug.h>"
+#include <gedit/gedit-debug.h>
 
 #define GEDIT_XYZ_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_XYZ_PLUGIN, GeditXyzPluginPrivate))
 
@@ -100,17 +100,18 @@ static void
 gedit_xyz_plugin_class_init (GeditXyzPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
+	GeditPluginClass *plugin_class = GEDIT_PLUGIN_CLASS (klass);
+	
 	parent_class = g_type_class_peek_parent (klass);
 
 	object_class->finalize = gedit_xyz_plugin_finalize;
 	
-	klass->activate = impl_activate;
-	klass->deactivate = impl_deactivate;
-	klass->update_ui = impl_update_ui;
+	plugin_class->activate = impl_activate;
+	plugin_class->deactivate = impl_deactivate;
+	plugin_class->update_ui = impl_update_ui;
 	
 	/* Only if the plugin is configurable */
-	/* klass->create_configure_dialog = impl_create_configure_dialog; */
+	/* plugin_class->create_configure_dialog = impl_create_configure_dialog; */
 	
 	g_type_class_add_private (object_class, sizeof (GeditXyzPluginPrivate));
 }

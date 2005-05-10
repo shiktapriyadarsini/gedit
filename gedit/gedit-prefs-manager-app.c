@@ -987,7 +987,7 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 			GtkUIManager *ui;
 			GtkAction *a;
 
-			ui = _gedit_window_get_ui_manager (GEDIT_WINDOW (windows->data));
+			ui = gedit_window_get_ui_manager (GEDIT_WINDOW (windows->data));
 
 			a = gtk_ui_manager_get_action (ui,
 						       "/MenuBar/ViewMenu/ViewHighlightModeMenu");

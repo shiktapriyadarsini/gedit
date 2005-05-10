@@ -57,6 +57,7 @@
 #include "gedit-recent.h"
 #include "gedit-documents-panel.h"
 #include "gedit-search-panel.h"
+#include "gedit-plugins-engine.h"
 
 #include "recent-files/egg-recent-model.h"
 #include "recent-files/egg-recent-view.h"
@@ -474,6 +475,8 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 					      "ViewHighlightMode");
 	gtk_action_set_sensitive (action, 
 				  gedit_prefs_manager_get_enable_syntax_highlighting ());
+				  
+	gedit_plugins_engine_update_plugins_ui (window, FALSE);
 }
 
 static void
@@ -1404,6 +1407,8 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 					      "FileRevert");
 	gtk_action_set_sensitive (action,
 				  !gedit_document_is_untitled (doc));
+				  
+	gedit_plugins_engine_update_plugins_ui (window, NULL);
 }
 
 static void
@@ -1661,26 +1666,6 @@ notebook_tab_removed (GeditNotebook *notebook,
 	gedit_debug (DEBUG_MDI);
 	
 	--window->priv->num_tabs;
-
-	/* Set sensitivity */
-	if (window->priv->num_tabs == 0)
-	{
-		gtk_action_group_set_sensitive (window->priv->action_group,
-						FALSE);
-
-		action = gtk_action_group_get_action (window->priv->action_group,
-						      "ViewHighlightMode");
-
-		gtk_action_set_sensitive (action, FALSE);
-	}
-
-	if (window->priv->num_tabs <= 1)
-	{
-		action = gtk_action_group_get_action (window->priv->action_group,
-						     "DocumentsMoveToNewWindow");
-		gtk_action_set_sensitive (action,
-					  window->priv->num_tabs > 1);
-	}
 	
 	view = gedit_tab_get_view (tab);
 	doc = gedit_tab_get_document (tab);
@@ -1734,11 +1719,6 @@ notebook_tab_removed (GeditNotebook *notebook,
 				       signals[TAB_REMOVED], 
 				       0, 
 				       tab);
-				       
-			g_signal_emit (G_OBJECT (window), 
-				       signals[ACTIVE_TAB_CHANGED], 
-				       0, 
-				       NULL);
 	
 			/* the list has more than one item */
 			gtk_widget_destroy (GTK_WIDGET (window));
@@ -1769,7 +1749,29 @@ notebook_tab_removed (GeditNotebook *notebook,
 			update_documents_list_menu (window);
 	}
 	
-	g_signal_emit (G_OBJECT (window), signals[TAB_REMOVED], 0, tab);
+	/* Set sensitivity */
+	if (window->priv->num_tabs == 0)
+	{
+		gtk_action_group_set_sensitive (window->priv->action_group,
+						FALSE);
+
+		action = gtk_action_group_get_action (window->priv->action_group,
+						      "ViewHighlightMode");
+
+		gtk_action_set_sensitive (action, FALSE);
+		
+		gedit_plugins_engine_update_plugins_ui (window, FALSE);
+	}
+
+	if (window->priv->num_tabs <= 1)
+	{
+		action = gtk_action_group_get_action (window->priv->action_group,
+						     "DocumentsMoveToNewWindow");
+		gtk_action_set_sensitive (action,
+					  FALSE);
+	}
+	
+	g_signal_emit (G_OBJECT (window), signals[TAB_REMOVED], 0, tab);	
 }
 
 static void
@@ -2097,6 +2099,8 @@ gedit_window_init (GeditWindow *window)
 			  "drag_data_received",
 	                  G_CALLBACK (drag_data_received_cb), 
 	                  NULL);
+	                  
+        gedit_plugins_engine_update_plugins_ui (window, TRUE);
 }
 
 GeditView *
@@ -2438,7 +2442,7 @@ _gedit_window_is_removing_all_tabs (GeditWindow *window)
 }
 
 GtkUIManager *
-_gedit_window_get_ui_manager (GeditWindow *window)
+gedit_window_get_ui_manager (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	
