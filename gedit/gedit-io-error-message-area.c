@@ -52,8 +52,8 @@
 #define MAX_URI_IN_DIALOG_LENGTH 50
 
 static GtkWidget *
-create_unrecoverable_loading_error_message_area (const gchar *primary_text,
-						 const gchar *secondary_text)
+create_unrecoverable_error_message_area (const gchar *primary_text,
+					 const gchar *secondary_text)
 {
 	GtkWidget *message_area;
 	GtkWidget *hbox_content;
@@ -326,13 +326,12 @@ gedit_unrecoverable_loading_error_message_area_new (const gchar         *uri,
 		error_message = g_strdup_printf (_("Could not open the file %s."),
 						 uri_for_display);
 
-	message_area = create_unrecoverable_loading_error_message_area (
-								error_message,
+	message_area = create_unrecoverable_error_message_area (error_message,
 								message_details);
-								
+
 	g_free (error_message);
 	g_free (message_details);
-	
+
 	return message_area;
 }
 
@@ -603,5 +602,58 @@ gedit_file_already_open_warning_message_area_new (const gchar *uri)
 	
 	gedit_message_area_set_contents (GEDIT_MESSAGE_AREA (message_area),
 					 hbox_content);
+	return message_area;
+}
+
+GtkWidget *
+gedit_unrecoverable_saving_error_message_area_new (const gchar  *uri,
+						   const GError *error)
+{
+	gchar *error_message = NULL;
+	gchar *message_details = NULL;
+	gchar *full_formatted_uri;
+	gchar *scheme_string;
+       	gchar *uri_for_display;
+       	gchar *temp_uri_for_display;
+	GtkWidget *message_area;
+
+	g_return_val_if_fail (uri != NULL, NULL);
+	g_return_val_if_fail (error != NULL, NULL);
+	g_return_val_if_fail (error->domain == GEDIT_DOCUMENT_ERROR, NULL);
+
+	full_formatted_uri = gnome_vfs_format_uri_for_display (uri);
+
+	/* Truncate the URI so it doesn't get insanely wide. Note that even
+	 * though the dialog uses wrapped text, if the URI doesn't contain
+	 * white space then the text-wrapping code is too stupid to wrap it.
+	 */
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+								MAX_URI_IN_DIALOG_LENGTH);								
+	g_free (full_formatted_uri);
+
+	uri_for_display = g_strdup_printf ("<i>%s</i>", temp_uri_for_display);
+	g_free (temp_uri_for_display);
+
+	switch (error->code)
+	{
+		// TODO
+
+		default:
+			error_message = g_strdup_printf (_("Could not save the file %s."),
+							 uri_for_display);
+			message_details = g_strdup (_("Why? who knows..."));
+		break;
+	}
+
+	if (error_message == NULL)
+		error_message = g_strdup_printf (_("Could not save the file %s."),
+						 uri_for_display);
+
+	message_area = create_unrecoverable_error_message_area (error_message,
+								message_details);
+
+	g_free (error_message);
+	g_free (message_details);
+
 	return message_area;
 }

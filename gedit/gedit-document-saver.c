@@ -487,8 +487,11 @@ save_existing_local_file (GeditDocumentSaver *saver)
 		goto out;
 	}
 
-	/* check if someone else modified the file externally */
-	if ((statbuf.st_mtime != saver->priv->doc_mtime))
+	/* check if someone else modified the file externally,
+	 * except when "saving as" or saving a new doc (mtime = 0)
+	 */
+	if (saver->priv->doc_mtime > 0 &&
+	    statbuf.st_mtime != saver->priv->doc_mtime)
 	{
 		g_set_error (&saver->priv->error,
 			     GEDIT_DOCUMENT_ERROR,

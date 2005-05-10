@@ -52,13 +52,16 @@
 struct _GeditTabPrivate
 {
 	GeditTabState	 state;
-	GtkWidget 	*view;
-	GtkWidget 	*view_scrolled_window;
-	
-	GtkWidget 	*message_area;
-	GtkWidget 	*print_preview;
-	
+	GtkWidget	*view;
+	GtkWidget	*view_scrolled_window;
+
+	GtkWidget	*message_area;
+	GtkWidget	*print_preview;
+
 	GeditPrintJob   *print_job;
+
+	/* tmp data for saving */
+	gchar		*save_uri;
 };
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
@@ -91,7 +94,6 @@ gedit_tab_set_property (GObject      *object,
 	}
 }
 
-
 static void
 gedit_tab_get_property (GObject    *object,
 		        guint       prop_id,
@@ -119,7 +121,9 @@ gedit_tab_get_property (GObject    *object,
 static void
 gedit_tab_finalize (GObject *object)
 {
-	/* GeditTab *tab = GEDIT_TAB (object); */
+	GeditTab *tab = GEDIT_TAB (object);
+
+	g_free (tab->priv->save_uri);
 
 	G_OBJECT_CLASS (gedit_tab_parent_class)->finalize (object);
 }
@@ -169,23 +173,22 @@ gedit_tab_set_state (GeditTab *tab,
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail ((state >= 0) && (state < GEDIT_TAB_NUM_OF_STATES));
 		
-
 	if (tab->priv->state == state)
 		return;
-	
+
 	tab->priv->state = state;
-	
+
 	if (state == GEDIT_TAB_STATE_NORMAL)
 		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), TRUE);
 	else		
 		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
-	
+
 	if ((state == GEDIT_TAB_STATE_LOADING_ERROR) ||
 	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))	
 		gtk_widget_hide (tab->priv->view_scrolled_window);
 	else
 		gtk_widget_show (tab->priv->view_scrolled_window);
-		
+
 	g_object_notify (G_OBJECT (tab), "state");		
 }
 
@@ -279,17 +282,16 @@ document_loaded (GeditDocument *document,
 	if (error != NULL)
 	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
-		
+
 		encoding = gedit_document_get_encoding (document);
-		
+
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
 		{
-			emsg = gedit_unrecoverable_loading_error_message_area_new (
-									uri, 
-									error);
-			
+			emsg = gedit_unrecoverable_loading_error_message_area_new (uri, 
+										   error);
+
 			set_message_area (tab, emsg);
-			
+
 			g_signal_connect (emsg,
 					  "response",
 					  G_CALLBACK (unrecoverable_loading_error_message_area_response),
@@ -301,9 +303,9 @@ document_loaded (GeditDocument *document,
 									uri,
 									encoding,
 									error);
-									
+
 			set_message_area (tab, emsg);
-			
+
 			// FIXME
 			g_signal_connect (emsg,
 					  "response",
@@ -313,20 +315,20 @@ document_loaded (GeditDocument *document,
 
 		gedit_message_area_set_default_response (GEDIT_MESSAGE_AREA (emsg),
 							 GTK_RESPONSE_CANCEL);
-							  
+
 		gtk_widget_show (emsg);
-		
+
 		return;
 	}
 	else
 	{
 		GList *all_documents;
 		GList *l;
-		
+
 		g_return_if_fail (uri != NULL);
-		
+
 		all_documents = gedit_app_get_documents (gedit_app_get_default ());
-		
+
 		for (l = all_documents; l != NULL; l = g_list_next (l))
 		{
 			GeditDocument *d = GEDIT_DOCUMENT (l->data);
@@ -342,21 +344,21 @@ document_loaded (GeditDocument *document,
 			    	{
 			    		GtkWidget *w;
 			    		GeditView *view;
-			    		
+
 			    		view = gedit_tab_get_view (tab);
-			    		
+
 			    		gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
 			    					    FALSE);
-			    					    
+
 			    		w = gedit_file_already_open_warning_message_area_new (uri);
-			    		
+
 					set_message_area (tab, w);
-			    		
+
 					gedit_message_area_set_default_response (GEDIT_MESSAGE_AREA (w),
 							 GTK_RESPONSE_CANCEL);
 
 					gtk_widget_show (w);
-					
+
 					g_signal_connect (w,
 							  "response",
 							  G_CALLBACK (file_already_open_warning_message_area_response),
@@ -365,12 +367,12 @@ document_loaded (GeditDocument *document,
 			    	}
 			}
 		}
-		
+
 		g_list_free (all_documents);
-		
+
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
-}		 
+}
 
 static void
 document_saving (GeditDocument *document,
@@ -388,16 +390,34 @@ document_saved (GeditDocument *document,
 		const GError  *error,
 		GeditTab      *tab)
 {
+	GtkWidget *emsg;
+
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
+
+	g_return_if_fail (tab->priv->save_uri != NULL);
 
 	if (error != NULL)
 	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING_ERROR);
 
-		g_print ("TAB: error saving\n");
+		emsg = gedit_unrecoverable_saving_error_message_area_new (tab->priv->save_uri, 
+										  error);
+
+		set_message_area (tab, emsg);
+
+		g_signal_connect (emsg,
+				  "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  tab);
+
+		gtk_widget_show (emsg);
+	}
+	else
+	{
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	g_free (tab->priv->save_uri);
 }
 
 static void
@@ -785,7 +805,7 @@ _gedit_tab_save (GeditTab *tab)
 	GeditDocument *doc;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
-	
+
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (!gedit_document_is_untitled);
@@ -793,6 +813,10 @@ _gedit_tab_save (GeditTab *tab)
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 	
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+	/* uri used in error messages... strdup because errors are async
+	 * and the string can go away, will be freed in documnt_loaded */
+	tab->priv->save_uri = g_strdup (gedit_document_get_uri_ (doc));
 
 	gedit_document_save (doc);
 }
@@ -812,6 +836,10 @@ _gedit_tab_save_as (GeditTab            *tab,
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+	/* uri used in error messages... strdup because errors are async
+	 * and the string can go away, will be freed in documnt_loaded */
+	tab->priv->save_uri = g_strdup (uri);
 
 	gedit_document_save_as (doc, uri, encoding);
 }
