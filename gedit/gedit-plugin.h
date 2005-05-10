@@ -69,18 +69,18 @@ typedef struct _GeditPluginClass GeditPluginClass;
 struct _GeditPluginClass 
 {
 	GObjectClass parent_class;
-	
+
 	/* Virtual public methods */
 	
 	void 		(*activate)		(GeditPlugin *plugin,
 						 GeditWindow *window);
 	void 		(*deactivate)		(GeditPlugin *plugin,
 						 GeditWindow *window);
-				 
+
 	void 		(*update_ui)		(GeditPlugin *plugin,
 						 GeditWindow *window);
 
-	GtkWidget      *(*create_configure_dialog)	
+	GtkWidget      *(*create_configure_dialog)
 						(GeditPlugin *plugin);
 
 	/* TODO: add place holders */						
@@ -102,6 +102,62 @@ void 		 gedit_plugin_update_ui		(GeditPlugin *plugin,
 gboolean	 gedit_plugin_is_configurable	(GeditPlugin *plugin);
 GtkWidget	*gedit_plugin_create_configure_dialog		
 						(GeditPlugin *plugin);
+
+/*
+ * Utility macro used to register plugins
+ *
+ * use: GEDIT_PLUGIN_REGISTER_TYPE(GeditSamplePlugin, gedit_sample_plugin)
+ */
+
+#define GEDIT_PLUGIN_REGISTER_TYPE(PluginName, plugin_name)			\
+										\
+static GType plugin_name##_type = 0;						\
+										\
+GType										\
+plugin_name##_get_type (void)							\
+{										\
+	return plugin_name##_type;						\
+}										\
+										\
+static void     plugin_name##_init              (PluginName        *self);	\
+static void     plugin_name##_class_init        (PluginName##Class *klass);	\
+static gpointer plugin_name##_parent_class = NULL;				\
+static void     plugin_name##_class_intern_init (gpointer klass)		\
+{										\
+	plugin_name##_parent_class = g_type_class_peek_parent (klass);		\
+	plugin_name##_class_init ((PluginName##Class *) klass);			\
+}										\
+										\
+G_MODULE_EXPORT GType								\
+register_gedit_plugin (GTypeModule *module)					\
+{										\
+	static const GTypeInfo our_info =					\
+	{									\
+		sizeof (PluginName##Class),					\
+		NULL, /* base_init */						\
+		NULL, /* base_finalize */					\
+		(GClassInitFunc) plugin_name##_class_intern_init,		\
+		NULL,								\
+		NULL, /* class_data */						\
+		sizeof (PluginName),						\
+		0, /* n_preallocs */						\
+		(GInstanceInitFunc) plugin_name##_init				\
+	};									\
+										\
+	gedit_debug_message (DEBUG_PLUGINS, "Registering " #PluginName);	\
+										\
+	/* Initialise the i18n stuff */						\
+	bindtextdomain (GETTEXT_PACKAGE, GEDIT_LOCALEDIR);			\
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");			\
+										\
+	plugin_name##_type = g_type_module_register_type (module,		\
+					    GEDIT_TYPE_PLUGIN,			\
+					    #PluginName,			\
+					    &our_info,				\
+					    0);					\
+	return plugin_name##_type;						\
+}
+
 
 G_END_DECLS
 

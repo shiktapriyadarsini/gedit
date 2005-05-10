@@ -46,18 +46,17 @@ struct _GeditSamplePluginPrivate
 	gpointer dummy;
 };
 
+GEDIT_PLUGIN_REGISTER_TYPE(GeditSamplePlugin, gedit_sample_plugin)
+
 typedef struct
 {
 	GtkActionGroup *action_group;
 	guint           ui_id;
 } WindowData;
 
-static GObjectClass *parent_class = NULL;
-static GType type = 0;
-
 static void sample_cb (GtkAction *action, GeditWindow *window);
 
-static const GtkActionEntry action_entries [] =
+static const GtkActionEntry action_entries[] =
 {
 	{ "UserName",
 	  NULL,
@@ -83,11 +82,12 @@ gedit_sample_plugin_finalize (GObject *object)
 */
 	gedit_debug_message (DEBUG_PLUGINS, "GeditSamplePlugin finalising");
 
-	G_OBJECT_CLASS (parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_sample_plugin_parent_class)->finalize (object);
 }
 
 static void 
-sample_cb (GtkAction *action, GeditWindow *window)
+sample_cb (GtkAction   *action,
+	   GeditWindow *window)
 {
 	GeditDocument *doc;
 	gchar *user_name;
@@ -101,13 +101,13 @@ sample_cb (GtkAction *action, GeditWindow *window)
 
 	temp = g_get_real_name ();
 	g_return_if_fail (temp != NULL);
-	
+
 	if (strlen (temp) <= 0)
 	{
 		temp = g_get_user_name ();
 		g_return_if_fail (temp != NULL);
 	}
-	
+
 	user_name = g_strdup_printf ("%s ", temp);
 	g_return_if_fail (user_name != NULL);
 
@@ -115,7 +115,11 @@ sample_cb (GtkAction *action, GeditWindow *window)
 		user_name_utf8 = user_name;
 	else
 	{
-		user_name_utf8 = g_locale_to_utf8 (user_name, -1, NULL, NULL, NULL);
+		user_name_utf8 = g_locale_to_utf8 (user_name,
+						   -1,
+						   NULL,
+						   NULL,
+						   NULL);
 		g_free (user_name);
 
 		if (user_name_utf8 == NULL)
@@ -124,7 +128,9 @@ sample_cb (GtkAction *action, GeditWindow *window)
 
 	gtk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (doc));
 
-	gtk_text_buffer_insert_at_cursor (GTK_TEXT_BUFFER (doc), user_name_utf8, -1);
+	gtk_text_buffer_insert_at_cursor (GTK_TEXT_BUFFER (doc),
+					  user_name_utf8,
+					  -1);
 
 	gtk_text_buffer_end_user_action (GTK_TEXT_BUFFER (doc));
 
@@ -144,13 +150,13 @@ static void
 update_ui_real (GeditWindow  *window,
 		WindowData   *data)
 {
-	GeditView    *view;
-	GtkAction    *action;
-	
+	GeditView *view;
+	GtkAction *action;
+
 	gedit_debug (DEBUG_PLUGINS);
-		
+
 	view = gedit_window_get_active_view (window);
-	
+
 	gedit_debug_message (DEBUG_PLUGINS, "View: %p", view);
 	
 	action = gtk_action_group_get_action (data->action_group,
@@ -197,7 +203,7 @@ impl_activate (GeditPlugin *plugin,
 			       "UserName",
 			       GTK_UI_MANAGER_MENUITEM, 
 			       TRUE);
-			       
+
 	update_ui_real (window, data);
 }
 
@@ -209,7 +215,7 @@ impl_deactivate	(GeditPlugin *plugin,
 	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
-	
+
 	manager = gedit_window_get_ui_manager (window);
 
 	data = (WindowData *) g_object_get_data (G_OBJECT (window), WINDOW_DATA_KEY);
@@ -226,9 +232,9 @@ impl_update_ui	(GeditPlugin *plugin,
 		 GeditWindow *window)
 {
 	WindowData   *data;
-	
+
 	gedit_debug (DEBUG_PLUGINS);
-	
+
 	data = (WindowData *) g_object_get_data (G_OBJECT (window), WINDOW_DATA_KEY);
 	g_return_if_fail (data != NULL);
 
@@ -240,50 +246,12 @@ gedit_sample_plugin_class_init (GeditSamplePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GeditPluginClass *plugin_class = GEDIT_PLUGIN_CLASS (klass);
-	
-	parent_class = g_type_class_peek_parent (klass);
 
 	object_class->finalize = gedit_sample_plugin_finalize;
-	
+
 	plugin_class->activate = impl_activate;
 	plugin_class->deactivate = impl_deactivate;
 	plugin_class->update_ui = impl_update_ui;
-		
+	
 	g_type_class_add_private (object_class, sizeof (GeditSamplePluginPrivate));
-}
-
-GType
-gedit_sample_plugin_get_type (void)
-{
-	return type;
-}
-
-G_MODULE_EXPORT GType
-register_gedit_plugin (GTypeModule *module)
-{
-	static const GTypeInfo our_info =
-	{
-		sizeof (GeditSamplePluginClass),
-		NULL, /* base_init */
-		NULL, /* base_finalize */
-		(GClassInitFunc) gedit_sample_plugin_class_init,
-		NULL,
-		NULL, /* class_data */
-		sizeof (GeditSamplePlugin),
-		0, /* n_preallocs */
-		(GInstanceInitFunc) gedit_sample_plugin_init
-	};
-
-	gedit_debug_message (DEBUG_PLUGINS, "Registering GeditSamplePlugin");
-
-	/* Initialise the i18n stuff */
-	bindtextdomain (GETTEXT_PACKAGE, GEDIT_LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");	
-
-	type = g_type_module_register_type (module,
-					    GEDIT_TYPE_PLUGIN,
-					    "GeditSamplePlugin",
-					    &our_info, 
-					    0);
-	return type;
 }

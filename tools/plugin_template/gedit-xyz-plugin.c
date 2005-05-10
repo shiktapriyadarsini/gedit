@@ -31,6 +31,11 @@
 
 #include <gedit/gedit-debug.h>
 
+enum
+{
+	PROP_0
+};
+
 #define GEDIT_XYZ_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_XYZ_PLUGIN, GeditXyzPluginPrivate))
 
 struct _GeditXyzPluginPrivate
@@ -38,14 +43,7 @@ struct _GeditXyzPluginPrivate
 	gpointer dummy;
 };
 
-enum
-{
-	PROP_0
-};
-
-static GObjectClass *parent_class = NULL;
-
-static GType type = 0;
+GEDIT_PLUGIN_REGISTER_TYPE(GeditXyzPlugin, gedit_xyz_plugin)
 
 static void
 gedit_xyz_plugin_init (GeditXyzPlugin *plugin)
@@ -90,7 +88,7 @@ impl_update_ui	(GeditPlugin *plugin,
 /*
 static GtkWidget *
 impl_create_configure_dialog (GeditPlugin *plugin)
-{	
+{
 	* Implements this function only and only if the plugin
 	* is configurable. Otherwise you can safely remove it. *
 }
@@ -101,53 +99,15 @@ gedit_xyz_plugin_class_init (GeditXyzPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GeditPluginClass *plugin_class = GEDIT_PLUGIN_CLASS (klass);
-	
-	parent_class = g_type_class_peek_parent (klass);
 
 	object_class->finalize = gedit_xyz_plugin_finalize;
-	
+
 	plugin_class->activate = impl_activate;
 	plugin_class->deactivate = impl_deactivate;
 	plugin_class->update_ui = impl_update_ui;
-	
+
 	/* Only if the plugin is configurable */
 	/* plugin_class->create_configure_dialog = impl_create_configure_dialog; */
-	
+
 	g_type_class_add_private (object_class, sizeof (GeditXyzPluginPrivate));
-}
-
-GType
-gedit_xyz_plugin_get_type (void)
-{
-	return type;
-}
-
-G_MODULE_EXPORT GType
-register_gedit_plugin (GTypeModule *module)
-{
-	static const GTypeInfo our_info =
-	{
-		sizeof (GeditXyzPluginClass),
-		NULL, /* base_init */
-		NULL, /* base_finalize */
-		(GClassInitFunc) gedit_xyz_plugin_class_init,
-		NULL,
-		NULL, /* class_data */
-		sizeof (GeditXyzPlugin),
-		0, /* n_preallocs */
-		(GInstanceInitFunc) gedit_xyz_plugin_init
-	};
-
-	gedit_debug_message (DEBUG_PLUGINS, "Registering GeditXyzPlugin");
-
-	/* Initialise the i18n stuff */
-	bindtextdomain (GETTEXT_PACKAGE, GEDIT_LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");	
-
-	type = g_type_module_register_type (module,
-					    GEDIT_TYPE_PLUGIN,
-					    "GeditXyzPlugin",
-					    &our_info, 
-					    0);
-	return type;
 }
