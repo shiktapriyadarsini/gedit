@@ -10,16 +10,30 @@ help = """generate scheleton sources for a gedit plugin.
 
 Options:
   -i, --internal        adds the plugin to gedit's configure.ac (TODO)
+  -t, --type=TYPE       specify which kind of plugin generate (defauly barebone)
+  
+types
+  barebone - generate code for a simple plugin
+  with-ui  - generate code for a plugin which adds menu items and toolbuttons
+  sidepane - generate code for a plugin which adds a sidepane page (TODO)
+
 """
+
+
+# template info
 
 tmpl_dir = 'plugin_template'
 
-tmpl_files = (
+common_tmpl_files = (
     'gedit-xyz-plugin.h',
-    'gedit-xyz-plugin.c',
     'xyz.gedit-plugin.desktop.in',
     'Makefile.am',
 )
+
+barebone_tmpl = 'gedit-xyz-plugin.c'
+with_ui_tmpl  = 'gedit-xyz-plugin.c'
+sidepane_tmpl = 'gedit-xyz-plugin.c'
+
 
 def copy_template_file(tmpl_file, replacements):
     dest_file = tmpl_file
@@ -45,23 +59,37 @@ def copy_template_file(tmpl_file, replacements):
     r.close()
     w.close()
 
-#main
-internal = False
+# --- main ---
+
+plugin_types = {
+    'barebone': barebone_tmpl,
+    'with-ui': with_ui_tmpl,
+    'sidepane': sidepane_tmpl,
+}
+
+#defaults
+internal  = False
+tmpl_type = barebone_tmpl
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], 'i:', ['internal', 'help'])
+    opts, args = getopt.getopt(sys.argv[1:], 'i:t:', ['internal', 'type=', 'help'])
 except getopt.error, exc:
     sys.stderr.write('gen-plugin: %s\n' % str(exc))
     sys.stderr.write(usage + '\n')
     sys.exit(1)
 
-for opt in opts:
+for opt, arg in opts:
     if opt == '--help':
         print usage
         print help
         sys.exit(0)
     elif opt in ('-i', '--internal'):
         internal = True
+    elif opt in ('-t', '--type'):
+        if arg in plugin_types.keys():
+            tmpl_type = plugin_types[arg]
+        else:
+            sys.stderr.write('invalid type, using barebone\n\n')
 
 if len(args) != 1:
     sys.stderr.write(usage + '\n')
@@ -77,10 +105,14 @@ replacements = [('plugin_template', new_name.replace('-', '')),
                 ('xyz', new_name),
 ]
 
+root_path = os.path.dirname(__file__)
+
 tmpl_paths = []
 
-for f in tmpl_files:
-    tmpl_paths.append(os.path.join(os.path.dirname(__file__), tmpl_dir, f))
+for f in common_tmpl_files:
+    tmpl_paths.append(os.path.join(root_path, tmpl_dir, f))
+
+tmpl_paths.append(os.path.join(root_path, tmpl_dir, tmpl_type))
 
 #if internal:
 #    TODO: edit configure.in
