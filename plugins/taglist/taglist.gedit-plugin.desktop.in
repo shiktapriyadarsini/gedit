@@ -1,6 +1,6 @@
 [Gedit Plugin]
-Location=taglist
+Module=taglist
 _Name=Tag list
 _Description=Provides a method to easily insert into a document commonly used tags/strings without having to type them.
 Author=Paolo Maggi <paolo.maggi@polito.it>
-Copyright=Copyright © 2002-2003 Paolo Maggi
+Copyright=Copyright © 2002-2005 Paolo Maggi

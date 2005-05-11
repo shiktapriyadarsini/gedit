@@ -1,9 +1,8 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-taglist-plugin-parser.c
- * This file is part of the gedit taglist plugin
+ * This file is part of gedit
  *
- * Copyright (C) 2002 Paolo Maggi 
+ * Copyright (C) 2002-2005 - Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +21,11 @@
  */
  
 /*
- * Modified by the gedit Team, 2002. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -49,6 +50,7 @@
 #define USER_GEDIT_TAGLIST_PLUGIN_LOCATION ".gedit-2/plugins/taglist/"
 
 TagList *taglist = NULL;
+static gint taglist_ref_count = 0;
 
 static gboolean	 parse_tag (Tag *tag, xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur);
 static gboolean	 parse_tag_group (TagGroup *tg, const gchar *fn, 
@@ -492,11 +494,17 @@ free_tag_group (TagGroup *tag_group)
 void
 free_taglist (void)
 {
-	gedit_debug (DEBUG_PLUGINS);
+	gedit_debug_message (DEBUG_PLUGINS, "ref_count: %d", taglist_ref_count);
+	
+	g_return_if_fail (taglist_ref_count > 0);
 
+	--taglist_ref_count;
+	if (taglist_ref_count > 0)
+		return;
+		
 	if (taglist == NULL)
 		return;
-	
+		
 	while (taglist->tag_groups)
 	{
 		free_tag_group ((TagGroup *)taglist->tag_groups->data);
@@ -510,7 +518,7 @@ free_taglist (void)
 
 	taglist = NULL;
 
-	gedit_debug_message (DEBUG_PLUGINS, "END");
+	gedit_debug_message (DEBUG_PLUGINS, "Really freed");
 }
 
 static TagList * 
@@ -547,10 +555,15 @@ TagList* create_taglist (void)
 {
 	gchar const * const home = g_get_home_dir ();
 
-	gedit_debug (DEBUG_PLUGINS);
+	gedit_debug_message (DEBUG_PLUGINS, "ref_count: %d", taglist_ref_count);
 
-	g_return_val_if_fail (taglist == NULL, taglist);
-
+	if (taglist_ref_count > 0)
+	{		
+		++taglist_ref_count;
+		
+		return taglist;
+	}
+		
 	/* load user's taglists */
 	if (home != NULL)
 	{
@@ -565,5 +578,8 @@ TagList* create_taglist (void)
 	/* load system's taglists */	
 	parse_taglist_dir (GEDIT_TAGLIST_DIR);
 
+	++taglist_ref_count;
+	g_return_val_if_fail (taglist_ref_count == 1, taglist);
+	
 	return taglist;
 }
