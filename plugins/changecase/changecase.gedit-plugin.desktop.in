@@ -1,5 +1,5 @@
 [Gedit Plugin]
-Location=changecase
+Module=changecase
 _Name=Change Case
 _Description=Changes the case of selected text.
 Author=Paolo Borelli <pborelli@katamail.com>
