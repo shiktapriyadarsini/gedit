@@ -851,6 +851,7 @@ time_world_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname
 					gedit_warning (GTK_WINDOW (dialog->dialog),
 						       error->message);
 
+
 					g_error_free (error);
 				}
 				continue;

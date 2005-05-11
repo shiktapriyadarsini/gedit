@@ -203,10 +203,12 @@ cursor_changed_cb (GtkTreeView  *view, gpointer data)
 	gedit_debug (DEBUG_PLUGINS);
 
 	info = plugin_manager_get_selected_plugin (dialog);
-	g_return_if_fail (info != NULL);
-
+	
+	gtk_widget_set_sensitive (GTK_WIDGET (dialog->about_button),
+				  info != NULL);
 	gtk_widget_set_sensitive (GTK_WIDGET (dialog->configure_button),
-				  gedit_plugins_engine_plugin_is_configurable (info));
+				  (info != NULL) && 
+				   gedit_plugins_engine_plugin_is_configurable (info));
 }
 
 static void

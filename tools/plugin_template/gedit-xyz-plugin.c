@@ -31,11 +31,6 @@
 
 #include <gedit/gedit-debug.h>
 
-enum
-{
-	PROP_0
-};
-
 #define GEDIT_XYZ_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_XYZ_PLUGIN, GeditXyzPluginPrivate))
 
 struct _GeditXyzPluginPrivate
@@ -61,7 +56,7 @@ gedit_xyz_plugin_finalize (GObject *object)
 */
 	gedit_debug_message (DEBUG_PLUGINS, "GeditXyzPlugin finalizing");
 
-	G_OBJECT_CLASS (parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_xyz_plugin_parent_class)->finalize (object);
 }
 
 static void

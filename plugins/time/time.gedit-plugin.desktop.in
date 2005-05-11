@@ -1,5 +1,5 @@
 [Gedit Plugin]
-Location=time
+Module=time
 _Name=Insert Date/Time
 _Description=Inserts current date and time at the cursor position.
 Author=Paolo Maggi <paolo.maggi@polito.it>, Lee Mallabone <gnome@fonicmonkey.net>
