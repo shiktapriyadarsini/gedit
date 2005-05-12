@@ -562,21 +562,187 @@ gedit_cmd_file_save_all (GtkAction   *action,
 #endif
 }
 
+static void
+revert_dialog_response_cb (GtkDialog     *dialog,
+			   gint           response_id,
+			   GeditWindow   *window)
+{
+	GeditTab *tab;
+	GeditDocument *doc;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	// CHECK: we are relying on the fact that the dialog is modal
+	// so the active tab can't have changed... not very nice
+
+	tab = gedit_window_get_active_tab (window);
+	if (tab == NULL)
+		return;
+
+	if (response_id != GTK_RESPONSE_OK)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+
+		return;
+	}
+
+	doc = gedit_tab_get_document (tab);
+	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+				        window->priv->generic_message_cid,
+				       _("Reverting the document \"%s\"..."),
+				       gedit_document_get_uri_for_display (doc));
+
+	_gedit_tab_revert (tab);
+
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+static GtkWidget *
+revert_dialog (GeditWindow   *window,
+	       GeditDocument *doc)
+{
+	GtkWidget *dialog;
+	const gchar *name;
+	gchar *primary_msg;
+	gchar *secondary_msg;
+	glong seconds;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	name = gedit_document_get_short_name_for_display (doc);
+	primary_msg = g_strdup_printf (_("Revert unsaved changes to document \"%s\"?"),
+	                               name);
+
+	seconds = MAX (1, _gedit_document_get_seconds_since_last_save_or_load (doc));
+
+	if (seconds < 55)
+	{
+		secondary_msg = g_strdup_printf (
+					ngettext ("Changes made to the document in the last %ld second "
+					    	  "will be permanently lost.",
+						  "Changes made to the document in the last %ld seconds "
+					    	  "will be permanently lost.",
+						  seconds),
+					seconds);
+	}
+	else if (seconds < 75) /* 55 <= seconds < 75 */
+	{
+		secondary_msg = g_strdup (_("Changes made to the document in the last minute "
+					    "will be permanently lost."));
+	}
+	else if (seconds < 110) /* 75 <= seconds < 110 */
+	{
+		secondary_msg = g_strdup_printf (
+					ngettext ("Changes made to the document in the last minute and "
+						  "%ld second will be permanently lost.",
+						  "Changes made to the document in the last minute and "
+						  "%ld seconds will be permanently lost.",
+						  seconds - 60 ),
+					seconds - 60);
+	}
+	else if (seconds < 3600)
+	{
+		secondary_msg = g_strdup_printf (
+					ngettext ("Changes made to the document in the last %ld minute "
+					    	  "will be permanently lost.",
+						  "Changes made to the document in the last %ld minutes "
+					    	  "will be permanently lost.",
+						  seconds / 60),
+					seconds / 60);
+	}
+	else if (seconds < 7200)
+	{
+		gint minutes;
+		seconds -= 3600;
+
+		minutes = seconds / 60;
+		if (minutes < 5)
+		{
+			secondary_msg = g_strdup (_("Changes made to the document in the last hour "
+						    "will be permanently lost."));
+		}
+		else
+		{
+			secondary_msg = g_strdup_printf (
+					ngettext ("Changes made to the document in the last hour and "
+						  "%d minute will be permanently lost.",
+						  "Changes made to the document in the last hour and "
+						  "%d minutes will be permanently lost.",
+						  minutes),
+					minutes);
+		}
+	}
+	else
+	{
+		gint hours;
+
+		hours = seconds / 3600;
+
+		secondary_msg = g_strdup_printf (
+					ngettext ("Changes made to the document in the last hour "
+					    	  "will be permanently lost.",
+						  "Changes made to the document in the last %d hours "
+					    	  "will be permanently lost.",
+						  hours),
+					hours);
+	}
+
+	dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+					 GTK_DIALOG_DESTROY_WITH_PARENT,
+					 GTK_MESSAGE_QUESTION,
+					 GTK_BUTTONS_NONE,
+					 primary_msg);
+	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+						  secondary_msg);
+	g_free (primary_msg);
+	g_free (secondary_msg);
+
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+	gtk_dialog_add_button (GTK_DIALOG (dialog),
+			       GTK_STOCK_CANCEL,
+			       GTK_RESPONSE_CANCEL);
+
+	gedit_dialog_add_button (GTK_DIALOG (dialog), 
+				 _("_Revert"),
+				 GTK_STOCK_REVERT_TO_SAVED,
+				 GTK_RESPONSE_OK);
+
+	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
+					 GTK_RESPONSE_CANCEL);
+
+	return dialog;
+}
+
 void
 gedit_cmd_file_revert (GtkAction   *action,
 		       GeditWindow *window)
 {
-#if 0
-	GeditMDIChild *active_child;
+	GeditDocument *doc;
+	GtkWidget *dialog;
+	GtkWindowGroup *wg;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	active_child = GEDIT_MDI_CHILD (bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi)));
-	if (active_child == NULL)
-		return;
+	doc = gedit_window_get_active_document (window);
+	g_return_if_fail (doc != NULL);
 
-	gedit_file_revert (active_child);
-#endif
+	// CHECK: do not show the confirmation dialog if doc is unmodified?
+
+	dialog = revert_dialog (window, doc);
+
+	wg = gedit_window_get_group (window);
+
+	gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
+
+	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+
+	g_signal_connect (dialog,
+			  "response",
+			  G_CALLBACK (revert_dialog_response_cb),
+			  window);
+
+	gtk_widget_show (dialog);
 }
 
 void

@@ -60,6 +60,9 @@ struct _GeditTabPrivate
 
 	GeditPrintJob   *print_job;
 
+	/* tmp data for loading */
+	gboolean        reverting;
+
 	/* tmp data for saving */
 	gchar		*save_uri;
 };
@@ -204,21 +207,21 @@ set_message_area (GeditTab  *tab,
 {
 	if (tab->priv->message_area == message_area)
 		return;
-		
+
 	if (tab->priv->message_area != NULL)
 		gtk_widget_destroy (tab->priv->message_area);
-		
+
 	tab->priv->message_area = message_area;
 
 	if (message_area == NULL)
 		return;
-		
+
 	gtk_box_pack_start (GTK_BOX (tab),
 			    tab->priv->message_area,
 			    FALSE,
 			    FALSE,
 			    0);		
-			    
+
 	g_object_add_weak_pointer (G_OBJECT (tab->priv->message_area), 
 				   (gpointer *)&tab->priv->message_area);
 }
@@ -263,9 +266,10 @@ document_loading (GeditDocument *document,
 {
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
 
-
+//	if (tab->priv->reverting)
 }
 
+// TODO: different error messages if tab->priv->reverting
 static void
 document_loaded (GeditDocument *document,
 		 const GError  *error,
@@ -805,7 +809,7 @@ gedit_tab_get_from_document (GeditDocument *doc)
 }
 
 gboolean
-_gedit_tab_load	(GeditTab            *tab,
+_gedit_tab_load (GeditTab            *tab,
 		 const gchar         *uri,
 		 const GeditEncoding *encoding,
 		 gint                 line_pos,
@@ -821,11 +825,35 @@ _gedit_tab_load	(GeditTab            *tab,
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
+	tab->priv->reverting = FALSE;
+
 	return gedit_document_load (doc,
 				    uri,
 				    encoding,
 				    line_pos,
 				    create);
+}
+
+void
+_gedit_tab_revert (GeditTab *tab)
+{
+	GeditDocument *doc;
+
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
+
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
+
+	tab->priv->reverting = TRUE;
+
+	gedit_document_load (doc,
+			     gedit_document_get_uri_ (doc),
+			     gedit_document_get_encoding (doc),
+			     0,
+			     FALSE);
 }
 
 void
