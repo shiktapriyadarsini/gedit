@@ -19,11 +19,13 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
  * Modified by the gedit Team, 2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -107,7 +109,6 @@ gedit_get_command_line_data (GnomeProgram *program)
 					/* goto the last line of the document */
 					line_position = G_MAXINT;
 				else
-					/* -1 because get_iter_at_line counts from 0 */
 					line_position = atoi (args[i] + 1);
 			}
 			else
