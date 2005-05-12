@@ -106,6 +106,7 @@ struct _GeditDocumentPrivate
 	gboolean             create; /* Create file if uri points 
 	                              * to a non existing file */
 	const GeditEncoding *requested_encoding;
+	gint                 requested_line_pos;
 
 	/* Saving stuff */
 	GeditDocumentSaver *saver;
@@ -697,15 +698,6 @@ document_loader_loading (GeditDocumentLoader *loader,
 {
 	if (completed)
 	{
-		/* special case creating a named new doc */
-		if (doc->priv->create &&
-		    (error->code == GNOME_VFS_ERROR_NOT_FOUND))
-		{
-			// FIXME
-
-			g_print ("create new\n");
-		}
-
 		/* load was successful */
 		if (error == NULL)
 		{
@@ -723,12 +715,39 @@ document_loader_loading (GeditDocumentLoader *loader,
 
 //			set_encoding (doc, doc->priv->requested_encoding);
 
-			// FIXME: we should probably pass a requested_line to doc load
-			// for "gedit +42 life_and_everything.txt"
-			/* move the cursor to the top */
-			gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
+			/* move the cursor at the requested line or to the top */
+			if (doc->priv->requested_line_pos > 0)
+			{
+				/* line_pos - 1 because get_iter_at_line counts from 0 */
+				gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+								  &iter,
+								  doc->priv->requested_line_pos - 1);
+			}
+			else
+			{
+				gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
+								&iter);
+			}
+
 			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 		}
+
+		/* special case creating a named new doc */
+		else if (doc->priv->create &&
+		         (error->code == GNOME_VFS_ERROR_NOT_FOUND))
+		{
+			// FIXME: do other stuff??
+
+			g_signal_emit (doc,
+				       document_signals[LOADED],
+				       0,
+				       NULL);
+
+			g_object_unref (doc->priv->loader);
+			doc->priv->loader = NULL;
+
+			return;
+		}		
 
 		g_signal_emit (doc,
 			       document_signals[LOADED],
@@ -760,6 +779,7 @@ gboolean
 gedit_document_load (GeditDocument       *doc,
 		     const gchar         *uri,
 		     const GeditEncoding *encoding,
+		     gint                 line_pos,
 		     gboolean             create)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
@@ -778,6 +798,7 @@ gedit_document_load (GeditDocument       *doc,
 
 	doc->priv->create = create;
 	doc->priv->requested_encoding = encoding;
+	doc->priv->requested_line_pos = line_pos;
 
 	set_uri (doc, uri, NULL);
 

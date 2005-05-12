@@ -489,7 +489,8 @@ _gedit_tab_new (void)
    not refer to an existing file */
 GtkWidget *
 _gedit_tab_new_from_uri (const gchar         *uri,
-			 const GeditEncoding *encoding,				
+			 const GeditEncoding *encoding,
+			 gint                 line_pos,			
 			 gboolean             create)
 {
 	GeditTab *tab;
@@ -502,9 +503,12 @@ _gedit_tab_new_from_uri (const gchar         *uri,
 	
 	doc = gedit_tab_get_document (tab);
 
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
+
 	ret = gedit_document_load (doc, 
 				   uri,
 				   encoding,
+				   line_pos,
 				   create);
 
 	if (!ret)

@@ -40,6 +40,7 @@
 
 #include "gedit-dialogs.h"
 #include "gedit-encodings-option-menu.h"
+#include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-utils.h"
 
@@ -96,10 +97,9 @@ dialog_response_cb (GtkDialog          *dialog,
 		encoding = gedit_encodings_option_menu_get_selected_encoding (
 				GEDIT_ENCODINGS_OPTION_MENU (dlg->encoding_menu));
 
-		n = gedit_window_load_files (dlg->gedit_window,
-			 		     uris,
-					     encoding,
-					     FALSE);
+		n = gedit_cmd_load_files (dlg->gedit_window,
+			 		  uris,
+					  encoding);
 		g_free (uri);
 		g_slist_free (uris);
 

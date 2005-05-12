@@ -42,6 +42,7 @@
 #include "gedit-mdi.h"
 #include "gedit-prefs-manager-app.h"
 #include "gedit-debug.h"
+#include "gedit-commands.h"
 #include "gedit-encodings.h"
 #include "gedit-file.h"
 #include "gedit-utils.h"
@@ -52,10 +53,81 @@
 #include "gedit-app.h"
 #include "gedit-metadata-manager.h"
 
-static struct poptOption options[] =
+/* command line */
+static gint line_position = 0;
+static gchar *encoding_charset = NULL;
+const GeditEncoding *encoding;
+// static gboolean quit_option = FALSE; //doesn't make sense anymore, right?
+// static gboolean new_window_option = FALSE; // TODO when we have single instance support
+// static gboolean new_document_option = FALSE; // ditto
+static GSList *file_list = NULL;
+
+static const struct poptOption options [] =
 {
-	{ NULL, 0, 0, NULL, 0, NULL, NULL }
+	{ "encoding", '\0', POPT_ARG_STRING, &encoding_charset,	0,
+	  N_("Set the character encoding to be used to open the files listed on the command line"), NULL },
+
+/*	{ "quit", '\0', POPT_ARG_NONE, &quit_option, 0,
+	  N_("Quit an existing instance of gedit"), NULL },
+
+	{ "new-window", '\0', POPT_ARG_NONE, &new_window_option, 0,
+	  N_("Create a new toplevel window in an existing instance of gedit"), NULL },
+
+	{ "new-document", '\0', POPT_ARG_NONE, &new_document_option, 0,
+	  N_("Create a new document in an existing instance of gedit"), NULL },
+*/
+	{NULL, '\0', 0, NULL, 0}
 };
+
+static void
+gedit_get_command_line_data (GnomeProgram *program)
+{
+	GValue value = { 0, };
+	poptContext ctx;
+	gchar **args;
+
+	g_value_init (&value, G_TYPE_POINTER);
+	g_object_get_property (G_OBJECT (program),
+			       GNOME_PARAM_POPT_CONTEXT,
+			       &value);
+	ctx = g_value_get_pointer (&value);
+	g_value_unset (&value);
+
+	args = (gchar **) poptGetArgs(ctx);
+
+	if (args)
+	{
+		gint i;
+
+		for (i = 0; args[i]; i++) 
+		{
+			if (*args[i] == '+')
+			{
+				if (*(args[i] + 1) == '\0')
+					/* goto the last line of the document */
+					line_position = G_MAXINT;
+				else
+					/* -1 because get_iter_at_line counts from 0 */
+					line_position = atoi (args[i] + 1);
+			}
+			else
+			{
+				file_list = g_slist_prepend (file_list, 
+					gnome_vfs_make_uri_from_shell_arg (args[i]));
+			}
+		}
+
+		file_list = g_slist_reverse (file_list);
+
+		if (encoding_charset)
+		{
+			encoding = gedit_encoding_get_from_charset (encoding_charset);
+			if (encoding == NULL)
+				g_print (_("The specified encoding \"%s\" is not valid\n"),
+					 encoding_charset);
+		}
+	}
+}
 
 int
 main (int argc, char *argv[])
@@ -119,11 +191,17 @@ main (int argc, char *argv[])
 
 	gedit_app_server = gedit_application_server_new (gdk_screen_get_default ());
 #endif
+
+	gedit_get_command_line_data (program);
+
 	app = gedit_app_get_default ();
-	
+
 	window = gedit_app_create_window (app);
-	gedit_window_create_tab (window, TRUE);
-	
+	if (file_list != NULL)
+		gedit_cmd_load_files_from_prompt (window, file_list, encoding, line_position);
+	else
+		gedit_window_create_tab (window, TRUE);
+
 	gtk_widget_show (GTK_WIDGET (window));
 	
 	gtk_main();

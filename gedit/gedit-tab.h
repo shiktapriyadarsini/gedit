@@ -116,6 +116,7 @@ GtkWidget 	*_gedit_tab_new 		(void);
    not refer to an existing file */
 GtkWidget	*_gedit_tab_new_from_uri	(const gchar         *uri,
 						 const GeditEncoding *encoding,
+						 gint                 line_pos,
 						 gboolean             create);
 gchar 		*_gedit_tab_get_name		(GeditTab            *tab);
 gchar 		*_gedit_tab_get_tooltips	(GeditTab            *tab);

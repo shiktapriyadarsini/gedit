@@ -1446,10 +1446,9 @@ drag_data_received_cb (GtkWidget        *widget,
 
 	uri_list = g_slist_reverse (uri_list);
 
-	gedit_window_load_files (GEDIT_WINDOW (target_window),
-				 uri_list,
-				 NULL,
-				 FALSE);
+	gedit_cmd_load_files (GEDIT_WINDOW (target_window),
+			      uri_list,
+			      NULL);
 
 	g_slist_foreach (uri_list, (GFunc) g_free, NULL);	
 	g_slist_free (uri_list);
@@ -2163,14 +2162,19 @@ GeditTab *
 gedit_window_create_tab_from_uri (GeditWindow         *window,
 				  const gchar         *uri,
 				  const GeditEncoding *encoding,
+				  gint                 line_pos,
 				  gboolean             create,
 				  gboolean             jump_to)
 {
 	GtkWidget *tab;
 	
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	g_return_val_if_fail (uri != NULL, NULL);
 	
-	tab = _gedit_tab_new_from_uri (uri, encoding, create);	
+	tab = _gedit_tab_new_from_uri (uri,
+				       encoding,
+				       line_pos,
+				       create);	
 	if (tab == NULL)
 		return NULL;
 		
@@ -2463,99 +2467,6 @@ _gedit_window_get_search_panel (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return window->priv->search_panel;	
-}
-
-gint
-gedit_window_load_files (GeditWindow         *window,
-			 const GSList        *uris,
-			 const GeditEncoding *encoding,
-			 gboolean             create)
-{
-	gint loaded_files = 0;
-	gboolean ret;
-	GeditDocument *doc;
-	gboolean jump_to = TRUE;
-	gboolean flash = TRUE;
-
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
-	g_return_val_if_fail (uris != NULL, 0);
-
-	doc = gedit_window_get_active_document (window);
-	if (doc != NULL)
-	{
-		if (gedit_document_is_untouched (doc) &&
-		    (gedit_tab_get_state (window->priv->active_tab) == GEDIT_TAB_STATE_NORMAL))
-		{
-			const gchar * uri;
-			
-			g_return_val_if_fail (uris->data != NULL, 0);
-			
-			uri = (const gchar *)uris->data;
-			ret = gedit_document_load (doc,
-						   uri,
-						   encoding,
-						   create);
-
-			uris = g_slist_next (uris);
-			jump_to = FALSE;
-
-			if (ret)
-			{
-				if (uris == NULL)
-				{
-					/* There is only a single file to load */
-					gchar *uri_for_display;
-
-					uri_for_display = gnome_vfs_format_uri_for_display (uri);
-
-					gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-								       window->priv->generic_message_cid,
-								       _("Loading file \"%s\"..."),
-								       uri_for_display);
-
-					g_free (uri_for_display);
-
-					flash = FALSE;								       
-				}
-				
-				++loaded_files;
-			}
-		}
-	}
-
-	while (uris != NULL)
-	{
-		GeditTab *tab;
-
-		g_return_val_if_fail (uris->data != NULL, 0);
-
-		tab = gedit_window_create_tab_from_uri (window,
-							(const gchar *)uris->data,
-							encoding,
-							create,
-							jump_to);
-
-		if (tab != NULL)
-		{
-			jump_to = FALSE;
-			++loaded_files;	
-		}
-
-		uris = g_slist_next (uris);
-	}
-
-	if (flash)
-	{
-		/* FIXME: show the URI of the file when a single file is being loaded - Paolo */
-		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-					       window->priv->generic_message_cid,
-					       ngettext("Loading %d file...",
-							"Loading %d files...", 
-							loaded_files),
-					       loaded_files);
-	}				     
-
-	return loaded_files;
 }
 
 GtkWidget *

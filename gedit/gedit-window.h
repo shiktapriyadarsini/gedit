@@ -97,6 +97,7 @@ GeditTab	*gedit_window_create_tab		(GeditWindow         *window,
 GeditTab	*gedit_window_create_tab_from_uri	(GeditWindow         *window,
 							 const gchar         *uri,
 							 const GeditEncoding *encoding,
+							 gint                 line_pos,
 							 gboolean             create,
 							 gboolean             jump_to);
 							 
@@ -123,11 +124,6 @@ GList		*gedit_window_get_views			(GeditWindow         *window);
 GtkWindowGroup  *gedit_window_get_group			(GeditWindow         *window);
 
 GeditPanel	*gedit_window_get_side_panel		(GeditWindow         *window);
-
-gint		 gedit_window_load_files		(GeditWindow         *window,
-							 const GSList        *uris,
-							 const GeditEncoding *encoding,
-							 gboolean             create);
 
 GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 

@@ -63,6 +63,123 @@
 
 #define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
 
+static gint
+load_file_list (GeditWindow         *window,
+		const GSList        *uris,
+		const GeditEncoding *encoding,
+		gint                 line_pos,
+		gboolean             create)
+{
+	gint loaded_files = 0;
+	gboolean ret;
+	GeditDocument *doc;
+	gboolean jump_to = TRUE;
+	gboolean flash = TRUE;
+
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
+	g_return_val_if_fail (uris != NULL && uris->data != NULL, 0);
+
+	doc = gedit_window_get_active_document (window);
+	if (doc != NULL)
+	{
+		if (gedit_document_is_untouched (doc) &&
+		    (gedit_tab_get_state (window->priv->active_tab) == GEDIT_TAB_STATE_NORMAL))
+		{
+			const gchar * uri;
+
+			uri = (const gchar *)uris->data;
+			ret = gedit_document_load (doc,
+						   uri,
+						   encoding,
+						   line_pos,
+						   create);
+
+			uris = g_slist_next (uris);
+			jump_to = FALSE;
+
+			if (ret)
+			{
+				if (uris == NULL)
+				{
+					/* There is only a single file to load */
+					gchar *uri_for_display;
+
+					uri_for_display = gnome_vfs_format_uri_for_display (uri);
+
+					gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+								       window->priv->generic_message_cid,
+								       _("Loading file \"%s\"..."),
+								       uri_for_display);
+
+					g_free (uri_for_display);
+
+					flash = FALSE;								       
+				}
+				
+				++loaded_files;
+			}
+		}
+	}
+
+	while (uris != NULL)
+	{
+		GeditTab *tab;
+
+		g_return_val_if_fail (uris->data != NULL, 0);
+
+		tab = gedit_window_create_tab_from_uri (window,
+							(const gchar *)uris->data,
+							encoding,
+							line_pos,
+							create,
+							jump_to);
+
+		if (tab != NULL)
+		{
+			jump_to = FALSE;
+			++loaded_files;	
+		}
+
+		uris = g_slist_next (uris);
+	}
+
+	if (flash)
+	{
+		/* FIXME: show the URI of the file when a single file is being loaded - Paolo */
+		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+					       window->priv->generic_message_cid,
+					       ngettext("Loading %d file...",
+							"Loading %d files...", 
+							loaded_files),
+					       loaded_files);
+	}				     
+
+	return loaded_files;
+}
+
+/* exported so it can be used for drag'n'drop */
+gint
+gedit_cmd_load_files (GeditWindow         *window,
+		      const GSList        *uris,
+		      const GeditEncoding *encoding)
+{
+	return load_file_list (window, uris, encoding, 0, FALSE);
+}
+
+/*
+ * From the command line we can specify a line position for the 
+ * first doc. Beside specifying a not existing uri crates a 
+ * titled document.
+ */
+gint
+gedit_cmd_load_files_from_prompt (GeditWindow         *window,
+				  const GSList        *uris,
+				  const GeditEncoding *encoding,
+				  gint                 line_pos)
+{
+	return load_file_list (window, uris, encoding, line_pos, TRUE);
+}
+
 void
 gedit_cmd_file_new (GtkAction   *action,
 		    GeditWindow *window)
@@ -104,10 +221,9 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	g_return_if_fail (uris != NULL); /* CHECK */
 		
-	n = gedit_window_load_files (window,
-		 		     uris,
-				     encoding,
-				     FALSE);
+	n = gedit_cmd_load_files (window,
+		 		  uris,
+				  encoding);
 
 	g_slist_foreach (uris, (GFunc) g_free, NULL);
 	g_slist_free (uris);
@@ -188,10 +304,9 @@ gedit_cmd_file_open_recent (EggRecentItem *item,
 
 	uris = g_slist_prepend (uris, uri);
 
-	n = gedit_window_load_files (window,
-		 		     uris,
-				     NULL,
-				     FALSE);
+	n = gedit_cmd_load_files (window,
+		 		  uris,
+				  NULL);
 
 	if (n != 1)
 	{
