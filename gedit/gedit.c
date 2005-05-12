@@ -153,7 +153,7 @@ main (int argc, char *argv[])
 	/* Must be called after gnome_program_init to avoid problem with the
          * translation of --help messages */
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	
+
 	/* Setup debugging */
 	gedit_debug_init ();
 
@@ -203,16 +203,14 @@ main (int argc, char *argv[])
 		gedit_window_create_tab (window, TRUE);
 
 	gtk_widget_show (GTK_WIDGET (window));
-	
+
 	gtk_main();
-	
+
 	gedit_prefs_manager_app_shutdown ();
 	gedit_metadata_manager_shutdown ();
-	// gedit_plugins_engine_shutdown ();
-	
+//	gedit_plugins_engine_shutdown ();
+
 	g_object_unref (program);
-	
-	g_print ("Quit!\n");
-	
+
 	return 0;
 }

@@ -804,19 +804,42 @@ gedit_tab_get_from_document (GeditDocument *doc)
 	return (res != NULL) ? GEDIT_TAB (res) : NULL;
 }
 
+gboolean
+_gedit_tab_load	(GeditTab            *tab,
+		 const gchar         *uri,
+		 const GeditEncoding *encoding,
+		 gint                 line_pos,
+		 gboolean             create)
+{
+	GeditDocument *doc;
+
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), FALSE);
+	g_return_val_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL, FALSE);
+
+	doc = gedit_tab_get_document (tab);
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
+
+	return gedit_document_load (doc,
+				    uri,
+				    encoding,
+				    line_pos,
+				    create);
+}
+
 void
-_gedit_tab_save (GeditTab *tab)		  
+_gedit_tab_save (GeditTab *tab)
 {
 	GeditDocument *doc;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (!gedit_document_is_untitled);
 
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
-	
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
 	/* uri used in error messages... strdup because errors are async
@@ -829,16 +852,15 @@ _gedit_tab_save (GeditTab *tab)
 void
 _gedit_tab_save_as (GeditTab            *tab,
 		    const gchar         *uri,
-		    const GeditEncoding *encoding)		  
+		    const GeditEncoding *encoding)
 {
 	GeditDocument *doc;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 

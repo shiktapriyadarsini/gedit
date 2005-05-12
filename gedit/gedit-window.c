@@ -1382,7 +1382,7 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 	gchar *tab_name; // CHECK escaping
 	gint n;
 	GeditDocument *doc;
-	
+
 	if (tab != window->priv->active_tab)
 		return;
 
@@ -1401,14 +1401,14 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 
 	g_free (action_name);
 	g_free (tab_name);
-	
+
 	doc = gedit_tab_get_document (tab);
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "FileRevert");
 	gtk_action_set_sensitive (action,
 				  !gedit_document_is_untitled (doc));
-				  
-	gedit_plugins_engine_update_plugins_ui (window, NULL);
+
+	gedit_plugins_engine_update_plugins_ui (window, FALSE);
 }
 
 static void

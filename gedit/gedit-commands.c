@@ -72,6 +72,7 @@ load_file_list (GeditWindow         *window,
 {
 	gint loaded_files = 0;
 	gboolean ret;
+	GeditTab *tab;
 	GeditDocument *doc;
 	gboolean jump_to = TRUE;
 	gboolean flash = TRUE;
@@ -79,20 +80,22 @@ load_file_list (GeditWindow         *window,
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
 	g_return_val_if_fail (uris != NULL && uris->data != NULL, 0);
 
-	doc = gedit_window_get_active_document (window);
-	if (doc != NULL)
+	tab = gedit_window_get_active_tab (window);
+	if (tab != NULL)
 	{
+		doc = gedit_tab_get_document (tab);
+
 		if (gedit_document_is_untouched (doc) &&
-		    (gedit_tab_get_state (window->priv->active_tab) == GEDIT_TAB_STATE_NORMAL))
+		    (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL))
 		{
 			const gchar * uri;
 
 			uri = (const gchar *)uris->data;
-			ret = gedit_document_load (doc,
-						   uri,
-						   encoding,
-						   line_pos,
-						   create);
+			ret = _gedit_tab_load (tab,
+					       uri,
+					       encoding,
+					       line_pos,
+					       create);
 
 			uris = g_slist_next (uris);
 			jump_to = FALSE;
