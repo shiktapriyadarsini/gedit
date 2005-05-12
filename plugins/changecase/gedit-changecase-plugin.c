@@ -1,5 +1,5 @@
 /*
- * gedit-changecase-plugin.h
+ * gedit-changecase-plugin.c
  * 
  * Copyright (C) 2004-2005 - Paolo Borelli
  *
@@ -237,7 +237,7 @@ static const GtkActionEntry action_entries[] =
 const gchar submenu[] =
 "<ui>"
 "  <menubar name='MenuBar'>"
-"    <menu name='EditMenu'>"
+"    <menu name='EditMenu' action='Edit'>"
 "      <placeholder name='EditOps_6'>"
 "        <menu action='ChangeCase'>"
 "          <menuitem action='UpperCase'/>"
