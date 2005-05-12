@@ -1,6 +1,6 @@
 [Gedit Plugin]
-Location=indent
+Module=indent
 _Name=Indent lines
 _Description=Indents or un-indents selected lines.
 Author=Paolo Maggi <paolo.maggi@polito.it>
-Copyright=Copyright © 2002-2003 Paolo Maggi
+Copyright=Copyright © 2002-2005 Paolo Maggi

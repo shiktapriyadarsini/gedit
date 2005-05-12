@@ -136,7 +136,7 @@ unindent_cb (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
 			iter2 = iter;
 			gtk_text_iter_forward_char (&iter2);
 			gtk_text_buffer_delete (GTK_TEXT_BUFFER (doc), &iter, &iter2);
-		} 
+		}
 		else if (gtk_text_iter_get_char (&iter) == ' ') 
 		{
 			int spaces = 0;
