@@ -1,5 +1,5 @@
 /*
- * gedit-xyz-plugin.h
+ * gedit-xyz-plugin.c
  * 
  * Copyright (C) %YEAR% - %AUTHOR%
  *
