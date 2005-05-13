@@ -159,8 +159,7 @@ gedit_taglist_plugin_panel_class_init (GeditTaglistPluginPanelClass *klass)
 
 static void
 insert_tag (GeditTaglistPluginPanel *panel,
-	    Tag                     *tag, 
-	    gboolean                 focus_to_document)
+	    Tag                     *tag)
 {
 	GeditView *view;
 	GtkTextBuffer *buffer;
@@ -231,9 +230,6 @@ insert_tag (GeditTaglistPluginPanel *panel,
 	gtk_text_buffer_place_cursor (buffer, &cursor);
 
 	gtk_text_buffer_end_user_action (buffer);
-
-	if (focus_to_document)
-		gtk_widget_grab_focus (GTK_WIDGET (view));
 }
 
 static void
@@ -258,8 +254,7 @@ tag_list_row_activated_cb (GtkTreeView             *tag_list,
 	gedit_debug_message (DEBUG_PLUGINS, "Index: %d", index);
 
 	insert_tag (panel,
-		    (Tag*)g_list_nth_data (panel->priv->selected_tag_group->tags, index),
-		    TRUE);
+		    (Tag*)g_list_nth_data (panel->priv->selected_tag_group->tags, index));
 }
 
 static gboolean 
@@ -267,7 +262,7 @@ tag_list_key_press_event_cb (GtkTreeView             *tag_list,
 			     GdkEventKey             *event,
 			     GeditTaglistPluginPanel *panel)
 {
-	if (event->keyval == GDK_Return)
+	if ((event->keyval == GDK_Return) && (event->state & GDK_CONTROL_MASK))
 	{
 		GtkTreeModel *model;
 		GtkTreeSelection *selection;
@@ -287,8 +282,7 @@ tag_list_key_press_event_cb (GtkTreeView             *tag_list,
 			gedit_debug_message (DEBUG_PLUGINS, "Index: %d", index);
 
 			insert_tag (panel,
-				    (Tag*)g_list_nth_data (panel->priv->selected_tag_group->tags, index),
-				    event->state & GDK_CONTROL_MASK);
+				    (Tag*)g_list_nth_data (panel->priv->selected_tag_group->tags, index));
 		}
 
 		return FALSE;
@@ -443,6 +437,7 @@ gedit_taglist_plugin_panel_init (GeditTaglistPluginPanel *panel)
 	GtkWidget *sw;
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
+	GList *focus_chain = NULL;
 	
 	gedit_debug (DEBUG_PLUGINS);
 	
@@ -452,24 +447,19 @@ gedit_taglist_plugin_panel_init (GeditTaglistPluginPanel *panel)
 	g_object_ref (G_OBJECT (panel->priv->tooltips));
 	gtk_object_sink (GTK_OBJECT (panel->priv->tooltips));
 
-
 	/* Build the window content */
-	// gtk_box_set_spacing (GTK_BOX (panel), 6);
-
-	panel->priv->tag_groups_combo = gtk_combo_box_entry_new_text ();
-	
-	gtk_editable_set_editable (GTK_EDITABLE (GTK_BIN (panel->priv->tag_groups_combo)->child), FALSE);
-	
-	gtk_tooltips_set_tip (panel->priv->tooltips,
-			      GTK_BIN (panel->priv->tag_groups_combo)->child,
-			      _("Select the group of tags you want to use"),
-			      NULL);
-	
+	panel->priv->tag_groups_combo = gtk_combo_box_new_text ();
 	gtk_box_pack_start (GTK_BOX (panel), 
 			    panel->priv->tag_groups_combo, 
 			    FALSE, 
 			    TRUE,
 			    0);
+	
+			   
+	gtk_tooltips_set_tip (panel->priv->tooltips,
+			      panel->priv->tag_groups_combo,
+			      _("Select the group of tags you want to use"),
+			      NULL);
 
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	
@@ -508,10 +498,10 @@ gedit_taglist_plugin_panel_init (GeditTaglistPluginPanel *panel)
 				G_CALLBACK (tag_list_row_activated_cb), 
 				panel);
 
-	g_signal_connect_after (panel->priv->tags_list, 
-				"key_press_event",
-				G_CALLBACK (tag_list_key_press_event_cb),
-				panel);
+	g_signal_connect (panel->priv->tags_list, 
+			  "key_press_event",
+			  G_CALLBACK (tag_list_key_press_event_cb),
+			  panel);
 
 	/* Add the tags column */
 	cell = gtk_cell_renderer_text_new ();
@@ -528,13 +518,18 @@ gedit_taglist_plugin_panel_init (GeditTaglistPluginPanel *panel)
 
 	gtk_container_add (GTK_CONTAINER (sw), panel->priv->tags_list);
 
-	// gtk_window_set_default_size (GTK_WINDOW (tag_list_window->window), 250, 450);
-
 	g_signal_connect (panel->priv->tag_groups_combo, 
 			  "changed",
 			  G_CALLBACK (selected_group_changed), 
 			  panel);
 
+	focus_chain = g_list_prepend (focus_chain, panel->priv->tags_list);
+	focus_chain = g_list_prepend (focus_chain, panel->priv->tag_groups_combo);
+	
+	gtk_container_set_focus_chain (GTK_CONTAINER (panel),
+				       focus_chain);
+	g_list_free (focus_chain);
+	
 	/* Populate combo box */
 	populate_tag_groups_combo (panel);
 				

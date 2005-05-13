@@ -209,9 +209,9 @@ main (int argc, char *argv[])
 
 	gtk_main();
 
+	gedit_plugins_engine_shutdown ();
 	gedit_prefs_manager_app_shutdown ();
 	gedit_metadata_manager_shutdown ();
-//	gedit_plugins_engine_shutdown ();
 
 	g_object_unref (program);
 

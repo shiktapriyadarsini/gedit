@@ -40,6 +40,8 @@
 
 #include <gedit/gedit-debug.h>
 
+#define WINDOW_DATA_KEY "GeditTaglistPluginWindowData"
+
 #define GEDIT_TAGLIST_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAGLIST_PLUGIN, GeditTaglistPluginPrivate))
 
 struct _GeditTaglistPluginPrivate
@@ -129,6 +131,8 @@ impl_activate (GeditPlugin *plugin,
 	
 	gedit_debug (DEBUG_PLUGINS);
 	
+	g_return_if_fail (g_object_get_data (G_OBJECT (window), WINDOW_DATA_KEY) == NULL);
+	
 	side_panel = gedit_window_get_side_panel (window);
 	taglist_panel = gedit_taglist_plugin_panel_new (window);
 	
@@ -136,30 +140,52 @@ impl_activate (GeditPlugin *plugin,
 			      taglist_panel, 
 			      "Tags", 
 			      GTK_STOCK_ADD);
+			      
+	g_object_set_data (G_OBJECT (window), 
+			   WINDOW_DATA_KEY,
+			   taglist_panel);
 }
 
 static void
 impl_deactivate	(GeditPlugin *plugin,
 		 GeditWindow *window)
 {
+	GeditPanel *side_panel;
+	gpointer data;
+	
 	gedit_debug (DEBUG_PLUGINS);
+	
+	data = g_object_get_data (G_OBJECT (window), WINDOW_DATA_KEY);
+	g_return_if_fail (data != NULL);
+	
+	side_panel = gedit_window_get_side_panel (window);
+
+	gedit_panel_remove_item (side_panel, 
+			      	 GTK_WIDGET (data));
+			      
+	g_object_set_data (G_OBJECT (window), 
+			   WINDOW_DATA_KEY,
+			   NULL);
 }
 
 static void
 impl_update_ui	(GeditPlugin *plugin,
 		 GeditWindow *window)
 {
+	gpointer data;
+	GeditView *view;
+	
 	gedit_debug (DEBUG_PLUGINS);
+	
+	data = g_object_get_data (G_OBJECT (window), WINDOW_DATA_KEY);
+	g_return_if_fail (data != NULL);
+	
+	view = gedit_window_get_active_view (window);
+	
+	gtk_widget_set_sensitive (GTK_WIDGET (data),
+				  (view != NULL) &&
+				  gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 }
-
-/*
-static GtkWidget *
-impl_create_configure_dialog (GeditPlugin *plugin)
-{
-	* Implements this function only and only if the plugin
-	* is configurable. Otherwise you can safely remove it. *
-}
-*/
 
 static void
 gedit_taglist_plugin_class_init (GeditTaglistPluginClass *klass)
@@ -172,9 +198,6 @@ gedit_taglist_plugin_class_init (GeditTaglistPluginClass *klass)
 	plugin_class->activate = impl_activate;
 	plugin_class->deactivate = impl_deactivate;
 	plugin_class->update_ui = impl_update_ui;
-
-	/* Only if the plugin is configurable */
-	/* plugin_class->create_configure_dialog = impl_create_configure_dialog; */
 
 	g_type_class_add_private (object_class, sizeof (GeditTaglistPluginPrivate));
 }

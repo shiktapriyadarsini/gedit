@@ -70,7 +70,7 @@ struct _GeditXyzPluginClass
  */
 GType	gedit_xyz_plugin_get_type		(void);
 
-/* All the plugins must implement this function */
+/* All plugins must implement this function */
 G_MODULE_EXPORT GType register_gedit_plugin (GTypeModule *module);
 
 G_END_DECLS

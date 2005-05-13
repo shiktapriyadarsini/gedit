@@ -145,8 +145,6 @@ gedit_panel_grab_focus (GtkWidget *w)
 	GtkWidget *tab;
 	GeditPanel *panel = GEDIT_PANEL (w);
 	
-	g_print ("gedit_panel_grab_focus\n");
-	
 	n = gtk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
 	if (n == -1)
 		return;
@@ -492,11 +490,12 @@ build_tab_label (GeditPanel  *panel,
 			      NULL);
 			      
 	gtk_widget_show_all (hbox);
+	gtk_widget_hide (label);
 	
 	g_object_set_data (G_OBJECT (item), "label", label);
 	g_object_set_data (G_OBJECT (item), "hbox", hbox);
 	g_object_set_data (G_OBJECT (item), "label-ebox", label_ebox);
-
+	
 	return hbox;
 }
 
@@ -534,7 +533,7 @@ gedit_panel_add_item (GeditPanel  *panel,
 	gtk_notebook_append_page_menu (GTK_NOTEBOOK (panel->priv->notebook),
 				       item,
 				       tab_label,
-				       menu_label);		
+				       menu_label);
 }
 
 gboolean
