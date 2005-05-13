@@ -594,17 +594,35 @@ gedit_plugins_engine_plugin_is_configurable (GeditPluginInfo *info)
 	return gedit_plugin_is_configurable (info->plugin);
 }
 
-gboolean 	 
+void 	 
 gedit_plugins_engine_configure_plugin (GeditPluginInfo *info, 
 				       GtkWindow       *parent)
 {
+	GtkWidget *conf_dlg;
+	
+	GtkWindowGroup *wg;
+	
 	gedit_debug (DEBUG_PLUGINS);
 
-	g_return_val_if_fail (info != NULL, FALSE);
+	g_return_if_fail (info != NULL);
 
-	/* TODO */
-	
-	return TRUE;
+	conf_dlg = gedit_plugin_create_configure_dialog (info->plugin);
+	g_return_if_fail (conf_dlg != NULL);
+	gtk_window_set_transient_for (GTK_WINDOW (conf_dlg),
+				      parent);
+
+	wg = parent->group;		      
+	if (wg == NULL)
+	{
+		wg = gtk_window_group_new ();
+		gtk_window_group_add_window (wg, parent);
+	}
+			
+	gtk_window_group_add_window (wg,
+				     GTK_WINDOW (conf_dlg));
+		
+	gtk_window_set_modal (GTK_WINDOW (conf_dlg), TRUE);		     
+	gtk_widget_show (conf_dlg);
 }
 
 static void 

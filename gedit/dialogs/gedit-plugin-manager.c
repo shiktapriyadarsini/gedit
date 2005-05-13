@@ -124,7 +124,8 @@ configure_button_cb (GtkWidget *button, gpointer data)
 {
 	GeditPluginManager *pm = data;
 	GeditPluginInfo *info;
-
+	GtkWidget *toplevel;
+	
 	gedit_debug (DEBUG_PLUGINS);
 
 	info = plugin_manager_get_selected_plugin (pm);
@@ -134,8 +135,10 @@ configure_button_cb (GtkWidget *button, gpointer data)
 	gedit_debug_message (DEBUG_PLUGINS, "Configuring: %s\n", 
 			     gedit_plugins_engine_get_plugin_name (info));
 
-	/* TODO */
-
+	toplevel = GTK_WINDOW (gtk_widget_get_toplevel (pm->page));
+	
+	gedit_plugins_engine_configure_plugin (info, toplevel);
+	
 	gedit_debug_message (DEBUG_PLUGINS, "Done");	
 }
 

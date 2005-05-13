@@ -67,6 +67,26 @@ enum
 	NUM_COLUMNS
 };
 
+typedef struct _TimeConfigureDialog TimeConfigureDialog;
+
+struct _TimeConfigureDialog
+{
+	GtkWidget *dialog;
+
+	GtkWidget *list;
+	
+        /* Radio buttons to indicate what should be done */
+        GtkWidget *prompt;
+        GtkWidget *use_list;
+        GtkWidget *custom;
+        
+        GtkWidget *custom_entry;
+	GtkWidget *custom_format_example;
+
+	/* Info needed for the response handler */
+	GeditTimePlugin *plugin;	
+};
+
 typedef struct _ChooseFormatDialog ChooseFormatDialog;
 
 struct _ChooseFormatDialog
@@ -675,6 +695,235 @@ choose_format_dialog_button_toggled (GtkToggleButton *button,
 		return;
 	}
 }
+
+static void
+configure_dialog_button_toggled (GtkToggleButton *button, TimeConfigureDialog *dialog)
+{
+	gedit_debug (DEBUG_PLUGINS);
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
+	{
+		gtk_widget_set_sensitive (dialog->list, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_entry, TRUE);
+		gtk_widget_set_sensitive (dialog->custom_format_example, TRUE);
+
+		return;
+	}
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
+	{
+		gtk_widget_set_sensitive (dialog->list, TRUE);
+		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+
+		return;
+	}
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->prompt)))
+	{
+		gtk_widget_set_sensitive (dialog->list, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+
+		return;
+	}
+}
+
+static gint
+get_format_from_list (GtkWidget *listview)
+{
+	GtkTreeModel *model;
+	GtkTreeSelection *selection;
+	GtkTreeIter iter;
+        gint selected_value;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	model = gtk_tree_view_get_model (GTK_TREE_VIEW (listview));
+	g_return_val_if_fail (model != NULL, 0);
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (listview));
+	g_return_val_if_fail (selection != NULL, 0);
+
+	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+	{
+		gtk_tree_model_get (model, &iter, COLUMN_INDEX, &selected_value, -1);
+	}
+	
+	gedit_debug_message (DEBUG_PLUGINS, "Sel value: %d", selected_value);
+
+        return selected_value;
+}
+
+static void
+ok_button_pressed (TimeConfigureDialog *dialog)
+{
+	gint sel_format;
+	const gchar *custom_format;
+
+	gedit_debug (DEBUG_PLUGINS);
+   
+	sel_format = get_format_from_list (dialog->list);
+   
+	custom_format = gtk_entry_get_text (GTK_ENTRY (dialog->custom_entry));
+	
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
+	{
+		set_prompt_type (dialog->plugin, USE_CUSTOM_FORMAT);
+		set_custom_format (dialog->plugin, custom_format);
+	}
+	else 
+	{
+		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
+		{
+			set_prompt_type (dialog->plugin, USE_SELECTED_FORMAT);
+
+			set_selected_format (dialog->plugin, formats [sel_format]);
+		}
+		else
+     			/* Default to always prompt the user */
+			set_prompt_type (dialog->plugin, PROMPT_FOR_FORMAT);
+	}
+
+	gedit_debug_message (DEBUG_PLUGINS, "Sel: %d", sel_format);
+}
+
+static TimeConfigureDialog * 
+get_configure_dialog (GeditTimePlugin *plugin)
+{
+	TimeConfigureDialog *dialog = NULL;
+
+	GladeXML *gui;
+	GtkWidget *content;
+	GtkWidget *viewport;
+	GeditTimePluginPromptType prompt_type;
+	gchar *sf, *cf;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	gui = glade_xml_new (GEDIT_GLADEDIR "time.glade2",
+			     "time_dialog_content", NULL);   
+	if (!gui) 
+	{
+		gedit_warning (NULL,
+			       MISSING_FILE,	
+			       GEDIT_GLADEDIR "time.glade2");
+		return NULL;
+	}
+
+	dialog = g_new0 (TimeConfigureDialog, 1);
+
+	dialog->dialog = gtk_dialog_new_with_buttons (_("Configure insert date/time plugin..."),
+						      NULL,
+						      GTK_DIALOG_DESTROY_WITH_PARENT,
+						      GTK_STOCK_CANCEL,
+						      GTK_RESPONSE_CANCEL,
+						      GTK_STOCK_OK,
+						      GTK_RESPONSE_OK,
+						      GTK_STOCK_HELP,
+						      GTK_RESPONSE_HELP,
+						      NULL);
+
+	g_return_val_if_fail (dialog->dialog != NULL, NULL);
+
+	gtk_window_set_resizable (GTK_WINDOW (dialog->dialog), FALSE);
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog->dialog), FALSE);
+
+	content		= glade_xml_get_widget (gui, "time_dialog_content");
+	viewport 	= glade_xml_get_widget (gui, "formats_viewport");
+	dialog->list 	= glade_xml_get_widget (gui, "formats_tree");
+        dialog->prompt  = glade_xml_get_widget (gui, "always_prompt");
+        dialog->use_list= glade_xml_get_widget (gui, "never_prompt");
+        dialog->custom  = glade_xml_get_widget (gui, "use_custom");
+        dialog->custom_entry = glade_xml_get_widget (gui, "custom_entry");
+	dialog->custom_format_example = glade_xml_get_widget (gui, "custom_format_example");
+
+	if (!content              ||
+	    !viewport             ||
+	    !dialog->list         ||
+	    !dialog->prompt       ||
+	    !dialog->use_list     ||
+	    !dialog->custom       ||
+	    !dialog->custom_entry ||
+	    !dialog->custom_format_example)
+	{
+		gedit_warning (NULL,
+			       MISSING_WIDGETS,
+			       GEDIT_GLADEDIR "time.glade2");
+		return NULL;
+	}
+
+	sf = get_selected_format (plugin);
+	create_formats_list (dialog->list, sf, plugin);
+	g_free (sf);
+
+	prompt_type = get_prompt_type (plugin);
+
+	cf = get_custom_format (plugin);
+     	gtk_entry_set_text (GTK_ENTRY(dialog->custom_entry), cf);
+       	g_free (cf);
+
+        if (prompt_type == USE_CUSTOM_FORMAT)
+        {
+	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->custom), TRUE);
+
+		gtk_widget_set_sensitive (dialog->list, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_entry, TRUE);
+		gtk_widget_set_sensitive (dialog->custom_format_example, TRUE);
+        }
+        else if (prompt_type == USE_SELECTED_FORMAT)
+        {
+	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_list), TRUE);
+
+		gtk_widget_set_sensitive (dialog->list, TRUE);
+		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+        }
+        else
+        {
+	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->prompt), TRUE);
+
+		gtk_widget_set_sensitive (dialog->list, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_entry, FALSE);
+		gtk_widget_set_sensitive (dialog->custom_format_example, FALSE);
+        }
+
+	updated_custom_format_example (GTK_ENTRY (dialog->custom_entry), 
+			GTK_LABEL (dialog->custom_format_example));
+	
+	/* setup a window of a sane size. */
+	gtk_widget_set_size_request (GTK_WIDGET (viewport), 10, 200);
+
+	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog->dialog)->vbox),
+			    content, FALSE, FALSE, 0);
+
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
+					 GTK_RESPONSE_OK);
+
+	g_signal_connect (G_OBJECT (dialog->custom), "toggled",
+			  G_CALLBACK (configure_dialog_button_toggled), 
+			  dialog);
+
+   	g_signal_connect (G_OBJECT (dialog->prompt), "toggled",
+			  G_CALLBACK (configure_dialog_button_toggled), 
+			  dialog);
+
+	g_signal_connect (G_OBJECT (dialog->use_list), "toggled",
+			  G_CALLBACK (configure_dialog_button_toggled), 
+			  dialog);
+
+	g_signal_connect (G_OBJECT (dialog->dialog), "destroy",
+			  G_CALLBACK (dialog_destroyed), dialog);
+	
+	g_signal_connect (G_OBJECT (dialog->custom_entry), "changed",
+			  G_CALLBACK (updated_custom_format_example), 
+			  dialog->custom_format_example);
+
+	g_object_unref (gui);
+
+	return dialog;
+}
+
 static ChooseFormatDialog *
 get_choose_format_dialog (GtkWindow *parent, GeditTimePlugin *plugin)
 {
@@ -790,32 +1039,6 @@ real_insert_time (GtkTextBuffer *buffer,
 	gtk_text_buffer_end_user_action (buffer);
 }
 
-static gint
-get_format_from_list (GtkWidget *listview)
-{
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
-        gint selected_value;
-
-	gedit_debug (DEBUG_PLUGINS);
-
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (listview));
-	g_return_val_if_fail (model != NULL, 0);
-
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (listview));
-	g_return_val_if_fail (selection != NULL, 0);
-
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
-	{
-		gtk_tree_model_get (model, &iter, COLUMN_INDEX, &selected_value, -1);
-	}
-	
-	gedit_debug_message (DEBUG_PLUGINS, "Sel value: %d", selected_value);
-
-        return selected_value;
-}
-
 static void
 choose_format_dialog_response_cb (GtkWidget          *widget, 
 				  gint                response, 
@@ -895,7 +1118,6 @@ time_cb (GtkAction  *action,
 	 ActionData *data)
 {
 	GtkTextBuffer *buffer;
-	gint prompt_response;
 	gchar *the_time = NULL;
 	GeditTimePluginPromptType prompt_type;
 
@@ -955,14 +1177,63 @@ time_cb (GtkAction  *action,
 
 	g_free (the_time);
 }
-/*
+
+static void
+configure_dialog_response_cb (GtkWidget           *widget, 
+			      gint                 response, 
+			      TimeConfigureDialog *dialog)
+{
+	switch (response)
+	{
+		case GTK_RESPONSE_HELP:
+		{
+			GError *error = NULL;
+		
+			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");	
+			gnome_help_display ("gedit.xml","gedit-date-time-configure",
+					    &error);
+
+			if (error != NULL)
+			{
+				gedit_warning (GTK_WINDOW (dialog->dialog),
+					       error->message);
+
+				g_error_free (error);
+			}
+			break;
+		}
+		case GTK_RESPONSE_OK:
+		{
+			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
+		
+			ok_button_pressed (dialog);
+			
+			gtk_widget_destroy (dialog->dialog);
+			break;
+		}	
+		case GTK_RESPONSE_CANCEL:
+			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CANCEL");
+			gtk_widget_destroy (dialog->dialog);
+	}	
+}
+
 static GtkWidget *
 impl_create_configure_dialog (GeditPlugin *plugin)
 {
-	* Implements this function only and only if the plugin
-	* is configurable. Otherwise you can safely remove it. *
+	TimeConfigureDialog *dialog;
+	
+	dialog = get_configure_dialog (GEDIT_TIME_PLUGIN (plugin));
+	
+	dialog->plugin = GEDIT_TIME_PLUGIN (plugin);
+		
+	g_signal_connect (dialog->dialog,
+			  "response",
+			  G_CALLBACK (configure_dialog_response_cb),
+			  dialog);
+			  
+	return GTK_WIDGET (dialog->dialog);
 }
-*/
+
 
 static void
 gedit_time_plugin_class_init (GeditTimePluginClass *klass)
@@ -976,8 +1247,7 @@ gedit_time_plugin_class_init (GeditTimePluginClass *klass)
 	plugin_class->deactivate = impl_deactivate;
 	plugin_class->update_ui = impl_update_ui;
 
-	/* Only if the plugin is configurable */
-	/* plugin_class->create_configure_dialog = impl_create_configure_dialog; */
+	plugin_class->create_configure_dialog = impl_create_configure_dialog;
 
 	g_type_class_add_private (object_class, sizeof (GeditTimePluginPrivate));
 }
