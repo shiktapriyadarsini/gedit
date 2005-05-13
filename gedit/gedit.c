@@ -128,6 +128,8 @@ gedit_get_command_line_data (GnomeProgram *program)
 					 encoding_charset);
 		}
 	}
+
+	poptFreeContext (ctx);
 }
 
 int
