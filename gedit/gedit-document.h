@@ -35,7 +35,7 @@
 
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksourcebuffer.h>
-#include <libgnomevfs/gnome-vfs-result.h>
+#include <libgnomevfs/gnome-vfs.h>
 
 #include <gedit/gedit-encodings.h>
 
@@ -91,16 +91,16 @@ struct _GeditDocumentClass
 
 	/* Document load */
 	void (* loading)		(GeditDocument    *document,
-					 gulong            size,
-					 gulong            total_size);
+					 GnomeVFSFileSize  size,
+					 GnomeVFSFileSize  total_size);
 
 	void (* loaded)			(GeditDocument    *document,
 					 const GError     *error);
 
 	/* Document save */
 	void (* saving)			(GeditDocument    *document,
-					 gulong            size,
-					 gulong            total_size);
+					 GnomeVFSFileSize  size,
+					 GnomeVFSFileSize  total_size);
 
 	void (* saved)  		(GeditDocument    *document,
 					 const GError     *error);

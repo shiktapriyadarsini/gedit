@@ -78,7 +78,7 @@ struct _GeditDocumentPrivate
 	gboolean     readonly : 1;
 	gboolean     last_save_was_manually : 1; 	
 	gboolean     language_set_by_user : 1;
-	
+
 	gchar	    *uri;
 	gint 	     untitled_number;
 
@@ -258,11 +258,11 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, loading),
 			      NULL, NULL,
-			      gedit_marshal_VOID__ULONG_ULONG,
+			      gedit_marshal_VOID__UINT64_UINT64,
 			      G_TYPE_NONE,
 			      2,
-			      G_TYPE_ULONG,
-			      G_TYPE_ULONG);
+			      G_TYPE_UINT64,
+			      G_TYPE_UINT64);
 
 	document_signals[LOADED] =
    		g_signal_new ("loaded",
@@ -281,11 +281,11 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, saving),
 			      NULL, NULL,
-			      gedit_marshal_VOID__ULONG_ULONG,
+			      gedit_marshal_VOID__UINT64_UINT64,
 			      G_TYPE_NONE,
 			      2,
-			      G_TYPE_ULONG,
-			      G_TYPE_ULONG);
+			      G_TYPE_UINT64,
+			      G_TYPE_UINT64);
 
 	document_signals[SAVED] =
    		g_signal_new ("saved",

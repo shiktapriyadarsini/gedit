@@ -899,6 +899,8 @@ gedit_document_loader_get_file_size (GeditDocumentLoader  *loader)
 	if (loader->priv->info == NULL)
 		return 0;
 
+	g_print ("size: %d\n", loader->priv->info->size);
+
 	return loader->priv->info->size;
 }									 
 

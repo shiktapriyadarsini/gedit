@@ -283,13 +283,13 @@ show_loading_message_area (GeditTab *tab)
 }
 			   
 static void
-document_loading (GeditDocument *document,
-		  gint           size,
-		  gint           total_size,
-		  GeditTab      *tab)
+document_loading (GeditDocument    *document,
+		  GnomeVFSFileSize  size,
+		  GnomeVFSFileSize  total_size,
+		  GeditTab         *tab)
 {
 	double et;
-	
+
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
 
 	if (tab->priv->timer == NULL)
@@ -297,7 +297,7 @@ document_loading (GeditDocument *document,
 		g_return_if_fail (tab->priv->times_called == 0);
 		tab->priv->timer = g_timer_new ();
 	}
-	
+
 	et = g_timer_elapsed (tab->priv->timer, NULL);
 
 	if (tab->priv->times_called == 1)
@@ -305,7 +305,7 @@ document_loading (GeditDocument *document,
 		if ((total_size == 0) || (total_size > 51200UL) /* 50 KB */)
 		{
 			show_loading_message_area (tab);
-			g_print ("Show: %d/%d\n", size, total_size);
+			g_print ("Show: %Ld/%Ld\n", size, total_size);
 		}
 	}
 	else
@@ -319,7 +319,7 @@ document_loading (GeditDocument *document,
 
 			if ((total_time - et) > 3.0)
 			{
-				g_print ("Show: %d/%d\n", size, total_size);
+				g_print ("Show: %Ld/%Ld\n", size, total_size);
 				show_loading_message_area (tab);
 			}
 		}
@@ -327,14 +327,14 @@ document_loading (GeditDocument *document,
 		{
 			if (et > 3.0)
 			{
-				g_print ("Show: %d/%d\n", size, total_size);
+				g_print ("Show: %Ld/%Ld\n", size, total_size);
 				show_loading_message_area (tab);
 			}
 		}
 	}
 
 	// set_progress_bar (size, total_size);
-	g_print ("SET: %d/%d\n", size, total_size);
+	g_print ("SET: %Ld/%Ld\n", size, total_size);
 
 	tab->priv->times_called++;
 //	if (tab->priv->reverting)
