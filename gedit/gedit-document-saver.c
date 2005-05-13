@@ -440,6 +440,8 @@ get_slow_mime_type (const char *text_uri)
 	return mime_type;
 }
 
+/* ----------- local files ----------- */
+
 static gboolean
 save_existing_local_file (GeditDocumentSaver *saver)
 {
@@ -830,7 +832,7 @@ remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 	/* assert that the list has one and only one item */
 	g_return_if_fail (results != NULL && results->next == NULL);
 
-	info_result = (GnomeVFSGetFileInfoResult *)results->data;
+	info_result = (GnomeVFSGetFileInfoResult *) results->data;
 	g_return_if_fail (info_result != NULL);
 
 	if (info_result->result != GNOME_VFS_OK)
@@ -1081,6 +1083,8 @@ save_remote_file (GeditDocumentSaver *saver)
 			    saver,
 			    NULL);
 }
+
+/* ---------- public api ---------- */
 
 gboolean
 gedit_document_saver_save (GeditDocumentSaver  *saver,
