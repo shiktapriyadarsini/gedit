@@ -124,7 +124,7 @@ configure_button_cb (GtkWidget *button, gpointer data)
 {
 	GeditPluginManager *pm = data;
 	GeditPluginInfo *info;
-	GtkWidget *toplevel;
+	GtkWindow *toplevel;
 	
 	gedit_debug (DEBUG_PLUGINS);
 

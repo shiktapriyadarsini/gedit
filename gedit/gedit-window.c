@@ -369,8 +369,8 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	
 	g_return_if_fail (GEDIT_TAB (tab));
 		
-	g_print ("set_sensitivity_according_to_tab\n");
-	
+	gedit_debug (DEBUG_MDI);
+		
 	state = gedit_tab_get_state (tab);
 		
 	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
@@ -1712,32 +1712,16 @@ notebook_tab_removed (GeditNotebook *notebook,
 		
 		window->priv->active_tab = NULL;
 			       
-		if (windows->next != NULL)
-		{
-			g_signal_emit (G_OBJECT (window), 
-				       signals[TAB_REMOVED], 
-				       0, 
-				       tab);
-	
-			/* the list has more than one item */
-			gtk_widget_destroy (GTK_WIDGET (window));
-
-			/* do not try updating the menu */
-			return;
-		}
-		else
-		{	
-			set_title (window);
+		set_title (window);
 			
-			/* Remove line and col info */
-			gedit_statusbar_set_cursor_position (
-					GEDIT_STATUSBAR (window->priv->statusbar),
-					-1,
-					-1);
+		/* Remove line and col info */
+		gedit_statusbar_set_cursor_position (
+				GEDIT_STATUSBAR (window->priv->statusbar),
+				-1,
+				-1);
 				
-			gedit_statusbar_clear_overwrite (
-					GEDIT_STATUSBAR (window->priv->statusbar));								
-		}
+		gedit_statusbar_clear_overwrite (
+				GEDIT_STATUSBAR (window->priv->statusbar));								
 	}
 
 	if (!window->priv->removing_all_tabs)

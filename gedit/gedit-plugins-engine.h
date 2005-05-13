@@ -47,7 +47,7 @@ gboolean 	 gedit_plugins_engine_plugin_is_active 	(GeditPluginInfo *info);
 
 gboolean	 gedit_plugins_engine_plugin_is_configurable 
 							(GeditPluginInfo *info);
-void 	 gedit_plugins_engine_configure_plugin	(GeditPluginInfo *info, 
+void	 	 gedit_plugins_engine_configure_plugin	(GeditPluginInfo *info, 
 							 GtkWindow       *parent);
 
 /* 
