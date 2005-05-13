@@ -65,6 +65,9 @@ struct _GeditTabPrivate
 
 	/* tmp data for saving */
 	gchar		*save_uri;
+	
+	GTimer 		*timer;
+	guint		 times_called;
 };
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
@@ -259,13 +262,81 @@ file_already_open_warning_message_area_response (GtkWidget   *message_area,
 }
 
 static void
+show_loading_message_area (GeditTab *tab)
+{
+	GtkWidget *area;
+	
+	if (tab->priv->message_area != NULL)
+		return;
+		
+	if (tab->priv->reverting)
+		area = gedit_progress_message_area_new (GTK_STOCK_OPEN, // FIXME
+							"Reverting...",
+							FALSE);
+	else
+		area = gedit_progress_message_area_new (GTK_STOCK_OPEN,
+							"Loading...",
+							TRUE);
+	gtk_widget_show (area);
+	
+	set_message_area (tab, area);
+}
+			   
+static void
 document_loading (GeditDocument *document,
 		  gint           size,
 		  gint           total_size,
 		  GeditTab      *tab)
 {
+	double et;
+	
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
 
+	if (tab->priv->timer == NULL)
+	{
+		g_return_if_fail (tab->priv->times_called == 0);
+		tab->priv->timer = g_timer_new ();
+	}
+	
+	et = g_timer_elapsed (tab->priv->timer, NULL);
+
+	if (tab->priv->times_called == 1)
+	{
+		if ((total_size == 0) || (total_size > 51200UL) /* 50 KB */)
+		{
+			show_loading_message_area (tab);
+			g_print ("Show: %d/%d\n", size, total_size);
+		}
+	}
+	else
+	{
+		if ((tab->priv->times_called == 3) && (total_size != 0))
+		{
+			gdouble total_time;
+
+			/* et : total_time = size : total_size */
+			total_time = (et * total_size)/size;
+
+			if ((total_time - et) > 3.0)
+			{
+				g_print ("Show: %d/%d\n", size, total_size);
+				show_loading_message_area (tab);
+			}
+		}
+		else
+		{
+			if (et > 3.0)
+			{
+				g_print ("Show: %d/%d\n", size, total_size);
+				show_loading_message_area (tab);
+			}
+		}
+	}
+
+	// set_progress_bar (size, total_size);
+	g_print ("SET: %d/%d\n", size, total_size);
+
+	tab->priv->times_called++;
 //	if (tab->priv->reverting)
 }
 
@@ -281,6 +352,10 @@ document_loaded (GeditDocument *document,
 
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
 
+	g_timer_destroy (tab->priv->timer);
+	tab->priv->timer = NULL;
+	tab->priv->times_called = 0;
+	
 	uri = gedit_document_get_uri_ (document);
 
 	if (error != NULL)
