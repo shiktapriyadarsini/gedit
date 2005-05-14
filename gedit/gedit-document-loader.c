@@ -55,14 +55,15 @@
 struct _GeditDocumentLoaderPrivate
 {
 	GeditDocument		 *document;
-	GeditDocumentLoaderPhase  phase;
+
+	gboolean 		  used;
 	
 	/* Info on the current file */
 	gchar			 *uri;
 	const GeditEncoding      *encoding;
-	
+
 	GnomeVFSURI              *vfs_uri;
-	
+
 	GnomeVFSFileInfo	 *info;
 	GnomeVFSFileSize	  bytes_read;
 
@@ -73,7 +74,7 @@ struct _GeditDocumentLoaderPrivate
 	GnomeVFSAsyncHandle 	 *handle;
 	GnomeVFSAsyncHandle      *info_handle;
 
-	gchar                    *buffer; //FIXME: leaked on error
+	gchar                    *buffer;
 
 	const GeditEncoding      *auto_detected_encoding;
 
@@ -144,9 +145,12 @@ gedit_document_loader_finalize (GObject *object)
 {
 	GeditDocumentLoaderPrivate *priv = GEDIT_DOCUMENT_LOADER (object)->priv;
 
-	/* TODO */
-
 	g_free (priv->uri);
+
+	if (priv->info)
+		gnome_vfs_file_info_unref (priv->info);
+
+	g_free (priv->buffer);
 
 	if (priv->vfs_uri)
 		gnome_vfs_uri_unref (priv->vfs_uri);
@@ -195,7 +199,7 @@ gedit_document_loader_init (GeditDocumentLoader *loader)
 {
 	loader->priv = GEDIT_DOCUMENT_LOADER_GET_PRIVATE (loader);
 
-	loader->priv->phase = GEDIT_DOCUMENT_LOADER_IDLE;
+	loader->priv->used = FALSE;
 
 	loader->priv->fd = -1;
 
@@ -206,13 +210,13 @@ GeditDocumentLoader *
 gedit_document_loader_new (GeditDocument *doc)
 {
 	GeditDocumentLoader *dl;
-	
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-	
+
 	dl = GEDIT_DOCUMENT_LOADER (g_object_new (GEDIT_TYPE_DOCUMENT_LOADER, 
 						  "document", doc,
 						  NULL));
-						  
+
 	return dl;						  
 }
 
@@ -231,7 +235,7 @@ insert_text_in_document (GeditDocumentLoader *loader,
 
 	gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (loader->priv->document),
 				      FALSE);
-	
+
 	gtk_source_buffer_end_not_undoable_action (
 				GTK_SOURCE_BUFFER (loader->priv->document));
 }
@@ -447,7 +451,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 	if (fstat (loader->priv->fd, &statbuf) != 0) 
 	{
 		result = gnome_vfs_result_from_errno ();
-		loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_GETTING_INFO;
 
 		g_set_error (&loader->priv->error,
 			     GEDIT_DOCUMENT_ERROR,
@@ -483,7 +486,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 		if (mapped_file == MAP_FAILED)
 		{
 			result = gnome_vfs_result_from_errno ();
-			loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_READING;
 
 			g_set_error (&loader->priv->error,
 				     GEDIT_DOCUMENT_ERROR,
@@ -500,8 +502,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 					       loader->priv->info->size,
 					       &loader->priv->error))
 		{
-			loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_CONVERTING;
-
 			ret = munmap (mapped_file, loader->priv->info->size);
 			if (ret != 0)
 				g_warning ("File '%s' has not been correctly unmapped: %s",
@@ -532,8 +532,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 
 	loader->priv->fd = -1;
 
-	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED;
-
  done:
 	/* the object will be unrefed in the callback of the loading
 	 * signal, so we need to prevent finalization.
@@ -541,12 +539,6 @@ load_local_file_real (GeditDocumentLoader *loader)
 	g_object_ref (loader);
 
 	load_completed_or_failed (loader);
-
-	/* each loader can be used only once: put the loader in 
-	 * phase END so that we can check if a loader has already
-	 * been used in case it is still alive after the unref
-	 */
-	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_END;
 
 	g_object_unref (loader);
 
@@ -566,8 +558,6 @@ static void
 load_local_file (GeditDocumentLoader *loader,
 		 const gchar         *fname)
 {
-	loader->priv->phase = GEDIT_DOCUMENT_LOADER_PHASE_READY_TO_GO;
-
 	g_signal_emit (loader,
 		       signals[LOADING],
 		       0,
@@ -608,6 +598,20 @@ async_close_cb (GnomeVFSAsyncHandle *handle,
 	/* nothing to do... no point in reporting an error */
 }
 
+static void
+remote_load_completed_or_failed (GeditDocumentLoader *loader)
+{
+	/* free the buffer and close the handle */
+	gnome_vfs_async_close (loader->priv->handle,
+			       async_close_cb,
+			       NULL);
+
+	g_free (loader->priv->buffer);
+	loader->priv->buffer = NULL;
+
+	load_completed_or_failed (loader);
+}
+
 /* prototype, because they call each other... isn't C lovely */
 static void	read_file_chunk		(GeditDocumentLoader *loader);
 
@@ -635,7 +639,7 @@ async_read_cb (GnomeVFSAsyncHandle *handle,
 			     result,
 			     gnome_vfs_result_to_string (result));
 
-		load_completed_or_failed (loader);
+		remote_load_completed_or_failed (loader);
 
 		return;
 	}
@@ -648,7 +652,7 @@ async_read_cb (GnomeVFSAsyncHandle *handle,
 			     GNOME_VFS_ERROR_TOO_BIG,
 			     gnome_vfs_result_to_string (GNOME_VFS_ERROR_TOO_BIG));
 
-		load_completed_or_failed (loader);
+		remote_load_completed_or_failed (loader);
 
 		return;
 	}
@@ -664,13 +668,7 @@ async_read_cb (GnomeVFSAsyncHandle *handle,
 					  loader->priv->bytes_read,
 					  &loader->priv->error);
 
-		gnome_vfs_async_close (loader->priv->handle,
-				       async_close_cb,
-				       NULL);
-
-		g_free (loader->priv->buffer);
-
-		load_completed_or_failed (loader);
+		remote_load_completed_or_failed (loader);
 
 		return;
 	}
@@ -723,7 +721,7 @@ remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 			     info_result->result,
 			     gnome_vfs_result_to_string (info_result->result));
 
-		load_completed_or_failed (loader);
+		remote_load_completed_or_failed (loader);
 
 		return;
 	}
@@ -740,7 +738,7 @@ remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 			     GNOME_VFS_ERROR_GENERIC, // FIXME
 			     gnome_vfs_result_to_string (GNOME_VFS_ERROR_GENERIC));
 
-		load_completed_or_failed (loader);
+		remote_load_completed_or_failed (loader);
 
 		return;
 	}
@@ -765,6 +763,7 @@ async_open_callback (GnomeVFSAsyncHandle *handle,
 			     result,
 			     gnome_vfs_result_to_string (result));
 
+		/* in this case we don't need to close the handle */
 		load_completed_or_failed (loader);
 
 		return;
@@ -820,8 +819,11 @@ gedit_document_loader_load (GeditDocumentLoader *loader,
 {
 	gchar *local_path;
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
-	g_return_val_if_fail (loader->priv->phase == GEDIT_DOCUMENT_LOADER_IDLE, FALSE);
 	g_return_val_if_fail (uri != NULL, FALSE);
+
+	/* the loader can be used just once, then it must be thrown away */
+	g_return_val_if_fail (loader->priv->used == FALSE, FALSE);
+	loader->priv->used = TRUE;
 
 	loader->priv->vfs_uri = gnome_vfs_uri_new (uri);
 	if (loader->priv->vfs_uri == NULL)
@@ -835,6 +837,7 @@ gedit_document_loader_load (GeditDocumentLoader *loader,
 	if (local_path != NULL)
 	{
 		load_local_file (loader, local_path);
+		g_free (local_path);
 	}
 	else
 	{
@@ -842,23 +845,12 @@ gedit_document_loader_load (GeditDocumentLoader *loader,
 		load_remote_file (loader);
 	}
 
-	g_free (local_path);
-
 	return TRUE;
-}
-
-GeditDocumentLoaderPhase 
-gedit_document_loader_get_phase (GeditDocumentLoader  *loader)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 
-			      GEDIT_DOCUMENT_LOADER_IDLE);
-
-	return loader->priv->phase;
 }
 
 /* Returns STDIN_URI if loading from stdin */
 const gchar *
-gedit_document_loader_get_uri (GeditDocumentLoader  *loader)
+gedit_document_loader_get_uri (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
 
@@ -867,7 +859,7 @@ gedit_document_loader_get_uri (GeditDocumentLoader  *loader)
 
 /* it may return NULL, it's up to gedit-document handle it */
 const gchar *
-gedit_document_loader_get_mime_type (GeditDocumentLoader  *loader)
+gedit_document_loader_get_mime_type (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
 
@@ -879,7 +871,7 @@ gedit_document_loader_get_mime_type (GeditDocumentLoader  *loader)
 }
 
 time_t
-gedit_document_loader_get_mtime (GeditDocumentLoader  *loader)
+gedit_document_loader_get_mtime (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
 
@@ -892,20 +884,18 @@ gedit_document_loader_get_mtime (GeditDocumentLoader  *loader)
 
 /* Returns 0 if file size is unknown */
 GnomeVFSFileSize
-gedit_document_loader_get_file_size (GeditDocumentLoader  *loader)
+gedit_document_loader_get_file_size (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
 
 	if (loader->priv->info == NULL)
 		return 0;
 
-	g_print ("size: %d\n", loader->priv->info->size);
-
 	return loader->priv->info->size;
 }									 
 
 GnomeVFSFileSize
-gedit_document_loader_get_bytes_read (GeditDocumentLoader  *loader)
+gedit_document_loader_get_bytes_read (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
 

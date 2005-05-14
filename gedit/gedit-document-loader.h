@@ -47,41 +47,6 @@ G_BEGIN_DECLS
 #define GEDIT_IS_DOCUMENT_LOADER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_DOCUMENT_LOADER))
 #define GEDIT_DOCUMENT_LOADER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_DOCUMENT_LOADER, GeditDocumentLoaderClass))
 
-/* This specifies the current phase in the loading operation.  Phases whose
-   comments are marked with `(*)' are always reported in "normal" (i.e. no
-   error) condition; the other ones are only reported if an error happens in
-   that specific phase.  */
-typedef enum {
-	/* Idle (not loading a file) */
-	GEDIT_DOCUMENT_LOADER_IDLE,
-	/* Initial phase */
-	GEDIT_DOCUMENT_LOADER_PHASE_INITIAL,
-	/* Ready to go (*) */
-	GEDIT_DOCUMENT_LOADER_PHASE_READY_TO_GO,
-	/* Open the file to read */
-	GEDIT_DOCUMENT_LOADER_PHASE_OPEN,
-	/* Getting info on the document to load */
-	GEDIT_DOCUMENT_LOADER_PHASE_GETTING_INFO,
-	/* Got info on the document to load (*) */
-	GEDIT_DOCUMENT_LOADER_PHASE_GOT_INFO,	
-	/* Loading the file (*) */
-	GEDIT_DOCUMENT_LOADER_PHASE_LOADING,
-	/* Reading the file */
-	GEDIT_DOCUMENT_LOADER_PHASE_READING,	
-	/* Converting file to UTF-8 */
-	GEDIT_DOCUMENT_LOADER_PHASE_CONVERTING,	
-	/* File loaded (*) */
-	GEDIT_DOCUMENT_LOADER_PHASE_LOADED,
-	/* File loading cancelled */
-	GEDIT_DOCUMENT_LOADER_PHASE_CANCELLED,
-	/* Operation finished (*) */
-	GEDIT_DOCUMENT_LOADER_PHASE_COMPLETED,
-	/* Loader has been used. Reset or destroy */
-	GEDIT_DOCUMENT_LOADER_PHASE_END,
-
-	GEDIT_DOCUMENT_LOADER_NUM_OF_PHASES
-} GeditDocumentLoaderPhase;
-
 /* Private structure type */
 typedef struct _GeditDocumentLoaderPrivate GeditDocumentLoaderPrivate;
 
@@ -129,10 +94,6 @@ gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader  *loader);
 void			 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
 #endif
 
-GeditDocumentLoaderPhase gedit_document_loader_get_phase	(GeditDocumentLoader  *loader);
-#if 0
-gchar			*gedit_document_loader_get_message	(GeditDocumentLoader  *loader);
-#endif
 /* Returns STDIN_URI if loading from stdin */
 #define STDIN_URI "stdin:" 
 const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader  *loader);
