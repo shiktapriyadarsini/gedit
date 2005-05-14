@@ -860,8 +860,8 @@ remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 }
 
 static gint
-async_transfer_ok (GnomeVFSXferProgressInfo *progress_info,
-		   GeditDocumentSaver       *saver)
+async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
+	       GeditDocumentSaver       *saver)
 {
 	/* TODO: if cancelled && !completed */
 
@@ -913,7 +913,7 @@ async_transfer_ok (GnomeVFSXferProgressInfo *progress_info,
 	case GNOME_VFS_XFER_PHASE_DELETESOURCE:
 	case GNOME_VFS_XFER_PHASE_READSOURCE:
 	default:
-		g_assert_not_reached ();
+		g_return_val_if_reached (0);
 	}
 
 	/* signal the progress */
@@ -927,8 +927,8 @@ async_transfer_ok (GnomeVFSXferProgressInfo *progress_info,
 }
 
 static gint
-async_transfer_error (GnomeVFSXferProgressInfo *progress_info,
-		      GeditDocumentSaver       *saver)
+async_xfer_error (GnomeVFSXferProgressInfo *progress_info,
+		  GeditDocumentSaver       *saver)
 {
 	g_set_error (&saver->priv->error,
 		     GEDIT_DOCUMENT_ERROR,
@@ -950,9 +950,9 @@ async_xfer_progress (GnomeVFSAsyncHandle      *handle,
 	switch (progress_info->status)
 	{
 	case GNOME_VFS_XFER_PROGRESS_STATUS_OK:
-		return async_transfer_ok (progress_info, saver);
+		return async_xfer_ok (progress_info, saver);
 	case GNOME_VFS_XFER_PROGRESS_STATUS_VFSERROR:
-		return async_transfer_error (progress_info, saver);
+		return async_xfer_error (progress_info, saver);
 
 	/* we should never go in these */
 	case GNOME_VFS_XFER_PROGRESS_STATUS_OVERWRITE:
