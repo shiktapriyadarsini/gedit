@@ -551,10 +551,10 @@ document_loaded (GeditDocument *document,
 }
 
 static void
-document_saving (GeditDocument *document,
-		 gint           size,
-		 gint           total_size,
-		 GeditTab      *tab)
+document_saving (GeditDocument    *document,
+		 GnomeVFSFileSize  size,
+		 GnomeVFSFileSize  total_size,
+		 GeditTab         *tab)
 {
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
 
@@ -626,7 +626,7 @@ gedit_tab_init (GeditTab *tab)
 	gtk_box_pack_end (GTK_BOX (tab), sw, TRUE, TRUE, 0);
 	gtk_container_add (GTK_CONTAINER (sw), tab->priv->view);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                             GTK_SHADOW_IN);	
+					     GTK_SHADOW_IN);	
 	gtk_widget_show (sw);
 
 	g_signal_connect (G_OBJECT (doc),
@@ -1038,7 +1038,7 @@ _gedit_tab_save (GeditTab *tab)
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (!gedit_document_is_untitled);
+	g_return_if_fail (!gedit_document_is_untitled (doc));
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
