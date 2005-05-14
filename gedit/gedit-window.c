@@ -1188,29 +1188,6 @@ update_overwrite_mode_statusbar (GtkTextView *view,
 
 #define MAX_TITLE_LENGTH 100
 
-static gchar *
-get_dirname (const gchar *uri)
-{
-	gchar *res;
-	gchar *str;
-
-	str = g_path_get_dirname (uri);
-	g_return_val_if_fail (str != NULL, ".");
-
-	if ((strlen (str) == 1) && (*str == '.'))
-	{
-		g_free (str);
-		
-		return NULL;
-	}
-
-	res = gedit_utils_replace_home_dir_with_tilde (str);
-
-	g_free (str);
-	
-	return res;
-}
-
 static void 
 set_title (GeditWindow *window)
 {
@@ -1250,7 +1227,7 @@ set_title (GeditWindow *window)
 		name = g_strdup (short_name);
 
 		uri = gedit_document_get_uri_for_display (doc);
-		str = get_dirname (uri);
+		str = gedit_utils_uri_get_dirname (uri);
 
 		if (str != NULL)
 		{

@@ -100,8 +100,6 @@ gchar *gedit_utils_str_middle_truncate (const char *string,
 
 gchar *gedit_utils_make_valid_utf8 (const char *name);
 
-gchar *gedit_utils_uri_get_basename (const char *uri);
-
 gchar *gedit_utils_uri_get_dirname (const char *uri);
 
 gchar *gedit_utils_replace_home_dir_with_tilde (const gchar *uri);

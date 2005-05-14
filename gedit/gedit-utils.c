@@ -669,45 +669,27 @@ gedit_utils_make_valid_utf8 (const char *name)
 	return g_string_free (string, FALSE);
 }
 
-gchar *
-gedit_utils_uri_get_basename (const char *uri)
-{
-	GnomeVFSURI *vfs_uri;
-	char *name;
-
-	/* Make VFS version of URI. */
-	vfs_uri = gnome_vfs_uri_new (uri);
-	if (vfs_uri == NULL) {
-		return NULL;
-	}
-
-	/* Extract name part. */
-	name = gnome_vfs_uri_extract_short_name (vfs_uri);
-	gnome_vfs_uri_unref (vfs_uri);
-
-	return name;
-}
 
 gchar *
-gedit_utils_uri_get_dirname (const char *uri)
+gedit_utils_uri_get_dirname (const gchar *uri)
 {
-	GnomeVFSURI *vfs_uri;
-	gchar *name;
 	gchar *res;
+	gchar *str;
 
-	/* Make VFS version of URI. */
-	vfs_uri = gnome_vfs_uri_new (uri);
-	if (vfs_uri == NULL) {
+	str = g_path_get_dirname (uri);
+	g_return_val_if_fail (str != NULL, ".");
+
+	if ((strlen (str) == 1) && (*str == '.'))
+	{
+		g_free (str);
+		
 		return NULL;
 	}
 
-	/* Extract name part. */
-	name = gnome_vfs_uri_extract_dirname (vfs_uri);
-	gnome_vfs_uri_unref (vfs_uri);
+	res = gedit_utils_replace_home_dir_with_tilde (str);
 
-	res = g_strdup_printf ("file:///%s", name);
-	g_free (name);
-
+	g_free (str);
+	
 	return res;
 }
 

@@ -44,6 +44,7 @@
 #include "gedit-io-error-message-area.h"
 #include "gedit-print-job-preview.h"
 #include "gedit-progress-message-area.h"
+#include "gedit-debug.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -261,27 +262,124 @@ file_already_open_warning_message_area_response (GtkWidget   *message_area,
 	gtk_widget_grab_focus (GTK_WIDGET (view));	
 }
 
+#define MAX_MSG_LENGTH 100
+
 static void
 show_loading_message_area (GeditTab *tab)
 {
 	GtkWidget *area;
+	GeditDocument *doc = NULL;
+	const gchar *short_name;
+	gchar *name;
+	gchar *dirname = NULL;
+	gchar *msg = NULL;
+	gint len;
 	
 	if (tab->priv->message_area != NULL)
 		return;
+	
+	gedit_debug (DEBUG_DOCUMENT);
 		
-	if (tab->priv->reverting)
-		area = gedit_progress_message_area_new (GTK_STOCK_OPEN, // FIXME
-							"Reverting...",
-							FALSE);
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (doc != NULL);
+
+	short_name = gedit_document_get_short_name_for_display (doc);
+
+	len = g_utf8_strlen (short_name, -1);
+
+	/* if the name is awfully long, truncate it and be done with it,
+	 * otherwise also show the directory (ellipsized if needed)
+	 */
+	if (len > MAX_MSG_LENGTH)
+	{
+		name = gedit_utils_str_middle_truncate (short_name, 
+							MAX_MSG_LENGTH);
+	}
 	else
+	{
+		const gchar *uri;
+		gchar *str;
+
+		name = g_strdup (short_name);
+
+		uri = gedit_document_get_uri_for_display (doc);
+		str = gedit_utils_uri_get_dirname (uri);
+
+		if (str != NULL)
+		{
+			/* use the remaining space for the dir, but use a min of 20 chars
+			 * so that we do not end up with a dirname like "(a...b)".
+			 * This means that in the worst case when the filename is long 99
+			 * we have a title long 99 + 20, but I think it's a rare enough
+			 * case to be acceptable. It's justa darn title afterall :)
+			 */
+			dirname = gedit_utils_str_middle_truncate (str, 
+								   MAX (20, MAX_MSG_LENGTH - len));
+			g_free (str);
+		}
+	}
+
+	if (tab->priv->reverting)
+	{
+		/* Translators: the first %s is a file name (e.g. test.txt) the second one
+		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
+		msg = g_strdup_printf ("Reverting <b>%s</b> from <b>%s</b>",
+				       name, dirname);
+				       
+		area = gedit_progress_message_area_new (GTK_STOCK_REVERT_TO_SAVED,
+							"msg",
+							FALSE);
+	}
+	else
+	{
+		/* Translators: the first %s is a file name (e.g. test.txt) the second one
+		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
+		msg = g_strdup_printf ("Loading <b>%s</b> from <b>%s</b>",
+				       name, dirname);
+
 		area = gedit_progress_message_area_new (GTK_STOCK_OPEN,
-							"Loading...",
-							TRUE);
+							msg,
+							FALSE);
+	}
+	
 	gtk_widget_show (area);
 	
 	set_message_area (tab, area);
+	
+	g_free (msg);
+	g_free (name);
+	g_free (dirname);
 }
-			   
+
+static void
+loading_message_area_set_progress (GeditTab	    *tab,
+				   GnomeVFSFileSize  size,
+				   GnomeVFSFileSize  total_size)
+{
+	if (tab->priv->message_area == NULL)
+		return;
+	
+	gedit_debug_message (DEBUG_DOCUMENT, "%Ld/%Ld", size, total_size);
+	
+	g_return_if_fail (GEDIT_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
+	
+	if (total_size == 0)
+	{
+		gedit_progress_message_area_pulse (
+				GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area));		
+	}
+	else
+	{
+		gdouble frac;
+
+		frac = (gdouble)size / (gdouble)total_size;
+
+		gedit_progress_message_area_set_fraction (
+				GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
+				frac);		
+	}
+}
+
 static void
 document_loading (GeditDocument    *document,
 		  GnomeVFSFileSize  size,
@@ -292,6 +390,8 @@ document_loading (GeditDocument    *document,
 
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
 
+	gedit_debug_message (DEBUG_DOCUMENT, "%Ld/%Ld", size, total_size);
+	
 	if (tab->priv->timer == NULL)
 	{
 		g_return_if_fail (tab->priv->times_called == 0);
@@ -305,7 +405,6 @@ document_loading (GeditDocument    *document,
 		if ((total_size == 0) || (total_size > 51200UL) /* 50 KB */)
 		{
 			show_loading_message_area (tab);
-			g_print ("Show: %Ld/%Ld\n", size, total_size);
 		}
 	}
 	else
@@ -319,7 +418,6 @@ document_loading (GeditDocument    *document,
 
 			if ((total_time - et) > 3.0)
 			{
-				g_print ("Show: %Ld/%Ld\n", size, total_size);
 				show_loading_message_area (tab);
 			}
 		}
@@ -327,17 +425,14 @@ document_loading (GeditDocument    *document,
 		{
 			if (et > 3.0)
 			{
-				g_print ("Show: %Ld/%Ld\n", size, total_size);
 				show_loading_message_area (tab);
 			}
 		}
 	}
-
-	// set_progress_bar (size, total_size);
-	g_print ("SET: %Ld/%Ld\n", size, total_size);
+	
+	loading_message_area_set_progress (tab, size, total_size);
 
 	tab->priv->times_called++;
-//	if (tab->priv->reverting)
 }
 
 // TODO: different error messages if tab->priv->reverting
@@ -355,6 +450,8 @@ document_loaded (GeditDocument *document,
 	g_timer_destroy (tab->priv->timer);
 	tab->priv->timer = NULL;
 	tab->priv->times_called = 0;
+	
+	set_message_area (tab, NULL);
 	
 	uri = gedit_document_get_uri_ (document);
 
