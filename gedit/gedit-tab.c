@@ -45,6 +45,7 @@
 #include "gedit-print-job-preview.h"
 #include "gedit-progress-message-area.h"
 #include "gedit-debug.h"
+#include "gedit-prefs-manager-app.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -60,9 +61,6 @@ struct _GeditTabPrivate
 	GtkWidget	*print_preview;
 
 	GeditPrintJob   *print_job;
-
-	/* tmp data for loading */
-	gboolean        reverting;
 
 	/* tmp data for saving */
 	gchar		*save_uri;
@@ -190,6 +188,21 @@ gedit_tab_set_state (GeditTab *tab,
 	else		
 		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
 
+	if (state == GEDIT_TAB_STATE_LOADING) // FIXME: add other states if needed
+	{
+		g_object_set (G_OBJECT (tab->priv->view),
+			      "highlight_current_line", FALSE,
+			      "cursor-visible", FALSE,
+			      NULL);
+	}
+	else
+	{
+		g_object_set (G_OBJECT (tab->priv->view),
+			      "highlight_current_line", gedit_prefs_manager_get_highlight_current_line (),
+			      "cursor-visible", TRUE,
+			      NULL);
+	}
+		
 	if ((state == GEDIT_TAB_STATE_LOADING_ERROR) ||
 	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))	
 		gtk_widget_hide (tab->priv->view_scrolled_window);
@@ -319,7 +332,7 @@ show_loading_message_area (GeditTab *tab)
 		}
 	}
 
-	if (tab->priv->reverting)
+	if (tab->priv->state == GEDIT_TAB_STATE_REVERTING)
 	{
 		/* Translators: the first %s is a file name (e.g. test.txt) the second one
 		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
@@ -327,7 +340,7 @@ show_loading_message_area (GeditTab *tab)
 				       name, dirname);
 				       
 		area = gedit_progress_message_area_new (GTK_STOCK_REVERT_TO_SAVED,
-							"msg",
+							msg,
 							FALSE);
 	}
 	else
@@ -388,7 +401,8 @@ document_loading (GeditDocument    *document,
 {
 	double et;
 
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
+	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
+		 	  (tab->priv->state == GEDIT_TAB_STATE_REVERTING));
 
 	gedit_debug_message (DEBUG_DOCUMENT, "%Ld/%Ld", size, total_size);
 	
@@ -435,7 +449,7 @@ document_loading (GeditDocument    *document,
 	tab->priv->times_called++;
 }
 
-// TODO: different error messages if tab->priv->reverting
+// TODO: different error messages if tab->priv->state == GEDIT_TAB_STATE_REVERTING
 static void
 document_loaded (GeditDocument *document,
 		 const GError  *error,
@@ -445,7 +459,8 @@ document_loaded (GeditDocument *document,
 	const GeditEncoding *encoding;
 	const gchar *uri;
 
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING);
+	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
+			  (tab->priv->state == GEDIT_TAB_STATE_REVERTING));
 
 	g_timer_destroy (tab->priv->timer);
 	tab->priv->timer = NULL;
@@ -457,8 +472,11 @@ document_loaded (GeditDocument *document,
 
 	if (error != NULL)
 	{
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
-
+		if (tab->priv->state == GEDIT_TAB_STATE_LOADING)
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
+		else
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
+			
 		encoding = gedit_document_get_encoding (document);
 
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
@@ -783,6 +801,10 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 			tip =  g_markup_printf_escaped(_("Error opening file <i>%s</i>."),
 						       ruri);
 			break;
+		case GEDIT_TAB_STATE_REVERTING_ERROR:
+			tip =  g_markup_printf_escaped(_("Error reverting file <i>%s</i>."),
+						       ruri);
+			break;			
 		case GEDIT_TAB_STATE_SAVING_ERROR:
 			tip =  g_markup_printf_escaped(_("Error saving file <i>%s</i>."),
 						       ruri);
@@ -926,6 +948,11 @@ _gedit_tab_get_icon (GeditTab *tab)
 						 GTK_STOCK_OPEN, 
 						 icon_size);
 			break;
+		case GEDIT_TAB_STATE_REVERTING:
+			pixbuf = get_stock_icon (theme, 
+						 GTK_STOCK_REVERT_TO_SAVED, 
+						 icon_size);						 
+			break;
 		case GEDIT_TAB_STATE_SAVING:
 			pixbuf = get_stock_icon (theme, 
 						 GTK_STOCK_SAVE, 
@@ -944,6 +971,7 @@ _gedit_tab_get_icon (GeditTab *tab)
 			break;
 
 		case GEDIT_TAB_STATE_LOADING_ERROR:
+		case GEDIT_TAB_STATE_REVERTING_ERROR:		
 		case GEDIT_TAB_STATE_SAVING_ERROR:
 		case GEDIT_TAB_STATE_GENERIC_ERROR:
 			pixbuf = get_stock_icon (theme, 
@@ -997,8 +1025,6 @@ _gedit_tab_load (GeditTab            *tab,
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
-	tab->priv->reverting = FALSE;
-
 	return gedit_document_load (doc,
 				    uri,
 				    encoding,
@@ -1017,9 +1043,7 @@ _gedit_tab_revert (GeditTab *tab)
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
-
-	tab->priv->reverting = TRUE;
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING);
 
 	gedit_document_load (doc,
 			     gedit_document_get_uri_ (doc),

@@ -184,7 +184,8 @@ refresh_list (GeditDocumentsPanel *panel)
 				    -1);
 		
 		g_free (name);
-		g_object_unref (pixbuf);
+		if (pixbuf != NULL)
+			g_object_unref (pixbuf);
 		
 		if (l->data == active_tab)
 		{
@@ -224,7 +225,8 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditDocumentsPanel *panel)
         	            -1);
         	            
 	g_free (name);
-	g_object_unref (pixbuf);
+	if (pixbuf != NULL)
+		g_object_unref (pixbuf);
 }
 
 static void
@@ -290,7 +292,8 @@ window_tab_added (GeditWindow         *window,
         	            -1);
         	            
 	g_free (name);
-	g_object_unref (pixbuf);
+	if (pixbuf != NULL)
+		g_object_unref (pixbuf);
 }			    
  
 static void
