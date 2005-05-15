@@ -612,6 +612,7 @@ document_saved (GeditDocument *document,
 	}
 
 	g_free (tab->priv->save_uri);
+	tab->priv->save_uri = NULL;
 }
 
 static void

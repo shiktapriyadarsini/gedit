@@ -169,6 +169,9 @@ gedit_document_saver_reset (GeditDocumentSaver *saver)
 	g_free (saver->priv->local_path);
 	saver->priv->local_path = NULL;
 
+	saver->priv->size = 0;
+	saver->priv->bytes_written = 0;
+
 	if (saver->priv->error)
 		g_error_free (saver->priv->error);
 	saver->priv->error = NULL;
@@ -889,6 +892,7 @@ async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 		break;
 	case GNOME_VFS_XFER_PHASE_INITIAL:
 	case GNOME_VFS_XFER_PHASE_COLLECTING:
+	case GNOME_VFS_XFER_PHASE_DELETESOURCE: // why do we get this phase??
 	case GNOME_VFS_XFER_CHECKING_DESTINATION:
 		break;
 	case GNOME_VFS_XFER_PHASE_READYTOGO:
@@ -910,7 +914,6 @@ async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 	case GNOME_VFS_XFER_PHASE_SETATTRIBUTES:
 	case GNOME_VFS_XFER_PHASE_CLOSESOURCE:
 	case GNOME_VFS_XFER_PHASE_MOVING:
-	case GNOME_VFS_XFER_PHASE_DELETESOURCE:
 	case GNOME_VFS_XFER_PHASE_READSOURCE:
 	default:
 		g_return_val_if_reached (0);
