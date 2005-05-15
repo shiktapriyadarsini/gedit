@@ -438,11 +438,11 @@ gedit_taglist_plugin_panel_init (GeditTaglistPluginPanel *panel)
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
 	GList *focus_chain = NULL;
-	
+
 	gedit_debug (DEBUG_PLUGINS);
-	
+
 	panel->priv = GEDIT_TAGLIST_PLUGIN_PANEL_GET_PRIVATE (panel);
-	
+
 	panel->priv->tooltips = gtk_tooltips_new ();
 	g_object_ref (G_OBJECT (panel->priv->tooltips));
 	gtk_object_sink (GTK_OBJECT (panel->priv->tooltips));
@@ -454,8 +454,7 @@ gedit_taglist_plugin_panel_init (GeditTaglistPluginPanel *panel)
 			    FALSE, 
 			    TRUE,
 			    0);
-	
-			   
+
 	gtk_tooltips_set_tip (panel->priv->tooltips,
 			      panel->priv->tag_groups_combo,
 			      _("Select the group of tags you want to use"),
@@ -532,7 +531,7 @@ gedit_taglist_plugin_panel_init (GeditTaglistPluginPanel *panel)
 	
 	/* Populate combo box */
 	populate_tag_groups_combo (panel);
-				
+
 	gtk_widget_show_all (GTK_WIDGET (panel));
 }
 
