@@ -532,7 +532,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 		dirname = g_path_get_dirname (saver->priv->local_path);
 		tmp_filename = g_build_filename (dirname, ".gedit-save-XXXXXX", NULL);
 		g_free (dirname);
-	
+
 		/* We set the umask because some (buggy) implementations
 		 * of mkstemp() use permissions 0666 and we want 0600.
 		 */
@@ -541,13 +541,17 @@ save_existing_local_file (GeditDocumentSaver *saver)
 		umask (saved_umask);
 
 		if (tmpfd == -1)
+		{
+			g_free (tmp_filename);
 			goto fallback_strategy;
+		}
 
 		/* try to set permissions */
 		if (fchown (tmpfd, statbuf.st_uid, statbuf.st_gid) == -1 &&
 		    fchmod (tmpfd, statbuf.st_mode) == -1)
 		{
 			close (tmpfd);
+			g_free (tmp_filename);
 			goto fallback_strategy;
 		}
 
@@ -557,6 +561,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 				 	      &saver->priv->error))
 		{
 			close (tmpfd);
+			g_free (tmp_filename);
 			goto out;
 		}
 
@@ -572,6 +577,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 
 			close (tmpfd);
 			unlink (tmp_filename);
+			g_free (tmp_filename);
 			goto out;
 		}
 
@@ -590,8 +596,11 @@ save_existing_local_file (GeditDocumentSaver *saver)
 
 			close (tmpfd);
 			unlink (tmp_filename);
+			g_free (tmp_filename);
 			goto out;
 		}
+
+		g_free (tmp_filename);
 
 		/* restat and get the mime type */
 		if (fstat (tmpfd, &new_statbuf) != 0)

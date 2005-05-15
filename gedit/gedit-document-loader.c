@@ -274,12 +274,12 @@ update_document_contents (GeditDocumentLoader  *loader,
 		GError *conv_error = NULL;
 		gchar *converted_text = NULL;
 		gsize new_len = file_size;
-		
+
 		if (loader->priv->encoding == NULL)
 		{
 			/* Autodetecting the encoding: first try with the encoding
 			stored in the metadata, if any */
-			
+
 			const GeditEncoding *enc;
 			gchar *charset;
 
@@ -305,11 +305,11 @@ update_document_contents (GeditDocumentLoader  *loader,
 				g_free (charset);
 			}
 		}
-		
+
 		if (converted_text == NULL)				
 		{
 			loader->priv->auto_detected_encoding = loader->priv->encoding;
-			
+
 			converted_text = gedit_convert_to_utf8 (
 							file_contents,
 							file_size,
@@ -317,11 +317,11 @@ update_document_contents (GeditDocumentLoader  *loader,
 							&new_len,
 							&conv_error);
 		}
-	
+
 		if (converted_text == NULL)
 		{
 			g_return_val_if_fail (conv_error != NULL, FALSE);
-			
+
 			g_propagate_error (error, conv_error);
 	
 			return FALSE;
@@ -331,6 +331,8 @@ update_document_contents (GeditDocumentLoader  *loader,
 			insert_text_in_document (loader,
 						 converted_text,
 						 new_len);
+
+			g_free (converted_text);
 
 			return TRUE;
 		}

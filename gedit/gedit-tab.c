@@ -338,7 +338,7 @@ show_loading_message_area (GeditTab *tab)
 		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
 		msg = g_strdup_printf ("Reverting <b>%s</b> from <b>%s</b>",
 				       name, dirname);
-				       
+
 		area = gedit_progress_message_area_new (GTK_STOCK_REVERT_TO_SAVED,
 							msg,
 							FALSE);
@@ -354,11 +354,11 @@ show_loading_message_area (GeditTab *tab)
 							msg,
 							FALSE);
 	}
-	
+
 	gtk_widget_show (area);
-	
+
 	set_message_area (tab, area);
-	
+
 	g_free (msg);
 	g_free (name);
 	g_free (dirname);
@@ -826,8 +826,6 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 				encoding = g_strdup (_("Unicode (UTF-8)"));
 			else
 				encoding = gedit_encoding_to_string (enc);
-			
-			
 
 			tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
 						       "<b>%s</b> %s\n"
