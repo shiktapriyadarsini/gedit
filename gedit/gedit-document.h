@@ -143,11 +143,13 @@ gboolean	 gedit_document_insert_file	(GeditDocument       *doc,
 						 const gchar         *uri, 
 						 const GeditEncoding *encoding);
 
-void		 gedit_document_save 		(GeditDocument        *doc);
+gboolean	 gedit_document_load_cancel	(GeditDocument       *doc);
 
-void		 gedit_document_save_as 		(GeditDocument        *doc,	
-						 const gchar          *uri, 
-						 const GeditEncoding  *encoding);
+void		 gedit_document_save 		(GeditDocument       *doc);
+
+void		 gedit_document_save_as 	(GeditDocument       *doc,	
+						 const gchar         *uri, 
+						 const GeditEncoding *encoding);
 
 gboolean	 gedit_document_is_untouched 	(GeditDocument       *doc);
 gboolean	 gedit_document_is_untitled 	(GeditDocument       *doc);

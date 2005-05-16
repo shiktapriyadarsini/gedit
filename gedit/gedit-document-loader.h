@@ -90,9 +90,9 @@ gboolean		 gedit_document_loader_load		(GeditDocumentLoader  *loader,
 								 const GeditEncoding  *encoding);
 #if 0
 gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader  *loader);
-							 
-void			 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
-#endif
+#endif		 
+gboolean		 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
+
 
 /* Returns STDIN_URI if loading from stdin */
 #define STDIN_URI "stdin:" 

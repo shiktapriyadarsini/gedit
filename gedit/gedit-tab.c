@@ -315,6 +315,19 @@ file_already_open_warning_message_area_response (GtkWidget   *message_area,
 	gtk_widget_grab_focus (GTK_WIDGET (view));	
 }
 
+static void
+load_cancelled (GeditMessageArea *area,
+                gint              response_id,
+                GeditTab         *tab)
+{
+	GeditDocument *doc;
+	g_return_if_fail (GEDIT_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
+	
+	g_object_ref (tab);
+	gedit_document_load_cancel (gedit_tab_get_document (tab));
+	g_object_unref (tab);	
+}
+
 #define MAX_MSG_LENGTH 100
 
 static void
@@ -388,7 +401,7 @@ show_loading_message_area (GeditTab *tab)
 		
 		area = gedit_progress_message_area_new (GTK_STOCK_REVERT_TO_SAVED,
 							msg,
-							FALSE);
+							TRUE);
 	}
 	else
 	{
@@ -406,9 +419,14 @@ show_loading_message_area (GeditTab *tab)
 
 		area = gedit_progress_message_area_new (GTK_STOCK_OPEN,
 							msg,
-							FALSE);
+							TRUE);
 	}
 
+	g_signal_connect (area,
+			  "response",
+			  G_CALLBACK (load_cancelled),
+			  tab);
+						 
 	gtk_widget_show (area);
 
 	set_message_area (tab, area);
@@ -611,15 +629,26 @@ document_loaded (GeditDocument *document,
 
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
 		{
-			emsg = gedit_unrecoverable_loading_error_message_area_new (uri, 
+			if (error->code == GNOME_VFS_ERROR_CANCELLED)
+			{
+				unrecoverable_loading_error_message_area_response (NULL,
+										   0,
+										   GTK_WIDGET (tab));
+										   
+				return;
+			}
+			else
+			{
+				emsg = gedit_unrecoverable_loading_error_message_area_new (uri, 
 										   error);
 
-			set_message_area (tab, emsg);
+				set_message_area (tab, emsg);
 
-			g_signal_connect (emsg,
-					  "response",
-					  G_CALLBACK (unrecoverable_loading_error_message_area_response),
-					  tab);
+				g_signal_connect (emsg,
+						  "response",
+						  G_CALLBACK (unrecoverable_loading_error_message_area_response),
+						  tab);
+			}
 		}					  
 		else
 		{

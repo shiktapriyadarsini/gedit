@@ -731,21 +731,19 @@ document_loader_loading (GeditDocumentLoader *loader,
 
 			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 		}
-
 		/* special case creating a named new doc */
 		else if (doc->priv->create &&
 		         (error->code == GNOME_VFS_ERROR_NOT_FOUND))
 		{
+			g_object_unref (doc->priv->loader);
+			doc->priv->loader = NULL;
+			
 			// FIXME: do other stuff??
 
 			g_signal_emit (doc,
 				       document_signals[LOADED],
 				       0,
 				       NULL);
-
-			g_object_unref (doc->priv->loader);
-			doc->priv->loader = NULL;
-
 			return;
 		}		
 
@@ -756,7 +754,7 @@ document_loader_loading (GeditDocumentLoader *loader,
 
 		g_object_unref (doc->priv->loader);
 		doc->priv->loader = NULL;
-
+		
 		return;
 	}
 	else
@@ -1323,4 +1321,15 @@ _gedit_document_can_find_again (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 	
 	return (doc->priv->search_text != NULL);
+}
+
+gboolean
+gedit_document_load_cancel (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	if (doc->priv->loader == NULL)
+		return FALSE;
+		
+	return gedit_document_loader_cancel (doc->priv->loader);
 }
