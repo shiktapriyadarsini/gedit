@@ -171,6 +171,43 @@ gedit_tab_get_state (GeditTab *tab)
 	return tab->priv->state;
 }
 
+static void
+view_realized (GtkTextView *view,
+	       GeditTab    *tab)
+{
+	g_return_if_fail (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT) != NULL);
+	g_return_if_fail (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT) != NULL);
+	
+	if ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
+	    (tab->priv->state == GEDIT_TAB_STATE_REVERTING) ||
+	    (tab->priv->state == GEDIT_TAB_STATE_SAVING) ||
+	    (tab->priv->state == GEDIT_TAB_STATE_PRINTING) ||
+	    (tab->priv->state == GEDIT_TAB_STATE_PRINT_PREVIEWING))
+	{
+		GdkCursor *cursor;
+	
+		cursor = gdk_cursor_new_for_display (
+				gtk_widget_get_display (GTK_WIDGET (view)),
+				GDK_WATCH);
+				
+		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT),
+				       cursor);
+				       
+		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT),
+				       cursor);
+
+		gdk_cursor_unref (cursor);		
+	}
+	else
+	{
+		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT),
+				       NULL);
+				       
+		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT),
+				       NULL);
+	}
+}
+
 void
 gedit_tab_set_state (GeditTab *tab,
 		     GeditTabState state)
@@ -208,7 +245,10 @@ gedit_tab_set_state (GeditTab *tab,
 		gtk_widget_hide (tab->priv->view_scrolled_window);
 	else
 		gtk_widget_show (tab->priv->view_scrolled_window);
-
+	
+	if (gtk_text_view_get_window (GTK_TEXT_VIEW (tab->priv->view), GTK_TEXT_WINDOW_TEXT) != NULL)
+		view_realized (GTK_TEXT_VIEW (tab->priv->view), tab);
+	
 	g_object_notify (G_OBJECT (tab), "state");		
 }
 
@@ -334,21 +374,35 @@ show_loading_message_area (GeditTab *tab)
 
 	if (tab->priv->state == GEDIT_TAB_STATE_REVERTING)
 	{
-		/* Translators: the first %s is a file name (e.g. test.txt) the second one
-		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
-		msg = g_strdup_printf ("Reverting <b>%s</b> from <b>%s</b>",
-				       name, dirname);
-
+		if (dirname != NULL)
+		{
+			/* Translators: the first %s is a file name (e.g. test.txt) the second one
+			   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
+			msg = g_strdup_printf ("Reverting <b>%s</b> from <b>%s</b>",
+					       name, dirname);
+		}
+		else
+		{
+			msg = g_strdup_printf ("Reverting <b>%s</b>", name);
+		}
+		
 		area = gedit_progress_message_area_new (GTK_STOCK_REVERT_TO_SAVED,
 							msg,
 							FALSE);
 	}
 	else
 	{
-		/* Translators: the first %s is a file name (e.g. test.txt) the second one
-		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
-		msg = g_strdup_printf ("Loading <b>%s</b> from <b>%s</b>",
-				       name, dirname);
+		if (dirname != NULL)
+		{
+			/* Translators: the first %s is a file name (e.g. test.txt) the second one
+			   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
+			msg = g_strdup_printf ("Loading <b>%s</b> from <b>%s</b>",
+					       name, dirname);
+		}
+		else
+		{
+			msg = g_strdup_printf ("Loading <b>%s</b>", name);
+		}
 
 		area = gedit_progress_message_area_new (GTK_STOCK_OPEN,
 							msg,
@@ -365,9 +419,80 @@ show_loading_message_area (GeditTab *tab)
 }
 
 static void
-loading_message_area_set_progress (GeditTab	    *tab,
-				   GnomeVFSFileSize  size,
-				   GnomeVFSFileSize  total_size)
+show_saving_message_area (GeditTab *tab)
+{
+	GtkWidget *area;
+	GeditDocument *doc = NULL;
+	const gchar *short_name;
+	gchar *from;
+	gchar *to = NULL;
+	gchar *msg = NULL;
+	gint len;
+	
+	if (tab->priv->message_area != NULL)
+		return;
+	
+	gedit_debug (DEBUG_DOCUMENT);
+		
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (doc != NULL);
+
+	short_name = gedit_document_get_short_name_for_display (doc);
+
+	len = g_utf8_strlen (short_name, -1);
+
+	/* if the name is awfully long, truncate it and be done with it,
+	 * otherwise also show the directory (ellipsized if needed)
+	 */
+	if (len > MAX_MSG_LENGTH)
+	{
+		from = gedit_utils_str_middle_truncate (short_name, 
+							MAX_MSG_LENGTH);
+	}
+	else
+	{
+		gchar *str;
+		
+		from = g_strdup (short_name);
+
+		to = gnome_vfs_format_uri_for_display (tab->priv->save_uri);
+
+		str = gedit_utils_str_middle_truncate (to, 
+						       MAX (20, MAX_MSG_LENGTH - len));
+		g_free (to);
+			
+		to = str;
+	}
+
+	if (to != NULL)
+	{
+		/* Translators: the first %s is a file name (e.g. test.txt) the second one
+		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
+		msg = g_strdup_printf ("Saving <b>%s</b> to <b>%s</b>",
+				       from, to);
+	}
+	else
+	{
+		msg = g_strdup_printf ("Saving <b>%s</b>", to);
+	}
+
+	area = gedit_progress_message_area_new (GTK_STOCK_SAVE,
+						msg,
+						FALSE);
+
+	gtk_widget_show (area);
+
+	set_message_area (tab, area);
+
+	g_free (msg);
+	g_free (to);
+	g_free (from);
+}
+
+static void
+message_area_set_progress (GeditTab	    *tab,
+			   GnomeVFSFileSize  size,
+			   GnomeVFSFileSize  total_size)
 {
 	if (tab->priv->message_area == NULL)
 		return;
@@ -378,8 +503,13 @@ loading_message_area_set_progress (GeditTab	    *tab,
 	
 	if (total_size == 0)
 	{
-		gedit_progress_message_area_pulse (
-				GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area));		
+		if (size != 0)
+			gedit_progress_message_area_pulse (
+					GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area));	
+		else
+			gedit_progress_message_area_set_fraction (
+				GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
+				0);
 	}
 	else
 	{
@@ -444,7 +574,7 @@ document_loading (GeditDocument    *document,
 		}
 	}
 	
-	loading_message_area_set_progress (tab, size, total_size);
+	message_area_set_progress (tab, size, total_size);
 
 	tab->priv->times_called++;
 }
@@ -574,9 +704,53 @@ document_saving (GeditDocument    *document,
 		 GnomeVFSFileSize  total_size,
 		 GeditTab         *tab)
 {
+	double et;
+
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
 
+	gedit_debug_message (DEBUG_DOCUMENT, "%Ld/%Ld", size, total_size);
+	
+	if (tab->priv->timer == NULL)
+	{
+		g_return_if_fail (tab->priv->times_called == 0);
+		tab->priv->timer = g_timer_new ();
+	}
 
+	et = g_timer_elapsed (tab->priv->timer, NULL);
+
+	if (tab->priv->times_called == 1)
+	{
+		if ((total_size == 0) || (total_size > 51200UL) /* 50 KB */)
+		{
+			show_saving_message_area (tab);
+		}
+	}
+	else
+	{
+		if ((tab->priv->times_called == 3) && (total_size != 0))
+		{
+			gdouble total_time;
+
+			/* et : total_time = size : total_size */
+			total_time = (et * total_size)/size;
+
+			if ((total_time - et) > 3.0)
+			{
+				show_saving_message_area (tab);
+			}
+		}
+		else
+		{
+			if (et > 3.0)
+			{
+				show_saving_message_area (tab);
+			}
+		}
+	}
+	
+	message_area_set_progress (tab, size, total_size);
+
+	tab->priv->times_called++;
 }
 
 static void
@@ -590,6 +764,12 @@ document_saved (GeditDocument *document,
 
 	g_return_if_fail (tab->priv->save_uri != NULL);
 
+	g_timer_destroy (tab->priv->timer);
+	tab->priv->timer = NULL;
+	tab->priv->times_called = 0;
+	
+	set_message_area (tab, NULL);
+	
 	if (error != NULL)
 	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING_ERROR);
@@ -648,30 +828,35 @@ gedit_tab_init (GeditTab *tab)
 					     GTK_SHADOW_IN);	
 	gtk_widget_show (sw);
 
-	g_signal_connect (G_OBJECT (doc),
+	g_signal_connect (doc,
 			  "name_changed",
 			  G_CALLBACK (document_name_modified_changed),
 			  tab);
-	g_signal_connect (G_OBJECT (doc),
+	g_signal_connect (doc,
 			  "modified_changed",
 			  G_CALLBACK (document_name_modified_changed),
 			  tab);
-	g_signal_connect (G_OBJECT (doc),
+	g_signal_connect (doc,
 			  "loading",
 			  G_CALLBACK (document_loading),
 			  tab);
-	g_signal_connect (G_OBJECT (doc),
+	g_signal_connect (doc,
 			  "loaded",
 			  G_CALLBACK (document_loaded),
 			  tab);
-	g_signal_connect (G_OBJECT (doc),
+	g_signal_connect (doc,
 			  "saving",
 			  G_CALLBACK (document_saving),
 			  tab);
-	g_signal_connect (G_OBJECT (doc),
+	g_signal_connect (doc,
 			  "saved",
 			  G_CALLBACK (document_saved),
 			  tab);
+			  
+	g_signal_connect_after(tab->priv->view,
+			       "realize",
+			       G_CALLBACK (view_realized),
+			       tab);
 }
 
 GtkWidget *

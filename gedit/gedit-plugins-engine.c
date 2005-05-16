@@ -327,9 +327,8 @@ gedit_plugins_engine_shutdown (void)
 
 			g_object_unref (info->plugin);
 			
-			/* CHECK: it seems it is not possible to finalize the type module */
-			/* g_return_if_fail (info->module != NULL);
-			   g_object_unref (info->module); */
+			/* info->module must not be unref since it is not possible to finalize 
+			 * a type module */
 		}
 
 		g_free (info->file);

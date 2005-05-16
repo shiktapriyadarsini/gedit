@@ -854,7 +854,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 		size = gedit_document_saver_get_file_size (saver);
 		written = gedit_document_saver_get_bytes_written (saver);
 
-		g_print ("save progress: %Lu of %Lu", written, size);
+		gedit_debug_message (DEBUG_DOCUMENT, "save progress: %Lu of %Lu", written, size);
 
 		g_signal_emit (doc,
 			       document_signals[SAVING],
