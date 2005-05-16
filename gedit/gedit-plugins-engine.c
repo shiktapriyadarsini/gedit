@@ -54,17 +54,18 @@
 
 struct _GeditPluginInfo
 {
-	gchar       *file;
+	gchar        *file;
 	
-	gchar       *location;
-	GTypeModule *module;
+	gchar        *location;
+	GTypeModule  *module;
 
-	gchar       *name;
-	gchar       *desc;
-	gchar       *author;
-	gchar       *copyright;
-	
-	GeditPlugin *plugin;
+	gchar        *name;
+	gchar        *desc;
+	gchar       **authors;
+	gchar        *copyright;
+	gchar        *website;
+	 
+	GeditPlugin  *plugin;
 	
 	gboolean     active;
 };
@@ -100,7 +101,28 @@ gedit_plugins_engine_load (const gchar *file)
 		g_warning ("Bad plugin file: %s", file);
 		goto error;
 	}
-
+	
+	if (!g_key_file_has_key (plugin_file,
+			   	 "Gedit Plugin",
+				 "IAge",
+				 NULL))
+	{
+		gedit_debug_message (DEBUG_PLUGINS,
+				     "IAge key does not exist in file: %s", file);
+		goto error;
+	}
+		
+	/* Check IAge=2 */
+	if (g_key_file_get_integer (plugin_file,
+				    "Gedit Plugin",
+				    "IAge",
+				    NULL) != 2)
+	{
+		gedit_debug_message (DEBUG_PLUGINS,
+				     "Wrong IAge in file: %s", file);
+		goto error;
+	}
+				    
 	/* Get Location */
 	str = g_key_file_get_string (plugin_file,
 				     "Gedit Plugin",
@@ -135,23 +157,18 @@ gedit_plugins_engine_load (const gchar *file)
 	if (str)
 		info->desc = str;
 	else
-	{
-		g_warning ("Could not find 'Description' in %s", file);
-		goto error;
-	}
+		gedit_debug_message (DEBUG_PLUGINS, "Could not find 'Description' in %s", file);
 
-	/* Get Author */
-	str = g_key_file_get_string (plugin_file,
-				     "Gedit Plugin",
-				     "Author",
-				     NULL);
-	if (str)
-		info->author = str;
-	else
-	{
-		g_warning ("Could not find 'Author' in %s", file);
-		goto error;
-	}
+
+	/* Get Authors */
+	info->authors = g_key_file_get_string_list (plugin_file,
+						    "Gedit Plugin",
+						    "Authors",
+						    NULL,
+						    NULL);
+	if (info->authors == NULL)
+		gedit_debug_message (DEBUG_PLUGINS, "Could not find 'Authors' in %s", file);
+
 
 	/* Get Copyright */
 	str = g_key_file_get_string (plugin_file,
@@ -161,11 +178,18 @@ gedit_plugins_engine_load (const gchar *file)
 	if (str)
 		info->copyright = str;
 	else
-	{
-		g_warning ("Could not find 'Copyright' in %s", file);
-		goto error;
-	}
+		gedit_debug_message (DEBUG_PLUGINS, "Could not find 'Copyright' in %s", file);
 
+	/* Get Copyright */
+	str = g_key_file_get_string (plugin_file,
+				     "Gedit Plugin",
+				     "Website",
+				     NULL);
+	if (str)
+		info->website = str;
+	else
+		gedit_debug_message (DEBUG_PLUGINS, "Could not find 'Website' in %s", file);
+		
 	g_key_file_free (plugin_file);
 	
 	return info;
@@ -174,9 +198,6 @@ error:
 	g_free (info->file);
 	g_free (info->location);
 	g_free (info->name);
-	g_free (info->desc);
-	g_free (info->author);
-	g_free (info->copyright);
 	g_free (info);
 	g_key_file_free (plugin_file);
 
@@ -315,8 +336,9 @@ gedit_plugins_engine_shutdown (void)
 		g_free (info->location);
 		g_free (info->name);
 		g_free (info->desc);
-		g_free (info->author);
+		g_free (info->website);
 		g_free (info->copyright);
+		g_strfreev (info->authors);
 		
 		g_free (info);
 	}
@@ -695,10 +717,22 @@ gedit_plugins_engine_get_plugin_description (GeditPluginInfo *info)
 	
 	return info->desc;
 }
-/*
-const gchar	*gedit_plugins_engine_get_plugin_authors
-							(GeditPluginInfo *info);
-*/
+
+const gchar **
+gedit_plugins_engine_get_plugin_authors (GeditPluginInfo *info)
+{
+	g_return_val_if_fail (info != NULL, (const gchar **)NULL);
+	
+	return (const gchar **)info->authors;
+}
+
+const gchar *
+gedit_plugins_engine_get_plugin_website (GeditPluginInfo *info)
+{
+	g_return_val_if_fail (info != NULL, NULL);
+	
+	return info->website;
+}
 
 const gchar *
 gedit_plugins_engine_get_plugin_copyright (GeditPluginInfo *info)

@@ -36,6 +36,7 @@
 #include <glib.h>
 #include <gtk/gtkwidget.h>
 #include <gtk/gtkdialog.h>
+#include <gtk/gtkaboutdialog.h>
 #include <gtk/gtkmenu.h>
 #include <gtk/gtktextiter.h>
 #include <atk/atk.h>
@@ -108,6 +109,10 @@ guint gedit_utils_get_current_workspace (GdkScreen *screen);
 
 guint gedit_utils_get_window_workspace (GtkWindow *gtkwindow);
 
+void  gedit_utils_activate_url (GtkAboutDialog *about,
+				const gchar    *url,
+				gpointer        data);
+					 
 #endif /* __GEDIT_UTILS_H__ */
 
 

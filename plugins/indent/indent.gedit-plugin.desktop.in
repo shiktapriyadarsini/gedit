@@ -1,6 +1,8 @@
 [Gedit Plugin]
 Module=indent
+IAge=2
 _Name=Indent lines
 _Description=Indents or un-indents selected lines.
-Author=Paolo Maggi <paolo.maggi@polito.it>
+Authors=Paolo Maggi <paolo@gnome.org>
 Copyright=Copyright © 2002-2005 Paolo Maggi
+Website=http://www.gedit.org

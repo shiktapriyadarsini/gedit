@@ -172,7 +172,8 @@ main (int argc, char *argv[])
 	gedit_plugins_engine_init ();
 
 	gnome_authentication_manager_init ();
-
+	gtk_about_dialog_set_url_hook (gedit_utils_activate_url, NULL, NULL);
+	
 	/* Initialize session management */
 //	gedit_session_init (argv[0]);
 

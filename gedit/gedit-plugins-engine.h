@@ -61,10 +61,11 @@ void		 gedit_plugins_engine_update_plugins_ui (GeditWindow     *window,
 const gchar	*gedit_plugins_engine_get_plugin_name	(GeditPluginInfo *info);
 const gchar	*gedit_plugins_engine_get_plugin_description
 							(GeditPluginInfo *info);
-/*
-const gchar	*gedit_plugins_engine_get_plugin_authors
+
+const gchar    **gedit_plugins_engine_get_plugin_authors
 							(GeditPluginInfo *info);
-*/
+const gchar	*gedit_plugins_engine_get_plugin_website
+							(GeditPluginInfo *info);
 const gchar	*gedit_plugins_engine_get_plugin_copyright
 							(GeditPluginInfo *info);
 

@@ -46,6 +46,7 @@
 #include <glib/gunicode.h>
 #include <glib/gi18n.h>
 #include <libgnomevfs/gnome-vfs.h>
+#include <libgnome/gnome-url.h>
 
 #include "gedit-utils.h"
 #include "gedit2.h"
@@ -809,5 +810,12 @@ gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
        }
 
        return ret;
+}
+void  
+gedit_utils_activate_url (GtkAboutDialog *about,
+			  const gchar    *url,
+			  gpointer        data)
+{
+	gnome_url_show (url, NULL);
 }
 

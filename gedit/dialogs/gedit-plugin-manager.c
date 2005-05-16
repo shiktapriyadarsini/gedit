@@ -37,6 +37,7 @@
 
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
+#include <libgnome/gnome-url.h>
 
 #include "gedit-plugin-manager.h"
 #include "gedit-utils.h"
@@ -78,7 +79,6 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 {
 	static GtkWidget *about;
 	GeditPluginInfo *info;
-	// gchar **authors;
 	GdkPixbuf* pixbuf = NULL;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -86,8 +86,6 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 	info = plugin_manager_get_selected_plugin (pm);
 
 	g_return_if_fail (info != NULL);
-
-	// FIXME authors = g_strsplit (info->plugin->author, ", ", 0); 
 
 	pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR "/gedit-plugin-manager.png", NULL);
 
@@ -98,11 +96,12 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 	about = g_object_new (GTK_TYPE_ABOUT_DIALOG,
 			      "name", gedit_plugins_engine_get_plugin_name (info),
 			      "copyright", gedit_plugins_engine_get_plugin_copyright (info),
-			      // FIXME "authors", (const gchar**) authors,
+			      "authors", gedit_plugins_engine_get_plugin_authors (info),
 			      "comments", gedit_plugins_engine_get_plugin_description (info),
+			      "website", gedit_plugins_engine_get_plugin_website (info),
 			      "logo", pixbuf,
 			      NULL);
-
+	
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (about), TRUE);
 
 	g_signal_connect (about, "response", G_CALLBACK (gtk_widget_destroy), NULL);
@@ -114,9 +113,6 @@ about_button_cb (GtkWidget *button, GeditPluginManager *pm)
 
 	if (pixbuf != NULL)
 		g_object_unref (pixbuf);
-
-//	if (authors != NULL)
-//		g_strfreev (authors);
 }
 
 static void

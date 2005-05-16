@@ -40,7 +40,6 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <libgnome/gnome-help.h>
-#include <libgnome/gnome-url.h>
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "gedit-commands.h"
@@ -1313,14 +1312,6 @@ gedit_cmd_help_contents (GtkAction   *action,
 	}
 }
 
-static void
-activate_url (GtkAboutDialog *about,
-	      const gchar    *url,
-	      gpointer        data)
-{
-	gnome_url_show (url, NULL);
-}
-
 void
 gedit_cmd_help_about (GtkAction   *action,
 		      GeditWindow *window)
@@ -1356,8 +1347,6 @@ gedit_cmd_help_about (GtkAction   *action,
 		logo = gdk_pixbuf_new_from_file (
 			GNOME_ICONDIR "/gedit-logo.png",
 			NULL);
-
-		gtk_about_dialog_set_url_hook (activate_url, NULL, NULL);
 	}
 
 	gtk_show_about_dialog (GTK_WINDOW (window),
