@@ -857,7 +857,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 		g_signal_emit (doc,
 			       document_signals[SAVING],
 			       0,
-			       read,
+			       written,
 			       size);
 	}
 }
