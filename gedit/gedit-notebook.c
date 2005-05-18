@@ -1,5 +1,5 @@
 /*
- * gedit-notebook.h
+ * gedit-notebook.c
  * This file is part of gedit
  *
  * Copyright (C) 2005 - Paolo Maggi 
@@ -46,26 +46,19 @@
 #include <gtk/gtkhbox.h>
 #include <gtk/gtklabel.h>
 #include <gtk/gtkwidget.h>
-#include <gtk/gtktooltips.h>
 #include <gtk/gtkmain.h>
 #include <gtk/gtkstock.h>
 #include <gtk/gtkimage.h>
 #include <gtk/gtkbutton.h>
 #include <gtk/gtkiconfactory.h>
-// #include <libgnomevfs/gnome-vfs-uri.h>
 
 #include "gedit-notebook.h"
 #include "gedit-marshal.h"
 #include "gedit-window.h"
 #include "gedit-tooltips.h"
 
-
-#define TAB_WIDTH_N_CHARS 15
-
 #define AFTER_ALL_TABS -1
 #define NOT_IN_APP_WINDOWS -2
-
-#define INSANE_NUMBER_OF_URLS 20
 
 #define GEDIT_NOTEBOOK_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_NOTEBOOK, GeditNotebookPrivate))
 
@@ -76,8 +69,8 @@ struct _GeditNotebookPrivate
 	gulong         motion_notify_handler_id;
 	gint           x_start;
 	gint           y_start;
-	gboolean       drag_in_progress;
-	gboolean       always_show_tabs;
+	gboolean       drag_in_progress : 1;
+	gboolean       always_show_tabs : 1;
 };
 
 G_DEFINE_TYPE(GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
@@ -91,15 +84,6 @@ static void move_current_tab_to_another_notebook  (GeditNotebook  *src,
 
 /* Local variables */
 static GdkCursor *cursor = NULL;
-
-#if 0 /* CHECK */
-static GtkTargetEntry url_drag_types [] = 
-{
-        { EPHY_DND_URI_LIST_TYPE,   0, 0 },
-        { EPHY_DND_URL_TYPE,        0, 1 }
-};
-static guint n_url_drag_types = G_N_ELEMENTS (url_drag_types);
-#endif
 
 /* Signals */
 enum
@@ -361,11 +345,12 @@ drag_start (GeditNotebook *notebook,
 
 	/* get a new cursor, if necessary */
 	/* FIXME multi-head */
-	if (!cursor)
+	if (cursor == NULL)
 		cursor = gdk_cursor_new (GDK_FLEUR);
 
 	/* grab the pointer */
 	gtk_grab_add (GTK_WIDGET (notebook));
+
 	/* FIXME multi-head */
 	if (!gdk_pointer_is_grabbed ())
 	{
@@ -634,65 +619,6 @@ ephy_notebook_switch_page_cb (GtkNotebook     *notebook,
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 }
 
-#if 0
-static void
-notebook_drag_data_received_cb (GtkWidget        *widget, 
-				GdkDragContext   *context,
-				gint              x, 
-				gint              y, 
-				GtkSelectionData *selection_data,
-				guint             info, 
-				guint             time, 
-				GeditTab         *tab)
-{
-	EphyWindow *window;
-	GtkWidget *notebook;
-
-	g_signal_stop_emission_by_name (widget, "drag_data_received");
-
-	if (eel_gconf_get_boolean (CONF_LOCKDOWN_DISABLE_ARBITRARY_URL)) return;
-
-	if (selection_data->length <= 0 || selection_data->data == NULL) return;
-
-	window = EPHY_WINDOW (gtk_widget_get_toplevel (widget));
-	notebook = ephy_window_get_notebook (window);
-
-	if (selection_data->target == gdk_atom_intern (EPHY_DND_URL_TYPE, FALSE))
-	{
-		char **split;
-
-		/* URL_TYPE has format: url \n title */
-		split = g_strsplit (selection_data->data, "\n", 2);
-		if (split != NULL && split[0] != NULL && split[0][0] != '\0')
-		{
-			ephy_link_open (EPHY_LINK (notebook), split[0], tab,
-					tab ? 0 : EPHY_LINK_NEW_TAB);
-		}
-		g_strfreev (split);
-	}
-	else if (selection_data->target == gdk_atom_intern (EPHY_DND_URI_LIST_TYPE, FALSE))
-	{
-		char **uris;
-		int i;
-
-		uris = gtk_selection_data_get_uris (selection_data);
-		if (uris == NULL) return;
-
-		for (i = 0; uris[i] != NULL && i < INSANE_NUMBER_OF_URLS; i++)
-		{
-			tab = ephy_link_open (EPHY_LINK (notebook), uris[i],
-					      tab, i == 0 ? 0 : EPHY_LINK_NEW_TAB);
-		}
-
-		g_strfreev (uris);
-	}
-	else
-	{
-		g_return_if_reached ();
-	}
-}
-#endif
-
 /*
  * update_tabs_visibility: Hide tabs if there is only one tab
  * and the pref is not set.
@@ -743,16 +669,6 @@ gedit_notebook_init (GeditNotebook *notebook)
 				"switch_page",
                                 G_CALLBACK (ephy_notebook_switch_page_cb),
                                 NULL);
-#if 0
-	/* Set up drag-and-drop target */
-	g_signal_connect (G_OBJECT(notebook), "drag_data_received",
-			  G_CALLBACK(notebook_drag_data_received_cb),
-			  NULL);
-        gtk_drag_dest_set (GTK_WIDGET(notebook), GTK_DEST_DEFAULT_MOTION |
-			   GTK_DEST_DEFAULT_DROP,
-                           url_drag_types,n_url_drag_types,
-                           GDK_ACTION_MOVE | GDK_ACTION_COPY);
-#endif
 }
 
 static void
@@ -767,7 +683,6 @@ gedit_notebook_finalize (GObject *object)
 
 	G_OBJECT_CLASS (gedit_notebook_parent_class)->finalize (object);
 }
-
 
 static void
 sync_load_status (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
@@ -859,7 +774,7 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	pixbuf = _gedit_tab_get_icon (tab);
 	gtk_image_set_from_pixbuf (icon, pixbuf);
 
-	if (pixbuf)
+	if (pixbuf != NULL)
 		g_object_unref (pixbuf);
 }
 
@@ -964,10 +879,8 @@ gedit_notebook_set_always_show_tabs (GeditNotebook *nb,
 				     gboolean       show_tabs)
 {
 	g_return_if_fail (GEDIT_NOTEBOOK (nb));
-	
-	// FIXME: normalizzare show_tabs
-	
-	nb->priv->always_show_tabs = show_tabs;
+
+	nb->priv->always_show_tabs = (show_tabs != FALSE);
 
 	update_tabs_visibility (nb, FALSE);
 }
@@ -992,14 +905,6 @@ gedit_notebook_add_tab (GeditNotebook *nb,
 				  label, 
 				  position);
 
-#if 0
-	/* Set up drag-and-drop target */
-	g_signal_connect (G_OBJECT(label), "drag_data_received",
-			  G_CALLBACK(notebook_drag_data_received_cb), tab);
-	gtk_drag_dest_set (label, GTK_DEST_DEFAULT_ALL,
-			   url_drag_types,n_url_drag_types,
-			   GDK_ACTION_MOVE | GDK_ACTION_COPY);
-#endif
 	sync_icon (tab, NULL, label);
 	sync_name (tab, NULL, label);
 	sync_load_status (tab, NULL, label);
