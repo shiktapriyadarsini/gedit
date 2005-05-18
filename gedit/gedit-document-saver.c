@@ -154,31 +154,6 @@ gedit_document_saver_new (GeditDocument *doc)
 	return saver;
 }
 
-gboolean
-gedit_document_saver_reset (GeditDocumentSaver *saver)
-{
-	// TODO: needs checking that the saver is not active... or maybe redesign stuff
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), FALSE);
-
-	saver->priv->fd = -1;
-
-	g_free (saver->priv->uri);
-	saver->priv->uri = NULL;
-
-	g_free (saver->priv->local_path);
-	saver->priv->local_path = NULL;
-
-	saver->priv->size = 0;
-	saver->priv->bytes_written = 0;
-
-	if (saver->priv->error)
-		g_error_free (saver->priv->error);
-	saver->priv->error = NULL;
-
-	return TRUE;
-}
-
 /*
  * Write the document contents in fd.
  */
@@ -295,11 +270,18 @@ write_document_contents (gint                  fd,
 static void
 save_completed_or_failed (GeditDocumentSaver *saver)
 {
+	/* the object will be unrefed in the callback of the saving
+	 * signal, so we need to prevent finalization.
+	 */
+	g_object_ref (saver);
+
 	g_signal_emit (saver, 
 		       signals[SAVING],
 		       0,
 		       TRUE, /* completed */
 		       saver->priv->error);
+
+	g_object_unref (saver);
 }
 
 static gchar *

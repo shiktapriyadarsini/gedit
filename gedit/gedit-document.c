@@ -752,6 +752,7 @@ document_loader_loading (GeditDocumentLoader *loader,
 			       0,
 			       error);
 
+		/* the loader has been used, throw it away */
 		g_object_unref (doc->priv->loader);
 		doc->priv->loader = NULL;
 		
@@ -805,6 +806,17 @@ gedit_document_load (GeditDocument       *doc,
 					   encoding);
 }
 
+gboolean
+gedit_document_load_cancel (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	if (doc->priv->loader == NULL)
+		return FALSE;
+
+	return gedit_document_loader_cancel (doc->priv->loader);
+}
+
 static void
 document_saver_saving (GeditDocumentSaver *saver,
 		       gboolean            completed,
@@ -842,7 +854,9 @@ document_saver_saving (GeditDocumentSaver *saver,
 			       0,
 			       error);
 
-		return;
+		/* the saver has been used, throw it away */
+		g_object_unref (doc->priv->saver);
+		doc->priv->saver = NULL;
 	}
 	else
 	{
@@ -868,26 +882,15 @@ document_save_real (GeditDocument       *doc,
 		    const GeditEncoding *encoding,
 		    time_t               mtime)
 {
-	/* create a saver.
-	 * Differently from the loader, the saver will live until
-	 * the document itself is destroyed, since saving usually
-	 * occurs more than once. If a saver already exist, reset it.
-	 */
-	// CHECK: or do we want to keep it simple and create and throw away?
-	if (doc->priv->saver == NULL)
-	{
-		doc->priv->saver = gedit_document_saver_new (doc);
+	g_return_if_fail (doc->priv->saver == NULL);
 
-		g_signal_connect (doc->priv->saver,
-				  "saving",
-				  G_CALLBACK (document_saver_saving),
-				  doc);
-	}
-	else
-	{
-		if (!gedit_document_saver_reset (doc->priv->saver))
-			return; //TODO assert it
-	}
+	/* create a saver, it will be destroyed once saving is complete */
+	doc->priv->saver = gedit_document_saver_new (doc);
+
+	g_signal_connect (doc->priv->saver,
+			  "saving",
+			  G_CALLBACK (document_saver_saving),
+			  doc);
 
 	doc->priv->requested_encoding = encoding;
 
@@ -1321,15 +1324,4 @@ _gedit_document_can_find_again (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 	
 	return (doc->priv->search_text != NULL);
-}
-
-gboolean
-gedit_document_load_cancel (GeditDocument *doc)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-
-	if (doc->priv->loader == NULL)
-		return FALSE;
-		
-	return gedit_document_loader_cancel (doc->priv->loader);
 }
