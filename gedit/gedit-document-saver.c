@@ -64,18 +64,19 @@ struct _GeditDocumentSaverPrivate
 	time_t                    doc_mtime;
 	gchar                    *mime_type; //CHECK use FileInfo instead?
 
-	gint			  fd;
-
 	GnomeVFSFileSize	  size;
 	GnomeVFSFileSize	  bytes_written;
 
 	/* temp data for local files */
+	gint			  fd;
 	gchar			 *local_path;
 
 	/* temp data for remote files */
 	GnomeVFSURI		 *vfs_uri;
 	GnomeVFSAsyncHandle	 *handle;
 	GnomeVFSAsyncHandle      *info_handle;
+	gint			  tmpfd;
+	gchar			 *tmp_fname;
 
 	GError                   *error;
 };
@@ -97,10 +98,13 @@ gedit_document_saver_finalize (GObject *object)
 	GeditDocumentSaverPrivate *priv = GEDIT_DOCUMENT_SAVER (object)->priv;
 
 	g_free (priv->uri);
-	g_free (priv->local_path);
 
 	if (priv->vfs_uri)
 		gnome_vfs_uri_unref (priv->vfs_uri);
+
+	g_free (priv->local_path);
+
+	g_free (priv->tmp_fname);
 
 	if (priv->error)
 		g_error_free (priv->error);
@@ -136,6 +140,8 @@ gedit_document_saver_init (GeditDocumentSaver *saver)
 	saver->priv = GEDIT_DOCUMENT_SAVER_GET_PRIVATE (saver);
 
 	saver->priv->fd = -1;
+
+	saver->priv->tmpfd = -1;
 
 	saver->priv->error = NULL;
 }
@@ -816,6 +822,16 @@ save_local_file (GeditDocumentSaver *saver)
 /* ----------- remote files ----------- */
 
 static void
+remote_save_completed_or_failed (GeditDocumentSaver *saver)
+{
+	/* we can now close and unlink the tmp file */
+	close (saver->priv->tmpfd);
+	unlink (saver->priv->tmp_fname);
+
+	save_completed_or_failed (saver);
+}
+
+static void
 remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 		    GList               *results,
 		    gpointer             data)
@@ -836,7 +852,7 @@ remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 			     info_result->result,
 			     gnome_vfs_result_to_string (info_result->result));
 
-		save_completed_or_failed (saver);
+		remote_save_completed_or_failed (saver);
 
 		return;
 	}
@@ -850,7 +866,7 @@ remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 		saver->priv->mime_type = g_strdup (info_result->file_info->mime_type);
 	}
 
-	save_completed_or_failed (saver);
+	remote_save_completed_or_failed (saver);
 }
 
 static gint
@@ -929,7 +945,7 @@ async_xfer_error (GnomeVFSXferProgressInfo *progress_info,
 		     progress_info->vfs_status,
 		     gnome_vfs_result_to_string (progress_info->vfs_status));
 
-	save_completed_or_failed (saver);
+	remote_save_completed_or_failed (saver);
 
 	return GNOME_VFS_XFER_ERROR_ACTION_ABORT;
 }
@@ -952,7 +968,7 @@ async_xfer_progress (GnomeVFSAsyncHandle      *handle,
 	case GNOME_VFS_XFER_PROGRESS_STATUS_OVERWRITE:
 	case GNOME_VFS_XFER_PROGRESS_STATUS_DUPLICATE:
 	default:
-		g_return_val_if_reached (1); // CHECK return what??
+		g_return_val_if_reached (0);
 	}
 }
 
@@ -960,8 +976,6 @@ static gboolean
 save_remote_file_real (GeditDocumentSaver *saver)
 {
 	mode_t saved_umask;
-	gint tmpfd;  // FIXME: we are leaking this!
-	gchar *tmp_fname;
 	gchar *tmp_uri;
 	GnomeVFSURI *tmp_vfs_uri;
 	GList *source_uri_list = NULL;
@@ -978,12 +992,12 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	 * of mkstemp() use permissions 0666 and we want 0600.
 	 */
 	saved_umask = umask (0077);
-	tmpfd = g_file_open_tmp (".gedit-save-XXXXXX",
-				 &tmp_fname,
-				 &saver->priv->error);
+	saver->priv->tmpfd = g_file_open_tmp (".gedit-save-XXXXXX",
+					      &saver->priv->tmp_fname,
+					      &saver->priv->error);
 	umask (saved_umask);
 
-	if (tmpfd == -1)
+	if (saver->priv->tmpfd == -1)
 	{
 		GnomeVFSResult result = gnome_vfs_result_from_errno ();
 
@@ -992,15 +1006,17 @@ save_remote_file_real (GeditDocumentSaver *saver)
 			     result,
 			     gnome_vfs_result_to_string (result));
 
-		goto error;
+		/* in this case no need to close the tmp file */
+		save_completed_or_failed (saver);
+
+		return FALSE;
 	}
 
-	tmp_uri = g_filename_to_uri (tmp_fname, NULL, &saver->priv->error);
+	tmp_uri = g_filename_to_uri (saver->priv->tmp_fname,
+				     NULL,
+				     &saver->priv->error);
 	if (tmp_uri == NULL)
 	{
-		close (tmpfd);
-		unlink (tmp_fname); // do err check?
-
 		goto error;
 	}
 
@@ -1012,14 +1028,11 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	source_uri_list = g_list_prepend (source_uri_list, tmp_vfs_uri);
 	dest_uri_list = g_list_prepend (dest_uri_list, saver->priv->vfs_uri);
 
-	if (!write_document_contents (tmpfd,
+	if (!write_document_contents (saver->priv->tmpfd,
 				      GTK_TEXT_BUFFER (saver->priv->document),
 		 	 	      saver->priv->encoding,
 			 	      &saver->priv->error))
 	{
-		close (tmpfd);
-		unlink (tmp_fname); // do err check?
-
 		goto error;
 	}
 
@@ -1041,12 +1054,10 @@ save_remote_file_real (GeditDocumentSaver *saver)
 
 	if (result != GNOME_VFS_OK)
 	{
-		unlink (tmp_fname); // do err check?
-
 		g_set_error (&saver->priv->error,
 		    	     GEDIT_DOCUMENT_ERROR,
 		     	     result,
-			     gnome_vfs_result_to_string (result));	
+			     gnome_vfs_result_to_string (result));
 
 		goto error;
 	}
@@ -1055,7 +1066,7 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	return FALSE;
 
  error:
-	save_completed_or_failed (saver);
+	remote_save_completed_or_failed (saver);
 
 	/* stop the timeout */
 	return FALSE;
