@@ -46,6 +46,7 @@
 #include "gedit-progress-message-area.h"
 #include "gedit-debug.h"
 #include "gedit-prefs-manager-app.h"
+#include "gedit-recent.h"
 
 #define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
 
@@ -320,7 +321,6 @@ load_cancelled (GeditMessageArea *area,
                 gint              response_id,
                 GeditTab         *tab)
 {
-	GeditDocument *doc;
 	g_return_if_fail (GEDIT_IS_PROGRESS_MESSAGE_AREA (tab->priv->message_area));
 	
 	g_object_ref (tab);
@@ -630,7 +630,7 @@ document_loaded (GeditDocument *document,
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
 		{
 			if (error->code == GNOME_VFS_ERROR_CANCELLED)
-			{
+			{	
 				unrecoverable_loading_error_message_area_response (NULL,
 										   0,
 										   GTK_WIDGET (tab));
@@ -639,6 +639,8 @@ document_loaded (GeditDocument *document,
 			}
 			else
 			{
+				gedit_recent_remove (uri);
+				
 				emsg = gedit_unrecoverable_loading_error_message_area_new (uri, 
 										   error);
 
@@ -664,6 +666,8 @@ document_loaded (GeditDocument *document,
 					  "response",
 					  G_CALLBACK (unrecoverable_loading_error_message_area_response),
 					  tab);
+					  
+			// FIXME: ricordarsi di chiamare gedit_recent_remove (uri) nel response
 		}
 
 		gedit_message_area_set_default_response (GEDIT_MESSAGE_AREA (emsg),
@@ -679,6 +683,8 @@ document_loaded (GeditDocument *document,
 		GList *l;
 
 		g_return_if_fail (uri != NULL);
+		
+		gedit_recent_add (uri);
 
 		all_documents = gedit_app_get_documents (gedit_app_get_default ());
 
@@ -801,6 +807,8 @@ document_saved (GeditDocument *document,
 	
 	if (error != NULL)
 	{
+		gedit_recent_remove (tab->priv->save_uri);
+		
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING_ERROR);
 
 		emsg = gedit_unrecoverable_saving_error_message_area_new (tab->priv->save_uri, 
@@ -817,6 +825,8 @@ document_saved (GeditDocument *document,
 	}
 	else
 	{
+		gedit_recent_add (tab->priv->save_uri);
+		
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
 
