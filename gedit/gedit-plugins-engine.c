@@ -564,7 +564,7 @@ reactivate_all (GeditWindow *window)
 		
 		GeditPluginInfo *info = (GeditPluginInfo*)pl->data;
 
-		if (info->plugin == NULL)
+		if ((info->plugin == NULL) && info->active)
 			res = load_plugin_module (info);
 			
 		if (info->active && res)
