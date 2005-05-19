@@ -36,7 +36,7 @@
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-utils.h>
 
-#define PLUGIN_DATA_KEY "GeditDocInfoPluginData"
+#define WINDOW_DATA_KEY "GeditDocInfoWindowData"
 #define MENU_PATH "/MenuBar/Tools/ToolsOps_2"
 
 GEDIT_PLUGIN_REGISTER_TYPE(GeditDocInfoPlugin, gedit_docinfo_plugin)
@@ -50,52 +50,44 @@ typedef struct
 	GtkWidget *chars_label;
 	GtkWidget *chars_ns_label;
 	GtkWidget *bytes_label;
-} PluginDialog;
+} DocInfoDialog;
 
 typedef struct
 {
-	GtkActionGroup	*ui_action_group;
+	GtkActionGroup *ui_action_group;
 	guint ui_id;
+	
+	DocInfoDialog *dialog;
+} WindowData;
 
-	PluginDialog *ui_dialog;
-} DocInfoPluginData;
-
-static void	dialog_response_callback	(GtkDialog         *dialog,
-						 gint               res_id,
-						 DocInfoPluginData *data);
+static void docinfo_dialog_response_cb (GtkDialog   *widget,
+					gint	    res_id,
+					GeditWindow *window);
 
 static void
-dialog_destroy_callback (GtkObject         *object,
-			 DocInfoPluginData *data)
+docinfo_dialog_destroy_cb (GtkObject *obj,
+			   gpointer  data_pointer)
 {
 	gedit_debug (DEBUG_PLUGINS);
-
+	
+	WindowData *data = (WindowData *) data_pointer;
+	
 	if (data != NULL)
 	{
-		if (data->ui_dialog != NULL)
-		{
-			g_free (data->ui_dialog);
-			data->ui_dialog = NULL;
-		}
+		g_free (data->dialog);
+		data->dialog = NULL;
 	}
 }
 
-static PluginDialog *
-get_dialog (GeditWindow       *window,
-	    DocInfoPluginData *data)
+static DocInfoDialog *
+get_docinfo_dialog (GeditWindow *window,
+		    WindowData	*data)
 {
 	GladeXML *gladexml;
+	DocInfoDialog *dialog;
 	GtkWidget *content;
 
 	gedit_debug (DEBUG_PLUGINS);
-
-	if (data->ui_dialog != NULL)
-	{
-		gtk_window_present (GTK_WINDOW (data->ui_dialog->dialog));
-		gtk_widget_grab_focus (data->ui_dialog->dialog);
-
-		return data->ui_dialog;
-	}
 
 	gladexml = glade_xml_new (GEDIT_GLADEDIR "docinfo.glade2",
 				  "dialog",
@@ -106,67 +98,63 @@ get_dialog (GeditWindow       *window,
 			       MISSING_FILE,
 			       GEDIT_GLADEDIR "docinfo.glade2");
 
-		data->ui_dialog = NULL;
 		return NULL;
 	}
 
-	data->ui_dialog = g_new (PluginDialog, 1);
+	dialog = g_new (DocInfoDialog, 1);
 
-	data->ui_dialog->dialog = glade_xml_get_widget (gladexml, "dialog");
-	g_return_val_if_fail (data->ui_dialog->dialog != NULL, NULL);
+	dialog->dialog = glade_xml_get_widget (gladexml, "dialog");
+	g_return_val_if_fail (dialog->dialog != NULL, NULL);
 
 	content	= glade_xml_get_widget (gladexml, "docinfo_dialog_content");
-	data->ui_dialog->file_name_label = glade_xml_get_widget (gladexml, "file_name_label");
-	data->ui_dialog->words_label = glade_xml_get_widget (gladexml, "words_label");
-	data->ui_dialog->bytes_label = glade_xml_get_widget (gladexml, "bytes_label");
-	data->ui_dialog->lines_label = glade_xml_get_widget (gladexml, "lines_label");
-	data->ui_dialog->chars_label = glade_xml_get_widget (gladexml, "chars_label");
-	data->ui_dialog->chars_ns_label = glade_xml_get_widget (gladexml, "chars_ns_label");
+	dialog->file_name_label = glade_xml_get_widget (gladexml, "file_name_label");
+	dialog->words_label = glade_xml_get_widget (gladexml, "words_label");
+	dialog->bytes_label = glade_xml_get_widget (gladexml, "bytes_label");
+	dialog->lines_label = glade_xml_get_widget (gladexml, "lines_label");
+	dialog->chars_label = glade_xml_get_widget (gladexml, "chars_label");
+	dialog->chars_ns_label = glade_xml_get_widget (gladexml, "chars_ns_label");
 
-	if (!content ||
-	    !data->ui_dialog->file_name_label ||
-	    !data->ui_dialog->words_label     ||
-	    !data->ui_dialog->bytes_label     ||
-	    !data->ui_dialog->lines_label     ||
-	    !data->ui_dialog->chars_label     ||
-	    !data->ui_dialog->chars_ns_label)
+	if (!content		     ||
+	    !dialog->file_name_label ||
+	    !dialog->words_label     ||
+	    !dialog->bytes_label     ||
+	    !dialog->lines_label     ||
+	    !dialog->chars_label     ||
+	    !dialog->chars_ns_label)
 	{
 		gedit_warning (GTK_WINDOW (window),
 			       MISSING_WIDGETS,
 			       GEDIT_GLADEDIR "docinfo.glade2");
 
+		g_free (dialog);
+
 		return NULL;
 	}
 
 	g_object_unref (gladexml);
-
-	g_signal_connect (data->ui_dialog->dialog,
-			  "destroy",
-			  G_CALLBACK (dialog_destroy_callback),
-			  data);
-
-	g_signal_connect (data->ui_dialog->dialog,
-			  "response",
-			  G_CALLBACK (dialog_response_callback),
-			  data);
-
-	gtk_window_set_transient_for (GTK_WINDOW (data->ui_dialog->dialog),
-				      GTK_WINDOW (window));
-
-	gtk_dialog_set_default_response (GTK_DIALOG (data->ui_dialog->dialog),
+	
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);
+	gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
+				      GTK_WINDOW (window));
+	
+	g_signal_connect (dialog->dialog,
+			  "destroy",
+			  G_CALLBACK (docinfo_dialog_destroy_cb),
+			  data);
 
-	gtk_widget_show (data->ui_dialog->dialog);
+	g_signal_connect (dialog->dialog,
+			  "response",
+			  G_CALLBACK (docinfo_dialog_response_cb),
+			  window);
 
-	return data->ui_dialog;
+	return dialog;
 }
 
 static void
-document_statistics_cb_real (GeditWindow       *window,
-			     DocInfoPluginData *data)
+docinfo_real (GeditDocument *doc,
+	      DocInfoDialog *dialog)
 {
-	PluginDialog *dialog;
-	GeditDocument *doc;
 	GtkTextIter start, end;
 	gchar *text;
 	PangoLogAttr *attrs;
@@ -180,19 +168,10 @@ document_statistics_cb_real (GeditWindow       *window,
 	const gchar *file_name;
 
 	gedit_debug (DEBUG_PLUGINS);
-
-	dialog = get_dialog (window, data);
-	g_return_if_fail (dialog != NULL);
-
-	doc = gedit_window_get_active_document (window);
-
-	if (doc == NULL)
-	{
-		gtk_widget_destroy (dialog->dialog);
-		return;
-	}
-
-	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc), &start, &end);
+	
+	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+				    &start,
+				    &end);
 	text = gtk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc),
 					  &start,
 					  &end,
@@ -240,7 +219,7 @@ document_statistics_cb_real (GeditWindow       *window,
 	tmp_str = g_strdup_printf("%d", lines);
 	gtk_label_set_text (GTK_LABEL (dialog->lines_label), tmp_str);
 	g_free (tmp_str);
-	
+
 	tmp_str = g_strdup_printf("%d", words);
 	gtk_label_set_text (GTK_LABEL (dialog->words_label), tmp_str);
 	g_free (tmp_str);
@@ -259,42 +238,83 @@ document_statistics_cb_real (GeditWindow       *window,
 }
 
 static void
-document_statistics_cb (GtkAction   *action,
-			GeditWindow *window)
+docinfo_cb (GtkAction	*action,
+	    GeditWindow *window)
 {
-	DocInfoPluginData *data;
+	GeditDocument *doc;
+	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
+	
+	data = (WindowData *) g_object_get_data (G_OBJECT (window),
+						 WINDOW_DATA_KEY);
 
-	data = (DocInfoPluginData *) g_object_get_data (G_OBJECT (window), PLUGIN_DATA_KEY);
-	g_return_if_fail (data != NULL);
+	doc = gedit_window_get_active_document (window);
+	g_return_if_fail (doc != NULL);
 
-	document_statistics_cb_real (window, data);
+	if (data->dialog != NULL)
+	{
+		gtk_window_present (GTK_WINDOW (data->dialog->dialog));
+		gtk_widget_grab_focus (GTK_WIDGET (data->dialog->dialog));
+	}
+	else
+	{
+		DocInfoDialog *dialog;
+	
+		dialog = get_docinfo_dialog (window, data);
+		g_return_if_fail (dialog != NULL);
+		
+		data->dialog = dialog;
+
+		gtk_widget_show (GTK_WIDGET (dialog->dialog));
+	}
+	
+	docinfo_real (doc,
+		      data->dialog);
 }
 
 static void
-dialog_response_callback (GtkDialog         *dialog,
-			  gint               res_id,
-			  DocInfoPluginData *data)
+docinfo_dialog_response_cb (GtkDialog	*widget,
+			    gint	res_id,
+			    GeditWindow *window)
 {
-	GeditWindow *window;
+	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
+	
+	data = (WindowData *) g_object_get_data (G_OBJECT (window),
+						 WINDOW_DATA_KEY);
 
 	switch (res_id)
 	{
-		case GTK_RESPONSE_OK:
-			window = GEDIT_WINDOW (gtk_window_get_transient_for (GTK_WINDOW (data->ui_dialog->dialog)));
-			g_return_if_fail (window != NULL);
-
-			document_statistics_cb_real (window, data);
-
-			break;
-
 		case GTK_RESPONSE_CLOSE:
-			gtk_widget_destroy (data->ui_dialog->dialog);
+		{
+			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CLOSE");
+			gtk_widget_destroy (data->dialog->dialog);
 
 			break;
+		}
+
+		case GTK_RESPONSE_OK:
+		{
+			GeditDocument *doc;
+			
+			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
+			
+			doc = gedit_window_get_active_document (window);
+			
+			if (doc == NULL)
+			{
+				gtk_widget_destroy (data->dialog->dialog);
+			}
+			else
+			{
+				docinfo_real (doc,
+					      data->dialog);
+			}
+			
+			break;
+		}
 	}
 }
 
@@ -305,21 +325,29 @@ static const GtkActionEntry action_entries[] =
 	  N_("_Document Statistics"),
 	  NULL,
 	  N_("Get statistic info on current document"),
-	  G_CALLBACK (document_statistics_cb) }
+	  G_CALLBACK (docinfo_cb) }
 };
 
 static void
-free_plugin_data (DocInfoPluginData *data)
+free_window_data (WindowData *data)
 {
 	g_return_if_fail (data != NULL);
 	
+	gedit_debug (DEBUG_PLUGINS);
+
 	g_object_unref (data->ui_action_group);
+	
+	if (data->dialog != NULL)
+	{
+		gtk_widget_destroy (data->dialog->dialog);
+	}
+	
 	g_free (data);
 }
 
 static void
-update_ui_real (GeditWindow *window,
-		DocInfoPluginData *data)
+update_ui_real (GeditWindow  *window,
+		WindowData   *data)
 {
 	GeditView *view;
 
@@ -350,43 +378,44 @@ impl_activate (GeditPlugin *plugin,
 	       GeditWindow *window)
 {
 	GtkUIManager *manager;
-	DocInfoPluginData *plugin_data;
-
+	WindowData *data;
+	
 	gedit_debug (DEBUG_PLUGINS);
 
-	plugin_data = g_new (DocInfoPluginData, 1);
-	plugin_data->ui_dialog = NULL;
-
+	data = g_new (WindowData, 1);
 	manager = gedit_window_get_ui_manager (window);
 
-	plugin_data->ui_action_group = gtk_action_group_new ("GeditDocInfoPluginActions");
-	gtk_action_group_set_translation_domain (plugin_data->ui_action_group, 
+	data->dialog = NULL;
+	data->ui_action_group = gtk_action_group_new ("GeditDocInfoPluginActions");
+	
+	gtk_action_group_set_translation_domain (data->ui_action_group, 
 						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (plugin_data->ui_action_group, 
+	gtk_action_group_add_actions (data->ui_action_group,
 				      action_entries,
-				      G_N_ELEMENTS (action_entries), 
+				      G_N_ELEMENTS (action_entries),
 				      window);
 
 	gtk_ui_manager_insert_action_group (manager,
-					    plugin_data->ui_action_group,
+					    data->ui_action_group,
 					    -1);
 
-	plugin_data->ui_id = gtk_ui_manager_new_merge_id (manager);
+	data->ui_id = gtk_ui_manager_new_merge_id (manager);
 
-	g_object_set_data_full (G_OBJECT (window),
-				PLUGIN_DATA_KEY,
-				plugin_data,
-				(GDestroyNotify) free_plugin_data);
+	g_object_set_data_full (G_OBJECT (window), 
+				WINDOW_DATA_KEY, 
+				data,
+				(GDestroyNotify) free_window_data);
 
-	gtk_ui_manager_add_ui (manager,
-			       plugin_data->ui_id, 
+	gtk_ui_manager_add_ui (manager, 
+			       data->ui_id, 
 			       MENU_PATH,
 			       "DocumentStatistics", 
 			       "DocumentStatistics",
 			       GTK_UI_MANAGER_MENUITEM, 
-			       TRUE);
+			       FALSE);
 
-	update_ui_real (window, plugin_data);
+	update_ui_real (window,
+			data);
 }
 
 static void
@@ -394,38 +423,40 @@ impl_deactivate	(GeditPlugin *plugin,
 		 GeditWindow *window)
 {
 	GtkUIManager *manager;
-	DocInfoPluginData *plugin_data;
+	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	manager = gedit_window_get_ui_manager (window);
 
-	plugin_data = (DocInfoPluginData *) g_object_get_data (G_OBJECT (window), PLUGIN_DATA_KEY);
-	g_return_if_fail (plugin_data != NULL);
+	data = (WindowData *) g_object_get_data (G_OBJECT (window),
+						 WINDOW_DATA_KEY);
+	g_return_if_fail (data != NULL);
 
-	gtk_ui_manager_remove_ui (manager, plugin_data->ui_id);
-	gtk_ui_manager_remove_action_group (manager, plugin_data->ui_action_group);
+	gtk_ui_manager_remove_ui (manager,
+				  data->ui_id);
+	gtk_ui_manager_remove_action_group (manager,
+					    data->ui_action_group);
 
-	if (plugin_data->ui_dialog != NULL)
-	{
-		gtk_widget_destroy (plugin_data->ui_dialog->dialog);
-	}
-
-	g_object_set_data (G_OBJECT (window), PLUGIN_DATA_KEY, NULL);
+	g_object_set_data (G_OBJECT (window),
+			   WINDOW_DATA_KEY,
+			   NULL);
 }
 
 static void
-impl_update_ui	(GeditPlugin *plugin,
-		 GeditWindow *window)
+impl_update_ui (GeditPlugin *plugin,
+		GeditWindow *window)
 {
-	DocInfoPluginData *data;
+	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	data = (DocInfoPluginData *) g_object_get_data (G_OBJECT (window), PLUGIN_DATA_KEY);
+	data = (WindowData *) g_object_get_data (G_OBJECT (window),
+						 WINDOW_DATA_KEY);
 	g_return_if_fail (data != NULL);
 
-	update_ui_real (window, data);
+	update_ui_real (window,
+			data);
 }
 
 static void

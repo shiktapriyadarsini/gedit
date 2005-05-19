@@ -41,7 +41,7 @@
 /* Key in case the plugin ever needs any settings. */
 #define SORT_BASE_KEY "/apps/gedit-2/plugins/sort"
 
-#define PLUGIN_DATA_KEY "GeditSortPluginData"
+#define WINDOW_DATA_KEY "GeditSortPluginWindowData"
 #define MENU_PATH "/MenuBar/EditMenu/EditOps_6"
 
 GEDIT_PLUGIN_REGISTER_TYPE(GeditSortPlugin, gedit_sort_plugin)
@@ -53,15 +53,15 @@ typedef struct
 	GtkWidget *reverse_order_checkbutton;
 	GtkWidget *ignore_case_checkbutton;
 	GtkWidget *remove_dups_checkbutton;
+
+	GeditDocument *doc;
 } SortDialog;
 
 typedef struct
 {
 	GtkActionGroup *ui_action_group;
 	guint ui_id;
-	SortDialog *ui_dialog;
-	GeditWindow *ui_window;
-} PluginData;
+} WindowData;
 
 typedef struct
 {
@@ -71,10 +71,9 @@ typedef struct
 	gint starting_column;
 } SortInfo;
 
-static void sort_cb (GtkAction *action, PluginData *data);
-static void sort_real (PluginData *data);
+static void sort_cb (GtkAction *action, GeditWindow *window);
+static void sort_real (SortDialog *dialog);
 
-/* Menu items. */
 static const GtkActionEntry action_entries[] =
 {
 	{ "Sort",
@@ -86,22 +85,18 @@ static const GtkActionEntry action_entries[] =
 };
 
 static void
-sort_dialog_destroy (GtkObject  *dialog,
-		     PluginData *data)
+sort_dialog_destroy (GtkObject *obj,
+		     gpointer  dialog_pointer)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
-	if (data != NULL)
-	{
-		g_free (data->ui_dialog);
-		data->ui_dialog = NULL;
-	}
+	g_free (dialog_pointer);
 }
 
 static void
-sort_dialog_response_handler (GtkDialog  *dialog,
-			      gint        res_id,
-			      PluginData *data)
+sort_dialog_response_handler (GtkDialog  *widget,
+			      gint       res_id,
+			      SortDialog *dialog)
 {
 	GError *error = NULL;
 
@@ -110,9 +105,9 @@ sort_dialog_response_handler (GtkDialog  *dialog,
 	switch (res_id)
 	{
 		case GTK_RESPONSE_OK:
-			sort_real (data);
-			gtk_widget_destroy (data->ui_dialog->dialog);
-			
+			sort_real (dialog);
+			gtk_widget_destroy (dialog->dialog);
+
 			break;
 
 		case GTK_RESPONSE_HELP:
@@ -129,14 +124,14 @@ sort_dialog_response_handler (GtkDialog  *dialog,
 			break;
 
 		case GTK_RESPONSE_CANCEL:
-			gtk_widget_destroy (data->ui_dialog->dialog);
+			gtk_widget_destroy (dialog->dialog);
 
 			break;
 	}
 }
 
 static SortDialog *
-get_sort_dialog (PluginData *data)
+get_sort_dialog (GtkWindow *parent)
 {
 	GladeXML *gladexml;
 	SortDialog *dialog;
@@ -149,7 +144,7 @@ get_sort_dialog (PluginData *data)
 
 	if (gladexml == NULL)
 	{
-		gedit_warning (GTK_WINDOW (data->ui_window),
+		gedit_warning (parent,
 			       MISSING_FILE,
 			       GEDIT_GLADEDIR "sort.glade2");
 		return NULL;
@@ -163,71 +158,76 @@ get_sort_dialog (PluginData *data)
 	dialog->ignore_case_checkbutton = glade_xml_get_widget (gladexml, "ignore_case_checkbutton");
 	dialog->remove_dups_checkbutton = glade_xml_get_widget (gladexml, "remove_dups_checkbutton");
 
-	if (!dialog->dialog ||
+	if (!dialog->dialog                    ||
 	    !dialog->reverse_order_checkbutton ||
 	    !dialog->col_num_spinbutton        ||
 	    !dialog->ignore_case_checkbutton   ||
 	    !dialog->remove_dups_checkbutton)
 	{
-		gedit_warning (GTK_WINDOW (data->ui_window),
+		gedit_warning (parent,
 			       MISSING_WIDGETS,
 			       GEDIT_GLADEDIR "sort.glade2");
 
 		g_free (dialog);
+
 		return NULL;
 	}
 
 	g_object_unref (gladexml);
 
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
+					 GTK_RESPONSE_OK);
+
 	g_signal_connect (dialog->dialog,
 			  "destroy",
 			  G_CALLBACK (sort_dialog_destroy),
-			  data);
+			  dialog);
+
 	g_signal_connect (dialog->dialog,
 			  "response",
 			  G_CALLBACK (sort_dialog_response_handler),
-			  data);
+			  dialog);
 
 	return dialog;
 }
 
 static void
 sort_cb (GtkAction  *action,
-	 PluginData *data)
-{	
+	 GeditWindow *window)
+{
+	GeditDocument *doc;
+	GtkWindowGroup *wg;
+	SortDialog *dialog;
+
 	gedit_debug (DEBUG_PLUGINS);
 
-	g_return_if_fail (data != NULL);
+	doc = gedit_window_get_active_document (window);
+	g_return_if_fail (doc != NULL);
 
-	if (data->ui_dialog != NULL)
-	{
-		gtk_widget_grab_focus (data->ui_dialog->dialog);
-		gtk_window_present (GTK_WINDOW (data->ui_dialog->dialog));
-	}
-	else
-	{
-		GtkWindowGroup *wg;
-		
-		data->ui_dialog = get_sort_dialog (data);
-		g_return_if_fail (data->ui_dialog != NULL);
+	dialog = get_sort_dialog (GTK_WINDOW (window));
+	g_return_if_fail (dialog != NULL);
 
-		wg = gedit_window_get_group (data->ui_window);
-		g_return_if_fail (wg != NULL);
-				
-		gtk_window_group_add_window (wg, GTK_WINDOW (data->ui_dialog->dialog));
+	wg = gedit_window_get_group (window);
+	gtk_window_group_add_window (wg,
+				     GTK_WINDOW (dialog->dialog));
 
-		gtk_window_set_transient_for (GTK_WINDOW (data->ui_dialog->dialog),
-					      GTK_WINDOW (data->ui_window));
+	dialog->doc = doc;
 
-		gtk_window_set_modal (GTK_WINDOW (data->ui_dialog->dialog), TRUE);
-		gtk_widget_show (data->ui_dialog->dialog);
-	}
+	gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
+				      GTK_WINDOW (window));
+				      
+	gtk_window_set_modal (GTK_WINDOW (dialog->dialog),
+			      TRUE);
+
+	gtk_widget_show (GTK_WIDGET (dialog->dialog));
 }
 
 /* Compares two strings for the sorting algorithm. Uses the UTF-8 processing
  * functions in GLib to be as correct as possible.*/
 static gint
-compare_algorithm (gconstpointer s1, gconstpointer s2, gpointer data)
+compare_algorithm (gconstpointer s1,
+		   gconstpointer s2,
+		   gpointer	 data)
 {
 	gint length1, length2;
 	gint ret;
@@ -308,7 +308,7 @@ compare_algorithm (gconstpointer s1, gconstpointer s2, gpointer data)
 }
 
 static void
-sort_real (PluginData *data)
+sort_real (SortDialog *dialog)
 {
 	GeditDocument *doc;
 	GtkTextIter start, end;
@@ -322,25 +322,29 @@ sort_real (PluginData *data)
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	doc = gedit_window_get_active_document (data->ui_window);
+	doc = dialog->doc;
 	g_return_if_fail (doc != NULL);
 
 	sort_info = g_new0 (SortInfo, 1);
-	sort_info->ignore_case = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (data->ui_dialog->ignore_case_checkbutton));
-	sort_info->reverse_order = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (data->ui_dialog->reverse_order_checkbutton));
-	sort_info->remove_duplicates = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (data->ui_dialog->remove_dups_checkbutton));
-	sort_info->starting_column = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (data->ui_dialog->col_num_spinbutton)) - 1;
+	sort_info->ignore_case = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->ignore_case_checkbutton));
+	sort_info->reverse_order = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->reverse_order_checkbutton));
+	sort_info->remove_duplicates = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->remove_dups_checkbutton));
+	sort_info->starting_column = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (dialog->col_num_spinbutton)) - 1;
 
 	if (!gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
-						   &start, &end))
+						   &start,
+						   &end))
 	{
 		/* No selection, get the whole document. */
 		gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
-					    &start, &end);
+					    &start,
+					    &end);
 	}
 
 	buffer = gtk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc),
-					    &start, &end, TRUE);
+					    &start,
+					    &end,
+					    TRUE);
 
 	lines = g_new0 (gpointer, gtk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc)) + 1);
 
@@ -376,13 +380,19 @@ sort_real (PluginData *data)
 
 	gedit_debug_message (DEBUG_PLUGINS, "Sort list...");
 
-	g_qsort_with_data (lines, cont, sizeof (gpointer), compare_algorithm, sort_info);
+	g_qsort_with_data (lines,
+			   cont,
+			   sizeof (gpointer),
+			   compare_algorithm,
+			   sort_info);
 
 	gedit_debug_message (DEBUG_PLUGINS, "Rebuilding document...");
 
 	gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (doc));
 
-	gtk_text_buffer_delete (GTK_TEXT_BUFFER (doc), &start, &end);
+	gtk_text_buffer_delete (GTK_TEXT_BUFFER (doc),
+				&start,
+				&end);
 
 	cont = 0;
 
@@ -398,7 +408,8 @@ sort_real (PluginData *data)
 		{
 			gtk_text_buffer_insert (GTK_TEXT_BUFFER (doc),
 						&start,
-						current_row, -1);
+						current_row,
+						-1);
 
 			if (lines[cont + 1] != NULL)
 			{
@@ -423,7 +434,7 @@ sort_real (PluginData *data)
 }
 
 static void
-free_plugin_data (PluginData *data)
+free_window_data (WindowData *data)
 {
 	g_return_if_fail (data != NULL);
 
@@ -432,13 +443,14 @@ free_plugin_data (PluginData *data)
 }
 
 static void
-update_ui_real (PluginData *data)
+update_ui_real (GeditWindow  *window,
+		WindowData   *data)
 {
 	GeditView *view;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	view = gedit_window_get_active_view (data->ui_window);
+	view = gedit_window_get_active_view (window);
 
 	gtk_action_group_set_sensitive (data->ui_action_group,
 					(view != NULL) &&
@@ -450,42 +462,43 @@ impl_activate (GeditPlugin *plugin,
 	       GeditWindow *window)
 {
 	GtkUIManager *manager;
-	PluginData *plugin_data;
+	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	plugin_data = g_new (PluginData, 1);
-	plugin_data->ui_dialog = NULL;
-	plugin_data->ui_window = window;
+	data = g_new (WindowData, 1);
 
 	manager = gedit_window_get_ui_manager (window);
 
-	plugin_data->ui_action_group = gtk_action_group_new ("GeditSortPluginActions");
-	gtk_action_group_set_translation_domain (plugin_data->ui_action_group, 
+	data->ui_action_group = gtk_action_group_new ("GeditSortPluginActions");
+	gtk_action_group_set_translation_domain (data->ui_action_group, 
 						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (plugin_data->ui_action_group, 
+	gtk_action_group_add_actions (data->ui_action_group,
 				      action_entries,
-				      G_N_ELEMENTS (action_entries), 
-				      plugin_data);
+				      G_N_ELEMENTS (action_entries),
+				      window);
 
-	gtk_ui_manager_insert_action_group (manager, plugin_data->ui_action_group, -1);
+	gtk_ui_manager_insert_action_group (manager,
+					    data->ui_action_group,
+					    -1);
 
-	plugin_data->ui_id = gtk_ui_manager_new_merge_id (manager);
+	data->ui_id = gtk_ui_manager_new_merge_id (manager);
 
 	g_object_set_data_full (G_OBJECT (window), 
-				PLUGIN_DATA_KEY, 
-				plugin_data,
-				(GDestroyNotify) free_plugin_data);
+				WINDOW_DATA_KEY, 
+				data,
+				(GDestroyNotify) free_window_data);
 
 	gtk_ui_manager_add_ui (manager, 
-			       plugin_data->ui_id, 
+			       data->ui_id, 
 			       MENU_PATH,
 			       "Sort", 
 			       "Sort",
 			       GTK_UI_MANAGER_MENUITEM, 
-			       TRUE);
+			       FALSE);
 
-	update_ui_real (plugin_data);
+	update_ui_real (window,
+			data);
 }
 
 static void
@@ -493,38 +506,40 @@ impl_deactivate	(GeditPlugin *plugin,
 		 GeditWindow *window)
 {
 	GtkUIManager *manager;
-	PluginData *plugin_data;
+	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	manager = gedit_window_get_ui_manager (window);
 
-	plugin_data = (PluginData *) g_object_get_data (G_OBJECT (window), PLUGIN_DATA_KEY);
-	g_return_if_fail (plugin_data != NULL);
+	data = (WindowData *) g_object_get_data (G_OBJECT (window),
+						 WINDOW_DATA_KEY);
+	g_return_if_fail (data != NULL);
 
-	gtk_ui_manager_remove_ui (manager, plugin_data->ui_id);
-	gtk_ui_manager_remove_action_group (manager, plugin_data->ui_action_group);
+	gtk_ui_manager_remove_ui (manager,
+				  data->ui_id);
+	gtk_ui_manager_remove_action_group (manager,
+					    data->ui_action_group);
 
-	if (plugin_data->ui_dialog != NULL)
-	{
-		gtk_widget_destroy (plugin_data->ui_dialog->dialog);
-	}
-
-	g_object_set_data (G_OBJECT (window), PLUGIN_DATA_KEY, NULL);
+	g_object_set_data (G_OBJECT (window),
+			   WINDOW_DATA_KEY,
+			   NULL);
 }
 
 static void
 impl_update_ui (GeditPlugin *plugin,
 		GeditWindow *window)
 {
-	PluginData *data;
+	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	data = (PluginData *) g_object_get_data (G_OBJECT (window), PLUGIN_DATA_KEY);
+	data = (WindowData *) g_object_get_data (G_OBJECT (window),
+						 WINDOW_DATA_KEY);
 	g_return_if_fail (data != NULL);
-	
-	update_ui_real (data);
+
+	update_ui_real (window,
+			data);
 }
 
 static void
