@@ -1207,7 +1207,7 @@ gedit_cmd_view_show_bottom_panel (GtkAction   *action,
 
 	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 
-	// TODO
+	_gedit_window_set_bottom_panel_visible (window, visible);
 }
 
 void 

@@ -139,9 +139,11 @@ void		 _gedit_window_set_statusbar_visible	(GeditWindow         *window,
 void		 _gedit_window_set_toolbar_visible	(GeditWindow         *window,
 							 gboolean             visible);
 void		 _gedit_window_set_side_panel_visible	(GeditWindow         *window,
-							 gboolean             visible);							 							 
+							 gboolean             visible);
+void		 _gedit_window_set_bottom_panel_visible	(GeditWindow         *window,
+							 gboolean             visible);
 GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
-							 GeditTab            *tab);								 
+							 GeditTab            *tab);
 gboolean	 _gedit_window_is_removing_all_tabs	(GeditWindow         *window);
 
 GtkWidget	*_gedit_window_get_search_panel		(GeditWindow         *window);

@@ -2306,18 +2306,18 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 				      gboolean     visible)
 {
 	GtkAction *action;
-	static gboolean recursione_guard = FALSE;
+	static gboolean recursion_guard = FALSE;
 	gboolean show = FALSE;
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	
-	if (recursione_guard)
+	if (recursion_guard)
 		return;
 		
-	recursione_guard = TRUE;
+	recursion_guard = TRUE;
 
 	visible = (visible != FALSE);
 	
-	if (visible && 
+	if (visible &&
 	    (GTK_WIDGET_VISIBLE (window->priv->side_panel) != visible))
 	{
 		gtk_widget_show (window->priv->side_panel);
@@ -2326,27 +2326,75 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 	else
 	{
 		gtk_widget_hide (window->priv->side_panel);
-		if (window->priv->active_tab)		
+		if (window->priv->active_tab)
 			gtk_widget_grab_focus (GTK_WIDGET (
 					gedit_tab_get_view (GEDIT_TAB (window->priv->active_tab))));
 	}
-		
+
 	if (gedit_prefs_manager_side_pane_visible_can_set ())
 		gedit_prefs_manager_set_side_pane_visible (visible);
-	
+
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewSidePane");		
-		
+
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-
 
 	if (show)
 	{
 		g_print ("GRAB side panel\n");
 		gtk_widget_grab_focus (window->priv->side_panel);
 	}
-	recursione_guard = FALSE;		
+
+	recursion_guard = FALSE;
+}
+
+void
+_gedit_window_set_bottom_panel_visible (GeditWindow *window,
+					gboolean     visible)
+{
+	GtkAction *action;
+	static gboolean recursion_guard = FALSE;
+	gboolean show = FALSE;
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	
+	if (recursion_guard)
+		return;
+		
+	recursion_guard = TRUE;
+
+	visible = (visible != FALSE);
+	
+	if (visible &&
+	    (GTK_WIDGET_VISIBLE (window->priv->bottom_panel) != visible))
+	{
+		gtk_widget_show (window->priv->bottom_panel);
+		show = TRUE;
+	}
+	else
+	{
+		gtk_widget_hide (window->priv->bottom_panel);
+		if (window->priv->active_tab)
+			gtk_widget_grab_focus (GTK_WIDGET (
+					gedit_tab_get_view (GEDIT_TAB (window->priv->active_tab))));
+	}
+
+//	if (gedit_prefs_manager_bottom_pane_visible_can_set ())
+//		gedit_prefs_manager_set_bottom_pane_visible (visible);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewBottomPanel");		
+
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+
+	if (show)
+	{
+		g_print ("GRAB bottom panel\n");
+		gtk_widget_grab_focus (window->priv->bottom_panel);
+	}
+
+	recursion_guard = FALSE;
 }
 
 GeditWindow *
