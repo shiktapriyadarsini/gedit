@@ -44,7 +44,7 @@
 
 #define GEDIT_VIEW_SCROLL_MARGIN 0.02
 
-#define GEDIT_VIEW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_WINDOW, GeditViewPrivate))
+#define GEDIT_VIEW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_VIEW, GeditViewPrivate))
 
 struct _GeditViewPrivate
 {
