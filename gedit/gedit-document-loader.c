@@ -857,7 +857,6 @@ gedit_document_loader_load (GeditDocumentLoader *loader,
 	}
 	else
 	{
-		loader->priv->vfs_uri = gnome_vfs_uri_new (uri);
 		load_remote_file (loader);
 	}
 
@@ -919,13 +918,13 @@ gedit_document_loader_get_bytes_read (GeditDocumentLoader *loader)
 }
 
 gboolean 
-gedit_document_loader_cancel (GeditDocumentLoader  *loader)
+gedit_document_loader_cancel (GeditDocumentLoader *loader)
 {
 	gedit_debug (DEBUG_DOCUMENT);
-	
+
 	if (loader->priv->handle == NULL)
 		return FALSE;
-		
+
 	if (loader->priv->info_handle != NULL)
 	{
 		gnome_vfs_async_cancel (loader->priv->info_handle);
@@ -933,9 +932,9 @@ gedit_document_loader_cancel (GeditDocumentLoader  *loader)
 				       async_close_cb, 
 				       NULL);
 	}
-	
+
 	gnome_vfs_async_cancel (loader->priv->handle);
-	
+
 	g_set_error (&loader->priv->error,
 		     GEDIT_DOCUMENT_ERROR,
 		     GNOME_VFS_ERROR_CANCELLED,
