@@ -475,7 +475,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 					      "ViewHighlightMode");
 	gtk_action_set_sensitive (action, 
 				  gedit_prefs_manager_get_enable_syntax_highlighting ());
-				  
+
 	gedit_plugins_engine_update_plugins_ui (window, FALSE);
 }
 
@@ -493,7 +493,7 @@ language_toggled (GtkToggleAction *action,
 
 	doc = gedit_window_get_active_document (window);
 	if (doc == NULL)
-		return; // CHECK turn this into a g_return_if_fail when sensitivity is in place?
+		return;
 
 	n = gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
 
@@ -510,7 +510,6 @@ language_toggled (GtkToggleAction *action,
 		lang = GTK_SOURCE_LANGUAGE (g_slist_nth_data ((GSList *) languages, n));
 	}
 
-	// FIXME: why doc_set/get_language do not take a const instead of casting here?
 	gedit_document_set_language (doc, (GtkSourceLanguage *) lang);
 }
 
@@ -1932,10 +1931,10 @@ gen_role (void)
 
 	if (!hostname)
 	{
-		static char buffer [512];
+		static char buffer[512];
 
 		if ((gethostname (buffer, sizeof (buffer) - 1) == 0) &&
-		    (buffer [0] != 0))
+		    (buffer[0] != 0))
 			hostname = buffer;
 		else
 			hostname = "localhost";
@@ -2360,11 +2359,11 @@ _gedit_window_set_bottom_panel_visible (GeditWindow *window,
 	
 	if (recursion_guard)
 		return;
-		
+
 	recursion_guard = TRUE;
 
 	visible = (visible != FALSE);
-	
+
 	if (visible &&
 	    (GTK_WIDGET_VISIBLE (window->priv->bottom_panel) != visible))
 	{
@@ -2379,8 +2378,8 @@ _gedit_window_set_bottom_panel_visible (GeditWindow *window,
 					gedit_tab_get_view (GEDIT_TAB (window->priv->active_tab))));
 	}
 
-//	if (gedit_prefs_manager_bottom_pane_visible_can_set ())
-//		gedit_prefs_manager_set_bottom_pane_visible (visible);
+	if (gedit_prefs_manager_bottom_panel_visible_can_set ())
+		gedit_prefs_manager_set_bottom_panel_visible (visible);
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewBottomPanel");		
