@@ -1,8 +1,11 @@
-/* gedit-session - Basic session management for gedit
+/*
+ * gedit-session.c - Basic session management for gedit
+ * This file is part of gedit
  *
  * Copyright (C) 2002 Ximian, Inc.
+ * Copyright (C) 2005 - Paolo Maggi 
  *
- * Authors Federico Mena-Quintero <federico@ximian.com>
+ * Author: Federico Mena-Quintero <federico@ximian.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,9 +24,11 @@
  */
 
 /*
- * Modified by the gedit Team, 2002. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id 
  */
 
 
@@ -31,17 +36,22 @@
 #include <config.h>
 #endif
 
-#include <libgnome/gnome-config.h>
+#include <unistd.h>
+#include <string.h>
+
+#include <libgnome/gnome-util.h>
 #include <libgnomeui/gnome-client.h>
-#include "bonobo-mdi-session.h"
-#include "gedit2.h"
-#include "gedit-mdi-child.h"
+#include <libxml/tree.h>
+#include <libxml/xmlwriter.h>
+
 #include "gedit-session.h"
 #include "gedit-file.h"
 #include "gedit-debug.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-prefs-manager-app.h"
 #include "gedit-metadata-manager.h"
+#include "gedit-window.h"
+#include "gedit-app.h"
 
 /* The master client we use for SM */
 static GnomeClient *master_client = NULL;
@@ -49,31 +59,215 @@ static GnomeClient *master_client = NULL;
 /* argv[0] from main(); used as the command to restart the program */
 static const char *program_argv0 = NULL;
 
-static void 
-interaction_function (GnomeClient *client, gint key, GnomeDialogType dialog_type, gpointer shutdown)
+static void
+ensure_session_directory (void)
 {
-	const gchar *prefix;
+	gchar *gedit_dir;
+	gchar *dir;
 
 	gedit_debug (DEBUG_SESSION);
 
-	/* Save all unsaved files */
+	dir = gnome_util_home_file ("gedit");
+	if (g_file_test (dir, G_FILE_TEST_EXISTS) == FALSE)
+	{
+		if (mkdir (dir, 488) != 0)
+		{
+			g_warning ("Unable to create directory '%s'\n", dir);
+		}
+	}
 
-	if (GPOINTER_TO_INT (shutdown))		
-		gedit_file_save_all ();
+	gedit_dir = dir;
 
-	/* Save session data */
+	dir = g_build_filename (gedit_dir, "sessions", NULL);	
+	if (g_file_test (dir, G_FILE_TEST_EXISTS) == FALSE)
+	{
+		if (mkdir (dir, 488) != 0)
+		{
+			g_warning ("Unable to create directory '%s'\n", dir);
+		}
+	}
+
+	g_free (dir);
+	g_free (gedit_dir);
+}
+
+static gchar *
+get_session_file_path (GnomeClient *client)
+{
+	const gchar *prefix;
+	
+	gchar *session_file;
+	gchar *session_path;	
+	gchar *gedit_dir;
 
 	prefix = gnome_client_get_config_prefix (client);
-
 	gedit_debug_message (DEBUG_SESSION, "Prefix: %s", prefix);
+	
+	session_file = g_strndup (prefix, strlen (prefix) - 1);
+	gedit_debug_message (DEBUG_SESSION, "Session File: %s", session_file);
+	
+	gedit_dir = gnome_util_home_file ("gedit");
+	session_path = g_build_filename (gedit_dir, "sessions", session_file, NULL);
+	g_free (gedit_dir);
+	
+	g_free (session_file);
 
-	gnome_config_push_prefix (prefix);
+	gedit_debug_message (DEBUG_SESSION, "Session Path: %s", session_path);
+	
+	return session_path;
+}
 
-	bonobo_mdi_save_state (BONOBO_MDI (gedit_mdi), "Session");
+static int
+save_window_session (xmlTextWriterPtr  writer,
+		     GeditWindow      *window)
+{
+	const gchar *role;
+	GeditPanel *panel;
+	GList *docs, *l;
+	int ret;
+	GeditDocument *active_document;
+	
+	gedit_debug (DEBUG_SESSION);
+	
+	active_document = gedit_window_get_active_document (window);
+	
+	ret = xmlTextWriterStartElement (writer, (xmlChar *) "window");
+	if (ret < 0) return ret;
+	
+	role = gtk_window_get_role (GTK_WINDOW (window));
+	if (role != NULL)
+	{
+		ret = xmlTextWriterWriteAttribute (writer, "role", role);
+		if (ret < 0) return ret;
+	}
+	
+	ret = xmlTextWriterStartElement (writer, (xmlChar *) "side-pane");
+	if (ret < 0) return ret;
+	panel = gedit_window_get_side_panel (window);
+	ret = xmlTextWriterWriteAttribute (writer,
+					   "visible", 
+					   GTK_WIDGET_VISIBLE (panel) ? "yes": "no");
+	if (ret < 0) return ret;
+		
+	ret = xmlTextWriterEndElement (writer); /* side-pane */
+	if (ret < 0) return ret;
 
-	gnome_config_pop_prefix ();
-	gnome_config_sync ();
 
+	ret = xmlTextWriterStartElement (writer, (xmlChar *) "bottom-panel");
+	if (ret < 0) return ret;
+	/* TODO: bottom panel */
+	/*
+	ret = xmlTextWriterWriteAttribute (writer,
+					   "visible", 
+					   GTK_WIDGET_VISIBLE (panel) ? "yes", "no");
+	if (ret < 0) return ret;
+	*/	
+	ret = xmlTextWriterEndElement (writer); /* bottom-panel */
+	if (ret < 0) return ret;
+
+	docs = gedit_window_get_documents (window);
+	l = docs;
+	while (l != NULL)
+	{
+		const gchar *uri;
+		
+		ret = xmlTextWriterStartElement (writer, (xmlChar *) "document");
+		if (ret < 0) return ret;
+	
+		uri = gedit_document_get_uri_ (GEDIT_DOCUMENT (l->data));
+		
+		if (uri != NULL)
+		{
+			ret = xmlTextWriterWriteAttribute (writer,
+							   "uri", 
+							   uri);
+			if (ret < 0) return ret;
+		}
+		
+		if (active_document == GEDIT_DOCUMENT (l->data))
+		{
+			ret = xmlTextWriterWriteAttribute (writer,
+							   "active", 
+							   "yes");
+			if (ret < 0) return ret;
+		}
+	
+		ret = xmlTextWriterEndElement (writer); /* document */
+		if (ret < 0) return ret;
+
+		l = g_list_next (l);
+	}
+	g_list_free (docs);	
+	ret = xmlTextWriterEndElement (writer); /* window */
+	return ret;
+}
+
+static void
+save_session (const gchar *fname)
+{
+	int ret;
+	xmlTextWriterPtr writer;
+	const GSList *windows;
+	
+	gedit_debug_message (DEBUG_SESSION, "Session file: %s", fname);
+	
+	writer = xmlNewTextWriterFilename (fname, 0);
+	if (writer == NULL)
+	{
+		g_warning ("Cannot write the session file '%s'", fname);
+		return;
+	}
+	
+	ret = xmlTextWriterSetIndent (writer, 1);
+	if (ret < 0) goto out;
+
+	ret = xmlTextWriterSetIndentString (writer, (const xmlChar *) "\t");
+	if (ret < 0) goto out;
+
+	/* create and set the root node for the session */
+	ret = xmlTextWriterStartElement (writer, (const xmlChar *) "session");
+	if (ret < 0) goto out;
+	
+	windows = gedit_app_get_windows (gedit_app_get_default ());
+	while (windows != NULL)
+	{
+		ret = save_window_session (writer, 
+					   GEDIT_WINDOW (windows->data));
+		if (ret < 0) goto out;
+				   
+		windows = g_slist_next (windows);
+	}
+	
+	ret = xmlTextWriterEndElement (writer); /* session */
+	if (ret < 0) goto out;
+
+	ret = xmlTextWriterEndDocument (writer);		
+out:
+	xmlFreeTextWriter (writer);
+	
+	if (ret < 0)
+		unlink (fname);
+}
+
+static void 
+interaction_function (GnomeClient *client, gint key, GnomeDialogType dialog_type, gpointer shutdown)
+{
+	gchar *fname;
+	
+	gedit_debug (DEBUG_SESSION);
+#if 0
+	/* Save all unsaved files */
+	if (GPOINTER_TO_INT (shutdown))		
+		gedit_file_save_all ();
+#endif
+	/* Save session data */
+
+	fname = get_session_file_path (client);
+	
+	save_session (fname);
+
+	g_free (fname);
+	
 	gnome_interaction_key_return (key, FALSE);
 
 	gedit_debug_message (DEBUG_SESSION, "END");
@@ -89,9 +283,7 @@ client_save_yourself_cb (GnomeClient *client,
 			 gboolean fast,
 			 gpointer data)
 {
-	const gchar *prefix;
-
-	char *argv[] = { "rm", "-r", NULL };
+	gchar *argv[] = { "rm", "-r", NULL };
 
 	gedit_debug (DEBUG_SESSION);
 
@@ -100,15 +292,12 @@ client_save_yourself_cb (GnomeClient *client,
 					  interaction_function,
 					  GINT_TO_POINTER (shutdown));
 	
-	prefix = gnome_client_get_config_prefix (client);
-
-	gedit_debug_message (DEBUG_SESSION, "Prefix: %s", prefix);
-
 	/* Tell the session manager how to discard this save */
-
-	argv[2] = gnome_config_get_real_path (prefix);
+	argv[2] = get_session_file_path (client);
 	gnome_client_set_discard_command (client, 3, argv);
 
+	g_free (argv[2]);
+	
 	/* Tell the session manager how to clone or restart this instance */
 
 	argv[0] = (char *) program_argv0;
@@ -126,6 +315,7 @@ client_save_yourself_cb (GnomeClient *client,
 static void
 client_die_cb (GnomeClient *client, gpointer data)
 {
+#if 0
 	gedit_debug (DEBUG_SESSION);
 
 	if (!client->save_yourself_emitted)
@@ -146,7 +336,7 @@ client_die_cb (GnomeClient *client, gpointer data)
 	bonobo_object_unref (gedit_app_server);
 
 	gedit_debug_message (DEBUG_FILE, "Unref gedit_app_server: DONE");
-
+#endif
 	gedit_prefs_manager_app_shutdown ();
 	gedit_metadata_manager_shutdown ();
 	gedit_plugins_engine_shutdown ();
@@ -170,6 +360,8 @@ gedit_session_init (const char *argv0)
 
 	program_argv0 = argv0;
 
+	ensure_session_directory ();
+	
 	master_client = gnome_master_client ();
 
 	g_signal_connect (master_client, "save_yourself",
@@ -177,7 +369,7 @@ gedit_session_init (const char *argv0)
 			  NULL);
 	g_signal_connect (master_client, "die",
 			  G_CALLBACK (client_die_cb),
-			  NULL);
+			  NULL);		  
 }
 
 /**
@@ -206,28 +398,6 @@ gedit_session_is_restored (void)
 	return restored;
 }
 
-/* Callback used from bonobo_mdi_restore_state() */
-static BonoboMDIChild *
-mdi_child_create_cb (const gchar *str)
-{
-	GeditMDIChild *child;
-
-	gedit_debug (DEBUG_SESSION);
-
-	/* The config string is simply a filename */
-	if (str != NULL)
-	{
-		gedit_debug_message (DEBUG_SESSION, "URI: %s", str);
-
-		/* FIXME */
-		child = gedit_mdi_child_new_with_uri (str, NULL);
-	}
-	else
-		child = gedit_mdi_child_new ();
-
-	return (child == NULL) ? NULL : BONOBO_MDI_CHILD (child);
-}
-
 /**
  * gedit_session_load:
  * 
@@ -239,6 +409,7 @@ mdi_child_create_cb (const gchar *str)
 gboolean
 gedit_session_load (void)
 {
+#if 0
 	int retval;
 
 	gedit_debug (DEBUG_SESSION);
@@ -250,4 +421,6 @@ gedit_session_load (void)
 
 	gnome_config_pop_prefix ();
 	return retval;
+#endif 
+	return TRUE;	
 }

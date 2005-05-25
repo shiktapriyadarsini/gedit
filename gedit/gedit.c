@@ -175,7 +175,7 @@ main (int argc, char *argv[])
 	gtk_about_dialog_set_url_hook (gedit_utils_activate_url, NULL, NULL);
 	
 	/* Initialize session management */
-//	gedit_session_init (argv[0]);
+	gedit_session_init (argv[0]);
 
 #if 0
 	if (gedit_session_is_restored ())

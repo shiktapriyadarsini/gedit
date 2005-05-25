@@ -44,9 +44,8 @@ NON_INST_H_FILS =			\
 	gedit-document-loader.h		\
 	gedit-document-saver.h		\
 	gedit-io-error-message-area.h	\
-	gedit-search-panel.h
-
-#	gedit-session.h
+	gedit-search-panel.h		\
+	gedit-session.h
 
 INST_H_FILES =				\
 	gedit-utils.h 			\
@@ -121,6 +120,7 @@ gedit_SOURCES = 			\
 	gedit-plugin.c			\
 	gedit-module.c			\
 	gedit-plugins-engine.c		\
+	gedit-session.c			\
 	$(NON_INST_H_FILS)		\
 	$(INST_H_FILES)
 
@@ -128,7 +128,6 @@ gedit_SOURCES = 			\
 #	gedit2.c			\
 #	gedit-menus.c			\
 #	gedit-file.c			\
-#	gedit-session.c			\
 #	gedit-file-selector-util.c 	\
 #	gedit-io-error-dialogs.c	\
 #	gedit-output-window.c
