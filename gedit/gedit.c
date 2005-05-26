@@ -138,6 +138,7 @@ main (int argc, char *argv[])
 	GnomeProgram *program;
 	GeditWindow *window;
 	GeditApp *app;
+	gboolean restored = FALSE;
 
 	setlocale (LC_ALL, "");
 
@@ -177,37 +178,29 @@ main (int argc, char *argv[])
 	/* Initialize session management */
 	gedit_session_init (argv[0]);
 
-#if 0
 	if (gedit_session_is_restored ())
 		restored = gedit_session_load ();
 
-	if (!restored) 
+	if (!restored)
 	{
-		CommandLineData *data;
+		gedit_get_command_line_data (program);
 
-		data = gedit_get_command_line_data (program);
-		
-		gtk_init_add ((GtkFunction)gedit_load_file_list, (gpointer)data);
+		app = gedit_app_get_default ();
 
-		/* Open the first top level window */
-		bonobo_mdi_open_toplevel (BONOBO_MDI (gedit_mdi), NULL);
+		window = gedit_app_create_window (app);
+		if (file_list != NULL)
+			gedit_cmd_load_files_from_prompt (window, file_list, encoding, line_position);
+		else
+			gedit_window_create_tab (window, TRUE);
+
+		gtk_widget_show (GTK_WIDGET (window));
 	}
+
+#if 0
 
 	gedit_app_server = gedit_application_server_new (gdk_screen_get_default ());
 #endif
-
-	gedit_get_command_line_data (program);
-
-	app = gedit_app_get_default ();
-
-	window = gedit_app_create_window (app);
-	if (file_list != NULL)
-		gedit_cmd_load_files_from_prompt (window, file_list, encoding, line_position);
-	else
-		gedit_window_create_tab (window, TRUE);
-
-	gtk_widget_show (GTK_WIDGET (window));
-
+	
 	gtk_main();
 
 	gedit_plugins_engine_shutdown ();

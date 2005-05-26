@@ -221,7 +221,7 @@ save_session (const gchar *fname)
 	ret = xmlTextWriterSetIndent (writer, 1);
 	if (ret < 0) goto out;
 
-	ret = xmlTextWriterSetIndentString (writer, (const xmlChar *) "\t");
+	ret = xmlTextWriterSetIndentString (writer, (const xmlChar *) " ");
 	if (ret < 0) goto out;
 
 	/* create and set the root node for the session */
@@ -260,8 +260,8 @@ interaction_function (GnomeClient *client, gint key, GnomeDialogType dialog_type
 	if (GPOINTER_TO_INT (shutdown))		
 		gedit_file_save_all ();
 #endif
-	/* Save session data */
 
+	/* Save session data */
 	fname = get_session_file_path (client);
 	
 	save_session (fname);
@@ -398,6 +398,68 @@ gedit_session_is_restored (void)
 	return restored;
 }
 
+static void
+parse_window (xmlNodePtr node)
+{
+	GeditWindow *window;
+	xmlChar *role;
+	xmlNodePtr child;
+	
+	role = xmlGetProp (node, (const xmlChar *) "role");
+	gedit_debug_message (DEBUG_SESSION, "Window role: %s", role);
+	
+	window = gedit_app_create_window (gedit_app_get_default ());
+	
+	if (role != NULL)
+	{
+		gtk_window_set_role (GTK_WINDOW (window), 
+				     (const char *)role);
+				     
+		xmlFree (role);
+	}
+	
+	child = node->children;
+	
+	while (child != NULL)
+	{
+		if (strcmp ((char *) child->name, "side-pane") == 0)
+		{
+			xmlChar *visible;
+			
+			visible = xmlGetProp (child, (const xmlChar *) "visible");
+
+			if ((visible != NULL) &&
+			    (strcmp ((char *) visible, "yes") == 0))
+			{
+				gedit_debug_message (DEBUG_SESSION, "Side panel visible");
+				_gedit_window_set_side_panel_visible (window, 
+								      TRUE);
+			}
+			else
+			{
+				gedit_debug_message (DEBUG_SESSION, "Side panel _NOT_ visible");
+				_gedit_window_set_side_panel_visible (window, 
+								      FALSE);
+
+			}
+			
+			if (visible != NULL)
+				xmlFree (visible);	
+		}
+		else if (strcmp ((char *) child->name, "bottom-panel") == 0)
+		{
+			// TODO
+		}
+		else if  (strcmp ((char *) child->name, "document") == 0)
+		{
+			// TODO
+		}
+		
+		child = child->next;
+	}
+	gtk_widget_show (GTK_WIDGET (window));
+}
+
 /**
  * gedit_session_load:
  * 
@@ -409,18 +471,43 @@ gedit_session_is_restored (void)
 gboolean
 gedit_session_load (void)
 {
-#if 0
-	int retval;
+	xmlDocPtr doc;
+        xmlNodePtr child;
+	gchar *fname;
 
 	gedit_debug (DEBUG_SESSION);
 
-	gnome_config_push_prefix (gnome_client_get_config_prefix (master_client));
+	fname = get_session_file_path (master_client);
+	gedit_debug_message (DEBUG_SESSION, "Session file: %s", fname);
+	
+	doc = xmlParseFile (fname);
+	g_free (fname);
 
-	retval = bonobo_mdi_restore_state (BONOBO_MDI (gedit_mdi), "Session",
-					   mdi_child_create_cb);
+	if (doc == NULL)
+		return FALSE;
 
-	gnome_config_pop_prefix ();
-	return retval;
-#endif 
+	child = xmlDocGetRootElement (doc);
+
+	/* skip the session node */
+	child = child->children;
+
+	while (child != NULL)
+	{
+		if (xmlStrEqual (child->name, (const xmlChar *) "window"))
+		{
+			gedit_debug_message (DEBUG_SESSION, "Restore window");
+			
+			parse_window (child);
+			
+			// ephy_gui_window_update_user_time (widget, user_time);
+
+			//gtk_widget_show (widget);
+		}
+
+		child = child->next;
+	}
+
+	xmlFreeDoc (doc);
+
 	return TRUE;	
 }
