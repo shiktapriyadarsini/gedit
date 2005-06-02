@@ -1853,7 +1853,7 @@ create_side_panel (GeditWindow *window)
 	GtkAction *action;
 	gboolean visible;
 	GtkWidget *documents_panel;
-	
+
 	window->priv->side_panel = gedit_panel_new ();
 
   	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned), 
@@ -1861,7 +1861,7 @@ create_side_panel (GeditWindow *window)
   			 TRUE, 
   			 FALSE);
 	gtk_widget_set_size_request (window->priv->side_panel, 100, -1);  			 
-  			 
+
   	g_signal_connect (window->priv->side_panel,
   			  "size_allocate",
   			  G_CALLBACK (side_panel_size_allocate),
@@ -1871,28 +1871,27 @@ create_side_panel (GeditWindow *window)
   			  "hide",
   			  G_CALLBACK (side_panel_hide),
   			  window);
-  			  
+
 	gtk_paned_set_position (GTK_PANED (window->priv->hpaned),
 				MAX (100, gedit_prefs_manager_get_side_panel_size ()));
-				
 
 	documents_panel = gedit_documents_panel_new (window);
-  	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), 
-  			      documents_panel, 
-  			      "Documents", 
-  			      GTK_STOCK_FILE);
+	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), 
+			      documents_panel, 
+			      "Documents", 
+			      GTK_STOCK_FILE);
 
 	window->priv->search_panel = gedit_search_panel_new (window);
 	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), 
 			      window->priv->search_panel, 
 			      "Search", 
 			      GTK_STOCK_FIND);
-	
+
 	visible = gedit_prefs_manager_get_side_pane_visible ();
-	
+
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewSidePane");		
-		
+
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 
@@ -1901,18 +1900,55 @@ create_side_panel (GeditWindow *window)
 }
 
 static void
+bottom_panel_size_allocate (GtkWidget     *widget,
+			    GtkAllocation *allocation,
+			    GeditWindow   *window)
+{
+	window->priv->bottom_panel_size = allocation->height;
+}
+
+static void
+bottom_panel_hide (GtkWidget   *panel,
+		   GeditWindow *window)
+{
+	_gedit_window_set_bottom_panel_visible (window, FALSE);
+}
+
+static void
 create_bottom_panel (GeditWindow *window) 
 {
+	GtkAction *action;
+	gboolean visible;
+
 	window->priv->bottom_panel = gedit_panel_new ();
-  	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned), 
-  			 window->priv->bottom_panel, 
-  			 FALSE, 
-  			 TRUE);
-  			 
+	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned), 
+			 window->priv->bottom_panel, 
+			 FALSE, 
+			 TRUE);
+
+	g_signal_connect (window->priv->bottom_panel,
+			  "size_allocate",
+			  G_CALLBACK (bottom_panel_size_allocate),
+			  window);
+
+  	g_signal_connect (window->priv->bottom_panel,
+			  "hide",
+			  G_CALLBACK (bottom_panel_hide),
+			  window);
+
 	gtk_paned_set_position (GTK_PANED (window->priv->vpaned),
-				gedit_prefs_manager_get_bottom_panel_size ());
-				  			 
-  	gtk_widget_hide_all (window->priv->bottom_panel);
+				gedit_prefs_manager_get_bottom_panel_size ()); // CHECK set a min height as we do for the sidepane?
+
+	visible = gedit_prefs_manager_get_bottom_panel_visible();
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "ViewBottomPanel");
+
+	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
+
+	if(visible) 
+  		gtk_widget_show_all (window->priv->bottom_panel);
 }
 
 /* Generates a unique string for a window role.
@@ -2457,7 +2493,7 @@ GtkUIManager *
 gedit_window_get_ui_manager (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
-	
+
 	return window->priv->manager;
 }
 
@@ -2467,6 +2503,14 @@ gedit_window_get_side_panel (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return GEDIT_PANEL (window->priv->side_panel);
+}
+
+GeditPanel *
+gedit_window_get_bottom_panel (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+
+	return GEDIT_PANEL (window->priv->bottom_panel);
 }
 
 GtkWidget *

@@ -749,12 +749,12 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	gchar *str;
 	GtkImage *icon;
 	GdkPixbuf *pixbuf;
-	
+
 	tips = GEDIT_TOOLTIPS (g_object_get_data (G_OBJECT (hbox), "tooltips"));
 	label = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label"));
 	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label-ebox"));
 	icon = GTK_IMAGE (g_object_get_data (G_OBJECT (hbox), "icon"));
-	
+
 	g_return_if_fail ((tips != NULL) && (label != NULL) && (ebox != NULL));
 
 	str = _gedit_tab_get_name (tab);
@@ -878,7 +878,7 @@ void
 gedit_notebook_set_always_show_tabs (GeditNotebook *nb, 
 				     gboolean       show_tabs)
 {
-	g_return_if_fail (GEDIT_NOTEBOOK (nb));
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
 
 	nb->priv->always_show_tabs = (show_tabs != FALSE);
 

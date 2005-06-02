@@ -125,6 +125,8 @@ GtkWindowGroup  *gedit_window_get_group			(GeditWindow         *window);
 
 GeditPanel	*gedit_window_get_side_panel		(GeditWindow         *window);
 
+GeditPanel	*gedit_window_get_bottom_panel		(GeditWindow         *window);
+
 GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 
 GtkUIManager	*gedit_window_get_ui_manager		(GeditWindow         *window);
