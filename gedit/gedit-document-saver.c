@@ -77,6 +77,7 @@ struct _GeditDocumentSaverPrivate
 	GnomeVFSAsyncHandle      *info_handle;
 	gint			  tmpfd;
 	gchar			 *tmp_fname;
+	GnomeVFSFileInfo	 *orig_info; /* used to restore permissions */
 
 	GError                   *error;
 };
@@ -105,6 +106,9 @@ gedit_document_saver_finalize (GObject *object)
 	g_free (priv->local_path);
 
 	g_free (priv->tmp_fname);
+
+	if (priv->orig_info)
+		gnome_vfs_file_info_unref (priv->orig_info);
 
 	if (priv->error)
 		g_error_free (priv->error);
@@ -873,34 +877,70 @@ static gint
 async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 	       GeditDocumentSaver       *saver)
 {
-	/* TODO: if cancelled && !completed */
-
 	switch (progress_info->phase)
 	{
-	case GNOME_VFS_XFER_PHASE_COMPLETED:
-		/* transfer done! we now need to fetch info
-		 * on our just written file */
+	case GNOME_VFS_XFER_PHASE_INITIAL:
+		break;
+	case GNOME_VFS_XFER_CHECKING_DESTINATION:
 		{
-			GList *uri_list = NULL;
+			GnomeVFSFileInfo *orig_info;
+			GnomeVFSResult res;
 
-			uri_list = g_list_prepend (uri_list, saver->priv->vfs_uri);
+			/* we need to retrieve info ourselves too, since xfer
+			 * doesn't allow to access it :(
+			 * If that was not enough we need to do it sync or we are going
+			 * to mess everything up
+			 */
+			orig_info = gnome_vfs_file_info_new ();
+			res = gnome_vfs_get_file_info_uri (saver->priv->vfs_uri,
+							   orig_info,
+							   GNOME_VFS_FILE_INFO_DEFAULT |
+							   GNOME_VFS_FILE_INFO_FOLLOW_LINKS);
 
-			gnome_vfs_async_get_file_info (&saver->priv->info_handle,
-						       uri_list,
-						       GNOME_VFS_FILE_INFO_DEFAULT |
-						       GNOME_VFS_FILE_INFO_GET_MIME_TYPE |
-						       GNOME_VFS_FILE_INFO_FORCE_SLOW_MIME_TYPE |
-						       GNOME_VFS_FILE_INFO_FOLLOW_LINKS,
-						       GNOME_VFS_PRIORITY_MAX,
-						       remote_get_info_cb,
-						       saver);
-			g_list_free (uri_list);
+			if (res == GNOME_VFS_ERROR_NOT_FOUND)
+			{
+				/* ok, we are not overwriting, go on with the xfer */
+				break;
+			}
+
+			if (res != GNOME_VFS_OK)
+			{
+				// CHECK: do we want to ignore the error and try to go on anyway?
+				g_set_error (&saver->priv->error,
+					     GEDIT_DOCUMENT_ERROR,
+					     res,
+					     gnome_vfs_result_to_string (res));
+
+				/* abort xfer */
+				return 0;
+			}
+
+			/* check if someone else modified the file externally,
+			 * except when "saving as" or saving a new doc (mtime = 0)
+			 */
+			if (orig_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_MTIME)
+			{
+				if (saver->priv->doc_mtime > 0 &&
+				    orig_info->mtime != saver->priv->doc_mtime)
+				{
+					g_set_error (&saver->priv->error,
+						     GEDIT_DOCUMENT_ERROR,
+						     GNOME_VFS_ERROR_GENERIC, //FIXME
+						     gnome_vfs_result_to_string (GNOME_VFS_ERROR_GENERIC));
+
+					/* abort xfer */
+					return 0;
+				}
+			}
+
+			/* store the original file info, so that we can restore permissions */
+			// FIXME: what about the case where we are usin "Save as" but overwriting a file... we don't want to restore perms
+			if (orig_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_PERMISSIONS)
+				saver->priv->orig_info = orig_info;
 		}
 		break;
-	case GNOME_VFS_XFER_PHASE_INITIAL:
 	case GNOME_VFS_XFER_PHASE_COLLECTING:
 	case GNOME_VFS_XFER_PHASE_DELETESOURCE: // why do we get this phase??
-	case GNOME_VFS_XFER_CHECKING_DESTINATION:
 		break;
 	case GNOME_VFS_XFER_PHASE_READYTOGO:
 		saver->priv->size = progress_info->bytes_total;
@@ -916,6 +956,40 @@ async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 		break;
 	case GNOME_VFS_XFER_PHASE_FILECOMPLETED:
 	case GNOME_VFS_XFER_PHASE_CLEANUP:
+		break;
+	case GNOME_VFS_XFER_PHASE_COMPLETED:
+		/* Transfer done!
+		 * Restore the permissions if needed and then refetch
+		 * info on our newly written file to get the mime etc */
+		{
+			GList *uri_list = NULL;
+
+			/* Try is not as paranoid as the local version (GID)... it would take
+			 * yet another stat to do it...
+			 */
+			if (saver->priv->orig_info != NULL &&
+			    (saver->priv->orig_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_PERMISSIONS))
+			{
+				gnome_vfs_set_file_info_uri (saver->priv->vfs_uri,
+			     				     saver->priv->orig_info,
+			     				     GNOME_VFS_SET_FILE_INFO_PERMISSIONS);
+
+				// FIXME: for now is a blind try... do we want to error check?
+			}
+
+			uri_list = g_list_prepend (uri_list, saver->priv->vfs_uri);
+
+			gnome_vfs_async_get_file_info (&saver->priv->info_handle,
+						       uri_list,
+						       GNOME_VFS_FILE_INFO_DEFAULT |
+						       GNOME_VFS_FILE_INFO_GET_MIME_TYPE |
+						       GNOME_VFS_FILE_INFO_FORCE_SLOW_MIME_TYPE |
+						       GNOME_VFS_FILE_INFO_FOLLOW_LINKS,
+						       GNOME_VFS_PRIORITY_MAX,
+						       remote_get_info_cb,
+						       saver);
+			g_list_free (uri_list);
+		}
 		break;
 	/* Phases we don't expect to see */
 	case GNOME_VFS_XFER_PHASE_SETATTRIBUTES:
@@ -1035,8 +1109,6 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	{
 		goto error;
 	}
-
-	/* TODO: we should retrieve and check the remote file mtime */
 
 	result = gnome_vfs_async_xfer (&saver->priv->handle,
 				       source_uri_list,
