@@ -442,7 +442,6 @@ get_text_secondary_label (GeditDocument *doc)
 	return secondary_msg;
 }
 
-/* FIXME: Primary and secondary label should be selectable - Paolo (Jan 11, 2004) */
 static void
 build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 {
@@ -473,6 +472,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
 	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
 	gtk_misc_set_alignment (GTK_MISC (primary_label), 0.0, 0.5);
+	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
 	doc_name = gedit_document_get_short_name_for_display (doc);
 	str = g_strdup_printf (_("Save the changes to document \"%s\" before closing?"),
@@ -490,6 +490,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	g_free (str);
 	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
 	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0.0, 0.5);
+	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 
 	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
@@ -641,6 +642,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
 	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
 	gtk_misc_set_alignment (GTK_MISC (primary_label), 0.0, 0.5);
+	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
 	str = g_strdup_printf (
 			ngettext ("There is %d document with unsaved changes. "
@@ -682,6 +684,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_box_pack_start (GTK_BOX (vbox2), secondary_label, FALSE, FALSE, 0);
 	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
 	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0, 0.5);
+	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (select_label), treeview);
 
