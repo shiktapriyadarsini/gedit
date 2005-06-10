@@ -34,8 +34,7 @@
 
 #include <string.h>
 #include <glib/gi18n.h>
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkprogressbar.h>
+#include <gtk/gtk.h>
 
 #include "gedit-statusbar.h"
 
@@ -43,9 +42,13 @@
 
 struct _GeditStatusbarPrivate
 {
-	GtkWidget *progressbar;
 	GtkWidget *overwrite_mode_statusbar;
 	GtkWidget *cursor_position_statusbar;
+	
+	GtkWidget *state_frame;
+	GtkWidget *load_image;
+	GtkWidget *save_image;
+	GtkWidget *print_image;
 };
 
 G_DEFINE_TYPE(GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
@@ -80,6 +83,8 @@ gedit_statusbar_class_init (GeditStatusbarClass *klass)
 static void
 gedit_statusbar_init (GeditStatusbar *statusbar)
 {
+	GtkWidget *hbox;
+	
 	statusbar->priv = GEDIT_STATUSBAR_GET_PRIVATE (statusbar);
 
 	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar), FALSE);
@@ -107,10 +112,31 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 			  statusbar->priv->cursor_position_statusbar,
 			  FALSE, TRUE, 0);
 
-	statusbar->priv->progressbar = gtk_progress_bar_new ();
-	gtk_box_pack_end (GTK_BOX (statusbar),
-			  statusbar->priv->progressbar,
-			  FALSE, TRUE, 0);
+	statusbar->priv->state_frame = gtk_frame_new (NULL);
+	gtk_frame_set_shadow_type (GTK_FRAME (statusbar->priv->state_frame), GTK_SHADOW_IN);
+
+	hbox = gtk_hbox_new (FALSE, 0);	
+	gtk_container_add (GTK_CONTAINER (statusbar->priv->state_frame), hbox);
+					   
+	statusbar->priv->load_image = gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
+	statusbar->priv->save_image = gtk_image_new_from_stock (GTK_STOCK_SAVE, GTK_ICON_SIZE_MENU);
+	statusbar->priv->print_image = gtk_image_new_from_stock (GTK_STOCK_PRINT, GTK_ICON_SIZE_MENU);
+
+	gtk_widget_show (hbox);
+	
+	gtk_box_pack_start (GTK_BOX (hbox),
+			    statusbar->priv->load_image,
+			    FALSE, TRUE, 4);
+	gtk_box_pack_start (GTK_BOX (hbox),
+			    statusbar->priv->save_image,
+			    FALSE, TRUE, 4);
+	gtk_box_pack_start (GTK_BOX (hbox),
+			    statusbar->priv->print_image,
+			    FALSE, TRUE, 4);
+	
+	gtk_box_pack_start (GTK_BOX (statusbar),
+			    statusbar->priv->state_frame,
+			    FALSE, TRUE, 0);
 }
 
 /**
@@ -221,19 +247,6 @@ gedit_statusbar_set_cursor_position (GeditStatusbar *statusbar,
       	g_free (msg);
 }
 
-/**
- * gedit_statusbar_get_progress:
- * @statusbar: a #GeditStatusbar
- * 
- * Gets the statusbar's progressbar.
- **/
-GtkWidget *
-gedit_statusbar_get_progress (GeditStatusbar *statusbar)
-{
-	g_return_val_if_fail (GEDIT_IS_STATUSBAR (statusbar), NULL);
-
-	return statusbar->priv->progressbar;
-}
 
 /* utility struct */
 typedef struct {
@@ -287,4 +300,35 @@ gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 
 	g_free (msg);
 }
+
+void		 
+gedit_statusbar_set_window_state (GeditStatusbar   *statusbar,
+				  GeditWindowState  state)
+{
+	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
+	
+	gtk_widget_hide (statusbar->priv->state_frame);
+	gtk_widget_hide (statusbar->priv->save_image);
+	gtk_widget_hide (statusbar->priv->load_image);
+	gtk_widget_hide (statusbar->priv->print_image);			
+
+	if (state & GEDIT_WINDOW_STATE_SAVING)
+	{
+		gtk_widget_show (statusbar->priv->state_frame);
+		gtk_widget_show (statusbar->priv->save_image);
+	}
+	if (state & GEDIT_WINDOW_STATE_LOADING)
+	{
+		gtk_widget_show (statusbar->priv->state_frame);
+		gtk_widget_show (statusbar->priv->load_image);
+	}
+	
+	if (state & GEDIT_WINDOW_STATE_PRINTING)
+	{
+		gtk_widget_show (statusbar->priv->state_frame);
+		gtk_widget_show (statusbar->priv->print_image);
+	}
+		
+}
+
 

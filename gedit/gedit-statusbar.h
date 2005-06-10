@@ -30,6 +30,7 @@
 #define GEDIT_STATUSBAR_H
 
 #include <gtk/gtkstatusbar.h>
+#include <gedit/gedit-window.h>
 
 G_BEGIN_DECLS
 
@@ -63,36 +64,34 @@ GtkWidget	*gedit_statusbar_new			(void);
 
 /* FIXME: status is not defined in any .h */
 #define GeditStatus gint
-void		 gedit_statusbar_set_status		(GeditStatusbar *statusbar,
-							 GeditStatus     status);
+void		 gedit_statusbar_set_window_state	(GeditStatusbar   *statusbar,
+							 GeditWindowState  state);
 
-void		 gedit_statusbar_set_overwrite		(GeditStatusbar *statusbar,
-							 gboolean        overwrite);
+void		 gedit_statusbar_set_overwrite		(GeditStatusbar   *statusbar,
+							 gboolean          overwrite);
 
-void		 gedit_statusbar_set_cursor_position	(GeditStatusbar *statusbar,
-							 gint            line,
-							 gint            col);
+void		 gedit_statusbar_set_cursor_position	(GeditStatusbar   *statusbar,
+							 gint              line,
+							 gint              col);
 
-void		 gedit_statusbar_clear_overwrite 	(GeditStatusbar *statusbar);
+void		 gedit_statusbar_clear_overwrite 	(GeditStatusbar   *statusbar);
 
-GtkWidget	*gedit_statusbar_get_progress		(GeditStatusbar *statusbar);
-
-void		 gedit_statusbar_flash_message		(GeditStatusbar *statusbar,
-							 guint           context_id,
-							 const gchar    *format,
+void		 gedit_statusbar_flash_message		(GeditStatusbar   *statusbar,
+							 guint             context_id,
+							 const gchar      *format,
 							 ...) G_GNUC_PRINTF(3, 4);
 /* FIXME: these would be nice for plugins...
-void		 gedit_statusbar_add_widget		(GeditStatusbar *statusbar,
-							 GtkWidget      *widget);
-void		 gedit_statusbar_remove_widget		(GeditStatusbar *statusbar,
-							 GtkWidget      *widget);
+void		 gedit_statusbar_add_widget		(GeditStatusbar   *statusbar,
+							 GtkWidget        *widget);
+void		 gedit_statusbar_remove_widget		(GeditStatusbar   *statusbar,
+							 GtkWidget        *widget);
 */
 
 /*
  * Non exported functions
  */
-void		_gedit_statusbar_set_has_resize_grip	(GeditStatusbar *bar,
-							 gboolean        show);
+void		_gedit_statusbar_set_has_resize_grip	(GeditStatusbar   *statusbar,
+							 gboolean          show);
 
 G_END_DECLS
 

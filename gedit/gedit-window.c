@@ -1460,6 +1460,9 @@ update_window_state (GeditWindow *window,
 		gtk_action_set_sensitive (action, 
 					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
 
+		gedit_statusbar_set_window_state (GEDIT_STATUSBAR (window->priv->statusbar),
+						  window->priv->state);
+						  
 		g_object_notify (G_OBJECT (window), "state");
 	}
 }
@@ -1754,6 +1757,8 @@ notebook_tab_added (GeditNotebook *notebook,
 			  "drag_drop",
 			  G_CALLBACK (drag_drop_cb), 
 			  NULL);
+
+	update_window_state (window, tab);
 
 	g_signal_emit (G_OBJECT (window), signals[TAB_ADDED], 0, tab);
 }
