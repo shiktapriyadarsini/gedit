@@ -259,7 +259,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 					 PROP_STATE,
 					 g_param_spec_int ("state",
 							   "State",
-							   "The windows's state",
+							   "The window's state",
 							   0, /* GEDIT_WINDOW_STATE_NORMAL */
 							   G_MAXINT,
 							   0, /* GEDIT_WINDOW_STATE_NORMAL */
@@ -449,10 +449,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 					      "FileClose");
 
 	gtk_action_set_sensitive (action,
-				  (state != GEDIT_TAB_STATE_PRINTING) &&
-				  (state != GEDIT_TAB_STATE_LOADING)  &&
-				  (state != GEDIT_TAB_STATE_PRINTING) &&
-				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING));
+				  state != GEDIT_TAB_STATE_SAVING);
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditUndo");
@@ -1846,6 +1843,8 @@ notebook_tab_removed (GeditNotebook *notebook,
 		gtk_action_group_set_sensitive (window->priv->action_group,
 						FALSE);
 
+		// FIXME: Quit and the view menu should be active 
+		
 		action = gtk_action_group_get_action (window->priv->action_group,
 						      "ViewHighlightMode");
 

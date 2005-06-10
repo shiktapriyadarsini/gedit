@@ -129,6 +129,14 @@ gedit_tab_finalize (GObject *object)
 {
 	GeditTab *tab = GEDIT_TAB (object);
 	
+	if (tab->priv->print_job != NULL)
+	{
+		g_print ("Cancelling printing\n");
+		
+		gtk_source_print_job_cancel (GTK_SOURCE_PRINT_JOB (tab->priv->print_job));
+		g_object_unref (tab->priv->print_job);
+	}
+	
 	if (tab->priv->timer != NULL)
 		g_timer_destroy (tab->priv->timer);
 

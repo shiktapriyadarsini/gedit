@@ -687,7 +687,7 @@ gedit_notebook_finalize (GObject *object)
 static void
 sync_load_status (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
 {
-#if 0
+#if 0 /* CHECK */
 	GtkWidget *spinner, *icon;
 
 	spinner = GTK_WIDGET (g_object_get_data (G_OBJECT (proxy), "spinner"));
@@ -712,7 +712,7 @@ sync_load_status (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
 static void
 sync_icon (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
 {
-#if 0
+#if 0 /* CHECK */
 	EphyFaviconCache *cache;
 	GdkPixbuf *pixbuf = NULL;
 	GtkImage *icon = NULL;
@@ -745,17 +745,20 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 {
 	GtkWidget *label;
 	GtkWidget *ebox;
+	GtkWidget *button;
 	GeditTooltips *tips;	
 	gchar *str;
 	GtkImage *icon;
 	GdkPixbuf *pixbuf;
-
+	GeditTabState  state;
+	
 	tips = GEDIT_TOOLTIPS (g_object_get_data (G_OBJECT (hbox), "tooltips"));
 	label = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label"));
 	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label-ebox"));
 	icon = GTK_IMAGE (g_object_get_data (G_OBJECT (hbox), "icon"));
-
-	g_return_if_fail ((tips != NULL) && (label != NULL) && (ebox != NULL));
+	button = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "close-button"));
+	
+	g_return_if_fail ((tips != NULL) && (label != NULL) && (ebox != NULL) && (button != NULL));
 
 	str = _gedit_tab_get_name (tab);
 	g_return_if_fail (str != NULL);
@@ -776,6 +779,12 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 
 	if (pixbuf != NULL)
 		g_object_unref (pixbuf);
+		
+	state = gedit_tab_get_state (tab);
+	
+	gtk_widget_set_sensitive (button, 
+				  (state != GEDIT_TAB_STATE_SAVING) &&
+				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 }
 
 static void

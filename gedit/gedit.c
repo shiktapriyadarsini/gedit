@@ -55,6 +55,11 @@
 #include "gedit-app.h"
 #include "gedit-metadata-manager.h"
 
+#include "bacon-message-connection.h"
+
+static guint32 startup_timestamp = 0;
+static BaconMessageConnection *connection;
+
 /* command line */
 static gint line_position = 0;
 static gchar *encoding_charset = NULL;
@@ -132,6 +137,51 @@ gedit_get_command_line_data (GnomeProgram *program)
 	poptFreeContext (ctx);
 }
 
+static void
+on_message_received (const char *message, gpointer user_data)
+{
+	if (message == NULL)
+		return;
+
+	g_print ("%s", message);
+}
+  	 
+static guint32
+get_startup_timestamp ()
+{
+	const gchar *startup_id_env;
+	gchar *startup_id = NULL;
+	gchar *time_str;
+	gchar *end;
+	gulong retval = 0;
+
+	/* we don't unset the env, since startup-notification
+	 * may still need it */
+	startup_id_env = g_getenv ("DESKTOP_STARTUP_ID");
+	if (startup_id_env == NULL)
+		goto out;
+
+	startup_id = g_strdup (startup_id_env);
+
+	time_str = g_strrstr (startup_id, "_TIME");
+	if (time_str == NULL)
+		goto out;
+
+	errno = 0;
+
+	/* Skip past the "_TIME" part */
+	time_str += 5;
+
+	retval = strtoul (time_str, &end, 0);
+	if (end == time_str || errno != 0)
+		retval = 0;
+
+ out:
+	g_free (startup_id);
+
+	return (retval > 0) ? retval : 0;
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -145,6 +195,8 @@ main (int argc, char *argv[])
 	bindtextdomain (GETTEXT_PACKAGE, GEDIT_LOCALEDIR);
 	textdomain (GETTEXT_PACKAGE);
 
+	startup_timestamp = get_startup_timestamp();
+
 	/* Initialize gnome program */
 	program = gnome_program_init ("gedit", VERSION,
 			    LIBGNOMEUI_MODULE, argc, argv,
@@ -157,6 +209,29 @@ main (int argc, char *argv[])
 	/* Must be called after gnome_program_init to avoid problem with the
          * translation of --help messages */
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
+	connection = bacon_message_connection_new ("gedit");
+	
+	if (connection != NULL)
+	{
+	  	if (!bacon_message_connection_get_is_server (connection)) 
+	  	{
+		  	gedit_debug_message (DEBUG_APP, "I'm a client");
+		  	
+			bacon_message_connection_send (connection, "test");
+			bacon_message_connection_free (connection);
+
+			exit (0);
+		} 
+		else 
+		{
+		  	gedit_debug_message (DEBUG_APP, "I'm a server");
+		  	
+			bacon_message_connection_set_callback (connection, on_message_received, NULL);
+	  	}
+	}
+	else
+		g_warning ("Cannot create the 'gedit' connection.");
 
 	/* Setup debugging */
 	gedit_debug_init ();

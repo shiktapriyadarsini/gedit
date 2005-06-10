@@ -91,6 +91,7 @@ header_DATA = 				\
 
 gedit_SOURCES = 			\
 	$(BUILT_SOURCES)		\
+	$(BACON_FILES)			\
 	gedit.c				\
 	gedit-commands.c		\
 	gedit-document.c 		\
@@ -166,3 +167,8 @@ install-exec-local:
 	rm -f $(DESTDIR)$(bindir)/gnome-text-editor
 	ln -s gedit $(DESTDIR)$(bindir)/gnome-text-editor
 
+BACON_DIR=$(srcdir)/../../libbacon/src/
+BACON_FILES=bacon-message-connection.h bacon-message-connection.c
+
+regenerate-built-sources:
+	BACONFILES="$(BACON_FILES)" BACONDIR="$(BACON_DIR)" $(top_srcdir)/gedit/update-from-bacon.sh
