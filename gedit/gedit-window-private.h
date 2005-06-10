@@ -74,12 +74,14 @@ struct _GeditWindowPrivate
 
 	gint            width;
 	gint            height;	
-	GdkWindowState  state;
+	GdkWindowState  window_state;
 
 	gint		side_panel_size;
 	gint		bottom_panel_size;
 
 	gboolean	removing_all_tabs;
+	
+	GeditWindowState state;
 
 	GtkWindowGroup *window_group;
 };

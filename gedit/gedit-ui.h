@@ -61,9 +61,7 @@ static const GtkActionEntry gedit_always_sensitive_menu_entries[] =
 	  N_("Open a file from a specified location"), G_CALLBACK (gedit_cmd_file_open_uri) },
 	{ "FilePageSetup", NULL, N_("Page Set_up..."), NULL,
 	  N_("Setup the page settings"), G_CALLBACK (gedit_cmd_file_page_setup) },
-	{ "FileQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
-	  N_("Quit the program"), G_CALLBACK (gedit_cmd_file_quit) },
-
+	
 	/* Edit menu */
 	{ "EditPreferences", GTK_STOCK_PREFERENCES, N_("Pr_eferences"), NULL,
 	  N_("Configure the application"), G_CALLBACK (gedit_cmd_edit_preferences) },
@@ -90,6 +88,8 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Print the current page"), G_CALLBACK (gedit_cmd_file_print) },
 	{ "FileClose", GTK_STOCK_CLOSE, NULL, "<control>W",
 	  N_("Close the current file"), G_CALLBACK (gedit_cmd_file_close) },
+	{ "FileQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
+	  N_("Quit the program"), G_CALLBACK (gedit_cmd_file_quit) },
 
 	/* Edit menu */
 	{ "EditUndo", GTK_STOCK_UNDO, NULL, "<control>Z",

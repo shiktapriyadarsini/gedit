@@ -65,14 +65,16 @@ gedit_debug_init ()
 		debug = debug | GEDIT_DEBUG_DOCUMENT;
 	if (g_getenv ("GEDIT_DEBUG_COMMANDS") != NULL)
 		debug = debug | GEDIT_DEBUG_COMMANDS;
-	if (g_getenv ("GEDIT_DEBUG_MDI") != NULL)
-		debug = debug | GEDIT_DEBUG_MDI;
+	if (g_getenv ("GEDIT_DEBUG_APP") != NULL)
+		debug = debug | GEDIT_DEBUG_APP;
 	if (g_getenv ("GEDIT_DEBUG_SESSION") != NULL)
 		debug = debug | GEDIT_DEBUG_SESSION;
 	if (g_getenv ("GEDIT_DEBUG_UTILS") != NULL)
 		debug = debug | GEDIT_DEBUG_UTILS;
 	if (g_getenv ("GEDIT_DEBUG_METADATA") != NULL)
 		debug = debug | GEDIT_DEBUG_METADATA;
+	if (g_getenv ("GEDIT_DEBUG_WINDOW") != NULL)
+		debug = debug | GEDIT_DEBUG_WINDOW;		
 }
 
 void

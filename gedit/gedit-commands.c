@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-commands.c
  * This file is part of gedit
@@ -938,6 +937,8 @@ gedit_cmd_file_close_all (GtkAction   *action,
 	GList *l;
 	gboolean close = FALSE;
 
+	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_SAVING));
+	
 	gedit_debug (DEBUG_COMMANDS);
 
 	unsaved_docs = NULL;
@@ -1036,6 +1037,8 @@ void
 gedit_cmd_file_quit (GtkAction   *action,
 		     GeditWindow *window)
 {
+	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_SAVING));
+	
 	gedit_cmd_file_close_all (NULL, window);
 
 	gtk_widget_destroy (GTK_WIDGET (window));

@@ -128,6 +128,9 @@ static void
 gedit_tab_finalize (GObject *object)
 {
 	GeditTab *tab = GEDIT_TAB (object);
+	
+	if (tab->priv->timer != NULL)
+		g_timer_destroy (tab->priv->timer);
 
 	g_free (tab->priv->save_uri);
 

@@ -53,6 +53,11 @@
 
 #define GEDIT_DOCUMENT_LOADER_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_DOCUMENT_LOADER, GeditDocumentLoaderPrivate))
 
+static void	async_close_cb (GnomeVFSAsyncHandle *handle,
+				GnomeVFSResult       result,
+				gpointer             data);
+
+
 struct _GeditDocumentLoaderPrivate
 {
 	GeditDocument		 *document;
@@ -146,6 +151,22 @@ gedit_document_loader_finalize (GObject *object)
 {
 	GeditDocumentLoaderPrivate *priv = GEDIT_DOCUMENT_LOADER (object)->priv;
 
+	if (priv->handle != NULL)
+	{		
+		if (priv->info_handle != NULL)
+		{
+			gnome_vfs_async_cancel (priv->info_handle);
+			gnome_vfs_async_close (priv->info_handle,
+					       async_close_cb, 
+					       NULL);
+		}
+
+		gnome_vfs_async_cancel (priv->handle);
+		gnome_vfs_async_close (priv->handle,
+				       async_close_cb, 
+				       NULL);
+	}
+	
 	g_free (priv->uri);
 
 	if (priv->info)

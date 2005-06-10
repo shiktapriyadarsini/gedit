@@ -477,7 +477,7 @@ gedit_view_scroll_to_cursor (GeditView *view)
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 				      gtk_text_buffer_get_insert (buffer),
-				      GEDIT_VIEW_SCROLL_MARGIN,
+				      0.25,
 				      FALSE,
 				      0.0,
 				      0.0);

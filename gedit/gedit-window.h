@@ -38,6 +38,14 @@
 
 G_BEGIN_DECLS
 
+typedef enum
+{
+	GEDIT_WINDOW_STATE_NORMAL      = 0,
+	GEDIT_WINDOW_STATE_SAVING   = 1 << 1,
+	GEDIT_WINDOW_STATE_PRINTING = 1 << 2,
+	GEDIT_WINDOW_STATE_LOADING  = 1 << 3
+} GeditWindowState;
+	
 /*
  * Type checking and casting macros
  */
@@ -131,6 +139,8 @@ GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 
 GtkUIManager	*gedit_window_get_ui_manager		(GeditWindow         *window);
 
+GeditWindowState gedit_window_get_state 		(GeditWindow         *window);
+							 
 /*
  * Non exported functions
  */

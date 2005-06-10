@@ -118,6 +118,13 @@ window_delete_event (GeditWindow *window,
                      GdkEvent    *event,
                      GeditApp    *app)
 {
+	GeditWindowState ws;
+	
+	ws = gedit_window_get_state (window);
+	
+	if (ws & GEDIT_WINDOW_STATE_SAVING)
+		return TRUE; 
+	
 	gedit_cmd_file_close_all (NULL, window);
 	
 	/* Check if all the tabs have been closed */

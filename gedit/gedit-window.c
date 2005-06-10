@@ -81,6 +81,12 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 enum
 {
+	PROP_0,
+	PROP_STATE
+};
+
+enum
+{
 	TARGET_URI_LIST = 100
 };
 
@@ -90,6 +96,26 @@ static const GtkTargetEntry drag_types[] =
 };
 
 G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
+
+static void
+gedit_window_get_property (GObject    *object,
+			   guint       prop_id,
+			   GValue     *value,
+			   GParamSpec *pspec)
+{
+	GeditWindow *window = GEDIT_WINDOW (object);
+
+	switch (prop_id)
+	{
+		case PROP_STATE:
+			g_value_set_int (value,
+					 gedit_window_get_state (window));
+			break;			
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;			
+	}
+}
 
 static void
 gedit_window_finalize (GObject *object)
@@ -115,7 +141,7 @@ gedit_window_destroy (GtkObject *object)
 		gedit_prefs_manager_set_window_width (window->priv->width);
 
 	if (gedit_prefs_manager_window_state_can_set ())
-		gedit_prefs_manager_set_window_state (window->priv->state);
+		gedit_prefs_manager_set_window_state (window->priv->window_state);
 		
 	if ((window->priv->side_panel_size > 0) &&
 		gedit_prefs_manager_side_panel_size_can_set ())
@@ -136,7 +162,7 @@ window_state_event (GtkWidget           *widget,
 {
 	GeditWindow *window = GEDIT_WINDOW (widget);
 
-	window->priv->state = event->new_window_state;
+	window->priv->window_state = event->new_window_state;
 
 	if (event->changed_mask &
 	    (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN))
@@ -173,6 +199,8 @@ gedit_window_class_init (GeditWindowClass *klass)
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gedit_window_finalize;
+	object_class->get_property = gedit_window_get_property;
+	
 	gobject_class->destroy = gedit_window_destroy;
 
 	widget_class->window_state_event = window_state_event;
@@ -227,6 +255,16 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_TYPE_NONE,
 			      0);			      			      
 
+	g_object_class_install_property (object_class,
+					 PROP_STATE,
+					 g_param_spec_int ("state",
+							   "State",
+							   "The windows's state",
+							   0, /* GEDIT_WINDOW_STATE_NORMAL */
+							   G_MAXINT,
+							   0, /* GEDIT_WINDOW_STATE_NORMAL */
+							   G_PARAM_READABLE));
+							   
 	g_type_class_add_private (object_class, sizeof(GeditWindowPrivate));
 }
 
@@ -326,27 +364,27 @@ set_toolbar_style (GeditWindow *window,
 	switch (style)
 	{
 		case GEDIT_TOOLBAR_SYSTEM:
-			gedit_debug_message (DEBUG_MDI, "GEDIT: SYSTEM");
+			gedit_debug_message (DEBUG_WINDOW, "GEDIT: SYSTEM");
 			gtk_toolbar_unset_style (
 					GTK_TOOLBAR (window->priv->toolbar));
 			break;
 			
 		case GEDIT_TOOLBAR_ICONS:
-			gedit_debug_message (DEBUG_MDI, "GEDIT: ICONS");
+			gedit_debug_message (DEBUG_WINDOW, "GEDIT: ICONS");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (window->priv->toolbar),
 					GTK_TOOLBAR_ICONS);
 			break;
 			
 		case GEDIT_TOOLBAR_ICONS_AND_TEXT:
-			gedit_debug_message (DEBUG_MDI, "GEDIT: ICONS_AND_TEXT");
+			gedit_debug_message (DEBUG_WINDOW, "GEDIT: ICONS_AND_TEXT");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (window->priv->toolbar),
 					GTK_TOOLBAR_BOTH);			
 			break;
 			
 		case GEDIT_TOOLBAR_ICONS_BOTH_HORIZ:
-			gedit_debug_message (DEBUG_MDI, "GEDIT: ICONS_BOTH_HORIZ");
+			gedit_debug_message (DEBUG_WINDOW, "GEDIT: ICONS_BOTH_HORIZ");
 			gtk_toolbar_set_style (
 					GTK_TOOLBAR (window->priv->toolbar),
 					GTK_TOOLBAR_BOTH_HORIZ);	
@@ -369,7 +407,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	
 	g_return_if_fail (GEDIT_TAB (tab));
 		
-	gedit_debug (DEBUG_MDI);
+	gedit_debug (DEBUG_WINDOW);
 		
 	state = gedit_tab_get_state (tab);
 		
@@ -1065,7 +1103,7 @@ clone_window (GeditWindow *origin)
 				     origin->priv->width,
 				     origin->priv->height);
 				     
-	if ((origin->priv->state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
+	if ((origin->priv->window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
 	{
 		gtk_window_set_default_size (window, 
 					     gedit_prefs_manager_get_default_window_width (),
@@ -1082,7 +1120,7 @@ clone_window (GeditWindow *origin)
 		gtk_window_unmaximize (window);
 	}		
 
-	if ((origin->priv->state & GDK_WINDOW_STATE_STICKY ) != 0)
+	if ((origin->priv->window_state & GDK_WINDOW_STATE_STICKY ) != 0)
 		gtk_window_stick (window);
 	else
 		gtk_window_unstick (window);
@@ -1119,7 +1157,7 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 	guint tab_size;
 	GeditView *view;
 
-	gedit_debug (DEBUG_MDI);
+	gedit_debug (DEBUG_WINDOW);
   
  	if (buffer != GTK_TEXT_BUFFER (gedit_window_get_active_document (window)))
  		return;
@@ -1340,8 +1378,102 @@ notebook_switch_page (GtkNotebook     *book,
 }
 
 static void
+analyze_tab_state (GeditTab *tab, GeditWindowState *ws)
+{
+	GeditTabState ts;
+	
+	ts = gedit_tab_get_state (tab);
+	
+	switch (ts)
+	{
+		case GEDIT_TAB_STATE_LOADING:
+		case GEDIT_TAB_STATE_REVERTING:
+			*ws |= GEDIT_WINDOW_STATE_LOADING;
+			break;
+		
+		case GEDIT_TAB_STATE_SAVING:
+			*ws |= GEDIT_WINDOW_STATE_SAVING;
+			break;
+			
+		case GEDIT_TAB_STATE_PRINTING:
+		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
+			*ws |= GEDIT_WINDOW_STATE_PRINTING;
+			break;
+	
+		default:
+			/* NOP */
+			break;		
+	}
+}
+
+static void
+update_window_state (GeditWindow *window,
+		     GeditTab    *tab)
+{
+	GeditTabState ts;
+	GeditWindowState old_ws;
+	
+	gedit_debug_message (DEBUG_WINDOW, "Old state: %x", window->priv->state);
+	
+	ts = gedit_tab_get_state (tab);
+	
+	old_ws = window->priv->state;
+	
+	switch (ts)
+	{
+		case GEDIT_TAB_STATE_LOADING:
+		case GEDIT_TAB_STATE_REVERTING:
+			window->priv->state |= GEDIT_WINDOW_STATE_LOADING;
+			break;
+		
+		case GEDIT_TAB_STATE_SAVING:
+			window->priv->state |= GEDIT_WINDOW_STATE_SAVING;
+			break;
+			
+		case GEDIT_TAB_STATE_PRINTING:
+		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
+			window->priv->state |= GEDIT_WINDOW_STATE_PRINTING;
+			break;
+			
+		default:
+		{
+			GeditWindowState ws = 0;
+			
+			gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+			       		       (GtkCallback)analyze_tab_state,
+			       		       &ws);
+			
+			window->priv->state = ws;
+		}
+	}
+		
+	gedit_debug_message (DEBUG_WINDOW, "New state: %x", window->priv->state);		
+				
+	if (old_ws != window->priv->state)
+	{
+		GtkAction *action;
+		
+		action = gtk_action_group_get_action (window->priv->action_group,
+					              "FileQuit");
+		gtk_action_set_sensitive (action, 
+					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+
+		action = gtk_action_group_get_action (window->priv->action_group,
+					              "FileCloseAll");
+		gtk_action_set_sensitive (action, 
+					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+
+		g_object_notify (G_OBJECT (window), "state");
+	}
+}
+
+static void
 sync_state (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
-{	
+{
+	gedit_debug (DEBUG_WINDOW);
+	
+	update_window_state (window, tab);
+	
 	if (tab != window->priv->active_tab)
 		return;
 
@@ -1549,7 +1681,7 @@ notebook_tab_added (GeditNotebook *notebook,
 	GtkTargetList *tl;
 	GtkAction *action;
 
-	gedit_debug (DEBUG_MDI);
+	gedit_debug (DEBUG_WINDOW);
 
 	++window->priv->num_tabs;
 
@@ -1638,7 +1770,7 @@ notebook_tab_removed (GeditNotebook *notebook,
 	GeditDocument *doc;
 	GtkAction     *action;
 	
-	gedit_debug (DEBUG_MDI);
+	gedit_debug (DEBUG_WINDOW);
 	
 	--window->priv->num_tabs;
 	
@@ -1996,6 +2128,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->active_tab = NULL;
 	window->priv->num_tabs = 0;
 	window->priv->removing_all_tabs = FALSE;
+	window->priv->state = GEDIT_WINDOW_STATE_NORMAL;
 	
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
@@ -2262,7 +2395,8 @@ void
 gedit_window_close_all_tabs (GeditWindow *window)
 {
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-
+	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+	
 	window->priv->removing_all_tabs = TRUE;
 	
 	gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (window->priv->notebook));
@@ -2527,4 +2661,12 @@ gedit_window_get_statusbar (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
 
 	return window->priv->statusbar;
+}
+
+GeditWindowState
+gedit_window_get_state (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), GEDIT_WINDOW_STATE_NORMAL);
+	
+	return window->priv->state;
 }
