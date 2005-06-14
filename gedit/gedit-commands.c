@@ -109,7 +109,7 @@ load_file_list (GeditWindow         *window,
 
 					gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 								       window->priv->generic_message_cid,
-								       _("Loading file \"%s\"..."),
+								       _("Loading file '%s'..."),
 								       uri_for_display);
 
 					g_free (uri_for_display);
@@ -152,7 +152,7 @@ load_file_list (GeditWindow         *window,
 			doc = gedit_tab_get_document (tab);
 			gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 						       window->priv->generic_message_cid,
-						       _("Loading file \"%s\"..."),
+						       _("Loading file '%s'..."),
 						       gedit_document_get_uri_for_display (doc));
 		}
 		else
