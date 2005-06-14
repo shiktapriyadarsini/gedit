@@ -31,15 +31,16 @@ libdialogs_la_SOURCES = 			\
 
 
 glade_DATA =				\
+	gedit-encodings-dialog.glade2	\
+	gedit-preferences.glade2	\
+	page-setup-dialog.glade2	\
+	plugin-manager.glade2		\
 	uri.glade2			\
-	goto-line.glade2		\
-	replace.glade2
+	goto-line.glade2
 
-#	plugin-manager.glade2		\
-#	gedit-preferences.glade2	\
-#	program-location-dialog.glade2	\
-#	gedit-encodings-dialog.glade2	\
-#	page-setup-dialog.glade2
+#	replace.glade2
+#	program-location-dialog.glade2
+
 
 EXTRA_DIST = $(glade_DATA) 
 

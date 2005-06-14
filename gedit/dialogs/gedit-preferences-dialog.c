@@ -1251,7 +1251,7 @@ get_preferences_dialog (GtkWindow *parent)
 {
 	static GeditPreferencesDialog *dialog = NULL;
 	GladeXML *gui;
-	
+
 	gedit_debug (DEBUG_PREFS);
 
 	if (dialog != NULL)

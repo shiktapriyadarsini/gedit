@@ -64,7 +64,6 @@ static BaconMessageConnection *connection;
 static gint line_position = 0;
 static gchar *encoding_charset = NULL;
 const GeditEncoding *encoding;
-// static gboolean quit_option = FALSE; //doesn't make sense anymore, right?
 // static gboolean new_window_option = FALSE; // TODO when we have single instance support
 // static gboolean new_document_option = FALSE; // ditto
 static GSList *file_list = NULL;
@@ -73,10 +72,7 @@ static const struct poptOption options [] =
 {
 	{ "encoding", '\0', POPT_ARG_STRING, &encoding_charset,	0,
 	  N_("Set the character encoding to be used to open the files listed on the command line"), NULL },
-
-/*	{ "quit", '\0', POPT_ARG_NONE, &quit_option, 0,
-	  N_("Quit an existing instance of gedit"), NULL },
-
+/*
 	{ "new-window", '\0', POPT_ARG_NONE, &new_window_option, 0,
 	  N_("Create a new toplevel window in an existing instance of gedit"), NULL },
 
@@ -137,15 +133,6 @@ gedit_get_command_line_data (GnomeProgram *program)
 	poptFreeContext (ctx);
 }
 
-static void
-on_message_received (const char *message, gpointer user_data)
-{
-	if (message == NULL)
-		return;
-
-	g_print ("%s", message);
-}
-  	 
 static guint32
 get_startup_timestamp ()
 {
@@ -182,6 +169,16 @@ get_startup_timestamp ()
 	return (retval > 0) ? retval : 0;
 }
 
+static void
+on_message_received (const char *message,
+		     gpointer    data)
+{
+	if (message == NULL)
+		return;
+
+	g_print ("%s", message);
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -216,18 +213,20 @@ main (int argc, char *argv[])
 	{
 	  	if (!bacon_message_connection_get_is_server (connection)) 
 	  	{
-		  	gedit_debug_message (DEBUG_APP, "I'm a client");
-		  	
+			gedit_debug_message (DEBUG_APP, "I'm a client");
+
 			bacon_message_connection_send (connection, "test");
 			bacon_message_connection_free (connection);
 
 			exit (0);
-		} 
+		}
 		else 
 		{
 		  	gedit_debug_message (DEBUG_APP, "I'm a server");
 		  	
-			bacon_message_connection_set_callback (connection, on_message_received, NULL);
+			bacon_message_connection_set_callback (connection,
+							       on_message_received,
+							       NULL);
 	  	}
 	}
 	else

@@ -113,7 +113,7 @@ update_buttons_sensitivity (GeditSearchPanel *panel)
 {
 	const gchar *replace_text;
 	const gchar *search_text;
-	
+
 	search_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
 	replace_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
 
@@ -919,8 +919,6 @@ search_entry_insert_text (GtkEditable *editable,
 	g_free (escaped_text);
 }
 
-#define GEDIT_GLADEDIR "./dialogs/"
-
 static void
 gedit_search_panel_init (GeditSearchPanel *panel)
 {
@@ -929,12 +927,12 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 	GtkWidget *search_panel_vbox;
 	GtkListStore *store;
 	GtkEntryCompletion *completion;
-	
+
 	panel->priv = GEDIT_SEARCH_PANEL_GET_PRIVATE (panel);
-	
+
 	panel->priv->new_search_text = FALSE;
-	
-	gui = glade_xml_new ( GEDIT_GLADEDIR "search-panel.glade",
+
+	gui = glade_xml_new (GEDIT_GLADEDIR "search-panel.glade",
 			     "search_panel_vbox", NULL);
 	if (!gui)
 	{
@@ -944,26 +942,26 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 			       GEDIT_GLADEDIR "search-panel.glade");
 
 		g_warning (msg);
-		
+
 		label = gtk_label_new (msg);
-		
+
 		gtk_box_pack_start (GTK_BOX (panel), 
 				    label, 
 				    TRUE, 
 				    TRUE, 
 				    0);
-				    
+		    
 		g_free (msg);
-		
+
 		return ;
 	}
-	
+
 	search_panel_vbox = glade_xml_get_widget (gui, "search_panel_vbox");
 	find_vbox = glade_xml_get_widget (gui, "find_vbox");
 	panel->priv->search_options_expander = glade_xml_get_widget (gui, "search_options_expander");
  	panel->priv->replace_expander = glade_xml_get_widget (gui, "replace_expander");
  	panel->priv->goto_line_expander = glade_xml_get_widget (gui, "goto_line_expander");
- 	
+
  	panel->priv->search_entry = glade_xml_get_widget (gui, "search_entry");
  	panel->priv->replace_entry = glade_xml_get_widget (gui, "replace_entry");
  	panel->priv->line_number_entry = glade_xml_get_widget (gui, "line_number_entry");
@@ -977,7 +975,9 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 	panel->priv->entire_word_checkbutton = glade_xml_get_widget (gui, "entire_word_checkbutton");
 	panel->priv->search_backwards_checkbutton = glade_xml_get_widget (gui, "search_backwards_checkbutton");
 	panel->priv->wrap_around_checkbutton = glade_xml_get_widget (gui, "wrap_around_checkbutton");
- 	 	 	 	
+
+	g_object_unref (gui);	 	 	 	
+
  	if (!find_vbox					||
  	    !search_panel_vbox				||
  	    !panel->priv->replace_expander		||
@@ -1122,8 +1122,6 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 			  "toggled",
 			  G_CALLBACK (option_button_toggled),
 			  panel);
-
-	g_object_unref (gui);
 }
 
 GtkWidget *

@@ -801,7 +801,8 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 				    gtk_ui_manager_get_accel_group (manager));
 
 	/* now load the UI definition */
-	gtk_ui_manager_add_ui_from_file (manager, /* GEDIT_UI_DIR */ "gedit-ui.xml", &error);
+	if (!gtk_ui_manager_add_ui_from_file (manager, "gedit-ui.xml", &error)) // REMOVE ME... just to allow running without install
+	gtk_ui_manager_add_ui_from_file (manager, GEDIT_UI_DIR "gedit-ui.xml", &error);
 	if (error != NULL)
 	{
 		g_warning ("Could not merge gedit-ui.xml: %s", error->message);
@@ -809,10 +810,14 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	}
 
 	/* show tooltips in the statusbar */
-	g_signal_connect (manager, "connect_proxy",
-			  G_CALLBACK (connect_proxy_cb), window);
-	g_signal_connect (manager, "disconnect_proxy",
-			 G_CALLBACK (disconnect_proxy_cb), window);
+	g_signal_connect (manager,
+			  "connect_proxy",
+			  G_CALLBACK (connect_proxy_cb),
+			  window);
+	g_signal_connect (manager,
+			  "disconnect_proxy",
+			  G_CALLBACK (disconnect_proxy_cb),
+			  window);
 
 	action_group = gtk_action_group_new ("GeditWindowAlwaysSensitiveActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);

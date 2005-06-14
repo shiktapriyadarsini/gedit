@@ -154,8 +154,13 @@ gedit-marshal.c: gedit-marshal.list $(GLIB_GENMARSHAL)
 ui_DATA = gedit-ui.xml
 uidir = $(datadir)/gedit-2/ui/
 
+gladedir = $(datadir)/gedit-2/glade/
+
+glade_DATA = search-panel.glade
+
 EXTRA_DIST = 				\
 	$(ui_DATA)			\
+	$(glade_DATA)			\
 	gedit-marshal.list
 
 CLEANFILES = $(BUILT_SOURCES)
