@@ -930,9 +930,8 @@ get_choose_format_dialog (GtkWindow *parent, GeditTimePlugin *plugin)
 	ChooseFormatDialog *dialog;
 	GladeXML *gui;
 
-	// FIXME: s/chose/choose
 	gui = glade_xml_new (GEDIT_GLADEDIR "time.glade2",
-			     "chose_format_dialog", 
+			     "choose_format_dialog", 
 			     NULL);
 	if (!gui) 
 	{
@@ -944,8 +943,7 @@ get_choose_format_dialog (GtkWindow *parent, GeditTimePlugin *plugin)
 
 	dialog = g_new0 (ChooseFormatDialog, 1);
 	
-	// FIXME: s/chose/choose
-	dialog->dialog 		= glade_xml_get_widget (gui, "chose_format_dialog");
+	dialog->dialog 		= glade_xml_get_widget (gui, "choose_format_dialog");
 	dialog->list 		= glade_xml_get_widget (gui, "choice_list");
 	dialog->use_list 	= glade_xml_get_widget (gui, "use_sel_format_radiobutton");
 	dialog->custom		= glade_xml_get_widget (gui, "use_custom_radiobutton");

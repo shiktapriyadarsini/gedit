@@ -1465,6 +1465,11 @@ update_window_state (GeditWindow *window,
 		gtk_action_set_sensitive (action, 
 					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
 
+		action = gtk_action_group_get_action (window->priv->action_group,
+					              "FileSaveAll");
+		gtk_action_set_sensitive (action, 
+					  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+
 		gedit_statusbar_set_window_state (GEDIT_STATUSBAR (window->priv->statusbar),
 						  window->priv->state);
 						  

@@ -89,7 +89,7 @@ gedit_tab_set_property (GObject      *object,
 
 	switch (prop_id)
 	{
-
+		/* FIXME: do we really need state to be a writable property */
 		case PROP_STATE:
 			gedit_tab_set_state (tab,
 					     g_value_get_int (value));
@@ -256,7 +256,10 @@ gedit_tab_set_state (GeditTab *tab,
 	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))	
 		gtk_widget_hide (tab->priv->view_scrolled_window);
 	else
-		gtk_widget_show (tab->priv->view_scrolled_window);
+	{
+		if (tab->priv->print_preview == NULL)
+			gtk_widget_show (tab->priv->view_scrolled_window);
+	}
 	
 	if (gtk_text_view_get_window (GTK_TEXT_VIEW (tab->priv->view), GTK_TEXT_WINDOW_TEXT) != NULL)
 		view_realized (GTK_TEXT_VIEW (tab->priv->view), tab);
@@ -838,7 +841,10 @@ document_saved (GeditDocument *document,
 	{
 		gedit_recent_add (tab->priv->save_uri);
 		
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+		if (tab->priv->print_preview != NULL)
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+		else
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
 
 	g_free (tab->priv->save_uri);
@@ -1292,7 +1298,8 @@ _gedit_tab_save (GeditTab *tab)
 	GeditDocument *doc;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
+	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
+			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
@@ -1315,7 +1322,9 @@ _gedit_tab_save_as (GeditTab            *tab,
 	GeditDocument *doc;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
+	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
+			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
+
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
@@ -1333,9 +1342,12 @@ static void
 print_preview_destroyed (GtkWidget *preview,
 			 GeditTab  *tab)
 {
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-	
 	tab->priv->print_preview = NULL;
+	
+	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	else
+		gtk_widget_show (tab->priv->view_scrolled_window);		
 }
 
 static void
