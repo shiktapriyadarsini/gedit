@@ -223,13 +223,16 @@ gedit_document_finalize (GObject *object)
 		}
 	}
 
+	g_free (doc->priv->uri);
+	if (doc->priv->vfs_uri != NULL)
+		gnome_vfs_uri_unref (doc->priv->vfs_uri);
+
 	g_free (doc->priv->uri_for_display);
 	g_free (doc->priv->short_name_for_display);
 
 	if (doc->priv->loader)
 		g_object_unref (doc->priv->loader);
-	
-	g_free (doc->priv->uri);
+
 	g_free (doc->priv->search_text);
 
 	G_OBJECT_CLASS (gedit_document_parent_class)->finalize (object);
