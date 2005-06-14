@@ -850,10 +850,11 @@ language_changed_cb (GtkOptionMenu *optionmenu,
 				    NAME_COLUMN, name, 
 				    ID_COLUMN, id,
 				    -1);
+		g_free (name);
 
 		l = g_slist_next (l);
 	}
-	
+
 	g_slist_foreach (tags, (GFunc)g_object_unref, NULL);
 	g_slist_free (tags);
 	

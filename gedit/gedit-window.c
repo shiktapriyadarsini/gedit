@@ -683,6 +683,32 @@ create_languages_menu (GeditWindow *window)
 }
 
 static void
+update_languages_menu (GeditWindow *window)
+{
+	GeditDocument *doc;
+	GtkAction *action;
+	GtkSourceLanguage *lang;
+	gchar *lang_name;
+
+	doc = gedit_window_get_active_document (window);
+	if (doc == NULL)
+		return;
+
+	lang = gedit_document_get_language (doc);
+	if (lang != NULL)
+		lang_name = gtk_source_language_get_name (lang);
+	else
+		lang_name = g_strdup ("LangNormal");
+
+	action = gtk_action_group_get_action (window->priv->languages_action_group,
+					      lang_name);
+
+	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+
+	g_free (lang_name);
+}
+
+static void
 open_recent_gtk (EggRecentViewGtk *view, 
 		 EggRecentItem    *item,
 		 GeditWindow      *window)
@@ -1365,6 +1391,9 @@ notebook_switch_page (GtkNotebook     *book,
 
 	g_free (action_name);
 
+	/* update the syntax menu */
+	update_languages_menu (window);
+
 	view = gedit_tab_get_view (tab);
 
 	/* sync the statusbar */
@@ -1682,6 +1711,14 @@ can_redo (GeditDocument *doc,
 }
 
 static void
+sync_languages_menu (GeditDocument *doc,
+		     GParamSpec    *pspec,
+		     GeditWindow   *window)
+{
+	update_languages_menu (window);
+}
+
+static void
 notebook_tab_added (GeditNotebook *notebook,
 		    GeditTab      *tab,
 		    GeditWindow   *window)
@@ -1735,6 +1772,10 @@ notebook_tab_added (GeditNotebook *notebook,
 	g_signal_connect (doc,
 			  "can-redo",
 			  G_CALLBACK (can_redo),
+			  window);
+	g_signal_connect (doc,
+			  "notify::language",
+			  G_CALLBACK (sync_languages_menu),
 			  window);
 	g_signal_connect (view,
 			  "toggle_overwrite",
@@ -1845,13 +1886,15 @@ notebook_tab_removed (GeditNotebook *notebook,
 	}
 
 	if (!window->priv->removing_all_tabs)
+	{
 		update_documents_list_menu (window);
+	}
 	else
 	{
 		if (window->priv->num_tabs == 0)
 			update_documents_list_menu (window);
 	}
-	
+
 	/* Set sensitivity */
 	if (window->priv->num_tabs == 0)
 	{
