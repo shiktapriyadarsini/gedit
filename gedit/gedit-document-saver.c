@@ -179,7 +179,7 @@ write_document_contents (gint                  fd,
 	gsize len;
 	gboolean add_cr;
 	ssize_t written;
-	gboolean res = FALSE;
+	gboolean res;
 
 	gtk_text_buffer_get_bounds (doc, &start_iter, &end_iter);
 	contents = gtk_text_buffer_get_slice (doc, &start_iter, &end_iter, TRUE);
@@ -201,15 +201,15 @@ write_document_contents (gint                  fd,
 							      encoding,
 							      &new_len,
 							      error);
+		g_free (contents);
 
 		if (error != NULL)
 		{
 			/* Conversion error */
-			goto out;
+			return FALSE;
 		}
 		else
 		{
-			g_free (contents);
 			contents = converted_contents;
 			len = new_len;
 		}
@@ -261,7 +261,6 @@ write_document_contents (gint                  fd,
 		}
 	}
 
- out:
 	g_free (contents);
 
 	if (!res)
@@ -703,16 +702,15 @@ save_existing_local_file (GeditDocumentSaver *saver)
 	saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
 
  out:
-	save_completed_or_failed (saver);
-
 	if (close (saver->priv->fd))
 		g_warning ("File '%s' has not been correctly closed: %s",
 			   saver->priv->uri,
 			   strerror (errno));
-
 	saver->priv->fd = -1;
 
 	g_free (backup_filename);
+
+	save_completed_or_failed (saver);
 
 	/* stop the timeout */
 	return FALSE;
