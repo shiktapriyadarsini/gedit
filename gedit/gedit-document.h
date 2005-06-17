@@ -115,6 +115,14 @@ struct _GeditDocumentClass
 
 #define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()
 
+enum {
+	/* start at GNOME_VFS_NUM_ERRORS since we use GnomeVFSResult 
+	 * for the error codes */ 
+	GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED = GNOME_VFS_NUM_ERRORS,
+	GEDIT_DOCUMENT_ERROR_NOT_REGULAR_FILE,
+	GEDIT_DOCUMENT_NUM_ERRORS 
+};
+
 GQuark		 gedit_document_error_quark	(void);
 
 GType		 gedit_document_get_type      	(void) G_GNUC_CONST;

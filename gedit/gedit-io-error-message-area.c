@@ -112,8 +112,8 @@ create_unrecoverable_error_message_area (const gchar *primary_text,
 }
 
 GtkWidget *
-gedit_unrecoverable_loading_error_message_area_new (const gchar         *uri,
-				    		    const GError        *error)
+gedit_unrecoverable_loading_error_message_area_new (const gchar  *uri,
+				    		    const GError *error)
 {
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
@@ -139,7 +139,6 @@ gedit_unrecoverable_loading_error_message_area_new (const gchar         *uri,
 	
 	uri_for_display = g_strdup_printf ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
-
 
 	switch (error->code)
 	{
@@ -276,13 +275,13 @@ gedit_unrecoverable_loading_error_message_area_new (const gchar         *uri,
 						      "Please, check that you typed the location "
 						      "correctly and try again."));
 			break;
-#if 0
-	case GEDIT_ERROR_NOT_REGULAR_FILE:
-		error_message = g_strdup_printf (_("Could not open the file \"%s\""),
-						 uri_for_display);
-		message_details = g_strdup (_("The file you are trying to open is not a regular file."));
-		break;
-#endif
+
+		case GEDIT_DOCUMENT_ERROR_NOT_REGULAR_FILE:
+			error_message = g_strdup_printf (_("Could not open the file \"%s\""),
+							 uri_for_display);
+			message_details = g_strdup (_("The file you are trying to open is not a regular file."));
+			break;
+
 		case GNOME_VFS_ERROR_GENERIC:
 			break;
 
@@ -365,7 +364,7 @@ create_option_menu (GtkWidget *message_area, GtkWidget *vbox)
 			  0);
 
 	gtk_widget_show_all (hbox);
-	
+
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 }
 

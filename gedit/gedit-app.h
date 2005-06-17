@@ -77,20 +77,22 @@ struct _GeditAppClass
 /*
  * Public methods
  */
-GType 		 gedit_app_get_type 		(void) G_GNUC_CONST;
+GType 		 gedit_app_get_type 			(void) G_GNUC_CONST;
 
-GeditApp 	*gedit_app_get_default		(void);
+GeditApp 	*gedit_app_get_default			(void);
 
-GeditWindow	*gedit_app_create_window	(GeditApp *app);
+GeditWindow	*gedit_app_create_window		(GeditApp *app);
 
-const GSList	*gedit_app_get_windows		(GeditApp *app);
-GeditWindow	*gedit_app_get_active_window	(GeditApp *app);
+const GSList	*gedit_app_get_windows			(GeditApp *app);
+GeditWindow	*gedit_app_get_active_window		(GeditApp *app);
+GeditWindow	*gedit_app_get_window_in_workspace	(GeditApp *app,
+							 gint      workspace);
 
 /* Returns a newly allocated list with all the documents */
-GList		*gedit_app_get_documents	(GeditApp *app);
+GList		*gedit_app_get_documents		(GeditApp *app);
 
 /* Returns a newly allocated list with all the views */
-GList		*gedit_app_get_views		(GeditApp *app);
+GList		*gedit_app_get_views			(GeditApp *app);
 
 G_END_DECLS
 

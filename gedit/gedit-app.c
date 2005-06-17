@@ -38,6 +38,7 @@
 #include "gedit-prefs-manager-app.h"
 #include "gedit-commands.h"
 #include "gedit-notebook.h"
+#include "gedit-utils.h"
 
 #define GEDIT_APP_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_APP, GeditAppPrivate))
 
@@ -237,7 +238,7 @@ const GSList *
 gedit_app_get_windows (GeditApp *app)
 {
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-	
+
 	return app->priv->windows;
 }
 
@@ -245,8 +246,45 @@ GeditWindow *
 gedit_app_get_active_window (GeditApp *app)
 {
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-	
+
 	return app->priv->active_window;
+}
+
+GeditWindow *
+gedit_app_get_window_in_workspace (GeditApp *app,
+				   gint      workspace)
+{
+	GeditWindow *window;
+	gint ws;
+
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+
+	/* first try if the active window */
+	window = app->priv->active_window;
+	ws = gedit_utils_get_window_workspace (GTK_WINDOW (window));
+
+	if (ws != workspace && ws != GEDIT_ALL_WORKSPACES)
+	{
+		GSList *l;
+
+		/* try to see if there is a window on this workspace */
+		l = app->priv->windows;
+		while (l != NULL)
+		{
+			window = l->data;
+			ws = gedit_utils_get_window_workspace (GTK_WINDOW (window));
+			if (ws == workspace || ws == GEDIT_ALL_WORKSPACES)
+				break;
+
+			l = l->next;
+		}
+
+		/* no window on this workspace... create a new one */
+		if (l == NULL)
+			window = gedit_app_create_window (app);
+	}
+
+	return window;
 }
 
 /* Returns a newly allocated list with all the documents */

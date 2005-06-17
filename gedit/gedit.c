@@ -36,6 +36,7 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
+#include <gdk/gdkx.h>
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
@@ -63,22 +64,22 @@ static BaconMessageConnection *connection;
 /* command line */
 static gint line_position = 0;
 static gchar *encoding_charset = NULL;
-const GeditEncoding *encoding;
-// static gboolean new_window_option = FALSE; // TODO when we have single instance support
-// static gboolean new_document_option = FALSE; // ditto
+static const GeditEncoding *encoding;
+static gboolean new_window_option = FALSE;
+static gboolean new_document_option = FALSE;
 static GSList *file_list = NULL;
 
 static const struct poptOption options [] =
 {
 	{ "encoding", '\0', POPT_ARG_STRING, &encoding_charset,	0,
 	  N_("Set the character encoding to be used to open the files listed on the command line"), NULL },
-/*
+
 	{ "new-window", '\0', POPT_ARG_NONE, &new_window_option, 0,
 	  N_("Create a new toplevel window in an existing instance of gedit"), NULL },
 
 	{ "new-document", '\0', POPT_ARG_NONE, &new_document_option, 0,
 	  N_("Create a new document in an existing instance of gedit"), NULL },
-*/
+
 	{NULL, '\0', 0, NULL, 0}
 };
 
@@ -120,14 +121,18 @@ gedit_get_command_line_data (GnomeProgram *program)
 		}
 
 		file_list = g_slist_reverse (file_list);
+	}
 
-		if (encoding_charset)
-		{
-			encoding = gedit_encoding_get_from_charset (encoding_charset);
-			if (encoding == NULL)
-				g_print (_("The specified encoding \"%s\" is not valid\n"),
-					 encoding_charset);
-		}
+
+	if (encoding_charset)
+	{
+		encoding = gedit_encoding_get_from_charset (encoding_charset);
+		if (encoding == NULL)
+			g_print (_("The specified encoding \"%s\" is not valid\n"),
+				 encoding_charset);
+
+		g_free (encoding_charset);
+		encoding_charset = NULL;
 	}
 
 	poptFreeContext (ctx);
@@ -173,10 +178,55 @@ static void
 on_message_received (const char *message,
 		     gpointer    data)
 {
-	if (message == NULL)
-		return;
+	gchar **commands;
+	gint workspace;
+	GeditApp *app;
+	GeditWindow *window;
+
+	g_return_if_fail (message != NULL);
 
 	g_print ("%s", message);
+
+	commands = g_strsplit (message, ":", 6);
+
+	startup_timestamp = atoi (commands[0]); //this sucks, right?
+	workspace = atoi (commands[1]);
+	new_window_option = atoi (commands[2]);
+	new_document_option = atoi (commands[3]);
+	line_position = atoi (commands[4]);
+	encoding_charset = commands[5];
+
+	app = gedit_app_get_default ();
+
+	if (new_window_option)
+	{
+		window = gedit_app_create_window (app);
+	}
+	else
+	{
+		/* get a window in the current workspace (if exists) and raise it */
+		window = gedit_app_get_window_in_workspace (app, workspace);
+
+		/* fall back to roundtripping to the X server. lame. */
+		if (startup_timestamp <= 0)
+		{
+			if (!GTK_WIDGET_REALIZED (window))
+				gtk_widget_realize (GTK_WIDGET (window));
+
+			startup_timestamp = gdk_x11_get_server_time (GTK_WIDGET (window)->window);
+		}
+
+		gdk_x11_window_set_user_time (GTK_WIDGET (window)->window,
+					      startup_timestamp);
+	}
+
+// also handle --new-doc
+//	if (file_list != NULL)
+//		gedit_cmd_load_files_from_prompt (window, file_list, encoding, line_position);
+//	else
+		gedit_window_create_tab (window, TRUE);
+
+	gtk_window_present (GTK_WINDOW (window));
 }
 
 int
@@ -197,7 +247,7 @@ main (int argc, char *argv[])
 	/* Initialize gnome program */
 	program = gnome_program_init ("gedit", VERSION,
 			    LIBGNOMEUI_MODULE, argc, argv,
-			    GNOME_PARAM_POPT_TABLE, options,			    
+			    GNOME_PARAM_POPT_TABLE, options,
 			    GNOME_PARAM_HUMAN_READABLE_NAME,
 		            _("Text Editor"),
 			    GNOME_PARAM_APP_DATADIR, DATADIR,
@@ -208,14 +258,49 @@ main (int argc, char *argv[])
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
 	connection = bacon_message_connection_new ("gedit");
-	
+
 	if (connection != NULL)
 	{
-	  	if (!bacon_message_connection_get_is_server (connection)) 
-	  	{
+		if (!bacon_message_connection_get_is_server (connection)) 
+		{
+			gint ws;
+			GSList *l;
+			GString *command;
+
 			gedit_debug_message (DEBUG_APP, "I'm a client");
 
-			bacon_message_connection_send (connection, "test");
+			ws = gedit_utils_get_current_workspace (gdk_screen_get_default ());
+			gedit_get_command_line_data (program);
+
+			command = g_string_new (NULL);
+
+			/* send a command with the timestamp, the options, 
+			 * and the file list using : as a separator.
+			 */
+			g_string_append_printf (command,
+					"%" G_GUINT32_FORMAT ":%d:%d:%d:%d:%s",
+					startup_timestamp,
+					ws,
+					new_window_option,
+					new_document_option,
+					line_position,
+					encoding_charset ? encoding_charset : "");
+
+			for (l = file_list; l; l = l->next)
+			{
+				command = g_string_append_c (command, ':');
+				command = g_string_append (command, l->data);
+			}
+
+			bacon_message_connection_send (connection,
+						       command->str);
+
+			/* we never popup a window... tell startup-notification
+			 * that we are done.
+			 */
+			gdk_notify_startup_complete ();
+
+			g_string_free (command, TRUE);
 			bacon_message_connection_free (connection);
 
 			exit (0);
@@ -223,14 +308,17 @@ main (int argc, char *argv[])
 		else 
 		{
 		  	gedit_debug_message (DEBUG_APP, "I'm a server");
-		  	
+
 			bacon_message_connection_set_callback (connection,
 							       on_message_received,
 							       NULL);
-	  	}
+		}
 	}
 	else
 		g_warning ("Cannot create the 'gedit' connection.");
+
+	/* we don't need this anymore */
+	g_free (encoding_charset);
 
 	/* Setup debugging */
 	gedit_debug_init ();
@@ -270,11 +358,6 @@ main (int argc, char *argv[])
 		gtk_widget_show (GTK_WIDGET (window));
 	}
 
-#if 0
-
-	gedit_app_server = gedit_application_server_new (gdk_screen_get_default ());
-#endif
-	
 	gtk_main();
 
 	gedit_plugins_engine_shutdown ();

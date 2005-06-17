@@ -462,7 +462,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 	{
 		GnomeVFSResult result = S_ISDIR (statbuf.st_mode) ?
 					GNOME_VFS_ERROR_IS_DIRECTORY :
-					GNOME_VFS_ERROR_GENERIC; // FIXME choose better err?
+					GEDIT_DOCUMENT_ERROR_NOT_REGULAR_FILE;
 
 		g_set_error (&saver->priv->error,
 			     GEDIT_DOCUMENT_ERROR,
