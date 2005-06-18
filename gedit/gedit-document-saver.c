@@ -748,14 +748,14 @@ save_new_local_file (GeditDocumentSaver *saver)
 	saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
 
  out:
-	save_completed_or_failed (saver);
-
 	if (close (saver->priv->fd))
 		g_warning ("File '%s' has not been correctly closed: %s",
 			   saver->priv->uri,
 			   strerror (errno));
 
 	saver->priv->fd = -1;
+
+	save_completed_or_failed (saver);
 
 	/* stop the timeout */
 	return FALSE;
