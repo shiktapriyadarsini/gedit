@@ -146,8 +146,6 @@ gedit_get_command_line_data (GnomeProgram *program)
 				else
 					g_print (_("%s: malformed file name or URI.\n"),
 						 args[i]);
-
-				/* FIXME: who does free file_list and its content ? */				
 			} 
 		}
 
