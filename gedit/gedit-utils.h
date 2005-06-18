@@ -112,7 +112,9 @@ guint gedit_utils_get_window_workspace (GtkWindow *gtkwindow);
 void  gedit_utils_activate_url (GtkAboutDialog *about,
 				const gchar    *url,
 				gpointer        data);
-					 
+
+gboolean gedit_utils_is_valid_uri (const gchar *uri);
+
 #endif /* __GEDIT_UTILS_H__ */
 
 

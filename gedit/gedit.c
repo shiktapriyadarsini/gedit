@@ -115,20 +115,50 @@ gedit_get_command_line_data (GnomeProgram *program)
 			}
 			else
 			{
-				file_list = g_slist_prepend (file_list, 
-					gnome_vfs_make_uri_from_shell_arg (args[i]));
-			}
+				gchar *uri;
+				gchar *canonical_uri;
+				
+				/* Note for the future: 
+				 *
+				 * <federico> paolo: and flame whoever tells 
+				 * you that file:///gnome/test_files/hëllò 
+				 * doesn't work --- that's not a valid URI
+				 *
+				 * <paolo> federico: well, another solution that 
+				 * does not requires patch to _from_shell_args 
+				 * is to check that the string returned by it 
+				 * contains only ASCII chars
+				 * <federico> paolo: hmmmm, isn't there 
+				 * gnome_vfs_is_uri_valid() or something?
+				 * <paolo>: I will use gedit_utils_is_valid_uri ()
+				 *
+				 */
+				 
+				uri = gnome_vfs_make_uri_from_shell_arg (args[i]);
+				canonical_uri = gnome_vfs_make_uri_canonical (uri);
+				g_free (uri);
+				
+				g_print ("URI: %s\n", canonical_uri);
+				
+				if (gedit_utils_is_valid_uri (canonical_uri))
+					file_list = g_slist_prepend (file_list, 
+								     canonical_uri);
+				else
+					g_print (_("%s: malformed file name or URI.\n"),
+						 args[i]);
+
+				/* FIXME: who does free file_list and its content ? */				
+			} 
 		}
 
 		file_list = g_slist_reverse (file_list);
 	}
 
-
 	if (encoding_charset)
 	{
 		encoding = gedit_encoding_get_from_charset (encoding_charset);
 		if (encoding == NULL)
-			g_print (_("The specified encoding \"%s\" is not valid\n"),
+			g_print (_("%s: invalid encoding.\n"),
 				 encoding_charset);
 
 		g_free (encoding_charset);
@@ -375,6 +405,10 @@ main (int argc, char *argv[])
 	GeditApp *app;
 	gboolean restored = FALSE;
 
+	/* Setup debugging */
+	gedit_debug_init ();
+	gedit_debug_message (DEBUG_APP, "Startup");
+	
 	setlocale (LC_ALL, "");
 
 	bindtextdomain (GETTEXT_PACKAGE, GEDIT_LOCALEDIR);
@@ -382,6 +416,8 @@ main (int argc, char *argv[])
 
 	startup_timestamp = get_startup_timestamp();
 
+	gedit_debug_message (DEBUG_APP, "Run gnome_program_init");
+	
 	/* Initialize gnome program */
 	program = gnome_program_init ("gedit", VERSION,
 			    LIBGNOMEUI_MODULE, argc, argv,
@@ -391,10 +427,14 @@ main (int argc, char *argv[])
 			    GNOME_PARAM_APP_DATADIR, DATADIR,
 			    NULL);
 
+	gedit_debug_message (DEBUG_APP, "Done gnome_program_init");
+	
 	/* Must be called after gnome_program_init to avoid problem with the
          * translation of --help messages */
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
+	gedit_debug_message (DEBUG_APP, "Create bacon connection");
+	
 	connection = bacon_message_connection_new ("gedit");
 
 	if (connection != NULL)
@@ -428,24 +468,28 @@ main (int argc, char *argv[])
 	else
 		g_warning ("Cannot create the 'gedit' connection.");
 
-	/* Setup debugging */
-	gedit_debug_init ();
-
+	gedit_debug_message (DEBUG_APP, "Set icon");
+	
 	/* Set default icon */
 	gtk_window_set_default_icon_name ("text-editor");
 
 	/* Load user preferences */
+	gedit_debug_message (DEBUG_APP, "Init prefs manager");
 	gedit_prefs_manager_app_init ();
 
+	gedit_debug_message (DEBUG_APP, "Init recent files");
 	gedit_recent_init ();
 
 	/* Init plugins engine */
+	gedit_debug_message (DEBUG_APP, "Init plugins");	
 	gedit_plugins_engine_init ();
 
+	gedit_debug_message (DEBUG_APP, "Init authentication manager");	
 	gnome_authentication_manager_init ();
 	gtk_about_dialog_set_url_hook (gedit_utils_activate_url, NULL, NULL);
 	
 	/* Initialize session management */
+	gedit_debug_message (DEBUG_APP, "Init session manager");		
 	gedit_session_init (argv[0]);
 
 	if (gedit_session_is_restored ())
@@ -453,16 +497,27 @@ main (int argc, char *argv[])
 
 	if (!restored)
 	{
+		gedit_debug_message (DEBUG_APP, "Analyze command line data");
 		gedit_get_command_line_data (program);
-
+		
+		gedit_debug_message (DEBUG_APP, "Get default app");
 		app = gedit_app_get_default ();
 
+		gedit_debug_message (DEBUG_APP, "Create main window");
 		window = gedit_app_create_window (app);
+		
 		if (file_list != NULL)
+		{
+			gedit_debug_message (DEBUG_APP, "Load files");
 			gedit_cmd_load_files_from_prompt (window, file_list, encoding, line_position);
+		}
 		else
+		{
+			gedit_debug_message (DEBUG_APP, "Create tab");
 			gedit_window_create_tab (window, TRUE);
-
+		}
+		
+		gedit_debug_message (DEBUG_APP, "Show window");
 		gtk_widget_show (GTK_WIDGET (window));
 
 		g_slist_foreach (file_list, (GFunc) g_free, NULL);
@@ -477,6 +532,7 @@ main (int argc, char *argv[])
 		line_position = 0;
 	}
 
+	gedit_debug_message (DEBUG_APP, "Start gtk-main");		
 	gtk_main();
 
 	gedit_plugins_engine_shutdown ();

@@ -38,6 +38,7 @@
 #include "gedit-prefs-manager-app.h"
 #include "gedit-commands.h"
 #include "gedit-notebook.h"
+#include "gedit-debug.h"
 #include "gedit-utils.h"
 
 #define GEDIT_APP_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_APP, GeditAppPrivate))
@@ -176,7 +177,11 @@ gedit_app_create_window	(GeditApp *app)
 	GtkWindow *window;
 	GtkWidget *notebook;
 	
+	gedit_debug (DEBUG_APP);
+	
 	window = GTK_WINDOW (g_object_new (GEDIT_TYPE_WINDOW, NULL));
+	
+	gedit_debug_message (DEBUG_APP, "Window created");
 	
 	/* Set window state and size, but only if the session is not being restored */
 	if (!app->priv->is_restoring)

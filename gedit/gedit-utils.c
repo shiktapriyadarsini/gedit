@@ -819,3 +819,60 @@ gedit_utils_activate_url (GtkAboutDialog *about,
 	gnome_url_show (url, NULL);
 }
 
+static gboolean
+is_valid_scheme_character (gchar c)
+{
+	return g_ascii_isalnum (c) || c == '+' || c == '-' || c == '.';
+}
+
+static gboolean
+has_valid_scheme (const gchar *uri)
+{
+	const gchar *p;
+
+	p = uri;
+
+	if (!is_valid_scheme_character (*p)) {
+		return FALSE;
+	}
+
+	do {
+		p++;
+	} while (is_valid_scheme_character (*p));
+
+	return *p == ':';
+}
+
+gboolean
+gedit_utils_is_valid_uri (const gchar *uri)
+{
+	const guchar *p;
+
+	if (uri == NULL)
+		return FALSE;
+
+	if (!has_valid_scheme (uri)) {
+		return FALSE;
+	}
+
+	/* We expect to have a fully valid set of characters */
+	for (p = uri; *p; p++) {
+		if (*p == '%')
+		{
+			++p;
+			if (!g_ascii_isxdigit (*p))
+				return FALSE;
+
+			++p;		
+			if (!g_ascii_isxdigit (*p))
+				return FALSE;
+		}
+		else
+		{
+			if (*p <= 32 || *p >= 128)
+				return FALSE;
+		}
+	}
+
+	return TRUE;
+}

@@ -37,6 +37,13 @@
 #include <stdio.h>
 #include "gedit-debug.h"
 
+#define ENABLE_PROFILING
+
+#ifdef ENABLE_PROFILING
+static GTimer *timer = NULL;
+static gdouble last = 0.0;
+#endif
+
 static GeditDebugSection debug = GEDIT_NO_DEBUG;
 
 void
@@ -46,7 +53,7 @@ gedit_debug_init ()
 	{
 		/* enable all debugging */
 		debug = ~GEDIT_NO_DEBUG;
-		return;
+		goto out;
 	}
 
 	if (g_getenv ("GEDIT_DEBUG_VIEW") != NULL)
@@ -74,7 +81,15 @@ gedit_debug_init ()
 	if (g_getenv ("GEDIT_DEBUG_METADATA") != NULL)
 		debug = debug | GEDIT_DEBUG_METADATA;
 	if (g_getenv ("GEDIT_DEBUG_WINDOW") != NULL)
-		debug = debug | GEDIT_DEBUG_WINDOW;		
+		debug = debug | GEDIT_DEBUG_WINDOW;
+	
+out:		
+
+#ifdef ENABLE_PROFILING
+	if (debug != GEDIT_NO_DEBUG)
+		timer = g_timer_new ();
+#endif
+	return;
 }
 
 void
@@ -85,7 +100,11 @@ gedit_debug_message (GeditDebugSection  section,
 		     const gchar       *format, ...)
 {
 	if (debug & section)
-	{
+	{	
+#ifdef ENABLE_PROFILING
+		gdouble seconds;
+#endif
+	
 		va_list args;
 		gchar *msg;
 
@@ -95,7 +114,17 @@ gedit_debug_message (GeditDebugSection  section,
 		msg = g_strdup_vprintf (format, args);
 		va_end (args);
 
-		g_print ("%s:%d (%s) %s\n", file, line, function, msg);
+#ifdef ENABLE_PROFILING
+		g_return_if_fail (timer != NULL);
+
+		seconds = g_timer_elapsed (timer, NULL);
+		g_print ("[%f (%f)] %s:%d (%s) %s\n", 
+			 seconds, seconds - last,  file, line, function, msg);
+		last = seconds;			 
+#else
+		g_print ("%s:%d (%s) %s\n", file, line, function, msg);	
+#endif
+
 		fflush (stdout);
 
 		g_free (msg);
@@ -109,7 +138,18 @@ void gedit_debug (GeditDebugSection  section,
 {
 	if (debug & section)
 	{
+#ifdef ENABLE_PROFILING
+		gdouble seconds;
+		
+		g_return_if_fail (timer != NULL);
+
+		seconds = g_timer_elapsed (timer, NULL);		
+		g_print ("[%f (%f)] %s:%d (%s)\n", 
+			 seconds, seconds - last, file, line, function);
+		last = seconds;
+#else
 		g_print ("%s:%d (%s)\n", file, line, function);
+#endif		
 		fflush (stdout);
 	}
 }

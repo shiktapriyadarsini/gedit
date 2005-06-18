@@ -2181,6 +2181,8 @@ gedit_window_init (GeditWindow *window)
 {
 	GtkWidget *main_box;
 
+	gedit_debug (DEBUG_WINDOW);
+	
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
 	window->priv->active_tab = NULL;
 	window->priv->num_tabs = 0;
@@ -2195,12 +2197,15 @@ gedit_window_init (GeditWindow *window)
 	gtk_widget_show (main_box);
 
 	/* Add menu bar and toolbar bar */
+	gedit_debug_message (DEBUG_WINDOW, "Add menu bar and toolbar bar");
 	create_menu_bar_and_toolbar (window, main_box);
 
 	/* Add status bar */
+	gedit_debug_message (DEBUG_WINDOW, "Add statusbar");	
 	create_statusbar (window, main_box);
 
 	/* Add the main area */
+	gedit_debug_message (DEBUG_WINDOW, "Add main area");		
 	window->priv->hpaned = gtk_hpaned_new ();
   	gtk_box_pack_start (GTK_BOX (main_box), 
   			    window->priv->hpaned, 
@@ -2209,6 +2214,7 @@ gedit_window_init (GeditWindow *window)
   			    0);
 	gtk_widget_show (window->priv->hpaned);
 
+	gedit_debug_message (DEBUG_WINDOW, "Create side panel");		
   	create_side_panel (window);
   	  	
 	window->priv->vpaned = gtk_vpaned_new ();
@@ -2218,6 +2224,7 @@ gedit_window_init (GeditWindow *window)
   			 FALSE);
   	gtk_widget_show (window->priv->vpaned);
   	
+	gedit_debug_message (DEBUG_WINDOW, "Create gedit notebook");
 	window->priv->notebook = gedit_notebook_new ();
   	gtk_paned_pack1 (GTK_PANED (window->priv->vpaned), 
   			 window->priv->notebook,
@@ -2225,6 +2232,7 @@ gedit_window_init (GeditWindow *window)
   			 TRUE);
   	gtk_widget_show (window->priv->notebook);  			 
 
+	gedit_debug_message (DEBUG_WINDOW, "Create bottom panel");
 	create_bottom_panel (window);
 	
 	/* Set visibility of panels */
@@ -2239,6 +2247,7 @@ gedit_window_init (GeditWindow *window)
 		g_free (role);
 	}
 
+	gedit_debug_message (DEBUG_WINDOW, "Connect signals");
 	/* Drag and drop support */
 	gtk_drag_dest_set (GTK_WIDGET (window),
 			   GTK_DEST_DEFAULT_MOTION |
@@ -2285,7 +2294,10 @@ gedit_window_init (GeditWindow *window)
 	                  G_CALLBACK (drag_data_received_cb), 
 	                  NULL);
 	                  
+	gedit_debug_message (DEBUG_WINDOW, "Update plugins ui");	                  
         gedit_plugins_engine_update_plugins_ui (window, TRUE);
+        
+       	gedit_debug_message (DEBUG_WINDOW, "END");	                  
 }
 
 GeditView *

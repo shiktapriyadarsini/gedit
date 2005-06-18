@@ -503,54 +503,7 @@ gedit_document_new (void)
 	return GEDIT_DOCUMENT (g_object_new (GEDIT_TYPE_DOCUMENT, NULL));
 }
 
-#ifndef G_DISABLE_CHECKS
 
-static gboolean
-is_valid_scheme_character (gchar c)
-{
-	return g_ascii_isalnum (c) || c == '+' || c == '-' || c == '.';
-}
-
-static gboolean
-has_valid_scheme (const gchar *uri)
-{
-	const gchar *p;
-
-	p = uri;
-
-	if (!is_valid_scheme_character (*p)) {
-		return FALSE;
-	}
-
-	do {
-		p++;
-	} while (is_valid_scheme_character (*p));
-
-	return *p == ':';
-}
-
-static gboolean
-is_valid_uri (const gchar *uri)
-{
-	const guchar *p;
-
-	if (uri == NULL)
-		return FALSE;
-
-	if (!has_valid_scheme (uri)) {
-		return FALSE;
-	}
-
-	/* We expect to have a fully valid set of characters */
-	for (p = uri; *p; p++) {
-		if (*p <= 32 || *p >= 128)
-			return FALSE;
-	}
-
-	return TRUE;
-}
-
-#endif /* G_DISABLE_CHECKS */
 
 /* If mime type is null, we guess from the filename */
 /* If uri is null, we only set the mime-type */
@@ -565,7 +518,7 @@ set_uri (GeditDocument *doc,
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	g_return_if_fail ((uri == NULL) || is_valid_uri (uri));
+	g_return_if_fail ((uri == NULL) || gedit_utils_is_valid_uri (uri));
 
 	if (uri != NULL)
 	{
@@ -786,7 +739,7 @@ gedit_document_load (GeditDocument       *doc,
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (uri != NULL, FALSE);
-	g_return_val_if_fail (is_valid_uri (uri), FALSE);
+	g_return_val_if_fail (gedit_utils_is_valid_uri (uri), FALSE);
 
 	g_return_val_if_fail (doc->priv->loader == NULL, FALSE);
 

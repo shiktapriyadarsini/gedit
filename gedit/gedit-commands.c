@@ -213,7 +213,7 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
                          gint                    response_id,
                          GeditWindow            *window)
 {
-	GSList *uris;
+	GSList *uris, *l;
 	const GeditEncoding *encoding;
 	gint n;
 
@@ -227,6 +227,14 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 	}
 
 	uris = gtk_file_chooser_get_uris (GTK_FILE_CHOOSER (dialog));
+	
+	l = uris;
+	while (l != NULL)
+	{
+		g_print ("%s\n", l->data);
+		l = g_slist_next (l);
+	}
+	
 	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
