@@ -251,8 +251,8 @@ gedit_app_get_active_window (GeditApp *app)
 }
 
 GeditWindow *
-gedit_app_get_window_in_workspace (GeditApp *app,
-				   gint      workspace)
+_gedit_app_get_window_in_workspace (GeditApp *app,
+				    gint      workspace)
 {
 	GeditWindow *window;
 	gint ws;

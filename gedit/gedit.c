@@ -174,12 +174,15 @@ get_startup_timestamp ()
 	return (retval > 0) ? retval : 0;
 }
 
+/* serverside */
 static void
 on_message_received (const char *message,
 		     gpointer    data)
 {
 	gchar **commands;
+	gchar **params;
 	gint workspace;
+	gint i;
 	GeditApp *app;
 	GeditWindow *window;
 
@@ -187,14 +190,50 @@ on_message_received (const char *message,
 
 	g_print ("%s", message);
 
-	commands = g_strsplit (message, ":", 6);
+	commands = g_strsplit (message, "\v", -1);
 
-	startup_timestamp = atoi (commands[0]); //this sucks, right?
-	workspace = atoi (commands[1]);
-	new_window_option = atoi (commands[2]);
-	new_document_option = atoi (commands[3]);
-	line_position = atoi (commands[4]);
-	encoding_charset = commands[5];
+	/* header */
+	params = g_strsplit (commands[0], "\t", 2);
+	startup_timestamp = atoi (params[0]); //CHECK if this is safe
+	workspace = atoi (params[1]);
+	g_strfreev (params);
+
+	/* body */
+	i = 1;
+	while (commands[i])
+	{
+		params = g_strsplit (commands[i], "\t", -1);
+
+		if (strcmp (params[0], "NEW-WINDOW") == 0)
+		{
+			new_window_option = TRUE;
+		}
+		else if (strcmp (params[0], "OPEN-URIS") == 0)
+		{
+			gint n_uris, i;
+			gchar **uris;
+
+			line_position = atoi (params[1]);
+			if (params[2] != '\0');
+				encoding = gedit_encoding_get_from_charset (params[2]);
+
+			n_uris = atoi (params[3]);
+			uris = g_strsplit (params[4], " ", n_uris);
+
+			for (i = 0; i < n_uris; i++)
+				file_list = g_slist_prepend (file_list, uris[i]);
+			file_list = g_slist_reverse (file_list);
+		}
+		else
+		{
+			g_warning ("Unexpected bacon command");
+		}
+
+		g_strfreev (params);
+		++i;
+	}
+
+	/* execute the commands */
 
 	app = gedit_app_get_default ();
 
@@ -205,28 +244,102 @@ on_message_received (const char *message,
 	else
 	{
 		/* get a window in the current workspace (if exists) and raise it */
-		window = gedit_app_get_window_in_workspace (app, workspace);
-
-		/* fall back to roundtripping to the X server. lame. */
-		if (startup_timestamp <= 0)
-		{
-			if (!GTK_WIDGET_REALIZED (window))
-				gtk_widget_realize (GTK_WIDGET (window));
-
-			startup_timestamp = gdk_x11_get_server_time (GTK_WIDGET (window)->window);
-		}
-
-		gdk_x11_window_set_user_time (GTK_WIDGET (window)->window,
-					      startup_timestamp);
+		window = _gedit_app_get_window_in_workspace (app, workspace);
 	}
 
-// also handle --new-doc
-//	if (file_list != NULL)
-//		gedit_cmd_load_files_from_prompt (window, file_list, encoding, line_position);
-//	else
+	/* set the proper interaction time on the window.
+	 * fall back to roundtripping to the X server. lame. */
+	if (startup_timestamp <= 0)
+	{
+		if (!GTK_WIDGET_REALIZED (window))
+			gtk_widget_realize (GTK_WIDGET (window));
+
+		startup_timestamp = gdk_x11_get_server_time (GTK_WIDGET (window)->window);
+	}
+
+	gdk_x11_window_set_user_time (GTK_WIDGET (window)->window,
+				      startup_timestamp);
+
+	if (file_list != NULL)
+		gedit_cmd_load_files_from_prompt (window,
+						  file_list,
+						  encoding,
+						  line_position);
+	else
 		gedit_window_create_tab (window, TRUE);
 
 	gtk_window_present (GTK_WINDOW (window));
+
+	/* free the file list and reset to default */
+	g_slist_foreach (file_list, (GFunc) g_free, NULL);
+	g_slist_free (file_list);
+	file_list = NULL;
+
+	new_window_option = FALSE;
+	encoding = NULL;
+	line_position = 0;
+}
+
+/* clientside */
+static void
+send_bacon_message (void)
+{
+	gint ws;
+	GString *command;
+
+	/* the messages have the following format:
+	 * <----   header   -----> <----            body             ----->
+	 * timestamp \t workspace \v OP1 \t arg \t arg \v OP2 \t arg \t arg|...
+	 *
+	 * when the arg is a list of uri, they are separated by a space.
+	 * So the delimiters are \v for the commands, \t for the tokens in
+	 * a command and ' ' for the uris: note that such delimiters cannot
+	 * be part of an uri, this way parsing is easier.
+	 */
+
+	ws = gedit_utils_get_current_workspace (gdk_screen_get_default ());
+
+	command = g_string_new (NULL);
+
+	/* header */
+	g_string_append_printf (command,
+				"%" G_GUINT32_FORMAT "\t%d",
+				startup_timestamp,
+				ws);
+
+	/* NEW-WINDOW command */
+	if (new_window_option)
+	{
+		command = g_string_append_c (command, '\v');
+		command = g_string_append (command, "NEW-WINDOW");
+	}
+
+	/* OPEN_URIS command, optionally specify line_num and encoding */
+	if (file_list)
+	{
+		GSList *l;
+
+		command = g_string_append_c (command, '\v');
+		command = g_string_append (command, "OPEN-URIS");
+
+		g_string_append_printf (command,
+					"\t%d\t%s\t%d\t",
+					line_position,
+					encoding_charset ? encoding_charset : "",
+					g_slist_length (file_list));
+
+		for (l = file_list; l != NULL; l = l->next)
+		{
+			command = g_string_append (command, l->data);
+			if (l->next != NULL)
+				command = g_string_append_c (command, ' ');
+		}
+	}
+
+	bacon_message_connection_send (connection,
+				       command->str);
+
+	g_string_free (command, TRUE);
 }
 
 int
@@ -263,44 +376,17 @@ main (int argc, char *argv[])
 	{
 		if (!bacon_message_connection_get_is_server (connection)) 
 		{
-			gint ws;
-			GSList *l;
-			GString *command;
-
 			gedit_debug_message (DEBUG_APP, "I'm a client");
 
-			ws = gedit_utils_get_current_workspace (gdk_screen_get_default ());
 			gedit_get_command_line_data (program);
 
-			command = g_string_new (NULL);
-
-			/* send a command with the timestamp, the options, 
-			 * and the file list using : as a separator.
-			 */
-			g_string_append_printf (command,
-					"%" G_GUINT32_FORMAT ":%d:%d:%d:%d:%s",
-					startup_timestamp,
-					ws,
-					new_window_option,
-					new_document_option,
-					line_position,
-					encoding_charset ? encoding_charset : "");
-
-			for (l = file_list; l; l = l->next)
-			{
-				command = g_string_append_c (command, ':');
-				command = g_string_append (command, l->data);
-			}
-
-			bacon_message_connection_send (connection,
-						       command->str);
+			send_bacon_message ();
 
 			/* we never popup a window... tell startup-notification
 			 * that we are done.
 			 */
 			gdk_notify_startup_complete ();
 
-			g_string_free (command, TRUE);
 			bacon_message_connection_free (connection);
 
 			exit (0);
@@ -316,9 +402,6 @@ main (int argc, char *argv[])
 	}
 	else
 		g_warning ("Cannot create the 'gedit' connection.");
-
-	/* we don't need this anymore */
-	g_free (encoding_charset);
 
 	/* Setup debugging */
 	gedit_debug_init ();
@@ -356,6 +439,16 @@ main (int argc, char *argv[])
 			gedit_window_create_tab (window, TRUE);
 
 		gtk_widget_show (GTK_WIDGET (window));
+
+		g_slist_foreach (file_list, (GFunc) g_free, NULL);
+		g_slist_free (file_list);
+		file_list = NULL;
+
+		g_free (encoding_charset);
+
+		new_window_option = FALSE;
+		encoding = NULL;
+		line_position = 0;
 	}
 
 	gtk_main();
