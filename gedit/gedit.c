@@ -208,6 +208,10 @@ on_message_received (const char *message,
 		{
 			new_window_option = TRUE;
 		}
+		else if (strcmp (params[0], "NEW-DOCUMENT") == 0)
+		{
+			new_document_option = TRUE;
+		}
 		else if (strcmp (params[0], "OPEN-URIS") == 0)
 		{
 			gint n_uris, i;
@@ -261,12 +265,25 @@ on_message_received (const char *message,
 				      startup_timestamp);
 
 	if (file_list != NULL)
+	{
 		gedit_cmd_load_files_from_prompt (window,
 						  file_list,
 						  encoding,
 						  line_position);
+
+		if (new_document_option)
+			gedit_window_create_tab (window, TRUE);
+	}
 	else
-		gedit_window_create_tab (window, TRUE);
+	{
+		GeditDocument *doc;
+		doc = gedit_window_get_active_document (window);
+
+		if (doc == NULL ||
+		    !gedit_document_is_untouched (doc) ||
+		    new_document_option)
+			gedit_window_create_tab (window, TRUE);
+	}
 
 	gtk_window_present (GTK_WINDOW (window));
 
@@ -276,6 +293,7 @@ on_message_received (const char *message,
 	file_list = NULL;
 
 	new_window_option = FALSE;
+	new_document_option = FALSE;
 	encoding = NULL;
 	line_position = 0;
 }
@@ -312,6 +330,13 @@ send_bacon_message (void)
 	{
 		command = g_string_append_c (command, '\v');
 		command = g_string_append (command, "NEW-WINDOW");
+	}
+
+	/* NEW-DOCUMENT command */
+	if (new_document_option)
+	{
+		command = g_string_append_c (command, '\v');
+		command = g_string_append (command, "NEW-DOCUMENT");
 	}
 
 	/* OPEN_URIS command, optionally specify line_num and encoding */
@@ -447,6 +472,7 @@ main (int argc, char *argv[])
 		g_free (encoding_charset);
 
 		new_window_option = FALSE;
+		new_document_option = FALSE;
 		encoding = NULL;
 		line_position = 0;
 	}
