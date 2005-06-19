@@ -343,9 +343,7 @@ set_toolbar_style (GeditWindow *window,
 	if (visible)
 		gtk_widget_show (window->priv->toolbar);
 	else
-	{
 		gtk_widget_hide (window->priv->toolbar);
-	}
 	
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewToolbar");
@@ -639,6 +637,8 @@ create_languages_menu (GeditWindow *window)
 	guint id;
 	gint i;
 
+	gedit_debug (DEBUG_WINDOW);
+
 	/* add the "Normal" item before all the others */
 	action_normal = gtk_radio_action_new ("LangNormal",
 					      _("Normal"),
@@ -820,30 +820,13 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	GtkToolItem *open_button;
 	GError *error = NULL;
 
+	gedit_debug (DEBUG_WINDOW);
+
 	manager = gtk_ui_manager_new ();
 	window->priv->manager = manager;
 
 	gtk_window_add_accel_group (GTK_WINDOW (window),
 				    gtk_ui_manager_get_accel_group (manager));
-
-	/* now load the UI definition */
-	if (!gtk_ui_manager_add_ui_from_file (manager, "gedit-ui.xml", &error)) // REMOVE ME... just to allow running without install
-	gtk_ui_manager_add_ui_from_file (manager, GEDIT_UI_DIR "gedit-ui.xml", &error);
-	if (error != NULL)
-	{
-		g_warning ("Could not merge gedit-ui.xml: %s", error->message);
-		g_error_free (error);
-	}
-
-	/* show tooltips in the statusbar */
-	g_signal_connect (manager,
-			  "connect_proxy",
-			  G_CALLBACK (connect_proxy_cb),
-			  window);
-	g_signal_connect (manager,
-			  "disconnect_proxy",
-			  G_CALLBACK (disconnect_proxy_cb),
-			  window);
 
 	action_group = gtk_action_group_new ("GeditWindowAlwaysSensitiveActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
@@ -883,6 +866,25 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	action = gtk_action_group_get_action (action_group, "EditUndo");
 	g_object_set (action, "is_important", TRUE, NULL);
 
+	/* now load the UI definition */
+	if (!gtk_ui_manager_add_ui_from_file (manager, "gedit-ui.xml", &error)) // REMOVE ME... just to allow running without install
+	gtk_ui_manager_add_ui_from_file (manager, GEDIT_UI_DIR "gedit-ui.xml", &error);
+	if (error != NULL)
+	{
+		g_warning ("Could not merge gedit-ui.xml: %s", error->message);
+		g_error_free (error);
+	}
+
+	/* show tooltips in the statusbar */
+	g_signal_connect (manager,
+			  "connect_proxy",
+			  G_CALLBACK (connect_proxy_cb),
+			  window);
+	g_signal_connect (manager,
+			  "disconnect_proxy",
+			  G_CALLBACK (disconnect_proxy_cb),
+			  window);
+
 	/* recent files menu */
 	recent_model = gedit_recent_get_model ();
 	recent_view = egg_recent_view_uimanager_new (manager,
@@ -921,18 +923,20 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 
 	/* add the custom Open button to the toolbar */
 	open_button = gtk_menu_tool_button_new_from_stock (GTK_STOCK_OPEN);
-//	gtk_tool_item_set_homogeneous (open_button, TRUE);
 
 	/* the popup menu is actually built the first time it's showed */
 	window->priv->toolbar_recent_menu = gtk_menu_new ();
 	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (open_button),
 				       window->priv->toolbar_recent_menu);
-	g_signal_connect (open_button, "show-menu",
-			  G_CALLBACK (build_recent_tool_menu), window);
+	g_signal_connect (open_button,
+			  "show-menu",
+			  G_CALLBACK (build_recent_tool_menu),
+			  window);
 
-	// CHECK: not very nice the way we access the tooltops object
-	// but I can't see a better way and I don't want a differen GtkTooltip
-	// just for this tool button.
+	/* not very nice the way we access the tooltops object
+	 * but I can't see a better way and I don't want a differen GtkTooltip
+	 * just for this tool button.
+	 */
 	gtk_tool_item_set_tooltip (open_button,
 				   GTK_TOOLBAR (window->priv->toolbar)->tooltips,
 				   _("Open a file"),
@@ -980,6 +984,8 @@ update_documents_list_menu (GeditWindow *window)
 	gint n, i;
 	guint id;
 	GSList *group = NULL;
+
+	gedit_debug (DEBUG_WINDOW);
 
 	g_return_if_fail (p->documents_list_action_group != NULL);
 
@@ -1101,6 +1107,8 @@ static void
 create_statusbar (GeditWindow *window, 
 		  GtkWidget   *main_box)
 {
+	gedit_debug (DEBUG_WINDOW);
+
 	window->priv->statusbar = gedit_statusbar_new ();
 
 	window->priv->generic_message_cid = gtk_statusbar_get_context_id
@@ -1113,7 +1121,7 @@ create_statusbar (GeditWindow *window,
 			  FALSE, 
 			  TRUE, 
 			  0);	
-			  
+
 	set_statusbar_style (window, NULL);		
 }
 
@@ -1122,7 +1130,9 @@ clone_window (GeditWindow *origin)
 {
 	GtkWindow *window;
 	GeditApp  *app;
-	
+
+	gedit_debug (DEBUG_WINDOW);	
+
 	app = gedit_app_get_default ();
 	
 	window = GTK_WINDOW (gedit_app_create_window (app));
@@ -2043,23 +2053,25 @@ create_side_panel (GeditWindow *window)
 	gboolean visible;
 	GtkWidget *documents_panel;
 
+	gedit_debug (DEBUG_WINDOW);
+
 	window->priv->side_panel = gedit_panel_new ();
 
-  	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned), 
-  			 window->priv->side_panel, 
-  			 TRUE, 
-  			 FALSE);
+	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned), 
+			 window->priv->side_panel, 
+			 TRUE, 
+			 FALSE);
 	gtk_widget_set_size_request (window->priv->side_panel, 100, -1);  			 
 
-  	g_signal_connect (window->priv->side_panel,
-  			  "size_allocate",
-  			  G_CALLBACK (side_panel_size_allocate),
-  			  window);
+	g_signal_connect (window->priv->side_panel,
+			  "size_allocate",
+			  G_CALLBACK (side_panel_size_allocate),
+			  window);
 
 	g_signal_connect (window->priv->side_panel,
-  			  "hide",
-  			  G_CALLBACK (side_panel_hide),
-  			  window);
+			  "hide",
+			  G_CALLBACK (side_panel_hide),
+			  window);
 
 	gtk_paned_set_position (GTK_PANED (window->priv->hpaned),
 				MAX (100, gedit_prefs_manager_get_side_panel_size ()));
@@ -2108,6 +2120,8 @@ create_bottom_panel (GeditWindow *window)
 {
 	GtkAction *action;
 	gboolean visible;
+
+	gedit_debug (DEBUG_WINDOW);
 
 	window->priv->bottom_panel = gedit_panel_new ();
 	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned), 
@@ -2342,12 +2356,12 @@ gedit_window_create_tab (GeditWindow *window,
 			 gboolean     jump_to)
 {
 	GeditTab *tab;
-	
+
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
-	
+
 	tab = GEDIT_TAB (_gedit_tab_new ());	
 	gtk_widget_show (GTK_WIDGET (tab));	
-	
+
 	gedit_notebook_add_tab (GEDIT_NOTEBOOK (window->priv->notebook),
 				tab,
 				-1,
@@ -2365,7 +2379,7 @@ gedit_window_create_tab_from_uri (GeditWindow         *window,
 				  gboolean             jump_to)
 {
 	GtkWidget *tab;
-	
+
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (uri != NULL, NULL);
 	
@@ -2449,7 +2463,7 @@ gedit_window_get_views (GeditWindow *window)
 	return res;
 }
 
-void 
+void
 gedit_window_close_tab (GeditWindow *window,
 			GeditTab    *tab)
 {
@@ -2460,16 +2474,16 @@ gedit_window_close_tab (GeditWindow *window,
 				   tab);
 }
 
-void 
+void
 gedit_window_close_all_tabs (GeditWindow *window)
 {
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
-	
+
 	window->priv->removing_all_tabs = TRUE;
-	
+
 	gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (window->priv->notebook));
-	
+
 	window->priv->removing_all_tabs = FALSE;
 }
 
@@ -2479,12 +2493,14 @@ _gedit_window_set_statusbar_visible (GeditWindow *window,
 {
 	GtkAction *action;
 	static gboolean recursione_guard = FALSE;
-	
+
+	gedit_debug (DEBUG_WINDOW);
+
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	if (recursione_guard)
 		return;
-		
+
 	recursione_guard = TRUE;
 
 	visible = (visible != FALSE);
@@ -2512,16 +2528,18 @@ _gedit_window_set_toolbar_visible (GeditWindow *window,
 {
 	GtkAction *action;
 	static gboolean recursione_guard = FALSE;
-	
+
+	gedit_debug (DEBUG_WINDOW);
+
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	if (recursione_guard)
 		return;
-		
+
 	recursione_guard = TRUE;
 	
 	visible = (visible != FALSE);
-		
+
 	if (visible)
 		gtk_widget_show (window->priv->toolbar);
 	else
@@ -2532,10 +2550,10 @@ _gedit_window_set_toolbar_visible (GeditWindow *window,
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewToolbar");		
-		
+
 	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-	
+
 	recursione_guard = FALSE;
 }
 
@@ -2546,15 +2564,18 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 	GtkAction *action;
 	static gboolean recursion_guard = FALSE;
 	gboolean show = FALSE;
+
+	gedit_debug (DEBUG_WINDOW);
+
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	
+
 	if (recursion_guard)
 		return;
-		
+
 	recursion_guard = TRUE;
 
 	visible = (visible != FALSE);
-	
+
 	if (visible &&
 	    (GTK_WIDGET_VISIBLE (window->priv->side_panel) != visible))
 	{
@@ -2594,8 +2615,11 @@ _gedit_window_set_bottom_panel_visible (GeditWindow *window,
 	GtkAction *action;
 	static gboolean recursion_guard = FALSE;
 	gboolean show = FALSE;
+
+	gedit_debug (DEBUG_WINDOW);
+
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	
+
 	if (recursion_guard)
 		return;
 
