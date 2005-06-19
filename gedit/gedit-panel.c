@@ -97,11 +97,10 @@ gedit_panel_focus_document (GeditPanel *panel)
 	if (GTK_WIDGET_TOPLEVEL (toplevel) && GEDIT_IS_WINDOW (toplevel))
    	{
 		GeditView *view;
-		
+
 		view = gedit_window_get_active_view (GEDIT_WINDOW (toplevel));
 		if (view != NULL)
 			gtk_widget_grab_focus (GTK_WIDGET (view));
-			
    	}
 }
 
@@ -174,30 +173,36 @@ tab_label_style_set_cb (GtkWidget *label,
 			GtkStyle  *previous_style,
 			GtkWidget *hbox)
 {
-	PangoFontMetrics *metrics;
-	PangoContext *context;
-	gint char_width, h, w, len;
-	const gchar *str;
-
-	context = gtk_widget_get_pango_context (label);
-	metrics = pango_context_get_metrics (context,
-			                     label->style->font_desc,
-					     pango_context_get_language (context));
-
-	char_width = pango_font_metrics_get_approximate_digit_width (metrics);
-	pango_font_metrics_unref (metrics);
-
-	str = gtk_label_get_text (GTK_LABEL (label));
-	len = g_utf8_strlen (str, -1);
+	gint h, w;
 
 	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (label),
 					   GTK_ICON_SIZE_MENU, &w, &h);
 
 	if (GTK_WIDGET_VISIBLE (label))
+	{
+		PangoFontMetrics *metrics;
+		PangoContext *context;
+		gint char_width, len;
+		const gchar *str;
+
+		context = gtk_widget_get_pango_context (label);
+		metrics = pango_context_get_metrics (context,
+				                     label->style->font_desc,
+						     pango_context_get_language (context));
+
+		char_width = pango_font_metrics_get_approximate_digit_width (metrics);
+		pango_font_metrics_unref (metrics);
+
+		str = gtk_label_get_text (GTK_LABEL (label));
+		len = g_utf8_strlen (str, -1);
+
 		gtk_widget_set_size_request
 			(hbox, MIN (TAB_WIDTH_N_CHARS, len) * PANGO_PIXELS(char_width) + w, -1);
+	}
 	else
+	{
 		gtk_widget_set_size_request (hbox, w, -1);
+	}
 }
 
 static void
