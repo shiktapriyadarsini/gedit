@@ -330,6 +330,13 @@ set_language (GeditDocument     *doc,
               GtkSourceLanguage *lang,
               gboolean           set_by_user)
 {
+	GtkSourceLanguage *old_lang;
+	
+	old_lang = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
+	
+	if (old_lang == lang)
+		return;
+		
 	if (lang != NULL)
 		gtk_source_buffer_set_highlight (GTK_SOURCE_BUFFER (doc),
 						 gedit_prefs_manager_get_enable_syntax_highlighting ());
