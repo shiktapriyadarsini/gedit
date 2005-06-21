@@ -36,6 +36,7 @@
 #include <gdk/gdkkeysyms.h>
 
 #include "gedit-window.h"
+#include "gedit-debug.h"
 
 #define PANEL_ITEM_KEY "GeditPanelItemKey"
 

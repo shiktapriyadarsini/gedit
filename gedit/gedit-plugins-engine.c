@@ -368,6 +368,8 @@ load_plugin_module (GeditPluginInfo *info)
 	gchar *path;
 	gchar *dirname;
 
+	gedit_debug (DEBUG_PLUGINS);
+
 	g_return_val_if_fail (info != NULL, FALSE);
 	g_return_val_if_fail (info->file != NULL, FALSE);
 	g_return_val_if_fail (info->location != NULL, FALSE);
@@ -398,6 +400,8 @@ load_plugin_module (GeditPluginInfo *info)
 
 	g_type_module_unuse (info->module);
 
+	gedit_debug_message (DEBUG_PLUGINS, "End");
+	
 	return TRUE;
 }
 
@@ -573,6 +577,8 @@ reactivate_all (GeditWindow *window)
 					       window);
 		}
 	}
+	
+	gedit_debug_message (DEBUG_PLUGINS, "End");
 }
 
 void
