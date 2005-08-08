@@ -1,4 +1,14 @@
 ============
+gedit 2.10.5
+============
+
+Fixes
+=====
+- fix a potential crasher in the spell plugin (Paolo Borelli)
+- fix a runtime warning due to an api change in recent-files (Paolo B.)
+
+
+============
 gedit 2.10.4
 ============
 
@@ -43,6 +53,7 @@ New and updated translations
 - Theppitak Karoonboonyanan (th)
 - Funda Wang (zh_CN)
 - Woodman Tuen (zh_TW)
+
 
 ============
 gedit 2.10.3
