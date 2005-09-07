@@ -123,7 +123,9 @@ gedit_window_finalize (GObject *object)
 	GeditWindow *window = GEDIT_WINDOW (object); 
 	
 	g_object_unref (window->priv->window_group);
-		
+
+	g_free (window->priv->default_path);
+	
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
 
@@ -1729,6 +1731,75 @@ sync_languages_menu (GeditDocument *doc,
 }
 
 static void
+update_default_path (GeditWindow   *window,
+		     GeditDocument *doc)
+{
+	const gchar *uri;
+	
+	uri = gedit_document_get_uri_(doc);
+	// CHECK: what does it happens when loading from stdin? - Paolo
+	g_return_if_fail (uri != NULL);
+	
+	if (gedit_utils_uri_has_file_scheme (uri))
+	{
+		gchar *default_path;
+			
+		// CHECK: does it work with uri chaining? - Paolo
+		default_path = g_path_get_dirname (uri);
+
+		g_return_if_fail (strlen (default_path) >= 5 /* strlen ("file:") */);
+		if (strcmp (default_path, "file:") == 0)
+		{
+			g_free (default_path);
+		
+			default_path = g_strdup ("file:///");
+		}
+
+		g_free (window->priv->default_path);
+				
+		window->priv->default_path = default_path;
+		
+		gedit_debug_message (DEBUG_WINDOW, 
+				     "New default path: %s", default_path);
+	}
+}
+
+
+static void
+doc_loaded (GeditDocument *doc,
+	    const GError  *error,
+	    GeditWindow   *window)
+{
+	if (error != NULL)
+	{
+		gedit_debug_message (DEBUG_WINDOW, "Error");
+		return;
+	}
+	
+	update_default_path (window, doc);
+}
+
+static void
+doc_saved (GeditDocument *doc,
+	   const GError  *error,
+	   GeditWindow   *window)
+{
+	if (error != NULL)
+	{
+		gedit_debug_message (DEBUG_WINDOW, "Error");
+		return;
+	}
+	
+	if (!_gedit_document_is_saving_as (doc))
+	{
+		gedit_debug_message (DEBUG_WINDOW, "Not saving as");
+		return;
+	}
+
+	update_default_path (window, doc);
+}
+
+static void
 notebook_tab_added (GeditNotebook *notebook,
 		    GeditTab      *tab,
 		    GeditWindow   *window)
@@ -1752,6 +1823,13 @@ notebook_tab_added (GeditNotebook *notebook,
 	gtk_action_set_sensitive (action,
 				  window->priv->num_tabs > 1);
 
+
+	view = gedit_tab_get_view (tab);
+	doc = gedit_tab_get_document (tab);
+	
+	/* IMPORTANT: remember to disconnect the signal in notebook_tab_removed
+	 * if a new signal is connected here */
+
 	g_signal_connect (tab, 
 			 "notify::name",
 			  G_CALLBACK (sync_name), 
@@ -1762,11 +1840,6 @@ notebook_tab_added (GeditNotebook *notebook,
 			  G_CALLBACK (sync_state), 
 			  window);
 			  
-	view = gedit_tab_get_view (tab);
-	doc = gedit_tab_get_document (tab);
-	
-	/* CHECK: in the old gedit-view we also connected doc "changed" */
-
 	g_signal_connect (doc, 
 			  "changed",
 			  G_CALLBACK (update_cursor_position_statusbar),
@@ -1786,6 +1859,14 @@ notebook_tab_added (GeditNotebook *notebook,
 	g_signal_connect (doc,
 			  "notify::language",
 			  G_CALLBACK (sync_languages_menu),
+			  window);
+	g_signal_connect (doc,
+			  "loaded",
+			  G_CALLBACK (doc_loaded),
+			  window);			  			  
+	g_signal_connect (doc,
+			  "saved",
+			  G_CALLBACK (doc_saved),
 			  window);
 	g_signal_connect (view,
 			  "toggle_overwrite",
@@ -1858,6 +1939,12 @@ notebook_tab_removed (GeditNotebook *notebook,
 	g_signal_handlers_disconnect_by_func (doc, 
 					      G_CALLBACK (can_redo),
 					      window);
+	g_signal_handlers_disconnect_by_func (doc, 
+					      G_CALLBACK (doc_loaded),
+					      window);
+	g_signal_handlers_disconnect_by_func (doc, 
+					      G_CALLBACK (doc_saved),
+					      window);					      				      
 	g_signal_handlers_disconnect_by_func (view, 
 					      G_CALLBACK (update_overwrite_mode_statusbar),
 					      window);
@@ -2762,4 +2849,12 @@ gedit_window_get_state (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), GEDIT_WINDOW_STATE_NORMAL);
 	
 	return window->priv->state;
+}
+
+G_CONST_RETURN gchar *
+_gedit_window_get_default_path (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
+	return window->priv->default_path;
 }

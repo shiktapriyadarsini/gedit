@@ -255,7 +255,9 @@ gedit_cmd_file_open (GtkAction   *action,
 {
 	GtkWidget *open_dialog;
 	gpointer data;
-
+	GeditDocument *doc;
+	gchar *default_path = NULL;
+	
 	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
 
 	if (data != NULL)
@@ -283,24 +285,42 @@ gedit_cmd_file_open (GtkAction   *action,
 			   (GWeakNotify) open_dialog_destroyed,
 			   window);
 
-	/* TODO: set the default path */
+	doc = gedit_window_get_active_document (window);
+	if (doc != NULL)
+	{
+		const gchar *uri;
+		
+		uri = gedit_document_get_uri_ (doc);
+		
+		if ((uri != NULL) && gedit_utils_uri_has_file_scheme (uri))
+		{	
+			default_path = g_path_get_dirname (uri);
 
+			g_return_if_fail (strlen (default_path) >= 5 /* strlen ("file:") */);
+			if (strcmp (default_path, "file:") == 0)
+			{
+				g_free (default_path);
+		
+				default_path = g_strdup ("file:///");
+			}
+		}
+	}
+	
+	if (default_path == NULL)
+		default_path = g_strdup (_gedit_window_get_default_path (window));
+		
+	if (default_path != NULL)
+		gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (open_dialog),
+							 default_path);
+	
+	g_free (default_path);
+						  	
 	g_signal_connect (open_dialog,
 			  "response",
 			  G_CALLBACK (open_dialog_response_cb),
 			  window);
 
 	gtk_widget_show (open_dialog);
-
-#if 0
-	BonoboMDIChild *active_child;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	active_child = bonobo_mdi_get_active_child (BONOBO_MDI (gedit_mdi));
-
-	gedit_file_open ((GeditMDIChild*) active_child);
-#endif
 }
 
 void

@@ -74,11 +74,12 @@ PROFILE (static GTimer *timer = NULL);
 
 struct _GeditDocumentPrivate
 {
-	gboolean     auto_save : 1;
-	gboolean     readonly : 1;
-	gboolean     last_save_was_manually : 1; 	
-	gboolean     language_set_by_user : 1;
-
+	gint	     auto_save : 1;
+	gint	     readonly : 1;
+	gint	     last_save_was_manually : 1; 	
+	gint	     language_set_by_user : 1;
+	gint         is_saving_as : 1;
+	
 	gchar	    *uri;
 	gint 	     untitled_number;
 
@@ -390,32 +391,40 @@ set_encoding (GeditDocument       *doc,
 		g_signal_emit (G_OBJECT (doc), document_signals[NAME_CHANGED], 0);
 }
 
-/* This function has been borrowed from Nautilus */
 static gchar *
 get_uri_shortname_for_display (GnomeVFSURI *uri)
 {
-	char *utf8_name, *name, *tmp;
-	char *text_uri, *local_file;
-	gboolean validated;
-	const char *method;
+	gchar    *name;	
+	gboolean  validated;
 
 	validated = FALSE;
 	name = gnome_vfs_uri_extract_short_name (uri);
+	
 	if (name == NULL)
 	{
 		name = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_PASSWORD);
 	}
 	else if (g_ascii_strcasecmp (uri->method_string, "file") == 0)
 	{
+		gchar *text_uri;
+		gchar *local_file;
 		text_uri = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_PASSWORD);
 		local_file = gnome_vfs_get_local_path_from_uri (text_uri);
-		name = g_filename_display_basename (local_file);
+		
+		if (local_file != NULL)
+		{
+			g_free (name);
+			name = g_filename_display_basename (local_file);
+			validated = TRUE;
+		}
+		
 		g_free (local_file);
 		g_free (text_uri);
-		validated = TRUE;
 	} 
 	else if (!gnome_vfs_uri_has_parent (uri)) 
 	{
+		const gchar *method;
+		
 		method = uri->method_string;
 		
 		if (name == NULL ||
@@ -426,6 +435,8 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 		} 
 		else 
 		{
+			gchar *tmp;
+			
 			tmp = name;
 			name = g_strdup_printf ("%s: %s", method, name);
 			g_free (tmp);
@@ -434,6 +445,8 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 
 	if (!validated && !g_utf8_validate (name, -1, NULL)) 
 	{
+		gchar *utf8_name;
+		
 		utf8_name = gedit_utils_make_valid_utf8 (name);
 		g_free (name);
 		name = utf8_name;
@@ -441,6 +454,7 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 
 	return name;
 }
+
 
 static void
 update_uri_for_display (GeditDocument *doc)
@@ -820,6 +834,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 		/* the saver has been used, throw it away */
 		g_object_unref (doc->priv->saver);
 		doc->priv->saver = NULL;
+		doc->priv->is_saving_as = NULL;
 	}
 	else
 	{
@@ -883,6 +898,8 @@ gedit_document_save_as (GeditDocument       *doc,
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (uri != NULL);
 
+	doc->priv->is_saving_as = TRUE;
+	
 	document_save_real (doc, uri, encoding, 0);
 }
 
@@ -1287,4 +1304,12 @@ _gedit_document_can_find_again (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 	
 	return (doc->priv->search_text != NULL);
+}
+
+gboolean
+_gedit_document_is_saving_as (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+	
+	return (doc->priv->is_saving_as);
 }

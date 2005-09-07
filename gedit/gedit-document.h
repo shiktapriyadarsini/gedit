@@ -86,7 +86,7 @@ struct _GeditDocumentClass
 
 	/* Signals */ // CHECK: ancora da rivedere
 
-	/* File name (uri) changed */
+	/* File name (uri), mime-type and/or encoding is changed */
 	void (* name_changed)		(GeditDocument    *document);
 
 	/* Document load */
@@ -214,7 +214,9 @@ void		 gedit_document_set_auto_save_interval
 /* 
  * Non exported functions
  */
- 
+
+gboolean	_gedit_document_is_saving_as	(GeditDocument       *doc);
+
 // CHECK: va bene un gint?
 glong		 _gedit_document_get_seconds_since_last_save_or_load 
 						(GeditDocument       *doc);

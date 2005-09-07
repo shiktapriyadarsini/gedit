@@ -55,13 +55,6 @@
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
 
-void	gedit_utils_flash     (const gchar *msg);
-void	gedit_utils_flash_va  (const gchar *format, ...) G_GNUC_PRINTF(1, 2);
-
-void	gedit_utils_set_status    (const gchar *msg);
-void	gedit_utils_set_status_va (const gchar *format, ...) G_GNUC_PRINTF(1, 2);
-
-
 gboolean gedit_utils_is_uri_read_only (const gchar* uri);
 gboolean gedit_utils_uri_has_file_scheme (const gchar *uri);
 
@@ -101,6 +94,7 @@ gchar *gedit_utils_str_middle_truncate (const char *string,
 
 gchar *gedit_utils_make_valid_utf8 (const char *name);
 
+/* Note that this function replace home dir with ~ */
 gchar *gedit_utils_uri_get_dirname (const char *uri);
 
 gchar *gedit_utils_replace_home_dir_with_tilde (const gchar *uri);

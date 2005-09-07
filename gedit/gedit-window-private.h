@@ -84,6 +84,8 @@ struct _GeditWindowPrivate
 	GeditWindowState state;
 
 	GtkWindowGroup *window_group;
+	
+	gchar          *default_path;
 };
 
 G_END_DECLS
