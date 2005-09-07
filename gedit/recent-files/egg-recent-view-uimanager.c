@@ -43,6 +43,15 @@
 #define EGG_RECENT_ACTION "EggRecentFile"
 #define EGG_RECENT_SEPARATOR (NULL)
 
+#ifndef EGG_COMPILATION
+#include <glib/gi18n.h>
+#else
+#define _(x) (x)
+#define N_(x) (x)
+#endif
+
+#define DEFAULT_LABEL_WIDTH_CHARS 30
+
 struct _EggRecentViewUIManager {
 	GObject         parent_instance;
 
@@ -71,6 +80,8 @@ struct _EggRecentViewUIManager {
 	EggRecentModel *model;
 	GConfClient    *client;
 	GtkIconSize     icon_size;
+
+	gint            label_width;
 };
 
 
@@ -92,10 +103,28 @@ enum {
 	PROP_UIMANAGER,
 	PROP_PATH,
 	PROP_SHOW_ICONS,
-	PROP_SHOW_NUMBERS
+	PROP_SHOW_NUMBERS,
+	PROP_LABEL_WIDTH
 };
 
 static guint view_signals[LAST_SIGNAL] = { 0 };
+
+static void
+connect_proxy_cb (GtkActionGroup         *action_group,
+		  GtkAction              *action,
+		  GtkWidget              *proxy,
+		  EggRecentViewUIManager *view)
+{
+	if (GTK_IS_MENU_ITEM (proxy))
+	{
+		GtkWidget *label;
+
+		label = GTK_BIN (proxy)->child;
+
+		gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+		gtk_label_set_max_width_chars (GTK_LABEL (label), view->label_width);
+	}
+}
 
 static void
 egg_recent_view_uimanager_clear (EggRecentViewUIManager *view)
@@ -131,7 +160,10 @@ egg_recent_view_uimanager_set_list (EggRecentViewUIManager *view, GList *list)
 		gchar *group = g_strdup_printf ("EggRecentActions%u", 
 						view->merge_id);
 		view->action_group = gtk_action_group_new (group);
-		gtk_ui_manager_insert_action_group (view->uimanager, view->action_group, 0);
+		g_signal_connect (view->action_group, "connect-proxy",
+				  G_CALLBACK (connect_proxy_cb), view);
+		gtk_ui_manager_insert_action_group (view->uimanager,
+						    view->action_group, -1);
 		g_free (group);
 	}
 
@@ -169,7 +201,10 @@ egg_recent_view_uimanager_set_list (EggRecentViewUIManager *view, GList *list)
 		if (view->tooltip_func != NULL)
 			tooltip = (*view->tooltip_func) (item, view->tooltip_func_data);
 
-		basename = g_path_get_basename (uri);
+		if (!tooltip)
+			tooltip = g_strdup_printf (_("Open '%s'"), uri);
+
+		basename = egg_recent_item_get_short_name (item);
 		escaped = egg_recent_util_escape_underlines (basename);
 		g_free (basename);
 		g_free (uri);
@@ -239,6 +274,84 @@ egg_recent_view_uimanager_set_list (EggRecentViewUIManager *view, GList *list)
 }
 
 static void
+egg_recent_view_uimanager_set_empty_list (EggRecentViewUIManager *view)
+{
+	gboolean   is_embedded;
+
+	g_return_if_fail (view);
+
+	egg_recent_view_uimanager_clear (view);
+
+	if (view->merge_id == 0)
+		view->merge_id = gtk_ui_manager_new_merge_id (view->uimanager);
+
+	if (view->action_group == NULL) {
+		gchar *group = g_strdup_printf ("EggRecentActions%u", 
+						view->merge_id);
+		view->action_group = gtk_action_group_new (group);
+		g_signal_connect (view->action_group, "connect-proxy",
+				  G_CALLBACK (connect_proxy_cb), view);
+		gtk_ui_manager_insert_action_group (view->uimanager,
+						    view->action_group, -1);
+		g_free (group);
+	}
+
+	if (view->leading_sep) {
+		gchar *sep_action = g_strdup_printf ("EggRecentLeadingSeparator%u",
+						     view->merge_id);
+		gtk_ui_manager_add_ui (view->uimanager, 
+				       view->merge_id, 
+				       view->path,
+				       sep_action,
+				       EGG_RECENT_SEPARATOR,
+				       GTK_UI_MANAGER_AUTO, 
+				       FALSE);
+		g_free (sep_action);
+	}
+
+	is_embedded = (view->leading_sep && view->trailing_sep);
+
+	if (is_embedded) {
+		GtkAction *action;
+		gchar     *name;
+
+		name = g_strdup_printf (EGG_RECENT_NAME_PREFIX "%u-0", view->merge_id);
+
+		action = g_object_new (GTK_TYPE_ACTION,
+				       "name", name,
+				       "label", _("Empty"),
+				       "sensitive", FALSE,
+				       NULL);
+		
+		gtk_action_group_add_action (view->action_group, action);
+		g_object_unref (action);
+
+		gtk_ui_manager_add_ui (view->uimanager, 
+				       view->merge_id, 
+				       view->path,
+				       name,
+				       name,
+				       GTK_UI_MANAGER_AUTO, 
+				       FALSE);
+
+		g_free (name);
+	}
+
+	if (view->trailing_sep) {
+		gchar *sep_action = g_strdup_printf ("EggRecentTrailingSeparator%u",
+						     view->merge_id);
+		gtk_ui_manager_add_ui (view->uimanager, 
+				       view->merge_id, 
+				       view->path,
+				       sep_action,
+				       EGG_RECENT_SEPARATOR,
+				       GTK_UI_MANAGER_AUTO, 
+				       FALSE);
+		g_free (sep_action);
+	}
+}
+
+static void
 model_changed_cb (EggRecentModel         *model,  
 		  GList                  *list, 
 		  EggRecentViewUIManager *view)
@@ -246,7 +359,8 @@ model_changed_cb (EggRecentModel         *model,
 	if (list != NULL)
 		egg_recent_view_uimanager_set_list (view, list);
 	else
-		egg_recent_view_uimanager_clear (view);
+		egg_recent_view_uimanager_set_empty_list (view);
+
 	gtk_ui_manager_ensure_update (view->uimanager);
 }
 
@@ -328,6 +442,9 @@ egg_recent_view_uimanager_set_property (GObject      *object,
 	case PROP_SHOW_NUMBERS:
 		egg_recent_view_uimanager_show_numbers (view, g_value_get_boolean (value));
 		break;
+	case PROP_LABEL_WIDTH:
+		egg_recent_view_uimanager_set_label_width (view, g_value_get_int (value));
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 		break;
@@ -354,6 +471,9 @@ egg_recent_view_uimanager_get_property (GObject    *object,
 		break;
 	case PROP_SHOW_NUMBERS:
 		g_value_set_boolean (value, view->show_numbers);
+		break;
+	case PROP_LABEL_WIDTH:
+		g_value_set_int (value, view->label_width);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -453,6 +573,16 @@ egg_recent_view_uimanager_class_init (EggRecentViewUIManagerClass * klass)
 							       "Whether or not to show numbers",
 							       TRUE,
 							       G_PARAM_READWRITE));
+	g_object_class_install_property (object_class,
+					 PROP_LABEL_WIDTH,
+					 g_param_spec_int ("label-width",
+						 	   "Label Width",
+							   "The desired width of the menu label, in characters",
+							   -1,
+							   G_MAXINT,
+							   DEFAULT_LABEL_WIDTH_CHARS,
+							   G_PARAM_READWRITE));
+	
 
 	klass->activate = NULL;
 }
@@ -528,6 +658,7 @@ egg_recent_view_uimanager_init (EggRecentViewUIManager * view)
 	view->tooltip_func_data = NULL;
 
 	view->icon_size = GTK_ICON_SIZE_MENU;
+	view->label_width = DEFAULT_LABEL_WIDTH_CHARS;
 }
 
 void
@@ -640,6 +771,21 @@ egg_recent_view_uimanager_get_path (EggRecentViewUIManager *view)
 {
 	g_return_val_if_fail (EGG_IS_RECENT_VIEW_UIMANAGER (view), NULL);
 	return view->path;
+}
+
+void
+egg_recent_view_uimanager_set_label_width (EggRecentViewUIManager *view,
+					   gint                    chars)
+{
+	g_return_if_fail (EGG_IS_RECENT_VIEW_UIMANAGER (view));
+	view->label_width = chars;
+}
+
+gint
+egg_recent_view_uimanager_get_label_width (EggRecentViewUIManager *view)
+{
+	g_return_val_if_fail (EGG_IS_RECENT_VIEW_UIMANAGER (view), DEFAULT_LABEL_WIDTH_CHARS);
+	return view->label_width;
 }
 
 void
