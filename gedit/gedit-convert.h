@@ -35,7 +35,7 @@
 
 typedef enum 
 {
-	GEDIT_CONVERT_ERROR_AUTO_DETECTION_FAILED = 1100,
+	GEDIT_CONVERT_ERROR_AUTO_DETECTION_FAILED = 1100
 } GeditConvertError;
 
 #define GEDIT_CONVERT_ERROR gedit_convert_error_quark()

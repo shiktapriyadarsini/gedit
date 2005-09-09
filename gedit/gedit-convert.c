@@ -33,7 +33,6 @@
 #include <glib/gi18n.h>
 
 #include "gedit-convert.h"
-#include "gedit-encodings.h"
 #include "gedit-debug.h"
 #include "gedit-prefs-manager.h"
 
