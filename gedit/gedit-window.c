@@ -2146,7 +2146,7 @@ create_side_panel (GeditWindow *window)
 
 	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned), 
 			 window->priv->side_panel, 
-			 TRUE, 
+			 FALSE, 
 			 FALSE);
 	gtk_widget_set_size_request (window->priv->side_panel, 100, -1);  			 
 
@@ -2214,7 +2214,7 @@ create_bottom_panel (GeditWindow *window)
 	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned), 
 			 window->priv->bottom_panel, 
 			 FALSE, 
-			 TRUE);
+			 FALSE);
 
 	g_signal_connect (window->priv->bottom_panel,
 			  "size_allocate",
@@ -2329,7 +2329,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->notebook = gedit_notebook_new ();
   	gtk_paned_pack1 (GTK_PANED (window->priv->vpaned), 
   			 window->priv->notebook,
-  			 TRUE, 
+  			 FALSE, 
   			 TRUE);
   	gtk_widget_show (window->priv->notebook);  			 
 

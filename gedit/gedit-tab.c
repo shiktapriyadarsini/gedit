@@ -68,6 +68,8 @@ struct _GeditTabPrivate
 	
 	GTimer 		*timer;
 	guint		 times_called;
+	
+	gboolean	 not_editable;
 };
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
@@ -233,9 +235,11 @@ gedit_tab_set_state (GeditTab *tab,
 	tab->priv->state = state;
 
 	if (state == GEDIT_TAB_STATE_NORMAL)
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), TRUE);
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), 
+					    !tab->priv->not_editable);
 	else		
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), FALSE);
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), 
+					    FALSE);
 
 	if (state == GEDIT_TAB_STATE_LOADING) // FIXME: add other states if needed
 	{
@@ -317,11 +321,17 @@ unrecoverable_loading_error_message_area_response (GeditMessageArea *message_are
 static void 
 file_already_open_warning_message_area_response (GtkWidget   *message_area,
 						 gint         response_id,
-						 GtkTextView *view)
+						 GeditTab    *tab)
 {
+	GeditView *view;
+	
+	view = gedit_tab_get_view (tab);
+	
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		gtk_text_view_set_editable (view,
+		tab->priv->not_editable = FALSE;
+		
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
 					    TRUE);
 	}
 
@@ -720,8 +730,7 @@ document_loaded (GeditDocument *document,
 
 			    		view = gedit_tab_get_view (tab);
 
-			    		gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-			    					    FALSE);
+			    		tab->priv->not_editable = TRUE;
 
 			    		w = gedit_file_already_open_warning_message_area_new (uri);
 
@@ -735,7 +744,7 @@ document_loaded (GeditDocument *document,
 					g_signal_connect (w,
 							  "response",
 							  G_CALLBACK (file_already_open_warning_message_area_response),
-							  view);
+							  tab);
 			    		break;
 			    	}
 			}
@@ -861,6 +870,8 @@ gedit_tab_init (GeditTab *tab)
 
 	tab->priv->state = GEDIT_TAB_STATE_NORMAL;
 
+	tab->priv->not_editable = FALSE;
+	
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	tab->priv->view_scrolled_window = sw;
@@ -1527,7 +1538,8 @@ _gedit_tab_print (GeditTab      *tab,
 	if (!gtk_source_print_job_print_range_async (GTK_SOURCE_PRINT_JOB (pjob), start, end))
 	{
 		/* FIXME: go in error state */
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), TRUE);
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), 
+					    !tab->priv->not_editable);
 		g_warning ("Async print preview failed");
 		g_object_unref (pjob);
 	}
