@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-utils.h
  * This file is part of gedit
@@ -49,8 +48,12 @@
 #define IS_VALID_BOOLEAN(v) (((v == TRUE) || (v == FALSE)) ? TRUE : FALSE)
 
 /* some common error strings, %s must be a file path */
+/* FIXME: remove MISSING_FILE and MISSING_WIDGETS" */
 #define MISSING_FILE    N_("Could not find \"%s\". Please, reinstall gedit.\n")
 #define MISSING_WIDGETS N_("Could not find the required widgets inside\"%s\". Please, reinstall gedit.\n")
+#define GEDIT_MISSING_FILE    N_("<span size=\"large\" weight=\"bold\">Unable to find file <i>%s</i>.</span>\n\nPlease, check your installation.")
+#define GEDIT_MISSING_WIDGETS N_("<span size=\"large\" weight=\"bold\">Unable to find the required widgets inside file <i>%s</i>..</span>\n\nPlease, check your installation.")
+
 
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
@@ -109,6 +112,10 @@ void  gedit_utils_activate_url (GtkAboutDialog *about,
 
 gboolean gedit_utils_is_valid_uri (const gchar *uri);
 
+gboolean    gedit_help_display (GtkWindow   *parent,
+				const gchar *file_name, /* "gedit.xml" if NULL */
+                                const gchar *link_id);
+                                
 #endif /* __GEDIT_UTILS_H__ */
 
 

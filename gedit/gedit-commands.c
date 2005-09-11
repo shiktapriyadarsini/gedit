@@ -51,15 +51,16 @@
 #include "gedit-print.h"
 #include "gedit-recent.h"
 #include "dialogs/gedit-page-setup-dialog.h"
-#include "dialogs/gedit-dialogs.h"
 #include "dialogs/gedit-preferences-dialog.h"
 #include "dialogs/gedit-close-confirmation-dialog.h"
+#include "dialogs/gedit-open-location-dialog.h"
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-notebook.h"
 #include "gedit-app.h"
 #include "gedit-search-panel.h"
 
 #define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
+#define GEDIT_OPEN_LOCATION_DIALOG_KEY "gedit-open-location-dialog-key"
 
 static gint
 load_file_list (GeditWindow         *window,
@@ -231,7 +232,7 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 	l = uris;
 	while (l != NULL)
 	{
-		g_print ("%s\n", l->data);
+		g_print ("%s\n", (char *)l->data);
 		l = g_slist_next (l);
 	}
 	
@@ -323,11 +324,119 @@ gedit_cmd_file_open (GtkAction   *action,
 	gtk_widget_show (open_dialog);
 }
 
+static void
+open_location_dialog_destroyed (GeditWindow *window,
+				gpointer     data)
+{
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_OPEN_LOCATION_DIALOG_KEY,
+			   NULL);
+}
+
+static void
+open_location_dialog_response_cb (GeditOpenLocationDialog *dlg,
+				  gint                    response_id,
+				  GeditWindow             *window)
+{
+	gchar *uri;
+	GSList *uris = NULL;
+	const GeditEncoding *encoding;
+	
+	gedit_debug (DEBUG_COMMANDS);
+	
+	if (response_id != GTK_RESPONSE_OK)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dlg));
+
+		return;
+	}
+	
+	uri = gedit_open_location_dialog_get_uri (dlg);
+	if (uri == NULL)
+	{
+		GtkWidget *msg;
+		GtkWindowGroup *wg;
+		
+		wg = GTK_WINDOW (dlg)->group;
+		
+		if (wg == NULL)
+		{
+			wg = gtk_window_group_new ();
+			
+			gtk_window_group_add_window (wg, GTK_WINDOW (dlg));
+		}
+		
+		msg = gtk_message_dialog_new (GTK_WINDOW (dlg),
+					      GTK_DIALOG_DESTROY_WITH_PARENT,
+					      GTK_MESSAGE_ERROR,
+					      GTK_BUTTONS_CLOSE,
+					      _("The entered location is not valid."));
+
+		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (msg),
+							  _("Please, check that you typed the location correctly and try again."));
+		
+		gtk_window_group_add_window (wg, GTK_WINDOW (msg));
+		
+		g_signal_connect (G_OBJECT (msg),
+				  "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (msg), FALSE);
+		gtk_window_set_modal (GTK_WINDOW (msg), TRUE);
+		
+		gtk_widget_show (msg);
+
+		return;
+	}
+
+	encoding = gedit_open_location_dialog_get_encoding (dlg);
+	uris = g_slist_prepend (uris, uri);
+
+	gtk_widget_destroy (GTK_WIDGET (dlg));
+		
+	gedit_cmd_load_files (window,
+		 	      uris,
+			      encoding);
+
+	g_slist_foreach (uris, (GFunc) g_free, NULL);
+	g_slist_free (uris);
+}
+
 void
 gedit_cmd_file_open_uri (GtkAction   *action,
 			 GeditWindow *window)
 {
-	gedit_dialog_open_uri (window);
+	GtkWidget *dlg;
+	gpointer data;
+
+	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_LOCATION_DIALOG_KEY);
+
+	if (data != NULL)
+	{
+		g_return_if_fail (GEDIT_IS_OPEN_LOCATION_DIALOG (data));
+
+		gtk_window_present (GTK_WINDOW (data));
+
+		return;
+	}
+		
+	dlg = gedit_open_location_dialog_new (GTK_WINDOW (window));
+
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_OPEN_LOCATION_DIALOG_KEY,
+			   dlg);
+
+	g_object_weak_ref (G_OBJECT (dlg),
+			   (GWeakNotify) open_location_dialog_destroyed,
+			   window);
+	
+	g_signal_connect (dlg,
+			  "response",
+			  G_CALLBACK (open_location_dialog_response_cb),
+			  window);
+			  			      
+	gtk_widget_show (dlg);
 }
 
 void

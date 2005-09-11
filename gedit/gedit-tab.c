@@ -174,7 +174,7 @@ gedit_tab_class_init (GeditTabClass *klass)
 							   0, /* GEDIT_TAB_STATE_NORMAL */
 							   G_PARAM_READWRITE));							      	
 							      
-	g_type_class_add_private (object_class, sizeof(GeditTabPrivate));
+	g_type_class_add_private (object_class, sizeof (GeditTabPrivate));
 }
 
 GeditTabState
