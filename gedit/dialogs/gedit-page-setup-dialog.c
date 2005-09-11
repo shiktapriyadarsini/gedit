@@ -36,7 +36,6 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <glade/glade-xml.h>
-#include <libgnome/gnome-help.h>
 #include <gconf/gconf-client.h>
 
 #include <gedit/gedit-prefs-manager.h>
@@ -94,19 +93,15 @@ dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 static void
 dialog_response_handler (GtkDialog *dlg, gint res_id,  GeditPageSetupDialog *dialog)
 {
-	GError *error = NULL;
-
 	gedit_debug (DEBUG_PRINT);
 
-	switch (res_id) {
+	switch (res_id)
+	{
 		case GTK_RESPONSE_HELP:
-			gnome_help_display ("gedit.xml", "gedit-page-setup", &error);
-			if (error != NULL)
-			{
-				gedit_warning (GTK_WINDOW (dlg), error->message);
-				g_error_free (error);
-			}
-			break;		
+			gedit_help_display (GTK_WINDOW (dlg),
+					    "gedit.xml",
+					    "gedit-page-setup");
+			break;
 		default:
 			gtk_widget_destroy (dialog->dialog);
 	}

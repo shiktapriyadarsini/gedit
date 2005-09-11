@@ -33,7 +33,6 @@
 
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
-#include <libgnome/gnome-help.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include <libgnomeui/gnome-entry.h>
 #include <libgnomeui/gnome-file-entry.h>
@@ -173,8 +172,6 @@ dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 static void
 dialog_response_handler (GtkDialog *dlg, gint res_id, ShellOutputDialog *dialog)
 {
-	GError *error = NULL;
-
 	gedit_debug (DEBUG_PLUGINS);
 
 	switch (res_id) {
@@ -183,12 +180,9 @@ dialog_response_handler (GtkDialog *dlg, gint res_id, ShellOutputDialog *dialog)
 		break;
 
 	case GTK_RESPONSE_HELP:
-		gnome_help_display ("gedit.xml", "gedit-shell-command-plugin", &error);
-		if (error != NULL)
-		{
-			g_warning (error->message);
-			g_error_free (error);
-		}
+		gedit_help_display (GTK_WINDOW (dlg),
+				    "gedit.xml",
+				    "gedit-shell-command-plugin");
 		break;
 
 	case GEDIT_RESPONSE_STOP:

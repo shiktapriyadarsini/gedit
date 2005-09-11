@@ -38,7 +38,6 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <libgnome/gnome-help.h>
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "gedit-commands.h"
@@ -1549,17 +1548,9 @@ void
 gedit_cmd_help_contents (GtkAction   *action,
 			 GeditWindow *window)
 {
-	GError *error = NULL;
-
 	gedit_debug (DEBUG_COMMANDS);
 
-	gnome_help_display ("gedit.xml", NULL, &error);
-
-	if (error != NULL)
-	{
-		gedit_warning (GTK_WINDOW (window), error->message);
-		g_error_free (error);
-	}
+	gedit_help_display (GTK_WINDOW (window), NULL, NULL);
 }
 
 void

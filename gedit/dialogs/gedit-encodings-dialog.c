@@ -38,7 +38,6 @@
 #include <glib/gslist.h>
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
-#include <libgnome/gnome-help.h>
 #include <gtk/gtk.h>
 
 #include "gedit-encodings-dialog.h"
@@ -54,38 +53,6 @@ enum {
 };
 
 #define SHOW_IN_MENU_LIST_KEY "gedit_enc_dlg_show_in_menu_list"
-
-static void
-show_help (GtkWidget *window)
-{
-	GError *err;
-	err = NULL;
-
-	gnome_help_display ("gedit", NULL, &err);
-
-	if (err)
-	{
-		GtkWidget *dialog;
-
-		dialog = gtk_message_dialog_new (GTK_WINDOW (window),
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CLOSE,
-						 _("There was an error displaying help: %s"),
-						 err->message);
- 
-		g_signal_connect (G_OBJECT (dialog), 
-				  "response", 
-				  G_CALLBACK (gtk_widget_destroy), 
-				  NULL);
-
-		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-
-		gtk_widget_show (dialog);
-
-		g_error_free (err);
-	}
-}
 
 static void
 count_selected_items_func (GtkTreeModel *model,
@@ -336,7 +303,7 @@ response_cb (GtkDialog *dialog,
 {
 	if (response_id == GTK_RESPONSE_HELP)
 	{
-		show_help (GTK_WIDGET (dialog));
+		gedit_help_display (GTK_WINDOW (dialog), "gedit", NULL);
 		g_signal_stop_emission_by_name (dialog, "response");
 		return;
 	}

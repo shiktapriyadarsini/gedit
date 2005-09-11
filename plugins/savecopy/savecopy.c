@@ -34,7 +34,6 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
-#include <libgnome/gnome-help.h>
 #include <libgnomevfs/gnome-vfs.h>
 
 #include <gedit/gedit-plugin.h>

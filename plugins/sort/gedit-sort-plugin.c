@@ -30,7 +30,6 @@
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
-#include <libgnome/gnome-help.h>
 #include <glade/glade-xml.h>
 
 #include <gedit/gedit-debug.h>
@@ -98,8 +97,6 @@ sort_dialog_response_handler (GtkDialog  *widget,
 			      gint       res_id,
 			      SortDialog *dialog)
 {
-	GError *error = NULL;
-
 	gedit_debug (DEBUG_PLUGINS);
 
 	switch (res_id)
@@ -107,25 +104,16 @@ sort_dialog_response_handler (GtkDialog  *widget,
 		case GTK_RESPONSE_OK:
 			sort_real (dialog);
 			gtk_widget_destroy (dialog->dialog);
-
 			break;
 
 		case GTK_RESPONSE_HELP:
-			gnome_help_display ("gedit.xml",
-					    "gedit-sort-plugin",
-					    &error);
-
-			if (error != NULL)
-			{
-				g_warning (error->message);
-				g_error_free (error);
-			}
-
+			gedit_help_display (GTK_WINDOW (widget),
+					    "gedit.xml",
+					    "gedit-sort-plugin");
 			break;
 
 		case GTK_RESPONSE_CANCEL:
 			gtk_widget_destroy (dialog->dialog);
-
 			break;
 	}
 }

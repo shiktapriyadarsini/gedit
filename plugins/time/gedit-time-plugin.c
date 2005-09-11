@@ -35,7 +35,6 @@
 
 #include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
-#include <libgnome/gnome-help.h>
 #include <libgnome/gnome-config.h>
 
 #include "gedit-time-plugin.h"
@@ -1046,19 +1045,10 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 	{
 		case GTK_RESPONSE_HELP:
 		{
-			GError *error = NULL;
-		
 			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");	
-			gnome_help_display ("gedit.xml","gedit-insert-date-time-plugin",
-					    &error);
-
-			if (error != NULL)
-			{
-				gedit_warning (GTK_WINDOW (dialog->dialog),
-					       error->message);
-
-				g_error_free (error);
-			}
+			gedit_help_display (GTK_WINDOW (widget),
+					    "gedit.xml",
+					    "gedit-insert-date-time-plugin");
 			break;
 		}
 		case GTK_RESPONSE_OK:
@@ -1185,19 +1175,11 @@ configure_dialog_response_cb (GtkWidget           *widget,
 	{
 		case GTK_RESPONSE_HELP:
 		{
-			GError *error = NULL;
-		
-			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");	
-			gnome_help_display ("gedit.xml","gedit-date-time-configure",
-					    &error);
+			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");
 
-			if (error != NULL)
-			{
-				gedit_warning (GTK_WINDOW (dialog->dialog),
-					       error->message);
-
-				g_error_free (error);
-			}
+			gedit_help_display (GTK_WINDOW (dialog),
+					    "gedit.xml",
+					    "gedit-date-time-configure");
 			break;
 		}
 		case GTK_RESPONSE_OK:
@@ -1210,16 +1192,18 @@ configure_dialog_response_cb (GtkWidget           *widget,
 			break;
 		}	
 		case GTK_RESPONSE_CANCEL:
+		{
 			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CANCEL");
 			gtk_widget_destroy (dialog->dialog);
-	}	
+		}
+	}
 }
 
 static GtkWidget *
 impl_create_configure_dialog (GeditPlugin *plugin)
 {
 	TimeConfigureDialog *dialog;
-	
+
 	dialog = get_configure_dialog (GEDIT_TIME_PLUGIN (plugin));
 	
 	dialog->plugin = GEDIT_TIME_PLUGIN (plugin);

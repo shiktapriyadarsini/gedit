@@ -35,7 +35,6 @@
 
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
-#include <libgnome/gnome-help.h>
 #include <gconf/gconf-client.h>
 #include <gtksourceview/gtksourcetag.h>
 #include <gtksourceview/gtksourcelanguage.h>
@@ -159,20 +158,15 @@ dialog_response_handler (GtkDialog              *dlg,
 			 gint                    res_id,
 			 GeditPreferencesDialog *dialog)
 {
-	GError *error = NULL;
-
 	gedit_debug (DEBUG_PREFS);
 
-	switch (res_id) {
+	switch (res_id)
+	{
 		case GTK_RESPONSE_HELP:
-			gnome_help_display ("gedit.xml", "gedit-prefs", &error);
-			if (error != NULL)
-			{
-				gedit_warning (GTK_WINDOW (dlg), error->message);
-				g_error_free (error);
-			}
+			gedit_help_display (GTK_WINDOW (dlg),
+					    "gedit.xml",
+					    "gedit-prefs");
 			break;
-
 		default:
 			destroy_dialog (dialog);
 	}

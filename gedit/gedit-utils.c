@@ -765,14 +765,13 @@ has_valid_scheme (const gchar *uri)
 gboolean
 gedit_utils_is_valid_uri (const gchar *uri)
 {
-	const guchar *p;
+	const gchar *p;
 
 	if (uri == NULL)
 		return FALSE;
 
-	if (!has_valid_scheme (uri)) {
+	if (!has_valid_scheme (uri))
 		return FALSE;
-	}
 
 	/* We expect to have a fully valid set of characters */
 	for (p = uri; *p; p++) {
@@ -795,6 +794,7 @@ gedit_utils_is_valid_uri (const gchar *uri)
 
 	return TRUE;
 }
+
 gboolean    
 gedit_help_display (GtkWindow   *parent,
 		    const gchar *file_name, /* "gedit.xml" if NULL */
@@ -802,9 +802,9 @@ gedit_help_display (GtkWindow   *parent,
 {
 	GError *error = NULL;
 	gboolean ret;
-	
+
 	g_return_val_if_fail ((parent == NULL) || GTK_IS_WINDOW (parent), FALSE);
-	
+
 	if (file_name == NULL)
 		file_name = "gedit.xml";
 

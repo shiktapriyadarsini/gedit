@@ -34,7 +34,6 @@
 #include <glib/gi18n.h>
 #include <glade/glade-xml.h>
 #include <libgnomeui/libgnomeui.h>
-#include <libgnome/gnome-help.h>
 #include <gconf/gconf-client.h>
 
 #include "gedit-dialogs.h"
@@ -152,8 +151,6 @@ gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *pl
 
 	do
 	{
-		GError *error = NULL;
-		
 		program_location = NULL;
 
 		ret = gtk_dialog_run (GTK_DIALOG (dialog));	
@@ -176,21 +173,9 @@ gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *pl
 				break;
 				
 			case GTK_RESPONSE_HELP:
-				if (help_id == NULL)
-				{
-					gnome_help_display ("gedit.xml", "gedit-plugins", &error);
-				}
-				else
-				{
-					gnome_help_display ("gedit.xml", help_id, &error);
-				}
-	
-				if (error != NULL)
-				{
-					gedit_warning (GTK_WINDOW (dialog), error->message);
-					g_error_free (error);
-				}
-
+				gedit_help_display (GTK_WINDOW (dialog),
+						    "gedit.xml",
+						    help_id != NULL ? help_id : "gedit-plugins");
 				break;
 
 			default:
