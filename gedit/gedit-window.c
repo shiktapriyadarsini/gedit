@@ -784,6 +784,10 @@ build_recent_tool_menu (GtkMenuToolButton *button,
 
 	egg_recent_view_gtk_show_icons (view, TRUE);
 	egg_recent_view_gtk_show_numbers (view, FALSE);
+
+	/* elipsize if if gets too large */
+	egg_recent_view_gtk_set_label_width (view, 50);
+
 	egg_recent_view_gtk_set_tooltip_func (view, recent_tooltip_func_gtk, NULL);
 
 	egg_recent_view_set_model (EGG_RECENT_VIEW (view), model);
@@ -1593,7 +1597,7 @@ drag_data_received_cb (GtkWidget        *widget,
 	target_window = gtk_widget_get_toplevel (widget);
 	g_return_if_fail (GEDIT_IS_WINDOW (target_window));
 
-	uris = g_uri_list_extract_uris (selection_data->data);
+	uris = g_uri_list_extract_uris ((gchar *) selection_data->data);
 
 	for (i = 0; uris[i] != NULL; i++)
 		uri_list = g_slist_prepend (uri_list, g_strdup (uris[i]));
