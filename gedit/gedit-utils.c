@@ -765,7 +765,7 @@ has_valid_scheme (const gchar *uri)
 gboolean
 gedit_utils_is_valid_uri (const gchar *uri)
 {
-	const gchar *p;
+	const guchar *p;
 
 	if (uri == NULL)
 		return FALSE;

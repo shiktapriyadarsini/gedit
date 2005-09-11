@@ -82,6 +82,8 @@ typedef enum
   GEDIT_ENCODING_CP_866,
 
   GEDIT_ENCODING_EUC_JP,
+  GEDIT_ENCODING_EUC_JP_MS,
+  GEDIT_ENCODING_CP932,
   GEDIT_ENCODING_EUC_KR,
   GEDIT_ENCODING_EUC_TW,
 
@@ -196,6 +198,11 @@ static GeditEncoding encodings [] = {
 
   { GEDIT_ENCODING_EUC_JP,
     "EUC-JP", N_("Japanese") },
+  { GEDIT_ENCODING_EUC_JP_MS,
+    "EUC-JP-MS", N_("Japanese") },
+  { GEDIT_ENCODING_CP932,
+    "CP932", N_("Japanese") },
+
   { GEDIT_ENCODING_EUC_KR,
     "EUC-KR", N_("Korean") },
   { GEDIT_ENCODING_EUC_TW,
@@ -288,8 +295,7 @@ gedit_encoding_lazy_init (void)
 
 		/* Translate the names */
 		encodings[i].name = _(encodings[i].name);
-      
-		
+
 		++i;
     	}
 
