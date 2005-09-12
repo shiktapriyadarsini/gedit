@@ -79,7 +79,7 @@ struct _GeditTaglistPluginPanelClass
  */
 GType		 gedit_taglist_plugin_panel_register_type	(GTypeModule *module);
 							
-GType 		 gedit_taglist_plugin_panel_get_type		(void);
+GType 		 gedit_taglist_plugin_panel_get_type		(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_taglist_plugin_panel_new 		(GeditWindow *window);
 

@@ -75,7 +75,7 @@ struct _GeditTaglistPluginClass
 /*
  * Public methods
  */
-GType	gedit_taglist_plugin_get_type		(void);
+GType	gedit_taglist_plugin_get_type		(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT GType register_gedit_plugin (GTypeModule *module);

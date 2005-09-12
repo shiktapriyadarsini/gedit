@@ -79,7 +79,7 @@ struct _GeditPanelClass
 /*
  * Public methods
  */
-GType 		 gedit_panel_get_type 		(void);
+GType 		 gedit_panel_get_type 		(void) G_GNUC_CONST;
 
 GtkWidget 	*gedit_panel_new 		(void);
 
