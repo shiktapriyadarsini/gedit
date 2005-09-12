@@ -433,6 +433,7 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 			g_free (name);
 			name = g_strdup (method);
 		} 
+		/*
 		else 
 		{
 			gchar *tmp;
@@ -441,6 +442,7 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 			name = g_strdup_printf ("%s: %s", method, name);
 			g_free (tmp);
 		}
+		*/
 	}
 
 	if (!validated && !g_utf8_validate (name, -1, NULL)) 

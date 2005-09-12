@@ -82,30 +82,34 @@ struct _GeditDocumentLoaderClass
  */
 GType 		 	 gedit_document_loader_get_type		(void) G_GNUC_CONST;
 
-GeditDocumentLoader 	*gedit_document_loader_new 		(GeditDocument        *doc);
+GeditDocumentLoader 	*gedit_document_loader_new 		(GeditDocument       *doc);
 
 /* If enconding == NULL, the encoding will be autodetected */
-gboolean		 gedit_document_loader_load		(GeditDocumentLoader  *loader,
-							 	 const gchar          *uri,
-								 const GeditEncoding  *encoding);
+gboolean		 gedit_document_loader_load		(GeditDocumentLoader *loader,
+							 	 const gchar         *uri,
+								 const GeditEncoding *encoding);
 #if 0
-gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader  *loader);
+gboolean		 gedit_document_loader_load_from_stdin	(GeditDocumentLoader *loader);
 #endif		 
-gboolean		 gedit_document_loader_cancel		(GeditDocumentLoader  *loader);
+gboolean		 gedit_document_loader_cancel		(GeditDocumentLoader *loader);
 
 
 /* Returns STDIN_URI if loading from stdin */
 #define STDIN_URI "stdin:" 
-const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader  *loader);
+const gchar		*gedit_document_loader_get_uri		(GeditDocumentLoader *loader);
 
-const gchar		*gedit_document_loader_get_mime_type	(GeditDocumentLoader  *loader);
+const gchar		*gedit_document_loader_get_mime_type	(GeditDocumentLoader *loader);
 
-time_t 			 gedit_document_loader_get_mtime 	(GeditDocumentLoader  *loader);
+time_t 			 gedit_document_loader_get_mtime 	(GeditDocumentLoader *loader);
+
+/* In the case the loader does not know if the file is readonly, for example for most
+remote files, the function returns FALSE */
+gboolean		 gedit_document_loader_is_readonly	(GeditDocumentLoader *loader);
 
 /* Returns 0 if file size is unknown */
-GnomeVFSFileSize	 gedit_document_loader_get_file_size	(GeditDocumentLoader  *loader);									 
+GnomeVFSFileSize	 gedit_document_loader_get_file_size	(GeditDocumentLoader *loader);									 
 
-GnomeVFSFileSize	 gedit_document_loader_get_bytes_read	(GeditDocumentLoader  *loader);									 
+GnomeVFSFileSize	 gedit_document_loader_get_bytes_read	(GeditDocumentLoader *loader);									 
 
 
 G_END_DECLS

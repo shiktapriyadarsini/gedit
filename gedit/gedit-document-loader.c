@@ -40,6 +40,7 @@
 #include <errno.h>
 
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "gedit-document-loader.h"
@@ -75,7 +76,8 @@ struct _GeditDocumentLoaderPrivate
 
 	/* Handle for local files */
 	gint                      fd;
-
+	gchar			 *local_file_name;
+	
 	/* Handle for remote files */
 	GnomeVFSAsyncHandle 	 *handle;
 	GnomeVFSAsyncHandle      *info_handle;
@@ -172,6 +174,8 @@ gedit_document_loader_finalize (GObject *object)
 	if (priv->info)
 		gnome_vfs_file_info_unref (priv->info);
 
+
+	g_free (priv->local_file_name);
 	g_free (priv->buffer);
 
 	if (priv->vfs_uri)
@@ -364,6 +368,36 @@ update_document_contents (GeditDocumentLoader  *loader,
 }
 
 /* The following function has been copied from gnome-vfs 
+   (modules/file-method.c) file */
+static void
+get_access_info (GnomeVFSFileInfo *file_info,
+              	 const gchar *full_name)
+{
+	/* FIXME: should check errno after calling access because we don't
+	 * want to set valid_fields if something bad happened during one
+	 * of the access calls
+	 */
+	if (g_access (full_name, W_OK) == 0) 
+		file_info->permissions |= GNOME_VFS_PERM_ACCESS_WRITABLE;
+		
+/*	We don't need to know if a local file is readable or executable
+
+	if (g_access (full_name, R_OK) == 0) 
+		file_info->permissions |= GNOME_VFS_PERM_ACCESS_READABLE;
+
+#ifdef G_OS_WIN32
+	if (g_file_test (full_name, G_FILE_TEST_IS_EXECUTABLE))
+		file_info->permissions |= GNOME_VFS_PERM_ACCESS_EXECUTABLE;
+#else 
+	if (g_access (full_name, X_OK) == 0)
+		file_info->permissions |= GNOME_VFS_PERM_ACCESS_EXECUTABLE;
+#endif 
+*/
+
+	file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_ACCESS;
+}
+
+/* The following function has been copied from gnome-vfs 
    (gnome-vfs-module-shared.c) file */
 static void
 stat_to_file_info (GnomeVFSFileInfo *file_info,
@@ -498,7 +532,8 @@ load_local_file_real (GeditDocumentLoader *loader)
 	loader->priv->info = gnome_vfs_file_info_new ();
 	stat_to_file_info (loader->priv->info, &statbuf);
 	GNOME_VFS_FILE_INFO_SET_LOCAL (loader->priv->info, TRUE);
-
+	get_access_info (loader->priv->info, loader->priv->local_file_name);
+	
 	if (loader->priv->info->size == 0)
 	{
 		if (loader->priv->encoding == NULL)
@@ -611,7 +646,10 @@ load_local_file (GeditDocumentLoader *loader,
 				    
 		return;			    
 	}
-
+	
+	g_free (loader->priv->local_file_name);
+	loader->priv->local_file_name = g_strdup (fname);
+	
 	g_timeout_add_full (G_PRIORITY_HIGH,
 			    0,
 			    (GSourceFunc) load_local_file_real,
@@ -943,6 +981,8 @@ gedit_document_loader_cancel (GeditDocumentLoader *loader)
 {
 	gedit_debug (DEBUG_DOCUMENT);
 
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
+	
 	if (loader->priv->handle == NULL)
 		return FALSE;
 
@@ -964,4 +1004,19 @@ gedit_document_loader_cancel (GeditDocumentLoader *loader)
 	remote_load_completed_or_failed (loader);
 
 	return TRUE;
+}
+
+/* In the case the loader does not know if the file is readonly, for example 
+   for most remote files, the function returns FALSE, so that we can try writing
+   and if needed handle the error. */
+gboolean
+gedit_document_loader_is_readonly (GeditDocumentLoader *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
+
+	if (loader->priv->info &&
+	    (loader->priv->info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_ACCESS))
+		return (loader->priv->info->permissions & GNOME_VFS_PERM_ACCESS_WRITABLE) ? FALSE : TRUE;
+	else
+		return FALSE;
 }
