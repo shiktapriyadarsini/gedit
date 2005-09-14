@@ -180,32 +180,17 @@ gedit_view_move_cursor (GtkTextView    *text_view,
 										count,
 										extend_selection);
 	}
+
+		(* GTK_TEXT_VIEW_CLASS (gedit_view_parent_class)->move_cursor) (text_view,
+										step,
+										count,
+										extend_selection);
 }
 
 static gboolean
-gedit_view_expose (GtkTextView    *widget, 
-		   GdkEventExpose *event,
-                   GeditView      *view)
+scroll_to_cursor_on_init (GeditView *view)
 {
-	GtkTextBuffer* buffer = NULL;
-
-	gedit_debug (DEBUG_VIEW);
-
-	g_return_val_if_fail (GEDIT_IS_VIEW (view), FALSE);
-	
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-	g_return_val_if_fail (buffer != NULL, FALSE);
-
-	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
-				      gtk_text_buffer_get_insert (buffer),
-				      0.25,
-				      FALSE,
-				      0.0,
-				      0.0);
-
-	g_signal_handlers_disconnect_by_func (widget, 
-					      G_CALLBACK (gedit_view_expose), 
-					      view);
+	gedit_view_scroll_to_cursor (view);
 
 	return FALSE;
 }
@@ -215,9 +200,9 @@ gedit_view_init (GeditView *view)
 {	
 #if 0
 	GeditDocument *doc;
-#endif	
+#endif
 	gedit_debug (DEBUG_VIEW);
-	
+
 	/*
 	 *  Set tab, fonts, wrap mode, colors, etc. according
 	 *  to preferences 
@@ -225,9 +210,9 @@ gedit_view_init (GeditView *view)
 	if (!gedit_prefs_manager_get_use_default_font ())
 	{
 		gchar *editor_font;
-		
+
 		editor_font = gedit_prefs_manager_get_editor_font ();
-		
+
 		gedit_view_set_font (view, FALSE, editor_font);
 
 		g_free (editor_font);
@@ -239,17 +224,17 @@ gedit_view_init (GeditView *view)
 		GdkColor text;
 		GdkColor selection;
 		GdkColor sel_text;
-		
+
 		background = gedit_prefs_manager_get_background_color ();
 		text = gedit_prefs_manager_get_text_color ();
 		selection = gedit_prefs_manager_get_selection_color ();
 		sel_text = gedit_prefs_manager_get_selected_text_color ();
 
-		gedit_view_set_colors (view, 
+		gedit_view_set_colors (view,
 				       FALSE,
-				       &background, 
-				       &text, 
-				       &selection, 
+				       &background,
+				       &text,
+				       &selection,
 				       &sel_text);
 	}	
 
@@ -273,15 +258,19 @@ gedit_view_init (GeditView *view)
 			  "readonly_changed",
 			  G_CALLBACK (doc_readonly_changed_handler),
 			  view);
-#endif
-	g_signal_connect_after (G_OBJECT (view),
-				"expose-event",
-				G_CALLBACK (gedit_view_expose),
-				view);
-#if 0
+
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
 				    !gedit_document_is_readonly (doc));
-#endif				   
+#endif
+
+	/* Make sure that the view is scrolled to the cursor so
+	 * that "gedit +100 foo.txt" works.
+	 * We would like to this on the first expose handler so that
+	 * it would look instantaneous, but this isn't currently
+	 * possible: see bug #172277 and bug #311728.
+	 * So we need to do this in an idle handler.
+	 */
+	g_idle_add ((GSourceFunc) scroll_to_cursor_on_init, view);			   
 }
 
 static void
