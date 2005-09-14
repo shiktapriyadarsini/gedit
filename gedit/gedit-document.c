@@ -836,7 +836,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 		/* the saver has been used, throw it away */
 		g_object_unref (doc->priv->saver);
 		doc->priv->saver = NULL;
-		doc->priv->is_saving_as = NULL;
+		doc->priv->is_saving_as = FALSE;
 	}
 	else
 	{

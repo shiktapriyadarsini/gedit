@@ -85,13 +85,10 @@ GType 		 	 gedit_document_saver_get_type		(void) G_GNUC_CONST;
 GeditDocumentSaver 	*gedit_document_saver_new 		(GeditDocument        *doc);
 
 /* If enconding == NULL, the encoding will be autodetected */
-gboolean		 gedit_document_saver_save		(GeditDocumentSaver  *saver,
+void			 gedit_document_saver_save		(GeditDocumentSaver  *saver,
 							 	 const gchar         *uri,
-//							 	 const gchar         *backup_dir,
-//							 	 const gchar         *backup_ext,
-//							 	 gboolean             keep_backup, 
 								 const GeditEncoding *encoding,
-								 time_t               mtime);
+								 time_t               oldmtime);
 
 #if 0
 void			 gedit_document_saver_cancel		(GeditDocumentSaver  *saver);

@@ -46,6 +46,7 @@
 #include "gedit-document-saver.h"
 #include "gedit-convert.h"
 #include "gedit-metadata-manager.h"
+#include "gedit-prefs-manager.h"
 #include "gedit-marshal.h"
 #include "gedit-utils.h"
 
@@ -1111,7 +1112,7 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	result = gnome_vfs_async_xfer (&saver->priv->handle,
 				       source_uri_list,
 				       dest_uri_list,
-				       GNOME_VFS_XFER_DEFAULT, // CHECK needs more thinking, follow symlinks etc... options are undocumented :(
+				       GNOME_VFS_XFER_DEFAULT | GNOME_VFS_XFER_TARGET_DEFAULT_PERMS, // CHECK needs more thinking, follow symlinks etc... options are undocumented :(
 				       GNOME_VFS_XFER_ERROR_MODE_ABORT,       /* keep it simple, abort on any error */
 				       GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE, /* We have already asked confirm (even if it is racy) */
 				       GNOME_VFS_PRIORITY_DEFAULT,
@@ -1161,36 +1162,36 @@ save_remote_file (GeditDocumentSaver *saver)
 
 /* ---------- public api ---------- */
 
-gboolean
+void
 gedit_document_saver_save (GeditDocumentSaver  *saver,
 			   const gchar         *uri,
-//			   const gchar         *uri,
-//			   gboolean	        keep_backup,
 			   const GeditEncoding *encoding,
-			   time_t               mtime)
+			   time_t               oldmtime)
 {
 	gchar *local_path;
 
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver), FALSE);
-	g_return_val_if_fail ((uri != NULL) && (strlen (uri) > 0), FALSE);
+	g_return_if_fail (GEDIT_IS_DOCUMENT_SAVER (saver));
+	g_return_if_fail ((uri != NULL) && (strlen (uri) > 0));
 
-	// CHECK: sanity check a max len for the uri?
+	// CHECK:
+	// - sanity check a max len for the uri?
+	// - check a whitelist of allowed uri types
+	// report async (in an idle handler) or sync (bool ret)
+	// async is extra work here, sync is special casing in the caller
 
-	saver->priv->uri = g_strdup (uri); // needed?
+	saver->priv->uri = g_strdup (uri);
 
-	// TODO: returns FALSE if uri is not valid?
-
-// provvisorio... still to decide if fetch prefs here or in gedit-document
-	saver->priv->backup_ext = g_strdup ("~"); // g_strdup (backup_extension);
-	saver->priv->keep_backup = TRUE; //keep_backup;
-	saver->priv->backups_in_curr_dir = TRUE;
+	/* fetch saving options */
+	saver->priv->backup_ext = gedit_prefs_manager_get_backup_extension ();
+	saver->priv->keep_backup = gedit_prefs_manager_get_create_backup_copy ();
+	saver->priv->backups_in_curr_dir = TRUE; // TODO configurable backup dir
 
 	if (encoding != NULL)
 		saver->priv->encoding = encoding;
 	else
 		saver->priv->encoding = gedit_encoding_get_utf8 ();
 
-	saver->priv->doc_mtime = mtime;
+	saver->priv->doc_mtime = oldmtime;
 
 	local_path = gnome_vfs_get_local_path_from_uri (uri);
 	if (local_path != NULL)
@@ -1203,8 +1204,6 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 		saver->priv->vfs_uri = gnome_vfs_uri_new (uri);
 		save_remote_file (saver);
 	}
-
-	return TRUE;
 }
 
 const gchar *

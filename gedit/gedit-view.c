@@ -180,11 +180,6 @@ gedit_view_move_cursor (GtkTextView    *text_view,
 										count,
 										extend_selection);
 	}
-
-		(* GTK_TEXT_VIEW_CLASS (gedit_view_parent_class)->move_cursor) (text_view,
-										step,
-										count,
-										extend_selection);
 }
 
 static gboolean
