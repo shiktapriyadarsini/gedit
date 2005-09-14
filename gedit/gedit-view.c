@@ -53,6 +53,10 @@ struct _GeditViewPrivate
 
 static void	gedit_view_destroy	(GtkObject *object);
 static void	gedit_view_finalize	(GObject *object);
+static void	gedit_view_move_cursor	(GtkTextView *text_view,
+					 GtkMovementStep step,
+					 gint count,
+					 gboolean extend_selection);
 
 G_DEFINE_TYPE(GeditView, gedit_view, GTK_TYPE_SOURCE_VIEW)
 
@@ -72,9 +76,12 @@ gedit_view_class_init (GeditViewClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkObjectClass *gtkobject_class = GTK_OBJECT_CLASS (klass);
+	GtkTextViewClass *textview_class = GTK_TEXT_VIEW_CLASS (klass);
 
 	gtkobject_class->destroy = gedit_view_destroy;
 	object_class->finalize = gedit_view_finalize;
+
+	textview_class->move_cursor = gedit_view_move_cursor;
 
 	/* Note: it is commented out since we don't use it - Paolo */
 	/* g_type_class_add_private (klass, sizeof (GeditViewPrivate)); */
@@ -112,29 +119,29 @@ static void
 gedit_view_move_cursor (GtkTextView    *text_view,
 			GtkMovementStep step,
 			gint            count,
-			gboolean        extend_selection,
-			gpointer	data)
+			gboolean        extend_selection)
 {
 	GtkTextBuffer *buffer = text_view->buffer;
 	GtkTextMark *mark;
 	GtkTextIter cur, iter;
 
-	if (step != GTK_MOVEMENT_DISPLAY_LINE_ENDS)
-		return;
-
+	/* really make sure gtksourceview's home/end is disabled */
 	g_return_if_fail (!gtk_source_view_get_smart_home_end (
-						GTK_SOURCE_VIEW (text_view)));	
-			
+						GTK_SOURCE_VIEW (text_view)));
+
 	mark = gtk_text_buffer_get_insert (buffer);
 	gtk_text_buffer_get_iter_at_mark (buffer, &cur, mark);
 	iter = cur;
 
-	if ((count == -1) && gtk_text_iter_starts_line (&iter))
+	if (step == GTK_MOVEMENT_DISPLAY_LINE_ENDS &&
+	    (count == -1) && gtk_text_iter_starts_line (&iter))
 	{
 		/* Find the iter of the first character on the line. */
 		while (!gtk_text_iter_ends_line (&cur))
 		{
-			gunichar c = gtk_text_iter_get_char (&cur);
+			gunichar c;
+
+			c = gtk_text_iter_get_char (&cur);
 			if (g_unichar_isspace (c))
 				gtk_text_iter_forward_char (&cur);
 			else
@@ -142,21 +149,16 @@ gedit_view_move_cursor (GtkTextView    *text_view,
 		}
 
 		if (!gtk_text_iter_equal (&cur, &iter))
-		{
 			move_cursor (text_view, &cur, extend_selection);
-			g_signal_stop_emission_by_name (text_view, 
-							"move-cursor");
-		}
-
-		return;
 	}
-
-	if ((count == 1) && gtk_text_iter_ends_line (&iter))
+	else if (step == GTK_MOVEMENT_DISPLAY_LINE_ENDS &&
+	         (count == 1) && gtk_text_iter_ends_line (&iter))
 	{
 		/* Find the iter of the last character on the line. */
 		while (!gtk_text_iter_starts_line (&cur))
 		{
 			gunichar c;
+
 			gtk_text_iter_backward_char (&cur);
 			c = gtk_text_iter_get_char (&cur);
 			if (!g_unichar_isspace (c))
@@ -168,11 +170,15 @@ gedit_view_move_cursor (GtkTextView    *text_view,
 		}
 
 		if (!gtk_text_iter_equal (&cur, &iter))
-		{
 			move_cursor (text_view, &cur, extend_selection);
-			g_signal_stop_emission_by_name (text_view, 
-							"move-cursor");
-		}
+	}
+	else
+	{
+		/* note that we chain up to GtkTextView skipping GtkSourceView */
+		(* GTK_TEXT_VIEW_CLASS (gedit_view_parent_class)->move_cursor) (text_view,
+										step,
+										count,
+										extend_selection);
 	}
 }
 
@@ -259,11 +265,6 @@ gedit_view_init (GeditView *view)
 		      "smart_home_end", FALSE, /* Never changes this */
 		      NULL);
 
-	g_signal_connect (G_OBJECT (view), 
-			  "move-cursor",
-			  G_CALLBACK (gedit_view_move_cursor), 
-			  view);
-
 #if 0
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 	g_return_if_fail (doc != NULL);
@@ -293,10 +294,6 @@ gedit_view_destroy (GtkObject *object)
 
 	doc = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (doc != NULL);
-
-	g_signal_handlers_disconnect_by_func (G_OBJECT (doc),
-					      G_CALLBACK (gedit_view_move_cursor),
-					      view);
 
 	(* GTK_OBJECT_CLASS (gedit_view_parent_class)->destroy) (object);
 }
