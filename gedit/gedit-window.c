@@ -882,7 +882,10 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	g_object_set (action, "is_important", TRUE, NULL);
 
 	/* now load the UI definition */
-	if (!gtk_ui_manager_add_ui_from_file (manager, "gedit-ui.xml", &error)) // REMOVE ME... just to allow running without install
+	if (gtk_ui_manager_add_ui_from_file (manager, "gedit-ui.xml", NULL)) // REMOVE ME... just to allow running without install
+		;
+	else
+
 	gtk_ui_manager_add_ui_from_file (manager, GEDIT_UI_DIR "gedit-ui.xml", &error);
 	if (error != NULL)
 	{
