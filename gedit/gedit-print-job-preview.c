@@ -163,15 +163,19 @@ goto_page (GeditPrintJobPreview *mp, gint page)
 	g_snprintf (c, 32, "%d", page + 1);
 	gtk_entry_set_text (GTK_ENTRY (priv->page_entry), c);
 
+// CHECK: we don't use bpf and bpl... just comment them out for now to avoid runtime warnings
+#if 0
 	gtk_widget_set_sensitive (mp->bpf, (page > 0) &&
 					   (priv->pagecount > 1));
+#endif
 	gtk_widget_set_sensitive (mp->bpp, (page > 0) &&
 					   (priv->pagecount > 1));
 	gtk_widget_set_sensitive (mp->bpn, (page != (priv->pagecount - 1)) &&
 					   (priv->pagecount > 1));
+#if 0
 	gtk_widget_set_sensitive (mp->bpl, (page != (priv->pagecount - 1)) &&
 					   (priv->pagecount > 1));
-
+#endif
 	if (page != priv->current_page) {
 		priv->current_page = page;
 		if (priv->pagecount > 0)
