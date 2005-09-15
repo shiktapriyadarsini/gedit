@@ -162,6 +162,7 @@ GtkWidget	*_gedit_window_get_search_panel		(GeditWindow         *window);
 
 G_CONST_RETURN gchar
 		*_gedit_window_get_default_path 	(GeditWindow         *window);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_WINDOW_H__  */

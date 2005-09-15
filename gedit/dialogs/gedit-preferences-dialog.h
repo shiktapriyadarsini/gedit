@@ -30,9 +30,13 @@
 #ifndef __GEDIT_PREFERENCES_DIALOG_H__
 #define __GEDIT_PREFERENCES_DIALOG_H__
 
-#include <gtk/gtkwindow.h>
+#include "gedit-window.h"
 
-void gedit_show_preferences_dialog (GtkWindow *parent);
+G_BEGIN_DECLS
+
+void gedit_show_preferences_dialog (GeditWindow *parent);
+
+G_END_DECLS
 
 #endif /* __GEDIT_PREFERENCES_DIALOG_H__ */
 

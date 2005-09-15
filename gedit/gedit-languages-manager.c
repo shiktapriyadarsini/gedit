@@ -3,7 +3,7 @@
  * gedit-languages-manager.c
  * This file is part of gedit
  *
- * Copyright (C) 2003 - Paolo Maggi 
+ * Copyright (C) 2003-2005 - Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +22,11 @@
  */
  
 /*
- * Modified by the gedit Team, 2003. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
+ *
+ * $Id$
  */
 
 /* FIXME: Monitor gconf keys */
@@ -40,7 +42,9 @@
 
 
 static GtkSourceLanguagesManager *language_manager = NULL;
-static GConfClient 		 *gconf_client = NULL;
+static GConfClient *gconf_client = NULL;
+static const GSList *languages_list = NULL;
+static GSList *languages_list_sorted = NULL;
 
 
 GtkSourceLanguagesManager *
@@ -318,5 +322,39 @@ gedit_language_init_tag_styles (GtkSourceLanguage *language)
 	g_slist_free (tags);
 
 	initialized_languages =	g_slist_prepend (initialized_languages, language);
+}
+
+static gint
+language_compare (gconstpointer a, gconstpointer b)
+{
+	GtkSourceLanguage *lang_a = GTK_SOURCE_LANGUAGE (a);
+	GtkSourceLanguage *lang_b = GTK_SOURCE_LANGUAGE (b);
+	gchar *name_a = gtk_source_language_get_name (lang_a);
+	gchar *name_b = gtk_source_language_get_name (lang_b);
+	gint res;
+	
+	res = g_utf8_collate (name_a, name_b);
+		
+	g_free (name_a);
+	g_free (name_b);	
+	
+	return res;
+}
+
+const GSList*
+gedit_languages_manager_get_available_languages_sorted (GtkSourceLanguagesManager *lm)
+{
+	const GSList *languages;
+
+	languages = gtk_source_languages_manager_get_available_languages (lm);
+
+	if ((languages_list_sorted == NULL) || (languages != languages_list))
+	{
+		languages_list = languages;
+		languages_list_sorted = g_slist_copy ((GSList*)languages);
+		languages_list_sorted = g_slist_sort (languages_list_sorted, (GCompareFunc)language_compare);
+	}
+
+	return languages_list_sorted;
 }
 

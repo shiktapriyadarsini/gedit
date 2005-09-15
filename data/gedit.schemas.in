@@ -165,9 +165,23 @@
       <type>int</type>
       <default>25</default>
       <locale name="C">
-	<short>Undo Actions Limit</short>
+	<short>Undo Actions Limit (DEPRECATED)</short>
 	<long>Maximum number of actions that gedit will be able to
-	undo or redo.</long>
+	undo or redo. Use "-1" for unlimited number of actions. 
+	Deprecated since 2.12.0</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gedit-2/preferences/editor/undo/max_undo_actions</key>
+      <applyto>/apps/gedit-2/preferences/editor/undo/max_undo_actions</applyto>
+      <owner>gedit</owner>
+      <type>int</type>
+      <default>2000</default>
+      <locale name="C">
+	<short>Max Number of Undo Actions</short>
+	<long>Maximum number of actions that gedit will be able to
+	undo or redo. Use "-1" for unlimited number of actions.</long>
       </locale>
     </schema>
 
@@ -329,7 +343,7 @@
 	should be visible.</long>
       </locale>
     </schema>
-    
+
     <schema>
       <key>/schemas/apps/gedit-2/preferences/ui/side_pane/side_pane_visible</key>
       <applyto>/apps/gedit-2/preferences/ui/side_pane/side_pane_visible</applyto>
@@ -342,7 +356,7 @@
 	should be visible.</long>
       </locale>
     </schema>
-    
+
     <schema>
       <key>/schemas/apps/gedit-2/preferences/ui/bottom_panel/bottom_panel_visible</key>
       <applyto>/apps/gedit-2/preferences/ui/bottom_panel/bottom_panel_visible</applyto>
@@ -354,7 +368,7 @@
 	<long>Whether the bottom panel at the bottom of editing windows
 	should be visible.</long>
       </locale>
-    </schema>        
+    </schema>
 
     <schema>
       <key>/schemas/apps/gedit-2/preferences/print/page/print_syntax_highlighting</key>
@@ -420,7 +434,7 @@
       <type>string</type>
       <locale name="C">
         <default><!-- Translators: This is the Body font for printing. 
-        This is a gnome-print font name and replaced by
+        This is a gnome-print font name and is replaced by
         print_font_body_pango.-->Monospace Regular 9</default>
 	<short>Body Font for Printing</short>
 	<long>Specifies the font to use for a document's body when

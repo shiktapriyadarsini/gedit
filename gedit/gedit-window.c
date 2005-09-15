@@ -669,19 +669,14 @@ create_languages_menu (GeditWindow *window)
 	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action_normal), TRUE);
 
 	/* now add all the known languages */
-	languages = gtk_source_languages_manager_get_available_languages (
+	languages = gedit_languages_manager_get_available_languages_sorted (
 						gedit_get_languages_manager ());
 
-	i = 0;
-	for (l = languages; l != NULL; l = l->next)
-	{
+	for (l = languages, i = 0; l != NULL; l = l->next, ++i)
 		create_language_menu_item (GTK_SOURCE_LANGUAGE (l->data),
 					    i,
 					    id,
 					    window);
-
-		i++;
-	}
 }
 
 static void
@@ -731,6 +726,8 @@ open_recent_uim (GtkAction   *action,
 	gedit_cmd_file_open_recent (item, window);
 }
 
+#define TIP_MAX_URI_LEN 100
+
 static void
 recent_tooltip_func_gtk (GtkTooltips   *tooltips,
 			 GtkWidget     *menu,
@@ -739,14 +736,19 @@ recent_tooltip_func_gtk (GtkTooltips   *tooltips,
 {
 	gchar *tip;
 	gchar *uri_for_display;
+	gchar *trunc_uri;
 
 	uri_for_display = egg_recent_item_get_uri_for_display (item);
 	g_return_if_fail (uri_for_display != NULL);
 
-	/* Translators: %s is a URI */
-	tip = g_strdup_printf (_("Open '%s'"), uri_for_display);
+	trunc_uri = gedit_utils_str_middle_truncate (uri_for_display,
+						     TIP_MAX_URI_LEN);
+        g_free (uri_for_display);
 
-	g_free (uri_for_display);
+	/* Translators: %s is a URI */
+	tip = g_strdup_printf (_("Open '%s'"), trunc_uri);
+
+	g_free (trunc_uri);
 
 	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (menu), tip, NULL);
 
@@ -759,17 +761,24 @@ recent_tooltip_func_uim (EggRecentItem *item,
 {
 	gchar *tip;
 	gchar *uri_for_display;
+	gchar *trunc_uri;
 
 	uri_for_display = egg_recent_item_get_uri_for_display (item);
 	g_return_val_if_fail (uri_for_display != NULL, NULL);
 
-	/* Translators: %s is a URI */
-	tip = g_strdup_printf (_("Open '%s'"), uri_for_display);
+	trunc_uri = gedit_utils_str_middle_truncate (uri_for_display,
+						     TIP_MAX_URI_LEN);
+        g_free (uri_for_display);
 
-	g_free (uri_for_display);
+	/* Translators: %s is a URI */
+	tip = g_strdup_printf (_("Open '%s'"), trunc_uri);
+
+	g_free (trunc_uri);
 
 	return tip;
 }
+
+#undef TIP_MAX_URI_LEN
 
 static void
 build_recent_tool_menu (GtkMenuToolButton *button,

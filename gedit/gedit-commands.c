@@ -1404,7 +1404,7 @@ gedit_cmd_edit_preferences (GtkAction   *action,
 {
 	gedit_debug (DEBUG_COMMANDS);
 
-	gedit_show_preferences_dialog (GTK_WINDOW (window));
+	gedit_show_preferences_dialog (window);
 }
 
 void

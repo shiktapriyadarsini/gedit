@@ -45,6 +45,7 @@
 #include "gedit-preferences-dialog.h"
 #include "gedit-utils.h"
 #include "gedit-debug.h"
+#include "gedit-document.h"
 #include "gedit-plugin-manager.h"
 #include "gedit-languages-manager.h"
 
@@ -60,9 +61,9 @@ typedef struct _GeditPreferencesDialog GeditPreferencesDialog;
 struct _GeditPreferencesDialog 
 {
 	GtkWidget       *dialog;
-	
+
 	GtkTooltips	*tooltips;
-	
+
 	/* Font & Colors */
 	GtkWidget	*default_font_checkbutton;
 	GtkWidget	*default_colors_checkbutton;
@@ -73,18 +74,12 @@ struct _GeditPreferencesDialog
 	GtkWidget	*selection_colorbutton;
 	GtkWidget	*colors_table;
 	GtkWidget	*font_hbox;
-	
-	/* Undo*/
-	GtkWidget	*undo_box;
-	GtkWidget	*limited_undo_radiobutton;
-	GtkWidget	*unlimited_undo_radiobutton;
-	GtkWidget	*undo_levels_spinbutton;
 
 	/* Tabs */
 	GtkWidget	*tabs_width_spinbutton;
 	GtkWidget	*insert_spaces_checkbutton;
 	GtkWidget	*tabs_width_hbox;
-	
+
 	/* Auto indentation */
 	GtkWidget	*auto_indent_checkbutton;
 
@@ -130,6 +125,9 @@ struct _GeditPreferencesDialog
 
 	/* Plugins manager */
 	GtkWidget	*plugin_manager_place_holder;
+
+	/* utility pointer to the parent */
+	GeditWindow *parent_window;
 };
 
 
@@ -249,56 +247,9 @@ auto_save_spinbutton_value_changed (GtkSpinButton          *spin_button,
 }
 
 static void
-limited_undo_radiobutton_toggled (GtkToggleButton *button, GeditPreferencesDialog *dlg)
-{
-	gedit_debug (DEBUG_PREFS);
-
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->limited_undo_radiobutton));
-
-	if (gtk_toggle_button_get_active (button))
-	{
-		gint undo_levels;
-		
-		gtk_widget_set_sensitive (dlg->undo_levels_spinbutton, 
-					  gedit_prefs_manager_undo_actions_limit_can_set());
-		
-		undo_levels = gtk_spin_button_get_value_as_int (
-				GTK_SPIN_BUTTON (dlg->undo_levels_spinbutton));
-		g_return_if_fail (undo_levels >= 1);
-
-		gedit_prefs_manager_set_undo_actions_limit (undo_levels);
-	}
-	else	
-	{
-		gtk_widget_set_sensitive (dlg->undo_levels_spinbutton, FALSE);
-
-		gedit_prefs_manager_set_undo_actions_limit (-1);
-	}
-}
-
-static void
-undo_levels_spinbutton_value_changed (GtkSpinButton          *spin_button,
-				      GeditPreferencesDialog *dlg)
-{
-	gint undo_levels;
-
-	gedit_debug (DEBUG_PREFS);
-
-	g_return_if_fail (spin_button == GTK_SPIN_BUTTON (dlg->undo_levels_spinbutton));
-
-	undo_levels = gtk_spin_button_get_value_as_int (
-				GTK_SPIN_BUTTON (dlg->undo_levels_spinbutton));
-	g_return_if_fail (undo_levels >= 1);
-
-	gedit_prefs_manager_set_undo_actions_limit (undo_levels);
-}
-
-static void
 setup_editor_page (GeditPreferencesDialog *dlg)
 {
 	gboolean auto_save;
-	gint undo_levels;
-	gboolean can_set;
 	gint auto_save_interval;
 
 	gedit_debug (DEBUG_PREFS);
@@ -306,19 +257,16 @@ setup_editor_page (GeditPreferencesDialog *dlg)
 	/* Set initial state */
 	gtk_spin_button_set_value (GTK_SPIN_BUTTON (dlg->tabs_width_spinbutton),
 				   (guint) gedit_prefs_manager_get_tabs_size ());
-
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->insert_spaces_checkbutton), 
 				      gedit_prefs_manager_get_insert_spaces ());
-	
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->auto_indent_checkbutton), 
 				      gedit_prefs_manager_get_auto_indent ());
-
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->backup_copy_checkbutton),
 				      gedit_prefs_manager_get_create_backup_copy ());
 
 	auto_save = gedit_prefs_manager_get_auto_save ();
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->auto_save_checkbutton),
-				      auto_save );
+				      auto_save);
 
 	auto_save_interval = gedit_prefs_manager_get_auto_save_interval ();
 	if (auto_save_interval <= 0)
@@ -327,62 +275,34 @@ setup_editor_page (GeditPreferencesDialog *dlg)
 	gtk_spin_button_set_value (GTK_SPIN_BUTTON (dlg->auto_save_spinbutton),
 				   auto_save_interval);
 
-	undo_levels = gedit_prefs_manager_get_undo_actions_limit ();
-	
-	if (undo_levels > 0)
-	{
-		gtk_spin_button_set_value (GTK_SPIN_BUTTON (dlg->undo_levels_spinbutton),
-					   (guint) undo_levels);
-
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->limited_undo_radiobutton), 
-				              TRUE);
-	}
-	else
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->unlimited_undo_radiobutton), 
-				              TRUE);
-
-
 	/* Set widget sensitivity */
 	gtk_widget_set_sensitive (dlg->tabs_width_hbox, 
 				  gedit_prefs_manager_tabs_size_can_set ());
 	gtk_widget_set_sensitive (dlg->insert_spaces_checkbutton,
 				  gedit_prefs_manager_insert_spaces_can_set ());
-	
 	gtk_widget_set_sensitive (dlg->auto_indent_checkbutton,
 				  gedit_prefs_manager_auto_indent_can_set ());
-
 	gtk_widget_set_sensitive (dlg->backup_copy_checkbutton,
 				  gedit_prefs_manager_create_backup_copy_can_set ());
-
 	gtk_widget_set_sensitive (dlg->autosave_hbox, 
 				  gedit_prefs_manager_auto_save_can_set ()); 
-	
 	gtk_widget_set_sensitive (dlg->auto_save_spinbutton, 
 			          auto_save &&
 				  gedit_prefs_manager_auto_save_interval_can_set ());
 
-	can_set = gedit_prefs_manager_undo_actions_limit_can_set ();
-
-	gtk_widget_set_sensitive (dlg->undo_box, can_set);
-	gtk_widget_set_sensitive (dlg->undo_levels_spinbutton, can_set && (undo_levels > 0));
-
 	/* Connect signal */
-	g_signal_connect (G_OBJECT (dlg->tabs_width_spinbutton), "value_changed",
+	g_signal_connect (dlg->tabs_width_spinbutton, "value_changed",
 			  G_CALLBACK (tabs_width_spinbutton_value_changed), dlg);
-	g_signal_connect (G_OBJECT (dlg->insert_spaces_checkbutton), "toggled", 
+	g_signal_connect (dlg->insert_spaces_checkbutton, "toggled", 
 			  G_CALLBACK (insert_spaces_checkbutton_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->auto_indent_checkbutton), "toggled", 
+	g_signal_connect (dlg->auto_indent_checkbutton, "toggled", 
 			  G_CALLBACK (auto_indent_checkbutton_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->auto_save_checkbutton), "toggled", 
+	g_signal_connect (dlg->auto_save_checkbutton, "toggled", 
 			  G_CALLBACK (auto_save_checkbutton_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->backup_copy_checkbutton), "toggled", 
+	g_signal_connect (dlg->backup_copy_checkbutton, "toggled", 
 			  G_CALLBACK (backup_copy_checkbutton_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->auto_save_spinbutton), "value_changed",
+	g_signal_connect (dlg->auto_save_spinbutton, "value_changed",
 			  G_CALLBACK (auto_save_spinbutton_value_changed), dlg);
-	g_signal_connect (G_OBJECT (dlg->limited_undo_radiobutton), "toggled", 
-		  	  G_CALLBACK (limited_undo_radiobutton_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->undo_levels_spinbutton), "value_changed",
-		  	  G_CALLBACK (undo_levels_spinbutton_value_changed), dlg);
 }
 
 static void
@@ -543,53 +463,51 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	/* Set widgets sensitivity */
 	gtk_widget_set_sensitive (dlg->display_line_numbers_checkbutton,
 				  gedit_prefs_manager_display_line_numbers_can_set ());
-
 	gtk_widget_set_sensitive (dlg->highlight_current_line_checkbutton,
 				  gedit_prefs_manager_highlight_current_line_can_set ());
-
 	gtk_widget_set_sensitive (dlg->bracket_matching_checkbutton,
 				  gedit_prefs_manager_bracket_matching_can_set ());
-
 	wrap_mode_can_set = gedit_prefs_manager_wrap_mode_can_set ();
-
 	gtk_widget_set_sensitive (dlg->wrap_text_checkbutton, 
 				  wrap_mode_can_set);
-
 	gtk_widget_set_sensitive (dlg->split_checkbutton, 
 				  wrap_mode_can_set && 
 				  (wrap_mode != GTK_WRAP_NONE));
-
 	gtk_widget_set_sensitive (dlg->right_margin_checkbutton,
 				  gedit_prefs_manager_display_right_margin_can_set ());
-
 	gtk_widget_set_sensitive (dlg->right_margin_position_hbox,
 				  display_right_margin && 
 				  gedit_prefs_manager_right_margin_position_can_set ());
 				  
 	/* Connect signals */
-	g_signal_connect (G_OBJECT (dlg->display_line_numbers_checkbutton), "toggled", 
+	g_signal_connect (dlg->display_line_numbers_checkbutton,
+			  "toggled",
 			  G_CALLBACK (display_line_numbers_checkbutton_toggled), 
 			  dlg);
-	g_signal_connect (G_OBJECT (dlg->highlight_current_line_checkbutton), "toggled", 
+	g_signal_connect (dlg->highlight_current_line_checkbutton,
+			  "toggled", 
 			  G_CALLBACK (highlight_current_line_checkbutton_toggled), 
 			  dlg);
-	g_signal_connect (G_OBJECT (dlg->bracket_matching_checkbutton), "toggled", 
+	g_signal_connect (dlg->bracket_matching_checkbutton,
+			  "toggled", 
 			  G_CALLBACK (bracket_matching_checkbutton_toggled), 
 			  dlg);
-	g_signal_connect (G_OBJECT (dlg->wrap_text_checkbutton), "toggled", 
+	g_signal_connect (dlg->wrap_text_checkbutton,
+			  "toggled", 
 			  G_CALLBACK (wrap_mode_checkbutton_toggled), 
 			  dlg);
-	g_signal_connect (G_OBJECT (dlg->split_checkbutton), "toggled", 
+	g_signal_connect (dlg->split_checkbutton,
+			  "toggled", 
 			  G_CALLBACK (wrap_mode_checkbutton_toggled), 
 			  dlg);
-	g_signal_connect (G_OBJECT (dlg->right_margin_checkbutton), "toggled", 
+	g_signal_connect (dlg->right_margin_checkbutton,
+			  "toggled", 
 			  G_CALLBACK (right_margin_checkbutton_toggled), 
 			  dlg);
-
-	g_signal_connect (G_OBJECT (dlg->right_margin_position_spinbutton), "value_changed",
+	g_signal_connect (dlg->right_margin_position_spinbutton,
+			  "value_changed",
 			  G_CALLBACK (right_margin_position_spinbutton_value_changed), 
 			  dlg);
-
 }
 
 static void
@@ -819,7 +737,7 @@ language_changed_cb (GtkOptionMenu *optionmenu,
 	GtkTreeIter iter;
 	GtkTreePath *path;
 
-	languages = gtk_source_languages_manager_get_available_languages (
+	languages = gedit_languages_manager_get_available_languages_sorted (
 						gedit_get_languages_manager ());
 
 	lang = g_slist_nth_data ((GSList*)languages, gtk_option_menu_get_history (optionmenu));
@@ -864,7 +782,7 @@ get_selected_language (GeditPreferencesDialog *dlg)
 	const GSList *languages;
 	GtkSourceLanguage *lang;
 	
-	languages = gtk_source_languages_manager_get_available_languages (
+	languages = gedit_languages_manager_get_available_languages_sorted (
 						gedit_get_languages_manager ());
 	lang = g_slist_nth_data ((GSList*)languages,
 		gtk_option_menu_get_history (GTK_OPTION_MENU (dlg->hl_mode_optionmenu)));
@@ -1094,21 +1012,21 @@ styles_cb (GtkWidget              *treeview,
 	gtk_widget_set_sensitive (dlg->reset_button, !style->is_default);
 
 	/* reenable callbacks */
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->bold_togglebutton),
+	g_signal_handlers_unblock_by_func (dlg->bold_togglebutton,
 					   G_CALLBACK (style_button_toggled), dlg);
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->italic_togglebutton),
+	g_signal_handlers_unblock_by_func (dlg->italic_togglebutton,
 					   G_CALLBACK (style_button_toggled), dlg);
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->underline_togglebutton),
+	g_signal_handlers_unblock_by_func (dlg->underline_togglebutton,
 					   G_CALLBACK (style_button_toggled), dlg);
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->strikethrough_togglebutton),
+	g_signal_handlers_unblock_by_func (dlg->strikethrough_togglebutton,
 					   G_CALLBACK (style_button_toggled), dlg);
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->foreground_checkbutton), 
+	g_signal_handlers_unblock_by_func (dlg->foreground_checkbutton, 
 					   G_CALLBACK (style_button_toggled), dlg);
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->background_checkbutton), 
+	g_signal_handlers_unblock_by_func (dlg->background_checkbutton, 
 					   G_CALLBACK (style_button_toggled), dlg);
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->foreground_colorbutton),
+	g_signal_handlers_unblock_by_func (dlg->foreground_colorbutton,
 					   G_CALLBACK (style_color_set), dlg);
-	g_signal_handlers_unblock_by_func (G_OBJECT (dlg->background_colorbutton_2), 
+	g_signal_handlers_unblock_by_func (dlg->background_colorbutton_2, 
 					   G_CALLBACK (style_color_set), dlg);
 
 	gtk_source_tag_style_free (style);
@@ -1145,6 +1063,9 @@ setup_syntax_highlighting_page (GeditPreferencesDialog *dlg)
 	const GSList *languages, *l;
 	GtkCellRenderer *renderer;
 	GtkTreeViewColumn *column;
+	GeditDocument *current_document;
+	GtkSourceLanguage *current_document_language;
+	gint selected_language, current_item;
 
 	/* Set initial state */
 	hl_enabled = gedit_prefs_manager_get_enable_syntax_highlighting ();
@@ -1170,19 +1091,31 @@ setup_syntax_highlighting_page (GeditPreferencesDialog *dlg)
 	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->tags_treeview), column);
 
 	/* Connect signals */
-	g_signal_connect (G_OBJECT (dlg->hl_mode_optionmenu), "changed",
-			  G_CALLBACK (language_changed_cb), dlg);
-
-	g_signal_connect (G_OBJECT (dlg->tags_treeview), "cursor-changed",
-			  G_CALLBACK (styles_cb), dlg);
+	g_signal_connect (dlg->hl_mode_optionmenu,
+			  "changed",
+			  G_CALLBACK (language_changed_cb),
+			  dlg);
+	g_signal_connect (dlg->tags_treeview,
+			  "cursor-changed",
+			  G_CALLBACK (styles_cb),
+			  dlg);
 
 	/* Add languages to optionmenu. */
 	menu = gtk_menu_new ();
 
-	languages = gtk_source_languages_manager_get_available_languages (
+	languages = gedit_languages_manager_get_available_languages_sorted (
 						gedit_get_languages_manager ());
 
+	current_document = gedit_window_get_active_document (dlg->parent_window);
+	if (current_document != NULL)
+		current_document_language = gedit_document_get_language (current_document);
+	else
+		current_document_language = NULL;
+
 	l = languages;
+
+	selected_language = 0;
+	current_item = 0;
 
 	while (l != NULL)
 	{
@@ -1195,35 +1128,41 @@ setup_syntax_highlighting_page (GeditPreferencesDialog *dlg)
 		name = gtk_source_language_get_name (lang);
 		menuitem = gtk_menu_item_new_with_label (name);
 		g_free (name);
-		
+
 		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
+		if (current_document_language == lang)
+			selected_language = current_item;
+  	 
+		++current_item;
 		l = g_slist_next (l);
 	}
-	
-	gtk_widget_show_all (menu);
-	
-	gtk_option_menu_set_menu (GTK_OPTION_MENU (dlg->hl_mode_optionmenu), menu);
 
-	g_signal_connect (G_OBJECT (dlg->enable_syntax_hl_checkbutton), "toggled",
+	gtk_widget_show_all (menu);
+
+	gtk_option_menu_set_menu (GTK_OPTION_MENU (dlg->hl_mode_optionmenu), menu);
+	gtk_option_menu_set_history (GTK_OPTION_MENU (dlg->hl_mode_optionmenu),
+				     selected_language);
+
+	g_signal_connect (dlg->enable_syntax_hl_checkbutton, "toggled",
 			  G_CALLBACK (enable_syntax_hl_button_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->bold_togglebutton), "toggled",
+	g_signal_connect (dlg->bold_togglebutton, "toggled",
 			  G_CALLBACK (style_button_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->italic_togglebutton), "toggled",
+	g_signal_connect (dlg->italic_togglebutton, "toggled",
 			  G_CALLBACK (style_button_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->underline_togglebutton), "toggled",
+	g_signal_connect (dlg->underline_togglebutton, "toggled",
 			  G_CALLBACK (style_button_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->strikethrough_togglebutton), "toggled",
+	g_signal_connect (dlg->strikethrough_togglebutton, "toggled",
 			  G_CALLBACK (style_button_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->foreground_checkbutton), "toggled",
+	g_signal_connect (dlg->foreground_checkbutton, "toggled",
 			  G_CALLBACK (style_button_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->background_checkbutton), "toggled",
+	g_signal_connect (dlg->background_checkbutton, "toggled",
 			  G_CALLBACK (style_button_toggled), dlg);
-	g_signal_connect (G_OBJECT (dlg->foreground_colorbutton), "color_set",
+	g_signal_connect (dlg->foreground_colorbutton, "color_set",
 			  G_CALLBACK (style_color_set), dlg);
-	g_signal_connect (G_OBJECT (dlg->background_colorbutton_2), "color_set",
+	g_signal_connect (dlg->background_colorbutton_2, "color_set",
 			  G_CALLBACK (style_color_set), dlg);
-	g_signal_connect (G_OBJECT (dlg->reset_button), "clicked",
+	g_signal_connect (dlg->reset_button, "clicked",
 			  G_CALLBACK (reset_button_clicked), dlg);
 }
 
@@ -1231,18 +1170,21 @@ static void
 setup_plugins_page (GeditPreferencesDialog *dlg)
 {
 	GtkWidget *page_content;
-	
+
 	gedit_debug (DEBUG_PREFS);
 
 	page_content = gedit_plugin_manager_get_page ();
 	g_return_if_fail (page_content != NULL);
-	
-	gtk_box_pack_start (GTK_BOX (dlg->plugin_manager_place_holder), page_content, TRUE, TRUE, 0);
 
+	gtk_box_pack_start (GTK_BOX (dlg->plugin_manager_place_holder),
+			    page_content,
+			    TRUE,
+			    TRUE,
+			    0);
 }
 
 static GeditPreferencesDialog *
-get_preferences_dialog (GtkWindow *parent)
+get_preferences_dialog (GeditWindow *parent)
 {
 	static GeditPreferencesDialog *dialog = NULL;
 	GladeXML *gui;
@@ -1251,8 +1193,10 @@ get_preferences_dialog (GtkWindow *parent)
 
 	if (dialog != NULL)
 	{
+		dialog->parent_window = parent;
+
 		gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
-					      parent);
+					      GTK_WINDOW (parent));
 		gtk_window_present (GTK_WINDOW (dialog->dialog));
 
 		return dialog;
@@ -1262,13 +1206,15 @@ get_preferences_dialog (GtkWindow *parent)
 			     "preferences_dialog", NULL);
 	if (!gui)
 	{
-		gedit_warning (parent,
+		gedit_warning (GTK_WINDOW (parent),
 			       MISSING_FILE,
 			       GEDIT_GLADEDIR "gedit-preferences.glade2");
 		return NULL;
 	}
 
 	dialog = g_new0 (GeditPreferencesDialog, 1);
+
+	dialog->parent_window = parent;
 
 	dialog->dialog = glade_xml_get_widget (gui, "preferences_dialog");
 	dialog->display_line_numbers_checkbutton = glade_xml_get_widget (gui, "display_line_numbers_checkbutton");
@@ -1305,11 +1251,6 @@ get_preferences_dialog (GtkWindow *parent)
 	dialog->backup_copy_checkbutton = glade_xml_get_widget (gui, "backup_copy_checkbutton");
 	dialog->auto_save_checkbutton = glade_xml_get_widget (gui, "auto_save_checkbutton");
 	dialog->auto_save_spinbutton = glade_xml_get_widget (gui, "auto_save_spinbutton");
-
-	dialog->limited_undo_radiobutton = glade_xml_get_widget (gui, "limited_undo_radiobutton");
-	dialog->unlimited_undo_radiobutton = glade_xml_get_widget (gui, "unlimited_undo_radiobutton");
-	dialog->undo_levels_spinbutton = glade_xml_get_widget (gui, "undo_levels_spinbutton");
-	dialog->undo_box = glade_xml_get_widget (gui, "undo_box");
 
 	dialog->plugin_manager_place_holder = glade_xml_get_widget (gui, "plugin_manager_place_holder");
 
@@ -1354,10 +1295,6 @@ get_preferences_dialog (GtkWindow *parent)
 	    !dialog->backup_copy_checkbutton ||
 	    !dialog->auto_save_checkbutton ||
 	    !dialog->auto_save_spinbutton ||
-	    !dialog->limited_undo_radiobutton ||
-	    !dialog->unlimited_undo_radiobutton ||
-	    !dialog->undo_levels_spinbutton ||
-	    !dialog->undo_box ||
 	    !dialog->plugin_manager_place_holder ||
 	    !dialog->enable_syntax_hl_checkbutton ||
 	    !dialog->hl_vbox ||
@@ -1373,13 +1310,13 @@ get_preferences_dialog (GtkWindow *parent)
 	    !dialog->background_colorbutton_2 ||
 	    !dialog->reset_button)
 	{
-		gedit_warning (parent,
+		gedit_warning (GTK_WINDOW (parent),
 			       MISSING_WIDGETS,
 			       GEDIT_GLADEDIR "gedit-preferences.glade2");
 
 		if (!dialog->dialog)
 			gtk_widget_destroy (dialog->dialog);
-		
+
 		g_object_unref (gui);
 		g_free (dialog);
 		dialog = NULL;
@@ -1398,13 +1335,16 @@ get_preferences_dialog (GtkWindow *parent)
 	setup_plugins_page (dialog);
 
 	gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),
-				      parent);
+				      GTK_WINDOW (parent));
 
-	g_signal_connect (G_OBJECT (dialog->dialog), "destroy",
-			  G_CALLBACK (dialog_destroyed), &dialog);
-
-	g_signal_connect (G_OBJECT (dialog->dialog), "response",
-			  G_CALLBACK (dialog_response_handler), dialog);
+	g_signal_connect (dialog->dialog,
+			  "destroy",
+			  G_CALLBACK (dialog_destroyed),
+			  &dialog);
+	g_signal_connect (dialog->dialog,
+			  "response",
+			  G_CALLBACK (dialog_response_handler),
+			  dialog);
 
 	g_object_unref (gui);
 
@@ -1414,13 +1354,13 @@ get_preferences_dialog (GtkWindow *parent)
 }
 
 void
-gedit_show_preferences_dialog (GtkWindow *parent)
+gedit_show_preferences_dialog (GeditWindow *parent)
 {
 	GeditPreferencesDialog *dialog;
 
 	gedit_debug (DEBUG_PREFS);
 
-	g_return_if_fail (parent != NULL);
+	g_return_if_fail (GEDIT_IS_WINDOW (parent));
 
 	dialog = get_preferences_dialog (parent);
 	if (!dialog) 
