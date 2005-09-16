@@ -241,7 +241,6 @@ set_window (GeditSearchPanel *panel,
 			  panel);			  			  
 }
 
-
 static void
 gedit_search_panel_set_property (GObject      *object,
 		        	 guint         prop_id,
@@ -313,6 +312,45 @@ gedit_search_panel_class_init (GeditSearchPanelClass *klass)
 	g_type_class_add_private (object_class, sizeof(GeditSearchPanelPrivate));
 }
 
+
+typedef enum
+{
+	GEDIT_SEARCH_ENTRY_NORMAL,
+	GEDIT_SEARCH_ENTRY_NOT_FOUND
+} GeditSearchEntryBgColor;
+
+static void
+set_entry_background (GtkWidget               *entry,
+		      GeditSearchEntryBgColor  col)
+{
+	if (col == GEDIT_SEARCH_ENTRY_NOT_FOUND)
+	{
+		GdkColor red;
+		GdkColor white;
+
+		/* FIXME: a11y and theme */
+
+		gdk_color_parse ("#FF6666", &red);
+		gdk_color_parse ("white", &white);
+
+		gtk_widget_modify_base (entry,
+				        GTK_STATE_NORMAL,
+				        &red);
+		gtk_widget_modify_text (entry,
+				        GTK_STATE_NORMAL,
+				        &white);
+	}
+	else /* reset */
+	{
+		gtk_widget_modify_base (entry,
+				        GTK_STATE_NORMAL,
+				        NULL);
+		gtk_widget_modify_text (entry,
+				        GTK_STATE_NORMAL,
+				        NULL);
+	}
+}
+
 static void
 line_number_entry_insert_text (GtkEditable *editable, 
 			       const char  *text, 
@@ -356,24 +394,35 @@ line_number_entry_changed (GtkEditable      *editable,
 
 	if ((line_str != NULL) && (line_str[0] != 0))
 	{
-		gboolean exceeded;
+		gboolean moved;
 		GeditDocument *active_document;
 		gint line;
 
 		active_document = gedit_window_get_active_document (panel->priv->window);
 
 		line = MAX (atoi (line_str) - 1, 0);
-		exceeded = gedit_document_goto_line (active_document, line);
+		moved = gedit_document_goto_line (active_document, line);
 		gedit_view_scroll_to_cursor (active_view);
 
-		gedit_statusbar_flash_message (GEDIT_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
-					       panel->priv->message_cid,
-					       ngettext("The document has less than %d line. Moving to last line.",
-					     	        "The document has less than %d lines. Moving to last line.",
-					     	        line),
-					       line);
+		if (!moved)
+		{
+			gedit_statusbar_flash_message (GEDIT_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
+						       panel->priv->message_cid,
+						       ngettext("The document has less than %d line. Moving to last line.",
+						     	        "The document has less than %d lines. Moving to last line.",
+						     	        line),
+						       line);
+
+			set_entry_background (panel->priv->line_number_entry,
+					      GEDIT_SEARCH_ENTRY_NOT_FOUND);
+		}
+		else
+		{
+			set_entry_background (panel->priv->line_number_entry,
+					      GEDIT_SEARCH_ENTRY_NORMAL);
+		}
 	}
-	
+
 	g_free (line_str);
 }
 
@@ -478,36 +527,20 @@ phrase_found (GeditSearchPanel *panel,
 					       panel->priv->message_cid, 
 					       " ");
 	}
-				   
-	gtk_widget_modify_base (panel->priv->search_entry,
-			        GTK_STATE_NORMAL,
-			        NULL);
-	gtk_widget_modify_text (panel->priv->search_entry,
-			        GTK_STATE_NORMAL,
-			        NULL);	
+
+	set_entry_background (panel->priv->search_entry,
+			      GEDIT_SEARCH_ENTRY_NORMAL);
 }
 
 static void
 phrase_not_found (GeditSearchPanel *panel)
 {
-	GdkColor red;
-	GdkColor white;
-	
-	/* FIXME: a11y and theme */
-	
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
 				       panel->priv->message_cid,
 				       _("Phrase not found"));
-				
-	gdk_color_parse ("#FF6666", &red);
-	gdk_color_parse ("white", &white);		
 
-	gtk_widget_modify_base (panel->priv->search_entry,
-			        GTK_STATE_NORMAL,
-			        &red);
-	gtk_widget_modify_text (panel->priv->search_entry,
-			        GTK_STATE_NORMAL,
-			        &white);			
+	set_entry_background (panel->priv->search_entry,
+			      GEDIT_SEARCH_ENTRY_NOT_FOUND);
 }
 
 static gboolean
