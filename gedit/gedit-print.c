@@ -46,6 +46,7 @@
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-prefs-manager-app.h"
+#include "gedit-tab.h"
 
 #define GEDIT_PRINT_CONFIG_FILE "gedit-print-config"
 
@@ -289,34 +290,50 @@ gedit_print_dialog_new (GeditPrintJob *job)
 	gint lines;
 	GnomePrintConfig *config;
 	GtkSourceBuffer *buffer;
+	GeditTab *tab;
+	GeditTabState tab_state;
 
 	gedit_debug (DEBUG_PRINT);
 
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
-	
+
 	buffer = gtk_source_print_job_get_buffer (GTK_SOURCE_PRINT_JOB (job));
 	g_return_val_if_fail (buffer != NULL, NULL);
-	
+
 	if (!gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer), NULL, NULL))
 		selection_flag = GNOME_PRINT_RANGE_SELECTION_UNSENSITIVE;
 	else
 		selection_flag = GNOME_PRINT_RANGE_SELECTION;
-	
+
 	config = gtk_source_print_job_get_config (GTK_SOURCE_PRINT_JOB (job));
-	
+
 	dialog = g_object_new (GNOME_TYPE_PRINT_DIALOG, "print_config", config, NULL);
-	
+
 	gnome_print_dialog_construct (GNOME_PRINT_DIALOG (dialog), 
 				      _("Print"),
 			              GNOME_PRINT_DIALOG_RANGE | GNOME_PRINT_DIALOG_COPIES);
 
 	lines = gtk_text_buffer_get_line_count (GTK_TEXT_BUFFER (buffer));
 
-	gnome_print_dialog_construct_range_page ( GNOME_PRINT_DIALOG (dialog),
-						  GNOME_PRINT_RANGE_ALL |
-						  GNOME_PRINT_RANGE_RANGE |
-						  selection_flag,
-						  1, lines, "A", _("Lines"));
+	gnome_print_dialog_construct_range_page (GNOME_PRINT_DIALOG (dialog),
+						 GNOME_PRINT_RANGE_ALL |
+						 GNOME_PRINT_RANGE_RANGE |
+						 selection_flag,
+						 1, lines, "A", _("Lines"));
+
+	/* Disable the print preview button of the gnome print dialog if 
+	 * the state of the active tab is print_previewing or 
+	 * showing_print_preview 
+	 */
+	tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (buffer));
+	tab_state = gedit_tab_get_state (tab);
+	if ((tab_state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
+	    (tab_state == GEDIT_TAB_STATE_PRINT_PREVIEWING))
+	{
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+						   GNOME_PRINT_DIALOG_RESPONSE_PREVIEW,
+						   FALSE);
+	}
 
 	return dialog;
 }
