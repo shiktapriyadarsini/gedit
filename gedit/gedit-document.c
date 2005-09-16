@@ -949,10 +949,15 @@ gedit_document_get_deleted (GeditDocument *doc)
 	return !gnome_vfs_uri_exists (doc->priv->vfs_uri);
 }
 
-void
+/*
+ * If @line is bigger than the lines of the document, the cursor is moved
+ * to the last line and FALSE is returned.
+ */
+gboolean
 gedit_document_goto_line (GeditDocument *doc, 
 			  gint           line)
 {
+	gboolean ret = TRUE;
 	guint line_count;
 	GtkTextIter iter;
 	
@@ -964,10 +969,15 @@ gedit_document_goto_line (GeditDocument *doc,
 	line_count = gtk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc));
 	
 	if (line > line_count)
+	{
+		ret = FALSE;
 		line = line_count;
+	}
 
 	gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc), &iter, line);
 	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+
+	return ret;
 }
 
 void		

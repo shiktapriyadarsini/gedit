@@ -347,23 +347,31 @@ line_number_entry_changed (GtkEditable      *editable,
 {
 	gchar     *line_str;
 	GeditView *active_view; 
-	
+
 	active_view = gedit_window_get_active_view (panel->priv->window);
 	if (active_view == NULL)
 		return;
 
 	line_str = gtk_editable_get_chars (editable, 0, -1);
-	
+
 	if ((line_str != NULL) && (line_str[0] != 0))
 	{
+		gboolean exceeded;
 		GeditDocument *active_document;
 		gint line;
-		
+
 		active_document = gedit_window_get_active_document (panel->priv->window);
-		
+
 		line = MAX (atoi (line_str) - 1, 0);
-		gedit_document_goto_line (active_document, line);
+		exceeded = gedit_document_goto_line (active_document, line);
 		gedit_view_scroll_to_cursor (active_view);
+
+		gedit_statusbar_flash_message (GEDIT_STATUSBAR (gedit_window_get_statusbar (panel->priv->window)),
+					       panel->priv->message_cid,
+					       ngettext("The document has less than %d line. Moving to last line.",
+					     	        "The document has less than %d lines. Moving to last line.",
+					     	        line),
+					       line);
 	}
 	
 	g_free (line_str);

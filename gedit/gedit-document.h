@@ -168,7 +168,7 @@ gboolean	 gedit_document_get_externally_modified
 						(GeditDocument       *doc);
 */
 
-void		 gedit_document_goto_line 	(GeditDocument       *doc, 
+gboolean	 gedit_document_goto_line 	(GeditDocument       *doc, 
 						 gint                 line);
 
 void		 gedit_document_set_search_text	(GeditDocument       *doc,
