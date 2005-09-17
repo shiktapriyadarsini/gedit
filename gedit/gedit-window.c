@@ -159,8 +159,8 @@ gedit_window_destroy (GtkObject *object)
 }
 
 static gboolean
-window_state_event (GtkWidget           *widget,
-		    GdkEventWindowState *event)
+gedit_window_window_state_event (GtkWidget           *widget,
+				 GdkEventWindowState *event)
 {
 	GeditWindow *window = GEDIT_WINDOW (widget);
 
@@ -182,8 +182,8 @@ window_state_event (GtkWidget           *widget,
 }
 
 static gboolean 
-configure_event (GtkWidget         *widget,
-		 GdkEventConfigure *event)
+gedit_window_configure_event (GtkWidget         *widget,
+			      GdkEventConfigure *event)
 {
 	GeditWindow *window = GEDIT_WINDOW (widget);
 
@@ -191,6 +191,36 @@ configure_event (GtkWidget         *widget,
 	window->priv->height = event->height;
 
 	return GTK_WIDGET_CLASS (gedit_window_parent_class)->configure_event (widget, event);
+}
+
+// CHECK: make sure the hack doesn't screw things up...
+/*
+ * GtkWindow catches keybindings for the menu items _before_ passing them to the
+ * focused widget. This is unfortunate and means that pressing ctrl+V in the search
+ * entry ends up pasting text in the TextView. Here we force events to be first 
+ * passed to the focused widget and then we chain up the default handler... this is
+ * the opposite of Gtk default behavior so we need to keep an eye open to see if
+ * anything breaks.
+ */
+static gboolean
+gedit_window_key_press_event (GtkWidget   *widget,
+			      GdkEventKey *event)
+{
+	GtkWidget *focused_widget;
+	gboolean handled = FALSE;
+
+	focused_widget = gtk_window_get_focus (GTK_WINDOW (widget));
+
+	if (focused_widget)
+	{
+		handled = gtk_widget_event (focused_widget,
+					    (GdkEvent*) event);
+	}
+
+	if (handled)
+		return TRUE;
+	else
+		return GTK_WIDGET_CLASS (gedit_window_parent_class)->key_press_event (widget, event);
 }
 
 static void
@@ -205,8 +235,9 @@ gedit_window_class_init (GeditWindowClass *klass)
 	
 	gobject_class->destroy = gedit_window_destroy;
 
-	widget_class->window_state_event = window_state_event;
-	widget_class->configure_event = configure_event;
+	widget_class->window_state_event = gedit_window_window_state_event;
+	widget_class->configure_event = gedit_window_configure_event;
+	widget_class->key_press_event = gedit_window_key_press_event;
 
 	signals[TAB_ADDED] =
 		g_signal_new ("tab_added",
