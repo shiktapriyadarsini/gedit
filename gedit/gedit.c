@@ -265,6 +265,8 @@ on_message_received (const char *message,
 		++i;
 	}
 
+	g_strfreev (commands);
+
 	/* execute the commands */
 
 	app = gedit_app_get_default ();

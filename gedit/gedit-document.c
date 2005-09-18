@@ -90,7 +90,7 @@ struct _GeditDocumentPrivate
 
 	const GeditEncoding *encoding;
 
-	const gchar *mime_type;
+	gchar *mime_type;
 
 	gint	     auto_save_interval;
 	guint	     auto_save_timeout;
@@ -490,7 +490,7 @@ gedit_document_init (GeditDocument *doc)
 
 	update_uri_for_display (doc);
 
-	doc->priv->mime_type = "text/plain";
+	doc->priv->mime_type = g_strdup ("text/plain");
 
 	doc->priv->readonly = FALSE;
 
@@ -525,8 +525,6 @@ gedit_document_new (void)
 
 	return GEDIT_DOCUMENT (g_object_new (GEDIT_TYPE_DOCUMENT, NULL));
 }
-
-
 
 /* If mime type is null, we guess from the filename */
 /* If uri is null, we only set the mime-type */
@@ -568,10 +566,11 @@ set_uri (GeditDocument *doc,
 	}
 
 	g_return_if_fail (doc->priv->vfs_uri != NULL);
-		
+
+	g_free (doc->priv->mime_type);
 	if (mime_type != NULL)
 	{
-		doc->priv->mime_type = mime_type;
+		doc->priv->mime_type = g_strdup (mime_type);
 	}
 	else
 	{
@@ -579,12 +578,12 @@ set_uri (GeditDocument *doc,
 	   	 * if no match. */
 		base_name = gnome_vfs_uri_extract_short_path_name (doc->priv->vfs_uri);
 		if (base_name != NULL) 
-			doc->priv->mime_type = "text/plain"; // FIXME
+			doc->priv->mime_type = g_strdup ("text/plain"); // FIXME
 //			gnome_vfs_mime_type_from_name_or_default (base_name,
 //								  "text/plain");
 		else
-			doc->priv->mime_type = "text/plain";
-		
+			doc->priv->mime_type = g_strdup ("text/plain");
+
 		g_free (base_name);
 	}
 

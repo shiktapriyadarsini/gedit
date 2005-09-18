@@ -104,8 +104,10 @@ gedit_document_saver_finalize (GObject *object)
 	if (priv->vfs_uri)
 		gnome_vfs_uri_unref (priv->vfs_uri);
 
-	g_free (priv->local_path);
+	g_free (priv->backup_ext);
 
+	g_free (priv->local_path);
+	g_free (priv->mime_type);
 	g_free (priv->tmp_fname);
 
 	if (priv->orig_info)
