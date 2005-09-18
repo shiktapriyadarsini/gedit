@@ -90,7 +90,7 @@ struct _GeditDocumentPrivate
 
 	const GeditEncoding *encoding;
 
-	gchar *mime_type;
+	gchar	    *mime_type;
 
 	gint	     auto_save_interval;
 	guint	     auto_save_timeout;
@@ -456,7 +456,6 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 
 	return name;
 }
-
 
 static void
 update_uri_for_display (GeditDocument *doc)
