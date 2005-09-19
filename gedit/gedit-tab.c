@@ -280,6 +280,13 @@ document_uri_notify_handler (GeditDocument *document,
 }
 
 static void
+document_modified_changed (GtkTextBuffer *document,
+			   GeditTab      *tab)
+{
+	g_object_notify (G_OBJECT (tab), "name");
+}
+
+static void
 set_message_area (GeditTab  *tab,
 		  GtkWidget *message_area)
 {
@@ -900,6 +907,10 @@ gedit_tab_init (GeditTab *tab)
 	g_signal_connect (doc,
 			  "notify::uri",
 			  G_CALLBACK (document_uri_notify_handler),
+			  tab);
+	g_signal_connect (doc,
+			  "modified_changed",
+			  G_CALLBACK (document_modified_changed),
 			  tab);
 	g_signal_connect (doc,
 			  "loading",
