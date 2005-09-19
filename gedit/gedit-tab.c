@@ -161,7 +161,7 @@ gedit_tab_class_init (GeditTabClass *klass)
 					 g_param_spec_string ("name",
 							      "Name",
 							      "The tab's name",
-							      "",
+							      NULL,
 							      G_PARAM_READABLE));
 							      
 	g_object_class_install_property (object_class,
@@ -272,7 +272,9 @@ gedit_tab_set_state (GeditTab *tab,
 }
 
 static void 
-document_name_modified_changed (GeditDocument *document, GeditTab *tab)
+document_uri_notify_handler (GeditDocument *document,
+			     GParamSpec    *pspec,
+			     GeditTab      *tab)
 {
 	g_object_notify (G_OBJECT (tab), "name");
 }
@@ -896,12 +898,8 @@ gedit_tab_init (GeditTab *tab)
 	gtk_widget_show (sw);
 
 	g_signal_connect (doc,
-			  "name_changed",
-			  G_CALLBACK (document_name_modified_changed),
-			  tab);
-	g_signal_connect (doc,
-			  "modified_changed",
-			  G_CALLBACK (document_name_modified_changed),
+			  "notify::uri",
+			  G_CALLBACK (document_uri_notify_handler),
 			  tab);
 	g_signal_connect (doc,
 			  "loading",

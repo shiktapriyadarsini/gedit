@@ -61,14 +61,14 @@ static void	gedit_view_move_cursor	(GtkTextView *text_view,
 G_DEFINE_TYPE(GeditView, gedit_view, GTK_TYPE_SOURCE_VIEW)
 
 static void
-doc_readonly_changed_handler (GeditDocument *document, 
-			      gboolean       readonly,
-			      GeditView     *view)
+document_read_only_notify_handler (GeditDocument *document, 
+			           GParamSpec    *pspec,
+				   GeditView     *view)
 {
 	gedit_debug (DEBUG_VIEW);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
-				    !readonly);
+				    !gedit_document_is_readonly (document));
 }
 
 static void
@@ -250,8 +250,8 @@ gedit_view_init (GeditView *view)
 	g_return_if_fail (doc != NULL);
 
 	g_signal_connect (G_OBJECT (doc),
-			  "readonly_changed",
-			  G_CALLBACK (doc_readonly_changed_handler),
+			  "notify::read-only",
+			  G_CALLBACK (document_read_only_notify_handler),
 			  view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
@@ -316,8 +316,8 @@ gedit_view_new (GeditDocument *doc)
 				  GTK_TEXT_BUFFER (doc));
   		
 	g_signal_connect (G_OBJECT (doc),
-			  "readonly_changed",
-			  G_CALLBACK (doc_readonly_changed_handler),
+			  "notify::read-only",
+			  G_CALLBACK (document_read_only_notify_handler),
 			  view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 

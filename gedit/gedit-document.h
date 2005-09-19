@@ -86,9 +86,6 @@ struct _GeditDocumentClass
 
 	/* Signals */ // CHECK: ancora da rivedere
 
-	/* File name (uri), mime-type and/or encoding is changed */
-	void (* name_changed)		(GeditDocument    *document);
-
 	/* Document load */
 	void (* loading)		(GeditDocument    *document,
 					 GnomeVFSFileSize  size,
@@ -104,10 +101,6 @@ struct _GeditDocumentClass
 
 	void (* saved)  		(GeditDocument    *document,
 					 const GError     *error);
-
-	/* Readonly flag changed */
-	void (* readonly_changed)	(GeditDocument    *document,
-					 gboolean          readonly);
 
 	/* Find state udpated */
 	void (* can_find_again) 	(GeditDocument    *document);

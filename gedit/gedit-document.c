@@ -114,12 +114,20 @@ struct _GeditDocumentPrivate
 };
 
 enum {
-	NAME_CHANGED,
+	PROP_0,
+	
+	PROP_URI,
+	PROP_SHORTNAME,
+	PROP_MIME_TYPE,
+	PROP_READ_ONLY,
+	PROP_ENCODING
+};
+
+enum {
 	LOADING,
 	LOADED,
 	SAVING,
 	SAVED,
-	READONLY_CHANGED,
 	CAN_FIND_AGAIN,
 	LAST_SIGNAL
 };
@@ -239,22 +247,95 @@ gedit_document_finalize (GObject *object)
 	G_OBJECT_CLASS (gedit_document_parent_class)->finalize (object);
 }
 
+static void
+gedit_document_set_property (GObject      *object,
+			     guint         prop_id,
+			     const GValue *value,
+			     GParamSpec   *pspec)
+{
+	GeditDocument *doc = GEDIT_DOCUMENT (object);
+  
+	switch (prop_id)
+	{
+		case PROP_READ_ONLY:
+			doc->priv->readonly = g_value_get_boolean (value);
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_document_get_property (GObject    *object,
+			     guint       prop_id,
+			     GValue     *value,
+			     GParamSpec *pspec)
+{
+	GeditDocument *doc = GEDIT_DOCUMENT (object);
+  
+	switch (prop_id)
+	{
+		case PROP_URI:
+			g_value_set_string (value, gedit_document_get_uri_ (doc));
+			break;
+		case PROP_SHORTNAME:
+			g_value_set_string (value, gedit_document_get_short_name_for_display (doc));
+			break;
+		case PROP_MIME_TYPE:
+			g_value_set_string (value, gedit_document_get_mime_type (doc));
+			break;
+		case PROP_READ_ONLY:
+			g_value_set_boolean (value, doc->priv->readonly);
+			break;
+		case PROP_ENCODING:
+			g_value_set_boxed (value, doc->priv->encoding);
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
 static void 
 gedit_document_class_init (GeditDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->finalize = gedit_document_finalize;
-
-  	document_signals[NAME_CHANGED] =
-   		g_signal_new ("name_changed",
-			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, name_changed),
-			      NULL, NULL,
-			      gedit_marshal_VOID__VOID,
-			      G_TYPE_NONE,
-			      0);
+	object_class->set_property = gedit_document_set_property;
+	object_class->get_property = gedit_document_get_property;
+	
+	g_object_class_install_property (object_class, PROP_URI,
+					 g_param_spec_string ("uri",
+					 		      "URI",
+					 		      "The document's URI",
+					 		      NULL,
+					 		      G_PARAM_READABLE));
+	g_object_class_install_property (object_class, PROP_SHORTNAME,
+					 g_param_spec_string ("shortname",
+					 		      "Short Name",
+					 		      "The document's short name",
+					 		      NULL,
+					 		      G_PARAM_READABLE));
+	g_object_class_install_property (object_class, PROP_MIME_TYPE,
+					 g_param_spec_string ("mime-type",
+					 		      "MIME Type",
+					 		      "The document's MIME Type",
+					 		      "text/plain",
+					 		      G_PARAM_READABLE));
+	g_object_class_install_property (object_class, PROP_READ_ONLY,
+					 g_param_spec_boolean ("read-only",
+					 		       "Read Only",
+					 		       "Whether the document is read only or not",
+					 		       FALSE,
+					 		       (G_PARAM_READABLE | G_PARAM_WRITABLE)));
+	g_object_class_install_property (object_class, PROP_ENCODING,
+					 g_param_spec_boxed ("encoding",
+					 		     "Encoding",
+					 		     "The GeditEncoding used for the document",
+					 		     GEDIT_TYPE_ENCODING,
+					 		     G_PARAM_READABLE));
 
 	document_signals[LOADING] =
    		g_signal_new ("loading",
@@ -301,17 +382,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_POINTER);
-
-	document_signals[READONLY_CHANGED] =
-   		g_signal_new ("readonly_changed",
-			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, readonly_changed),
-			      NULL, NULL,
-			      gedit_marshal_VOID__BOOLEAN,
-			      G_TYPE_NONE,
-			      1,
-			      G_TYPE_BOOLEAN);
 
 	document_signals[CAN_FIND_AGAIN] =
    		g_signal_new ("can_find_again",
@@ -388,7 +458,7 @@ set_encoding (GeditDocument       *doc,
 
 	if (emit_signal)
 		/* FIXME: do we need a encoding changed signal ? - Paolo */
-		g_signal_emit (G_OBJECT (doc), document_signals[NAME_CHANGED], 0);
+		g_object_notify (G_OBJECT (doc), "uri");
 }
 
 static gchar *
@@ -615,10 +685,8 @@ set_uri (GeditDocument *doc,
 
 		set_language (doc, language, FALSE);		
 	}
-
-	g_signal_emit (G_OBJECT (doc), 
-		       document_signals[NAME_CHANGED],
-		       0);
+	
+	g_object_notify (G_OBJECT (doc), "uri");
 }
 
 const gchar *
