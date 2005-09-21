@@ -117,6 +117,14 @@ update_buttons_sensitivity (GeditSearchPanel *panel)
 	search_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
 	replace_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
 
+	/* do not crash if there was a problem loading the glade file */
+	if (panel->priv->find_button == NULL    ||
+	    panel->priv->replace_button == NULL ||
+	    panel->priv->replace_all_button == NULL)
+	{
+		return;
+	}
+
 	gtk_widget_set_sensitive (panel->priv->find_button, 
 				  (*search_text != '\0'));	
 	gtk_widget_set_sensitive (panel->priv->replace_button,
