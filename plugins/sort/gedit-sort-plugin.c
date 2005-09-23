@@ -30,7 +30,6 @@
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
-#include <glade/glade-xml.h>
 
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-utils.h>
@@ -121,47 +120,34 @@ sort_dialog_response_handler (GtkDialog  *widget,
 static SortDialog *
 get_sort_dialog (GtkWindow *parent)
 {
-	GladeXML *gladexml;
 	SortDialog *dialog;
+	GtkWidget *error_widget;
+	gboolean ret;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	gladexml = glade_xml_new (GEDIT_GLADEDIR "sort.glade2",
-				  "sort_dialog",
-				  NULL);
-
-	if (gladexml == NULL)
-	{
-		gedit_warning (parent,
-			       MISSING_FILE,
-			       GEDIT_GLADEDIR "sort.glade2");
-		return NULL;
-	}
-
 	dialog = g_new (SortDialog, 1);
 
-	dialog->dialog = glade_xml_get_widget (gladexml, "sort_dialog");
-	dialog->reverse_order_checkbutton = glade_xml_get_widget (gladexml, "reverse_order_checkbutton");
-	dialog->col_num_spinbutton = glade_xml_get_widget (gladexml, "col_num_spinbutton");
-	dialog->ignore_case_checkbutton = glade_xml_get_widget (gladexml, "ignore_case_checkbutton");
-	dialog->remove_dups_checkbutton = glade_xml_get_widget (gladexml, "remove_dups_checkbutton");
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "sort.glade2",
+					     "sort_dialog",
+					     &error_widget,
+					     "sort_dialog", &dialog->dialog,
+					     "reverse_order_checkbutton", &dialog->reverse_order_checkbutton,
+					     "col_num_spinbutton", &dialog->col_num_spinbutton,
+					     "ignore_case_checkbutton", &dialog->ignore_case_checkbutton,
+					     "remove_dups_checkbutton", &dialog->remove_dups_checkbutton,
+					     NULL);
 
-	if (!dialog->dialog                    ||
-	    !dialog->reverse_order_checkbutton ||
-	    !dialog->col_num_spinbutton        ||
-	    !dialog->ignore_case_checkbutton   ||
-	    !dialog->remove_dups_checkbutton)
+	if (!ret)
 	{
 		gedit_warning (parent,
-			       MISSING_WIDGETS,
-			       GEDIT_GLADEDIR "sort.glade2");
+			       gtk_label_get_label (GTK_LABEL (error_widget)));
 
 		g_free (dialog);
+		gtk_widget_destroy (error_widget);
 
 		return NULL;
 	}
-
-	g_object_unref (gladexml);
 
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);

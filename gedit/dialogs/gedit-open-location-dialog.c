@@ -35,7 +35,6 @@
 #include "gedit-open-location-dialog.h"
 
 #include <glib/gi18n.h>
-#include <glade/glade-xml.h>
 
 #include <libgnomeui/gnome-entry.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
@@ -135,12 +134,12 @@ response_handler (GeditOpenLocationDialog *dlg,
 
 static void
 gedit_open_location_dialog_init (GeditOpenLocationDialog *dlg)
-{
-	GladeXML  *gui;
-	
+{	
 	GtkWidget *content;
 	GtkWidget *encoding_label;
 	GtkWidget *encoding_hbox;
+	GtkWidget *error_widget;
+	gboolean   ret;
 	
 	dlg->priv = GEDIT_OPEN_LOCATION_DIALOG_GET_PRIVATE (dlg);
 	
@@ -167,49 +166,25 @@ gedit_open_location_dialog_init (GeditOpenLocationDialog *dlg)
 			  "response",
 			  G_CALLBACK (response_handler),
 			  NULL);
-				   
-	gui = glade_xml_new (GEDIT_GLADEDIR "uri.glade2",
-			     "open_uri_dialog_content", 
-			     NULL);
+			  
+			  
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "uri.glade2",
+					     "open_uri_dialog_content",
+					     &error_widget,
+					     "open_uri_dialog_content", &content,
+					     "uri", &dlg->priv->uri,
+					     "uri_list", &dlg->priv->uri_list,
+					     "encoding_label", &encoding_label,
+					     "encoding_hbox", &encoding_hbox,
+					     NULL);
+
+	if (!ret)
+	{
+		gtk_widget_show (error_widget);
 			
-	if (!gui)
-	{
-		gchar *error_str;
-		
-		error_str = g_strdup_printf (GEDIT_MISSING_FILE, 
-					     GEDIT_GLADEDIR "uri.glade2");
-					     
-		show_error_message (dlg,
-				    error_str);
-				
-		g_free (error_str);
-						    
-		return;
-	}
+		gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dlg)->vbox),
+					     error_widget);
 
-	content = glade_xml_get_widget (gui, "open_uri_dialog_content");
-	dlg->priv->uri = glade_xml_get_widget (gui, "uri");
-	dlg->priv->uri_list = glade_xml_get_widget (gui, "uri_list");
-	encoding_label = glade_xml_get_widget (gui, "encoding_label");
-	encoding_hbox = glade_xml_get_widget (gui, "encoding_hbox");
-	
-	if (!content                ||
-	    !dlg->priv->uri         ||
-	    !dlg->priv->uri_list    ||
-	    !encoding_label         ||
-	    !encoding_hbox) 
-	{
-		gchar *error_str;
-		
-		error_str = g_strdup_printf (GEDIT_MISSING_WIDGETS, 
-					     GEDIT_GLADEDIR "uri.glade2");
-					     
-		show_error_message (dlg,
-				    error_str);
-
-		g_free (error_str);
-		g_object_unref (gui);
-				    
 		return;
 	}
 		
@@ -234,7 +209,6 @@ gedit_open_location_dialog_init (GeditOpenLocationDialog *dlg)
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dlg)->vbox),
 			    content, FALSE, FALSE, 0);
 
-	g_object_unref (gui);
 }
 
 GtkWidget *

@@ -33,7 +33,6 @@
 #include <string.h>
 #include <time.h>
 
-#include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
 #include <libgnome/gnome-config.h>
 
@@ -792,26 +791,17 @@ get_configure_dialog (GeditTimePlugin *plugin)
 {
 	TimeConfigureDialog *dialog = NULL;
 
-	GladeXML *gui;
 	GtkWidget *content;
 	GtkWidget *viewport;
 	GeditTimePluginPromptType prompt_type;
 	gchar *sf, *cf;
+	GtkWidget *error_widget;
+	gboolean ret;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	gui = glade_xml_new (GEDIT_GLADEDIR "time.glade2",
-			     "time_dialog_content", NULL);   
-	if (!gui) 
-	{
-		gedit_warning (NULL,
-			       MISSING_FILE,	
-			       GEDIT_GLADEDIR "time.glade2");
-		return NULL;
-	}
-
 	dialog = g_new0 (TimeConfigureDialog, 1);
-
+	
 	dialog->dialog = gtk_dialog_new_with_buttons (_("Configure insert date/time plugin..."),
 						      NULL,
 						      GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -822,35 +812,34 @@ get_configure_dialog (GeditTimePlugin *plugin)
 						      GTK_STOCK_HELP,
 						      GTK_RESPONSE_HELP,
 						      NULL);
-
+						      
 	g_return_val_if_fail (dialog->dialog != NULL, NULL);
+						      
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "time.glade2",
+					     "time_dialog_content",
+					     &error_widget,
+					     "time_dialog_content", &content,
+					     "formats_viewport", &viewport,
+					     "formats_tree", &dialog->list,
+					     "always_prompt", &dialog->prompt,
+					     "never_prompt", &dialog->use_list,
+					     "use_custom", &dialog->custom,
+					     "custom_entry", &dialog->custom_entry,
+					     "custom_format_example", &dialog->custom_format_example,
+					     NULL);
 
+	if (!ret)
+	{
+		gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog->dialog)->vbox),
+					     error_widget);
+
+		gtk_widget_show (error_widget);
+
+		return dialog;
+	}
+	
 	gtk_window_set_resizable (GTK_WINDOW (dialog->dialog), FALSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog->dialog), FALSE);
-
-	content		= glade_xml_get_widget (gui, "time_dialog_content");
-	viewport 	= glade_xml_get_widget (gui, "formats_viewport");
-	dialog->list 	= glade_xml_get_widget (gui, "formats_tree");
-        dialog->prompt  = glade_xml_get_widget (gui, "always_prompt");
-        dialog->use_list= glade_xml_get_widget (gui, "never_prompt");
-        dialog->custom  = glade_xml_get_widget (gui, "use_custom");
-        dialog->custom_entry = glade_xml_get_widget (gui, "custom_entry");
-	dialog->custom_format_example = glade_xml_get_widget (gui, "custom_format_example");
-
-	if (!content              ||
-	    !viewport             ||
-	    !dialog->list         ||
-	    !dialog->prompt       ||
-	    !dialog->use_list     ||
-	    !dialog->custom       ||
-	    !dialog->custom_entry ||
-	    !dialog->custom_format_example)
-	{
-		gedit_warning (NULL,
-			       MISSING_WIDGETS,
-			       GEDIT_GLADEDIR "time.glade2");
-		return NULL;
-	}
 
 	sf = get_selected_format (plugin);
 	create_formats_list (dialog->list, sf, plugin);
@@ -918,8 +907,6 @@ get_configure_dialog (GeditTimePlugin *plugin)
 			  G_CALLBACK (updated_custom_format_example), 
 			  dialog->custom_format_example);
 
-	g_object_unref (gui);
-
 	return dialog;
 }
 
@@ -927,38 +914,30 @@ static ChooseFormatDialog *
 get_choose_format_dialog (GtkWindow *parent, GeditTimePlugin *plugin)
 {
 	ChooseFormatDialog *dialog;
-	GladeXML *gui;
-
-	gui = glade_xml_new (GEDIT_GLADEDIR "time.glade2",
-			     "choose_format_dialog", 
-			     NULL);
-	if (!gui) 
-	{
-		gedit_warning (parent,
-			       MISSING_FILE,	
-			       GEDIT_GLADEDIR "time.glade2");
-		return NULL;
-	}
+	GtkWidget *error_widget;
+	gboolean ret;
 
 	dialog = g_new0 (ChooseFormatDialog, 1);
-	
-	dialog->dialog 		= glade_xml_get_widget (gui, "choose_format_dialog");
-	dialog->list 		= glade_xml_get_widget (gui, "choice_list");
-	dialog->use_list 	= glade_xml_get_widget (gui, "use_sel_format_radiobutton");
-	dialog->custom		= glade_xml_get_widget (gui, "use_custom_radiobutton");
-	dialog->custom_entry	= glade_xml_get_widget (gui, "custom_entry");
-	dialog->custom_format_example = glade_xml_get_widget (gui, "custom_format_example");
 
-	if (!dialog->dialog       ||
-	    !dialog->list         ||
-	    !dialog->use_list     ||
-	    !dialog->custom       ||
-	    !dialog->custom_entry ||
-	    !dialog->custom_format_example)
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "time.glade2",
+					     "choose_format_dialog",
+					     &error_widget,
+					     "choose_format_dialog", &dialog->dialog,
+					     "choice_list", &dialog->list,
+					     "use_sel_format_radiobutton", &dialog->use_list,
+					     "use_custom_radiobutton", &dialog->custom,
+					     "custom_entry", &dialog->custom_entry,
+					     "custom_format_example", &dialog->custom_format_example,
+					     NULL);
+
+	if (!ret)
 	{
 		gedit_warning (parent,
-			       MISSING_WIDGETS,
-			       GEDIT_GLADEDIR "time.glade2");
+			       gtk_label_get_label (GTK_LABEL (error_widget)));
+
+		g_free (dialog);
+		gtk_widget_destroy (error_widget);
+
 		return NULL;
 	}
 
@@ -1014,8 +993,6 @@ get_choose_format_dialog (GtkWindow *parent, GeditTimePlugin *plugin)
 	g_signal_connect (G_OBJECT (dialog->custom_entry), "changed",
 			  G_CALLBACK (updated_custom_format_example), 
 			  dialog->custom_format_example);
-
-	g_object_unref (gui);
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog->dialog), FALSE);
 

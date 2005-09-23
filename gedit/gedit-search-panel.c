@@ -42,7 +42,6 @@
 #include "gedit-statusbar.h"
 
 #include <glib/gi18n.h>
-#include <glade/glade-xml.h>
 
 #define GEDIT_SEARCH_PANEL_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_SEARCH_PANEL, GeditSearchPanelPrivate))
 
@@ -971,9 +970,10 @@ search_entry_insert_text (GtkEditable *editable,
 static void
 gedit_search_panel_init (GeditSearchPanel *panel)
 {
-	GladeXML *gui;
 	GtkWidget *find_vbox;
 	GtkWidget *search_panel_vbox;
+	GtkWidget *error_widget;
+	gboolean ret;
 	GtkListStore *store;
 	GtkEntryCompletion *completion;
 
@@ -981,87 +981,35 @@ gedit_search_panel_init (GeditSearchPanel *panel)
 
 	panel->priv->new_search_text = FALSE;
 
-	gui = glade_xml_new (GEDIT_GLADEDIR "search-panel.glade",
-			     "search_panel_vbox", NULL);
-	if (!gui)
-	{
-		gchar *msg;
-		GtkWidget *label;		
-		msg = g_strdup_printf (MISSING_FILE,
-			       GEDIT_GLADEDIR "search-panel.glade");
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "search-panel.glade",
+					     "search_panel_vbox",
+					     &error_widget,
+					     "search_panel_vbox", &search_panel_vbox,
+					     "find_vbox", &find_vbox,
+					     "search_options_expander", &panel->priv->search_options_expander,
+					     "replace_expander", &panel->priv->replace_expander,
+					     "goto_line_expander", &panel->priv->goto_line_expander,
+					     "search_entry", &panel->priv->search_entry,
+					     "replace_entry", &panel->priv->replace_entry,
+					     "line_number_entry", &panel->priv->line_number_entry,
+					     "find_button", &panel->priv->find_button,
+					     "replace_button", &panel->priv->replace_button,
+					     "replace_all_button", &panel->priv->replace_all_button,
+					     "search_options_vbox", &panel->priv->search_options_vbox,
+					     "match_case_checkbutton", &panel->priv->match_case_checkbutton,
+					     "entire_word_checkbutton", &panel->priv->entire_word_checkbutton,
+					     "search_backwards_checkbutton", &panel->priv->search_backwards_checkbutton,
+					     "wrap_around_checkbutton", &panel->priv->wrap_around_checkbutton,
+					     NULL);
 
-		g_warning (msg);
-
-		label = gtk_label_new (msg);
-
-		gtk_box_pack_start (GTK_BOX (panel), 
-				    label, 
-				    TRUE, 
-				    TRUE, 
-				    0);
-		    
-		g_free (msg);
-
-		return ;
-	}
-
-	search_panel_vbox = glade_xml_get_widget (gui, "search_panel_vbox");
-	find_vbox = glade_xml_get_widget (gui, "find_vbox");
-	panel->priv->search_options_expander = glade_xml_get_widget (gui, "search_options_expander");
- 	panel->priv->replace_expander = glade_xml_get_widget (gui, "replace_expander");
- 	panel->priv->goto_line_expander = glade_xml_get_widget (gui, "goto_line_expander");
-
- 	panel->priv->search_entry = glade_xml_get_widget (gui, "search_entry");
- 	panel->priv->replace_entry = glade_xml_get_widget (gui, "replace_entry");
- 	panel->priv->line_number_entry = glade_xml_get_widget (gui, "line_number_entry");
- 	
- 	panel->priv->find_button = glade_xml_get_widget (gui, "find_button");
- 	panel->priv->replace_button = glade_xml_get_widget (gui, "replace_button");
- 	panel->priv->replace_all_button = glade_xml_get_widget (gui, "replace_all_button");
- 	panel->priv->search_options_vbox = glade_xml_get_widget (gui, "search_options_vbox");
-
-	panel->priv->match_case_checkbutton = glade_xml_get_widget (gui, "match_case_checkbutton");
-	panel->priv->entire_word_checkbutton = glade_xml_get_widget (gui, "entire_word_checkbutton");
-	panel->priv->search_backwards_checkbutton = glade_xml_get_widget (gui, "search_backwards_checkbutton");
-	panel->priv->wrap_around_checkbutton = glade_xml_get_widget (gui, "wrap_around_checkbutton");
-
-	g_object_unref (gui);	 	 	 	
-
- 	if (!find_vbox					||
- 	    !search_panel_vbox				||
- 	    !panel->priv->replace_expander		||
- 	    !panel->priv->search_options_expander	||
- 	    !panel->priv->goto_line_expander		||
- 	    !panel->priv->search_entry			||
- 	    !panel->priv->replace_entry			||
- 	    !panel->priv->line_number_entry		||
- 	    !panel->priv->find_button			||
- 	    !panel->priv->replace_button		||
- 	    !panel->priv->replace_all_button		||
- 	    !panel->priv->search_options_vbox		||
- 	    !panel->priv->match_case_checkbutton	||
- 	    !panel->priv->entire_word_checkbutton	||      
- 	    !panel->priv->search_backwards_checkbutton	||
- 	    !panel->priv->wrap_around_checkbutton)
+ 	if (!ret)
  	{
- 		gchar *msg;
-		GtkWidget *label;		
-		msg = g_strdup_printf (MISSING_WIDGETS,
-			       GEDIT_GLADEDIR "search-panel.glade");
+		gtk_box_pack_start_defaults (GTK_BOX (panel),
+					     error_widget);
 
-		g_warning (msg);
-		
-		label = gtk_label_new (msg);
-		
-		gtk_box_pack_start (GTK_BOX (panel), 
-				    label, 
-				    TRUE, 
-				    TRUE, 
-				    0);
-				    
-		g_free (msg);
-		
-		return ;
+		gtk_widget_show (error_widget);
+
+		return;
  	}
  	
  	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (panel->priv->wrap_around_checkbutton),

@@ -34,7 +34,6 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
-#include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
 #include <gtksourceview/gtksourcetag.h>
 #include <gtksourceview/gtksourcelanguage.h>
@@ -1187,7 +1186,8 @@ static GeditPreferencesDialog *
 get_preferences_dialog (GeditWindow *parent)
 {
 	static GeditPreferencesDialog *dialog = NULL;
-	GladeXML *gui;
+	GtkWidget *error_widget;
+	gboolean ret;
 
 	gedit_debug (DEBUG_PREFS);
 
@@ -1202,124 +1202,76 @@ get_preferences_dialog (GeditWindow *parent)
 		return dialog;
 	}
 
-	gui = glade_xml_new (GEDIT_GLADEDIR "gedit-preferences.glade2",
-			     "preferences_dialog", NULL);
-	if (!gui)
-	{
-		gedit_warning (GTK_WINDOW (parent),
-			       MISSING_FILE,
-			       GEDIT_GLADEDIR "gedit-preferences.glade2");
-		return NULL;
-	}
-
 	dialog = g_new0 (GeditPreferencesDialog, 1);
 
 	dialog->parent_window = parent;
 
-	dialog->dialog = glade_xml_get_widget (gui, "preferences_dialog");
-	dialog->display_line_numbers_checkbutton = glade_xml_get_widget (gui, "display_line_numbers_checkbutton");
-	dialog->highlight_current_line_checkbutton = glade_xml_get_widget (gui, "highlight_current_line_checkbutton");
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-preferences.glade2",
+		"preferences_dialog",
+		&error_widget,
 
-	dialog->bracket_matching_checkbutton = glade_xml_get_widget (gui, "bracket_matching_checkbutton");
+		"preferences_dialog", &dialog->dialog,
+		"display_line_numbers_checkbutton", &dialog->display_line_numbers_checkbutton,
+		"highlight_current_line_checkbutton", &dialog->highlight_current_line_checkbutton,
+				
+		"bracket_matching_checkbutton", &dialog->bracket_matching_checkbutton,
+		"wrap_text_checkbutton", &dialog->wrap_text_checkbutton,
+		"split_checkbutton", &dialog->split_checkbutton,
+		"default_font_checkbutton", &dialog->default_font_checkbutton,
+		"default_colors_checkbutton", &dialog->default_colors_checkbutton,
 
-	dialog->wrap_text_checkbutton = glade_xml_get_widget (gui, "wrap_text_checkbutton");
-	dialog->split_checkbutton = glade_xml_get_widget (gui, "split_checkbutton");
+		"font_button", &dialog->font_button,
+		"text_colorbutton", &dialog->text_colorbutton,
+		"background_colorbutton", &dialog->background_colorbutton,
+		"seltext_colorbutton", &dialog->seltext_colorbutton,
+		"selection_colorbutton", &dialog->selection_colorbutton,
 
-	dialog->default_font_checkbutton = glade_xml_get_widget (gui, "default_font_checkbutton");
-	dialog->default_colors_checkbutton = glade_xml_get_widget (gui, "default_colors_checkbutton");
+		"colors_table", &dialog->colors_table,
+		"font_hbox", &dialog->font_hbox,
 
-	dialog->font_button = glade_xml_get_widget (gui, "font_button");
-	dialog->text_colorbutton = glade_xml_get_widget (gui, "text_colorbutton");
-	dialog->background_colorbutton = glade_xml_get_widget (gui, "background_colorbutton");
-	dialog->seltext_colorbutton = glade_xml_get_widget (gui, "seltext_colorbutton");
-	dialog->selection_colorbutton = glade_xml_get_widget (gui, "selection_colorbutton");
+		"right_margin_checkbutton", &dialog->right_margin_checkbutton,
+		"right_margin_position_spinbutton", &dialog->right_margin_position_spinbutton,
+		"right_margin_position_hbox", &dialog->right_margin_position_hbox,
 
-	dialog->colors_table = glade_xml_get_widget (gui, "colors_table");
-	dialog->font_hbox = glade_xml_get_widget (gui, "font_hbox");	
+		"tabs_width_spinbutton", &dialog->tabs_width_spinbutton,
+		"tabs_width_hbox", &dialog->tabs_width_hbox,
+		"insert_spaces_checkbutton", &dialog->insert_spaces_checkbutton,
 
-	dialog->right_margin_checkbutton = glade_xml_get_widget (gui, "right_margin_checkbutton");
-	dialog->right_margin_position_spinbutton = glade_xml_get_widget (gui, "right_margin_position_spinbutton");
-	dialog->right_margin_position_hbox = glade_xml_get_widget (gui, "right_margin_position_hbox");
+		"auto_indent_checkbutton", &dialog->auto_indent_checkbutton,
 
-	dialog->tabs_width_spinbutton = glade_xml_get_widget (gui, "tabs_width_spinbutton");
-	dialog->tabs_width_hbox = glade_xml_get_widget (gui, "tabs_width_hbox");
-	dialog->insert_spaces_checkbutton = glade_xml_get_widget (gui, "insert_spaces_checkbutton");
-	
-	dialog->auto_indent_checkbutton = glade_xml_get_widget (gui, "auto_indent_checkbutton");
+		"autosave_hbox", &dialog->autosave_hbox,
+		"backup_copy_checkbutton", &dialog->backup_copy_checkbutton,
+		"auto_save_checkbutton", &dialog->auto_save_checkbutton,
+		"auto_save_spinbutton", &dialog->auto_save_spinbutton,
 
-	dialog->autosave_hbox = glade_xml_get_widget (gui, "autosave_hbox");
-	dialog->backup_copy_checkbutton = glade_xml_get_widget (gui, "backup_copy_checkbutton");
-	dialog->auto_save_checkbutton = glade_xml_get_widget (gui, "auto_save_checkbutton");
-	dialog->auto_save_spinbutton = glade_xml_get_widget (gui, "auto_save_spinbutton");
+		"plugin_manager_place_holder", &dialog->plugin_manager_place_holder,
 
-	dialog->plugin_manager_place_holder = glade_xml_get_widget (gui, "plugin_manager_place_holder");
+		"enable_syntax_hl_checkbutton", &dialog->enable_syntax_hl_checkbutton,
+		"hl_vbox", &dialog->hl_vbox,
+		"hl_mode_optionmenu", &dialog->hl_mode_optionmenu,
+		"tags_treeview", &dialog->tags_treeview,
 
-	dialog->enable_syntax_hl_checkbutton = glade_xml_get_widget (gui, "enable_syntax_hl_checkbutton");
-	dialog->hl_vbox = glade_xml_get_widget (gui, "hl_vbox");
-	dialog->hl_mode_optionmenu = glade_xml_get_widget (gui, "hl_mode_optionmenu");
-	dialog->tags_treeview = glade_xml_get_widget (gui, "tags_treeview");
-	
-	dialog->bold_togglebutton = glade_xml_get_widget (gui, "bold_togglebutton");
-	dialog->italic_togglebutton = glade_xml_get_widget (gui, "italic_togglebutton");
-	dialog->underline_togglebutton = glade_xml_get_widget (gui, "underline_togglebutton");
-	dialog->strikethrough_togglebutton = glade_xml_get_widget (gui, "strikethrough_togglebutton");
-	dialog->foreground_checkbutton = glade_xml_get_widget (gui, "foreground_checkbutton");
-	dialog->foreground_colorbutton = glade_xml_get_widget (gui, "foreground_colorbutton");
-	dialog->background_checkbutton = glade_xml_get_widget (gui, "background_checkbutton");
-	dialog->background_colorbutton_2 = glade_xml_get_widget (gui, "background_colorbutton_2");
-	dialog->reset_button = glade_xml_get_widget (gui, "reset_button");
+		"bold_togglebutton", &dialog->bold_togglebutton,
+		"italic_togglebutton", &dialog->italic_togglebutton,
+		"underline_togglebutton", &dialog->underline_togglebutton,
+		"strikethrough_togglebutton", &dialog->strikethrough_togglebutton,
+		"foreground_checkbutton", &dialog->foreground_checkbutton,
+		"foreground_colorbutton", &dialog->foreground_colorbutton,
+		"background_checkbutton", &dialog->background_checkbutton,
+		"background_colorbutton_2", &dialog->background_colorbutton_2,
+		"reset_button", &dialog->reset_button,
+		NULL);
 
-	if (!dialog->dialog ||
-	    !dialog->display_line_numbers_checkbutton ||
-	    !dialog->highlight_current_line_checkbutton ||
-	    !dialog->bracket_matching_checkbutton ||
-	    !dialog->wrap_text_checkbutton ||
-	    !dialog->split_checkbutton ||
-	    !dialog->default_font_checkbutton ||
-	    !dialog->default_colors_checkbutton ||
-	    !dialog->font_button ||
-	    !dialog->text_colorbutton ||
-	    !dialog->background_colorbutton ||
-	    !dialog->seltext_colorbutton ||
-	    !dialog->selection_colorbutton ||
-	    !dialog->colors_table ||
-	    !dialog->font_hbox ||
-	    !dialog->right_margin_checkbutton ||
-	    !dialog->right_margin_position_spinbutton ||
-	    !dialog->right_margin_position_hbox ||
-	    !dialog->tabs_width_spinbutton ||
-	    !dialog->tabs_width_hbox ||
-	    !dialog->insert_spaces_checkbutton ||
-	    !dialog->auto_indent_checkbutton ||
-	    !dialog->autosave_hbox ||
-	    !dialog->backup_copy_checkbutton ||
-	    !dialog->auto_save_checkbutton ||
-	    !dialog->auto_save_spinbutton ||
-	    !dialog->plugin_manager_place_holder ||
-	    !dialog->enable_syntax_hl_checkbutton ||
-	    !dialog->hl_vbox ||
-	    !dialog->hl_mode_optionmenu ||
-	    !dialog->tags_treeview ||
-	    !dialog->bold_togglebutton ||
-	    !dialog->italic_togglebutton ||
-	    !dialog->underline_togglebutton ||
-	    !dialog->strikethrough_togglebutton ||
-	    !dialog->foreground_checkbutton ||
-	    !dialog->foreground_colorbutton ||
-	    !dialog->background_checkbutton ||
-	    !dialog->background_colorbutton_2 ||
-	    !dialog->reset_button)
+	if (!ret)
 	{
 		gedit_warning (GTK_WINDOW (parent),
-			       MISSING_WIDGETS,
-			       GEDIT_GLADEDIR "gedit-preferences.glade2");
+			       gtk_label_get_label (GTK_LABEL (error_widget)));
 
 		if (!dialog->dialog)
 			gtk_widget_destroy (dialog->dialog);
 
-		g_object_unref (gui);
+		gtk_widget_destroy (error_widget);
 		g_free (dialog);
-		dialog = NULL;
 
 		return NULL;
 	}
@@ -1345,8 +1297,6 @@ get_preferences_dialog (GeditWindow *parent)
 			  "response",
 			  G_CALLBACK (dialog_response_handler),
 			  dialog);
-
-	g_object_unref (gui);
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog->dialog), FALSE);
 

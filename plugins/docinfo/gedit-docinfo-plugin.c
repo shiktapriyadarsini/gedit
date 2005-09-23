@@ -29,7 +29,6 @@
 #include <string.h> /* For strlen (...) */
 
 #include <glib/gi18n-lib.h>
-#include <glade/glade-xml.h>
 #include <pango/pango-break.h>
 #include <gmodule.h>
 
@@ -83,56 +82,39 @@ static DocInfoDialog *
 get_docinfo_dialog (GeditWindow *window,
 		    WindowData	*data)
 {
-	GladeXML *gladexml;
 	DocInfoDialog *dialog;
 	GtkWidget *content;
+	GtkWidget *error_widget;
+	gboolean ret;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	gladexml = glade_xml_new (GEDIT_GLADEDIR "docinfo.glade2",
-				  "dialog",
-				  NULL);
-	if (!gladexml)
-	{
-		gedit_warning (GTK_WINDOW (window),
-			       MISSING_FILE,
-			       GEDIT_GLADEDIR "docinfo.glade2");
-
-		return NULL;
-	}
-
 	dialog = g_new (DocInfoDialog, 1);
 
-	dialog->dialog = glade_xml_get_widget (gladexml, "dialog");
-	g_return_val_if_fail (dialog->dialog != NULL, NULL);
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "docinfo.glade2",
+					     "dialog",
+					     &error_widget,
+					     "dialog", &dialog->dialog,
+					     "docinfo_dialog_content", &content,
+					     "file_name_label", &dialog->file_name_label,
+					     "words_label", &dialog->words_label,
+					     "bytes_label", &dialog->bytes_label,
+					     "lines_label", &dialog->lines_label,
+					     "chars_label", &dialog->chars_label,
+					     "chars_ns_label", &dialog->chars_ns_label,
+					     NULL);
 
-	content	= glade_xml_get_widget (gladexml, "docinfo_dialog_content");
-	dialog->file_name_label = glade_xml_get_widget (gladexml, "file_name_label");
-	dialog->words_label = glade_xml_get_widget (gladexml, "words_label");
-	dialog->bytes_label = glade_xml_get_widget (gladexml, "bytes_label");
-	dialog->lines_label = glade_xml_get_widget (gladexml, "lines_label");
-	dialog->chars_label = glade_xml_get_widget (gladexml, "chars_label");
-	dialog->chars_ns_label = glade_xml_get_widget (gladexml, "chars_ns_label");
-
-	if (!content		     ||
-	    !dialog->file_name_label ||
-	    !dialog->words_label     ||
-	    !dialog->bytes_label     ||
-	    !dialog->lines_label     ||
-	    !dialog->chars_label     ||
-	    !dialog->chars_ns_label)
+	if (!ret)
 	{
 		gedit_warning (GTK_WINDOW (window),
-			       MISSING_WIDGETS,
-			       GEDIT_GLADEDIR "docinfo.glade2");
+			       gtk_label_get_label (GTK_LABEL (error_widget)));
 
 		g_free (dialog);
+		gtk_widget_destroy (error_widget);
 
 		return NULL;
 	}
 
-	g_object_unref (gladexml);
-	
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);
 	gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog),

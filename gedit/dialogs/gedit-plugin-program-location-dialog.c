@@ -32,7 +32,6 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <glade/glade-xml.h>
 #include <libgnomeui/libgnomeui.h>
 #include <gconf/gconf-client.h>
 
@@ -50,20 +49,20 @@ gchar *
 gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *plugin_name,
 		GtkWindow *parent, const gchar *gconf_key, const gchar *help_id)
 {
-	GladeXML *gui;
-
 	GtkWidget *dialog;	
 	GtkWidget *content;
 	GtkWidget *label;
 	GtkWidget *logo;
 	GtkWidget *program_location_entry;
 	GConfClient *gconf_client;
-	
+	GtkWidget *error_widget;
+	gboolean ret;
+
 	gchar *str_label;
 	gchar *program_location;
 
 	gint ret;
-	
+
 	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (program_name != NULL, NULL);
@@ -71,16 +70,6 @@ gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *pl
 	g_return_val_if_fail (gconf_key != NULL, NULL);
 
 	gconf_client = gconf_client_get_default ();
-	
-	gui = glade_xml_new (GEDIT_GLADEDIR "program-location-dialog.glade2",
-			     "dialog_content", NULL);
-	if (!gui)
-	{
-		gedit_warning (parent,
-			       MISSING_FILE,
-			       GEDIT_GLADEDIR "program-location-dialog.glade2");
-		return NULL;
-	}
 
 	dialog = gtk_dialog_new_with_buttons (_("Set program location..."),
 					      parent,
@@ -95,21 +84,27 @@ gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *pl
 
 	g_return_val_if_fail (dialog != NULL, NULL);
 
-	content = glade_xml_get_widget (gui, "dialog_content");
-	program_location_entry  = glade_xml_get_widget (gui, "program_location_file_entry");
-	label = glade_xml_get_widget (gui, "label");
-	logo = glade_xml_get_widget (gui, "logo");
+	gui = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "program-location-dialog.glade2",
+			     		     "dialog_content",
+					     &error_widget,
+					     "dialog_content", &content,
+					     "program_location_file_entry", &program_location_entry,
+					     "label", &label,
+					     "logo", &logo,
+					     NULL);
 
-	g_object_unref (gui);
-
-	if (!content || !program_location_entry || !label || !logo)
+	if (!ret)
 	{
 		gedit_warning (parent,
-			       MISSING_WIDGETS,
-			       GEDIT_GLADEDIR "program-location-dialog.glade2");
+			       gtk_label_get_label (GTK_LABEL (error_widget)));
+
+		g_object_unref (gconf_client);
+		gtk_widget_destroy (error_widget);
+		g_free (dialog);
+
 		return NULL;
 	}
-	
+
 	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
 
 	str_label = g_strdup_printf(_("The %s plugin uses an external program, "
@@ -126,7 +121,7 @@ gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *pl
 	program_location = gconf_client_get_string (gconf_client,
 						    gconf_key,
 						    NULL);
-	
+
 	if (program_location == NULL)
 		program_location = g_find_program_in_path (program_name);
 
@@ -137,7 +132,7 @@ gedit_plugin_program_location_dialog (const gchar *program_name, const gchar *pl
 
 		g_free (program_location);
 	}
-		
+
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox),
 			    content, FALSE, FALSE, 0);
 

@@ -46,6 +46,7 @@
 #include <gdk/gdkx.h>
 #include <glib/gunicode.h>
 #include <glib/gi18n.h>
+#include <glade/glade-xml.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include <libgnome/gnome-url.h>
 #include <libgnome/gnome-help.h>
@@ -482,7 +483,7 @@ gedit_warning (GtkWindow *parent, const gchar *format, ...)
 	str = g_strdup_vprintf (format, args);
 	va_end (args);
 
-	dialog = gtk_message_dialog_new (
+	dialog = gtk_message_dialog_new_with_markup (
 			parent,
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 		   	GTK_MESSAGE_ERROR,
@@ -836,6 +837,89 @@ gedit_help_display (GtkWindow   *parent,
 
 		g_error_free (error);
 	}
+
+	return ret;
+}
+
+#define GEDIT_MISSING_FILE    N_("<span size=\"large\" weight=\"bold\">Unable to find file <i>%s</i>.</span>\n\nPlease, check your installation.")
+#define GEDIT_MISSING_WIDGETS N_("<span size=\"large\" weight=\"bold\">Unable to find the required widgets inside file <i>%s</i>..</span>\n\nPlease, check your installation.")
+
+/**
+ * gedit_utils_get_glade_widgets:
+ * @filename: the path to the glade file
+ * @root_node: the root node in the glade file
+ * @error_widget: a pointer were a #GtkLabel
+ * @widget_name: the name of the first widget
+ * @...: a pointer were the first widget is returned, followed by more
+ *       name / widget pairs and terminated by NULL.
+ *
+ * This function gets the requested widgets from a glade file. In case
+ * of error it returns FALSE and sets error_widget to a GtkLabel containing
+ * the error message to display.
+ *
+ * Returns FALSE if an error occurs, TRUE on success.
+ */
+gboolean
+gedit_utils_get_glade_widgets (const gchar *filename,
+			       const gchar *root_node,
+			       GtkWidget **error_widget,
+			       const gchar *widget_name,
+			       ...)
+{
+	GtkWidget *label;
+	GladeXML *gui;
+	va_list args;
+	const gchar *name;
+	gchar *msg;
+	gboolean ret = TRUE;
+
+	g_return_val_if_fail (filename != NULL, FALSE);
+	g_return_val_if_fail (error_widget != NULL, FALSE);
+	g_return_val_if_fail (widget_name != NULL, FALSE);
+
+	*error_widget = NULL;
+
+	gui = glade_xml_new (filename, root_node, NULL);
+	if (!gui)
+	{
+		msg = g_strdup_printf (GEDIT_MISSING_FILE, filename);
+		label = gtk_label_new (msg);
+
+		gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+
+		g_free (msg);
+
+		*error_widget = label;
+
+		return FALSE;
+	}
+
+	va_start (args, widget_name);
+	for (name = widget_name; name; name = va_arg (args, const gchar *) )
+	{
+		GtkWidget **wid;
+
+		wid = va_arg (args, GtkWidget **);
+		*wid = glade_xml_get_widget (gui, name);
+		if (*wid == NULL)
+		{
+			msg = g_strdup_printf (GEDIT_MISSING_WIDGETS, filename);
+			label = gtk_label_new (msg);
+
+			gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+
+			g_free (msg);
+
+			*error_widget = label;
+
+			ret = FALSE;
+
+			break;
+		}
+	}
+	va_end (args);
+
+	g_object_unref (gui);
 
 	return ret;
 }
