@@ -443,8 +443,7 @@ set_language (GeditDocument     *doc,
 static void
 set_encoding (GeditDocument       *doc, 
 	      const GeditEncoding *encoding,
-	      gboolean             set_by_user,
-	      gboolean             emit_signal)
+	      gboolean             set_by_user)
 {
 	if (doc->priv->encoding == encoding)
 		return;
@@ -456,9 +455,7 @@ set_encoding (GeditDocument       *doc,
 					    "encoding",
 					    gedit_encoding_get_charset (encoding));
 
-	if (emit_signal)
-		/* FIXME: do we need a encoding changed signal ? - Paolo */
-		g_object_notify (G_OBJECT (doc), "uri");
+	g_object_notify (G_OBJECT (doc), "encoding");
 }
 
 static gchar *
@@ -758,7 +755,8 @@ document_loader_loading (GeditDocumentLoader *loader,
 			/* We already set the uri */
 			set_uri (doc, NULL, mime_type);
 
-//			set_encoding (doc, doc->priv->requested_encoding);
+			// FIXME: distinguish user set encoding from autodetected
+			set_encoding (doc, doc->priv->requested_encoding, TRUE);
 
 			/* move the cursor at the requested line or to the top */
 			if (doc->priv->requested_line_pos > 0)
@@ -888,7 +886,8 @@ document_saver_saving (GeditDocumentSaver *saver,
 
 			set_uri (doc, uri, mime_type);
 
-//			set_encoding (doc, doc->priv->requested_encoding);
+			// FIXME: distinguish user set encoding from autodetected
+			set_encoding (doc, doc->priv->requested_encoding, TRUE);
 
 			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
 						      FALSE);
