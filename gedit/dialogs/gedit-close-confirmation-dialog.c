@@ -60,7 +60,7 @@ enum
 	DOC_COLUMN, /* a handy pointer to the document */
 	N_COLUMNS
 };
-	
+
 typedef struct _GeditCloseConfirmationDialogPrivate GeditCloseConfirmationDialogPrivate;
 
 struct _GeditCloseConfirmationDialogPrivate 
@@ -76,52 +76,10 @@ struct _GeditCloseConfirmationDialogPrivate
 
 #define GET_MODE(priv) (((priv->unsaved_documents != NULL) && (priv->unsaved_documents->next == NULL)) ? SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
-static void gedit_close_confirmation_dialog_init		(GeditCloseConfirmationDialog        *dlg);
-static void gedit_close_confirmation_dialog_class_init		(GeditCloseConfirmationDialogClass   *klass);
-static void gedit_close_confirmation_dialog_finalize		(GObject                             *object);
-static void gedit_close_confirmation_dialog_set_property	(GObject                             *object, 
-								 guint                                prop_id, 
-								 const GValue                        *value, 
-								 GParamSpec                          *pspec);
-static void gedit_close_confirmation_dialog_get_property	(GObject                             *object,
-								 guint                                prop_id, 
-								 GValue                              *value,
-								 GParamSpec                          *pspec);
+G_DEFINE_TYPE(GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
 
 static void set_unsaved_document 				(GeditCloseConfirmationDialog        *dlg,
 								 const GSList                        *list);
-
-static GtkDialogClass *parent_class = NULL;
-
-GType
-gedit_close_confirmation_dialog_get_type (void)
-{
-	static GType close_confirmation_dialog_type = 0;
-
-	if (!close_confirmation_dialog_type) 
-	{
-		static const GTypeInfo close_confirmation_dialog_info = 
-		{
-			sizeof (GeditCloseConfirmationDialogClass),	/* size of your class struct */
-			NULL,						/* init method for base class */
-			NULL,						/* finalize method for base class */
-			(GClassInitFunc) gedit_close_confirmation_dialog_class_init,
-			NULL,						/* finalize method for your class*/
-			NULL,	
-			sizeof (GeditCloseConfirmationDialog),	
-			0,
-			(GInstanceInitFunc) gedit_close_confirmation_dialog_init
-		};
-
-		close_confirmation_dialog_type = 
-				g_type_register_static (GTK_TYPE_DIALOG,
-                				    	"GeditCloseConfirmationDialog",
-							&close_confirmation_dialog_info,
-							0);
-	}
-
-	return  close_confirmation_dialog_type;
-}
 
 static void 
 gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
@@ -156,29 +114,6 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 }
 
 static void 
-gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *klass)
-{
-	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-
-	parent_class = g_type_class_peek_parent (klass);
-
-	gobject_class->set_property = gedit_close_confirmation_dialog_set_property;
-	gobject_class->get_property = gedit_close_confirmation_dialog_get_property;
-	gobject_class->finalize = gedit_close_confirmation_dialog_finalize;
-
-	g_type_class_add_private (klass, sizeof (GeditCloseConfirmationDialogPrivate));
-
-	g_object_class_install_property (gobject_class,
-					 PROP_UNSAVED_DOCUMENTS,
-					 g_param_spec_pointer ("unsaved_documents",
-						 	       "Unsaved Documents",
-							       "List of Unsaved Documents",
-							       (G_PARAM_READWRITE | 
-							        G_PARAM_CONSTRUCT_ONLY)));
-
-}
-
-static void 
 gedit_close_confirmation_dialog_finalize (GObject *object)
 {
 	GeditCloseConfirmationDialogPrivate *priv;
@@ -192,11 +127,10 @@ gedit_close_confirmation_dialog_finalize (GObject *object)
 		g_slist_free (priv->selected_documents);
 
 	/* Call the parent's destructor */
-	G_OBJECT_CLASS (parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_close_confirmation_dialog_parent_class)->finalize (object);
 }
 
-/*property getters and setters*/
-static void 
+static void
 gedit_close_confirmation_dialog_set_property (GObject      *object, 
 					      guint         prop_id, 
 					      const GValue *value, 
@@ -211,17 +145,18 @@ gedit_close_confirmation_dialog_set_property (GObject      *object,
 		case PROP_UNSAVED_DOCUMENTS:
 			set_unsaved_document (dlg, g_value_get_pointer (value));
 			break;
-		
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
 }
 
-static void gedit_close_confirmation_dialog_get_property (GObject    *object, 
-							  guint       prop_id, 
-							  GValue     *value, 
-							  GParamSpec *pspec)
+static void
+gedit_close_confirmation_dialog_get_property (GObject    *object, 
+					      guint       prop_id, 
+					      GValue     *value, 
+					      GParamSpec *pspec)
 {
 	GeditCloseConfirmationDialogPrivate *priv;
 
@@ -232,11 +167,31 @@ static void gedit_close_confirmation_dialog_get_property (GObject    *object,
 		case PROP_UNSAVED_DOCUMENTS:
 			g_value_set_pointer (value, priv->unsaved_documents);
 			break;
-		 		
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
+}
+
+static void 
+gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *klass)
+{
+	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+
+	gobject_class->set_property = gedit_close_confirmation_dialog_set_property;
+	gobject_class->get_property = gedit_close_confirmation_dialog_get_property;
+	gobject_class->finalize = gedit_close_confirmation_dialog_finalize;
+
+	g_type_class_add_private (klass, sizeof (GeditCloseConfirmationDialogPrivate));
+
+	g_object_class_install_property (gobject_class,
+					 PROP_UNSAVED_DOCUMENTS,
+					 g_param_spec_pointer ("unsaved_documents",
+						 	       "Unsaved Documents",
+							       "List of Unsaved Documents",
+							       (G_PARAM_READWRITE | 
+							        G_PARAM_CONSTRUCT_ONLY)));
 }
 
 static GSList *
@@ -269,7 +224,7 @@ get_selected_docs (GtkTreeModel *store)
 	return list;
 }
 
-gboolean 
+gboolean
 gedit_close_confirmation_dialog_run (GeditCloseConfirmationDialog *dlg)
 {
 	GeditCloseConfirmationDialogPrivate *priv;
