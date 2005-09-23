@@ -40,26 +40,18 @@
  *           Lauris Kaplinski <lauris@ximian.com>
  */
 
-/* TODO: this file needs to be cleaned up before merging to HEAD,
-   i.e. the unused functions and variables must be removed.
-   We should also merge the GPMPPrivate structure with GeditPrintJobPreview */
-
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
 
 #include <math.h>
-#include <libart_lgpl/art_affine.h>
-#include <atk/atk.h>
-#include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
+#include <glib/gi18n.h>
 
 /* FIXME */
 #define WE_ARE_LIBGNOMEPRINT_INTERNALS
 #include <libgnomeprint/private/gnome-print-private.h>
-
-#include <glib/gi18n.h>
-#include <libgnomeprint/gnome-print-meta.h>
-#include <libgnomeprint/gnome-print-job.h>
-#include <libgnomecanvas/libgnomecanvas.h>
 
 #include "gedit-print-job-preview.h"
 
@@ -68,7 +60,7 @@
 #define GPMP_ZOOM_MIN 0.0625
 #define GPMP_ZOOM_MAX 16.0
 
-#define GPMP_A4_WIDTH (210.0 * 72.0 / 25.4)
+#define GPMP_A4_WIDTH  (210.0 * 72.0 / 25.4)
 #define GPMP_A4_HEIGHT (297.0 * 72.0 / 2.54)
 
 #define GPP_COLOR_RGBA(color, ALPHA)              \
@@ -76,18 +68,13 @@
                 (((color).red   / 256) << 24)   | \
                 (((color).green / 256) << 16)   | \
                 (((color).blue  / 256) << 8)))
-                
-#define TOOLBAR_BUTTON_BASE 5
-#define MOVE_INDEX 5
 
-typedef struct _GPMPPrivate GPMPPrivate;
+#define GEDIT_PRINT_JOB_PREVIEW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_PRINT_JOB_PREVIEW, GeditPrintJobPreviewPrivate))
 
-struct _GeditPrintJobPreview 
+struct _GeditPrintJobPreviewPrivate
 {
-	GtkVBox vbox;
-	
-	/* Some interesting buttons */
-	GtkWidget *bpf, *bpp, *bpn, *bpl;
+	/* Navigation and zoom buttons */
+	GtkWidget *bpn, *bpp;
 	GtkWidget *bz1, *bzf, *bzi, *bzo;
 	/* Zoom factor */
 	gdouble zoom;
@@ -102,21 +89,6 @@ struct _GeditPrintJobPreview
 	gint anchorx, anchory;
 	gint offsetx, offsety;
 
-	GPMPPrivate *priv;
-
-	/* Number of pages displayed together */
-	gulong nx, ny;
-	gint update_func_id;
-
-	GPtrArray *page_array;
-};
-
-struct _GeditPrintJobPreviewClass 
-{
-	GtkVBoxClass parent_class;
-};
-
-struct _GPMPPrivate {
 	/* Our GnomePrintJob */
 	GnomePrintJob *job;
 	/* Our GnomePrintPreview */
@@ -133,52 +105,49 @@ struct _GPMPPrivate {
 
 	/* Strict theme compliance [#96802] */
 	gboolean theme_compliance;
+
+	/* Number of pages displayed together */
+	gulong nx, ny;
+	gint update_func_id;
+
+	GPtrArray *page_array;
 };
+
+enum {
+	PROP_0,
+	PROP_NX,
+	PROP_NY
+};
+
+G_DEFINE_TYPE(GeditPrintJobPreview, gedit_print_job_preview, GTK_TYPE_VBOX);
 
 static void gpmp_parse_layout			  (GeditPrintJobPreview *pmp);
 static void gedit_print_job_preview_update	  (GeditPrintJobPreview *pmp);
 static void gedit_print_job_preview_set_nx_and_ny (GeditPrintJobPreview *pmp,
 						   gulong nx, gulong ny);
 
-/*
- * Padding in points around the simulated page
- */
-
-#define PAGE_PAD 6
-
 static gint
 goto_page (GeditPrintJobPreview *mp, gint page)
 {
-	GPMPPrivate *priv;
 	guchar c[32];
 
 	g_return_val_if_fail (mp != NULL, GNOME_PRINT_ERROR_BADVALUE);
 
-	priv = (GPMPPrivate *) mp->priv;
-
-	g_return_val_if_fail ((priv->pagecount == 0) || 
-			      (page < priv->pagecount),
+	g_return_val_if_fail ((mp->priv->pagecount == 0) || 
+			      (page < mp->priv->pagecount),
 			      GNOME_PRINT_ERROR_BADVALUE);
 
 	g_snprintf (c, 32, "%d", page + 1);
-	gtk_entry_set_text (GTK_ENTRY (priv->page_entry), c);
+	gtk_entry_set_text (GTK_ENTRY (mp->priv->page_entry), c);
 
-// CHECK: we don't use bpf and bpl... just comment them out for now to avoid runtime warnings
-#if 0
-	gtk_widget_set_sensitive (mp->bpf, (page > 0) &&
-					   (priv->pagecount > 1));
-#endif
-	gtk_widget_set_sensitive (mp->bpp, (page > 0) &&
-					   (priv->pagecount > 1));
-	gtk_widget_set_sensitive (mp->bpn, (page != (priv->pagecount - 1)) &&
-					   (priv->pagecount > 1));
-#if 0
-	gtk_widget_set_sensitive (mp->bpl, (page != (priv->pagecount - 1)) &&
-					   (priv->pagecount > 1));
-#endif
-	if (page != priv->current_page) {
-		priv->current_page = page;
-		if (priv->pagecount > 0)
+	gtk_widget_set_sensitive (mp->priv->bpp, (page > 0) &&
+					   (mp->priv->pagecount > 1));
+	gtk_widget_set_sensitive (mp->priv->bpn, (page != (mp->priv->pagecount - 1)) &&
+					   (mp->priv->pagecount > 1));
+
+	if (page != mp->priv->current_page) {
+		mp->priv->current_page = page;
+		if (mp->priv->pagecount > 0)
 			gedit_print_job_preview_update (mp);
 	}
 
@@ -188,21 +157,23 @@ goto_page (GeditPrintJobPreview *mp, gint page)
 static gint
 change_page_cmd (GtkEntry *entry, GeditPrintJobPreview *pmp)
 {
-	GPMPPrivate *priv;
 	const gchar *text;
 	gint page;
 
-	priv = (GPMPPrivate *) pmp->priv;
-
 	text = gtk_entry_get_text (entry);
 
-	page = CLAMP (atoi (text), 1, priv->pagecount) - 1;
+	page = CLAMP (atoi (text), 1, pmp->priv->pagecount) - 1;
 
 	gtk_widget_grab_focus (GTK_WIDGET (pmp->priv->canvas));
 	
 	return goto_page (pmp, page);
 }
 
+/*
+ * Padding in points around the simulated page
+ */
+
+#define PAGE_PAD 6
 #define CLOSE_ENOUGH(a,b) (fabs (a - b) < 1e-6)
 
 static void
@@ -211,25 +182,24 @@ gpmp_zoom (GeditPrintJobPreview *mp, gdouble factor)
 	gdouble	     zoom, xdpi, ydpi;
 	int          w, h, w_mm, h_mm;
 	GdkScreen   *screen;
-	GPMPPrivate *priv = (GPMPPrivate *) mp->priv;
 
 	if (factor <= 0.) {
-		gint width = GTK_WIDGET (priv->canvas)->allocation.width;
-		gint height = GTK_WIDGET (priv->canvas)->allocation.height;
-		gdouble zoomx = width  / ((mp->paw + PAGE_PAD * 2) * mp->nx + PAGE_PAD * 2);
-		gdouble zoomy = height / ((mp->pah + PAGE_PAD * 2) * mp->ny + PAGE_PAD * 2);
+		gint width = GTK_WIDGET (mp->priv->canvas)->allocation.width;
+		gint height = GTK_WIDGET (mp->priv->canvas)->allocation.height;
+		gdouble zoomx = width  / ((mp->priv->paw + PAGE_PAD * 2) * mp->priv->nx + PAGE_PAD * 2);
+		gdouble zoomy = height / ((mp->priv->pah + PAGE_PAD * 2) * mp->priv->ny + PAGE_PAD * 2);
 
 		zoom = MIN (zoomx, zoomy);
 	} else
-		zoom = mp->zoom * factor;
+		zoom = mp->priv->zoom * factor;
 
-	mp->zoom = CLAMP (zoom, GPMP_ZOOM_MIN, GPMP_ZOOM_MAX);
+	mp->priv->zoom = CLAMP (zoom, GPMP_ZOOM_MIN, GPMP_ZOOM_MAX);
 
-	gtk_widget_set_sensitive (mp->bz1, (!CLOSE_ENOUGH (mp->zoom, 1.0)));
-	gtk_widget_set_sensitive (mp->bzi, (!CLOSE_ENOUGH (mp->zoom, GPMP_ZOOM_MAX)));
-	gtk_widget_set_sensitive (mp->bzo, (!CLOSE_ENOUGH (mp->zoom, GPMP_ZOOM_MIN)));
+	gtk_widget_set_sensitive (mp->priv->bz1, (!CLOSE_ENOUGH (mp->priv->zoom, 1.0)));
+	gtk_widget_set_sensitive (mp->priv->bzi, (!CLOSE_ENOUGH (mp->priv->zoom, GPMP_ZOOM_MAX)));
+	gtk_widget_set_sensitive (mp->priv->bzo, (!CLOSE_ENOUGH (mp->priv->zoom, GPMP_ZOOM_MIN)));
 
-	screen = gtk_widget_get_screen (GTK_WIDGET (priv->canvas)),
+	screen = gtk_widget_get_screen (GTK_WIDGET (mp->priv->canvas)),
 #if 0
        /* there is no per monitor physical size info available for now */
 	n = gdk_screen_get_n_monitors (screen);
@@ -272,7 +242,7 @@ gpmp_zoom (GeditPrintJobPreview *mp, gdouble factor)
 		ydpi = 96.;
 	}
 
-	gnome_canvas_set_pixels_per_unit (priv->canvas, mp->zoom * (xdpi + ydpi) / (72. * 2.));
+	gnome_canvas_set_pixels_per_unit (mp->priv->canvas, mp->priv->zoom * (xdpi + ydpi) / (72. * 2.));
 }
 
 /* Button press handler for the print preview canvas */
@@ -288,12 +258,12 @@ preview_canvas_button_press (GtkWidget *widget, GdkEventButton *event, GeditPrin
 		GdkCursor *cursor;
 		GdkDisplay *display = gtk_widget_get_display (widget);
 
-		mp->dragging = TRUE;
+		mp->priv->dragging = TRUE;
 
-		gnome_canvas_get_scroll_offsets (GNOME_CANVAS (widget), &mp->offsetx, &mp->offsety);
+		gnome_canvas_get_scroll_offsets (GNOME_CANVAS (widget), &mp->priv->offsetx, &mp->priv->offsety);
 
-		mp->anchorx = event->x - mp->offsetx;
-		mp->anchory = event->y - mp->offsety;
+		mp->priv->anchorx = event->x - mp->priv->offsetx;
+		mp->priv->anchory = event->y - mp->priv->offsety;
 
 		cursor = gdk_cursor_new_for_display (display, GDK_FLEUR);
 		gdk_pointer_grab (widget->window, FALSE,
@@ -319,7 +289,7 @@ preview_canvas_motion (GtkWidget *widget, GdkEventMotion *event, GeditPrintJobPr
 
 	retval = FALSE;
 
-	if (mp->dragging) {
+	if (mp->priv->dragging) {
 		gint x, y, dx, dy;
 
 		if (event->is_hint) {
@@ -329,15 +299,15 @@ preview_canvas_motion (GtkWidget *widget, GdkEventMotion *event, GeditPrintJobPr
 			y = event->y;
 		}
 
-		dx = mp->anchorx - x;
-		dy = mp->anchory - y;
+		dx = mp->priv->anchorx - x;
+		dy = mp->priv->anchory - y;
 
-		gnome_canvas_scroll_to (((GPMPPrivate *) mp->priv)->canvas, mp->offsetx + dx, mp->offsety + dy);
+		gnome_canvas_scroll_to ( mp->priv->canvas, mp->priv->offsetx + dx, mp->priv->offsety + dy);
 
 		/* Get new anchor and offset */
-		mp->anchorx = event->x;
-		mp->anchory = event->y;
-		gnome_canvas_get_scroll_offsets (GNOME_CANVAS (widget), &mp->offsetx, &mp->offsety);
+		mp->priv->anchorx = event->x;
+		mp->priv->anchory = event->y;
+		gnome_canvas_get_scroll_offsets (GNOME_CANVAS (widget), &mp->priv->offsetx, &mp->priv->offsety);
 
 		retval = TRUE;
 	}
@@ -355,7 +325,7 @@ preview_canvas_button_release (GtkWidget *widget, GdkEventButton *event, GeditPr
 	retval = TRUE;
 
 	if (event->button == 1) {
-		mp->dragging = FALSE;
+		mp->priv->dragging = FALSE;
 		gdk_display_pointer_ungrab (gtk_widget_get_display (widget),
 					    event->time);
 		retval = TRUE;
@@ -363,7 +333,6 @@ preview_canvas_button_release (GtkWidget *widget, GdkEventButton *event, GeditPr
 
 	return retval;
 }
-
 
 static void
 preview_close_cmd (gpointer unused, GeditPrintJobPreview *mp)
@@ -375,15 +344,14 @@ static void
 preview_next_page_cmd (void *unused, GeditPrintJobPreview *pmp)
 {
 	GdkEvent *event;
-	GPMPPrivate *priv = (GPMPPrivate *) pmp->priv;
 
 	event = gtk_get_current_event ();
 	
 	if (event->button.state & GDK_SHIFT_MASK)
-		goto_page (pmp, priv->pagecount - 1);
+		goto_page (pmp, pmp->priv->pagecount - 1);
 	else
-		goto_page (pmp, MIN (priv->current_page + pmp->nx * pmp->ny,
-			     	     priv->pagecount - 1));
+		goto_page (pmp, MIN (pmp->priv->current_page + pmp->priv->nx * pmp->priv->ny,
+			     	     pmp->priv->pagecount - 1));
 		   
 	gdk_event_free (event);
 }
@@ -392,7 +360,6 @@ static void
 preview_prev_page_cmd (void *unused, GeditPrintJobPreview *pmp)
 {
 	GdkEvent *event;
-	GPMPPrivate *priv = (GPMPPrivate *) pmp->priv;
 
 	event = gtk_get_current_event ();
 	
@@ -400,7 +367,7 @@ preview_prev_page_cmd (void *unused, GeditPrintJobPreview *pmp)
 		goto_page (pmp, 0);
 	else
 		goto_page (pmp,
-		   MAX ((gint) (priv->current_page - pmp->nx * pmp->ny), 0));
+		   MAX ((gint) (pmp->priv->current_page - pmp->priv->nx * pmp->priv->ny), 0));
 		   
 	gdk_event_free (event);
 }
@@ -426,25 +393,22 @@ preview_zoom_fit_cmd (GeditPrintJobPreview *mp)
 static void
 preview_zoom_100_cmd (GeditPrintJobPreview *mp)
 {
-	gpmp_zoom (mp,  1. / mp->zoom); /* cheesy way to force 100% */
+	gpmp_zoom (mp,  1. / mp->priv->zoom); /* cheesy way to force 100% */
 }
 
 static gint
 preview_canvas_key (GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
 	GeditPrintJobPreview *pmp;
-	GPMPPrivate *priv;
 	gint x,y;
 	gint height, width;
 	gint domove = 0;
 
 	pmp = (GeditPrintJobPreview *) data;
 
-	priv = (GPMPPrivate *) pmp->priv;
-
-	gnome_canvas_get_scroll_offsets (priv->canvas, &x, &y);
-	height = GTK_WIDGET (priv->canvas)->allocation.height;
-	width = GTK_WIDGET (priv->canvas)->allocation.width;
+	gnome_canvas_get_scroll_offsets (pmp->priv->canvas, &x, &y);
+	height = GTK_WIDGET (pmp->priv->canvas)->allocation.height;
+	width = GTK_WIDGET (pmp->priv->canvas)->allocation.width;
 
 	switch (event->keyval) {
 	case '1':
@@ -497,9 +461,9 @@ preview_canvas_key (GtkWidget *widget, GdkEventKey *event, gpointer data)
 	case GDK_BackSpace:
 	page_up:
 		if (y <= 0) {
-			if (priv->current_page > 0) {
-				goto_page (pmp, priv->current_page - 1);
-				y = GTK_LAYOUT (priv->canvas)->height - height;
+			if (pmp->priv->current_page > 0) {
+				goto_page (pmp, pmp->priv->current_page - 1);
+				y = GTK_LAYOUT (pmp->priv->canvas)->height - height;
 			}
 		} else {
 			y -= height;
@@ -510,9 +474,9 @@ preview_canvas_key (GtkWidget *widget, GdkEventKey *event, gpointer data)
 	case GDK_Page_Down:
 	case ' ':
 	page_down:
-		if (y >= GTK_LAYOUT (priv->canvas)->height - height) {
-			if (priv->current_page < priv->pagecount - 1) {
-				goto_page (pmp, priv->current_page + 1);
+		if (y >= GTK_LAYOUT (pmp->priv->canvas)->height - height) {
+			if (pmp->priv->current_page < pmp->priv->pagecount - 1) {
+				goto_page (pmp, pmp->priv->current_page + 1);
 				y = 0;
 			}
 		} else {
@@ -528,7 +492,7 @@ preview_canvas_key (GtkWidget *widget, GdkEventKey *event, gpointer data)
 		break;
 	case GDK_KP_End:
 	case GDK_End:
-		goto_page (pmp, priv->pagecount - 1);
+		goto_page (pmp, pmp->priv->pagecount - 1);
 		y = 0;
 		domove = 1;
 		break;
@@ -555,7 +519,7 @@ preview_canvas_key (GtkWidget *widget, GdkEventKey *event, gpointer data)
 	}
 
 	if (domove)
-		gnome_canvas_scroll_to (priv->canvas, x, y);
+		gnome_canvas_scroll_to (pmp->priv->canvas, x, y);
 
 	g_signal_stop_emission (G_OBJECT (widget), g_signal_lookup ("key_press_event", G_OBJECT_TYPE (widget)), 0);
 	
@@ -565,17 +529,14 @@ preview_canvas_key (GtkWidget *widget, GdkEventKey *event, gpointer data)
 static void
 canvas_style_changed_cb (GtkWidget *canvas, GtkStyle *ps, GeditPrintJobPreview *mp)
 {
-	GPMPPrivate *priv;
 	GtkStyle *style;
 	gint32 border_color;
 	gint32 page_color;
 	guint i;
 	GnomeCanvasItem *page;
 
-	priv = (GPMPPrivate *) mp->priv;
-
 	style = gtk_widget_get_style (GTK_WIDGET (canvas));
-	if (priv->theme_compliance) {
+	if (mp->priv->theme_compliance) {
 		page_color = GPP_COLOR_RGBA (style->base [GTK_STATE_NORMAL], 
 					     0xff);
 		border_color = GPP_COLOR_RGBA (style->text [GTK_STATE_NORMAL], 
@@ -586,8 +547,8 @@ canvas_style_changed_cb (GtkWidget *canvas, GtkStyle *ps, GeditPrintJobPreview *
 		border_color = GPP_COLOR_RGBA (style->black, 0xff);
 	}
 
-	for (i = 0; i < mp->page_array->len; i++) {
-		page = g_object_get_data (mp->page_array->pdata[i], "page");
+	for (i = 0; i < mp->priv->page_array->len; i++) {
+		page = g_object_get_data (mp->priv->page_array->pdata[i], "page");
 		gnome_canvas_item_set (page,
 			       "fill_color_rgba", page_color,
 			       "outline_color_rgba", border_color,
@@ -625,20 +586,17 @@ entry_insert_text_cb (GtkEditable *editable, const gchar *text, gint length, gin
 static gboolean 
 entry_focus_out_event_cb (GtkWidget *widget, GdkEventFocus *event, GeditPrintJobPreview *pjp)
 {
-	GPMPPrivate *priv;
 	const gchar *text;
 	gint page;
-
-	priv = (GPMPPrivate *) pjp->priv;
 
 	text = gtk_entry_get_text (GTK_ENTRY(widget));
 	page = atoi (text) - 1;
 	
 	/* Reset the page number only if really needed */
-	if (page != priv->current_page) {
+	if (page != pjp->priv->current_page) {
 		gchar *str;
 
-		str = g_strdup_printf ("%d", priv->current_page + 1);
+		str = g_strdup_printf ("%d", pjp->priv->current_page + 1);
 		gtk_entry_set_text (GTK_ENTRY (widget), str);
 		g_free (str);
 	}
@@ -649,55 +607,41 @@ entry_focus_out_event_cb (GtkWidget *widget, GdkEventFocus *event, GeditPrintJob
 static void
 create_preview_canvas (GeditPrintJobPreview *mp)
 {
-	GPMPPrivate *priv;
-
 	AtkObject *atko;
 
-	priv = (GPMPPrivate *) mp->priv;
-	
-	priv->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+	mp->priv->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_policy (
-		GTK_SCROLLED_WINDOW (priv->scrolled_window),
+		GTK_SCROLLED_WINDOW (mp->priv->scrolled_window),
 		GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
 
 	gtk_widget_push_colormap (gdk_screen_get_rgb_colormap (
-  	                     		gtk_widget_get_screen (priv->scrolled_window)));
-	priv->canvas = GNOME_CANVAS (gnome_canvas_new_aa ());
-	gnome_canvas_set_center_scroll_region (priv->canvas, FALSE);
+  	                     		gtk_widget_get_screen (mp->priv->scrolled_window)));
+	mp->priv->canvas = GNOME_CANVAS (gnome_canvas_new_aa ());
+	gnome_canvas_set_center_scroll_region (mp->priv->canvas, FALSE);
 	gtk_widget_pop_colormap ();
-	atko = gtk_widget_get_accessible (GTK_WIDGET (priv->canvas));
+	atko = gtk_widget_get_accessible (GTK_WIDGET (mp->priv->canvas));
 	atk_object_set_name (atko, _("Page Preview"));
 	atk_object_set_description (atko, _("The preview of a page in the document to be printed"));
 
-	g_signal_connect (G_OBJECT (priv->canvas), "button_press_event",
+	g_signal_connect (G_OBJECT (mp->priv->canvas), "button_press_event",
 			  (GCallback) preview_canvas_button_press, mp);
-	g_signal_connect (G_OBJECT (priv->canvas), "button_release_event",
+	g_signal_connect (G_OBJECT (mp->priv->canvas), "button_release_event",
 			  (GCallback) preview_canvas_button_release, mp);
-	g_signal_connect (G_OBJECT (priv->canvas), "motion_notify_event",
+	g_signal_connect (G_OBJECT (mp->priv->canvas), "motion_notify_event",
 			  (GCallback) preview_canvas_motion, mp);
-	g_signal_connect (G_OBJECT (priv->canvas), "key_press_event",
+	g_signal_connect (G_OBJECT (mp->priv->canvas), "key_press_event",
 			  (GCallback) preview_canvas_key, mp);
 
-	gtk_container_add (GTK_CONTAINER (priv->scrolled_window), GTK_WIDGET (priv->canvas));
+	gtk_container_add (GTK_CONTAINER (mp->priv->scrolled_window), GTK_WIDGET (mp->priv->canvas));
 
-	g_signal_connect (G_OBJECT (priv->canvas), "style_set",
+	g_signal_connect (G_OBJECT (mp->priv->canvas), "style_set",
 			  G_CALLBACK (canvas_style_changed_cb), mp);
 	
-	gtk_box_pack_end (GTK_BOX (mp), priv->scrolled_window, TRUE, TRUE, 0);
+	gtk_box_pack_end (GTK_BOX (mp), mp->priv->scrolled_window, TRUE, TRUE, 0);
 
-	gtk_widget_show_all (GTK_WIDGET (priv->scrolled_window));
-	gtk_widget_grab_focus (GTK_WIDGET (priv->canvas));
+	gtk_widget_show_all (GTK_WIDGET (mp->priv->scrolled_window));
+	gtk_widget_grab_focus (GTK_WIDGET (mp->priv->canvas));
 }
-
-#ifdef GPMP_VERBOSE
-#define PRINT_2(s,a,b) g_print ("GPMP %s %g %g\n", s, (a), (b))
-#define PRINT_DRECT(s,a) g_print ("GPMP %s %g %g %g %g\n", (s), (a)->x0, (a)->y0, (a)->x1, (a)->y1)
-#define PRINT_AFFINE(s,a) g_print ("GPMP %s %g %g %g %g %g %g\n", (s), *(a), *((a) + 1), *((a) + 2), *((a) + 3), *((a) + 4), *((a) + 5))
-#else
-#define PRINT_2(s,a,b)
-#define PRINT_DRECT(s,a)
-#define PRINT_AFFINE(s,a)
-#endif
 
 static void
 on_1x1_clicked (GtkMenuItem *i, GeditPrintJobPreview *mp)
@@ -777,23 +721,21 @@ gpmp_multi_cmd (GtkWidget *w, GeditPrintJobPreview *mp)
 static void
 create_toplevel (GeditPrintJobPreview *mp)
 {
-	GPMPPrivate *priv;
 	GtkWidget *tb;
 	GtkToolItem *i;
 	AtkObject *atko;
 	GtkWidget *status;
 	
-	priv = (GPMPPrivate *) mp->priv;
-
 	tb = gtk_toolbar_new ();
 	gtk_toolbar_set_style (GTK_TOOLBAR (tb), GTK_TOOLBAR_BOTH_HORIZ);
 	gtk_widget_show (tb);
 	gtk_box_pack_start (GTK_BOX (mp), tb, FALSE, FALSE, 0);
 
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_GO_BACK);
-		gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "P_revious Page");
+	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "P_revious Page");
+	mp->priv->bpp = GTK_WIDGET(i);
 	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
-	mp->bpp = GTK_WIDGET (i);
+
 	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
 				   _("Show the previous page"), "");
 	g_signal_connect (i, "clicked",
@@ -802,7 +744,7 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_GO_FORWARD);
-	mp->bpn = GTK_WIDGET (i);
+	mp->priv->bpn = GTK_WIDGET (i);
 	gtk_tool_button_set_label (GTK_TOOL_BUTTON (i), "_Next Page");
 	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
 	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
@@ -817,31 +759,31 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 
 	status = gtk_hbox_new (FALSE, 4);
-	priv->page_entry = gtk_entry_new ();
-	gtk_entry_set_width_chars (GTK_ENTRY (priv->page_entry), 3);
-	gtk_entry_set_max_length (GTK_ENTRY (priv->page_entry), 6);
+	mp->priv->page_entry = gtk_entry_new ();
+	gtk_entry_set_width_chars (GTK_ENTRY (mp->priv->page_entry), 3);
+	gtk_entry_set_max_length (GTK_ENTRY (mp->priv->page_entry), 6);
 	gtk_tooltips_set_tip (GTK_TOOLBAR (tb)->tooltips,
-	                      priv->page_entry,
+	                      mp->priv->page_entry,
 	                      _("Current page (Alt+P)"),
 	                      NULL);
 	                      
-	g_signal_connect (G_OBJECT (priv->page_entry), "activate", 
+	g_signal_connect (G_OBJECT (mp->priv->page_entry), "activate", 
 			  G_CALLBACK (change_page_cmd), mp);
-	g_signal_connect (G_OBJECT (priv->page_entry), "insert_text",
+	g_signal_connect (G_OBJECT (mp->priv->page_entry), "insert_text",
 			  G_CALLBACK (entry_insert_text_cb), NULL);
-	g_signal_connect (G_OBJECT (priv->page_entry), "focus_out_event",
+	g_signal_connect (G_OBJECT (mp->priv->page_entry), "focus_out_event",
 			  G_CALLBACK (entry_focus_out_event_cb), mp);
 
-	gtk_box_pack_start (GTK_BOX (status), priv->page_entry, FALSE, FALSE, 0);
-	/* gtk_label_set_mnemonic_widget ((GtkLabel *) l, priv->page_entry); */
+	gtk_box_pack_start (GTK_BOX (status), mp->priv->page_entry, FALSE, FALSE, 0);
+	/* gtk_label_set_mnemonic_widget ((GtkLabel *) l, mp->priv->page_entry); */
 
 	/* We are displaying 'XXX of XXX'. */
 	gtk_box_pack_start (GTK_BOX (status), gtk_label_new (_("of")),
 			    FALSE, FALSE, 0);
 
-	priv->last = gtk_label_new ("");
-	gtk_box_pack_start (GTK_BOX (status), priv->last, FALSE, FALSE, 0);
-	atko = gtk_widget_get_accessible (priv->last);
+	mp->priv->last = gtk_label_new ("");
+	gtk_box_pack_start (GTK_BOX (status), mp->priv->last, FALSE, FALSE, 0);
+	atko = gtk_widget_get_accessible (mp->priv->last);
 	atk_object_set_name (atko, _("Page total"));
 	atk_object_set_description (atko, _("The total number of pages in the document"));
 
@@ -870,7 +812,7 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 	
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_100);
-	mp->bz1 = GTK_WIDGET (i);
+	mp->priv->bz1 = GTK_WIDGET (i);
 	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
 				   _("Zoom 1:1"), "");
 	g_signal_connect_swapped (i, "clicked",
@@ -878,7 +820,7 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_FIT);
-	mp->bzf = GTK_WIDGET (i);
+	mp->priv->bzf = GTK_WIDGET (i);
 	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
 				   _("Zoom to fit the whole page"), "");
 	g_signal_connect_swapped (i, "clicked",
@@ -887,7 +829,7 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 	
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_IN);
-	mp->bzi = GTK_WIDGET (i);
+	mp->priv->bzi = GTK_WIDGET (i);
 	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
 				   _("Zoom the page in"), "");
 	g_signal_connect (i, "clicked",
@@ -895,7 +837,7 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_widget_show (GTK_WIDGET (i));
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 	i = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_OUT);
-	mp->bzo = GTK_WIDGET (i);
+	mp->priv->bzo = GTK_WIDGET (i);
 	gtk_tool_item_set_tooltip (i, GTK_TOOLBAR (tb)->tooltips,
 				   _("Zoom the page out"), "");
 	g_signal_connect (i, "clicked",
@@ -918,70 +860,35 @@ create_toplevel (GeditPrintJobPreview *mp)
 	gtk_toolbar_insert (GTK_TOOLBAR (tb), i, -1);
 }
 
-/*
-  The GeditPrintJobPreview object
-*/
-
-static void gedit_print_job_preview_class_init (GeditPrintJobPreviewClass *klass);
-static void gedit_print_job_preview_init (GeditPrintJobPreview *pmp);
-
-static GtkVBoxClass *parent_class;
-
-GType
-gedit_print_job_preview_get_type (void)
-{
-	static GType type;
-	if (!type) {
-		static const GTypeInfo info = {
-			sizeof (GeditPrintJobPreviewClass),
-			NULL, NULL,
-			(GClassInitFunc) gedit_print_job_preview_class_init,
-			NULL, NULL,
-			sizeof (GeditPrintJobPreview),
-			0,
-			(GInstanceInitFunc) gedit_print_job_preview_init,
-			NULL
-		};
-		type = g_type_register_static (GTK_TYPE_VBOX, "GeditPrintJobPreview", &info, 0);
-	}
-	return type;
-}
-
 static void
 gedit_print_job_preview_destroy (GtkObject *object)
 {
 	GeditPrintJobPreview *pmp = GEDIT_PRINT_JOB_PREVIEW (object);
-	GPMPPrivate *priv = (GPMPPrivate *) pmp->priv;
 
-	if (pmp->page_array != NULL) {
-		g_ptr_array_free (pmp->page_array, TRUE);
-		pmp->page_array = NULL;
+	if (pmp->priv->page_array != NULL) {
+		g_ptr_array_free (pmp->priv->page_array, TRUE);
+		pmp->priv->page_array = NULL;
 	}
 
-	if (priv->job != NULL) {
-		g_object_unref (G_OBJECT (priv->job));
-		priv->job = NULL;
+	if (pmp->priv->job != NULL) {
+		g_object_unref (G_OBJECT (pmp->priv->job));
+		pmp->priv->job = NULL;
 	}
 
-	if (pmp->update_func_id) {
-		g_source_remove (pmp->update_func_id);
-		pmp->update_func_id = 0;
+	if (pmp->priv->update_func_id) {
+		g_source_remove (pmp->priv->update_func_id);
+		pmp->priv->update_func_id = 0;
 	}
 
-	if (GTK_OBJECT_CLASS (parent_class)->destroy)
-		(* GTK_OBJECT_CLASS (parent_class)->destroy) (object);
+	if (GTK_OBJECT_CLASS (gedit_print_job_preview_parent_class)->destroy)
+		(* GTK_OBJECT_CLASS (gedit_print_job_preview_parent_class)->destroy) (object);
 }
 
 static void
 gedit_print_job_preview_finalize (GObject *object)
 {
-	GeditPrintJobPreview *pmp;
-
-	pmp = GEDIT_PRINT_JOB_PREVIEW (object);
-	g_free (pmp->priv);
-
-	if (G_OBJECT_CLASS (parent_class)->finalize)
-		(* G_OBJECT_CLASS (parent_class)->finalize) (object);
+	if (G_OBJECT_CLASS (gedit_print_job_preview_parent_class)->finalize)
+		(* G_OBJECT_CLASS (gedit_print_job_preview_parent_class)->finalize) (object);
 }
 
 static gboolean
@@ -990,7 +897,7 @@ update_func (gpointer data)
 	GeditPrintJobPreview *pmp = GEDIT_PRINT_JOB_PREVIEW (data);
 
 	gedit_print_job_preview_update (pmp);
-	pmp->update_func_id = 0;
+	pmp->priv->update_func_id = 0;
 	
 	return FALSE;
 }
@@ -1001,51 +908,49 @@ gedit_print_job_preview_set_nx_and_ny (GeditPrintJobPreview *pmp,
 {
 	GPtrArray *a;
 	GnomeCanvasItem *group, *item;
-	GPMPPrivate *priv;
 	guint i, col, row;
 
 	g_return_if_fail (GEDIT_IS_PRINT_JOB_PREVIEW (pmp));
 	g_return_if_fail (nx > 0);	
 	g_return_if_fail (ny > 0);	
 	
-	pmp->nx = nx;
-	pmp->ny = ny; 
+	pmp->priv->nx = nx;
+	pmp->priv->ny = ny; 
 		
 	/* Remove unnecessary pages */
-	priv = (GPMPPrivate *) pmp->priv;
-	a = pmp->page_array;
-	while (pmp->page_array->len > MIN (nx * ny, priv->pagecount)) {
+	a = pmp->priv->page_array;
+	while (pmp->priv->page_array->len > MIN (nx * ny, pmp->priv->pagecount)) {
 		gtk_object_destroy (GTK_OBJECT (a->pdata[a->len - 1]));
 		g_ptr_array_remove_index (a, a->len - 1);
 	}
 
 	/* Create pages if needed */
-	if (pmp->page_array->len < MIN (nx * ny, priv->pagecount)) {
+	if (pmp->priv->page_array->len < MIN (nx * ny, pmp->priv->pagecount)) {
 		gdouble transform[6];
 
 		transform[0] =  1.; transform[1] =  0.;
 		transform[2] =  0.; transform[3] = -1.;
-		transform[4] =  0.; transform[5] =  pmp->pah;
-		art_affine_multiply (transform, pmp->pa2ly, transform);
+		transform[4] =  0.; transform[5] =  pmp->priv->pah;
+		art_affine_multiply (transform, pmp->priv->pa2ly, transform);
 
-		while (pmp->page_array->len < MIN (nx * ny, priv->pagecount)) {
+		while (pmp->priv->page_array->len < MIN (nx * ny, pmp->priv->pagecount)) {
 			GnomePrintPreview *preview;
 
 			group = gnome_canvas_item_new (
-				gnome_canvas_root (priv->canvas),
+				gnome_canvas_root (pmp->priv->canvas),
 				GNOME_TYPE_CANVAS_GROUP, "x", 0., "y", 0., NULL);
 			g_ptr_array_add (a, group);
 			item = gnome_canvas_item_new (GNOME_CANVAS_GROUP (group),
 				GNOME_TYPE_CANVAS_RECT, "x1", 0.0, "y1", 0.0,
-				"x2", (gdouble) pmp->paw, "y2", (gdouble) pmp->pah,
+				"x2", (gdouble) pmp->priv->paw, "y2", (gdouble) pmp->priv->pah,
 				"fill_color", "white", "outline_color", "black",
 				"width_pixels", 1, NULL);
 			gnome_canvas_item_lower_to_bottom (item);
 			g_object_set_data (G_OBJECT (group), "page", item);
 			item = gnome_canvas_item_new (GNOME_CANVAS_GROUP (group),
 				GNOME_TYPE_CANVAS_RECT, "x1", 3.0, "y1", 3.0,
-				"x2", (gdouble) pmp->paw + 3,
-				"y2", (gdouble) pmp->pah + 3,
+				"x2", (gdouble) pmp->priv->paw + 3,
+				"y2", (gdouble) pmp->priv->pah + 3,
 				"fill_color", "black", NULL);
 			gnome_canvas_item_lower_to_bottom (item);
 
@@ -1057,7 +962,7 @@ gedit_print_job_preview_set_nx_and_ny (GeditPrintJobPreview *pmp,
 			gnome_canvas_item_affine_absolute (item, transform); 
 			preview = g_object_new (GNOME_TYPE_PRINT_PREVIEW,
 				"group", item,
-				"theme_compliance", priv->theme_compliance,
+				"theme_compliance", pmp->priv->theme_compliance,
 				NULL);
 			/* CHECK: changing this I have fixed a crash, but I'm not sure
 			 * of the fix since I may have included a mem leak */
@@ -1071,17 +976,17 @@ gedit_print_job_preview_set_nx_and_ny (GeditPrintJobPreview *pmp,
 
 	/* Position the pages */
 	for (i = 0; i < a->len; i++) {
-		col = i % pmp->nx;
-		row = i / pmp->nx;
+		col = i % pmp->priv->nx;
+		row = i / pmp->priv->nx;
 		g_object_set (a->pdata[i],
-			"x", (gdouble) col * (pmp->paw + PAGE_PAD * 2),
-			"y", (gdouble) row * (pmp->pah + PAGE_PAD * 2), NULL);
+			"x", (gdouble) col * (pmp->priv->paw + PAGE_PAD * 2),
+			"y", (gdouble) row * (pmp->priv->pah + PAGE_PAD * 2), NULL);
 	}
 
 	preview_zoom_fit_cmd (pmp);
 
-	if (!pmp->update_func_id)
-		pmp->update_func_id = g_idle_add_full (
+	if (!pmp->priv->update_func_id)
+		pmp->priv->update_func_id = g_idle_add_full (
 			G_PRIORITY_DEFAULT_IDLE, update_func, pmp, NULL);
 }
 
@@ -1090,12 +995,10 @@ gedit_print_job_preview_update (GeditPrintJobPreview *pmp)
 {
 	guint col, row, i, page;
 	GPtrArray *a;
-	GPMPPrivate *priv;
 
 	g_return_if_fail (GEDIT_IS_PRINT_JOB_PREVIEW (pmp));
 
-	a = pmp->page_array;
-	priv = pmp->priv;
+	a = pmp->priv->page_array;
 
 	/* Show something on the pages */
 	for (i = 0; i < a->len; i++) {
@@ -1103,33 +1006,27 @@ gedit_print_job_preview_update (GeditPrintJobPreview *pmp)
 		GnomePrintPreview *preview = g_object_get_data (
 						G_OBJECT (group), "preview");
 
-		col = i % pmp->nx;
-		row = i / pmp->nx;
-		page = (guint) (priv->current_page / (pmp->nx * pmp->ny))
-				* (pmp->nx * pmp->ny) + i;
+		col = i % pmp->priv->nx;
+		row = i / pmp->priv->nx;
+		page = (guint) (pmp->priv->current_page / (pmp->priv->nx * pmp->priv->ny))
+				* (pmp->priv->nx * pmp->priv->ny) + i;
 
 		/* Do we need to show this page? */
-		if (page < priv->pagecount)
+		if (page < pmp->priv->pagecount)
 			gnome_canvas_item_show (group);
 		else {
 			gnome_canvas_item_hide (group);
 			continue;
 		}
-		gnome_print_job_render_page (priv->job,
+		gnome_print_job_render_page (pmp->priv->job,
 				GNOME_PRINT_CONTEXT (preview), page, TRUE);
 	}
 
-	gnome_canvas_set_scroll_region (priv->canvas,
+	gnome_canvas_set_scroll_region (pmp->priv->canvas,
 		0 - PAGE_PAD, 0 - PAGE_PAD,
-		(pmp->paw + PAGE_PAD * 2) * pmp->nx + PAGE_PAD,
-		(pmp->pah + PAGE_PAD * 2) * pmp->ny + PAGE_PAD);
+		(pmp->priv->paw + PAGE_PAD * 2) * pmp->priv->nx + PAGE_PAD,
+		(pmp->priv->pah + PAGE_PAD * 2) * pmp->priv->ny + PAGE_PAD);
 }
-
-enum {
-	PROP_0,
-	PROP_NX,
-	PROP_NY
-};
 
 static void
 gedit_print_job_preview_get_property (GObject *object, guint n, GValue *v, GParamSpec *pspec)
@@ -1138,13 +1035,13 @@ gedit_print_job_preview_get_property (GObject *object, guint n, GValue *v, GPara
 
 	switch (n) {
 	case PROP_NX:
-		g_value_set_ulong (v, pmp->nx);
+		g_value_set_ulong (v, pmp->priv->nx);
 		break;
 	case PROP_NY:
-		g_value_set_ulong (v, pmp->ny);
+		g_value_set_ulong (v, pmp->priv->ny);
 		break;
 	default:
-		break;;
+		break;
 	}
 }
 
@@ -1157,11 +1054,11 @@ gedit_print_job_preview_set_property (GObject *object, guint n,
 	switch (n) {
 	case PROP_NX:
 		gedit_print_job_preview_set_nx_and_ny (pmp,
-				g_value_get_ulong (v), pmp->ny);
+				g_value_get_ulong (v), pmp->priv->ny);
 		break;
 	case PROP_NY:
 		gedit_print_job_preview_set_nx_and_ny (pmp,
-				pmp->nx, g_value_get_ulong (v));
+				pmp->priv->nx, g_value_get_ulong (v));
 		break;
 	default:
 		break;
@@ -1187,8 +1084,6 @@ gedit_print_job_preview_class_init (GeditPrintJobPreviewClass *klass)
 	
 	object_class = (GtkObjectClass *) klass;
 
-	parent_class = gtk_type_class (GTK_TYPE_VBOX);
-
 	object_class->destroy = gedit_print_job_preview_destroy;
 	
 	widget_class->grab_focus = grab_focus;
@@ -1205,26 +1100,27 @@ gedit_print_job_preview_class_init (GeditPrintJobPreviewClass *klass)
 		g_param_spec_ulong ("ny", _("Number of pages vertically"),
 			_("Number of pages vertically"), 1, 0xffff, 1,
 			G_PARAM_READWRITE));
+
+	g_type_class_add_private(klass, sizeof(GeditPrintJobPreviewPrivate));
 }
 
 static void
 gedit_print_job_preview_init (GeditPrintJobPreview *mp)
 {
-	GPMPPrivate *priv;
 	const gchar *env_theme_variable;
 	
-	mp->priv = priv = g_new0 (GPMPPrivate, 1);
-	priv->current_page = -1;
+	mp->priv = GEDIT_PRINT_JOB_PREVIEW_GET_PRIVATE(mp);
+	mp->priv->current_page = -1;
 
-	priv->theme_compliance = FALSE;
+	mp->priv->theme_compliance = FALSE;
 	env_theme_variable = g_getenv("GP_PREVIEW_STRICT_THEME");
 	if (env_theme_variable && env_theme_variable [0])
-		priv->theme_compliance = TRUE;
+		mp->priv->theme_compliance = TRUE;
 
-	mp->zoom = 1.0;
+	mp->priv->zoom = 1.0;
 
-	mp->nx = mp->ny = 1;
-	mp->page_array = g_ptr_array_new ();
+	mp->priv->nx = mp->priv->ny = 1;
+	mp->priv->page_array = g_ptr_array_new ();
 }
 
 static void
@@ -1237,7 +1133,6 @@ GtkWidget *
 gedit_print_job_preview_new (GnomePrintJob *gpm)
 {
 	GeditPrintJobPreview *gpmp;
-	GPMPPrivate *priv;
 	gchar *text;
 
 	g_return_val_if_fail (gpm != NULL, NULL);
@@ -1245,9 +1140,7 @@ gedit_print_job_preview_new (GnomePrintJob *gpm)
 
 	gpmp = g_object_new (GEDIT_TYPE_PRINT_JOB_PREVIEW, NULL);
 
-	priv = (GPMPPrivate *) gpmp->priv;
-
-	priv->job = gpm;
+	gpmp->priv->job = gpm;
 	g_object_ref (G_OBJECT (gpm));
 
 	gpmp_parse_layout (gpmp);
@@ -1255,14 +1148,14 @@ gedit_print_job_preview_new (GnomePrintJob *gpm)
 	create_preview_canvas (gpmp);
 
 	/* this zooms to fit, once we know how big the window actually is */
-	g_signal_connect_after (priv->canvas, "realize",
+	g_signal_connect_after (gpmp->priv->canvas, "realize",
 		(GCallback) realized, gpmp);
 
-	priv->pagecount = gnome_print_job_get_pages (gpm);
+	gpmp->priv->pagecount = gnome_print_job_get_pages (gpm);
 	goto_page (gpmp, 0);
 	
-	if (priv->pagecount == 0) {
-		priv->pagecount = 1;
+	if (gpmp->priv->pagecount == 0) {
+		gpmp->priv->pagecount = 1;
 		text = g_strdup_printf ("<markup>%d   "
 					"<span foreground=\"red\" "
 					"weight=\"ultrabold\" "
@@ -1271,28 +1164,35 @@ gedit_print_job_preview_new (GnomePrintJob *gpm)
 					1, 
 					_("No visible output was created."));
 	} else 
-		text =  g_strdup_printf ("%d", priv->pagecount);
-	gtk_label_set_markup_with_mnemonic (GTK_LABEL (priv->last), text);
+		text =  g_strdup_printf ("%d", gpmp->priv->pagecount);
+	gtk_label_set_markup_with_mnemonic (GTK_LABEL (gpmp->priv->last), text);
 	g_free (text);
 
 	on_1x1_clicked (NULL, gpmp);
 	return (GtkWidget *) gpmp;
 }
 
+#ifdef GPMP_VERBOSE
+#define PRINT_2(s,a,b) g_print ("GPMP %s %g %g\n", s, (a), (b))
+#define PRINT_DRECT(s,a) g_print ("GPMP %s %g %g %g %g\n", (s), (a)->x0, (a)->y0, (a)->x1, (a)->y1)
+#define PRINT_AFFINE(s,a) g_print ("GPMP %s %g %g %g %g %g %g\n", (s), *(a), *((a) + 1), *((a) + 2), *((a) + 3), *((a) + 4), *((a) + 5))
+#else
+#define PRINT_2(s,a,b)
+#define PRINT_DRECT(s,a)
+#define PRINT_AFFINE(s,a)
+#endif
+
 static void
 gpmp_parse_layout (GeditPrintJobPreview *mp)
 {
-	GPMPPrivate *priv;
 	GnomePrintConfig *config;
 	GnomePrintLayoutData *lyd;
 
-	priv = (GPMPPrivate *) mp->priv;
-
 	/* Calculate layout-compensated page dimensions */
-	mp->paw = GPMP_A4_WIDTH;
-	mp->pah = GPMP_A4_HEIGHT;
-	art_affine_identity (mp->pa2ly);
-	config = gnome_print_job_get_config (priv->job);
+	mp->priv->paw = GPMP_A4_WIDTH;
+	mp->priv->pah = GPMP_A4_HEIGHT;
+	art_affine_identity (mp->priv->pa2ly);
+	config = gnome_print_job_get_config (mp->priv->job);
 	lyd = gnome_print_config_get_layout_data (config, NULL, NULL, NULL, NULL);
 	gnome_print_config_unref (config);
 	if (lyd) {
@@ -1323,15 +1223,15 @@ gpmp_parse_layout (GeditPrintJobPreview *mp)
 				pp.y1 = lyd->ph;
 				art_drect_affine_transform (&tp, &pp, pp2lyI);
 				/* Compensate with expansion */
-				mp->paw = tp.x1 - tp.x0;
-				mp->pah = tp.y1 - tp.y0;
-				PRINT_2 ("Width & Height", mp->paw, mp->pah);
+				mp->priv->paw = tp.x1 - tp.x0;
+				mp->priv->pah = tp.y1 - tp.y0;
+				PRINT_2 ("Width & Height", mp->priv->paw, mp->priv->pah);
 			}
 			/* Now compensate with feed orientation */
 			art_affine_invert (pa2pp, ly->PP2PA);
 			PRINT_AFFINE ("pa2pp:", &pa2pp[0]);
-			art_affine_multiply (mp->pa2ly, pa2pp, pp2lyI);
-			PRINT_AFFINE ("pa2ly:", &mp->pa2ly[0]);
+			art_affine_multiply (mp->priv->pa2ly, pa2pp, pp2lyI);
+			PRINT_AFFINE ("pa2ly:", &mp->priv->pa2ly[0]);
 			/* Finally we need translation factors */
 			/* Page box in normalized layout */
 			pp.x0 = 0.0;
@@ -1339,21 +1239,14 @@ gpmp_parse_layout (GeditPrintJobPreview *mp)
 			pp.x1 = lyd->pw;
 			pp.y1 = lyd->ph;
 			art_drect_affine_transform (&ap, &pp, ly->PP2PA);
-			art_drect_affine_transform (&tp, &ap, mp->pa2ly);
+			art_drect_affine_transform (&tp, &ap, mp->priv->pa2ly);
 			PRINT_DRECT ("RRR:", &tp);
-			mp->pa2ly[4] -= tp.x0;
-			mp->pa2ly[5] -= tp.y0;
-			PRINT_AFFINE ("pa2ly:", &mp->pa2ly[0]);
+			mp->priv->pa2ly[4] -= tp.x0;
+			mp->priv->pa2ly[5] -= tp.y0;
+			PRINT_AFFINE ("pa2ly:", &mp->priv->pa2ly[0]);
 			/* Now, if job does PA2LY LY2PA concat it ends with scaled identity */
 			gnome_print_layout_free (ly);
 		}
 		gnome_print_layout_data_free (lyd);
 	}
 }
-
-GnomePrintJob *
-gedit_print_job_preview_get_print_job (GeditPrintJobPreview *pjp)
-{
-	return pjp->priv->job;
-}
-

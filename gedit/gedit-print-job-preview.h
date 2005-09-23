@@ -39,10 +39,12 @@
  *           Miguel de Icaza (miguel@gnu.org)
  */
 
-#include <glib.h>
-
 #ifndef __GEDIT_PRINT_MASTER_PREVIEW_H__
 #define __GEDIT_PRINT_MASTER_PREVIEW_H__
+
+#include <gtk/gtkwindow.h>
+#include <libgnomeprint/gnome-print-job.h>
+#include <libgnomeprintui/gnome-print-preview.h>
 
 G_BEGIN_DECLS
 
@@ -53,17 +55,25 @@ G_BEGIN_DECLS
 #define GEDIT_IS_PRINT_JOB_PREVIEW_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k),    GEDIT_TYPE_PRINT_JOB_PREVIEW))
 #define GEDIT_PRINT_JOB_PREVIEW_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o),  GEDIT_TYPE_PRINT_JOB_PREVIEW, GeditPrintJobPreviewClass))
 
-typedef struct _GeditPrintJobPreview      GeditPrintJobPreview;
-typedef struct _GeditPrintJobPreviewClass GeditPrintJobPreviewClass;
+typedef struct _GeditPrintJobPreview        GeditPrintJobPreview;
+typedef struct _GeditPrintJobPreviewClass   GeditPrintJobPreviewClass;
+typedef struct _GeditPrintJobPreviewPrivate GeditPrintJobPreviewPrivate;
 
-#include <gtk/gtkwindow.h>
-#include <libgnomeprint/gnome-print-job.h>
-#include <libgnomeprintui/gnome-print-preview.h>
+struct _GeditPrintJobPreview
+{
+	GtkVBox vbox;
 
-GtkType		 gedit_print_job_preview_get_type 	(void) G_GNUC_CONST;
-GtkWidget	*gedit_print_job_preview_new 		(GnomePrintJob        *gpm);
+	GeditPrintJobPreviewPrivate *priv;
+};
 
-GnomePrintJob	*gedit_print_job_preview_get_print_job	(GeditPrintJobPreview *pjp);
+struct _GeditPrintJobPreviewClass 
+{
+	GtkVBoxClass parent_class;
+};
+
+GType		 gedit_print_job_preview_get_type	(void) G_GNUC_CONST;
+
+GtkWidget	*gedit_print_job_preview_new		(GnomePrintJob	*gpm);
 
 G_END_DECLS
 
