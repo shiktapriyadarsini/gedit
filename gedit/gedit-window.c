@@ -1587,6 +1587,7 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 	GtkAction *action;
 	gchar *action_name;
 	gchar *tab_name; // CHECK escaping
+	gchar *tip;
 	gint n;
 	GeditDocument *doc;
 
@@ -1604,10 +1605,14 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 	g_return_if_fail (action != NULL);
 
 	tab_name = _gedit_tab_get_name (tab);
+	tip =  g_strdup_printf (_("Activate %s"), tab_name);
+
 	g_object_set (action, "label", tab_name, NULL);
+	g_object_set (action, "tooltip", tip, NULL);
 
 	g_free (action_name);
 	g_free (tab_name);
+	g_free (tip);
 
 	doc = gedit_tab_get_document (tab);
 	action = gtk_action_group_get_action (window->priv->action_group,
@@ -1811,7 +1816,6 @@ update_default_path (GeditWindow   *window,
 				     "New default path: %s", default_path);
 	}
 }
-
 
 static void
 doc_loaded (GeditDocument *doc,
