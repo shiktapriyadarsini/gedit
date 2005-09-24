@@ -740,6 +740,91 @@ gedit_document_is_readonly (GeditDocument *doc)
 }
 
 static void
+document_loader_loaded (GeditDocumentLoader *loader,
+			const GError        *error,
+			GeditDocument       *doc)
+{
+	/* load was successful */
+	if (error == NULL)
+	{
+		GtkTextIter iter;
+		const gchar *mime_type;
+
+		mime_type = gedit_document_loader_get_mime_type (loader);
+
+		doc->priv->mtime = gedit_document_loader_get_mtime (loader);
+
+		g_get_current_time (&doc->priv->time_of_last_save_or_load);
+
+		/* We already set the uri */
+		set_uri (doc, NULL, mime_type);
+
+		// FIXME: distinguish user set encoding from autodetected
+		set_encoding (doc, doc->priv->requested_encoding, TRUE);
+
+		/* move the cursor at the requested line if any */
+		if (doc->priv->requested_line_pos > 0)
+		{
+			/* line_pos - 1 because get_iter_at_line counts from 0 */
+			gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+							  &iter,
+							  doc->priv->requested_line_pos - 1);
+		}
+
+		/* else, if enabled, to the position stored in the metadata */
+		else if (0) // FIXME: should be a GConf option
+		{
+			gchar *pos;
+			gint offset;
+
+			pos = gedit_metadata_manager_get (doc->priv->uri,
+							  "position");
+			offset = pos ? atoi (pos) : 0;
+			g_free (pos);
+
+			gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
+							    &iter,
+							    MAX (offset, 0));
+		}
+
+		/* otherwise to the top */
+		else
+		{
+			gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
+							&iter);
+		}
+
+		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+	}
+
+	/* special case creating a named new doc */
+	else if (doc->priv->create &&
+	         (error->code == GNOME_VFS_ERROR_NOT_FOUND))
+	{
+		g_object_unref (doc->priv->loader);
+		doc->priv->loader = NULL;
+		
+		// FIXME: do other stuff??
+
+		g_signal_emit (doc,
+			       document_signals[LOADED],
+			       0,
+			       NULL);
+
+		return;
+	}
+
+	g_signal_emit (doc,
+		       document_signals[LOADED],
+		       0,
+		       error);
+
+	/* the loader has been used, throw it away */
+	g_object_unref (doc->priv->loader);
+	doc->priv->loader = NULL;
+}
+
+static void
 document_loader_loading (GeditDocumentLoader *loader,
 			 gboolean             completed,
 			 const GError        *error,
@@ -747,84 +832,7 @@ document_loader_loading (GeditDocumentLoader *loader,
 {
 	if (completed)
 	{
-		/* load was successful */
-		if (error == NULL)
-		{
-			GtkTextIter iter;
-			const gchar *mime_type;
-
-			mime_type = gedit_document_loader_get_mime_type (loader);
-
-			doc->priv->mtime = gedit_document_loader_get_mtime (loader);
-
-			g_get_current_time (&doc->priv->time_of_last_save_or_load);
-
-			/* We already set the uri */
-			set_uri (doc, NULL, mime_type);
-
-			// FIXME: distinguish user set encoding from autodetected
-			set_encoding (doc, doc->priv->requested_encoding, TRUE);
-
-			/* move the cursor at the requested line if any */
-			if (doc->priv->requested_line_pos > 0)
-			{
-				/* line_pos - 1 because get_iter_at_line counts from 0 */
-				gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
-								  &iter,
-								  doc->priv->requested_line_pos - 1);
-			}
-
-			/* else, if enabled, to the position stored in the metadata */
-			else if (0) // FIXME: should be a GConf option
-			{
-				gchar *pos;
-				gint offset;
-
-				pos = gedit_metadata_manager_get (doc->priv->uri,
-								  "position");
-				offset = pos ? atoi (pos) : 0;
-				g_free (pos);
-
-				gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
-								    &iter,
-								    MAX (offset, 0));
-			}
-
-			/* otherwise to the top */
-			else
-			{
-				gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
-								&iter);
-			}
-
-			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
-		}
-		/* special case creating a named new doc */
-		else if (doc->priv->create &&
-		         (error->code == GNOME_VFS_ERROR_NOT_FOUND))
-		{
-			g_object_unref (doc->priv->loader);
-			doc->priv->loader = NULL;
-			
-			// FIXME: do other stuff??
-
-			g_signal_emit (doc,
-				       document_signals[LOADED],
-				       0,
-				       NULL);
-			return;
-		}		
-
-		g_signal_emit (doc,
-			       document_signals[LOADED],
-			       0,
-			       error);
-
-		/* the loader has been used, throw it away */
-		g_object_unref (doc->priv->loader);
-		doc->priv->loader = NULL;
-		
-		return;
+		document_loader_loaded (loader, error, doc);
 	}
 	else
 	{
