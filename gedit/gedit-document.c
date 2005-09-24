@@ -35,6 +35,7 @@
 #endif
 
 #include <string.h>
+#include <stdlib.h>
 
 #include <glib/gi18n.h>
 #include <libgnomevfs/gnome-vfs.h>
@@ -451,9 +452,15 @@ set_encoding (GeditDocument       *doc,
 	doc->priv->encoding = encoding;
 
 	if (set_by_user)
+	{
+		const gchar *charset;
+
+		charset = encoding ? gedit_encoding_get_charset (encoding) : "UTF-8";
+
 		gedit_metadata_manager_set (doc->priv->uri,
 					    "encoding",
-					    gedit_encoding_get_charset (encoding));
+					    charset);
+	}
 
 	g_object_notify (G_OBJECT (doc), "encoding");
 }
@@ -758,7 +765,7 @@ document_loader_loading (GeditDocumentLoader *loader,
 			// FIXME: distinguish user set encoding from autodetected
 			set_encoding (doc, doc->priv->requested_encoding, TRUE);
 
-			/* move the cursor at the requested line or to the top */
+			/* move the cursor at the requested line if any */
 			if (doc->priv->requested_line_pos > 0)
 			{
 				/* line_pos - 1 because get_iter_at_line counts from 0 */
@@ -766,6 +773,24 @@ document_loader_loading (GeditDocumentLoader *loader,
 								  &iter,
 								  doc->priv->requested_line_pos - 1);
 			}
+
+			/* else, if enabled, to the position stored in the metadata */
+			else if (0) // FIXME: should be a GConf option
+			{
+				gchar *pos;
+				gint offset;
+
+				pos = gedit_metadata_manager_get (doc->priv->uri,
+								  "position");
+				offset = pos ? atoi (pos) : 0;
+				g_free (pos);
+
+				gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
+								    &iter,
+								    MAX (offset, 0));
+			}
+
+			/* otherwise to the top */
 			else
 			{
 				gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
