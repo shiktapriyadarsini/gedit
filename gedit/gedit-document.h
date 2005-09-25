@@ -122,8 +122,6 @@ GType		 gedit_document_get_type      	(void) G_GNUC_CONST;
 
 GeditDocument   *gedit_document_new 		(void);
 
-gboolean	 gedit_document_is_readonly 	(GeditDocument       *doc);
-						 
 const gchar	*gedit_document_get_uri_ 	(GeditDocument       *doc);
 
 const gchar	*gedit_document_get_uri_for_display
@@ -132,6 +130,11 @@ const gchar	*gedit_document_get_short_name_for_display
 					 	(GeditDocument       *doc);
 
 const gchar	*gedit_document_get_mime_type 	(GeditDocument       *doc);
+
+gboolean	 gedit_document_get_readonly 	(GeditDocument       *doc);
+
+void		 gedit_document_set_readonly 	(GeditDocument       *doc,
+						 gboolean             readonly);
 
 gboolean	 gedit_document_load 		(GeditDocument       *doc, 
 						 const gchar         *uri, 

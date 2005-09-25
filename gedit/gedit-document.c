@@ -259,7 +259,8 @@ gedit_document_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_READ_ONLY:
-			doc->priv->readonly = g_value_get_boolean (value);
+			gedit_document_set_readonly (doc,
+						     g_value_get_boolean (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -731,8 +732,46 @@ gedit_document_get_mime_type (GeditDocument *doc)
  	return doc->priv->mime_type;
 }
 
+void 		
+gedit_document_set_readonly (GeditDocument *doc,
+			     gboolean       readonly)
+{
+	gedit_debug (DEBUG_DOCUMENT);
+
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	if (readonly) 
+	{
+		if (doc->priv->auto_save_timeout > 0)
+		{
+			g_source_remove (doc->priv->auto_save_timeout);
+			doc->priv->auto_save_timeout = 0;
+		}
+	}
+	else
+	{
+		if (doc->priv->auto_save &&
+		    (doc->priv->auto_save_timeout <= 0) && 
+                    !gedit_document_is_untitled (doc))
+		{
+/*			doc->priv->auto_save_timeout = g_timeout_add
+				 (doc->priv->auto_save_interval * 1000 * 60,
+		 		 (GSourceFunc)gedit_document_auto_save,
+		  		 doc);
+*/
+		}
+	}
+
+	if (doc->priv->readonly == readonly) 
+		return;
+
+	doc->priv->readonly = (readonly != FALSE);
+
+	g_object_notify (G_OBJECT (doc), "readonly");
+}
+
 gboolean
-gedit_document_is_readonly (GeditDocument *doc)
+gedit_document_get_readonly (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 

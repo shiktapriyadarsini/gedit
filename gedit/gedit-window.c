@@ -1380,7 +1380,7 @@ set_title (GeditWindow *window)
 	} 
 	else 
 	{
-		if (gedit_document_is_readonly (doc)) 
+		if (gedit_document_get_readonly (doc)) 
 		{
 			if (dirname != NULL)
 				title = g_strdup_printf ("%s [%s] (%s) - gedit", 

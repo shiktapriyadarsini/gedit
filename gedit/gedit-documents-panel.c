@@ -80,7 +80,7 @@ tab_get_name (GeditTab *tab)
 	} 
 	else 
 	{
-		if (gedit_document_is_readonly (doc)) 
+		if (gedit_document_get_readonly (doc)) 
 		{
 			tab_name = g_strdup_printf ("%s [%s]", 
 						    docname, 

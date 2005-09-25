@@ -68,7 +68,7 @@ document_read_only_notify_handler (GeditDocument *document,
 	gedit_debug (DEBUG_VIEW);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
-				    !gedit_document_is_readonly (document));
+				    !gedit_document_get_readonly (document));
 }
 
 static void
@@ -255,7 +255,7 @@ gedit_view_init (GeditView *view)
 			  view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
-				    !gedit_document_is_readonly (doc));
+				    !gedit_document_get_readonly (doc));
 #endif
 
 	/* Make sure that the view is scrolled to the cursor so
@@ -321,7 +321,7 @@ gedit_view_new (GeditDocument *doc)
 			  view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
-				    !gedit_document_is_readonly (doc));					  
+				    !gedit_document_get_readonly (doc));					  
   
 	gedit_debug_message (DEBUG_VIEW, "END: %d", G_OBJECT (view)->ref_count);
 
@@ -345,7 +345,7 @@ gedit_view_cut_clipboard (GeditView *view)
 	/* FIXME: what is default editability of a buffer? */
   	gtk_text_buffer_cut_clipboard (buffer,
   				       gtk_clipboard_get (GDK_NONE),
-				       !gedit_document_is_readonly (
+				       !gedit_document_get_readonly (
 				       		GEDIT_DOCUMENT (buffer)));
   	
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
@@ -390,7 +390,7 @@ gedit_view_paste_clipboard (GeditView *view)
   	gtk_text_buffer_paste_clipboard (buffer,
 					 gtk_clipboard_get (GDK_NONE),
 					 NULL,
-					 !gedit_document_is_readonly (
+					 !gedit_document_get_readonly (
 						GEDIT_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
@@ -416,7 +416,7 @@ gedit_view_delete_selection (GeditView *view)
 	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_delete_selection (buffer,
 					  TRUE,
-					  !gedit_document_is_readonly (
+					  !gedit_document_get_readonly (
 						GEDIT_DOCUMENT (buffer)));
 						
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
