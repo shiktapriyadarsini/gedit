@@ -740,6 +740,8 @@ gedit_document_set_readonly (GeditDocument *doc,
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
+	readonly = (readonly != FALSE);
+
 	if (readonly) 
 	{
 		if (doc->priv->auto_save_timeout > 0)
@@ -765,7 +767,7 @@ gedit_document_set_readonly (GeditDocument *doc,
 	if (doc->priv->readonly == readonly) 
 		return;
 
-	doc->priv->readonly = (readonly != FALSE);
+	doc->priv->readonly = readonly;
 
 	g_object_notify (G_OBJECT (doc), "readonly");
 }
