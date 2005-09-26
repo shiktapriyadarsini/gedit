@@ -247,8 +247,6 @@ gedit_python_module_class_init (GeditPythonModuleClass *class)
 	GObjectClass *object_class = G_OBJECT_CLASS (class);
 	GTypeModuleClass *module_class = G_TYPE_MODULE_CLASS (class);
 
-	gedit_python_module_parent_class = (GObjectClass *) g_type_class_peek_parent (class);
-
 	object_class->finalize = gedit_python_module_finalize;
 	object_class->get_property = gedit_python_module_get_property;
 	object_class->set_property = gedit_python_module_set_property;
