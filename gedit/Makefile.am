@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-SUBDIRS= dialogs recent-files
+SUBDIRS = dialogs recent-files
 
 bin_PROGRAMS = gedit
 
@@ -15,6 +15,14 @@ INCLUDES =							\
 	-DGEDIT_UI_DIR=\""$(datadir)/gedit-2/ui/"\"		\
 	-DGEDIT_PLUGINDIR=\""$(libdir)/gedit-2/plugins"\"	\
 	-DGEDIT_GLADEDIR=\""$(datadir)/gedit-2/glade/"\"
+	
+if ENABLE_PYTHON
+INCLUDES += \
+	$(NO_STRICT_ALIASING_CFLAGS)	\
+	$(PYGTK_CFLAGS)			\
+	$(PYTHON_CFLAGS)		\
+	$(AM_CFLAGS)
+endif
 
 noinst_LTLIBRARIES = libgedit.la
 
@@ -26,11 +34,16 @@ gedit_LDADD =				\
 	dialogs/libdialogs.la		\
 	recent-files/librecent.la
 
+if ENABLE_PYTHON
+gedit_LDADD += \
+	$(top_srcdir)/bindings/python/gedit.la
+endif
+
 BUILT_SOURCES = 			\
 	gedit-marshal.c			\
 	gedit-marshal.h              
 
-NON_INST_H_FILS =			\
+NOINST_H_FILES =			\
 	gedit-commands.h		\
 	gedit-file-selector-util.h 	\
 	gedit-io-error-dialogs.h	\
@@ -46,6 +59,12 @@ NON_INST_H_FILS =			\
 	gedit-io-error-message-area.h	\
 	gedit-search-panel.h		\
 	gedit-session.h
+
+if ENABLE_PYTHON
+NOINST_H_FILES += \
+	gedit-python-module.h \
+	gedit-python-plugin.h 
+endif
 
 INST_H_FILES =				\
 	gedit-utils.h 			\
@@ -122,7 +141,7 @@ gedit_SOURCES = 			\
 	gedit-module.c			\
 	gedit-plugins-engine.c		\
 	gedit-session.c			\
-	$(NON_INST_H_FILS)		\
+	$(NOINST_H_FILES)		\
 	$(INST_H_FILES)
 
 
@@ -143,6 +162,14 @@ libgedit_la_SOURCES = 			\
 	gedit-encodings.c		\
 	gedit-convert.c			\
 	$(LIB_H_FILES)
+
+if ENABLE_PYTHON
+libgedit_la_SOURCES += \
+	gedit-python-module.c	\
+	gedit-python-module.h	\
+	gedit-python-plugin.c	\
+	gedit-python-plugin.h	
+endif
 
 gedit-marshal.h: gedit-marshal.list $(GLIB_GENMARSHAL)
 	$(GLIB_GENMARSHAL) $< --header --prefix=gedit_marshal > $@

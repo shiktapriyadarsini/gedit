@@ -42,8 +42,12 @@
 #include "gedit-plugins-engine.h"
 #include "gedit-plugin.h"
 #include "gedit-debug.h"
-#include "gedit-module.h"
 #include "gedit-app.h"
+
+#include "gedit-module.h"
+#ifdef ENABLE_PYTHON
+#include "gedit-python-module.h"
+#endif
 
 #define USER_GEDIT_PLUGINS_LOCATION "gedit/plugins/"
 
@@ -52,11 +56,18 @@
 
 #define PLUGIN_EXT	".gedit-plugin"
 
+typedef enum
+{
+	GEDIT_PLUGIN_LOADER_C,
+	GEDIT_PLUGIN_LOADER_PY,
+} GeditPluginLang;
+
 struct _GeditPluginInfo
 {
 	gchar        *file;
 	
 	gchar        *location;
+	GeditPluginLang lang;
 	GTypeModule  *module;
 
 	gchar        *name;
@@ -70,7 +81,7 @@ struct _GeditPluginInfo
 	gboolean     active;
 };
 
-static void 		 gedit_plugins_engine_active_plugins_changed (GConfClient *client,
+static void			gedit_plugins_engine_active_plugins_changed (GConfClient *client,
 								      guint cnxn_id, 
 								      GConfEntry *entry, 
 								      gpointer user_data);
@@ -134,6 +145,25 @@ gedit_plugins_engine_load (const gchar *file)
 	{
 		g_warning ("Could not find 'Module' in %s", file);
 		goto error;
+	}
+	
+	/* Get the loader for this plugin */
+	str = g_key_file_get_string (plugin_file,
+				     "Gedit Plugin",
+				     "Loader",
+				     NULL);
+	if (str && strcmp(str, "python") == 0)
+	{
+		info->lang = GEDIT_PLUGIN_LOADER_PY;
+#ifndef ENABLE_PYTHON
+		g_warning ("Cannot load python extension '%s', gedit was not "
+					"compiled with python support", file);
+		goto error;
+#endif
+	}
+	else
+	{
+		info->lang = GEDIT_PLUGIN_LOADER_C;
 	}
 
 	/* Get Name */
@@ -375,29 +405,65 @@ load_plugin_module (GeditPluginInfo *info)
 	g_return_val_if_fail (info->location != NULL, FALSE);
 	g_return_val_if_fail (info->plugin == NULL, FALSE);
 	
-	dirname = g_path_get_dirname (info->file);	
-	g_return_val_if_fail (dirname != NULL, FALSE);
+	switch (info->lang)
+	{
+		case GEDIT_PLUGIN_LOADER_C:
+			dirname = g_path_get_dirname (info->file);	
+			g_return_val_if_fail (dirname != NULL, FALSE);
 
-	path = g_module_build_path (dirname, info->location);
-	g_free (dirname);
-	g_return_val_if_fail (path != NULL, FALSE);
+			path = g_module_build_path (dirname, info->location);
+			g_free (dirname);
+			g_return_val_if_fail (path != NULL, FALSE);
 	
-	info->module = G_TYPE_MODULE (gedit_module_new (path));
-	g_free (path);
+			info->module = G_TYPE_MODULE (gedit_module_new (path));
+			g_free (path);
+			break;
+#ifdef ENABLE_PYTHON
+		case GEDIT_PLUGIN_LOADER_PY:
+		{
+			gchar *dir = g_path_get_dirname (info->file);
+			
+			info->module = G_TYPE_MODULE (
+					gedit_python_module_new (dir, info->location));
+					
+			g_free (dir);
+			break;
+		}
+#endif
+	}
+
 	
 	if (g_type_module_use (info->module) == FALSE)
 	{
-		g_warning ("Could not load plugin file at %s\n",
-			   gedit_module_get_path (GEDIT_MODULE (info->module)));
+		switch (info->lang)
+		{
+			case GEDIT_PLUGIN_LOADER_C:
+				g_warning ("Could not load plugin file at %s\n",
+				   gedit_module_get_path (GEDIT_MODULE (info->module)));
+				break;
+			case GEDIT_PLUGIN_LOADER_PY:
+				g_warning ("Could not load python module %s\n", info->location);
+				break;
+		}
 			   
 		g_object_unref (G_OBJECT (info->module));
 		info->module = NULL;
 		
 		return FALSE;
 	}
-
-	info->plugin = GEDIT_PLUGIN (gedit_module_new_object (GEDIT_MODULE (info->module)));
-
+	
+	switch (info->lang)
+	{
+		case GEDIT_PLUGIN_LOADER_C:
+			info->plugin = GEDIT_PLUGIN (gedit_module_new_object (GEDIT_MODULE (info->module)));
+			break;
+#ifdef ENABLE_PYTHON
+		case GEDIT_PLUGIN_LOADER_PY:
+			info->plugin = GEDIT_PLUGIN (gedit_python_module_new_object (GEDIT_PYTHON_MODULE (info->module)));
+			break;
+#endif
+	}
+	
 	g_type_module_unuse (info->module);
 
 	gedit_debug_message (DEBUG_PLUGINS, "End");
