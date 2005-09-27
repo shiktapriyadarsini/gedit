@@ -404,11 +404,17 @@ set_language (GeditDocument     *doc,
               gboolean           set_by_user)
 {
 	GtkSourceLanguage *old_lang;
+
+	gedit_debug (DEBUG_DOCUMENT);
 	
 	old_lang = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
 	
 	if (old_lang == lang)
 		return;
+
+	gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (doc), lang);
+	if (lang != NULL)
+		gedit_language_init_tag_styles (lang);
 		
 	if (lang != NULL)
 		gtk_source_buffer_set_highlight (GTK_SOURCE_BUFFER (doc),
@@ -416,11 +422,6 @@ set_language (GeditDocument     *doc,
 	else
 		gtk_source_buffer_set_highlight (GTK_SOURCE_BUFFER (doc), 
 						 FALSE);
-
-	gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (doc), lang);
-
-	if (lang != NULL)
-		gedit_language_init_tag_styles (lang);
 
 	if (set_by_user && (doc->priv->uri != NULL))
 	{
@@ -447,6 +448,8 @@ set_encoding (GeditDocument       *doc,
 	      const GeditEncoding *encoding,
 	      gboolean             set_by_user)
 {
+	gedit_debug (DEBUG_DOCUMENT);
+
 	if (doc->priv->encoding == encoding)
 		return;
 
@@ -607,10 +610,6 @@ set_uri (GeditDocument *doc,
 	 const gchar   *uri,
 	 const gchar   *mime_type)
 {
-	GtkSourceLanguage *language = NULL;
-	gchar *data;
-	gchar *base_name;
-
 	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail ((uri == NULL) || gedit_utils_is_valid_uri (uri));
@@ -648,6 +647,8 @@ set_uri (GeditDocument *doc,
 	}
 	else
 	{
+		gchar *base_name;
+
 		/* Set the mime type using the file extension or "text/plain" 
 	   	 * if no match. */
 		base_name = gnome_vfs_uri_extract_short_path_name (doc->priv->vfs_uri);
@@ -663,6 +664,9 @@ set_uri (GeditDocument *doc,
 
 	if (!doc->priv->language_set_by_user)
 	{
+		gchar *data;
+		GtkSourceLanguage *language = NULL;
+
 		data = gedit_metadata_manager_get (doc->priv->uri, "language");
 
 		if (data != NULL)
@@ -675,9 +679,13 @@ set_uri (GeditDocument *doc,
 							gedit_get_languages_manager (),
 							data);
 			}
+
+			g_free (data);
 		}
 		else
 		{
+			gedit_debug_message (DEBUG_DOCUMENT, "Language Normal");
+
 			if (strcmp (doc->priv->mime_type, "text/plain") != 0)
 			{
 				language = gtk_source_languages_manager_get_language_from_mime_type (
@@ -686,9 +694,7 @@ set_uri (GeditDocument *doc,
 			}
 		}
 
-		g_free (data);
-
-		set_language (doc, language, FALSE);		
+		set_language (doc, language, FALSE);
 	}
 	
 	g_object_notify (G_OBJECT (doc), "uri");
