@@ -715,6 +715,8 @@ static void
 update_languages_menu (GeditWindow *window)
 {
 	GeditDocument *doc;
+	GList *actions;
+	GList *l;
 	GtkAction *action;
 	GtkSourceLanguage *lang;
 	gchar *lang_name;
@@ -729,11 +731,29 @@ update_languages_menu (GeditWindow *window)
 	else
 		lang_name = g_strdup ("LangNormal");
 
+	actions = gtk_action_group_list_actions (window->priv->languages_action_group);
+
+	/* prevent recursion */
+	for (l = actions; l != NULL; l = l->next)
+	{
+		g_signal_handlers_block_by_func (GTK_ACTION (l->data),
+						 G_CALLBACK (language_toggled),
+						 window);
+	}
+
 	action = gtk_action_group_get_action (window->priv->languages_action_group,
 					      lang_name);
 
 	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
+	for (l = actions; l != NULL; l = l->next)
+	{
+		g_signal_handlers_unblock_by_func (GTK_ACTION (l->data),
+						   G_CALLBACK (language_toggled),
+						   window);
+	}
+
+	g_list_free (actions);
 	g_free (lang_name);
 }
 
