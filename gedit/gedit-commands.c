@@ -524,14 +524,9 @@ is_read_only (const gchar *uri)
 	return ret;
 }
 
-/* Displays a confirmation dialog for whether to replace a file.  The message
- * should contain a %s to include the file name.
- */
 static gboolean
-replace_dialog (GtkWindow   *parent,
-		const gchar *primary_message,
-		const gchar *uri,
-		const gchar *secondary_message)
+replace_read_only_file (GtkWindow   *parent,
+			const gchar *uri)
 {
 	GtkWidget *dialog;
 	gint ret;
@@ -550,7 +545,8 @@ replace_dialog (GtkWindow   *parent,
 	g_return_val_if_fail (uri_for_display != NULL, FALSE);
 	g_free (full_formatted_uri);
 
-	message_with_uri = g_strdup_printf (primary_message, uri_for_display);
+	message_with_uri = g_strdup_printf (_("The file \"%s\" is read-only."),
+					    uri_for_display);
 	g_free (uri_for_display);
 
 	dialog = gtk_message_dialog_new (parent,
@@ -559,16 +555,16 @@ replace_dialog (GtkWindow   *parent,
 					 GTK_BUTTONS_NONE,
 					 message_with_uri);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-						  secondary_message);
-
+						  _("Do you want to try to replace it "
+						    "with the one you are saving?"));
 	g_free (message_with_uri);
 
 	gtk_dialog_add_button (GTK_DIALOG (dialog),
 			       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 
-	gedit_dialog_add_button (GTK_DIALOG (dialog), 
+	gedit_dialog_add_button (GTK_DIALOG (dialog),
 				 _("_Replace"),
-			  	 GTK_STOCK_REFRESH,
+			  	 GTK_STOCK_SAVE_AS,
 			  	 GTK_RESPONSE_YES);
 
 	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
@@ -581,26 +577,6 @@ replace_dialog (GtkWindow   *parent,
 	gtk_widget_destroy (dialog);
 
 	return (ret == GTK_RESPONSE_YES);
-}
-
-static gboolean
-replace_existing_file (GtkWindow   *parent,
-		       const gchar *uri)
-{
-	return replace_dialog (parent,
-			       _("A file named \"%s\" already exists.\n"), uri,
-			       _("Do you want to replace it with the "
-			         "one you are saving?"));
-}
-
-static gboolean
-replace_read_only_file (GtkWindow   *parent,
-			const gchar *uri)
-{
-	return replace_dialog (parent,
-			       _("The file \"%s\" is read-only.\n"), uri,
-			       _("Do you want to try to replace it with the "
-			         "one you are saving?"));
 }
 
 static void
@@ -627,18 +603,6 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	g_return_if_fail (uri != NULL); /* CHECK */
 
-	if (gedit_utils_uri_exists (uri))
-	{
-		if (is_read_only (uri))
-		{
-			do_save = replace_read_only_file (GTK_WINDOW (dialog), uri);
-		}
-		else
-		{
-			do_save = replace_existing_file (GTK_WINDOW (dialog), uri);
-		}
-	}
-
 	tab = gedit_window_get_active_tab (window);
 	if (tab != NULL && do_save)
 	{
@@ -663,6 +627,28 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 	g_free (uri);
 }
 
+static GtkFileChooserConfirmation
+confirm_overwrite_callback (GtkFileChooser *dialog,
+			    gpointer        data)
+{
+	gchar *uri;
+
+	uri = gtk_file_chooser_get_uri (dialog);
+
+	if (is_read_only (uri))
+	{
+		if (replace_read_only_file (GTK_WINDOW (dialog), uri))
+			return GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+		else
+			return GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN; 
+	}
+	else
+	{
+		/* fall back to the default confirmation dialog */
+		return GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
+	}
+}
+
 /* Save As dialog is modal to its main window */
 void
 gedit_cmd_file_save_as (GtkAction   *action,
@@ -678,6 +664,12 @@ gedit_cmd_file_save_as (GtkAction   *action,
 						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						     GTK_STOCK_SAVE, GTK_RESPONSE_OK,
 						     NULL);
+
+	gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (save_dialog), TRUE);
+	g_signal_connect (save_dialog,
+			  "confirm-overwrite",
+			  G_CALLBACK (confirm_overwrite_callback),
+			  NULL);
 
 	wg = gedit_window_get_group (window);
 
