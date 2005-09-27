@@ -204,7 +204,9 @@ refresh_list (GeditDocumentsPanel *panel)
 }
 
 static void
-sync_name (GeditTab *tab, GParamSpec *pspec, GeditDocumentsPanel *panel)
+sync_name_and_icon (GeditTab            *tab,
+		    GParamSpec          *pspec,
+		    GeditDocumentsPanel *panel)
 {
 	/* TODO: refresh the list only if the panel is visible */
 
@@ -235,7 +237,7 @@ window_tab_removed (GeditWindow         *window,
 		    GeditDocumentsPanel *panel)
 {
 	g_signal_handlers_disconnect_by_func (tab,
-					      G_CALLBACK (sync_name), 
+					      G_CALLBACK (sync_name_and_icon), 
 					      panel);	
 
 	if (_gedit_window_is_removing_all_tabs (window))
@@ -253,11 +255,16 @@ window_tab_added (GeditWindow         *window,
 	GtkTreeIter sibling;
 	GdkPixbuf *pixbuf;
 	gchar *name;
-	
-	g_signal_connect (tab, 
+
+	g_signal_connect (tab,
 			 "notify::name",
-			  G_CALLBACK (sync_name), 
-			  panel);	
+			  G_CALLBACK (sync_name_and_icon),
+			  panel);
+
+	g_signal_connect (tab, 
+			 "notify::state",
+			  G_CALLBACK (sync_name_and_icon),
+			  panel);
 
 	sibling = get_iter_from_tab (panel, tab);
 	
