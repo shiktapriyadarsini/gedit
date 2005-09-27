@@ -361,6 +361,23 @@ load_cancelled (GeditMessageArea *area,
 	g_object_unref (tab);	
 }
 
+static void 
+unrecoverable_reverting_error_message_area_response (GeditMessageArea *message_area,
+						     gint              response_id,
+						     GeditTab         *tab)
+{
+	GeditView *view;
+	
+	gedit_tab_set_state (tab,
+			     GEDIT_TAB_STATE_NORMAL);
+
+	gtk_widget_destroy (GTK_WIDGET (message_area));
+
+	view = gedit_tab_get_view (tab);
+
+	gtk_widget_grab_focus (GTK_WIDGET (view));	
+}
+
 #define MAX_MSG_LENGTH 100
 
 static void
@@ -630,7 +647,6 @@ document_loading (GeditDocument    *document,
 	tab->priv->times_called++;
 }
 
-// TODO: different error messages if tab->priv->state == GEDIT_TAB_STATE_REVERTING
 static void
 document_loaded (GeditDocument *document,
 		 const GError  *error,
@@ -673,20 +689,34 @@ document_loaded (GeditDocument *document,
 			else
 			{
 				gedit_recent_remove (uri);
-				
-				emsg = gedit_unrecoverable_loading_error_message_area_new (uri, 
-										   error);
+
+				if (tab->priv->state == GEDIT_TAB_STATE_LOADING)
+				{
+					emsg = gedit_unrecoverable_loading_error_message_area_new (uri, 
+												   error);
+					g_signal_connect (emsg,
+							  "response",
+							  G_CALLBACK (unrecoverable_loading_error_message_area_response),
+							  tab);
+				}
+				else
+				{
+					emsg = gedit_unrecoverable_reverting_error_message_area_new (uri, 
+												     error);
+
+					g_signal_connect (emsg,
+							  "response",
+							  G_CALLBACK (unrecoverable_reverting_error_message_area_response),
+							  tab);
+				}
 
 				set_message_area (tab, emsg);
-
-				g_signal_connect (emsg,
-						  "response",
-						  G_CALLBACK (unrecoverable_loading_error_message_area_response),
-						  tab);
 			}
 		}					  
 		else
 		{
+			// TODO: different error messages if tab->priv->state == GEDIT_TAB_STATE_REVERTING?
+			// note that while reverting encoding should be ok, so this is unlikely to happen
 			emsg = gedit_conversion_error_while_loading_message_area_new (
 									uri,
 									encoding,
