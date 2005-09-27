@@ -124,12 +124,13 @@ update_buttons_sensitivity (GeditSearchPanel *panel)
 		return;
 	}
 
+	/* Buttons are disabled if the search entry is empty */
 	gtk_widget_set_sensitive (panel->priv->find_button, 
 				  (*search_text != '\0'));	
 	gtk_widget_set_sensitive (panel->priv->replace_button,
-				  (*replace_text != '\0') && (*search_text != '\0'));
+				  (*search_text != '\0'));
 	gtk_widget_set_sensitive (panel->priv->replace_all_button, 
-				  (*replace_text != '\0') && (*search_text != '\0'));
+				  (*search_text != '\0'));
 }
 
 static void
@@ -177,12 +178,14 @@ window_tab_added (GeditWindow      *window,
 	gtk_widget_set_sensitive (panel->priv->replace_entry,
 				  state_normal);
 	gtk_widget_set_sensitive (panel->priv->line_number_entry,
-				  state_normal);	
+				  state_normal);
 	gtk_widget_set_sensitive (panel->priv->search_options_vbox,
 				  state_normal);
 
 	if (state_normal)
+	{
 		update_buttons_sensitivity (panel);
+	}
 	else
 	{
 		gtk_widget_set_sensitive (panel->priv->find_button,
@@ -537,6 +540,9 @@ phrase_found (GeditSearchPanel *panel,
 
 	set_entry_background (panel->priv->search_entry,
 			      GEDIT_SEARCH_ENTRY_NORMAL);
+
+	gtk_widget_set_sensitive (panel->priv->replace_button,TRUE);
+	gtk_widget_set_sensitive (panel->priv->replace_all_button,TRUE);
 }
 
 static void
@@ -548,6 +554,9 @@ phrase_not_found (GeditSearchPanel *panel)
 
 	set_entry_background (panel->priv->search_entry,
 			      GEDIT_SEARCH_ENTRY_NOT_FOUND);
+
+	gtk_widget_set_sensitive (panel->priv->replace_button,FALSE);
+	gtk_widget_set_sensitive (panel->priv->replace_all_button,FALSE);
 }
 
 static gboolean
@@ -689,6 +698,15 @@ run_search (GeditSearchPanel *panel,
 		gedit_view_scroll_to_cursor (view);
 
 		phrase_found (panel, 0); 
+
+		/* Need to disable replace buttons if the search entry
+		 * was empty, because at the end of phrase_found
+		 * the buttons are normally enabled */
+		if (*entry_text == '\0') 
+		{
+			gtk_widget_set_sensitive (panel->priv->replace_button,FALSE);
+			gtk_widget_set_sensitive (panel->priv->replace_all_button,FALSE);
+		}
 	}
 	else
 	{
@@ -788,11 +806,14 @@ replace (GeditSearchPanel *panel)
 	if (doc == NULL)
 		return;
 			
-	replace_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
-	g_return_if_fail ((*replace_entry_text) != '\0');
 	search_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	g_return_if_fail ((search_entry_text) != NULL);
 	g_return_if_fail ((*search_entry_text) != '\0');
-		
+
+	/* replace text may be "", we just delete all occurrencies */
+	replace_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
+	g_return_if_fail ((search_entry_text) != NULL);
+
 	unescaped_search_text = gedit_utils_unescape_search_text (search_entry_text);
 	
 	get_selected_text (GTK_TEXT_BUFFER (doc), 
@@ -843,11 +864,14 @@ replace_all (GeditSearchPanel *panel)
 	if (doc == NULL)
 		return;
 			
-	replace_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
-	g_return_if_fail ((*replace_entry_text) != '\0');
 	search_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
+	g_return_if_fail ((search_entry_text) != NULL);
 	g_return_if_fail ((*search_entry_text) != '\0');
-		
+
+	/* replace text may be "", we just delete all occurrencies */
+	replace_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->replace_entry));
+	g_return_if_fail ((search_entry_text) != NULL);
+
 	/* retrieve search settings from the toggle buttons */
 	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->match_case_checkbutton));
 	entire_word = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->entire_word_checkbutton));
@@ -894,8 +918,8 @@ static void
 search_entry_changed (GtkEditable      *editable,
 		      GeditSearchPanel *panel)
 {
-	search (panel, FALSE);
 	update_buttons_sensitivity (panel);
+	search (panel, FALSE);
 }
 
 static void
@@ -910,7 +934,6 @@ static void
 replace_entry_changed (GtkEditable      *editable,
 		       GeditSearchPanel *panel)
 {
-	update_buttons_sensitivity (panel);
 }
 
 static void
