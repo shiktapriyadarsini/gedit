@@ -19,16 +19,19 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA. 
  */
-#include "config.h"
 
-#include "gedit-python-module.h"
-#include "gedit-python-plugin.h"
-#include "gedit-debug.h"
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 #include <gmodule.h>
 
 #include <pygobject.h>
 #include <pygtk/pygtk.h>
+
+#include "gedit-python-module.h"
+#include "gedit-python-plugin.h"
+#include "gedit-debug.h"
 
 #define GEDIT_PYTHON_MODULE_GET_PRIVATE(object) (G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_PYTHON_MODULE, GeditPythonModulePrivate))
 
@@ -68,7 +71,7 @@ gedit_python_module_init_python ()
 		g_warning ("Python Should only be initted once, since it's in class_init");
 		g_return_if_reached ();
 	}
-	
+
 	Py_Initialize ();
 	PySys_SetArgv (1, argv);
 
@@ -98,21 +101,21 @@ gedit_python_module_init_python ()
 		return;
 	}
 	Py_DECREF (pygtk_required_version);
-	
+
 	/* sys.path.insert(0, ...) for system-wide plugins */
 	sys_path = PySys_GetObject ("path");
 	path = PyString_FromString (GEDIT_PLUGINDIR "/");
 	PyList_Insert (sys_path, 0, path);
 	Py_DECREF(path);
-	
+
 	/* import gedit */
 	gedit = Py_InitModule ("gedit", pygedit_functions);
-    mdict = PyModule_GetDict (gedit);
-	
-    pygedit_register_classes (mdict);
-    pygedit_add_constants (gedit, "GEDIT_");   
-    
-    /* Retreive the Python type for gedit.Plugin */
+	mdict = PyModule_GetDict (gedit);
+
+	pygedit_register_classes (mdict);
+	pygedit_add_constants (gedit, "GEDIT_");   
+
+	/* Retreive the Python type for gedit.Plugin */
 	PyGeditPlugin_Type = (PyTypeObject *) PyDict_GetItemString (mdict, "Plugin"); 
 	if (PyGeditPlugin_Type == NULL)
 	{
@@ -128,22 +131,23 @@ gedit_python_module_load (GTypeModule *gmodule)
 	PyObject *main_module, *main_locals, *locals, *key, *value;
 	PyObject *module;
 	int pos = 0;
-	
+
 	main_module = PyImport_AddModule ("__main__");
 	if (main_module == NULL)
 	{
 		g_warning ("Could not get __main__.");
 		return FALSE;
 	}
-	
+
 	/* If we have a special path, we register it */
 	if (priv->path != NULL)
 	{
 		PyObject *sys_path = PySys_GetObject ("path");
 		PyObject *path = PyString_FromString (priv->path);
-		
+
 		if (PySequence_Contains(sys_path, path) == 0)
 			PyList_Insert (sys_path, 0, path);
+
 		Py_DECREF(path);
 	}
 	
@@ -154,7 +158,7 @@ gedit_python_module_load (GTypeModule *gmodule)
 		PyErr_Print ();
 		return FALSE;
 	}
-	
+
 	locals = PyModule_GetDict (module);
 	while (PyDict_Next (locals, &pos, &key, &value))
 	{
@@ -167,7 +171,7 @@ gedit_python_module_load (GTypeModule *gmodule)
 			return TRUE;
 		}
 	}
-	
+
 	return FALSE;
 }
 
@@ -203,28 +207,28 @@ gedit_python_module_finalize (GObject *object)
 {
 	GeditPythonModulePrivate *priv = GEDIT_PYTHON_MODULE_GET_PRIVATE (object);
 	gedit_debug_message (DEBUG_PLUGINS, "Finalizing python module %s", g_type_name (priv->type));
-	
+
 	g_free (priv->module);
 	g_free (priv->path);
-	
+
 	G_OBJECT_CLASS (gedit_python_module_parent_class)->finalize (object);
 }
 
 static void
-gedit_python_module_get_property (GObject *object,
-				    guint prop_id,
-				    GValue *value,
-				    GParamSpec *pspec)
+gedit_python_module_get_property (GObject    *object,
+				  guint       prop_id,
+				  GValue     *value,
+				  GParamSpec *pspec)
 {
 	/* no readable properties */
 	g_return_if_reached ();
 }
 
 static void
-gedit_python_module_set_property (GObject *object,
-				    guint prop_id,
-				    const GValue *value,
-				    GParamSpec *pspec)
+gedit_python_module_set_property (GObject      *object,
+				  guint         prop_id,
+				  const GValue *value,
+				  GParamSpec   *pspec)
 {
 	GeditPythonModule *mod = GEDIT_PYTHON_MODULE (object);
 
@@ -273,26 +277,26 @@ gedit_python_module_class_init (GeditPythonModuleClass *class)
 	
 	module_class->load = gedit_python_module_load;
 	module_class->unload = gedit_python_module_unload;
-	
+
 	/* Init python subsystem, this should happen only once
-	   in the process lifetime, and doing it here is ok since class_init is called once */
+	 * in the process lifetime, and doing it here is ok since
+	 * class_init is called once */
 	gedit_python_module_init_python ();
 }
 
 GeditPythonModule *
 gedit_python_module_new (const gchar *path,
-						const gchar *module)
+			 const gchar *module)
 {
 	GeditPythonModule *result;
 
-	if (module == NULL || module[0] == '\0') {
+	if (module == NULL || module[0] == '\0')
 		return NULL;
-	}
 
 	result = g_object_new (GEDIT_TYPE_PYTHON_MODULE,
-						"module", module,
-						"path", path,
-						NULL);
+			       "module", module,
+			       "path", path,
+			       NULL);
 
 	g_type_module_set_name (G_TYPE_MODULE (result), module);
 

@@ -19,6 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA. 
  */
+
 #ifndef GEDIT_PYTHON_MODULE_H
 #define GEDIT_PYTHON_MODULE_H
 
@@ -27,14 +28,14 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PYTHON_MODULE			(gedit_python_module_get_type ())
-#define GEDIT_PYTHON_MODULE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_PYTHON_MODULE, GeditPythonModule))
+#define GEDIT_TYPE_PYTHON_MODULE		(gedit_python_module_get_type ())
+#define GEDIT_PYTHON_MODULE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_PYTHON_MODULE, GeditPythonModule))
 #define GEDIT_PYTHON_MODULE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_PYTHON_MODULE, GeditPythonModuleClass))
-#define GEDIT_IS_PYTHON_MODULE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_PYTHON_MODULE))
+#define GEDIT_IS_PYTHON_MODULE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_PYTHON_MODULE))
 #define GEDIT_IS_PYTHON_MODULE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((obj), GEDIT_TYPE_PYTHON_MODULE))
 #define GEDIT_PYTHON_MODULE_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_PYTHON_MODULE, GeditPythonModuleClass))
 
-typedef struct _GeditPythonModule			GeditPythonModule;
+typedef struct _GeditPythonModule		GeditPythonModule;
 typedef struct _GeditPythonModuleClass 		GeditPythonModuleClass;
 typedef struct _GeditPythonModulePrivate	GeditPythonModulePrivate;
 
@@ -48,12 +49,12 @@ struct _GeditPythonModule
 	GTypeModule parent_instance;
 };
 
-GType gedit_python_module_get_type (void);
+GType			 gedit_python_module_get_type		(void);
 
-GeditPythonModule *gedit_python_module_new (const gchar* path,
-											const gchar *module);
+GeditPythonModule	*gedit_python_module_new		(const gchar* path,
+								 const gchar *module);
 
-GObject *gedit_python_module_new_object (GeditPythonModule *module);
+GObject			*gedit_python_module_new_object		(GeditPythonModule *module);
 
 G_END_DECLS
 
