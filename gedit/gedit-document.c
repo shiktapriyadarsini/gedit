@@ -80,7 +80,8 @@ struct _GeditDocumentPrivate
 	gint	     last_save_was_manually : 1; 	
 	gint	     language_set_by_user : 1;
 	gint         is_saving_as : 1;
-	
+	gint         has_selection : 1;
+
 	gchar	    *uri;
 	gint 	     untitled_number;
 
@@ -121,7 +122,8 @@ enum {
 	PROP_SHORTNAME,
 	PROP_MIME_TYPE,
 	PROP_READ_ONLY,
-	PROP_ENCODING
+	PROP_ENCODING,
+	PROP_HAS_SELECTION
 };
 
 enum {
@@ -275,7 +277,7 @@ gedit_document_get_property (GObject    *object,
 			     GParamSpec *pspec)
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (object);
-  
+
 	switch (prop_id)
 	{
 		case PROP_URI:
@@ -293,9 +295,41 @@ gedit_document_get_property (GObject    *object,
 		case PROP_ENCODING:
 			g_value_set_boxed (value, doc->priv->encoding);
 			break;
+		case PROP_HAS_SELECTION:
+			g_value_set_boolean (value, doc->priv->has_selection);
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
+	}
+}
+
+static void
+gedit_document_mark_set (GtkTextBuffer     *buffer,
+                         const GtkTextIter *iter,
+                         GtkTextMark       *mark)
+{
+	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
+
+	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set)
+		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set (buffer,
+									       iter,
+									       mark);
+
+	if (mark == gtk_text_buffer_get_insert (buffer) ||
+	    mark == gtk_text_buffer_get_selection_bound (buffer))
+	{
+		gboolean has_selection;
+
+		has_selection = gtk_text_buffer_get_selection_bounds (buffer,
+								      NULL,
+								      NULL);
+
+		if (has_selection != doc->priv->has_selection)
+		{
+			doc->priv->has_selection = has_selection;
+			g_object_notify (G_OBJECT (doc), "has-selection");
+		}
 	}
 }
 
@@ -303,11 +337,14 @@ static void
 gedit_document_class_init (GeditDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkTextBufferClass *buf_class = GTK_TEXT_BUFFER_CLASS (klass);
 
 	object_class->finalize = gedit_document_finalize;
 	object_class->set_property = gedit_document_set_property;
 	object_class->get_property = gedit_document_get_property;
-	
+
+	buf_class->mark_set = gedit_document_mark_set;
+
 	g_object_class_install_property (object_class, PROP_URI,
 					 g_param_spec_string ("uri",
 					 		      "URI",
@@ -338,6 +375,14 @@ gedit_document_class_init (GeditDocumentClass *klass)
 					 		     "The GeditEncoding used for the document",
 					 		     GEDIT_TYPE_ENCODING,
 					 		     G_PARAM_READABLE));
+
+	/* This should really go in GtkTextBuffer */
+	g_object_class_install_property (object_class, PROP_HAS_SELECTION,
+					 g_param_spec_boolean ("has-selection",
+					 		       "Has selection",
+					 		       "Wheter the document has selected text",
+					 		       FALSE,
+					 		       G_PARAM_READABLE));
 
 	document_signals[LOADING] =
    		g_signal_new ("loading",
@@ -1087,11 +1132,19 @@ gboolean
 gedit_document_get_deleted (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-	
+
 	if (doc->priv->uri == NULL)
 		return FALSE;
 		
 	return !gnome_vfs_uri_exists (doc->priv->vfs_uri);
+}
+
+gboolean
+gedit_document_get_has_selection (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	return doc->priv->has_selection;
 }
 
 /*

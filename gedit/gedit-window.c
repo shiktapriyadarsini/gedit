@@ -435,15 +435,14 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	gboolean       b;
 	gboolean       state_normal;
 	GeditTabState  state;
-	
+
 	g_return_if_fail (GEDIT_TAB (tab));
-		
+
 	gedit_debug (DEBUG_WINDOW);
-		
+
 	state = gedit_tab_get_state (tab);
-		
 	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
-							
+
 	view = gedit_tab_get_view (tab);
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 	
@@ -498,12 +497,14 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditCut");
 	gtk_action_set_sensitive (action,
-				  state_normal);
-				  
+				  state_normal &&
+				  gedit_document_get_has_selection (doc));
+
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditCopy");
 	gtk_action_set_sensitive (action,
-				  state_normal);
+				  state_normal &&
+				  gedit_document_get_has_selection (doc));
 				  
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditPaste");
@@ -513,7 +514,8 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditDelete");
 	gtk_action_set_sensitive (action,
-				  state_normal);
+				  state_normal &&
+				  gedit_document_get_has_selection (doc));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFind");
@@ -1796,6 +1798,44 @@ can_redo (GeditDocument *doc,
 }
 
 static void
+selection_changed (GeditDocument *doc,
+		   GParamSpec    *pspec,
+		   GeditWindow   *window)
+{
+	GeditTab *tab;
+	GtkAction *action;
+	GeditTabState state;
+	gboolean state_normal;
+
+	gedit_debug (DEBUG_WINDOW);
+
+	if (doc != gedit_window_get_active_document (window))
+		return;
+
+	tab = gedit_tab_get_from_document (doc);
+	state = gedit_tab_get_state (tab);
+	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditCut");
+	gtk_action_set_sensitive (action,
+				  state_normal &&
+				  gedit_document_get_has_selection (doc));
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditCopy");
+	gtk_action_set_sensitive (action,
+				  state_normal &&
+				  gedit_document_get_has_selection (doc));
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "EditDelete");
+	gtk_action_set_sensitive (action,
+				  state_normal &&
+				  gedit_document_get_has_selection (doc));
+}
+
+static void
 sync_languages_menu (GeditDocument *doc,
 		     GParamSpec    *pspec,
 		     GeditWindow   *window)
@@ -1927,6 +1967,10 @@ notebook_tab_added (GeditNotebook *notebook,
 	g_signal_connect (doc,
 			  "can-redo",
 			  G_CALLBACK (can_redo),
+			  window);
+	g_signal_connect (doc,
+			  "notify::has-selection",
+			  G_CALLBACK (selection_changed),
 			  window);
 	g_signal_connect (doc,
 			  "notify::language",

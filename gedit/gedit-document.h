@@ -164,6 +164,9 @@ gboolean	 gedit_document_get_externally_modified
 						(GeditDocument       *doc);
 */
 
+gboolean	 gedit_document_get_has_selection
+						(GeditDocument       *doc);
+
 gboolean	 gedit_document_goto_line 	(GeditDocument       *doc, 
 						 gint                 line);
 
