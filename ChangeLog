@@ -1,3 +1,8 @@
+2005-09-29  Raphael Slinckx  <rslinckx@cvs.gnome.org>
+
+	* plugins/pythonconsole/pythonconsole.py:
+	Use new icon method for bottom panel.
+
 ==== gedit 2.10.0 ====
 
 2005-03-08  Paolo Borelli  <pborelli@katamail.com>

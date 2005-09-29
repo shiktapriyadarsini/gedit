@@ -7,10 +7,12 @@ class ConsolePlugin(gedit.Plugin):
 			
 	def activate(self, window):
 		# Build the console widget
-		cons = init_console(window, self.console_exit)
+		cons = init_console(window)
 		
 		bottom = window.get_bottom_panel()
-		bottom.add_item(cons, "Python Console", gtk.STOCK_EXECUTE)
+		image = gtk.Image()
+		image.set_from_icon_name("gnome-mime-text-x-python", gtk.ICON_SIZE_BUTTON)
+		bottom.add_item(cons, "Python Console", image)
 			
 		# Store data in the window object
 		window._pythonconsole_window_data = (cons)
@@ -18,18 +20,13 @@ class ConsolePlugin(gedit.Plugin):
 	def deactivate(self, window):
 		# Retreive the data of the window object
 		cons = window._pythonconsole_window_data
-				
+		del window._pythonconsole_window_data
+		
 		# Shutdown the console
 		bottom = window.get_bottom_panel()
 		bottom.remove_item(cons)
 		
 	def update_ui(self, window):
-		pass
-
-	def show_console(self, action, window):
-		window.get_bottom_panel().activate_item(window._pythonconsole_window_data[0])
-	
-	def console_exit(self):
 		pass
 
 def init_console(window, quit_cb=None):
