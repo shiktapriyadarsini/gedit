@@ -60,6 +60,7 @@
 
 #define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
 #define GEDIT_OPEN_LOCATION_DIALOG_KEY "gedit-open-location-dialog-key"
+#define GEDIT_PAGE_SETUP_DIALOG_KEY "gedit-page-setup-dialog-key"
 
 static gint
 load_file_list (GeditWindow         *window,
@@ -981,13 +982,51 @@ gedit_cmd_file_revert (GtkAction   *action,
 	gtk_widget_show (dialog);
 }
 
+static void
+page_setup_dialog_destroyed (GeditWindow *window,
+			     gpointer     data)
+{
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_PAGE_SETUP_DIALOG_KEY,
+			   NULL);
+}
+
 void
 gedit_cmd_file_page_setup (GtkAction   *action,
 			   GeditWindow *window)
 {
+	GtkWidget *dlg;
+	gpointer data;
+
 	gedit_debug (DEBUG_COMMANDS);
 
-	gedit_show_page_setup_dialog (GTK_WINDOW (window));
+	data = g_object_get_data (G_OBJECT (window), GEDIT_PAGE_SETUP_DIALOG_KEY);
+
+	if (data != NULL)
+	{
+		g_return_if_fail (GEDIT_IS_PAGE_SETUP_DIALOG (data));
+
+		gtk_window_present (GTK_WINDOW (data));
+
+		return;
+	}
+
+	dlg = gedit_page_setup_dialog_new (GTK_WINDOW (window));
+
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_PAGE_SETUP_DIALOG_KEY,
+			   dlg);
+
+	g_object_weak_ref (G_OBJECT (dlg),
+			   (GWeakNotify) page_setup_dialog_destroyed,
+			   window);
+
+	g_signal_connect_swapped (dlg,
+				  "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  window);
+
+	gtk_widget_show (dlg);
 }
 
 void
