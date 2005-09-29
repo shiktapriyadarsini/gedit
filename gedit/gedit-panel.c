@@ -60,7 +60,7 @@ typedef struct _GeditPanelItem GeditPanelItem;
 struct _GeditPanelItem 
 {
 	gchar *name;
-	gchar *stock_id;
+	GtkWidget *icon;
 };
 
 /* Signals */
@@ -206,6 +206,99 @@ tab_label_style_set_cb (GtkWidget *label,
 	}
 }
 
+/* This is ugly, since it supports only known
+ * storage types of GtkImage, otherwise fall back
+ * to the empty icon.
+ * See http://bugzilla.gnome.org/show_bug.cgi?id=317520.
+ */
+static void
+set_gtk_image_from_gtk_image (GtkImage *image,
+			      GtkImage *source)
+{
+	switch (gtk_image_get_storage_type (source))
+	{
+	case GTK_IMAGE_EMPTY:
+		gtk_image_clear (image);
+		break;
+	case GTK_IMAGE_PIXMAP:
+		{
+			GdkPixmap *pm;
+			GdkBitmap *bm;
+
+			gtk_image_get_pixmap (source, &pm, &bm);
+			gtk_image_set_from_pixmap (image, pm, bm);
+		}
+		break;
+	case GTK_IMAGE_IMAGE:
+		{
+			GdkImage *i;
+			GdkBitmap *bm;
+
+			gtk_image_get_image (source, &i, &bm);
+			gtk_image_set_from_image (image, i, bm);
+		}
+		break;
+	case GTK_IMAGE_PIXBUF:
+		{
+			GdkPixbuf *pb;
+
+			pb = gtk_image_get_pixbuf (source);
+			gtk_image_set_from_pixbuf (image, pb);
+		}
+		break;
+	case GTK_IMAGE_STOCK:
+		{
+			gchar *s_id;
+			GtkIconSize s;
+
+			gtk_image_get_stock (source, &s_id, &s);
+			gtk_image_set_from_stock (image, s_id, s);
+		}
+		break;
+	case GTK_IMAGE_ICON_SET:
+		{
+			GtkIconSet *is;
+			GtkIconSize s;
+
+			gtk_image_get_icon_set (source, &is, &s);
+			gtk_image_set_from_icon_set (image, is, s);
+		}
+		break;
+	case GTK_IMAGE_ANIMATION:
+		{
+			GdkPixbufAnimation *a;
+
+			a = gtk_image_get_animation (source);
+			gtk_image_set_from_animation (image, a);
+		}
+		break;
+	case GTK_IMAGE_ICON_NAME:
+		{
+			const gchar *n;
+			GtkIconSize s;
+
+			gtk_image_get_icon_name (source, &n, &s);
+			gtk_image_set_from_icon_name (image, n, s);
+		}
+		break;
+	default:
+		gtk_image_set_from_stock (image,
+					  GTK_STOCK_FILE,
+					  GTK_ICON_SIZE_MENU);
+	}
+}
+
+static void
+sync_title (GeditPanel     *panel,
+	    GeditPanelItem *item)
+{
+	gtk_label_set_text (GTK_LABEL (panel->priv->title_label), 
+			    item->name);
+
+	set_gtk_image_from_gtk_image (GTK_IMAGE (panel->priv->title_image),
+				      GTK_IMAGE (item->icon));
+}
+
 static void
 notebook_page_changed (GtkNotebook     *notebook,
                        GtkNotebookPage *page,
@@ -224,22 +317,7 @@ notebook_page_changed (GtkNotebook     *notebook,
 						    PANEL_ITEM_KEY);
 	g_return_if_fail (data != NULL);
 
-	gtk_label_set_text (GTK_LABEL (panel->priv->title_label), 
-			    data->name);
-
-	/* FIXME: manage the case stock_id is invalid - Paolo */		    
-	if (data->stock_id == NULL)
-	{
-		gtk_image_set_from_stock (GTK_IMAGE (panel->priv->title_image),
-					  GTK_STOCK_FILE,
-					  GTK_ICON_SIZE_MENU);
-	}
-	else
-	{
-		gtk_image_set_from_stock (GTK_IMAGE (panel->priv->title_image),
-					  data->stock_id,
-					  GTK_ICON_SIZE_MENU);
-	}
+	sync_title (panel, data);
 
 	pages = gtk_notebook_get_n_pages (notebook);
 	for (i = 0; i < pages; ++i)
@@ -327,22 +405,22 @@ gedit_panel_init (GeditPanel *panel)
 	
 	dummy_label = gtk_label_new (" ");
 	
-	gtk_box_pack_start (GTK_BOX (icon_name_hbox), 
-			    dummy_label, 
-			    FALSE, 
-			    FALSE, 
-			    0);	
+	gtk_box_pack_end (GTK_BOX (icon_name_hbox), 
+			  dummy_label, 
+			  FALSE, 
+			  FALSE, 
+			  0);	
 			    
 	panel->priv->title_label = gtk_label_new (_("Empty"));
 
 	/* FIXME: elipsize */
 
-	gtk_box_pack_start (GTK_BOX (icon_name_hbox), 
-			    panel->priv->title_label, 
-			    FALSE, 
-			    FALSE, 
-			    0);			   
-	
+	gtk_box_pack_end (GTK_BOX (icon_name_hbox), 
+			  panel->priv->title_label, 
+			  FALSE, 
+			  FALSE, 
+			  0);			   
+
 	panel->priv->close_button = gtk_button_new ();						    
 	gtk_button_set_relief (GTK_BUTTON (panel->priv->close_button), 
 			       GTK_RELIEF_NONE);
@@ -411,10 +489,10 @@ static GtkWidget *
 build_tab_label (GeditPanel  *panel,
 		 GtkWidget   *item,
 		 const gchar *name,
-		 const gchar *stock_id)
+		 GtkWidget   *icon)
 {
 	GtkWidget *hbox, *label_hbox, *label_ebox;
-	GtkWidget *label, *icon;
+	GtkWidget *label;
 
 	/* set hbox spacing and label padding (see below) so that there's an
 	 * equal amount of space around the label */
@@ -427,20 +505,7 @@ build_tab_label (GeditPanel  *panel,
 	label_hbox = gtk_hbox_new (FALSE, 4);
 	gtk_container_add (GTK_CONTAINER (label_ebox), label_hbox);
 
-	/* setup site icon, empty by default */
-	icon = gtk_image_new ();
-	if (stock_id == NULL)
-	{
-		gtk_image_set_from_stock (GTK_IMAGE (icon),
-					  GTK_STOCK_FILE,
-					  GTK_ICON_SIZE_MENU);
-	}
-	else
-	{
-		gtk_image_set_from_stock (GTK_IMAGE (icon),
-					  stock_id,
-					  GTK_ICON_SIZE_MENU);
-	}
+	/* setup icon */
 	gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
 
 	/* setup label */
@@ -473,7 +538,7 @@ void
 gedit_panel_add_item (GeditPanel  *panel, 
 		      GtkWidget   *item, 
 		      const gchar *name,
-		      const gchar *stock_id)
+		      GtkWidget   *image)
 {
 	GeditPanelItem *data;
 	GtkWidget *tab_label;
@@ -482,17 +547,28 @@ gedit_panel_add_item (GeditPanel  *panel,
 	g_return_if_fail (GEDIT_IS_PANEL (panel));
 	g_return_if_fail (GTK_IS_WIDGET (item));
 	g_return_if_fail (name != NULL);
+	g_return_if_fail (image == NULL || GTK_IS_IMAGE (image));
 
 	data = g_new (GeditPanelItem, 1);
 
 	data->name = g_strdup (name);
-	data->stock_id = g_strdup (stock_id);
+
+	if (image == NULL)
+	{
+		/* default to empty */
+		data->icon = gtk_image_new_from_stock (GTK_STOCK_FILE,
+						       GTK_ICON_SIZE_MENU);
+	}
+	else
+	{
+		data->icon = image;
+	}
 
 	g_object_set_data (G_OBJECT (item),
 		           PANEL_ITEM_KEY,
 		           data);
 
-	tab_label = build_tab_label (panel, item, name, stock_id);
+	tab_label = build_tab_label (panel, item, data->name, data->icon);
 
 	menu_label = gtk_label_new (name);
 	gtk_misc_set_alignment (GTK_MISC (menu_label), 0.0, 0.5);
@@ -504,6 +580,23 @@ gedit_panel_add_item (GeditPanel  *panel,
 				       item,
 				       tab_label,
 				       menu_label);
+}
+
+void
+gedit_panel_add_item_with_stock_icon (GeditPanel  *panel, 
+				      GtkWidget   *item, 
+				      const gchar *name,
+				      const gchar *stock_id)
+{
+	GtkWidget *icon = NULL;
+
+	if (stock_id != NULL)
+	{
+		icon = gtk_image_new_from_stock (stock_id,
+						 GTK_ICON_SIZE_MENU);
+	}
+
+	gedit_panel_add_item (panel, item, name, icon);
 }
 
 gboolean
@@ -528,12 +621,12 @@ gedit_panel_remove_item (GeditPanel *panel,
 	g_return_val_if_fail (data != NULL, FALSE);
 	
 	g_free (data->name);
-	g_free (data->stock_id);
 	g_free (data);
+
 	g_object_set_data (G_OBJECT (item),
 		           PANEL_ITEM_KEY,
 		           NULL);
-		           
+
 	ebox = g_object_get_data (G_OBJECT (item), "label-ebox");
 	gtk_tooltips_set_tip (GTK_TOOLTIPS (panel->priv->tooltips), 
 			      ebox, 

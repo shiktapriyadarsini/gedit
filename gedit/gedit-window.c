@@ -2280,16 +2280,16 @@ create_side_panel (GeditWindow *window)
 				MAX (100, gedit_prefs_manager_get_side_panel_size ()));
 
 	documents_panel = gedit_documents_panel_new (window);
-	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), 
-			      documents_panel, 
-			      "Documents", 
-			      GTK_STOCK_FILE);
+	gedit_panel_add_item_with_stock_icon (GEDIT_PANEL (window->priv->side_panel),
+					      documents_panel,
+					      "Documents",
+					      GTK_STOCK_FILE);
 
 	window->priv->search_panel = gedit_search_panel_new (window);
-	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel), 
-			      window->priv->search_panel, 
-			      "Search", 
-			      GTK_STOCK_FIND);
+	gedit_panel_add_item_with_stock_icon (GEDIT_PANEL (window->priv->side_panel),
+					      window->priv->search_panel,
+					      "Search",
+					      GTK_STOCK_FIND);
 
 	visible = gedit_prefs_manager_get_side_pane_visible ();
 

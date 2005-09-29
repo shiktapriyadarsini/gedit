@@ -397,6 +397,17 @@
   (parameters
     '("GtkWidget*" "item")
     '("const-gchar*" "name")
+    '("GtkWidget*" "image")
+  )
+)
+
+(define-method add_item_with_stock_icon
+  (of-object "GeditPanel")
+  (c-name "gedit_panel_add_item_with_stock_icon")
+  (return-type "none")
+  (parameters
+    '("GtkWidget*" "item")
+    '("const-gchar*" "name")
     '("const-gchar*" "stock_id")
   )
 )

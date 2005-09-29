@@ -136,11 +136,11 @@ impl_activate (GeditPlugin *plugin,
 	side_panel = gedit_window_get_side_panel (window);
 	taglist_panel = gedit_taglist_plugin_panel_new (window);
 	
-	gedit_panel_add_item (side_panel, 
-			      taglist_panel, 
-			      "Tags", 
-			      GTK_STOCK_ADD);
-			      
+	gedit_panel_add_item_with_stock_icon (side_panel, 
+					      taglist_panel, 
+					      "Tags", 
+					      GTK_STOCK_ADD);
+
 	g_object_set_data (G_OBJECT (window), 
 			   WINDOW_DATA_KEY,
 			   taglist_panel);

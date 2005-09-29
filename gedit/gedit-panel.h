@@ -79,19 +79,26 @@ struct _GeditPanelClass
 /*
  * Public methods
  */
-GType 		 gedit_panel_get_type 		(void) G_GNUC_CONST;
+GType 		 gedit_panel_get_type 			(void) G_GNUC_CONST;
 
-GtkWidget 	*gedit_panel_new 		(void);
+GtkWidget 	*gedit_panel_new 			(void);
 
-void		 gedit_panel_add_item		(GeditPanel     *panel,
-					      	 GtkWidget      *item,
-					      	 const gchar    *name,
-					      	 const gchar    *stock_id);
+void		 gedit_panel_add_item			(GeditPanel     *panel,
+						      	 GtkWidget      *item,
+						      	 const gchar    *name,
+							 GtkWidget      *image);
+
+void		 gedit_panel_add_item_with_stock_icon	(GeditPanel     *panel,
+							 GtkWidget      *item,
+						      	 const gchar    *name,
+						      	 const gchar    *stock_id);
+
 gboolean	 gedit_panel_remove_item	(GeditPanel     *panel,
 					  	 GtkWidget      *item);
-					  	 
+
 gboolean	 gedit_panel_activate_item 	(GeditPanel     *panel,
 					    	 GtkWidget      *item);
+
 gboolean	 gedit_panel_item_is_active 	(GeditPanel     *panel,
 					    	 GtkWidget      *item);
 
