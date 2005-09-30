@@ -119,6 +119,10 @@ gboolean gedit_utils_get_glade_widgets (const gchar *filename,
 					GtkWidget **error_widget,
 					const gchar *widget_name,
 					...) G_GNUC_NULL_TERMINATED;
+
+GtkWidget *gedit_gtk_button_new_with_stock_icon (const gchar *label,
+						 const gchar *stock_id);
+
                                 
 #endif /* __GEDIT_UTILS_H__ */
 

@@ -141,7 +141,7 @@ gedit_utils_menu_position_under_widget (GtkMenu  *menu,
 	*push_in = TRUE;
 }
 
-static GtkWidget *
+GtkWidget *
 gedit_gtk_button_new_with_stock_icon (const gchar *label,
 				      const gchar *stock_id)
 {

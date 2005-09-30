@@ -49,6 +49,7 @@ NOINST_H_FILES =			\
 	gedit-io-error-dialogs.h	\
 	gedit-tooltips.h		\
 	gedit-languages-manager.h	\
+	gedit-plugin-manager.h		\
 	gedit-plugins-engine.h		\
 	gedit-module.h			\
 	gedit-ui.h			\
@@ -140,6 +141,7 @@ gedit_SOURCES = 			\
 	gedit-plugin.c			\
 	gedit-module.c			\
 	gedit-plugins-engine.c		\
+	gedit-plugin-manager.c		\
 	gedit-session.c			\
 	$(NOINST_H_FILES)		\
 	$(INST_H_FILES)

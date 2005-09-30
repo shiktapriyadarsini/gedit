@@ -14,8 +14,6 @@ noinst_LTLIBRARIES = libdialogs.la
 libdialogs_la_SOURCES = 			\
 	gedit-page-setup-dialog.c		\
 	gedit-page-setup-dialog.h		\
-	gedit-plugin-manager.h			\
-	gedit-plugin-manager.c			\
 	gedit-preferences-dialog.h		\
 	gedit-preferences-dialog.c		\
 	gedit-close-confirmation-dialog.c 	\
@@ -30,7 +28,6 @@ glade_DATA =				\
 	gedit-encodings-dialog.glade2	\
 	gedit-preferences.glade2	\
 	page-setup-dialog.glade2	\
-	plugin-manager.glade2		\
 	uri.glade2			\
 	goto-line.glade2
 
