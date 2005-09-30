@@ -203,6 +203,7 @@ GtkSourceLanguage
 const GeditEncoding 
 		*gedit_document_get_encoding	(GeditDocument       *doc);
 
+// CHECK: I think this can be private
 void		 gedit_document_set_auto_save_enabled	
 						(GeditDocument       *doc, 
 						 gboolean             enable);

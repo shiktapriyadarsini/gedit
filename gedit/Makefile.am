@@ -59,6 +59,7 @@ NOINST_H_FILES =			\
 	gedit-document-saver.h		\
 	gedit-io-error-message-area.h	\
 	gedit-search-panel.h		\
+	gedit-spinner.h			\
 	gedit-session.h
 
 if ENABLE_PYTHON
@@ -142,6 +143,7 @@ gedit_SOURCES = 			\
 	gedit-module.c			\
 	gedit-plugins-engine.c		\
 	gedit-plugin-manager.c		\
+	gedit-spinner.c			\
 	gedit-session.c			\
 	$(NOINST_H_FILES)		\
 	$(INST_H_FILES)

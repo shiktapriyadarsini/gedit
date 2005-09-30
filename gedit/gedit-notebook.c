@@ -56,6 +56,7 @@
 #include "gedit-marshal.h"
 #include "gedit-window.h"
 #include "gedit-tooltips.h"
+#include "gedit-spinner.h"
 
 #define AFTER_ALL_TABS -1
 #define NOT_IN_APP_WINDOWS -2
@@ -685,71 +686,15 @@ gedit_notebook_finalize (GObject *object)
 }
 
 static void
-sync_load_status (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
-{
-#if 0 /* CHECK */
-	GtkWidget *spinner, *icon;
-
-	spinner = GTK_WIDGET (g_object_get_data (G_OBJECT (proxy), "spinner"));
-	icon = GTK_WIDGET (g_object_get_data (G_OBJECT (proxy), "icon"));
-	g_return_if_fail (spinner != NULL && icon != NULL);
-
-	if (ephy_tab_get_load_status (tab))
-	{
-		gtk_widget_hide (icon);
-		gtk_widget_show (spinner);
-		ephy_spinner_start (EPHY_SPINNER (spinner));
-	}
-	else
-	{
-		ephy_spinner_stop (EPHY_SPINNER (spinner));
-		gtk_widget_hide (spinner);
-		gtk_widget_show (icon);
-	}
-#endif
-}
-
-static void
-sync_icon (GeditTab *tab, GParamSpec *pspec, GtkWidget *proxy)
-{
-#if 0 /* CHECK */
-	EphyFaviconCache *cache;
-	GdkPixbuf *pixbuf = NULL;
-	GtkImage *icon = NULL;
-	const char *address;
-
-	cache = EPHY_FAVICON_CACHE
-		(ephy_embed_shell_get_favicon_cache (EPHY_EMBED_SHELL (ephy_shell)));
-	address = ephy_tab_get_icon_address (tab);
-
-	if (address)
-	{
-		pixbuf = ephy_favicon_cache_get (cache, address);
-	}
-
-	icon = GTK_IMAGE (g_object_get_data (G_OBJECT (proxy), "icon"));
-	if (icon)
-	{
-		gtk_image_set_from_pixbuf (icon, pixbuf);
-	}
-
-	if (pixbuf)
-	{
-		g_object_unref (pixbuf);
-	}
-#endif 
-}
-
-static void
 sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 {
 	GtkWidget *label;
 	GtkWidget *ebox;
 	GtkWidget *button;
+	GtkWidget *spinner;
 	GeditTooltips *tips;	
 	gchar *str;
 	GtkImage *icon;
-	GdkPixbuf *pixbuf;
 	GeditTabState  state;
 	
 	tips = GEDIT_TOOLTIPS (g_object_get_data (G_OBJECT (hbox), "tooltips"));
@@ -757,8 +702,14 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label-ebox"));
 	icon = GTK_IMAGE (g_object_get_data (G_OBJECT (hbox), "icon"));
 	button = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "close-button"));
+	spinner = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "spinner"));
 	
-	g_return_if_fail ((tips != NULL) && (label != NULL) && (ebox != NULL) && (button != NULL));
+	g_return_if_fail ((tips    != NULL) && 
+			  (label   != NULL) && 
+			  (ebox    != NULL) && 
+			  (button  != NULL) &&
+			  (icon    != NULL) &&
+			  (spinner != NULL));
 
 	str = _gedit_tab_get_name (tab);
 	g_return_if_fail (str != NULL);
@@ -771,20 +722,37 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	
 	gedit_tooltips_set_tip (tips, ebox, str, NULL);
 	g_free (str);
-	
-	g_return_if_fail (icon != NULL);
-	
-	pixbuf = _gedit_tab_get_icon (tab);
-	gtk_image_set_from_pixbuf (icon, pixbuf);
-
-	if (pixbuf != NULL)
-		g_object_unref (pixbuf);
 		
 	state = gedit_tab_get_state (tab);
 	
 	gtk_widget_set_sensitive (button, 
 				  (state != GEDIT_TAB_STATE_SAVING) &&
 				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
+				  
+	if ((state == GEDIT_TAB_STATE_LOADING)   ||
+	    (state == GEDIT_TAB_STATE_SAVING)    ||
+	    (state == GEDIT_TAB_STATE_REVERTING))
+	{
+		gtk_widget_hide (GTK_WIDGET (icon));
+		
+		gtk_widget_show (spinner);
+		gedit_spinner_start (GEDIT_SPINNER (spinner));
+	}
+	else
+	{
+		GdkPixbuf *pixbuf;
+		
+		pixbuf = _gedit_tab_get_icon (tab);
+		gtk_image_set_from_pixbuf (icon, pixbuf);
+
+		if (pixbuf != NULL)
+			g_object_unref (pixbuf);
+
+		gtk_widget_show (GTK_WIDGET (icon));
+		
+		gtk_widget_hide (spinner);
+		gedit_spinner_stop (GEDIT_SPINNER (spinner));
+	}
 }
 
 static void
@@ -810,7 +778,7 @@ build_tab_label (GeditNotebook *nb,
 	GtkSettings *settings;
 	gint w, h;
 	GtkWidget *image;
-	// GtkWidget *spinner;
+	GtkWidget *spinner;
 	GtkWidget *icon;
 
 	hbox = gtk_hbox_new (FALSE, 0);
@@ -845,12 +813,12 @@ build_tab_label (GeditNotebook *nb,
 	g_signal_connect (G_OBJECT (close_button), "clicked",
                           G_CALLBACK (close_button_clicked_cb),
                           tab);
-#if 0
-	/* setup load feedback */
-	spinner = ephy_spinner_new ();
-	ephy_spinner_set_size (EPHY_SPINNER (spinner), GTK_ICON_SIZE_MENU);
+
+	/* setup spinner */
+	spinner = gedit_spinner_new ();
+	gedit_spinner_set_size (GEDIT_SPINNER (spinner), GTK_ICON_SIZE_MENU);
 	gtk_box_pack_start (GTK_BOX (label_hbox), spinner, FALSE, FALSE, 0);
-#endif
+
 	/* setup site icon, empty by default */
 	icon = gtk_image_new ();
 	gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
@@ -858,7 +826,7 @@ build_tab_label (GeditNotebook *nb,
 	/* setup label */
         label = gtk_label_new ("");
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-        gtk_misc_set_padding (GTK_MISC (label), 4, 0);
+        gtk_misc_set_padding (GTK_MISC (label), 2, 0);
 	gtk_box_pack_start (GTK_BOX (label_hbox), label, FALSE, FALSE, 0);
 
 	dummy_label = gtk_label_new ("");
@@ -875,7 +843,7 @@ build_tab_label (GeditNotebook *nb,
 	
 	g_object_set_data (G_OBJECT (hbox), "label", label);
 	g_object_set_data (G_OBJECT (hbox), "label-ebox", label_ebox);
-//	g_object_set_data (G_OBJECT (hbox), "spinner", spinner);
+	g_object_set_data (G_OBJECT (hbox), "spinner", spinner);
 	g_object_set_data (G_OBJECT (hbox), "icon", icon);
 	g_object_set_data (G_OBJECT (hbox), "close-button", close_button);
 	g_object_set_data (G_OBJECT (hbox), "tooltips", nb->priv->title_tips);
@@ -914,16 +882,8 @@ gedit_notebook_add_tab (GeditNotebook *nb,
 				  label, 
 				  position);
 
-	sync_icon (tab, NULL, label);
 	sync_name (tab, NULL, label);
-	sync_load_status (tab, NULL, label);
-/*
-	g_signal_connect_object (tab, 
-				 "notify::icon",
-			         G_CALLBACK (sync_icon), 
-			         label, 
-			         0);
-*/			         
+		         
 	g_signal_connect_object (tab, 
 				 "notify::name",
 			         G_CALLBACK (sync_name), 
@@ -934,13 +894,7 @@ gedit_notebook_add_tab (GeditNotebook *nb,
 			         G_CALLBACK (sync_name), 
 			         label, 
 			         0);			         
-/*			         
-	g_signal_connect_object (tab, 
-				 "notify::load-status",
-				 G_CALLBACK (sync_load_status), 
-				 label, 
-				 0);
-*/
+
 	g_signal_emit (G_OBJECT (nb), signals[TAB_ADDED], 0, tab);
 
 	/* The signal handler may have reordered the tabs */
@@ -1005,19 +959,11 @@ remove_tab (GeditTab      *tab,
 			        ebox, 
 			        NULL, 
 			        NULL);
-/*
-	g_signal_handlers_disconnect_by_func (tab,
-					      G_CALLBACK (sync_icon), 
-					      label);
-*/					      
+					      
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_name), 
 					      label);
-/*
-	g_signal_handlers_disconnect_by_func (tab,
-					      G_CALLBACK (sync_load_status), 
-					      label);
-*/
+
 	/**
 	 * we ref the tab so that it's still alive while the tabs_removed
 	 * signal is processed.
