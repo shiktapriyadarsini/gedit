@@ -41,20 +41,15 @@
 #include <atk/atk.h>
 #include <gedit/gedit-encodings.h>
 
+G_BEGIN_DECLS
+
 /* useful macro */
 #define GBOOLEAN_TO_POINTER(i) ((gpointer) ((i) ? 2 : 1))
 #define GPOINTER_TO_BOOLEAN(i) ((gboolean) ((((gint)(i)) == 2) ? TRUE : FALSE))
 
 #define IS_VALID_BOOLEAN(v) (((v == TRUE) || (v == FALSE)) ? TRUE : FALSE)
 
-/* some common error strings, %s must be a file path */
-/* FIXME: remove MISSING_FILE and MISSING_WIDGETS: code should use gedit_utils_get_glade_widgets */
-#define MISSING_FILE    N_("Could not find \"%s\". Please, reinstall gedit.\n")
-#define MISSING_WIDGETS N_("Could not find the required widgets inside\"%s\". Please, reinstall gedit.\n")
-
-
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
-
 
 gboolean gedit_utils_is_uri_read_only (const gchar* uri);
 gboolean gedit_utils_uri_has_file_scheme (const gchar *uri);
@@ -64,6 +59,9 @@ void gedit_utils_menu_position_under_widget (GtkMenu  *menu,
 					     gint     *y,
 					     gboolean *push_in,
 					     gpointer  user_data);
+
+GtkWidget *gedit_gtk_button_new_with_stock_icon (const gchar *label,
+						 const gchar *stock_id);
 
 GtkWidget *gedit_dialog_add_button (GtkDialog *dialog, 
 				    const gchar* text, 
@@ -120,10 +118,8 @@ gboolean gedit_utils_get_glade_widgets (const gchar *filename,
 					const gchar *widget_name,
 					...) G_GNUC_NULL_TERMINATED;
 
-GtkWidget *gedit_gtk_button_new_with_stock_icon (const gchar *label,
-						 const gchar *stock_id);
+G_END_DECLS
 
-                                
 #endif /* __GEDIT_UTILS_H__ */
 
 
