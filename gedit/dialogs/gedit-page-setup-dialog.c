@@ -45,7 +45,7 @@
 #include "gedit-page-setup-dialog.h"
 #include "gedit-utils.h"
 #include "gedit-debug.h"
-
+#include "gedit-help.h"
 
 /*
  * gedit-page-setup dialog is a singleton since we don't

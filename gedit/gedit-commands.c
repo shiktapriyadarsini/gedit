@@ -47,6 +47,7 @@
 #include "gedit-debug.h"
 #include "gedit-view.h"
 #include "gedit-utils.h"
+#include "gedit-help.h"
 #include "gedit-print.h"
 #include "gedit-recent.h"
 #include "dialogs/gedit-page-setup-dialog.h"

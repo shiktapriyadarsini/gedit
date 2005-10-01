@@ -44,7 +44,7 @@
 #include "gedit-prefs-manager.h"
 #include "gedit-utils.h"
 #include "gedit-debug.h"
-
+#include "gedit-help.h"
 
 enum {
 	COLUMN_NAME,

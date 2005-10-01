@@ -1333,6 +1333,12 @@ update_overwrite_mode_statusbar (GtkTextView *view,
 			!gtk_text_view_get_overwrite (view));
 }
 
+static void
+show_error_message (GeditWindow *window)
+{
+	g_print ("show_error_message\n");
+}
+
 #define MAX_TITLE_LENGTH 100
 
 static void 
@@ -1483,7 +1489,10 @@ notebook_switch_page (GtkNotebook     *book,
 					  window);
 	gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
 				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
-				       
+
+	/* Show the global error message if needed */
+	show_error_message (window);
+	
 	g_signal_emit (G_OBJECT (window), 
 		       signals[ACTIVE_TAB_CHANGED], 
 		       0, 
@@ -1513,6 +1522,32 @@ analyze_tab_state (GeditTab *tab, GeditWindowState *ws)
 			*ws |= GEDIT_WINDOW_STATE_PRINTING;
 			break;
 	
+		case GEDIT_TAB_STATE_LOADING_ERROR:
+		case GEDIT_TAB_STATE_REVERTING_ERROR:
+		case GEDIT_TAB_STATE_SAVING_ERROR:
+		case GEDIT_TAB_STATE_GENERIC_ERROR:
+			*ws |= GEDIT_WINDOW_STATE_ERROR;
+		default:
+			/* NOP */
+			break;		
+	}
+}
+
+static void
+count_error_tabs (GeditTab *tab, gint *n)
+{
+	GeditTabState ts;
+	
+	ts = gedit_tab_get_state (tab);
+	
+	switch (ts)
+	{
+	
+		case GEDIT_TAB_STATE_LOADING_ERROR:
+		case GEDIT_TAB_STATE_REVERTING_ERROR:
+		case GEDIT_TAB_STATE_SAVING_ERROR:
+		case GEDIT_TAB_STATE_GENERIC_ERROR:
+			(*n) += 1;
 		default:
 			/* NOP */
 			break;		
@@ -1548,6 +1583,13 @@ update_window_state (GeditWindow *window,
 			window->priv->state |= GEDIT_WINDOW_STATE_PRINTING;
 			break;
 			
+		case GEDIT_TAB_STATE_LOADING_ERROR:
+		case GEDIT_TAB_STATE_REVERTING_ERROR:
+		case GEDIT_TAB_STATE_SAVING_ERROR:
+		case GEDIT_TAB_STATE_GENERIC_ERROR:
+			window->priv->state |= GEDIT_WINDOW_STATE_ERROR;
+			break;
+			
 		default:
 		{
 			GeditWindowState ws = 0;
@@ -1561,7 +1603,22 @@ update_window_state (GeditWindow *window,
 	}
 		
 	gedit_debug_message (DEBUG_WINDOW, "New state: %x", window->priv->state);		
-				
+		
+	if (window->priv->state & GEDIT_WINDOW_STATE_ERROR)
+	{
+		gint n = 0;
+		
+		gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+				       (GtkCallback)count_error_tabs,
+			       	       &n);
+			       		       
+		window->priv->num_tabs_with_error = n;
+		
+		g_return_if_fail (n >= 1);
+		
+		show_error_message (window);
+	}		
+	
 	if (old_ws != window->priv->state)
 	{
 		GtkAction *action;

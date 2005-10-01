@@ -38,6 +38,7 @@
 #include "gedit-dialogs.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
+#include "gedit-help.h"
 
 #define PLUGIN_MANAGER_LOGO "/gedit-plugin-manager.png"
 

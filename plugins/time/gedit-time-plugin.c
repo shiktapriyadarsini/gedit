@@ -37,6 +37,7 @@
 #include <libgnome/gnome-config.h>
 
 #include "gedit-time-plugin.h"
+#include <gedit/gedit-help.h>
 
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>

@@ -71,6 +71,8 @@ struct _GeditWindowPrivate
 
 	GeditTab       *active_tab;
 	gint            num_tabs;
+	
+	gint            num_tabs_with_error;
 
 	gint            width;
 	gint            height;	

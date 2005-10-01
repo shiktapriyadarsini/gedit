@@ -41,6 +41,7 @@
 
 #include "gedit-encodings-option-menu.h"
 #include "gedit-utils.h"
+#include "gedit-help.h"
 
 #define GEDIT_OPEN_LOCATION_DIALOG_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_OPEN_LOCATION_DIALOG, GeditOpenLocationDialogPrivate))
 

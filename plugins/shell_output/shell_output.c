@@ -51,6 +51,7 @@
 #include <gedit/gedit-mdi.h>
 #include <gedit/gedit-output-window.h>
 #include <gedit/gedit-metadata-manager.h>
+#include <gedit/gedit-help.h>
 
 #define MENU_ITEM_LABEL		N_("_Run Command...")
 #define MENU_ITEM_PATH		"/menu/Tools/ToolsOps_3/"

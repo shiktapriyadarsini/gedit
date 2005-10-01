@@ -108,10 +108,6 @@ void  gedit_utils_activate_url (GtkAboutDialog *about,
 
 gboolean gedit_utils_is_valid_uri (const gchar *uri);
 
-gboolean gedit_help_display (GtkWindow   *parent,
-			     const gchar *file_name, /* "gedit.xml" if NULL */
-			     const gchar *link_id);
-
 gboolean gedit_utils_get_glade_widgets (const gchar *filename,
 					const gchar *root_node,
 					GtkWidget **error_widget,

@@ -47,6 +47,7 @@
 #include "gedit-document.h"
 #include "gedit-plugin-manager.h"
 #include "gedit-languages-manager.h"
+#include "gedit-help.h"
 
 enum
 {

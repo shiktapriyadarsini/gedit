@@ -33,6 +33,7 @@
 
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-utils.h>
+#include <gedit/gedit-help.h>
 
 #define GEDIT_SORT_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_SORT_PLUGIN, GeditSortPluginPrivate))
 

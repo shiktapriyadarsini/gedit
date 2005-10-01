@@ -70,6 +70,7 @@ endif
 
 INST_H_FILES =				\
 	gedit-utils.h 			\
+	gedit-help.h 			\
 	gedit-document.h 		\
 	gedit-view.h 			\
 	gedit-tab.h 			\
@@ -125,6 +126,7 @@ gedit_SOURCES = 			\
 	gedit-panel.c			\
 	gedit-statusbar.c		\
 	gedit-utils.c 			\
+	gedit-help.c			\
 	gedit-languages-manager.c	\
 	gedit-print.c			\
 	gedit-recent.c			\

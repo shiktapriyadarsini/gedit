@@ -593,10 +593,10 @@ gedit_notebook_new (void)
 }
 
 static void
-ephy_notebook_switch_page_cb (GtkNotebook     *notebook,
-                              GtkNotebookPage *page,
-                              guint            page_num,
-                              gpointer         data)
+gedit_notebook_switch_page_cb (GtkNotebook     *notebook,
+                               GtkNotebookPage *page,
+                               guint            page_num,
+                               gpointer         data)
 {
 	GeditNotebook *nb = GEDIT_NOTEBOOK (notebook);
 	GtkWidget *child;
@@ -668,7 +668,7 @@ gedit_notebook_init (GeditNotebook *notebook)
 
 	g_signal_connect_after (G_OBJECT (notebook), 
 				"switch_page",
-                                G_CALLBACK (ephy_notebook_switch_page_cb),
+                                G_CALLBACK (gedit_notebook_switch_page_cb),
                                 NULL);
 }
 
@@ -756,7 +756,8 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 }
 
 static void
-close_button_clicked_cb (GtkWidget *widget, GtkWidget *tab)
+close_button_clicked_cb (GtkWidget *widget, 
+			 GtkWidget *tab)
 {
 	GeditNotebook *notebook;
 	gboolean can_close = TRUE;
