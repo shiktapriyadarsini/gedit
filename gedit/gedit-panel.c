@@ -402,24 +402,24 @@ gedit_panel_init (GeditPanel *panel)
 			    FALSE, 
 			    FALSE, 
 			    0);
-	
+
 	dummy_label = gtk_label_new (" ");
 	
-	gtk_box_pack_end (GTK_BOX (icon_name_hbox), 
-			  dummy_label, 
-			  FALSE, 
-			  FALSE, 
-			  0);	
+	gtk_box_pack_start (GTK_BOX (icon_name_hbox), 
+			    dummy_label, 
+			    FALSE, 
+			    FALSE, 
+			    0);	
 			    
 	panel->priv->title_label = gtk_label_new (_("Empty"));
 
 	/* FIXME: elipsize */
 
-	gtk_box_pack_end (GTK_BOX (icon_name_hbox), 
-			  panel->priv->title_label, 
-			  FALSE, 
-			  FALSE, 
-			  0);			   
+	gtk_box_pack_start (GTK_BOX (icon_name_hbox), 
+			    panel->priv->title_label, 
+			    FALSE, 
+			    FALSE, 
+			    0);			   
 
 	panel->priv->close_button = gtk_button_new ();						    
 	gtk_button_set_relief (GTK_BUTTON (panel->priv->close_button), 
@@ -440,10 +440,10 @@ gedit_panel_init (GeditPanel *panel)
 			    FALSE, 
 			    FALSE, 
 			    0);
-	
-	gtk_tooltips_set_tip (panel->priv->tooltips, 
+
+	gtk_tooltips_set_tip (panel->priv->tooltips,
 			      panel->priv->close_button,
-			      _("Hide panel"), 
+			      _("Hide panel"),
 			      NULL);
 
 	g_signal_connect (G_OBJECT (panel->priv->close_button), 
