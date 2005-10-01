@@ -76,9 +76,9 @@ struct _GeditPageSetupDialogClass
 /*
  * Public methods
  */
-GType			 gedit_page_setup_dialog_get_type		(void) G_GNUC_CONST;
+GType		 gedit_page_setup_dialog_get_type	(void) G_GNUC_CONST;
 
-GtkWidget		*gedit_page_setup_dialog_new			(GtkWindow	*parent);
+void		 gedit_show_page_setup_dialog		(GtkWindow	*parent);
 
 G_END_DECLS
 

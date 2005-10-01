@@ -47,6 +47,18 @@
 #include "gedit-debug.h"
 
 
+/*
+ * gedit-page-setup dialog is a singleton since we don't
+ * want two dialogs showing an inconsistent state of the
+ * preferences.
+ * When gedit_show_page_setup_dialog is called and there
+ * is already a page setup dialog open, it is reparented
+ * and shown.
+ */
+
+static GtkWidget *page_setup_dialog = NULL;
+
+
 #define GEDIT_PAGE_SETUP_DIALOG_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_PAGE_SETUP_DIALOG, GeditPageSetupDialogPrivate))
 
 
@@ -501,7 +513,6 @@ gedit_page_setup_dialog_init (GeditPageSetupDialog *dlg)
 {
 	GtkWidget *content = NULL;
 	GtkWidget *error_widget = NULL;
-	GtkWidget *dialog = NULL;
 	gboolean ret = FALSE;
 
 	dlg->priv = GEDIT_PAGE_SETUP_DIALOG_GET_PRIVATE (dlg);
@@ -561,16 +572,27 @@ gedit_page_setup_dialog_init (GeditPageSetupDialog *dlg)
 	setup_font_page (dlg);
 }
 
-GtkWidget *
-gedit_page_setup_dialog_new (GtkWindow *parent)
+void
+gedit_show_page_setup_dialog (GtkWindow *parent)
 {
-	GtkWidget *dlg = NULL;
-	
-	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_PAGE_SETUP_DIALOG, NULL));
-	
-	if (parent != NULL)
-		gtk_window_set_transient_for (GTK_WINDOW (dlg),
+	g_return_if_fail (GTK_IS_WINDOW (parent));
+
+	if (page_setup_dialog == NULL)
+	{
+		page_setup_dialog = GTK_WIDGET (g_object_new (GEDIT_TYPE_PAGE_SETUP_DIALOG, NULL));
+		g_signal_connect (page_setup_dialog,
+				  "destroy",
+				  G_CALLBACK (gtk_widget_destroyed),
+				  &page_setup_dialog);
+	}
+
+	if (parent != gtk_window_get_transient_for (GTK_WINDOW (page_setup_dialog)))
+	{
+		gtk_window_set_transient_for (GTK_WINDOW (page_setup_dialog),
 					      parent);
-					      
-	return dlg;
+		gtk_window_set_destroy_with_parent (GTK_WINDOW (page_setup_dialog),
+						    TRUE);
+	}
+
+	gtk_window_present (GTK_WINDOW (page_setup_dialog));
 }
