@@ -493,6 +493,8 @@ set_encoding (GeditDocument       *doc,
 	      const GeditEncoding *encoding,
 	      gboolean             set_by_user)
 {
+	g_return_if_fail (encoding != NULL);
+
 	gedit_debug (DEBUG_DOCUMENT);
 
 	if (doc->priv->encoding == encoding)
@@ -504,7 +506,7 @@ set_encoding (GeditDocument       *doc,
 	{
 		const gchar *charset;
 
-		charset = encoding ? gedit_encoding_get_charset (encoding) : "UTF-8";
+		charset = gedit_encoding_get_charset (encoding);
 
 		gedit_metadata_manager_set (doc->priv->uri,
 					    "encoding",
@@ -832,6 +834,17 @@ gedit_document_get_readonly (GeditDocument *doc)
 }
 
 static void
+reset_temp_loading_data (GeditDocument       *doc)
+{
+	/* the loader has been used, throw it away */
+	g_object_unref (doc->priv->loader);
+	doc->priv->loader = NULL;
+
+	doc->priv->requested_encoding = NULL;
+	doc->priv->requested_line_pos = 0;
+}
+
+static void
 document_loader_loaded (GeditDocumentLoader *loader,
 			const GError        *error,
 			GeditDocument       *doc)
@@ -851,8 +864,9 @@ document_loader_loaded (GeditDocumentLoader *loader,
 		/* We already set the uri */
 		set_uri (doc, NULL, mime_type);
 
-		// FIXME: distinguish user set encoding from autodetected
-		set_encoding (doc, doc->priv->requested_encoding, TRUE);
+		set_encoding (doc, 
+			      gedit_document_loader_get_encoding (loader),
+			      (doc->priv->requested_encoding != NULL));
 
 		/* move the cursor at the requested line if any */
 		if (doc->priv->requested_line_pos > 0)
@@ -893,9 +907,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 	else if (doc->priv->create &&
 	         (error->code == GNOME_VFS_ERROR_NOT_FOUND))
 	{
-		g_object_unref (doc->priv->loader);
-		doc->priv->loader = NULL;
-		
+		reset_temp_loading_data (doc);
 		// FIXME: do other stuff??
 
 		g_signal_emit (doc,
@@ -911,9 +923,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 		       0,
 		       error);
 
-	/* the loader has been used, throw it away */
-	g_object_unref (doc->priv->loader);
-	doc->priv->loader = NULL;
+	reset_temp_loading_data (doc);
 }
 
 static void
@@ -991,6 +1001,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 		       const GError       *error,
 		       GeditDocument      *doc)
 {
+	/* FIXME */
 	if (error)
 		g_print ("error saving: %s\n", error->message);
 
@@ -1011,8 +1022,9 @@ document_saver_saving (GeditDocumentSaver *saver,
 
 			set_uri (doc, uri, mime_type);
 
-			// FIXME: distinguish user set encoding from autodetected
-			set_encoding (doc, doc->priv->requested_encoding, TRUE);
+			set_encoding (doc, 
+				      doc->priv->requested_encoding, 
+				      TRUE);
 
 			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
 						      FALSE);
@@ -1089,6 +1101,7 @@ gedit_document_save_as (GeditDocument       *doc,
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (uri != NULL);
+	g_return_if_fail (encoding != NULL);
 
 	doc->priv->is_saving_as = TRUE;
 	

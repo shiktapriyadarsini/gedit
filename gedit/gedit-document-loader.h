@@ -104,7 +104,9 @@ time_t 			 gedit_document_loader_get_mtime 	(GeditDocumentLoader *loader);
 
 /* In the case the loader does not know if the file is readonly, for example for most
 remote files, the function returns FALSE */
-gboolean		 gedit_document_loader_is_readonly	(GeditDocumentLoader *loader);
+gboolean		 gedit_document_loader_get_readonly	(GeditDocumentLoader *loader);
+
+const GeditEncoding	*gedit_document_loader_get_encoding	(GeditDocumentLoader *loader);
 
 /* Returns 0 if file size is unknown */
 GnomeVFSFileSize	 gedit_document_loader_get_file_size	(GeditDocumentLoader *loader);									 

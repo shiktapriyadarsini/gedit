@@ -1010,7 +1010,7 @@ gedit_document_loader_cancel (GeditDocumentLoader *loader)
    for most remote files, the function returns FALSE, so that we can try writing
    and if needed handle the error. */
 gboolean
-gedit_document_loader_is_readonly (GeditDocumentLoader *loader)
+gedit_document_loader_get_readonly (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
 
@@ -1019,4 +1019,18 @@ gedit_document_loader_is_readonly (GeditDocumentLoader *loader)
 		return (loader->priv->info->permissions & GNOME_VFS_PERM_ACCESS_WRITABLE) ? FALSE : TRUE;
 	else
 		return FALSE;
+}
+
+const GeditEncoding *
+gedit_document_loader_get_encoding (GeditDocumentLoader *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
+
+	if (loader->priv->encoding != NULL)
+		return loader->priv->encoding;
+		
+	g_return_val_if_fail (loader->priv->auto_detected_encoding != NULL, 
+			      gedit_encoding_get_current ());
+			  
+	return loader->priv->auto_detected_encoding;
 }
