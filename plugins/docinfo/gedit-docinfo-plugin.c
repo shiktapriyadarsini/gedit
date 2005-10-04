@@ -1,5 +1,5 @@
 /*
- * gedit-docinfo-plugin.h
+ * gedit-docinfo-plugin.c
  * 
  * Copyright (C) 2002-2005 Paolo Maggi 
  *
@@ -49,13 +49,19 @@ typedef struct
 	GtkWidget *chars_label;
 	GtkWidget *chars_ns_label;
 	GtkWidget *bytes_label;
+	GtkWidget *selection_vbox;
+	GtkWidget *selected_lines_label;
+	GtkWidget *selected_words_label;
+	GtkWidget *selected_chars_label;
+	GtkWidget *selected_chars_ns_label;
+	GtkWidget *selected_bytes_label;
 } DocInfoDialog;
 
 typedef struct
 {
 	GtkActionGroup *ui_action_group;
 	guint ui_id;
-	
+
 	DocInfoDialog *dialog;
 } WindowData;
 
@@ -68,9 +74,9 @@ docinfo_dialog_destroy_cb (GtkObject *obj,
 			   gpointer  data_pointer)
 {
 	gedit_debug (DEBUG_PLUGINS);
-	
+
 	WindowData *data = (WindowData *) data_pointer;
-	
+
 	if (data != NULL)
 	{
 		g_free (data->dialog);
@@ -102,6 +108,12 @@ get_docinfo_dialog (GeditWindow *window,
 					     "lines_label", &dialog->lines_label,
 					     "chars_label", &dialog->chars_label,
 					     "chars_ns_label", &dialog->chars_ns_label,
+					     "selection_vbox", &dialog->selection_vbox,
+					     "selected_words_label", &dialog->selected_words_label,
+					     "selected_bytes_label", &dialog->selected_bytes_label,
+					     "selected_lines_label", &dialog->selected_lines_label,
+					     "selected_chars_label", &dialog->selected_chars_label,
+					     "selected_chars_ns_label", &dialog->selected_chars_ns_label,
 					     NULL);
 
 	if (!ret)
@@ -124,7 +136,6 @@ get_docinfo_dialog (GeditWindow *window,
 			  "destroy",
 			  G_CALLBACK (docinfo_dialog_destroy_cb),
 			  data);
-
 	g_signal_connect (dialog->dialog,
 			  "response",
 			  G_CALLBACK (docinfo_dialog_response_cb),
@@ -133,65 +144,83 @@ get_docinfo_dialog (GeditWindow *window,
 	return dialog;
 }
 
-static void
-docinfo_real (GeditDocument *doc,
-	      DocInfoDialog *dialog)
-{
-	GtkTextIter start, end;
+
+static void 
+calculate_info (GeditDocument *doc,
+		GtkTextIter   *start,
+		GtkTextIter   *end, 
+		gint          *chars,
+		gint          *words,
+		gint          *white_chars,
+		gint          *bytes)
+{	
 	gchar *text;
 	PangoLogAttr *attrs;
-	gint words = 0;
-	gint chars = 0;
-	gint white_chars = 0;
-	gint lines = 0;
-	gint bytes = 0;
 	gint i;
-	gchar *tmp_str;
-	const gchar *file_name;
 
-	gedit_debug (DEBUG_PLUGINS);
-	
-	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
-				    &start,
-				    &end);
 	text = gtk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc),
-					  &start,
-					  &end,
+					  start,
+					  end,
 					  TRUE);
 
-	lines = gtk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc));
-
-	chars = g_utf8_strlen (text, -1);
- 	attrs = g_new0 (PangoLogAttr, chars + 1);
+	*chars = g_utf8_strlen (text, -1);
+ 	attrs = g_new0 (PangoLogAttr, *chars + 1);
 
 	pango_get_log_attrs (text,
 			     -1,
 			     0,
 			     pango_language_from_string ("C"),
 			     attrs,
-			     chars + 1);
+			     *chars + 1);
 
-	for (i = 0; i < chars; i++)
+	for (i = 0; i < (*chars); i++)
 	{
 		if (attrs [i].is_white)
-			++white_chars;
+			++(*white_chars);
 
 		if (attrs [i].is_word_start)
-			++words;
+			++(*words);
 	}
+
+	*bytes = strlen (text);
+
+	g_free (attrs);
+	g_free (text);
+}
+
+static void
+docinfo_real (GeditDocument *doc,
+	      DocInfoDialog *dialog)
+{
+	GtkTextIter start, end;
+	gint words = 0;
+	gint chars = 0;
+	gint white_chars = 0;
+	gint lines = 0;
+	gint bytes = 0;
+	gchar *tmp_str;
+	const gchar *file_name;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (doc),
+				    &start,
+				    &end);
+
+	lines = gtk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc));
+
+	calculate_info (doc,
+			&start, &end,
+			&chars, &words, &white_chars, &bytes);
 
 	if (chars == 0)
 		lines = 0;
-
-	bytes = strlen (text);
 
 	gedit_debug_message (DEBUG_PLUGINS, "Chars: %d", chars);
 	gedit_debug_message (DEBUG_PLUGINS, "Lines: %d", lines);
 	gedit_debug_message (DEBUG_PLUGINS, "Words: %d", words);
 	gedit_debug_message (DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars);
-
-	g_free (attrs);
-	g_free (text);
+	gedit_debug_message (DEBUG_PLUGINS, "Bytes: %d", bytes);
 
 	file_name = gedit_document_get_short_name_for_display (doc);
 	tmp_str = g_strdup_printf ("<span weight=\"bold\">%s</span>", file_name);
@@ -220,6 +249,72 @@ docinfo_real (GeditDocument *doc,
 }
 
 static void
+selectioninfo_real (GeditDocument *doc,
+		    DocInfoDialog *dialog)
+{
+	gboolean sel;
+	GtkTextIter start, end;
+	gint words = 0;
+	gint chars = 0;
+	gint white_chars = 0;
+	gint lines = 0;
+	gint bytes = 0;
+	gchar *tmp_str;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	sel = gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
+						    &start,
+						    &end);
+
+	if (sel)
+	{
+		lines = gtk_text_iter_get_line (&end) - gtk_text_iter_get_line (&start) + 1;
+	
+		calculate_info (doc,
+				&start, &end,
+				&chars, &words, &white_chars, &bytes);
+
+		gedit_debug_message (DEBUG_PLUGINS, "Selected chars: %d", chars);
+		gedit_debug_message (DEBUG_PLUGINS, "Selected lines: %d", lines);
+		gedit_debug_message (DEBUG_PLUGINS, "Selected words: %d", words);
+		gedit_debug_message (DEBUG_PLUGINS, "Selected chars non-space: %d", chars - white_chars);
+		gedit_debug_message (DEBUG_PLUGINS, "Selected bytes: %d", bytes);
+
+		gtk_widget_set_sensitive (dialog->selection_vbox, TRUE);
+	}
+	else
+	{
+		gtk_widget_set_sensitive (dialog->selection_vbox, FALSE);
+
+		gedit_debug_message (DEBUG_PLUGINS, "Selection empty");
+	}
+
+	if (chars == 0)
+		lines = 0;
+
+	tmp_str = g_strdup_printf("%d", lines);
+	gtk_label_set_text (GTK_LABEL (dialog->selected_lines_label), tmp_str);
+	g_free (tmp_str);
+
+	tmp_str = g_strdup_printf("%d", words);
+	gtk_label_set_text (GTK_LABEL (dialog->selected_words_label), tmp_str);
+	g_free (tmp_str);
+
+	tmp_str = g_strdup_printf("%d", chars);
+	gtk_label_set_text (GTK_LABEL (dialog->selected_chars_label), tmp_str);
+	g_free (tmp_str);
+
+	tmp_str = g_strdup_printf("%d", chars - white_chars);
+	gtk_label_set_text (GTK_LABEL (dialog->selected_chars_ns_label), tmp_str);
+	g_free (tmp_str);
+
+	tmp_str = g_strdup_printf("%d", bytes);
+	gtk_label_set_text (GTK_LABEL (dialog->selected_bytes_label), tmp_str);
+	g_free (tmp_str);
+}
+
+static void
 docinfo_cb (GtkAction	*action,
 	    GeditWindow *window)
 {
@@ -227,7 +322,7 @@ docinfo_cb (GtkAction	*action,
 	WindowData *data;
 
 	gedit_debug (DEBUG_PLUGINS);
-	
+
 	data = (WindowData *) g_object_get_data (G_OBJECT (window),
 						 WINDOW_DATA_KEY);
 
@@ -242,7 +337,7 @@ docinfo_cb (GtkAction	*action,
 	else
 	{
 		DocInfoDialog *dialog;
-	
+
 		dialog = get_docinfo_dialog (window, data);
 		g_return_if_fail (dialog != NULL);
 		
@@ -251,8 +346,10 @@ docinfo_cb (GtkAction	*action,
 		gtk_widget_show (GTK_WIDGET (dialog->dialog));
 	}
 	
-	docinfo_real (doc,
-		      data->dialog);
+	docinfo_real (doc, 
+		      data->dialog);	
+	selectioninfo_real (doc, 
+			    data->dialog);
 }
 
 static void
@@ -293,6 +390,8 @@ docinfo_dialog_response_cb (GtkDialog	*widget,
 			{
 				docinfo_real (doc,
 					      data->dialog);
+				selectioninfo_real (doc,
+						    data->dialog);
 			}
 			
 			break;
