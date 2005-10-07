@@ -376,7 +376,9 @@ gedit_document_class_init (GeditDocumentClass *klass)
 					 		     GEDIT_TYPE_ENCODING,
 					 		     G_PARAM_READABLE));
 
-	/* This should really go in GtkTextBuffer */
+	/* This has been properly moved in GtkTextBuffer in gtk 2.10, so when
+	 * we switch to 2.10 we can remove it along with gedit_document_mark_set
+	 */
 	g_object_class_install_property (object_class, PROP_HAS_SELECTION,
 					 g_param_spec_boolean ("has-selection",
 					 		       "Has selection",
@@ -1153,7 +1155,7 @@ gedit_document_get_deleted (GeditDocument *doc)
 }
 
 gboolean
-gedit_document_get_has_selection (GeditDocument *doc)
+_gedit_document_get_has_selection (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 

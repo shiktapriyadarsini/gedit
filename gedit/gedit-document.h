@@ -164,9 +164,6 @@ gboolean	 gedit_document_get_externally_modified
 						(GeditDocument       *doc);
 */
 
-gboolean	 gedit_document_get_has_selection
-						(GeditDocument       *doc);
-
 gboolean	 gedit_document_goto_line 	(GeditDocument       *doc, 
 						 gint                 line);
 
@@ -222,6 +219,11 @@ glong		 _gedit_document_get_seconds_since_last_save_or_load
 						(GeditDocument       *doc);
 
 gboolean	 _gedit_document_can_find_again	(GeditDocument       *doc);
+
+/* private because the property will move to gtk */
+gboolean	 _gedit_document_get_has_selection
+						(GeditDocument       *doc);
+
 
 /* Search macros */
 

@@ -498,13 +498,13 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 					      "EditCut");
 	gtk_action_set_sensitive (action,
 				  state_normal &&
-				  gedit_document_get_has_selection (doc));
+				  _gedit_document_get_has_selection (doc));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditCopy");
 	gtk_action_set_sensitive (action,
 				  state_normal &&
-				  gedit_document_get_has_selection (doc));
+				  _gedit_document_get_has_selection (doc));
 				  
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditPaste");
@@ -515,7 +515,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 					      "EditDelete");
 	gtk_action_set_sensitive (action,
 				  state_normal &&
-				  gedit_document_get_has_selection (doc));
+				  _gedit_document_get_has_selection (doc));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFind");
@@ -1877,19 +1877,19 @@ selection_changed (GeditDocument *doc,
 					      "EditCut");
 	gtk_action_set_sensitive (action,
 				  state_normal &&
-				  gedit_document_get_has_selection (doc));
+				  _gedit_document_get_has_selection (doc));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditCopy");
 	gtk_action_set_sensitive (action,
 				  state_normal &&
-				  gedit_document_get_has_selection (doc));
+				  _gedit_document_get_has_selection (doc));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditDelete");
 	gtk_action_set_sensitive (action,
 				  state_normal &&
-				  gedit_document_get_has_selection (doc));
+				  _gedit_document_get_has_selection (doc));
 }
 
 static void
