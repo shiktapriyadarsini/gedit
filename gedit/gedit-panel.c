@@ -292,11 +292,23 @@ static void
 sync_title (GeditPanel     *panel,
 	    GeditPanelItem *item)
 {
-	gtk_label_set_text (GTK_LABEL (panel->priv->title_label), 
-			    item->name);
+	if (item != NULL)
+	{
+		gtk_label_set_text (GTK_LABEL (panel->priv->title_label), 
+				    item->name);
 
-	set_gtk_image_from_gtk_image (GTK_IMAGE (panel->priv->title_image),
-				      GTK_IMAGE (item->icon));
+		set_gtk_image_from_gtk_image (GTK_IMAGE (panel->priv->title_image),
+					      GTK_IMAGE (item->icon));
+	}
+	else
+	{
+		gtk_label_set_text (GTK_LABEL (panel->priv->title_label), 
+				    _("Empty"));
+
+		gtk_image_set_from_stock (GTK_IMAGE (panel->priv->title_image),
+					  GTK_STOCK_FILE,
+					  GTK_ICON_SIZE_MENU);
+	}
 }
 
 static void
@@ -635,6 +647,12 @@ gedit_panel_remove_item (GeditPanel *panel,
 	
 	gtk_notebook_remove_page (GTK_NOTEBOOK (panel->priv->notebook), 
 				  page_num);
+
+	/* if we removed all the pages, reset the title */
+	if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (panel->priv->notebook)) == 0)
+	{
+		sync_title (panel, NULL);
+	}
 
 	return TRUE;
 }
