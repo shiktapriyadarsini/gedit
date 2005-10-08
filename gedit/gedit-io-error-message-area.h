@@ -46,9 +46,15 @@ GtkWidget	*gedit_unrecoverable_reverting_error_message_area_new (
 GtkWidget	*gedit_conversion_error_while_loading_message_area_new (
 						const gchar         *uri,
 						const GeditEncoding *encoding,
-				    		const GError        *error);				    		
+				    		const GError        *error);
+				    		
+GtkWidget	*gedit_conversion_error_while_saving_message_area_new (
+						const gchar         *uri,
+						const GeditEncoding *encoding,
+				    		const GError        *error);
+
 const GeditEncoding 
-		*gedit_conversion_error_while_loading_message_area_get_encoding (
+		*gedit_conversion_error_message_area_get_encoding (
 						GtkWidget           *message_area);
 
 GtkWidget	*gedit_file_already_open_warning_message_area_new (

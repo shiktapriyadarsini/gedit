@@ -351,8 +351,7 @@ recoverable_loading_error_message_area_response (GeditMessageArea *message_area,
 	{
 		const GeditEncoding *encoding;
 		
-		encoding =
-			gedit_conversion_error_while_loading_message_area_get_encoding (
+		encoding = gedit_conversion_error_message_area_get_encoding (
 				GTK_WIDGET (message_area));
 
 		g_return_if_fail (encoding != NULL);
@@ -422,7 +421,7 @@ unrecoverable_reverting_error_message_area_response (GeditMessageArea *message_a
 	gedit_tab_set_state (tab,
 			     GEDIT_TAB_STATE_NORMAL);
 
-	gtk_widget_destroy (GTK_WIDGET (message_area));
+	set_message_area (tab, NULL);
 
 	view = gedit_tab_get_view (tab);
 
@@ -548,7 +547,7 @@ show_saving_message_area (GeditTab *tab)
 	gchar *msg = NULL;
 	gint len;
 
-	g_return_if_fail (tab->priv->tmp_save_uri != NULL);	
+	g_return_if_fail (tab->priv->tmp_save_uri != NULL);
 	
 	if (tab->priv->message_area != NULL)
 		return;
@@ -730,14 +729,14 @@ document_loaded (GeditDocument *document,
 		encoding = gedit_document_get_encoding (document);
 
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
-		{			
+		{
 			if (error->code == GNOME_VFS_ERROR_CANCELLED)
 			{	
 				unrecoverable_loading_error_message_area_response (NULL,
 										   0,
 										   tab);
 										   
-				return;
+				goto end;
 			}
 			else
 			{
@@ -848,6 +847,9 @@ document_loaded (GeditDocument *document,
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
+end:
+	tab->priv->tmp_line_pos = 0;
+	tab->priv->tmp_encoding = NULL;
 }
 
 static void
@@ -905,6 +907,23 @@ document_saving (GeditDocument    *document,
 	tab->priv->times_called++;
 }
 
+static void 
+unrecoverable_saving_error_message_area_response (GeditMessageArea *message_area,
+						  gint              response_id,
+						  GeditTab         *tab)
+{
+	GeditView *view;
+	
+	gedit_tab_set_state (tab,
+			     GEDIT_TAB_STATE_NORMAL);
+
+	set_message_area (tab, NULL);
+
+	view = gedit_tab_get_view (tab);
+
+	gtk_widget_grab_focus (GTK_WIDGET (view));	
+}
+
 static void
 document_saved (GeditDocument *document,
 		const GError  *error,
@@ -915,6 +934,7 @@ document_saved (GeditDocument *document,
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
 
 	g_return_if_fail (tab->priv->tmp_save_uri != NULL);
+	g_return_if_fail (tab->priv->tmp_encoding != NULL);	
 
 	g_timer_destroy (tab->priv->timer);
 	tab->priv->timer = NULL;
@@ -924,21 +944,58 @@ document_saved (GeditDocument *document,
 	
 	if (error != NULL)
 	{
-		gedit_recent_remove (tab->priv->tmp_save_uri);
-		
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING_ERROR);
-
-		emsg = gedit_unrecoverable_saving_error_message_area_new (tab->priv->tmp_save_uri, 
+		
+		if (error->domain == GEDIT_DOCUMENT_ERROR)
+		{
+#if 0
+			if (error->code == GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED)
+			{
+				/* This error is recoverable */
+				// TODO
+			}
+			else
+#endif
+			{
+				/* These errors are _NOT_ recoverable */
+				gedit_recent_remove (tab->priv->tmp_save_uri);
+				
+				emsg = gedit_unrecoverable_saving_error_message_area_new (tab->priv->tmp_save_uri, 
 									  error);
+				g_return_if_fail (emsg != NULL);
+		
+				set_message_area (tab, emsg);
 
-		set_message_area (tab, emsg);
+				/* FIXME */
+				g_signal_connect (emsg,
+						  "response",
+						  G_CALLBACK (unrecoverable_saving_error_message_area_response),
+						  tab);
+			}			
+		}
+		else
+		{
+			g_return_if_fail (error->domain == G_CONVERT_ERROR);
 
-		g_signal_connect (emsg,
-				  "response",
-				  G_CALLBACK (gtk_widget_destroy),
-				  tab);
+			emsg = gedit_conversion_error_while_saving_message_area_new (
+									tab->priv->tmp_save_uri,
+									tab->priv->tmp_encoding,
+									error);
+
+			set_message_area (tab, emsg);
+
+			/* FIXME */
+			g_signal_connect (emsg,
+					  "response",
+					  G_CALLBACK (unrecoverable_saving_error_message_area_response),
+					  tab);
+		}
+		
+		gedit_message_area_set_default_response (GEDIT_MESSAGE_AREA (emsg),
+							 GTK_RESPONSE_CANCEL);
 
 		gtk_widget_show (emsg);
+		
 	}
 	else
 	{
@@ -952,6 +1009,7 @@ document_saved (GeditDocument *document,
 
 	g_free (tab->priv->tmp_save_uri);
 	tab->priv->tmp_save_uri = NULL;
+	tab->priv->tmp_encoding = NULL;
 }
 
 static void
@@ -1408,6 +1466,7 @@ _gedit_tab_save (GeditTab *tab)
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
 			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 	g_return_if_fail (tab->priv->tmp_save_uri == NULL);
+	g_return_if_fail (tab->priv->tmp_encoding == NULL);
 	
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
@@ -1418,6 +1477,7 @@ _gedit_tab_save (GeditTab *tab)
 	/* uri used in error messages... strdup because errors are async
 	 * and the string can go away, will be freed in documnt_loaded */
 	tab->priv->tmp_save_uri = g_strdup (gedit_document_get_uri_ (doc));
+	tab->priv->tmp_encoding = gedit_document_get_encoding (doc); 
 
 	gedit_document_save (doc);
 }
@@ -1432,8 +1492,11 @@ _gedit_tab_save_as (GeditTab            *tab,
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
 			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
+	g_return_if_fail (encoding != NULL);
+				  
 	g_return_if_fail (tab->priv->tmp_save_uri == NULL);
-
+	g_return_if_fail (tab->priv->tmp_encoding == NULL);
+	
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -1442,7 +1505,8 @@ _gedit_tab_save_as (GeditTab            *tab,
 	/* uri used in error messages... strdup because errors are async
 	 * and the string can go away, will be freed in documnt_loaded */
 	tab->priv->tmp_save_uri = g_strdup (uri);
-
+	tab->priv->tmp_encoding = encoding;
+	
 	gedit_document_save_as (doc, uri, encoding);
 }
 

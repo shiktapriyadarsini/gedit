@@ -581,8 +581,8 @@ create_option_menu (GtkWidget *message_area, GtkWidget *vbox)
 }
 
 static GtkWidget *
-create_conversion_error_while_loading_message_area (const gchar *primary_text,
-						    const gchar *secondary_text)
+create_conversion_error_message_area (const gchar *primary_text,
+				      const gchar *secondary_text)
 {
 	GtkWidget *message_area;
 	GtkWidget *hbox_content;
@@ -703,10 +703,61 @@ gedit_conversion_error_while_loading_message_area_new (
 						 uri_for_display, 
 						 encoding_name);
 		message_details = g_strconcat (_("Please check that you are not trying to open a binary file."), "\n",
-					       _("Select a character coding from the menu and try again."), NULL);
+					       _("Select a different character coding from the menu and try again."), NULL);
 	}
 	
-	message_area = create_conversion_error_while_loading_message_area (
+	message_area = create_conversion_error_message_area (
+								error_message,
+								message_details);
+
+	g_free (error_message);
+	g_free (message_details);
+	
+	return message_area;
+}
+
+GtkWidget *
+gedit_conversion_error_while_saving_message_area_new (
+						const gchar         *uri,
+						const GeditEncoding *encoding,
+				    		const GError        *error)
+{
+	gchar *error_message = NULL;
+	gchar *message_details = NULL;
+	gchar *full_formatted_uri;
+	gchar *encoding_name;
+       	gchar *uri_for_display;
+       	gchar *temp_uri_for_display;
+	GtkWidget *message_area;
+	
+	g_return_val_if_fail (uri != NULL, NULL);
+	g_return_val_if_fail (error != NULL, NULL);
+	g_return_val_if_fail (error->domain == G_CONVERT_ERROR, NULL);
+	g_return_val_if_fail (encoding != NULL, NULL);
+	
+	full_formatted_uri = gnome_vfs_format_uri_for_display (uri);
+
+	/* Truncate the URI so it doesn't get insanely wide. Note that even
+	 * though the dialog uses wrapped text, if the URI doesn't contain
+	 * white space then the text-wrapping code is too stupid to wrap it.
+	 */
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+								MAX_URI_IN_DIALOG_LENGTH);								
+	g_free (full_formatted_uri);
+	
+	uri_for_display = g_strdup_printf ("<i>%s</i>", temp_uri_for_display);
+	g_free (temp_uri_for_display);
+
+	encoding_name = gedit_encoding_to_string (encoding);
+	
+	error_message = g_strdup_printf (_("Could not save the file %s using the %s character coding."),
+					 uri_for_display, 
+					 encoding_name);
+	message_details = g_strconcat (_("The document contains one or more characters that cannot be encoded "
+					 "using the specified character coding."), "\n",
+				       _("Select a different character coding from the menu and try again."), NULL);
+	
+	message_area = create_conversion_error_message_area (
 								error_message,
 								message_details);
 
@@ -717,8 +768,7 @@ gedit_conversion_error_while_loading_message_area_new (
 }
 
 const GeditEncoding *
-gedit_conversion_error_while_loading_message_area_get_encoding (
-							GtkWidget *message_area)
+gedit_conversion_error_message_area_get_encoding (GtkWidget *message_area)
 {
 	gpointer menu;
 	
@@ -853,12 +903,16 @@ gedit_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 			if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
 			{
 				/* Translators: %s is a URI scheme (like for example http, ftp, etc.) */
-				message_details = g_strdup_printf (_("gedit cannot handle <i>%s:</i> locations in write mode."),
+				message_details = g_strdup_printf (_("gedit cannot handle <i>%s:</i> locations in write mode. "
+								     "Please, check that you typed the "
+								     "location correctly and try again."),
 								   scheme_string);
 			}
 			else
 			{
-				message_details = g_strdup (_("gedit cannot handle this location  in write mode."));
+				message_details = g_strdup (_("gedit cannot handle this location  in write mode. "
+							      "Please, check that you typed the "
+							      "location correctly and try again."));
 			}
 
 			g_free (scheme_string);
@@ -872,15 +926,17 @@ gedit_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 			break;
 
 		case GNOME_VFS_ERROR_INVALID_URI:
-			error_message = g_strdup_printf (_("%s is not a valid location."),
-							 uri_for_display);
-			message_details = g_strdup (_("Please, check that you typed the "
+			message_details = g_strdup (_("%s is not a valid location. " 
+						      "Please, check that you typed the "
 						      "location correctly and try again."));
 			break;
 
 		case GNOME_VFS_ERROR_ACCESS_DENIED:
 		case GNOME_VFS_ERROR_NOT_PERMITTED:		
-			message_details = g_strdup (_("You do not have the permissions necessary to save the file."));
+			message_details = g_strdup (_("You do not have the permissions necessary to save the file. "
+						      "Please, check that you typed the "
+						      "location correctly and try again."));
+
 			break;
 
 		case GNOME_VFS_ERROR_TOO_MANY_OPEN_FILES:
@@ -889,9 +945,8 @@ gedit_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 			break;
 
 		case GNOME_VFS_ERROR_IS_DIRECTORY:
-			error_message = g_strdup_printf (_("%s is a directory."),
-							 uri_for_display);
-			message_details = g_strdup (_("Please, check that you typed the "
+			message_details = g_strdup (_("%s is a directory. "
+						      "Please, check that you typed the "
 						      "location correctly and try again."));
 			break;
 
@@ -923,8 +978,8 @@ gedit_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 						/* Translators: %s is a host name */
 						message_details = g_strdup_printf (
 							_("Host <i>%s</i> could not be found. "
-		        		  	  	"Please, check that your proxy settings "
-					  	  	"are correct and try again."),
+		        		  	  	  "Please, check that your proxy settings "
+					  	  	  "are correct and try again."),
 						  	host_name);
 
 						g_free (host_name);
@@ -990,6 +1045,13 @@ gedit_unrecoverable_saving_error_message_area_new (const gchar  *uri,
 			message_details = g_strdup (_("The disk where you are trying to save the file has "
 						      "a limitation on length of the file names. "
 						      "Please, use a shorter name."));
+
+		case GEDIT_DOCUMENT_ERROR_NOT_REGULAR_FILE:
+			message_details = g_strdup_printf (_("%s is not a regular file. "
+							     "Please, check that you typed the location "
+							     "correctly and try again."),
+							   uri_for_display);
+
 		case GNOME_VFS_ERROR_GENERIC:
 			break;
 
