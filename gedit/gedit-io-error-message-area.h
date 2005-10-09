@@ -60,6 +60,10 @@ const GeditEncoding
 GtkWidget	*gedit_file_already_open_warning_message_area_new (
 						const gchar         *uri);
 
+GtkWidget	*gedit_externally_modified_saving_error_message_area_new (
+						const gchar         *uri,
+				    		const GError        *error);
+
 GtkWidget	*gedit_unrecoverable_saving_error_message_area_new (
 						const gchar         *uri,
 				    		const GError        *error);

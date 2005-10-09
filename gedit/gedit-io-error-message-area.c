@@ -831,7 +831,8 @@ gedit_file_already_open_warning_message_area_new (const gchar *uri)
 	vbox = gtk_vbox_new (FALSE, 6);
 	gtk_widget_show (vbox);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
-	
+
+	// FIXME: try to rephrase in a better way
 	primary_text = g_strdup_printf (_("The file %s is already open."), uri_for_display);
 	g_free (uri_for_display);
 	
@@ -846,7 +847,7 @@ gedit_file_already_open_warning_message_area_new (const gchar *uri)
 	gtk_misc_set_alignment (GTK_MISC (primary_label), 0, 0.5);
 	GTK_WIDGET_SET_FLAGS (primary_label, GTK_CAN_FOCUS);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
-  
+
 	secondary_text = _("gedit opened this instance of the file in non-editable way. "
 			   "Do you want to edit it anyway?");
   	secondary_markup = g_strdup_printf ("<small>%s</small>",
@@ -860,9 +861,104 @@ gedit_file_already_open_warning_message_area_new (const gchar *uri)
 	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
 	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0, 0.5);
-	
+
 	gedit_message_area_set_contents (GEDIT_MESSAGE_AREA (message_area),
 					 hbox_content);
+	return message_area;
+}
+
+GtkWidget *
+gedit_externally_modified_saving_error_message_area_new (
+						const gchar  *uri,
+						const GError *error)
+{
+	GtkWidget *message_area;
+	GtkWidget *hbox_content;
+	GtkWidget *image;
+	GtkWidget *vbox;
+	gchar *primary_markup;
+	gchar *secondary_markup;
+	GtkWidget *primary_label;
+	GtkWidget *secondary_label;
+	gchar *primary_text;
+	const gchar *secondary_text;
+	gchar *full_formatted_uri;
+	gchar *uri_for_display;
+	gchar *temp_uri_for_display;
+
+	g_return_val_if_fail (uri != NULL, NULL);
+	g_return_val_if_fail (error != NULL, NULL);
+	g_return_val_if_fail (error->domain == GEDIT_DOCUMENT_ERROR, NULL);
+	g_return_val_if_fail (error->code == GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED, NULL);
+
+	full_formatted_uri = gnome_vfs_format_uri_for_display (uri);
+
+	/* Truncate the URI so it doesn't get insanely wide. Note that even
+	 * though the dialog uses wrapped text, if the URI doesn't contain
+	 * white space then the text-wrapping code is too stupid to wrap it.
+	 */
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+								MAX_URI_IN_DIALOG_LENGTH);								
+	g_free (full_formatted_uri);
+
+	uri_for_display = g_strdup_printf ("<i>%s</i>", temp_uri_for_display);
+	g_free (temp_uri_for_display);
+
+	message_area = gedit_message_area_new ();
+	gedit_message_area_add_button (GEDIT_MESSAGE_AREA (message_area),
+				       _("_Save Anyway"),
+				       GTK_RESPONSE_YES);
+	gedit_message_area_add_button (GEDIT_MESSAGE_AREA (message_area),
+				       _("_Don't Save"),
+				       GTK_RESPONSE_CANCEL);
+
+	hbox_content = gtk_hbox_new (FALSE, 8);
+	gtk_widget_show (hbox_content);				
+
+	image = gtk_image_new_from_stock ("gtk-dialog-warning", GTK_ICON_SIZE_DIALOG);
+	gtk_widget_show (image);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0);
+
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_widget_show (vbox);
+	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
+
+	// FIXME: review this message, it's not clear since for the user the "modification"
+	// could be interpreted as the changes he made in the document. beside "reading" is
+	// not accurate (since last load/save)
+	primary_text = g_strdup_printf (_("The file %s has been modified since reading it."),
+					uri_for_display);
+	g_free (uri_for_display);
+
+	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
+	g_free (primary_text);
+	primary_label = gtk_label_new (primary_markup);
+	g_free (primary_markup);
+	gtk_widget_show (primary_label);
+	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
+	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
+	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (primary_label), 0, 0.5);
+	GTK_WIDGET_SET_FLAGS (primary_label, GTK_CAN_FOCUS);
+	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
+
+	secondary_text = _("If you save it, all the external changes could be lost. Save it anyway?");
+  	secondary_markup = g_strdup_printf ("<small>%s</small>",
+					    secondary_text);
+	secondary_label = gtk_label_new (secondary_markup);
+	g_free (secondary_markup);
+	gtk_widget_show (secondary_label);
+	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
+	GTK_WIDGET_SET_FLAGS (secondary_label, GTK_CAN_FOCUS);
+	gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
+	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
+	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0, 0.5);
+
+	gedit_message_area_set_contents (GEDIT_MESSAGE_AREA (message_area),
+					 hbox_content);
+
 	return message_area;
 }
 

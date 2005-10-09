@@ -106,9 +106,18 @@ struct _GeditDocumentClass
 	void (* can_find_again) 	(GeditDocument    *document);
 };
 
+
+typedef enum
+{
+	GEDIT_DOCUMENT_SAVE_IGNORE_MTIME	 = 1 << 0,
+	GEDIT_DOCUMENT_SAVE_IGNORE_NOBACKUP	 = 1 << 1
+} GeditDocumentSaveFlags;
+
+
 #define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()
 
-enum {
+enum
+{
 	/* start at GNOME_VFS_NUM_ERRORS since we use GnomeVFSResult 
 	 * for the error codes */ 
 	GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED = GNOME_VFS_NUM_ERRORS,
@@ -149,11 +158,13 @@ gboolean	 gedit_document_insert_file	(GeditDocument       *doc,
 
 gboolean	 gedit_document_load_cancel	(GeditDocument       *doc);
 
-void		 gedit_document_save 		(GeditDocument       *doc);
+void		 gedit_document_save 		(GeditDocument       *doc,
+						 GeditDocumentSaveFlags flags);
 
 void		 gedit_document_save_as 	(GeditDocument       *doc,	
 						 const gchar         *uri, 
-						 const GeditEncoding *encoding);
+						 const GeditEncoding *encoding,
+						 GeditDocumentSaveFlags flags);
 
 gboolean	 gedit_document_is_untouched 	(GeditDocument       *doc);
 gboolean	 gedit_document_is_untitled 	(GeditDocument       *doc);

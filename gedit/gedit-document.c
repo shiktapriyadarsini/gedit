@@ -1061,10 +1061,11 @@ document_saver_saving (GeditDocumentSaver *saver,
 }
 
 static void
-document_save_real (GeditDocument       *doc,
-		    const gchar         *uri,
-		    const GeditEncoding *encoding,
-		    time_t               mtime)
+document_save_real (GeditDocument          *doc,
+		    const gchar            *uri,
+		    const GeditEncoding    *encoding,
+		    time_t                  mtime,
+		    GeditDocumentSaveFlags  flags)
 {
 	g_return_if_fail (doc->priv->saver == NULL);
 
@@ -1081,11 +1082,13 @@ document_save_real (GeditDocument       *doc,
 	gedit_document_saver_save (doc->priv->saver,
 				   uri,
 				   encoding,
-				   mtime);
+				   mtime,
+				   flags);
 }
 
 void
-gedit_document_save (GeditDocument *doc)
+gedit_document_save (GeditDocument          *doc,
+		     GeditDocumentSaveFlags  flags)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (doc->priv->uri != NULL);
@@ -1093,13 +1096,15 @@ gedit_document_save (GeditDocument *doc)
 	document_save_real (doc,
 			    doc->priv->uri,
 			    doc->priv->encoding,
-			    doc->priv->mtime);
+			    doc->priv->mtime,
+			    flags);
 }
 
 void
-gedit_document_save_as (GeditDocument       *doc,
-			const gchar         *uri,
-			const GeditEncoding *encoding)
+gedit_document_save_as (GeditDocument          *doc,
+			const gchar            *uri,
+			const GeditEncoding    *encoding,
+			GeditDocumentSaveFlags  flags)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (uri != NULL);
@@ -1107,7 +1112,7 @@ gedit_document_save_as (GeditDocument       *doc,
 
 	doc->priv->is_saving_as = TRUE;
 	
-	document_save_real (doc, uri, encoding, 0);
+	document_save_real (doc, uri, encoding, 0, flags);
 }
 
 gboolean

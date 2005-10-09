@@ -58,6 +58,9 @@ struct _GeditDocumentSaverPrivate
 
 	gchar			 *uri;
 	const GeditEncoding      *encoding;
+
+	GeditDocumentSaveFlags    flags;
+
 	gboolean		  keep_backup;
 	gchar			 *backup_ext;
 	gboolean                  backups_in_curr_dir;
@@ -463,14 +466,20 @@ save_existing_local_file (GeditDocumentSaver *saver)
 	/* not a regular file */
 	if (!S_ISREG (statbuf.st_mode))
 	{
-		GnomeVFSResult result = S_ISDIR (statbuf.st_mode) ?
-					GNOME_VFS_ERROR_IS_DIRECTORY :
-					GEDIT_DOCUMENT_ERROR_NOT_REGULAR_FILE;
-
-		g_set_error (&saver->priv->error,
-			     GEDIT_DOCUMENT_ERROR,
-			     result,
-			     gnome_vfs_result_to_string (result));
+		if (S_ISDIR (statbuf.st_mode))
+		{
+			g_set_error (&saver->priv->error,
+				     GEDIT_DOCUMENT_ERROR,
+				     GNOME_VFS_ERROR_IS_DIRECTORY,
+				     gnome_vfs_result_to_string (GNOME_VFS_ERROR_IS_DIRECTORY));
+		}
+		else
+		{
+			g_set_error (&saver->priv->error,
+				     GEDIT_DOCUMENT_ERROR,
+				     GEDIT_DOCUMENT_ERROR_NOT_REGULAR_FILE,
+				     "Not a regular file");
+		}
 
 		goto out;
 	}
@@ -487,15 +496,17 @@ save_existing_local_file (GeditDocumentSaver *saver)
 	}
 
 	/* check if someone else modified the file externally,
-	 * except when "saving as" or saving a new doc (mtime = 0)
+	 * except when "saving as", when saving a new doc (mtime = 0)
+	 * or when the mtime check is explicitely disabled
 	 */
 	if (saver->priv->doc_mtime > 0 &&
-	    statbuf.st_mtime != saver->priv->doc_mtime)
+	    statbuf.st_mtime != saver->priv->doc_mtime &&
+	    ((saver->priv->flags & GEDIT_DOCUMENT_SAVE_IGNORE_MTIME) == 0))
 	{
 		g_set_error (&saver->priv->error,
 			     GEDIT_DOCUMENT_ERROR,
-			     GNOME_VFS_ERROR_GENERIC, //FIXME
-			     gnome_vfs_result_to_string (GNOME_VFS_ERROR_GENERIC));
+			     GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
+			     "Externally modified");
 
 		goto out;
 	}
@@ -916,18 +927,21 @@ async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 				return 0;
 			}
 
+
 			/* check if someone else modified the file externally,
-			 * except when "saving as" or saving a new doc (mtime = 0)
+			 * except when "saving as", when saving a new doc (mtime = 0)
+			 * or when the mtime check is explicitely disabled
 			 */
 			if (orig_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_MTIME)
 			{
 				if (saver->priv->doc_mtime > 0 &&
-				    orig_info->mtime != saver->priv->doc_mtime)
+				    orig_info->mtime != saver->priv->doc_mtime &&
+				    ((saver->priv->flags & GEDIT_DOCUMENT_SAVE_IGNORE_MTIME) == 0))
 				{
 					g_set_error (&saver->priv->error,
 						     GEDIT_DOCUMENT_ERROR,
-						     GNOME_VFS_ERROR_GENERIC, //FIXME
-						     gnome_vfs_result_to_string (GNOME_VFS_ERROR_GENERIC));
+						     GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
+						     "Externally modified");
 
 					/* abort xfer */
 					return 0;
@@ -1165,10 +1179,11 @@ save_remote_file (GeditDocumentSaver *saver)
 /* ---------- public api ---------- */
 
 void
-gedit_document_saver_save (GeditDocumentSaver  *saver,
-			   const gchar         *uri,
-			   const GeditEncoding *encoding,
-			   time_t               oldmtime)
+gedit_document_saver_save (GeditDocumentSaver     *saver,
+			   const gchar            *uri,
+			   const GeditEncoding    *encoding,
+			   time_t                  oldmtime,
+			   GeditDocumentSaveFlags  flags)
 {
 	gchar *local_path;
 
@@ -1194,6 +1209,8 @@ gedit_document_saver_save (GeditDocumentSaver  *saver,
 		saver->priv->encoding = gedit_encoding_get_utf8 ();
 
 	saver->priv->doc_mtime = oldmtime;
+
+	saver->priv->flags = flags;
 
 	local_path = gnome_vfs_get_local_path_from_uri (uri);
 	if (local_path != NULL)

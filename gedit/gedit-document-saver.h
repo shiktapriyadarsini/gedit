@@ -88,7 +88,8 @@ GeditDocumentSaver 	*gedit_document_saver_new 		(GeditDocument        *doc);
 void			 gedit_document_saver_save		(GeditDocumentSaver  *saver,
 							 	 const gchar         *uri,
 								 const GeditEncoding *encoding,
-								 time_t               oldmtime);
+								 time_t               oldmtime,
+								 GeditDocumentSaveFlags flags);
 
 #if 0
 void			 gedit_document_saver_cancel		(GeditDocumentSaver  *saver);

@@ -927,6 +927,33 @@ unrecoverable_saving_error_message_area_response (GeditMessageArea *message_area
 }
 
 static void 
+externally_modified_error_message_area_response (GeditMessageArea *message_area,
+						 gint              response_id,
+						 GeditTab         *tab)
+{
+	GeditDocument *doc;
+
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	if (response_id == GTK_RESPONSE_YES)
+	{
+		set_message_area (tab, NULL);
+/* TODO
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+		gedit_document_save (doc, GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
+*/
+	}
+	else
+	{
+		unrecoverable_saving_error_message_area_response (message_area,
+								  response_id,
+								  tab);
+	}
+}
+
+static void 
 recoverable_saving_error_message_area_response (GeditMessageArea *message_area,
 						gint              response_id,
 						GeditTab         *tab)
@@ -991,14 +1018,22 @@ document_saved (GeditDocument *document,
 		
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
 		{
-#if 0
 			if (error->code == GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED)
 			{
 				/* This error is recoverable */
-				// TODO
+				emsg = gedit_externally_modified_saving_error_message_area_new (
+								tab->priv->tmp_save_uri, 
+								error);
+				g_return_if_fail (emsg != NULL);
+
+				set_message_area (tab, emsg);
+
+				g_signal_connect (emsg,
+						  "response",
+						  G_CALLBACK (externally_modified_error_message_area_response),
+						  tab);
 			}
 			else
-#endif
 			{
 				/* These errors are _NOT_ recoverable */
 				gedit_recent_remove (tab->priv->tmp_save_uri);
@@ -1520,7 +1555,7 @@ _gedit_tab_save (GeditTab *tab)
 	tab->priv->tmp_save_uri = g_strdup (gedit_document_get_uri_ (doc));
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc); 
 
-	gedit_document_save (doc);
+	gedit_document_save (doc, 0);
 }
 
 void
@@ -1548,7 +1583,7 @@ _gedit_tab_save_as (GeditTab            *tab,
 	tab->priv->tmp_save_uri = g_strdup (uri);
 	tab->priv->tmp_encoding = encoding;
 	
-	gedit_document_save_as (doc, uri, encoding);
+	gedit_document_save_as (doc, uri, encoding, 0);
 }
 
 static void
