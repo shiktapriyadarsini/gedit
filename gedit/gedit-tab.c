@@ -914,14 +914,57 @@ unrecoverable_saving_error_message_area_response (GeditMessageArea *message_area
 {
 	GeditView *view;
 	
-	gedit_tab_set_state (tab,
-			     GEDIT_TAB_STATE_NORMAL);
+	if (tab->priv->print_preview != NULL)
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+	else
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
 	set_message_area (tab, NULL);
 
 	view = gedit_tab_get_view (tab);
 
 	gtk_widget_grab_focus (GTK_WIDGET (view));	
+}
+
+static void 
+recoverable_saving_error_message_area_response (GeditMessageArea *message_area,
+						gint              response_id,
+						GeditTab         *tab)
+{
+	GeditDocument *doc;
+	const gchar *uri;
+
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	uri = gedit_document_get_uri_ (doc);
+	g_return_if_fail (uri != NULL);
+	
+	if (response_id == GTK_RESPONSE_OK)
+	{
+		const GeditEncoding *encoding;
+		
+		encoding = gedit_conversion_error_message_area_get_encoding (
+				GTK_WIDGET (message_area));
+
+		g_return_if_fail (encoding != NULL);
+			
+		set_message_area (tab, NULL);
+		
+		/* TODO */
+		/*
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+	
+		tab->priv->tmp_encoding = encoding;
+		*/
+		/* Force saving */
+	}
+	else
+	{
+		unrecoverable_saving_error_message_area_response (message_area,
+								  response_id,
+								  tab);
+	}
 }
 
 static void
@@ -966,7 +1009,6 @@ document_saved (GeditDocument *document,
 		
 				set_message_area (tab, emsg);
 
-				/* FIXME */
 				g_signal_connect (emsg,
 						  "response",
 						  G_CALLBACK (unrecoverable_saving_error_message_area_response),
@@ -984,10 +1026,9 @@ document_saved (GeditDocument *document,
 
 			set_message_area (tab, emsg);
 
-			/* FIXME */
 			g_signal_connect (emsg,
 					  "response",
-					  G_CALLBACK (unrecoverable_saving_error_message_area_response),
+					  G_CALLBACK (recoverable_saving_error_message_area_response),
 					  tab);
 		}
 		
@@ -1571,7 +1612,7 @@ print_page_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
 	gtk_widget_show (tab->priv->message_area);
 	
 	str = g_strdup_printf (_("Rendering page %d of %d..."), page_num, total);
-	/* sleep (1); */
+
 	gedit_progress_message_area_set_markup (GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
 						str);
 	g_free (str);
