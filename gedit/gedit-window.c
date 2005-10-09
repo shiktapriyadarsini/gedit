@@ -1336,7 +1336,10 @@ update_overwrite_mode_statusbar (GtkTextView *view,
 static void
 show_error_message (GeditWindow *window)
 {
-	g_print ("show_error_message\n");
+	if (window->priv->num_tabs_with_error > 1)
+		g_print ("show_error_message\n");
+	else
+		g_print ("hide_error_message\n");
 }
 
 #define MAX_TITLE_LENGTH 100

@@ -907,6 +907,14 @@ document_saving (GeditDocument    *document,
 	tab->priv->times_called++;
 }
 
+static void
+reset_tmp_data_for_saving (GeditTab *tab)
+{
+	g_free (tab->priv->tmp_save_uri);
+	tab->priv->tmp_save_uri = NULL;
+	tab->priv->tmp_encoding = NULL;
+}
+
 static void 
 unrecoverable_saving_error_message_area_response (GeditMessageArea *message_area,
 						  gint              response_id,
@@ -926,23 +934,6 @@ unrecoverable_saving_error_message_area_response (GeditMessageArea *message_area
 	gtk_widget_grab_focus (GTK_WIDGET (view));	
 }
 
-static void
-gedit_tab_force_save (GeditTab               *tab,
-		      GeditDocumentSaveFlags  flags)
-{
-	GeditDocument *doc;
-
-	doc = gedit_tab_get_document (tab);
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	tab->priv->tmp_save_uri = g_strdup (gedit_document_get_uri_ (doc));
-	tab->priv->tmp_encoding = gedit_document_get_encoding (doc); 
-
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
-
-	gedit_document_save (doc, flags);
-}
-
 static void 
 externally_modified_error_message_area_response (GeditMessageArea *message_area,
 						 gint              response_id,
@@ -950,12 +941,31 @@ externally_modified_error_message_area_response (GeditMessageArea *message_area,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
+		GeditDocument *doc;
+
+		doc = gedit_tab_get_document (tab);
+		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+		
 		set_message_area (tab, NULL);
 
-		gedit_tab_force_save (tab, GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
+		g_return_if_fail (tab->priv->tmp_save_uri != NULL);
+		g_return_if_fail (tab->priv->tmp_encoding != NULL);
+		
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+		g_print ("Force saving with URI '%s'\n",
+			 tab->priv->tmp_save_uri);
+			  
+		/* Force saving */
+		gedit_document_save_as (doc, 
+					tab->priv->tmp_save_uri,
+					tab->priv->tmp_encoding,
+					GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
 	}
 	else
 	{
+		reset_tmp_data_for_saving (tab);
+		
 		unrecoverable_saving_error_message_area_response (message_area,
 								  response_id,
 								  tab);
@@ -968,35 +978,39 @@ recoverable_saving_error_message_area_response (GeditMessageArea *message_area,
 						GeditTab         *tab)
 {
 	GeditDocument *doc;
-	const gchar *uri;
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	uri = gedit_document_get_uri_ (doc);
-	g_return_if_fail (uri != NULL);
 	
 	if (response_id == GTK_RESPONSE_OK)
 	{
 		const GeditEncoding *encoding;
 		
 		encoding = gedit_conversion_error_message_area_get_encoding (
-				GTK_WIDGET (message_area));
+									GTK_WIDGET (message_area));
 
 		g_return_if_fail (encoding != NULL);
-			
+
 		set_message_area (tab, NULL);
-		
-		/* TODO */
-		/*
+
+		g_return_if_fail (tab->priv->tmp_save_uri != NULL);
+				
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
-	
+			
 		tab->priv->tmp_encoding = encoding;
-		*/
-		/* Force saving */
+
+		g_print ("Force saving with URI '%s'\n",
+			 tab->priv->tmp_save_uri);
+			 
+		gedit_document_save_as (doc,
+					tab->priv->tmp_save_uri,
+					tab->priv->tmp_encoding,
+					0);
 	}
 	else
 	{
+		reset_tmp_data_for_saving (tab);
+		
 		unrecoverable_saving_error_message_area_response (message_area,
 								  response_id,
 								  tab);
@@ -1057,10 +1071,13 @@ document_saved (GeditDocument *document,
 						  "response",
 						  G_CALLBACK (unrecoverable_saving_error_message_area_response),
 						  tab);
+						  
+				reset_tmp_data_for_saving (tab);						  
 			}			
 		}
 		else
 		{
+			/* This error is recoverable */
 			g_return_if_fail (error->domain == G_CONVERT_ERROR);
 
 			emsg = gedit_conversion_error_while_saving_message_area_new (
@@ -1090,11 +1107,10 @@ document_saved (GeditDocument *document,
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
 		else
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+			
+		reset_tmp_data_for_saving (tab);
 	}
 
-	g_free (tab->priv->tmp_save_uri);
-	tab->priv->tmp_save_uri = NULL;
-	tab->priv->tmp_encoding = NULL;
 }
 
 static void
