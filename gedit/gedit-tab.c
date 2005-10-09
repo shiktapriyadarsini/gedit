@@ -926,24 +926,33 @@ unrecoverable_saving_error_message_area_response (GeditMessageArea *message_area
 	gtk_widget_grab_focus (GTK_WIDGET (view));	
 }
 
-static void 
-externally_modified_error_message_area_response (GeditMessageArea *message_area,
-						 gint              response_id,
-						 GeditTab         *tab)
+static void
+gedit_tab_force_save (GeditTab               *tab,
+		      GeditDocumentSaveFlags  flags)
 {
 	GeditDocument *doc;
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
+	tab->priv->tmp_save_uri = g_strdup (gedit_document_get_uri_ (doc));
+	tab->priv->tmp_encoding = gedit_document_get_encoding (doc); 
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+	gedit_document_save (doc, flags);
+}
+
+static void 
+externally_modified_error_message_area_response (GeditMessageArea *message_area,
+						 gint              response_id,
+						 GeditTab         *tab)
+{
 	if (response_id == GTK_RESPONSE_YES)
 	{
 		set_message_area (tab, NULL);
-/* TODO
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
-		gedit_document_save (doc, GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
-*/
+		gedit_tab_force_save (tab, GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
 	}
 	else
 	{
