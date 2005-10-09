@@ -188,6 +188,9 @@
 (define-method save
   (of-object "GeditDocument")
   (c-name "gedit_document_save")
+  (parameters
+    '("GeditDocumentSaveFlags" "flags")
+  )
   (return-type "none")
 )
 
@@ -198,6 +201,7 @@
   (parameters
     '("const-gchar*" "uri")
     '("const-GeditEncoding*" "encoding")
+    '("GeditDocumentSaveFlags" "flags")
   )
 )
 
