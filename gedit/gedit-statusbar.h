@@ -65,7 +65,8 @@ GtkWidget	*gedit_statusbar_new			(void);
 /* FIXME: status is not defined in any .h */
 #define GeditStatus gint
 void		 gedit_statusbar_set_window_state	(GeditStatusbar   *statusbar,
-							 GeditWindowState  state);
+							 GeditWindowState  state,
+							 gint              num_of_errors);
 
 void		 gedit_statusbar_set_overwrite		(GeditStatusbar   *statusbar,
 							 gboolean          overwrite);

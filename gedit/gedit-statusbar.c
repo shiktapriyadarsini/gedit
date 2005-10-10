@@ -37,18 +37,24 @@
 #include <gtk/gtk.h>
 
 #include "gedit-statusbar.h"
+#include "gedit-tooltips.h"
 
 #define GEDIT_STATUSBAR_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_STATUSBAR, GeditStatusbarPrivate))
 
 struct _GeditStatusbarPrivate
 {
-	GtkWidget *overwrite_mode_statusbar;
-	GtkWidget *cursor_position_statusbar;
+	GtkWidget     *overwrite_mode_statusbar;
+	GtkWidget     *cursor_position_statusbar;
 	
-	GtkWidget *state_frame;
-	GtkWidget *load_image;
-	GtkWidget *save_image;
-	GtkWidget *print_image;
+	GtkWidget     *state_frame;
+	GtkWidget     *load_image;
+	GtkWidget     *save_image;
+	GtkWidget     *print_image;
+	
+	GtkWidget     *error_frame;
+	GtkWidget     *error_event_box;
+	
+	GeditTooltips *tooltips;
 };
 
 G_DEFINE_TYPE(GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
@@ -84,6 +90,7 @@ static void
 gedit_statusbar_init (GeditStatusbar *statusbar)
 {
 	GtkWidget *hbox;
+	GtkWidget *error_image;
 	
 	statusbar->priv = GEDIT_STATUSBAR_GET_PRIVATE (statusbar);
 
@@ -121,7 +128,7 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 	statusbar->priv->load_image = gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
 	statusbar->priv->save_image = gtk_image_new_from_stock (GTK_STOCK_SAVE, GTK_ICON_SIZE_MENU);
 	statusbar->priv->print_image = gtk_image_new_from_stock (GTK_STOCK_PRINT, GTK_ICON_SIZE_MENU);
-
+	
 	gtk_widget_show (hbox);
 	
 	gtk_box_pack_start (GTK_BOX (hbox),
@@ -137,6 +144,33 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 	gtk_box_pack_start (GTK_BOX (statusbar),
 			    statusbar->priv->state_frame,
 			    FALSE, TRUE, 0);
+
+	statusbar->priv->error_frame = gtk_frame_new (NULL);
+	gtk_frame_set_shadow_type (GTK_FRAME (statusbar->priv->error_frame), GTK_SHADOW_IN);
+	
+	error_image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_ERROR, GTK_ICON_SIZE_MENU);
+	gtk_misc_set_padding (GTK_MISC (error_image), 4, 0);
+	gtk_widget_show (error_image);
+	
+	statusbar->priv->error_event_box = gtk_event_box_new ();
+	gtk_event_box_set_visible_window  (GTK_EVENT_BOX (statusbar->priv->error_event_box),
+					   FALSE);
+	gtk_widget_show (statusbar->priv->error_event_box);
+	
+	gtk_container_add (GTK_CONTAINER (statusbar->priv->error_frame),
+			   statusbar->priv->error_event_box);		    
+	gtk_container_add (GTK_CONTAINER (statusbar->priv->error_event_box), 
+			   error_image);
+			   		    			   					   
+	gtk_box_pack_start (GTK_BOX (statusbar),
+			    statusbar->priv->error_frame,
+			    FALSE, TRUE, 0);
+			    
+	gtk_box_reorder_child (GTK_BOX (statusbar),
+			       statusbar->priv->error_frame,
+			       0);
+
+	statusbar->priv->tooltips = gedit_tooltips_new ();			       
 }
 
 /**
@@ -303,7 +337,8 @@ gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 
 void		 
 gedit_statusbar_set_window_state (GeditStatusbar   *statusbar,
-				  GeditWindowState  state)
+				  GeditWindowState  state,
+				  gint              num_of_errors)
 {
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
 	
@@ -311,7 +346,7 @@ gedit_statusbar_set_window_state (GeditStatusbar   *statusbar,
 	gtk_widget_hide (statusbar->priv->save_image);
 	gtk_widget_hide (statusbar->priv->load_image);
 	gtk_widget_hide (statusbar->priv->print_image);			
-
+	
 	if (state & GEDIT_WINDOW_STATE_SAVING)
 	{
 		gtk_widget_show (statusbar->priv->state_frame);
@@ -328,7 +363,27 @@ gedit_statusbar_set_window_state (GeditStatusbar   *statusbar,
 		gtk_widget_show (statusbar->priv->state_frame);
 		gtk_widget_show (statusbar->priv->print_image);
 	}
-		
+	
+	if (state & GEDIT_WINDOW_STATE_ERROR)
+	{
+	 	gchar *tip;
+	 	
+ 		tip = g_strdup_printf (ngettext("There is a tab with errors",
+						"There are %d tabs with errors",
+						num_of_errors),
+			       		num_of_errors);
+				       
+		gedit_tooltips_set_tip (statusbar->priv->tooltips,
+					statusbar->priv->error_event_box,
+					tip,
+					NULL);
+					
+		g_free (tip);
+					
+		gtk_widget_show (statusbar->priv->error_frame);
+	}
+	else
+		gtk_widget_hide (statusbar->priv->error_frame);
 }
 
 

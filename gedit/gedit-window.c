@@ -984,7 +984,11 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
 
 	menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
-	gtk_box_pack_start (GTK_BOX (main_box), menubar, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (main_box), 
+			    menubar, 
+			    FALSE, 
+			    FALSE, 
+			    0);
 
 	window->priv->toolbar = gtk_ui_manager_get_widget (manager, "/ToolBar");
 	gtk_box_pack_start (GTK_BOX (main_box),
@@ -1032,7 +1036,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 
 	gtk_container_foreach (GTK_CONTAINER (window->priv->toolbar),
 			       (GtkCallback)set_non_homogeneus,
-			       NULL);
+			       NULL);	       
 }
 
 static void
@@ -1333,15 +1337,6 @@ update_overwrite_mode_statusbar (GtkTextView *view,
 			!gtk_text_view_get_overwrite (view));
 }
 
-static void
-show_error_message (GeditWindow *window)
-{
-	if (window->priv->num_tabs_with_error > 1)
-		g_print ("show_error_message\n");
-	else
-		g_print ("hide_error_message\n");
-}
-
 #define MAX_TITLE_LENGTH 100
 
 static void 
@@ -1493,9 +1488,6 @@ notebook_switch_page (GtkNotebook     *book,
 	gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
 				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (view)));
 
-	/* Show the global error message if needed */
-	show_error_message (window);
-	
 	g_signal_emit (G_OBJECT (window), 
 		       signals[ACTIVE_TAB_CHANGED], 
 		       0, 
@@ -1503,72 +1495,12 @@ notebook_switch_page (GtkNotebook     *book,
 }
 
 static void
-analyze_tab_state (GeditTab *tab, GeditWindowState *ws)
+analyze_tab_state (GeditTab    *tab, 
+		   GeditWindow *window)
 {
 	GeditTabState ts;
 	
 	ts = gedit_tab_get_state (tab);
-	
-	switch (ts)
-	{
-		case GEDIT_TAB_STATE_LOADING:
-		case GEDIT_TAB_STATE_REVERTING:
-			*ws |= GEDIT_WINDOW_STATE_LOADING;
-			break;
-		
-		case GEDIT_TAB_STATE_SAVING:
-			*ws |= GEDIT_WINDOW_STATE_SAVING;
-			break;
-			
-		case GEDIT_TAB_STATE_PRINTING:
-		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
-			*ws |= GEDIT_WINDOW_STATE_PRINTING;
-			break;
-	
-		case GEDIT_TAB_STATE_LOADING_ERROR:
-		case GEDIT_TAB_STATE_REVERTING_ERROR:
-		case GEDIT_TAB_STATE_SAVING_ERROR:
-		case GEDIT_TAB_STATE_GENERIC_ERROR:
-			*ws |= GEDIT_WINDOW_STATE_ERROR;
-		default:
-			/* NOP */
-			break;		
-	}
-}
-
-static void
-count_error_tabs (GeditTab *tab, gint *n)
-{
-	GeditTabState ts;
-	
-	ts = gedit_tab_get_state (tab);
-	
-	switch (ts)
-	{
-	
-		case GEDIT_TAB_STATE_LOADING_ERROR:
-		case GEDIT_TAB_STATE_REVERTING_ERROR:
-		case GEDIT_TAB_STATE_SAVING_ERROR:
-		case GEDIT_TAB_STATE_GENERIC_ERROR:
-			(*n) += 1;
-		default:
-			/* NOP */
-			break;		
-	}
-}
-
-static void
-update_window_state (GeditWindow *window,
-		     GeditTab    *tab)
-{
-	GeditTabState ts;
-	GeditWindowState old_ws;
-	
-	gedit_debug_message (DEBUG_WINDOW, "Old state: %x", window->priv->state);
-	
-	ts = gedit_tab_get_state (tab);
-	
-	old_ws = window->priv->state;
 	
 	switch (ts)
 	{
@@ -1585,43 +1517,39 @@ update_window_state (GeditWindow *window,
 		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
 			window->priv->state |= GEDIT_WINDOW_STATE_PRINTING;
 			break;
-			
+	
 		case GEDIT_TAB_STATE_LOADING_ERROR:
 		case GEDIT_TAB_STATE_REVERTING_ERROR:
 		case GEDIT_TAB_STATE_SAVING_ERROR:
 		case GEDIT_TAB_STATE_GENERIC_ERROR:
 			window->priv->state |= GEDIT_WINDOW_STATE_ERROR;
-			break;
-			
+			++window->priv->num_tabs_with_error;
 		default:
-		{
-			GeditWindowState ws = 0;
-			
-			gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
-			       		       (GtkCallback)analyze_tab_state,
-			       		       &ws);
-			
-			window->priv->state = ws;
-		}
+			/* NOP */
+			break;		
 	}
+}
+
+static void
+update_window_state (GeditWindow *window)
+{
+	GeditWindowState old_ws;
+	gint old_num_of_errors;
+	
+	gedit_debug_message (DEBUG_WINDOW, "Old state: %x", window->priv->state);
+
+	
+	old_ws = window->priv->state;
+	old_num_of_errors = window->priv->num_tabs_with_error;
+	window->priv->state = 0;
+	window->priv->num_tabs_with_error = 0;
+
+	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
+	       		       (GtkCallback)analyze_tab_state,
+	       		       window);
 		
 	gedit_debug_message (DEBUG_WINDOW, "New state: %x", window->priv->state);		
 		
-	if (window->priv->state & GEDIT_WINDOW_STATE_ERROR)
-	{
-		gint n = 0;
-		
-		gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
-				       (GtkCallback)count_error_tabs,
-			       	       &n);
-			       		       
-		window->priv->num_tabs_with_error = n;
-		
-		g_return_if_fail (n >= 1);
-		
-		show_error_message (window);
-	}		
-	
 	if (old_ws != window->priv->state)
 	{
 		GtkAction *action;
@@ -1642,10 +1570,18 @@ update_window_state (GeditWindow *window,
 					  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
 
 		gedit_statusbar_set_window_state (GEDIT_STATUSBAR (window->priv->statusbar),
-						  window->priv->state);
+						  window->priv->state,
+						  window->priv->num_tabs_with_error);
 						  
 		g_object_notify (G_OBJECT (window), "state");
 	}
+	else if (old_num_of_errors != window->priv->num_tabs_with_error)
+	{
+		gedit_statusbar_set_window_state (GEDIT_STATUSBAR (window->priv->statusbar),
+						  window->priv->state,
+						  window->priv->num_tabs_with_error);	
+	}
+	
 }
 
 static void
@@ -1653,7 +1589,7 @@ sync_state (GeditTab *tab, GParamSpec *pspec, GeditWindow *window)
 {
 	gedit_debug (DEBUG_WINDOW);
 	
-	update_window_state (window, tab);
+	update_window_state (window);
 	
 	if (tab != window->priv->active_tab)
 		return;
@@ -2076,7 +2012,7 @@ notebook_tab_added (GeditNotebook *notebook,
 			  G_CALLBACK (drag_drop_cb), 
 			  NULL);
 
-	update_window_state (window, tab);
+	update_window_state (window);
 
 	g_signal_emit (G_OBJECT (window), signals[TAB_ADDED], 0, tab);
 }
@@ -2192,6 +2128,8 @@ notebook_tab_removed (GeditNotebook *notebook,
 					  FALSE);
 	}
 	
+	update_window_state (window);
+		
 	g_signal_emit (G_OBJECT (window), signals[TAB_REMOVED], 0, tab);	
 }
 
