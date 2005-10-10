@@ -542,17 +542,6 @@
   (return-type "GeditTabState")
 )
 
-(define-method set_state
-  (of-object "GeditTab")
-  (c-name "gedit_tab_set_state")
-  (return-type "none")
-  (parameters
-    '("GeditTabState" "state")
-  )
-)
-
-
-
 ;; From ../../gedit/gedit-view.h
 
 (define-function gedit_view_get_type

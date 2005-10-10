@@ -87,26 +87,6 @@ enum
 	PROP_STATE
 };
 
-static void
-gedit_tab_set_property (GObject      *object,
-		        guint         prop_id,
-		        const GValue *value,
-		        GParamSpec   *pspec)
-{
-	GeditTab *tab = GEDIT_TAB (object);
-
-	switch (prop_id)
-	{
-		/* FIXME: do we really need state to be a writable property */
-		case PROP_STATE:
-			gedit_tab_set_state (tab,
-					     g_value_get_int (value));
-			break;			
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;			
-	}
-}
 
 static void
 gedit_tab_get_property (GObject    *object,
@@ -160,7 +140,6 @@ gedit_tab_class_init (GeditTabClass *klass)
 
 	object_class->finalize = gedit_tab_finalize;
 	object_class->get_property = gedit_tab_get_property;
-	object_class->set_property = gedit_tab_set_property;
 	
 	g_object_class_install_property (object_class,
 					 PROP_NAME,
@@ -178,7 +157,7 @@ gedit_tab_class_init (GeditTabClass *klass)
 							   0, /* GEDIT_TAB_STATE_NORMAL */
 							   GEDIT_TAB_NUM_OF_STATES - 1,
 							   0, /* GEDIT_TAB_STATE_NORMAL */
-							   G_PARAM_READWRITE));							      	
+							   G_PARAM_READABLE));							      	
 							      
 	g_type_class_add_private (object_class, sizeof (GeditTabPrivate));
 }
@@ -229,7 +208,7 @@ view_realized (GtkTextView *view,
 	}
 }
 
-void
+static void
 gedit_tab_set_state (GeditTab *tab,
 		     GeditTabState state)
 {
@@ -1850,4 +1829,13 @@ _gedit_tab_print_preview (GeditTab      *tab,
 		g_warning ("Async print preview failed");
 		g_object_unref (pjob);
 	}
+}
+
+void 
+_gedit_tab_mark_for_closing (GeditTab *tab)
+{
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
+	
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_CLOSING);
 }

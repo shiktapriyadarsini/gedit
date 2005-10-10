@@ -1196,8 +1196,7 @@ tab_state_changed_while_saving (GeditTab    *tab,
 			return;
 			
 		/* Close the document only if it has been succesfully saved */		
-		gedit_tab_set_state (tab,
-				     GEDIT_TAB_STATE_CLOSING);
+		_gedit_tab_mark_for_closing (tab);
 
 		g_idle_add_full (G_PRIORITY_HIGH_IDLE,
 				 (GSourceFunc)really_close_tab,

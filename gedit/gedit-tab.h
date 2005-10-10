@@ -108,8 +108,6 @@ GeditTab	*gedit_tab_get_from_document	(GeditDocument       *doc);
 
 GeditTabState	 gedit_tab_get_state		(GeditTab	     *tab);
 
-void		 gedit_tab_set_state		(GeditTab	     *tab,
-						 GeditTabState	      state);
 /*
  * Non exported methods
  */
@@ -143,6 +141,7 @@ void		 _gedit_tab_print_preview	(GeditTab            *tab,
 						 GtkTextIter         *start, 
 			  			 GtkTextIter         *end);
 			  			 
+void		 _gedit_tab_mark_for_closing	(GeditTab	     *tab);
 
 G_END_DECLS
 
