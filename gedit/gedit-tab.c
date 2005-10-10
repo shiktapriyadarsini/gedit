@@ -950,17 +950,14 @@ externally_modified_error_message_area_response (GeditMessageArea *message_area,
 
 		g_return_if_fail (tab->priv->tmp_save_uri != NULL);
 		g_return_if_fail (tab->priv->tmp_encoding != NULL);
-		
+
+		g_return_if_fail (strcmp (tab->priv->tmp_save_uri, gedit_document_get_uri_ (doc)) == 0);
+		g_return_if_fail (tab->priv->tmp_encoding == gedit_document_get_encoding (doc));
+
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
-		g_print ("Force saving with URI '%s'\n",
-			 tab->priv->tmp_save_uri);
-			  
 		/* Force saving */
-		gedit_document_save_as (doc, 
-					tab->priv->tmp_save_uri,
-					tab->priv->tmp_encoding,
-					GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
+		gedit_document_save (doc, GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
 	}
 	else
 	{
