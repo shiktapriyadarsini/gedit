@@ -202,7 +202,8 @@ view_realized (GtkTextView *view,
 	    (tab->priv->state == GEDIT_TAB_STATE_REVERTING) ||
 	    (tab->priv->state == GEDIT_TAB_STATE_SAVING) ||
 	    (tab->priv->state == GEDIT_TAB_STATE_PRINTING) ||
-	    (tab->priv->state == GEDIT_TAB_STATE_PRINT_PREVIEWING))
+	    (tab->priv->state == GEDIT_TAB_STATE_PRINT_PREVIEWING) ||
+	    (tab->priv->state == GEDIT_TAB_STATE_CLOSING))
 	{
 		GdkCursor *cursor;
 	
@@ -242,12 +243,14 @@ gedit_tab_set_state (GeditTab *tab,
 
 	if (state == GEDIT_TAB_STATE_NORMAL)
 		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), 
+					    (tab->priv->print_preview == NULL) && 
 					    !tab->priv->not_editable);
 	else		
 		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), 
 					    FALSE);
 
-	if (state == GEDIT_TAB_STATE_LOADING) // FIXME: add other states if needed
+	if ((state == GEDIT_TAB_STATE_LOADING) ||
+	    (state == GEDIT_TAB_STATE_CLOSING)) // FIXME: add other states if needed
 	{
 		g_object_set (G_OBJECT (tab->priv->view),
 			      "highlight_current_line", FALSE,
@@ -1300,14 +1303,16 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 			tip =  g_markup_printf_escaped(_("Error opening file <i>%s</i>."),
 						       ruri);
 			break;
+
 		case GEDIT_TAB_STATE_REVERTING_ERROR:
 			tip =  g_markup_printf_escaped(_("Error reverting file <i>%s</i>."),
 						       ruri);
 			break;			
+
 		case GEDIT_TAB_STATE_SAVING_ERROR:
 			tip =  g_markup_printf_escaped(_("Error saving file <i>%s</i>."),
 						       ruri);
-			break;
+			break;			
 		default:
 			mime_type = gedit_document_get_mime_type (doc);
 			mime_description = gnome_vfs_mime_get_description (mime_type);

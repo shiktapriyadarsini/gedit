@@ -479,6 +479,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 					      "FileClose");
 
 	gtk_action_set_sensitive (action,
+	                          (state != GEDIT_TAB_STATE_CLOSING) &&
 				  (state != GEDIT_TAB_STATE_SAVING) &&
 				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 
@@ -543,6 +544,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "ViewHighlightMode");
 	gtk_action_set_sensitive (action, 
+				  (state != GEDIT_TAB_STATE_CLOSING) &&
 				  gedit_prefs_manager_get_enable_syntax_highlighting ());
 
 	gedit_plugins_engine_update_plugins_ui (window, FALSE);
@@ -2670,6 +2672,8 @@ gedit_window_close_tab (GeditWindow *window,
 {
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail ((gedit_tab_get_state (tab) != GEDIT_TAB_STATE_SAVING) &&
+			  (gedit_tab_get_state (tab) != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 	
 	gedit_notebook_remove_tab (GEDIT_NOTEBOOK (window->priv->notebook),
 				   tab);

@@ -61,6 +61,10 @@
 
 #define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
 #define GEDIT_OPEN_LOCATION_DIALOG_KEY "gedit-open-location-dialog-key"
+#define GEDIT_TAB_TO_SAVE_AS  "gedit-tab-to-save-as"
+
+static void 		file_save_as (GeditTab    *tab, 
+				      GeditWindow *window);
 
 static gint
 load_file_list (GeditWindow         *window,
@@ -466,11 +470,11 @@ gedit_cmd_file_open_recent (EggRecentItem *item,
 	g_slist_free (uris);
 }
 
-void
-gedit_cmd_file_save (GtkAction   *action,
-		     GeditWindow *window)
+
+static void
+file_save (GeditTab    *tab,
+	   GeditWindow *window)
 {
-	GeditTab *tab;
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -486,7 +490,7 @@ gedit_cmd_file_save (GtkAction   *action,
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled");
 
-		return gedit_cmd_file_save_as (NULL, window);
+		return file_save_as (tab, window);
 	}
 
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
@@ -495,6 +499,21 @@ gedit_cmd_file_save (GtkAction   *action,
 				       gedit_document_get_uri_for_display (doc));
 
 	_gedit_tab_save (tab);
+}
+
+void
+gedit_cmd_file_save (GtkAction   *action,
+		     GeditWindow *window)
+{
+	GeditTab *tab;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	tab = gedit_window_get_active_tab (window);
+	if (tab == NULL)
+		return;
+	
+	file_save (tab, window);
 }
 
 // CHECK: move to utils? If so, do not include vfs.h
@@ -604,7 +623,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	g_return_if_fail (uri != NULL); /* CHECK */
 
-	tab = gedit_window_get_active_tab (window);
+	tab = GEDIT_TAB (g_object_get_data (G_OBJECT (dialog), GEDIT_TAB_TO_SAVE_AS));
 	if (tab != NULL && do_save)
 	{
 		GeditDocument *doc;
@@ -651,9 +670,9 @@ confirm_overwrite_callback (GtkFileChooser *dialog,
 }
 
 /* Save As dialog is modal to its main window */
-void
-gedit_cmd_file_save_as (GtkAction   *action,
-			GeditWindow *window)
+static void
+file_save_as (GeditTab    *tab,
+	      GeditWindow *window)
 {
 	GtkWidget *save_dialog;
 	GtkWindowGroup *wg;
@@ -681,12 +700,30 @@ gedit_cmd_file_save_as (GtkAction   *action,
 
 	/* TODO: set the default path/name */
 
+	g_object_set_data (G_OBJECT (save_dialog), GEDIT_TAB_TO_SAVE_AS, tab);
+	
 	g_signal_connect (save_dialog,
 			  "response",
 			  G_CALLBACK (save_dialog_response_cb),
 			  window);
+			  
 
 	gtk_widget_show (save_dialog);
+}
+
+void
+gedit_cmd_file_save_as (GtkAction   *action,
+			GeditWindow *window)
+{
+	GeditTab *tab;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	tab = gedit_window_get_active_tab (window);
+	if (tab == NULL)
+		return;
+	
+	file_save_as (tab, window);
 }
 
 void
@@ -1117,19 +1154,89 @@ gedit_cmd_file_print (GtkAction   *action,
 	gtk_widget_show (print_dialog);
 }
 
+static gboolean 
+really_close_tab (GeditTab *tab)
+{
+	GtkWidget *toplevel; 
+	g_return_val_if_fail (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_CLOSING, 
+			      FALSE);
+	
+	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
+	g_return_val_if_fail (GEDIT_IS_WINDOW (toplevel), FALSE);
+	
+	gedit_window_close_tab (GEDIT_WINDOW (toplevel), tab);
+	
+	return FALSE;
+}
+
+static void
+tab_state_changed_while_saving (GeditTab    *tab, 
+				GParamSpec  *pspec,
+				GeditWindow *window)
+{
+	GeditTabState ts;
+	
+	ts = gedit_tab_get_state (tab);
+	
+	gedit_debug_message (DEBUG_COMMANDS, "State while saving: %d\n", ts);
+	
+	if (ts == GEDIT_TAB_STATE_NORMAL)
+	{
+		GeditDocument *doc;
+		
+		g_signal_handlers_disconnect_by_func (tab,
+						      G_CALLBACK (tab_state_changed_while_saving), 
+					      	      window);
+
+		doc = gedit_tab_get_document (tab);
+		g_return_if_fail (doc != NULL);
+		
+		if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) || 
+		    gedit_document_get_deleted (doc))
+			return;
+			
+		/* Close the document only if it has been succesfully saved */		
+		gedit_tab_set_state (tab,
+				     GEDIT_TAB_STATE_CLOSING);
+
+		g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+				 (GSourceFunc)really_close_tab,
+				 tab,
+				 NULL);
+	}
+}
+
+static void
+save_and_close (GeditTab    *tab,
+		GeditWindow *window)
+{
+	g_signal_connect (tab, 
+			  "notify::state",
+			  G_CALLBACK (tab_state_changed_while_saving),
+			  window);
+
+	file_save (tab, window);
+	
+}
+/* Returns TRUE if the tab can be immediately closed */
 gboolean
 _gedit_cmd_file_can_close (GeditTab  *tab,
 			   GtkWindow *window)
 {
 	GeditDocument *doc;
 	gboolean       close = TRUE;
+	GeditTabState  ts;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_tab_get_document (tab);
-
-	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) || 
-	    gedit_document_get_deleted (doc))
+	ts = gedit_tab_get_state (tab);
+	
+	/* TODO: we need to save the file also if it has been externally 
+	   modified - Paolo (Oct 10, 2005) */
+	if ((ts != GEDIT_TAB_STATE_LOADING_ERROR) && 
+	    (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) || 
+	     gedit_document_get_deleted (doc)))	     
 	{
 		GtkWidget *dlg;
 
@@ -1140,8 +1247,15 @@ _gedit_cmd_file_can_close (GeditTab  *tab,
 		close = gedit_close_confirmation_dialog_run (
 					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
 		
-		// TODO: salvare il documenta se necessario
-		g_print ("Close? %s\n", close ? "TRUE": "FALSE");
+		if (close)
+		{
+			if (gedit_close_confirmation_dialog_get_selected_documents (
+					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg)) != NULL)
+			{
+				close = FALSE;
+				save_and_close (tab, GEDIT_WINDOW (window));
+			}
+		}
 		
 		gtk_widget_destroy (dlg);		
 	}

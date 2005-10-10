@@ -726,7 +726,8 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	state = gedit_tab_get_state (tab);
 	
 	gtk_widget_set_sensitive (button, 
-				  (state != GEDIT_TAB_STATE_SAVING) &&
+				  (state != GEDIT_TAB_STATE_CLOSING) &&
+				  (state != GEDIT_TAB_STATE_SAVING)  &&
 				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 				  
 	if ((state == GEDIT_TAB_STATE_LOADING)   ||

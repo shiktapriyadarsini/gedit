@@ -69,6 +69,7 @@
     '("state-reverting-error" "GEDIT_TAB_STATE_REVERTING_ERROR")
     '("state-saving-error" "GEDIT_TAB_STATE_SAVING_ERROR")
     '("state-generic-error" "GEDIT_TAB_STATE_GENERIC_ERROR")
+    '("state-closing" "GEDIT_TAB_STATE_CLOSING")
     '("num-of-states" "GEDIT_TAB_NUM_OF_STATES")
   )
 )
@@ -81,6 +82,7 @@
     '("saving" "GEDIT_WINDOW_STATE_SAVING")
     '("printing" "GEDIT_WINDOW_STATE_PRINTING")
     '("loading" "GEDIT_WINDOW_STATE_LOADING")
+    '("error" "GEDIT_WINDOW_STATE_ERROR")
   )
 )
 
