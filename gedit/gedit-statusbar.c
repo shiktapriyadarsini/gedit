@@ -77,11 +77,22 @@ gedit_statusbar_notify (GObject    *object,
 }
 
 static void
+gedit_statusbar_finalize (GObject *object)
+{
+	GeditStatusbar *statusbar = GEDIT_STATUSBAR (object);
+
+	g_object_unref (statusbar->priv->tooltips);
+
+	G_OBJECT_CLASS (gedit_statusbar_parent_class)->finalize (object);
+}
+
+static void
 gedit_statusbar_class_init (GeditStatusbarClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->notify = gedit_statusbar_notify;
+	object_class->finalize = gedit_statusbar_finalize;
 
 	g_type_class_add_private (object_class, sizeof (GeditStatusbarPrivate));
 }
@@ -91,7 +102,7 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 {
 	GtkWidget *hbox;
 	GtkWidget *error_image;
-	
+
 	statusbar->priv = GEDIT_STATUSBAR_GET_PRIVATE (statusbar);
 
 	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar), FALSE);
@@ -101,7 +112,7 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 	gtk_widget_set_size_request (statusbar->priv->overwrite_mode_statusbar, 
 				     80, 
 				     10);
-	
+
 	gtk_statusbar_set_has_resize_grip (GTK_STATUSBAR (statusbar->priv->overwrite_mode_statusbar),
 					   TRUE);
 	gtk_box_pack_end (GTK_BOX (statusbar),
@@ -124,13 +135,13 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 
 	hbox = gtk_hbox_new (FALSE, 0);	
 	gtk_container_add (GTK_CONTAINER (statusbar->priv->state_frame), hbox);
-					   
+
 	statusbar->priv->load_image = gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
 	statusbar->priv->save_image = gtk_image_new_from_stock (GTK_STOCK_SAVE, GTK_ICON_SIZE_MENU);
 	statusbar->priv->print_image = gtk_image_new_from_stock (GTK_STOCK_PRINT, GTK_ICON_SIZE_MENU);
-	
+
 	gtk_widget_show (hbox);
-	
+
 	gtk_box_pack_start (GTK_BOX (hbox),
 			    statusbar->priv->load_image,
 			    FALSE, TRUE, 4);
@@ -140,37 +151,39 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 	gtk_box_pack_start (GTK_BOX (hbox),
 			    statusbar->priv->print_image,
 			    FALSE, TRUE, 4);
-	
+
 	gtk_box_pack_start (GTK_BOX (statusbar),
 			    statusbar->priv->state_frame,
 			    FALSE, TRUE, 0);
 
 	statusbar->priv->error_frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (statusbar->priv->error_frame), GTK_SHADOW_IN);
-	
+
 	error_image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_ERROR, GTK_ICON_SIZE_MENU);
 	gtk_misc_set_padding (GTK_MISC (error_image), 4, 0);
 	gtk_widget_show (error_image);
-	
+
 	statusbar->priv->error_event_box = gtk_event_box_new ();
 	gtk_event_box_set_visible_window  (GTK_EVENT_BOX (statusbar->priv->error_event_box),
 					   FALSE);
 	gtk_widget_show (statusbar->priv->error_event_box);
-	
+
 	gtk_container_add (GTK_CONTAINER (statusbar->priv->error_frame),
 			   statusbar->priv->error_event_box);		    
 	gtk_container_add (GTK_CONTAINER (statusbar->priv->error_event_box), 
 			   error_image);
-			   		    			   					   
+
 	gtk_box_pack_start (GTK_BOX (statusbar),
 			    statusbar->priv->error_frame,
 			    FALSE, TRUE, 0);
-			    
+
 	gtk_box_reorder_child (GTK_BOX (statusbar),
 			       statusbar->priv->error_frame,
 			       0);
 
-	statusbar->priv->tooltips = gedit_tooltips_new ();			       
+	statusbar->priv->tooltips = gedit_tooltips_new ();
+	g_object_ref (G_OBJECT (statusbar->priv->tooltips));
+	gtk_object_sink (GTK_OBJECT (statusbar->priv->tooltips));			       
 }
 
 /**
