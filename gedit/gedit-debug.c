@@ -99,12 +99,12 @@ gedit_debug_message (GeditDebugSection  section,
 		     const gchar       *function,
 		     const gchar       *format, ...)
 {
-	if (debug & section)
+	if (G_UNLIKELY (debug & section))
 	{	
 #ifdef ENABLE_PROFILING
 		gdouble seconds;
 #endif
-	
+
 		va_list args;
 		gchar *msg;
 
@@ -136,11 +136,11 @@ void gedit_debug (GeditDebugSection  section,
 		  gint               line,
 		  const gchar       *function)
 {
-	if (debug & section)
+	if (G_UNLIKELY (debug & section))
 	{
 #ifdef ENABLE_PROFILING
 		gdouble seconds;
-		
+
 		g_return_if_fail (timer != NULL);
 
 		seconds = g_timer_elapsed (timer, NULL);		
