@@ -566,6 +566,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 				 	      &saver->priv->error))
 		{
 			close (tmpfd);
+			unlink (tmp_filename);
 			g_free (tmp_filename);
 			goto out;
 		}

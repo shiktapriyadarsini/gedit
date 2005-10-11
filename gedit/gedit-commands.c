@@ -1019,19 +1019,18 @@ gedit_cmd_file_revert (GtkAction   *action,
 	gtk_widget_show (dialog);
 }
 
-
 static gboolean 
 really_close_tab (GeditTab *tab)
 {
 	GtkWidget *toplevel; 
 	g_return_val_if_fail (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_CLOSING, 
 			      FALSE);
-	
+
 	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
 	g_return_val_if_fail (GEDIT_IS_WINDOW (toplevel), FALSE);
-	
+
 	gedit_window_close_tab (GEDIT_WINDOW (toplevel), tab);
-	
+
 	return FALSE;
 }
 
@@ -1041,26 +1040,26 @@ tab_state_changed_while_saving (GeditTab    *tab,
 				GeditWindow *window)
 {
 	GeditTabState ts;
-	
+
 	ts = gedit_tab_get_state (tab);
-	
+
 	gedit_debug_message (DEBUG_COMMANDS, "State while saving: %d\n", ts);
-	
+
 	if (ts == GEDIT_TAB_STATE_NORMAL)
 	{
 		GeditDocument *doc;
-		
+
 		g_signal_handlers_disconnect_by_func (tab,
 						      G_CALLBACK (tab_state_changed_while_saving), 
 					      	      window);
 
 		doc = gedit_tab_get_document (tab);
 		g_return_if_fail (doc != NULL);
-		
+
 		if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) || 
 		    gedit_document_get_deleted (doc))
 			return;
-			
+
 		/* Close the document only if it has been succesfully saved */		
 		_gedit_tab_mark_for_closing (tab);
 
@@ -1081,8 +1080,8 @@ save_and_close (GeditTab    *tab,
 			  window);
 
 	file_save (tab, window);
-	
 }
+
 /* Returns TRUE if the tab can be immediately closed */
 gboolean
 _gedit_cmd_file_can_close (GeditTab  *tab,
@@ -1096,22 +1095,22 @@ _gedit_cmd_file_can_close (GeditTab  *tab,
 
 	doc = gedit_tab_get_document (tab);
 	ts = gedit_tab_get_state (tab);
-	
+
 	/* TODO: we need to save the file also if it has been externally 
 	   modified - Paolo (Oct 10, 2005) */
-	if ((ts != GEDIT_TAB_STATE_LOADING_ERROR) && 
+	if ((ts != GEDIT_TAB_STATE_LOADING_ERROR) &&
 	    (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) || 
-	     gedit_document_get_deleted (doc)))	     
+	     gedit_document_get_deleted (doc)))
 	{
 		GtkWidget *dlg;
 
 		dlg = gedit_close_confirmation_dialog_new_single (
-					window, 
+					window,
 					doc);
-				 
+
 		close = gedit_close_confirmation_dialog_run (
 					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
-		
+
 		if (close)
 		{
 			if (gedit_close_confirmation_dialog_get_selected_documents (
@@ -1121,10 +1120,10 @@ _gedit_cmd_file_can_close (GeditTab  *tab,
 				save_and_close (tab, GEDIT_WINDOW (window));
 			}
 		}
-		
+
 		gtk_widget_destroy (dlg);		
 	}
-	
+
 	return close;
 }
 
@@ -1138,13 +1137,13 @@ gedit_cmd_file_close (GtkAction   *action,
 
 	active_tab = gedit_window_get_active_tab (window);
 	if (active_tab == NULL)
-		return;	
+		return;
 
 	if (_gedit_cmd_file_can_close (active_tab, GTK_WINDOW (window)))
 		gedit_window_close_tab (window, active_tab);
 }
 
-void 
+void
 gedit_cmd_file_close_all (GtkAction   *action,
 			  GeditWindow *window)
 {
@@ -1154,7 +1153,7 @@ gedit_cmd_file_close_all (GtkAction   *action,
 	gboolean close = FALSE;
 
 	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_SAVING));
-	
+
 	gedit_debug (DEBUG_COMMANDS);
 
 	unsaved_docs = NULL;
@@ -1171,53 +1170,53 @@ gedit_cmd_file_close_all (GtkAction   *action,
 		}
 	}
 	g_list_free (docs);
-	
+
 	if (unsaved_docs == NULL)
 	{
 		/* Close all documents */
 		gedit_window_close_all_tabs (window);
 		return;
 	}
-	
+
 	unsaved_docs = g_slist_reverse (unsaved_docs);
-	
+
 	if (unsaved_docs->next == NULL)
 	{
 		/* There is only one usaved doc */
-		
+
 		GeditTab *tab;
 		GtkWidget *dlg;
 		GeditDocument *doc;
 
 		doc = GEDIT_DOCUMENT (unsaved_docs->data);
-		
+
 		tab = gedit_tab_get_from_document (doc);
 		g_return_if_fail (tab != NULL);
-		
+
 		gedit_window_set_active_tab (window, tab);
-				
+
 		dlg = gedit_close_confirmation_dialog_new_single (
 					GTK_WINDOW (window), 
 					doc);
-				 
+
 		close = gedit_close_confirmation_dialog_run (
 					GEDIT_CLOSE_CONFIRMATION_DIALOG (dlg));
-		
+
 		gtk_widget_hide (dlg);
-		
+
 		if (close)
 		{
 			// TODO: salvare il documento se necessario
 		}
-		
+
 		gtk_widget_destroy (dlg);
 	}
 	else
 	{
 		/* There are more than one unsaved docs */
-		
+
 		GtkWidget *dlg;
-		
+
 		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window), 
 							   unsaved_docs);
 
@@ -1237,13 +1236,13 @@ gedit_cmd_file_close_all (GtkAction   *action,
 			{
 				// TODO: salvare i documenti se necessario
 			}
-			
+
 			g_slist_free (sel_docs);
 		}
-		
+
 		gtk_widget_destroy (dlg);
 	}
-	
+
 	if (close)
 		/* Close all documents */
 		gedit_window_close_all_tabs (window);
@@ -1254,13 +1253,8 @@ gedit_cmd_file_quit (GtkAction   *action,
 		     GeditWindow *window)
 {
 	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_SAVING));
-	
+
 	gedit_cmd_file_close_all (NULL, window);
 
 	gtk_widget_destroy (GTK_WIDGET (window));
 }
-
-
-
-
-
