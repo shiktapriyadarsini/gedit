@@ -359,6 +359,7 @@ copy_file_data (gint     sfd,
 		GError **error)
 {
 	gboolean ret = TRUE;
+	GError *err = NULL;
 	gpointer buffer;
 	const gchar *write_buffer;
 	ssize_t bytes_read;
@@ -374,7 +375,7 @@ copy_file_data (gint     sfd,
 		{
 			GnomeVFSResult result = gnome_vfs_result_from_errno ();
 
-			g_set_error (error,
+			g_set_error (&err,
 				     GEDIT_DOCUMENT_ERROR,
 				     result,
 				     gnome_vfs_result_to_string (result));
@@ -394,7 +395,7 @@ copy_file_data (gint     sfd,
 			{
 				GnomeVFSResult result = gnome_vfs_result_from_errno ();
 
-				g_set_error (error,
+				g_set_error (&err,
 					     GEDIT_DOCUMENT_ERROR,
 					     result,
 					     gnome_vfs_result_to_string (result));
@@ -410,6 +411,9 @@ copy_file_data (gint     sfd,
 		while (bytes_to_write > 0);
 
 	} while ((bytes_read != 0) && (ret == TRUE));
+
+	if (error)
+		*error = err;
 
 	return ret;
 }
@@ -513,6 +517,16 @@ save_existing_local_file (GeditDocumentSaver *saver)
 
 	/* prepare the backup name */
 	backup_filename = get_backup_filename (saver);
+	if (backup_filename == NULL)
+	{
+		/* bad bad luck... */
+		g_set_error (&saver->priv->error,
+			     GEDIT_DOCUMENT_ERROR,
+			     GNOME_VFS_ERROR_GENERIC,
+			     gnome_vfs_result_to_string (GNOME_VFS_ERROR_GENERIC));
+
+		goto out;
+	}
 
 	/* We now use two backup strategies.
 	 * The first one (which is faster) consist in saving to a
@@ -636,58 +650,72 @@ save_existing_local_file (GeditDocumentSaver *saver)
 
  fallback_strategy:
 
-	/* move away old backups */
-	if (!remove_file (backup_filename))
+	/* try to copy the old contents in a backup for safety
+	 * unless we are explicetely told not to.
+	 */
+	if ((saver->priv->flags & GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP) == 0)
 	{
-		GnomeVFSResult result = gnome_vfs_result_from_errno ();
-
-		g_set_error (&saver->priv->error,
-			     GEDIT_DOCUMENT_ERROR,
-			     result,
-			     gnome_vfs_result_to_string (result));
-
-		goto out;
-	}
-
-	bfd = open (backup_filename,
-		    O_WRONLY | O_CREAT | O_EXCL,
-		    statbuf.st_mode & 0777);
-
-	if (bfd == -1)
-	{
-		GnomeVFSResult result = gnome_vfs_result_from_errno ();
-
-		g_set_error (&saver->priv->error,
-			     GEDIT_DOCUMENT_ERROR,
-			     result,
-			     gnome_vfs_result_to_string (result));
-
-		goto out;
-	}
-
-	/* Try to set the group of the backup same as the
-	 * original file. If this fails, set the protection
-	 * bits for the group same as the protection bits for
-	 * others. */
-	if (fchown (bfd, (uid_t) -1, statbuf.st_gid) != 0)
-	{
-		if (fchmod (bfd,
-		            (statbuf.st_mode& 0707) |
-		            ((statbuf.st_mode & 07) << 3)) != 0)
+		/* move away old backups */
+		if (!remove_file (backup_filename))
 		{
-			GnomeVFSResult result = gnome_vfs_result_from_errno ();
-
+			/* we don't care about which was the problem, just
+			 * that a backup was not possible.
+			 */
 			g_set_error (&saver->priv->error,
 				     GEDIT_DOCUMENT_ERROR,
-				     result,
-				     gnome_vfs_result_to_string (result));
+				     GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
+				     "No backup created");
 
 			goto out;
 		}
-	}
 
-	if (!copy_file_data (saver->priv->fd, bfd, &saver->priv->error))
-		goto out;
+		bfd = open (backup_filename,
+			    O_WRONLY | O_CREAT | O_EXCL,
+			    statbuf.st_mode & 0777);
+
+		if (bfd == -1)
+		{
+			g_set_error (&saver->priv->error,
+				     GEDIT_DOCUMENT_ERROR,
+				     GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
+				     "No backup created");
+
+			goto out;
+		}
+
+		/* Try to set the group of the backup same as the
+		 * original file. If this fails, set the protection
+		 * bits for the group same as the protection bits for
+		 * others. */
+		if (fchown (bfd, (uid_t) -1, statbuf.st_gid) != 0)
+		{
+			if (fchmod (bfd,
+			            (statbuf.st_mode& 0707) |
+			            ((statbuf.st_mode & 07) << 3)) != 0)
+			{
+				g_set_error (&saver->priv->error,
+					     GEDIT_DOCUMENT_ERROR,
+					     GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
+					     "No backup created");
+
+				unlink (backup_filename);
+
+				goto out;
+			}
+		}
+
+		if (!copy_file_data (saver->priv->fd, bfd, NULL))
+		{
+				g_set_error (&saver->priv->error,
+					     GEDIT_DOCUMENT_ERROR,
+					     GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
+					     "No backup created");
+
+				unlink (backup_filename);
+
+				goto out;
+		}
+	}
 
 	/* finally overwrite the original */
 	if (!write_document_contents (saver->priv->fd,

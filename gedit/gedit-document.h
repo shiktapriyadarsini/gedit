@@ -109,8 +109,11 @@ struct _GeditDocumentClass
 
 typedef enum
 {
-	GEDIT_DOCUMENT_SAVE_IGNORE_MTIME	 = 1 << 0,
-	GEDIT_DOCUMENT_SAVE_IGNORE_NOBACKUP	 = 1 << 1
+	/* save file despite external modifications */
+	GEDIT_DOCUMENT_SAVE_IGNORE_MTIME 	= 1 << 0,
+
+	/* try to save anyway even if a prior backup was not possible */
+	GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP	= 1 << 1
 } GeditDocumentSaveFlags;
 
 
@@ -122,6 +125,7 @@ enum
 	 * for the error codes */ 
 	GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED = GNOME_VFS_NUM_ERRORS,
 	GEDIT_DOCUMENT_ERROR_NOT_REGULAR_FILE,
+	GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
 	GEDIT_DOCUMENT_NUM_ERRORS 
 };
 
