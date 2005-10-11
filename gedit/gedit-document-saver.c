@@ -209,7 +209,7 @@ write_document_contents (gint                  fd,
 							      error);
 		g_free (contents);
 
-		if (error != NULL)
+		if (*error != NULL)
 		{
 			/* Conversion error */
 			return FALSE;
