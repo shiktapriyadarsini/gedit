@@ -636,9 +636,13 @@ static void
 file_save_as (GeditTab    *tab,
 	      GeditWindow *window)
 {
-	GtkWidget      *save_dialog;
-	GtkWindowGroup *wg;
-
+	GtkWidget           *save_dialog;
+	GtkWindowGroup      *wg;
+	GeditDocument       *doc;
+	const gchar         *uri;	
+	gboolean             uri_set = FALSE;
+	const GeditEncoding *encoding;
+	
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
@@ -667,8 +671,38 @@ file_save_as (GeditTab    *tab,
 	/* Save As dialog is modal to its main window */
 	gtk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
 
-	/* TODO: set the default path/name */
+	/* Set the suggested file name */
+	doc = gedit_tab_get_document (tab);
+	uri = gedit_document_get_uri_ (doc);
 
+	if ((uri != NULL) &&
+	    gedit_utils_uri_has_file_scheme (uri))
+	{
+		uri_set = gtk_file_chooser_set_uri (GTK_FILE_CHOOSER (save_dialog),
+						    uri);
+	}
+	
+	if (!uri_set)
+	{
+		const gchar *default_path;	
+		
+		default_path = _gedit_window_get_default_path (window);
+		
+		if (default_path != NULL)
+			gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (save_dialog),
+								 default_path);	
+	
+		gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (save_dialog),
+						   gedit_document_get_short_name_for_display (doc));
+	}
+
+	/* Set suggested encoding */
+	encoding = gedit_document_get_encoding (doc);
+	g_return_if_fail (encoding != NULL);
+	
+	gedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
+						encoding);
+	
 	g_object_set_data (G_OBJECT (save_dialog), GEDIT_TAB_TO_SAVE_AS, tab);
 
 	g_signal_connect (save_dialog,
