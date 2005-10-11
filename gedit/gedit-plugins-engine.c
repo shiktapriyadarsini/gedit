@@ -81,10 +81,10 @@ struct _GeditPluginInfo
 	gboolean     active;
 };
 
-static void			gedit_plugins_engine_active_plugins_changed (GConfClient *client,
-								      guint cnxn_id, 
-								      GConfEntry *entry, 
-								      gpointer user_data);
+static void	gedit_plugins_engine_active_plugins_changed (GConfClient *client,
+							     guint cnxn_id, 
+							     GConfEntry *entry, 
+							     gpointer user_data);
 
 static GList *gedit_plugins_list = NULL;
 
@@ -112,7 +112,7 @@ gedit_plugins_engine_load (const gchar *file)
 		g_warning ("Bad plugin file: %s", file);
 		goto error;
 	}
-	
+
 	if (!g_key_file_has_key (plugin_file,
 			   	 "Gedit Plugin",
 				 "IAge",
@@ -122,7 +122,7 @@ gedit_plugins_engine_load (const gchar *file)
 				     "IAge key does not exist in file: %s", file);
 		goto error;
 	}
-		
+	
 	/* Check IAge=2 */
 	if (g_key_file_get_integer (plugin_file,
 				    "Gedit Plugin",
@@ -140,7 +140,9 @@ gedit_plugins_engine_load (const gchar *file)
 				     "Module",
 				     NULL);
 	if (str)
+	{
 		info->location = str;
+	}
 	else
 	{
 		g_warning ("Could not find 'Module' in %s", file);
@@ -165,6 +167,7 @@ gedit_plugins_engine_load (const gchar *file)
 	{
 		info->lang = GEDIT_PLUGIN_LOADER_C;
 	}
+	g_free (str);
 
 	/* Get Name */
 	str = g_key_file_get_locale_string (plugin_file,
