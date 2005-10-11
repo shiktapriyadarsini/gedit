@@ -115,7 +115,7 @@ gedit_SOURCES = 			\
 	$(BUILT_SOURCES)		\
 	$(BACON_FILES)			\
 	gedit.c				\
-	gedit-commands.c		\
+	gedit-commands-file.c		\
 	gedit-commands-documents.c	\
 	gedit-commands-edit.c		\
 	gedit-commands-file-print.c	\
