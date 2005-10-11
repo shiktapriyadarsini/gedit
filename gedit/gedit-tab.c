@@ -209,53 +209,54 @@ view_realized (GtkTextView *view,
 }
 
 static void
-gedit_tab_set_state (GeditTab *tab,
-		     GeditTabState state)
+set_view_properties_according_to_state (GeditTab      *tab,
+					GeditTabState  state)
+{
+	gboolean val;
+
+	val = ((state == GEDIT_TAB_STATE_NORMAL) &&
+	       (tab->priv->print_preview == NULL) &&
+	       !tab->priv->not_editable);
+	gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), val);
+
+	val = ((state != GEDIT_TAB_STATE_LOADING) &&
+	       (state != GEDIT_TAB_STATE_CLOSING));
+	gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tab->priv->view), val);
+
+	val = ((state != GEDIT_TAB_STATE_LOADING) &&
+	       (state != GEDIT_TAB_STATE_CLOSING) &&
+	       (gedit_prefs_manager_get_highlight_current_line ()));
+	gtk_source_view_set_highlight_current_line (GTK_SOURCE_VIEW (tab->priv->view), val);
+}
+
+static void
+gedit_tab_set_state (GeditTab      *tab,
+		     GeditTabState  state)
 {
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail ((state >= 0) && (state < GEDIT_TAB_NUM_OF_STATES));
-		
+
 	if (tab->priv->state == state)
 		return;
 
 	tab->priv->state = state;
 
-	if (state == GEDIT_TAB_STATE_NORMAL)
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), 
-					    (tab->priv->print_preview == NULL) && 
-					    !tab->priv->not_editable);
-	else		
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (tab->priv->view), 
-					    FALSE);
+	set_view_properties_according_to_state (tab, state);
 
-	if ((state == GEDIT_TAB_STATE_LOADING) ||
-	    (state == GEDIT_TAB_STATE_CLOSING)) // FIXME: add other states if needed
-	{
-		g_object_set (G_OBJECT (tab->priv->view),
-			      "highlight_current_line", FALSE,
-			      "cursor-visible", FALSE,
-			      NULL);
-	}
-	else
-	{
-		g_object_set (G_OBJECT (tab->priv->view),
-			      "highlight_current_line", gedit_prefs_manager_get_highlight_current_line (),
-			      "cursor-visible", TRUE,
-			      NULL);
-	}
-		
 	if ((state == GEDIT_TAB_STATE_LOADING_ERROR) || // FIXME: add other states if needed
-	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))	
+	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))
+	{
 		gtk_widget_hide (tab->priv->view_scrolled_window);
+	}
 	else
 	{
 		if (tab->priv->print_preview == NULL)
 			gtk_widget_show (tab->priv->view_scrolled_window);
 	}
-	
+
 	if (gtk_text_view_get_window (GTK_TEXT_VIEW (tab->priv->view), GTK_TEXT_WINDOW_TEXT) != NULL)
 		view_realized (GTK_TEXT_VIEW (tab->priv->view), tab);
-	
+
 	g_object_notify (G_OBJECT (tab), "state");		
 }
 
