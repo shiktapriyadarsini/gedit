@@ -520,6 +520,8 @@ save_existing_local_file (GeditDocumentSaver *saver)
 	if (backup_filename == NULL)
 	{
 		/* bad bad luck... */
+		g_warning (_("Could not obtain backup filename"));
+
 		g_set_error (&saver->priv->error,
 			     GEDIT_DOCUMENT_ERROR,
 			     GNOME_VFS_ERROR_GENERIC,

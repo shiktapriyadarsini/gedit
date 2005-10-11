@@ -112,7 +112,7 @@ typedef enum
 	/* save file despite external modifications */
 	GEDIT_DOCUMENT_SAVE_IGNORE_MTIME 	= 1 << 0,
 
-	/* try to save anyway even if a prior backup was not possible */
+	/* write the file directly without attempting to backup */
 	GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP	= 1 << 1
 } GeditDocumentSaveFlags;
 
