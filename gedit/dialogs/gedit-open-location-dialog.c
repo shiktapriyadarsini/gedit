@@ -62,27 +62,6 @@ gedit_open_location_dialog_class_init (GeditOpenLocationDialogClass *klass)
 	g_type_class_add_private (object_class, sizeof (GeditOpenLocationDialogPrivate));
 }
 
-static void
-show_error_message (GeditOpenLocationDialog *dlg,
-		    const gchar             *str)
-{
-	GtkWidget *label;
-
-	label = gtk_label_new (str);
-
-	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-	gtk_misc_set_padding (GTK_MISC (label), 6, 6);
-	
-	gtk_widget_show (label);
-			
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dlg)->vbox),
-		    	    label, 
-		    	    FALSE, 
-		    	    FALSE,
-		    	    0);
-}
-
 static void 
 entry_changed (GtkEditable             *editable, 
 	       GeditOpenLocationDialog *dlg)
