@@ -116,6 +116,8 @@ gedit_SOURCES = 			\
 	$(BACON_FILES)			\
 	gedit.c				\
 	gedit-commands.c		\
+	gedit-view-commands.c		\
+	gedit-documents-commands.c	\
 	gedit-search-commands.c		\
 	gedit-help-commands.c		\
 	gedit-document.c 		\
