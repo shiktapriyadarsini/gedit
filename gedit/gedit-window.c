@@ -1557,6 +1557,11 @@ update_window_state (GeditWindow *window)
 	{
 		GtkAction *action;
 		
+		/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
+		   operations (save and print/print preview) that uses the message area at
+		   the same time (may be we can remove this limitation in the future) */
+		/* We disable File->Quit/CloseAll if state is saving since saving cannot be
+		   cancelled (may be we can remove this limitation in the future) */
 		action = gtk_action_group_get_action (window->priv->action_group,
 					              "FileQuit");
 		gtk_action_set_sensitive (action, 

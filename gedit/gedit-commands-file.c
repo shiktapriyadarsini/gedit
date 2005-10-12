@@ -56,7 +56,7 @@
 #define GEDIT_OPEN_DIALOG_KEY 		"gedit-open-dialog-key"
 #define GEDIT_OPEN_LOCATION_DIALOG_KEY  "gedit-open-location-dialog-key"
 #define GEDIT_TAB_TO_SAVE_AS  		"gedit-tab-to-save-as"
-
+#define GEDIT_LIST_OF_TABS_TO_SAVE_AS   "gedit-list-of-tabs-to-save-as"
 
 void
 gedit_cmd_file_new (GtkAction   *action,
@@ -470,6 +470,7 @@ gedit_cmd_file_open_recent (EggRecentItem *item,
 }
 
 /* File saving */
+static void file_save_as (GeditTab *tab, GeditWindow *window);
 
 /* CHECK: move to utils? If so, do not include vfs.h */
 static gboolean
@@ -567,23 +568,25 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 	gchar               *uri;
 	const GeditEncoding *encoding;
 	GeditTab            *tab;
-
+	gpointer	     data;
+	GSList		    *tabs_to_save_as;
+	
 	gedit_debug (DEBUG_COMMANDS);
 
+	tab = GEDIT_TAB (g_object_get_data (G_OBJECT (dialog),
+					    GEDIT_TAB_TO_SAVE_AS));
+					    
 	if (response_id != GTK_RESPONSE_OK)
 	{
 		gtk_widget_destroy (GTK_WIDGET (dialog));
 
-		return;
+		goto save_next_tab;
 	}
 
 	uri = gtk_file_chooser_get_uri (GTK_FILE_CHOOSER (dialog));
 	g_return_if_fail (uri != NULL);
 
 	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
-
-	tab = GEDIT_TAB (g_object_get_data (G_OBJECT (dialog),
-					    GEDIT_TAB_TO_SAVE_AS));
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
@@ -606,6 +609,33 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 	}
 
 	g_free (uri);
+
+save_next_tab:
+
+	data = g_object_get_data (G_OBJECT (window),
+				  GEDIT_LIST_OF_TABS_TO_SAVE_AS);
+	if (data == NULL)
+		return;
+		
+	/* Save As the next tab of the list (we are Saving All files) */
+	tabs_to_save_as = (GSList *)data;
+	g_return_if_fail (tab == GEDIT_TAB (tabs_to_save_as->data));
+	
+	/* Remove the first item of the list */
+	tabs_to_save_as = g_slist_delete_link (tabs_to_save_as,
+					       tabs_to_save_as);
+					       
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
+			   tabs_to_save_as);
+			   
+	if (tabs_to_save_as != NULL)
+	{
+		tab = GEDIT_TAB (tabs_to_save_as->data);
+		
+		gedit_window_set_active_tab (window, tab);
+		file_save_as (tab, window);
+	}
 }
 
 static GtkFileChooserConfirmation
@@ -703,7 +733,10 @@ file_save_as (GeditTab    *tab,
 	gedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
 						encoding);
 	
-	g_object_set_data (G_OBJECT (save_dialog), GEDIT_TAB_TO_SAVE_AS, tab);
+
+	g_object_set_data (G_OBJECT (save_dialog), 
+			   GEDIT_TAB_TO_SAVE_AS,
+			   tab);
 
 	g_signal_connect (save_dialog,
 			  "response",
@@ -776,13 +809,19 @@ void
 gedit_cmd_file_save_all (GtkAction   *action,
 			 GeditWindow *window)
 {
-	GList *tabs, *l;
+	GList *tabs;
+	GList *l;
+	GSList *tabs_to_save_as;
 
+	gedit_debug (DEBUG_COMMANDS);
+	
 	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_PRINTING));
 
 	tabs = gtk_container_get_children (
 			GTK_CONTAINER (_gedit_window_get_notebook (window)));
 
+	tabs_to_save_as = NULL;
+	
 	l = tabs;
 	while (l != NULL)
 	{
@@ -797,18 +836,17 @@ gedit_cmd_file_save_all (GtkAction   *action,
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
+		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 
-		/* FIXME: manage readonly files */
-		/* FIXME: what does it happen if there is for example a LOAD_ERROR or
-		   a REVERTING_ERROR? */
-		/* FIXME: what should we do if a file is being REVERTED? */
-
+		/* FIXME: manage readonly files - Paolo (Oct. 12, 2005) */
 		if ((state == GEDIT_TAB_STATE_NORMAL) ||
-		    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))
+		    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
+		    (state == GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE))
 		{
 			if (gedit_document_is_untitled (doc))
 			{
-				/* TODO: creare una list di file untitled */
+				tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
+								   t);
 			}
 			else
 			{
@@ -817,6 +855,27 @@ gedit_cmd_file_save_all (GtkAction   *action,
 		}
 		else
 		{
+			/* If the state is:
+			   - GEDIT_TAB_STATE_LOADING: we do not save since we are sure the file is unmodified
+			   - GEDIT_TAB_STATE_REVERTING: we do not save since the user wants
+			     to return back to the version of the file she previously saved
+			   - GEDIT_TAB_STATE_SAVING: well, we are already saving (no need to save again)
+			   - GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a 
+			     real reason for not saving in this case, we do not save to avoid to run
+			     two operations using the message area at the same time (may be we can remove 
+			     this limitation in the future). Note that SaveAll, ClosAll
+			     and Quit are unsensitive if the window state is PRINTING.
+			   - GEDIT_TAB_STATE_GENERIC_ERROR: we do not save since the document contains
+			     errors (I don't think this is a very frequent case, we should probably remove 
+			     this state)
+			   - GEDIT_TAB_STATE_LOADING_ERROR: there is nothing to save
+			   - GEDIT_TAB_STATE_REVERTING_ERROR: there is nothing to save and saving the current
+			     document will overwrite the copy of the file the user wants to go back to
+			   - GEDIT_TAB_STATE_SAVING_ERROR: we do not save since we just failed to save, so there is
+			     no reason to automatically retry... we wait for user intervention
+			   - GEDIT_TAB_STATE_CLOSING: this state is invalid in this case
+			*/
+			
 			gedit_debug_message (DEBUG_COMMANDS,
 					     "File '%s' not saved. State: %d",
 					     gedit_document_get_uri_for_display (doc),
@@ -825,62 +884,28 @@ gedit_cmd_file_save_all (GtkAction   *action,
 
 		l = g_list_next (l);
 	}
-/*
-<paolo> sto implementando il Save All
-<paolo> è molto meno banale di cosa pensassi
-<paolo> e non so bene come risolvere un problema
-<paolo> la mia implementazione funziona così
-<paolo> - prendo la lista di tutte le tab
-<paolo> - creo una lista di documenti untitled
-<paolo> - salvo tutti i documenti con titolo e il cui stato è
-<paolo> if ((state == GEDIT_TAB_STATE_NORMAL) ||
-<paolo>     (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
-<paolo>     (state == GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE))
-<pbor> (io stavo leggendo http://bugzilla.gnome.org/show_bug.cgi?id=148218, che parla di mmap in glib... e mi ha fatto venire un dubbio: new_mdi funziona se il file e' lungo esattamente come una memory page? ossia non e' null term)
-<paolo> - potenzialmente rimangono altri documenti
-<paolo> (direi di sì, ma bisogna provare)
-<paolo> a questo punto faccio save_as per tutti i documenti untitled
-<paolo> uno dopo l'altro
-<pbor> perche' non salvi se il doc e PRINT_PREVIEW?
-<paolo> hmmm... in che senso?
-<paolo> salvo nei tre casi NORMAL, SHOWING_PRINT_PREVIEW e GENERIC_NOT_EDITABLE
-<pbor> ugh... scusa
-<pbor> ok
-<paolo> cmq... fino qui mi sembra tutto lineare (anche se non banale da implementare senza usare dialog_run)
-<paolo> il problema sono i file che rimangono ossia quelli che erano per esempio "PRINTING" quando è stato attivato il save_all
-<paolo> cosa ne faccio?
-<paolo> io vedo due possibilità:
-<pbor> e se disattivassimo il save_all?
-<paolo> 1. fare finta di niente
-<paolo> 2. mostrare una dlg con una lista di file non salvati
-<paolo> disattivare la save_all è una possibilità... ma non mi attizza troppo
-<paolo> ma forse alla fine è la più lineare
-<paolo> perchè aggira il problema
-<pbor> io invece opterei per disattivarlo come con il close_all
-<paolo> in realtà il problema si pone solo per i file che sono nei seguenti stati:
-<paolo> GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING e GEDIT_TAB_STATE_SAVING_ERROR
-<paolo> se il file e LOADING o REVERTING non è il caso di salvarlo
-<paolo> se è SAVING idem
-<paolo> se è LOADING_ERROR o REVERTING error, c'è poco da salvare
-<paolo> se è GENERIC_ERROR ... non so
-<pbor> non puoi salvare mentre e' in print/print_preview?
-<paolo> in teoria sì, il problema che è un casino da gestire con la message_area
-<paolo> potremmo però salvare non appena escono dallo stato printing/print_previewing
-<pbor> saving error non e' un problema: si skippa il file, come se la save fosse fallita
-<paolo> infatti
-<pbor> boh... io disabiliterei per ora
-<pbor> e' la cosa piu semplice
-<paolo> rimane solo il problema dei documenti untitled che sono in uno degli stati di cui sopra
-<pbor> e non mi sembra un caso molto probabile
-<pbor> al max metti un buon vecchio FIXME
-<pbor> :-)
-<paolo> ossia tu dici... quando lo stato della window e PRINTING disabilita Save All
-<pbor> yep
-<paolo> tanto gli altri casi non creano problemi
-<paolo> ok, concordo
-*/
+
 	g_list_free (tabs);
-}
+	
+	if (tabs_to_save_as != NULL)
+	{
+		GeditTab *tab;
+		
+		tabs_to_save_as = g_slist_reverse (tabs_to_save_as );
+		
+		g_return_if_fail (g_object_get_data (G_OBJECT (window),
+						     GEDIT_LIST_OF_TABS_TO_SAVE_AS) == NULL);
+						     
+		g_object_set_data (G_OBJECT (window),
+				   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
+				   tabs_to_save_as);
+			
+		tab = GEDIT_TAB (tabs_to_save_as->data);
+		
+		gedit_window_set_active_tab (window, tab);
+		file_save_as (tab, window);
+	}
+}	
 
 /* File revert */
 static void
@@ -1215,7 +1240,9 @@ gedit_cmd_file_close_all (GtkAction   *action,
 	GList *l;
 	gboolean close = FALSE;
 
-	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_SAVING));
+	g_return_if_fail (!(gedit_window_get_state (window) & 
+	                    GEDIT_WINDOW_STATE_SAVING &
+	                    GEDIT_WINDOW_STATE_PRINTING));
 
 	gedit_debug (DEBUG_COMMANDS);
 
