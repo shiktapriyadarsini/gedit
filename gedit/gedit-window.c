@@ -481,7 +481,8 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	gtk_action_set_sensitive (action,
 	                          (state != GEDIT_TAB_STATE_CLOSING) &&
 				  (state != GEDIT_TAB_STATE_SAVING) &&
-				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
+				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "EditUndo");
