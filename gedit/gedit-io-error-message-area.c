@@ -47,6 +47,7 @@
 #include "gedit-document.h"
 #include "gedit-io-error-message-area.h"
 #include "gedit-message-area.h"
+#include "gedit-prefs-manager.h"
 #include <gedit/gedit-encodings-option-menu.h>
 
 #define MAX_URI_IN_DIALOG_LENGTH 50
@@ -1018,9 +1019,15 @@ gedit_no_backup_saving_error_message_area_new (const gchar  *uri,
 	gtk_widget_show (vbox);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
-	// FIXME: review this message
-	primary_text = g_strdup_printf (_("Could not create a backup file while saving %s"),
-					uri_for_display);
+	// FIXME: review this messages
+
+	if (gedit_prefs_manager_get_create_backup_copy ())
+		primary_text = g_strdup_printf (_("Could not create a backup file while saving %s"),
+						uri_for_display);
+	else
+		primary_text = g_strdup_printf (_("Could not create a temporary backup file while saving %s"),
+						uri_for_display);
+
 	g_free (uri_for_display);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
@@ -1035,7 +1042,9 @@ gedit_no_backup_saving_error_message_area_new (const gchar  *uri,
 	GTK_WIDGET_SET_FLAGS (primary_label, GTK_CAN_FOCUS);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
-	secondary_text = _("If there is a problem during save the original file may get lost. Save anyway?");
+	secondary_text = _("gedit could not backup the old copy of the file before saving the new one. "
+			   "You can ignore this warning and save the file anyway, but if an error "
+			   "occurs while saving, you could lose the old copy of the file. Save anyway?");
   	secondary_markup = g_strdup_printf ("<small>%s</small>",
 					    secondary_text);
 	secondary_label = gtk_label_new (secondary_markup);
