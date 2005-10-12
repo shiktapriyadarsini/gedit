@@ -1084,6 +1084,7 @@
 
 			  <child>
 			    <widget class="GtkHBox" id="autosave_hbox">
+			      <property name="visible">True</property>
 			      <property name="homogeneous">False</property>
 			      <property name="spacing">6</property>
 
