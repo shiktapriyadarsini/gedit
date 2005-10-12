@@ -1560,13 +1560,15 @@ update_window_state (GeditWindow *window)
 		action = gtk_action_group_get_action (window->priv->action_group,
 					              "FileQuit");
 		gtk_action_set_sensitive (action, 
-					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+					  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
 
 		action = gtk_action_group_get_action (window->priv->action_group,
 					              "FileCloseAll");
 		gtk_action_set_sensitive (action, 
-					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
-
+					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+					  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+					  
 		action = gtk_action_group_get_action (window->priv->action_group,
 					              "FileSaveAll");
 		gtk_action_set_sensitive (action, 
