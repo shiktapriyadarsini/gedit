@@ -906,9 +906,10 @@ gedit_externally_modified_saving_error_message_area_new (
 	g_free (temp_uri_for_display);
 
 	message_area = gedit_message_area_new ();
-	gedit_message_area_add_button (GEDIT_MESSAGE_AREA (message_area),
-				       _("_Save Anyway"),
-				       GTK_RESPONSE_YES);
+	gedit_message_area_add_stock_button_with_text (GEDIT_MESSAGE_AREA (message_area),
+						       _("_Save Anyway"),
+						       GTK_STOCK_SAVE,
+						       GTK_RESPONSE_YES);
 	gedit_message_area_add_button (GEDIT_MESSAGE_AREA (message_area),
 				       _("_Don't Save"),
 				       GTK_RESPONSE_CANCEL);
@@ -1000,9 +1001,10 @@ gedit_no_backup_saving_error_message_area_new (const gchar  *uri,
 	g_free (temp_uri_for_display);
 
 	message_area = gedit_message_area_new ();
-	gedit_message_area_add_button (GEDIT_MESSAGE_AREA (message_area),
-				       _("_Save Anyway"),
-				       GTK_RESPONSE_YES);
+	gedit_message_area_add_stock_button_with_text (GEDIT_MESSAGE_AREA (message_area),
+						       _("_Save Anyway"),
+						       GTK_STOCK_SAVE,
+						       GTK_RESPONSE_YES);
 	gedit_message_area_add_button (GEDIT_MESSAGE_AREA (message_area),
 				       _("_Don't Save"),
 				       GTK_RESPONSE_CANCEL);
