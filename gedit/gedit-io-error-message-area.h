@@ -47,7 +47,7 @@ GtkWidget	*gedit_conversion_error_while_loading_message_area_new (
 						const gchar         *uri,
 						const GeditEncoding *encoding,
 				    		const GError        *error);
-				    		
+
 GtkWidget	*gedit_conversion_error_while_saving_message_area_new (
 						const gchar         *uri,
 						const GeditEncoding *encoding,
@@ -61,6 +61,10 @@ GtkWidget	*gedit_file_already_open_warning_message_area_new (
 						const gchar         *uri);
 
 GtkWidget	*gedit_externally_modified_saving_error_message_area_new (
+						const gchar         *uri,
+				    		const GError        *error);
+
+GtkWidget	*gedit_no_backup_saving_error_message_area_new (
 						const gchar         *uri,
 				    		const GError        *error);
 

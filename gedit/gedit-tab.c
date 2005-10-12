@@ -74,8 +74,10 @@ struct _GeditTabPrivate
 	
 	GTimer 		    *timer;
 	guint		     times_called;
-	
+
 	gboolean	     not_editable;
+
+	GeditDocumentSaveFlags	save_flags;
 };
 
 G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_VBOX)
@@ -918,6 +920,44 @@ unrecoverable_saving_error_message_area_response (GeditMessageArea *message_area
 }
 
 static void 
+no_backup_error_message_area_response (GeditMessageArea *message_area,
+				       gint              response_id,
+				       GeditTab         *tab)
+{
+	if (response_id == GTK_RESPONSE_YES)
+	{
+		GeditDocument *doc;
+
+		doc = gedit_tab_get_document (tab);
+		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+		set_message_area (tab, NULL);
+
+		g_return_if_fail (tab->priv->tmp_save_uri != NULL);
+		g_return_if_fail (tab->priv->tmp_encoding != NULL);
+
+		g_return_if_fail (strcmp (tab->priv->tmp_save_uri, gedit_document_get_uri_ (doc)) == 0);
+		g_return_if_fail (tab->priv->tmp_encoding == gedit_document_get_encoding (doc));
+
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+		/* don't bug the user again with this... */
+		tab->priv->save_flags |= GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP;
+
+		/* Force saving */
+		gedit_document_save (doc, tab->priv->save_flags);
+	}
+	else
+	{
+		reset_tmp_data_for_saving (tab);
+
+		unrecoverable_saving_error_message_area_response (message_area,
+								  response_id,
+								  tab);
+	}
+}
+
+static void
 externally_modified_error_message_area_response (GeditMessageArea *message_area,
 						 gint              response_id,
 						 GeditTab         *tab)
@@ -939,8 +979,10 @@ externally_modified_error_message_area_response (GeditMessageArea *message_area,
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
+		/* ignore mtime should not be persisted in save flags across saves */
+
 		/* Force saving */
-		gedit_document_save (doc, GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
+		gedit_document_save (doc, tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
 	}
 	else
 	{
@@ -985,7 +1027,7 @@ recoverable_saving_error_message_area_response (GeditMessageArea *message_area,
 		gedit_document_save_as (doc,
 					tab->priv->tmp_save_uri,
 					tab->priv->tmp_encoding,
-					0);
+					tab->priv->save_flags);
 	}
 	else
 	{
@@ -1034,6 +1076,21 @@ document_saved (GeditDocument *document,
 				g_signal_connect (emsg,
 						  "response",
 						  G_CALLBACK (externally_modified_error_message_area_response),
+						  tab);
+			}
+			else if (error->code == GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP)
+			{
+				/* This error is recoverable */
+				emsg = gedit_no_backup_saving_error_message_area_new (
+								tab->priv->tmp_save_uri, 
+								error);
+				g_return_if_fail (emsg != NULL);
+
+				set_message_area (tab, emsg);
+
+				g_signal_connect (emsg,
+						  "response",
+						  G_CALLBACK (no_backup_error_message_area_response),
 						  tab);
 			}
 			else
@@ -1104,6 +1161,8 @@ gedit_tab_init (GeditTab *tab)
 	tab->priv->state = GEDIT_TAB_STATE_NORMAL;
 
 	tab->priv->not_editable = FALSE;
+
+	tab->priv->save_flags = 0;
 	
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
@@ -1562,7 +1621,7 @@ _gedit_tab_save (GeditTab *tab)
 	tab->priv->tmp_save_uri = g_strdup (gedit_document_get_uri_ (doc));
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc); 
 
-	gedit_document_save (doc, 0);
+	gedit_document_save (doc, tab->priv->save_flags);
 }
 
 void
@@ -1589,8 +1648,11 @@ _gedit_tab_save_as (GeditTab            *tab,
 	 * and the string can go away, will be freed in documnt_loaded */
 	tab->priv->tmp_save_uri = g_strdup (uri);
 	tab->priv->tmp_encoding = encoding;
-	
-	gedit_document_save_as (doc, uri, encoding, 0);
+
+	/* reset the save flags, when saving as */
+	tab->priv->save_flags = 0;
+
+	gedit_document_save_as (doc, uri, encoding, tab->priv->save_flags);
 }
 
 static void
