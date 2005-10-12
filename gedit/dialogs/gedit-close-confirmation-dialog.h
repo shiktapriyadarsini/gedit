@@ -62,8 +62,9 @@ GtkWidget	*gedit_close_confirmation_dialog_new			(GtkWindow     *parent,
 GtkWidget 	*gedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent, 
 									 GeditDocument *doc);
 
-gboolean 	 gedit_close_confirmation_dialog_run 			(GeditCloseConfirmationDialog *dlg);
-GSList 		*gedit_close_confirmation_dialog_get_selected_documents	(GeditCloseConfirmationDialog *dlg);
+const GSList	*gedit_close_confirmation_dialog_get_unsaved_documents  (GeditCloseConfirmationDialog *dlg);
+
+const GSList	*gedit_close_confirmation_dialog_get_selected_documents	(GeditCloseConfirmationDialog *dlg);
 
 #endif /* __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__ */
 

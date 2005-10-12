@@ -127,15 +127,8 @@ window_delete_event (GeditWindow *window,
 	if (ws & GEDIT_WINDOW_STATE_SAVING)
 		return TRUE; 
 	
-	gedit_cmd_file_close_all (NULL, window);
-	
-	/* Check if all the tabs have been closed */
-	if (gedit_window_get_active_tab	(window) == NULL)
-	{
-		/* Return FALSE so GTK+ will emit the "destroy" signal */
-		return FALSE;
-	}
-	
+	gedit_cmd_file_quit (NULL, window);
+		
 	/* Do not destroy the window */
 	return TRUE;
 }

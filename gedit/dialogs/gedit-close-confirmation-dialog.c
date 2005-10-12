@@ -78,9 +78,45 @@ struct _GeditCloseConfirmationDialogPrivate
 
 G_DEFINE_TYPE(GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
 
-static void set_unsaved_document 				(GeditCloseConfirmationDialog        *dlg,
-								 const GSList                        *list);
+static void 	 set_unsaved_document 		(GeditCloseConfirmationDialog *dlg,
+						 const GSList                 *list);
+						 
+static GSList 	*get_selected_docs 		(GtkTreeModel                 *store);
 
+/*  Since we connect in the costructor we are sure this handler will be called 
+ *  before the user ones
+ */
+static void
+response_cb (GeditCloseConfirmationDialog *dlg,
+             gint                          response_id,
+             gpointer                      data)
+{
+	GeditCloseConfirmationDialogPrivate *priv;
+
+	g_return_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg));
+
+	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (dlg);
+	
+	if (priv->selected_documents != NULL)
+		g_slist_free (priv->selected_documents);
+	
+	if (response_id == GTK_RESPONSE_YES)
+	{
+		if (GET_MODE (priv) == SINGLE_DOC_MODE)
+			priv->selected_documents = 
+				g_slist_copy (priv->unsaved_documents);
+		else
+		{
+			g_return_if_fail (priv->list_store);
+				
+			priv->selected_documents =
+				get_selected_docs (priv->list_store);
+		}
+	}
+	else
+		priv->selected_documents = NULL;
+}
+    
 static void 
 gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 {
@@ -111,6 +147,11 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 	atk_obj = gtk_widget_get_accessible (GTK_WIDGET (dlg));
 	atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
 	atk_object_set_name (atk_obj, _("Question"));
+	
+	g_signal_connect (dlg,
+			  "response",
+			  G_CALLBACK (response_cb),
+			  NULL);
 }
 
 static void 
@@ -123,7 +164,7 @@ gedit_close_confirmation_dialog_finalize (GObject *object)
 	if (priv->unsaved_documents != NULL)
 		g_slist_free (priv->unsaved_documents);
 
-	if (priv->unsaved_documents != NULL)
+	if (priv->selected_documents != NULL)
 		g_slist_free (priv->selected_documents);
 
 	/* Call the parent's destructor */
@@ -224,47 +265,7 @@ get_selected_docs (GtkTreeModel *store)
 	return list;
 }
 
-gboolean
-gedit_close_confirmation_dialog_run (GeditCloseConfirmationDialog *dlg)
-{
-	GeditCloseConfirmationDialogPrivate *priv;
-	gint ret;
-
-	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), FALSE);
-
-	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (dlg);
-
-	ret = gtk_dialog_run (GTK_DIALOG (dlg));
-	
-	switch (ret)
-	{
-		case GTK_RESPONSE_YES:
-			if (GET_MODE (priv) == SINGLE_DOC_MODE)
-			{
-				priv->selected_documents = 
-					g_slist_copy (priv->unsaved_documents);
-			}
-			else
-			{
-				g_return_val_if_fail (priv->list_store, FALSE);
-				
-				priv->selected_documents =
-					get_selected_docs (priv->list_store);
-			}
-
-			return TRUE;
-			
-		case GTK_RESPONSE_NO:
-			priv->selected_documents = NULL;
-			return TRUE;
-
-		default:
-			priv->selected_documents = NULL;
-			return FALSE;
-	}
-}
-
-GSList * 
+const GSList * 
 gedit_close_confirmation_dialog_get_selected_documents (GeditCloseConfirmationDialog *dlg)
 {
 	GeditCloseConfirmationDialogPrivate *priv;
@@ -669,3 +670,14 @@ set_unsaved_document (GeditCloseConfirmationDialog *dlg,
 	}	
 }
 
+const GSList *
+gedit_close_confirmation_dialog_get_unsaved_documents (GeditCloseConfirmationDialog *dlg)
+{
+	GeditCloseConfirmationDialogPrivate *priv;
+	
+	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
+
+	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (dlg);
+
+	return priv->unsaved_documents;
+}
