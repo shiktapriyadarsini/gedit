@@ -41,20 +41,18 @@
 #include <libgnomeui/libgnomeui.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
 
-#include "gedit2.h"
-#include "gedit-mdi.h"
-#include "gedit-prefs-manager-app.h"
-#include "gedit-debug.h"
-#include "gedit-commands.h"
-#include "gedit-encodings.h"
-#include "gedit-file.h"
-#include "gedit-utils.h"
-#include "gedit-session.h"
-#include "gedit-plugins-engine.h"
-#include "gedit-convert.h"
-#include "gedit-window.h"
 #include "gedit-app.h"
+#include "gedit-commands.h"
+#include "gedit-convert.h"
+#include "gedit-debug.h"
+#include "gedit-encodings.h"
 #include "gedit-metadata-manager.h"
+#include "gedit-plugins-engine.h"
+#include "gedit-prefs-manager-app.h"
+#include "gedit-recent.h"
+#include "gedit-session.h"
+#include "gedit-utils.h"
+#include "gedit-window.h"
 
 #include "bacon-message-connection.h"
 
@@ -117,7 +115,7 @@ gedit_get_command_line_data (GnomeProgram *program)
 			{
 				gchar *uri;
 				gchar *canonical_uri;
-				
+
 				/* Note for the future: 
 				 *
 				 * <federico> paolo: and flame whoever tells 
@@ -428,13 +426,13 @@ main (int argc, char *argv[])
 			    NULL);
 
 	gedit_debug_message (DEBUG_APP, "Done gnome_program_init");
-	
+
 	/* Must be called after gnome_program_init to avoid problem with the
          * translation of --help messages */
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
 	gedit_debug_message (DEBUG_APP, "Create bacon connection");
-	
+
 	connection = bacon_message_connection_new ("gedit");
 
 	if (connection != NULL)
