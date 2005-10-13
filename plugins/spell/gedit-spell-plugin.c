@@ -45,7 +45,7 @@
 #include "gedit-automatic-spell-checker.h"
 
 #define WINDOW_DATA_KEY "GeditSpellPluginWindowData"
-#define MENU_PATH "/MenuBar/Tools/ToolsOps_3"
+#define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_1"
 
 #define GEDIT_SPELL_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_SPELL_PLUGIN, GeditSpellPluginPrivate))
 

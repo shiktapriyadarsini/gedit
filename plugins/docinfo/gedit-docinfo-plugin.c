@@ -36,7 +36,7 @@
 #include <gedit/gedit-utils.h>
 
 #define WINDOW_DATA_KEY "GeditDocInfoWindowData"
-#define MENU_PATH "/MenuBar/Tools/ToolsOps_2"
+#define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_2"
 
 GEDIT_PLUGIN_REGISTER_TYPE(GeditDocInfoPlugin, gedit_docinfo_plugin)
 
