@@ -121,19 +121,6 @@ fi
 
 
 dnl ================================================================
-dnl PIXMAPS 
-dnl ================================================================
-if test "x${prefix}" = "xNONE"; then
-  AC_DEFINE_UNQUOTED(PIXMAPS_DIR, "${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps", [Directory of pixmaps])
-  pixmapsdir="${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps"
-else
-  AC_DEFINE_UNQUOTED(PIXMAPS_DIR, "${prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps", [Directory of pixmaps])
-  pixmapsdir="${prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps"
-fi
-
-AC_SUBST(pixmapsdir)
-
-dnl ================================================================
 dnl Python
 dnl ================================================================
 
