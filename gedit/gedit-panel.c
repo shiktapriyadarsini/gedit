@@ -381,8 +381,8 @@ gedit_panel_init (GeditPanel *panel)
 	GtkWidget *icon_name_hbox;
 	GtkWidget *image;
 	GtkWidget *dummy_label;
-	GtkSettings *settings;
-	gint w, h;
+	GtkRcStyle *rcstyle;
+	GtkRequisition size;
 
 	panel->priv = GEDIT_PANEL_GET_PRIVATE (panel);
 	g_return_if_fail (panel->priv != NULL);	
@@ -436,13 +436,20 @@ gedit_panel_init (GeditPanel *panel)
 	panel->priv->close_button = gtk_button_new ();						    
 	gtk_button_set_relief (GTK_BUTTON (panel->priv->close_button), 
 			       GTK_RELIEF_NONE);
-	/* fetch the size of an icon */
-	settings = gtk_widget_get_settings (GTK_WIDGET (panel));
-	gtk_icon_size_lookup_for_settings (settings,
-					   GTK_ICON_SIZE_MENU,
-					   &w, &h);
-	image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
-	gtk_widget_set_size_request (panel->priv->close_button, w + 2, h + 2); 
+
+	/* make it as small as possible */
+	rcstyle = gtk_rc_style_new ();
+	rcstyle->xthickness = rcstyle->ythickness = 0;
+	gtk_widget_modify_style (panel->priv->close_button, rcstyle);
+	gtk_rc_style_unref (rcstyle),
+
+	image = gtk_image_new_from_stock (GTK_STOCK_CLOSE,
+					  GTK_ICON_SIZE_MENU);
+	gtk_widget_size_request (image, &size);
+	gtk_widget_set_size_request (panel->priv->close_button,
+				     size.width,
+				     size.height);
+
 	gtk_container_add (GTK_CONTAINER (panel->priv->close_button), image);
 	gtk_button_set_focus_on_click (GTK_BUTTON (panel->priv->close_button), 
 				       FALSE);
