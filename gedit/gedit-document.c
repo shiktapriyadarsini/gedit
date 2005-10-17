@@ -239,6 +239,7 @@ gedit_document_finalize (GObject *object)
 	if (doc->priv->vfs_uri != NULL)
 		gnome_vfs_uri_unref (doc->priv->vfs_uri);
 
+	g_free (doc->priv->mime_type);
 	g_free (doc->priv->uri_for_display);
 	g_free (doc->priv->short_name_for_display);
 

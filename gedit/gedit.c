@@ -214,7 +214,7 @@ on_message_received (const char *message,
 
 	g_return_if_fail (message != NULL);
 
-	g_print ("%s", message);
+	gedit_debug_message (DEBUG_APP, "Received message:\n%s\n", message);
 
 	commands = g_strsplit (message, "\v", -1);
 
@@ -253,6 +253,10 @@ on_message_received (const char *message,
 			for (i = 0; i < n_uris; i++)
 				file_list = g_slist_prepend (file_list, uris[i]);
 			file_list = g_slist_reverse (file_list);
+
+			/* the list takes ownerhip of the strings,
+			 * only free the array */
+			g_free (uris);
 		}
 		else
 		{
