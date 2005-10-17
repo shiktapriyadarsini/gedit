@@ -2104,7 +2104,7 @@ notebook_tab_removed (GeditNotebook *notebook,
 				GEDIT_STATUSBAR (window->priv->statusbar));								
 	}
 
-	if (!window->priv->removing_all_tabs)
+	if (!window->priv->removing_tabs)
 	{
 		update_documents_list_menu (window);
 	}
@@ -2411,7 +2411,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
 	window->priv->active_tab = NULL;
 	window->priv->num_tabs = 0;
-	window->priv->removing_all_tabs = FALSE;
+	window->priv->removing_tabs = FALSE;
 	window->priv->state = GEDIT_WINDOW_STATE_NORMAL;
 	
 	window->priv->window_group = gtk_window_group_new ();
@@ -2693,11 +2693,31 @@ gedit_window_close_all_tabs (GeditWindow *window)
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
 
-	window->priv->removing_all_tabs = TRUE;
+	window->priv->removing_tabs = TRUE;
 
 	gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (window->priv->notebook));
 
-	window->priv->removing_all_tabs = FALSE;
+	window->priv->removing_tabs = FALSE;
+}
+
+void
+gedit_window_close_tabs (GeditWindow *window,
+			 const GList *tabs)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+
+	window->priv->removing_tabs = TRUE;
+
+	while (tabs != NULL)
+	{
+		gedit_notebook_remove_tab (GEDIT_NOTEBOOK (window->priv->notebook),
+				   	   GEDIT_TAB (tabs->data));
+
+		tabs = g_list_next (tabs);
+	}
+	
+	window->priv->removing_tabs = FALSE;
 }
 
 void
@@ -2814,7 +2834,7 @@ _gedit_window_set_side_panel_visible (GeditWindow *window,
 
 	if (show)
 	{
-		g_print ("GRAB side panel\n");
+		/* g_print ("GRAB side panel\n"); */
 		gtk_widget_grab_focus (window->priv->side_panel);
 	}
 
@@ -2865,7 +2885,7 @@ _gedit_window_set_bottom_panel_visible (GeditWindow *window,
 
 	if (show)
 	{
-		g_print ("GRAB bottom panel\n");
+		/* g_print ("GRAB bottom panel\n"); */
 		gtk_widget_grab_focus (window->priv->bottom_panel);
 	}
 
@@ -2922,11 +2942,11 @@ gedit_window_get_group (GeditWindow *window)
 }
 
 gboolean
-_gedit_window_is_removing_all_tabs (GeditWindow *window)
+_gedit_window_is_removing_tabs (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), FALSE);
 	
-	return window->priv->removing_all_tabs;
+	return window->priv->removing_tabs;
 }
 
 GtkUIManager *

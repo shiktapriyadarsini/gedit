@@ -364,7 +364,8 @@ panel_show (GeditPanel *panel,
 
 	page = gtk_notebook_get_current_page (nb);
 
-	notebook_page_changed (nb, NULL, page, panel);
+	if (page != -1)
+		notebook_page_changed (nb, NULL, page, panel);
 }
 
 static void

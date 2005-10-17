@@ -114,6 +114,9 @@ void		 gedit_window_close_tab			(GeditWindow         *window,
 							 GeditTab            *tab);
 							 
 void		 gedit_window_close_all_tabs		(GeditWindow         *window);
+
+void		 gedit_window_close_tabs		(GeditWindow         *window,
+							 const GList         *tabs);
 							 
 GeditTab	*gedit_window_get_active_tab		(GeditWindow         *window);
 
@@ -157,7 +160,7 @@ void		 _gedit_window_set_bottom_panel_visible	(GeditWindow         *window,
 							 gboolean             visible);
 GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
 							 GeditTab            *tab);
-gboolean	 _gedit_window_is_removing_all_tabs	(GeditWindow         *window);
+gboolean	 _gedit_window_is_removing_tabs		(GeditWindow         *window);
 
 GtkWidget	*_gedit_window_get_search_panel		(GeditWindow         *window);
 

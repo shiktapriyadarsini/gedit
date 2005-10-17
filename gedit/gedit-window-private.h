@@ -81,7 +81,7 @@ struct _GeditWindowPrivate
 	gint		side_panel_size;
 	gint		bottom_panel_size;
 
-	gboolean	removing_all_tabs;
+	gboolean	removing_tabs;
 	
 	GeditWindowState state;
 

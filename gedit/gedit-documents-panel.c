@@ -125,7 +125,7 @@ window_active_tab_changed (GeditWindow         *window,
 {	
 	g_return_if_fail (tab != NULL);
 		
-	if (!_gedit_window_is_removing_all_tabs (window))
+	if (!_gedit_window_is_removing_tabs (window))
 	{
 		GtkTreeIter iter;
 		GtkTreeSelection *selection;
@@ -240,7 +240,7 @@ window_tab_removed (GeditWindow         *window,
 					      G_CALLBACK (sync_name_and_icon), 
 					      panel);	
 
-	if (_gedit_window_is_removing_all_tabs (window))
+	if (_gedit_window_is_removing_tabs (window))
 		gtk_list_store_clear (GTK_LIST_STORE (panel->priv->model));
 	else
 		refresh_list (panel);
