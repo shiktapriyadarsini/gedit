@@ -576,7 +576,7 @@ language_toggled (GtkToggleAction *action,
 	}
 	else
 	{
-		languages = gtk_source_languages_manager_get_available_languages (
+		languages = gedit_languages_manager_get_available_languages_sorted (
 						gedit_get_languages_manager ());
 
 		lang = GTK_SOURCE_LANGUAGE (g_slist_nth_data ((GSList *) languages, n));
