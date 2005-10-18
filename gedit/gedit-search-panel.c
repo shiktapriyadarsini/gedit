@@ -1179,8 +1179,6 @@ show_side_pane (GeditSearchPanel *panel)
 void
 gedit_search_panel_focus_search	(GeditSearchPanel *panel)
 {
-	gboolean was_visible;
-	const gchar *text;
 	GeditDocument *doc;
 	gboolean selection_exists;
 	gchar *find_text = NULL;
@@ -1193,43 +1191,37 @@ gedit_search_panel_focus_search	(GeditSearchPanel *panel)
 	if (doc == NULL)
 		return;
 
+	show_side_pane (panel);
+	
 	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc), 
 					      &find_text, 
 					      &sel_len);
-						      			
-	was_visible = show_side_pane (panel);
-				
-	text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
-	
-	if (!was_visible)
-		text = NULL;
-		
-	if ((text == NULL) || (text[0] == 0))
-	{		
-		if (!selection_exists   ||
-		    (find_text == NULL) ||
-		    (sel_len > 160))
-		{
-			gchar *lst;
+						      				
+	if (!selection_exists   ||
+	    (find_text == NULL) ||
+	    (sel_len > 160))
+	{
+		gchar *lst;
 
-			lst = gedit_document_get_search_text (doc, NULL);
-			
-			if (lst != NULL)
-			{
-				g_free (find_text);
-				find_text = lst;
-			}
-			else if (sel_len > 160)
-			{
-				g_free (find_text);
-				find_text = NULL;
-			}
+		lst = gedit_document_get_search_text (doc, NULL);
+		
+		if (lst != NULL)
+		{
+			g_free (find_text);
+			find_text = lst;
 		}
-		
-		if (find_text != NULL)
-			gtk_entry_set_text (GTK_ENTRY (panel->priv->search_entry), 
-					    find_text);
-		
+		else if (sel_len > 160)
+		{
+			g_free (find_text);
+			find_text = NULL;
+		}
+	}
+	
+	if (find_text != NULL)
+	{
+		gtk_entry_set_text (GTK_ENTRY (panel->priv->search_entry), 
+				    find_text);
+	
 		g_free (find_text);
 	}
 	

@@ -380,19 +380,24 @@ get_access_info (GnomeVFSFileInfo *file_info,
 	if (g_access (full_name, W_OK) == 0) 
 		file_info->permissions |= GNOME_VFS_PERM_ACCESS_WRITABLE;
 		
-/*	We don't need to know if a local file is readable or executable
+	/*	
+	 * We don't need to know if a local file is readable or 
+	 * executable so I have commented the followig code to avoid 
+	 * multiple g_access calls - Paolo (Oct. 18, 2005) 
+	 */
 
-	if (g_access (full_name, R_OK) == 0) 
-		file_info->permissions |= GNOME_VFS_PERM_ACCESS_READABLE;
-
-#ifdef G_OS_WIN32
-	if (g_file_test (full_name, G_FILE_TEST_IS_EXECUTABLE))
-		file_info->permissions |= GNOME_VFS_PERM_ACCESS_EXECUTABLE;
-#else 
-	if (g_access (full_name, X_OK) == 0)
-		file_info->permissions |= GNOME_VFS_PERM_ACCESS_EXECUTABLE;
-#endif 
-*/
+	/*	 
+	 *	if (g_access (full_name, R_OK) == 0) 
+	 *		file_info->permissions |= GNOME_VFS_PERM_ACCESS_READABLE;
+	 *
+	 * #ifdef G_OS_WIN32
+	 *	if (g_file_test (full_name, G_FILE_TEST_IS_EXECUTABLE))
+	 *		file_info->permissions |= GNOME_VFS_PERM_ACCESS_EXECUTABLE;
+	 * #else 
+	 *	if (g_access (full_name, X_OK) == 0)
+	 *		file_info->permissions |= GNOME_VFS_PERM_ACCESS_EXECUTABLE;
+	 * #endif 
+	 */
 
 	file_info->valid_fields |= GNOME_VFS_FILE_INFO_FIELDS_ACCESS;
 }
@@ -459,7 +464,7 @@ stat_to_file_info (GnomeVFSFileInfo *file_info,
 	  GNOME_VFS_FILE_INFO_FIELDS_CTIME;
 }
 
-/* FIXME: this is ugly for multple reasons: it refetches all the info,
+/* FIXME: this is ugly for multiple reasons: it refetches all the info,
  * it doesn't use fd etc... we need something better, possibly in gnome-vfs
  * public api.
  */
