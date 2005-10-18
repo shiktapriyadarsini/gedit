@@ -76,20 +76,23 @@ tab_get_name (GeditTab *tab)
 
 	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
-		tab_name = g_strdup_printf ("<i>%s</i>", docname);
+		gchar *tmp_name;
+		
+		tmp_name = g_strdup_printf ("<i>%s</i>", docname);
+		g_free (docname);
+		
+		docname = tmp_name;
+	}	
+
+	if (gedit_document_get_readonly (doc)) 
+	{
+		tab_name = g_strdup_printf ("%s [<i>%s</i>]", 
+					    docname, 
+					    _("Read Only"));
 	} 
 	else 
 	{
-		if (gedit_document_get_readonly (doc)) 
-		{
-			tab_name = g_strdup_printf ("%s [%s]", 
-						    docname, 
-						    _("<i>Read Only</i>"));
-		} 
-		else 
-		{
-			tab_name = g_strdup_printf ("%s", docname);
-		}
+		tab_name = g_strdup_printf ("%s", docname);
 	}
 	
 	g_free (docname);

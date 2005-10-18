@@ -788,14 +788,13 @@ gedit_document_get_mime_type (GeditDocument *doc)
  	return doc->priv->mime_type;
 }
 
-void 		
-gedit_document_set_readonly (GeditDocument *doc,
-			     gboolean       readonly)
+/* Note: do not emit the notify::readonly signal */
+static void
+set_readonly (GeditDocument *doc,
+	      gboolean       readonly)
 {
 	gedit_debug (DEBUG_DOCUMENT);
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
+	
 	readonly = (readonly != FALSE);
 
 	if (readonly) 
@@ -824,6 +823,17 @@ gedit_document_set_readonly (GeditDocument *doc,
 		return;
 
 	doc->priv->readonly = readonly;
+}
+
+void 		
+gedit_document_set_readonly (GeditDocument *doc,
+			     gboolean       readonly)
+{
+	gedit_debug (DEBUG_DOCUMENT);
+
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	set_readonly (doc, readonly);
 
 	g_object_notify (G_OBJECT (doc), "readonly");
 }
@@ -864,12 +874,15 @@ document_loader_loaded (GeditDocumentLoader *loader,
 
 		g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-		/* We already set the uri */
-		set_uri (doc, NULL, mime_type);
+		set_readonly (doc,
+		      gedit_document_loader_get_readonly (loader));
 
 		set_encoding (doc, 
 			      gedit_document_loader_get_encoding (loader),
 			      (doc->priv->requested_encoding != NULL));
+		      
+		/* We already set the uri */
+		set_uri (doc, NULL, mime_type);
 
 		/* move the cursor at the requested line if any */
 		if (doc->priv->requested_line_pos > 0)
@@ -920,7 +933,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 
 		return;
 	}
-
+	
 	g_signal_emit (doc,
 		       document_signals[LOADED],
 		       0,

@@ -1399,38 +1399,35 @@ set_title (GeditWindow *window)
 
 	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
+		gchar *tmp_name;
+		
+		tmp_name = g_strdup_printf ("*%s", name);
+		g_free (name);
+		
+		name = tmp_name;
+	}		
+
+	if (gedit_document_get_readonly (doc)) 
+	{
 		if (dirname != NULL)
-			title = g_strdup_printf ("*%s (%s) - gedit", 
+			title = g_strdup_printf ("%s [%s] (%s) - gedit", 
 						 name, 
+						 _("Read Only"), 
 						 dirname);
 		else
-			title = g_strdup_printf ("*%s - gedit", 
-						 name);
+			title = g_strdup_printf ("%s [%s] - gedit", 
+						 name, 
+						 _("Read Only"));
 	} 
 	else 
 	{
-		if (gedit_document_get_readonly (doc)) 
-		{
-			if (dirname != NULL)
-				title = g_strdup_printf ("%s [%s] (%s) - gedit", 
-							 name, 
-							 _("Read Only"), 
-							 dirname);
-			else
-				title = g_strdup_printf ("%s [%s] - gedit", 
-							 name, 
-							 _("Read Only"));
-		} 
-		else 
-		{
-			if (dirname != NULL)
-				title = g_strdup_printf ("%s (%s) - gedit", 
-							 name, 
-							 dirname);
-			else
-				title = g_strdup_printf ("%s - gedit", 
-							 name);
-		}
+		if (dirname != NULL)
+			title = g_strdup_printf ("%s (%s) - gedit", 
+						 name, 
+						 dirname);
+		else
+			title = g_strdup_printf ("%s - gedit", 
+						 name);
 	}
 
 	gtk_window_set_title (GTK_WINDOW (window), title);
