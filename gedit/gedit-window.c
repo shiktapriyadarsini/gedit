@@ -34,7 +34,6 @@
 
 #include <time.h>
 #include <sys/types.h>
-#include <unistd.h>
 #include <string.h>
 
 #include <glib/gi18n.h>
@@ -2362,40 +2361,22 @@ create_bottom_panel (GeditWindow *window)
   		gtk_widget_show_all (window->priv->bottom_panel);
 }
 
-/* Generates a unique string for a window role.
- *
- * Taken from EOG.
- */
+/* Generates a unique string for a window role */
 static gchar *
 gen_role (void)
 {
-        gchar *ret;
-	static gchar *hostname;
 	time_t t;
 	static gint serial;
 
 	t = time (NULL);
 
-	if (!hostname)
-	{
-		static char buffer[512];
-
-		if ((gethostname (buffer, sizeof (buffer) - 1) == 0) &&
-		    (buffer[0] != 0))
-			hostname = buffer;
-		else
-			hostname = "localhost";
-	}
-
-	ret = g_strdup_printf ("gedit-window-%d-%d-%d-%ld-%d@%s",
-			       getpid (),
-			       getgid (),
-			       getppid (),
-			       (long) t,
-			       serial++,
-			       hostname);
-
-	return ret;
+	return g_strdup_printf ("gedit-window-%d-%d-%d-%ld-%d@%s",
+				getpid (),
+				getgid (),
+				getppid (),
+				(long) t,
+				serial++,
+				g_get_host_name ());
 }
 
 static void
@@ -2404,16 +2385,16 @@ gedit_window_init (GeditWindow *window)
 	GtkWidget *main_box;
 
 	gedit_debug (DEBUG_WINDOW);
-	
+
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
 	window->priv->active_tab = NULL;
 	window->priv->num_tabs = 0;
 	window->priv->removing_tabs = FALSE;
 	window->priv->state = GEDIT_WINDOW_STATE_NORMAL;
-	
+
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
-	
+
 	main_box = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (window), main_box);
 	gtk_widget_show (main_box);
