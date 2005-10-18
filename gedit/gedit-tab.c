@@ -1468,12 +1468,11 @@ _gedit_tab_get_icon (GeditTab *tab)
 	GtkIconTheme *theme;
 	GdkScreen *screen;
 	gint icon_size;
-	
+
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
 	screen = gtk_widget_get_screen (GTK_WIDGET (tab));
-		
-	/* CHECK: should we unref the theme? It is not clear from the documentation */
+
 	theme = gtk_icon_theme_get_for_screen (screen);
 	g_return_val_if_fail (theme != NULL, NULL);
 
