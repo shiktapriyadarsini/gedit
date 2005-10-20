@@ -568,10 +568,11 @@ save_existing_local_file (GeditDocumentSaver *saver)
 		}
 
 		/* try to set permissions */
-		if (fchown (tmpfd, statbuf.st_uid, statbuf.st_gid) == -1 &&
+		if (fchown (tmpfd, statbuf.st_uid, statbuf.st_gid) == -1 ||
 		    fchmod (tmpfd, statbuf.st_mode) == -1)
 		{
 			close (tmpfd);
+			unlink (tmp_filename);
 			g_free (tmp_filename);
 			goto fallback_strategy;
 		}
