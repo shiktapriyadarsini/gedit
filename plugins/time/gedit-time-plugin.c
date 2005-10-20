@@ -1,5 +1,5 @@
 /*
- * gedit-time-plugin.h
+ * gedit-time-plugin.c
  * 
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -634,7 +634,7 @@ create_formats_list (GtkWidget       *listview,
 	/* Create model, it also add model to the tree view */
 	create_model (listview, sel_format, plugin);
 
-	g_signal_connect (G_OBJECT (listview), 
+	g_signal_connect (listview,
 			  "realize", 
 			  G_CALLBACK (scroll_to_selected), 
 			  NULL);
@@ -889,30 +889,73 @@ get_configure_dialog (GeditTimePlugin *plugin)
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);
 
-	g_signal_connect (G_OBJECT (dialog->custom), "toggled",
+	g_signal_connect (dialog->custom,
+			  "toggled",
 			  G_CALLBACK (configure_dialog_button_toggled), 
 			  dialog);
-
-   	g_signal_connect (G_OBJECT (dialog->prompt), "toggled",
+   	g_signal_connect (dialog->prompt,
+			  "toggled",
 			  G_CALLBACK (configure_dialog_button_toggled), 
 			  dialog);
-
-	g_signal_connect (G_OBJECT (dialog->use_list), "toggled",
+	g_signal_connect (dialog->use_list,
+			  "toggled",
 			  G_CALLBACK (configure_dialog_button_toggled), 
 			  dialog);
-
-	g_signal_connect (G_OBJECT (dialog->dialog), "destroy",
-			  G_CALLBACK (dialog_destroyed), dialog);
-	
-	g_signal_connect (G_OBJECT (dialog->custom_entry), "changed",
+	g_signal_connect (dialog->dialog,
+			  "destroy",
+			  G_CALLBACK (dialog_destroyed),
+			  dialog);
+	g_signal_connect (dialog->custom_entry,
+			  "changed",
 			  G_CALLBACK (updated_custom_format_example), 
 			  dialog->custom_format_example);
 
 	return dialog;
 }
 
+static void
+real_insert_time (GtkTextBuffer *buffer,
+		  const gchar   *the_time)
+{
+	gedit_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
+
+	gtk_text_buffer_begin_user_action (buffer);
+
+	gtk_text_buffer_insert_at_cursor (buffer, the_time, -1);
+	gtk_text_buffer_insert_at_cursor (buffer, " ", -1);
+
+	gtk_text_buffer_end_user_action (buffer);
+}
+
+static void
+choose_format_dialog_row_activated (GtkTreeView        *list,
+				    GtkTreePath        *path,
+				    GtkTreeViewColumn  *column,
+				    ChooseFormatDialog *dialog)
+{
+	gint sel_format;
+	gchar *the_time;
+
+	sel_format = get_format_from_list (dialog->list);
+	the_time = get_time (formats[sel_format]);
+			
+	g_free (dialog->plugin->priv->last_selected_format);		
+	dialog->plugin->priv->last_selected_format = g_strdup (formats[sel_format]);
+
+	dialog->plugin->priv->last_prompt_type = USE_SELECTED_FORMAT;
+	set_selected_format (dialog->plugin,
+			     dialog->plugin->priv->last_selected_format);
+
+	g_return_if_fail (the_time != NULL);
+
+	real_insert_time (dialog->buffer, the_time);
+
+	g_free (the_time);
+}
+
 static ChooseFormatDialog *
-get_choose_format_dialog (GtkWindow *parent, GeditTimePlugin *plugin)
+get_choose_format_dialog (GtkWindow       *parent,
+			  GeditTimePlugin *plugin)
 {
 	ChooseFormatDialog *dialog;
 	GtkWidget *error_widget;
@@ -980,38 +1023,30 @@ get_choose_format_dialog (GtkWindow *parent, GeditTimePlugin *plugin)
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog),
 					 GTK_RESPONSE_OK);
 
-	g_signal_connect (G_OBJECT (dialog->custom), "toggled",
+	g_signal_connect (dialog->custom,
+			  "toggled",
 			  G_CALLBACK (choose_format_dialog_button_toggled), 
 			  dialog);
-
-	g_signal_connect (G_OBJECT (dialog->use_list), "toggled",
+	g_signal_connect (dialog->use_list,
+			  "toggled",
 			  G_CALLBACK (choose_format_dialog_button_toggled), 
 			  dialog);
-
-	g_signal_connect (G_OBJECT (dialog->dialog), "destroy",
-			  G_CALLBACK (dialog_destroyed), dialog);
-	
-	g_signal_connect (G_OBJECT (dialog->custom_entry), "changed",
+	g_signal_connect (dialog->dialog,
+			  "destroy",
+			  G_CALLBACK (dialog_destroyed),
+			  dialog);
+	g_signal_connect (dialog->custom_entry,
+			  "changed",
 			  G_CALLBACK (updated_custom_format_example), 
 			  dialog->custom_format_example);
+	g_signal_connect (dialog->list,
+			  "row_activated",
+			  G_CALLBACK (choose_format_dialog_row_activated),
+			  dialog);
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog->dialog), FALSE);
 
 	return dialog;
-}
-
-static void
-real_insert_time (GtkTextBuffer *buffer,
-		  const gchar   *the_time)
-{
-	gedit_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
-	
-	gtk_text_buffer_begin_user_action (buffer);
-
-	gtk_text_buffer_insert_at_cursor (buffer, the_time, -1);
-	gtk_text_buffer_insert_at_cursor (buffer, " ", -1);
-
-	gtk_text_buffer_end_user_action (buffer);
 }
 
 static void
