@@ -2361,24 +2361,6 @@ create_bottom_panel (GeditWindow *window)
   		gtk_widget_show_all (window->priv->bottom_panel);
 }
 
-/* Generates a unique string for a window role */
-static gchar *
-gen_role (void)
-{
-	time_t t;
-	static gint serial;
-
-	t = time (NULL);
-
-	return g_strdup_printf ("gedit-window-%d-%d-%d-%ld-%d@%s",
-				getpid (),
-				getgid (),
-				getppid (),
-				(long) t,
-				serial++,
-				g_get_host_name ());
-}
-
 static void
 gedit_window_init (GeditWindow *window)
 {
@@ -2440,15 +2422,6 @@ gedit_window_init (GeditWindow *window)
 	
 	/* Set visibility of panels */
 	// TODO
-
-	if (gtk_window_get_role (GTK_WINDOW (window)) == NULL)
-	{
-		gchar *role;
-
-		role = gen_role ();
-		gtk_window_set_role (GTK_WINDOW (window), role);
-		g_free (role);
-	}
 
 	gedit_debug_message (DEBUG_WINDOW, "Connect signals");
 	/* Drag and drop support */

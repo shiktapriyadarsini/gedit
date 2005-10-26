@@ -434,14 +434,15 @@ parse_window (xmlNodePtr node)
 	role = xmlGetProp (node, (const xmlChar *) "role");
 	gedit_debug_message (DEBUG_SESSION, "Window role: %s", role);
 
-	window = gedit_app_create_window (gedit_app_get_default ());
+	window = _gedit_app_restore_window (gedit_app_get_default (), role);
 
 	if (role != NULL)
-	{
-		gtk_window_set_role (GTK_WINDOW (window), 
-				     (const char *)role);
-				     
 		xmlFree (role);
+
+	if (window == NULL)
+	{
+		g_warning ("Couldn't restore window");
+		return;
 	}
 
 	child = node->children;

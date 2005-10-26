@@ -45,8 +45,6 @@
 
 struct _GeditAppPrivate
 {
-	gboolean     is_restoring;
-	
 	GSList	    *windows;
 	GeditWindow *active_window;
 };
@@ -83,8 +81,6 @@ static void
 gedit_app_init (GeditApp *app)
 {
 	app->priv = GEDIT_APP_GET_PRIVATE (app);	
-	
-	app->priv->is_restoring = FALSE;
 }
 
 GeditApp *
@@ -163,21 +159,53 @@ notebook_tab_delete (GeditNotebook *notebook,
 {
 	return _gedit_cmd_file_can_close (tab, window);
 }
+
+/* Generates a unique string for a window role */
+static gchar *
+gen_role (void)
+{
+	time_t t;
+	static gint serial;
+
+	t = time (NULL);
+
+	return g_strdup_printf ("gedit-window-%d-%d-%d-%ld-%d@%s",
+				getpid (),
+				getgid (),
+				getppid (),
+				(long) t,
+				serial++,
+				g_get_host_name ());
+}
 	     
-GeditWindow *
-gedit_app_create_window	(GeditApp *app)
+static GeditWindow *
+gedit_app_create_window_real (GeditApp    *app,
+			      gboolean     set_geometry,
+			      const gchar *role)
 {
 	GtkWindow *window;
 	GtkWidget *notebook;
-	
+
 	gedit_debug (DEBUG_APP);
 	
 	window = GTK_WINDOW (g_object_new (GEDIT_TYPE_WINDOW, NULL));
-	
+
 	gedit_debug_message (DEBUG_APP, "Window created");
-	
-	/* Set window state and size, but only if the session is not being restored */
-	if (!app->priv->is_restoring)
+
+	if (role != NULL)
+	{
+		gtk_window_set_role (GTK_WINDOW (window), role);
+	}
+	else
+	{
+		gchar *newrole;
+
+		newrole = gen_role ();
+		gtk_window_set_role (GTK_WINDOW (window), newrole);
+		g_free (newrole);
+	}
+
+	if (set_geometry)
 	{
 		GdkWindowState state;
 		
@@ -230,6 +258,27 @@ gedit_app_create_window	(GeditApp *app)
 			  window);
 			  
 	return GEDIT_WINDOW (window);
+}
+
+GeditWindow *
+gedit_app_create_window (GeditApp *app)
+{
+	return gedit_app_create_window_real (app, TRUE, NULL);
+}
+
+/*
+ * Same as _create_window, but doesn't set the geometry.
+ * The session manager takes care of it. Used in gnome-session.
+ */
+GeditWindow *
+_gedit_app_restore_window (GeditApp    *app,
+			   const gchar *role)
+{
+	GeditWindow *window;
+
+	window = gedit_app_create_window_real (app, FALSE, role);
+
+	return window;
 }
 
 const GSList *

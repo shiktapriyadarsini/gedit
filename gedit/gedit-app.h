@@ -95,6 +95,8 @@ GList		*gedit_app_get_views			(GeditApp *app);
 /*
  * Non exported functions
  */
+GeditWindow	*_gedit_app_restore_window		(GeditApp    *app,
+							 const gchar *role);
 GeditWindow	*_gedit_app_get_window_in_workspace	(GeditApp *app,
 							 gint      workspace);
 
