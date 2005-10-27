@@ -176,6 +176,8 @@ static void
 view_realized (GtkTextView *view,
 	       GeditTab    *tab)
 {
+	GdkCursor *cursor;
+
 	g_return_if_fail (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT) != NULL);
 	g_return_if_fail (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT) != NULL);
 	
@@ -186,27 +188,31 @@ view_realized (GtkTextView *view,
 	    (tab->priv->state == GEDIT_TAB_STATE_PRINT_PREVIEWING) ||
 	    (tab->priv->state == GEDIT_TAB_STATE_CLOSING))
 	{
-		GdkCursor *cursor;
-	
 		cursor = gdk_cursor_new_for_display (
 				gtk_widget_get_display (GTK_WIDGET (view)),
 				GDK_WATCH);
-				
+
 		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT),
 				       cursor);
-				       
+
 		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT),
 				       cursor);
 
-		gdk_cursor_unref (cursor);		
+		gdk_cursor_unref (cursor);
 	}
 	else
 	{
+		cursor = gdk_cursor_new_for_display (
+				gtk_widget_get_display (GTK_WIDGET (view)),
+				GDK_XTERM);
+
 		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT),
-				       NULL);
-				       
+				       cursor);
+	       
 		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT),
 				       NULL);
+
+		gdk_cursor_unref (cursor);
 	}
 }
 
