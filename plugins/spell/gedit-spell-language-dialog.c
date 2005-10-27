@@ -35,6 +35,8 @@
 #include <glade/glade-xml.h>
 #include <gtk/gtk.h>
 
+#include <gedit/gedit-utils.h>
+
 #include "gedit-spell-language-dialog.h"
 
 enum
@@ -72,29 +74,29 @@ dialog_destroyed (GtkObject *obj,  void **dialog_pointer)
 }
 
 static void
-dialog_response_handler (GtkDialog *dlg, gint res_id,  GeditSpellLanguageDialog *dialog)
+dialog_response_handler (GtkDialog                *dlg,
+			 gint                      res_id,
+			 GeditSpellLanguageDialog *dialog)
 {
 	switch (res_id) {
 		case GTK_RESPONSE_OK:
 			ok_button_pressed (dialog);
-
 			gtk_widget_destroy (dialog->dialog);
-
 			break;
-			
+
 		case GTK_RESPONSE_HELP:
-			
-			/* FIXME */
-
+			gedit_help_display (GTK_WINDOW (dlg),
+					    "gedit.xml",
+					    "gedit-spell-checker-plugin");
 			break;
-	
+
 		default:
 			gtk_widget_destroy (dialog->dialog);
 	}
 }
 
 static void 
-ok_button_pressed (GeditSpellLanguageDialog * dialog)
+ok_button_pressed (GeditSpellLanguageDialog *dialog)
 {
 	GError *error = NULL;
 	GValue value = {0, };
@@ -124,7 +126,7 @@ ok_button_pressed (GeditSpellLanguageDialog * dialog)
 	}
 }
 
-static GtkTreeModel*
+static GtkTreeModel *
 init_languages_treeview_model (GeditSpellLanguageDialog *dlg)
 {
 	GtkListStore *store;
