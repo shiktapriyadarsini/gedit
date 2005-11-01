@@ -863,6 +863,7 @@
 
 			  <child>
 			    <widget class="GtkCheckButton" id="insert_spaces_checkbutton">
+			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">Insert _spaces instead of tabs</property>
 			      <property name="use_underline">True</property>
