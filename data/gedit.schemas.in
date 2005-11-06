@@ -590,6 +590,19 @@
         the "Location" of a given plugin.</long>
       </locale>
     </schema>
-
+ 
+    <schema>
+      <key>/schemas/apps/gedit-2/preferences/editor/save/writable_vfs_schemes</key>
+      <applyto>/apps/gedit-2/preferences/editor/save/writable_vfs_schemes</applyto>
+      <owner>gedit</owner>
+      <type>list</type>
+      <list_type>string</list_type>
+      <default>[ssh,ftp,smb,dav]</default>
+      <locale name="C">
+	<short>Writable VFS schemes</short>
+	<long>List of VFS schemes gedit supports in write mode. The 'file' scheme
+	is writable by default.</long>
+      </locale>
+    </schema>
   </schemalist>
 </gconfschemafile>

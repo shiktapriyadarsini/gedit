@@ -132,6 +132,9 @@
 #define GPM_SYNTAX_HL_DIR		GPM_PREFS_DIR "/syntax_highlighting"
 #define GPM_SYNTAX_HL_ENABLE		GPM_SYNTAX_HL_DIR "/enable"
 
+/* White list of writable gnome-vfs methods */
+#define GPM_WRITABLE_VFS_SCHEMES 	GPM_SAVE_DIR "/writable_vfs_schemes"
+
 /* Fallback default values. Keep in sync with gedit.schemas */
 
 #define GPM_DEFAULT_USE_DEFAULT_FONT 	0 /* FALSE */
@@ -203,6 +206,8 @@
 #define GPM_DEFAULT_RIGHT_MARGIN_POSITION 80
 
 #define GPM_DEFAULT_SYNTAX_HL_ENABLE	1 /* TRUE */
+
+#define GPM_DEFAULT_WRITABLE_VFS_SCHEMES {"ssh", "ftp", "smb", "dav", NULL}
 
 typedef enum {
 	GEDIT_TOOLBAR_SYSTEM = 0,
@@ -403,6 +408,9 @@ gboolean		 gedit_prefs_manager_right_margin_position_can_set (void);
 gboolean 		 gedit_prefs_manager_get_enable_syntax_highlighting (void);
 void			 gedit_prefs_manager_set_enable_syntax_highlighting (gboolean esh);
 gboolean		 gedit_prefs_manager_enable_syntax_highlighting_can_set (void);
+
+/* Writable VFS schemes */
+GSList			*gedit_prefs_manager_get_writable_vfs_schemes	(void);
 
 #endif  /* __GEDIT_PREFS_MANAGER_H__ */
 

@@ -47,6 +47,7 @@
 #include "gedit-convert.h"
 #include "gedit-debug.h"
 #include "gedit-metadata-manager.h"
+#include "gedit-utils.h"
 
 #include "gedit-marshal.h"
 
@@ -1018,6 +1019,9 @@ gboolean
 gedit_document_loader_get_readonly (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
+
+	if (!gedit_utils_uri_has_writable_scheme (loader->priv->uri))
+		return TRUE;
 
 	if (loader->priv->info &&
 	    (loader->priv->info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_ACCESS))

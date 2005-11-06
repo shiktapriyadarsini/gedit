@@ -4,6 +4,7 @@
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2002 Chema Celorio, Paolo Maggi 
+ * Copyright (C) 2003-2005 Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +23,7 @@
  */
  
 /*
- * Modified by the gedit Team, 1998-2002. See the AUTHORS file for a 
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
  *
@@ -49,7 +50,6 @@
 #include <glade/glade-xml.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include <libgnome/gnome-url.h>
-
 
 #include "gedit-utils.h"
 #include "gedit2.h"
@@ -78,40 +78,36 @@ gedit_utils_uri_has_file_scheme (const gchar *uri)
 }
 
 gboolean
-gedit_utils_is_uri_read_only (const gchar* uri)
+gedit_utils_uri_has_writable_scheme (const gchar *uri)
 {
-	gchar* file_uri = NULL;
-	gchar* canonical_uri = NULL;
-
-	gint res;
-
-	g_return_val_if_fail (uri != NULL, TRUE);
+	gchar    *canonical_uri;
+	gchar    *scheme;
+	GSList   *writable_schemes;
+	gboolean  res;
 	
-	gedit_debug_message (DEBUG_FILE, "URI: %s", uri);
-
-	/* FIXME: all remote files are marked as readonly */
-	if (!gedit_utils_uri_has_file_scheme (uri))
-		return TRUE;
-		
+	scheme = gnome_vfs_get_uri_scheme (uri);
+	
 	canonical_uri = gnome_vfs_make_uri_canonical (uri);
-	g_return_val_if_fail (canonical_uri != NULL, TRUE);
-
-	gedit_debug_message (DEBUG_FILE, "CANONICAL URI: %s", canonical_uri);
-
-	file_uri = gnome_vfs_get_local_path_from_uri (canonical_uri);
-	if (file_uri == NULL)
-	{
-		gedit_debug_message (DEBUG_FILE, "FILE URI: NULL");
-
-		return TRUE;
-	}
+	g_return_val_if_fail (canonical_uri != NULL, FALSE);
 	
-	res = access (file_uri, W_OK);
-
+	scheme = gnome_vfs_get_uri_scheme (canonical_uri);
+	g_return_val_if_fail (scheme != NULL, FALSE);
+	
 	g_free (canonical_uri);
-	g_free (file_uri);
-
-	return res;	
+	
+	writable_schemes = gedit_prefs_manager_get_writable_vfs_schemes ();
+	
+	/* CHECK: should we use g_ascii_strcasecmp? - Paolo (Nov 6, 2005) */
+	res = (g_slist_find_custom (writable_schemes,
+				    scheme,
+				    (GCompareFunc)strcmp) != NULL);
+				    
+	g_slist_foreach (writable_schemes, (GFunc)g_free, NULL);
+	g_slist_free (writable_schemes);
+	
+	g_free (scheme);
+	
+	return res;
 }
 
 void
@@ -182,6 +178,7 @@ gedit_dialog_add_button (GtkDialog   *dialog,
 /*
  * n: len of the string in bytes
  */
+// FIXME: sync with the function in gtksourceview
 gboolean 
 g_utf8_caselessnmatch (const char *s1, const char *s2, gssize n1, gssize n2)
 {

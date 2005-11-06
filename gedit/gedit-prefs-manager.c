@@ -1237,6 +1237,44 @@ DEFINE_BOOL_PREF (enable_syntax_highlighting,
 		  GPM_DEFAULT_SYNTAX_HL_ENABLE)
 
 
+GSList *
+gedit_prefs_manager_get_writable_vfs_schemes (void)
+{
+	GSList *strings;
+	
+	gedit_debug (DEBUG_PREFS);
+
+	g_return_val_if_fail (gedit_prefs_manager != NULL, NULL);
+	g_return_val_if_fail (gedit_prefs_manager->gconf_client != NULL, NULL);
+
+	strings = gconf_client_get_list (gedit_prefs_manager->gconf_client,
+				GPM_WRITABLE_VFS_SCHEMES,
+				GCONF_VALUE_STRING, 
+				NULL);
+
+	if (strings == NULL)
+	{
+		gint i = 0;
+		const gchar* s[] = GPM_DEFAULT_WRITABLE_VFS_SCHEMES;
+
+		while (s[i] != NULL)
+		{
+			strings = g_slist_prepend (strings, g_strdup (s[i]));
+
+			++i;
+		}
+
+		strings = g_slist_reverse (strings);
+	}
+
+	/* The 'file' scheme is writable by default. */
+	strings = g_slist_prepend (strings, g_strdup ("file")); 
+	
+	gedit_debug_message (DEBUG_PREFS, "Done");
+
+	return strings;
+}
+
 /* The following functions are taken from gconf-client.c 
  * and partially modified. 
  * The licensing terms on these is: 

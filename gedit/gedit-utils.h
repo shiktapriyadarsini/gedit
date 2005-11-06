@@ -52,7 +52,7 @@ G_BEGIN_DECLS
 
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
-gboolean	 gedit_utils_is_uri_read_only		(const gchar* uri);
+gboolean	 gedit_utils_uri_has_writable_scheme	(const gchar *uri);
 gboolean	 gedit_utils_uri_has_file_scheme	(const gchar *uri);
 
 void		 gedit_utils_menu_position_under_widget (GtkMenu  *menu,
