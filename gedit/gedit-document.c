@@ -73,6 +73,9 @@ PROFILE (static GTimer *timer = NULL);
 
 #define GEDIT_DOCUMENT_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_DOCUMENT, GeditDocumentPrivate))
 
+static void	gedit_document_set_readonly	(GeditDocument *doc,
+						 gboolean       readonly);
+			     
 struct _GeditDocumentPrivate
 {
 	gint	     auto_save : 1;
@@ -252,26 +255,6 @@ gedit_document_finalize (GObject *object)
 }
 
 static void
-gedit_document_set_property (GObject      *object,
-			     guint         prop_id,
-			     const GValue *value,
-			     GParamSpec   *pspec)
-{
-	GeditDocument *doc = GEDIT_DOCUMENT (object);
-  
-	switch (prop_id)
-	{
-		case PROP_READ_ONLY:
-			gedit_document_set_readonly (doc,
-						     g_value_get_boolean (value));
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
 gedit_document_get_property (GObject    *object,
 			     guint       prop_id,
 			     GValue     *value,
@@ -341,7 +324,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	GtkTextBufferClass *buf_class = GTK_TEXT_BUFFER_CLASS (klass);
 
 	object_class->finalize = gedit_document_finalize;
-	object_class->set_property = gedit_document_set_property;
 	object_class->get_property = gedit_document_get_property;
 
 	buf_class->mark_set = gedit_document_mark_set;
@@ -369,7 +351,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 					 		       "Read Only",
 					 		       "Whether the document is read only or not",
 					 		       FALSE,
-					 		       (G_PARAM_READABLE | G_PARAM_WRITABLE)));
+					 		       G_PARAM_READABLE));
 	g_object_class_install_property (object_class, PROP_ENCODING,
 					 g_param_spec_boxed ("encoding",
 					 		     "Encoding",
@@ -788,7 +770,7 @@ gedit_document_get_mime_type (GeditDocument *doc)
  	return doc->priv->mime_type;
 }
 
-/* Note: do not emit the notify::readonly signal */
+/* Note: do not emit the notify::read-only signal */
 static void
 set_readonly (GeditDocument *doc,
 	      gboolean       readonly)
@@ -825,7 +807,7 @@ set_readonly (GeditDocument *doc,
 	doc->priv->readonly = readonly;
 }
 
-void 		
+static void
 gedit_document_set_readonly (GeditDocument *doc,
 			     gboolean       readonly)
 {
@@ -835,7 +817,7 @@ gedit_document_set_readonly (GeditDocument *doc,
 
 	set_readonly (doc, readonly);
 
-	g_object_notify (G_OBJECT (doc), "readonly");
+	g_object_notify (G_OBJECT (doc), "read-only");
 }
 
 gboolean
@@ -1036,14 +1018,16 @@ document_saver_saving (GeditDocumentSaver *saver,
 
 			g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-			set_uri (doc, uri, mime_type);
-
-			set_encoding (doc, 
-				      doc->priv->requested_encoding, 
-				      TRUE);
+			gedit_document_set_readonly (doc, FALSE);
 
 			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
 						      FALSE);
+			
+			set_uri (doc, uri, mime_type);
+			
+			set_encoding (doc, 
+				      doc->priv->requested_encoding, 
+				      TRUE);
 		}
 
 		g_signal_emit (doc,

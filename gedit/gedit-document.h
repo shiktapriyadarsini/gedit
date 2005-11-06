@@ -146,9 +146,6 @@ const gchar	*gedit_document_get_mime_type 	(GeditDocument       *doc);
 
 gboolean	 gedit_document_get_readonly 	(GeditDocument       *doc);
 
-void		 gedit_document_set_readonly 	(GeditDocument       *doc,
-						 gboolean             readonly);
-
 gboolean	 gedit_document_load 		(GeditDocument       *doc, 
 						 const gchar         *uri, 
 						 const GeditEncoding *encoding,

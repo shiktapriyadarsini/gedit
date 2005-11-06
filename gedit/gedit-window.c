@@ -448,8 +448,9 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "FileSave");
 	gtk_action_set_sensitive (action,
-				  state_normal ||
-				  (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));					      
+				  (state_normal ||
+				   (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+				  !gedit_document_get_readonly (doc));
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "FileSaveAs");

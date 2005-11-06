@@ -149,15 +149,6 @@
   (return-type "gboolean")
 )
 
-(define-method set_readonly
-  (of-object "GeditDocument")
-  (c-name "gedit_document_set_readonly")
-  (return-type "none")
-  (parameters
-    '("gboolean" "readonly")
-  )
-)
-
 (define-method load
   (of-object "GeditDocument")
   (c-name "gedit_document_load")
