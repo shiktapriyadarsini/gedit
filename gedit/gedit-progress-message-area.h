@@ -87,6 +87,9 @@ void		 gedit_progress_message_area_set_stock_image	(GeditProgressMessageArea *ar
 void		 gedit_progress_message_area_set_markup		(GeditProgressMessageArea *area,
 								 const gchar              *markup);
 
+void		 gedit_progress_message_area_set_text		(GeditProgressMessageArea *area,
+								 const gchar              *text);
+
 void		 gedit_progress_message_area_set_fraction	(GeditProgressMessageArea *area,
 								 gdouble                   fraction);
 

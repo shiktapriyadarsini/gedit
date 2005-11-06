@@ -230,8 +230,8 @@ gedit_unrecoverable_loading_error_message_area_new (const gchar  *uri,
 					/* Translators: %s is a host name */
 					message_details = g_strdup_printf (
 						_("Host <i>%s</i> could not be found. "
-	        		  	  	"Please, check that your proxy settings "
-				  	  	"are correct and try again."),
+	        		  	  	  "Please, check that your proxy settings "
+				  	  	  "are correct and try again."),
 					  	host_name);
 
 					g_free (host_name);

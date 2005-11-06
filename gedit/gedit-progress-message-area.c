@@ -213,6 +213,17 @@ gedit_progress_message_area_set_markup (GeditProgressMessageArea *area,
 }
 
 void
+gedit_progress_message_area_set_text (GeditProgressMessageArea *area,
+				      const gchar              *text)
+{
+	g_return_if_fail (GEDIT_IS_PROGRESS_MESSAGE_AREA (area));
+	g_return_if_fail (text != NULL);
+
+	gtk_label_set_text (GTK_LABEL (area->priv->label),
+			    text);
+}
+
+void
 gedit_progress_message_area_set_fraction (GeditProgressMessageArea *area,
 					  gdouble                   fraction)
 {

@@ -482,12 +482,14 @@ show_loading_message_area (GeditTab *tab)
 		{
 			/* Translators: the first %s is a file name (e.g. test.txt) the second one
 			   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
-			msg = g_strdup_printf ("Reverting <b>%s</b> from <b>%s</b>",
-					       name, dirname);
+			msg = g_markup_printf_escaped (_("Reverting <b>%s</b> from <b>%s</b>"),
+						       name,
+						       dirname);
 		}
 		else
 		{
-			msg = g_strdup_printf ("Reverting <b>%s</b>", name);
+			msg = g_markup_printf_escaped (_("Reverting <b>%s</b>"), 
+						       name);
 		}
 		
 		area = gedit_progress_message_area_new (GTK_STOCK_REVERT_TO_SAVED,
@@ -500,12 +502,14 @@ show_loading_message_area (GeditTab *tab)
 		{
 			/* Translators: the first %s is a file name (e.g. test.txt) the second one
 			   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
-			msg = g_strdup_printf ("Loading <b>%s</b> from <b>%s</b>",
-					       name, dirname);
+			msg = g_markup_printf_escaped (_("Loading <b>%s</b> from <b>%s</b>"),
+					       	       name,
+					       	       dirname);
 		}
 		else
 		{
-			msg = g_strdup_printf ("Loading <b>%s</b>", name);
+			msg = g_markup_printf_escaped (_("Loading <b>%s</b>"), 
+						       name);
 		}
 
 		area = gedit_progress_message_area_new (GTK_STOCK_OPEN,
@@ -579,12 +583,13 @@ show_saving_message_area (GeditTab *tab)
 	{
 		/* Translators: the first %s is a file name (e.g. test.txt) the second one
 		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
-		msg = g_strdup_printf ("Saving <b>%s</b> to <b>%s</b>",
-				       from, to);
+		msg = g_markup_printf_escaped (_("Saving <b>%s</b> to <b>%s</b>"),
+				       	       from,
+				       	       to);
 	}
 	else
 	{
-		msg = g_strdup_printf ("Saving <b>%s</b>", to);
+		msg = g_markup_printf_escaped (_("Saving <b>%s</b>"), to);
 	}
 
 	area = gedit_progress_message_area_new (GTK_STOCK_SAVE,
@@ -1375,12 +1380,12 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 			else
 				encoding = gedit_encoding_to_string (enc);
 
-			tip =  g_markup_printf_escaped("<b>%s</b> %s\n\n"
-						       "<b>%s</b> %s\n"
-						       "<b>%s</b> %s",
-						       _("Name:"), ruri,
-						       _("MIME Type:"), mime_full_description,
-						       _("Encoding:"), encoding);
+			tip =  g_markup_printf_escaped ("<b>%s</b> %s\n\n"
+						        "<b>%s</b> %s\n"
+						        "<b>%s</b> %s",
+						        _("Name:"), ruri,
+						        _("MIME Type:"), mime_full_description,
+						        _("Encoding:"), encoding);
 
 			g_free (encoding);
 			g_free (mime_full_description);
@@ -1722,12 +1727,12 @@ print_page_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
 	
 	str = g_strdup_printf (_("Rendering page %d of %d..."), page_num, total);
 
-	gedit_progress_message_area_set_markup (GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
-						str);
+	gedit_progress_message_area_set_text (GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
+					      str);
 	g_free (str);
 	
 	gedit_progress_message_area_set_fraction (GEDIT_PROGRESS_MESSAGE_AREA (tab->priv->message_area),
-				       1.0 * page_num / total);
+						  1.0 * page_num / total);
 }
 
 static void

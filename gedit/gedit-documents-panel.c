@@ -64,7 +64,7 @@ tab_get_name (GeditTab *tab)
 	const gchar* name = NULL;
 	gchar* docname = NULL;
 	gchar* tab_name = NULL;
-
+	
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
 	doc = gedit_tab_get_document (tab);
@@ -76,25 +76,32 @@ tab_get_name (GeditTab *tab)
 
 	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
-		gchar *tmp_name;
-		
-		tmp_name = g_strdup_printf ("<i>%s</i>", docname);
-		g_free (docname);
-		
-		docname = tmp_name;
-	}	
-
-	if (gedit_document_get_readonly (doc)) 
-	{
-		tab_name = g_strdup_printf ("%s [<i>%s</i>]", 
-					    docname, 
-					    _("Read Only"));
-	} 
-	else 
-	{
-		tab_name = g_strdup_printf ("%s", docname);
+		if (gedit_document_get_readonly (doc))
+		{
+			tab_name = g_markup_printf_escaped ("<i>%s</i> [<i>%s</i>]",
+							    docname,
+							    _("Read Only"));
+		}
+		else
+		{
+			tab_name = g_markup_printf_escaped ("<i>%s</i>", 
+							    docname);
+		}
 	}
-	
+	else
+	{
+		if (gedit_document_get_readonly (doc))
+		{
+			tab_name = g_markup_printf_escaped ("%s [<i>%s</i>]",
+							    docname,
+							    _("Read Only"));
+		}
+		else
+		{
+			tab_name = g_markup_escape_text (docname, -1);
+		}
+	}
+
 	g_free (docname);
 
 	return tab_name;
