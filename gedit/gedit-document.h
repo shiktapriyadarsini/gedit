@@ -86,6 +86,8 @@ struct _GeditDocumentClass
 
 	/* Signals */ // CHECK: ancora da rivedere
 
+	void (* cursor_moved)		(GeditDocument    *document);
+
 	/* Document load */
 	void (* loading)		(GeditDocument    *document,
 					 GnomeVFSFileSize  size,

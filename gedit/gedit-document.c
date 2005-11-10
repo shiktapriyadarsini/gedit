@@ -84,6 +84,7 @@ struct _GeditDocumentPrivate
 	gint	     language_set_by_user : 1;
 	gint         is_saving_as : 1;
 	gint         has_selection : 1;
+	gint         stop_cursor_moved_emission : 1;
 
 	gchar	    *uri;
 	gint 	     untitled_number;
@@ -130,6 +131,7 @@ enum {
 };
 
 enum {
+	CURSOR_MOVED,
 	LOADING,
 	LOADED,
 	SAVING,
@@ -289,6 +291,17 @@ gedit_document_get_property (GObject    *object,
 }
 
 static void
+emit_cursor_moved (GeditDocument *doc)
+{
+	if (!doc->priv->stop_cursor_moved_emission)
+	{
+		g_signal_emit (doc,
+			       document_signals[CURSOR_MOVED],
+			       0);
+	}
+}
+
+static void
 gedit_document_mark_set (GtkTextBuffer     *buffer,
                          const GtkTextIter *iter,
                          GtkTextMark       *mark)
@@ -315,6 +328,19 @@ gedit_document_mark_set (GtkTextBuffer     *buffer,
 			g_object_notify (G_OBJECT (doc), "has-selection");
 		}
 	}
+
+	if (mark == gtk_text_buffer_get_insert (buffer))
+	{
+		emit_cursor_moved (doc);
+	}
+}
+
+static void
+gedit_document_changed (GtkTextBuffer *buffer)
+{
+	emit_cursor_moved (GEDIT_DOCUMENT (buffer));
+
+	GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->changed (buffer);
 }
 
 static void 
@@ -327,6 +353,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	object_class->get_property = gedit_document_get_property;
 
 	buf_class->mark_set = gedit_document_mark_set;
+	buf_class->changed = gedit_document_changed;
 
 	g_object_class_install_property (object_class, PROP_URI,
 					 g_param_spec_string ("uri",
@@ -360,7 +387,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 					 		     G_PARAM_READABLE));
 
 	/* This has been properly moved in GtkTextBuffer in gtk 2.10, so when
-	 * we switch to 2.10 we can remove it along with gedit_document_mark_set
+	 * we switch to 2.10 we can remove it and part of with gedit_document_mark_set.
 	 */
 	g_object_class_install_property (object_class, PROP_HAS_SELECTION,
 					 g_param_spec_boolean ("has-selection",
@@ -368,6 +395,22 @@ gedit_document_class_init (GeditDocumentClass *klass)
 					 		       "Wheter the document has selected text",
 					 		       FALSE,
 					 		       G_PARAM_READABLE));
+
+	/* This signal is used to update the cursor position is the statusbar,
+	 * it's emitted either when the insert mark is moved explicitely or
+	 * when the buffer changes (insert/delete).
+	 * We prevent the emission of the signal during replace_all to 
+	 * improve performance.
+	 */
+	document_signals[CURSOR_MOVED] =
+   		g_signal_new ("cursor-moved",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_LAST,
+			      G_STRUCT_OFFSET (GeditDocumentClass, cursor_moved),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__VOID,
+			      G_TYPE_NONE,
+			      0);
 
 	document_signals[LOADING] =
    		g_signal_new ("loading",
@@ -602,6 +645,9 @@ gedit_document_init (GeditDocument *doc)
 	doc->priv->mime_type = g_strdup ("text/plain");
 
 	doc->priv->readonly = FALSE;
+
+	doc->priv->has_selection = FALSE;
+	doc->priv->stop_cursor_moved_emission = FALSE;
 
 	doc->priv->last_save_was_manually = TRUE;
 	doc->priv->language_set_by_user = FALSE;
@@ -1408,7 +1454,13 @@ gedit_document_replace_all (GeditDocument       *doc,
 	}
 	
 	replace_text_len = strlen (replace_text);
-	
+
+	/* disable cursor_moved emission until the end of the
+	 * replace_all so that we don't spend all the time
+	 * updating the position in the statusbar
+	 */
+	doc->priv->stop_cursor_moved_emission = TRUE;
+
 	gtk_text_buffer_begin_user_action (buffer);
 	
 	do
@@ -1453,6 +1505,12 @@ gedit_document_replace_all (GeditDocument       *doc,
 	} while (found);
 
 	gtk_text_buffer_end_user_action (buffer);
+
+	/* re-enable cursor_moved emission and notify
+	 * the current position 
+	 */
+	doc->priv->stop_cursor_moved_emission = FALSE;
+	emit_cursor_moved (doc);
 
 	g_free (search_text);
 	g_free (replace_text);	

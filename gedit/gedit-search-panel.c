@@ -859,11 +859,11 @@ replace_all (GeditSearchPanel *panel)
 	gboolean entire_word;
 	gint flags = 0;
 	gint cont;
-	
+
 	doc = gedit_window_get_active_document (panel->priv->window);
 	if (doc == NULL)
 		return;
-			
+
 	search_entry_text = gtk_entry_get_text (GTK_ENTRY (panel->priv->search_entry));
 	g_return_if_fail ((search_entry_text) != NULL);
 	g_return_if_fail ((*search_entry_text) != '\0');
@@ -875,15 +875,15 @@ replace_all (GeditSearchPanel *panel)
 	/* retrieve search settings from the toggle buttons */
 	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->match_case_checkbutton));
 	entire_word = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (panel->priv->entire_word_checkbutton));
-	
+
 	GEDIT_SEARCH_SET_CASE_SENSITIVE (flags, case_sensitive);
 	GEDIT_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
-	
+
 	cont = gedit_document_replace_all (doc, 
 					   search_entry_text,
 					   replace_entry_text,
 					   flags);
-					   
+
 	if (cont > 0)
 	{
 		add_entry_completion_entry (panel, doc, TRUE);

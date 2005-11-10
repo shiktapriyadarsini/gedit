@@ -1312,19 +1312,6 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 }
 
 static void
-cursor_moved (GtkTextBuffer     *buffer,
-	      const GtkTextIter *new_location,
-	      GtkTextMark       *mark,
-	      GeditWindow       *window)
-{
-	if (buffer != GTK_TEXT_BUFFER (gedit_window_get_active_document (window)))
-		return;
-			  
-	if (mark == gtk_text_buffer_get_insert (buffer))
-		update_cursor_position_statusbar (buffer, window);
-}
-
-static void
 update_overwrite_mode_statusbar (GtkTextView *view, 
 				 GeditWindow *window)
 {
@@ -1949,19 +1936,14 @@ notebook_tab_added (GeditNotebook *notebook,
 			 "notify::name",
 			  G_CALLBACK (sync_name), 
 			  window);
-			  
 	g_signal_connect (tab, 
 			 "notify::state",
 			  G_CALLBACK (sync_state), 
 			  window);
-			  
-	g_signal_connect (doc, 
-			  "changed",
-			  G_CALLBACK (update_cursor_position_statusbar),
-			  window);
+
 	g_signal_connect (doc,
-			  "mark_set",/* cursor moved */
-			  G_CALLBACK (cursor_moved),
+			  "cursor-moved",
+			  G_CALLBACK (update_cursor_position_statusbar),
 			  window);			  
 	g_signal_connect (doc,
 			  "can-undo",
@@ -2049,9 +2031,6 @@ notebook_tab_removed (GeditNotebook *notebook,
 	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (update_cursor_position_statusbar), 
 					      window);
-	g_signal_handlers_disconnect_by_func (doc,
-					      G_CALLBACK (cursor_moved), 
-					      window);					      
 	g_signal_handlers_disconnect_by_func (doc, 
 					      G_CALLBACK (can_undo),
 					      window);
@@ -2639,6 +2618,7 @@ gedit_window_close_tab (GeditWindow *window,
 				   tab);
 }
 
+// CHECK: these should be priv? pbor.
 void
 gedit_window_close_all_tabs (GeditWindow *window)
 {
