@@ -53,8 +53,13 @@ struct _GeditStatusbarPrivate
 	
 	GtkWidget     *error_frame;
 	GtkWidget     *error_event_box;
-	
+
 	GeditTooltips *tooltips;
+
+	/* tmp flash timeout data */
+	guint          flash_timeout;
+	guint          flash_context_id;
+	guint          flash_message_id;
 };
 
 G_DEFINE_TYPE(GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
@@ -82,6 +87,9 @@ gedit_statusbar_finalize (GObject *object)
 	GeditStatusbar *statusbar = GEDIT_STATUSBAR (object);
 
 	g_object_unref (statusbar->priv->tooltips);
+
+	if (statusbar->priv->flash_timeout > 0)
+		g_source_remove (statusbar->priv->flash_timeout);
 
 	G_OBJECT_CLASS (gedit_statusbar_parent_class)->finalize (object);
 }
@@ -294,23 +302,15 @@ gedit_statusbar_set_cursor_position (GeditStatusbar *statusbar,
       	g_free (msg);
 }
 
-
-/* utility struct */
-typedef struct {
-	GtkStatusbar *statusbar;
-	guint context_id;
-	guint message_id;
-} FlashInfo;
-
-static const guint32 flash_length = 3000;
-
 static gboolean
-remove_message_timeout (FlashInfo * fi) 
+remove_message_timeout (GeditStatusbar *statusbar)
 {
-	gtk_statusbar_remove (fi->statusbar, fi->context_id, fi->message_id);
-	g_free (fi);
+	gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
+			      statusbar->priv->flash_context_id,
+			      statusbar->priv->flash_message_id);
 
 	/* remove the timeout */
+	statusbar->priv->flash_timeout = 0;
   	return FALSE;
 }
 
@@ -327,8 +327,8 @@ gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 			       guint           context_id,
 			       const gchar    *format, ...)
 {
+	const guint32 flash_length = 3000; /* three seconds */
 	va_list args;
-	FlashInfo *fi;
 	gchar *msg;
 
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
@@ -338,12 +338,22 @@ gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 	msg = g_strdup_vprintf (format, args);
 	va_end (args);
 
-	fi = g_new (FlashInfo, 1);
-	fi->statusbar = GTK_STATUSBAR (statusbar);
-	fi->context_id = context_id;
-	fi->message_id = gtk_statusbar_push (fi->statusbar, fi->context_id, msg);
+	/* remove a currently ongoing flash message */
+	g_source_remove (statusbar->priv->flash_timeout);
+	statusbar->priv->flash_timeout = 0;
 
-	g_timeout_add (flash_length, (GtkFunction) remove_message_timeout, fi);
+	gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
+			      statusbar->priv->flash_context_id,
+			      statusbar->priv->flash_message_id);
+
+	statusbar->priv->flash_context_id = context_id;
+	statusbar->priv->flash_message_id = gtk_statusbar_push (GTK_STATUSBAR (statusbar),
+								context_id,
+								msg);
+
+	statusbar->priv->flash_timeout = g_timeout_add (flash_length,
+							(GtkFunction) remove_message_timeout,
+							statusbar);
 
 	g_free (msg);
 }
