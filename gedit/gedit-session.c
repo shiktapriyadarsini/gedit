@@ -59,62 +59,61 @@ static GnomeClient *master_client = NULL;
 /* argv[0] from main(); used as the command to restart the program */
 static const char *program_argv0 = NULL;
 
-static void
-ensure_session_directory (void)
+static gchar *
+get_session_dir ()
 {
 	gchar *gedit_dir;
-	gchar *dir;
+	gchar *session_dir;
 
-	gedit_debug (DEBUG_SESSION);
-
-	dir = gnome_util_home_file ("gedit");
-	if (g_file_test (dir, G_FILE_TEST_EXISTS) == FALSE)
-	{
-		if (mkdir (dir, 488) != 0)
-		{
-			g_warning ("Unable to create directory '%s'\n", dir);
-		}
-	}
-
-	gedit_dir = dir;
-
-	dir = g_build_filename (gedit_dir, "sessions", NULL);	
-	if (g_file_test (dir, G_FILE_TEST_EXISTS) == FALSE)
-	{
-		if (mkdir (dir, 488) != 0)
-		{
-			g_warning ("Unable to create directory '%s'\n", dir);
-		}
-	}
-
-	g_free (dir);
+	gedit_dir = gnome_util_home_file ("gedit");
+	session_dir = g_build_filename (gedit_dir, "sessions", NULL);	
 	g_free (gedit_dir);
+
+	return session_dir;
 }
 
 static gchar *
 get_session_file_path (GnomeClient *client)
 {
 	const gchar *prefix;
-	
+	gchar *session_dir;
 	gchar *session_file;
 	gchar *session_path;	
-	gchar *gedit_dir;
 
 	prefix = gnome_client_get_config_prefix (client);
 	gedit_debug_message (DEBUG_SESSION, "Prefix: %s", prefix);
-	
+
 	session_file = g_strndup (prefix, strlen (prefix) - 1);
 	gedit_debug_message (DEBUG_SESSION, "Session File: %s", session_file);
-	
-	gedit_dir = gnome_util_home_file ("gedit");
-	session_path = g_build_filename (gedit_dir, "sessions", session_file, NULL);
-	g_free (gedit_dir);
-	
+
+	session_dir = get_session_dir ();
+
+	session_path = g_build_filename (session_dir,
+					 session_file,
+					 NULL);
+
+	g_free (session_dir);
 	g_free (session_file);
 
 	gedit_debug_message (DEBUG_SESSION, "Session Path: %s", session_path);
-	
+
 	return session_path;
+}
+
+static gboolean
+ensure_session_dir (void)
+{
+	gboolean ret = TRUE;
+	gchar *dir;
+
+	dir = get_session_dir ();
+
+	if (g_file_test (dir, G_FILE_TEST_IS_DIR) == FALSE)
+		ret = (g_mkdir_with_parents (dir, 488) == 0);
+
+	g_free (dir);
+
+	return ret;
 }
 
 static int
@@ -225,15 +224,20 @@ save_session (const gchar *fname)
 	int ret;
 	xmlTextWriterPtr writer;
 	const GSList *windows;
-	
+
 	gedit_debug_message (DEBUG_SESSION, "Session file: %s", fname);
-	
+
+	if (!ensure_session_dir ())
+	{
+		g_warning ("Cannot create or write in session directory");
+		return;
+	}
+
 	writer = xmlNewTextWriterFilename (fname, 0);
 	if (writer == NULL)
 	{
 		g_warning ("Cannot write the session file '%s'", fname);
 		return;
-
 	}
 
 	ret = xmlTextWriterSetIndent (writer, 1);
@@ -386,8 +390,6 @@ gedit_session_init (const char *argv0)
 		return;
 
 	program_argv0 = argv0;
-
-	ensure_session_directory ();
 	
 	master_client = gnome_master_client ();
 
