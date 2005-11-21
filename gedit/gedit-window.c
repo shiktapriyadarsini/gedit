@@ -1333,7 +1333,6 @@ static void
 set_title (GeditWindow *window)
 {
 	GeditDocument *doc = NULL;
-	const gchar *short_name;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *title = NULL;
@@ -1348,27 +1347,30 @@ set_title (GeditWindow *window)
 	doc = gedit_tab_get_document (window->priv->active_tab);
 	g_return_if_fail (doc != NULL);
 
-	short_name = gedit_document_get_short_name_for_display (doc);
+	name = gedit_document_get_short_name_for_display (doc);
 
-	len = g_utf8_strlen (short_name, -1);
+	len = g_utf8_strlen (name, -1);
 
 	/* if the name is awfully long, truncate it and be done with it,
 	 * otherwise also show the directory (ellipsized if needed)
 	 */
 	if (len > MAX_TITLE_LENGTH)
 	{
-		name = gedit_utils_str_middle_truncate (short_name, 
-							MAX_TITLE_LENGTH);
+		gchar *tmp;
+
+		tmp = gedit_utils_str_middle_truncate (name,
+						       MAX_TITLE_LENGTH);
+		g_free (name);
+		name = tmp;
 	}
 	else
 	{
-		const gchar *uri;
+		gchar *uri;
 		gchar *str;
-
-		name = g_strdup (short_name);
 
 		uri = gedit_document_get_uri_for_display (doc);
 		str = gedit_utils_uri_get_dirname (uri);
+		g_free (uri);
 
 		if (str != NULL)
 		{
@@ -1837,16 +1839,16 @@ static void
 update_default_path (GeditWindow   *window,
 		     GeditDocument *doc)
 {
-	const gchar *uri;
-	
-	uri = gedit_document_get_uri_(doc);
+	gchar *uri;
+
+	uri = gedit_document_get_uri (doc);
 	// CHECK: what does it happens when loading from stdin? - Paolo
 	g_return_if_fail (uri != NULL);
-	
+
 	if (gedit_utils_uri_has_file_scheme (uri))
 	{
 		gchar *default_path;
-			
+
 		// CHECK: does it work with uri chaining? - Paolo
 		default_path = g_path_get_dirname (uri);
 
@@ -1859,12 +1861,14 @@ update_default_path (GeditWindow   *window,
 		}
 
 		g_free (window->priv->default_path);
-				
+
 		window->priv->default_path = default_path;
-		
+
 		gedit_debug_message (DEBUG_WINDOW, 
 				     "New default path: %s", default_path);
 	}
+
+	g_free (uri);
 }
 
 static void

@@ -183,13 +183,16 @@ save_window_session (xmlTextWriterPtr  writer,
 		if (ret < 0)
 			return ret;
 
-		uri = gedit_document_get_uri_ (GEDIT_DOCUMENT (l->data));
+		uri = gedit_document_get_uri (GEDIT_DOCUMENT (l->data));
 
 		if (uri != NULL)
 		{
 			ret = xmlTextWriterWriteAttribute (writer,
 							   "uri", 
 							   uri);
+
+			g_free (uri);
+
 			if (ret < 0)
 				return ret;
 		}

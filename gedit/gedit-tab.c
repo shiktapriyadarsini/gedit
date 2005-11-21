@@ -335,7 +335,7 @@ recoverable_loading_error_message_area_response (GeditMessageArea *message_area,
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	uri = gedit_document_get_uri_ (doc);
+	uri = gedit_document_get_uri (doc);
 	g_return_if_fail (uri != NULL);
 	
 	if (response_id == GTK_RESPONSE_OK)
@@ -454,13 +454,14 @@ show_loading_message_area (GeditTab *tab)
 	}
 	else
 	{
-		const gchar *uri;
+		gchar *uri;
 		gchar *str;
 
 		name = g_strdup (short_name);
 
 		uri = gedit_document_get_uri_for_display (doc);
 		str = gedit_utils_uri_get_dirname (uri);
+		g_free (uri);
 
 		if (str != NULL)
 		{
@@ -536,7 +537,7 @@ show_saving_message_area (GeditTab *tab)
 {
 	GtkWidget *area;
 	GeditDocument *doc = NULL;
-	const gchar *short_name;
+	gchar *short_name;
 	gchar *from;
 	gchar *to = NULL;
 	gchar *msg = NULL;
@@ -563,12 +564,13 @@ show_saving_message_area (GeditTab *tab)
 	{
 		from = gedit_utils_str_middle_truncate (short_name, 
 							MAX_MSG_LENGTH);
+		g_free (short_name);
 	}
 	else
 	{
 		gchar *str;
-		
-		from = g_strdup (short_name);
+
+		from = short_name;
 
 		to = gnome_vfs_format_uri_for_display (tab->priv->tmp_save_uri);
 
@@ -701,8 +703,8 @@ document_loaded (GeditDocument *document,
 		 GeditTab      *tab)
 {
 	GtkWidget *emsg;
+	gchar *uri;
 	const GeditEncoding *encoding;
-	const gchar *uri;
 
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
 			  (tab->priv->state == GEDIT_TAB_STATE_REVERTING));
@@ -710,10 +712,10 @@ document_loaded (GeditDocument *document,
 	g_timer_destroy (tab->priv->timer);
 	tab->priv->timer = NULL;
 	tab->priv->times_called = 0;
-	
+
 	set_message_area (tab, NULL);
-	
-	uri = gedit_document_get_uri_ (document);
+
+	uri = gedit_document_get_uri (document);
 
 	if (error != NULL)
 	{
@@ -807,10 +809,10 @@ document_loaded (GeditDocument *document,
 			
 			if (d != document)
 			{
-				const gchar *u;
-				
-				u = gedit_document_get_uri_ (d);
-								
+				gchar *u;
+
+				u = gedit_document_get_uri (d);
+
 				if ((u != NULL) &&
 			    	    gnome_vfs_uris_match (uri, u))
 			    	{
@@ -834,8 +836,13 @@ document_loaded (GeditDocument *document,
 							  "response",
 							  G_CALLBACK (file_already_open_warning_message_area_response),
 							  tab);
+
+					g_free (u);
+
 			    		break;
 			    	}
+
+				g_free (u);
 			}
 		}
 
@@ -843,7 +850,10 @@ document_loaded (GeditDocument *document,
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
-end:
+
+ end:
+	g_free (uri);
+
 	tab->priv->tmp_line_pos = 0;
 	tab->priv->tmp_encoding = NULL;
 }
@@ -947,9 +957,6 @@ no_backup_error_message_area_response (GeditMessageArea *message_area,
 		g_return_if_fail (tab->priv->tmp_save_uri != NULL);
 		g_return_if_fail (tab->priv->tmp_encoding != NULL);
 
-		g_return_if_fail (strcmp (tab->priv->tmp_save_uri, gedit_document_get_uri_ (doc)) == 0);
-		g_return_if_fail (tab->priv->tmp_encoding == gedit_document_get_encoding (doc));
-
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
 		/* don't bug the user again with this... */
@@ -984,9 +991,6 @@ externally_modified_error_message_area_response (GeditMessageArea *message_area,
 
 		g_return_if_fail (tab->priv->tmp_save_uri != NULL);
 		g_return_if_fail (tab->priv->tmp_encoding != NULL);
-
-		g_return_if_fail (strcmp (tab->priv->tmp_save_uri, gedit_document_get_uri_ (doc)) == 0);
-		g_return_if_fail (tab->priv->tmp_encoding == gedit_document_get_encoding (doc));
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
@@ -1330,23 +1334,24 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 {
 	GeditDocument *doc;
 	gchar *tip;
-	const gchar *uri;
+	gchar *uri;
 	gchar *ruri;
-	const gchar *mime_type;
+	gchar *mime_type;
 	const gchar *mime_description = NULL;
 	gchar *mime_full_description; 
 	gchar *encoding;
 	const GeditEncoding *enc;
-	
+
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
 	doc = gedit_tab_get_document (tab);
-	
+
 	uri = gedit_document_get_uri_for_display (doc);
 	g_return_val_if_fail (uri != NULL, NULL);
 
 	ruri = 	gedit_utils_replace_home_dir_with_tilde (uri);
-	
+	g_free (uri);
+
 	switch (tab->priv->state)
 	{
 		case GEDIT_TAB_STATE_LOADING_ERROR:
@@ -1372,6 +1377,8 @@ _gedit_tab_get_tooltips	(GeditTab *tab)
 			else
 				mime_full_description = g_strdup_printf ("%s (%s)", 
 						mime_description, mime_type);
+
+			g_free (mime_type);
 
 			enc = gedit_document_get_encoding (doc);
 
@@ -1530,21 +1537,24 @@ _gedit_tab_get_icon (GeditTab *tab)
 						 icon_size);
 			break;
 		default:
-		{	
-			const gchar *raw_uri;
-			const gchar *mime_type;
+		{
+			gchar *raw_uri;
+			gchar *mime_type;
 			GeditDocument *doc;
-		
+
 			doc = gedit_tab_get_document (tab);
-			
-			raw_uri = gedit_document_get_uri_ (doc);
+
+			raw_uri = gedit_document_get_uri (doc);
 			mime_type = gedit_document_get_mime_type (doc);
 
 			pixbuf = get_icon (theme, raw_uri, mime_type, icon_size);
+
+			g_free (raw_uri);
+			g_free (mime_type);
 		}
 	}
-	
-	return pixbuf;	
+
+	return pixbuf;
 }
 
 GeditTab *
@@ -1590,6 +1600,7 @@ void
 _gedit_tab_revert (GeditTab *tab)
 {
 	GeditDocument *doc;
+	gchar *uri;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
@@ -1599,14 +1610,19 @@ _gedit_tab_revert (GeditTab *tab)
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING);
 
+	uri = gedit_document_get_uri (doc);
+	g_return_if_fail (uri != NULL);
+
 	tab->priv->tmp_line_pos = 0;
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
-	
+
 	gedit_document_load (doc,
-			     gedit_document_get_uri_ (doc),
+			     uri,
 			     tab->priv->tmp_encoding,
 			     0,
 			     FALSE);
+
+	g_free (uri);
 }
 
 void
@@ -1619,16 +1635,15 @@ _gedit_tab_save (GeditTab *tab)
 			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 	g_return_if_fail (tab->priv->tmp_save_uri == NULL);
 	g_return_if_fail (tab->priv->tmp_encoding == NULL);
-	
+
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (!gedit_document_is_untitled (doc));
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
-	/* uri used in error messages... strdup because errors are async
-	 * and the string can go away, will be freed in documnt_loaded */
-	tab->priv->tmp_save_uri = g_strdup (gedit_document_get_uri_ (doc));
+	/* uri used in error messages, will be freed in document_loaded */
+	tab->priv->tmp_save_uri = gedit_document_get_uri (doc);
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc); 
 
 	gedit_document_save (doc, tab->priv->save_flags);
@@ -1655,7 +1670,7 @@ _gedit_tab_save_as (GeditTab            *tab,
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
 	/* uri used in error messages... strdup because errors are async
-	 * and the string can go away, will be freed in documnt_loaded */
+	 * and the string can go away, will be freed in document_loaded */
 	tab->priv->tmp_save_uri = g_strdup (uri);
 	tab->priv->tmp_encoding = encoding;
 

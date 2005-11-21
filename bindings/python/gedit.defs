@@ -118,29 +118,28 @@
   (return-type "GeditDocument*")
 )
 
-
-(define-method get_uri_
+(define-method get_uri
   (of-object "GeditDocument")
-  (c-name "gedit_document_get_uri_")
-  (return-type "const-gchar*")
+  (c-name "gedit_document_get_uri")
+  (return-type "gchar*")
 )
 
 (define-method get_uri_for_display
   (of-object "GeditDocument")
   (c-name "gedit_document_get_uri_for_display")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method get_short_name_for_display
   (of-object "GeditDocument")
   (c-name "gedit_document_get_short_name_for_display")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method get_mime_type
   (of-object "GeditDocument")
   (c-name "gedit_document_get_mime_type")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method get_readonly

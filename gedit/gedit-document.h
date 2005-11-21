@@ -137,14 +137,14 @@ GType		 gedit_document_get_type      	(void) G_GNUC_CONST;
 
 GeditDocument   *gedit_document_new 		(void);
 
-const gchar	*gedit_document_get_uri_ 	(GeditDocument       *doc);
+gchar		*gedit_document_get_uri 	(GeditDocument       *doc);
 
-const gchar	*gedit_document_get_uri_for_display
+gchar		*gedit_document_get_uri_for_display
 						(GeditDocument       *doc);
-const gchar	*gedit_document_get_short_name_for_display
+gchar		*gedit_document_get_short_name_for_display
 					 	(GeditDocument       *doc);
 
-const gchar	*gedit_document_get_mime_type 	(GeditDocument       *doc);
+gchar		*gedit_document_get_mime_type 	(GeditDocument       *doc);
 
 gboolean	 gedit_document_get_readonly 	(GeditDocument       *doc);
 
@@ -200,7 +200,6 @@ gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
 						 GtkTextIter         *match_start,
 						 GtkTextIter         *match_end);
 
-// CHECK: non sono sicuro sul da farsi... va cancellata? o può essere comoda averla qui?						 
 gint		 gedit_document_replace_all 	(GeditDocument       *doc,
 				            	 const gchar         *find, 
 						 const gchar         *replace, 

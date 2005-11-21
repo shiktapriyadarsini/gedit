@@ -165,14 +165,19 @@ load_file_list (GeditWindow         *window,
 		if (loaded_files == 1)
 		{
 			GeditDocument *doc;
+			gchar *uri_for_display;
 
 			g_return_val_if_fail (tab != NULL, loaded_files);
 
 			doc = gedit_tab_get_document (tab);
+			uri_for_display = gedit_document_get_uri_for_display (doc);
+
 			gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 						       window->priv->generic_message_cid,
 						       _("Loading file '%s'\342\200\246"),
-						       gedit_document_get_uri_for_display (doc));
+						       uri_for_display);
+
+			g_free (uri_for_display);
 		}
 		else
 		{
@@ -301,9 +306,9 @@ gedit_cmd_file_open (GtkAction   *action,
 	doc = gedit_window_get_active_document (window);
 	if (doc != NULL)
 	{
-		const gchar *uri;
+		gchar *uri;
 
-		uri = gedit_document_get_uri_ (doc);
+		uri = gedit_document_get_uri (doc);
 
 		if ((uri != NULL) &&
 		    gedit_utils_uri_has_file_scheme (uri))
@@ -318,6 +323,8 @@ gedit_cmd_file_open (GtkAction   *action,
 				default_path = g_strdup ("file:///");
 			}
 		}
+
+		g_free (uri);
 	}
 
 	if (default_path == NULL)
@@ -725,7 +732,7 @@ file_save_as (GeditTab    *tab,
 
 	/* Set the suggested file name */
 	doc = gedit_tab_get_document (tab);
-	uri = gedit_document_get_uri_ (doc);
+	uri = gedit_document_get_uri (doc);
 
 	if ((uri != NULL) &&
 	    gedit_utils_uri_has_file_scheme (uri))
@@ -734,18 +741,24 @@ file_save_as (GeditTab    *tab,
 						    uri);
 	}
 
+	g_free (uri);
+
 	if (!uri_set)
 	{
 		const gchar *default_path;
+		gchar *docname;
 
 		default_path = _gedit_window_get_default_path (window);
+		docname = gedit_document_get_short_name_for_display (doc);
 
 		if (default_path != NULL)
 			gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (save_dialog),
 								 default_path);
 
 		gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (save_dialog),
-						   gedit_document_get_short_name_for_display (doc));
+						   docname);
+
+		g_free (docname);
 	}
 
 	/* Set suggested encoding */
@@ -773,6 +786,7 @@ file_save (GeditTab    *tab,
 	   GeditWindow *window)
 {
 	GeditDocument *doc;
+	gchar *uri_for_display;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -789,10 +803,13 @@ file_save (GeditTab    *tab,
 		return file_save_as (tab, window);
 	}
 
+	uri_for_display = gedit_document_get_uri_for_display (doc);
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 				        window->priv->generic_message_cid,
 				       _("Saving file '%s'\342\200\246"),
-				       gedit_document_get_uri_for_display (doc));
+				       uri_for_display);
+
+	g_free (uri_for_display);
 
 	_gedit_tab_save (tab);
 }
@@ -898,10 +915,14 @@ gedit_cmd_file_save_all (GtkAction   *action,
 			   - GEDIT_TAB_STATE_CLOSING: this state is invalid in this case
 			*/
 
+			gchar *uri_for_display;
+
+			uri_for_display = gedit_document_get_uri_for_display (doc);
 			gedit_debug_message (DEBUG_COMMANDS,
 					     "File '%s' not saved. State: %d",
-					     gedit_document_get_uri_for_display (doc),
+					     uri_for_display,
 					     state);
+			g_free (uri_for_display);
 		}
 
 		l = g_list_next (l);
@@ -935,8 +956,9 @@ revert_dialog_response_cb (GtkDialog     *dialog,
 			   gint           response_id,
 			   GeditWindow   *window)
 {
-	GeditTab      *tab;
+	GeditTab *tab;
 	GeditDocument *doc;
+	gchar *docname;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -955,12 +977,14 @@ revert_dialog_response_cb (GtkDialog     *dialog,
 	}
 
 	doc = gedit_tab_get_document (tab);
+	docname = gedit_document_get_short_name_for_display (doc);
 
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 				        window->priv->generic_message_cid,
 				       _("Reverting the document '%s'\342\200\246"),
-				       gedit_document_get_short_name_for_display (doc));
+				       docname);
 
+	g_free (docname);
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
 	_gedit_tab_revert (tab);
@@ -971,14 +995,17 @@ revert_dialog (GeditWindow   *window,
 	       GeditDocument *doc)
 {
 	GtkWidget *dialog;
-	gchar     *primary_msg;
-	gchar     *secondary_msg;
-	glong      seconds;
+	gchar *docname;
+	gchar *primary_msg;
+	gchar *secondary_msg;
+	glong seconds;
 
 	gedit_debug (DEBUG_COMMANDS);
 
+	docname = gedit_document_get_short_name_for_display (doc);
 	primary_msg = g_strdup_printf (_("Revert unsaved changes to document '%s'?"),
-	                               gedit_document_get_short_name_for_display (doc));
+	                               docname);
+	g_free (docname);
 
 	seconds = MAX (1, _gedit_document_get_seconds_since_last_save_or_load (doc));
 

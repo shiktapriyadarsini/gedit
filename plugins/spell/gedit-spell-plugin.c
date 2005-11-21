@@ -129,12 +129,12 @@ set_spell_language_cb (GeditSpellChecker   *spell,
 		       const GeditLanguage *lang,
 		       GeditDocument 	   *doc)
 {
-	const gchar *uri;
+	gchar *uri;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (lang != NULL);
 
-	uri = gedit_document_get_uri_ (doc);
+	uri = gedit_document_get_uri (doc);
 
 	if (uri != NULL)
 	{
@@ -148,6 +148,7 @@ set_spell_language_cb (GeditSpellChecker   *spell,
 					    key);
 
 		g_free (key);
+		g_free (uri);
 	}
 }
 
@@ -165,11 +166,11 @@ get_spell_checker_from_document (GeditDocument *doc)
 
 	if (data == NULL)
 	{
-		const gchar *uri;
-		
+		gchar *uri;
+
 		spell = gedit_spell_checker_new ();
 
-		uri = gedit_document_get_uri_ (doc);
+		uri = gedit_document_get_uri (doc);
 
 		if (uri != NULL)
 		{
@@ -188,7 +189,9 @@ get_spell_checker_from_document (GeditDocument *doc)
 			if (lang != NULL)
 				gedit_spell_checker_set_language (spell,
 								  lang,
-								  NULL);	
+								  NULL);
+
+			g_free (uri);	
 		}
 
 		g_object_set_qdata_full (G_OBJECT (doc), 

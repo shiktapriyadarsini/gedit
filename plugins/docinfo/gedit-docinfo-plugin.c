@@ -199,7 +199,7 @@ docinfo_real (GeditDocument *doc,
 	gint lines = 0;
 	gint bytes = 0;
 	gchar *tmp_str;
-	const gchar *file_name;
+	gchar *doc_name;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -222,9 +222,10 @@ docinfo_real (GeditDocument *doc,
 	gedit_debug_message (DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars);
 	gedit_debug_message (DEBUG_PLUGINS, "Bytes: %d", bytes);
 
-	file_name = gedit_document_get_short_name_for_display (doc);
-	tmp_str = g_strdup_printf ("<span weight=\"bold\">%s</span>", file_name);
+	doc_name = gedit_document_get_short_name_for_display (doc);
+	tmp_str = g_strdup_printf ("<span weight=\"bold\">%s</span>", doc_name);
 	gtk_label_set_markup (GTK_LABEL (dialog->file_name_label), tmp_str);
+	g_free (doc_name);
 	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", lines);

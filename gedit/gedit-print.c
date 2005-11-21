@@ -174,7 +174,7 @@ buffer_set (GeditPrintJob *job, GParamSpec *pspec, gpointer d)
 		
 	if (gedit_prefs_manager_get_print_header ())
 	{
-		const gchar *doc_name;
+		gchar *doc_name;
 		gchar *name_to_display;
 		gchar *left;
 
@@ -194,6 +194,7 @@ buffer_set (GeditPrintJob *job, GParamSpec *pspec, gpointer d)
 
 		gtk_source_print_job_set_print_header (pjob, TRUE);
 
+		g_free (doc_name);
 		g_free (name_to_display);
 		g_free (left);
 	}	
