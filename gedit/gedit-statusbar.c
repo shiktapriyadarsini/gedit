@@ -339,12 +339,15 @@ gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 	va_end (args);
 
 	/* remove a currently ongoing flash message */
-	g_source_remove (statusbar->priv->flash_timeout);
-	statusbar->priv->flash_timeout = 0;
+	if (statusbar->priv->flash_timeout > 0)
+	{
+		g_source_remove (statusbar->priv->flash_timeout);
+		statusbar->priv->flash_timeout = 0;
 
-	gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
-			      statusbar->priv->flash_context_id,
-			      statusbar->priv->flash_message_id);
+		gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
+				      statusbar->priv->flash_context_id,
+				      statusbar->priv->flash_message_id);
+	}
 
 	statusbar->priv->flash_context_id = context_id;
 	statusbar->priv->flash_message_id = gtk_statusbar_push (GTK_STATUSBAR (statusbar),
