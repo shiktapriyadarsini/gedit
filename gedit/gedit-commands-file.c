@@ -1496,19 +1496,12 @@ _gedit_cmd_file_can_close (GeditTab  *tab,
 			   GtkWindow *window)
 {
 	GeditDocument *doc;
-	GeditTabState  ts;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	doc = gedit_tab_get_document (tab);
-	ts = gedit_tab_get_state (tab);
 
-	/* TODO: we need to save the file also if it has been externally
-	   modified - Paolo (Oct 10, 2005) */
-	/* TODO: testing manage closing while reverting and reverting error */
-	if ((ts != GEDIT_TAB_STATE_LOADING_ERROR) &&
-	    (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) ||
-	     gedit_document_get_deleted (doc)))
+	if (!_gedit_tab_can_close (tab))
 	{
 		GtkWidget     *dlg;
 

@@ -1927,3 +1927,30 @@ _gedit_tab_mark_for_closing (GeditTab *tab)
 	
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_CLOSING);
 }
+
+gboolean
+_gedit_tab_can_close (GeditTab *tab)
+{
+	GeditDocument *doc;
+	GeditTabState  ts;
+
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), FALSE);
+
+	ts = gedit_tab_get_state (tab);
+
+	/* if we are loading or reverting, the tab can be closed */
+	if ((ts == GEDIT_TAB_STATE_LOADING)       ||
+	    (ts == GEDIT_TAB_STATE_LOADING_ERROR) ||
+	    (ts == GEDIT_TAB_STATE_REVERTING)     ||
+	    (ts == GEDIT_TAB_STATE_REVERTING_ERROR))
+		return TRUE;
+
+	doc = gedit_tab_get_document (tab);
+
+	/* TODO: we need to save the file also if it has been externally
+	   modified - Paolo (Oct 10, 2005) */
+
+	return (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) &&
+		!gedit_document_get_deleted (doc));
+}
+
