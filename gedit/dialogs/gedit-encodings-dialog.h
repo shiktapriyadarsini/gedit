@@ -2,7 +2,7 @@
  * gedit-encodings-dialog.h
  * This file is part of gedit
  *
- * Copyright (C) 2002-2005 Paolo Maggi 
+ * Copyright (C) 2003-2005 Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
  */
 
 /*
- * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
  *
@@ -36,13 +36,51 @@
 G_BEGIN_DECLS
 
 /*
- * A GeditEncodingsDialog _is_ a GtkDialog
+ * Type checking and casting macros
  */
+#define GEDIT_TYPE_ENCODINGS_DIALOG              (gedit_encodings_dialog_get_type())
+#define GEDIT_ENCODINGS_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_ENCODINGS_DIALOG, GeditEncodingsDialog))
+#define GEDIT_ENCODINGS_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_ENCODINGS_DIALOG, GeditEncodingsDialog const))
+#define GEDIT_ENCODINGS_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_ENCODINGS_DIALOG, GeditEncodingsDialogClass))
+#define GEDIT_IS_ENCODINGS_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_ENCODINGS_DIALOG))
+#define GEDIT_IS_ENCODINGS_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_ENCODINGS_DIALOG))
+#define GEDIT_ENCODINGS_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_ENCODINGS_DIALOG, GeditEncodingsDialogClass))
 
-GtkWidget *gedit_encodings_dialog_new (void);
+
+/* Private structure type */
+typedef struct _GeditEncodingsDialogPrivate GeditEncodingsDialogPrivate;
+
+/*
+ * Main object structure
+ */
+typedef struct _GeditEncodingsDialog GeditEncodingsDialog;
+
+struct _GeditEncodingsDialog 
+{
+	GtkDialog dialog;
+
+	/*< private > */
+	GeditEncodingsDialogPrivate *priv;
+};
+
+/*
+ * Class definition
+ */
+typedef struct _GeditEncodingsDialogClass GeditEncodingsDialogClass;
+
+struct _GeditEncodingsDialogClass 
+{
+	GtkDialogClass parent_class;
+};
+
+/*
+ * Public methods
+ */
+GType		 gedit_encodings_dialog_get_type	(void) G_GNUC_CONST;
+
+GtkWidget	*gedit_encodings_dialog_new		(void);
 
 G_END_DECLS
 
 #endif /* __GEDIT_ENCODINGS_DIALOG_H__ */
 
-	

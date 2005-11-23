@@ -71,7 +71,7 @@
       </child>
 
       <child>
-	<widget class="GtkHBox" id="hbox5">
+	<widget class="GtkHBox" id="encodings-dialog-contents">
 	  <property name="border_width">6</property>
 	  <property name="visible">True</property>
 	  <property name="homogeneous">True</property>
