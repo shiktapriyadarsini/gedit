@@ -140,10 +140,6 @@ void		 _gedit_tab_print_preview	(GeditTab            *tab,
 						 GeditPrintJob       *pjob,
 						 GtkTextIter         *start, 
 			  			 GtkTextIter         *end);
-
-/*
- * Non exported functions
- */
 void		 _gedit_tab_mark_for_closing	(GeditTab	     *tab);
 
 gboolean	 _gedit_tab_can_close		(GeditTab	     *tab);
