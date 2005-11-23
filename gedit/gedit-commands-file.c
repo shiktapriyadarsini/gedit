@@ -695,11 +695,11 @@ static void
 file_save_as (GeditTab    *tab,
 	      GeditWindow *window)
 {
-	GtkWidget           *save_dialog;
-	GtkWindowGroup      *wg;
-	GeditDocument       *doc;
-	const gchar         *uri;
-	gboolean             uri_set = FALSE;
+	GtkWidget *save_dialog;
+	GtkWindowGroup *wg;
+	GeditDocument *doc;
+	gchar *uri;
+	gboolean uri_set = FALSE;
 	const GeditEncoding *encoding;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
