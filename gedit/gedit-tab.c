@@ -173,30 +173,31 @@ gedit_tab_get_state (GeditTab *tab)
 }
 
 static void
-view_realized (GtkTextView *view,
-	       GeditTab    *tab)
+set_cursor_according_to_state (GtkTextView   *view,
+			       GeditTabState  state)
 {
 	GdkCursor *cursor;
+	GdkWindow *text_window;
+	GdkWindow *left_window;
 
-	g_return_if_fail (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT) != NULL);
-	g_return_if_fail (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT) != NULL);
-	
-	if ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
-	    (tab->priv->state == GEDIT_TAB_STATE_REVERTING) ||
-	    (tab->priv->state == GEDIT_TAB_STATE_SAVING) ||
-	    (tab->priv->state == GEDIT_TAB_STATE_PRINTING) ||
-	    (tab->priv->state == GEDIT_TAB_STATE_PRINT_PREVIEWING) ||
-	    (tab->priv->state == GEDIT_TAB_STATE_CLOSING))
+	text_window = gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT);
+	left_window = gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT);
+
+	if ((state == GEDIT_TAB_STATE_LOADING)          ||
+	    (state == GEDIT_TAB_STATE_REVERTING)        ||
+	    (state == GEDIT_TAB_STATE_SAVING)           ||
+	    (state == GEDIT_TAB_STATE_PRINTING)         ||
+	    (state == GEDIT_TAB_STATE_PRINT_PREVIEWING) ||
+	    (state == GEDIT_TAB_STATE_CLOSING))
 	{
 		cursor = gdk_cursor_new_for_display (
 				gtk_widget_get_display (GTK_WIDGET (view)),
 				GDK_WATCH);
 
-		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT),
-				       cursor);
-
-		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT),
-				       cursor);
+		if (text_window != NULL)
+			gdk_window_set_cursor (text_window, cursor);
+		if (left_window != NULL)
+			gdk_window_set_cursor (left_window, cursor);
 
 		gdk_cursor_unref (cursor);
 	}
@@ -206,14 +207,20 @@ view_realized (GtkTextView *view,
 				gtk_widget_get_display (GTK_WIDGET (view)),
 				GDK_XTERM);
 
-		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT),
-				       cursor);
-	       
-		gdk_window_set_cursor (gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT),
-				       NULL);
+		if (text_window != NULL)
+			gdk_window_set_cursor (text_window, cursor);
+		if (left_window != NULL)
+			gdk_window_set_cursor (left_window, NULL);
 
 		gdk_cursor_unref (cursor);
 	}
+}
+
+static void
+view_realized (GtkTextView *view,
+	       GeditTab    *tab)
+{
+	set_cursor_according_to_state (view, tab->priv->state);
 }
 
 static void
@@ -262,8 +269,8 @@ gedit_tab_set_state (GeditTab      *tab,
 			gtk_widget_show (tab->priv->view_scrolled_window);
 	}
 
-	if (gtk_text_view_get_window (GTK_TEXT_VIEW (tab->priv->view), GTK_TEXT_WINDOW_TEXT) != NULL)
-		view_realized (GTK_TEXT_VIEW (tab->priv->view), tab);
+	set_cursor_according_to_state (GTK_TEXT_VIEW (tab->priv->view),
+				       state);
 
 	g_object_notify (G_OBJECT (tab), "state");		
 }
