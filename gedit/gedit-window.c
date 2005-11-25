@@ -120,11 +120,13 @@ static void
 gedit_window_finalize (GObject *object)
 {
 	GeditWindow *window = GEDIT_WINDOW (object); 
-	
+
+	g_object_unref (window->priv->manager);
+
 	g_object_unref (window->priv->window_group);
 
 	g_free (window->priv->default_path);
-	
+
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
 
@@ -132,7 +134,7 @@ static void
 gedit_window_destroy (GtkObject *object)
 {
 	GeditWindow *window;
-	
+
 	window = GEDIT_WINDOW (object);
 
 	if (gedit_prefs_manager_window_height_can_set ())
@@ -143,17 +145,26 @@ gedit_window_destroy (GtkObject *object)
 
 	if (gedit_prefs_manager_window_state_can_set ())
 		gedit_prefs_manager_set_window_state (window->priv->window_state);
-		
+
 	if ((window->priv->side_panel_size > 0) &&
 		gedit_prefs_manager_side_panel_size_can_set ())
 			gedit_prefs_manager_set_side_panel_size	(
 					window->priv->side_panel_size);
-	
+
 	if ((window->priv->bottom_panel_size > 0) && 
 		gedit_prefs_manager_bottom_panel_size_can_set ())
 			gedit_prefs_manager_set_bottom_panel_size (
 					window->priv->bottom_panel_size);
-										
+
+	/* do it here, because recent_view_uim finalization
+	 * requires that widgets are still there
+	 */
+	if (window->priv->recent_view_uim != NULL)
+	{
+		g_object_unref (window->priv->recent_view_uim);
+		window->priv->recent_view_uim = NULL;
+	}
+
 	GTK_OBJECT_CLASS (gedit_window_parent_class)->destroy (object);
 }
 
@@ -908,6 +919,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 				      window);
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	g_object_unref (action_group);
 	window->priv->always_sensitive_action_group = action_group;
 
 	action_group = gtk_action_group_new ("GeditWindowActions");
@@ -922,6 +934,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 					     window);
 
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	g_object_unref (action_group);
 	window->priv->action_group = action_group;
 
 	/* set short labels to use in the toolbar */
@@ -978,6 +991,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->languages_action_group = action_group;
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	g_object_unref (action_group);
 	create_languages_menu (window);
 
 	/* list of open documents menu */
@@ -985,6 +999,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_action_group_set_translation_domain (action_group, NULL);
 	window->priv->documents_list_action_group = action_group;
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	g_object_unref (action_group);
 
 	menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
 	gtk_box_pack_start (GTK_BOX (main_box), 
