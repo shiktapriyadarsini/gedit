@@ -803,6 +803,7 @@ language_changed_cb (GtkComboBox *combobox,
 				    ID_COLUMN, id,
 				    -1);
 		g_free (name);
+		g_free (id);
 
 		l = g_slist_next (l);
 	}
