@@ -136,11 +136,11 @@ gedit_convert_to_utf8_from_charset (const gchar  *content,
 }
 
 gchar *
-gedit_convert_to_utf8   (const gchar          *content, 
-			 gsize                 len,
-			 const GeditEncoding **encoding,
-			 gsize                *new_len,
-			 GError              **error)
+gedit_convert_to_utf8 (const gchar          *content,
+		       gsize                 len,
+		       const GeditEncoding **encoding,
+		       gsize                *new_len,
+		       GError              **error)
 {
 	gedit_debug (DEBUG_UTILS);
 
@@ -168,8 +168,9 @@ gedit_convert_to_utf8   (const gchar          *content,
 	{
 		/* Automatically detect the encoding used */
 
-		GSList *encodings = NULL;
+		GSList *encodings;
 		GSList *start;
+		gchar *ret = NULL;
 
 		gedit_debug_message (DEBUG_UTILS,
 				     "Automatically detect the encoding used");
@@ -179,7 +180,7 @@ gedit_convert_to_utf8   (const gchar          *content,
 		if (encodings == NULL)
 		{
 			gedit_debug_message (DEBUG_UTILS, "encodings == NULL");
-			
+
 			if (g_utf8_validate (content, len, NULL))
 			{
 				gedit_debug_message (DEBUG_UTILS, "validate OK.");
@@ -205,7 +206,7 @@ gedit_convert_to_utf8   (const gchar          *content,
 		gedit_debug_message (DEBUG_UTILS, "encodings != NULL");
 
 		start = encodings;
-		
+
 		while (encodings != NULL) 
 		{
 			const GeditEncoding *enc;
@@ -231,25 +232,31 @@ gedit_convert_to_utf8   (const gchar          *content,
 			if (utf8_content != NULL) 
 			{
 				*encoding = enc;
+				ret = utf8_content;
 
-				return utf8_content;
+				break;
 			}
 
 			encodings = g_slist_next (encodings);
 		}
 
-		gedit_debug_message (DEBUG_UTILS, "gedit has not been able to automatically determine the encoding of "
-				     "the file you want to open.");
+		if (ret == NULL)
+		{
+			gedit_debug_message (DEBUG_UTILS, "gedit has not been able to automatically determine the encoding of "
+					     "the file you want to open.");
 
-		g_set_error (error, GEDIT_CONVERT_ERROR,
-			     GEDIT_CONVERT_ERROR_AUTO_DETECTION_FAILED,
-		 	     "gedit was not able to automatically determine "
-			     "the encoding of the file you want to open.");
+			g_set_error (error, GEDIT_CONVERT_ERROR,
+				     GEDIT_CONVERT_ERROR_AUTO_DETECTION_FAILED,
+			 	     "gedit was not able to automatically determine "
+				     "the encoding of the file you want to open.");
+		}
 
 		g_slist_free (start);
+
+		return ret;
 	}
-	
-	return NULL;
+
+	g_return_val_if_reached (NULL);
 }
 
 gchar *
