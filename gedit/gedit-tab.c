@@ -1297,14 +1297,14 @@ gchar *
 _gedit_tab_get_name (GeditTab *tab)
 {
 	GeditDocument *doc;
-	const gchar* name = NULL;
-	gchar* docname = NULL;
-	gchar* tab_name = NULL;
+	gchar *name;
+	gchar *docname;
+	gchar *tab_name;
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
 	doc = gedit_tab_get_document (tab);
-	
+
 	name = gedit_document_get_short_name_for_display (doc);
 
 	/* Truncate the name so it doesn't get insanely wide. */
@@ -1328,10 +1328,10 @@ _gedit_tab_get_name (GeditTab *tab)
 		}
 #endif
 		tab_name = g_strdup (docname);
-
 	}
 	
 	g_free (docname);
+	g_free (name);
 
 	return tab_name;
 }
