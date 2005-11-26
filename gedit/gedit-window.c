@@ -2056,6 +2056,12 @@ notebook_tab_removed (GeditNotebook *notebook,
 	g_signal_handlers_disconnect_by_func (doc, 
 					      G_CALLBACK (can_redo),
 					      window);
+	g_signal_handlers_disconnect_by_func (doc,
+					      G_CALLBACK (selection_changed),
+					      window);
+	g_signal_handlers_disconnect_by_func (doc,
+					      G_CALLBACK (sync_languages_menu),
+					      window);
 	g_signal_handlers_disconnect_by_func (doc, 
 					      G_CALLBACK (doc_loaded),
 					      window);
