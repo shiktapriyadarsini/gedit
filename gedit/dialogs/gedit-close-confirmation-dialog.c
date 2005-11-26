@@ -407,10 +407,10 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	GtkWidget     *secondary_label;
 	GtkWidget     *image;
 	GeditDocument *doc;
-	const gchar   *doc_name;
+	gchar         *doc_name;
 	gchar         *str;
 	gchar         *markup_str;
-	
+
 	GeditCloseConfirmationDialogPrivate *priv;
 
 	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (dlg);
@@ -433,10 +433,11 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	doc_name = gedit_document_get_short_name_for_display (doc);
 	str = g_strdup_printf (_("Save the changes to document \"%s\" before closing?"),
 			       doc_name);
-	
+	g_free (doc_name);
+
 	markup_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
 	g_free (str);
-	
+
 	gtk_label_set_markup (GTK_LABEL (primary_label), markup_str);
 	g_free (markup_str);
 
@@ -466,7 +467,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	                    FALSE, 
 			    FALSE, 
 			    0);
-	
+
 	gtk_widget_show_all (hbox);
 }
 
@@ -478,12 +479,11 @@ populate_model (GtkTreeModel *store, GSList *docs)
 	while (docs != NULL)
 	{
 		GeditDocument *doc;
-		const gchar *name;
+		gchar *name;
 
 		doc = GEDIT_DOCUMENT (docs->data);
 
 		name = gedit_document_get_short_name_for_display (doc);
-		g_return_if_fail (name != NULL);
 
 		gtk_list_store_append (GTK_LIST_STORE (store), &iter);
 		gtk_list_store_set (GTK_LIST_STORE (store), &iter,
@@ -491,6 +491,8 @@ populate_model (GtkTreeModel *store, GSList *docs)
 				    NAME_COLUMN, name,
 				    DOC_COLUMN, doc,
 			            -1);
+
+		g_free (name);
 
 		docs = g_slist_next (docs);
 	}
