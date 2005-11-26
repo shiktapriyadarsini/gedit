@@ -148,7 +148,10 @@ gedit_view_move_cursor (GtkTextView    *text_view,
 				break;
 		}
 
-		if (!gtk_text_iter_equal (&cur, &iter))
+		/* if we are clearing selection, we need to move_cursor even
+		 * if we are at proper iter because selection_bound may need
+		 * to be moved */
+		if (!gtk_text_iter_equal (&cur, &iter) || !extend_selection)
 			move_cursor (text_view, &cur, extend_selection);
 	}
 	else if (step == GTK_MOVEMENT_DISPLAY_LINE_ENDS &&
@@ -169,7 +172,10 @@ gedit_view_move_cursor (GtkTextView    *text_view,
 			}
 		}
 
-		if (!gtk_text_iter_equal (&cur, &iter))
+		/* if we are clearing selection, we need to move_cursor even
+		 * if we are at proper iter because selection_bound may need
+		 * to be moved */
+		if (!gtk_text_iter_equal (&cur, &iter) || !extend_selection)
 			move_cursor (text_view, &cur, extend_selection);
 	}
 	else
