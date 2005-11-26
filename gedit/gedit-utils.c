@@ -80,33 +80,31 @@ gedit_utils_uri_has_file_scheme (const gchar *uri)
 gboolean
 gedit_utils_uri_has_writable_scheme (const gchar *uri)
 {
-	gchar    *canonical_uri;
-	gchar    *scheme;
-	GSList   *writable_schemes;
-	gboolean  res;
-	
-	scheme = gnome_vfs_get_uri_scheme (uri);
-	
+	gchar *canonical_uri;
+	gchar *scheme;
+	GSList *writable_schemes;
+	gboolean res;
+
 	canonical_uri = gnome_vfs_make_uri_canonical (uri);
 	g_return_val_if_fail (canonical_uri != NULL, FALSE);
-	
+
 	scheme = gnome_vfs_get_uri_scheme (canonical_uri);
 	g_return_val_if_fail (scheme != NULL, FALSE);
-	
+
 	g_free (canonical_uri);
-	
+
 	writable_schemes = gedit_prefs_manager_get_writable_vfs_schemes ();
-	
+
 	/* CHECK: should we use g_ascii_strcasecmp? - Paolo (Nov 6, 2005) */
 	res = (g_slist_find_custom (writable_schemes,
 				    scheme,
 				    (GCompareFunc)strcmp) != NULL);
-				    
+
 	g_slist_foreach (writable_schemes, (GFunc)g_free, NULL);
 	g_slist_free (writable_schemes);
-	
+
 	g_free (scheme);
-	
+
 	return res;
 }
 
