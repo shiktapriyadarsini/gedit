@@ -102,7 +102,7 @@ struct _GeditDocumentPrivate
 
 	GTimeVal     time_of_last_save_or_load;
 
-	gint         search_flags;
+	guint        search_flags;
 	gchar       *search_text;
 
 	/* Temp data while loading */
@@ -1224,7 +1224,7 @@ gedit_document_goto_line (GeditDocument *doc,
 void		
 gedit_document_set_search_text (GeditDocument *doc,
 				const gchar   *text,
-				gint           flags)
+				guint          flags)
 {
 	gchar *converted_text = NULL;
 	
@@ -1234,18 +1234,26 @@ gedit_document_set_search_text (GeditDocument *doc,
 
 	gedit_debug_message (DEBUG_DOCUMENT, "text = %s", text);
 	
-	if (*text != '\0')		
-		converted_text = gedit_utils_unescape_search_text (text);
+	if (text != NULL)
+	{
+		if (*text != '\0')		
+			converted_text = gedit_utils_unescape_search_text (text);
 
-	g_free (doc->priv->search_text);
+		g_free (doc->priv->search_text);
 	
-	doc->priv->search_text = converted_text;
-	doc->priv->search_flags = flags;
+		doc->priv->search_text = converted_text;
+	}
+	
+	if (!GEDIT_SEARCH_IS_DONT_SET_FLAGS (flags))
+	{
+		doc->priv->search_flags = flags;
+	}
 }
+
 
 gchar *
 gedit_document_get_search_text (GeditDocument *doc,
-				gint          *flags)
+				guint         *flags)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	
@@ -1397,7 +1405,7 @@ gint
 gedit_document_replace_all (GeditDocument       *doc,
 			    const gchar         *find, 
 			    const gchar         *replace, 
-			    gint                 flags)
+			    guint                flags)
 {
 	GtkTextIter iter;
 	GtkTextIter m_start;

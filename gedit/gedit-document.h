@@ -54,10 +54,11 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-	GEDIT_SEARCH_ENTIRE_WORD	= 1 << 0,
-	GEDIT_SEARCH_CASE_SENSITIVE	= 1 << 1
-} GeditSearchFlags;
+	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0, 
+	GEDIT_SEARCH_ENTIRE_WORD	= 1 << 1,
+	GEDIT_SEARCH_CASE_SENSITIVE	= 1 << 2
 
+} GeditSearchFlags;
 
 /* Private structure type */
 typedef struct _GeditDocumentPrivate    GeditDocumentPrivate;
@@ -183,10 +184,10 @@ gboolean	 gedit_document_goto_line 	(GeditDocument       *doc,
 
 void		 gedit_document_set_search_text	(GeditDocument       *doc,
 						 const gchar         *text,
-						 gint                 flags);
+						 guint                flags);
 						 
 gchar		*gedit_document_get_search_text	(GeditDocument       *doc,
-						 gint                *flags);
+						 guint               *flags);
 
 gboolean	 gedit_document_search_forward	(GeditDocument       *doc,
 						 const GtkTextIter   *start,
@@ -203,7 +204,7 @@ gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
 gint		 gedit_document_replace_all 	(GeditDocument       *doc,
 				            	 const gchar         *find, 
 						 const gchar         *replace, 
-					    	 gint                 flags);
+					    	 guint                flags);
 
 void 		 gedit_document_set_language 	(GeditDocument       *doc,
 						 GtkSourceLanguage   *lang);
@@ -239,6 +240,9 @@ gboolean	 _gedit_document_get_has_selection
 
 
 /* Search macros */
+#define GEDIT_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & GEDIT_SEARCH_DONT_SET_FLAGS) != 0)
+#define GEDIT_SEARCH_SET_DONT_SET_FLAGS(sflags,state) ((state == TRUE) ? \
+(sflags |= GEDIT_SEARCH_DONT_SET_FLAGS) : (sflags &= ~GEDIT_SEARCH_DONT_SET_FLAGS))
 
 #define GEDIT_SEARCH_IS_ENTIRE_WORD(sflags) ((sflags & GEDIT_SEARCH_ENTIRE_WORD) != 0)
 #define GEDIT_SEARCH_SET_ENTIRE_WORD(sflags,state) ((state == TRUE) ? \
