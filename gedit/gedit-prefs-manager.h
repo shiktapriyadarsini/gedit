@@ -207,7 +207,7 @@
 
 #define GPM_DEFAULT_SYNTAX_HL_ENABLE	1 /* TRUE */
 
-#define GPM_DEFAULT_WRITABLE_VFS_SCHEMES {"ssh", "ftp", "smb", "dav", NULL}
+#define GPM_DEFAULT_WRITABLE_VFS_SCHEMES {"ssh", "sftp", "smb", "dav", "davs", NULL}
 
 typedef enum {
 	GEDIT_TOOLBAR_SYSTEM = 0,

@@ -176,7 +176,7 @@ save_window_session (xmlTextWriterPtr  writer,
 	l = docs;
 	while (l != NULL)
 	{
-		const gchar *uri;
+		gchar *uri;
 		
 		ret = xmlTextWriterStartElement (writer, (xmlChar *) "document");
 		if (ret < 0)

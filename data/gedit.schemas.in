@@ -597,7 +597,7 @@
       <owner>gedit</owner>
       <type>list</type>
       <list_type>string</list_type>
-      <default>[ssh,ftp,smb,dav]</default>
+      <default>[ssh,sftp,smb,dav,davs]</default>
       <locale name="C">
 	<short>Writable VFS schemes</short>
 	<long>List of VFS schemes gedit supports in write mode. The 'file' scheme
