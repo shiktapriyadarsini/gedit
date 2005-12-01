@@ -56,13 +56,13 @@ gedit_app_finalize (GObject *object)
 {
 	gboolean quit = FALSE;	
 	GeditApp *app = GEDIT_APP (object); 
-	
+
 	quit = (app == gedit_app_get_default ());
 
 	g_slist_free (app->priv->windows);
 
 	G_OBJECT_CLASS (gedit_app_parent_class)->finalize (object);
-	
+
 	if (quit)
 		gtk_main_quit ();
 }
@@ -73,7 +73,7 @@ gedit_app_class_init (GeditAppClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->finalize = gedit_app_finalize;
-							      
+
 	g_type_class_add_private (object_class, sizeof(GeditAppPrivate));
 }
 
@@ -87,14 +87,14 @@ GeditApp *
 gedit_app_get_default (void)
 {
 	static GeditApp *app = NULL;
-	
+
 	if (app != NULL)
 		return app;
-		
+
 	app = GEDIT_APP (g_object_new (GEDIT_TYPE_APP, NULL));	
 
 	// FIXME: add_weak_pointer 
-	
+
 	return app;
 }
 
@@ -105,7 +105,7 @@ window_focus_in_event (GeditWindow   *window,
 {
 	/* updates active_view and active_child when a new toplevel receives focus */
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), FALSE);
-	
+
 	app->priv->active_window = window;
 
 	return FALSE;
@@ -117,9 +117,9 @@ window_delete_event (GeditWindow *window,
                      GeditApp    *app)
 {
 	GeditWindowState ws;
-	
+
 	ws = gedit_window_get_state (window);
-	
+
 	if (ws & GEDIT_WINDOW_STATE_SAVING)
 		return TRUE; 
 	
@@ -129,12 +129,18 @@ window_delete_event (GeditWindow *window,
 	return TRUE;
 }
 
-static void 
+static void
 window_destroy (GeditWindow *window, 
 		GeditApp    *app)
 {
 	app->priv->windows = g_slist_remove (app->priv->windows,
 					     window);
+
+	if (window == app->priv->active_window)
+	{
+		app->priv->active_window = app->priv->windows != NULL ?
+					   app->priv->windows->data : NULL;
+	}
 
 /* CHECK: I don't think we have to disconnect this function, since windows
    is being destroyed */
