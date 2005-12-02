@@ -104,9 +104,6 @@ struct _GeditDocumentClass
 
 	void (* saved)  		(GeditDocument    *document,
 					 const GError     *error);
-
-	/* Find state udpated */
-	void (* can_find_again) 	(GeditDocument    *document);
 };
 
 
@@ -189,6 +186,9 @@ void		 gedit_document_set_search_text	(GeditDocument       *doc,
 gchar		*gedit_document_get_search_text	(GeditDocument       *doc,
 						 guint               *flags);
 
+gboolean	 gedit_document_get_can_search_again
+						(GeditDocument       *doc);
+
 gboolean	 gedit_document_search_forward	(GeditDocument       *doc,
 						 const GtkTextIter   *start,
 						 const GtkTextIter   *end,
@@ -225,14 +225,11 @@ void		 gedit_document_set_auto_save_interval
 /* 
  * Non exported functions
  */
-
 gboolean	_gedit_document_is_saving_as	(GeditDocument       *doc);
 
 // CHECK: va bene un gint?
 glong		 _gedit_document_get_seconds_since_last_save_or_load 
 						(GeditDocument       *doc);
-
-gboolean	 _gedit_document_can_find_again	(GeditDocument       *doc);
 
 /* private because the property will move to gtk */
 gboolean	 _gedit_document_get_has_selection

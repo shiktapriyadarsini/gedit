@@ -538,7 +538,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	gtk_action_set_sensitive (action,
 				  state_normal);
 
-	b = _gedit_document_can_find_again (doc);
+	b = gedit_document_get_can_search_again (doc);
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
 	gtk_action_set_sensitive (action, state_normal && b);
@@ -1539,7 +1539,6 @@ update_window_state (GeditWindow *window)
 	gint old_num_of_errors;
 	
 	gedit_debug_message (DEBUG_WINDOW, "Old state: %x", window->priv->state);
-
 	
 	old_ws = window->priv->state;
 	old_num_of_errors = window->priv->num_tabs_with_error;
@@ -1773,8 +1772,9 @@ drag_drop_cb (GtkWidget      *widget,
 }
 
 static void
-can_find_again (GeditDocument *doc,
-                GeditWindow   *window)
+can_search_again (GeditDocument *doc,
+		  GParamSpec    *pspec,
+		  GeditWindow   *window)
 {
 	gboolean sensitive;
 	GtkAction *action;
@@ -1782,7 +1782,7 @@ can_find_again (GeditDocument *doc,
 	if (doc != gedit_window_get_active_document (window))
 		return;
 
-	sensitive = _gedit_document_can_find_again (doc);
+	sensitive = gedit_document_get_can_search_again (doc);
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
@@ -1984,8 +1984,8 @@ notebook_tab_added (GeditNotebook *notebook,
 			  G_CALLBACK (update_cursor_position_statusbar),
 			  window);
 	g_signal_connect (doc,
-			  "can-find-again",
-			  G_CALLBACK (can_find_again),
+			  "notify::can-search-again",
+			  G_CALLBACK (can_search_again),
 			  window);
 	g_signal_connect (doc,
 			  "can-undo",
@@ -2074,7 +2074,7 @@ notebook_tab_removed (GeditNotebook *notebook,
 					      G_CALLBACK (update_cursor_position_statusbar), 
 					      window);
 	g_signal_handlers_disconnect_by_func (doc, 
-					      G_CALLBACK (can_find_again),
+					      G_CALLBACK (can_search_again),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc, 
 					      G_CALLBACK (can_undo),

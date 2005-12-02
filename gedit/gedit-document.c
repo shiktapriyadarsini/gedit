@@ -118,12 +118,13 @@ struct _GeditDocumentPrivate
 
 enum {
 	PROP_0,
-	
+
 	PROP_URI,
 	PROP_SHORTNAME,
 	PROP_MIME_TYPE,
 	PROP_READ_ONLY,
 	PROP_ENCODING,
+	PROP_CAN_SEARCH_AGAIN,
 	PROP_HAS_SELECTION
 };
 
@@ -133,7 +134,6 @@ enum {
 	LOADED,
 	SAVING,
 	SAVED,
-	CAN_FIND_AGAIN,
 	LAST_SIGNAL
 };
 
@@ -276,6 +276,9 @@ gedit_document_get_property (GObject    *object,
 		case PROP_ENCODING:
 			g_value_set_boxed (value, doc->priv->encoding);
 			break;
+		case PROP_CAN_SEARCH_AGAIN:
+			g_value_set_boolean (value, gedit_document_get_can_search_again (doc));
+			break;
 		case PROP_HAS_SELECTION:
 			g_value_set_boolean (value, doc->priv->has_selection);
 			break;
@@ -380,6 +383,12 @@ gedit_document_class_init (GeditDocumentClass *klass)
 					 		     "The GeditEncoding used for the document",
 					 		     GEDIT_TYPE_ENCODING,
 					 		     G_PARAM_READABLE));
+	g_object_class_install_property (object_class, PROP_CAN_SEARCH_AGAIN,
+					 g_param_spec_boolean ("can-search-again",
+					 		       "Can search again",
+					 		       "Wheter it's possible to search again in the document",
+					 		       FALSE,
+					 		       G_PARAM_READABLE));
 
 	/* This has been properly moved in GtkTextBuffer in gtk 2.10, so when
 	 * we switch to 2.10 we can remove it and part of with gedit_document_mark_set.
@@ -453,16 +462,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      1,
 			      G_TYPE_POINTER);
 
-	document_signals[CAN_FIND_AGAIN] =
-   		g_signal_new ("can_find_again",
-			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, can_find_again),
-			      NULL, NULL,
-			      gedit_marshal_VOID__VOID,
-			      G_TYPE_NONE,
-			      0);
-      
 	g_type_class_add_private (object_class, sizeof(GeditDocumentPrivate));
 }
 
@@ -1221,27 +1220,33 @@ gedit_document_goto_line (GeditDocument *doc,
 	return ret;
 }
 
-void		
+void
 gedit_document_set_search_text (GeditDocument *doc,
 				const gchar   *text,
 				guint          flags)
 {
 	gchar *converted_text = NULL;
-	
+	gboolean notify;
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail ((text == NULL) || (doc->priv->search_text != text));
 	g_return_if_fail ((text == NULL) || g_utf8_validate (text, -1, NULL));
 
 	gedit_debug_message (DEBUG_DOCUMENT, "text = %s", text);
 
-	if (text != NULL)
-	{
-		if (*text != '\0')		
-			converted_text = gedit_utils_unescape_search_text (text);
+	g_free (doc->priv->search_text);
 
-		g_free (doc->priv->search_text);
+	if (text != NULL && *text != '\0')
+	{
+		converted_text = gedit_utils_unescape_search_text (text);
+		notify = doc->priv->search_text == NULL;
 
 		doc->priv->search_text = converted_text;
+	}
+	else
+	{
+		notify = doc->priv->search_text != NULL;
+		doc->priv->search_text = NULL;
 	}
 
 	if (!GEDIT_SEARCH_IS_DONT_SET_FLAGS (flags))
@@ -1249,8 +1254,8 @@ gedit_document_set_search_text (GeditDocument *doc,
 		doc->priv->search_flags = flags;
 	}
 
-	// CHECK, we can also get rid of this signal and/or turn it into a property
-	g_signal_emit (doc, document_signals[CAN_FIND_AGAIN], 0);
+	if (notify)
+		g_object_notify (G_OBJECT (doc), "can-search-again");
 }
 
 gchar *
@@ -1258,11 +1263,19 @@ gedit_document_get_search_text (GeditDocument *doc,
 				guint         *flags)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-	
+
 	if (flags != NULL)
 		*flags = doc->priv->search_flags;
-		
+
 	return gedit_utils_escape_search_text (doc->priv->search_text);
+}
+
+gboolean
+gedit_document_get_can_search_again (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	return doc->priv->search_text != NULL;
 }
 
 gboolean
@@ -1571,14 +1584,6 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 	g_get_current_time (&current_time);
 
 	return (current_time.tv_sec - doc->priv->time_of_last_save_or_load.tv_sec);
-}
-
-gboolean
-_gedit_document_can_find_again (GeditDocument *doc)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
-	
-	return (doc->priv->search_text != NULL);
 }
 
 gboolean
