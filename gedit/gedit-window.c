@@ -55,7 +55,6 @@
 #include "gedit-panel.h"
 #include "gedit-recent.h"
 #include "gedit-documents-panel.h"
-#include "gedit-search-panel.h"
 #include "gedit-plugins-engine.h"
 
 #include "recent-files/egg-recent-model.h"
@@ -203,14 +202,13 @@ gedit_window_configure_event (GtkWidget         *widget,
 	return GTK_WIDGET_CLASS (gedit_window_parent_class)->configure_event (widget, event);
 }
 
-// CHECK: make sure the hack doesn't screw things up...
 /*
- * GtkWindow catches keybindings for the menu items _before_ passing them to the
- * focused widget. This is unfortunate and means that pressing ctrl+V in the search
- * entry ends up pasting text in the TextView. Here we force events to be first 
- * passed to the focused widget and then we chain up the default handler... this is
- * the opposite of Gtk default behavior so we need to keep an eye open to see if
- * anything breaks.
+ * GtkWindow catches keybindings for the menu items _before_ passing them to
+ * the focused widget. This is unfortunate and means that pressing ctrl+V
+ * in an entry on a panel ends up pasting text in the TextView.
+ * Here we force events to be first  passed to the focused widget and then
+ * we chain up the default handler... this is the opposite of Gtk default
+ * behavior so we need to keep an eye open to see if anything breaks.
  */
 static gboolean
 gedit_window_key_press_event (GtkWidget   *widget,
@@ -242,7 +240,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 
 	object_class->finalize = gedit_window_finalize;
 	object_class->get_property = gedit_window_get_property;
-	
+
 	gobject_class->destroy = gedit_window_destroy;
 
 	widget_class->window_state_event = gedit_window_window_state_event;
@@ -1775,6 +1773,27 @@ drag_drop_cb (GtkWidget      *widget,
 }
 
 static void
+can_find_again (GeditDocument *doc,
+                GeditWindow   *window)
+{
+	gboolean sensitive;
+	GtkAction *action;
+
+	if (doc != gedit_window_get_active_document (window))
+		return;
+
+	sensitive = _gedit_document_can_find_again (doc);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "SearchFindNext");
+	gtk_action_set_sensitive (action, sensitive);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					      "SearchFindPrevious");
+	gtk_action_set_sensitive (action, sensitive);
+}
+
+static void
 can_undo (GeditDocument *doc,
           gboolean       can,
           GeditWindow   *window)
@@ -1963,7 +1982,11 @@ notebook_tab_added (GeditNotebook *notebook,
 	g_signal_connect (doc,
 			  "cursor-moved",
 			  G_CALLBACK (update_cursor_position_statusbar),
-			  window);			  
+			  window);
+	g_signal_connect (doc,
+			  "can-find-again",
+			  G_CALLBACK (can_find_again),
+			  window);
 	g_signal_connect (doc,
 			  "can-undo",
 			  G_CALLBACK (can_undo),
@@ -2049,6 +2072,9 @@ notebook_tab_removed (GeditNotebook *notebook,
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (update_cursor_position_statusbar), 
+					      window);
+	g_signal_handlers_disconnect_by_func (doc, 
+					      G_CALLBACK (can_find_again),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc, 
 					      G_CALLBACK (can_undo),
@@ -2293,12 +2319,6 @@ create_side_panel (GeditWindow *window)
 					      documents_panel,
 					      "Documents",
 					      GTK_STOCK_FILE);
-
-	window->priv->search_panel = gedit_search_panel_new (window);
-	gedit_panel_add_item_with_stock_icon (GEDIT_PANEL (window->priv->side_panel),
-					      window->priv->search_panel,
-					      "Search",
-					      GTK_STOCK_FIND);
 
 	visible = gedit_prefs_manager_get_side_pane_visible ();
 
@@ -2931,14 +2951,6 @@ gedit_window_get_bottom_panel (GeditWindow *window)
 }
 
 GtkWidget *
-_gedit_window_get_search_panel (GeditWindow *window)
-{
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
-
-	return window->priv->search_panel;	
-}
-
-GtkWidget *
 gedit_window_get_statusbar (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
@@ -2950,7 +2962,7 @@ GeditWindowState
 gedit_window_get_state (GeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), GEDIT_WINDOW_STATE_NORMAL);
-	
+
 	return window->priv->state;
 }
 

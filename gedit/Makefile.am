@@ -58,7 +58,6 @@ NOINST_H_FILES =			\
 	gedit-document-loader.h		\
 	gedit-document-saver.h		\
 	gedit-io-error-message-area.h	\
-	gedit-search-panel.h		\
 	gedit-spinner.h			\
 	sexy-icon-entry.h		\
 	gedit-session.h
@@ -89,13 +88,6 @@ INST_H_FILES =				\
 	gedit-progress-message-area.h	\
 	gedit-plugin.h			\
 	gedit-app.h
-
-#	gedit2.h			\
-#	gedit-file.h			\
-#	gedit-menus.h			\
-#	bonobo-mdi.h			\
-#	gedit-plugin.h			\
-#	gedit-output-window.h
 
 
 LIB_H_FILES =				\
@@ -139,7 +131,6 @@ gedit_SOURCES = 			\
 	gedit-recent.c			\
 	gedit-app.c			\
 	gedit-documents-panel.c		\
-	gedit-search-panel.c		\
 	gedit-document-loader.c		\
 	gedit-document-saver.c		\
 	gedit-file-chooser-dialog.c	\
@@ -158,13 +149,6 @@ gedit_SOURCES = 			\
 	$(NOINST_H_FILES)		\
 	$(INST_H_FILES)
 
-
-#	gedit2.c			\
-#	gedit-menus.c			\
-#	gedit-file.c			\
-#	gedit-file-selector-util.c 	\
-#	gedit-io-error-dialogs.c	\
-#	gedit-output-window.c
 
 libgedit_la_SOURCES = 			\
 	gedit-debug.c			\
@@ -195,13 +179,8 @@ gedit-marshal.c: gedit-marshal.list $(GLIB_GENMARSHAL)
 ui_DATA = gedit-ui.xml
 uidir = $(datadir)/gedit-2/ui/
 
-gladedir = $(datadir)/gedit-2/glade/
-
-glade_DATA = search-panel.glade
-
 EXTRA_DIST = 				\
 	$(ui_DATA)			\
-	$(glade_DATA)			\
 	gedit-marshal.list
 
 CLEANFILES = $(BUILT_SOURCES)

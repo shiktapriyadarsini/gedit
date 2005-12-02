@@ -21,7 +21,9 @@ libdialogs_la_SOURCES = 			\
 	gedit-encodings-dialog.c		\
 	gedit-encodings-dialog.h		\
 	gedit-open-location-dialog.c		\
-	gedit-open-location-dialog.h
+	gedit-open-location-dialog.h		\
+	gedit-search-dialog.h			\
+	gedit-search-dialog.c
 
 
 glade_DATA =				\
@@ -29,9 +31,8 @@ glade_DATA =				\
 	gedit-preferences.glade2	\
 	page-setup-dialog.glade2	\
 	uri.glade2			\
-	goto-line.glade2
+	gedit-search-dialog.glade2
 
-#	replace.glade2
 #	program-location-dialog.glade2
 
 

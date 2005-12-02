@@ -49,8 +49,6 @@ struct _GeditWindowPrivate
 	GtkWidget      *hpaned;
 	GtkWidget      *vpaned;	
 
-	GtkWidget      *search_panel;
-
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;	
 	guint           generic_message_cid;

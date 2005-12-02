@@ -1233,23 +1233,25 @@ gedit_document_set_search_text (GeditDocument *doc,
 	g_return_if_fail ((text == NULL) || g_utf8_validate (text, -1, NULL));
 
 	gedit_debug_message (DEBUG_DOCUMENT, "text = %s", text);
-	
+
 	if (text != NULL)
 	{
 		if (*text != '\0')		
 			converted_text = gedit_utils_unescape_search_text (text);
 
 		g_free (doc->priv->search_text);
-	
+
 		doc->priv->search_text = converted_text;
 	}
-	
+
 	if (!GEDIT_SEARCH_IS_DONT_SET_FLAGS (flags))
 	{
 		doc->priv->search_flags = flags;
 	}
-}
 
+	// CHECK, we can also get rid of this signal and/or turn it into a property
+	g_signal_emit (doc, document_signals[CAN_FIND_AGAIN], 0);
+}
 
 gchar *
 gedit_document_get_search_text (GeditDocument *doc,
