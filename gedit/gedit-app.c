@@ -54,17 +54,11 @@ G_DEFINE_TYPE(GeditApp, gedit_app, G_TYPE_OBJECT)
 static void
 gedit_app_finalize (GObject *object)
 {
-	gboolean quit = FALSE;	
 	GeditApp *app = GEDIT_APP (object); 
-
-	quit = (app == gedit_app_get_default ());
 
 	g_slist_free (app->priv->windows);
 
 	G_OBJECT_CLASS (gedit_app_parent_class)->finalize (object);
-
-	if (quit)
-		gtk_main_quit ();
 }
 
 static void 
@@ -83,6 +77,13 @@ gedit_app_init (GeditApp *app)
 	app->priv = GEDIT_APP_GET_PRIVATE (app);	
 }
 
+static void
+app_weak_notify (gpointer data,
+		 GObject *where_the_app_was)
+{
+	gtk_main_quit ();
+}
+
 GeditApp *
 gedit_app_get_default (void)
 {
@@ -93,7 +94,11 @@ gedit_app_get_default (void)
 
 	app = GEDIT_APP (g_object_new (GEDIT_TYPE_APP, NULL));	
 
-	// FIXME: add_weak_pointer 
+	g_object_add_weak_pointer (G_OBJECT (app),
+				   (gpointer) &app);
+	g_object_weak_ref (G_OBJECT (app),
+			   app_weak_notify,
+			   NULL);
 
 	return app;
 }
