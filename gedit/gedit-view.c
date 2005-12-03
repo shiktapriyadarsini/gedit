@@ -68,13 +68,23 @@ struct _GeditViewPrivate
 	SearchMode   search_mode;
 	
 	GtkTextIter  start_search_iter;
-	gchar       *old_search_text;
-	
+
+	/* used to restore the search state if an
+	 * incremental search is cancelled
+	 */
+ 	gchar       *old_search_text;
+	guint        old_search_flags;
+
+	/* used to remeber the state of the last
+	 * incremental search (the document search
+	 * state may be changed by the search dialog)
+	 */
+	guint        search_flags;
+	gboolean     wrap_around;
+
 	GtkWidget   *search_window;
 	GtkWidget   *search_entry;
-	
-	gboolean     wrap_around;
-	
+
 	guint        typeselect_flush_timeout;
 	guint        search_entry_changed_id;
 	
@@ -1111,11 +1121,12 @@ search_window_key_press_event (GtkWidget   *widget,
 		if (view->priv->search_mode == SEARCH)
 		{
 			GeditDocument *doc;
-			
+
+			/* restore document search so that Find Next does the right thing */
 			doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 			gedit_document_set_search_text (doc, 
 							view->priv->old_search_text,
-							GEDIT_SEARCH_DONT_SET_FLAGS);
+							view->priv->old_search_flags);
 						
 		}
 		
@@ -1126,7 +1137,7 @@ search_window_key_press_event (GtkWidget   *widget,
 	if (view->priv->search_mode == GOTO_LINE)
 		return retval;
 		
-	/* SEARCH mode */		
+	/* SEARCH mode */
 
 	/* select previous matching iter */
 	if (event->keyval == GDK_Up || event->keyval == GDK_KP_Up)
@@ -1177,40 +1188,16 @@ static void
 match_entire_word_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 				     GeditView        *view)
 {
-	GeditDocument *doc;
-	gchar         *search_text;
-	guint          flags;
-	
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-	
-	search_text = gedit_document_get_search_text (doc,
-						      &flags);
-	g_free (search_text);
-						      
-	GEDIT_SEARCH_SET_ENTIRE_WORD (flags,
+	GEDIT_SEARCH_SET_ENTIRE_WORD (view->priv->search_flags,
 				      gtk_check_menu_item_get_active (checkmenuitem));
-
-	gedit_document_set_search_text (doc, NULL, flags);
 }
 
 static void
 match_case_menu_item_toggled (GtkCheckMenuItem *checkmenuitem,
 			      GeditView        *view)
 {
-	GeditDocument *doc;
-	gchar         *search_text;
-	guint          flags;
-	
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-	
-	search_text = gedit_document_get_search_text (doc,
-						      &flags);
-	g_free (search_text);
-						      
-	GEDIT_SEARCH_SET_CASE_SENSITIVE (flags,
+	GEDIT_SEARCH_SET_CASE_SENSITIVE (view->priv->search_flags,
 					 gtk_check_menu_item_get_active (checkmenuitem));
-
-	gedit_document_set_search_text (doc, NULL, flags);
 }
 
 static gboolean
@@ -1249,20 +1236,14 @@ search_entry_populate_popup (GtkEntry  *entry,
 			     GeditView *view)
 {
 	GtkWidget *menu_item;
-	guint flags;
-	gchar *search_text;
-	
+
 	view->priv->disable_popdown = TRUE;
 	g_signal_connect (menu, "hide",
 		    	  G_CALLBACK (search_enable_popdown), view);
 
 	if (view->priv->search_mode == GOTO_LINE)
 		return;
-		
-	search_text = gedit_document_get_search_text (GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view))),
-						      &flags);
-	g_free (search_text);
-	
+
 	/* separator */
 	menu_item = gtk_menu_item_new ();
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
@@ -1277,7 +1258,7 @@ search_entry_populate_popup (GtkEntry  *entry,
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
 					view->priv->wrap_around);
 	gtk_widget_show (menu_item);
-	
+
 	/* create "Match Entire Word Only" menu item. */
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("Match _Entire Word Only"));
 	g_signal_connect (G_OBJECT (menu_item), "toggled",
@@ -1285,7 +1266,7 @@ search_entry_populate_popup (GtkEntry  *entry,
 			  view);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					GEDIT_SEARCH_IS_ENTIRE_WORD (flags));
+					GEDIT_SEARCH_IS_ENTIRE_WORD (view->priv->search_flags));
 	gtk_widget_show (menu_item);
 
 	/* create "Match Case" menu item. */
@@ -1295,7 +1276,7 @@ search_entry_populate_popup (GtkEntry  *entry,
 			  view);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					GEDIT_SEARCH_IS_CASE_SENSITIVE(flags));
+					GEDIT_SEARCH_IS_CASE_SENSITIVE (view->priv->search_flags));
 	gtk_widget_show (menu_item);
 }
 
@@ -1530,7 +1511,6 @@ get_selected_text (GtkTextBuffer *doc, gchar **selected_text, gint *len)
 	return TRUE;
 }
 
-
 static void
 init_search_entry (GeditView *view)
 {
@@ -1559,19 +1539,25 @@ init_search_entry (GeditView *view)
 		/* SEARCH mode */
 		gboolean  selection_exists;
 		gchar    *find_text = NULL;
-		gchar    *old_find_text; 
+		gchar    *old_find_text;
+		guint     old_find_flags = 0;
 		gint      sel_len = 0;
-	
+
 		g_free (view->priv->old_search_text);
 		
 		old_find_text = gedit_document_get_search_text (GEDIT_DOCUMENT (buffer), 
-								NULL);
+								&old_find_flags);
 		if (old_find_text != NULL)
 		{
 			view->priv->old_search_text = old_find_text;
 			add_search_completion_entry (old_find_text);
 		}
-		
+
+		if (old_find_flags != 0)
+		{
+			view->priv->old_search_flags = old_find_flags;
+		}
+
 		selection_exists = get_selected_text (buffer, 
 						      &find_text, 
 						      &sel_len);
@@ -1592,11 +1578,12 @@ init_search_entry (GeditView *view)
 }
 
 static void
-search_init (GtkWidget *entry, GeditView *view)
+search_init (GtkWidget *entry,
+	     GeditView *view)
 {
 	GeditDocument *doc;
 	const gchar   *entry_text;
-	
+
 	/* renew the flush timeout */
 	if (view->priv->typeselect_flush_timeout != 0)
 	{
@@ -1614,18 +1601,21 @@ search_init (GtkWidget *entry, GeditView *view)
 	if (view->priv->search_mode == SEARCH)
 	{
 		gchar *search_text;
-		
-		search_text = gedit_document_get_search_text (doc, NULL);
-		
-		if ((search_text == NULL) || (strcmp (search_text, entry_text) != 0))
+		guint  search_flags;
+
+		search_text = gedit_document_get_search_text (doc, &search_flags);
+
+		if ((search_text == NULL) ||
+		    (strcmp (search_text, entry_text) != 0) ||
+		     search_flags != view->priv->search_flags)
 		{
 			gedit_document_set_search_text (doc, 
 							entry_text,
-							GEDIT_SEARCH_DONT_SET_FLAGS);
+							view->priv->search_flags);
 		}
-		
+
 		g_free (search_text);
-		
+
 		run_search (view,
 			    entry_text,
 			    FALSE,
