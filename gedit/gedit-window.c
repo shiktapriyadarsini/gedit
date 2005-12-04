@@ -2685,13 +2685,16 @@ gedit_window_close_tabs (GeditWindow *window,
 
 	while (tabs != NULL)
 	{
+		if (tabs->next == NULL)
+			window->priv->removing_tabs = FALSE;
+			
 		gedit_notebook_remove_tab (GEDIT_NOTEBOOK (window->priv->notebook),
 				   	   GEDIT_TAB (tabs->data));
 
 		tabs = g_list_next (tabs);
 	}
 	
-	window->priv->removing_tabs = FALSE;
+	g_return_if_fail (window->priv->removing_tabs == FALSE);
 }
 
 void
