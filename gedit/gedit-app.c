@@ -45,7 +45,7 @@
 
 struct _GeditAppPrivate
 {
-	GSList	    *windows;
+	GList	    *windows;
 	GeditWindow *active_window;
 };
 
@@ -56,7 +56,7 @@ gedit_app_finalize (GObject *object)
 {
 	GeditApp *app = GEDIT_APP (object); 
 
-	g_slist_free (app->priv->windows);
+	g_list_free (app->priv->windows);
 
 	G_OBJECT_CLASS (gedit_app_parent_class)->finalize (object);
 }
@@ -138,8 +138,8 @@ static void
 window_destroy (GeditWindow *window, 
 		GeditApp    *app)
 {
-	app->priv->windows = g_slist_remove (app->priv->windows,
-					     window);
+	app->priv->windows = g_list_remove (app->priv->windows,
+					    window);
 
 	if (window == app->priv->active_window)
 	{
@@ -245,8 +245,8 @@ gedit_app_create_window_real (GeditApp    *app,
 			gtk_window_unstick (window);
 	}
 	
-	app->priv->windows = g_slist_prepend (app->priv->windows,
-					      window);
+	app->priv->windows = g_list_prepend (app->priv->windows,
+					     window);
 	
 	g_signal_connect (window, 
 			  "focus_in_event",
@@ -292,7 +292,7 @@ _gedit_app_restore_window (GeditApp    *app,
 	return window;
 }
 
-const GSList *
+const GList *
 gedit_app_get_windows (GeditApp *app)
 {
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
@@ -323,18 +323,17 @@ _gedit_app_get_window_in_workspace (GeditApp *app,
 
 	if (ws != workspace && ws != GEDIT_ALL_WORKSPACES)
 	{
-		GSList *l;
+		GList *l;
 
 		/* try to see if there is a window on this workspace */
 		l = app->priv->windows;
 		while (l != NULL)
 		{
-			window = l->data;
-			ws = gedit_utils_get_window_workspace (GTK_WINDOW (window));
+			ws = gedit_utils_get_window_workspace (GTK_WINDOW (l->data));
 			if (ws == workspace || ws == GEDIT_ALL_WORKSPACES)
 				break;
 
-			l = l->next;
+			l = g_list_next (l);
 		}
 
 		/* no window on this workspace... create a new one */
@@ -350,7 +349,7 @@ GList *
 gedit_app_get_documents	(GeditApp *app)
 {
 	GList *res = NULL;
-	GSList *windows;
+	GList *windows;
 	
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 	
@@ -361,7 +360,7 @@ gedit_app_get_documents	(GeditApp *app)
 		res = g_list_concat (res,
 				     gedit_window_get_documents (GEDIT_WINDOW (windows->data)));
 				     
-		windows = g_slist_next (windows);
+		windows = g_list_next (windows);
 	}
 	
 	return res;
@@ -372,7 +371,7 @@ GList *
 gedit_app_get_views (GeditApp *app)
 {
 	GList *res = NULL;
-	GSList *windows;
+	GList *windows;
 	
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 	
@@ -383,7 +382,7 @@ gedit_app_get_views (GeditApp *app)
 		res = g_list_concat (res,
 				     gedit_window_get_views (GEDIT_WINDOW (windows->data)));
 				     
-		windows = g_slist_next (windows);
+		windows = g_list_next (windows);
 	}
 	
 	return res;

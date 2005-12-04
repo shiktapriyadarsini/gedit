@@ -2111,11 +2111,8 @@ notebook_tab_removed (GeditNotebook *notebook,
 	if (window->priv->num_tabs == 0)
 	{
 		GeditApp *app;
-		const GSList *windows;
 			
 		app = gedit_app_get_default ();
-		windows = gedit_app_get_windows (app);		
-		g_return_if_fail (windows != NULL);
 		
 		window->priv->active_tab = NULL;
 			       

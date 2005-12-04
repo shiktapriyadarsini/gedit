@@ -484,13 +484,13 @@ gedit_plugins_engine_activate_plugin_real (GeditPluginInfo *info)
 
 	if (res)
 	{
-		const GSList *wins = gedit_app_get_windows (gedit_app_get_default ());
+		const GList *wins = gedit_app_get_windows (gedit_app_get_default ());
 		while (wins != NULL)
 		{
 			gedit_plugin_activate (info->plugin,
 					       GEDIT_WINDOW (wins->data));
 			
-			wins = g_slist_next (wins);
+			wins = g_list_next (wins);
 		}
 	}
 	else
@@ -553,14 +553,14 @@ gedit_plugins_engine_activate_plugin (GeditPluginInfo *info)
 static void
 gedit_plugins_engine_deactivate_plugin_real (GeditPluginInfo *info)
 {
-	const GSList *wins = gedit_app_get_windows (gedit_app_get_default ());
+	const GList *wins = gedit_app_get_windows (gedit_app_get_default ());
 	
 	while (wins != NULL)
 	{
 		gedit_plugin_deactivate (info->plugin,
 					 GEDIT_WINDOW (wins->data));
 			
-		wins = g_slist_next (wins);
+		wins = g_list_next (wins);
 	}
 }
 

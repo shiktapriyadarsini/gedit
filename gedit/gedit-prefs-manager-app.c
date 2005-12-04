@@ -958,7 +958,7 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 		gboolean enable;
 		GList *docs;
 		GList *l;
-		const GSList *windows;
+		const GList *windows;
 
 		if (entry->value->type == GCONF_VALUE_BOOL)
 			enable = gconf_value_get_bool (entry->value);
@@ -994,7 +994,7 @@ gedit_prefs_manager_syntax_hl_enable_changed (GConfClient *client,
 
 			gtk_action_set_sensitive (a, enable);
 
-			windows = windows->next;
+			windows = g_list_next (windows);
 		}
 	}
 }

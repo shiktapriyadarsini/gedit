@@ -223,7 +223,7 @@ save_session (const gchar *fname)
 {
 	int ret;
 	xmlTextWriterPtr writer;
-	const GSList *windows;
+	const GList *windows;
 
 	gedit_debug_message (DEBUG_SESSION, "Session file: %s", fname);
 
@@ -261,7 +261,7 @@ save_session (const gchar *fname)
 		if (ret < 0)
 			goto out;
 
-		windows = g_slist_next (windows);
+		windows = g_list_next (windows);
 	}
 
 	ret = xmlTextWriterEndElement (writer); /* session */
