@@ -1,5 +1,12 @@
 ;; -*- scheme -*-
 ; object definitions ...
+(define-object App
+  (in-module "Gedit")
+  (parent "GObject")
+  (c-name "GeditApp")
+  (gtype-id "GEDIT_TYPE_APP")
+)
+
 (define-object Document
   (in-module "Gedit")
   (parent "GtkSourceBuffer")
@@ -48,6 +55,7 @@
   (in-module "Gedit")
   (c-name "GeditSearchFlags")
   (values
+    '("dont-set-flags" "GEDIT_SEARCH_DONT_SET_FLAGS")
     '("entire-word" "GEDIT_SEARCH_ENTIRE_WORD")
     '("case-sensitive" "GEDIT_SEARCH_CASE_SENSITIVE")
   )
@@ -99,6 +107,51 @@
 ;;    '("gchar*" "name")
 ;;  )
 )
+
+
+;; From ../../gedit/gedit-app.h
+
+(define-function gedit_app_get_type
+  (c-name "gedit_app_get_type")
+  (return-type "GType")
+)
+
+(define-function gedit_app_get_default
+  (c-name "gedit_app_get_default")
+  (return-type "GeditApp*")
+)
+
+(define-method create_window
+  (of-object "GeditApp")
+  (c-name "gedit_app_create_window")
+  (return-type "GeditWindow*")
+)
+
+(define-method get_windows
+  (of-object "GeditApp")
+  (c-name "gedit_app_get_windows")
+  (return-type "const-GList*")
+)
+
+(define-method get_active_window
+  (of-object "GeditApp")
+  (c-name "gedit_app_get_active_window")
+  (return-type "GeditWindow*")
+)
+
+(define-method get_documents
+  (of-object "GeditApp")
+  (c-name "gedit_app_get_documents")
+  (return-type "GList*")
+)
+
+(define-method get_views
+  (of-object "GeditApp")
+  (c-name "gedit_app_get_views")
+  (return-type "GList*")
+)
+
+
 
 ;; From ../../gedit/gedit-document.h
 
@@ -230,7 +283,7 @@
   (return-type "none")
   (parameters
     '("const-gchar*" "text")
-    '("gint" "flags")
+    '("guint" "flags")
   )
 )
 
@@ -239,8 +292,14 @@
   (c-name "gedit_document_get_search_text")
   (return-type "gchar*")
   (parameters
-    '("gint*" "flags")
+    '("guint*" "flags")
   )
+)
+
+(define-method get_can_search_again
+  (of-object "GeditDocument")
+  (c-name "gedit_document_get_can_search_again")
+  (return-type "gboolean")
 )
 
 (define-method search_forward
@@ -252,6 +311,17 @@
     '("const-GtkTextIter*" "end")
     '("GtkTextIter*" "match_start")
     '("GtkTextIter*" "match_end")
+  )
+)
+
+(define-method replace_all
+  (of-object "GeditDocument")
+  (c-name "gedit_document_replace_all")
+  (return-type "gint")
+  (parameters
+    '("const-gchar*" "find")
+    '("const-gchar*" "replace")
+    '("guint" "flags")
   )
 )
 
@@ -377,7 +447,7 @@
 
 (define-function help_display
   (c-name "gedit_help_display")
-  (return-type "none")
+  (return-type "gboolean")
   (parameters
     '("GtkWindow*" "parent")
     '("const-gchar*" "file_name")

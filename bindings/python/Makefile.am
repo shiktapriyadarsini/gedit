@@ -30,13 +30,15 @@ gedit.c: gedit.defs gedit.override
 		--prefix py$* $(<F) ) > $@ 
 
 BINDING_HEADERS_SRCDIR_IN = \
+	gedit/gedit-app.h		\
 	gedit/gedit-document.h		\
 	gedit/gedit-encodings.h		\
 	gedit/gedit-plugin.h		\
-	gedit/gedit-view.h			\
+	gedit/gedit-view.h		\
 	gedit/gedit-tab.h 		\
 	gedit/gedit-panel.h 		\
-	gedit/gedit-window.h 
+	gedit/gedit-window.h 		\
+	gedit/gedit-help.h
 
 BINDING_HEADERS_BUILDDIR_IN = 
 
