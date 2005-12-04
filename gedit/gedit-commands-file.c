@@ -844,34 +844,32 @@ gedit_cmd_file_save_as (GtkAction   *action,
 	file_save_as (tab, window);
 }
 
+/*
+ * The docs in the list must belong to the same GeditWindow.
+ */
 void
-gedit_cmd_file_save_all (GtkAction   *action,
-			 GeditWindow *window)
+_gedit_cmd_file_save_documents_list (GeditWindow *window,
+				     GList       *docs)
 {
-	GList *tabs;
 	GList *l;
-	GSList *tabs_to_save_as;
+	GSList *tabs_to_save_as = NULL;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_PRINTING));
 
-	tabs = gtk_container_get_children (
-			GTK_CONTAINER (_gedit_window_get_notebook (window)));
-
-	tabs_to_save_as = NULL;
-
-	l = tabs;
+	l = docs;
 	while (l != NULL)
 	{
+		GeditDocument *doc;
 		GeditTab *t;
 		GeditTabState state;
-		GeditDocument *doc;
 
-		t = GEDIT_TAB (l->data);
-
+		g_return_if_fail (GEDIT_IS_DOCUMENT (l->data));
+ 
+		doc = GEDIT_DOCUMENT (l->data);
+		t = gedit_tab_get_from_document (doc);
 		state = gedit_tab_get_state (t);
-		doc = gedit_tab_get_document (t);
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
@@ -928,8 +926,6 @@ gedit_cmd_file_save_all (GtkAction   *action,
 		l = g_list_next (l);
 	}
 
-	g_list_free (tabs);
-
 	if (tabs_to_save_as != NULL)
 	{
 		GeditTab *tab;
@@ -948,6 +944,21 @@ gedit_cmd_file_save_all (GtkAction   *action,
 		gedit_window_set_active_tab (window, tab);
 		file_save_as (tab, window);
 	}
+}
+
+void
+gedit_cmd_file_save_all (GtkAction   *action,
+			 GeditWindow *window)
+{
+	GList *docs;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	docs = gedit_window_get_documents (window);
+
+	_gedit_cmd_file_save_documents_list (window, docs);
+
+	g_list_free (docs);
 }
 
 /* File revert */

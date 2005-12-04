@@ -128,6 +128,9 @@ void		gedit_cmd_help_about			(GtkAction   *action,
 gboolean	_gedit_cmd_file_can_close 		(GeditTab  *tab,
 							 GtkWindow *window);
 
+void		_gedit_cmd_file_save_documents_list	(GeditWindow *window,
+							 GList       *docs);
+
 G_END_DECLS
 
 #endif /* __GEDIT_COMMANDS_H__ */ 
