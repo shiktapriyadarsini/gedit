@@ -2973,3 +2973,30 @@ _gedit_window_get_default_path (GeditWindow *window)
 	
 	return window->priv->default_path;
 }
+
+/* Returns the documents that need to be saved before closing the window */
+GList *
+gedit_window_get_unsaved_documents (GeditWindow *window)
+{
+	GList *unsaved_docs = NULL;
+	GList *docs;
+	GList *l;
+
+	docs = gedit_window_get_documents (window);
+
+	for (l = docs; l != NULL; l = l->next)
+	{
+		GeditTab *tab;
+		GeditDocument *doc;
+
+		doc = GEDIT_DOCUMENT (l->data);
+		tab = gedit_tab_get_from_document (doc);
+
+		if (!_gedit_tab_can_close (tab))
+			unsaved_docs = g_list_prepend (unsaved_docs, doc);
+	}
+
+	g_list_free (docs);
+
+	return g_list_reverse (unsaved_docs);
+}

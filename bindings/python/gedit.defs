@@ -756,6 +756,12 @@
   (return-type "GList*")
 )
 
+(define-method get_unsaved_documents
+  (of-object "GeditWindow")
+  (c-name "gedit_window_get_unsaved_documents")
+  (return-type "GList*")
+)
+
 (define-method get_views
   (of-object "GeditWindow")
   (c-name "gedit_window_get_views")

@@ -1563,8 +1563,6 @@ file_close_all (GeditWindow *window,
 		gboolean     is_quitting)
 {
 	GList     *unsaved_docs;
-	GList     *docs;
-	GList     *l;
 	GtkWidget *dlg;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -1581,22 +1579,7 @@ file_close_all (GeditWindow *window,
 			   GEDIT_IS_QUITTING,
 			   GBOOLEAN_TO_POINTER (is_quitting));
 			   
-	unsaved_docs = NULL;
-	docs = gedit_window_get_documents (window);
-
-	for (l = docs; l != NULL; l = l->next)
-	{
-		GeditTab *tab;
-		GeditDocument *doc;
-
-		doc = GEDIT_DOCUMENT (l->data);
-		tab = gedit_tab_get_from_document (doc);
-
-		if (!_gedit_tab_can_close (tab))
-			unsaved_docs = g_list_prepend (unsaved_docs, doc);
-	}
-
-	g_list_free (docs);
+	unsaved_docs = gedit_window_get_unsaved_documents (window);
 
 	if (unsaved_docs == NULL)
 	{
@@ -1608,8 +1591,6 @@ file_close_all (GeditWindow *window,
 
 		return;
 	}
-
-	unsaved_docs = g_list_reverse (unsaved_docs);
 
 	if (unsaved_docs->next == NULL)
 	{

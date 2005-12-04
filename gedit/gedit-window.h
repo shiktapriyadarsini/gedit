@@ -130,6 +130,10 @@ GeditDocument	*gedit_window_get_active_document	(GeditWindow         *window);
 /* Returns a newly allocated list with all the documents in the window */
 GList		*gedit_window_get_documents		(GeditWindow         *window);
 
+/* Returns a newly allocated list with all the documents that need to be 
+   saved before closing the window */
+GList		*gedit_window_get_unsaved_documents 	(GeditWindow         *window);
+
 /* Returns a newly allocated list with all the views in the window */
 GList		*gedit_window_get_views			(GeditWindow         *window);
 
