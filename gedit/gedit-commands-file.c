@@ -1518,7 +1518,8 @@ _gedit_cmd_file_can_close (GeditTab  *tab,
 
 		dlg = gedit_close_confirmation_dialog_new_single (
 						window,
-						doc);
+						doc,
+						FALSE);
 
 		g_signal_connect (dlg,
 				  "response",
@@ -1607,12 +1608,14 @@ file_close_all (GeditWindow *window,
 
 		dlg = gedit_close_confirmation_dialog_new_single (
 						GTK_WINDOW (window),
-						doc);
+						doc,
+						FALSE);
 	}
 	else
 	{
 		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window),
-							   unsaved_docs);
+							   unsaved_docs,
+							   FALSE);
 	}
 
 	g_list_free (unsaved_docs);

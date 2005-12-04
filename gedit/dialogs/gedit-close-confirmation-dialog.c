@@ -2,7 +2,7 @@
  * gedit-close-confirmation-dialog.c
  * This file is part of gedit
  *
- * Copyright (C) 2004 GNOME Foundation 
+ * Copyright (C) 2004-2005 GNOME Foundation 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
  */
 
 /*
- * Modified by the gedit Team, 2004. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2004-2005. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes.
  *
@@ -42,7 +42,8 @@
 enum 
 {
 	PROP_0,	
-	PROP_UNSAVED_DOCUMENTS
+	PROP_UNSAVED_DOCUMENTS,
+	PROP_LOGOUT_MODE
 };
 
 /* Mode */
@@ -65,6 +66,8 @@ typedef struct _GeditCloseConfirmationDialogPrivate GeditCloseConfirmationDialog
 
 struct _GeditCloseConfirmationDialogPrivate 
 {
+	gboolean     logout_mode;
+
 	GList       *unsaved_documents;
 	
 	GList       *selected_documents;
@@ -80,7 +83,7 @@ G_DEFINE_TYPE(GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK
 
 static void 	 set_unsaved_document 		(GeditCloseConfirmationDialog *dlg,
 						 const GList                  *list);
-						 
+
 static GList 	*get_selected_docs 		(GtkTreeModel                 *store);
 
 /*  Since we connect in the costructor we are sure this handler will be called 
@@ -116,7 +119,44 @@ response_cb (GeditCloseConfirmationDialog *dlg,
 	else
 		priv->selected_documents = NULL;
 }
-    
+
+static void
+set_logout_mode (GeditCloseConfirmationDialog *dlg,
+		 gboolean                      logout_mode)
+{
+	GeditCloseConfirmationDialogPrivate *priv;
+	
+	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (dlg);
+
+	priv->logout_mode = logout_mode;
+	
+	if (logout_mode)
+	{
+		gtk_dialog_add_button (GTK_DIALOG (dlg),
+				       _("Logout _without Saving"),
+				       GTK_RESPONSE_NO);
+
+		gedit_dialog_add_button (GTK_DIALOG (dlg),
+					 _("_Cancel Logout"),
+					 GTK_STOCK_CANCEL,
+					 GTK_RESPONSE_CANCEL);
+	}
+	else
+	{
+		gtk_dialog_add_button (GTK_DIALOG (dlg),
+				       _("Close _without Saving"),
+				       GTK_RESPONSE_NO);
+
+		gtk_dialog_add_button (GTK_DIALOG (dlg),
+				       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+	}
+	
+	gtk_dialog_add_button (GTK_DIALOG (dlg),
+			       GTK_STOCK_SAVE, GTK_RESPONSE_YES);
+
+	gtk_dialog_set_default_response	(GTK_DIALOG (dlg), GTK_RESPONSE_YES);
+}
+
 static void 
 gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 {
@@ -135,15 +175,6 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
 
-	gtk_dialog_add_button (GTK_DIALOG (dlg),
-			       _("Close _without Saving"),
-			       GTK_RESPONSE_NO);
-
-	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
-				GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-				GTK_STOCK_SAVE, GTK_RESPONSE_YES, NULL);
-
-	gtk_dialog_set_default_response	(GTK_DIALOG (dlg), GTK_RESPONSE_YES);
 	atk_obj = gtk_widget_get_accessible (GTK_WIDGET (dlg));
 	atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
 	atk_object_set_name (atk_obj, _("Question"));
@@ -178,13 +209,19 @@ gedit_close_confirmation_dialog_set_property (GObject      *object,
 					      GParamSpec   *pspec)
 {
 	GeditCloseConfirmationDialog *dlg;
+	GeditCloseConfirmationDialogPrivate *priv;
 
 	dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
+	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (object);
 
 	switch (prop_id)
 	{
 		case PROP_UNSAVED_DOCUMENTS:
 			set_unsaved_document (dlg, g_value_get_pointer (value));
+			break;
+			
+		case PROP_LOGOUT_MODE:
+			set_logout_mode (dlg, g_value_get_boolean (value));
 			break;
 
 		default:
@@ -209,6 +246,10 @@ gedit_close_confirmation_dialog_get_property (GObject    *object,
 			g_value_set_pointer (value, priv->unsaved_documents);
 			break;
 
+		case PROP_LOGOUT_MODE:
+			g_value_set_boolean (value, priv->logout_mode);
+			break;
+			
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -233,6 +274,15 @@ gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *k
 							       "List of Unsaved Documents",
 							       (G_PARAM_READWRITE | 
 							        G_PARAM_CONSTRUCT_ONLY)));
+							        
+	g_object_class_install_property (gobject_class,
+					 PROP_LOGOUT_MODE,
+					 g_param_spec_boolean ("logout_mode",
+						 	       "Logout Mode",
+							       "Whether the dialog is in logout mode",
+							       FALSE,
+							       (G_PARAM_READWRITE | 
+							        G_PARAM_CONSTRUCT_ONLY)));							        
 }
 
 static GList *
@@ -278,13 +328,16 @@ gedit_close_confirmation_dialog_get_selected_documents (GeditCloseConfirmationDi
 }
 
 GtkWidget *
-gedit_close_confirmation_dialog_new (GtkWindow *parent, GList *unsaved_documents)
+gedit_close_confirmation_dialog_new (GtkWindow *parent, 
+				     GList     *unsaved_documents,
+				     gboolean   logout_mode)
 {
 	GtkWidget *dlg;
 	g_return_val_if_fail (unsaved_documents != NULL, NULL);
 
 	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG,
 				        "unsaved_documents", unsaved_documents,
+				        "logout_mode", logout_mode,
 				        NULL));
 	g_return_val_if_fail (dlg != NULL, NULL);
 
@@ -300,7 +353,9 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent, GList *unsaved_documents
 }
 
 GtkWidget *
-gedit_close_confirmation_dialog_new_single (GtkWindow *parent, GeditDocument *doc)
+gedit_close_confirmation_dialog_new_single (GtkWindow     *parent, 
+					    GeditDocument *doc,
+					    gboolean       logout_mode)
 {
 	GtkWidget *dlg;
 	GList *unsaved_documents;
@@ -308,7 +363,9 @@ gedit_close_confirmation_dialog_new_single (GtkWindow *parent, GeditDocument *do
 	
 	unsaved_documents = g_list_prepend (NULL, doc);
 
-	dlg = gedit_close_confirmation_dialog_new (parent, unsaved_documents);
+	dlg = gedit_close_confirmation_dialog_new (parent, 
+						   unsaved_documents,
+						   logout_mode);
 	
 	g_list_free (unsaved_documents);
 

@@ -2681,6 +2681,9 @@ gedit_window_close_tabs (GeditWindow *window,
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
 
+	if (tabs == NULL)
+		return;
+		
 	window->priv->removing_tabs = TRUE;
 
 	while (tabs != NULL)
