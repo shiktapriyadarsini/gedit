@@ -3,7 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002 Ximian, Inc.
- * Copyright (C) 2005 Paolo Maggi 
+ * Copyright (C) 2005 - Paolo Maggi 
  *
  * Author: Federico Mena-Quintero <federico@ximian.com>
  *
@@ -31,6 +31,7 @@
  * $Id$
  */
 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -51,12 +52,22 @@
 #include "gedit-metadata-manager.h"
 #include "gedit-window.h"
 #include "gedit-app.h"
+#include "gedit-commands.h"
+#include "dialogs/gedit-close-confirmation-dialog.h"
 
 /* The master client we use for SM */
 static GnomeClient *master_client = NULL;
 
 /* argv[0] from main(); used as the command to restart the program */
 static const char *program_argv0 = NULL;
+
+/* globals vars used during the interaction. We are
+ * assuming there can only be one interaction at a time
+ */
+static gint interaction_key;
+static GSList *window_dirty_list;
+
+static void	ask_next_confirmation	(void);
 
 static gchar *
 get_session_dir ()
@@ -77,7 +88,7 @@ get_session_file_path (GnomeClient *client)
 	const gchar *prefix;
 	gchar *session_dir;
 	gchar *session_file;
-	gchar *session_path;	
+	gchar *session_path;
 
 	prefix = gnome_client_get_config_prefix (client);
 	gedit_debug_message (DEBUG_SESSION, "Prefix: %s", prefix);
@@ -218,11 +229,14 @@ save_window_session (xmlTextWriterPtr  writer,
 }
 
 static void
-save_session (const gchar *fname)
+save_session ()
 {
 	int ret;
+	gchar *fname;
 	xmlTextWriterPtr writer;
 	const GList *windows;
+
+	fname = get_session_file_path (master_client);
 
 	gedit_debug_message (DEBUG_SESSION, "Session file: %s", fname);
 
@@ -274,33 +288,246 @@ out:
 
 	if (ret < 0)
 		unlink (fname);
+
+	g_free (fname);
 }
 
-static void 
+static void
+finish_interaction (gboolean cancel_shutdown)
+{
+	/* save session file even if shutdown was cancelled */
+	save_session ();
+
+	gnome_interaction_key_return (interaction_key,
+				      cancel_shutdown);
+
+	interaction_key = 0;
+}
+
+static void
+window_handled (GeditWindow *window)
+{
+	window_dirty_list = g_slist_remove (window_dirty_list, window);
+
+	/* whee... we made it! */
+	if (window_dirty_list == NULL)
+		finish_interaction (FALSE);
+	else
+		ask_next_confirmation ();
+}
+
+static void
+window_state_change (GeditWindow *window,
+		     GParamSpec  *pspec,
+		     gpointer     data)
+{
+	/* FIXME: should we also check the window state? */
+
+	/* FIXME: we may still have unsaved docs if we unselected
+	 * them in the confirmation dialog */
+	if (gedit_window_get_unsaved_documents (window) == NULL)
+	{
+		g_signal_handlers_disconnect_by_func (window, window_state_change, data);
+		window_handled (window);
+	}
+}
+
+static void
+close_discarded_and_save_the_rest (const GList *docs_to_save,
+				   GeditWindow  *window)
+{
+	GList *tabs;
+	GList *l;
+	GList *tabs_to_close = NULL;
+
+	tabs = gtk_container_get_children (
+			GTK_CONTAINER (_gedit_window_get_notebook (window)));
+
+	for (l = tabs; l != NULL; l = l->next)
+	{
+		GeditTab *t;
+		GeditDocument *doc;
+
+		t = GEDIT_TAB (l->data);
+
+		doc = gedit_tab_get_document (t);
+
+		if (!g_list_find (docs_to_save, doc))
+			g_list_prepend (tabs_to_close, t);
+	}
+
+	gedit_window_close_tabs (window, tabs_to_close);
+	g_list_free (tabs_to_close);
+
+	_gedit_cmd_file_save_documents_list (window, docs_to_save);
+}
+
+static void
+close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
+					    gint                          response_id,
+					    GeditWindow                  *window)
+{
+	const GList *selected_documents;
+	GSList *l;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	switch (response_id)
+	{
+		case GTK_RESPONSE_YES:
+			/* save selected docs */
+
+			g_signal_connect (window,
+					  "notify::state",
+					  G_CALLBACK (window_state_change),
+					  NULL);
+
+			selected_documents = gedit_close_confirmation_dialog_get_selected_documents (dlg);
+
+			close_discarded_and_save_the_rest (selected_documents, window);
+
+			// FIXME: also need to lock the window to prevent further changes..
+
+			break;
+
+		case GTK_RESPONSE_NO:
+			/* dont save */
+			window_handled (window);
+			break;
+
+		default:
+			/* disconnect window_state_changed where needed */
+			for (l = window_dirty_list; l != NULL; l = l->next)
+				g_signal_handlers_disconnect_by_func (window,
+						window_state_change, NULL);
+			g_slist_free (window_dirty_list);
+			window_dirty_list = NULL;
+
+			/* cancel shutdown */
+			finish_interaction (TRUE);
+
+			break;
+	}
+
+	gtk_widget_destroy (GTK_WIDGET (dlg));
+}
+
+static void
+show_confirmation_dialog (GeditWindow *window)
+{
+	GList *unsaved_docs;
+	GtkWidget *dlg;
+
+	gedit_debug (DEBUG_SESSION);
+
+	unsaved_docs = gedit_window_get_unsaved_documents (window);
+
+	g_return_if_fail (unsaved_docs != NULL);
+
+	if (unsaved_docs->next == NULL)
+	{
+		/* There is only one unsaved document */
+		GeditTab *tab;
+		GeditDocument *doc;
+
+		doc = GEDIT_DOCUMENT (unsaved_docs->data);
+
+		tab = gedit_tab_get_from_document (doc);
+		g_return_if_fail (tab != NULL);
+
+		gedit_window_set_active_tab (window, tab);
+
+		dlg = gedit_close_confirmation_dialog_new_single (
+						GTK_WINDOW (window),
+						doc);
+	}
+	else
+	{
+		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window),
+							   unsaved_docs);
+	}
+
+	g_list_free (unsaved_docs);
+
+	g_signal_connect (dlg,
+			  "response",
+			  G_CALLBACK (close_confirmation_dialog_response_handler),
+			  window);
+
+	gtk_widget_show (dlg);
+}
+
+static void
+ask_next_confirmation ()
+{
+	g_return_if_fail (window_dirty_list != NULL);
+
+	/* pop up the confirmation dialog for the first window
+	 * in the dirty list. The next confirmation is asked once
+	 * this one has been handled.
+	 */
+	show_confirmation_dialog (GEDIT_WINDOW (window_dirty_list->data));
+}
+
+static void
+save_all_docs_and_save_session ()
+{
+	GeditApp *app;
+	const GList *l;
+
+	app = gedit_app_get_default ();
+
+	if (window_dirty_list != NULL)
+	{
+		g_critical ("global variable window_dirty_list not NULL");
+		window_dirty_list = NULL;
+	}
+
+	for (l = gedit_app_get_windows (app); l != NULL; l = l->next)
+	{
+		if (gedit_window_get_unsaved_documents (GEDIT_WINDOW (l->data)) != NULL)
+		{
+			window_dirty_list = g_slist_prepend (window_dirty_list, l->data);
+		}
+	}
+
+	/* no modified docs, go on and save session */
+	if (window_dirty_list == NULL)
+	{
+		finish_interaction (FALSE);
+
+		return;
+	}
+
+	ask_next_confirmation ();
+}
+
+static void
 interaction_function (GnomeClient     *client,
 		      gint             key,
 		      GnomeDialogType  dialog_type,
 		      gpointer         shutdown)
 {
-	gchar *fname;
-
 	gedit_debug (DEBUG_SESSION);
-#if 0
-	/* Save all unsaved files */
-	if (GPOINTER_TO_INT (shutdown))		
-		gedit_file_save_all ();
-#endif
 
-	/* Save session data */
-	fname = get_session_file_path (client);
+	/* sanity checks */
+	g_return_if_fail (client == master_client);
 
-	save_session (fname);
+	if (interaction_key != 0)
+		g_critical ("global variable interaction_key not NULL");
+	interaction_key = key;
 
-	g_free (fname);
-
-	gnome_interaction_key_return (key, FALSE);
-
-	gedit_debug_message (DEBUG_SESSION, "END");
+	/* If we are shutting down, give the user the chance to save
+	 * first, otherwise just ignore untitled documents documents.
+	 */
+	if (GPOINTER_TO_INT (shutdown))
+	{
+		save_all_docs_and_save_session ();
+	}
+	else
+	{
+		finish_interaction (FALSE);
+	}
 }
 
 /* save_yourself handler for the master client */
@@ -313,7 +540,7 @@ client_save_yourself_cb (GnomeClient        *client,
 			 gboolean            fast,
 			 gpointer            data)
 {
-	gchar *argv[] = { "rm", "-r", NULL };
+	gchar *argv[] = { "rm", "-f", NULL };
 
 	gedit_debug (DEBUG_SESSION);
 
@@ -321,20 +548,20 @@ client_save_yourself_cb (GnomeClient        *client,
 					  GNOME_DIALOG_NORMAL, 
 					  interaction_function,
 					  GINT_TO_POINTER (shutdown));
-	
+
 	/* Tell the session manager how to discard this save */
 	argv[2] = get_session_file_path (client);
 	gnome_client_set_discard_command (client, 3, argv);
 
 	g_free (argv[2]);
-	
+
 	/* Tell the session manager how to clone or restart this instance */
 
 	argv[0] = (char *) program_argv0;
-	argv[1] = NULL; /* "--debug-session"; */
+	argv[1] = NULL;
 
-	gnome_client_set_clone_command (client, 1 /*2*/, argv);
-	gnome_client_set_restart_command (client, 1 /*2*/, argv);
+	gnome_client_set_clone_command (client, 1, argv);
+	gnome_client_set_restart_command (client, 1, argv);
 
 	gedit_debug_message (DEBUG_SESSION, "END");
 
