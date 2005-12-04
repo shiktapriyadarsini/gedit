@@ -3,7 +3,7 @@
  * gedit-prefs-manager.c
  * This file is part of gedit
  *
- * Copyright (C) 2002-2003  Paolo Maggi 
+ * Copyright (C) 2002-2005  Paolo Maggi 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1097,4 +1097,3 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 		g_list_free (docs);
 	}
 }
-

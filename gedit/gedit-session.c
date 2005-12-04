@@ -3,7 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002 Ximian, Inc.
- * Copyright (C) 2005 - Paolo Maggi 
+ * Copyright (C) 2005 Paolo Maggi 
  *
  * Author: Federico Mena-Quintero <federico@ximian.com>
  *
@@ -30,7 +30,6 @@
  *
  * $Id$
  */
-
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>

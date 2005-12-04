@@ -58,13 +58,13 @@ struct _GeditCloseConfirmationDialogClass
 GType 		 gedit_close_confirmation_dialog_get_type		(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_close_confirmation_dialog_new			(GtkWindow     *parent,
-									 GSList        *unsaved_documents);
+									 GList         *unsaved_documents);
 GtkWidget 	*gedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent, 
 									 GeditDocument *doc);
 
-const GSList	*gedit_close_confirmation_dialog_get_unsaved_documents  (GeditCloseConfirmationDialog *dlg);
+const GList	*gedit_close_confirmation_dialog_get_unsaved_documents  (GeditCloseConfirmationDialog *dlg);
 
-const GSList	*gedit_close_confirmation_dialog_get_selected_documents	(GeditCloseConfirmationDialog *dlg);
+const GList	*gedit_close_confirmation_dialog_get_selected_documents	(GeditCloseConfirmationDialog *dlg);
 
 #endif /* __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__ */
 

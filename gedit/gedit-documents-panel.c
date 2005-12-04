@@ -219,8 +219,6 @@ sync_name_and_icon (GeditTab            *tab,
 		    GParamSpec          *pspec,
 		    GeditDocumentsPanel *panel)
 {
-	/* TODO: refresh the list only if the panel is visible */
-
 	GdkPixbuf *pixbuf;
 	gchar *name;
 	GtkTreeIter iter;

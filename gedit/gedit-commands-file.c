@@ -1250,7 +1250,7 @@ save_as_and_close (GeditTab    *tab,
 }
 
 static void
-save_and_close_all_documents (const GSList *docs,
+save_and_close_all_documents (const GList  *docs,
 			      GeditWindow  *window)
 {
 	GList  *tabs;
@@ -1289,7 +1289,7 @@ save_and_close_all_documents (const GSList *docs,
 		g_return_if_fail (state != GEDIT_TAB_STATE_LOADING_ERROR);
 		g_return_if_fail (state != GEDIT_TAB_STATE_SAVING);
 
-		if (g_slist_index ((GSList *)docs, doc) >= 0)
+		if (g_list_index ((GList *)docs, doc) >= 0)
 		{
 			/* The document must be saved before closing */
 			g_return_if_fail (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) ||
@@ -1357,7 +1357,7 @@ save_and_close_all_documents (const GSList *docs,
 }
 
 static void
-save_and_close_document (const GSList *docs,
+save_and_close_document (const GList  *docs,
 			 GeditWindow  *window)
 {
 	GeditTab *tab;
@@ -1410,8 +1410,8 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 					    gint                          response_id,
 					    GeditWindow                  *window)
 {
-	const GSList *unsaved_documents;
-	const GSList *selected_documents;
+	const GList *unsaved_documents;
+	const GList *selected_documents;
 	gboolean is_closing_all;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -1551,7 +1551,7 @@ static void
 file_close_all (GeditWindow *window,
 		gboolean     is_quitting)
 {
-	GSList    *unsaved_docs;
+	GList     *unsaved_docs;
 	GList     *docs;
 	GList     *l;
 	GtkWidget *dlg;
@@ -1582,7 +1582,7 @@ file_close_all (GeditWindow *window,
 		tab = gedit_tab_get_from_document (doc);
 
 		if (!_gedit_tab_can_close (tab))
-			unsaved_docs = g_slist_prepend (unsaved_docs, doc);
+			unsaved_docs = g_list_prepend (unsaved_docs, doc);
 	}
 
 	g_list_free (docs);
@@ -1598,7 +1598,7 @@ file_close_all (GeditWindow *window,
 		return;
 	}
 
-	unsaved_docs = g_slist_reverse (unsaved_docs);
+	unsaved_docs = g_list_reverse (unsaved_docs);
 
 	if (unsaved_docs->next == NULL)
 	{
@@ -1623,7 +1623,7 @@ file_close_all (GeditWindow *window,
 							   unsaved_docs);
 	}
 
-	g_slist_free (unsaved_docs);
+	g_list_free (unsaved_docs);
 
 	g_signal_connect (dlg,
 			  "response",
@@ -1659,4 +1659,3 @@ gedit_cmd_file_quit (GtkAction   *action,
 
 	file_close_all (window, TRUE);
 }
-
