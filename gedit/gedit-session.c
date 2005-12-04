@@ -439,12 +439,14 @@ show_confirmation_dialog (GeditWindow *window)
 
 		dlg = gedit_close_confirmation_dialog_new_single (
 						GTK_WINDOW (window),
-						doc);
+						doc,
+						TRUE);
 	}
 	else
 	{
 		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window),
-							   unsaved_docs);
+							   unsaved_docs,
+							   TRUE);
 	}
 
 	g_list_free (unsaved_docs);
