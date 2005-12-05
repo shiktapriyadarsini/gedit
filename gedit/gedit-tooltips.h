@@ -77,6 +77,7 @@ struct _GeditTooltipsClass {
 };
 
 GType gedit_tooltips_get_type (void) G_GNUC_CONST;
+
 GeditTooltips *gedit_tooltips_new (void);
 
 void gedit_tooltips_enable (GeditTooltips * tooltips);
