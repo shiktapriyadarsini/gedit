@@ -69,6 +69,8 @@ static GSList *window_dirty_list;
 
 static void	ask_next_confirmation	(void);
 
+#define GEDIT_SESSION_LIST_OF_DOCS_TO_SAVE "gedit-session-list-of-docs-to-save-key"
+
 static gchar *
 get_session_dir ()
 {
@@ -321,45 +323,45 @@ window_state_change (GeditWindow *window,
 		     GParamSpec  *pspec,
 		     gpointer     data)
 {
-	/* FIXME: should we also check the window state? */
+	GeditWindowState state;
+	GList *unsaved_docs;
+	GList *docs_to_save;
+	GList *l;
+	gboolean done = TRUE;
 
-	/* FIXME: we may still have unsaved docs if we unselected
-	 * them in the confirmation dialog */
-	if (gedit_window_get_unsaved_documents (window) == NULL)
+	state = gedit_window_get_state (window);
+
+	/* we are still saving */
+	if (state & GEDIT_WINDOW_STATE_SAVING)
+		return;
+
+	unsaved_docs = gedit_window_get_unsaved_documents (window);
+
+	docs_to_save =	g_object_get_data (G_OBJECT (window),
+					   GEDIT_SESSION_LIST_OF_DOCS_TO_SAVE);
+
+
+	for (l = docs_to_save; l != NULL; l = l->next)
+	{
+		if (g_list_find (unsaved_docs, l->data))
+		{
+			done = FALSE;
+			break;
+		}
+	}
+
+	if (done)
 	{
 		g_signal_handlers_disconnect_by_func (window, window_state_change, data);
+		g_list_free (docs_to_save);
+		g_object_set_data (G_OBJECT (window),
+				   GEDIT_SESSION_LIST_OF_DOCS_TO_SAVE,
+				   NULL);
+
 		window_handled (window);
 	}
-}
 
-static void
-close_discarded_and_save_the_rest (const GList *docs_to_save,
-				   GeditWindow  *window)
-{
-	GList *tabs;
-	GList *l;
-	GList *tabs_to_close = NULL;
-
-	tabs = gtk_container_get_children (
-			GTK_CONTAINER (_gedit_window_get_notebook (window)));
-
-	for (l = tabs; l != NULL; l = l->next)
-	{
-		GeditTab *t;
-		GeditDocument *doc;
-
-		t = GEDIT_TAB (l->data);
-
-		doc = gedit_tab_get_document (t);
-
-		if (!g_list_find (docs_to_save, doc))
-			g_list_prepend (tabs_to_close, t);
-	}
-
-	gedit_window_close_tabs (window, tabs_to_close);
-	g_list_free (tabs_to_close);
-
-	_gedit_cmd_file_save_documents_list (window, docs_to_save);
+	g_list_free (unsaved_docs);
 }
 
 static void
@@ -384,7 +386,14 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 
 			selected_documents = gedit_close_confirmation_dialog_get_selected_documents (dlg);
 
-			close_discarded_and_save_the_rest (selected_documents, window);
+			g_return_if_fail (g_object_get_data (G_OBJECT (window),
+							     GEDIT_SESSION_LIST_OF_DOCS_TO_SAVE) == NULL);
+
+			g_object_set_data (G_OBJECT (window),
+					   GEDIT_SESSION_LIST_OF_DOCS_TO_SAVE,
+					   g_list_copy (selected_documents));
+
+			_gedit_cmd_file_save_documents_list (window, selected_documents);
 
 			// FIXME: also need to lock the window to prevent further changes..
 
