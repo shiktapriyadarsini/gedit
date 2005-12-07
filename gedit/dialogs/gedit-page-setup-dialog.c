@@ -537,7 +537,7 @@ gedit_page_setup_dialog_init (GeditPageSetupDialog *dlg)
  			  G_CALLBACK (dialog_response_handler),
 			  NULL);
 
-	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "page-setup-dialog.glade2",
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-page-setup-dialog.glade",
 					     "notebook1",
 					     &error_widget,
 					     "notebook1", &content,

@@ -26,14 +26,13 @@ libdialogs_la_SOURCES = 			\
 	gedit-search-dialog.c
 
 
-glade_DATA =				\
-	gedit-encodings-dialog.glade2	\
-	gedit-preferences.glade2	\
-	page-setup-dialog.glade2	\
-	uri.glade2			\
-	gedit-search-dialog.glade2
+glade_DATA =					\
+	gedit-encodings-dialog.glade		\
+	gedit-open-location-dialog.glade	\
+	gedit-page-setup-dialog.glade		\
+	gedit-preferences-dialog.glade		\
+	gedit-search-dialog.glade
 
-#	program-location-dialog.glade2
 
 
 EXTRA_DIST = $(glade_DATA) 

@@ -141,14 +141,13 @@ gedit_open_location_dialog_init (GeditOpenLocationDialog *dlg)
 					 GTK_RESPONSE_OK);
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dlg), 
 					   GTK_RESPONSE_OK, FALSE);
-	
+
 	g_signal_connect (G_OBJECT (dlg), 
 			  "response",
 			  G_CALLBACK (response_handler),
 			  NULL);
-			  
-			  
-	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "uri.glade2",
+
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-open-location-dialog.glade",
 					     "open_uri_dialog_content",
 					     &error_widget,
 					     "open_uri_dialog_content", &content,

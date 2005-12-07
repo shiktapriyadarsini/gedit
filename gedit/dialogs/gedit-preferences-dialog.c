@@ -1282,7 +1282,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 	g_object_ref (dlg->priv->tooltips);
 	gtk_object_sink (GTK_OBJECT (dlg->priv->tooltips));
 
-	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-preferences.glade2",
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-preferences-dialog.glade",
 		"notebook",
 		&error_widget,
 

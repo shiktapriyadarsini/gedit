@@ -266,7 +266,7 @@ gedit_search_dialog_init (GeditSearchDialog *dlg)
 				GTK_STOCK_CLOSE, GTK_RESPONSE_CANCEL,
 				NULL);
 
-	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-search-dialog.glade2",
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-search-dialog.glade",
 					     "search_dialog_content",
 					     &error_widget,
 					     "search_dialog_content", &content,

@@ -324,7 +324,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 			  G_CALLBACK (response_handler),
 			  dlg);
 
-	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-encodings-dialog.glade2",
+	ret = gedit_utils_get_glade_widgets (GEDIT_GLADEDIR "gedit-encodings-dialog.glade",
 					     "encodings-dialog-contents",
 					     &error_widget,
 					     "encodings-dialog-contents", &content,
