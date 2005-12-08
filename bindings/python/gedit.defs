@@ -86,11 +86,12 @@
   (in-module "Gedit")
   (c-name "GeditWindowState")
   (values
-    '("normal" "GEDIT_WINDOW_STATE_NORMAL")
-    '("saving" "GEDIT_WINDOW_STATE_SAVING")
-    '("printing" "GEDIT_WINDOW_STATE_PRINTING")
-    '("loading" "GEDIT_WINDOW_STATE_LOADING")
-    '("error" "GEDIT_WINDOW_STATE_ERROR")
+    '("state-normal" "GEDIT_WINDOW_STATE_NORMAL")
+    '("state-saving" "GEDIT_WINDOW_STATE_SAVING")
+    '("state-printing" "GEDIT_WINDOW_STATE_PRINTING")
+    '("state-loading" "GEDIT_WINDOW_STATE_LOADING")
+    '("state-error" "GEDIT_WINDOW_STATE_ERROR")
+    '("state-saving-session" "GEDIT_WINDOW_STATE_SAVING_SESSION")    
   )
 )
 
