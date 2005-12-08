@@ -88,7 +88,8 @@ struct _GeditNotebookClass
 	void	 (* tab_detached)   (GeditNotebook *notebook,
 				     GeditTab      *tab);
 	void	 (* tabs_reordered) (GeditNotebook *notebook);
-	gboolean (* tab_delete)	    (GeditNotebook *notebook,
+	void	 (* tab_close_request)
+				    (GeditNotebook *notebook,
 				     GeditTab      *tab);
 };
 

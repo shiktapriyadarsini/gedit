@@ -1504,9 +1504,9 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 }
 
 /* Returns TRUE if the tab can be immediately closed */
-gboolean
-_gedit_cmd_file_can_close (GeditTab  *tab,
-			   GtkWindow *window)
+static gboolean
+tab_can_close (GeditTab  *tab,
+	       GtkWindow *window)
 {
 	GeditDocument *doc;
 
@@ -1536,6 +1536,32 @@ _gedit_cmd_file_can_close (GeditTab  *tab,
 	return TRUE;
 }
 
+/* CHECK: we probably need this one public for plugins...
+ * maybe even a _list variant. Or maybe it's better make
+ * gedit_window_close_tab always run the confirm dialog?
+ * we should not allow closing a tab without resetting the
+ * GEDIT_IS_CLOSING_ALL flag!
+ */
+void
+_gedit_cmd_file_close_tab (GeditTab    *tab,
+			   GeditWindow *window)
+{
+	gedit_debug (DEBUG_COMMANDS);
+
+	g_return_if_fail (GTK_WIDGET (window) == gtk_widget_get_toplevel (GTK_WIDGET (tab)));
+
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_IS_CLOSING_ALL,
+			   GBOOLEAN_TO_POINTER (FALSE));
+
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_IS_QUITTING,
+			   GBOOLEAN_TO_POINTER (FALSE));
+
+	if (tab_can_close (tab, GTK_WINDOW (window)))
+		gedit_window_close_tab (window, tab);
+}
+
 void
 gedit_cmd_file_close (GtkAction   *action,
 		      GeditWindow *window)
@@ -1548,16 +1574,7 @@ gedit_cmd_file_close (GtkAction   *action,
 	if (active_tab == NULL)
 		return;
 
-	g_object_set_data (G_OBJECT (window),
-			   GEDIT_IS_CLOSING_ALL,
-			   GBOOLEAN_TO_POINTER (FALSE));
-
-	g_object_set_data (G_OBJECT (window),
-			   GEDIT_IS_QUITTING,
-			   GBOOLEAN_TO_POINTER (FALSE));
-
-	if (_gedit_cmd_file_can_close (active_tab, GTK_WINDOW (window)))
-		gedit_window_close_tab (window, active_tab);
+	_gedit_cmd_file_close_tab (active_tab, window);
 }
 
 /* Close all tabs */

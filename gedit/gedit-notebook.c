@@ -95,7 +95,7 @@ enum
 	TAB_REMOVED,
 	TABS_REORDERED,
 	TAB_DETACHED,
-	TAB_DELETE,
+	TAB_CLOSE_REQUEST,
 	LAST_SIGNAL
 };
 
@@ -147,14 +147,14 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE,
 			      0);
-	signals[TAB_DELETE] =
-		g_signal_new ("tab_delete",
+	signals[TAB_CLOSE_REQUEST] =
+		g_signal_new ("tab-close-request",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditNotebookClass, tab_delete),
-			      g_signal_accumulator_true_handled, NULL,
-			      gedit_marshal_BOOLEAN__OBJECT,
-			      G_TYPE_BOOLEAN,
+			      G_STRUCT_OFFSET (GeditNotebookClass, tab_close_request),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__OBJECT,
+			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
 
@@ -775,13 +775,9 @@ close_button_clicked_cb (GtkWidget *widget,
 			 GtkWidget *tab)
 {
 	GeditNotebook *notebook;
-	gboolean can_close = TRUE;
 
 	notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (tab));
-	g_signal_emit (G_OBJECT (notebook), signals[TAB_DELETE], 0, tab, &can_close);
-
-	if (can_close)
-		gedit_notebook_remove_tab (notebook, GEDIT_TAB (tab));
+	g_signal_emit (notebook, signals[TAB_CLOSE_REQUEST], 0, tab);
 }
 
 static GtkWidget *

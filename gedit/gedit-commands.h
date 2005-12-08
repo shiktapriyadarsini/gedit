@@ -125,8 +125,8 @@ void		gedit_cmd_help_about			(GtkAction   *action,
 /*
  * Non-exported function
  */
-gboolean	_gedit_cmd_file_can_close 		(GeditTab  *tab,
-							 GtkWindow *window);
+void		_gedit_cmd_file_close_tab 		(GeditTab    *tab,
+							 GeditWindow *window);
 
 void		_gedit_cmd_file_save_documents_list	(GeditWindow *window,
 							 GList       *docs);
