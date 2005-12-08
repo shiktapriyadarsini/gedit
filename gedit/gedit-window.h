@@ -40,11 +40,12 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-	GEDIT_WINDOW_STATE_NORMAL   = 0,
-	GEDIT_WINDOW_STATE_SAVING   = 1 << 1,
-	GEDIT_WINDOW_STATE_PRINTING = 1 << 2,
-	GEDIT_WINDOW_STATE_LOADING  = 1 << 3,
-	GEDIT_WINDOW_STATE_ERROR    = 1 << 4
+	GEDIT_WINDOW_STATE_NORMAL		= 0,
+	GEDIT_WINDOW_STATE_SAVING		= 1 << 1,
+	GEDIT_WINDOW_STATE_PRINTING		= 1 << 2,
+	GEDIT_WINDOW_STATE_LOADING		= 1 << 3,
+	GEDIT_WINDOW_STATE_ERROR		= 1 << 4,
+	GEDIT_WINDOW_STATE_SAVING_SESSION	= 1 << 5
 } GeditWindowState;
 	
 /*
@@ -171,6 +172,9 @@ GtkWidget	*_gedit_window_get_search_panel		(GeditWindow         *window);
 G_CONST_RETURN gchar
 		*_gedit_window_get_default_path 	(GeditWindow         *window);
 
+void		 _gedit_window_set_saving_session_state	(GeditWindow         *window,
+							 gboolean             saving_session);
+							 
 G_END_DECLS
 
 #endif  /* __GEDIT_WINDOW_H__  */

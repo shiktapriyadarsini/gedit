@@ -70,8 +70,10 @@ struct _GeditNotebookPrivate
 	gulong         motion_notify_handler_id;
 	gint           x_start;
 	gint           y_start;
-	gboolean       drag_in_progress : 1;
-	gboolean       always_show_tabs : 1;
+	gint           drag_in_progress : 1;
+	gint	       always_show_tabs : 1;
+	gint           close_buttons_sensitive : 1;
+	gint           tab_drag_and_drop_enabled : 1;
 };
 
 G_DEFINE_TYPE(GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
@@ -418,6 +420,9 @@ motion_notify_cb (GeditNotebook  *notebook,
 
 	if (notebook->priv->drag_in_progress == FALSE)
 	{
+		if (notebook->priv->tab_drag_and_drop_enabled == FALSE)
+			return FALSE;
+			
 		if (gtk_drag_check_threshold (GTK_WIDGET (notebook),
 					      notebook->priv->x_start,
 					      notebook->priv->y_start,
@@ -645,6 +650,9 @@ gedit_notebook_init (GeditNotebook *notebook)
 {
 	notebook->priv = GEDIT_NOTEBOOK_GET_PRIVATE (notebook);
 
+	notebook->priv->close_buttons_sensitive = TRUE;
+	notebook->priv->tab_drag_and_drop_enabled = TRUE;
+	
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
 	gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), FALSE);
@@ -688,6 +696,7 @@ gedit_notebook_finalize (GObject *object)
 static void
 sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 {
+	GeditNotebook *nb;
 	GtkWidget *label;
 	GtkWidget *ebox;
 	GtkWidget *button;
@@ -703,13 +712,16 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 	icon = GTK_IMAGE (g_object_get_data (G_OBJECT (hbox), "icon"));
 	button = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "close-button"));
 	spinner = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "spinner"));
-	
+
+	nb = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (tab)));
+
 	g_return_if_fail ((tips    != NULL) && 
 			  (label   != NULL) && 
 			  (ebox    != NULL) && 
 			  (button  != NULL) &&
 			  (icon    != NULL) &&
-			  (spinner != NULL));
+			  (spinner != NULL) &&
+			  (nb      != NULL));
 
 	str = _gedit_tab_get_name (tab);
 	g_return_if_fail (str != NULL);
@@ -725,7 +737,8 @@ sync_name (GeditTab *tab, GParamSpec *pspec, GtkWidget *hbox)
 		
 	state = gedit_tab_get_state (tab);
 	
-	gtk_widget_set_sensitive (button, 
+	gtk_widget_set_sensitive (button,
+				  nb->priv->close_buttons_sensitive &&  
 				  (state != GEDIT_TAB_STATE_CLOSING) &&
 				  (state != GEDIT_TAB_STATE_SAVING)  &&
 				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
@@ -849,6 +862,7 @@ build_tab_label (GeditNotebook *nb,
 	g_object_set_data (G_OBJECT (hbox), "spinner", spinner);
 	g_object_set_data (G_OBJECT (hbox), "icon", icon);
 	g_object_set_data (G_OBJECT (hbox), "close-button", close_button);
+	g_object_set_data (G_OBJECT (tab), "close-button", close_button);
 	g_object_set_data (G_OBJECT (hbox), "tooltips", nb->priv->title_tips);
 
 	return hbox;
@@ -1017,4 +1031,74 @@ gedit_notebook_remove_all_tabs (GeditNotebook *nb)
 	gtk_container_foreach (GTK_CONTAINER (nb),
 			       (GtkCallback)remove_tab,
 			       nb);
-}	
+}
+
+static void
+set_close_buttons_sensitivity (GeditTab      *tab,
+                               GeditNotebook *nb)
+{
+	GtkWidget     *button;
+	GeditTabState  state;
+	
+	button = GTK_WIDGET (g_object_get_data (G_OBJECT (tab), 
+						"close-button"));	
+	g_return_if_fail (button != NULL);
+	
+	state = gedit_tab_get_state (tab);
+	
+	gtk_widget_set_sensitive (button, 
+				  nb->priv->close_buttons_sensitive &&
+				  (state != GEDIT_TAB_STATE_CLOSING) &&
+				  (state != GEDIT_TAB_STATE_SAVING)  &&
+				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
+}
+
+void
+gedit_notebook_set_close_buttons_sensitive (GeditNotebook *nb,
+					    gboolean       sensitive)
+{
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
+	
+	sensitive = (sensitive != FALSE);
+	
+	if (sensitive == nb->priv->close_buttons_sensitive)
+		return;
+	
+	nb->priv->close_buttons_sensitive = sensitive;
+	
+	gtk_container_foreach (GTK_CONTAINER (nb),
+			       (GtkCallback)set_close_buttons_sensitivity,
+			       nb);
+}
+
+gboolean
+gedit_notebook_get_close_buttons_sensitive (GeditNotebook *nb)
+{
+	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (nb), TRUE);
+	
+	return nb->priv->close_buttons_sensitive;
+}
+
+void
+gedit_notebook_set_tab_drag_and_drop_enabled (GeditNotebook *nb,
+					      gboolean       enable)
+{
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
+	
+	enable = (enable != FALSE);
+	
+	if (enable == nb->priv->tab_drag_and_drop_enabled)
+		return;
+		
+	nb->priv->tab_drag_and_drop_enabled = enable;		
+}
+
+gboolean	
+gedit_notebook_get_tab_drag_and_drop_enabled (GeditNotebook *nb)
+{
+	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (nb), TRUE);
+	
+	return nb->priv->tab_drag_and_drop_enabled;
+}
+

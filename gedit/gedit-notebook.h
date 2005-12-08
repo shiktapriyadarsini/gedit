@@ -123,6 +123,20 @@ void		gedit_notebook_set_always_show_tabs
 						(GeditNotebook *nb,
 						 gboolean       show_tabs);
 
+void		gedit_notebook_set_close_buttons_sensitive
+						(GeditNotebook *nb,
+						 gboolean       sensitive);
+
+gboolean	gedit_notebook_get_close_buttons_sensitive
+						(GeditNotebook *nb);
+
+void		gedit_notebook_set_tab_drag_and_drop_enabled
+						(GeditNotebook *nb,
+						 gboolean       enable);
+
+gboolean	gedit_notebook_get_tab_drag_and_drop_enabled
+						(GeditNotebook *nb);
+
 G_END_DECLS
 
 #endif /* GEDIT_NOTEBOOK_H */

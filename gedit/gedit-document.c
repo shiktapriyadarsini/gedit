@@ -713,7 +713,7 @@ get_uri_shortname_for_display (GnomeVFSURI *uri)
 
 	validated = FALSE;
 	name = gnome_vfs_uri_extract_short_name (uri);
-
+	
 	if (name == NULL)
 	{
 		name = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_PASSWORD);

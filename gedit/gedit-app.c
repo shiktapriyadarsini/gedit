@@ -125,8 +125,11 @@ window_delete_event (GeditWindow *window,
 
 	ws = gedit_window_get_state (window);
 
-	if (ws & GEDIT_WINDOW_STATE_SAVING)
-		return TRUE; 
+	if (ws & 
+	    (GEDIT_WINDOW_STATE_SAVING |
+	     GEDIT_WINDOW_STATE_PRINTING |
+	     GEDIT_WINDOW_STATE_SAVING_SESSION))
+	    	return TRUE;
 	
 	gedit_cmd_file_quit (NULL, window);
 		

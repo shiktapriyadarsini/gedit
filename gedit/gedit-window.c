@@ -1497,6 +1497,78 @@ notebook_switch_page (GtkNotebook     *book,
 }
 
 static void
+set_sensitivity_according_to_window_state (GeditWindow *window)
+{
+	GtkAction *action;
+	// GtkWidget *recent_file_menu;
+	
+	/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
+	   operations (save and print/print preview) that uses the message area at
+	   the same time (may be we can remove this limitation in the future) */
+	/* We disable File->Quit/CloseAll if state is saving since saving cannot be
+	   cancelled (may be we can remove this limitation in the future) */
+	action = gtk_action_group_get_action (window->priv->action_group,
+				              "FileQuit");
+	gtk_action_set_sensitive (action, 
+				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+				              "FileCloseAll");
+	gtk_action_set_sensitive (action, 
+				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+				  
+	action = gtk_action_group_get_action (window->priv->action_group,
+				              "FileSaveAll");
+	gtk_action_set_sensitive (action, 
+				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+			
+	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+					      "FileNew");
+	gtk_action_set_sensitive (action, 
+				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+				  
+	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+					      "FileOpen");
+	gtk_action_set_sensitive (action, 
+				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+
+	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+					      "FileOpenURI");
+	gtk_action_set_sensitive (action, 
+				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+		
+	/* FIXME		
+	recent_file_menu = gtk_ui_manager_get_widget (window->priv->manager,
+						      "/MenuBar/FileMenu/FileRecentsPlaceholder");
+	gtk_widget_set_sensitive (recent_file_menu, 
+				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+	*/
+			  
+	gedit_notebook_set_close_buttons_sensitive (GEDIT_NOTEBOOK (window->priv->notebook),
+						    !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+						    
+	gedit_notebook_set_tab_drag_and_drop_enabled (GEDIT_NOTEBOOK (window->priv->notebook),
+						      !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+
+	if ((window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) != 0)
+	{
+		// FIXME: View menu and Find should be active when in SAVING_SESSION state
+		
+		if (gtk_action_group_get_sensitive (window->priv->action_group))
+			gtk_action_group_set_sensitive (window->priv->action_group,
+							FALSE);
+	}
+	else
+	{
+		if (!gtk_action_group_get_sensitive (window->priv->action_group))
+			gtk_action_group_set_sensitive (window->priv->action_group,
+							window->priv->num_tabs > 0);
+	}
+}
+
+static void
 analyze_tab_state (GeditTab    *tab, 
 		   GeditWindow *window)
 {
@@ -1542,7 +1614,9 @@ update_window_state (GeditWindow *window)
 	
 	old_ws = window->priv->state;
 	old_num_of_errors = window->priv->num_tabs_with_error;
-	window->priv->state = 0;
+	
+	window->priv->state = old_ws & GEDIT_WINDOW_STATE_SAVING_SESSION;
+	
 	window->priv->num_tabs_with_error = 0;
 
 	gtk_container_foreach (GTK_CONTAINER (window->priv->notebook),
@@ -1553,29 +1627,7 @@ update_window_state (GeditWindow *window)
 		
 	if (old_ws != window->priv->state)
 	{
-		GtkAction *action;
-		
-		/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
-		   operations (save and print/print preview) that uses the message area at
-		   the same time (may be we can remove this limitation in the future) */
-		/* We disable File->Quit/CloseAll if state is saving since saving cannot be
-		   cancelled (may be we can remove this limitation in the future) */
-		action = gtk_action_group_get_action (window->priv->action_group,
-					              "FileQuit");
-		gtk_action_set_sensitive (action, 
-					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-					  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
-
-		action = gtk_action_group_get_action (window->priv->action_group,
-					              "FileCloseAll");
-		gtk_action_set_sensitive (action, 
-					  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-					  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
-					  
-		action = gtk_action_group_get_action (window->priv->action_group,
-					              "FileSaveAll");
-		gtk_action_set_sensitive (action, 
-					  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+		set_sensitivity_according_to_window_state (window);
 
 		gedit_statusbar_set_window_state (GEDIT_STATUSBAR (window->priv->statusbar),
 						  window->priv->state,
@@ -1671,6 +1723,9 @@ drag_data_received_cb (GtkWidget        *widget,
 
 	target_window = gtk_widget_get_toplevel (widget);
 	g_return_if_fail (GEDIT_IS_WINDOW (target_window));
+	
+	if ((GEDIT_WINDOW(target_window)->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) != 0)
+		return;
 
 	uris = g_uri_list_extract_uris ((gchar *) selection_data->data);
 
@@ -1951,6 +2006,8 @@ notebook_tab_added (GeditNotebook *notebook,
 
 	gedit_debug (DEBUG_WINDOW);
 
+	g_return_if_fail ((window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) == 0);
+	
 	++window->priv->num_tabs;
 
 	/* Set sensitivity */
@@ -2059,6 +2116,8 @@ notebook_tab_removed (GeditNotebook *notebook,
 	
 	gedit_debug (DEBUG_WINDOW);
 	
+	g_return_if_fail ((window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) == 0);
+		
 	--window->priv->num_tabs;
 	
 	view = gedit_tab_get_view (tab);
@@ -2141,8 +2200,9 @@ notebook_tab_removed (GeditNotebook *notebook,
 	/* Set sensitivity */
 	if (window->priv->num_tabs == 0)
 	{
-		gtk_action_group_set_sensitive (window->priv->action_group,
-						FALSE);
+		if (gtk_action_group_get_sensitive (window->priv->action_group))
+			gtk_action_group_set_sensitive (window->priv->action_group,
+							FALSE);
 
 		// FIXME: Quit and the view menu should be active 
 		
@@ -2665,7 +2725,8 @@ void
 gedit_window_close_all_tabs (GeditWindow *window)
 {
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+			  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
 
 	window->priv->removing_tabs = TRUE;
 
@@ -2679,7 +2740,8 @@ gedit_window_close_tabs (GeditWindow *window,
 			 const GList *tabs)
 {
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+			  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
 
 	if (tabs == NULL)
 		return;
@@ -2985,6 +3047,8 @@ gedit_window_get_unsaved_documents (GeditWindow *window)
 	GList *docs;
 	GList *l;
 
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	
 	docs = gedit_window_get_documents (window);
 
 	for (l = docs; l != NULL; l = l->next)
@@ -3003,3 +3067,25 @@ gedit_window_get_unsaved_documents (GeditWindow *window)
 
 	return g_list_reverse (unsaved_docs);
 }
+
+void 
+_gedit_window_set_saving_session_state (GeditWindow *window,
+				        gboolean     saving_session)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+		
+	GeditWindowState old_state = window->priv->state;
+	
+	if (saving_session)
+		window->priv->state |= GEDIT_WINDOW_STATE_SAVING_SESSION;
+	else
+		window->priv->state &= ~GEDIT_WINDOW_STATE_SAVING_SESSION;
+		
+	if (old_state != window->priv->state)
+	{
+		set_sensitivity_according_to_window_state (window);
+		
+		g_object_notify (G_OBJECT (window), "state");
+	}
+}
+
