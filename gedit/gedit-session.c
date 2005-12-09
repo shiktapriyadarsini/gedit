@@ -45,7 +45,7 @@
 #include <libxml/xmlwriter.h>
 
 #include "gedit-session.h"
-#include "gedit-file.h"
+
 #include "gedit-debug.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-prefs-manager-app.h"

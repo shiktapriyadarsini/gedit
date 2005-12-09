@@ -52,7 +52,6 @@
 #include <libgnome/gnome-url.h>
 
 #include "gedit-utils.h"
-#include "gedit2.h"
 
 #include "gedit-document.h"
 #include "gedit-prefs-manager.h"
