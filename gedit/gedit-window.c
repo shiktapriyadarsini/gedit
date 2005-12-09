@@ -2255,6 +2255,16 @@ notebook_tab_detached (GeditNotebook *notebook,
 	gtk_widget_show (GTK_WIDGET (new_window));
 }		      
 
+static void 
+notebook_tab_close_request (GeditNotebook *notebook,
+			    GeditTab      *tab,
+			    GtkWindow     *window)
+{
+	/* CHECK: we are destroying the tab before the default handler
+	 * seems to be ok, but we need to keep an eye on this. */
+	_gedit_cmd_file_close_tab (tab, GEDIT_WINDOW (window));
+}
+
 static gboolean
 show_notebook_popup_menu (GtkNotebook    *notebook,
 			  GeditWindow    *window,
@@ -2516,38 +2526,42 @@ gedit_window_init (GeditWindow *window)
 			   GDK_ACTION_COPY);
 
 	/* Connect signals */
-	g_signal_connect (G_OBJECT (window->priv->notebook),
+	g_signal_connect (window->priv->notebook,
 			  "switch_page",
 			  G_CALLBACK (notebook_switch_page),
 			  window);
-	g_signal_connect (G_OBJECT (window->priv->notebook),
+	g_signal_connect (window->priv->notebook,
 			  "tab_added",
 			  G_CALLBACK (notebook_tab_added),
 			  window);
-	g_signal_connect (G_OBJECT (window->priv->notebook),
+	g_signal_connect (window->priv->notebook,
 			  "tab_removed",
 			  G_CALLBACK (notebook_tab_removed),
 			  window);
-	g_signal_connect (G_OBJECT (window->priv->notebook),
+	g_signal_connect (window->priv->notebook,
 			  "tabs_reordered",
 			  G_CALLBACK (notebook_tabs_reordered),
 			  window);			  
-	g_signal_connect (G_OBJECT (window->priv->notebook),
+	g_signal_connect (window->priv->notebook,
 			  "tab_detached",
 			  G_CALLBACK (notebook_tab_detached),
 			  window);
-	g_signal_connect (G_OBJECT (window->priv->notebook),
+	g_signal_connect (window->priv->notebook,
+			  "tab_close_request",
+			  G_CALLBACK (notebook_tab_close_request),
+			  window);
+	g_signal_connect (window->priv->notebook,
 			  "button-press-event",
 			  G_CALLBACK (notebook_button_press_event),
 			  window);
-	g_signal_connect (G_OBJECT (window->priv->notebook),
+	g_signal_connect (window->priv->notebook,
 			  "popup-menu",
 			  G_CALLBACK (notebook_popup_menu),
 			  window);
 
 	/* connect instead pf override, so that we can
 	 * share the cb code with the view */
-	g_signal_connect (G_OBJECT (window), 
+	g_signal_connect (window,
 			  "drag_data_received",
 	                  G_CALLBACK (drag_data_received_cb), 
 	                  NULL);

@@ -166,16 +166,6 @@ window_destroy (GeditWindow *window,
 	}
 }
 
-static void 
-notebook_tab_close_request (GeditNotebook *notebook,
-			    GeditTab      *tab,
-			    GtkWindow     *window)
-{
-	/* CHECK: we are destroying the tab before the default handler
-	 * seems to be ok, but we need to keep an eye on this. */
-	_gedit_cmd_file_close_tab (tab, GEDIT_WINDOW (window));
-}
-
 /* Generates a unique string for a window role */
 static gchar *
 gen_role (void)
@@ -200,7 +190,6 @@ gedit_app_create_window_real (GeditApp    *app,
 			      const gchar *role)
 {
 	GtkWindow *window;
-	GtkWidget *notebook;
 
 	gedit_debug (DEBUG_APP);
 	
@@ -265,14 +254,7 @@ gedit_app_create_window_real (GeditApp    *app,
 			  "destroy",
 			  G_CALLBACK (window_destroy),
 			  app);
-			  
-	notebook = _gedit_window_get_notebook (GEDIT_WINDOW (window));
-	
-	g_signal_connect (notebook,
-			  "tab_close_request",
-			  G_CALLBACK (notebook_tab_close_request),
-			  window);
-			  
+
 	return GEDIT_WINDOW (window);
 }
 
