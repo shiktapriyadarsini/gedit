@@ -175,7 +175,6 @@ gedit_dialog_add_button (GtkDialog   *dialog,
 /*
  * n: len of the string in bytes
  */
-// FIXME: sync with the function in gtksourceview
 gboolean 
 g_utf8_caselessnmatch (const char *s1, const char *s2, gssize n1, gssize n2)
 {
@@ -192,11 +191,11 @@ g_utf8_caselessnmatch (const char *s1, const char *s2, gssize n1, gssize n2)
 	g_return_val_if_fail (n2 > 0, FALSE);
 
 	casefold = g_utf8_casefold (s1, n1);
-	normalized_s1 = g_utf8_normalize (casefold, -1, G_NORMALIZE_ALL);
+	normalized_s1 = g_utf8_normalize (casefold, -1, G_NORMALIZE_NFD);
 	g_free (casefold);
 
 	casefold = g_utf8_casefold (s2, n2);
-	normalized_s2 = g_utf8_normalize (casefold, -1, G_NORMALIZE_ALL);
+	normalized_s2 = g_utf8_normalize (casefold, -1, G_NORMALIZE_NFD);
 	g_free (casefold);
 
 	len_s1 = strlen (normalized_s1);
