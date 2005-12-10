@@ -321,14 +321,10 @@ unrecoverable_loading_error_message_area_response (GeditMessageArea *message_are
 						   GeditTab         *tab)
 {
 	GeditNotebook *notebook;
-	gboolean can_close = TRUE;
 
 	notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (tab)));
-	
-	g_signal_emit_by_name (G_OBJECT (notebook), "tab_delete", tab, &can_close);
 
-	if (can_close)
-		gedit_notebook_remove_tab (notebook, tab);
+	gedit_notebook_remove_tab (notebook, tab);
 }
 
 static void 
@@ -344,7 +340,7 @@ recoverable_loading_error_message_area_response (GeditMessageArea *message_area,
 
 	uri = gedit_document_get_uri (doc);
 	g_return_if_fail (uri != NULL);
-	
+
 	if (response_id == GTK_RESPONSE_OK)
 	{
 		const GeditEncoding *encoding;
