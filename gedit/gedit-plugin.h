@@ -83,7 +83,11 @@ struct _GeditPluginClass
 	GtkWidget      *(*create_configure_dialog)
 						(GeditPlugin *plugin);
 
-	/* TODO: add place holders */						
+	/* Padding for future expansion */
+	void		(*_gedit_reserved1)	(void);
+	void		(*_gedit_reserved2)	(void);
+	void		(*_gedit_reserved3)	(void);
+	void		(*_gedit_reserved4)	(void);						
 };
 
 /*
