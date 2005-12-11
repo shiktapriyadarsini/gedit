@@ -45,8 +45,6 @@ BUILT_SOURCES = 			\
 
 NOINST_H_FILES =			\
 	gedit-commands.h		\
-	gedit-file-selector-util.h 	\
-	gedit-io-error-dialogs.h	\
 	gedit-tooltips.h		\
 	gedit-languages-manager.h	\
 	gedit-plugin-manager.h		\
