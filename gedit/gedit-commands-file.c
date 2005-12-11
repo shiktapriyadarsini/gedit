@@ -800,7 +800,9 @@ file_save (GeditTab    *tab,
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled");
 
-		return file_save_as (tab, window);
+		file_save_as (tab, window);
+		
+		return;
 	}
 
 	uri_for_display = gedit_document_get_uri_for_display (doc);
@@ -877,19 +879,26 @@ _gedit_cmd_file_save_documents_list (GeditWindow *window,
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 
-		/* FIXME: manage readonly files - Paolo (Oct. 12, 2005) */
 		if ((state == GEDIT_TAB_STATE_NORMAL) ||
 		    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
 		    (state == GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE))
 		{
-			if (gedit_document_is_untitled (doc))
+			/* FIXME: manage the case of local readonly files owned by the
+			   user is running gedit - Paolo (Dec. 8, 2005) */
+			if (gedit_document_is_untitled (doc) || 
+			    gedit_document_get_readonly (doc))
 			{
-				tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
-								   t);
+				/* Do not save unmodified utitled or readonly documents */
+				if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) ||
+			     	    gedit_document_get_deleted (doc))
+			     	{
+				     	tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
+									   t);
+			     	}
 			}
 			else
 			{
-				_gedit_tab_save (t);
+				file_save (t, window);			
 			}
 		}
 		else
@@ -1296,38 +1305,72 @@ save_and_close_all_documents (const GList  *docs,
 		state = gedit_tab_get_state (t);
 		doc = gedit_tab_get_document (t);
 
+		/* If the state is: ([*] invalid states)
+		   - GEDIT_TAB_STATE_NORMAL: close (and if needed save)
+		   - GEDIT_TAB_STATE_LOADING: close, we are sure the file is unmodified
+		   - GEDIT_TAB_STATE_REVERTING: since the user wants
+		     to return back to the version of the file she previously saved, we can close
+		     without saving (CHECK: are we sure this is the right behavior, suppose the case 
+		     the original file has been deleted)
+		   - [*] GEDIT_TAB_STATE_SAVING: invalid, ClosAll
+		     and Quit are unsensitive if the window state is SAVING.
+		   - [*] GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a
+		     real reason for not closing in this case, we do not save to avoid to run
+		     two operations using the message area at the same time (may be we can remove
+		     this limitation in the future). Note that ClosAll
+		     and Quit are unsensitive if the window state is PRINTING.
+		   - GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW: close (and if needed save)
+		   - GEDIT_TAB_STATE_LOADING_ERROR: close without saving (if the state is LOADING_ERROR then the
+		     document is not modified)
+		   - GEDIT_TAB_STATE_REVERTING_ERROR: we do not close since the document contains errors
+		   - GEDIT_TAB_STATE_SAVING_ERROR: we do not close since the document contains errors
+		   - GEDIT_TAB_STATE_GENERIC_ERROR: we do not close since the document contains
+		     errors (CHECK: we should problably remove this state)
+		   - [*] GEDIT_TAB_STATE_CLOSING: this state is invalid in this case
+		*/
+
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
-		g_return_if_fail (state != GEDIT_TAB_STATE_LOADING_ERROR);
 		g_return_if_fail (state != GEDIT_TAB_STATE_SAVING);
 
-		if (g_list_index ((GList *)docs, doc) >= 0)
+		if ((state != GEDIT_TAB_STATE_SAVING_ERROR) &&
+		    (state != GEDIT_TAB_STATE_GENERIC_ERROR) &&
+		    (state != GEDIT_TAB_STATE_REVERTING_ERROR))
 		{
-			/* The document must be saved before closing */
-			g_return_if_fail (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) ||
-	     				  gedit_document_get_deleted (doc));
+			if ((g_list_index ((GList *)docs, doc) >= 0) &&
+			    (state != GEDIT_TAB_STATE_LOADING) &&
+			    (state != GEDIT_TAB_STATE_LOADING_ERROR) &&			    
+			    (state != GEDIT_TAB_STATE_REVERTING)) /* CHECK: is this the right behavior with REVERTING ?*/
+			{			
+				/* The document must be saved before closing */
+				g_return_if_fail (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) ||
+		     				  gedit_document_get_deleted (doc));
+				
+				/* FIXME: manage the case of local readonly files owned by the
+				   user is running gedit - Paolo (Dec. 8, 2005) */
+				if (gedit_document_is_untitled (doc) ||
+				    gedit_document_get_readonly (doc))
+				{
+					g_object_set_data (G_OBJECT (t),
+							   GEDIT_IS_CLOSING_TAB,
+							   GBOOLEAN_TO_POINTER (TRUE));
 
-			if (gedit_document_is_untitled (doc))
-			{
-				g_object_set_data (G_OBJECT (t),
-						   GEDIT_IS_CLOSING_TAB,
-						   GBOOLEAN_TO_POINTER (TRUE));
-
-				tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
-								   t);
+					tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
+									   t);
+				}
+				else
+				{
+					tabs_to_save_and_close = g_slist_prepend (tabs_to_save_and_close,
+										  t);
+				}
 			}
 			else
 			{
-				tabs_to_save_and_close = g_slist_prepend (tabs_to_save_and_close,
-									  t);
+				/* The document must be closed without saving */
+				tabs_to_close = g_list_prepend (tabs_to_close,
+								t);
 			}
-		}
-		else
-		{
-			/* The document must be closed without saving */
-			tabs_to_close = g_list_prepend (tabs_to_close,
-							t);
 		}
 
 		l = g_list_next (l);

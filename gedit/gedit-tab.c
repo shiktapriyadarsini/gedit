@@ -1961,9 +1961,13 @@ _gedit_tab_can_close (GeditTab *tab)
 	if ((ts == GEDIT_TAB_STATE_LOADING)       ||
 	    (ts == GEDIT_TAB_STATE_LOADING_ERROR) ||
 	    (ts == GEDIT_TAB_STATE_REVERTING)     ||
-	    (ts == GEDIT_TAB_STATE_REVERTING_ERROR))
+	    (ts == GEDIT_TAB_STATE_REVERTING_ERROR)) /* CHECK: I'm not sure this is the right behavior for REVERTING ERROR */
 		return TRUE;
 
+	/* Do not close tab with saving errors */
+	if (ts == GEDIT_TAB_STATE_SAVING_ERROR)
+		return FALSE;
+		
 	doc = gedit_tab_get_document (tab);
 
 	/* TODO: we need to save the file also if it has been externally
