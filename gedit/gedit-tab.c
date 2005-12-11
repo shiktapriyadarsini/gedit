@@ -315,16 +315,22 @@ set_message_area (GeditTab  *tab,
 				   (gpointer *)&tab->priv->message_area);
 }
 
-static void 
-unrecoverable_loading_error_message_area_response (GeditMessageArea *message_area,
-						   gint              response_id,
-						   GeditTab         *tab)
+static void
+remove_tab (GeditTab *tab)
 {
 	GeditNotebook *notebook;
 
 	notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (tab)));
 
 	gedit_notebook_remove_tab (notebook, tab);
+}
+
+static void 
+unrecoverable_loading_error_message_area_response (GeditMessageArea *message_area,
+						   gint              response_id,
+						   GeditTab         *tab)
+{
+	remove_tab (tab);
 }
 
 static void 
@@ -700,6 +706,14 @@ document_loading (GeditDocument    *document,
 	tab->priv->times_called++;
 }
 
+static gboolean
+remove_tab_idle (GeditTab *tab)
+{
+	remove_tab (tab);
+
+	return FALSE;
+}
+
 static void
 document_loaded (GeditDocument *document,
 		 const GError  *error,
@@ -711,7 +725,7 @@ document_loaded (GeditDocument *document,
 
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
 			  (tab->priv->state == GEDIT_TAB_STATE_REVERTING));
-	
+
 	g_timer_destroy (tab->priv->timer);
 	tab->priv->timer = NULL;
 	tab->priv->times_called = 0;
@@ -726,17 +740,19 @@ document_loaded (GeditDocument *document,
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
 		else
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
-			
+
 		encoding = gedit_document_get_encoding (document);
 
 		if (error->domain == GEDIT_DOCUMENT_ERROR)
 		{
 			if (error->code == GNOME_VFS_ERROR_CANCELLED)
-			{	
-				unrecoverable_loading_error_message_area_response (NULL,
-										   0,
-										   tab);
-										   
+			{
+				/* remove the tab, but in an idle handler, since
+				 * we are in the handler of doc loaded and we 
+				 * don't want doc and tab to be finalized now.
+				 */
+				g_idle_add ((GSourceFunc) remove_tab_idle, tab);
+
 				goto end;
 			}
 			else
