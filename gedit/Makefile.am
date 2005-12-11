@@ -33,7 +33,7 @@ gedit_LDADD =				\
 
 if ENABLE_PYTHON
 gedit_LDADD += \
-	$(top_srcdir)/bindings/python/gedit.la
+	$(top_builddir)/bindings/python/gedit.la
 endif
 
 BUILT_SOURCES = 			\

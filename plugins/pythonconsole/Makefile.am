@@ -10,3 +10,5 @@ plugin_DATA = $(plugin_in_files:.gedit-plugin.desktop.in=.gedit-plugin)
 
 EXTRA_DIST = $(plugin_in_files)
 
+CLEANFILES = $(plugin_DATA)
+DISTCLEANFILES = $(plugin_DATA)
