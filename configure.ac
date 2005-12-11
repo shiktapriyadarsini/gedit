@@ -4,12 +4,12 @@ AC_PREREQ(2.59)
 
 AC_INIT(gedit, 2.13.0, http://bugzilla.gnome.org/enter_bug.cgi?product=gedit)
 AC_CONFIG_SRCDIR(gedit/gedit.c)
-AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
-
 AC_CONFIG_MACRO_DIR([m4])
 
 GEDIT_MAJOR=2.10
 AC_SUBST(GEDIT_MAJOR)
+
+AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 
 AM_MAINTAINER_MODE
 AM_CONFIG_HEADER(config.h)
@@ -309,8 +309,6 @@ plugins/indent/Makefile
 plugins/Makefile
 plugins/pythonconsole/Makefile
 plugins/sample/Makefile
-plugins/savecopy/Makefile
-plugins/shell_output/Makefile
 plugins/sort/Makefile
 plugins/spell/Makefile
 plugins/taglist/Makefile
