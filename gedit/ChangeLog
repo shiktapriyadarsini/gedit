@@ -1,3 +1,8 @@
+2005-12-17  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit-session.c: use "rm -f" instead if "rm -r", spotted by
+	Christian Persch.
+
 ==== gedit 2.12.1 ====
 
 ==== gedit 2.12.0 ====

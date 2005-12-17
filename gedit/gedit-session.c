@@ -91,7 +91,7 @@ client_save_yourself_cb (GnomeClient *client,
 {
 	const gchar *prefix;
 
-	char *argv[] = { "rm", "-r", NULL };
+	char *argv[] = { "rm", "-f", NULL };
 
 	gedit_debug (DEBUG_SESSION, "");
 
