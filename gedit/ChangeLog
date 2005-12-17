@@ -1,5 +1,11 @@
 2005-12-17  Paolo Borelli  <pborelli@katamail.com>
 
+	* gedit-document.c: do not emit "can-find-again" signal during
+	replace all in order to improve performance. Patch by Luis
+	Menina (liberforce@fr.st). Bug #160917.
+
+2005-12-17  Paolo Borelli  <pborelli@katamail.com>
+
 	* gedit-session.c: use "rm -f" instead if "rm -r", spotted by
 	Christian Persch.
 

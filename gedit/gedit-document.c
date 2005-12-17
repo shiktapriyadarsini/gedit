@@ -2418,8 +2418,8 @@ gedit_document_set_last_replace_text (GeditDocument* doc, const gchar *text)
 	doc->priv->last_replace_text = g_strdup (text);
 }
 
-gboolean
-gedit_document_find (GeditDocument* doc, const gchar* str, gint flags)
+static gboolean
+gedit_document_find_real (GeditDocument* doc, const gchar* str, gint flags)
 {
 	GtkTextIter iter;
 	gboolean found = FALSE;
@@ -2549,6 +2549,18 @@ gedit_document_find (GeditDocument* doc, const gchar* str, gint flags)
 	return found;
 }
 
+gboolean
+gedit_document_find (GeditDocument* doc, const gchar* str, gint flags)
+{
+	gboolean found;	
+
+	found = gedit_document_find_real (doc, str, flags);
+
+ 	g_signal_emit (G_OBJECT (doc), document_signals[CAN_FIND_AGAIN], 0);
+
+	return found;
+}
+
 static gboolean
 gedit_document_find_again (GeditDocument* doc, gint flags)
 {
@@ -2661,12 +2673,12 @@ gedit_document_replace_all (GeditDocument *doc,
 	GEDIT_SEARCH_SET_BACKWARDS (flags, FALSE);
 	GEDIT_SEARCH_SET_FROM_CURSOR (flags, FALSE);
 
-	while (gedit_document_find (doc, find, flags)) 
+	while (gedit_document_find_real (doc, find, flags)) 
 	{
 		gedit_document_replace_selected_text (doc, replace);
-		
+
 		GEDIT_SEARCH_SET_FROM_CURSOR (flags, TRUE);
-		
+
 		++cont;
 	}
 
