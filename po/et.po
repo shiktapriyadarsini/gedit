@@ -4556,26 +4556,3 @@ msgstr "_Küsi vormingut"
 msgid "_Use custom format"
 msgstr "_Oma vormingu kasutamine"
 
-#~ msgid "Symbol &gt;&gt;"
-#~ msgstr "Sümbol &gt;&gt;"
-
-#~ msgid "Symbol &gt;="
-#~ msgstr "Sümbol &gt;="
-
-#~ msgid "Symbol &lt;&lt;"
-#~ msgstr "Sümbol &lt;&lt;"
-
-#~ msgid "<b>Undo</b>"
-#~ msgstr "<b>Unustamine</b>"
-
-#~ msgid "_Limit to"
-#~ msgstr "_Piiratud"
-
-#~ msgid "_Unlimited undo"
-#~ msgstr "P_iiramatu unustamine"
-
-#~ msgid "act_ions"
-#~ msgstr "_tegevusega"
-
-#~ msgid "Invalid file name"
-#~ msgstr "Vigane failinimi"
