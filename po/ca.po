@@ -2826,7 +2826,7 @@ msgstr "_Afegeix"
 
 #: ../plugins/spell/gedit-automatic-spell-checker.c:546
 msgid "_Spelling Suggestions..."
-msgstr "_Suggerències d'ortografia"
+msgstr "_Suggeriments d'ortografia"
 
 #: ../plugins/spell/gedit-spell-checker-dialog.c:289
 msgid "Check Spelling"
