@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: gedit2 2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-09-01 07:57+0000\n"
-"PO-Revision-Date: 2006-01-23 08:53+0200\n"
+"PO-Revision-Date: 2006-02-24 15:35+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -92,16 +92,16 @@ msgid ""
 "Background color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Tekstivaliku värv redaktoris. See väärtus kehtib vaid siis, kui \"Kasuta "
-"teema vaikimisi värve\" on välja lülitatud."
+"Valitud teksti taustavärvus redigeerimisalas. See väärtus kehtib vaid siis, "
+"kui \"Vaikevärvuste kasutamine\" on välja lülitatud."
 
 #: ../data/gedit.schemas.in.h:9
 msgid ""
 "Background color for unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Teksti taustavärv redaktoris. See väärtus kehtib vaid siis, kui \"Kasuta "
-"teema vaikimisi värve\" on välja lülitatud."
+"Valimata teksti taustavärvus redigeerimisalas. See väärtus kehtib vaid siis, "
+"kui \"Vaikevärvuste kasutamine\" on välja lülitatud."
 
 #: ../data/gedit.schemas.in.h:10
 msgid "Backup Copy Extension"
@@ -148,12 +148,16 @@ msgid ""
 "Foreground color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
+"Valitud teksti värvus redigeerimisalas. See väärtus kehtib vaid siis, "
+"kui \"Vaikevärvuste kasutamine\" on välja lülitatud."
 
 #: ../data/gedit.schemas.in.h:20
 msgid ""
 "Foreground color for the unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
+"Valimata teksti värvus redigeerimisalas. See väärtus kehtib vaid siis, "
+"kui \"Vaikevärvuste kasutamine\" on välja lülitatud."
 
 #: ../data/gedit.schemas.in.h:21
 msgid "Header Font for Printing"
@@ -260,11 +264,11 @@ msgstr "Prindi reanumbrid"
 
 #: ../data/gedit.schemas.in.h:47
 msgid "Print Syntax Highlighting"
-msgstr ""
+msgstr "Süntaksi esiletõstmine printimisel"
 
 #: ../data/gedit.schemas.in.h:48
 msgid "Printing Line Wrapping Mode"
-msgstr ""
+msgstr "Reamurdmine printimisel"
 
 #: ../data/gedit.schemas.in.h:49
 msgid "Right Margin Position"
@@ -384,7 +388,7 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.h:78
 msgid "Status Bar is Visible"
-msgstr "Olekuriba on nähtaval"
+msgstr "Olekuriba on nähtav"
 
 #: ../data/gedit.schemas.in.h:79
 msgid ""
@@ -410,7 +414,7 @@ msgstr "Tööriistariba nuppude välimus"
 
 #: ../data/gedit.schemas.in.h:83
 msgid "Toolbar is Visible"
-msgstr "Tööriistariba on nähtaval"
+msgstr "Tööriistariba on nähtav"
 
 #: ../data/gedit.schemas.in.h:84
 msgid "Undo Actions Limit (DEPRECATED)"
@@ -418,11 +422,11 @@ msgstr "Unustatavate toimingute piirang (aegunud)"
 
 #: ../data/gedit.schemas.in.h:85
 msgid "Use Default Colors"
-msgstr "Kasuta teema vaikimisi värve"
+msgstr "Vaikevärvuste kasutamine"
 
 #: ../data/gedit.schemas.in.h:86
 msgid "Use Default Font"
-msgstr "Kasuta teema vaikimisi kirjatüüpi"
+msgstr "Vaikekirjatüüpide kasutamine"
 
 #: ../data/gedit.schemas.in.h:87
 msgid ""
@@ -465,7 +469,7 @@ msgstr "Kas gedit peab käesolevat rida esile tõstma."
 
 #: ../data/gedit.schemas.in.h:95
 msgid "Whether gedit should include a document header when printing documents."
-msgstr ""
+msgstr "Kas gedit peab kaasama printimisel ka dokumendi päise."
 
 #: ../data/gedit.schemas.in.h:96
 msgid "Whether gedit should insert spaces instead of tabs."
@@ -473,16 +477,17 @@ msgstr "Kas gedit peab tühikuid tabulaatorite asemel lisama."
 
 #: ../data/gedit.schemas.in.h:97
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr ""
+msgstr "Kas gedit peab printimisel kasutama süntaksi esiletõstmist."
 
 #: ../data/gedit.schemas.in.h:98
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
+"Kas redaktoriaknast allpool olev olekuriba peab olema nähtav."
 
 #: ../data/gedit.schemas.in.h:99
 msgid "Whether the toolbar should be visible in editing windows."
-msgstr ""
+msgstr "Kas tööriistariba peab redigeerimisaknas nähtav olema."
 
 #: ../data/gedit.schemas.in.h:100
 msgid ""
@@ -623,7 +628,7 @@ msgstr "_Vali dokumendid, mida soovid salvestada:"
 #. Secondary label
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:679
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
+msgstr "Kui Sa ei salvesta, siis lähevad kõik muudatused kaduma."
 
 #: ../gedit/dialogs/gedit-dialog-goto-line.c:184
 msgid "Go to Line"
@@ -735,7 +740,7 @@ msgstr "Teksti värvi määramiseks klõpsa sellel nupul"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:653
 msgid "Push this button to configure background color"
-msgstr "Taustavärvi muutmiseks klõpsa sellel nupul"
+msgstr "Tausta värvi muutmiseks klõpsa sellel nupul"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:655
 msgid ""
@@ -808,7 +813,7 @@ msgstr "<span weight=\"bold\">Värvid</span>"
 #: ../gedit/dialogs/gedit-preferences.glade2.h:13
 #: ../plugins/taglist/HTML.tags.xml.in.h:23
 msgid "Bold"
-msgstr ""
+msgstr "Rasvane"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:14
 msgid "Create a _backup copy of files before saving"
@@ -850,7 +855,7 @@ msgstr "_Esiletõstmise resiim:"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:23
 msgid "Highlight matching _bracket"
-msgstr "Vastavuses olevate _sulgude esiletõstmine"
+msgstr "Vastavuses olevate sul_gude esiletõstmine"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:24
 msgid "Insert _spaces instead of tabs"
@@ -898,7 +903,7 @@ msgstr "Eelistused"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:35
 msgid "Se_lection color:"
-msgstr "V_aliku värv:"
+msgstr "Va_liku värv:"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:36
 msgid "Selecte_d text color:"
@@ -906,7 +911,7 @@ msgstr "_Valitud teksti värv:"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:37
 msgid "Strikethrough"
-msgstr ""
+msgstr "Läbijoonitud"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:38
 msgid "Syntax Highlighting"
@@ -958,7 +963,7 @@ msgstr "Määra _vaikeväärtused"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:50
 msgid "_Right margin at column:"
-msgstr "_Paremääris veerule:"
+msgstr "Paremääris _veerule:"
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:51
 msgid "_Tab width:"
@@ -1401,6 +1406,8 @@ msgstr[1] ""
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
+"Dokumendile viimase minuti jooksul tehtud muudatused lähevad jäädavalt "
+"kaotsi."
 
 #: ../gedit/gedit-file.c:550
 #, c-format
@@ -1628,7 +1635,7 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-dialogs.c:248
 msgid "The file you are trying to open is not a regular file."
-msgstr ""
+msgstr "Fail, mida Sa avada proovid pole tavaline fail."
 
 #: ../gedit/gedit-io-error-dialogs.c:294
 msgid ""
@@ -1697,7 +1704,7 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-dialogs.c:507
 msgid "Attempt to log in failed."
-msgstr ""
+msgstr "Tõrge sisselogimisel"
 
 #: ../gedit/gedit-io-error-dialogs.c:513
 msgid ""
@@ -1893,7 +1900,7 @@ msgstr "Kõikide avatud failide sulgemine"
 
 #: ../gedit/gedit-ui.xml.h:7
 msgid "Close the current file"
-msgstr "Aktiivse faili sulgemine"
+msgstr "Käesoleva faili sulgemine"
 
 #: ../gedit/gedit-ui.xml.h:8
 msgid "Configure the application"
@@ -1957,7 +1964,7 @@ msgstr "Peatööriistariba"
 
 #: ../gedit/gedit-ui.xml.h:25
 msgid "Move the current document to a new window"
-msgstr "Tõsta aktiivne dokument uude aknasse"
+msgstr "Käesoleva dokumendi tõstmine uude aknasse"
 
 #: ../gedit/gedit-ui.xml.h:26
 msgid "New"
@@ -2057,11 +2064,11 @@ msgstr "Kõigi avatud failide salvestamine"
 
 #: ../gedit/gedit-ui.xml.h:53
 msgid "Save the current file"
-msgstr "Aktiivse faili salvestamine"
+msgstr "Käesoleva faili salvestamine"
 
 #: ../gedit/gedit-ui.xml.h:54
 msgid "Save the current file with a different name"
-msgstr "Aktiivse faili salvestamine teise nime alla"
+msgstr "Käesoleva faili salvestamine teise nime alla"
 
 #: ../gedit/gedit-ui.xml.h:55
 msgid "Search backwards for the same text"
@@ -2360,7 +2367,7 @@ msgstr "_Dokumendi statistika"
 
 #: ../plugins/docinfo/docinfo.c:48
 msgid "Get statistic info on current document"
-msgstr "Aktiivse dokumendi kohta statistiliste andmete hankimine"
+msgstr "Käesoleva dokumendi kohta statistiliste andmete hankimine"
 
 #: ../plugins/docinfo/docinfo.c:139
 #: ../plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:2
@@ -2598,7 +2605,7 @@ msgstr "_Eemalda kordused"
 
 #: ../plugins/sort/sort.glade2.h:2
 msgid "S_tart at column:"
-msgstr ""
+msgstr "A_lusta veerust:"
 
 #: ../plugins/sort/sort.glade2.h:4
 msgid "You cannot undo a sort operation"
@@ -2657,7 +2664,7 @@ msgstr "Õigekirjakontroll sai kogu dokumendi kontrollitud"
 
 #: ../plugins/spell/gedit-spell-checker.c:79
 msgid "Afrikaans"
-msgstr ""
+msgstr "Aafrika"
 
 #: ../plugins/spell/gedit-spell-checker.c:80
 msgid "Amharic"
@@ -2837,7 +2844,7 @@ msgstr "Mongoolia"
 
 #: ../plugins/spell/gedit-spell-checker.c:126
 msgid "Marathi"
-msgstr ""
+msgstr "Marathi"
 
 #: ../plugins/spell/gedit-spell-checker.c:127
 msgid "Malay"
@@ -2849,7 +2856,7 @@ msgstr "Malta"
 
 #: ../plugins/spell/gedit-spell-checker.c:129
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "Norra bokmål"
 
 #: ../plugins/spell/gedit-spell-checker.c:130
 msgid "Dutch"
@@ -2857,7 +2864,7 @@ msgstr "Hollandi"
 
 #: ../plugins/spell/gedit-spell-checker.c:131
 msgid "Norwegian Nynorsk"
-msgstr ""
+msgstr "Norra nynorsk"
 
 #: ../plugins/spell/gedit-spell-checker.c:132
 msgid "Norwegian"
@@ -2889,7 +2896,7 @@ msgstr "Vene"
 
 #: ../plugins/spell/gedit-spell-checker.c:140
 msgid "Kinyarwanda"
-msgstr ""
+msgstr "Kinyarwanda"
 
 #: ../plugins/spell/gedit-spell-checker.c:141
 msgid "Sardinian"
@@ -2933,15 +2940,15 @@ msgstr "Ukraina"
 
 #: ../plugins/spell/gedit-spell-checker.c:152
 msgid "Uzbek"
-msgstr ""
+msgstr "Usbeki"
 
 #: ../plugins/spell/gedit-spell-checker.c:154
 msgid "Walloon"
-msgstr ""
+msgstr "Vallooni"
 
 #: ../plugins/spell/gedit-spell-checker.c:155
 msgid "Yiddish"
-msgstr ""
+msgstr "Jidiš"
 
 #: ../plugins/spell/gedit-spell-checker.c:156
 msgid "Zulu"
@@ -3030,7 +3037,7 @@ msgstr "_Kontrolli õigekirja"
 
 #: ../plugins/spell/spell.c:55
 msgid "Check the current document for incorrect spelling"
-msgstr "Aktiivse dokumendi õigekirjakontroll"
+msgstr "Käesoleva dokumendi õigekirjakontroll"
 
 #: ../plugins/spell/spell.c:57
 msgid "_Autocheck Spelling"
@@ -3038,7 +3045,7 @@ msgstr "_Automaatne õigekirjakontroll"
 
 #: ../plugins/spell/spell.c:60
 msgid "Automatically spell-check the current document"
-msgstr "Aktiivse dokumendi automaatne õigekirjakontroll"
+msgstr "Käesoleva dokumendi automaatne õigekirjakontroll"
 
 #: ../plugins/spell/spell.c:62
 msgid "Set _Language"
@@ -3046,7 +3053,7 @@ msgstr "_Määra keel"
 
 #: ../plugins/spell/spell.c:65
 msgid "Set the language of the current document"
-msgstr "Aktiivsele dokumendile keele määramine"
+msgstr "Käesolevale dokumendile keele määramine"
 
 #: ../plugins/spell/spell.c:625
 msgid "The document is empty."
@@ -3166,7 +3173,7 @@ msgstr "Raami värv"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:26
 msgid "Box"
-msgstr ""
+msgstr "Kast"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:27
 msgid "Cell rowspan"
@@ -3174,7 +3181,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:28
 msgid "Center"
-msgstr ""
+msgstr "Keskel"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:29
 msgid "Character encoding of linked resource"
@@ -3210,7 +3217,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:37
 msgid "Color of selected links"
-msgstr ""
+msgstr "Valitud viitade värvus"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:38
 msgid "Column span"
@@ -3234,7 +3241,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:43
 msgid "Content type"
-msgstr ""
+msgstr "Sisutüüp"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:44
 msgid "Coordinates"
@@ -3250,7 +3257,7 @@ msgstr "DIV konteinet"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:47
 msgid "Date and time of change"
-msgstr ""
+msgstr "Muutmise kuupäev ja aeg"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:48
 msgid "Declare flag"
@@ -3281,7 +3288,7 @@ msgstr "Kustutatud tekst"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:57
 msgid "Direction"
-msgstr ""
+msgstr "Suund"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:58
 msgid "Directionality"
@@ -3289,7 +3296,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:59
 msgid "Directory list"
-msgstr ""
+msgstr "Kataloogiloend"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:60
 msgid "Disabled"
@@ -3354,7 +3361,7 @@ msgstr "Vorm"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:75
 msgid "Form action handler"
-msgstr ""
+msgstr "Vormi tegevuse käsitleja"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:76
 msgid "Form control group"
@@ -3434,15 +3441,15 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:95
 msgid "HTML - Special Characters"
-msgstr ""
+msgstr "HTML - erimärgid"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:96
 msgid "HTML - Tags"
-msgstr ""
+msgstr "HTML - sildid"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:97
 msgid "HTML root element"
-msgstr ""
+msgstr "HTML juurelement"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:98
 msgid "HTML version"
@@ -3450,7 +3457,7 @@ msgstr "HTML versioon"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:99
 msgid "HTTP header name"
-msgstr ""
+msgstr "HTTP päise nimi"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:100
 msgid "Header cell ID's"
@@ -3494,7 +3501,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:110
 msgid "Horizontal space"
-msgstr ""
+msgstr "Horisontaalne ruum"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:111
 msgid "I18N BiDi over-ride"
@@ -3566,7 +3573,7 @@ msgstr "Viida värv"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:128
 msgid "List item"
-msgstr ""
+msgstr "Loendi kirje"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:129
 msgid "List of MIME types for file upload"
@@ -3594,7 +3601,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:135
 msgid "Mail link"
-msgstr ""
+msgstr "E-posti viit"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:136
 msgid "Margin pixel height"
@@ -3626,7 +3633,7 @@ msgstr "Mitmerealine tekstiväli"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:143
 msgid "Multicolumn"
-msgstr ""
+msgstr "Mitmeveeruline"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:144
 msgid "Multiple"
@@ -3678,11 +3685,11 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:156
 msgid "No word wrap"
-msgstr ""
+msgstr "Tekstimurdmine keelatud"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:157
 msgid "Note"
-msgstr ""
+msgstr "Märkus"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:158
 msgid "Object applet file"
@@ -3770,19 +3777,19 @@ msgstr "OnUnload sündmus"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:179
 msgid "Option group"
-msgstr ""
+msgstr "Valikugrupp"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:180
 msgid "Option selector"
-msgstr ""
+msgstr "Valikuvalija"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:181
 msgid "Ordered list"
-msgstr ""
+msgstr "Järjestatud loend"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:182
 msgid "Output media"
-msgstr ""
+msgstr "Väljundmeedia"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:183
 msgid "Paragraph"
@@ -3790,15 +3797,15 @@ msgstr "Lõik"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:184
 msgid "Paragraph class"
-msgstr ""
+msgstr "Lõigu klass"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:185
 msgid "Paragraph style"
-msgstr ""
+msgstr "Lõigu laad"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:186
 msgid "Preformatted listing"
-msgstr ""
+msgstr "Eelvormindatud loend"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:187
 msgid "Preformatted text"
@@ -3842,7 +3849,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:197
 msgid "Rows"
-msgstr "Ridu"
+msgstr "Read"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:198
 msgid "Rulings between rows and columns"
@@ -3858,11 +3865,11 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:201
 msgid "Script language name"
-msgstr ""
+msgstr "Skriptitava keele nimi"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:202
 msgid "Script statments"
-msgstr ""
+msgstr "Skriptiavaldised"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:203
 msgid "Scrollbar"
@@ -3906,7 +3913,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:213
 msgid "Sound"
-msgstr ""
+msgstr "Heli"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:215
 msgid "Space"
@@ -4090,11 +4097,11 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:260
 msgid "Vertical space"
-msgstr ""
+msgstr "Vertikaalne ruum"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:261
 msgid "Visited link color"
-msgstr ""
+msgstr "Külastatud viitade värvus"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:262
 msgid "Width"
@@ -4142,27 +4149,27 @@ msgstr "Allmärkus"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:12
 msgid "Function cosin"
-msgstr ""
+msgstr "Funktsioon kosiinus"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:13
 msgid "Function e^"
-msgstr ""
+msgstr "Funktsioon e^"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:14
 msgid "Function exp"
-msgstr ""
+msgstr "Funktsioon exp"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:15
 msgid "Function log"
-msgstr ""
+msgstr "Funktsioon log"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:16
 msgid "Function log10"
-msgstr ""
+msgstr "Funktsioon log10"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:17
 msgid "Function sine"
-msgstr ""
+msgstr "Funktsioon siinus"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:18
 msgid "Greek alpha"
@@ -4246,7 +4253,7 @@ msgstr ""
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:38
 msgid "List description"
-msgstr ""
+msgstr "Loendi kirjeldus"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:39
 msgid "List enumerate"
@@ -4294,19 +4301,19 @@ msgstr ""
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:50
 msgid "Symbol <<"
-msgstr "Sümbol <<"
+msgstr "Märk <<"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:51
 msgid "Symbol <="
-msgstr "Sümbol <="
+msgstr "Märk <="
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:52
 msgid "Symbol >="
-msgstr "Sümbol >="
+msgstr "Märk >="
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:53
 msgid "Symbol >>"
-msgstr "Sümbol >>"
+msgstr "Märk >>"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:54
 msgid "Symbol and"
