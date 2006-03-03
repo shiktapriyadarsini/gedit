@@ -1,3 +1,7 @@
+2006-03-03  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit-view.c: backport a crasher (bug #332564)
+
 2005-12-17  Paolo Borelli  <pborelli@katamail.com>
 
 	* gedit-document.c: do not emit "can-find-again" signal during

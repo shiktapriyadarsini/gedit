@@ -59,6 +59,9 @@ struct _GeditViewPrivate
 	GtkWidget *overwrite_mode_statusbar;
 
 	gboolean overwrite_mode;
+
+	/* idle hack to make open-at-line work */
+	guint        scroll_idle;
 };
 
 enum
@@ -358,6 +361,9 @@ gedit_view_finalize (GObject *object)
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 	g_return_if_fail (view->priv != NULL);
 
+	if (view->priv->scroll_idle > 0)
+		g_source_remove (view->priv->scroll_idle);
+
 	g_return_if_fail (view->priv->document != NULL);
 
 	g_signal_handlers_disconnect_matched (G_OBJECT (view->priv->document),
@@ -374,21 +380,23 @@ gedit_view_finalize (GObject *object)
 }
 
 static gboolean
-scroll_to_cursor (GtkTextView *view)
+scroll_to_cursor (GeditView *view)
 {
 	GtkTextBuffer *buffer = NULL;
 
 	gedit_debug (DEBUG_VIEW, "");
 
-	buffer = gtk_text_view_get_buffer (view);
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view->priv->text_view));
 	g_return_val_if_fail (buffer != NULL, FALSE);
 
-	gtk_text_view_scroll_to_mark (view,
+	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view->priv->text_view),
 				      gtk_text_buffer_get_insert (buffer),
 				      0.25,
 				      FALSE,
 				      0.0,
 				      0.0);
+
+	view->priv->scroll_idle = 0;
 
 	return FALSE;
 }
@@ -452,7 +460,7 @@ gedit_view_new (GeditDocument *doc)
 	 * possible: see bug #172277 and bug #311728.
 	 * So we need to do this in an idle handler.
 	 */
-	g_idle_add ((GSourceFunc) scroll_to_cursor, view->priv->text_view);
+	view->priv->scroll_idle = g_idle_add ((GSourceFunc) scroll_to_cursor, view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view->priv->text_view), 
 				    !gedit_document_is_readonly (doc));	
