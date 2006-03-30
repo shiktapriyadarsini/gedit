@@ -1,3 +1,8 @@
+2006-03-30  Steve Frécinaux  <steve@istique.net>
+
+	* gedit/gedit-python-module.c: allow import of python modules with a '.'
+	(bug 336403). Patch by Johan Dahlin.
+
 2006-03-25  Julio M. Merino Vidal  <jmmv@NetBSD.org>
 
 	* configure.ac: Get rid of explicit libbonobo and bonobo-activation
