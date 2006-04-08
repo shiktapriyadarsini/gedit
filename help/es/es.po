@@ -1,13 +1,17 @@
+# translation of gedit.HEAD.po to español
+# maria <maria.majadas@hispalinux.es>, 2006.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2005-10-22 13:06-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: gedit.HEAD\n"
+"POT-Creation-Date: 2006-04-08 22:10+0200\n"
+"PO-Revision-Date: 2006-03-01 14:09+0100\n"
+"Last-Translator: maria <maria.majadas@hispalinux.es>\n"
+"Language-Team: español <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -15,6 +19,7 @@ msgstr ""
 msgid ""
 "@@image: 'figures/gedit_window.png'; md5=65ef55fb44c43c883a271cf28b6c5a0e"
 msgstr ""
+"@@image: 'figures/gedit_window.png'; md5=65ef55fb44c43c883a271cf28b6c5a0e"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -23,6 +28,8 @@ msgid ""
 "@@image: 'figures/gedit_recent_files_menu_icon.png'; "
 "md5=62b4bede31db64226f7e7f9b18f5eb74"
 msgstr ""
+"@@image: 'figures/gedit_recent_files_menu_icon.png'; "
+"md5=62b4bede31db64226f7e7f9b18f5eb74"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -31,6 +38,8 @@ msgid ""
 "@@image: 'figures/gedit_format_bold.png'; "
 "md5=950264711a3f0808bef134fa94b0a582"
 msgstr ""
+"@@image: 'figures/gedit_format_bold.png'; "
+"md5=950264711a3f0808bef134fa94b0a582"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -39,6 +48,8 @@ msgid ""
 "@@image: 'figures/gedit_format_italic.png'; "
 "md5=feb9817676516ae91b9f6b1cd36a5eca"
 msgstr ""
+"@@image: 'figures/gedit_format_italic.png'; "
+"md5=feb9817676516ae91b9f6b1cd36a5eca"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -47,6 +58,8 @@ msgid ""
 "@@image: 'figures/gedit_format_underline.png'; "
 "md5=58f5848d81ea3f0656ccce82ba32ec9c"
 msgstr ""
+"@@image: 'figures/gedit_format_underline.png'; "
+"md5=58f5848d81ea3f0656ccce82ba32ec9c"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -55,9 +68,10 @@ msgid ""
 "@@image: 'figures/gedit_format_strikethrough.png'; "
 "md5=cf962f5d9df721c1f4f4cef2780915ed"
 msgstr ""
+"@@image: 'figures/gedit_format_strikethrough.png'; "
+"md5=cf962f5d9df721c1f4f4cef2780915ed"
 
 #: ../C/gedit.xml:22(title) ../C/gedit.xml:168(revnumber)
-#, fuzzy
 msgid "gedit Manual V2.8"
 msgstr "Manual de gedit V2.5"
 
@@ -70,7 +84,6 @@ msgid "2003"
 msgstr "2003"
 
 #: ../C/gedit.xml:26(year)
-#, fuzzy
 msgid "2004"
 msgstr "2003"
 
@@ -95,13 +108,12 @@ msgid "GNOME Documentation Project"
 msgstr "Proyecto de documentación de GNOME"
 
 #: ../C/gedit.xml:48(firstname) ../C/gedit.xml:171(para)
-#, fuzzy
 msgid "Sun Java Desktop System Documentation Team"
 msgstr "Equipo de documentación de Sun GNOME"
 
 #: ../C/gedit.xml:52(email)
 msgid "gdocteam@sun.com"
-msgstr ""
+msgstr "gdocteam@sun.com"
 
 #: ../C/gedit.xml:56(firstname)
 msgid "Eric"
@@ -201,32 +213,22 @@ msgid "March 2003"
 msgstr "Marzo 2003"
 
 #: ../C/gedit.xml:152(revnumber)
-#, fuzzy
 msgid "gedit Manual V2.6"
 msgstr "Manual de gedit V2.5"
 
 #: ../C/gedit.xml:153(date)
-#, fuzzy
 msgid "September 2003"
 msgstr "Septiembre 2002"
 
 #: ../C/gedit.xml:160(revnumber)
-#, fuzzy
 msgid "gedit Manual V2.7"
 msgstr "Manual de gedit V2.5"
 
 #: ../C/gedit.xml:161(date)
-#, fuzzy
 msgid "March 2004"
 msgstr "Marzo 2003"
 
-#: ../C/gedit.xml:169(date)
-#, fuzzy
-msgid "August 2004"
-msgstr "Agosto 2002"
-
 #: ../C/gedit.xml:176(releaseinfo)
-#, fuzzy
 msgid "This manual describes version 2.7.91 of gedit."
 msgstr "Este manual describe la versión 2.2.1 del gedit."
 
@@ -247,7 +249,7 @@ msgstr ""
 
 #: ../C/gedit.xml:185(para)
 msgid "User manual for the gedit text editor."
-msgstr ""
+msgstr "Manual de usuario para el editor de textos de gedit."
 
 #: ../C/gedit.xml:188(primary)
 msgid "gedit"
@@ -289,10 +291,9 @@ msgstr ""
 
 #: ../C/gedit.xml:207(term)
 msgid "<guimenu>Applications</guimenu> menu"
-msgstr ""
+msgstr "<guimenu>Aplicaciones</guimenu> menú"
 
 #: ../C/gedit.xml:209(para)
-#, fuzzy
 msgid ""
 "Choose <menuchoice><guisubmenu>Accessories</guisubmenu><guimenuitem>Text "
 "Editor</guimenuitem></menuchoice>."
@@ -372,7 +373,6 @@ msgid "Output window"
 msgstr "Ventana de salida"
 
 #: ../C/gedit.xml:259(para)
-#, fuzzy
 msgid ""
 "The output window displays the output returned by the Shell command plugin."
 msgstr ""
@@ -384,7 +384,6 @@ msgid "Statusbar"
 msgstr "Barra de estado"
 
 #: ../C/gedit.xml:264(para)
-#, fuzzy
 msgid ""
 "The statusbar displays information about current <application>gedit</"
 "application> activity and contextual information about the menu items. The "
@@ -395,14 +394,12 @@ msgstr ""
 "elementos de menú."
 
 #: ../C/gedit.xml:267(para)
-#, fuzzy
 msgid ""
 "Cursor position: the line number and column number where the cursor is "
 "located."
 msgstr "Muestra el número de línea y columna en que se encuentra el cursor."
 
 #: ../C/gedit.xml:270(para)
-#, fuzzy
 msgid ""
 "Edit mode: If the editor is in insert mode, the statusbar contains the text "
 "<guilabel>INS</guilabel>. If the editor is in overwrite mode, the statusbar "
@@ -425,20 +422,17 @@ msgstr ""
 
 #: ../C/gedit.xml:287(para)
 msgid "UI Component"
-msgstr ""
+msgstr "Componente UI"
 
 #: ../C/gedit.xml:289(para) ../C/gedit.xml:1264(para)
-#, fuzzy
 msgid "Action"
 msgstr "Seleccionado"
 
 #: ../C/gedit.xml:294(para)
-#, fuzzy
 msgid "Window"
 msgstr "Ventana de gedit"
 
 #: ../C/gedit.xml:295(para)
-#, fuzzy
 msgid ""
 "Drag a file into the <application>gedit</application> window from another "
 "application such as a file manager."
@@ -447,7 +441,6 @@ msgstr ""
 "siguientes:"
 
 #: ../C/gedit.xml:299(para)
-#, fuzzy
 msgid ""
 "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open</guimenuitem></"
 "menuchoice>."
@@ -456,7 +449,6 @@ msgstr ""
 "guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:300(para)
-#, fuzzy
 msgid ""
 "If you have recently opened the file, choose <menuchoice><guimenu>File</"
 "guimenu><guimenuitem>Open Recent</guimenuitem></menuchoice>."
@@ -466,7 +458,6 @@ msgstr ""
 "guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:305(para)
-#, fuzzy
 msgid "Click on the <guibutton>Open</guibutton> toolbar button."
 msgstr ""
 "Haga clic en el botón <guibutton>Cerrar la ventana de salida</guibutton> "
@@ -474,21 +465,23 @@ msgstr ""
 
 #: ../C/gedit.xml:308(para)
 msgid "Right-click popup menu"
-msgstr ""
+msgstr "Hace click en el botón izquierda para que emerja el menú"
 
 #: ../C/gedit.xml:309(para)
 msgid ""
 "Right-click on the file in a file manager window, then choose <guilabel>Open "
 "With</guilabel> from the popup menu."
 msgstr ""
+"Haga click en el archivo de la ventana del selector de archivos, entonces "
+"elija <guilabel>Abrir con</guilabel> desde el menú emergente."
 
 #: ../C/gedit.xml:312(para)
 msgid "Shortcut keys"
-msgstr ""
+msgstr "Teclas atajo"
 
 #: ../C/gedit.xml:313(para)
 msgid "Press <keycombo><keycap>Ctrl</keycap><keycap>O</keycap></keycombo>."
-msgstr ""
+msgstr "Presione <keycombo><keycap>Ctrl</keycap><keycap>O</keycap></keycombo>."
 
 #: ../C/gedit.xml:278(para)
 msgid ""
@@ -505,17 +498,28 @@ msgid ""
 "><placeholder-11/></row><row valign=\"top\"><placeholder-12/><placeholder-13/"
 "></row></tbody></tgroup></informaltable>"
 msgstr ""
+"En <application>gedit</application>, puede realizar la misma acción de "
+"muchas maneras. Por ejemplo, puede abrir un archivo de las siguientes "
+"maneras: <informaltable frame=\"all\"><tgroup cols=\"2\" colsep=\"1\" rowsep="
+"\"1\"><colspec colname=\"COLSPEC0\" colwidth=\"50*\"/><colspec colname="
+"\"COLSPEC1\" colwidth=\"50*\"/><thead><row valign=\"top\"><entry colname="
+"\"COLSPEC0\"><placeholder-1/></entry><entry colname=\"COLSPEC1\" align=\"left"
+"\"><placeholder-2/></entry></row></thead><tbody><row valign=\"top"
+"\"><placeholder-3/><placeholder-4/></row><row valign=\"top\"><placeholder-5/"
+"><entry><placeholder-6/><placeholder-7/></entry></row><row valign=\"top"
+"\"><placeholder-8/><placeholder-9/></row><row valign=\"top\"><placeholder-10/"
+"><placeholder-11/></row><row valign=\"top\"><placeholder-12/><placeholder-13/"
+"></row></tbody></tgroup></informaltable>"
 
 #: ../C/gedit.xml:319(para)
 msgid "This manual documents functionality from the menubar."
-msgstr ""
+msgstr "Este manual de documentos funciona desde la barra de menú."
 
 #: ../C/gedit.xml:325(title)
 msgid "To Open a File"
 msgstr "Para abrir un archivo"
 
 #: ../C/gedit.xml:326(para)
-#, fuzzy
 msgid ""
 "To open a file, choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open</"
 "guimenuitem></menuchoice> to display the <guilabel>Open File</guilabel> "
@@ -563,7 +567,6 @@ msgid "Shows Recent Files menu icon."
 msgstr "símbolo de menú Mostrar archivos recientes."
 
 #: ../C/gedit.xml:330(para)
-#, fuzzy
 msgid ""
 "The application records the paths and filenames of the five most recent "
 "files that you edited and displays the files as menu items on the "
@@ -646,7 +649,6 @@ msgid "You can save files in the following ways:"
 msgstr "Puede guardar archivos de cualquiera de estas maneras:"
 
 #: ../C/gedit.xml:355(para)
-#, fuzzy
 msgid ""
 "To save changes to an existing file, choose <menuchoice><guimenu>File</"
 "guimenu><guimenuitem>Save</guimenuitem></menuchoice>."
@@ -656,7 +658,6 @@ msgstr ""
 "guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:357(para)
-#, fuzzy
 msgid ""
 "To save a new file or to save an existing file under a new filename, choose "
 "<menuchoice><guimenu>File</guimenu><guimenuitem>Save As</guimenuitem></"
@@ -681,7 +682,6 @@ msgstr ""
 "guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:362(para)
-#, fuzzy
 msgid ""
 "To close all of the files that are currently open in <application>gedit</"
 "application>, choose <menuchoice><guimenu>Documents</"
@@ -724,6 +724,7 @@ msgstr ""
 "guimenu><guimenuitem>Cortar</guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:375(para)
+#, fuzzy
 msgid ""
 "To permanently delete the selected text from the file, choose "
 "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Delete</guimenuitem></"
@@ -759,7 +760,6 @@ msgid "To Undo or Redo Edits"
 msgstr "Para deshacer o rehacer cambios"
 
 #: ../C/gedit.xml:386(para)
-#, fuzzy
 msgid ""
 "To undo an edit, choose <menuchoice><guimenu>Edit</"
 "guimenu><guimenuitem>Undo</guimenuitem></menuchoice>. To redo an edit, "
@@ -812,7 +812,6 @@ msgid "\\n"
 msgstr "\\n"
 
 #: ../C/gedit.xml:400(para) ../C/gedit.xml:440(para)
-#, fuzzy
 msgid "Use this escape sequence to specify a new line."
 msgstr "Utilice esta secuencia de escape para especificar una línea nueva"
 
@@ -821,7 +820,6 @@ msgid "\\t"
 msgstr "\\t"
 
 #: ../C/gedit.xml:404(para) ../C/gedit.xml:444(para)
-#, fuzzy
 msgid "Use this escape sequence to specify a tab character."
 msgstr "Utilice esta secuencia de escape para especificar un tabulador"
 
@@ -830,7 +828,6 @@ msgid "\\r"
 msgstr "\\r"
 
 #: ../C/gedit.xml:408(para) ../C/gedit.xml:448(para)
-#, fuzzy
 msgid "Use this escape sequence to specify a carriage return."
 msgstr "Utilice esta secuencia de escape para especificar un retorno de carro"
 
@@ -854,7 +851,6 @@ msgstr ""
 "palabras completas que se hayan escrito."
 
 #: ../C/gedit.xml:416(para) ../C/gedit.xml:458(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Search backwards</guilabel> option to search backwards "
 "to the beginning of the file."
@@ -886,7 +882,6 @@ msgstr ""
 "selecciona."
 
 #: ../C/gedit.xml:422(para)
-#, fuzzy
 msgid ""
 "To find the next occurrence of the string, click <guibutton>Find</guibutton> "
 "or choose <menuchoice><guimenu>Search</guimenu><guimenuitem>Find Next</"
@@ -945,7 +940,6 @@ msgstr ""
 "y minúsculas que se hayan escrito."
 
 #: ../C/gedit.xml:464(para)
-#, fuzzy
 msgid ""
 "Click <guibutton>Replace</guibutton> to replace the occurrence of the string "
 "with the text in the <guilabel>Replace with</guilabel> field. Click "
@@ -968,7 +962,6 @@ msgid "To Open a File from a URI"
 msgstr "Para abrir un archivo desde una URI"
 
 #: ../C/gedit.xml:475(para)
-#, fuzzy
 msgid ""
 "To open a file from a Uniform Resource Identifier (URI), perform the "
 "following steps:"
@@ -977,7 +970,6 @@ msgstr ""
 "lleve a cabo los pasos siguientes:"
 
 #: ../C/gedit.xml:478(para)
-#, fuzzy
 msgid ""
 "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Location</"
 "guimenuitem></menuchoice> to display the <guilabel>Open Location</guilabel> "
@@ -988,7 +980,6 @@ msgstr ""
 "guilabel>."
 
 #: ../C/gedit.xml:481(para)
-#, fuzzy
 msgid "Enter the URI of the file that you want to open."
 msgstr ""
 "Use este cuadro de incremento para especificar el número de copias del "
@@ -999,14 +990,14 @@ msgid ""
 "Use the <guilabel>Character coding</guilabel> drop-down list to select the "
 "appropriate character coding."
 msgstr ""
+"Use el <guilabel>código de Carácter</guilabel> la lsita de abajo para "
+"seleccione el código de carácter apropiado."
 
 #: ../C/gedit.xml:487(para)
-#, fuzzy
 msgid "Click <guibutton>Open</guibutton>."
 msgstr "Para terminar la búsqueda, haga clic en <guibutton>Cerrar</guibutton>."
 
 #: ../C/gedit.xml:490(para)
-#, fuzzy
 msgid ""
 "Alternatively, type <command>gedit <replaceable>URI</replaceable></command> "
 "at a command line, where <replaceable>URI</replaceable> is the URI of the "
@@ -1032,7 +1023,6 @@ msgid "To Pipe the Output of a Command to a File"
 msgstr "Para redirigir la salida de un comando a un archivo"
 
 #: ../C/gedit.xml:496(para)
-#, fuzzy
 msgid ""
 "You can use <application>gedit</application> to pipe the output of a command "
 "to a text file. For example, to pipe the output of an <command>ls</command> "
@@ -1109,10 +1099,9 @@ msgstr ""
 
 #: ../C/gedit.xml:517(title)
 msgid "To Set the Page Options"
-msgstr ""
+msgstr "Para asignar la página de opciones"
 
 #: ../C/gedit.xml:519(para)
-#, fuzzy
 msgid ""
 "To set the page options, choose <menuchoice><guimenu>File</"
 "guimenu><guimenuitem>Page Setup</guimenuitem></menuchoice> to display the "
@@ -1123,7 +1112,6 @@ msgstr ""
 "guilabel>."
 
 #: ../C/gedit.xml:521(para)
-#, fuzzy
 msgid ""
 "The <guilabel>Page Setup</guilabel> dialog enables you to specify the "
 "following print options:"
@@ -1132,19 +1120,21 @@ msgstr ""
 "opciones de impresión siguientes:"
 
 #: ../C/gedit.xml:524(title)
-#, fuzzy
 msgid "General Tabbed Section"
 msgstr "Pestaña Impresora"
 
 #: ../C/gedit.xml:526(guilabel)
 msgid "Print syntax highlighting"
-msgstr ""
+msgstr "Imprimir con sintaxis subrayada"
 
 #: ../C/gedit.xml:528(para)
 msgid ""
 "Select this option to print syntax highlighting. For more information about "
 "syntax highlighting, see <xref linkend=\"gedit-set-highlightmode\"/>."
 msgstr ""
+"Seleccione esta opción para imprimir con sintaxis subrayada. Para más "
+"información sob re sintaxis subrayada, ver <xref linkend=\"gedit-set-"
+"highlightmode\"/>."
 
 #: ../C/gedit.xml:531(guilabel)
 msgid "Print page headers"
@@ -1167,9 +1157,10 @@ msgid ""
 "Select the <guilabel>Print line numbers</guilabel> option to include line "
 "numbers when you print a file."
 msgstr ""
+"Seleccione la <guilabel>Impresión de línea de números</guilabel> opción para "
+"incluir línea de números cuando imprime un archivo."
 
 #: ../C/gedit.xml:540(para)
-#, fuzzy
 msgid ""
 "Use the <guilabel>Number every ... lines </guilabel> spin box to specify how "
 "often to print the line numbers, for example every 5 lines, every 10 lines, "
@@ -1181,12 +1172,10 @@ msgstr ""
 "ejemplo cada 5 líneas, cada 10 líneas, etc."
 
 #: ../C/gedit.xml:543(guilabel) ../C/gedit.xml:870(guilabel)
-#, fuzzy
 msgid "Text Wrapping"
 msgstr "Habilitar ajuste de texto"
 
 #: ../C/gedit.xml:545(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Enable text wrapping</guilabel> option to wrap text "
 "onto the next line, at a character level, when you print a file. The "
@@ -1197,7 +1186,6 @@ msgstr ""
 "ajustadas como si fueran una sola en lo que respecta a la numeración."
 
 #: ../C/gedit.xml:547(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Do not split words over two lines</guilabel> option to "
 "wrap text onto the next line, at a word level, when you print a file."
@@ -1234,10 +1222,9 @@ msgstr ""
 
 #: ../C/gedit.xml:568(guilabel)
 msgid "Headers and footers"
-msgstr ""
+msgstr "Encabezamientos y pies de página"
 
 #: ../C/gedit.xml:570(para)
-#, fuzzy
 msgid ""
 "Click on this button to select the font to use to print the headers and "
 "footers in a file."
@@ -1246,7 +1233,6 @@ msgstr ""
 "para imprimir las cabeceras en un archivo."
 
 #: ../C/gedit.xml:574(para)
-#, fuzzy
 msgid ""
 "To reset the fonts to the default fonts for printing a file from "
 "<application>gedit</application>, click <guibutton>Restore Default Fonts</"
@@ -1316,7 +1302,6 @@ msgstr ""
 "opciones de impresión siguientes:"
 
 #: ../C/gedit.xml:598(title)
-#, fuzzy
 msgid "Job Tabbed Section"
 msgstr "Pestaña Papel"
 
@@ -1341,7 +1326,7 @@ msgstr "Seleccione esta opción para imprimir todas las páginas del archivo."
 
 #: ../C/gedit.xml:609(guilabel)
 msgid "Lines"
-msgstr ""
+msgstr "Lineas"
 
 #: ../C/gedit.xml:610(para)
 msgid ""
@@ -1349,6 +1334,9 @@ msgid ""
 "<guilabel>From</guilabel> and <guilabel>To</guilabel> spin boxes to specify "
 "the line range."
 msgstr ""
+"Seleccione esta opción para imprimir sólo las líneas especificadas. Usar el "
+"<guilabel>Desde</guilabel> y <guilabel>A</guilabel> girar las cajas para "
+"especificar el rango de línea."
 
 #: ../C/gedit.xml:613(guilabel)
 msgid "Selection"
@@ -1363,12 +1351,10 @@ msgstr ""
 "sólo está disponible si previamente se ha seleccionado texto."
 
 #: ../C/gedit.xml:620(guilabel)
-#, fuzzy
 msgid "Copies"
 msgstr "Comparar archivos"
 
 #: ../C/gedit.xml:622(para)
-#, fuzzy
 msgid ""
 "Use the <guilabel>Number of copies</guilabel> spin box to specify the number "
 "of copies of the file that you want to print."
@@ -1377,7 +1363,6 @@ msgstr ""
 "archivo que desea imprimir."
 
 #: ../C/gedit.xml:623(para)
-#, fuzzy
 msgid ""
 "If you print multiple copies of the file, select the <guilabel>Collate</"
 "guilabel> option to collate the printed copies."
@@ -1390,12 +1375,10 @@ msgid "Printer Tabbed Section"
 msgstr "Pestaña Impresora"
 
 #: ../C/gedit.xml:632(guilabel)
-#, fuzzy
 msgid "Printer"
 msgstr "Imprimir"
 
 #: ../C/gedit.xml:634(para)
-#, fuzzy
 msgid ""
 "Use this drop-down list to select the printer to which you want to print the "
 "file."
@@ -1405,10 +1388,9 @@ msgstr ""
 
 #: ../C/gedit.xml:637(guilabel)
 msgid "Settings"
-msgstr ""
+msgstr "Propiedades"
 
 #: ../C/gedit.xml:639(para)
-#, fuzzy
 msgid "Use this drop-down list to select the printer settings."
 msgstr ""
 "Use esta lista desplegable para determinar la orientación de la página."
@@ -1419,13 +1401,15 @@ msgid ""
 "example, you can enable or disable duplex printing, or schedule delayed "
 "printing, if this functionality is supported by the printer."
 msgstr ""
+"Para configurar la impresora, haga click <guibutton>Configurar</guibutton>. "
+"Por ejemplo, puede permitir o no la doble impresión, o programar un "
+"impresión para más tarde, si ésta función está soportada en la impresora."
 
 #: ../C/gedit.xml:645(guilabel)
 msgid "Location"
-msgstr ""
+msgstr "Localización"
 
 #: ../C/gedit.xml:647(para)
-#, fuzzy
 msgid ""
 "Use this drop-down list to select one of the following print destinations:"
 msgstr ""
@@ -1433,10 +1417,9 @@ msgstr ""
 
 #: ../C/gedit.xml:652(guilabel)
 msgid "CUPS"
-msgstr ""
+msgstr "CUPS"
 
 #: ../C/gedit.xml:654(para)
-#, fuzzy
 msgid "Print the file to a CUPS printer."
 msgstr "Imprimir un archivo en la impresora."
 
@@ -1445,13 +1428,14 @@ msgid ""
 "If the selected printer is a CUPS printer, <guilabel>CUPS</guilabel> is the "
 "only entry in this drop-down list."
 msgstr ""
+"Si la impresora seleccionada es una impresora CUPS, <guilabel>CUPS</"
+"guilabel> es la única entrada en ésta lista de abajo."
 
 #: ../C/gedit.xml:665(guilabel)
 msgid "lpr"
-msgstr ""
+msgstr "lpr"
 
 #: ../C/gedit.xml:667(para)
-#, fuzzy
 msgid "Print the file to a printer."
 msgstr "Imprimir un archivo en la impresora."
 
@@ -1460,7 +1444,6 @@ msgid "File"
 msgstr "Archivo"
 
 #: ../C/gedit.xml:675(para)
-#, fuzzy
 msgid "Print the file to a PostScript file."
 msgstr "Imprimir un archivo en la impresora."
 
@@ -1469,13 +1452,14 @@ msgid ""
 "Click <guibutton>Save As</guibutton> to display a dialog where you specify "
 "the name and location of the PostScript file."
 msgstr ""
+"Pulse <guibutton>Guardar como</guibutton> para visualñizar un diálogo cuando "
+"especifique el nombre y localización en el archivo PostScript."
 
 #: ../C/gedit.xml:684(guilabel)
 msgid "Custom"
-msgstr ""
+msgstr "Clientela"
 
 #: ../C/gedit.xml:686(para)
-#, fuzzy
 msgid "Use the specified command to print the file."
 msgstr "Seleccione la impresora en la que desee imprimir el archivo."
 
@@ -1484,23 +1468,24 @@ msgid ""
 "Type the name of the command in the text box. Include all command-line "
 "arguments."
 msgstr ""
+"EScriba el nombre del comando en la caja de texto. Incluyendo todos los "
+"argumentos de las linea-comando."
 
 #: ../C/gedit.xml:697(guilabel)
-#, fuzzy
 msgid "State"
 msgstr "Guardar"
 
 #: ../C/gedit.xml:699(para) ../C/gedit.xml:705(para) ../C/gedit.xml:711(para)
 msgid "This functionality is not supported in this version of gedit."
-msgstr ""
+msgstr "Esta funcionalidad no es soportada en esta versión de gedit."
 
 #: ../C/gedit.xml:703(guilabel)
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../C/gedit.xml:709(guilabel)
 msgid "Comment"
-msgstr ""
+msgstr "Comentario"
 
 #: ../C/gedit.xml:719(title)
 msgid "Paper Tabbed Section"
@@ -1523,7 +1508,6 @@ msgid "Width"
 msgstr "Ancho"
 
 #: ../C/gedit.xml:728(para)
-#, fuzzy
 msgid ""
 "Use this spin box to specify the width of the paper. Use the adjacent drop-"
 "down list to change the measurement unit."
@@ -1576,16 +1560,14 @@ msgstr ""
 
 #: ../C/gedit.xml:751(guilabel)
 msgid "Paper tray"
-msgstr ""
+msgstr "Bandeja de papel"
 
 #: ../C/gedit.xml:753(para)
-#, fuzzy
 msgid "Use this drop-down list to select the paper tray."
 msgstr ""
 "Use esta lista desplegable para determinar la orientación de la página."
 
 #: ../C/gedit.xml:762(title)
-#, fuzzy
 msgid "To Customize the Toolbar"
 msgstr "Para personalizar la barra de herramientas y la barra de estado"
 
@@ -1615,7 +1597,7 @@ msgstr "Muestra la barra de herramientas predeterminada."
 
 #: ../C/gedit.xml:770(guimenuitem)
 msgid "Icons Only"
-msgstr ""
+msgstr "Sólo iconos"
 
 #: ../C/gedit.xml:771(para)
 msgid "Display icons only."
@@ -1623,19 +1605,17 @@ msgstr "Muestra sólo los iconos."
 
 #: ../C/gedit.xml:774(guimenuitem)
 msgid "Text for All Icons"
-msgstr ""
+msgstr "Texto para Todos los Iconos"
 
 #: ../C/gedit.xml:775(para)
-#, fuzzy
 msgid "Display icons, and display text for all icons."
 msgstr "Muestra iconos y texto junto a algunos de ellos."
 
 #: ../C/gedit.xml:778(guimenuitem)
 msgid "Text for Important Icons"
-msgstr ""
+msgstr "Texto para los Iconos Importantes"
 
 #: ../C/gedit.xml:779(para)
-#, fuzzy
 msgid "Display icons, and display text for the important icons."
 msgstr "Muestra iconos y texto junto a algunos de ellos."
 
@@ -1650,10 +1630,9 @@ msgstr ""
 
 #: ../C/gedit.xml:787(title)
 msgid "To Set the Syntax Highlighting Mode"
-msgstr ""
+msgstr "Para elegir el Modo de Subrayado de Sintaxis"
 
 #: ../C/gedit.xml:788(para)
-#, fuzzy
 msgid ""
 "To set the syntax highlighting mode, choose <menuchoice><guimenu>View</"
 "guimenu><guimenuitem>Highlight Mode</guimenuitem></menuchoice>, then select "
@@ -1662,61 +1641,74 @@ msgstr ""
 "Para guardar cambios en el archivo abierto, seleccione "
 "<menuchoice><guimenu>Archivo</guimenu><guimenuitem>Guardar</guimenuitem></"
 "menuchoice> o haga clic en <guibutton>Guardar</guibutton> desde la barra de "
-"herramientas."
+"herramientas"
 
 #: ../C/gedit.xml:791(guimenuitem)
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: ../C/gedit.xml:793(para)
 msgid "Do not display any syntax highlighting."
-msgstr ""
+msgstr "No visualizar sintaxis subrayada."
 
 #: ../C/gedit.xml:797(guisubmenu)
 msgid "Sources"
-msgstr ""
+msgstr "Fuentes"
 
 #: ../C/gedit.xml:799(para)
 msgid ""
 "Display syntax highlighting to edit source code. Use the "
 "<guisubmenu>Sources</guisubmenu> submenu to select the source code type."
 msgstr ""
+"Visualizar la sintaxis subrayada para editar el código fuente. Use "
+"<guisubmenu>Fuentes</guisubmenu> submenú para seleccionar el tipo de código "
+"fuente."
 
 #: ../C/gedit.xml:803(guisubmenu)
 msgid "Markup"
-msgstr ""
+msgstr "Aumentar"
 
 #: ../C/gedit.xml:805(para)
 msgid ""
 "Display syntax highlighting to edit markup code. Use the <guisubmenu>Markup</"
 "guisubmenu> submenu to select the markup code type."
 msgstr ""
+"Visualizar la sintaxis subrayada para editar el código de aumento. Use "
+"<guisubmenu>Aumentar</guisubmenu> submenú para selecionar el tipo de código "
+"de aumento."
 
 #: ../C/gedit.xml:809(guisubmenu)
 msgid "Scripts"
-msgstr ""
+msgstr "Guiones"
 
 #: ../C/gedit.xml:811(para)
 msgid ""
 "Display syntax highlighting to edit script code. Use the "
 "<guisubmenu>Scripts</guisubmenu> submenu to select the script code type."
 msgstr ""
+"Visualizar la sintaxis subrayada para editar el código de scripts. Use "
+"<guisubmenu>Scripts</guisubmenu> submenú para selecionar el tipo de código "
+"de script."
 
 #: ../C/gedit.xml:815(guisubmenu)
 msgid "Others"
-msgstr ""
+msgstr "Otros"
 
 #: ../C/gedit.xml:817(para)
 msgid ""
 "Display syntax highlighting to edit other types of code. Use the "
 "<guisubmenu>Others</guisubmenu> submenu to select the code type."
 msgstr ""
+"Visualizar la sintaxis subrayado para editor otros tipos de códigos. Use "
+"<guisubmenu>Otros</guisubmenu> submenú para selecionar el tipo de código."
 
 #: ../C/gedit.xml:821(para)
 msgid ""
 "For more information about how to configure syntax highlighting, see <xref "
 "linkend=\"gedit-prefs-syntax\"/>."
 msgstr ""
+"Para más información sobre como configurar el subrayado de sintaxis, ver "
+"<xref linkend=\"gedit-prefs-syntax\"/>."
 
 #: ../C/gedit.xml:828(title)
 msgid "Preferences"
@@ -1743,7 +1735,6 @@ msgid "Tabs"
 msgstr "Tabuladores"
 
 #: ../C/gedit.xml:844(para)
-#, fuzzy
 msgid ""
 "Use the <guilabel>Tabs width</guilabel> spin box to specify the width of the "
 "space that <application> gedit</application> inserts when you press the "
@@ -1754,7 +1745,6 @@ msgstr ""
 "<keycap>Tab</keycap>."
 
 #: ../C/gedit.xml:845(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Insert spaces instead of tabs</guilabel> option to "
 "specify that <application> gedit</application> inserts spaces instead of a "
@@ -1765,12 +1755,10 @@ msgstr ""
 "clic en la tecla <keycap>Tab</keycap>."
 
 #: ../C/gedit.xml:848(guilabel)
-#, fuzzy
 msgid "Auto Indentation"
 msgstr "Sangría automática"
 
 #: ../C/gedit.xml:849(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Enable auto indentation</guilabel> option to specify "
 "that the next line starts at the indentation level of the current line."
@@ -1780,10 +1768,9 @@ msgstr ""
 
 #: ../C/gedit.xml:852(guilabel)
 msgid "File Saving"
-msgstr ""
+msgstr "Guardando Archivo"
 
 #: ../C/gedit.xml:854(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Create a backup copy of files before saving</guilabel> "
 "option to create a backup copy of a file each time you save the file. The "
@@ -1794,7 +1781,6 @@ msgstr ""
 "contiene una tilde (~) al final del nombre de archivo."
 
 #: ../C/gedit.xml:855(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Autosave files every ... minutes</guilabel> option to "
 "automatically save the current file at regular intervals. Use the spin box "
@@ -1809,7 +1795,6 @@ msgid "Undo"
 msgstr "Deshacer"
 
 #: ../C/gedit.xml:860(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Limit to ... actions</guilabel> option to set a limit "
 "on the number of editing actions that you can undo. Use the spin box to "
@@ -1820,7 +1805,6 @@ msgstr ""
 "el número máximo de acciones que se pueden deshacer."
 
 #: ../C/gedit.xml:861(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Unlimited undo</guilabel> option to set no limit on the "
 "number of editing actions that you can undo."
@@ -1834,7 +1818,6 @@ msgid "View"
 msgstr "Ver"
 
 #: ../C/gedit.xml:872(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Enable text wrapping</guilabel> option to wrap text "
 "onto the next line, at a character level, when you reach the text window "
@@ -1844,7 +1827,6 @@ msgstr ""
 "del carácter, al llegar al límite de la ventana de texto."
 
 #: ../C/gedit.xml:873(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Do not split words over two lines</guilabel> option to "
 "wrap text onto the next line, at a word level, when you reach the text "
@@ -1854,7 +1836,6 @@ msgstr ""
 "de palabra, al llegar al límite de la ventana de texto."
 
 #: ../C/gedit.xml:879(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Display line numbers</guilabel> option to display line "
 "numbers on the left side of the <application>gedit</application> window."
@@ -1864,16 +1845,17 @@ msgstr ""
 
 #: ../C/gedit.xml:883(guilabel)
 msgid "Right Margin"
-msgstr ""
+msgstr "Margen Derecho"
 
 #: ../C/gedit.xml:885(para)
 msgid ""
 "Select the <guilabel>Display right margin</guilabel> option to display a "
 "vertical line that indicates the right margin."
 msgstr ""
+"Seleccionar <guilabel>Visualizar margen derecho</guilabel> opción para "
+"visualizar la linea vertical que indica el margen derecho."
 
 #: ../C/gedit.xml:886(para)
-#, fuzzy
 msgid ""
 "Use the <guilabel>Right margin at column</guilabel> spin box to specify the "
 "location of the vertical line."
@@ -1882,17 +1864,14 @@ msgstr ""
 "opciones de impresión siguientes:"
 
 #: ../C/gedit.xml:893(title)
-#, fuzzy
 msgid "Font &amp; Colors"
 msgstr "Fuentes y colores"
 
 #: ../C/gedit.xml:895(guilabel)
-#, fuzzy
 msgid "Font"
 msgstr "Fuentes"
 
 #: ../C/gedit.xml:897(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Use default theme font</guilabel> option to use the "
 "default system font for the text in the <application>gedit</application> "
@@ -1902,7 +1881,6 @@ msgstr ""
 "texto de la ventana de <application>gedit</application>."
 
 #: ../C/gedit.xml:898(para)
-#, fuzzy
 msgid ""
 "The <guilabel>Editor font</guilabel> field displays the font that "
 "<application>gedit</application> uses to display text. Click on the button "
@@ -1914,10 +1892,9 @@ msgstr ""
 
 #: ../C/gedit.xml:901(guilabel)
 msgid "Colors"
-msgstr ""
+msgstr "Colores"
 
 #: ../C/gedit.xml:903(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Use default theme colors</guilabel> option to use the "
 "default theme colors in the <application>gedit</application> text window."
@@ -1926,7 +1903,6 @@ msgstr ""
 "ventana de texto de <application>gedit</application>."
 
 #: ../C/gedit.xml:904(para)
-#, fuzzy
 msgid ""
 "Click on the <guibutton>Normal text color</guibutton> color button to "
 "display the color selector dialog. Select a color to use to display normal "
@@ -1938,7 +1914,6 @@ msgstr ""
 "<application>gedit</application>."
 
 #: ../C/gedit.xml:905(para)
-#, fuzzy
 msgid ""
 "Click on the <guibutton>Background color</guibutton> color button to display "
 "the color selector dialog. Select a background color for the "
@@ -1949,7 +1924,6 @@ msgstr ""
 "fondo para la ventana de texto de <application>gedit</application>."
 
 #: ../C/gedit.xml:906(para)
-#, fuzzy
 msgid ""
 "Click on the <guibutton>Selected text color</guibutton> color button to "
 "display the color selector dialog. Select a color to use to display selected "
@@ -1960,7 +1934,6 @@ msgstr ""
 "el color que desee usar en la visualización del texto seleccionado."
 
 #: ../C/gedit.xml:908(para)
-#, fuzzy
 msgid ""
 "Click on the <guibutton>Selection color</guibutton> color button to display "
 "the color selector dialog. Select a background color to use to highlight a "
@@ -1972,11 +1945,11 @@ msgstr ""
 
 #: ../C/gedit.xml:915(title)
 msgid "Syntax Highlighting"
-msgstr ""
+msgstr "Subrayado de Sintaxis"
 
 #: ../C/gedit.xml:917(guilabel)
 msgid "Enable syntax highlighting"
-msgstr ""
+msgstr "Permitir subrayado de sintaxis"
 
 #: ../C/gedit.xml:919(para)
 #, fuzzy
@@ -1985,33 +1958,33 @@ msgstr "Seleccione esta opción para imprimir todas las páginas del archivo."
 
 #: ../C/gedit.xml:922(guilabel)
 msgid "Highlight mode"
-msgstr ""
+msgstr "Modo subrayado"
 
 #: ../C/gedit.xml:924(para)
-#, fuzzy
 msgid "Use this drop-down list to select a syntax mode to configure."
 msgstr ""
 "Use esta lista desplegable para determinar la orientación de la página."
 
 #: ../C/gedit.xml:927(guilabel)
 msgid "Elements"
-msgstr ""
+msgstr "Elementos"
 
 #: ../C/gedit.xml:929(para)
-#, fuzzy
 msgid "Use this list box to select a syntax element to configure."
 msgstr ""
 "Use esta lista desplegable para determinar la orientación de la página."
 
 #: ../C/gedit.xml:932(term)
 msgid "Format buttons"
-msgstr ""
+msgstr "Botones de Formato"
 
 #: ../C/gedit.xml:934(para)
 msgid ""
 "Use the following buttons to change the format of the selected syntax "
 "element:"
 msgstr ""
+"Use los siguientes botones para cambiar el formato de la sintaxis "
+"seleccionada:"
 
 #: ../C/gedit.xml:942(para)
 msgid "Button"
@@ -2019,45 +1992,43 @@ msgstr "Botón"
 
 #: ../C/gedit.xml:944(para)
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #: ../C/gedit.xml:956(phrase)
 msgid "Shows icon for bold format."
-msgstr ""
+msgstr "Mostrar icono para formato negrita."
 
 #: ../C/gedit.xml:962(para)
-#, fuzzy
 msgid "Bold"
 msgstr "Cuerpo"
 
 #: ../C/gedit.xml:974(phrase)
 msgid "Shows icon for italic format."
-msgstr ""
+msgstr "Mostrar icono para formato cursiva."
 
 #: ../C/gedit.xml:980(para)
 msgid "Italic"
-msgstr ""
+msgstr "Cursiva"
 
 #: ../C/gedit.xml:992(phrase)
 msgid "Shows icon for underline."
-msgstr ""
+msgstr "Mostrar icono para subrayar."
 
 #: ../C/gedit.xml:998(para)
-#, fuzzy
 msgid "Underline"
 msgstr "Sangrar líneas"
 
 #: ../C/gedit.xml:1010(phrase)
 msgid "Shows icon for strikethrough."
-msgstr ""
+msgstr "Mostrar icono para tachar."
 
 #: ../C/gedit.xml:1016(para)
 msgid "Strikethrough"
-msgstr ""
+msgstr "Tachar"
 
 #: ../C/gedit.xml:1026(guilabel)
 msgid "Foreground"
-msgstr ""
+msgstr "Primer plano"
 
 #: ../C/gedit.xml:1028(para)
 msgid ""
@@ -2065,9 +2036,11 @@ msgid ""
 "Click on the color button to display the color selector dialog, then select "
 "the font color."
 msgstr ""
+"Seleccione ésta opción para cambiar la fuente de color del elemento de "
+"sintaxis seleccionado. Haga click en el botón de color para visualizar el "
+"diálogo de selección de color, entonces seleccione la fuente de color."
 
 #: ../C/gedit.xml:1031(guilabel)
-#, fuzzy
 msgid "Background"
 msgstr "Color del fondo"
 
@@ -2077,9 +2050,11 @@ msgid ""
 "element. Click on the color button to display the color selector dialog, "
 "then select the background color."
 msgstr ""
+"Seleccione ésta opción para cambiar el color de fondo del elemento de "
+"sintaxis seleccionado. Haga click en el botón de color para visualizar el "
+"diálogo de selección de color, entonces seleccione el color de fondo."
 
 #: ../C/gedit.xml:1036(guibutton)
-#, fuzzy
 msgid "Reset to Default"
 msgstr "Escritorio predeterminado"
 
@@ -2088,6 +2063,8 @@ msgid ""
 "Click on this button to reset the foreground color and background color of "
 "the selected syntax element to the default values."
 msgstr ""
+"Haga click en éste botón para reiniciar los valores por defecto del color de "
+"primer plano y el color de fondo del elemento de sintaxis seleccionado."
 
 #: ../C/gedit.xml:1045(title)
 msgid "Plugins"
@@ -2131,10 +2108,9 @@ msgstr "Función"
 
 #: ../C/gedit.xml:1066(para) ../C/gedit.xml:1141(para)
 msgid "ChangeCase"
-msgstr ""
+msgstr "CambiarCapitalización"
 
 #: ../C/gedit.xml:1067(para)
-#, fuzzy
 msgid "Changes the case of the selected text."
 msgstr "Ordena el texto seleccionado."
 
@@ -2144,7 +2120,6 @@ msgid "Document Statistics"
 msgstr "Estadísticas del documento"
 
 #: ../C/gedit.xml:1071(para)
-#, fuzzy
 msgid ""
 "Counts the number of lines, words, characters with spaces, characters "
 "without spaces, and bytes in the current file. The plugin displays the "
@@ -2192,7 +2167,7 @@ msgstr "Ordena el texto seleccionado."
 
 #: ../C/gedit.xml:1090(para) ../C/gedit.xml:1183(para)
 msgid "Spell checker"
-msgstr ""
+msgstr "Corrector ortografico"
 
 #: ../C/gedit.xml:1091(para)
 msgid ""
@@ -2200,6 +2175,9 @@ msgid ""
 "<application>gedit</application> to check the spelling automatically, or you "
 "can check the spelling manually, in the specified language."
 msgstr ""
+"Revisar la ortografía en el texto selecionado. Puede configurar "
+"<application>gedit</application> para revisar la ortografía automáticamente, "
+"o puede revisar la ortografía manualmente, en el idioma específicado."
 
 #: ../C/gedit.xml:1095(para) ../C/gedit.xml:1194(para)
 msgid "Tag list"
@@ -2222,7 +2200,6 @@ msgid "Inserts the username of the current user into the file."
 msgstr "Inserta el nombre de usuario actual en el archivo."
 
 #: ../C/gedit.xml:1105(para)
-#, fuzzy
 msgid ""
 "When you choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</"
 "guimenuitem></menuchoice>, the <guilabel>Plugins</guilabel> tabbed section "
@@ -2235,23 +2212,22 @@ msgstr ""
 
 #: ../C/gedit.xml:1107(para)
 msgid "A table that contains two columns:"
-msgstr ""
+msgstr "Una tabla que contiene dos columnas:"
 
 #: ../C/gedit.xml:1110(guilabel)
 msgid "Enabled"
-msgstr ""
+msgstr "Permitido"
 
 #: ../C/gedit.xml:1112(para)
 msgid "Displays check boxes that you select to load the plugins."
 msgstr ""
+"Visualizar casillas de revisión que seleccione para cargar los plugins."
 
 #: ../C/gedit.xml:1116(guilabel)
-#, fuzzy
 msgid "Plugin"
 msgstr "Módulos"
 
 #: ../C/gedit.xml:1118(para)
-#, fuzzy
 msgid ""
 "Displays a list of the plugins that you can use with <application>gedit</"
 "application>."
@@ -2265,6 +2241,9 @@ msgid ""
 "brief description of the selected plugin, including details about the author "
 "of the plugin."
 msgstr ""
+"Botón <guibutton>Plugin Acerca de</guibutton>: use éste botón para "
+"visualizar una breve descrpción del plugin selecionado, incluyendo detalles "
+"sobre el autor del plugin."
 
 #: ../C/gedit.xml:1125(para)
 #, fuzzy
@@ -2279,7 +2258,6 @@ msgstr ""
 "configure\"/> y <xref linkend=\"gedit-date-time-configure\"/>."
 
 #: ../C/gedit.xml:1128(para)
-#, fuzzy
 msgid ""
 "When you load a plugin, <application>gedit</application> adds the plugin to "
 "the appropriate <application>gedit</application> menu, as described in the "
@@ -2309,23 +2287,23 @@ msgstr "Editar"
 #: ../C/gedit.xml:1272(guisubmenu) ../C/gedit.xml:1278(guisubmenu)
 #: ../C/gedit.xml:1284(guisubmenu) ../C/gedit.xml:1290(guisubmenu)
 msgid "Change Case"
-msgstr ""
+msgstr "Cambiar capitalización"
 
 #: ../C/gedit.xml:1144(guimenuitem) ../C/gedit.xml:1272(guimenuitem)
 msgid "All Upper Case"
-msgstr ""
+msgstr "Todo en Mayúscula"
 
 #: ../C/gedit.xml:1147(guimenuitem) ../C/gedit.xml:1278(guimenuitem)
 msgid "All Lower Case"
-msgstr ""
+msgstr "Todo en Minúscula"
 
 #: ../C/gedit.xml:1150(guimenuitem) ../C/gedit.xml:1284(guimenuitem)
 msgid "Invert Case"
-msgstr ""
+msgstr "Capitalización Invertida"
 
 #: ../C/gedit.xml:1153(guimenuitem) ../C/gedit.xml:1290(guimenuitem)
 msgid "Title Case"
-msgstr ""
+msgstr "Capitalización de Título"
 
 #: ../C/gedit.xml:1157(guimenu) ../C/gedit.xml:1174(guimenu)
 #: ../C/gedit.xml:1185(guimenu) ../C/gedit.xml:1187(guimenu)
@@ -2351,15 +2329,15 @@ msgstr "Ejecutar comando"
 
 #: ../C/gedit.xml:1186(guimenuitem)
 msgid "Check Spelling"
-msgstr ""
+msgstr "Revisar ortografía"
 
 #: ../C/gedit.xml:1188(guimenuitem)
 msgid "Autocheck Spelling"
-msgstr ""
+msgstr "Revisar automáticamente la ortografía"
 
 #: ../C/gedit.xml:1190(guimenuitem)
 msgid "Set Language"
-msgstr ""
+msgstr "Elegir Idioma"
 
 #: ../C/gedit.xml:1196(guimenuitem)
 msgid "Tag List"
@@ -2370,12 +2348,10 @@ msgid "Insert User Name"
 msgstr "Insertar nombre de usuario"
 
 #: ../C/gedit.xml:1208(title)
-#, fuzzy
 msgid "To Load a gedit Plugin"
 msgstr "Para cargar módulos de gedit"
 
 #: ../C/gedit.xml:1209(para)
-#, fuzzy
 msgid ""
 "To load a <application>gedit</application> plugin, perform the following "
 "steps:"
@@ -2394,12 +2370,10 @@ msgstr ""
 
 #: ../C/gedit.xml:1215(para) ../C/gedit.xml:1236(para)
 #: ../C/gedit.xml:1373(para)
-#, fuzzy
 msgid "Select the <guilabel>Plugins</guilabel> tab."
 msgstr "Seleccione el módulo <guilabel>Comparar archivos</guilabel>."
 
 #: ../C/gedit.xml:1218(para)
-#, fuzzy
 msgid ""
 "Select the check box next to the name of the plugin that you want to load."
 msgstr ""
@@ -2407,7 +2381,6 @@ msgstr ""
 "archivo que desea imprimir."
 
 #: ../C/gedit.xml:1221(para) ../C/gedit.xml:1242(para)
-#, fuzzy
 msgid ""
 "Click <guibutton>Close</guibutton> to close the <guilabel>Preferences</"
 "guilabel> dialog."
@@ -2416,7 +2389,6 @@ msgstr ""
 "<guilabel>Establecer ubicación de programa</guilabel>."
 
 #: ../C/gedit.xml:1228(title)
-#, fuzzy
 msgid "To Remove a gedit Plugin"
 msgstr "Para quitar módulos de gedit"
 
@@ -2426,7 +2398,6 @@ msgstr ""
 "Al salir de <application>gedit</application>, los módulos siguen cargados."
 
 #: ../C/gedit.xml:1230(para)
-#, fuzzy
 msgid ""
 "To remove a <application>gedit</application> plugin, perform the following "
 "steps:"
@@ -2435,7 +2406,6 @@ msgstr ""
 "realizar las operaciones de impresión siguientes:"
 
 #: ../C/gedit.xml:1239(para)
-#, fuzzy
 msgid ""
 "Deselect the check box next to the name of the plugin that you want to "
 "remove."
@@ -2444,12 +2414,10 @@ msgstr ""
 "archivo que desea imprimir."
 
 #: ../C/gedit.xml:1248(title)
-#, fuzzy
 msgid "To Use the ChangeCase Plugin"
 msgstr "Cargue el módulo Registro de cambios del CVS."
 
 #: ../C/gedit.xml:1249(para)
-#, fuzzy
 msgid ""
 "The ChangeCase plugin changes the case of the selected text. To use the "
 "ChangeCase plugin, perform the following steps:"
@@ -2458,65 +2426,62 @@ msgstr ""
 "archivo. Para utilizar el módulo Nombre de usuario, siga estos pasos:"
 
 #: ../C/gedit.xml:1251(para)
-#, fuzzy
 msgid "Load the ChangeCase plugin."
 msgstr "Cargue el módulo Registro de cambios del CVS."
 
 #: ../C/gedit.xml:1253(para)
-#, fuzzy
 msgid "Choose one of the following menu items:"
 msgstr "Seleccione una de las opciones siguientes:"
 
 #: ../C/gedit.xml:1262(para)
-#, fuzzy
 msgid "Menu Item"
 msgstr "Menú"
 
 #: ../C/gedit.xml:1266(para)
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../C/gedit.xml:1273(para)
 msgid "Change each character to uppercase."
-msgstr ""
+msgstr "Cambiar cada carácter a la caja alta."
 
 #: ../C/gedit.xml:1274(para)
 msgid "<literal>This text</literal> becomes <literal>THIS TEXT</literal>"
-msgstr ""
+msgstr "<literal>Este texto</literal> poner <literal>ESTE TEXTO</literal>"
 
 #: ../C/gedit.xml:1279(para)
 msgid "Change each character to lowercase."
-msgstr ""
+msgstr "Cambiar cada carácter a la caja baja."
 
 #: ../C/gedit.xml:1280(para)
 msgid "<literal>This Text</literal> becomes <literal>this text</literal>"
-msgstr ""
+msgstr "<literal>Este texto</literal> poner <literal>este texto</literal>"
 
 #: ../C/gedit.xml:1285(para)
 msgid ""
 "Change each lowercase character to uppercase, and change each uppercase "
 "character to lowercase."
 msgstr ""
+"Cambiar cada carácter de la caja baja a la caja alta, y cambiar cada "
+"carácter de la caja alta a la caja baja."
 
 #: ../C/gedit.xml:1286(para)
 msgid "<literal>This Text</literal> becomes <literal>tHIS tEXT</literal>"
-msgstr ""
+msgstr "<literal>Este Texto</literal> poner <literal>eSTE tEXTO</literal>"
 
 #: ../C/gedit.xml:1291(para)
 msgid "Change the first character of each word to uppercase."
-msgstr ""
+msgstr "Cambiar el primer carácter de cada palabra de la caja alta."
 
 #: ../C/gedit.xml:1292(para)
 msgid "<literal>this text</literal> becomes <literal>This Text</literal>"
-msgstr ""
+msgstr "<literal>este texto</literal> poner <literal>Este Texto</literal>"
 
 #: ../C/gedit.xml:1302(title)
-#, fuzzy
 msgid "To Use the Document Statistics Plugin"
 msgstr "Cargue el módulo Estadísticas del documento."
 
 #: ../C/gedit.xml:1303(para)
-#, fuzzy
 msgid ""
 "The Document Statistics plugin counts the number of lines, words, characters "
 "with spaces, characters without spaces, and bytes in the current file. The "
@@ -2533,7 +2498,6 @@ msgid "Load the Document Statistics plugin."
 msgstr "Cargue el módulo Estadísticas del documento."
 
 #: ../C/gedit.xml:1307(para)
-#, fuzzy
 msgid ""
 "Choose <menuchoice><guimenu>Tools</guimenu><guimenuitem>Document Statistics</"
 "guimenuitem></menuchoice> to display the <guilabel>Document Statistics</"
@@ -2556,18 +2520,17 @@ msgstr "Número de palabras del documento actual."
 
 #: ../C/gedit.xml:1316(para)
 msgid "Number of characters, including spaces, in the current document."
-msgstr "Número de caracteres, espacios incluidos, del documento actual."
+msgstr "Número de caracteres, espacios incluidos, del documento actual"
 
 #: ../C/gedit.xml:1319(para)
 msgid "Number of characters, not including spaces, in the current document."
-msgstr "Número de caracteres, espacios excluidos, del documento actual."
+msgstr "Número de caracteres, espacios excluidos, del documento actual"
 
 #: ../C/gedit.xml:1322(para)
 msgid "Number of bytes in the current document."
 msgstr "Número de bytes del documento actual."
 
 #: ../C/gedit.xml:1327(para)
-#, fuzzy
 msgid ""
 "You can continue to update the <application>gedit</application> file while "
 "the <guilabel>Document Statistics</guilabel> dialog is open. To refresh the "
@@ -2589,7 +2552,6 @@ msgstr ""
 "clic en el botón <guibutton>Cerrar</guibutton>."
 
 #: ../C/gedit.xml:1337(title)
-#, fuzzy
 msgid "To Use the Indent Lines Plugin"
 msgstr "Cargue el módulo Sangrar líneas."
 
@@ -2633,7 +2595,6 @@ msgstr ""
 "guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:1354(title)
-#, fuzzy
 msgid "To Use the Insert Date/Time Plugin"
 msgstr "Para configurar el módulo Insertar fecha/hora"
 
@@ -2658,7 +2619,6 @@ msgstr ""
 "hora</guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:1360(para)
-#, fuzzy
 msgid ""
 "If you have not configured the Insert Date/Time plugin to automatically "
 "insert the date/time without prompting you for the format, "
@@ -2678,7 +2638,6 @@ msgstr ""
 "posición del cursor."
 
 #: ../C/gedit.xml:1361(para)
-#, fuzzy
 msgid ""
 "If you have configured <application>gedit</application> to use one "
 "particular date/time format, the <guilabel>Insert Date and Time</guilabel> "
@@ -2711,7 +2670,6 @@ msgid "Select the <guilabel>Insert Date/Time</guilabel> plugin."
 msgstr "Seleccione el módulo <guilabel>Insertar fecha/hora</guilabel>."
 
 #: ../C/gedit.xml:1379(para)
-#, fuzzy
 msgid ""
 "Click <guibutton>Configure Plugin</guibutton> to display the "
 "<guilabel>Configure insert date/time plugin</guilabel> dialog."
@@ -2732,6 +2690,7 @@ msgstr ""
 "seleccione la opción <guilabel>Solicitar un formato</guilabel>."
 
 #: ../C/gedit.xml:1387(para)
+#, fuzzy
 msgid ""
 "To use the same <application>gedit</application>-provided date/time format "
 "each time you insert the date/time, select the <guilabel>Use the selected "
@@ -2789,7 +2748,6 @@ msgstr ""
 "<guibutton>Cerrar</guibutton>."
 
 #: ../C/gedit.xml:1405(title)
-#, fuzzy
 msgid "To Use the Shell Command Plugin"
 msgstr "Módulo Comando de shell"
 
@@ -2806,7 +2764,6 @@ msgstr ""
 "a cabo los pasos siguientes:"
 
 #: ../C/gedit.xml:1409(para)
-#, fuzzy
 msgid "Load the Shell command plugin."
 msgstr "Cargue el módulo Ordenar."
 
@@ -2856,8 +2813,7 @@ msgid ""
 msgstr ""
 "Utilice estos caracteres especiales para especificar el nombre de archivo "
 "del documento activo actual, sin la ruta de acceso; en este caso, "
-"<application>gedit</application> busca el archivo en el directorio de "
-"trabajo."
+"<application>gedit</application> busca el archivo en el directorio de trabajo"
 
 #: ../C/gedit.xml:1428(para)
 msgid ""
@@ -2897,7 +2853,6 @@ msgstr ""
 "ventana."
 
 #: ../C/gedit.xml:1438(para)
-#, fuzzy
 msgid ""
 "Click <guibutton>Copy selected lines</guibutton> to copy the selected text "
 "into the buffer."
@@ -2914,7 +2869,6 @@ msgstr ""
 "guimenuitem></menuchoice> para pegar el texto seleccionado en el archivo."
 
 #: ../C/gedit.xml:1444(para)
-#, fuzzy
 msgid ""
 "Click <guibutton>Close the output window</guibutton> to close the output "
 "window."
@@ -2923,7 +2877,6 @@ msgstr ""
 "para cerrar dicha ventana."
 
 #: ../C/gedit.xml:1451(title)
-#, fuzzy
 msgid "To Use the Sort Plugin"
 msgstr "Cargue el módulo Ordenar."
 
@@ -2986,7 +2939,6 @@ msgstr ""
 "<guilabel>Ignorar mayúsculas/minúsculas</guilabel>."
 
 #: ../C/gedit.xml:1472(para)
-#, fuzzy
 msgid ""
 "To specify the start position of the sort, use the <guilabel>Start at "
 "column</guilabel> spin box."
@@ -2996,14 +2948,13 @@ msgstr ""
 "guilabel>."
 
 #: ../C/gedit.xml:1475(para)
-#, fuzzy
 msgid "To perform the sort operation, click <guibutton>Sort</guibutton>."
 msgstr ""
 "Para efectuar la ordenación, pulse el botón <guibutton>Ordenar</guibutton>."
 
 #: ../C/gedit.xml:1482(title)
 msgid "To Use the Spell Checker Plugin"
-msgstr ""
+msgstr "Para usar el plugin del revisor de ortografía"
 
 #: ../C/gedit.xml:1483(para)
 msgid ""
@@ -3013,14 +2964,18 @@ msgid ""
 "language. The language setting, and the autocheck spelling properties, apply "
 "per document. To use the Spell checker plugin, perform the following steps:"
 msgstr ""
+"El plugin del revisor de ortografía revisa la ortografía del texto "
+"seleccionado. Puede configurar <application>gedit</application> para revisar "
+"la ortografía automáticamente, o puede revisar la ortografía manualmente, en "
+"el idioma específicado. El idioma elegido, y  las propiedades del revisor de "
+"ortografía automáticamente, aplicado en el documento. Para usae el plugin el "
+"revisor de ortografía, siga los siguientes pasos:"
 
 #: ../C/gedit.xml:1485(para)
-#, fuzzy
 msgid "Load the Spell checker plugin."
 msgstr "Cargue el módulo Ordenar."
 
 #: ../C/gedit.xml:1487(para)
-#, fuzzy
 msgid ""
 "Choose <menuchoice><guimenu>Tools</guimenu><guimenuitem>Set Language</"
 "guimenuitem></menuchoice> to display the <guilabel>Set language</guilabel> "
@@ -3045,13 +3000,27 @@ msgid ""
 "checking is unset by default, each time <application>gedit</application> "
 "starts."
 msgstr ""
+"Para revisar la ortografía automáticamente, seleccione "
+"<menuchoice><guimenu>Herramientas</guimenu><guimenuitem>Revisar Ortografía "
+"Automáticamente</guimenuitem></menuchoice>. Para quitar el revisor de "
+"ortografía automático, seleccione <menuchoice><guimenu>Herramientas</"
+"guimenu><guimenuitem>Revisar Ortografía Automáticamente</guimenuitem></"
+"menuchoice> otra vez. Cuando el revisor de ortografía automático es "
+"seleccionado, un icono se visualiza al lado de <guimenuitem>Revisar "
+"Ortografía Automáticamente</guimenuitem> artículo de menú. El revisor de "
+"ortografía automático está sin selecionar por defecto, cada vez que "
+"<application>gedit</application> comienza."
 
 #: ../C/gedit.xml:1491(para)
+#, fuzzy
 msgid ""
 "Unknown spellings are displayed in a different color, and underlined. Right-"
 "click on an unknown spelling, then select <guimenu>Spelling Suggestions</"
 "guimenu> from the popup menu:"
 msgstr ""
+"Ortografías desconocidas son visualizadas en color diferente, y subrayado. "
+"Haga click en el botón izquierdo en una ortografía desconocida, entonces "
+"seleccione <guimenu>Sugerencias de ortografía</guimenu> del menú emeregente:"
 
 #: ../C/gedit.xml:1494(para)
 msgid ""
@@ -3059,9 +3028,11 @@ msgid ""
 "the replacement spelling from the <guimenu>Spelling Suggestions</guimenu> "
 "popup menu."
 msgstr ""
+"Para sustituir la ortografía desconocida por otra ortografía en la lista, "
+"seleccione sustituir ortografía desde <guimenu>Sugerencias de ortografía</"
+"guimenu> del menú emergente."
 
 #: ../C/gedit.xml:1497(para)
-#, fuzzy
 msgid ""
 "To add the unknown spelling to your personal dictionary, select "
 "<menuchoice><guimenu>Spelling Suggestions</guimenu><guimenuitem>Add</"
@@ -3079,9 +3050,14 @@ msgid ""
 "guimenu><guimenuitem>Ignore All</guimenuitem></menuchoice>. The unknown word "
 "is ignored in the current <application>gedit</application> session only."
 msgstr ""
+"Para ignorar todas las palabrar de ortografía desconocida, así que no se "
+"volverán a ver como desconocidas pero no serán añadidas a su diccionario "
+"personal, selecione <menuchoice><guimenu> Sugerencias de ortografía</"
+"guimenu><guimenuitem>Ignorar todo</guimenuitem></menuchoice>. La palabra "
+"desconocida es ignorada sólp en la actual sesión de <application>gedit</"
+"application>."
 
 #: ../C/gedit.xml:1505(para)
-#, fuzzy
 msgid ""
 "To check the spelling manually, choose <menuchoice><guimenu>Tools</"
 "guimenu><guimenuitem>Check Spelling</guimenuitem></menuchoice>."
@@ -3097,18 +3073,26 @@ msgid ""
 "words. Click <guibutton>OK</guibutton> to close the <guilabel>Information</"
 "guilabel> dialog."
 msgstr ""
+"Si no hay errores de ortografía, un diálogo de <guilabel>Información</"
+"guilabel> visualiza un mensaje expone que el documento no contiene palabras "
+"mal escritas. Haga click <guibutton>OK</guibutton> para cerrar el diálogo de "
+"<guilabel>Información</guilabel>."
 
 #: ../C/gedit.xml:1509(para)
 msgid ""
 "If there are spelling errors, the <guilabel>Check Spelling</guilabel> dialog "
 "is displayed:"
 msgstr ""
+"Si hay errores de ortografía, el <guilabel>Revisor de Ortografía</guilabel> "
+"diálogo se visualiza:"
 
 #: ../C/gedit.xml:1512(para)
 msgid ""
 "The <guilabel>Misspelled word</guilabel> is displayed at the top of the "
 "dialog."
 msgstr ""
+"La <guilabel>Palabra mal escrita</guilabel> se visualiza en la parte de "
+"arriba del diálogo."
 
 #: ../C/gedit.xml:1515(para)
 msgid ""
@@ -3117,6 +3101,11 @@ msgid ""
 "selecting a spelling from the <guilabel>Suggestions</guilabel> list, or you "
 "can enter text directly into the <guilabel>Change to</guilabel> text box."
 msgstr ""
+"Una sugerencia de ortografía conocida es visualizada en la casilla de "
+"texto<guilabel>Cambiar a</guilabel>. Puede sustituirse ésta con otra palabra "
+"conocida seleccionado una ortografía de la lista de <guilabel>Sugerencias</"
+"guilabel>, o puede introducir el texto directamente en la casilla de texto "
+"de <guilabel>Cambiar a</guilabel>."
 
 #: ../C/gedit.xml:1518(para)
 msgid ""
@@ -3126,6 +3115,12 @@ msgid ""
 "(correct spelling)</literal>. If the word is not known, new entries appear "
 "in the <guilabel>Suggestions</guilabel> list."
 msgstr ""
+"Para revisar la ortografía del texto en la casilla de texto de "
+"<guilabel>Cambiar a</guilabel>, haga click <guibutton>Revisar la palabra</"
+"guibutton>. Si ésta es una palabra conocida, la lista <guilabel>Sugerencias</"
+"guilabel>será sustituida con el texto <literal>(ortografía correcta)</"
+"literal>.Si la palabra conocida es desconocida, nuevas entradas aparecerán "
+"en la lista de <guilabel>Sugerencias</guilabel>."
 
 #: ../C/gedit.xml:1521(para)
 msgid ""
@@ -3134,6 +3129,11 @@ msgid ""
 "word, click <guibutton>Ignore All</guibutton>. The unknown word is ignored "
 "in the current <application>gedit</application> session only."
 msgstr ""
+"Para ignorar la palabra desconocida señalada en ese momento, haga click "
+"<guibutton>Ignorar</guibutton>. Para ignorar todas las palabras "
+"desconocidas, haga click <guibutton>Ignorar Todo</guibutton>. La palabra "
+"desconocida es ignorada sólo en la actual sesión <application>gedit</"
+"application>."
 
 #: ../C/gedit.xml:1524(para)
 msgid ""
@@ -3143,9 +3143,13 @@ msgid ""
 "<guilabel>Change to</guilabel> text box, click <guibutton>Change All</"
 "guibutton>."
 msgstr ""
+"Para cambiar la palabra desconocida señalada al texto en la casilla de texto "
+"<guilabel>Cambiar a</guilabel>, haga click <guibutton>Cambiar</guibutton>. "
+"Para cambiar todas las palabras desconocidas al texto en la casilla de texto "
+"<guilabel>Cambiar a</guilabel>, haga click  <guibutton>Cambiar todo</"
+"guibutton>."
 
 #: ../C/gedit.xml:1527(para)
-#, fuzzy
 msgid ""
 "To add the unknown word to your personal dictionary, click <guibutton>Add "
 "word</guibutton>."
@@ -3153,7 +3157,6 @@ msgstr ""
 "Para efectuar la ordenación, pulse el botón <guibutton>Ordenar</guibutton>."
 
 #: ../C/gedit.xml:1530(para)
-#, fuzzy
 msgid ""
 "To close the <guilabel>Check Spelling</guilabel> dialog, click "
 "<guibutton>Close</guibutton>."
@@ -3162,7 +3165,6 @@ msgstr ""
 "clic en el botón <guibutton>Cerrar</guibutton>."
 
 #: ../C/gedit.xml:1539(title)
-#, fuzzy
 msgid "To Use the Tag List Plugin"
 msgstr "Cargue el módulo Lista de etiquetas."
 
@@ -3192,7 +3194,6 @@ msgstr ""
 "<guilabel>Lista de etiquetas</guilabel>."
 
 #: ../C/gedit.xml:1547(para)
-#, fuzzy
 msgid ""
 "Select the appropriate tag category from the drop-down list. For example, "
 "<literal>HTML - Tags</literal>."
@@ -3214,7 +3215,6 @@ msgstr ""
 "procedimiento:"
 
 #: ../C/gedit.xml:1555(para)
-#, fuzzy
 msgid ""
 "To insert a tag in the current file and change the focus from the "
 "<guilabel>Tag list plugin</guilabel> window to the editor window, press "
@@ -3225,7 +3225,6 @@ msgstr ""
 "editor, pulse <keycap>Intro</keycap>."
 
 #: ../C/gedit.xml:1558(para)
-#, fuzzy
 msgid ""
 "To insert a tag in the current file and maintain the focus on the "
 "<guilabel>Tag list plugin</guilabel> window, press <keycombo><keycap>Shift</"
@@ -3250,7 +3249,6 @@ msgstr ""
 "<guilabel>Lista de etiquetas</guilabel>."
 
 #: ../C/gedit.xml:1570(title)
-#, fuzzy
 msgid "To Use the User Name Plugin"
 msgstr "Cargue el módulo Nombre de usuario."
 
@@ -3353,8 +3351,8 @@ msgstr ""
 "ESCRITOR ORIGINAL NI EL AUTOR NI NINGUNO DE LOS COLABORADORES) ASUMIRÁ EL "
 "COSTE DE CUALQUIER MANTENIMIENTO, REPARACIÓN O CORRECCIÓN QUE SEAN "
 "NECESARIOS. ESTA RENUNCIA DE GARANTÍA CONSTITUYE UNA PARTE ESENCIAL DE ESTA "
-"LICENCIA. NO SE AUTORIZA EL USO DE NINGÚN DOCUMENTO NI VERSIÓN MODIFICADA "
-"DEL MISMO, SALVO EN LAS CONDICIONES ESPECIFICADAS EN ESTA RENUNCIA; Y BAJO "
+"LICENCIA NO SE AUTORIZA EL USO DE NINGÚN DOCUMENTO NI VERSIÓN MODIFICADA DEL "
+"MISMO, SALVO EN LAS CONDICIONES ESPECIFICADAS EN ESTA RENUNCIA; Y BAJO "
 "NINGUNA CIRCUNSTANCIA NI SUPUESTO LEGAL, YA SEA POR AGRAVIO (INCLUIDA LA "
 "NEGLIGENCIA), CONTRATO U OTROS CASOS, SERÁN RESPONSABLES EL AUTOR, EL "
 "ESCRITOR ORIGINAL, CUALQUIERA DE LOS COLABORADORES O DISTRIBUIDORES DEL "
@@ -3379,613 +3377,7 @@ msgstr ""
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
 #: ../C/legal.xml:0(None)
 msgid "translator-credits"
-msgstr ""
+msgstr "María Majadas <maria.majadas@hispalinux.es>, 2005"
 
-#~ msgid "gedit Manual V2.5.1"
-#~ msgstr "Manual del gedit V2.5.1"
-
-#~ msgid ""
-#~ "For information about how to start <application>gedit</application> from "
-#~ "a menu, see the latest version of the GNOME Desktop User Guide for your "
-#~ "platform."
-#~ msgstr ""
-#~ "Para obtener información sobre cómo iniciar la aplicación "
-#~ "<application>gedit</application> desde un menú, consulte la última "
-#~ "versión de la GNOME Desktop User Guide correspondiente a su plataforma."
-
-#~ msgid "Use the <keycap>Delete</keycap> key to delete text."
-#~ msgstr "Usando la tecla <keycap>Supr</keycap> para borrar texto."
-
-#~ msgid ""
-#~ "Use the <guimenuitem>Cut</guimenuitem>, <guimenuitem>Copy</guimenuitem>, "
-#~ "<guimenuitem>Paste</guimenuitem>, and <guimenuitem>Delete</guimenuitem> "
-#~ "menu items on the <guimenu>Edit</guimenu> menu to edit text."
-#~ msgstr ""
-#~ "Usando los elementos de menú <guimenuitem>Cortar</guimenuitem>,"
-#~ "<guimenuitem>Copiar</guimenuitem>, <guimenuitem>Pegar</guimenuitem> y "
-#~ "<guimenuitem>Borrar</guimenuitem> del menú <guimenu>Editar</guimenu> para "
-#~ "editar texto."
-
-#~ msgid "You can perform any of the following actions on the selected text:"
-#~ msgstr ""
-#~ "Puede efectuar cualquiera de las acciones siguientes en el texto "
-#~ "seleccionado:"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Location</"
-#~ "guimenuitem></menuchoice> to display the <guilabel>Open Location</"
-#~ "guilabel> dialog. Enter the URI of the file that you want to open, then "
-#~ "click <guibutton>Open</guibutton>."
-#~ msgstr ""
-#~ "Seleccione <menuchoice><guimenu>Archivo</guimenu><guimenuitem>Abrir "
-#~ "dirección</guimenuitem></menuchoice> para que se muestre el cuadro de "
-#~ "diálogo <guilabel>Abrir dirección</guilabel>. Escriba la URI del archivo "
-#~ "que desee abrir y, a continuación, haga clic en <guibutton>Abrir</"
-#~ "guibutton>."
-
-#~ msgid "To Change the Input Mode"
-#~ msgstr "Para cambiar el modo de entrada"
-
-#~ msgid ""
-#~ "To change the input mode, right-click in the text window, then select "
-#~ "<guimenuitem>Input Methods</guimenuitem>. The <guimenuitem>Insert Unicode "
-#~ "control character</guimenuitem> menu item provides character layout "
-#~ "options that are useful for working with non-Latin character sets."
-#~ msgstr ""
-#~ "Para cambiar el modo de entrada, haga clic con el botón derecho del ratón "
-#~ "en la ventana de texto y seleccione <guimenuitem>Métodos de entrada</"
-#~ "guimenuitem>. El elemento de menú <guimenuitem>Insertar carácter de "
-#~ "control Unicode</guimenuitem> incluye opciones de disposición de "
-#~ "caracteres que son útiles para trabajar con alfabetos no latinos."
-
-#~ msgid "Printer pane"
-#~ msgstr "Panel de impresoras"
-
-#~ msgid "Number of copies"
-#~ msgstr "Número de copias"
-
-#~ msgid "Collate"
-#~ msgstr "Ordenar"
-
-#~ msgid "Filename"
-#~ msgstr "Nombre de archivo"
-
-#~ msgid ""
-#~ "To print the file to a print file, type the name of the output file in "
-#~ "this text box."
-#~ msgstr ""
-#~ "Para imprimir en un archivo de impresión, escriba el nombre del archivo "
-#~ "de salida en este cuadro de texto."
-
-#~ msgid "Icon"
-#~ msgstr "Icono"
-
-#~ msgid "Icon and Text"
-#~ msgstr "Icono y texto"
-
-#~ msgid "Display icons and text."
-#~ msgstr "Muestra iconos y texto."
-
-#~ msgid "Priority Text beside Icons"
-#~ msgstr "Texto con prioridad al lado de los iconos"
-
-#~ msgid "Show Cursor Position"
-#~ msgstr "Mostrar la posición del cursor"
-
-#~ msgid "Show Overwrite Mode"
-#~ msgstr "Mostrar modo de sobrescritura"
-
-#~ msgid ""
-#~ "The <guilabel>Editor</guilabel> category is subdivided into the following "
-#~ "subcategories:"
-#~ msgstr ""
-#~ "La categoría <guilabel>Editor</guilabel> está subdividida en las "
-#~ "subcategorías siguientes:"
-
-#~ msgid "Use default theme font"
-#~ msgstr "Usar fuente del tema predeterminado"
-
-#~ msgid "Editor font"
-#~ msgstr "Fuente utilizada por el editor"
-
-#~ msgid "Use default theme colors"
-#~ msgstr "Usar los colores del tema predeterminado"
-
-#~ msgid "Text color"
-#~ msgstr "Color del texto"
-
-#~ msgid "Selected text color"
-#~ msgstr "Color de texto seleccionado"
-
-#~ msgid "Selection color"
-#~ msgstr "Color de selección"
-
-#~ msgid "Set tabs width equivalent to"
-#~ msgstr "Configurar ancho de tabuladores equivalente a"
-
-#~ msgid "Insert spaces instead of tabs"
-#~ msgstr "Insertar espacios en lugar de tabuladores"
-
-#~ msgid "Wrap Mode"
-#~ msgstr "Modo Ajustar"
-
-#~ msgid "Do not split words over two lines"
-#~ msgstr "No dividir palabras en dos líneas"
-
-#~ msgid "Enable auto indentation"
-#~ msgstr "Habilitar sangría automática"
-
-#~ msgid "Display line numbers"
-#~ msgstr "Mostrar números de línea"
-
-#~ msgid "Open"
-#~ msgstr "Abrir"
-
-#~ msgid "Supported encodings"
-#~ msgstr "Codificaciones admitidas"
-
-#~ msgid ""
-#~ "A character encoding is a method of converting bytes to characters. "
-#~ "Different encodings might convert the same byte sequence into different "
-#~ "characters, or might produce invalid output. If you open a file using the "
-#~ "same encoding as that used to create the file, all characters are "
-#~ "displayed as intended. However, if you open a file using a different "
-#~ "encoding, some characters might not be displayed correctly, or an error "
-#~ "might be returned."
-#~ msgstr ""
-#~ "Una codificación de caracteres es un método de conversión de bytes en "
-#~ "caracteres. Distintas codificaciones pueden convertir la misma secuencia "
-#~ "de bytes en caracteres diferentes, o generar una salida no válida. Si "
-#~ "abre un archivo utilizando la misma codificación que la que se usó para "
-#~ "crearlo, todos los caracteres se muestran correctamente. Sin embargo, si "
-#~ "lo abre usando una codificación distinta, es posible que algunos "
-#~ "caracteres no se muestren correctamente, o se devuelva un error."
-
-#~ msgid ""
-#~ "By default, <application>gedit</application> uses UTF-8 encoding to try "
-#~ "to open a file. UTF-8 encoding can be used for multilingual texts, as UTF-"
-#~ "8 covers almost all known alphabets and character sets. If the file is "
-#~ "not a valid UTF-8 file, <application>gedit</application> tries to open "
-#~ "the file by using the encoding for the current locale. If this also "
-#~ "fails, <application>gedit</application> tries to use an encoding from the "
-#~ "Supported encodings list, starting at the top of the list."
-#~ msgstr ""
-#~ "De forma predeterminada, <application>gedit</application> utiliza la "
-#~ "codificación UTF-8 cuando intenta abrir un archivo. La codificación UTF-8 "
-#~ "se puede utilizar en textos multilingües, ya que abarca la mayoría de los "
-#~ "alfabetos y juegos de caracteres conocidos. Si no es un archivo UTF-8 "
-#~ "válido, <application>gedit</application> intentará abrirlo usando la "
-#~ "codificación correspondiente al actual entorno nacional. Si esto tampoco "
-#~ "funciona, <application>gedit</application> intentará utilizar una "
-#~ "codificación de la lista <guilabel>Codificaciones admitidas</guilabel>, "
-#~ "empezando por arriba."
-
-#~ msgid ""
-#~ "To modify the contents of the Supported encodings list, use the buttons "
-#~ "described in the following table:"
-#~ msgstr ""
-#~ "Para modificar el contenido de la lista Codificaciones admitidas utilice "
-#~ "los botones que se describen en la tabla siguiente:"
-
-#~ msgid "Description"
-#~ msgstr "Descripción"
-
-#~ msgid "Add"
-#~ msgstr "Añadir"
-
-#~ msgid "Adds an encoding to the list."
-#~ msgstr "Agrega una codificación a la lista."
-
-#~ msgid "Remove"
-#~ msgstr "Quitar"
-
-#~ msgid "Removes an encoding from the list."
-#~ msgstr "Elimina una codificación de la lista."
-
-#~ msgid "Up arrow"
-#~ msgstr "Flecha arriba"
-
-#~ msgid "Moves an encoding to a higher position in the list."
-#~ msgstr "Traslada una codificación a una posición más alta en la lista."
-
-#~ msgid "Down arrow"
-#~ msgstr "Flecha abajo"
-
-#~ msgid "Moves an encoding to a lower position in the list."
-#~ msgstr "Traslada una codificación a una posición más baja en la lista."
-
-#~ msgid "Create a backup copy of files before saving"
-#~ msgstr "Crear una copia de seguridad de los archivos antes de guardarlos"
-
-#~ msgid "Autosave current file every"
-#~ msgstr "Guardar automáticamente el archivo actual cada"
-
-#~ msgid "When saving an existing file"
-#~ msgstr "Al guardar un archivo existente"
-
-#~ msgid "Always use UTF-8 encoding (faster)"
-#~ msgstr "Usar siempre codificación UTF-8 (más rápida)"
-
-#~ msgid "Select this option to save files using UTF-8 encoding."
-#~ msgstr ""
-#~ "Seleccione esta opción para guardar los archivos usando la codificación "
-#~ "UTF-8 bit."
-
-#~ msgid "Use current locale's encoding if possible"
-#~ msgstr "Utilizar la codificación del entorno nacional actual, si es posible"
-
-#~ msgid ""
-#~ "Select this option to save files using the current locale. You can set up "
-#~ "locales for different input methods."
-#~ msgstr ""
-#~ "Seleccione esta opción para guardar archivos usando el entorno nacional "
-#~ "actual. Puede configurar entornos nacionales para distintos métodos de "
-#~ "entrada."
-
-#~ msgid "Use original file encoding if possible"
-#~ msgstr "Utilizar la codificación original del archivo, si es posible"
-
-#~ msgid ""
-#~ "Select this option to save a file using the current locale if the file "
-#~ "was already saved in the current locale."
-#~ msgstr ""
-#~ "Seleccione esta opción para guardar un archivo usando la localización "
-#~ "actual sólo si el archivo ya se había guardado en ella."
-
-#~ msgid "When saving a new file"
-#~ msgstr "Al guardar un archivo nuevo"
-
-#~ msgid "Select one of the following save options for new files:"
-#~ msgstr ""
-#~ "Seleccione una de las siguientes opciones de guardar para archivos nuevos:"
-
-#~ msgid "Select this option to save new files using UTF-8 encoding."
-#~ msgstr ""
-#~ "Seleccione esta opción para guardar los archivos nuevos usando la "
-#~ "codificación UTF-8 bit."
-
-#~ msgid ""
-#~ "Select this option to save new files using the current locale. You can "
-#~ "set up locales for different input methods."
-#~ msgstr ""
-#~ "Seleccione esta opción para guardar los archivos nuevos usando la "
-#~ "localización actual. Puede configurar entornos nacionales para distintos "
-#~ "métodos de entrada."
-
-#~ msgid "Set limit on undo actions to"
-#~ msgstr "Establecer límite de deshacer acciones en"
-
-#~ msgid ""
-#~ "The <guilabel>Print</guilabel> category is subdivided into the following "
-#~ "subcategories:"
-#~ msgstr ""
-#~ "La categoría <guilabel>Imprimir</guilabel> se subdivide en las "
-#~ "subcategorías siguientes:"
-
-#~ msgid "Page"
-#~ msgstr "Página"
-
-#~ msgid "Print line numbers every"
-#~ msgstr "Imprimir números de línea cada"
-
-#~ msgid "Page headers"
-#~ msgstr "Cabeceras de página"
-
-#~ msgid "ASCII table"
-#~ msgstr "Tabla ASCII"
-
-#~ msgid ""
-#~ "Displays a dialog that contains an ASCII table. You can use the ASCII "
-#~ "table to insert characters into a file."
-#~ msgstr ""
-#~ "Muestra un cuadro de diálogo que contiene una tabla ASCII. Puede usar la "
-#~ "tabla ASCII para insertar caracteres en un archivo."
-
-#~ msgid "CVS ChangeLog"
-#~ msgstr "Registro de cambios del CVS"
-
-#~ msgid "Opens the log messages associated with CVS commit commands."
-#~ msgstr ""
-#~ "Abre los mensajes de registro cronológico asociados a comandos de "
-#~ "ejecución CVS."
-
-#~ msgid ""
-#~ "Compares two files and displays the differences between the files in the "
-#~ "output window. This plugin uses the <command>diff</command> command to "
-#~ "compare the files."
-#~ msgstr ""
-#~ "Compara dos archivos y muestra las diferencias entre ellos en la ventana "
-#~ "de salida. Este módulo usa el comando <command>diff</command> para "
-#~ "comparar los archivos."
-
-#~ msgid ""
-#~ "To load <application>gedit</application> plugins, choose "
-#~ "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</"
-#~ "guimenuitem></menuchoice>. Within the <guilabel>Plugins</guilabel> "
-#~ "category, click on the <guilabel>Manager</guilabel> subcategory. The "
-#~ "<guilabel>Manager</guilabel> subcategory displays the following "
-#~ "information:"
-#~ msgstr ""
-#~ "Para cargar módulos de <application>gedit</application>, seleccione "
-#~ "<menuchoice><guimenu>Editar</guimenu><guimenuitem>Preferencias</"
-#~ "guimenuitem></menuchoice>. Dentro de la categoría <guilabel>Módulos</"
-#~ "guilabel>, pulse en la subcategoría <guilabel>Gestor</guilabel>. En la "
-#~ "subcategoría <guilabel>Gestor</guilabel> se muestra la información "
-#~ "siguiente:"
-
-#~ msgid ""
-#~ "A brief description of each plugin. To display a description, select the "
-#~ "plugin from the list of plugins."
-#~ msgstr ""
-#~ "Una descripción breve de cada módulo. Para visualizar una descripción, "
-#~ "seleccione un módulo de la lista."
-
-#~ msgid "Details about the author of the plugin and the name of the module."
-#~ msgstr "Detalles sobre el autor y el nombre del módulo."
-
-#~ msgid "ASCII Table"
-#~ msgstr "Tabla ASCII"
-
-#~ msgid "Open CVS ChangeLogs"
-#~ msgstr "Abrir Registro de cambios del CVS"
-
-#~ msgid ""
-#~ "To remove <application>gedit</application> plugins, choose "
-#~ "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</"
-#~ "guimenuitem></menuchoice>. Within the <guilabel>Plugins</guilabel> "
-#~ "category, click on the <guilabel>Manager</guilabel> subcategory. To "
-#~ "remove a plugin, deselect the check box next to the name of the plugin."
-#~ msgstr ""
-#~ "Para quitar módulos de <application>gedit</application>, seleccione "
-#~ "<menuchoice><guimenu>Editar</guimenu><guimenuitem>Preferencias</"
-#~ "guimenuitem></menuchoice>. Dentro de la categoría <guilabel>Módulos</"
-#~ "guilabel>, haga clic en la subcategoría <guilabel>Gestor</guilabel>. Para "
-#~ "eliminar un módulo, deseleccione la casilla que hay junto a su nombre."
-
-#~ msgid "ASCII Table Plugin"
-#~ msgstr "Módulo Tabla ASCII"
-
-#~ msgid ""
-#~ "The ASCII table plugin displays a dialog that contains an ASCII table. "
-#~ "You can use the ASCII table to insert characters into a file. To use the "
-#~ "ASCII table plugin, perform the following steps:"
-#~ msgstr ""
-#~ "El módulo Tabla ASCII muestra un cuadro de diálogo que contiene una tabla "
-#~ "ASCII. Puede usar la tabla ASCII para insertar caracteres en un archivo. "
-#~ "Para utilizar el módulo Tabla ASCII, siga estos pasos:"
-
-#~ msgid "Load the ASCII table plugin."
-#~ msgstr "Cargue el módulo Tabla ASCII."
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>ASCII Table</"
-#~ "guimenuitem></menuchoice> to display the <guilabel>ASCII Table</guilabel> "
-#~ "dialog."
-#~ msgstr ""
-#~ "Seleccione <menuchoice><guimenu>Ver</guimenu><guimenuitem>Tabla ASCII</"
-#~ "guimenuitem></menuchoice>para abrir el cuadro de diálogo <guilabel>Tabla "
-#~ "ASCII</guilabel>."
-
-#~ msgid ""
-#~ "Scroll through the list to find the character that you require, then "
-#~ "select the character with a single click."
-#~ msgstr ""
-#~ "Busque en la lista el carácter que necesite y haga clic en él para "
-#~ "seleccionarlo."
-
-#~ msgid ""
-#~ "Click on the <guibutton>Insert char</guibutton> button to insert the "
-#~ "character at the cursor position in the current file."
-#~ msgstr ""
-#~ "Haga clic en <guibutton>Insertar carácter</guibutton> para insertar el "
-#~ "carácter en la posición del cursor en el archivo actual."
-
-#~ msgid ""
-#~ "When you finish entering ASCII characters, click <guibutton>Close</"
-#~ "guibutton> to close the <guilabel>ASCII Table</guilabel> dialog."
-#~ msgstr ""
-#~ "Cuando termine de introducir caracteres ASCII, haga clic en "
-#~ "<guibutton>Cerrar</guibutton> para cerrar el cuadro de diálogo "
-#~ "<guilabel>Tabla ASCII</guilabel>."
-
-#~ msgid "CVS ChangeLog Plugin"
-#~ msgstr "Módulo Registro de cambios del CVS"
-
-#~ msgid ""
-#~ "The CVS ChangeLog plugin opens the log messages associated with CVS "
-#~ "commit commands. This plugin enables you to easily paste text into the "
-#~ "commit message from the ChangeLog file. To use the CVS ChangeLog plugin, "
-#~ "perform the following steps:"
-#~ msgstr ""
-#~ "El módulo Registro de cambios del CVS abre los mensajes de registro "
-#~ "asociados con comandos de ejecución CVS. Este módulo permite pegar texto "
-#~ "con facilidad en el mensaje de ejecución del archivo de registro de "
-#~ "cambios. Para utilizar el módulo Registro de cambios del CVS, siga estos "
-#~ "pasos:"
-
-#~ msgid ""
-#~ "Set the environment variable CVSEDITOR to <application>gedit</"
-#~ "application>. For example, if you are using the <command>bash</command> "
-#~ "shell, run the following command at the operating system prompt: <screen> "
-#~ "<userinput>export CVSEDITOR=<application>gedit</application> </userinput> "
-#~ "</screen>"
-#~ msgstr ""
-#~ "Establezca el valor de la variable de entorno CVSEDITOR en "
-#~ "<application>gedit</application>. Por ejemplo, si utiliza el shell "
-#~ "<command>bash</command> ejecute el comando siguiente en el indicador del "
-#~ "sistema operativo: <screen> <userinput>export "
-#~ "CVSEDITOR=<application>gedit</application> </userinput> </screen>"
-
-#~ msgid ""
-#~ "Commit a file to CVS in the usual way. A <application>gedit</application> "
-#~ "window opens, to enable you to enter the commit message."
-#~ msgstr ""
-#~ "Envíe un archivo a CVS de la forma habitual. Se abre una ventana de "
-#~ "<application>gedit</application> que permite escribir el mensaje de "
-#~ "ejecución."
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open CVS "
-#~ "ChangeLogs</guimenuitem></menuchoice> to open all of the ChangeLog files "
-#~ "referenced in the commit message. <application>gedit</application> opens "
-#~ "each ChangeLog file in a new tab."
-#~ msgstr ""
-#~ "Seleccione <menuchoice><guimenu>Archivo</guimenu><guimenuitem>Abrir "
-#~ "Registro de cambios del CVS</guimenuitem></menuchoice> para abrir todos "
-#~ "los archivos del registro de cambios a los que se hace referencia en el "
-#~ "mensaje de ejecución. <application>gedit</application> abre todos los "
-#~ "archivos, cada uno en una pestaña nueva."
-
-#~ msgid ""
-#~ "Copy the ChangeLog entries that you want to add to the commit message "
-#~ "from the <application>gedit</application> ChangeLog files."
-#~ msgstr ""
-#~ "Copie las entradas del registro de cambios (que desee agregar al mensaje "
-#~ "de ejecución) desde los archivos del registro de cambios de "
-#~ "<application>gedit</application>."
-
-#~ msgid ""
-#~ "Insert the copied ChangeLog entries in the <application>gedit</"
-#~ "application> commit message tab."
-#~ msgstr ""
-#~ "Inserte las entradas del registro de cambios copiadas en la pestaña de "
-#~ "mensaje de ejecución de <application>gedit</application>."
-
-#~ msgid "Save your changes to the commit message, then close all files."
-#~ msgstr ""
-#~ "Guarde los cambios efectuados en el mensaje de ejecución y cierre todos "
-#~ "los archivos."
-
-#~ msgid "Quit <application>gedit</application>."
-#~ msgstr "Salga de <application>gedit</application>."
-
-#~ msgid "Compare Files Plugin"
-#~ msgstr "Módulo Comparar archivos"
-
-#~ msgid ""
-#~ "The Compare Files plugin compares two files and displays the differences "
-#~ "between the files in the output window. This plugin uses the "
-#~ "<command>diff</command> command to compare the files. To use the Compare "
-#~ "Files plugin, perform the following steps:"
-#~ msgstr ""
-#~ "El módulo Comparar archivos compara dos archivos y muestra las "
-#~ "diferencias entre ambos en la ventana de salida. Este módulo utiliza el "
-#~ "comando <command>diff</command> para comparar los archivos. Para utilizar "
-#~ "el módulo Comparar archivos, siga estos pasos:"
-
-#~ msgid "Load the Compare Files plugin."
-#~ msgstr "Cargue el módulo Comparar archivos."
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>Tools</guimenu><guimenuitem>Compare Files</"
-#~ "guimenuitem></menuchoice>. When you choose this option for the first "
-#~ "time, you are prompted to confirm the location of the <command>diff</"
-#~ "command> command. You are not prompted for this location again. See <xref "
-#~ "linkend=\"gedit-compare-files-configure\"/> for information about how to "
-#~ "change this location later."
-#~ msgstr ""
-#~ "Seleccione <menuchoice><guimenu>Herramientas</"
-#~ "guimenu><guimenuitem>Comparar archivos</guimenuitem></menuchoice>. Si "
-#~ "selecciona esta opción por primera vez, se le solicitará que confirme la "
-#~ "ubicación del comando <command>diff</command>. No se le volverá a "
-#~ "solicitar dicha ubicación. Consulte <xref linkend=\"gedit-compare-files-"
-#~ "configure\"/> para obtener información acerca de cómo cambiar dicha "
-#~ "ubicación más adelante."
-
-#~ msgid ""
-#~ "Click <guibutton>OK</guibutton> to display the <guilabel>Compare Files</"
-#~ "guilabel> dialog."
-#~ msgstr ""
-#~ "Haga clic en <guibutton>Aceptar</guibutton> para abrir el cuadro de "
-#~ "diálogo <guilabel>Comparar archivos</guilabel>."
-
-#~ msgid ""
-#~ "Specify the files that you want to compare. To specify an open file, "
-#~ "select the file from the drop-down list. To specify a closed file, enter "
-#~ "the location of the file in the text box."
-#~ msgstr ""
-#~ "Especifique los archivos que desee comparar. Para especificar un archivo "
-#~ "abierto, selecciónelo en la lista desplegable. Para especificar un "
-#~ "archivo cerrado, escriba su ubicación en el cuadro de texto."
-
-#~ msgid ""
-#~ "To ignore changes in the amount of white space, select the "
-#~ "<guilabel>Ignore blanks</guilabel> option."
-#~ msgstr ""
-#~ "Para no tener en cuenta la cantidad de espacio en blanco, seleccione la "
-#~ "opción <guilabel>Ignorar espacios</guilabel>."
-
-#~ msgid ""
-#~ "To use the unified output format, showing three lines of context, select "
-#~ "the <guilabel>Use the unified output format</guilabel> option."
-#~ msgstr ""
-#~ "Para usar el formato de salida unificado, con tres líneas de contexto, "
-#~ "seleccione la opción <guilabel>Usar el formato de salida unificado</"
-#~ "guilabel>."
-
-#~ msgid ""
-#~ "Click on the <guibutton>Compare</guibutton> button to compare the "
-#~ "contents of the specified files. The command output is displayed in the "
-#~ "output window."
-#~ msgstr ""
-#~ "Haga clic en <guibutton>Comparar</guibutton> para comparar el contenido "
-#~ "de los archivos especificados. La salida del comando se muestra en la "
-#~ "ventana de salida."
-
-#~ msgid ""
-#~ "For more information, see <ulink url=\"man:diff\" type=\"man"
-#~ "\"><citerefentry><refentrytitle>diff</refentrytitle><manvolnum>1</"
-#~ "manvolnum></citerefentry></ulink>."
-#~ msgstr ""
-#~ "Para obtener más información, consulte <ulink url=\"man:diff\" type=\"man"
-#~ "\"><citerefentry><refentrytitle>diff</refentrytitle><manvolnum>1</"
-#~ "manvolnum></citerefentry></ulink>."
-
-#~ msgid "To Configure the Compare Files Plugin"
-#~ msgstr "Para configurar el módulo Comparar archivos"
-
-#~ msgid ""
-#~ "To change the location of the command that the Compare Files plugin uses, "
-#~ "perform the following steps:"
-#~ msgstr ""
-#~ "Para cambiar la ubicación del comando que utiliza el módulo Comparar "
-#~ "archivos, efectúe los siguientes pasos:"
-
-#~ msgid ""
-#~ "Within the <guilabel>Plugins</guilabel> category, click on the "
-#~ "<guilabel>Manager</guilabel> subcategory."
-#~ msgstr ""
-#~ "Dentro de la categoría <guilabel>Módulos</guilabel>, haga clic en la "
-#~ "subcategoría <guilabel>Gestor</guilabel>."
-
-#~ msgid ""
-#~ "Click on the <guibutton>Configure plugin</guibutton> button to display "
-#~ "the <guilabel>Set program location</guilabel> dialog."
-#~ msgstr ""
-#~ "Haga clic en <guibutton>Configurar módulo</guibutton> para abrir el "
-#~ "cuadro de diálogo <guilabel>Establecer ubicación de programa</guilabel>."
-
-#~ msgid ""
-#~ "Specify the location of the <command>diff</command> command in the "
-#~ "<guilabel>Location to search for</guilabel> text box."
-#~ msgstr ""
-#~ "Especifique la ubicación del comando <command>diff</command> en el cuadro "
-#~ "de texto <guilabel>Ruta de búsqueda para</guilabel>."
-
-#~ msgid "Document Statistics Plugin"
-#~ msgstr "Módulo Estadísticas del documento"
-
-#~ msgid "Indent Lines Plugin"
-#~ msgstr "Módulo Sangrar líneas"
-
-#~ msgid "Insert Date/Time Plugin"
-#~ msgstr "Módulo Insertar fecha/hora"
-
-#~ msgid "Sort Plugin"
-#~ msgstr "Módulo Ordenar"
-
-#~ msgid "Tag List Plugin"
-#~ msgstr "Módulo Lista de etiquetas"
-
-#~ msgid "User Name Plugin"
-#~ msgstr "Módulo Nombre de usuario"
+#~ msgid "August 2004"
+#~ msgstr "Agosto 2002"

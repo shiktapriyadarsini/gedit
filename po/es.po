@@ -1,11 +1,10 @@
 # translation of es.po to
-# translation of gedit.HEAD.po to Spanish
 # Spanish translation of es
-# translation of es.po to Spanish
 # traducción de es.po al Spanish
 # Gedit's Spanish translation
 # Copyright © 1999-2003, 2006 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
+#
 # Pablo Saratxaga <srtxg@chanae.alphanet.ch>, 1999-2000.
 # Carlos Perelló Marín <carlos@gnome-db.org>, 2000-2001.
 # Chema Celorio <chema@celorio.com>, 2000.
@@ -13,19 +12,19 @@
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com>,2002-2003.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003, 2004, 2005, 2006.
 # Pablo G. del Campo <pablodc@bigfoot.com>, 2004.
-#
+# FRancisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-04 07:25+0100\n"
-"PO-Revision-Date: 2006-03-28 16:04+0200\n"
-"Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
+"PO-Revision-Date: 2006-04-08 22:47+0200\n"
+"Last-Translator: FRancisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team:  <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../data/gedit.desktop.in.in.h:1
@@ -1058,11 +1057,11 @@ msgstr "_Restablecer predeterminados"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:50
 msgid "_Right margin at column:"
-msgstr "Margen _derecho a partir de la columna:"
+msgstr "Margen _derecho en la columna:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:51
 msgid "_Tab width:"
-msgstr "Ancho del _tabulador:"
+msgstr "Anchura del _tabulador:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:52
 msgid "_Use default theme font"
@@ -1092,7 +1091,7 @@ msgstr "_Reemplazar"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:1
 msgid "Match _entire word only"
-msgstr "Coincidir sólo con la palabra compl_eta"
+msgstr "Coincidir sólo con la _palabra completa"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:3
 msgid "Replace All"
@@ -1100,15 +1099,15 @@ msgstr "Reemplazar todo"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:4
 msgid "Replace _with: "
-msgstr "_Reemplazar con: "
+msgstr "Reemplazar _por: "
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:5
 msgid "Search _backwards"
-msgstr "_Buscar hacia atrás"
+msgstr "Buscar hacia _atrás"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:6
 msgid "_Match case"
-msgstr "Coi_ncidir con capitalización"
+msgstr "_Coincidir con capitalización"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:7
 msgid "_Search for: "
@@ -1116,7 +1115,7 @@ msgstr "_Buscar: "
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:8
 msgid "_Wrap around"
-msgstr "A_justar aproximadamente"
+msgstr "Continuar desde el _principio"
 
 #: ../gedit/gedit.c:75
 msgid ""
@@ -2159,7 +2158,7 @@ msgstr "Revertir a una versión guardada del archivo"
 
 #: ../gedit/gedit-ui.h:85
 msgid "Print Previe_w"
-msgstr "Vista prelimina_r de impresión"
+msgstr "_Vista preliminar de impresión"
 
 #: ../gedit/gedit-ui.h:86
 msgid "Print preview"
