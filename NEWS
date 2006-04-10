@@ -1,4 +1,25 @@
 ============
+gedit 2.14.2
+============
+
+New features and fixes
+======================
+- bugfixes to the external tools plugin (Steve Frécinaux)
+- bugfixes to the snippets plugin (Jesse Van Den Kieboom)
+- misc bugfixes
+
+New and updated translations
+============================
+- Clytie Siddall (vi)
+- Francisco Javier F. Serrador (es)
+- Ihar Hrachyshka (be)
+- Ivar Smolin (et)
+- Jérémy Ar Floc'h (br)
+- Pema Geyleg (dz)
+- Vladimer Sichinava (ka)
+
+
+============
 gedit 2.14.1
 ============
 
@@ -32,6 +53,7 @@ New and updated translations
 - Rajesh Ranjan (hi)
 - Gabor Kelemen (hu)
 - Tino Meinen (nl)
+
 
 =============
 gedit 2.13.93
