@@ -1,10 +1,10 @@
-Index: ChangeLog
-===================================================================
-RCS file: /cvs/gnome/gedit/ChangeLog,v
-retrieving revision 1.716
-diff -u -p -r1.716 ChangeLog
---- ChangeLog	20 Apr 2006 10:40:45 -0000	1.716
-+++ ChangeLog	20 Apr 2006 16:20:33 -0000
+2006-04-20  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-document-loader.c:
+	* gedit/gedit-document-saver.c:
+
+	Fix includes to make it compile on DragonFly BSD.
+
 2006-04-20  Paolo Maggi  <paolo@gnome.org>
 
 	Fixes bug #338173 - Gedit show keyring store password on the window 
