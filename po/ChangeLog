@@ -1,3 +1,7 @@
+2006-04-24  Paolo Borelli  <pborelli@katamail.com>
+
+	* LINGUAS: do not split the list on many lines.
+
 2006-04-24  Ahmad Riza H Nst  <rizahnst@eriagempita.co.id>
 
 	* id.po: Updated.
