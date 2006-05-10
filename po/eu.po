@@ -7,22 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-22 12:18+0100\n"
-"PO-Revision-Date: 2006-02-22 13:10+0100\n"
-"Last-Translator: Iñaki Larrañaga <dooteo@euskalgnu.org>\n"
+"POT-Creation-Date: 2006-05-10 19:01+0000\n"
+"PO-Revision-Date: 2006-05-10 19:03+0000\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "Edit text files"
 msgstr "Editatu testu-fitxategiak"
 
 #
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit.c:404
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit.c:460
 msgid "Text Editor"
 msgstr "Testu-editorea"
 
@@ -523,7 +523,9 @@ msgstr "Gedit-ek sintaxiaren nabarmentzea gaitu behar duen ala ez."
 
 #: ../data/gedit.schemas.in.h:98
 msgid "Whether gedit should highlight all the occurrences of the searched text."
-msgstr "Gedit-ek bilaketako testuaren gertaera guztiak nabarmendu behar dituen ala ez."
+msgstr ""
+"Gedit-ek bilaketako testuaren gertaera guztiak nabarmendu behar dituen ala "
+"ez."
 
 #: ../data/gedit.schemas.in.h:99
 msgid "Whether gedit should highlight matching bracket."
@@ -553,7 +555,9 @@ msgstr ""
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
-msgstr "Fitxategi bat kargatzean Gedit-ek kurtsorearen aurreko posizioa leheneratu behar duen ala ez."
+msgstr ""
+"Fitxategi bat kargatzean Gedit-ek kurtsorearen aurreko posizioa leheneratu "
+"behar duen ala ez."
 
 #: ../data/gedit.schemas.in.h:105
 msgid "Whether the bottom panel at the bottom of editing windows should be visible."
@@ -1093,22 +1097,22 @@ msgstr "_Erabili gaiaren letra-tipo lehenetsia"
 msgid "_minutes"
 msgstr "_minutuz behin"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:234
-#: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1008
+#: ../gedit/dialogs/gedit-search-dialog.c:260
+#: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1013
 msgid "Replace"
 msgstr "Ordeztu"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:246 ../gedit/gedit-window.c:1006
+#: ../gedit/dialogs/gedit-search-dialog.c:272 ../gedit/gedit-window.c:1011
 msgid "Find"
 msgstr "Bilatu"
 
 #
-#: ../gedit/dialogs/gedit-search-dialog.c:298
+#: ../gedit/dialogs/gedit-search-dialog.c:324
 msgid "Replace _All"
 msgstr "Ordeztu _guztiak"
 
 #
-#: ../gedit/dialogs/gedit-search-dialog.c:299
+#: ../gedit/dialogs/gedit-search-dialog.c:325
 #: ../gedit/gedit-commands-file.c:559
 msgid "_Replace"
 msgstr "Orde_ztu"
@@ -1206,27 +1210,27 @@ msgstr "\"%s\" fitxategia irakurtzeko soilik da."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Gordetzen ari zarenarekin ordezten saiatu nahi duzu?"
 
-#: ../gedit/gedit-commands-file.c:617 ../gedit/gedit-commands-file.c:808
+#: ../gedit/gedit-commands-file.c:617 ../gedit/gedit-commands-file.c:815
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "'%s fitxategia gordetzen..."
 
 #
-#: ../gedit/gedit-commands-file.c:707
+#: ../gedit/gedit-commands-file.c:714
 msgid "Save As…"
 msgstr "Gorde honela..."
 
-#: ../gedit/gedit-commands-file.c:1003
+#: ../gedit/gedit-commands-file.c:1010
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "'%s' fitxategia leheneratzen..."
 
-#: ../gedit/gedit-commands-file.c:1025
+#: ../gedit/gedit-commands-file.c:1032
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Leheneratu '%s' dokumentuko gorde ez diren aldaketak?"
 
-#: ../gedit/gedit-commands-file.c:1034
+#: ../gedit/gedit-commands-file.c:1041
 #, c-format
 msgid "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
@@ -1235,11 +1239,11 @@ msgid_plural ""
 msgstr[0] "Azken %ld segundoan dokumentuan egin diren aldaketak betirako galduko dira."
 msgstr[1] "Azken %ld segundotan dokumentuan egin diren aldaketak betirako galduko dira."
 
-#: ../gedit/gedit-commands-file.c:1043
+#: ../gedit/gedit-commands-file.c:1050
 msgid "Changes made to the document in the last minute will be permanently lost."
 msgstr "Azken minutuan dokumentuan egin diren aldaketak betirako galduko dira."
 
-#: ../gedit/gedit-commands-file.c:1049
+#: ../gedit/gedit-commands-file.c:1056
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1254,7 +1258,7 @@ msgstr[1] ""
 "Azken minutuan eta %ld segundotan dokumentuan egin diren aldaketak betirako "
 "galduko dira."
 
-#: ../gedit/gedit-commands-file.c:1059
+#: ../gedit/gedit-commands-file.c:1066
 #, c-format
 msgid "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
@@ -1263,14 +1267,14 @@ msgid_plural ""
 msgstr[0] "Azken %ld minutuan dokumentuan egin diren aldaketak betirako galduko dira."
 msgstr[1] "Azken %ld minututan dokumentuan egin diren aldaketak betirako galduko dira."
 
-#: ../gedit/gedit-commands-file.c:1074 ../gedit/gedit-commands-file.c:1095
+#: ../gedit/gedit-commands-file.c:1081 ../gedit/gedit-commands-file.c:1102
 #, c-format
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "Azken orduan dokumentuan egin diren aldaketak betirako galduko dira."
 msgstr[1] "Azken %d ordutan dokumentuan egin diren aldaketak betirako galduko dira."
 
-#: ../gedit/gedit-commands-file.c:1080
+#: ../gedit/gedit-commands-file.c:1087
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1285,7 +1289,7 @@ msgstr[1] ""
 "Azken azken orduan eta %d minututan dokumentuan egin diren aldaketak "
 "betirako galduko dira."
 
-#: ../gedit/gedit-commands-file.c:1121
+#: ../gedit/gedit-commands-file.c:1128
 msgid "_Revert"
 msgstr "_Leheneratu"
 
@@ -1294,45 +1298,41 @@ msgstr "_Leheneratu"
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit testu-editore txikia eta sinplea da, GNOME mahaigainerako."
 
-#: ../gedit/gedit-commands-help.c:98
+#: ../gedit/gedit-commands-help.c:93
 msgid "translator-credits"
 msgstr ""
 "Iñaki Larrañaga <dooteo@euskalgnu.org>\n"
 "Hizkuntza Politikarako Sailburuordetza \n"
 "<hizkpol@ej-gv.es>"
 
-#: ../gedit/gedit-commands-help.c:101
-msgid "gedit"
-msgstr "gedit"
-
-#: ../gedit/gedit-commands-search.c:166
+#: ../gedit/gedit-commands-search.c:165
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "Agerraldi %d aurkitu eta ordeztu da."
 msgstr[1] "%d agerraldi aurkitu eta ordeztu dira."
 
-#: ../gedit/gedit-commands-search.c:176
+#: ../gedit/gedit-commands-search.c:175
 msgid "Found and replaced one occurrence"
 msgstr "Agerraldi bat aurkitu eta ordeztu da."
 
-#: ../gedit/gedit-commands-search.c:189
+#: ../gedit/gedit-commands-search.c:188
 msgid "Phrase not found"
 msgstr "Ez da esaldia aurkitu"
 
-#: ../gedit/gedit-document.c:774 ../gedit/gedit-document.c:855
+#: ../gedit/gedit-document.c:774 ../gedit/gedit-document.c:868
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Gorde gabeko %d dokumentua"
 
 #
 #. bad bad luck...
-#: ../gedit/gedit-document-saver.c:523
+#: ../gedit/gedit-document-saver.c:536
 msgid "Could not obtain backup filename"
 msgstr "Ezin izan da babeskopiaren izena lortu."
 
 #: ../gedit/gedit-documents-panel.c:85 ../gedit/gedit-documents-panel.c:99
-#: ../gedit/gedit-window.c:1528 ../gedit/gedit-window.c:1533
+#: ../gedit/gedit-window.c:1535 ../gedit/gedit-window.c:1540
 msgid "Read Only"
 msgstr "Irakurtzeko soilik (IS)"
 
@@ -1560,8 +1560,8 @@ msgid ""
 "Host %s could not be found. Please, check that your proxy settings are "
 "correct and try again."
 msgstr ""
-"Ezin izan da %s ostalaria aurkitu. Egiaztatu proxy-ezarpenak zuzenak "
-"direla eta saiatu berriro."
+"Ezin izan da %s ostalaria aurkitu. Egiaztatu proxy-ezarpenak zuzenak direla "
+"eta saiatu berriro."
 
 #: ../gedit/gedit-io-error-message-area.c:249
 #: ../gedit/gedit-io-error-message-area.c:260
@@ -1852,13 +1852,13 @@ msgstr "Ezin izan da %s fitxategia gorde."
 msgid "Close document"
 msgstr "Itxi dokumentua"
 
-#: ../gedit/gedit-panel.c:370 ../gedit/gedit-panel.c:585
+#: ../gedit/gedit-panel.c:365 ../gedit/gedit-panel.c:556
 #: ../gedit/recent-files/egg-recent-view-gtk.c:446
 #: ../gedit/recent-files/egg-recent-view-uimanager.c:322
 msgid "Empty"
 msgstr "Hutsa"
 
-#: ../gedit/gedit-panel.c:526 ../gedit/gedit-panel.c:606
+#: ../gedit/gedit-panel.c:500 ../gedit/gedit-panel.c:577
 msgid "Hide panel"
 msgstr "Ezkutatu panela"
 
@@ -1886,7 +1886,7 @@ msgstr "K_onfiguratu plugin-a"
 msgid "Cannot initialize preferences manager."
 msgstr "Ezin da hobespenen kudeatzailea abiarazi."
 
-#: ../gedit/gedit-prefs-manager.c:1388
+#: ../gedit/gedit-prefs-manager.c:1390
 #, c-format
 msgid "Expected `%s' got `%s' for key %s"
 msgstr "`%s' espero nuen, baina `%s' eskuratu dut %s gakoarentzat"
@@ -2081,7 +2081,7 @@ msgstr "MIME mota:"
 msgid "Encoding:"
 msgstr "Kodeketa:"
 
-#: ../gedit/gedit-tab.c:2012
+#: ../gedit/gedit-tab.c:2013
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "%d/%d orria errendatzen..."
@@ -2128,7 +2128,7 @@ msgstr "Dokumentu berria sortzen du"
 msgid "_Open..."
 msgstr "_Ireki..."
 
-#: ../gedit/gedit-ui.h:59 ../gedit/gedit-window.c:1105
+#: ../gedit/gedit-ui.h:59 ../gedit/gedit-window.c:1110
 msgid "Open a file"
 msgstr "Fitxategi bat irekitzen du"
 
@@ -2296,81 +2296,89 @@ msgstr "Orde_ztu..."
 msgid "Search for and replace text"
 msgstr "Bilatu eta ordeztu testua"
 
-#
 #: ../gedit/gedit-ui.h:120
+msgid "_Clear Highlight"
+msgstr "_Garbitu nabarmentzea"
+
+#: ../gedit/gedit-ui.h:121
+msgid "Clear highlighting of search matches"
+msgstr "Garbitu bat datozenen nabarmentzea"
+
+#
+#: ../gedit/gedit-ui.h:122
 msgid "Go to _Line..."
 msgstr "Joan _lerro honetara:"
 
-#: ../gedit/gedit-ui.h:121
+#: ../gedit/gedit-ui.h:123
 msgid "Go to a specific line"
 msgstr "Joan lerro zehatzera"
 
 #
 #. Documents menu
-#: ../gedit/gedit-ui.h:124
+#: ../gedit/gedit-ui.h:126
 msgid "_Save All"
 msgstr "G_orde dena"
 
 #
-#: ../gedit/gedit-ui.h:125
+#: ../gedit/gedit-ui.h:127
 msgid "Save all open files"
 msgstr "Irekitako fitxategi guztiak gordetzen ditu"
 
 #
-#: ../gedit/gedit-ui.h:126
+#: ../gedit/gedit-ui.h:128
 msgid "_Close All"
 msgstr "Itxi _dena"
 
 #
-#: ../gedit/gedit-ui.h:127
+#: ../gedit/gedit-ui.h:129
 msgid "Close all open files"
 msgstr "Irekita dauden fitxategi guztiak ixten ditu"
 
-#: ../gedit/gedit-ui.h:128
+#: ../gedit/gedit-ui.h:130
 msgid "_Move to New Window"
 msgstr "_Eraman leiho berrira"
 
-#: ../gedit/gedit-ui.h:129
+#: ../gedit/gedit-ui.h:131
 msgid "Move the current document to a new window"
 msgstr "Eraman uneko dokumentua leiho berri batera"
 
 #
-#: ../gedit/gedit-ui.h:136
+#: ../gedit/gedit-ui.h:138
 msgid "Quit the program"
 msgstr "Programatik irteten da"
 
-#: ../gedit/gedit-ui.h:141
+#: ../gedit/gedit-ui.h:143
 msgid "_Toolbar"
 msgstr "_Tresna-barra"
 
-#: ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-ui.h:144
 msgid "Show or hide the toolbar in the current window"
 msgstr "Uneko leihoko tresna-barra erakusten/ezkutatzen du"
 
 #
-#: ../gedit/gedit-ui.h:144
+#: ../gedit/gedit-ui.h:146
 msgid "_Statusbar"
 msgstr "Egoe_ra-barra"
 
-#: ../gedit/gedit-ui.h:145
+#: ../gedit/gedit-ui.h:147
 msgid "Show or hide the statusbar in the current window"
 msgstr "Uneko leihoko egoera-barra erakusten/ezkutatzen du"
 
-#: ../gedit/gedit-ui.h:147
+#: ../gedit/gedit-ui.h:149
 msgid "Side _Pane"
 msgstr "Alboko panela"
 
-#: ../gedit/gedit-ui.h:148
+#: ../gedit/gedit-ui.h:150
 msgid "Show or hide the side pane in the current window"
 msgstr "Uneko leihoko alboko panela erakusten/ezkutatzen du"
 
-#: ../gedit/gedit-ui.h:150 ../gedit/gedit-ui.h:157
-msgid "_Bottom Panel"
+#: ../gedit/gedit-ui.h:156
+msgid "_Bottom Pane"
 msgstr "_Beheko panela"
 
-#: ../gedit/gedit-ui.h:151 ../gedit/gedit-ui.h:158
-msgid "Show or hide the bottom panel in the current window"
-msgstr "Uneko leihoko beheko panela erakusten/ezkutatzen du"
+#: ../gedit/gedit-ui.h:157
+msgid "Show or hide the bottom pane in the current window"
+msgstr "Erakutsi edo ezkutatu uneko leihoko beheko panela"
 
 #: ../gedit/gedit-utils.c:923
 #, c-format
@@ -2387,63 +2395,63 @@ msgid "Unable to find the required widgets inside file %s."
 msgstr "Ezin dira behar diren trepetak %s fitxategiaren barruan bilatu."
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view.c:1333
+#: ../gedit/gedit-view.c:1336
 msgid "_Wrap Around"
 msgstr "_Doitu"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view.c:1343
+#: ../gedit/gedit-view.c:1346
 msgid "Match _Entire Word Only"
 msgstr "_Hitz osoak soilik"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view.c:1353
+#: ../gedit/gedit-view.c:1356
 msgid "_Match Case"
 msgstr "_Maiuskula/minuskula"
 
-#: ../gedit/gedit-view.c:1441
+#: ../gedit/gedit-view.c:1444
 msgid "String you want to search for"
 msgstr "Bilatzea nahi duzun katea"
 
-#: ../gedit/gedit-view.c:1450
+#: ../gedit/gedit-view.c:1453
 msgid "Line you want to move the cursor to"
 msgstr "Lerroa kurtsorea kokatzeko"
 
-#: ../gedit/gedit-window.c:676
+#: ../gedit/gedit-window.c:681
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "Erabili %s nabarmentze-modua"
 
-#: ../gedit/gedit-window.c:729
+#: ../gedit/gedit-window.c:734
 msgid "Normal"
 msgstr "Normala"
 
-#: ../gedit/gedit-window.c:730
+#: ../gedit/gedit-window.c:735
 msgid "Use Normal highlight mode"
 msgstr "Erabili nabarmentze-modu normala"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:856 ../gedit/gedit-window.c:881
+#: ../gedit/gedit-window.c:861 ../gedit/gedit-window.c:886
 #: ../gedit/recent-files/egg-recent-view-gtk.c:346
 #: ../gedit/recent-files/egg-recent-view-uimanager.c:205
 #, c-format
 msgid "Open '%s'"
 msgstr "Ireki '%s'"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:1009
 msgid "Save"
 msgstr "Gorde"
 
 #
-#: ../gedit/gedit-window.c:1109
+#: ../gedit/gedit-window.c:1114
 msgid "Open a recently used file"
 msgstr "Erabili berri duzun fitxategi bat irekitzen du"
 
-#: ../gedit/gedit-window.c:1116
+#: ../gedit/gedit-window.c:1121
 msgid "Open"
 msgstr "Ireki"
 
-#: ../gedit/gedit-window.c:1205 ../gedit/gedit-window.c:1804
+#: ../gedit/gedit-window.c:1210 ../gedit/gedit-window.c:1811
 #, c-format
 msgid "Activate %s"
 msgstr "Aktibatu %s"
@@ -2566,103 +2574,118 @@ msgstr "Exekutatu kanpoko komandoak eta shell-eko script-ak."
 msgid "External Tools"
 msgstr "Kanpoko tresnak"
 
-#: ../plugins/externaltools/tools/functions.py:237
+#: ../plugins/externaltools/tools/functions.py:242
 msgid "You must be inside a word to run this command"
 msgstr "Hitz baten barruan egon behar zara komando hau exekutatzeko"
 
-#: ../plugins/externaltools/tools/functions.py:293
+#: ../plugins/externaltools/tools/functions.py:299
 msgid "Running tool:"
 msgstr "Tresna exekutatzen:"
 
-#: ../plugins/externaltools/tools/functions.py:303
+#: ../plugins/externaltools/tools/functions.py:322
 msgid "Done."
 msgstr "Eginda"
 
-#: ../plugins/externaltools/tools/functions.py:305
+#: ../plugins/externaltools/tools/functions.py:324
 msgid "Exited"
 msgstr "Irten da"
 
-#: ../plugins/externaltools/tools/manager.py:43
+#: ../plugins/externaltools/tools/manager.py:41
 msgid "Nothing"
 msgstr "Ezer ez"
 
-#: ../plugins/externaltools/tools/manager.py:44
+#: ../plugins/externaltools/tools/manager.py:42
 msgid "Current document"
 msgstr "Uneko dokumentua"
 
-#: ../plugins/externaltools/tools/manager.py:45
+#: ../plugins/externaltools/tools/manager.py:43
 msgid "Current selection"
 msgstr "Uneko hautapena"
 
-#: ../plugins/externaltools/tools/manager.py:46
+#: ../plugins/externaltools/tools/manager.py:44
 msgid "Current line"
 msgstr "Uneko lerroa"
 
-#: ../plugins/externaltools/tools/manager.py:47
+#: ../plugins/externaltools/tools/manager.py:45
 msgid "Current word"
 msgstr "Uneko hitza"
 
-#: ../plugins/externaltools/tools/manager.py:50
+#: ../plugins/externaltools/tools/manager.py:48
 msgid "Insert in output panel"
 msgstr "Txertatu kanpoko panelean"
 
-#: ../plugins/externaltools/tools/manager.py:51
+#: ../plugins/externaltools/tools/manager.py:49
 msgid "Create new document"
 msgstr "Sortu dokumentu berria"
 
 #
-#: ../plugins/externaltools/tools/manager.py:52
+#: ../plugins/externaltools/tools/manager.py:50
 msgid "Append to current document"
 msgstr "Erantsi uneko dokumentuari"
 
 #
-#: ../plugins/externaltools/tools/manager.py:53
+#: ../plugins/externaltools/tools/manager.py:51
 msgid "Replace current document"
 msgstr "Ordeztu uneko dokumentua"
 
-#: ../plugins/externaltools/tools/manager.py:54
+#: ../plugins/externaltools/tools/manager.py:52
 msgid "Replace current selection"
 msgstr "Ordeztu uneko hautapena"
 
 #
-#: ../plugins/externaltools/tools/manager.py:55
+#: ../plugins/externaltools/tools/manager.py:53
 msgid "Insert at cursor position"
 msgstr "Txertatu kurtsorearen posizioan"
 
-#: ../plugins/externaltools/tools/manager.py:58
+#: ../plugins/externaltools/tools/manager.py:56
 msgid "All documents"
 msgstr "Dokumentu guztiak"
 
-#: ../plugins/externaltools/tools/manager.py:59
+#: ../plugins/externaltools/tools/manager.py:57
 msgid "All documents except untitled ones"
 msgstr "Dokumentu guztiak izenik gabekoak ezik"
 
-#: ../plugins/externaltools/tools/manager.py:60
+#: ../plugins/externaltools/tools/manager.py:58
 msgid "Local files only"
 msgstr "Fitxategi lokalak soilik"
 
-#: ../plugins/externaltools/tools/manager.py:61
+#: ../plugins/externaltools/tools/manager.py:59
 msgid "Remote files only"
 msgstr "Urruneko fitxategiak soilik"
 
-#: ../plugins/externaltools/tools/manager.py:62
+#: ../plugins/externaltools/tools/manager.py:60
 msgid "Untitled documents only"
 msgstr "Izenik gabeko dokumentuak soilik"
 
-#: ../plugins/externaltools/tools/manager.py:175
-#: ../plugins/externaltools/tools/manager.py:192
-#: ../plugins/externaltools/tools/manager.py:231
+#: ../plugins/externaltools/tools/manager.py:190
+#: ../plugins/externaltools/tools/manager.py:207
+#: ../plugins/externaltools/tools/manager.py:246
 #, python-format
 msgid "Edit tool <i>%s</i>:"
 msgstr "Editatu <i>%s</i> tresna:"
 
-#: ../plugins/externaltools/tools/manager.py:179
+#: ../plugins/externaltools/tools/manager.py:194
 msgid "A Brand New Tool"
 msgstr "Tresna-mota berria"
 
-#: ../plugins/externaltools/tools/manager.py:202
+#: ../plugins/externaltools/tools/manager.py:217
 msgid "New tool"
 msgstr "Tresna berria"
+
+#: ../plugins/externaltools/tools/manager.py:280
+#, python-format
+msgid "This accelerator is already bound to %s"
+msgstr "Bizkortzaile hau jadanik honekin lotuta dago: %s"
+
+#: ../plugins/externaltools/tools/manager.py:333
+#: ../plugins/snippets/snippets/SnippetsDialog.py:562
+msgid "Type a new accelerator, or press Backspace to clear"
+msgstr "Sakatu bizkortzaile berria, edo Atzera-tekla garbitzeko"
+
+#: ../plugins/externaltools/tools/manager.py:335
+#: ../plugins/snippets/snippets/SnippetsDialog.py:564
+msgid "Type a new accelerator"
+msgstr "Sakatu bizkortzaile berria"
 
 #: ../plugins/externaltools/tools/outputpanel.py:78
 msgid "Stopped."
@@ -2728,14 +2751,6 @@ msgstr "_Gorde:"
 #: ../plugins/externaltools/tools/tools.glade.h:16
 msgid "_Tools:"
 msgstr "_Tresnak:"
-
-#: ../plugins/externaltools/tools/tools.glade.h:17
-msgid ""
-"cd $GEDIT_CURRENT_DOCUMENT_DIR\n"
-"make"
-msgstr ""
-"cd $GEDIT_UNEKO_DOKUMENTU_DIR\n"
-"make"
 
 #: ../plugins/indent/gedit-indent-plugin.c:56
 msgid "_Indent"
@@ -2844,14 +2859,6 @@ msgstr "Gehitu mozkin berria..."
 #: ../plugins/snippets/snippets/SnippetsDialog.py:109
 msgid "Global"
 msgstr "Globala"
-
-#: ../plugins/snippets/snippets/SnippetsDialog.py:562
-msgid "Type a new accelerator, or press Backspace to clear"
-msgstr "Sakatu bizkortzaile berria, edo Atzera-tekla garbitzeko"
-
-#: ../plugins/snippets/snippets/SnippetsDialog.py:564
-msgid "Type a new accelerator"
-msgstr "Sakatu bizkortzaile berria"
 
 #
 #: ../plugins/sort/gedit-sort-plugin.c:80
@@ -3241,12 +3248,12 @@ msgstr "(ortografia zuzena)"
 msgid "Completed spell checking"
 msgstr "Ortografia-egiaztapena bukatuta"
 
-#: ../plugins/spell/gedit-spell-language-dialog.c:245
+#: ../plugins/spell/gedit-spell-language-dialog.c:244
 #, c-format
 msgid "Could not find the required widgets inside %s."
 msgstr "Ezin izan dira behar diren trepetak bilatu %s(r)en barruan."
 
-#: ../plugins/spell/gedit-spell-language-dialog.c:266
+#: ../plugins/spell/gedit-spell-language-dialog.c:265
 msgid "Languages"
 msgstr "Hizkuntzak"
 
