@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Breton translation of gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-29 16:37+0200\n"
-"PO-Revision-Date: 2006-03-28 13:49+0200\n"
-"Last-Translator: Giulia Fraboulet <djoulia@gmail.com>\n"
+"POT-Creation-Date: 2006-05-13 10:39-0500\n"
+"PO-Revision-Date: 2006-04-24 17:14+0000\n"
+"Last-Translator: Oublieuse <oublieuse@gmail.com>\n"
 "Language-Team: Breton translation team <djoulia_at_gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +35,7 @@ msgstr "Astennoù en implij"
 
 #: ../data/gedit.schemas.in.h:3
 msgid "Auto Detected Encodings"
-msgstr "Embonegoù bet kavet"
+msgstr "Enkodadoù bet kavet war-eeun"
 
 #: ../data/gedit.schemas.in.h:4
 msgid "Auto Save"
@@ -51,7 +51,7 @@ msgstr "Emgefoskañ"
 
 #: ../data/gedit.schemas.in.h:7
 msgid "Background Color"
-msgstr "Liv-kein"
+msgstr "Liv an drekleur"
 
 #: ../data/gedit.schemas.in.h:8
 msgid ""
@@ -65,7 +65,9 @@ msgstr ""
 msgid ""
 "Background color for unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
-msgstr "Liv-kein an destenn ezdiuzet"
+msgstr ""
+"Liv-kein an destenn ezdiuzet en takad-skrivañ. Efedus e vo an dra-mañ hepken "
+"ma n'ho peus ket dibabet \"Implij al livioù dre-ziouer\"."
 
 #: ../data/gedit.schemas.in.h:10
 msgid "Backup Copy Extension"
@@ -77,7 +79,7 @@ msgstr "Arouezennaoueg korf ar skrid evit ar moullañ"
 
 #: ../data/gedit.schemas.in.h:12
 msgid "Bottom Panel is Visible"
-msgstr "Panel an traoñ a zo hewel"
+msgstr "Hewel eo ar banell-draoñ"
 
 #: ../data/gedit.schemas.in.h:13
 msgid "Create Backup Copies"
@@ -89,7 +91,7 @@ msgstr "Niverenniñ al linennoù"
 
 #: ../data/gedit.schemas.in.h:15
 msgid "Display Right Margin"
-msgstr "Diskouezh ar varzhenn zehou"
+msgstr "Diskouez ar varzhenn zehou"
 
 #: ../data/gedit.schemas.in.h:16
 msgid "Editor Font"
@@ -105,7 +107,7 @@ msgstr "Bevaat ar sintaks goulaouet"
 
 #: ../data/gedit.schemas.in.h:19
 msgid "Encodings shown in menu"
-msgstr "Embonegoù diskouezhet er roll"
+msgstr "Enkodoù diskouezet er meuziad"
 
 #: ../data/gedit.schemas.in.h:20
 msgid ""
@@ -120,7 +122,7 @@ msgid ""
 "Foreground color for selected text in the editing area. This will only take "
 "effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Liv dirak evit an destenn dibabet en takad-skrivañ. Ne vo ket efedus an dra-"
+"Liv dirak evit an destenn diuzet en takad-skrivañ. Ne vo ket efedus an dra-"
 "mañ m'ho peus dibabet \"Implij al livioù dre-ziouer\"."
 
 #: ../data/gedit.schemas.in.h:22
@@ -128,12 +130,12 @@ msgid ""
 "Foreground color for the unselected text in the editing area. This will only "
 "take effect if the \"Use Default Colors\" option is turned off."
 msgstr ""
-"Liv dirak evit an destenn ezdiuzet er vaezhienn aozañ. Ne vo ket efedus an "
-"dra-mañ m'ho peus diuzet an dibab \"Implij al livioù dre-ziouer\"."
+"Liv dirak evit an destenn ezdiuzet en takad-skrivañ. Ne vo ket efedus an dra-"
+"mañ m'ho peus diuzet an dibab \"Implij al livioù dre-ziouer\"."
 
 #: ../data/gedit.schemas.in.h:23
 msgid "Header Font for Printing"
-msgstr "Arouezennaoueg ar talbenn evit ar moullañ"
+msgstr "Arouezennaoueg an talbenn evit ar moullañ"
 
 #: ../data/gedit.schemas.in.h:24
 msgid "Highlight Current Line"
@@ -160,7 +162,7 @@ msgstr "Arouezennaoueg an niveroù linennoù evit ar moullañ"
 
 #: ../data/gedit.schemas.in.h:29
 msgid "Line Wrapping Mode"
-msgstr "Mod plegañ al linennoù"
+msgstr "Mod troc'hañ al linennoù"
 
 #: ../data/gedit.schemas.in.h:30
 msgid ""
@@ -173,9 +175,9 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Roll an astennoù en implij. Ennañ e kaver \"Chomlec'h\" an astennoù en "
-"implij. Sellit er restr .gedit-plugin evit kaout \"Chomlec'h\" un astenn "
-"resis."
+"Roll an adveziantoù war enaou. Ennañ e kaver \"Lec'hiadur\" an adveziantoù "
+"war enaou. Sellit er restr .gedit-plugin evit kaout \"Lec'hiadur\" un "
+"adveziant resis."
 
 #: ../data/gedit.schemas.in.h:32
 msgid ""
@@ -185,23 +187,29 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.h:33
 msgid "Max Number of Undo Actions"
-msgstr "Niver brasañ a oberoù da zizober"
+msgstr "Niver brasañ a oberoù da nullañ"
 
 #: ../data/gedit.schemas.in.h:34
 msgid "Maximum Recent Files"
-msgstr "Niver brasañ a restroù fresk"
+msgstr "Niver brasañ a restroù nevez-implijet"
 
 #: ../data/gedit.schemas.in.h:35
+#, fuzzy
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
 "\" for unlimited number of actions."
 msgstr ""
+"Niver brasañ a oberoù e vo gouest gedit da nullañ pe da adober. Implijit \"-1"
+"\" evit un niver \"diharz\" a oberoù."
 
 #: ../data/gedit.schemas.in.h:36
+#, fuzzy
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
 "\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
+"Niver brasañ a oberoù e vo gouest gedit da nullañ pe da adober. Implijit \"-1"
+"\" evit un niver \"diharz\" a oberoù. Dizimplij abaoe 2.12.0"
 
 #. Translators: This is the Editor Font.
 #. This is a Pango font
@@ -227,6 +235,9 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Auto Save\" option is turned on."
 msgstr ""
+"Niver a vunutennoù da c'hortoz a-raok ma vo enrollet war-eeun ar restroù "
+"kemmet gant gedit. Efedus e vo an dra-mañ m'eo bet diuzet an dibab "
+"\"Emenrollañ\" hepken."
 
 #: ../data/gedit.schemas.in.h:48
 msgid "Print Header"
@@ -238,7 +249,7 @@ msgstr "Moullañ an niveroù linennoù"
 
 #: ../data/gedit.schemas.in.h:50
 msgid "Print Syntax Highlighting"
-msgstr ""
+msgstr "Moullañ ar sintaks goulaouet"
 
 #: ../data/gedit.schemas.in.h:51
 msgid "Printing Line Wrapping Mode"
@@ -246,7 +257,7 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.h:52
 msgid "Restore Previous Cursor Position"
-msgstr ""
+msgstr "Distreiñ da lec'hiadur kent ar biz-red"
 
 #: ../data/gedit.schemas.in.h:53
 msgid "Right Margin Position"
@@ -280,15 +291,15 @@ msgstr "Sans Regular 8"
 
 #: ../data/gedit.schemas.in.h:68
 msgid "Selected Text Color"
-msgstr "Liv an destenn dibabet"
+msgstr "Liv an destenn diuzet"
 
 #: ../data/gedit.schemas.in.h:69
 msgid "Selection Color"
-msgstr "Liv an dibab"
+msgstr "Liv an diuziñ"
 
 #: ../data/gedit.schemas.in.h:70
 msgid "Side Pane is Visible"
-msgstr ""
+msgstr "Hewel eo ar banell-gostez"
 
 #: ../data/gedit.schemas.in.h:71
 msgid ""
@@ -319,18 +330,26 @@ msgstr ""
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
+"A ziskouez peseurt arouezennaoueg a zo da implij evit korf an dielloù pa "
+"vezont moullet."
 
 #: ../data/gedit.schemas.in.h:75
 msgid ""
 "Specifies the font to use for a document's body when printing documents. "
 "This is a gnome-print font name and replaced by print_font_body_pango."
 msgstr ""
+"A ziskouez peseurt arouezennaoueg a zo da implij evit korf an dielloù pa "
+"vezont moullet. Un anv arouezennaoueg-moullañ gnome eo hennezh hag a vo "
+"erlec'hiet gant print_font_body_pango."
 
 #: ../data/gedit.schemas.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
+"A ziskouez an arouezennaoueg a zo da implij evit an niveroù linennoù pa "
+"vezont moullet. Efedus e vo an dra-mañ ma n'eus ket zero evit an dibab "
+"\"Moullañ niveroù linennoù\"."
 
 #: ../data/gedit.schemas.in.h:77
 msgid ""
@@ -370,7 +389,7 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.h:83
 msgid "Status Bar is Visible"
-msgstr "Hewel eo ar varrenn-stuz"
+msgstr "Hewel eo ar varrenn-statuz"
 
 #: ../data/gedit.schemas.in.h:84
 msgid ""
@@ -388,7 +407,7 @@ msgstr "Ledander an tab"
 
 #: ../data/gedit.schemas.in.h:86
 msgid "Text Color"
-msgstr "Liv boutin an destenn"
+msgstr "Liv ar skrid"
 
 #: ../data/gedit.schemas.in.h:87
 msgid "Toolbar Buttons Style"
@@ -523,43 +542,43 @@ msgstr "[UTF-8,CURRENT,ISO-8859-15]"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:136
 msgid "Logout _without Saving"
-msgstr "Dilugañ hep enrollañ"
+msgstr "Serriñ hep enrollañ"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:140
 msgid "_Cancel Logout"
-msgstr "Nullañ an dilugañ"
+msgstr "Nullañ Serriñ"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:147
 msgid "Close _without Saving"
-msgstr "Serriñ hep enrollañ"
+msgstr "Serriñ _hep enrollañ"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:180
 msgid "Question"
 msgstr "Goulenn"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:386
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù e-kerzh an/ar %ld "
+"eilenn diwezhañ."
 msgstr[1] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh an/"
+"ar %ld eilenn diwezhañ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:395
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh ar "
+"vunutenn ziwezhañ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:401
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
 "permanently lost."
@@ -567,25 +586,25 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh ar "
+"vunutenn ha %ld eilenn diwezhañ."
 msgstr[1] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh ar "
+"vunutenn ha %ld eilenn diwezhañ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:411
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh ar "
+"%ld munutenn diwezhañ."
 msgstr[1] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh ar "
+"%ld munutenn diwezhañ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:426
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:447
@@ -594,14 +613,14 @@ msgid "If you don't save, changes from the last hour will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh an "
+"eurvezh diwezhañ."
 msgstr[1] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh an "
+"eurvezh diwezhañ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:432
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
 "permanently lost."
@@ -609,11 +628,11 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh an "
+"eurvezh ha %d munutenn diwezhañ."
 msgstr[1] ""
-"Ma ne enrollit ket, ar c'hemmoù bet graet e-kerzh ar vunutenn ziwezhañ a vo "
-"kollet da viskoazh."
+"Ma ne enrollit ket, e vo kollet da viskoazh ar c'hemmoù bet graet e-kerzh an "
+"eurvezh ha %d munutenn diwezhañ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:491
 #, c-format
@@ -621,69 +640,67 @@ msgid "Save the changes to document \"%s\" before closing?"
 msgstr "Enrollañ ar c'hemmoù en diell \"%s\" a-raok serriñ?"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:663
-#, fuzzy, c-format
+#, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
 "Bez ez eus %d diell gant kemmoù dienroll. Enrollañ ar c'hemmoù a-raok serriñ?"
-"Bez ez eus %d diell gant kemmoù dienroll. Enrollañ ar c'hemmoù a-raok serriñ?"
 msgstr[1] ""
-"Bez ez eus %d diell gant kemmoù dienroll. Enrollañ ar c'hemmoù a-raok serriñ?"
 "Bez ez eus %d diell gant kemmoù dienroll. Enrollañ ar c'hemmoù a-raok serriñ?"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:680
 msgid "S_elect the documents you want to save:"
-msgstr "Dibabit an dielloù a fell deoc'h enrollañ:"
+msgstr "_Dibabit an dielloù a fell deoc'h enrollañ:"
 
 #. Secondary label
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:697
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Ma ne enrollit ket, holl ho kemmoù a vo kollet da viskoazh."
+msgstr "Ma ne enrollit ket, e vo kollet da viskoazh holl ho kemmoù."
 
 #: ../gedit/dialogs/gedit-encodings-dialog.c:315
 msgid "Character Codings"
-msgstr ""
+msgstr "Enkodoù an arouezioù"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.c:365
 #: ../gedit/dialogs/gedit-encodings-dialog.c:426
 msgid "_Description"
-msgstr "_Taolennadur"
+msgstr "_Displegadenn"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.c:374
 #: ../gedit/dialogs/gedit-encodings-dialog.c:435
 msgid "_Encoding"
-msgstr ""
+msgstr "_Enkodiñ"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:1
 msgid "A_vailable encodings:"
-msgstr ""
+msgstr "Enkodadoù _hegerzh:"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:2
 msgid "Character codings"
-msgstr ""
+msgstr "Enkodadoù arouezioù"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:3
 msgid "E_ncodings shown in menu:"
-msgstr ""
+msgstr "E_kodadoù hewel er meuziad:"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.c:135
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:3
 msgid "Open Location"
-msgstr "Digeriñ gant ul lec'hiadur"
+msgstr "Digeriñ ul lec'hiadur"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:1
 msgid "Ch_aracter coding:"
-msgstr ""
+msgstr "Enkodadoù ar_ouezioù"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:2
 msgid "Enter the _location (URI) of the file you would like to open:"
-msgstr "Roit lec'hiadur (URI) ar restr ho pefe c'hoant da zigeriñ:"
+msgstr "Roit _lec'hiadur (URI) ar restr a fell deoc'h digeriñ:"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.c:527
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:9
 msgid "Page Setup"
-msgstr ""
+msgstr "Doare-kinnig ar bajenn"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:1
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:1
@@ -692,7 +709,7 @@ msgstr ""
 #: ../plugins/snippets/snippets/snippets.glade.h:1
 #: ../plugins/time/time.glade2.h:1
 msgid "    "
-msgstr "    "
+msgstr "....    "
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:2
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:8
@@ -702,17 +719,17 @@ msgstr "<b>Niveroù linennoù</b>"
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:3
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:11
 msgid "<b>Text Wrapping</b>"
-msgstr ""
+msgstr "<b>Troc'hañ linennoù</b>"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:4
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:16
 msgid "Do not _split words over two lines"
-msgstr ""
+msgstr "Chom hep _ledañ gerioù war ziv linenn"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:5
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:19
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "Bevaat troc'hañ al linennoù"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:6
 msgid "Fonts"
@@ -720,19 +737,19 @@ msgstr "Arouezennaouegoù"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:7
 msgid "General"
-msgstr "Dre vraz"
+msgstr "Hollek"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:8
 msgid "He_aders and footers:"
-msgstr "Penn ha traoñ testenn:"
+msgstr "Talbennoù:"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:10
 msgid "Print _line numbers"
-msgstr "Moullañ niveroù al linennoù"
+msgstr "Moullañ an niveroù linennoù"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:11
 msgid "Print s_yntax highlighting"
-msgstr ""
+msgstr "Moullañ ar sintaks goulaouet"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:12
 msgid "_Body:"
@@ -744,7 +761,7 @@ msgstr "_Niveroù linennoù:"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:14
 msgid "_Number every"
-msgstr "Niverenn bep"
+msgstr "_Niverenn bep"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:15
 msgid "_Print page headers"
@@ -761,31 +778,31 @@ msgstr "linennoù"
 #: ../gedit/dialogs/gedit-preferences-dialog.c:651
 msgid "Push this button to select the font to be used by the editor"
 msgstr ""
-"Pouezhit war ar bouton-mañ evit dibab an arouezennaoueg a vo implijet gant "
-"an aozer"
+"Pouezit war ar bouton-mañ evit dibab an arouezennaoueg a vo implijet gant an "
+"aozer"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:653
 msgid "Push this button to configure text color"
-msgstr "Pouezhit war ar bouton-mañ evit dibab liv ar skrid"
+msgstr "Pouezit war ar bouton-mañ evit dibab liv ar skrid"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:655
 msgid "Push this button to configure background color"
-msgstr "Pouezhit war ar bouton-mañ evit dibab al liv-kein"
+msgstr "Pouezit war ar bouton-mañ evit dibab al liv-kein"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:657
 msgid ""
 "Push this button to configure the color in which the selected text should "
 "appear"
 msgstr ""
-"Pouezhit war ar bouton-mañ evit dibab gant peseurt liv e vo gwelet an "
-"destenn dibabet"
+"Pouezit war ar bouton-mañ evit dibab gant peseurt liv e vo gwelet an destenn "
+"diuzet"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:660
 msgid ""
 "Push this button to configure the color in which the selected text should be "
 "marked"
 msgstr ""
-"Pouezhit war ar bouton-mañ evit dibab e peseurt liv e ranko bezañ merket an "
+"Pouezit war ar bouton-mañ evit dibab e peseurt liv e ranko bezañ merket an "
 "destenn diuzet"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:1161
@@ -835,7 +852,7 @@ msgstr "<span weight=\"bold\">Livioù</span>"
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:13
 #: ../plugins/taglist/HTML.tags.xml.in.h:23
 msgid "Bold"
-msgstr "Tev"
+msgstr "Druz"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:14
 msgid "Create a _backup copy of files before saving"
@@ -843,7 +860,7 @@ msgstr "Krouiñ un eilskouerenn-wareziñ a-raok enrollañ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:15
 msgid "Display right _margin"
-msgstr "Diskouezh ar varzhenn zehou"
+msgstr "Diskouez ar _varzhenn zehou"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:17
 msgid "Editor"
@@ -859,11 +876,11 @@ msgstr "Arouezennaoueg & Livioù"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:21
 msgid "Hi_ghlight current line"
-msgstr "Goulaouiñ al linenn-red"
+msgstr "_Goulaouiñ al linenn-red"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:22
 msgid "Highlight _mode:"
-msgstr "Mod goulaouiñ:"
+msgstr "_Mod goulaouiñ:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:23
 msgid "Highlight matching _bracket"
@@ -871,15 +888,15 @@ msgstr ""
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:24
 msgid "Insert _spaces instead of tabs"
-msgstr "Enlakaat esaouennoù e-lerc'h tab-où"
+msgstr "Enlakaat e_saouennoù e-lerc'h tab-où"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:25
 msgid "Italic"
-msgstr "Italek"
+msgstr "Stouet"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:26
 msgid "Normal _text color:"
-msgstr "Liv boutin an destenn"
+msgstr "Liv _skrid boutin"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:27
 msgid "Pick a color"
@@ -895,11 +912,11 @@ msgstr "Dibab arouezennaoueg an aozer"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:30
 msgid "Pick the normal text color"
-msgstr "Dibab liv boutin an destenn"
+msgstr "Dibab al liv skrid boutin"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:31
 msgid "Pick the selected text color"
-msgstr "Dibab liv an destenn zibabet"
+msgstr "Dibab al liv skrid diuzet"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:32
 msgid "Pick the selection color"
@@ -907,7 +924,7 @@ msgstr "Dibab liv an diuziñ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:33
 msgid "Plugins"
-msgstr "Astennoù"
+msgstr "Adveziantoù"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:34
 msgid "Preferences"
@@ -915,23 +932,23 @@ msgstr "Dibaboù gwellañ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:35
 msgid "Se_lection color:"
-msgstr "Liv an diuz"
+msgstr "Liv an diuziñ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:36
 msgid "Selecte_d text color:"
-msgstr "Liv an destenn ziuzet"
+msgstr "Dibab liv an destenn ziuzet"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:37
 msgid "Strikethrough"
-msgstr ""
+msgstr "Barrennet"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:38
 msgid "Syntax Highlighting"
-msgstr "Goulaouiñ an ereadurezh"
+msgstr "Goulaouiñ ar sintaks"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:39
 msgid "U_se default theme colors"
-msgstr "Implij an tem livioù dre-ziouer"
+msgstr "_Implij an tem livioù dre-ziouer"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:40
 msgid "Underline"
@@ -939,7 +956,7 @@ msgstr "Islinennañ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:41
 msgid "View"
-msgstr "Gwel"
+msgstr "Gwelout"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:42
 msgid "_Autosave files every"
@@ -947,39 +964,39 @@ msgstr "Lakaat an dielloù da _emenrollañ bep"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:43
 msgid "_Background color:"
-msgstr "Liv-kein:"
+msgstr "Liv an _drekleur:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:44
 msgid "_Background:"
-msgstr "Kein:"
+msgstr "_Drekleur:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:45
 msgid "_Display line numbers"
-msgstr "_Diskouezh niveroù linennoù"
+msgstr "_Niverenniñ al linennoù"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:46
 msgid "_Enable automatic indentation"
-msgstr "Bevaat an emgefoskañ"
+msgstr "_Enaouiñ an emgefoskañ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:47
 msgid "_Enable syntax highlighting"
-msgstr "Enaouiñ ar goulaouiñ sintaksel"
+msgstr "_Enaouiñ ar goulaouiñ sintaksel"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:48
 msgid "_Foreground:"
-msgstr "Gorreleur:"
+msgstr "_Gorreleur:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:49
 msgid "_Reset to Default "
-msgstr "Adlakaat dre-ziouer "
+msgstr "_Adlakaat dre-ziouer "
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:50
 msgid "_Right margin at column:"
-msgstr "Marzhenn zehou ouzh ar golonenn:"
+msgstr "Marzhenn _zehou ouzh ar bann:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:51
 msgid "_Tab width:"
-msgstr "Ledander an tab:"
+msgstr "Hirder an tab:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:52
 msgid "_Use default theme font"
@@ -996,7 +1013,7 @@ msgstr "Erlec'hiañ"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:272 ../gedit/gedit-window.c:1011
 msgid "Find"
-msgstr "Kavout"
+msgstr "Klask"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:324
 msgid "Replace _All"
@@ -1116,25 +1133,28 @@ msgid "Revert unsaved changes to document '%s'?"
 msgstr "Nullañ ar c'hemmoù dienroll en diell '%s'?"
 
 #: ../gedit/gedit-commands-file.c:1041
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad ar %ld eilenn diwezhañ a vo kollet da "
+"viskoazh."
 msgstr[1] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad ar %ld eilenn diwezhañ a vo kollet da "
+"viskoazh."
 
 #: ../gedit/gedit-commands-file.c:1050
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da "
+"viskoazh."
 
 #: ../gedit/gedit-commands-file.c:1056
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
 "permanently lost."
@@ -1142,21 +1162,25 @@ msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad ar vunutenn ha %ld eilenn diwezhañ a vo "
+"kollet da viskoazh."
 msgstr[1] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad ar vunutenn ha %ld eilenn diwezhañ a vo "
+"kollet da viskoazh."
 
 #: ../gedit/gedit-commands-file.c:1066
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad an %ld munutenn diwezhañ a vo kollet da "
+"viskoazh."
 msgstr[1] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad an %ld munutenn diwezhañ a vo kollet da "
+"viskoazh."
 
 #: ../gedit/gedit-commands-file.c:1081 ../gedit/gedit-commands-file.c:1102
 #, fuzzy, c-format
@@ -1164,12 +1188,14 @@ msgid "Changes made to the document in the last hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da "
+"viskoazh."
 msgstr[1] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da "
+"viskoazh."
 
 #: ../gedit/gedit-commands-file.c:1087
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
 "permanently lost."
@@ -1177,9 +1203,11 @@ msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad an eurvezh ha %d munutenn diwezhañ a vo "
+"kollet da viskoazh."
 msgstr[1] ""
-"Kemmoù bet graet en diell e-pad ar vunutenn ziwezhañ a vo kollet da viskoazh."
+"Ar c'hemmoù bet graet en diell e-pad an eurvezh ha %d munutenn diwezhañ a vo "
+"kollet da viskoazh."
 
 #: ../gedit/gedit-commands-file.c:1128
 msgid "_Revert"
@@ -1187,45 +1215,41 @@ msgstr ""
 
 #: ../gedit/gedit-commands-help.c:78
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "gedit a zo un aozer bihan ha skañv evit ar Gorretaol GNOME."
+msgstr "Un aozer bihan ha skañv eo gedit evit ar Burev GNOME."
 
-#: ../gedit/gedit-commands-help.c:98
+#: ../gedit/gedit-commands-help.c:93
 msgid "translator-credits"
 msgstr "Giulia Fraboulet <djoulia_at_gmail.com>"
 
-#: ../gedit/gedit-commands-help.c:101
-msgid "gedit"
-msgstr "gedit"
-
-#: ../gedit/gedit-commands-search.c:166
+#: ../gedit/gedit-commands-search.c:165
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "%d degouezh bet kavet hag erlerc'hiet"
 msgstr[1] "%d degouezh bet kavet hag erlerc'hiet"
 
-#: ../gedit/gedit-commands-search.c:176
+#: ../gedit/gedit-commands-search.c:175
 msgid "Found and replaced one occurrence"
 msgstr "Un degouezh bet kavet hag erlerc'hiet"
 
-#: ../gedit/gedit-commands-search.c:189
+#: ../gedit/gedit-commands-search.c:188
 msgid "Phrase not found"
 msgstr "N'eo ket bet kavet an destenn"
 
-#: ../gedit/gedit-document.c:774 ../gedit/gedit-document.c:855
+#: ../gedit/gedit-document.c:774 ../gedit/gedit-document.c:868
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Diell chomet dienroll %d"
 
 #. bad bad luck...
-#: ../gedit/gedit-document-saver.c:523
+#: ../gedit/gedit-document-saver.c:536
 msgid "Could not obtain backup filename"
 msgstr "Ne oa ket tu kaout anv ar restr-gwareziñ"
 
 #: ../gedit/gedit-documents-panel.c:85 ../gedit/gedit-documents-panel.c:99
 #: ../gedit/gedit-window.c:1535 ../gedit/gedit-window.c:1540
 msgid "Read Only"
-msgstr "Lenn hepken"
+msgstr "Lenn-hepken"
 
 #: ../gedit/gedit-documents-panel.c:633
 msgid "Documents"
@@ -1274,7 +1298,7 @@ msgstr "Gresianek"
 
 #: ../gedit/gedit-encodings.c:165
 msgid "Hebrew Visual"
-msgstr "Hebraeg Visual"
+msgstr "Hebraek Visual"
 
 #: ../gedit/gedit-encodings.c:167 ../gedit/gedit-encodings.c:231
 #: ../gedit/gedit-encodings.c:272 ../plugins/spell/gedit-spell-checker.c:109
@@ -1350,13 +1374,13 @@ msgstr "Dianav"
 
 #: ../gedit/gedit-encodings-option-menu.c:219
 msgid "Auto Detected"
-msgstr "Dizoloet ez-emgefre"
+msgstr "Dizoloet war-eeun"
 
 #: ../gedit/gedit-encodings-option-menu.c:239
 #: ../gedit/gedit-encodings-option-menu.c:261
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Lokal en implij (%s)"
+msgstr "Yezh en implij (%s)"
 
 #: ../gedit/gedit-encodings-option-menu.c:322
 msgid "Add or _Remove..."
@@ -1364,19 +1388,19 @@ msgstr "Ouzhpennañ pe _Lemel"
 
 #: ../gedit/gedit-file-chooser-dialog.c:72
 msgid "C_haracter Coding:"
-msgstr ""
+msgstr "Enkodadoù a_rouezioù"
 
 #: ../gedit/gedit-file-chooser-dialog.c:189
 msgid "All Files"
-msgstr "Holl Restroù"
+msgstr "An holl restroù"
 
 #: ../gedit/gedit-file-chooser-dialog.c:197
 msgid "All Text Files"
-msgstr "Holl Restroù-Skrid"
+msgstr "An holl restroù-skrid"
 
 #: ../gedit/gedit-help.c:66
 msgid "There was an error displaying help."
-msgstr "Bez e oa ur fazi o tiskouezh ar Skoazell"
+msgstr "Bez e oa ur fazi en ur ziskouez ar Skoazell"
 
 #: ../gedit/gedit-io-error-message-area.c:148
 #, c-format
@@ -1398,12 +1422,12 @@ msgstr "ne c'hell ket gedit anavezout lec'hiadurioù %s."
 #: ../gedit/gedit-io-error-message-area.c:172
 #: ../gedit/gedit-io-error-message-area.c:398
 msgid "gedit cannot handle this location."
-msgstr "Ne c'hell ket gedit anavezout al lec'hiadur-mañ"
+msgstr "Ne c'hell ket gedit anavezout al lec'hiadur-mañ."
 
 #: ../gedit/gedit-io-error-message-area.c:179
 #: ../gedit/gedit-io-error-message-area.c:405
 msgid "The file contains data in an invalid format."
-msgstr "Er restr ez eus roadoù en ur furmad direizh."
+msgstr "Er restr ez eus roadoù gant ur furmad direizh."
 
 #: ../gedit/gedit-io-error-message-area.c:183
 #: ../gedit/gedit-io-error-message-area.c:409
@@ -1433,7 +1457,7 @@ msgstr ""
 #: ../gedit/gedit-io-error-message-area.c:422
 #, c-format
 msgid "%s is a directory."
-msgstr "%s a zo ur renkell."
+msgstr "Ur renkell eo %s"
 
 #: ../gedit/gedit-io-error-message-area.c:210
 #: ../gedit/gedit-io-error-message-area.c:427
@@ -1467,7 +1491,7 @@ msgid ""
 "Host name was invalid. Please, check that you typed the location correctly "
 "and try again."
 msgstr ""
-"Anv an ostiz a zo siek. Marplij, gwiriekait ar chomlec'h ho peus roet, ha "
+"Siek eo an anv-ostiz. Marplij, gwiriekait ar chomlec'h ho peus roet, ha "
 "klaskit en-dro."
 
 #: ../gedit/gedit-io-error-message-area.c:274
@@ -1477,8 +1501,8 @@ msgid ""
 "Host name was empty. Please, check that your proxy settings are correct and "
 "try again."
 msgstr ""
-"Anv an ostiz a zo goullo. Marplij, gwiriekait titouroù ar proxy ha klaskit "
-"en-dro."
+"Goullo eo an anv-ostiz. Marplij, gwiriekait titouroù ar proxy ha klaskit en-"
+"dro."
 
 #: ../gedit/gedit-io-error-message-area.c:280
 #: ../gedit/gedit-io-error-message-area.c:1242
@@ -1504,11 +1528,11 @@ msgstr "Fazi dic'hortoz: %s"
 #: ../gedit/gedit-io-error-message-area.c:710
 #, c-format
 msgid "Could not open the file %s."
-msgstr "Ne oa ket tu digeriñ ar restr %s."
+msgstr "Ne oa ket tu da zigeriñ ar restr %s."
 
 #: ../gedit/gedit-io-error-message-area.c:376
 msgid "gedit cannot find it. Perhaps, it has recently been deleted."
-msgstr "gedit ne c'hell ket e gavout. Marteze eo bet diverket n'eus ket pell."
+msgstr "Ne c'hell ket gedit e gavout. Marteze eo bet diverket n'eus ket pell."
 
 #: ../gedit/gedit-io-error-message-area.c:491
 msgid "Attempt to log in failed."
@@ -1526,7 +1550,7 @@ msgstr "Ne oa ket distreiñ da stumm diwezhañ an diell %s."
 
 #: ../gedit/gedit-io-error-message-area.c:574
 msgid "Ch_aracter Coding:"
-msgstr ""
+msgstr "Enkodadoù a_rouezioù:"
 
 #: ../gedit/gedit-io-error-message-area.c:617
 msgid "_Retry"
@@ -1534,7 +1558,7 @@ msgstr "_Adklask"
 
 #: ../gedit/gedit-io-error-message-area.c:712
 msgid "gedit has not been able to detect the character coding."
-msgstr ""
+msgstr "N'eo ket bet gouest gedit da gavout enkodad an arouezioù."
 
 #: ../gedit/gedit-io-error-message-area.c:714
 #: ../gedit/gedit-io-error-message-area.c:723
@@ -1543,42 +1567,46 @@ msgstr "Marplij gwiriekait n'eo ket ur restr daouel eo a glaskit digeriñ."
 
 #: ../gedit/gedit-io-error-message-area.c:715
 msgid "Select a character coding from the menu and try again."
-msgstr ""
+msgstr "Dibabit un enkodad arouezioù er meuziad ha klaskit en-dro."
 
 #: ../gedit/gedit-io-error-message-area.c:720
 #, c-format
 msgid "Could not open the file %s using the %s character coding."
 msgstr ""
+"Ne oa ket tu da zigeriñ ar restr %s en ur implij an enkodad arouezioù %s."
 
 #: ../gedit/gedit-io-error-message-area.c:724
 #: ../gedit/gedit-io-error-message-area.c:774
 msgid "Select a different character coding from the menu and try again."
-msgstr ""
+msgstr "Dibabit un enkodad arouezioù disheñvel er meuziad ha klaskit en-dro."
 
 #: ../gedit/gedit-io-error-message-area.c:769
 #, c-format
 msgid "Could not save the file %s using the %s character coding."
 msgstr ""
+"Ne oa ket tu da enrollañ ar restr %s en ur implij an enkodad arouezioù %s."
 
 #: ../gedit/gedit-io-error-message-area.c:772
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character coding."
 msgstr ""
+"En diell ez eus unan pe meur a arouezenn ha n'hellont ket bezañ enkodet gant "
+"an enkodad arouezioù bet dibabet."
 
 #: ../gedit/gedit-io-error-message-area.c:833
 msgid "_Edit Anyway"
-msgstr "_Kemm Evelkent"
+msgstr "_Kemmañ Evelkent"
 
 #: ../gedit/gedit-io-error-message-area.c:836
 msgid "_Don't Edit"
-msgstr "Chom hep kemmañ"
+msgstr "_Chom hep kemmañ"
 
 #. FIXME: try to rephrase in a better way
 #: ../gedit/gedit-io-error-message-area.c:852
 #, c-format
 msgid "The file %s is already open."
-msgstr "Ar restr %s a zo digor dija."
+msgstr "Digor eo ar restr %s dija."
 
 #: ../gedit/gedit-io-error-message-area.c:867
 msgid ""
@@ -1594,7 +1622,7 @@ msgstr "_Enrollañ Evelkent"
 #: ../gedit/gedit-io-error-message-area.c:929
 #: ../gedit/gedit-io-error-message-area.c:1024
 msgid "_Don't Save"
-msgstr "Chom hep Enrollañ"
+msgstr "_Chom hep Enrollañ"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. could be interpreted as the changes he made in the document. beside "reading" is
@@ -1602,7 +1630,7 @@ msgstr "Chom hep Enrollañ"
 #: ../gedit/gedit-io-error-message-area.c:947
 #, c-format
 msgid "The file %s has been modified since reading it."
-msgstr "Kemmoù a zo bet er restr %s abaoe ho peus e lennet."
+msgstr "Kemmoù a zo bet er restr %s abaoe ho peus e garget."
 
 #: ../gedit/gedit-io-error-message-area.c:963
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
@@ -1613,12 +1641,13 @@ msgstr ""
 #: ../gedit/gedit-io-error-message-area.c:1042
 #, c-format
 msgid "Could not create a backup file while saving %s"
-msgstr "Ne oa ket tu krouiñ ur restr-gwareziñ e-pad an enrolladenn %s"
+msgstr "Ne oa ket tu da grouiñ ur restr-gwareziñ e-pad an enrolladenn %s"
 
 #: ../gedit/gedit-io-error-message-area.c:1045
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
-msgstr "Ne oa ket tu krouiñ ur restr-gwareziñ mareadus e-pad an enrolladenn %s"
+msgstr ""
+"Ne oa ket tu da grouiñ ur restr-gwareziñ mareadus e-pad an enrolladenn %s"
 
 #: ../gedit/gedit-io-error-message-area.c:1062
 msgid ""
@@ -1638,12 +1667,16 @@ msgid ""
 "gedit cannot handle %s locations in write mode. Please, check that you typed "
 "the location correctly and try again."
 msgstr ""
+"N'hell ket gedit degemer lec'hiadurioù %s er mod skrivañ. Gwiriekait al "
+"lec'hiadur ho peus roet ha klaskit en-dro."
 
 #: ../gedit/gedit-io-error-message-area.c:1131
 msgid ""
 "gedit cannot handle this location  in write mode. Please, check that you "
 "typed the location correctly and try again."
 msgstr ""
+"N'hell ket gedit degemer al lec'hiadur-mañ er mod skrivañ. Gwiriekait al "
+"lec'hiadur ho peus roet ha klaskit en-dro."
 
 #: ../gedit/gedit-io-error-message-area.c:1140
 msgid ""
@@ -1651,7 +1684,7 @@ msgid ""
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
 "not have this limitation."
 msgstr ""
-"Ar bladenn a glaskit enrollañ ar restr warnañ he deus un harz war ment ar "
+"Ar bladenn a glaskit enrollañ ar restr warnañ he deus un harz war vent ar "
 "restroù. Marplij, klaskit enrollañ ur restr bihanoc'h pe enrollañ anezhañ "
 "war ur bladenn n'he deus ket an harz-se."
 
@@ -1734,33 +1767,33 @@ msgstr "Ne oa ket tu enrollañ ar restr %s."
 
 #: ../gedit/gedit-notebook.c:823
 msgid "Close document"
-msgstr "Serriñ diell"
+msgstr "Serriñ an diell"
 
-#: ../gedit/gedit-panel.c:370 ../gedit/gedit-panel.c:585
+#: ../gedit/gedit-panel.c:365 ../gedit/gedit-panel.c:556
 #: ../gedit/recent-files/egg-recent-view-gtk.c:446
 #: ../gedit/recent-files/egg-recent-view-uimanager.c:322
 msgid "Empty"
-msgstr "Goullo"
+msgstr "Goulloiñ"
 
-#: ../gedit/gedit-panel.c:526 ../gedit/gedit-panel.c:606
+#: ../gedit/gedit-panel.c:500 ../gedit/gedit-panel.c:577
 msgid "Hide panel"
-msgstr "Kuzhat panel"
+msgstr "Kuzhat ar banell"
 
 #: ../gedit/gedit-plugin-manager.c:55
 msgid "Plugin"
-msgstr "Astenn"
+msgstr "Adveziant"
 
 #: ../gedit/gedit-plugin-manager.c:56
 msgid "Enabled"
-msgstr "Bevaet"
+msgstr "War enaou"
 
 #: ../gedit/gedit-plugin-manager.c:540
 msgid "_About Plugin"
-msgstr "_Diwar-benn Astenn"
+msgstr "_Diwar-benn an adveziant"
 
 #: ../gedit/gedit-plugin-manager.c:544
 msgid "C_onfigure Plugin"
-msgstr "Aozañ Astenn"
+msgstr "Ober war-dro an adveziant"
 
 #: ../gedit/gedit-prefs-manager.c:175
 msgid "Cannot initialize preferences manager."
@@ -1790,7 +1823,7 @@ msgstr "Linennoù"
 
 #: ../gedit/gedit-print-job-preview.c:623
 msgid "Page Preview"
-msgstr "Rakgwel Pajenn"
+msgstr "Rakgwel ar bajenn"
 
 #: ../gedit/gedit-print-job-preview.c:624
 msgid "The preview of a page in the document to be printed"
@@ -1802,11 +1835,11 @@ msgstr "All"
 
 #: ../gedit/gedit-print-job-preview.c:740
 msgid "Show the previous page"
-msgstr "Diskouezh ar bajenn a-raok"
+msgstr "Diskouez ar bajenn a-raok"
 
 #: ../gedit/gedit-print-job-preview.c:751
 msgid "Show the next page"
-msgstr "Diskouezh ar bajenn da heul"
+msgstr "Diskouez ar bajenn da heul"
 
 #: ../gedit/gedit-print-job-preview.c:767
 msgid "Current page (Alt+P)"
@@ -1828,23 +1861,23 @@ msgstr "An niver hollek a bajennoù en diell"
 
 #: ../gedit/gedit-print-job-preview.c:805
 msgid "Show multiple pages"
-msgstr "Diskouezh meur a bajenn"
+msgstr "Diskouez meur a bajenn"
 
 #: ../gedit/gedit-print-job-preview.c:817
 msgid "Zoom 1:1"
-msgstr "Zoum 1:1"
+msgstr "Zoom 1:1"
 
 #: ../gedit/gedit-print-job-preview.c:825
 msgid "Zoom to fit the whole page"
-msgstr "Zoum evit ar bajenn a-bezh"
+msgstr "Zoom evit ar bajenn a-bezh"
 
 #: ../gedit/gedit-print-job-preview.c:834
 msgid "Zoom the page in"
-msgstr ""
+msgstr "Tostaat ar zoom"
 
 #: ../gedit/gedit-print-job-preview.c:842
 msgid "Zoom the page out"
-msgstr ""
+msgstr "Pellaat ar zoom"
 
 #: ../gedit/gedit-print-job-preview.c:856
 msgid "Close print preview"
@@ -1862,11 +1895,11 @@ msgstr "Niver a-bajennoù a-serzh"
 
 #: ../gedit/gedit-print-job-preview.c:1165
 msgid "No visible output was created."
-msgstr "N'eus bet krouet diskas gwelus ebet."
+msgstr "N'eus bet krouet diskas hewel ebet."
 
 #: ../gedit/gedit-statusbar.c:257
 msgid "  OVR"
-msgstr "  --OVR"
+msgstr "  OVR"
 
 #: ../gedit/gedit-statusbar.c:259
 msgid "  INS"
@@ -1903,7 +1936,7 @@ msgstr ""
 #: ../gedit/gedit-tab.c:664
 #, c-format
 msgid "Loading %s from %s"
-msgstr "O kargañ %s diouzh %s"
+msgstr "O kargañ %s adalek %s"
 
 #: ../gedit/gedit-tab.c:671
 #, c-format
@@ -1930,7 +1963,7 @@ msgstr "LH"
 #: ../gedit/gedit-tab.c:1548
 #, c-format
 msgid "Error opening file %s"
-msgstr "Fazi o tigeriñ restr %s"
+msgstr "Fazi en ur zigeriñ ar restr %s"
 
 #: ../gedit/gedit-tab.c:1553
 #, c-format
@@ -1940,7 +1973,7 @@ msgstr ""
 #: ../gedit/gedit-tab.c:1558
 #, c-format
 msgid "Error saving file %s"
-msgstr "Fazi oc'h enrollañ restr %s"
+msgstr "Fazi en ur enrollañ ar restr %s"
 
 #: ../gedit/gedit-tab.c:1576
 msgid "Unicode (UTF-8)"
@@ -1956,12 +1989,12 @@ msgstr "Doare-MIME:"
 
 #: ../gedit/gedit-tab.c:1585
 msgid "Encoding:"
-msgstr "Enkodiñ:"
+msgstr "Enkodad:"
 
 #: ../gedit/gedit-tab.c:2013
 #, c-format
 msgid "Rendering page %d of %d..."
-msgstr "O tresañ pajenn %d war %d..."
+msgstr "O tresañ ar bajenn %d war %d..."
 
 #. Toplevel
 #: ../gedit/gedit-ui.h:47
@@ -1974,7 +2007,7 @@ msgstr "_Kemmañ"
 
 #: ../gedit/gedit-ui.h:49
 msgid "_View"
-msgstr "_Gwel"
+msgstr "_Kinnig"
 
 #: ../gedit/gedit-ui.h:50
 msgid "_Search"
@@ -1990,7 +2023,7 @@ msgstr "_Dielloù"
 
 #: ../gedit/gedit-ui.h:53
 msgid "_Help"
-msgstr "_Sikour"
+msgstr "_Skoazell"
 
 #: ../gedit/gedit-ui.h:57
 msgid "Create a new document"
@@ -2006,24 +2039,24 @@ msgstr "Digeriñ ur restr"
 
 #: ../gedit/gedit-ui.h:60
 msgid "Open _Location..."
-msgstr "Digeriñ _Chomlec'h..."
+msgstr "Digeriñ ul _lec'hiadur..."
 
 #: ../gedit/gedit-ui.h:61
 msgid "Open a file from a specified location"
-msgstr "Digeriñ ur restr diwar ur chomlec'h-resis"
+msgstr "Digeriñ ur restr diwar ul lec'hiadur resis"
 
 #: ../gedit/gedit-ui.h:62
 msgid "Page Set_up..."
-msgstr "Furmad moullañ..."
+msgstr ""
 
 #: ../gedit/gedit-ui.h:63
 msgid "Setup the page settings"
-msgstr ""
+msgstr "Ober war-dro dibarzhioù ar bajenn"
 
 #. Edit menu
 #: ../gedit/gedit-ui.h:66
 msgid "Pr_eferences"
-msgstr "Dibaboù gwellañ"
+msgstr "_Dibaboù gwellañ"
 
 #: ../gedit/gedit-ui.h:67
 msgid "Configure the application"
@@ -2048,7 +2081,7 @@ msgstr "Enrollañ ar restr-red"
 
 #: ../gedit/gedit-ui.h:81
 msgid "Save _As..."
-msgstr "Enrollañ dindan..."
+msgstr "Enrollañ _dindan..."
 
 #: ../gedit/gedit-ui.h:82
 msgid "Save the current file with a different name"
@@ -2060,11 +2093,11 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:85
 msgid "Print Previe_w"
-msgstr "Moullañ Rakgwel"
+msgstr "Rakgwel moullañ"
 
 #: ../gedit/gedit-ui.h:86
 msgid "Print preview"
-msgstr "Moullañ rakgwel"
+msgstr "Rakgwel moullañ"
 
 #: ../gedit/gedit-ui.h:87
 msgid "_Print..."
@@ -2080,19 +2113,19 @@ msgstr "Serriñ ar restr-red"
 
 #: ../gedit/gedit-ui.h:94
 msgid "Undo the last action"
-msgstr "Dizober an ober diwezhañ"
+msgstr "Nullañ an ober diwezhañ"
 
 #: ../gedit/gedit-ui.h:96
 msgid "Redo the last undone action"
-msgstr "Adober an oberioù disgraet diwezhañ"
+msgstr "Adober an oberioù nullet diwezhañ"
 
 #: ../gedit/gedit-ui.h:98
 msgid "Cut the selection"
-msgstr ""
+msgstr "Troc'hañ an diuz"
 
 #: ../gedit/gedit-ui.h:100
 msgid "Copy the selection"
-msgstr "Kopiañ an diuzadenn"
+msgstr "Kopiañ an diuz"
 
 #: ../gedit/gedit-ui.h:102
 msgid "Paste the clipboard"
@@ -2104,7 +2137,7 @@ msgstr "Diverkañ an destenn diuzet"
 
 #: ../gedit/gedit-ui.h:105
 msgid "Select _All"
-msgstr "Diuz Pep tra"
+msgstr "Diuziñ Pep tra"
 
 #: ../gedit/gedit-ui.h:106
 msgid "Select the entire document"
@@ -2113,12 +2146,12 @@ msgstr "Diuziñ an diell a-bezh"
 #. View menu
 #: ../gedit/gedit-ui.h:109
 msgid "_Highlight Mode"
-msgstr "Mod goulaouiñ"
+msgstr "Mod _goulaouiñ"
 
 #. Search menu
 #: ../gedit/gedit-ui.h:112
 msgid "_Find..."
-msgstr "Kavout..."
+msgstr "_Klask..."
 
 #: ../gedit/gedit-ui.h:113
 msgid "Search for text"
@@ -2126,7 +2159,7 @@ msgstr "Klask en destenn"
 
 #: ../gedit/gedit-ui.h:114
 msgid "Find Ne_xt"
-msgstr "Kavout war-lerc'h"
+msgstr "Klask an hini war-lerc'h"
 
 #: ../gedit/gedit-ui.h:115
 msgid "Search forwards for the same text"
@@ -2134,7 +2167,7 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:116
 msgid "Find Pre_vious"
-msgstr "Kavout a-raok"
+msgstr "Klask an hini kent"
 
 #: ../gedit/gedit-ui.h:117
 msgid "Search backwards for the same text"
@@ -2142,15 +2175,15 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:118
 msgid "_Replace..."
-msgstr "Erlec'hiañ..."
+msgstr "_Erlec'hiañ..."
 
 #: ../gedit/gedit-ui.h:119
 msgid "Search for and replace text"
-msgstr "Klask ha erlec'hiañ an destenn"
+msgstr "Klask hag erlec'hiañ tammoù-skrid"
 
 #: ../gedit/gedit-ui.h:120
 msgid "_Clear Highlight"
-msgstr "Lazhañ ar goulaouiñ"
+msgstr "_Lazhañ ar goulaouiñ"
 
 #: ../gedit/gedit-ui.h:121
 msgid "Clear highlighting of search matches"
@@ -2158,7 +2191,7 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:122
 msgid "Go to _Line..."
-msgstr "Mont da _Linenn..."
+msgstr "Mont d'al _linenn..."
 
 #: ../gedit/gedit-ui.h:123
 msgid "Go to a specific line"
@@ -2167,7 +2200,7 @@ msgstr "Mont d'ul linenn resis"
 #. Documents menu
 #: ../gedit/gedit-ui.h:126
 msgid "_Save All"
-msgstr "Enrollañ Holl"
+msgstr "_Enrollañ an holl"
 
 #: ../gedit/gedit-ui.h:127
 msgid "Save all open files"
@@ -2175,7 +2208,7 @@ msgstr "Enrollañ an holl zielloù digor"
 
 #: ../gedit/gedit-ui.h:128
 msgid "_Close All"
-msgstr "Serriñ Holl"
+msgstr "_Serriñ an holl"
 
 #: ../gedit/gedit-ui.h:129
 msgid "Close all open files"
@@ -2183,7 +2216,7 @@ msgstr "Serriñ holl zielloù digor"
 
 #: ../gedit/gedit-ui.h:130
 msgid "_Move to New Window"
-msgstr "Kas d'ar prenestr nevez"
+msgstr "_Kas d'ar prenestr nevez"
 
 #: ../gedit/gedit-ui.h:131
 msgid "Move the current document to a new window"
@@ -2199,31 +2232,31 @@ msgstr "Barrenn-_Ostilhoù"
 
 #: ../gedit/gedit-ui.h:144
 msgid "Show or hide the toolbar in the current window"
-msgstr "Diskouezh pe kuzhat barrenn-ostilhoù ar prenestr en implij"
+msgstr "Diskouez pe kuzhat barrenn-ostilhoù ar prenestr en implij"
 
 #: ../gedit/gedit-ui.h:146
 msgid "_Statusbar"
-msgstr "Barrenn Stuz"
+msgstr "Barrenn-_stad"
 
 #: ../gedit/gedit-ui.h:147
 msgid "Show or hide the statusbar in the current window"
-msgstr "Diskouezh pe kuzhat barrenn statuz ar prenestr en implij"
+msgstr "Diskouez pe kuzhat barrenn-stad ar prenestr en implij"
 
 #: ../gedit/gedit-ui.h:149
 msgid "Side _Pane"
-msgstr ""
+msgstr "_Panell gostez"
 
 #: ../gedit/gedit-ui.h:150
 msgid "Show or hide the side pane in the current window"
-msgstr ""
+msgstr "Diskouez pe kuzhat panell gostez ar prenestr red"
 
 #: ../gedit/gedit-ui.h:156
 msgid "_Bottom Pane"
-msgstr ""
+msgstr "Panell _draoñ"
 
 #: ../gedit/gedit-ui.h:157
 msgid "Show or hide the bottom pane in the current window"
-msgstr ""
+msgstr "Diskouez pe kuzhat panell draoñ ar prenestr red"
 
 #: ../gedit/gedit-utils.c:923
 #, c-format
@@ -2260,7 +2293,7 @@ msgstr "Chadenn a fell deoc'h klask"
 
 #: ../gedit/gedit-view.c:1453
 msgid "Line you want to move the cursor to"
-msgstr ""
+msgstr "Al linenn a fell deoc'h kas ar biz-red warni"
 
 #: ../gedit/gedit-window.c:681
 #, c-format
@@ -2269,11 +2302,11 @@ msgstr "Implij ar mod goulaouiñ %s"
 
 #: ../gedit/gedit-window.c:734
 msgid "Normal"
-msgstr "Reizh"
+msgstr "Boutin"
 
 #: ../gedit/gedit-window.c:735
 msgid "Use Normal highlight mode"
-msgstr "Implij ar mod goulaouiñ reizh"
+msgstr "Implij ar mod goulaouiñ boutin"
 
 #. Translators: %s is a URI
 #: ../gedit/gedit-window.c:861 ../gedit/gedit-window.c:886
@@ -2314,19 +2347,19 @@ msgstr ""
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:223
 msgid "All _Upper Case"
-msgstr ""
+msgstr "Pep tra gant _pennlizherennoù"
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:224
 msgid "Change selected text to upper case"
-msgstr ""
+msgstr "Lakaat an destenn diuzet e pennlizherennoù"
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:226
 msgid "All _Lower Case"
-msgstr ""
+msgstr "Pep tra e lizherennoù _bihan"
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:227
 msgid "Change selected text to lower case"
-msgstr ""
+msgstr "Lakaat an destenn diuzet e lizherennoù bihan"
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:229
 msgid "_Invert Case"
@@ -2342,7 +2375,7 @@ msgstr ""
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:233
 msgid "Capitalize the first letter of each selected word"
-msgstr ""
+msgstr "Kontañ lizherenn gentañ pep ger diuzet"
 
 #: ../plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:1
 msgid ""
@@ -2369,11 +2402,11 @@ msgstr "Bitoù"
 
 #: ../plugins/docinfo/docinfo.glade2.h:5
 msgid "Characters (no spaces)"
-msgstr "Lizherennoù (esaouenn ebet)"
+msgstr "Arouezenn (hep esaouennoù)"
 
 #: ../plugins/docinfo/docinfo.glade2.h:6
 msgid "Characters (with spaces)"
-msgstr "Lizherennoù (gant esaouennoù)"
+msgstr "Arouezennoù (gant esaouennoù)"
 
 #: ../plugins/docinfo/docinfo.glade2.h:7
 msgid "Document"
@@ -2381,7 +2414,7 @@ msgstr "Diell"
 
 #: ../plugins/docinfo/docinfo.glade2.h:10
 msgid "Selection"
-msgstr "Diuzadenn"
+msgstr "Diuz"
 
 #: ../plugins/docinfo/docinfo.glade2.h:11
 msgid "Words"
@@ -2389,11 +2422,11 @@ msgstr "Gerioù"
 
 #: ../plugins/docinfo/docinfo.glade2.h:12
 msgid "_Update"
-msgstr "_Nevesaat"
+msgstr "_Hizivaat"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:405
 msgid "_Document Statistics"
-msgstr "Statistikoù an diell"
+msgstr "Statistikoù an _diell"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:407
 msgid "Get statistic info on current document"
@@ -2405,15 +2438,15 @@ msgstr ""
 
 #: ../plugins/externaltools/externaltools.gedit-plugin.desktop.in.h:2
 msgid "External Tools"
-msgstr "Ostilhoù Diavez"
+msgstr "Ostilhoù diavaez"
 
 #: ../plugins/externaltools/tools/functions.py:242
 msgid "You must be inside a word to run this command"
-msgstr "Dav eo deoc'h bezañ e-barzh ur ger evit kas an urzh-mañ"
+msgstr "Dav eo deoc'h bezañ e-barzh ur ger evit kas an urzhiad-mañ"
 
 #: ../plugins/externaltools/tools/functions.py:299
 msgid "Running tool:"
-msgstr "Ostilh-red:"
+msgstr "O loc'hañ an ostilh:"
 
 #: ../plugins/externaltools/tools/functions.py:322
 msgid "Done."
@@ -2423,99 +2456,99 @@ msgstr "Graet."
 msgid "Exited"
 msgstr "Kuitaet"
 
-#: ../plugins/externaltools/tools/manager.py:42
+#: ../plugins/externaltools/tools/manager.py:41
 msgid "Nothing"
 msgstr "Netra"
 
-#: ../plugins/externaltools/tools/manager.py:43
+#: ../plugins/externaltools/tools/manager.py:42
 msgid "Current document"
 msgstr "Diell-red"
 
-#: ../plugins/externaltools/tools/manager.py:44
+#: ../plugins/externaltools/tools/manager.py:43
 msgid "Current selection"
 msgstr "Diuz-red"
 
-#: ../plugins/externaltools/tools/manager.py:45
+#: ../plugins/externaltools/tools/manager.py:44
 msgid "Current line"
 msgstr "Linenn-red"
 
-#: ../plugins/externaltools/tools/manager.py:46
+#: ../plugins/externaltools/tools/manager.py:45
 msgid "Current word"
 msgstr "Ger-red"
 
-#: ../plugins/externaltools/tools/manager.py:49
+#: ../plugins/externaltools/tools/manager.py:48
 msgid "Insert in output panel"
 msgstr ""
 
-#: ../plugins/externaltools/tools/manager.py:50
+#: ../plugins/externaltools/tools/manager.py:49
 msgid "Create new document"
-msgstr "Krouiñ diell nevez"
+msgstr "Krouiñ un diell nevez"
+
+#: ../plugins/externaltools/tools/manager.py:50
+msgid "Append to current document"
+msgstr "Ouzhpennañ d'an diell red"
 
 #: ../plugins/externaltools/tools/manager.py:51
-msgid "Append to current document"
-msgstr "Ouzhpennañ d'an diell en implij"
-
-#: ../plugins/externaltools/tools/manager.py:52
 msgid "Replace current document"
 msgstr "Erlec'hiañ an diell en implij"
 
-#: ../plugins/externaltools/tools/manager.py:53
+#: ../plugins/externaltools/tools/manager.py:52
 msgid "Replace current selection"
-msgstr "Erlec'hiañ an diuzadenn-red"
+msgstr "Erlec'hiañ an diuz-red"
 
-#: ../plugins/externaltools/tools/manager.py:54
+#: ../plugins/externaltools/tools/manager.py:53
 msgid "Insert at cursor position"
 msgstr "Enlakaat war lec'hiadur ar biz-red"
 
-#: ../plugins/externaltools/tools/manager.py:57
+#: ../plugins/externaltools/tools/manager.py:56
 msgid "All documents"
-msgstr "Holl dielloù"
+msgstr "An holl zielloù"
+
+#: ../plugins/externaltools/tools/manager.py:57
+msgid "All documents except untitled ones"
+msgstr "An holl zielloù nemet ar re hep titl"
 
 #: ../plugins/externaltools/tools/manager.py:58
-msgid "All documents except untitled ones"
-msgstr "Holl dielloù nemet ar re hep titl"
-
-#: ../plugins/externaltools/tools/manager.py:59
 msgid "Local files only"
 msgstr "Restroù diabarzh hepken"
 
-#: ../plugins/externaltools/tools/manager.py:60
+#: ../plugins/externaltools/tools/manager.py:59
 msgid "Remote files only"
 msgstr "Pellrestroù hepken"
 
-#: ../plugins/externaltools/tools/manager.py:61
+#: ../plugins/externaltools/tools/manager.py:60
 msgid "Untitled documents only"
 msgstr "Dielloù hep titl hepken"
 
-#: ../plugins/externaltools/tools/manager.py:191
-#: ../plugins/externaltools/tools/manager.py:208
-#: ../plugins/externaltools/tools/manager.py:247
+#: ../plugins/externaltools/tools/manager.py:190
+#: ../plugins/externaltools/tools/manager.py:207
+#: ../plugins/externaltools/tools/manager.py:246
 #, python-format
 msgid "Edit tool <i>%s</i>:"
 msgstr "Kemmañ an ostilh <i>%s</i>:"
 
-#: ../plugins/externaltools/tools/manager.py:195
+#: ../plugins/externaltools/tools/manager.py:194
 msgid "A Brand New Tool"
 msgstr ""
 
-#: ../plugins/externaltools/tools/manager.py:218
+#: ../plugins/externaltools/tools/manager.py:217
 msgid "New tool"
 msgstr "Ostilh nevez"
 
-#: ../plugins/externaltools/tools/manager.py:281
+#: ../plugins/externaltools/tools/manager.py:280
 #, python-format
 msgid "This accelerator is already bound to %s"
-msgstr ""
+msgstr "Ar verradenn-mañ a zo liammet gant %s dija"
 
-#: ../plugins/externaltools/tools/manager.py:330
+#: ../plugins/externaltools/tools/manager.py:333
 #: ../plugins/snippets/snippets/SnippetsDialog.py:562
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr ""
+msgstr "Roit ur verradenn nevez pe pouezit war ar stokell lemel evit diverkañ"
 
-#: ../plugins/externaltools/tools/manager.py:332
+#: ../plugins/externaltools/tools/manager.py:335
 #: ../plugins/snippets/snippets/SnippetsDialog.py:564
 msgid "Type a new accelerator"
-msgstr ""
+msgstr "Roit ur verradenn nevez"
 
 #: ../plugins/externaltools/tools/outputpanel.py:78
 msgid "Stopped."
@@ -2531,7 +2564,7 @@ msgstr "Kemmañ an ostilh <i>make</i>:"
 
 #: ../plugins/externaltools/tools/tools.glade.h:4
 msgid "External Tools Manager"
-msgstr "Aozer Ostilhoù Diavez"
+msgstr "Aozer Ostilhoù Diavaez"
 
 #: ../plugins/externaltools/tools/tools.glade.h:5
 msgid "F7"
@@ -2545,7 +2578,7 @@ msgid ""
 msgstr ""
 "Netra\n"
 "Diell en implij\n"
-"Holl dielloù"
+"Holl zielloù"
 
 #: ../plugins/externaltools/tools/tools.glade.h:9
 msgid "Run “make” in the document dir"
@@ -2554,7 +2587,7 @@ msgstr ""
 #: ../plugins/externaltools/tools/tools.glade.h:10
 #: ../plugins/snippets/snippets/snippets.glade.h:4
 msgid "_Accelerator:"
-msgstr "Buanaer:"
+msgstr "_Berradenn:"
 
 #: ../plugins/externaltools/tools/tools.glade.h:11
 msgid "_Applicability:"
@@ -2562,7 +2595,7 @@ msgstr ""
 
 #: ../plugins/externaltools/tools/tools.glade.h:12
 msgid "_Description:"
-msgstr "_Taolennadur:"
+msgstr "_Displegadenn:"
 
 #: ../plugins/externaltools/tools/tools.glade.h:13
 msgid "_Input:"
@@ -2582,27 +2615,27 @@ msgstr "_Ostilhoù:"
 
 #: ../plugins/indent/gedit-indent-plugin.c:56
 msgid "_Indent"
-msgstr ""
+msgstr "_Kefoskañ"
 
 #: ../plugins/indent/gedit-indent-plugin.c:58
 msgid "Indent selected lines"
-msgstr ""
+msgstr "Kefoskañ al linennoù diuzet"
 
 #: ../plugins/indent/gedit-indent-plugin.c:63
 msgid "U_nindent"
-msgstr ""
+msgstr "Di_gefoskañ"
 
 #: ../plugins/indent/gedit-indent-plugin.c:65
 msgid "Unindent selected lines"
-msgstr ""
+msgstr "Digefoskañ al linennoù diuzet"
 
 #: ../plugins/indent/indent.gedit-plugin.desktop.in.h:1
 msgid "Indent lines"
-msgstr ""
+msgstr "Kefoskañ al linennoù"
 
 #: ../plugins/indent/indent.gedit-plugin.desktop.in.h:2
 msgid "Indents or un-indents selected lines."
-msgstr ""
+msgstr "Kefoskañ pe digefoskañ al linennoù diuzet"
 
 #: ../plugins/modelines/modelines.gedit-plugin.desktop.in.h:1
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
@@ -2622,7 +2655,7 @@ msgstr ""
 
 #: ../plugins/sample/gedit-sample-plugin.c:63
 msgid "Insert User Na_me"
-msgstr "Enlakaat Anv Implijer"
+msgstr "Enlakaat an anv implijer"
 
 #: ../plugins/sample/gedit-sample-plugin.c:65
 msgid "Insert the user name at the cursor position"
@@ -2646,7 +2679,7 @@ msgstr ""
 
 #: ../plugins/snippets/snippets/snippets.glade.h:2
 msgid "<b>Activation</b>"
-msgstr ""
+msgstr "<b>Enaouiñ</b>"
 
 #: ../plugins/snippets/snippets/snippets.glade.h:3
 msgid "Snippets Manager"
@@ -2682,11 +2715,11 @@ msgstr "Hollek"
 
 #: ../plugins/sort/gedit-sort-plugin.c:80
 msgid "S_ort..."
-msgstr "Didoueziañ..."
+msgstr "_Didoueziañ..."
 
 #: ../plugins/sort/gedit-sort-plugin.c:82
 msgid "Sort the current document or selection"
-msgstr "Didoueziañ an diell en implij pe un diuzadenn"
+msgstr "Didoueziañ an diell en implij pe un diuz"
 
 #: ../plugins/sort/sort.gedit-plugin.desktop.in.h:1
 #: ../plugins/sort/sort.glade2.h:3
@@ -2695,7 +2728,7 @@ msgstr "Didoueziañ"
 
 #: ../plugins/sort/sort.gedit-plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
-msgstr "A zidouez un diell pe un destenn diuzet."
+msgstr "A zidouez un diell pe un destenn ziuzet."
 
 #: ../plugins/sort/sort.glade2.h:1
 msgid "R_emove duplicates"
@@ -4649,6 +4682,9 @@ msgstr ""
 #: ../plugins/time/time.glade2.h:10
 msgid "_Use custom format"
 msgstr "_Implij ur mentrezh personelaet"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
 
 #~ msgid ""
 #~ "If you don't save, changes from the last %ld second will be permanently "
