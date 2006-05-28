@@ -24,30 +24,6 @@ def message_dialog(par, typ, msg):
 	d.run()
 	d.destroy()
 
-class outfile:
-	def __init__(self, fn):
-		self.__fn = fn
-		self.__text = ''
-		
-	def close(self): pass
-	flush = close
-	def fileno(self):    return self.__fn
-	def isatty(self):    return 0
-	def read(self, a):   return ''
-	def readline(self):  return ''
-	def readlines(self):
-		l = self.__text.split('\n')
-		self.__text = ''
-		return l
-	def write(self, s):
-		#stdout.write(str(self.__w.get_point()) + '\n')
-		self.__text += s
-	def writelines(self, l):
-		self.__text += str.join('', l)
-	def seek(self, a):   raise IOError, (29, 'Illegal seek')
-	def tell(self):      raise IOError, (29, 'Illegal seek')
-	truncate = tell
-
 def compute_indentation(view, piter):
 	line = piter.get_line()
 	start = view.get_buffer().get_iter_at_line(line)
