@@ -1,4 +1,30 @@
 ============
+gedit 2.14.3
+============
+
+New features and fixes
+======================
+- bugfixes to the snippets plugin (Jesse Van Den Kieboom)
+- do not display password when it's part of the uri (Paolo Maggi)
+- fix search wrap-around setting (Paolo Maggi)
+- misc bugfixes
+
+New and updated translations
+============================
+- Ahmad Riza H Nst (id)
+- Artur Flinta (pl)
+- Åsmund Skjæveland (nn)
+- Benoît Dejean (fr)
+- Chao-Hsiung Liao (zh_HK)
+- Chao-Hsiung Liao (zh_TW)
+- Inaki Larranaga (eu)
+- Ivar Smolin (et)
+- Jérémy Ar Floc'h (br)
+- Josep Puigdemont Casamajó (ca)
+- Milo Casagrande (it)
+
+
+============
 gedit 2.14.2
 ============
 
