@@ -1,17 +1,19 @@
-# translation of gedit.HEAD.po to español
-# maria <maria.majadas@hispalinux.es>, 2006.
+# translation of es.po to
 #
+# maria <maria.majadas@hispalinux.es>, 2006.
+# FRancisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.HEAD\n"
-"POT-Creation-Date: 2006-04-08 22:10+0200\n"
-"PO-Revision-Date: 2006-03-01 14:09+0100\n"
-"Last-Translator: maria <maria.majadas@hispalinux.es>\n"
-"Language-Team: español <es@li.org>\n"
+"Project-Id-Version: es\n"
+"POT-Creation-Date: 2006-06-02 01:22+0200\n"
+"PO-Revision-Date: 2006-06-02 01:21+0200\n"
+"Last-Translator: FRancisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
+"Language-Team:  <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.2\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -73,7 +75,7 @@ msgstr ""
 
 #: ../C/gedit.xml:22(title) ../C/gedit.xml:168(revnumber)
 msgid "gedit Manual V2.8"
-msgstr "Manual de gedit V2.5"
+msgstr "Manual de gedit V2.8"
 
 #: ../C/gedit.xml:24(year)
 msgid "2002"
@@ -109,7 +111,7 @@ msgstr "Proyecto de documentación de GNOME"
 
 #: ../C/gedit.xml:48(firstname) ../C/gedit.xml:171(para)
 msgid "Sun Java Desktop System Documentation Team"
-msgstr "Equipo de documentación de Sun GNOME"
+msgstr "Equipo de documentación de Sun Java Desktop System"
 
 #: ../C/gedit.xml:52(email)
 msgid "gdocteam@sun.com"
@@ -135,7 +137,7 @@ msgstr "Baris"
 msgid ""
 "Cicek provided information from earlier revisions of the gedit application."
 msgstr ""
-"Cicek ha ofrecido información sobre las revisiones anteriores de la "
+"Cicek proporcionó información sobre las revisiones anteriores de la "
 "aplicación gedit."
 
 #: ../C/gedit.xml:66(contrib) ../C/gedit.xml:71(contrib)
@@ -230,7 +232,7 @@ msgstr "Marzo 2003"
 
 #: ../C/gedit.xml:176(releaseinfo)
 msgid "This manual describes version 2.7.91 of gedit."
-msgstr "Este manual describe la versión 2.2.1 del gedit."
+msgstr "Este manual describe la versión 2.7.9.1 del gedit."
 
 #: ../C/gedit.xml:179(title)
 msgid "Feedback"
@@ -244,8 +246,8 @@ msgid ""
 msgstr ""
 "Para informar de un defecto o hacer alguna sugerencia sobre la aplicación "
 "<application>gedit</application> o el presente manual, siga las "
-"instrucciones que aparecen en <ulink url=\"ghelp:gnome-feedback\" type=\"help"
-"\">GNOME Feedback Page</ulink>."
+"instrucciones que aparecen en la <ulink url=\"ghelp:gnome-feedback\" type="
+"\"help\">Página de comentarios de GNOME</ulink>."
 
 #: ../C/gedit.xml:185(para)
 msgid "User manual for the gedit text editor."
@@ -271,9 +273,10 @@ msgid ""
 "<application>gedit</application> window."
 msgstr ""
 "La aplicación <application>gedit</application> permite crear y editar "
-"archivos de texto. Con módulos adicionales de <application>gedit</"
-"application> se pueden realizar diversas tareas relacionadas con la edición "
-"de texto desde dentro de la ventana de <application>gedit</application>."
+"archivos de texto. Puede usar complementos adicionales de "
+"<application>gedit</application> para realizar diversas tareas relacionadas "
+"con la edición de texto desde dentro de la ventana de <application>gedit</"
+"application>."
 
 #: ../C/gedit.xml:199(title)
 msgid "Getting Started"
@@ -298,8 +301,8 @@ msgid ""
 "Choose <menuchoice><guisubmenu>Accessories</guisubmenu><guimenuitem>Text "
 "Editor</guimenuitem></menuchoice>."
 msgstr ""
-"Seleccione <menuchoice><guimenu>Editar</guimenu><guimenuitem>Sangrar</"
-"guimenuitem></menuchoice>."
+"Seleccione <menuchoice><guimenu>Accesorios</guimenu><guimenuitem>Editor de "
+"texto</guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:213(term)
 msgid "Command line"
@@ -311,14 +314,14 @@ msgstr "Ejecute el comando siguiente: <command>gedit</command>"
 
 #: ../C/gedit.xml:223(title)
 msgid "When You Start gedit"
-msgstr "Al iniciar gedit"
+msgstr "Cuando inicie gedit"
 
 #: ../C/gedit.xml:224(para)
 msgid ""
 "When you start <application>gedit</application>, the following window is "
 "displayed:"
 msgstr ""
-"Cuando inicia <application>gedit</application>, aparece la ventana siguiente."
+"Cuando inicia <application>gedit</application>, aparece la ventana siguiente:"
 
 #: ../C/gedit.xml:227(title)
 msgid "gedit Window"
@@ -453,27 +456,27 @@ msgid ""
 "If you have recently opened the file, choose <menuchoice><guimenu>File</"
 "guimenu><guimenuitem>Open Recent</guimenuitem></menuchoice>."
 msgstr ""
-"Para seleccionar todo el texto de un archivo, seleccione "
-"<menuchoice><guimenu>Editar</guimenu><guimenuitem>Seleccionar todo</"
+"Si ha abierto recientemente el archivo, seleccione "
+"<menuchoice><guimenu>Archivo</guimenu><guimenuitem>Abrir reciente</"
 "guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:305(para)
 msgid "Click on the <guibutton>Open</guibutton> toolbar button."
 msgstr ""
-"Haga clic en el botón <guibutton>Cerrar la ventana de salida</guibutton> "
-"para cerrar dicha ventana."
+"Pulse en el botón <guibutton>Cerrar la ventana de salida</guibutton> para "
+"cerrar dicha ventana."
 
 #: ../C/gedit.xml:308(para)
 msgid "Right-click popup menu"
-msgstr "Hace click en el botón izquierda para que emerja el menú"
+msgstr "Menú emergente del botón derecho"
 
 #: ../C/gedit.xml:309(para)
 msgid ""
 "Right-click on the file in a file manager window, then choose <guilabel>Open "
 "With</guilabel> from the popup menu."
 msgstr ""
-"Haga click en el archivo de la ventana del selector de archivos, entonces "
-"elija <guilabel>Abrir con</guilabel> desde el menú emergente."
+"Pulse en el archivo en una ventana del gestor de archivos, después elija "
+"<guilabel>Abrir con</guilabel> en el menú emergente."
 
 #: ../C/gedit.xml:312(para)
 msgid "Shortcut keys"
@@ -724,7 +727,6 @@ msgstr ""
 "guimenu><guimenuitem>Cortar</guimenuitem></menuchoice>."
 
 #: ../C/gedit.xml:375(para)
-#, fuzzy
 msgid ""
 "To permanently delete the selected text from the file, choose "
 "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Delete</guimenuitem></"
@@ -860,14 +862,13 @@ msgstr ""
 "del mismo."
 
 #: ../C/gedit.xml:418(para) ../C/gedit.xml:460(para)
-#, fuzzy
 msgid ""
 "Select the <guilabel>Wrap around</guilabel> option to search to one end of "
 "the file and then continue the search from the other end of the file."
 msgstr ""
-"Seleccione la opción <guilabel>Ajustar</guilabel> para buscar hasta el final "
-"del archivo y, a continuación, proseguir con la búsqueda desde el principio "
-"del mismo."
+"Seleccione la opción <guilabel>Continuar por el principio</guilabel> para "
+"buscar hasta el final del archivo y, a continuación, proseguir con la "
+"búsqueda desde el principio del mismo."
 
 #: ../C/gedit.xml:420(para) ../C/gedit.xml:462(para)
 msgid ""
@@ -876,10 +877,9 @@ msgid ""
 "string, the application moves the cursor to the string, and selects the "
 "string."
 msgstr ""
-"Haga clic en <guibutton>Buscar</guibutton> para buscar en el archivo la "
-"primera aparición de la cadena. Si <application>gedit</application> "
-"encuentra la cadena, la aplicación traslada el cursor hasta ella y la "
-"selecciona."
+"Pulse en <guibutton>Buscar</guibutton> para buscar en el archivo la primera "
+"aparición de la cadena. Si <application>gedit</application> encuentra la "
+"cadena, la aplicación traslada el cursor hasta ella y la selecciona."
 
 #: ../C/gedit.xml:422(para)
 msgid ""
@@ -945,10 +945,10 @@ msgid ""
 "with the text in the <guilabel>Replace with</guilabel> field. Click "
 "<guibutton>Replace All</guibutton> to replace all occurrences of the string."
 msgstr ""
-"Haga clic en <guibutton>Reemplazar</guibutton> para sustituir esa aparición "
-"de la cadena por el texto escrito en el campo <guilabel>Reemplazar con</"
-"guilabel>. Haga clic en <guibutton>Reemplazar todo</guibutton> para "
-"sustituir todas las apariciones de la cadena."
+"Pulse en <guibutton>Reemplazar</guibutton> para sustituir esa aparición de "
+"la cadena por el texto escrito en el campo <guilabel>Reemplazar con</"
+"guilabel>. Pulse en <guibutton>Reemplazar todo</guibutton> para sustituir "
+"todas las apariciones de la cadena."
 
 #: ../C/gedit.xml:466(para)
 msgid ""
@@ -1086,7 +1086,7 @@ msgid ""
 "Click <guibutton>Go to Line</guibutton>. The application moves the cursor to "
 "the line number that you specify."
 msgstr ""
-"Haga clic en <guibutton>Ir a la línea</guibutton>. La aplicación traslada el "
+"Pulse en <guibutton>Ir a la línea</guibutton>. La aplicación traslada el "
 "cursor al número de línea que especifique."
 
 #: ../C/gedit.xml:511(para)
@@ -1206,18 +1206,17 @@ msgid ""
 "Click on this button to select the font to use to print the body text of a "
 "file."
 msgstr ""
-"Haga clic en este botón con el fin de seleccionar la fuente que desea usar "
-"para imprimir el cuerpo del texto de un archivo."
+"Pulse en este botón con el fin de seleccionar la fuente que desea usar para "
+"imprimir el cuerpo del texto de un archivo."
 
 #: ../C/gedit.xml:562(guilabel)
 msgid "Line numbers"
 msgstr "Números de línea"
 
 #: ../C/gedit.xml:565(para)
-#, fuzzy
 msgid "Click on this button to select the font to use to print line numbers."
 msgstr ""
-"Haga clic en este botón para seleccionar la fuente que desea usar para "
+"Pulse en este botón para seleccionar la tipografía que desea usar para "
 "imprimir los números de línea."
 
 #: ../C/gedit.xml:568(guilabel)
@@ -1229,8 +1228,8 @@ msgid ""
 "Click on this button to select the font to use to print the headers and "
 "footers in a file."
 msgstr ""
-"Haga clic en este botón con el fin de seleccionar la fuente que desea usar "
-"para imprimir las cabeceras en un archivo."
+"Pulse en este botón con el fin de seleccionar la fuente que desea usar para "
+"imprimir las cabeceras en un archivo."
 
 #: ../C/gedit.xml:574(para)
 msgid ""
@@ -1887,8 +1886,8 @@ msgid ""
 "to specify the font type, style, and size to use for text."
 msgstr ""
 "Este campo muestra la fuente que <application>gedit</application> usa para "
-"mostrar texto. Haga clic en el botón para especificar el tipo, estilo y "
-"tamaño de fuente que desea usar para el texto."
+"mostrar texto. Pulse en el botón para especificar el tipo, estilo y tamaño "
+"de fuente que desea usar para el texto."
 
 #: ../C/gedit.xml:901(guilabel)
 msgid "Colors"
@@ -1908,10 +1907,10 @@ msgid ""
 "display the color selector dialog. Select a color to use to display normal "
 "text in the <application>gedit</application> text window."
 msgstr ""
-"Haga clic en el botón <guibutton>Color del texto</guibutton> para que se "
-"muestre el cuadro de diálogo del selector de colores. Seleccione el color "
-"que desea usar para la visualización del texto en la ventana de "
-"<application>gedit</application>."
+"Pulse en el botón <guibutton>Color del texto</guibutton> para que se muestre "
+"el cuadro de diálogo del selector de colores. Seleccione el color que desea "
+"usar para la visualización del texto en la ventana de <application>gedit</"
+"application>."
 
 #: ../C/gedit.xml:905(para)
 msgid ""
@@ -1919,9 +1918,9 @@ msgid ""
 "the color selector dialog. Select a background color for the "
 "<application>gedit</application> text window."
 msgstr ""
-"Haga clic en el botón <guibutton>Color del fondo</guibutton> para que se "
-"muestre el cuadro de diálogo del selector de colores. Seleccione un color de "
-"fondo para la ventana de texto de <application>gedit</application>."
+"Pulse en el botón <guibutton>Color del fondo</guibutton> para que se muestre "
+"el cuadro de diálogo del selector de colores. Seleccione un color de fondo "
+"para la ventana de texto de <application>gedit</application>."
 
 #: ../C/gedit.xml:906(para)
 msgid ""
@@ -1929,9 +1928,9 @@ msgid ""
 "display the color selector dialog. Select a color to use to display selected "
 "text."
 msgstr ""
-"Haga clic en el botón <guibutton>Color de texto seleccionado</guibutton> "
-"para que se muestre el cuadro de diálogo del selector de colores. Seleccione "
-"el color que desee usar en la visualización del texto seleccionado."
+"Pulse en el botón <guibutton>Color de texto seleccionado</guibutton> para "
+"que se muestre el cuadro de diálogo del selector de colores. Seleccione el "
+"color que desee usar en la visualización del texto seleccionado."
 
 #: ../C/gedit.xml:908(para)
 msgid ""
@@ -1939,7 +1938,7 @@ msgid ""
 "the color selector dialog. Select a background color to use to highlight a "
 "text selection."
 msgstr ""
-"Haga clic en el botón <guibutton>Color de selección</guibutton> para que se "
+"Pulse en el botón <guibutton>Color de selección</guibutton> para que se "
 "muestre el cuadro de diálogo del selector de colores. Seleccione el color de "
 "fondo que desee usar para resaltar una selección de texto."
 
@@ -1952,9 +1951,9 @@ msgid "Enable syntax highlighting"
 msgstr "Permitir subrayado de sintaxis"
 
 #: ../C/gedit.xml:919(para)
-#, fuzzy
 msgid "Select this option to highlight the syntax of the text that you edit."
-msgstr "Seleccione esta opción para imprimir todas las páginas del archivo."
+msgstr ""
+"Seleccione esta opción para resaltar la sintaxis del texto que está editando."
 
 #: ../C/gedit.xml:922(guilabel)
 msgid "Highlight mode"
@@ -2037,8 +2036,8 @@ msgid ""
 "the font color."
 msgstr ""
 "Seleccione ésta opción para cambiar la fuente de color del elemento de "
-"sintaxis seleccionado. Haga click en el botón de color para visualizar el "
-"diálogo de selección de color, entonces seleccione la fuente de color."
+"sintaxis seleccionado. Pulse en el botón de color para visualizar el diálogo "
+"de selección de color, entonces seleccione la fuente de color."
 
 #: ../C/gedit.xml:1031(guilabel)
 msgid "Background"
@@ -2051,8 +2050,8 @@ msgid ""
 "then select the background color."
 msgstr ""
 "Seleccione ésta opción para cambiar el color de fondo del elemento de "
-"sintaxis seleccionado. Haga click en el botón de color para visualizar el "
-"diálogo de selección de color, entonces seleccione el color de fondo."
+"sintaxis seleccionado. Pulse en el botón de color para visualizar el diálogo "
+"de selección de color, entonces seleccione el color de fondo."
 
 #: ../C/gedit.xml:1036(guibutton)
 msgid "Reset to Default"
@@ -2063,7 +2062,7 @@ msgid ""
 "Click on this button to reset the foreground color and background color of "
 "the selected syntax element to the default values."
 msgstr ""
-"Haga click en éste botón para reiniciar los valores por defecto del color de "
+"Pulse en éste botón para reiniciar los valores por defecto del color de "
 "primer plano y el color de fondo del elemento de sintaxis seleccionado."
 
 #: ../C/gedit.xml:1045(title)
@@ -2246,16 +2245,15 @@ msgstr ""
 "sobre el autor del plugin."
 
 #: ../C/gedit.xml:1125(para)
-#, fuzzy
 msgid ""
 "A <guibutton>Configure Plugin</guibutton> button: use this button to open a "
 "configuration dialog for the selected plugin, if that plugin is "
 "configurable. For example, see <xref linkend=\"gedit-date-time-configure\"/>."
 msgstr ""
-"El botón <guibutton>Configurar módulo</guibutton>. Puede usar este botón "
-"para abrir un cuadro de diálogo de configuración en los módulos que pueden "
-"configurarse. Por ejemplo, consulte <xref linkend=\"gedit-compare-files-"
-"configure\"/> y <xref linkend=\"gedit-date-time-configure\"/>."
+"Un botón <guibutton>Configurar complemento</guibutton>: use este botón para "
+"abrir un cuadro de diálogo de configuración para el complemento "
+"seleccionado, si ese complemento es configurable. Por ejemplo, vea la <xref "
+"linkend=\"gedit-date-time-configure\"/>."
 
 #: ../C/gedit.xml:1128(para)
 msgid ""
@@ -2385,7 +2383,7 @@ msgid ""
 "Click <guibutton>Close</guibutton> to close the <guilabel>Preferences</"
 "guilabel> dialog."
 msgstr ""
-"Haga clic en <guibutton>Aceptar</guibutton> para cerrar el cuadro de diálogo "
+"Pulse en <guibutton>Aceptar</guibutton> para cerrar el cuadro de diálogo "
 "<guilabel>Establecer ubicación de programa</guilabel>."
 
 #: ../C/gedit.xml:1228(title)
@@ -2632,7 +2630,7 @@ msgstr ""
 "automáticamente la fecha y la hora sin solicitar el formato, "
 "<application>gedit</application> mostrará el diálogo <guilabel>Insertar "
 "fecha y hora</guilabel>. Seleccione el formato de fecha/hora apropiado en la "
-"lista. Haga clic en el botón <guibutton>Insertar</guibutton> para cerrar el "
+"lista. Pulse en el botón <guibutton>Insertar</guibutton> para cerrar el "
 "diálogo <guilabel>Insertar fecha y hora</guilabel>;<application>gedit</"
 "application> insertará la fecha y la hora en el archivo actual, en la "
 "posición del cursor."
@@ -2674,8 +2672,8 @@ msgid ""
 "Click <guibutton>Configure Plugin</guibutton> to display the "
 "<guilabel>Configure insert date/time plugin</guilabel> dialog."
 msgstr ""
-"Haga clic en <guibutton>Configurar módulo</guibutton> para abrir el cuadro "
-"de diálogo <guilabel>Configurar el módulo Insertar fecha/hora</guilabel>."
+"Pulse en <guibutton>Configurar módulo</guibutton> para abrir el cuadro de "
+"diálogo <guilabel>Configurar el módulo Insertar fecha/hora</guilabel>."
 
 #: ../C/gedit.xml:1382(para)
 msgid "Select one of the options, as follows:"
@@ -2690,7 +2688,6 @@ msgstr ""
 "seleccione la opción <guilabel>Solicitar un formato</guilabel>."
 
 #: ../C/gedit.xml:1387(para)
-#, fuzzy
 msgid ""
 "To use the same <application>gedit</application>-provided date/time format "
 "each time you insert the date/time, select the <guilabel>Use the selected "
@@ -2736,7 +2733,7 @@ msgid ""
 "Click <guibutton>OK</guibutton> to close the <guilabel>Configure insert date/"
 "time plugin</guilabel> dialog."
 msgstr ""
-"Haga clic en <guibutton>Aceptar</guibutton> para cerrar el cuadro de diálogo "
+"Pulse en <guibutton>Aceptar</guibutton> para cerrar el cuadro de diálogo "
 "<guilabel>Configurar el módulo Insertar fecha/hora</guilabel>."
 
 #: ../C/gedit.xml:1398(para)
@@ -2842,8 +2839,8 @@ msgid ""
 "Click <guibutton>Run</guibutton>. The Shell command plugin executes the "
 "command and inserts the text output into the output window."
 msgstr ""
-"Haga clic en <guibutton>Ejecutar</guibutton>. El módulo Comando de shell "
-"ejecuta el comando e inserta la salida de texto en la ventana de salida."
+"Pulse en <guibutton>Ejecutar</guibutton>. El módulo Comando de shell ejecuta "
+"el comando e inserta la salida de texto en la ventana de salida."
 
 #: ../C/gedit.xml:1436(para)
 msgid ""
@@ -2857,8 +2854,8 @@ msgid ""
 "Click <guibutton>Copy selected lines</guibutton> to copy the selected text "
 "into the buffer."
 msgstr ""
-"Haga clic en <guibutton>Copiar líneas seleccionadas</guibutton> para copiar "
-"el texto seleccionado en el buffer."
+"Pulse en <guibutton>Copiar líneas seleccionadas</guibutton> para copiar el "
+"texto seleccionado en el buffer."
 
 #: ../C/gedit.xml:1441(para)
 msgid ""
@@ -2873,8 +2870,8 @@ msgid ""
 "Click <guibutton>Close the output window</guibutton> to close the output "
 "window."
 msgstr ""
-"Haga clic en el botón <guibutton>Cerrar la ventana de salida</guibutton> "
-"para cerrar dicha ventana."
+"Pulse en el botón <guibutton>Cerrar la ventana de salida</guibutton> para "
+"cerrar dicha ventana."
 
 #: ../C/gedit.xml:1451(title)
 msgid "To Use the Sort Plugin"
@@ -3012,15 +3009,14 @@ msgstr ""
 "<application>gedit</application> comienza."
 
 #: ../C/gedit.xml:1491(para)
-#, fuzzy
 msgid ""
 "Unknown spellings are displayed in a different color, and underlined. Right-"
 "click on an unknown spelling, then select <guimenu>Spelling Suggestions</"
 "guimenu> from the popup menu:"
 msgstr ""
-"Ortografías desconocidas son visualizadas en color diferente, y subrayado. "
-"Haga click en el botón izquierdo en una ortografía desconocida, entonces "
-"seleccione <guimenu>Sugerencias de ortografía</guimenu> del menú emeregente:"
+"Las ortografías desconocidas se muestran en un color diferente, y subrayado. "
+"Pulse en el botón derecho en una ortografía desconocida, después seleccione "
+"<guimenu>Sugerencias de ortografía</guimenu> del menú emergente:"
 
 #: ../C/gedit.xml:1494(para)
 msgid ""
@@ -3075,7 +3071,7 @@ msgid ""
 msgstr ""
 "Si no hay errores de ortografía, un diálogo de <guilabel>Información</"
 "guilabel> visualiza un mensaje expone que el documento no contiene palabras "
-"mal escritas. Haga click <guibutton>OK</guibutton> para cerrar el diálogo de "
+"mal escritas. Pulse <guibutton>OK</guibutton> para cerrar el diálogo de "
 "<guilabel>Información</guilabel>."
 
 #: ../C/gedit.xml:1509(para)
