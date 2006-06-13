@@ -1,3 +1,10 @@
+2006-06-13  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-panel.c: (create_small_button):
+	* gedit/gedit-notebook.c: (build_tab_label):
+
+	Fix bug #318461 – tab and panel close buttons are cropped.
+
 2006-05-31  Paolo Borelli  <pborelli@katamail.com>
 
 	* gedit/gedit-commands-file.c (confirm_overwrite_callback): fix
