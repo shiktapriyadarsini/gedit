@@ -1,3 +1,10 @@
+2006-06-14  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-panel.c: (create_small_button):
+	* gedit/gedit-notebook.c: (build_tab_label):
+
+	Fix yesterday's fix.
+
 2006-06-13  Paolo Borelli  <pborelli@katamail.com>
 
 	* gedit/gedit-panel.c: (create_small_button):
