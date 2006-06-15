@@ -1,3 +1,11 @@
+2006-06-15  Steve Frécinaux  <steve@istique.net>
+
+	* gedit/gedit-panel.c: (create_small_button):
+	* gedit/gedit-notebook.c: (build_tab_label):
+
+	Fix the fix of the fix of the cropped button issue (bug #318461) by
+	using the same trick as Epiphany does.
+
 2006-06-14  Paolo Borelli  <pborelli@katamail.com>
 
 	* gedit/gedit-panel.c: (create_small_button):
