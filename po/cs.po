@@ -10,22 +10,22 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 2.13.90\n"
+"Project-Id-Version: gedit VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-13 06:31+0100\n"
-"PO-Revision-Date: 2006-03-13 16:22+0100\n"
-"Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
+"POT-Creation-Date: 2006-06-30 13:39+0200\n"
+"PO-Revision-Date: 2006-06-30 19:58+0200\n"
+"Last-Translator: Lukas Novotny <lukasnov@cvs.gnome.org>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms:  nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "Edit text files"
 msgstr "Úprava textových souborů"
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit.c:436
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit.c:460
 msgid "Text Editor"
 msgstr "Textový editor"
 
@@ -182,13 +182,17 @@ msgstr "Zalamování řádků"
 msgid ""
 "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
 "writable by default."
-msgstr "Seznam schémat VFS, která gedit podporuje v režimu zápisu. Do schématu 'file' lze zapisovat implicitně."
+msgstr ""
+"Seznam schémat VFS, která gedit podporuje v režimu zápisu. Do schématu "
+"'file' lze zapisovat implicitně."
 
 #: ../data/gedit.schemas.in.h:31
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
-msgstr "Seznam aktivních pluginů. Obsahuje \"Umístění\" aktivních pluginů. Pro získání \"Umístění\" daného pluginu viz soubor .gedit-plugin."
+msgstr ""
+"Seznam aktivních pluginů. Obsahuje \"Umístění\" aktivních pluginů. Pro "
+"získání \"Umístění\" daného pluginu viz soubor .gedit-plugin."
 
 #: ../data/gedit.schemas.in.h:32
 msgid ""
@@ -675,15 +679,11 @@ msgstr[2] ""
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:447
 #, c-format
 msgid "If you don't save, changes from the last hour will be permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] ""
-"Pokud je neuložíte, budou změny provedené za poslední hodinu navždy ztraceny."
-msgstr[1] ""
-"Pokud je neuložíte, budou změny provedené za poslední %d hodiny navždy "
+msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] "Pokud je neuložíte, budou změny provedené za poslední hodinu navždy ztraceny."
+msgstr[1] "Pokud je neuložíte, budou změny provedené za poslední %d hodiny navždy "
 "ztraceny."
-msgstr[2] ""
-"Pokud je neuložíte, budou změny provedené za posledních %d hodin navždy "
+msgstr[2] "Pokud je neuložíte, budou změny provedené za posledních %d hodin navždy "
 "ztraceny."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:432
@@ -691,7 +691,7 @@ msgstr[2] ""
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
 "permanently lost."
-msgid_plural ""
+msgid_plural "" 
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
@@ -712,8 +712,7 @@ msgstr "Uložit před zavřením změny v dokumentu \"%s\"?"
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:663
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural ""
-"There are %d documents with unsaved changes. Save changes before closing?"
+msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] "V %d dokumentu jsou neuložené změny. Uložit změny před zavřením?"
 msgstr[1] "V %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
 msgstr[2] "V %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
@@ -1071,20 +1070,20 @@ msgstr "Používat _standardní písmo motivu"
 msgid "_minutes"
 msgstr "_minut"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:252
+#: ../gedit/dialogs/gedit-search-dialog.c:260
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1013
 msgid "Replace"
 msgstr "Nahradit"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:264 ../gedit/gedit-window.c:1011
+#: ../gedit/dialogs/gedit-search-dialog.c:272 ../gedit/gedit-window.c:1011
 msgid "Find"
 msgstr "Hledat"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:316
+#: ../gedit/dialogs/gedit-search-dialog.c:324
 msgid "Replace _All"
 msgstr "Nahradit _vše"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:317
+#: ../gedit/dialogs/gedit-search-dialog.c:325
 #: ../gedit/gedit-commands-file.c:559
 msgid "_Replace"
 msgstr "Nah_radit"
@@ -1181,26 +1180,26 @@ msgstr "Soubor \"%s\" je jen pro čtení."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Chcete se pokusit nahradit jej souborem, který ukládáte?"
 
-#: ../gedit/gedit-commands-file.c:617 ../gedit/gedit-commands-file.c:808
+#: ../gedit/gedit-commands-file.c:617 ../gedit/gedit-commands-file.c:815
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Ukládám soubor·'%s'…"
 
-#: ../gedit/gedit-commands-file.c:707
+#: ../gedit/gedit-commands-file.c:714
 msgid "Save As…"
 msgstr "Uložit jako…"
 
-#: ../gedit/gedit-commands-file.c:1003
+#: ../gedit/gedit-commands-file.c:1010
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Vracím dokument '%s'..."
 
-#: ../gedit/gedit-commands-file.c:1025
+#: ../gedit/gedit-commands-file.c:1032
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Vrátit neuložené změny v dokumentu '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1034
+#: ../gedit/gedit-commands-file.c:1041
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -1214,12 +1213,13 @@ msgstr[1] ""
 msgstr[2] ""
 "Změny provedené v dokumentu za posledních %ld sekund budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1043
+#: ../gedit/gedit-commands-file.c:1050
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
-msgstr "Změny provedené v dokumentu za poslední minutu budou navždy ztraceny."
+msgstr ""
+"Změny provedené v dokumentu za poslední minutu budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1049
+#: ../gedit/gedit-commands-file.c:1056
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1237,7 +1237,7 @@ msgstr[2] ""
 "Změny provedené v dokumentu za poslední minutu a %ld sekund budou navždy "
 "ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1059
+#: ../gedit/gedit-commands-file.c:1066
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -1251,19 +1251,15 @@ msgstr[1] ""
 msgstr[2] ""
 "Změny provedené v dokumentu za posledních %ld minut budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1074 ../gedit/gedit-commands-file.c:1095
+#: ../gedit/gedit-commands-file.c:1081 ../gedit/gedit-commands-file.c:1102
 #, c-format
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgid_plural ""
-"Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] ""
-"Změny provedené v dokumentu za poslední hodinu budou navždy ztraceny."
-msgstr[1] ""
-"Změny provedené v dokumentu za poslední %d hodiny budou navždy ztraceny."
-msgstr[2] ""
-"Změny provedené v dokumentu za posledních %d hodin budou navždy ztraceny."
+msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] "Změny provedené v dokumentu za poslední hodinu budou navždy ztraceny."
+msgstr[1] "Změny provedené v dokumentu za poslední %d hodiny budou navždy ztraceny."
+msgstr[2] "Změny provedené v dokumentu za posledních %d hodin budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1080
+#: ../gedit/gedit-commands-file.c:1087
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1281,27 +1277,22 @@ msgstr[2] ""
 "Změny provedené v dokumentu za poslední hodinu a %d minut budou navždy "
 "ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1121
+#: ../gedit/gedit-commands-file.c:1128
 msgid "_Revert"
 msgstr "V_rátit"
 
 #: ../gedit/gedit-commands-help.c:78
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr ""
-"gedit je malý a jednoduchý textový editor pro prostředí pracovní plochy GNOME"
+msgstr "gedit je malý a jednoduchý textový editor pro prostředí pracovní plochy GNOME"
 
-#: ../gedit/gedit-commands-help.c:98
+#: ../gedit/gedit-commands-help.c:93
 msgid "translator-credits"
 msgstr ""
 "Michal Bukovjan <bukm@centrum.cz>\n"
 "Miloslav Trmač <mitr@volny.cz>\n"
 "Lukáš Novotný <lukasnov@cvs.gnome.org>"
 
-#: ../gedit/gedit-commands-help.c:101
-msgid "gedit"
-msgstr "gedit"
-
-#: ../gedit/gedit-commands-search.c:166
+#: ../gedit/gedit-commands-search.c:165
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
@@ -1309,21 +1300,21 @@ msgstr[0] "Nalezen a nahrazen %d výskyt."
 msgstr[1] "Nalezeny a nahrazeny %d výskyty."
 msgstr[2] "Nalezeno a nahrazeno %d výskytů."
 
-#: ../gedit/gedit-commands-search.c:176
+#: ../gedit/gedit-commands-search.c:175
 msgid "Found and replaced one occurrence"
 msgstr "Nalezen a nahrazen jeden výskyt"
 
-#: ../gedit/gedit-commands-search.c:189
+#: ../gedit/gedit-commands-search.c:188
 msgid "Phrase not found"
 msgstr "Fráze nenalezena"
 
-#: ../gedit/gedit-document.c:774 ../gedit/gedit-document.c:855
+#: ../gedit/gedit-document.c:774 ../gedit/gedit-document.c:868
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Neuložený dokument %d"
 
 #. bad bad luck...
-#: ../gedit/gedit-document-saver.c:523
+#: ../gedit/gedit-document-saver.c:536
 msgid "Could not obtain backup filename"
 msgstr "Nemohu získat název záložního souboru"
 
@@ -1669,7 +1660,9 @@ msgstr "Nemohu uložit soubor %s s kódováním znaků %s."
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character coding."
-msgstr "Dokument obsahuje jeden nebo více znaků, které nelze zakódovat pomocí zadaného kódování znaků."
+msgstr ""
+"Dokument obsahuje jeden nebo více znaků, které nelze zakódovat pomocí "
+"zadaného kódování znaků."
 
 #: ../gedit/gedit-io-error-message-area.c:833
 msgid "_Edit Anyway"
@@ -1689,7 +1682,9 @@ msgstr "Soubor %s je již otevřen."
 msgid ""
 "gedit opened this instance of the file in non-editable way. Do you want to "
 "edit it anyway?"
-msgstr "gedit otevřel tuto instanci souboru neupravovatelným způsobem. Chcete ji přesto upravovat?"
+msgstr ""
+"gedit otevřel tuto instanci souboru neupravovatelným způsobem. Chcete ji "
+"přesto upravovat?"
 
 #: ../gedit/gedit-io-error-message-area.c:925
 #: ../gedit/gedit-io-error-message-area.c:1020
@@ -1711,7 +1706,9 @@ msgstr "Soubor %s byl od jeho načtení změněn."
 
 #: ../gedit/gedit-io-error-message-area.c:963
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
-msgstr "Pokud jej uložíte, všechny externí změny by mohly být ztraceny. Přesto jej uložit?"
+msgstr ""
+"Pokud jej uložíte, všechny externí změny by mohly být ztraceny. Přesto jej "
+"uložit?"
 
 #: ../gedit/gedit-io-error-message-area.c:1042
 #, c-format
@@ -1728,7 +1725,10 @@ msgid ""
 "gedit could not backup the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
-msgstr "gedit nemohl zazálohovat starou kopii souboru před uložením nové. Můžete toto varování ignorovat a přesto soubor uložit, ale pokud při ukládání dojde k chybě, mohli byste ztratit starou kopii souboru. Přesto uložit?"
+msgstr ""
+"gedit nemohl zazálohovat starou kopii souboru před uložením nové. Můžete "
+"toto varování ignorovat a přesto soubor uložit, ale pokud při ukládání dojde "
+"k chybě, mohli byste ztratit starou kopii souboru. Přesto uložit?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-message-area.c:1123
@@ -1736,7 +1736,9 @@ msgstr "gedit nemohl zazálohovat starou kopii souboru před uložením nové. M
 msgid ""
 "gedit cannot handle %s locations in write mode. Please, check that you typed "
 "the location correctly and try again."
-msgstr "gedit neumí používat umístění %s v režimu zápisu. Zkontrolujte prosím, že jste zadali umístění správně, a zkuste to znovu."
+msgstr ""
+"gedit neumí používat umístění %s v režimu zápisu. Zkontrolujte prosím, že "
+"jste zadali umístění správně, a zkuste to znovu."
 
 #: ../gedit/gedit-io-error-message-area.c:1131
 msgid ""
@@ -1832,17 +1834,17 @@ msgstr ""
 msgid "Could not save the file %s."
 msgstr "Nemohu uložit soubor %s."
 
-#: ../gedit/gedit-notebook.c:823
+#: ../gedit/gedit-notebook.c:838
 msgid "Close document"
 msgstr "Zavřít dokument"
 
-#: ../gedit/gedit-panel.c:370 ../gedit/gedit-panel.c:585
+#: ../gedit/gedit-panel.c:365 ../gedit/gedit-panel.c:580
 #: ../gedit/recent-files/egg-recent-view-gtk.c:446
 #: ../gedit/recent-files/egg-recent-view-uimanager.c:322
 msgid "Empty"
 msgstr "Prázdné"
 
-#: ../gedit/gedit-panel.c:526 ../gedit/gedit-panel.c:606
+#: ../gedit/gedit-panel.c:524 ../gedit/gedit-panel.c:601
 msgid "Hide panel"
 msgstr "Skrýt panel"
 
@@ -2059,7 +2061,7 @@ msgstr "Typ MIME:"
 msgid "Encoding:"
 msgstr "Kódování:"
 
-#: ../gedit/gedit-tab.c:2012
+#: ../gedit/gedit-tab.c:2013
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "Vykresluji stránku %d z %d..."
@@ -2514,79 +2516,79 @@ msgstr "Externí nástroje"
 msgid "You must be inside a word to run this command"
 msgstr "Pro spuštění tohoto příkazu musíte být uvnitř slova"
 
-#: ../plugins/externaltools/tools/functions.py:298
+#: ../plugins/externaltools/tools/functions.py:299
 msgid "Running tool:"
 msgstr "Spouštím nástroj:"
 
-#: ../plugins/externaltools/tools/functions.py:308
+#: ../plugins/externaltools/tools/functions.py:322
 msgid "Done."
 msgstr "Hotovo."
 
-#: ../plugins/externaltools/tools/functions.py:310
+#: ../plugins/externaltools/tools/functions.py:324
 msgid "Exited"
 msgstr "Skončil"
 
-#: ../plugins/externaltools/tools/manager.py:42
+#: ../plugins/externaltools/tools/manager.py:41
 msgid "Nothing"
 msgstr "Nic"
 
-#: ../plugins/externaltools/tools/manager.py:43
+#: ../plugins/externaltools/tools/manager.py:42
 msgid "Current document"
 msgstr "Aktuální dokument"
 
-#: ../plugins/externaltools/tools/manager.py:44
+#: ../plugins/externaltools/tools/manager.py:43
 msgid "Current selection"
 msgstr "Aktuální výběr"
 
-#: ../plugins/externaltools/tools/manager.py:45
+#: ../plugins/externaltools/tools/manager.py:44
 msgid "Current line"
 msgstr "Aktuální řádek"
 
-#: ../plugins/externaltools/tools/manager.py:46
+#: ../plugins/externaltools/tools/manager.py:45
 msgid "Current word"
 msgstr "Aktuální slovo"
 
-#: ../plugins/externaltools/tools/manager.py:49
+#: ../plugins/externaltools/tools/manager.py:48
 msgid "Insert in output panel"
 msgstr "Vložit do panelu výstupu"
 
-#: ../plugins/externaltools/tools/manager.py:50
+#: ../plugins/externaltools/tools/manager.py:49
 msgid "Create new document"
 msgstr "Vytvořit nový dokument"
 
-#: ../plugins/externaltools/tools/manager.py:51
+#: ../plugins/externaltools/tools/manager.py:50
 msgid "Append to current document"
 msgstr "Přidat do aktuálního dokumentu"
 
-#: ../plugins/externaltools/tools/manager.py:52
+#: ../plugins/externaltools/tools/manager.py:51
 msgid "Replace current document"
 msgstr "Nahradit aktuální dokument"
 
-#: ../plugins/externaltools/tools/manager.py:53
+#: ../plugins/externaltools/tools/manager.py:52
 msgid "Replace current selection"
 msgstr "Nahradit výběr"
 
-#: ../plugins/externaltools/tools/manager.py:54
+#: ../plugins/externaltools/tools/manager.py:53
 msgid "Insert at cursor position"
 msgstr "Vložit na pozici kurzoru"
 
-#: ../plugins/externaltools/tools/manager.py:57
+#: ../plugins/externaltools/tools/manager.py:56
 msgid "All documents"
 msgstr "Všechny dokumenty"
 
-#: ../plugins/externaltools/tools/manager.py:58
+#: ../plugins/externaltools/tools/manager.py:57
 msgid "All documents except untitled ones"
 msgstr "Všechny dokumenty kromě nepojmenovaných"
 
-#: ../plugins/externaltools/tools/manager.py:59
+#: ../plugins/externaltools/tools/manager.py:58
 msgid "Local files only"
 msgstr "Jen místní soubory"
 
-#: ../plugins/externaltools/tools/manager.py:60
+#: ../plugins/externaltools/tools/manager.py:59
 msgid "Remote files only"
 msgstr "Jen vzdálené soubory"
 
-#: ../plugins/externaltools/tools/manager.py:61
+#: ../plugins/externaltools/tools/manager.py:60
 msgid "Untitled documents only"
 msgstr "Jen nepojmenované dokumenty"
 
@@ -2610,12 +2612,13 @@ msgstr "Nový nástroj"
 msgid "This accelerator is already bound to %s"
 msgstr "Tato klávesová zkratka je již přiřazena k %s"
 
-#: ../plugins/externaltools/tools/manager.py:329
+#: ../plugins/externaltools/tools/manager.py:333
 #: ../plugins/snippets/snippets/SnippetsDialog.py:562
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr "Stiskněte novou klávesovou zkratku, nebo ji vymažte stisknutím Backspace"
+msgstr ""
+"Stiskněte novou klávesovou zkratku, nebo ji vymažte stisknutím Backspace"
 
-#: ../plugins/externaltools/tools/manager.py:331
+#: ../plugins/externaltools/tools/manager.py:335
 #: ../plugins/snippets/snippets/SnippetsDialog.py:564
 msgid "Type a new accelerator"
 msgstr "Stiskněte novou klávesovou zkratku"
@@ -2765,7 +2768,7 @@ msgstr "_Úryvky:"
 
 #: ../plugins/snippets/snippets/snippets.glade.h:7
 msgid "_Tab trigger:"
-msgstr ""
+msgstr "Spouštěč _tabulátoru:"
 
 #: ../plugins/snippets/snippets/SnippetPluginInstance.py:73
 msgid "Manage _Snippets..."
@@ -4752,3 +4755,6 @@ msgstr "Ze_ptat se na formát"
 #: ../plugins/time/time.glade2.h:10
 msgid "_Use custom format"
 msgstr "Použít vlastní _formát"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
