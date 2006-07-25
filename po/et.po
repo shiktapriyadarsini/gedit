@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: gedit 2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-02 07:31+0100\n"
-"PO-Revision-Date: 2006-03-23 10:59+0200\n"
+"PO-Revision-Date: 2006-07-17 16:20+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -160,6 +160,9 @@ msgid ""
 "document. Otherwise, gedit will print line numbers every such number of "
 "lines."
 msgstr ""
+"Kui selle väärtus on 0, siis dokumendile ei lisata printimisel reanumbreid. "
+"Vastasel juhul lisab gedit dokumendi printimisel reanumbreid siin määratud "
+"sammuga."
 
 #: ../data/gedit.schemas.in.h:27
 msgid "Insert spaces"
@@ -178,6 +181,8 @@ msgid ""
 "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
+"VFS-skeemide loend, mida gedit kirjutamiseks toetab. 'file' skeem on "
+"kirjutatav vaikimisi."
 
 #: ../data/gedit.schemas.in.h:31
 msgid ""
@@ -2039,7 +2044,7 @@ msgstr "Faili avamine määratud asukohast"
 
 #: ../gedit/gedit-ui.h:62
 msgid "Page Set_up..."
-msgstr "Lehekülje _sätted..."
+msgstr "Lehe_külje sätted..."
 
 #: ../gedit/gedit-ui.h:63
 msgid "Setup the page settings"
@@ -2314,7 +2319,7 @@ msgstr "Salvesta"
 
 #: ../gedit/gedit-window.c:1114
 msgid "Open a recently used file"
-msgstr "Avab viimati kasutatud faili"
+msgstr "Viimati kasutatud failide hulgast avamine"
 
 #: ../gedit/gedit-window.c:1121
 msgid "Open"
@@ -2613,15 +2618,15 @@ msgstr "_Taane"
 
 #: ../plugins/indent/gedit-indent-plugin.c:58
 msgid "Indent selected lines"
-msgstr "Taanda valitud read"
+msgstr "Valitud ridade taandamine"
 
 #: ../plugins/indent/gedit-indent-plugin.c:63
 msgid "U_nindent"
-msgstr ""
+msgstr "Taane _maha"
 
 #: ../plugins/indent/gedit-indent-plugin.c:65
 msgid "Unindent selected lines"
-msgstr ""
+msgstr "Taande eemaldamine valitud ridadelt"
 
 #: ../plugins/indent/indent.gedit-plugin.desktop.in.h:1
 msgid "Indent lines"
@@ -2653,11 +2658,11 @@ msgstr "Lisa kasutaja _nimi"
 
 #: ../plugins/sample/gedit-sample-plugin.c:65
 msgid "Insert the user name at the cursor position"
-msgstr "Lisa kasutaja nimi kursori asukohta"
+msgstr "Kasutaja nime lisamine kursori asukohale"
 
 #: ../plugins/sample/sample.gedit-plugin.desktop.in.h:1
 msgid "Inserts the user name at the cursor position."
-msgstr "Kasutaja nime lisamine kursori asukohta."
+msgstr "Kasutaja nime lisamine kursori asukohale."
 
 #: ../plugins/sample/sample.gedit-plugin.desktop.in.h:2
 msgid "User name"
@@ -2726,11 +2731,11 @@ msgstr "Dokumendi või valitud teksti sortimine."
 
 #: ../plugins/sort/sort.glade2.h:1
 msgid "R_emove duplicates"
-msgstr "_Eemalda kordused"
+msgstr "Kordused _eemaldatakse"
 
 #: ../plugins/sort/sort.glade2.h:2
 msgid "S_tart at column:"
-msgstr "A_lusta veerust:"
+msgstr "Al_ustades veerust:"
 
 #: ../plugins/sort/sort.glade2.h:4
 msgid "You cannot undo a sort operation"
@@ -2742,7 +2747,7 @@ msgstr "_Tõstutundetu"
 
 #: ../plugins/sort/sort.glade2.h:6
 msgid "_Reverse order"
-msgstr "T_agurpidi"
+msgstr "Ta_gurpidi"
 
 #: ../plugins/sort/sort.glade2.h:7
 msgid "_Sort"
@@ -4667,7 +4672,7 @@ msgstr "Kasutatakse _valitud vormingut"
 
 #: ../plugins/time/time.glade2.h:8
 msgid "_Insert"
-msgstr "_Lisa"
+msgstr "L_isa"
 
 #: ../plugins/time/time.glade2.h:9
 msgid "_Prompt for a format"
@@ -4675,5 +4680,4 @@ msgstr "_Küsitakse vormingut"
 
 #: ../plugins/time/time.glade2.h:10
 msgid "_Use custom format"
-msgstr "Kasutatakse _oma vormingut"
-
+msgstr "Kasutatakse o_ma vormingut"
