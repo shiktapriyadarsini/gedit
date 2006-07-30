@@ -1,4 +1,23 @@
 ============
+gedit 2.14.4
+============
+
+New features and fixes
+======================
+- Fix cropped close button on tabs (Steve Frécinaux)
+- Prevent a use-after-free crash (Sylvain Defresne)
+
+New and updated translations
+============================
+
+- Gabor Kelemen (hu)
+- Ivar Smolin (et)
+- Lukas Novotny (cs)
+- Raivis Dejus (lv)
+- Robert-André Mauchin (fr)
+
+
+============
 gedit 2.14.3
 ============
 
