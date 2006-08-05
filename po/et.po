@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: gedit 2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-02 07:31+0100\n"
-"PO-Revision-Date: 2006-07-17 16:20+0300\n"
+"PO-Revision-Date: 2006-07-30 00:45+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -1056,14 +1056,15 @@ msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
+"Käsureal avamiseks määratud failidele kooditabeli seadmine"
 
 #: ../gedit/gedit.c:78
 msgid "Create a new toplevel window in an existing instance of gedit"
-msgstr ""
+msgstr "Ülemise taseme akna loomine olemasolevale gedit'i instantsile"
 
 #: ../gedit/gedit.c:81
 msgid "Create a new document in an existing instance of gedit"
-msgstr ""
+msgstr "Uue dokumendi loomine olemasolevas gedit'i instantsis"
 
 #: ../gedit/gedit.c:116
 #, c-format
@@ -1883,7 +1884,7 @@ msgstr "Printimise eelvaate sulgemine"
 #: ../gedit/gedit-print-job-preview.c:1096
 #: ../gedit/gedit-print-job-preview.c:1097
 msgid "Number of pages horizontally"
-msgstr ""
+msgstr "Lehekülgede horisontaalne nummerdamine"
 
 #: ../gedit/gedit-print-job-preview.c:1100
 #: ../gedit/gedit-print-job-preview.c:1101
@@ -3296,7 +3297,7 @@ msgstr "Taustatekstuuri pealkiri"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:19
 msgid "Base URI"
-msgstr ""
+msgstr "BaasURI"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:20
 msgid "Base font"
@@ -3419,11 +3420,11 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:53
 msgid "Definition description"
-msgstr ""
+msgstr "Definitsiooni kirjeldus"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:54
 msgid "Definition list"
-msgstr ""
+msgstr "Definitsioonide loend"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:55
 msgid "Definition term"
@@ -4152,7 +4153,7 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:236
 msgid "Table data cell"
-msgstr ""
+msgstr "Tabeli andmelahter"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:237
 msgid "Table footer"
@@ -4164,7 +4165,7 @@ msgstr "Tabeli päis"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:239
 msgid "Table header cell"
-msgstr ""
+msgstr "Tabeli päiselahter"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:240
 msgid "Table row"
@@ -4176,19 +4177,19 @@ msgstr "Tabeli kokkuvõte"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:242
 msgid "Target - Blank"
-msgstr ""
+msgstr "Sihtkoht - tühi"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:243
 msgid "Target - Parent"
-msgstr ""
+msgstr "Sihtkoht - vanem"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:244
 msgid "Target - Self"
-msgstr ""
+msgstr "Sihtkoht - ise"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:245
 msgid "Target - Top"
-msgstr ""
+msgstr "Sihtkoht - kõige ülemine"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:246
 msgid "Teletype or monospace text style"
@@ -4224,7 +4225,7 @@ msgstr "Allajoonitud teksti laad"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:254
 msgid "Unordered list"
-msgstr ""
+msgstr "Järjestamata loend"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:255
 msgid "Use image map"
@@ -4240,11 +4241,11 @@ msgstr ""
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:258
 msgid "Variable or program argument"
-msgstr ""
+msgstr "Muutuja või programmiargument"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:259
 msgid "Vertical cell alignment"
-msgstr ""
+msgstr "Lahtri püstjoondus"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:260
 msgid "Vertical space"
