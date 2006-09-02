@@ -1,3 +1,82 @@
+2006-09-02  Paolo Borelli  <pborelli@katamail.com>
+
+	Backport many bugfixes from HEAD. Original ChangeLogs entry follow:
+
+2006-08-25  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-tab.c: plug tiny leak when loading remote files.
+
+2006-08-25  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-document-loader.c: fix a couple of typos.
+
+2006-08-24  Paolo Maggi  <paolo@gnome.org>
+
+	Fixed bug #352680 – Save on close for readonly files does not work as
+	expected
+	
+	* gedit/dialogs/gedit-close-confirmation-dialog.c
+	(set_logout_mode): add a "Save As" button instead of a "Save" one when
+	in single mode and the document to close is untitled or readonly
+
+	* gedit/gedit-commands-file.c (file_save): call file_save_as for
+	readonly files too
+
+2006-08-24  Paolo Borelli  <pborelli@katamail.com>
+
+	Fixed bug #352677 – Critical warning when opening a empty remote file
+	
+	* gedit/gedit-document-loader.c: handle remote zero lenght files
+	correctly.
+
+2006-08-24  Paolo Maggi  <paolo@gnome.org>
+
+	Fixes bug #352658 – print preview state machine issue.
+	
+	* gedit/gedit-tab.c (print_preview_destroyed): add a comment and
+	check that the state is "printing" in the "else" case  
+	(print_finished_cb) (print_cancelled): If we are printing while 
+	showing the print preview, close the print preview when done or 
+	cancelled
+
+2006-08-23  Jesse van den Kieboom  <jesse@icecrew.nl>
+
+	* gedit/gedit.c: initialize gnome authentication manager before 
+	plugins (since the file browser plugin might need it). Fixes Bug 
+	352339 – Remote root location for filebrowser makes gedit crash on load
+
+2006-08-23  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-python-plugin.c: fix a small leak.
+
+2006-08-21  Paolo Maggi  <paolo@gnome.org>
+
+	* gedit/gedit-encodings.c: added support for UTF-16LE, UTF-16BE 
+	and UTF-32
+
+2006-08-17  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/dialogs/gedit-preferences-dialog.c: do not crash if no
+	lang files are found.
+
+2006-08-17  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-io-error-message-area.c: small memory leaks on error.
+
+2006-08-16  Steve Frécinaux  <steve@istique.net>
+
+	* plugins/modelines/modelines.py: fix warning on activation.
+
+2006-08-09  Paolo Borelli  <pborelli@katamail.com>
+
+	* plugins/spell/gedit-spell-plugin.c: fix autospell state when
+	switching tab.
+
+2006-05-15  Paolo Borelli  <pborelli@katamail.com>
+
+	* plugins/sort/gedit-sort-plugin.c: handle empty lines correctly.
+	bug #341117.
+
 === gedit 2.14.4 ===
 
 2006-07-30  Paolo Borelli  <pborelli@katamail.com>

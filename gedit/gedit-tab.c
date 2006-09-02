@@ -389,7 +389,7 @@ gedit_tab_set_state (GeditTab      *tab,
 
 	set_view_properties_according_to_state (tab, state);
 
-	if ((state == GEDIT_TAB_STATE_LOADING_ERROR) || // FIXME: add other states if needed
+	if ((state == GEDIT_TAB_STATE_LOADING_ERROR) || /* FIXME: add other states if needed */
 	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))
 	{
 		gtk_widget_hide (tab->priv->view_scrolled_window);
@@ -475,7 +475,7 @@ recoverable_loading_error_message_area_response (GeditMessageArea *message_area,
 						 GeditTab         *tab)
 {
 	GeditDocument *doc;
-	const gchar *uri;
+	gchar *uri;
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
@@ -513,6 +513,8 @@ recoverable_loading_error_message_area_response (GeditMessageArea *message_area,
 								   response_id,
 								   tab);
 	}
+
+	g_free (uri);
 }
 
 static void 
@@ -575,40 +577,39 @@ show_loading_message_area (GeditTab *tab)
 {
 	GtkWidget *area;
 	GeditDocument *doc = NULL;
-	const gchar *short_name;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *msg = NULL;
 	gchar *name_markup;
 	gchar *dirname_markup;
 	gint len;
-	
+
 	if (tab->priv->message_area != NULL)
 		return;
-	
+
 	gedit_debug (DEBUG_TAB);
 		
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (doc != NULL);
 
-	short_name = gedit_document_get_short_name_for_display (doc);
-
-	len = g_utf8_strlen (short_name, -1);
+	name = gedit_document_get_short_name_for_display (doc);
+	len = g_utf8_strlen (name, -1);
 
 	/* if the name is awfully long, truncate it and be done with it,
 	 * otherwise also show the directory (ellipsized if needed)
 	 */
 	if (len > MAX_MSG_LENGTH)
 	{
-		name = gedit_utils_str_middle_truncate (short_name, 
-							MAX_MSG_LENGTH);
+		gchar *str;
+
+		str = gedit_utils_str_middle_truncate (name, MAX_MSG_LENGTH);
+		g_free (name);
+		name = str;
 	}
 	else
 	{
 		gchar *uri;
 		gchar *str;
-
-		name = g_strdup (short_name);
 
 		uri = gedit_document_get_uri_for_display (doc);
 		str = gedit_utils_uri_get_dirname (uri);
@@ -971,6 +972,7 @@ document_loaded (GeditDocument *document,
 							 GTK_RESPONSE_CANCEL);
 
 		gtk_widget_show (emsg);
+		g_free (uri);
 
 		return;
 	}
@@ -1957,9 +1959,18 @@ print_preview_destroyed (GtkWidget *preview,
 	tab->priv->print_preview = NULL;
 	
 	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	}
 	else
-		gtk_widget_show (tab->priv->view_scrolled_window);		
+	{
+		/* This should happen only when printing while showing the print
+		 * preview. In this case let us continue whithout changing
+		 * the state and show the document. See bug #352658 */
+		gtk_widget_show (tab->priv->view_scrolled_window);
+		
+		g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_PRINTING);
+	}	
 }
 
 static void
@@ -1970,8 +1981,7 @@ set_print_preview (GeditTab  *tab, GtkWidget *print_preview)
 		
 	if (tab->priv->print_preview != NULL)
 		gtk_widget_destroy (tab->priv->print_preview);
-		
-	
+
 	tab->priv->print_preview = print_preview;
 
 	gtk_box_pack_end (GTK_BOX (tab),
@@ -2056,8 +2066,16 @@ print_finished_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
  	g_object_unref (gjob);
 
 	gedit_print_job_save_config (GEDIT_PRINT_JOB (pjob));
-	
+
 	g_object_unref (pjob);
+
+	if (tab->priv->print_preview != NULL)
+	{
+		/* If we were printing while showing the print preview,
+		   see bug #352658 */
+		gtk_widget_destroy (tab->priv->print_preview);
+		g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_PRINTING);
+	}
 	
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 }
@@ -2073,6 +2091,14 @@ print_cancelled (GeditMessageArea *area,
 	g_object_unref (tab->priv->print_job);
 
 	set_message_area (tab, NULL); /* destroy the message area */
+
+	if (tab->priv->print_preview != NULL)
+	{
+		/* If we were printing while showing the print preview,
+		   see bug #352658 */        	
+		gtk_widget_destroy (tab->priv->print_preview);
+		g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_PRINTING);
+	}
 	
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 }
