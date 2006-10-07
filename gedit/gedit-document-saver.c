@@ -2,7 +2,7 @@
  * gedit-document-saver.c
  * This file is part of gedit
  *
- * Copyright (C) 2005 - Paolo Borelli and Paolo Maggi
+ * Copyright (C) 2005-2006 - Paolo Borelli and Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
  */
 
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
+ * Modified by the gedit Team, 2005-2006. See the AUTHORS file for a 
  * list of people on the gedit Team.  
  * See the ChangeLog files for a list of changes. 
  *
@@ -49,6 +49,12 @@
 #include "gedit-prefs-manager.h"
 #include "gedit-marshal.h"
 #include "gedit-utils.h"
+
+#ifdef HAVE_LIBATTR
+#include <attr/libattr.h>
+#else
+#define attr_copy_fd(x1, x2, x3, x4, x5, x6) (errno = ENOSYS, -1)
+#endif
 
 #define GEDIT_DOCUMENT_SAVER_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
 						 GEDIT_TYPE_DOCUMENT_SAVER, \
@@ -235,8 +241,26 @@ write_document_contents (gint                  fd,
 	/* Save the file content */
 	if (res)
 	{
-		written = write (fd, contents, len);
-		res = ((written != -1) && ((gsize) written == len));
+		const gchar *write_buffer = contents;
+		ssize_t to_write = len;
+
+		do
+		{
+			written = write (fd, write_buffer, to_write);
+			if (written == -1)
+			{
+				if (errno == EINTR)
+					continue;
+
+				res = FALSE;
+
+				break;
+			}
+
+			to_write -= written;
+			write_buffer += written;
+		}
+		while (to_write > 0);
 	}
 
 	/* Add \n at the end if needed */
@@ -368,7 +392,6 @@ copy_file_data (gint     sfd,
 		GError **error)
 {
 	gboolean ret = TRUE;
-	GError *err = NULL;
 	gpointer buffer;
 	const gchar *write_buffer;
 	ssize_t bytes_read;
@@ -386,7 +409,7 @@ copy_file_data (gint     sfd,
 		{
 			GnomeVFSResult result = gnome_vfs_result_from_errno ();
 
-			g_set_error (&err,
+			g_set_error (error,
 				     GEDIT_DOCUMENT_ERROR,
 				     result,
 				     gnome_vfs_result_to_string (result));
@@ -404,9 +427,14 @@ copy_file_data (gint     sfd,
 			bytes_written = write (dfd, write_buffer, bytes_to_write);
 			if (bytes_written == -1)
 			{
-				GnomeVFSResult result = gnome_vfs_result_from_errno ();
+				GnomeVFSResult result;
 
-				g_set_error (&err,
+				if (errno == EINTR)
+					continue;
+
+				result = gnome_vfs_result_from_errno ();
+
+				g_set_error (error,
 					     GEDIT_DOCUMENT_ERROR,
 					     result,
 					     gnome_vfs_result_to_string (result));
@@ -423,8 +451,7 @@ copy_file_data (gint     sfd,
 
 	} while ((bytes_read != 0) && (ret == TRUE));
 
-	if (error)
-		*error = err;
+	g_free (buffer);
 
 	return ret;
 }
@@ -456,6 +483,16 @@ get_slow_mime_type (const char *text_uri)
 }
 
 /* ----------- local files ----------- */
+
+#ifdef HAVE_LIBATTR
+/* Save everything: user/root xattrs, SELinux, ACLs. */
+static int
+all_xattrs (const char *xattr G_GNUC_UNUSED,
+	    struct error_context *err G_GNUC_UNUSED)
+{
+	return 1;
+}
+#endif
 
 static gboolean
 save_existing_local_file (GeditDocumentSaver *saver)
@@ -597,6 +634,25 @@ save_existing_local_file (GeditDocumentSaver *saver)
 			goto fallback_strategy;
 		}
 
+		/* copy the xattrs, like user.mime_type, over. Also ACLs and
+		 * SELinux context. */
+		if ((attr_copy_fd (saver->priv->local_path,
+				   saver->priv->fd,
+				   tmp_filename,
+				   tmpfd,
+				   all_xattrs,
+				   NULL) == -1) &&
+		    (errno != EOPNOTSUPP) && (errno != ENOSYS))
+		{
+			gedit_debug_message (DEBUG_SAVER, "could not set xattrs");
+
+			close (tmpfd);
+			unlink (tmp_filename);
+			g_free (tmp_filename);
+
+			goto fallback_strategy;
+		}
+
 		if (!write_document_contents (tmpfd,
 					      GTK_TEXT_BUFFER (saver->priv->document),
 			 	 	      saver->priv->encoding,
@@ -672,8 +728,24 @@ save_existing_local_file (GeditDocumentSaver *saver)
 
 		saver->priv->mime_type = get_slow_mime_type (saver->priv->uri);
 
-		if (!saver->priv->keep_backup)
+		if (saver->priv->keep_backup)
+		{
+			/* remove executable permissions from the backup 
+			 * file */
+			mode_t new_mode = statbuf.st_mode;
+
+			new_mode &= ~(S_IXUSR | S_IXGRP | S_IXOTH);
+			
+			if (new_mode != statbuf.st_mode)
+			{
+				/* try to change permissions */
+				chmod (backup_filename, new_mode);
+			}
+		}
+		else
+		{
 			unlink (backup_filename);
+		}
 
 		close (tmpfd);
 
@@ -709,9 +781,11 @@ save_existing_local_file (GeditDocumentSaver *saver)
 			goto out;
 		}
 
+		/* open the backup file with the same permissions
+		 * except the executable ones */
 		bfd = open (backup_filename,
 			    O_WRONLY | O_CREAT | O_EXCL,
-			    statbuf.st_mode & 0777);
+			    statbuf.st_mode & 0666);
 
 		if (bfd == -1)
 		{
@@ -734,8 +808,8 @@ save_existing_local_file (GeditDocumentSaver *saver)
 			gedit_debug_message (DEBUG_SAVER, "could not restore group");
 
 			if (fchmod (bfd,
-			            (statbuf.st_mode& 0707) |
-			            ((statbuf.st_mode & 07) << 3)) != 0)
+			            (statbuf.st_mode& 0606) |
+			            ((statbuf.st_mode & 06) << 3)) != 0)
 			{
 				gedit_debug_message (DEBUG_SAVER, "could not even clear group perms");
 
@@ -749,6 +823,29 @@ save_existing_local_file (GeditDocumentSaver *saver)
 
 				goto out;
 			}
+		}
+
+		/* copy the xattrs, like user.mime_type, over. Also ACLs and
+		 * SELinux context. */
+		if ((attr_copy_fd (saver->priv->local_path,
+				   saver->priv->fd,
+				   backup_filename,
+				   bfd,
+				   all_xattrs,
+				   NULL) == -1) &&
+		    (errno != EOPNOTSUPP) && (errno != ENOSYS))
+		{
+			gedit_debug_message (DEBUG_SAVER, "could not set xattrs");
+
+			g_set_error (&saver->priv->error,
+				     GEDIT_DOCUMENT_ERROR,
+				     GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
+				     "No backup created");
+
+			unlink (backup_filename);
+			close (bfd);
+
+			goto out;
 		}
 
 		if (!copy_file_data (saver->priv->fd, bfd, NULL))
@@ -776,6 +873,7 @@ save_existing_local_file (GeditDocumentSaver *saver)
 			 	      saver->priv->encoding,
 				      &saver->priv->error))
 	{
+		/* FIXME: restore the backup? */
 		goto out;
 	}
 
@@ -980,16 +1078,70 @@ remote_get_info_cb (GnomeVFSAsyncHandle *handle,
 	remote_save_completed_or_failed (saver);
 }
 
+static void
+manage_completed_phase (GeditDocumentSaver *saver)
+{
+	/* In tha complete phase we emit the "saving" signal before managing
+	   the phase itself since the saver could be destroyed during these
+	   operations */
+	g_signal_emit (saver,
+		       signals[SAVING],
+		       0,
+		       FALSE,
+		       NULL);
+
+	if (saver->priv->error != NULL)
+	{
+		/* We aborted the xfer after an error */
+		remote_save_completed_or_failed (saver);
+	}
+	else
+	{
+		/* Transfer done!
+		 * Restore the permissions if needed and then refetch
+		 * info on our newly written file to get the mime etc */
+
+		GList *uri_list = NULL;
+
+		/* Try is not as paranoid as the local version (GID)... it would take
+		 * yet another stat to do it...
+		 */
+		if (saver->priv->orig_info != NULL &&
+		    (saver->priv->orig_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_PERMISSIONS))
+		{
+			gnome_vfs_set_file_info_uri (saver->priv->vfs_uri,
+		     				     saver->priv->orig_info,
+		     				     GNOME_VFS_SET_FILE_INFO_PERMISSIONS);
+
+			// FIXME: for now is a blind try... do we want to error check?
+		}
+
+		uri_list = g_list_prepend (uri_list, saver->priv->vfs_uri);
+
+		gnome_vfs_async_get_file_info (&saver->priv->info_handle,
+					       uri_list,
+					       GNOME_VFS_FILE_INFO_DEFAULT |
+					       GNOME_VFS_FILE_INFO_GET_MIME_TYPE |
+					       GNOME_VFS_FILE_INFO_FORCE_SLOW_MIME_TYPE |
+					       GNOME_VFS_FILE_INFO_FOLLOW_LINKS,
+					       GNOME_VFS_PRIORITY_MAX,
+					       remote_get_info_cb,
+					       saver);
+		g_list_free (uri_list);
+	}
+}
+
 static gint
 async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 	       GeditDocumentSaver       *saver)
 {
-	gedit_debug_message (DEBUG_SAVER, "xfer phase: %d", progress_info->phase);
+	gedit_debug (DEBUG_SAVER);
 
 	switch (progress_info->phase)
 	{
 	case GNOME_VFS_XFER_PHASE_INITIAL:
 		break;
+		
 	case GNOME_VFS_XFER_CHECKING_DESTINATION:
 		{
 			GnomeVFSFileInfo *orig_info;
@@ -1051,12 +1203,15 @@ async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 				saver->priv->orig_info = orig_info;
 		}
 		break;
+		
 	case GNOME_VFS_XFER_PHASE_COLLECTING:
 	case GNOME_VFS_XFER_PHASE_DELETESOURCE: // why do we get this phase??
 		break;
+		
 	case GNOME_VFS_XFER_PHASE_READYTOGO:
 		saver->priv->size = progress_info->bytes_total;
 		break;
+		
 	case GNOME_VFS_XFER_PHASE_OPENSOURCE:
 	case GNOME_VFS_XFER_PHASE_OPENTARGET:
 	case GNOME_VFS_XFER_PHASE_COPYING:
@@ -1066,43 +1221,18 @@ async_xfer_ok (GnomeVFSXferProgressInfo *progress_info,
 			saver->priv->bytes_written = MIN (progress_info->total_bytes_copied,
 							  progress_info->bytes_total);
 		break;
+		
 	case GNOME_VFS_XFER_PHASE_FILECOMPLETED:
 	case GNOME_VFS_XFER_PHASE_CLEANUP:
 		break;
+		
 	case GNOME_VFS_XFER_PHASE_COMPLETED:
-		/* Transfer done!
-		 * Restore the permissions if needed and then refetch
-		 * info on our newly written file to get the mime etc */
-		{
-			GList *uri_list = NULL;
-
-			/* Try is not as paranoid as the local version (GID)... it would take
-			 * yet another stat to do it...
-			 */
-			if (saver->priv->orig_info != NULL &&
-			    (saver->priv->orig_info->valid_fields & GNOME_VFS_FILE_INFO_FIELDS_PERMISSIONS))
-			{
-				gnome_vfs_set_file_info_uri (saver->priv->vfs_uri,
-			     				     saver->priv->orig_info,
-			     				     GNOME_VFS_SET_FILE_INFO_PERMISSIONS);
-
-				// FIXME: for now is a blind try... do we want to error check?
-			}
-
-			uri_list = g_list_prepend (uri_list, saver->priv->vfs_uri);
-
-			gnome_vfs_async_get_file_info (&saver->priv->info_handle,
-						       uri_list,
-						       GNOME_VFS_FILE_INFO_DEFAULT |
-						       GNOME_VFS_FILE_INFO_GET_MIME_TYPE |
-						       GNOME_VFS_FILE_INFO_FORCE_SLOW_MIME_TYPE |
-						       GNOME_VFS_FILE_INFO_FOLLOW_LINKS,
-						       GNOME_VFS_PRIORITY_MAX,
-						       remote_get_info_cb,
-						       saver);
-			g_list_free (uri_list);
-		}
-		break;
+		manage_completed_phase (saver);
+		
+		/* We return here in order to not emit a "saving" signal on
+		   a potentially invald saver */
+		return 0;
+		
 	/* Phases we don't expect to see */
 	case GNOME_VFS_XFER_PHASE_SETATTRIBUTES:
 	case GNOME_VFS_XFER_PHASE_CLOSESOURCE:
@@ -1126,14 +1256,32 @@ static gint
 async_xfer_error (GnomeVFSXferProgressInfo *progress_info,
 		  GeditDocumentSaver       *saver)
 {
-	gedit_debug (DEBUG_SAVER);
+	if (saver->priv->error == NULL)
+	{
+		/* We set the error and then abort.
+		 * Note that remote_save_completed_or_failed ()
+		 * will then be called when the xfer state machine goes
+		 * in the COMPLETED state.
+		 */
+		gedit_debug_message (DEBUG_SAVER, 
+				     "Set the error: \"%s\"",
+				     gnome_vfs_result_to_string (progress_info->vfs_status));
+		 
+		g_set_error (&saver->priv->error,
+			     GEDIT_DOCUMENT_ERROR,
+			     progress_info->vfs_status,
+			     gnome_vfs_result_to_string (progress_info->vfs_status));
+	}
+	else
+	{
+		gedit_debug_message (DEBUG_SAVER, 
+				     "Error already set.\n"
+				     "The new (skipped) error is: \"%s\"",
+				     gnome_vfs_result_to_string (progress_info->vfs_status));
 
-	g_set_error (&saver->priv->error,
-		     GEDIT_DOCUMENT_ERROR,
-		     progress_info->vfs_status,
-		     gnome_vfs_result_to_string (progress_info->vfs_status));
-
-	remote_save_completed_or_failed (saver);
+		g_return_val_if_fail (progress_info->vfs_status == GNOME_VFS_ERROR_INTERRUPTED,
+				      GNOME_VFS_XFER_ERROR_ACTION_ABORT);
+	}
 
 	return GNOME_VFS_XFER_ERROR_ACTION_ABORT;
 }
@@ -1145,6 +1293,9 @@ async_xfer_progress (GnomeVFSAsyncHandle      *handle,
 {
 	GeditDocumentSaver *saver = GEDIT_DOCUMENT_SAVER (data);
 
+	gedit_debug_message (DEBUG_SAVER, "xfer phase: %d", progress_info->phase);
+	gedit_debug_message (DEBUG_SAVER, "xfer status: %d", progress_info->status);
+	
 	switch (progress_info->status)
 	{
 	case GNOME_VFS_XFER_PROGRESS_STATUS_OK:
@@ -1189,7 +1340,7 @@ save_remote_file_real (GeditDocumentSaver *saver)
 
 	if (saver->priv->tmpfd == -1)
 	{
-		GnomeVFSResult result = gnome_vfs_result_from_errno ();
+		result = gnome_vfs_result_from_errno ();
 
 		g_set_error (&saver->priv->error,
 			     GEDIT_DOCUMENT_ERROR,
@@ -1232,7 +1383,7 @@ save_remote_file_real (GeditDocumentSaver *saver)
 				       source_uri_list,
 				       dest_uri_list,
 				       GNOME_VFS_XFER_DEFAULT | GNOME_VFS_XFER_TARGET_DEFAULT_PERMS, // CHECK needs more thinking, follow symlinks etc... options are undocumented :(
-				       GNOME_VFS_XFER_ERROR_MODE_ABORT,       /* keep it simple, abort on any error */
+				       GNOME_VFS_XFER_ERROR_MODE_QUERY,       /* We need to use QUERY otherwise we don't get errors */
 				       GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE, /* We have already asked confirm (even if it is racy) */
 				       GNOME_VFS_PRIORITY_DEFAULT,
 				       async_xfer_progress, saver,
