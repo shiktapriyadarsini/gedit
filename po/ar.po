@@ -1,4 +1,5 @@
-# translation of gedit.HEAD.po to Arabic
+# translation of gedit.gnome-2-16.ar.po to Arabic
+#
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.#. Translator credits.
 # Sayed Jaffer Al-Mosawi <mosawi@arabeyes.org>, 2002.
 # Arafat Medini <lumina@silverpen.de>, 2002,2003.
@@ -6,24 +7,24 @@
 # Abdulaziz Al-Arfaj <alarfaj0@yahoo.com>, 2004.
 # Youssef Chahibi <chahibi@gmail.com>, 2006.
 # Djihed Afifi <djihed@gmail.com>, 2006.
-#
+# Khaled Hosny <khaledhosny@eglug.org>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.HEAD\n"
+"Project-Id-Version: gedit.gnome-2-16.ar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-30 00:52+0000\n"
-"PO-Revision-Date: 2006-11-05 11:45+0100\n"
-"Last-Translator: Djihed Afifi <djihed@gmail.com>\n"
-"Language-Team: Arabic <doc@arabeyes.org>\n"
+"PO-Revision-Date: 2006-12-01 01:53+0200\n"
+"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"Language-Team: Arabic <support@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "Edit text files"
-msgstr "تحرير ملفات نصية"
+msgstr "حرّر الملفات النصية"
 
 #: ../data/gedit.desktop.in.in.h:2
 #: ../gedit/gedit.c:457
@@ -37,15 +38,15 @@ msgstr "خطّ خاص للاستخدام في منطقة التحرير. لن ت
 #: ../data/gedit.schemas.in.h:2
 #: ../gedit/gedit-plugin-manager.c:747
 msgid "Active plugins"
-msgstr "تنشيط الملحقات %s"
+msgstr "الملحقات النشِطة"
 
 #: ../data/gedit.schemas.in.h:3
 msgid "Auto Detected Encodings"
-msgstr "التشفيرات المكشوفة آليا"
+msgstr "الترميزات المكتشفة آليا"
 
 #: ../data/gedit.schemas.in.h:4
 msgid "Auto Save"
-msgstr "حفظ آلي"
+msgstr "احفظ آلياً"
 
 #: ../data/gedit.schemas.in.h:5
 msgid "Auto Save Interval"
@@ -53,7 +54,7 @@ msgstr "فاصل الحفظ الآلي"
 
 #: ../data/gedit.schemas.in.h:6
 msgid "Auto indent"
-msgstr "فراغ آلي"
+msgstr "أزِح آلياً"
 
 #: ../data/gedit.schemas.in.h:7
 msgid "Background Color"
@@ -61,11 +62,11 @@ msgstr "لون الخلفية"
 
 #: ../data/gedit.schemas.in.h:8
 msgid "Background color for selected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "لون الخلفية للنص المحدد في منطقة التحرير. لن تظهر التأثيرات ما لم يلغى خيار\"استعمل الألوان الافتراضية\""
+msgstr "لون الخلفية للنص المحدد في منطقة التحرير. لن تظهر التأثيرات ما لم يلغى خيار \"Use Default Colors\""
 
 #: ../data/gedit.schemas.in.h:9
 msgid "Background color for unselected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "لون الخلفية للنص الغير المحدد في منطقة التحرير. لن تظهر التأثيرات ما لم يلغى خيار \"استعمل الألوان الإفتراضية\""
+msgstr "لون الخلفية للنص الغير المحدد في منطقة التحرير. لن تظهر التأثيرات ما لم يلغى خيار \"Use Default Colors\"."
 
 #: ../data/gedit.schemas.in.h:10
 msgid "Backup Copy Extension"
@@ -73,23 +74,23 @@ msgstr "إمتداد النسخة الإحتياطية"
 
 #: ../data/gedit.schemas.in.h:11
 msgid "Body Font for Printing"
-msgstr "جسم الخط للطباعة"
+msgstr "خط المتن عند الطباعة"
 
 #: ../data/gedit.schemas.in.h:12
 msgid "Bottom Panel is Visible"
-msgstr "عمود الأدوات ظاهر"
+msgstr "الشريط السفلي ظاهر"
 
 #: ../data/gedit.schemas.in.h:13
 msgid "Create Backup Copies"
-msgstr "إنشاء نسخ احتياطية"
+msgstr "أنشيء نسخ احتياطية"
 
 #: ../data/gedit.schemas.in.h:14
 msgid "Display Line Numbers"
-msgstr "إظهار أرقام السطور"
+msgstr "اظهر أرقام السطور"
 
 #: ../data/gedit.schemas.in.h:15
 msgid "Display Right Margin"
-msgstr "عرض الحاشية اليمنى"
+msgstr "اعرض الحاشية اليمنى"
 
 #: ../data/gedit.schemas.in.h:16
 msgid "Editor Font"
@@ -97,39 +98,39 @@ msgstr "خط المحرر"
 
 #: ../data/gedit.schemas.in.h:17
 msgid "Enable Search Highlighting"
-msgstr "تفعيل إبراز البحث"
+msgstr "فعّل إبراز البحث"
 
 #: ../data/gedit.schemas.in.h:18
 msgid "Enable Syntax Highlighting"
-msgstr "تفعيل إبراز بناء الجملة"
+msgstr "فعّل إبراز بنية الجملة"
 
 #: ../data/gedit.schemas.in.h:19
 msgid "Encodings shown in menu"
-msgstr "التشفيرات المعروضة في القائمة"
+msgstr "الترميزات المعروضة في القائمة"
 
 #: ../data/gedit.schemas.in.h:20
 msgid "Extension or suffix to use for backup file names. This will only take effect if the \"Create Backup Copies\" option is turned on."
-msgstr "الإمتداد أو الملحق للاستعمال مع نسخة احتياطية. لن تظهر التأثيرات ما لم يفعّل خيار\"انشاء نسخ إحتياطية\""
+msgstr "الإمتداد أو الملحق للاستعمال مع النسخة الإحتياطية. لن تظهر التأثيرات ما لم يفعّل خيار \"Create Backup Copies\"."
 
 #: ../data/gedit.schemas.in.h:21
 msgid "Foreground color for selected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "لون اﻷماميّة للنص المحدّد في مساحة التحرير. لن تظهر التأثيرات ما لم يلغى خيار \"استعمل الألوان الافتراضية\". "
+msgstr "لون اﻷماميّة للنص المحدّد في مساحة التحرير. لن تظهر التأثيرات ما لم يلغى خيار \"Use Default Colors\"."
 
 #: ../data/gedit.schemas.in.h:22
 msgid "Foreground color for the unselected text in the editing area. This will only take effect if the \"Use Default Colors\" option is turned off."
-msgstr "لون الأماميّة للنص الغير محدّد في مساحة التحرير. لن تظهر التأثيرات ما لم يلغى خيار \"استعمل الألوان الافتراضية\". "
+msgstr "لون الأماميّة للنص الغير محدّد في مساحة التحرير. لن تظهر التأثيرات ما لم يلغى خيار \"Use Default Colors\"."
 
 #: ../data/gedit.schemas.in.h:23
 msgid "Header Font for Printing"
-msgstr "خط الترويسة للطباعة"
+msgstr "خط الترويسة عند الطباعة"
 
 #: ../data/gedit.schemas.in.h:24
 msgid "Highlight Current Line"
-msgstr "إبراز السطر الحالي"
+msgstr "أبرِز السطر الحالي"
 
 #: ../data/gedit.schemas.in.h:25
 msgid "Highlight Matching Bracket"
-msgstr "إبراز القوس الموافق"
+msgstr "أبرِز القوس الموافق"
 
 #: ../data/gedit.schemas.in.h:26
 msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
@@ -137,11 +138,11 @@ msgstr "إذا كانت هذه القيمة 0، فلن تضاف أرقام ال�
 
 #: ../data/gedit.schemas.in.h:27
 msgid "Insert spaces"
-msgstr "إدرج فضاءات"
+msgstr "أدرج مسافات"
 
 #: ../data/gedit.schemas.in.h:28
 msgid "Line Number Font for Printing"
-msgstr "خطَّ رقمِ السطرِ للطباعة"
+msgstr "خطَّ رقمِ السطرِ عند الطباعة"
 
 #: ../data/gedit.schemas.in.h:29
 msgid "Line Wrapping Mode"
@@ -149,19 +150,19 @@ msgstr "نمط لف السطر"
 
 #: ../data/gedit.schemas.in.h:30
 msgid "List of VFS schemes gedit supports in write mode. The 'file' scheme is writable by default."
-msgstr "قائمة مخططات VFS المدعومة من قبل gedit في نمط الكتابة. الملف 'scheme' قابل للكتابة افتراضيا."
+msgstr "قائمة مخططات VFS المدعومة من قبل gedit في نمط الكتابة. مخطط الملف قابل للكتابة افتراضيا."
 
 #: ../data/gedit.schemas.in.h:31
 msgid "List of active plugins. It contains the \"Location\" of the active plugins. See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
-msgstr "قائمة الملحقات النشطة. تضم \"موقع\" الملحقات النشطة. انظر الملف .gedit-plugin, للحصول على  \"موقع\" ملحق معين."
+msgstr "قائمة الملحقات النشطة. تضم \"Location\" الملحقات النشطة. انظر الملف .gedit-plugin، للحصول على\"Location\"  ملحق معين."
 
 #: ../data/gedit.schemas.in.h:32
 msgid "List of encodings shown in Character Coding menu in open/save file selector. Only recognized encodings are used."
-msgstr "قائمة التشفيرات المعروضة في قائمة تشفيرات الرموز في  منتقي فتح/غلق للملفات. لا تستخدم إلا التشفيرات المعروفة."
+msgstr "قائمة الترميزات المعروضة في قائمة ترميزات المحارف في منتقي فتح/غلق للملفات. لا تستخدم إلا الترميزات المعروفة."
 
 #: ../data/gedit.schemas.in.h:33
 msgid "Max Number of Undo Actions"
-msgstr "العدد القصوي لأفعال إلغاءات الأفعال"
+msgstr "العدد الأقصى من أفعال التراجع"
 
 #: ../data/gedit.schemas.in.h:34
 msgid "Maximum Recent Files"
@@ -169,17 +170,17 @@ msgstr "العدد الأقصى للملفّات الحديثة"
 
 #: ../data/gedit.schemas.in.h:35
 msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions."
-msgstr "عدد العمليات الأقصى التي يمكن ل gedit من إلغائها أو إعادتها. استعمل \"-1\" لعدد غير محدود من الأفعال."
+msgstr "عدد العمليات الأقصى التي يمكن ل gedit من التراجع فيها أو إعادتها. استعمل \"-1\" لعدد غير محدود من الأفعال."
 
 #: ../data/gedit.schemas.in.h:36
 msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-msgstr "عدد العمليات الأقصى التي سيتمكّن gedit من إلغائها أو إعادتها .  استعمل \"-1\" لعدد غير محدود من الأفعال. متجاوز منذ 2.12.0"
+msgstr "عدد العمليات الأقصى التي سيتمكّن gedit من التراجع فيها أو إعادتها .  استعمل \"-1\" لعدد غير محدود من الأفعال. ملغي منذ 2.12.0"
 
 #. Translators: This is the Editor Font.
 #. This is a Pango font
 #: ../data/gedit.schemas.in.h:39
 msgid "Monospace 12"
-msgstr "ثابت العرض 12"
+msgstr "Monospace 12"
 
 #. Translators: This is the Body font for printing.
 #. This is a Pango font.
@@ -192,31 +193,31 @@ msgstr "Monospace 9"
 #. print_font_body_pango.
 #: ../data/gedit.schemas.in.h:46
 msgid "Monospace Regular 9"
-msgstr "ثابت العرض عادي 9"
+msgstr "Monospace Regular 9"
 
 #: ../data/gedit.schemas.in.h:47
 msgid "Number of minutes after which gedit will automatically save modified files. This will only take effect if the \"Auto Save\" option is turned on."
-msgstr "عدد الدقائق التي سيَحفِظ إثرها gedit الملفات المعدلة.لن تظهر التأثيرات ما لم يفَعّل خيار \" الحفظ اﻵلي\"."
+msgstr "عدد الدقائق التي سيَحفِظ إثرها gedit الملفات المعدلة.لن تظهر التأثيرات ما لم يفَعّل خيار \"Auto Save\"."
 
 #: ../data/gedit.schemas.in.h:48
 msgid "Print Header"
-msgstr "طبع الترويسة"
+msgstr "اطبع الترويسة"
 
 #: ../data/gedit.schemas.in.h:49
 msgid "Print Line Numbers"
-msgstr "طبع أرقام السطور"
+msgstr "اطبع أرقام السطور"
 
 #: ../data/gedit.schemas.in.h:50
 msgid "Print Syntax Highlighting"
-msgstr "طبع إبراز بناء الجملة"
+msgstr "اطبع إبراز بنية الجملة"
 
 #: ../data/gedit.schemas.in.h:51
 msgid "Printing Line Wrapping Mode"
-msgstr "طباعة نمط لف السطور"
+msgstr "نمط لف السطور في الطباعة"
 
 #: ../data/gedit.schemas.in.h:52
 msgid "Restore Previous Cursor Position"
-msgstr "استعاذة الموضع السابق للمشيرة."
+msgstr "استعِد الموضع السابق للمؤشّر"
 
 #: ../data/gedit.schemas.in.h:53
 msgid "Right Margin Position"
@@ -239,14 +240,14 @@ msgstr "Sans 8"
 #. print_font_header_pango.
 #: ../data/gedit.schemas.in.h:63
 msgid "Sans Regular 11"
-msgstr "سانس عادي 11"
+msgstr "Sans Regular 11"
 
 #. Translators: This is the Line Number font for printing.
 #. This is a gnome-print font name and replaced by
 #. print_font_numbers_pango.
 #: ../data/gedit.schemas.in.h:67
 msgid "Sans Regular 8"
-msgstr "سانس عادي 8"
+msgstr "Sans Regular 8"
 
 #: ../data/gedit.schemas.in.h:68
 msgid "Selected Text Color"
@@ -262,47 +263,47 @@ msgstr "اللوحة الجانبية ظاهرة"
 
 #: ../data/gedit.schemas.in.h:71
 msgid "Sorted list of encodings used by gedit for auto-detecting the encoding of a file. \"CURRENT\" is the current locale encoding. Only recognized encodings are used."
-msgstr "قائمة التشفيرات المستعملة ضمن من قبل جإدت لكشف تشفيرة ملف. \"حالي\" هو التشفير الحالي. لا تستخدم إلا التشفيرات المعترف بها."
+msgstr "قائمة الترميزات المستعملة من قبل جإدت للكشف الآلي لترميز الملف.  \"CURRENT\" هو ترميز اللغة الحالي. لا تستخدم إلا الترميزات المعترف بها."
 
 #: ../data/gedit.schemas.in.h:72
 msgid "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and \"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "تحديد لف سطور طويلة لالطباعة. يستعمل \"GTK_WRAP_NONE\" لمنع الحجب،\"GTK_WRAP_WORD\" للحجب عند حدود الكلمات، و \"GTK_WRAP_CHAR\" للحجب عند الحدود الفردية للكلمات. لاحظ أن القيم تتغير بحسب الحالة، لذلك تأكّد من ظهورهامطابقة لما ذُكِر هنا."
+msgstr "يحدد كيف تلف السطور الطويلة عند الطباعة. يستعمل \"GTK_WRAP_NONE\" لمنع اللف،\"GTK_WRAP_WORD\" للف عند حدود الكلمات، و \"GTK_WRAP_CHAR\" للف عند الحدود الفردية للكلمات. لاحظ أن القيم تتغير بحسب الحالة، لذلك تأكّد من ظهورهامطابقة لما ذُكِر هنا."
 
 #: ../data/gedit.schemas.in.h:73
 msgid "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and \"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "تحديد حجب سطور طويلة لالطباعة. يستعمل \"GTK_WRAP_NONE\" لمنع الحجب،\"GTK_WRAP_WORD\" للحجب عند حدود الكلمات، و \"GTK_WRAP_CHAR\" للحجبعند الحدود الفردية للكلمات. لاحظ أن القيم تتغير بحسب الحالة، لذلك تأكّد من ظهورهامطابقة لما ذُكِر هنا."
+msgstr "يحدد كيف تلف السطور الطويلة عند الطباعة. يستعمل \"GTK_WRAP_NONE\" لمنع اللف،\"GTK_WRAP_WORD\" للف عند حدود الكلمات، و \"GTK_WRAP_CHAR\" للف عند الحدود الفردية للكلمات. لاحظ أن القيم تتغير بحسب الحالة، لذلك تأكّد من ظهورهامطابقة لما ذُكِر هنا."
 
 #: ../data/gedit.schemas.in.h:74
 msgid "Specifies the font to use for a document's body when printing documents."
-msgstr "تحديد الخط الذي يستعمل في جسم مستند عند طباعة المستندات"
+msgstr "يحدّد الخط الذي سيستعمل في متن المستند عند طباعة المستندات."
 
 #: ../data/gedit.schemas.in.h:75
 msgid "Specifies the font to use for a document's body when printing documents. This is a gnome-print font name and replaced by print_font_body_pango."
-msgstr "يحدد الخط الذي يجب استعماله في جسم مستند عند طباعة المستندات. هذا اسم خط ل gnome-print ومستبدل ب  print_font_body_pango."
+msgstr "يحدّد الخط الذي سيستعمل في متن المستند عند طباعة المستندات.. هذا اسم خط ل gnome-print ومستبدل ب  print_font_body_pango."
 
 #: ../data/gedit.schemas.in.h:76
 msgid "Specifies the font to use for line numbers when printing. This will only take effect if the \"Print Line Numbers\" option is non-zero."
-msgstr "تحديد الخطّ الذي يستعمل لأرقام السطور عند الطباعة. لن يعمل إﻻ إذا كان خيار \"طبع أرقام السطور\"غير مساو لصفر."
+msgstr "يحدّد الخطّ الذي سيستعمل لأرقام السطور عند الطباعة. لن يعمل إﻻ إذا كان خيار \"Print Line Numbers\" غير مساو لصفر."
 
 #: ../data/gedit.schemas.in.h:77
 msgid "Specifies the font to use for line numbers when printing. This will only take effect if the \"Print Line Numbers\" option is non-zero. This is a gnome-print font name and replaced by print_font_numbers_pango."
-msgstr "يحدد الخطّ الذي يستعمل لأرقام السطور عند الطباعة. لن يعمل إﻻ إذا كان خيار \"طبع أرقام السطور\" غير مساو لصفر.  هذا اسم خط ل gnome-print ومستبدل ب  print_font_numbers_pango."
+msgstr "يحدد الخطّ الذي يستعمل لأرقام السطور عند الطباعة. لن يعمل إﻻ إذا كان خيار \"Print Line Numbers\" غير مساو لصفر.  هذا اسم خط ل gnome-print ومستبدل ب  print_font_numbers_pango."
 
 #: ../data/gedit.schemas.in.h:78
 msgid "Specifies the font to use for page headers when printing a document. This will only take effect if the \"Print Header\" option is turned on."
-msgstr "يحدّد الخطّ الذي يجب استعماله لترويسات الصفحات عند طباعة مستند. لن يعمل هذا إﻻّ إذا فعّل خيار \"طباعة الترويسة\"."
+msgstr "يحدّد الخطّ الذيسيستعمل لترويسات الصفحات عند طباعة مستند. لن يعمل هذا إﻻّ إذا فعّل خيار \"Print Header\"."
 
 #: ../data/gedit.schemas.in.h:79
 msgid "Specifies the font to use for page headers when printing a document. This will only take effect if the \"Print Header\" option is turned on. This is a gnome-print font name and replaced by print_font_header_pango."
-msgstr "يحدّد الخطّ الذي يجب إستعماله لترويسة الصفحة عند طباعة مستند. لن يعمل هذا إﻻّ إذا فعّل خيار \"طباعة الترويسة\".  هذا اسم خط ل gnome-print ومستبدل ب  print_font_header_pango."
+msgstr "يحدّد الخطّ الذي سيستعمل لترويسة الصفحة عند طباعة مستند. لن يعمل هذا إﻻّ إذا فعّل خيار \"Print Header\".  هذا اسم خط ل gnome-print ومستبدل ب  print_font_header_pango."
 
 #: ../data/gedit.schemas.in.h:80
 msgid "Specifies the maximum number of recently opened files that will be displayed in the \"Recent Files\" submenu."
-msgstr "يحدّد العدد الأقصى للملفات التي فتحت لعرضهافي القائمة الثانوية  \"الملفات الحديثة\"."
+msgstr "يحدّد العدد الأقصى من النلفات المفتوحة حديثا التي ستعرض في القائمة الثانوية \"Recent Files\"."
 
 #: ../data/gedit.schemas.in.h:81
 msgid "Specifies the number of spaces that should be displayed instead of Tab characters."
-msgstr "يحدّد عدد الفضاءات التي من المفترض عرضها عوض رموز تنظيم الجداول."
+msgstr "يحدّد عدد المسافات التي من المفترض عرضها عوض محارف Tab."
 
 #: ../data/gedit.schemas.in.h:82
 msgid "Specifies the position of the right margin."
@@ -310,15 +311,15 @@ msgstr "يحدد موقع الحاشية اليمنى."
 
 #: ../data/gedit.schemas.in.h:83
 msgid "Status Bar is Visible"
-msgstr "عمود الحالة مرئي"
+msgstr "شريط الحالة مرئي"
 
 #: ../data/gedit.schemas.in.h:84
 msgid "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "شكل أزرار عمود الأدوات. القيم الممكنة هي \"GEDIT_TOOLBAR_SYSTEM\"لإستعمال الإفتراضي للنظام و \"GEDIT_TOOLBAR_ICONS\" لعرض الأيقونات فقط و \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" لعرض نص و أيقونات و \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" لعرض نص مهم بجانب الأيقونات.لاحظ أن القيم تتغير بحسب الحالة، حافظ بالتالي على كتابتها كيفما ذكرت هنا."
+msgstr "أسلوب أزرار شريط الأدوات. القيم الممكنة هي \"GEDIT_TOOLBAR_SYSTEM\"لإستعمال الإفتراضي للنظام و \"GEDIT_TOOLBAR_ICONS\" لعرض الأيقونات فقط و \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" لعرض نص و أيقونات و \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" لعرض نص مهم بجانب الأيقونات.لاحظ أن القيم تتغير بحسب الحالة، حافظ بالتالي على كتابتها كيفما ذكرت هنا."
 
 #: ../data/gedit.schemas.in.h:85
 msgid "Tab Size"
-msgstr "حجم اللّسان"
+msgstr "حجم الشريط"
 
 #: ../data/gedit.schemas.in.h:86
 msgid "Text Color"
@@ -326,15 +327,15 @@ msgstr "لون النص"
 
 #: ../data/gedit.schemas.in.h:87
 msgid "Toolbar Buttons Style"
-msgstr "شكل أزرار عمود الأدوات"
+msgstr "أسلوب أزرار شريط الأدوات"
 
 #: ../data/gedit.schemas.in.h:88
 msgid "Toolbar is Visible"
-msgstr "عمود الأدوات مرئي"
+msgstr "شريط الأدوات مرئي"
 
 #: ../data/gedit.schemas.in.h:89
 msgid "Undo Actions Limit (DEPRECATED)"
-msgstr "حد إلغاء الأفعال (متجاوز)"
+msgstr "حد تراجع الأفعال (ملغي)"
 
 #: ../data/gedit.schemas.in.h:90
 msgid "Use Default Colors"
@@ -346,11 +347,11 @@ msgstr "استخدم الخطّ الإفتراضي"
 
 #: ../data/gedit.schemas.in.h:92
 msgid "Whether gedit should automatically save modified files after a time interval. You can set the time interval with the \"Auto Save Interval\" option."
-msgstr "بما إذا وجب لـ gedit حفظ الملفات المغيَّرة آليا بعد فاصل زمني. يمكنك وضعالفاصل الزمني بخيار \"فاصل الحفظ الآلي\""
+msgstr "ما إذا وجب لـ gedit حفظ الملفات المغيَّرة آليا بعد فاصل زمني. يمكنك وضع الفاصل الزمني بخيار \"Auto Save Interval\"."
 
 #: ../data/gedit.schemas.in.h:93
 msgid "Whether gedit should create backup copies for the files it saves. You can set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr "سما إذا وجب لـ gedit إنشاء نسخ إحتياطيّة للملفات التي يحفظها.يمكنك تحديد امتداد الملف الإحتياطي بخيار \"Backup Copy Extension\"."
+msgstr "ما إذا وجب لـ gedit إنشاء نسخ إحتياطيّة للملفات التي يحفظها.يمكنك تحديد امتداد الملف الإحتياطي بخيار \"Backup Copy Extension\"."
 
 #: ../data/gedit.schemas.in.h:94
 msgid "Whether gedit should display line numbers in the editing area."
@@ -362,15 +363,15 @@ msgstr "فيما إذا وجب لـ gedit عرض الحاشية اليمنى ف�
 
 #: ../data/gedit.schemas.in.h:96
 msgid "Whether gedit should enable auto indentation."
-msgstr "ما إذا وجب لـ gedit تضمّن ترويسة المستند عند طبع المستندات."
+msgstr "ما إذا وجب لـ gedit تفعيل الإزاحة الآلية."
 
 #: ../data/gedit.schemas.in.h:97
 msgid "Whether gedit should enable syntax highlighting."
-msgstr "فيما إذا يتوجب على جإدت تضمّن ترويسة المستند عند ابراز بناء التركيب."
+msgstr "فيما إذا يتوجب على جإدت تفعيل إبراز التركيب."
 
 #: ../data/gedit.schemas.in.h:98
 msgid "Whether gedit should highlight all the occurrences of the searched text."
-msgstr "فيما إذا كان على gedit إبراز جميع أحداث النص المبحوث."
+msgstr "فيما إذا كان على gedit إبراز جميع حالات وجود النص المبحوث."
 
 #: ../data/gedit.schemas.in.h:99
 msgid "Whether gedit should highlight matching bracket."
@@ -386,7 +387,7 @@ msgstr "ما إذا وجب لـ gedit تضمّن ترويسة المستند ع�
 
 #: ../data/gedit.schemas.in.h:102
 msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "ما إذا وجب لـ gedit إضافة فضاءات عوض الألسنة."
+msgstr "ما إذا وجب لـ gedit إضافة مسافات عوض الألسنة."
 
 #: ../data/gedit.schemas.in.h:103
 msgid "Whether gedit should print syntax highlighting when printing documents."
@@ -394,31 +395,32 @@ msgstr "فيما إذا سيطبع جإدت إبراز التراكيب عند �
 
 #: ../data/gedit.schemas.in.h:104
 msgid "Whether gedit should restore the previous cursor position when a file is loaded."
-msgstr "فيما إذا وجب لـ gedit استعاذة موضع المشيرة السابق عند تحميل ملف."
+msgstr "فيما إذا وجب لـ gedit استعاذة موضع المؤشّر السابق عند تحميل ملف."
 
 #: ../data/gedit.schemas.in.h:105
 msgid "Whether the bottom panel at the bottom of editing windows should be visible."
-msgstr "ما إذا وجب للوحة السفلى أسفل نافذة التحرير أن يكون مرئيّا."
+msgstr "ما إذا وجب ظهور اللوحة في أسفل نافذة التحرير أم لا."
 
 #: ../data/gedit.schemas.in.h:106
+#ARABEYES: the GUI is reversed, so this is right not left pane
 msgid "Whether the side pane at the left of the editing window should be visible."
-msgstr "ما إذا وجب لعمود الحالة في أسفل نافذة التحرير أن يكون مرئيّا."
+msgstr "ما إذا وجب ظهور اللوحة الجانبية على يمين نافذة التحرير أم لا."
 
 #: ../data/gedit.schemas.in.h:107
 msgid "Whether the status bar at the bottom of editing windows should be visible."
-msgstr "ما إذا وجب لعمود الحالة في أسفل نافذة التحرير أن يكون مرئيّا."
+msgstr "ما إذا وجب لشريط الحالة في أسفل نافذة التحرير أن يكون مرئيّا."
 
 #: ../data/gedit.schemas.in.h:108
 msgid "Whether the toolbar should be visible in editing windows."
-msgstr "ما إذا وجب لعمود الأدوات أن يكون مرئيّا في نوافذ التحرير."
+msgstr "ما إذا وجب لشريط الأدوات أن يكون مرئيّا في نوافذ التحرير."
 
 #: ../data/gedit.schemas.in.h:109
 msgid "Whether to use the system's default colors for the editing area. If this option is turned off, then the colors of the editing area will be those specified in the \"Background Color\", \"Text Color\", \"Selected Text Color\", and \"Selection Color\" options."
-msgstr "ما إذا وجب إستعمال الألوان الإفتراضية لالنظام لمساحة التحرير.إذا علّق هذا الخيار، فإنّ ألوان مساحة التحرير ستكون تلك التيأختيرت في خيارات \"لون الخلفية\"، \"لون النص\"، \"لون النص المختار\"، و \"لون الإختيار\"."
+msgstr "ما إذا وجب إستعمال الألوان الإفتراضية للنظام في مساحة التحرير.إذا علّق هذا الخيار، فإنّ ألوان مساحة التحرير ستكون تلك التي أختيرت في خيارات \"Background Color\"، \"Text Color\"، \"Selected Text Color\"، و \"Selection Color\""
 
 #: ../data/gedit.schemas.in.h:110
 msgid "Whether to use the system's default font for editing text instead of a font specific to gedit. If this option is turned off, then the font named in the \"Editor Font\" option will be used instead of the system font."
-msgstr "ما إذا وجب إستعمال الخط الإفتراضي لالنظام لتحرير النصوص على حساب خط خاص بـgedit. إذا علّق هذا الخيار، فإن الخطّ المختار في \"محرر الخطوط\" خيار سيستعمل عوض خطّ النظام."
+msgstr "ما إذا وجب إستعمال الخط الإفتراضي للنظام لتحرير النصوص على بدلا من خط خاص بـgedit. إذا علّق هذا الخيار، فإن الخطّ المختار في خيار \"Editor Font\" سيستعمل بدلا من خطّ النظام."
 
 #: ../data/gedit.schemas.in.h:111
 msgid "Writable VFS schemes"
@@ -435,19 +437,19 @@ msgstr "[ISO-8859-15]"
 #. Only recognized encodings are used.
 #: ../data/gedit.schemas.in.h:118
 msgid "[UTF-8,CURRENT,ISO-8859-15]"
-msgstr "[UTF-8,CURRENT,ISO-8859-15]"
+msgstr "[UTF-8،الحالي،ISO-8859-15]"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:140
 msgid "Logout _without Saving"
-msgstr "خروج _دون حفظ"
+msgstr "اخرج _دون حفظ"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:144
 msgid "_Cancel Logout"
-msgstr "إ_لغاء الخروج"
+msgstr "إ_لغي الخروج"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:151
 msgid "Close _without Saving"
-msgstr "غلق _دون حفظ"
+msgstr "اغلق _دون حفظ"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:211
 msgid "Question"
@@ -457,8 +459,8 @@ msgstr "سؤال"
 #, c-format
 msgid "If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural "If you don't save, changes from the last %ld seconds will be permanently lost."
-msgstr[0] "ستضيع تغييرات الثّانية 0 الأخيرة نهائيّاً إذا لم تحفظ.ستضيع تغييرات الثّانية الأخيرة نهائيّاً إذا لم تحفظ."
-msgstr[1] "ستضيع تغييرات الثّانية 1 الأخيرة نهائيّاً إذا لم تحفظ.ستضيع تغييرات الثّانية الأخيرة نهائيّاً إذا لم تحفظ."
+msgstr[0] "ستضيع تغييرات الثّانية الأخيرة نهائيّاً إذا لم تحفظ.ستضيع تغييرات الثّانية الأخيرة نهائيّاً إذا لم تحفظ."
+msgstr[1] "ستضيع تغييرات الثّانيتين الأخيرتين نهائيّاً إذا لم تحفظ.ستضيع تغييرات الثّانية الأخيرة نهائيّاً إذا لم تحفظ."
 msgstr[2] "ستضيع تغييرات الـ%ld ثوان الأخيرة نهائيّاً إذا لم تحفظ."
 msgstr[3] "ستضيع تغييرات الـ%ld ثوان الأخيرة نهائيّاً إذا لم تحفظ."
 
@@ -470,8 +472,8 @@ msgstr "ستضيع تغييرات الدّقيقة الأخيرة نهائيّا
 #, c-format
 msgid "If you don't save, changes from the last minute and %ld second will be permanently lost."
 msgid_plural "If you don't save, changes from the last minute and %ld seconds will be permanently lost."
-msgstr[0] "ستضيع تغييرات الدّقيقة والثانية  %ldة الأخيرة نهائيّاً إذا لم تحفظ."
-msgstr[1] "ستضيع تغييرات الدّقيقتين الثّانيتين الأخيرتين نهائيّاً إذا لم تحفظ."
+msgstr[0] "ستضيع تغييرات الدّقيقة والثانية الأخيرة نهائيّاً إذا لم تحفظ."
+msgstr[1] "ستضيع تغييرات الدّقيقة و الثّانيتين الأخيرتين نهائيّاً إذا لم تحفظ."
 msgstr[2] "ستضيع تغييرات الدّقيقة و %ld ثوان الأخيرة نهائيّاً إذا لم تحفظ."
 msgstr[3] "ستضيع تغييرات الدّقيقة و %ld ثانية الأخيرة نهائيّاً إذا لم تحفظ."
 
@@ -479,7 +481,7 @@ msgstr[3] "ستضيع تغييرات الدّقيقة و %ld ثانية الأخ
 #, c-format
 msgid "If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural "If you don't save, changes from the last %ld minutes will be permanently lost."
-msgstr[0] "ستضيع تغييرات الدّقيقة %ld الأخيرة نهائيّاً إذا لم تحفظ."
+msgstr[0] "ستضيع تغييرات الدّقيقة الأخيرة نهائيّاً إذا لم تحفظ."
 msgstr[1] "ستضيع تغييرات الدّقيقتين الأخيرتين نهائيّاً إذا لم تحفظ."
 msgstr[2] "ستضيع تغييرات الدقائق %ld الأخيرة نهائيّاً إذا لم تحفظ."
 msgstr[3] "ستضيع تغييرات الـ%ld دقيقة الأخيرة نهائيّاً إذا لم تحفظ."
@@ -516,13 +518,13 @@ msgstr "هل تريد حفظ التّغييرات في المستند \"%s\" ق�
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:530
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:741
 msgid "Saving has been disabled by the system administrator."
-msgstr "عطّل الحفظ من قبل مدير النظام."
+msgstr "عُطّل الحفظ من قبل مدير النظام."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:696
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] "ستضيع التّغييرات المحدثة على المستند واحد نهائيّاً."
+msgstr[0] "ستضيع التّغييرات المحدثة على مستند واحد نهائيّاً."
 msgstr[1] "ستضيع التّغييرات المحدثة على مستندين نهائيّاً."
 msgstr[2] "ستضيع التّغييرات المحدثة على %d مستندات نهائيّاً."
 msgstr[3] "ستضيع التّغييرات المحدثة على %d مستندا نهائيّاً."
@@ -550,7 +552,7 @@ msgstr "ستضيع جميع التّغييرات للأبد إذا لم تحفظ
 
 #: ../gedit/dialogs/gedit-encodings-dialog.c:315
 msgid "Character Codings"
-msgstr "تشفيرات الرموز"
+msgstr "ترميزات المحارف"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.c:365
 #: ../gedit/dialogs/gedit-encodings-dialog.c:426
@@ -560,37 +562,37 @@ msgstr "ال_وصف"
 #: ../gedit/dialogs/gedit-encodings-dialog.c:374
 #: ../gedit/dialogs/gedit-encodings-dialog.c:435
 msgid "_Encoding"
-msgstr "_تشفيرات"
+msgstr "_ترميزات"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:1
 msgid "A_vailable encodings:"
-msgstr "التشفيرات ال_متوفرة:"
+msgstr "الترميزات ال_متوفرة:"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:2
 msgid "Character codings"
-msgstr "تشفيرات الرموز"
+msgstr "ترميزات المحارف"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:3
 msgid "E_ncodings shown in menu:"
-msgstr "الت_شفيرات المعروضة في القائمة:"
+msgstr "الترميزات المعروضة في القائمة:"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.c:135
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:3
 msgid "Open Location"
-msgstr "فتح الموقع"
+msgstr "افتح الموقع"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:1
 msgid "Ch_aracter coding:"
-msgstr "ت_شفيرات الرموز:"
+msgstr "ترميزات المحارف:"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:2
 msgid "Enter the _location (URI) of the file you would like to open:"
-msgstr "إدخال _موقع الملف (URI) الذي تريد فتحه:"
+msgstr "أدخل _موقع الملف (URI) الذي تريد فتحه:"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.c:527
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:9
 msgid "Page Setup"
-msgstr "تعيينات الطبع"
+msgstr "إعداد الصفحة"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:1
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:1
@@ -604,12 +606,12 @@ msgstr "    "
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:2
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:8
 msgid "<b>Line Numbers</b>"
-msgstr "</b>أرفام السطور<b>"
+msgstr "</b>أرقام السطور<b>"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:3
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:11
 msgid "<b>Text Wrapping</b>"
-msgstr "<b>كسر النص</b>"
+msgstr "<b>لف النص</b>"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:4
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:16
@@ -619,7 +621,7 @@ msgstr "لا ت_فكّك كلامات على سطرين"
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:5
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:19
 msgid "Enable text _wrapping"
-msgstr "تفعيل _لفّ النص"
+msgstr "فعّل _لفّ النص"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:6
 msgid "Fonts"
@@ -631,19 +633,19 @@ msgstr "عام"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:8
 msgid "He_aders and footers:"
-msgstr "الت_رويسات و الهوامش السفلى:"
+msgstr "الت_رويسات و التذييلات:"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:10
 msgid "Print _line numbers"
-msgstr "طبع _أرقام السطور"
+msgstr "اطبع _أرقام السطور"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:11
 msgid "Print s_yntax highlighting"
-msgstr "طبع إبراز ال_تراكيب"
+msgstr "اطبع إبراز ال_تركيب"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:12
 msgid "_Body:"
-msgstr "_الجسم:"
+msgstr "_المتن:"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:13
 msgid "_Line numbers:"
@@ -655,11 +657,11 @@ msgstr "_رقم عند كل"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:15
 msgid "_Print page headers"
-msgstr "_طبع ترويسات الصفحات"
+msgstr "ا_طبع ترويسات الصفحات"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:16
 msgid "_Restore Default Fonts"
-msgstr "اس_ترجاع الخطوط الافتراضية"
+msgstr "اس_ترجع الخطوط الافتراضية"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:17
 msgid "lines"
@@ -671,19 +673,19 @@ msgstr "انقر هذا الزر لاختيار الخط المراد استخد
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:653
 msgid "Push this button to configure text color"
-msgstr "نقر هذا الزر لإعداد لون النص"
+msgstr "انقر هذا الزر لإعداد لون النص"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:655
 msgid "Push this button to configure background color"
-msgstr "نقر هذا الزر لإعداد لون الخلفية"
+msgstr "انقر هذا الزر لإعداد لون الخلفية"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:657
 msgid "Push this button to configure the color in which the selected text should appear"
-msgstr "نقر هذا الزر لإعداد اللون الذي يجب لالنص المنتقى ان يظهر فيه"
+msgstr "انقر هذا الزر لإعداد اللون الذي يجب للنص المنتقى ان يظهر فيه"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:660
 msgid "Push this button to configure the color in which the selected text should be marked"
-msgstr "نقر هذا الزر لإعداد اللون الذي يجب لالنص المنتقى تعليمه به"
+msgstr "انقر هذا الزر لإعداد اللون الذي يجب للنص المنتقى تعليمه به"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:1169
 msgid "Elements"
@@ -695,7 +697,7 @@ msgstr "تفضيلات gedit"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:2
 msgid "<b>Automatic Indentation</b>"
-msgstr "<b>تجويف آلي</b>"
+msgstr "<b>إزاحة آلية</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:3
 msgid "<b>Bracket Matching</b>"
@@ -711,7 +713,7 @@ msgstr "<b>عناصر</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:6
 msgid "<b>File Saving</b>"
-msgstr "<b>حفظ الخط</b>"
+msgstr "<b>حفظ الملف</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:7
 msgid "<b>Font</b>"
@@ -736,11 +738,11 @@ msgstr "سميك"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:14
 msgid "Create a _backup copy of files before saving"
-msgstr "انشاء نسخة _إسناد للملفات قبل الحفظ"
+msgstr "انشيء نسخة إ_حتياطية للملفات قبل الحفظ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:15
 msgid "Display right _margin"
-msgstr "إظهار الحاشية الي_منى"
+msgstr "اعرض الحاشية الي_منى"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:17
 msgid "Editor"
@@ -756,19 +758,19 @@ msgstr "خط وألوان"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:21
 msgid "Hi_ghlight current line"
-msgstr "إب_راز السطر الحالي"
+msgstr "أبرِز السطر الحالي"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:22
 msgid "Highlight _mode:"
-msgstr "_نسق الإبراز:"
+msgstr "_نمط الإبراز:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:23
 msgid "Highlight matching _bracket"
-msgstr "إبراز الأ_قواس المتوافقة"
+msgstr "أبرِز الأ_قواس المتوافقة"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:24
 msgid "Insert _spaces instead of tabs"
-msgstr "اضافة _فضاءات عوض"
+msgstr "أدرج _مسافات بدل الأشرطة"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:25
 msgid "Italic"
@@ -784,7 +786,7 @@ msgstr "انتقي لونا"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:28
 msgid "Pick the background color"
-msgstr "اختيار لون الخلفية"
+msgstr "انتقي لون الخلفية"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:29
 msgid "Pick the editor font"
@@ -796,11 +798,11 @@ msgstr "انتقي لون النص العادي"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:31
 msgid "Pick the selected text color"
-msgstr "اختيار لون النص المنتقى"
+msgstr "انتقي لون النص المحدد"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:32
 msgid "Pick the selection color"
-msgstr "اختيار لون المنتقى"
+msgstr "انتقي لون الإختيار"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:33
 msgid "Plugins"
@@ -812,11 +814,11 @@ msgstr "تفضيلات"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:35
 msgid "Se_lection color:"
-msgstr "لون المن_تقى:"
+msgstr "لون الإ_ختيار:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:36
 msgid "Selecte_d text color:"
-msgstr "لون النص الم_نتقى:"
+msgstr "لون النص الم_حدد:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:37
 msgid "Strikethrough"
@@ -824,11 +826,11 @@ msgstr "شطب"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:38
 msgid "Syntax Highlighting"
-msgstr "إبراز التراكيب"
+msgstr "أبرِز التراكيب"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:39
 msgid "U_se default theme colors"
-msgstr "إس_تخدام ألوان التيمة الإفتراضية"
+msgstr "إس_تخدم ألوان السِمة الإفتراضية"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:40
 msgid "Underline"
@@ -836,11 +838,11 @@ msgstr "تسطير"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:41
 msgid "View"
-msgstr "عرض"
+msgstr "اعرض"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:42
 msgid "_Autosave files every"
-msgstr "_حفظ الملف آليّا كلّ"
+msgstr "ا_حفظ الملفات آليّا كلّ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:43
 msgid "_Background color:"
@@ -848,19 +850,19 @@ msgstr "_لون الخلفية:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:44
 msgid "_Background:"
-msgstr "_الخلفية:"
+msgstr "ال_خلفية:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:45
 msgid "_Display line numbers"
-msgstr "_عرض أرقام السطور"
+msgstr "ا_عرض أرقام السطور"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:46
 msgid "_Enable automatic indentation"
-msgstr "_تفعيل التجويف الآلي"
+msgstr "_فعّل الإزاحة الآلية"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:47
 msgid "_Enable syntax highlighting"
-msgstr "_تفعيل إبراز التراكيب"
+msgstr "_فعّل إبراز التراكيب"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:48
 msgid "_Foreground:"
@@ -868,7 +870,7 @@ msgstr "ال_واجهة الأمامية:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:49
 msgid "_Reset to Default "
-msgstr "إ_عادة الضبط للإفتراض "
+msgstr "أ_عد الضبط للإفتراضي"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:50
 msgid "_Right margin at column:"
@@ -880,7 +882,7 @@ msgstr "ع_رض اللسان:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:52
 msgid "_Use default theme font"
-msgstr "_استخدام تيمة الخط الإفتراضية"
+msgstr "ا_ستخدم خط السِمة الإفتراضية"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:53
 msgid "_minutes"
@@ -890,7 +892,7 @@ msgstr "_دقائق"
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:2
 #: ../gedit/gedit-window.c:1273
 msgid "Replace"
-msgstr "استبدال"
+msgstr "استبدل"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:314
 #: ../gedit/gedit-window.c:1271
@@ -899,36 +901,36 @@ msgstr "إيجاد"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:366
 msgid "Replace _All"
-msgstr "استبدال الك_ل"
+msgstr "استبدل الك_ل"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:367
 #: ../gedit/gedit-commands-file.c:661
 msgid "_Replace"
-msgstr "است_بدال"
+msgstr "است_بدل"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:1
 msgid "Match _entire word only"
-msgstr "مطابقة لك_امل الكلمة فقط"
+msgstr "طابِق ك_امل الكلمة فقط"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:3
 msgid "Replace All"
-msgstr "تبديل الكل"
+msgstr "استبدّل الكل"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:4
 msgid "Replace _with: "
-msgstr "تبديل _بـ: "
+msgstr "استبدّل _بـ: "
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:5
 msgid "Search _backwards"
-msgstr "بحث إلى ال_خلف"
+msgstr "ابحث إلى ال_خلف"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:6
 msgid "_Match case"
-msgstr "_مطابقة للحالة"
+msgstr "_طابِق الحالة"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:7
 msgid "_Search for: "
-msgstr "_بحث عن:"
+msgstr "ا_بحث عن:"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:8
 msgid "_Wrap around"
@@ -963,7 +965,7 @@ msgstr "%s: ترميز غير سليم. \n"
 #. Setup command line options
 #: ../gedit/gedit.c:449
 msgid "- Edit text files"
-msgstr "- تحرير ملفات نصية"
+msgstr "- حرّر الملفات النصية"
 
 #: ../gedit/gedit-commands-file.c:212
 #: ../gedit/gedit-commands-file.c:258
@@ -982,7 +984,7 @@ msgstr[3] "تحميل %d ملف..."
 
 #: ../gedit/gedit-commands-file.c:407
 msgid "Open Files…"
-msgstr "فتح ملفات..."
+msgstr "افتح ملفات..."
 
 #: ../gedit/gedit-commands-file.c:513
 msgid "The entered location is not valid."
@@ -998,7 +1000,7 @@ msgstr "رجاء، تأكد من كتابة الموقع بشكل صحيح ثم 
 #: ../gedit/gedit-commands-file.c:642
 #, c-format
 msgid "The file \"%s\" is read-only."
-msgstr "الملف \"%s\" مفتوح للقراءة فقط."
+msgstr "الملف \"%s\" للقراءة فقط."
 
 #: ../gedit/gedit-commands-file.c:653
 msgid "Do you want to try to replace it with the one you are saving?"
@@ -1012,7 +1014,7 @@ msgstr "جاري حفظ الملف \"%s\"..."
 
 #: ../gedit/gedit-commands-file.c:816
 msgid "Save As…"
-msgstr "حفظ كـ..."
+msgstr "احفظ كـ..."
 
 #: ../gedit/gedit-commands-file.c:1113
 #, c-format
@@ -1022,7 +1024,7 @@ msgstr "جاري استرجاع المستند '%s'..."
 #: ../gedit/gedit-commands-file.c:1135
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
-msgstr "إعادة التعييرات غير المحفوظة للمستند '%s'؟"
+msgstr "عكس التغييرات غير المحفوظة للمستند '%s'؟"
 
 #: ../gedit/gedit-commands-file.c:1144
 #, c-format
@@ -1076,7 +1078,7 @@ msgstr[3] "ستضيع التّغييرات المحدثة على المستند 
 
 #: ../gedit/gedit-commands-file.c:1231
 msgid "_Revert"
-msgstr "_استرجاع"
+msgstr "ا_عكس"
 
 #: ../gedit/gedit-commands-help.c:80
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
@@ -1084,7 +1086,18 @@ msgstr "جإدت محرّر نصوص صغير و خفيف لجنوم"
 
 #: ../gedit/gedit-commands-help.c:96
 msgid "translator-credits"
-msgstr "جهاد عفيفي djihed@gmail.com , عرفات المديني، تونس <lumina@silverpen.de> حسن عابدين، مصر <abdin@arabeyes>org>عصام بيازيدي، الأردن محمد أمين آغة، العربية السعودية سيد جعفر الموسوي، البحرين إبراهيم الإبراهيم، الكويت يوسف الشهيبي (Youssef Chahibi) <chahibi@gmail.com>"
+msgstr ""
+"فريق عربآيز للترجمة http://www.arabeyes.org :\n"
+"عصام بيازيدي\t\t<bayazidi@arabeyes.org>\n"
+"سيد جعفر الموسوي\t<mosawi@arabeyes.org>\n"
+"عرفات المديني\t<lumina@silverpen.de>\n"
+"حسن عابدين\t\t<abdin@arabeyes.org>\n"
+"عبد العزيز العرفج\t<alarfaj0@yahoo.com>\n"
+"محمد أمين آغة\n"
+"إبراهيم الإبراهيم\n"
+"يوسف الشهيبي\t<chahibi@gmail.com>\n"
+"جهاد عفيفي\t\t<djihed@gmail.com>\n"
+"خالد حسني\t\t<khaledhosny@eglug.org>"
 
 #: ../gedit/gedit-commands-search.c:165
 #, c-format
@@ -1466,11 +1479,11 @@ msgstr "يحوي المستند حرفا أو حروفا لا يمكن ترمي�
 
 #: ../gedit/gedit-io-error-message-area.c:839
 msgid "_Edit Anyway"
-msgstr "ت_حرير على كل حال  "
+msgstr "_حرّر على كل حال  "
 
 #: ../gedit/gedit-io-error-message-area.c:842
 msgid "_Don't Edit"
-msgstr "_لا تحرر"
+msgstr "_لا تحرّر"
 
 #: ../gedit/gedit-io-error-message-area.c:857
 #, c-format
@@ -1645,7 +1658,7 @@ msgstr "الصفحة %N من %Q"
 
 #: ../gedit/gedit-print.c:316
 msgid "Print"
-msgstr "طبع"
+msgstr "اطبع"
 
 #: ../gedit/gedit-print.c:325
 #: ../plugins/docinfo/docinfo.glade2.h:9
@@ -1666,11 +1679,11 @@ msgstr "أخرى"
 
 #: ../gedit/gedit-print-job-preview.c:740
 msgid "Show the previous page"
-msgstr "إظهار الصفحة التالية"
+msgstr "اظهر الصفحة التالية"
 
 #: ../gedit/gedit-print-job-preview.c:751
 msgid "Show the next page"
-msgstr "إظهار الصفحة السابقة"
+msgstr "اظهر الصفحة السابقة"
 
 #: ../gedit/gedit-print-job-preview.c:767
 msgid "Current page (Alt+P)"
@@ -1692,7 +1705,7 @@ msgstr "مجموع الصفحات في المستند"
 
 #: ../gedit/gedit-print-job-preview.c:805
 msgid "Show multiple pages"
-msgstr "إظهار صفحات متعددة"
+msgstr "اظهر صفحات متعددة"
 
 #: ../gedit/gedit-print-job-preview.c:817
 msgid "Zoom 1:1"
@@ -1836,7 +1849,7 @@ msgstr "_ملف"
 
 #: ../gedit/gedit-ui.h:53
 msgid "_Edit"
-msgstr "_تحرير"
+msgstr "_حرّر"
 
 #: ../gedit/gedit-ui.h:54
 msgid "_View"
@@ -1935,11 +1948,11 @@ msgstr "معاينة الطبع"
 
 #: ../gedit/gedit-ui.h:92
 msgid "_Print..."
-msgstr "_طبع..."
+msgstr "ا_طبع..."
 
 #: ../gedit/gedit-ui.h:93
 msgid "Print the current page"
-msgstr "طبع الصفحة الحالية"
+msgstr "اطبع الصفحة الحالية"
 
 #: ../gedit/gedit-ui.h:95
 msgid "Close the current file"
@@ -2086,19 +2099,19 @@ msgstr "خروج من البرنامج"
 
 #: ../gedit/gedit-ui.h:154
 msgid "_Toolbar"
-msgstr "_عمود الأدوات"
+msgstr "_شريط الأدوات"
 
 #: ../gedit/gedit-ui.h:155
 msgid "Show or hide the toolbar in the current window"
-msgstr "إظهار أو إخفاء عمود الأدوات في النافذة الحالية "
+msgstr "اظهر أو إخفاء شريط الأدوات في النافذة الحالية "
 
 #: ../gedit/gedit-ui.h:157
 msgid "_Statusbar"
-msgstr "_عمود الحالة"
+msgstr "_شريط الحالة"
 
 #: ../gedit/gedit-ui.h:158
 msgid "Show or hide the statusbar in the current window"
-msgstr "إظهار أو إخفاء عمود الحالة في النافذة الحالية"
+msgstr "اظهر أو إخفاء شريط الحالة في النافذة الحالية"
 
 #: ../gedit/gedit-ui.h:160
 msgid "Side _Pane"
@@ -2106,7 +2119,7 @@ msgstr "ال_لوحة الجانبية"
 
 #: ../gedit/gedit-ui.h:161
 msgid "Show or hide the side pane in the current window"
-msgstr "إظهار أو إخفاء اللوحة الجانبية في النافذة الحالية "
+msgstr "اظهر أو إخفاء اللوحة الجانبية في النافذة الحالية "
 
 #: ../gedit/gedit-ui.h:167
 msgid "_Bottom Pane"
@@ -2114,7 +2127,7 @@ msgstr "اللوحة ال_سفلية"
 
 #: ../gedit/gedit-ui.h:168
 msgid "Show or hide the bottom pane in the current window"
-msgstr "إظهار أو إخفاء اللوحة السفلية في النافذة الحالية "
+msgstr "اظهر أو إخفاء اللوحة السفلية في النافذة الحالية "
 
 #: ../gedit/gedit-utils.c:988
 #, c-format
@@ -2152,7 +2165,7 @@ msgstr "السلسة التي تبحث عنها"
 
 #: ../gedit/gedit-view.c:1454
 msgid "Line you want to move the cursor to"
-msgstr "السطر الذي تريد تحريك المشيرة إليه"
+msgstr "السطر الذي تريد تحريك المؤشّر إليه"
 
 #: ../gedit/gedit-window.c:823
 #, c-format
@@ -2261,11 +2274,11 @@ msgstr "بايتات"
 
 #: ../plugins/docinfo/docinfo.glade2.h:5
 msgid "Characters (no spaces)"
-msgstr "رموز (لا فضاءات)"
+msgstr "محارف (لا فضاءات)"
 
 #: ../plugins/docinfo/docinfo.glade2.h:6
 msgid "Characters (with spaces)"
-msgstr "رموز (بفضاءات)"
+msgstr "محارف (بفضاءات)"
 
 #: ../plugins/docinfo/docinfo.glade2.h:7
 msgid "Document"
@@ -2349,7 +2362,7 @@ msgstr "الكلمة الحالية"
 
 #: ../plugins/externaltools/tools/manager.py:47
 msgid "Insert in output panel"
-msgstr "إدراج في لوحة الإخراج"
+msgstr "أدرج في لوحة الإخراج"
 
 #: ../plugins/externaltools/tools/manager.py:48
 msgid "Create new document"
@@ -2369,7 +2382,7 @@ msgstr "تعويض المنتقى الحالي"
 
 #: ../plugins/externaltools/tools/manager.py:52
 msgid "Insert at cursor position"
-msgstr "إدراج في موقع المشيرة"
+msgstr "أدرج في موقع المؤشّر"
 
 #: ../plugins/externaltools/tools/manager.py:55
 msgid "All documents"
@@ -2396,7 +2409,7 @@ msgstr "مستندات غير معنونة فقط"
 #: ../plugins/externaltools/tools/manager.py:245
 #, python-format
 msgid "Edit tool <i>%s</i>:"
-msgstr "تحرير الأداة <i>%s</i>"
+msgstr "حرّر الأداة <i>%s</i>"
 
 #: ../plugins/externaltools/tools/manager.py:193
 msgid "A Brand New Tool"
@@ -2431,7 +2444,7 @@ msgstr "الأمو_ر:"
 
 #: ../plugins/externaltools/tools/tools.glade.h:3
 msgid "Edit tool <i>make</i>:"
-msgstr "تحرير اﻷداة <i>make</i>"
+msgstr "حرّر اﻷداة <i>make</i>"
 
 #: ../plugins/externaltools/tools/tools.glade.h:4
 msgid "External Tools Manager"
@@ -2546,7 +2559,7 @@ msgstr "نموذج المصفّي لتصفية متصفح الملفات. يعم
 
 #: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:14
 msgid "This value determines what files get filtered from the file browser. Valid values are: none (filter nothing), hidden (filter hidden files), binary (filter binary files) and hidden_and_binary (filter both hidden and binary files)."
-msgstr "تحدد هذه القيمة الملفات التي يتم تصفيتها من متصفح الملفات. القيم الشرعية هي: none (لا شيء), hidden (الملفات المخفية), binary (الملفات الثنائية) و hidden_and_binary (الملفات المخفية و الثنائية)."
+msgstr "تحدد هذه القيمة الملفات التي يتم تصفيتها من متصفح الملفات. القيم الشرعية هي: none (لا شيء)، hidden (الملفات المخفية)، binary (الملفات الثنائية) و hidden_and_binary (الملفات المخفية و الثنائية)."
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:390
 msgid "_Set root to active document"
@@ -2730,7 +2743,7 @@ msgstr "اظهر ال_مخفي"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:849
 msgid "Show hidden files and directories"
-msgstr "إظهار الملفّات و الدلائل المخفية"
+msgstr "اظهر الملفّات و الدلائل المخفية"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:851
 msgid "Show _Binary"
@@ -2809,7 +2822,7 @@ msgstr "مطراف بيثون"
 
 #: ../plugins/sample/gedit-sample-plugin.c:63
 msgid "Insert User Na_me"
-msgstr "إدراج إس_م المستخدم"
+msgstr "أدرج إس_م المستخدم"
 
 #: ../plugins/sample/gedit-sample-plugin.c:65
 msgid "Insert the user name at the cursor position"
@@ -2825,7 +2838,7 @@ msgstr "اسم المستخدم"
 
 #: ../plugins/snippets/snippets.gedit-plugin.desktop.in.h:1
 msgid "Insert often used pieces of text in a fast way"
-msgstr "إدراج الأجزاء الأكثر استعمالا للنص بسرعة"
+msgstr "أدرج الأجزاء الأكثر استعمالا للنص بسرعة"
 
 #: ../plugins/snippets/snippets.gedit-plugin.desktop.in.h:2
 msgid "Snippets"
@@ -2841,7 +2854,7 @@ msgstr "مدير القصاصات"
 
 #: ../plugins/snippets/snippets/snippets.glade.h:5
 msgid "_Edit snippet:"
-msgstr "ت_حرير القصاصة:"
+msgstr "_حرّر القصاصة:"
 
 #: ../plugins/snippets/snippets/snippets.glade.h:6
 msgid "_Snippets:"
@@ -3497,7 +3510,7 @@ msgstr "وسط"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:29
 msgid "Character encoding of linked resource"
-msgstr "تشفيرات الرموز للمصدر الموصل إليه."
+msgstr "ترميزات المحارفمحارفصدر الموصل إليه."
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:30
 msgid "Checked (state)"
@@ -3893,7 +3906,7 @@ msgstr "قائمة أنواع MIME لرفع الملف"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:130
 msgid "List of supported character sets"
-msgstr "قائمة مجموعات الرموز المدعومة"
+msgstr "قائمة مجموعات المحارف المدعومة"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:131
 msgid "Listing"
@@ -4393,7 +4406,7 @@ msgstr "قائمة غير مرتّبة"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:255
 msgid "Use image map"
-msgstr "استعمال خارطة الصورة"
+msgstr "استعمل خارطة الصورة"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:256
 msgid "Value"
@@ -4673,7 +4686,7 @@ msgstr "رمز ما لا نهاية"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:64
 msgid "Symbol mathspace ,"
-msgstr "رمز mathspace ,"
+msgstr "رمز mathspace ،"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:65
 msgid "Symbol mathspace ."
@@ -4721,7 +4734,7 @@ msgstr "يوفّر طريقةً سهلة لإدراج الشّارات/السّ�
 
 #: ../plugins/taglist/taglist.gedit-plugin.desktop.in.h:2
 msgid "Tag list"
-msgstr "قائمة"
+msgstr "قائمة الشارة"
 
 #: ../plugins/taglist/XSLT.tags.xml.in.h:1
 msgid "XSLT - Axes"
@@ -4753,11 +4766,11 @@ msgstr "ابن"
 
 #: ../plugins/taglist/XSLT.tags.xml.in.h:8
 msgid "descendant"
-msgstr "خلف"
+msgstr "خَلَف"
 
 #: ../plugins/taglist/XSLT.tags.xml.in.h:9
 msgid "descendant-or-self"
-msgstr "الخلف أو الشيء"
+msgstr "الخَلَف أو الشيء"
 
 #: ../plugins/taglist/XSLT.tags.xml.in.h:10
 msgid "following"
@@ -4789,27 +4802,27 @@ msgstr "الشيء"
 
 #: ../plugins/time/gedit-time-plugin.c:183
 msgid "In_sert Date and Time..."
-msgstr "أد_خل التاريخ و الوقت..."
+msgstr "أد_رج التاريخ و الوقت..."
 
 #: ../plugins/time/gedit-time-plugin.c:185
 msgid "Insert current date and time at the cursor position"
-msgstr "أدخل التاريخ و الوقت الحالي عند موقع المؤشر"
+msgstr "أدرج التاريخ و الوقت الحالي عند موقع المؤشر"
 
 #: ../plugins/time/gedit-time-plugin.c:628
 msgid "Available formats"
-msgstr "التهييئات المتوفّرة"
+msgstr "التنسيقات المتوفّرة"
 
 #: ../plugins/time/gedit-time-plugin.c:806
 msgid "Configure insert date/time plugin..."
-msgstr "إعداد ملحق إدراج التاريخ/الوقت..."
+msgstr "إعداد ملحق أدرج التاريخ/الوقت..."
 
 #: ../plugins/time/time.gedit-plugin.desktop.in.h:1
 msgid "Insert Date/Time"
-msgstr "إدراج التاريخ/الوقت"
+msgstr "أدرج التاريخ/الوقت"
 
 #: ../plugins/time/time.gedit-plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
-msgstr "إدراج التاريخ و الوقت الحاليين عند موقع المؤشر"
+msgstr "أدرج التاريخ و الوقت الحاليين عند موقع المؤشر"
 
 #: ../plugins/time/time.glade2.h:3
 msgid "<span size=\"small\">01/11/2002 17:52:00</span>"
@@ -4825,21 +4838,21 @@ msgstr "إعداد ملحق التاريخ/الوقت"
 
 #: ../plugins/time/time.glade2.h:6
 msgid "Insert Date and Time"
-msgstr "أدخال التاريخ و الوقت"
+msgstr "أدرج التاريخ و الوقت"
 
 #: ../plugins/time/time.glade2.h:7
 msgid "Use the _selected format"
-msgstr "استعمال التهييئ المخ_تار"
+msgstr "استعمل التنسيق المخ_تار"
 
 #: ../plugins/time/time.glade2.h:8
 msgid "_Insert"
-msgstr "إ_دراج"
+msgstr "أ_درج"
 
 #: ../plugins/time/time.glade2.h:9
 msgid "_Prompt for a format"
-msgstr "_استدعاء للشوكل"
+msgstr "ا_سأل عن تنسيق"
 
 #: ../plugins/time/time.glade2.h:10
 msgid "_Use custom format"
-msgstr "اس_تعمال تهييئ شخصي"
+msgstr "اس_تعمل تنسيق مخصّص"
 
