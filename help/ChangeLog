@@ -1,3 +1,9 @@
+2006-12-10  Daniel Nylander <po@danielnylander.se>
+
+	* sv/sv.po: Updated Swedish translation.
+	* sv/figures/*png: Updated screenshots.
+	* Makefile.am: Added sv to DOC_LINGUAS.
+
 === gedit 2.14.4 ===
 
 2006-06-04  Francisco Javier F. Serrador  <serrador@cvs.gnome.org>
