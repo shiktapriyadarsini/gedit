@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: gedit.gnome-2-16.ar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-30 00:52+0000\n"
-"PO-Revision-Date: 2006-12-01 20:52+0200\n"
+"PO-Revision-Date: 2006-12-20 15:07+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
@@ -126,11 +126,11 @@ msgstr "خط الترويسة عند الطباعة"
 
 #: ../data/gedit.schemas.in.h:24
 msgid "Highlight Current Line"
-msgstr "أبرِز السطر الحالي"
+msgstr "ظَلِّل السطر الحالي"
 
 #: ../data/gedit.schemas.in.h:25
 msgid "Highlight Matching Bracket"
-msgstr "أبرِز القوس الموافق"
+msgstr "ظَلِّل القوس الموافق"
 
 #: ../data/gedit.schemas.in.h:26
 msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
@@ -263,7 +263,7 @@ msgstr "اللوحة الجانبية ظاهرة"
 
 #: ../data/gedit.schemas.in.h:71
 msgid "Sorted list of encodings used by gedit for auto-detecting the encoding of a file. \"CURRENT\" is the current locale encoding. Only recognized encodings are used."
-msgstr "قائمة الترميزات المستعملة من قبل جإدت للكشف الآلي لترميز الملف.  \"CURRENT\" هو ترميز المحلّية الحالي. لا تستخدم إلا الترميزات المعترف بها."
+msgstr "قائمة الترميزات المستعملة من قبل gedit للكشف الآلي لترميز الملف.  \"CURRENT\" هو ترميز المحلّية الحالي. لا تستخدم إلا الترميزات المعترف بها."
 
 #: ../data/gedit.schemas.in.h:72
 msgid "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and \"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
@@ -367,7 +367,7 @@ msgstr "ما إذا وجب لـ gedit تفعيل الإزاحة الآلية."
 
 #: ../data/gedit.schemas.in.h:97
 msgid "Whether gedit should enable syntax highlighting."
-msgstr "فيما إذا يتوجب على جإدت تفعيل إبراز التركيب."
+msgstr "فيما إذا يتوجب على gedit تفعيل إبراز التركيب."
 
 #: ../data/gedit.schemas.in.h:98
 msgid "Whether gedit should highlight all the occurrences of the searched text."
@@ -375,11 +375,11 @@ msgstr "فيما إذا كان على gedit إبراز جميع حالات وج�
 
 #: ../data/gedit.schemas.in.h:99
 msgid "Whether gedit should highlight matching bracket."
-msgstr "فيما إذا يتوجب على gedit إبراز القوس الموافق."
+msgstr "فيما إذا يتوجب على gedit تظليل القوس الموافق."
 
 #: ../data/gedit.schemas.in.h:100
 msgid "Whether gedit should highlight the current line."
-msgstr "فيما إذا وجب على gedit إبراز السطر الحالي."
+msgstr "فيما إذا وجب على gedit تظليل السطر الحالي."
 
 #: ../data/gedit.schemas.in.h:101
 msgid "Whether gedit should include a document header when printing documents."
@@ -391,7 +391,7 @@ msgstr "ما إذا وجب لـ gedit إضافة مسافات عوض الألس�
 
 #: ../data/gedit.schemas.in.h:103
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "فيما إذا سيطبع جإدت إبراز التراكيب عند طباعة المستندات."
+msgstr "فيما إذا سيطبع gedit إبراز التراكيب عند طباعة المستندات."
 
 #: ../data/gedit.schemas.in.h:104
 msgid "Whether gedit should restore the previous cursor position when a file is loaded."
@@ -606,7 +606,7 @@ msgstr "    "
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:2
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:8
 msgid "<b>Line Numbers</b>"
-msgstr "</b>أرقام السطور<b>"
+msgstr "<b>أرقام السطور</b>"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:3
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:11
@@ -616,7 +616,7 @@ msgstr "<b>لف النص</b>"
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:4
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:16
 msgid "Do not _split words over two lines"
-msgstr "لا ت_فكّك كلامات على سطرين"
+msgstr "لا ت_شقّ الكلمات على سطرين"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:5
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:19
@@ -758,7 +758,7 @@ msgstr "خط وألوان"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:21
 msgid "Hi_ghlight current line"
-msgstr "أبرِز السطر الحالي"
+msgstr "_ظلِّل السطر الحالي"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:22
 msgid "Highlight _mode:"
@@ -766,7 +766,7 @@ msgstr "_نمط الإبراز:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:23
 msgid "Highlight matching _bracket"
-msgstr "أبرِز الأ_قواس المتوافقة"
+msgstr "ظَلِّل الأ_قواس المتوافقة"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:24
 msgid "Insert _spaces instead of tabs"
@@ -1082,7 +1082,7 @@ msgstr "ا_عكس"
 
 #: ../gedit/gedit-commands-help.c:80
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "جإدت محرّر نصوص صغير و خفيف لجنوم"
+msgstr "gedit محرّر نصوص صغير و خفيف لجنوم"
 
 #: ../gedit/gedit-commands-help.c:96
 msgid "translator-credits"
