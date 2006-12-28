@@ -9,15 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-03 08:47+0200\n"
-"PO-Revision-Date: 2006-09-03 22:08+0530\n"
+"POT-Creation-Date: 2006-12-28 07:37+0100\n"
+"PO-Revision-Date: 2006-12-28 22:08+0530\n"
 "Last-Translator: Runa Bhattacharjee <runabh@gmail.com>\n"
 "Language-Team: Bengali India\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
 "\n"
 
 #: ../data/gedit.desktop.in.in.h:1
@@ -177,7 +178,8 @@ msgstr "পংক্তি বিভাজন মোড"
 msgid ""
 "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
 "writable by default."
-msgstr "লেখার মোডে gedit দ্বারা সমর্থিত VFS স্কিম। ডিফল্টরূপে 'file' স্কিম লেখারযোগ্য।"
+msgstr ""
+"লেখার মোডে gedit দ্বারা সমর্থিত VFS স্কিম। ডিফল্টরূপে 'file' স্কিম লেখারযোগ্য।"
 
 #: ../data/gedit.schemas.in.h:31
 msgid ""
@@ -192,7 +194,7 @@ msgid ""
 "List of encodings shown in Character Coding menu in open/save file selector. "
 "Only recognized encodings are used."
 msgstr ""
-"ফাইল খোলা/সংরক্ষণ বাক্সে ফাইলের জন্য চ্যারেক্টার কোডিং নির্বাচনের ক্ষেত্রে প্রদর্শিত "
+"ফাইল খোলা/সংরক্ষণ বাক্সে ফাইলের জন্য ক্যারেক্টার কোডিং নির্বাচনের ক্ষেত্রে প্রদর্শিত "
 "এনকোডিং-র তালিকা। শুধুমাত্র পরিচিত এনকোডিং ব্যবহৃত হবে।"
 
 #: ../data/gedit.schemas.in.h:33
@@ -347,7 +349,8 @@ msgstr ""
 "বিবরণ অনুযায়ী মান লেখা উচিত।"
 
 #: ../data/gedit.schemas.in.h:74
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr "নথি পত্র প্রিন্ট করার সময় মূল অংশে ব্যবহৃত ফন্ট নির্ধারণ করে।"
 
 #: ../data/gedit.schemas.in.h:75
@@ -496,7 +499,8 @@ msgid "Whether gedit should enable syntax highlighting."
 msgstr "gedit-র দ্বারা সিন্টেক্সের বিভিন্ন অংশ পৃথকরূপে প্রদর্শিত হবে কিনা।"
 
 #: ../data/gedit.schemas.in.h:98
-msgid "Whether gedit should highlight all the occurrences of the searched text."
+msgid ""
+"Whether gedit should highlight all the occurrences of the searched text."
 msgstr "অনুসন্ধান করা টেক্সটের উপস্থিতি gedit দ্বারা উজ্জ্বল করা হবে কি না।"
 
 #: ../data/gedit.schemas.in.h:99
@@ -517,24 +521,29 @@ msgstr "ট্যাবের পরিবর্তে gedit-র দ্বার
 
 #: ../data/gedit.schemas.in.h:103
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "নথিপত্র প্রিন্ট করার সময় gedit-র দ্বারা সিন্টেক্সের পৃথক বিন্যাস প্রিন্ট করা হবে কিনা।"
+msgstr ""
+"নথিপত্র প্রিন্ট করার সময় gedit-র দ্বারা সিন্টেক্সের পৃথক বিন্যাস প্রিন্ট করা হবে কিনা।"
 
 #: ../data/gedit.schemas.in.h:104
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
-msgstr "ফাইল লোড করা হলে gedit দ্বারা পূর্ববর্তী কার্সারের অবস্থায় অক্ষুন্ন রাখা হবে কি না।"
+msgstr ""
+"ফাইল লোড করা হলে gedit দ্বারা পূর্ববর্তী কার্সারের অবস্থায় অক্ষুন্ন রাখা হবে কি না।"
 
 #: ../data/gedit.schemas.in.h:105
-msgid "Whether the bottom panel at the bottom of editing windows should be visible."
+msgid ""
+"Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr "সম্পাদন ক্ষেত্রের উইন্ডোর নীচের অংশে প্যানেল প্রদর্শিত হবে কিনা।"
 
 #: ../data/gedit.schemas.in.h:106
-msgid "Whether the side pane at the left of the editing window should be visible."
+msgid ""
+"Whether the side pane at the left of the editing window should be visible."
 msgstr "সম্পাদন ক্ষেত্রের বাঁদিকে পার্শ্ববর্তী পেইন প্রদর্শিত হবে কিনা।"
 
 #: ../data/gedit.schemas.in.h:107
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr "সম্পাদন ক্ষেত্রের উইন্ডোর নীচে স্ট্যাটাস-বার প্রদর্শিত হবে কিনা।"
 
 #: ../data/gedit.schemas.in.h:108
@@ -597,16 +606,21 @@ msgstr "প্রশ্ন"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:411
 #, c-format
-msgid "If you don't save, changes from the last %ld second will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "সংরক্ষণ না করা হলে, গত %ld সেকেন্ডে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
-msgstr[1] "সংরক্ষণ না করা হলে, গত %ld সেকেন্ডের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[0] ""
+"সংরক্ষণ না করা হলে, গত %ld সেকেন্ডে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[1] ""
+"সংরক্ষণ না করা হলে, গত %ld সেকেন্ডের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:420
-msgid "If you don't save, changes from the last minute will be permanently lost."
-msgstr "সংরক্ষণ না করা হলে, গত এক মিনিটের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
+msgstr ""
+"সংরক্ষণ না করা হলে, গত এক মিনিটের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:426
 #, c-format
@@ -625,20 +639,26 @@ msgstr[1] ""
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:436
 #, c-format
-msgid "If you don't save, changes from the last %ld minute will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "সংরক্ষণ না করা হলে, গত %ld মিনিটের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
-msgstr[1] "সংরক্ষণ না করা হলে, গত %ld মিনিটের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[0] ""
+"সংরক্ষণ না করা হলে, গত %ld মিনিটের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[1] ""
+"সংরক্ষণ না করা হলে, গত %ld মিনিটের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:451
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:472
 #, c-format
 msgid "If you don't save, changes from the last hour will be permanently lost."
-msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] "সংরক্ষণ না করা হলে, গত %d ঘন্টার মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
-msgstr[1] "সংরক্ষণ না করা হলে, গত %d ঘন্টার মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] ""
+"সংরক্ষণ না করা হলে, গত %d ঘন্টার মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[1] ""
+"সংরক্ষণ না করা হলে, গত %d ঘন্টার মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:457
 #, c-format
@@ -680,7 +700,8 @@ msgstr[1] "%d ডকুমেন্টের মধ্যে করা সমস
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:702
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
 "%d-টি ডকুমেন্টে কিছু পরিবর্তন করা হয়েছে এবং তা সংরক্ষণ করা হয়নি। বন্ধ করার পূর্বে কি "
 "ডকুমেন্টটি সংরক্ষণ করা হবে?"
@@ -720,7 +741,7 @@ msgstr "উপস্থিত এনকোডিং: (_v)"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:2
 msgid "Character codings"
-msgstr "চ্যারেক্টার কোডিং"
+msgstr "ক্যারেক্টার কোডিং"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:3
 msgid "E_ncodings shown in menu:"
@@ -733,7 +754,7 @@ msgstr "কোনো অবস্থান খুলুন"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:1
 msgid "Ch_aracter coding:"
-msgstr "চ্যারেক্টার কোডিং (_a):"
+msgstr "ক্যারেক্টার কোডিং (_a):"
 
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:2
 msgid "Enter the _location (URI) of the file you would like to open:"
@@ -1048,11 +1069,11 @@ msgid "_minutes"
 msgstr "মিনিট (_m)"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:302
-#: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1250
+#: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1278
 msgid "Replace"
 msgstr "প্রতিস্থাপন"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:314 ../gedit/gedit-window.c:1248
+#: ../gedit/dialogs/gedit-search-dialog.c:314 ../gedit/gedit-window.c:1276
 msgid "Find"
 msgstr "অনুসন্ধান"
 
@@ -1098,11 +1119,13 @@ msgstr "বিভাজন করা হবে (_W)"
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
-msgstr "কমান্ড লাইনে তালিকভুক্ত ফাইল খোলার জন্য ব্যবহৃত চ্যারেক্টার এনকোডিং নির্ধারণ করুন"
+msgstr ""
+"কমান্ড লাইনে তালিকভুক্ত ফাইল খোলার জন্য ব্যবহৃত ক্যারেক্টার এনকোডিং নির্ধারণ করুন"
 
 #: ../gedit/gedit.c:77
 msgid "Create a new toplevel window in an existing instance of gedit"
-msgstr "বর্তমানে চলমান gedit-র কোনো ইনস্ট্যান্সের মধ্যে একটি উচ্চস্তরের উইন্ডো নির্মাণ করুন"
+msgstr ""
+"বর্তমানে চলমান gedit-র কোনো ইনস্ট্যান্সের মধ্যে একটি উচ্চস্তরের উইন্ডো নির্মাণ করুন"
 
 #: ../gedit/gedit.c:80
 msgid "Create a new document in an existing instance of gedit"
@@ -1161,7 +1184,8 @@ msgstr "\"%s\" ফাইলটি শুধুমাত্র পাঠযোগ
 
 #: ../gedit/gedit-commands-file.c:653
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr "আপনি কি উপস্থিত ফাইলটির পরিবর্তে নতুন ফাইলটি সংরক্ষণ করার প্রচেষ্টা করতে ইচ্ছুক?"
+msgstr ""
+"আপনি কি উপস্থিত ফাইলটির পরিবর্তে নতুন ফাইলটি সংরক্ষণ করার প্রচেষ্টা করতে ইচ্ছুক?"
 
 #: ../gedit/gedit-commands-file.c:719 ../gedit/gedit-commands-file.c:918
 #, c-format
@@ -1185,7 +1209,8 @@ msgstr "'%s' ডকুমেন্টের মধ্যে করা পরি�
 
 #: ../gedit/gedit-commands-file.c:1144
 #, c-format
-msgid "Changes made to the document in the last %ld second will be permanently lost."
+msgid ""
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
@@ -1193,7 +1218,8 @@ msgstr[0] "গত %ld সেকেন্ডে ডকুমেন্টের �
 msgstr[1] "গত %ld সেকেন্ডে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/gedit-commands-file.c:1153
-msgid "Changes made to the document in the last minute will be permanently lost."
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
 msgstr "গত এক মিনিটে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/gedit-commands-file.c:1159
@@ -1204,12 +1230,15 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "গত এক মিনিট ও %ld সেকেন্ডে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
-msgstr[1] "গত এক মিনিট ও %ld সেকেন্ডে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[0] ""
+"গত এক মিনিট ও %ld সেকেন্ডে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[1] ""
+"গত এক মিনিট ও %ld সেকেন্ডে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/gedit-commands-file.c:1169
 #, c-format
-msgid "Changes made to the document in the last %ld minute will be permanently lost."
+msgid ""
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
@@ -1219,7 +1248,8 @@ msgstr[1] "গত %ld মিনিটে ডকুমেন্টের মধ�
 #: ../gedit/gedit-commands-file.c:1184 ../gedit/gedit-commands-file.c:1205
 #, c-format
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "গত এক ঘন্টায় ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 msgstr[1] "গত এক ঘন্টায় ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
@@ -1231,8 +1261,10 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "গত এক ঘন্টা ও %d মিনিটে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
-msgstr[1] "গত এক ঘন্টা ও %d মিনিটে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[0] ""
+"গত এক ঘন্টা ও %d মিনিটে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
+msgstr[1] ""
+"গত এক ঘন্টা ও %d মিনিটে ডকুমেন্টের মধ্যে করা সমস্ত পরিবর্তন স্থায়ীরূপে মুছে যাবে।"
 
 #: ../gedit/gedit-commands-file.c:1231
 msgid "_Revert"
@@ -1269,12 +1301,12 @@ msgid "Unsaved Document %d"
 msgstr "অসংরক্ষিত ডকুমেন্ট %d"
 
 #. bad bad luck...
-#: ../gedit/gedit-document-saver.c:552
+#: ../gedit/gedit-document-saver.c:573
 msgid "Could not obtain backup filename"
 msgstr "ব্যাক-আপ ফাইল উদ্ধার করা যায়নি।"
 
 #: ../gedit/gedit-documents-panel.c:85 ../gedit/gedit-documents-panel.c:99
-#: ../gedit/gedit-window.c:1798 ../gedit/gedit-window.c:1803
+#: ../gedit/gedit-window.c:1826 ../gedit/gedit-window.c:1831
 msgid "Read Only"
 msgstr "শুধুমাত্র পাঠযোগ্য"
 
@@ -1476,7 +1508,8 @@ msgstr "ফাইল খোলার জন্য প্রয়োজনীয় �
 #: ../gedit/gedit-io-error-message-area.c:198
 #: ../gedit/gedit-io-error-message-area.c:418
 #: ../gedit/gedit-io-error-message-area.c:1166
-msgid "There are too many open files. Please, close some applications and try again."
+msgid ""
+"There are too many open files. Please, close some applications and try again."
 msgstr ""
 "অত্যাধিক সংখ্যক ফাইল খোলা রয়েছে। অনুগ্রহ করে কয়েকটি অ্যাপ্লিকেশন বন্ধ করে পুনরায় "
 "প্রচেষ্টা করুন।"
@@ -1528,7 +1561,8 @@ msgstr ""
 msgid ""
 "Host name was empty. Please, check that your proxy settings are correct and "
 "try again."
-msgstr "হোস্টের নাম ফাঁকা। অনুগ্রহ করে ব্যবহৃত প্রক্সির বৈশিষ্ট্য পরীক্ষা করে পুনরায় প্রচেষ্টা করুন।"
+msgstr ""
+"হোস্টের নাম ফাঁকা। অনুগ্রহ করে ব্যবহৃত প্রক্সির বৈশিষ্ট্য পরীক্ষা করে পুনরায় প্রচেষ্টা করুন।"
 
 #: ../gedit/gedit-io-error-message-area.c:280
 #: ../gedit/gedit-io-error-message-area.c:1247
@@ -2078,7 +2112,7 @@ msgstr "নতুন ডকুমেন্ট নির্মাণ করুন
 msgid "_Open..."
 msgstr "খুলুন (_O)..."
 
-#: ../gedit/gedit-ui.h:64 ../gedit/gedit-window.c:1373
+#: ../gedit/gedit-ui.h:64 ../gedit/gedit-window.c:1401
 msgid "Open a file"
 msgstr "একটি ফাইল খুলুন"
 
@@ -2366,7 +2400,7 @@ msgstr "অনুসন্ধানের উদ্দেশ্যে পংক�
 msgid "Line you want to move the cursor to"
 msgstr "কার্সার স্থানান্তরণের জন্য চিহ্নিত পংক্তি সংখ্যা"
 
-#: ../gedit/gedit-window.c:800
+#: ../gedit/gedit-window.c:828
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "%s উজ্জ্বলতার মোড ব্যবহার করা হবে"
@@ -2374,33 +2408,33 @@ msgstr "%s উজ্জ্বলতার মোড ব্যবহার কর
 #. add the "None" item before all the others
 #. Translators: "None" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:855
+#: ../gedit/gedit-window.c:883
 msgid "None"
 msgstr "উজ্জলতাবিহীন"
 
-#: ../gedit/gedit-window.c:856
+#: ../gedit/gedit-window.c:884
 msgid "Disable syntax highlighting"
 msgstr "সিন্টেক্সের বিভিন্ন অংশ পৃথকরূপে প্রদর্শন করা হবে না"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1127
+#: ../gedit/gedit-window.c:1155
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' খুলুন"
 
-#: ../gedit/gedit-window.c:1246
+#: ../gedit/gedit-window.c:1274
 msgid "Save"
 msgstr "সংরক্ষণ"
 
-#: ../gedit/gedit-window.c:1377
+#: ../gedit/gedit-window.c:1405
 msgid "Open a recently used file"
 msgstr "সম্প্রতি ব্যবহৃত কোনো ফাইল খুলুন"
 
-#: ../gedit/gedit-window.c:1384
+#: ../gedit/gedit-window.c:1412
 msgid "Open"
 msgstr "খুলুন"
 
-#: ../gedit/gedit-window.c:1473 ../gedit/gedit-window.c:2114
+#: ../gedit/gedit-window.c:1501 ../gedit/gedit-window.c:2151
 #, c-format
 msgid "Activate %s"
 msgstr "%s সক্রিয় করুন"
@@ -2500,11 +2534,11 @@ msgstr "শব্দ"
 msgid "_Update"
 msgstr "আপডেট করুন (_U)"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:400
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:411
 msgid "_Document Statistics"
 msgstr "ডকুমেন্ট সংক্রান্ত পরিসংখ্যান (_D)"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:402
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:413
 msgid "Get statistic info on current document"
 msgstr "বর্তমান ডকুমেন্টের বিভিন্ন পরিসংখ্যান প্রাপ্ত করুন"
 
@@ -2876,17 +2910,17 @@ msgstr ""
 msgid "If you delete an item it is permanently lost."
 msgstr "একটি বস্তু মুছে ফেলা হলে তা স্থায়ীরূপে বর্জন করা হবে।"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:2413
+#: ../plugins/filebrowser/gedit-file-browser-store.c:2430
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1734
 msgid "Invalid uri"
 msgstr "uri বৈধ নয়।"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:2771
+#: ../plugins/filebrowser/gedit-file-browser-store.c:2788
 msgid "file"
 msgstr "ফাইল"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:2792
-#: ../plugins/filebrowser/gedit-file-browser-store.c:2839
+#: ../plugins/filebrowser/gedit-file-browser-store.c:2809
+#: ../plugins/filebrowser/gedit-file-browser-store.c:2856
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2894,7 +2928,7 @@ msgstr ""
 "নতুন ফাইল বর্তমানে ফিল্টার করা হয়েছে। ফাইলটি প্রদর্শন করার জন্য আপনার ফিল্টারের "
 "বৈশিষ্ট্য পরিবর্তন করুন"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:2820
+#: ../plugins/filebrowser/gedit-file-browser-store.c:2837
 msgid "directory"
 msgstr "ডিরেক্টরি"
 
@@ -5115,4 +5149,3 @@ msgstr "বিন্যাস জানতে অনুরোধ করা হ�
 #: ../plugins/time/time.glade2.h:10
 msgid "_Use custom format"
 msgstr "স্বনির্বাচিত বিন্যাস ব্যবহার করা হবে (_U)"
-
