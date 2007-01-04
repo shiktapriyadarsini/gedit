@@ -1,3 +1,11 @@
+20007-01-04  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-languages-manager.c:
+	* gedit/gedit-prefs-manager.c:
+	* gedit/gedit-utils.c:
+
+	Avoid namespace conflict with gtk.
+
 2006-12-21  Paolo Borelli  <pborelli@katamail.com>
 
 	* plugins/docinfo/gedit-docinfo-plugin.c: do not crash when
