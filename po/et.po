@@ -12,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit2 HEAD\n"
+"Project-Id-Version: gedit2 2.18\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-29 19:25+0100\n"
-"PO-Revision-Date: 2007-06-10 20:09+0300\n"
+"POT-Creation-Date: 2007-06-25 03:43+0100\n"
+"PO-Revision-Date: 2007-07-19 08:39+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -149,7 +149,7 @@ msgstr "Päise kirjatüüp printimisel"
 
 #: ../data/gedit.schemas.in.h:24
 msgid "Highlight Current Line"
-msgstr "Käesoleva rea esiletõstmine"
+msgstr "Käesolev rida tõstetakse esile"
 
 #: ../data/gedit.schemas.in.h:25
 msgid "Highlight Matching Bracket"
@@ -812,7 +812,7 @@ msgstr "Üle _kahe rea sõnu ei murta"
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:5
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:19
 msgid "Enable text _wrapping"
-msgstr "_Tekstmurdmine lubatud"
+msgstr "_Tekstmurdmine on lubatud"
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:6
 msgid "Fonts"
@@ -885,7 +885,7 @@ msgstr "Valitud teksti taustavärvi määramiseks klõpsa sellel nupul"
 #: ../gedit/dialogs/gedit-preferences-dialog.c:670
 #, c-format
 msgid "_Use the system fixed width font (%s)"
-msgstr ""
+msgstr "Kasutatakse süsteemset määratud laiusega _kirjatüüpi (%s)"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:1178
 msgid "Elements"
@@ -913,7 +913,7 @@ msgstr "<b>Elemendid</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:6
 msgid "<b>File Saving</b>"
-msgstr "<b>Faili salvestamine</b>"
+msgstr "<b>Failide salvestamine</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:7
 msgid "<b>Font</b>"
@@ -938,7 +938,7 @@ msgstr "Rasvane"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:14
 msgid "Create a _backup copy of files before saving"
-msgstr "Failist _varukoopia tegemine enne salvestamist"
+msgstr "Failist tehakse enne salvestamist _varukoopia"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:15
 msgid "Display right _margin"
@@ -954,11 +954,11 @@ msgstr "_Redaktori kirjatüüp: "
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:20
 msgid "Font & Colors"
-msgstr "Kirjatüübid ja värvid"
+msgstr "Kirjatüübid ja värvused"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:21
 msgid "Hi_ghlight current line"
-msgstr "Käesoleva rea _esiletõstmine"
+msgstr "Käesolev rida tõstetakse _esile"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:22
 msgid "Highlight _mode:"
@@ -970,7 +970,7 @@ msgstr "Vastavuses olevate sul_gude esiletõstmine"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:24
 msgid "Insert _spaces instead of tabs"
-msgstr "Tabulaatorite ase_mel tühikute lisamine"
+msgstr "Tabulaatorite ase_mel lisatakse tühikud"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:25
 msgid "Italic"
@@ -978,7 +978,7 @@ msgstr "Kursiiv"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:26
 msgid "Normal _text color:"
-msgstr "_Tavateksti värv:"
+msgstr "_Tavateksti värvus:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:27
 msgid "Pick a color"
@@ -1014,11 +1014,11 @@ msgstr "Eelistused"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:35
 msgid "Se_lection color:"
-msgstr "Va_liku värv:"
+msgstr "Va_liku värvus:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:36
 msgid "Selecte_d text color:"
-msgstr "_Valitud teksti värv:"
+msgstr "_Valitud teksti värvus:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:37
 msgid "Strikethrough"
@@ -1030,7 +1030,7 @@ msgstr "Süntaksi esiletõstmine"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:39
 msgid "U_se default theme colors"
-msgstr "Teema vaikimisi värvide kasuta_mine"
+msgstr "Kasutatakse tee_ma vaikimisi värvuseid"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:40
 msgid "Underline"
@@ -1042,11 +1042,11 @@ msgstr "Vaade"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:42
 msgid "_Autosave files every"
-msgstr "Failide _automaatne salvestamine iga"
+msgstr "Failid salvestatakse _automaatselt iga"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:43
 msgid "_Background color:"
-msgstr "Ta_ustavärv:"
+msgstr "Ta_ustavärvus:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:44
 msgid "_Background:"
@@ -1054,11 +1054,11 @@ msgstr "_Taust:"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:45
 msgid "_Display line numbers"
-msgstr "_Reanumbrite näitamine"
+msgstr "_Reanumbreid näidatakse"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:46
 msgid "_Enable automatic indentation"
-msgstr "Automaatne taa_ndamine lubatud"
+msgstr "Automaatne taa_ndamine on lubatud"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:47
 msgid "_Enable syntax highlighting"
@@ -1084,20 +1084,20 @@ msgstr "_Tabulaatori laius:"
 msgid "_minutes"
 msgstr "_minuti järel"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:302
+#: ../gedit/dialogs/gedit-search-dialog.c:287
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1365
 msgid "Replace"
 msgstr "Asenda"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:313 ../gedit/gedit-window.c:1363
+#: ../gedit/dialogs/gedit-search-dialog.c:298 ../gedit/gedit-window.c:1363
 msgid "Find"
 msgstr "Otsi"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:390
+#: ../gedit/dialogs/gedit-search-dialog.c:375
 msgid "Replace _All"
 msgstr "Asenda _kõik"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:391
+#: ../gedit/dialogs/gedit-search-dialog.c:376
 #: ../gedit/gedit-commands-file.c:673
 msgid "_Replace"
 msgstr "_Asenda"
@@ -1112,11 +1112,11 @@ msgstr "Asenda kõik"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:4
 msgid "Replace _with: "
-msgstr "_Asendada tekstiga:"
+msgstr "Asendada _tekstiga:"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:5
 msgid "Search _backwards"
-msgstr "Otsimine tagantpoolt _ettepoole"
+msgstr "Otsitakse tagantpoolt _ettepoole"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:6
 msgid "_Match case"
@@ -1128,13 +1128,13 @@ msgstr "_Otsitav tekst:"
 
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:8
 msgid "_Wrap around"
-msgstr ""
+msgstr "_Lõppu (või algusese) jõudmisel otsingut ei katkestata"
 
 #: ../gedit/gedit.c:73
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
-msgstr "Käsureal avamiseks määratud failidele kooditabeli seadmine"
+msgstr "Käsurealt avatavate failidele kooditabeli seadmine"
 
 #: ../gedit/gedit.c:76
 msgid "Create a new toplevel window in an existing instance of gedit"
@@ -1960,83 +1960,83 @@ msgstr "Printimine"
 msgid "Lines"
 msgstr "_Read"
 
-#: ../gedit/gedit-print-job-preview.c:623
+#: ../gedit/gedit-print-job-preview.c:621
 msgid "Page Preview"
 msgstr "Lehekülje eelvaade"
 
-#: ../gedit/gedit-print-job-preview.c:624
+#: ../gedit/gedit-print-job-preview.c:622
 msgid "The preview of a page in the document to be printed"
 msgstr "Prinditava dokumendi eelvaade"
 
-#: ../gedit/gedit-print-job-preview.c:710
+#: ../gedit/gedit-print-job-preview.c:708
 msgid "Other"
 msgstr "Muu"
 
-#: ../gedit/gedit-print-job-preview.c:740
+#: ../gedit/gedit-print-job-preview.c:738
 msgid "Show the previous page"
 msgstr "Eelmise lehekülje näitamine"
 
-#: ../gedit/gedit-print-job-preview.c:751
+#: ../gedit/gedit-print-job-preview.c:749
 msgid "Show the next page"
 msgstr "Järgmise lehekülje näitamine"
 
-#: ../gedit/gedit-print-job-preview.c:767
+#: ../gedit/gedit-print-job-preview.c:765
 msgid "Current page (Alt+P)"
 msgstr "Käesolev lehekülg (Alt+P)"
 
 #. gtk_label_set_mnemonic_widget ((GtkLabel *) l, mp->priv->page_entry);
 #. We are displaying 'XXX of XXX'.
-#: ../gedit/gedit-print-job-preview.c:781
+#: ../gedit/gedit-print-job-preview.c:779
 msgid "of"
 msgstr ""
 
-#: ../gedit/gedit-print-job-preview.c:787
+#: ../gedit/gedit-print-job-preview.c:785
 msgid "Page total"
 msgstr "Lehekülgi kokku"
 
-#: ../gedit/gedit-print-job-preview.c:788
+#: ../gedit/gedit-print-job-preview.c:786
 msgid "The total number of pages in the document"
 msgstr "Selles dokumendis olevate lehekülgede koguarv"
 
-#: ../gedit/gedit-print-job-preview.c:805
+#: ../gedit/gedit-print-job-preview.c:803
 msgid "Show multiple pages"
 msgstr "Mitme lehekülje näitamine"
 
-#: ../gedit/gedit-print-job-preview.c:817
+#: ../gedit/gedit-print-job-preview.c:815
 msgid "Zoom 1:1"
 msgstr "Suurendus 1:1"
 
-#: ../gedit/gedit-print-job-preview.c:825
+#: ../gedit/gedit-print-job-preview.c:823
 msgid "Zoom to fit the whole page"
 msgstr "Suurendus kogu leheküljele sobitamiseks"
 
-#: ../gedit/gedit-print-job-preview.c:834
+#: ../gedit/gedit-print-job-preview.c:832
 msgid "Zoom the page in"
 msgstr "Lehekülje suurendamine"
 
-#: ../gedit/gedit-print-job-preview.c:842
+#: ../gedit/gedit-print-job-preview.c:840
 msgid "Zoom the page out"
 msgstr "Lehekülje vähendamine"
 
-#: ../gedit/gedit-print-job-preview.c:852
+#: ../gedit/gedit-print-job-preview.c:850
 msgid "_Close Preview"
 msgstr "_Sulge eelvaade"
 
-#: ../gedit/gedit-print-job-preview.c:856
+#: ../gedit/gedit-print-job-preview.c:854
 msgid "Close print preview"
 msgstr "Printimise eelvaate sulgemine"
 
-#: ../gedit/gedit-print-job-preview.c:1096
-#: ../gedit/gedit-print-job-preview.c:1097
+#: ../gedit/gedit-print-job-preview.c:1094
+#: ../gedit/gedit-print-job-preview.c:1095
 msgid "Number of pages horizontally"
 msgstr "Lehekülgede horisontaalne nummerdamine"
 
-#: ../gedit/gedit-print-job-preview.c:1100
-#: ../gedit/gedit-print-job-preview.c:1101
+#: ../gedit/gedit-print-job-preview.c:1098
+#: ../gedit/gedit-print-job-preview.c:1099
 msgid "Number of pages vertically"
 msgstr "Lehekülgede vertikaalne nummerdamine"
 
-#: ../gedit/gedit-print-job-preview.c:1165
+#: ../gedit/gedit-print-job-preview.c:1163
 msgid "No visible output was created."
 msgstr "Nähtavat väljundit ei loodud."
 
@@ -2452,7 +2452,7 @@ msgstr ""
 #. create "Match Case" menu item.
 #: ../gedit/gedit-view.c:1350
 msgid "_Match Case"
-msgstr "_Tõstutundlik"
+msgstr "Tõst_utundlik"
 
 #: ../gedit/gedit-view.c:1439
 msgid "String you want to search for"
@@ -3255,11 +3255,11 @@ msgstr "Tõrge pythoni käsu (%s) täitmisel: %s"
 msgid "The following python code, run in a snippet, does not return a value"
 msgstr ""
 
-#: ../plugins/snippets/snippets/SnippetPluginInstance.py:73
+#: ../plugins/snippets/snippets/SnippetPluginInstance.py:72
 msgid "Manage _Snippets..."
 msgstr ""
 
-#: ../plugins/snippets/snippets/SnippetPluginInstance.py:74
+#: ../plugins/snippets/snippets/SnippetPluginInstance.py:73
 msgid "Manage snippets"
 msgstr ""
 
@@ -3336,16 +3336,16 @@ msgid "_More..."
 msgstr "_Veel..."
 
 #. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:495
+#: ../plugins/spell/gedit-automatic-spell-checker.c:497
 msgid "_Ignore All"
 msgstr "_Eira kõiki"
 
 #. + Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:508
+#: ../plugins/spell/gedit-automatic-spell-checker.c:512
 msgid "_Add"
 msgstr "_Lisa"
 
-#: ../plugins/spell/gedit-automatic-spell-checker.c:545
+#: ../plugins/spell/gedit-automatic-spell-checker.c:551
 msgid "_Spelling Suggestions..."
 msgstr "Õigekirjako_ntrolli soovitused..."
 
@@ -4468,7 +4468,7 @@ msgstr "Väikese teksti laad"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:256
 msgid "Soft line break"
-msgstr ""
+msgstr "Pehme reamurdmine"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:257
 msgid "Sound"
@@ -5127,267 +5127,3 @@ msgstr "_Küsitakse vormingut"
 #: ../plugins/time/time.glade2.h:10
 msgid "_Use custom format"
 msgstr "Kasutatakse o_ma vormingut"
-
-#~ msgid "_Use default theme font"
-#~ msgstr "Teema vaikimisi _kirjatüübi kasutamine"
-
-#~ msgid "Insert in output panel"
-#~ msgstr "Lisatakse väljundpaneelile"
-
-#~ msgid "External Tools Manager"
-#~ msgstr "Väliste tööriistade haldur"
-
-#~ msgid "F7"
-#~ msgstr "F7"
-
-#~ msgid "_Accelerator:"
-#~ msgstr "_Kiirklahv:"
-
-#~ msgid "_New Directory"
-#~ msgstr "_Uus kataloog"
-
-#~ msgid "Add new empty directory"
-#~ msgstr "Uue tühja kataloogi lisamine"
-
-#~ msgid "_View Directory"
-#~ msgstr "Vaata _kataloogi"
-
-#~ msgid "Advanced filtering"
-#~ msgstr "Laiendatud filtreerimine"
-
-#~ msgid "Afrikaans"
-#~ msgstr "Afrikaani"
-
-#~ msgid "Amharic"
-#~ msgstr "Amhari"
-
-#~ msgid "Arabic (Egypt)"
-#~ msgstr "Araabia (Egiptuse)"
-
-#~ msgid "Azerbaijani"
-#~ msgstr "Aserbaidžaani"
-
-#~ msgid "Belarusian"
-#~ msgstr "Valgevene"
-
-#~ msgid "Bulgarian"
-#~ msgstr "Bulgaaria"
-
-#~ msgid "Bengali"
-#~ msgstr "Bengali"
-
-#~ msgid "Breton"
-#~ msgstr "Bretooni"
-
-#~ msgid "Catalan"
-#~ msgstr "Katalaani"
-
-#~ msgid "Czech"
-#~ msgstr "Tšehhi"
-
-#~ msgid "Welsh"
-#~ msgstr "Uelsi"
-
-#~ msgid "Danish"
-#~ msgstr "Taani"
-
-#~ msgid "German (Austria)"
-#~ msgstr "Saksa (Austria)"
-
-#~ msgid "German (Germany)"
-#~ msgstr "Saksa (Saksamaa)"
-
-#~ msgid "German (Swiss)"
-#~ msgstr "Saksa (Šveitsi)"
-
-#~ msgid "English (American)"
-#~ msgstr "Inglise (Ameerika)"
-
-#~ msgid "English (British)"
-#~ msgstr "Inglise (Briti)"
-
-#~ msgid "English (Canadian)"
-#~ msgstr "Inglise (Kanada)"
-
-#~ msgid "Esperanto"
-#~ msgstr "Esperanto"
-
-#~ msgid "Spanish"
-#~ msgstr "Hispaania"
-
-#~ msgid "Estonian"
-#~ msgstr "Eesti"
-
-#~ msgid "Persian"
-#~ msgstr "Pärsia"
-
-#~ msgid "Finnish"
-#~ msgstr "Soome"
-
-#~ msgid "Faroese"
-#~ msgstr "Fääri"
-
-#~ msgid "French (France)"
-#~ msgstr "Prantsuse (Prantsusmaa)"
-
-#~ msgid "French (Swiss)"
-#~ msgstr "Prantsuse (Šveitsi)"
-
-#~ msgid "Irish"
-#~ msgstr "Iiri"
-
-#~ msgid "Scottish Gaelic"
-#~ msgstr "Šoti gaeli"
-
-#~ msgid "Gallegan"
-#~ msgstr "Galeegi"
-
-#~ msgid "Manx Gaelic"
-#~ msgstr "Mänksi gaeli"
-
-#~ msgid "Hindi"
-#~ msgstr "Hindi"
-
-#~ msgid "Croatian"
-#~ msgstr "Horvaatia"
-
-#~ msgid "Upper Sorbian"
-#~ msgstr "Ülemsorbi"
-
-#~ msgid "Hungarian"
-#~ msgstr "Ungari"
-
-#~ msgid "Interlingua (IALA)"
-#~ msgstr "Interlingua (IALA)"
-
-#~ msgid "Indonesian"
-#~ msgstr "Indoneesia"
-
-#~ msgid "Icelandic"
-#~ msgstr "Islandi"
-
-#~ msgid "Italian"
-#~ msgstr "Itaalia"
-
-#~ msgid "Kurdish"
-#~ msgstr "Kurdi"
-
-#~ msgid "Latin"
-#~ msgstr "Ladina"
-
-#~ msgid "Lithuanian"
-#~ msgstr "Leedu"
-
-#~ msgid "Latvian"
-#~ msgstr "Läti"
-
-#~ msgid "Malagasy"
-#~ msgstr "Malagassi"
-
-#~ msgid "Maori"
-#~ msgstr "Maoori"
-
-#~ msgid "Macedonian"
-#~ msgstr "Makedoonia"
-
-#~ msgid "Mongolian"
-#~ msgstr "Mongoolia"
-
-#~ msgid "Marathi"
-#~ msgstr "Marathi"
-
-#~ msgid "Malay"
-#~ msgstr "Malay"
-
-#~ msgid "Maltese"
-#~ msgstr "Malta"
-
-#~ msgid "Norwegian Bokmal"
-#~ msgstr "Norra bokmål"
-
-#~ msgid "Dutch"
-#~ msgstr "Hollandi"
-
-#~ msgid "Norwegian Nynorsk"
-#~ msgstr "Norra nynorsk"
-
-#~ msgid "Norwegian"
-#~ msgstr "Norra"
-
-#~ msgid "Nyanja"
-#~ msgstr "Njandža"
-
-#~ msgid "Polish"
-#~ msgstr "Poola"
-
-#~ msgid "Portuguese (Portugal)"
-#~ msgstr "Portugali (Portugal)"
-
-#~ msgid "Portuguese (Brazilian)"
-#~ msgstr "Portugali (Brasiilia)"
-
-#~ msgid "Quechua"
-#~ msgstr "Ketšua"
-
-#~ msgid "Russian"
-#~ msgstr "Vene"
-
-#~ msgid "Kinyarwanda"
-#~ msgstr "Ruanda"
-
-#~ msgid "Sardinian"
-#~ msgstr "Sardiinia"
-
-#~ msgid "Slovak"
-#~ msgstr "Slovaki"
-
-#~ msgid "Slovenian"
-#~ msgstr "Sloveenia"
-
-#~ msgid "Swedish"
-#~ msgstr "Rootsi"
-
-#~ msgid "Swahili"
-#~ msgstr "Suahiili"
-
-#~ msgid "Tamil"
-#~ msgstr "Tamili"
-
-#~ msgid "Tetum"
-#~ msgstr "Tetumi"
-
-#~ msgid "Tagalog"
-#~ msgstr "Tagalogi"
-
-#~ msgid "Tswana"
-#~ msgstr "Tsvana"
-
-#~ msgid "Ukrainian"
-#~ msgstr "Ukraina"
-
-#~ msgid "Uzbek"
-#~ msgstr "Usbeki"
-
-#~ msgid "Walloon"
-#~ msgstr "Vallooni"
-
-#~ msgid "Yiddish"
-#~ msgstr "Jidiš"
-
-#~ msgid "Zulu"
-#~ msgstr "Suulu"
-
-#~ msgid "BGSound"
-#~ msgstr "Taustaheli"
-
-#~ msgid "Behavior"
-#~ msgstr "Käitumine"
-
-#~ msgid "Blinking text"
-#~ msgstr "Vilkuv tekst"
-
-#~ msgid "Box"
-#~ msgstr "Kast"
-
-#~ msgid "Space"
-#~ msgstr "Tühik"
