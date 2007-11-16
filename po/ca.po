@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 21:06+0200\n"
+"POT-Creation-Date: 2007-11-03 21:35+0000\n"
 "PO-Revision-Date: 2007-08-29 21:07+0200\n"
 "Last-Translator: Josep Puigdemont <josep.puigdemont@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Edit text files"
 msgstr "Editeu fitxers de text"
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit.c:463
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit.c:474
 msgid "Text Editor"
 msgstr "Editor de text"
 
@@ -757,7 +757,7 @@ msgstr "Codificació de caràcters"
 msgid "E_ncodings shown in menu:"
 msgstr "Codificacio_ns mostrades al menú:"
 
-#: ../gedit/dialogs/gedit-open-location-dialog.c:136
+#: ../gedit/dialogs/gedit-open-location-dialog.c:139
 #: ../gedit/dialogs/gedit-open-location-dialog.glade.h:3
 msgid "Open Location"
 msgstr "Obre la ubicació"
@@ -970,44 +970,48 @@ msgid "View"
 msgstr "Visualització"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:26
+msgid "_Add..."
+msgstr "_Afegeix..."
+
+#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:27
 msgid "_Autosave files every"
 msgstr "_Desa els fitxers automàticament cada"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:27
+#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:28
 msgid "_Display line numbers"
 msgstr "Mostra els _números de línia"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:28
+#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:29
 msgid "_Enable automatic indentation"
 msgstr "Habilita el _sagnat automàtic"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:29
+#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:30
 msgid "_Right margin at column:"
 msgstr "Marge _dret a la columna:"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:30
+#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:31
 msgid "_Tab width:"
 msgstr "_Amplada de la tabulació:"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:31
+#: ../gedit/dialogs/gedit-preferences-dialog.glade.h:32
 msgid "_minutes"
 msgstr "_minuts"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:287
-#: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1348
+#: ../gedit/dialogs/gedit-search-dialog.c:301
+#: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1343
 msgid "Replace"
 msgstr "Reemplaça"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:298 ../gedit/gedit-window.c:1346
+#: ../gedit/dialogs/gedit-search-dialog.c:312 ../gedit/gedit-window.c:1341
 msgid "Find"
 msgstr "Cerca"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:382
+#: ../gedit/dialogs/gedit-search-dialog.c:404
 msgid "Replace _All"
 msgstr "Reempl_aça-ho tot"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:383
-#: ../gedit/gedit-commands-file.c:677
+#: ../gedit/dialogs/gedit-search-dialog.c:405
+#: ../gedit/gedit-commands-file.c:678
 msgid "_Replace"
 msgstr "_Reemplaça"
 
@@ -1075,7 +1079,7 @@ msgid "%s: invalid encoding.\n"
 msgstr "%s: codificació invàlida.\n"
 
 #. Setup command line options
-#: ../gedit/gedit.c:455
+#: ../gedit/gedit.c:466
 msgid "- Edit text files"
 msgstr "- Editeu fitxers de text"
 
@@ -1092,50 +1096,50 @@ msgstr[0] "S'està carregant %d fitxer…"
 msgstr[1] "S'estan carregant %d fitxers…"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:423
+#: ../gedit/gedit-commands-file.c:424
 msgid "Open Files"
 msgstr "Obertura de fitxers"
 
-#: ../gedit/gedit-commands-file.c:529
+#: ../gedit/gedit-commands-file.c:530
 msgid "The entered location is not valid."
 msgstr "La ubicació entrada no és vàlida."
 
-#: ../gedit/gedit-commands-file.c:532
+#: ../gedit/gedit-commands-file.c:533
 #: ../gedit/gedit-io-error-message-area.c:187
 #: ../gedit/gedit-io-error-message-area.c:226
 #: ../gedit/gedit-io-error-message-area.c:242
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Comproveu que la ubicació estigui ben escrita i torneu-ho a intentar."
 
-#: ../gedit/gedit-commands-file.c:658
+#: ../gedit/gedit-commands-file.c:659
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "El fitxer «%s» és de només de lectura."
 
-#: ../gedit/gedit-commands-file.c:669
+#: ../gedit/gedit-commands-file.c:670
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Voleu intentar reemplaçar-lo pel que esteu desant?"
 
-#: ../gedit/gedit-commands-file.c:735 ../gedit/gedit-commands-file.c:938
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:939
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "S'està desant el fitxer «%s»…"
 
-#: ../gedit/gedit-commands-file.c:836
+#: ../gedit/gedit-commands-file.c:837
 msgid "Save As…"
 msgstr "Anomena i desa"
 
-#: ../gedit/gedit-commands-file.c:1117
+#: ../gedit/gedit-commands-file.c:1118
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "S'està recuperant el document «%s»…"
 
-#: ../gedit/gedit-commands-file.c:1162
+#: ../gedit/gedit-commands-file.c:1163
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Voleu recuperar els canvis no desats al document «%s»?"
 
-#: ../gedit/gedit-commands-file.c:1171
+#: ../gedit/gedit-commands-file.c:1172
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -1148,13 +1152,13 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en els darrers %ld "
 "segons."
 
-#: ../gedit/gedit-commands-file.c:1180
+#: ../gedit/gedit-commands-file.c:1181
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Es perdran permanentment els canvis fets al document en el darrer minut."
 
-#: ../gedit/gedit-commands-file.c:1186
+#: ../gedit/gedit-commands-file.c:1187
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1169,7 +1173,7 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en el darrer minut i %"
 "ld segons."
 
-#: ../gedit/gedit-commands-file.c:1196
+#: ../gedit/gedit-commands-file.c:1197
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -1182,11 +1186,11 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en els darrers %ld "
 "minuts."
 
-#: ../gedit/gedit-commands-file.c:1211
+#: ../gedit/gedit-commands-file.c:1212
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Es perdran per sempre els canvis fets al document la darrera hora."
 
-#: ../gedit/gedit-commands-file.c:1217
+#: ../gedit/gedit-commands-file.c:1218
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1201,7 +1205,7 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en la darrera hora i %d "
 "minuts."
 
-#: ../gedit/gedit-commands-file.c:1232
+#: ../gedit/gedit-commands-file.c:1233
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -1212,7 +1216,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Es perdran per sempre els canvis fets al document les darreres %d hores."
 
-#: ../gedit/gedit-commands-file.c:1258
+#: ../gedit/gedit-commands-file.c:1259
 msgid "_Revert"
 msgstr "_Recupera"
 
@@ -1250,7 +1254,7 @@ msgid "Unsaved Document %d"
 msgstr "Document sense desar %d"
 
 #: ../gedit/gedit-documents-panel.c:89 ../gedit/gedit-documents-panel.c:103
-#: ../gedit/gedit-window.c:1914 ../gedit/gedit-window.c:1919
+#: ../gedit/gedit-window.c:1909 ../gedit/gedit-window.c:1914
 msgid "Read Only"
 msgstr "Només de lectura"
 
@@ -2061,7 +2065,7 @@ msgstr "Tipus de MIME:"
 msgid "Encoding:"
 msgstr "Codificació:"
 
-#: ../gedit/gedit-tab.c:2215
+#: ../gedit/gedit-tab.c:2220
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "S'està representant la pàgina %d de %d..."
@@ -2103,7 +2107,7 @@ msgstr "Crea un document nou"
 msgid "_Open..."
 msgstr "_Obre..."
 
-#: ../gedit/gedit-ui.h:61 ../gedit/gedit-window.c:1468
+#: ../gedit/gedit-ui.h:61 ../gedit/gedit-window.c:1463
 msgid "Open a file"
 msgstr "Obre un fitxer"
 
@@ -2355,45 +2359,45 @@ msgstr "Subfinestra _inferior"
 msgid "Show or hide the bottom pane in the current window"
 msgstr "Mostra o amaga la subfinestra inferior de la finestra actual"
 
-#: ../gedit/gedit-utils.c:1005
+#: ../gedit/gedit-utils.c:1026
 #, c-format
 msgid "Unable to find file %s."
 msgstr "No s'ha pogut trobar el fitxer %s."
 
-#: ../gedit/gedit-utils.c:1009 ../gedit/gedit-utils.c:1045
+#: ../gedit/gedit-utils.c:1030 ../gedit/gedit-utils.c:1066
 msgid "Please check your installation."
 msgstr "Comproveu la instal·lació."
 
-#: ../gedit/gedit-utils.c:1041
+#: ../gedit/gedit-utils.c:1062
 #, c-format
 msgid "Unable to find the required widgets inside file %s."
 msgstr "No s'han trobat els ginys necessaris al fitxer %s."
 
 # FIXME
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view.c:1128
+#: ../gedit/gedit-view.c:1137
 msgid "_Wrap Around"
 msgstr "Cont_inua des de l'inici"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view.c:1138
+#: ../gedit/gedit-view.c:1147
 msgid "Match _Entire Word Only"
 msgstr "Coincidència només amb la paraula s_encera"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view.c:1148
+#: ../gedit/gedit-view.c:1157
 msgid "_Match Case"
 msgstr "Coi_ncidència de majúscules i minúscules"
 
-#: ../gedit/gedit-view.c:1236
+#: ../gedit/gedit-view.c:1245
 msgid "String you want to search for"
 msgstr "Cadena que vulgueu cercar"
 
-#: ../gedit/gedit-view.c:1244
+#: ../gedit/gedit-view.c:1253
 msgid "Line you want to move the cursor to"
 msgstr "Línia on vulgueu moure el cursor"
 
-#: ../gedit/gedit-window.c:881
+#: ../gedit/gedit-window.c:876
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "Utilitza el mode de ressaltat %s"
@@ -2401,35 +2405,35 @@ msgstr "Utilitza el mode de ressaltat %s"
 #. add the "None" item before all the others
 #. Translators: "None" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:938
+#: ../gedit/gedit-window.c:933
 msgid "None"
 msgstr "Cap"
 
-#: ../gedit/gedit-window.c:939
+#: ../gedit/gedit-window.c:934
 msgid "Disable syntax highlighting"
 msgstr "Deshabilita el ressaltat de la sintaxi"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1225
+#: ../gedit/gedit-window.c:1220
 #, c-format
 msgid "Open '%s'"
 msgstr "Obre «%s»"
 
-#: ../gedit/gedit-window.c:1344
+#: ../gedit/gedit-window.c:1339
 msgid "Save"
 msgstr "Desa"
 
 #
-#: ../gedit/gedit-window.c:1472
+#: ../gedit/gedit-window.c:1467
 msgid "Open a recently used file"
 msgstr "Obre un fitxer utilitzat recentment"
 
-#: ../gedit/gedit-window.c:1479
+#: ../gedit/gedit-window.c:1474
 msgid "Open"
 msgstr "Obre"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1529
+#: ../gedit/gedit-window.c:1524
 #, c-format
 msgid "Activate '%s'"
 msgstr "Activa «%s»"
@@ -2563,11 +2567,11 @@ msgstr "Heu de ser dins d'una paraula per poder executar aquesta ordre"
 msgid "Running tool:"
 msgstr "S'està executant l'eina:"
 
-#: ../plugins/externaltools/tools/functions.py:188
+#: ../plugins/externaltools/tools/functions.py:189
 msgid "Done."
 msgstr "Fet."
 
-#: ../plugins/externaltools/tools/functions.py:190
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "Exited"
 msgstr "Ha sortit"
 
@@ -2950,22 +2954,22 @@ msgstr "Esteu segur que voleu suprimir permanentment els fitxers seleccionats?"
 msgid "If you delete an item, it is permanently lost."
 msgstr "Si suprimiu un element, aquest es perdrà per sempre."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1598
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1591
 msgid "(Empty)"
 msgstr "(Buit)"
 
 #
-#: ../plugins/filebrowser/gedit-file-browser-store.c:2641
+#: ../plugins/filebrowser/gedit-file-browser-store.c:2731
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1838
 msgid "Invalid uri"
 msgstr "URI invàlida"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3074
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3163
 msgid "file"
 msgstr "fitxer"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3095
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3142
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3184
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3231
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2973,7 +2977,7 @@ msgstr ""
 "El fitxer actual està filtrat. Heu de canviar les preferències del filtre "
 "per fer-lo visible."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3123
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3212
 msgid "directory"
 msgstr "directori"
 
