@@ -1,4 +1,30 @@
 ============
+gedit 2.20.4
+============
+
+New Features and Fixes
+======================
+- Properly detect the current display viewport, so that
+  launching logic works properly on Compiz (Steve Frécinaux)
+- Misc bugfixes
+
+New and updated translations
+============================
+- Alexander Shopov (bg)
+- Djihed Afifi (ar)
+- Gabor Kelemen (hu)
+- Gil Forcada (ca)
+- Ignacio Casal Quinteiro (gl)
+- Ilkka Tuohela (fi)
+- Ivar Smolin (et)
+- Kjartan Maraas (nb)
+- Matej Urbančič  (sl)
+- Og Maciel (pt_BR)
+- Takeshi AIHANA (ja)
+- Yair Hershkovitz (he)
+
+
+============
 gedit 2.20.3
 ============
 
