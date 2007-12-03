@@ -1,4 +1,4 @@
-# Irish translations of gedit package.
+# Irish translations for gedit package.
 # Copyright (C) 2000, 2004, 2007 Free Software Foundation, Inc.
 # Alastair McKinstry <mckinstry@computer.org>, 2000.
 # Paul Duffy <dubhthach@frink.nuigalway.ie>, 2003.
@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-28 00:09-0700\n"
-"PO-Revision-Date: 2007-11-28 00:09-0700\n"
+"POT-Creation-Date: 2007-12-02 22:13-0700\n"
+"PO-Revision-Date: 2007-12-02 22:13-0700\n"
 "Last-Translator: Seán de Búrca <leftmostcat@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -482,7 +482,7 @@ msgstr ""
 #. menu in open/save file selector. Only recognized encodings are displayed.
 #: ../data/gedit.schemas.in.h:108
 msgid "[ISO-8859-15]"
-msgstr ""
+msgstr "[UTF-8,ISO-8859-15]"
 
 #. Translators: This is the sorted list of encodings used by gedit
 #. for auto-detecting the encoding of a file. You may want to customize it adding
@@ -497,7 +497,7 @@ msgstr ""
 #. a list of supported encodings
 #: ../data/gedit.schemas.in.h:120
 msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-msgstr ""
+msgstr "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:140
 #, fuzzy
@@ -506,7 +506,7 @@ msgstr "Dún an fhuinneog gan Sábháil"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:144
 msgid "_Cancel Logout"
-msgstr ""
+msgstr "_Cealaigh Logáil Amach"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:151
 #, fuzzy
@@ -637,7 +637,7 @@ msgstr "_Ionchódú"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:1
 msgid "A_vailable encodings:"
-msgstr ""
+msgstr "_Ionchóduithe ar fáil:"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.glade.h:2
 msgid "Character codings"
@@ -737,7 +737,7 @@ msgstr ""
 
 #: ../gedit/dialogs/gedit-page-setup-dialog.glade.h:17
 msgid "lines"
-msgstr ""
+msgstr "líne"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:570
 msgid "Push this button to select the font to be used by the editor"
@@ -887,7 +887,7 @@ msgstr ""
 
 #: ../gedit/dialogs/gedit-preferences-dialog.glade.h:32
 msgid "_minutes"
-msgstr ""
+msgstr "_nóiméad"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:301
 #: ../gedit/dialogs/gedit-search-dialog.glade.h:2 ../gedit/gedit-window.c:1343
@@ -1935,7 +1935,7 @@ msgstr "Oscail comhad"
 
 #: ../gedit/gedit-ui.h:62
 msgid "Open _Location..."
-msgstr "Oscai_l Súiomh..."
+msgstr "Osc_ail Suíomh..."
 
 #: ../gedit/gedit-ui.h:63
 msgid "Open a file from a specified location"
@@ -1969,7 +1969,7 @@ msgstr "Sábháil an comhad reatha"
 
 #: ../gedit/gedit-ui.h:81
 msgid "Save _As..."
-msgstr "Sábháil M_ar..."
+msgstr "Sábháil _Mar..."
 
 #: ../gedit/gedit-ui.h:82
 msgid "Save the current file with a different name"
@@ -1981,7 +1981,7 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:85
 msgid "Page Set_up..."
-msgstr "_Socrú Leathanaigh..."
+msgstr "Socrú _Leathanaigh..."
 
 #: ../gedit/gedit-ui.h:86
 msgid "Setup the page settings"
@@ -2044,7 +2044,7 @@ msgstr ""
 #. View menu
 #: ../gedit/gedit-ui.h:111
 msgid "_Highlight Mode"
-msgstr ""
+msgstr "_Mód Aibhsithe"
 
 #. Search menu
 #: ../gedit/gedit-ui.h:114
@@ -2057,7 +2057,7 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:116
 msgid "Find Ne_xt"
-msgstr ""
+msgstr "An Chéad Cheann _Eile"
 
 #: ../gedit/gedit-ui.h:117
 msgid "Search forwards for the same text"
@@ -2065,7 +2065,7 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:118
 msgid "Find Pre_vious"
-msgstr ""
+msgstr "_Roimhe Seo"
 
 #: ../gedit/gedit-ui.h:119
 msgid "Search backwards for the same text"
@@ -2081,7 +2081,7 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:122
 msgid "_Clear Highlight"
-msgstr ""
+msgstr "_Glan Aibhsiú"
 
 #: ../gedit/gedit-ui.h:123
 msgid "Clear highlighting of search matches"
@@ -2097,7 +2097,7 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:126
 msgid "_Incremental Search..."
-msgstr ""
+msgstr "_Cuardach Incriminteach..."
 
 #: ../gedit/gedit-ui.h:127
 msgid "Incrementally search for text"
@@ -2161,25 +2161,23 @@ msgstr ""
 
 #: ../gedit/gedit-ui.h:154
 msgid "_Statusbar"
-msgstr ""
+msgstr "Barra _Stádais"
 
 #: ../gedit/gedit-ui.h:155
 msgid "Show or hide the statusbar in the current window"
 msgstr ""
 
 #: ../gedit/gedit-ui.h:157
-#, fuzzy
 msgid "Side _Pane"
-msgstr "Pioc an _Teanga"
+msgstr "_Pána Taoibh"
 
 #: ../gedit/gedit-ui.h:158
 msgid "Show or hide the side pane in the current window"
 msgstr ""
 
 #: ../gedit/gedit-ui.h:164
-#, fuzzy
 msgid "_Bottom Pane"
-msgstr "_Dul go dtí Líne"
+msgstr "B_unphána"
 
 #: ../gedit/gedit-ui.h:165
 msgid "Show or hide the bottom pane in the current window"
@@ -2359,11 +2357,11 @@ msgstr "Focail"
 
 #: ../plugins/docinfo/docinfo.glade2.h:12
 msgid "_Update"
-msgstr ""
+msgstr "_Nuashonraigh"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:411
 msgid "_Document Statistics"
-msgstr ""
+msgstr "_Staitisticí Cáipéise"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:413
 msgid "Get statistic info on current document"
@@ -2767,7 +2765,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/gedit-file-browser-store.c:1591
 msgid "(Empty)"
-msgstr ""
+msgstr "(Folamh)"
 
 #: ../plugins/filebrowser/gedit-file-browser-store.c:2731
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1838
@@ -2792,7 +2790,7 @@ msgstr "comhadlann"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:736
 msgid "Bookmarks"
-msgstr ""
+msgstr "Leabharmharcanna"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:746
 #, fuzzy
@@ -2805,7 +2803,7 @@ msgstr "_Scagaire"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:830
 msgid "_Move To Trash"
-msgstr ""
+msgstr "_Bog go Bruscar"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:831
 msgid "Move selected file or folder to trash"
@@ -2813,7 +2811,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:833
 msgid "_Delete"
-msgstr "_Scrios"
+msgstr "Scri_os"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:834
 #, fuzzy
