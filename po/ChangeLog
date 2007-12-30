@@ -1,3 +1,7 @@
+2007-12-29  Leonardo Ferreira Fontenelle  <leonardof@svn.gnome.org>
+
+	* pt_BR.po: Not-so-minor fixes by Luiz Armesto. Closes bug #506314.
+
 2007-12-13  Leonardo Ferreira Fontenelle  <leonardof@svn.gnome.org>
 
 	* pt_BR.po: Several improvements in Brazilian Portuguese translation

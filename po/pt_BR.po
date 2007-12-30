@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-13 23:07-0200\n"
-"PO-Revision-Date: 2007-12-13 23:19-0200\n"
+"POT-Creation-Date: 2007-12-29 04:01+0000\n"
+"PO-Revision-Date: 2007-12-29 23:07-0200\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
@@ -1587,7 +1587,9 @@ msgstr "Selecione uma codificação de caracteres do menu e tente novamente."
 #: ../gedit/gedit-io-error-message-area.c:786
 #, c-format
 msgid "Could not open the file %s using the %s character coding."
-msgstr "Não pude abrir o arquivo \"%s\" usando a codificação de caracteres %s."
+msgstr ""
+"Não foi possível abrir o arquivo \"%s\" usando a codificação de caracteres %"
+"s."
 
 #: ../gedit/gedit-io-error-message-area.c:790
 #: ../gedit/gedit-io-error-message-area.c:842
@@ -1598,7 +1600,9 @@ msgstr ""
 #: ../gedit/gedit-io-error-message-area.c:837
 #, c-format
 msgid "Could not save the file %s using the %s character coding."
-msgstr "Não pude abrir o arquivo \"%s\" usando a codificação de caracteres %s."
+msgstr ""
+"Não foi possível salvar o arquivo \"%s\" usando a codificação de caracteres %"
+"s."
 
 #: ../gedit/gedit-io-error-message-area.c:840
 msgid ""
@@ -5684,7 +5688,7 @@ msgstr "_Usar formato personalizado"
 #~ "or remove the file. To try to load the file again, select the Tools -> "
 #~ "Manage Snippets... menu item."
 #~ msgstr ""
-#~ "Não pude salvar o arquivo \"%s\". O arquivo provavelmente está "
+#~ "Não foi possível salvar o arquivo \"%s\". O arquivo provavelmente está "
 #~ "corrompido. Por favor conserte ou remova este arquivo. Para tentar "
 #~ "carregar o arquivo de novo, selecione o menu item \"Ferramentas -> "
 #~ "Gerenciar Trechos...\""
