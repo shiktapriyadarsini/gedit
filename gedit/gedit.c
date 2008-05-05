@@ -480,7 +480,7 @@ main (int argc, char *argv[])
 
 	gedit_debug_message (DEBUG_APP, "Create bacon connection");
 
-	connection = bacon_message_connection_new ("gedit");
+	connection = bacon_message_connection_new ("gedit-svn");
 
 	if (connection != NULL)
 	{
