@@ -26,10 +26,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <string.h>
-#include <glib.h>
 #include <glib/gi18n-lib.h>
-#include <libgnome/gnome-url.h>
 #include <gdk/gdkkeysyms.h>
+#include <libgnomevfs/gnome-vfs.h>
+#include <libgnomeui/libgnomeui.h>
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-plugin.h>
 
@@ -60,7 +60,7 @@ enum
 	COLUMN_INDENT,
 	COLUMN_ICON,
 	COLUMN_NAME,
-	COLUMN_FILE,
+	COLUMN_OBJECT,
 	COLUMN_ID,
 	N_COLUMNS
 };
@@ -101,8 +101,8 @@ typedef struct
 
 typedef struct 
 {
-	GFile *root;
-	GFile *virtual_root;
+	gchar *root;
+	gchar *virtual_root;
 } Location;
 
 typedef struct
@@ -163,9 +163,6 @@ static void on_file_store_error                (GeditFileBrowserStore * store,
 						guint code,
 						gchar * message,
 						GeditFileBrowserWidget * obj);
-static gboolean on_file_store_no_trash 	       (GeditFileBrowserStore * store, 
-						GList * files, 
-						GeditFileBrowserWidget * obj);
 static void on_combo_changed                   (GtkComboBox * combo,
 						GeditFileBrowserWidget * obj);
 static gboolean on_treeview_popup_menu         (GeditFileBrowserView * treeview,
@@ -189,9 +186,6 @@ static void on_location_jump_activate          (GtkMenuItem * item,
 static void on_bookmarks_row_inserted          (GtkTreeModel * model, 
                                                 GtkTreePath * path,
                                                 GtkTreeIter * iter,
-                                                GeditFileBrowserWidget * obj);
-static void on_bookmarks_row_deleted           (GtkTreeModel * model, 
-                                                GtkTreePath * path,
                                                 GeditFileBrowserWidget * obj);
 static void on_filter_mode_changed	       (GeditFileBrowserStore * model,
                                                 GParamSpec * param,
@@ -261,12 +255,8 @@ filter_func_new (GeditFileBrowserWidget * obj,
 static void
 location_free (Location * loc)
 {
-	if (loc->root)
-		g_object_unref (loc->root);
-	
-	if (loc->virtual_root)
-		g_object_unref (loc->virtual_root);
-
+	g_free (loc->root);
+	g_free (loc->virtual_root);
 	g_free (loc);
 }
 
@@ -297,9 +287,16 @@ static void
 remove_path_items (GeditFileBrowserWidget * obj)
 {
 	GtkTreeIter iter;
+	gchar *uri;
 
-	while (combo_find_by_id (obj, PATH_ID, &iter))
+	while (combo_find_by_id (obj, PATH_ID, &iter)) {
+		gtk_tree_model_get (GTK_TREE_MODEL
+				    (obj->priv->combo_model), &iter,
+				    COLUMN_OBJECT, &uri, -1);
+		g_free (uri);
+
 		gtk_tree_store_remove (obj->priv->combo_model, &iter);
+	}
 }
 
 static void
@@ -329,6 +326,7 @@ gedit_file_browser_widget_finalize (GObject * object)
 	g_list_free (obj->priv->locations);
 
 	g_hash_table_destroy (obj->priv->bookmarks_hash);
+
 	G_OBJECT_CLASS (gedit_file_browser_widget_parent_class)->finalize (object);
 }
 
@@ -437,9 +435,10 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass * klass)
 	                                   confirm_no_trash),
 	                  g_signal_accumulator_true_handled,
 	                  NULL,
-	                  gedit_file_browser_marshal_BOOL__POINTER,
+	                  gedit_file_browser_marshal_BOOL__OBJECT_POINTER,
 	                  G_TYPE_BOOLEAN,
-	                  1,
+	                  2,
+	                  G_TYPE_OBJECT,
 	                  GTK_TYPE_POINTER);
 
 	g_type_class_add_private (object_class,
@@ -457,6 +456,33 @@ add_signal (GeditFileBrowserWidget * obj, gpointer object, gulong id)
 	obj->priv->signal_pool =
 	    g_slist_prepend (obj->priv->signal_pool, node);
 }
+
+/*static void
+remove_signal_by_func(GeditFileBrowserWidget *obj, gpointer object, gpointer func, 
+		gpointer data) {
+	gulong id;
+	GSList *item;
+	SignalNode *node;
+
+	id = g_signal_handler_find(object, 
+			G_SIGNAL_MATCH_FUNC | G_SIGNAL_MATCH_DATA,
+			0, 0, NULL, func, data);
+	
+	if (id != 0) {
+		for (item = obj->priv->signal_pool; item; item = item->next) {
+			node = (SignalNode *)(item->data);
+			
+			if (node->id == id) {
+				g_signal_handler_disconnect(node->object, node->id);
+
+				obj->priv->signal_pool = g_slist_remove_link(
+						obj->priv->signal_pool, item);
+				g_free(node);
+				break;
+			}
+		}
+	}
+}*/
 
 static void
 clear_signals (GeditFileBrowserWidget * obj)
@@ -486,13 +512,13 @@ separator_func (GtkTreeModel * model, GtkTreeIter * iter, gpointer data)
 }
 
 static gboolean
-get_from_bookmark_file (GeditFileBrowserWidget * obj, GFile * file,
+get_from_bookmark_uri (GeditFileBrowserWidget * obj, GnomeVFSURI * guri,
 		       gchar ** name, GdkPixbuf ** icon)
 {
 	gpointer data;
 	NameIcon * item;
 
-	data = g_hash_table_lookup (obj->priv->bookmarks_hash, file);
+	data = g_hash_table_lookup (obj->priv->bookmarks_hash, GUINT_TO_POINTER (gnome_vfs_uri_hash (guri)));
 	
 	if (data == NULL)
 		return FALSE;
@@ -505,34 +531,63 @@ get_from_bookmark_file (GeditFileBrowserWidget * obj, GFile * file,
 	return TRUE;
 }
 
+static gboolean
+get_from_bookmark (GeditFileBrowserWidget * obj, gchar const *uri,
+		   gchar ** name, GdkPixbuf ** icon)
+{
+	GnomeVFSURI *guri;
+	gboolean result;
+
+	guri = gnome_vfs_uri_new (uri);
+
+	if (guri == NULL)
+		return FALSE;
+	
+	result = get_from_bookmark_uri (obj, guri, name, icon);
+	gnome_vfs_uri_unref (guri);
+	
+	return result;
+}
+
 static void
 insert_path_item (GeditFileBrowserWidget * obj, 
-                  GFile * file,
+                  GnomeVFSURI * uri,
 		  GtkTreeIter * after, 
 		  GtkTreeIter * iter, 
 		  guint indent)
 {
-	gchar * unescape;
+	gchar *str2;
+	gchar *unescape;
+	gchar *str;
 	GdkPixbuf * icon = NULL;
 
-	/* Try to get the icon and name from the bookmarks hash */
-	if (!get_from_bookmark_file (obj, file, &unescape, &icon)) {
-		/* It's not a bookmark, fetch the name and the icon ourselves */
-		unescape = gedit_file_browser_utils_file_basename (file);
+	if (!get_from_bookmark_uri (obj, uri, &unescape, &icon)) {
+		str = gnome_vfs_uri_to_string (uri, 
+	        	                       GNOME_VFS_URI_HIDE_PASSWORD |
+	                	               GNOME_VFS_URI_HIDE_TOPLEVEL_METHOD | 
+	                        	       GNOME_VFS_URI_HIDE_FRAGMENT_IDENTIFIER);
+		unescape = gedit_file_browser_utils_uri_basename (str);
+		g_free (str);
 		
 		/* Get the icon */
-		icon = gedit_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
+		str = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
+		str2 = gnome_vfs_get_mime_type (str);
+		icon = gedit_file_browser_utils_pixbuf_from_mime_type (str, 
+		                                                       str2, 
+		                                                       GTK_ICON_SIZE_MENU);
+
+		g_free (str);
+		g_free (str2);
 	}
 
 	gtk_tree_store_insert_after (obj->priv->combo_model, iter, NULL,
 				     after);
-	
 	gtk_tree_store_set (obj->priv->combo_model, 
 	                    iter, 
 	                    COLUMN_INDENT, indent,
 	                    COLUMN_ICON, icon, 
 	                    COLUMN_NAME, unescape, 
-	                    COLUMN_FILE, file,
+	                    COLUMN_OBJECT, gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE),
 			    COLUMN_ID, PATH_ID, 
 			    -1);
 
@@ -565,25 +620,27 @@ combo_set_active_by_id (GeditFileBrowserWidget * obj, guint id)
 }
 
 static guint
-uri_num_parents (GFile * from, GFile * to)
+uri_num_parents (GnomeVFSURI * from, GnomeVFSURI * to)
 {
-	/* Determine the number of 'levels' to get from #from to #to. */
 	guint parents = 0;
-	GFile * parent;
+	GnomeVFSURI * tmp;
 
 	if (from == NULL)
 		return 0;
-
-	g_object_ref (from);
 	
-	while ((parent = g_file_get_parent (from)) && !(to && g_file_equal (from, to))) {
-		g_object_unref (from);
-		from = parent;
+	from = gnome_vfs_uri_dup (from);
+	
+	while (gnome_vfs_uri_has_parent (from) && 
+	       !(to && gnome_vfs_uri_equal (from, to))) {
+		tmp = gnome_vfs_uri_get_parent (from);
+		gnome_vfs_uri_unref (from);
+		from = tmp;
 		
 		++parents;
 	}
 	
-	g_object_unref (from);	
+	gnome_vfs_uri_unref (from);
+	
 	return parents;
 }
 
@@ -591,8 +648,10 @@ static void
 insert_location_path (GeditFileBrowserWidget * obj)
 {
 	Location *loc;
-	GFile *current = NULL;
-	GFile * tmp;
+	GnomeVFSURI *virtual_root;
+	GnomeVFSURI *root;
+	GnomeVFSURI *current = NULL;
+	GnomeVFSURI * tmp;
 	GtkTreeIter separator;
 	GtkTreeIter iter;
 	guint indent;
@@ -604,15 +663,18 @@ insert_location_path (GeditFileBrowserWidget * obj)
 
 	loc = (Location *) (obj->priv->current_location->data);
 
-	current = loc->virtual_root;
+	virtual_root = gnome_vfs_uri_new (loc->virtual_root);
+	root = gnome_vfs_uri_new (loc->root);
+	current = virtual_root;
+
 	combo_find_by_id (obj, SEPARATOR_ID, &separator);
 	
-	indent = uri_num_parents (loc->virtual_root, loc->root);
+	indent = uri_num_parents (virtual_root, root);
 
 	while (current != NULL) {
 		insert_path_item (obj, current, &separator, &iter, indent--);
 
-		if (current == loc->virtual_root) {
+		if (current == virtual_root) {
 			g_signal_handlers_block_by_func (obj->priv->combo,
 							 on_combo_changed,
 							 obj);
@@ -625,19 +687,22 @@ insert_location_path (GeditFileBrowserWidget * obj)
 							   obj);
 		}
 
-		if (g_file_equal (current, loc->root) || !_gedit_file_browser_utils_file_has_parent (current)) {
-			if (current != loc->virtual_root)
-				g_object_unref (current);
+		if (gnome_vfs_uri_equal (current, root) || !gnome_vfs_uri_has_parent (current)) {
+			if (current != virtual_root)
+				gnome_vfs_uri_unref (current);
 			break;
 		}
 
-		tmp = g_file_get_parent (current);
+		tmp = gnome_vfs_uri_get_parent (current);
 		
-		if (current != loc->virtual_root)
-			g_object_unref (current);
+		if (current != virtual_root)
+			gnome_vfs_uri_unref (current);
 
 		current = tmp;
 	}
+
+	gnome_vfs_uri_unref (virtual_root);
+	gnome_vfs_uri_unref (root);
 }
 
 static void
@@ -673,6 +738,17 @@ fill_combo_model (GeditFileBrowserWidget * obj)
 			    COLUMN_NAME, _("Bookmarks"),
 			    COLUMN_ID, BOOKMARKS_ID, -1);
 	g_object_unref (icon);
+
+#if 0
+	icon = gedit_file_browser_utils_pixbuf_from_theme (GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
+
+	gtk_tree_store_append (store, &iter, NULL);
+	gtk_tree_store_set (store, &iter,
+			    COLUMN_ICON, icon,
+			    COLUMN_NAME, _("Recent Files"),
+			    COLUMN_ID, RECENTS_ID, -1);
+	g_object_unref (icon);
+#endif
 
 	gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (obj->priv->combo),
 					      separator_func, obj, NULL);
@@ -710,7 +786,7 @@ create_combo (GeditFileBrowserWidget * obj)
 						     G_TYPE_UINT,
 						     GDK_TYPE_PIXBUF,
 						     G_TYPE_STRING,
-						     G_TYPE_FILE,
+						     G_TYPE_POINTER,
 						     G_TYPE_UINT);
 	obj->priv->combo =
 	    gtk_combo_box_new_with_model (GTK_TREE_MODEL
@@ -1006,25 +1082,28 @@ add_bookmark_hash (GeditFileBrowserWidget * obj,
 	GdkPixbuf * pixbuf;
 	gchar * name;
 	gchar * uri;
-	GFile * file;
+	GnomeVFSURI * guri;
 	NameIcon * item;
 
 	model = GTK_TREE_MODEL (obj->priv->bookmarks_store);
 
 	uri = gedit_file_bookmarks_store_get_uri (obj->priv->
-						  bookmarks_store,
-						  iter);
+					    	          bookmarks_store,
+							  iter);
 	
 	if (uri == NULL)
 		return;
 	
-	file = g_file_new_for_uri (uri);
+	guri = gnome_vfs_uri_new (uri);
 	g_free (uri);
+	
+	if (guri == NULL)
+		return;
 
 	gtk_tree_model_get (model, iter,
-			    GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON,
+			    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON,
 			    &pixbuf,
-			    GEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME,
+			    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
 			    &name, -1);	
 	
 	item = g_new (NameIcon, 1);
@@ -1032,8 +1111,10 @@ add_bookmark_hash (GeditFileBrowserWidget * obj,
 	item->icon = pixbuf;
 
 	g_hash_table_insert (obj->priv->bookmarks_hash,
-			     file,
+			     GUINT_TO_POINTER (gnome_vfs_uri_hash (guri)),
 			     item);
+
+	gnome_vfs_uri_unref (guri);
 }
 
 static void
@@ -1054,11 +1135,6 @@ init_bookmarks_hash (GeditFileBrowserWidget * obj)
 	g_signal_connect (obj->priv->bookmarks_store,
 		          "row-inserted",
 		          G_CALLBACK (on_bookmarks_row_inserted),
-		          obj);
-
-	g_signal_connect (obj->priv->bookmarks_store,
-		          "row-deleted",
-		          G_CALLBACK (on_bookmarks_row_deleted),
 		          obj);
 }
 
@@ -1147,14 +1223,26 @@ create_filter (GeditFileBrowserWidget * obj)
 	gtk_container_add (GTK_CONTAINER (expander), vbox);
 }
 
+static guint
+uint_hash (gconstpointer key)
+{
+	return GPOINTER_TO_UINT (key);
+}
+
+static gboolean
+uint_equal (gconstpointer a, gconstpointer b)
+{
+	return GPOINTER_TO_UINT (a) == GPOINTER_TO_UINT (b);
+}
+
 static void
 gedit_file_browser_widget_init (GeditFileBrowserWidget * obj)
 {
 	obj->priv = GEDIT_FILE_BROWSER_WIDGET_GET_PRIVATE (obj);
 
-	obj->priv->bookmarks_hash = g_hash_table_new_full (g_file_hash,
-			                                   (GEqualFunc)g_file_equal,
-			                                   g_object_unref,
+	obj->priv->bookmarks_hash = g_hash_table_new_full (uint_hash,
+			                                   uint_equal,
+			                                   NULL,
 			                                   free_name_icon);
 
 	create_toolbar (obj);
@@ -1360,6 +1448,14 @@ delete_selected_files (GeditFileBrowserWidget * obj, gboolean trash)
 
 	result = gedit_file_browser_store_delete_all (GEDIT_FILE_BROWSER_STORE (model),
 						      rows, trash);
+
+	if (result == GEDIT_FILE_BROWSER_STORE_RESULT_NO_TRASH) {
+		g_signal_emit (obj, signals[CONFIRM_NO_TRASH], 0, model, rows, &confirm);
+		
+		if (confirm)
+			result = gedit_file_browser_store_delete_all (GEDIT_FILE_BROWSER_STORE (model),
+								      rows, FALSE);
+	}
 	
 	g_list_foreach (rows, (GFunc)gtk_tree_path_free, NULL);
 	g_list_free (rows);
@@ -1367,28 +1463,17 @@ delete_selected_files (GeditFileBrowserWidget * obj, gboolean trash)
 	return result == GEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-static gboolean
-on_file_store_no_trash (GeditFileBrowserStore * store, 
-			GList * files, 
-			GeditFileBrowserWidget * obj)
+static GnomeVFSURI *
+get_topmost_uri (GnomeVFSURI const *uri)
 {
-	gboolean confirm = FALSE;
+	GnomeVFSURI * tmp;
+	GnomeVFSURI * current;
 	
-	g_signal_emit (obj, signals[CONFIRM_NO_TRASH], 0, files, &confirm);
+	current = gnome_vfs_uri_dup (uri);
 	
-	return confirm;
-}
-
-static GFile *
-get_topmost_file (GFile * file)
-{
-	GFile * tmp;
-	GFile * current;
-	
-	current = g_object_ref (file);
-	
-	while ((tmp = g_file_get_parent (current)) != NULL) {
-		g_object_unref (current);
+	while (gnome_vfs_uri_has_parent (current)) {
+		tmp = gnome_vfs_uri_get_parent (current);
+		gnome_vfs_uri_unref (current);
 		current = tmp;
 	}
 	
@@ -1401,14 +1486,29 @@ create_goto_menu_item (GeditFileBrowserWidget * obj, GList * item,
 {
 	GtkWidget *result;
 	GtkWidget *image;
+	gchar *base;
 	gchar *unescape;
 	GdkPixbuf *pixbuf;
 	Location *loc;
 
 	loc = (Location *) (item->data);
 
-	if (!get_from_bookmark_file (obj, loc->virtual_root, &unescape, &pixbuf)) {
-		unescape = gedit_file_browser_utils_file_basename (loc->virtual_root);
+	if (!get_from_bookmark (obj, loc->virtual_root,
+				&unescape, &pixbuf)) {
+
+		if (gedit_utils_uri_has_file_scheme (loc->virtual_root)) {
+			unescape =
+			    gnome_vfs_get_local_path_from_uri (loc->
+							       virtual_root);
+			base = g_path_get_basename (unescape);
+			g_free (unescape);
+		} else {
+			base = g_path_get_basename (loc->virtual_root);
+		}
+
+		unescape = gnome_vfs_unescape_string_for_display (base);
+		g_free (base);
+
 		pixbuf = g_object_ref (icon);
 	}
 
@@ -1460,8 +1560,6 @@ jump_to_location (GeditFileBrowserWidget * obj, GList * item,
 	GList *(*iter_func) (GList *);
 	GtkWidget *menu_from;
 	GtkWidget *menu_to;
-	gchar *root;
-	gchar *virtual_root;
 
 	if (!obj->priv->locations)
 		return;
@@ -1520,15 +1618,10 @@ jump_to_location (GeditFileBrowserWidget * obj, GList * item,
 	loc = (Location *) (obj->priv->current_location->data);
 
 	/* Set the new root + virtual root */
-	root = g_file_get_uri (loc->root);
-	virtual_root = g_file_get_uri (loc->virtual_root);
-	
 	gedit_file_browser_widget_set_root_and_virtual_root (obj,
-							     root,
+							     loc->root,
+							     loc->
 							     virtual_root);
-
-	g_free (root);
-	g_free (virtual_root);
 
 	obj->priv->changing_location = FALSE;
 }
@@ -1690,7 +1783,8 @@ gedit_file_browser_widget_show_bookmarks (GeditFileBrowserWidget * obj)
 }
 
 void
-gedit_file_browser_widget_set_root_and_virtual_root (GeditFileBrowserWidget *obj,
+gedit_file_browser_widget_set_root_and_virtual_root (GeditFileBrowserWidget
+						     * obj,
 						     gchar const *root,
 						     gchar const *virtual_root)
 {
@@ -1718,31 +1812,39 @@ gedit_file_browser_widget_set_root (GeditFileBrowserWidget * obj,
 				    gchar const *root, 
 				    gboolean virtual_root)
 {
-	GFile *file;
-	GFile *parent;
+	GnomeVFSURI *uri;
+	GnomeVFSURI *parent;
 	gchar *str;
 
 	if (!virtual_root) {
 		gedit_file_browser_widget_set_root_and_virtual_root (obj,
 								     root,
 								     NULL);
-		return;
+	} else {
+		uri = gnome_vfs_uri_new (root);
+
+		if (uri) {
+			parent = get_topmost_uri (uri);
+			str =
+			    gnome_vfs_uri_to_string (parent,
+						     GNOME_VFS_URI_HIDE_NONE);
+
+			gedit_file_browser_widget_set_root_and_virtual_root
+			    (obj, str, root);
+
+			g_free (str);
+			gnome_vfs_uri_unref (uri);
+			gnome_vfs_uri_unref (parent);
+		} else {
+			str =
+			    g_strconcat (_("Invalid uri"), ": ", root,
+					 NULL);
+			g_signal_emit (obj, signals[ERROR], 0,
+				       GEDIT_FILE_BROWSER_ERROR_SET_ROOT,
+				       str);
+			g_free (str);
+		}
 	}
-
-	if (!root)
-		return;
-
-	file = g_file_new_for_uri (root);
-	parent = get_topmost_file (file);
-	str = g_file_get_uri (parent);
-
-	gedit_file_browser_widget_set_root_and_virtual_root
-	    (obj, str, root);
-
-	g_free (str);
-	
-	g_object_unref (file);
-	g_object_unref (parent);
 }
 
 GeditFileBrowserStore *
@@ -1854,7 +1956,7 @@ gedit_file_browser_widget_get_selected_directory (GeditFileBrowserWidget * obj,
 }
 
 guint
-gedit_file_browser_widget_get_num_selected_files_or_directories (GeditFileBrowserWidget *obj) {
+gedit_file_browser_widget_get_num_selected_files_or_directories(GeditFileBrowserWidget *obj) {
 	GList *rows, *row;
 	GtkTreePath *path;
 	GtkTreeIter iter;
@@ -1989,9 +2091,8 @@ on_virtual_root_changed (GeditFileBrowserStore * model,
 				    (model);
 
 				loc = g_new (Location, 1);
-				loc->root = g_file_new_for_uri (root_uri);
-				loc->virtual_root = g_file_new_for_uri (uri);
-				g_free (root_uri);
+				loc->root = root_uri;
+				loc->virtual_root = g_strdup (uri);
 
 				if (obj->priv->current_location) {
 					/* Add current location to the menu so we can go back
@@ -2119,12 +2220,6 @@ on_model_set (GObject * gobject, GParamSpec * arg1,
 			    g_signal_connect (model, "error",
 					      G_CALLBACK
 					      (on_file_store_error), obj));
-
-		add_signal (obj, model,
-			    g_signal_connect (model, "no-trash",
-			    		      G_CALLBACK
-			    		      (on_file_store_no_trash), obj));
-
 		gtk_widget_set_sensitive (obj->priv->filter_expander, TRUE);
 	}
 
@@ -2150,8 +2245,7 @@ on_combo_changed (GtkComboBox * combo, GeditFileBrowserWidget * obj)
 {
 	GtkTreeIter iter;
 	guint id;
-	gchar * uri;
-	GFile * file;
+	gchar *uri;
 
 	if (!gtk_combo_box_get_active_iter (combo, &iter))
 		return;
@@ -2167,14 +2261,9 @@ on_combo_changed (GtkComboBox * combo, GeditFileBrowserWidget * obj)
 	case PATH_ID:
 		gtk_tree_model_get (GTK_TREE_MODEL
 				    (obj->priv->combo_model), &iter,
-				    COLUMN_FILE, &file, -1);
-		
-		uri = g_file_get_uri (file);
+				    COLUMN_OBJECT, &uri, -1);
 		gedit_file_browser_store_set_virtual_root_from_string
 		    (obj->priv->file_store, uri);
-		
-		g_free (uri);
-		g_object_unref (file);
 		break;
 	}
 }
@@ -2346,30 +2435,6 @@ on_bookmarks_row_inserted (GtkTreeModel * model,
                            GeditFileBrowserWidget *obj)
 {
 	add_bookmark_hash (obj, iter);
-}
-
-static void
-on_bookmarks_row_deleted (GtkTreeModel * model, 
-                          GtkTreePath * path,
-                          GeditFileBrowserWidget *obj)
-{
-	GtkTreeIter iter;
-	gchar * uri;
-	GFile * file;
-	
-	if (!gtk_tree_model_get_iter (model, &iter, path))
-		return;
-
-	uri = gedit_file_bookmarks_store_get_uri (obj->priv->bookmarks_store, &iter);
-	
-	if (!uri)
-		return;
-
-	file = g_file_new_for_uri (uri);
-	g_hash_table_remove (obj->priv->bookmarks_hash, file);
-
-	g_object_unref (file);
-	g_free (uri);
 }
 
 static void 
@@ -2550,8 +2615,7 @@ on_action_directory_open (GtkAction * action, GeditFileBrowserWidget * obj)
 {
 	GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW (obj->priv->treeview));
 	GtkTreeSelection *selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));	
-	GList *rows;
-	GList *row;
+	GList *rows, *row;
 	gboolean directory_opened = FALSE;
 	GtkTreeIter iter;
 	GtkTreePath *path;

@@ -937,30 +937,28 @@ static void
 on_cell_edited (GtkCellRendererText * cell, gchar * path, gchar * new_text,
 		GeditFileBrowserView * tree_view)
 {
-	GtkTreePath * treepath;
+	GtkTreePath *treepath;
 	GtkTreeIter iter;
-	gboolean ret;
-	GError * error = NULL;
-	
+	GError *error = NULL;
+
 	gtk_tree_path_free (tree_view->priv->editable);
 	tree_view->priv->editable = NULL;
 
 	if (new_text == NULL || *new_text == '\0')
 		return;
-		
+
 	treepath = gtk_tree_path_new_from_string (path);
-	ret = gtk_tree_model_get_iter (GTK_TREE_MODEL (tree_view->priv->model), &iter, treepath);
+	gtk_tree_model_get_iter (GTK_TREE_MODEL (tree_view->priv->model),
+				 &iter, treepath);
 	gtk_tree_path_free (treepath);
 
-	if (ret) {
-		if (!gedit_file_browser_store_rename
-		    (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model), &iter,
-		     new_text, &error)) {
-			if (error) {
-				g_signal_emit (tree_view, signals[ERROR], 0,
-					       error->code, error->message);
-				g_error_free (error);
-			}
+	if (!gedit_file_browser_store_rename
+	    (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model), &iter,
+	     new_text, &error)) {
+		if (error) {
+			g_signal_emit (tree_view, signals[ERROR], 0,
+				       error->code, error->message);
+			g_error_free (error);
 		}
 	}
 }
