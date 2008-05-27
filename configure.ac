@@ -4,7 +4,7 @@ AC_PREREQ(2.59)
 
 m4_define(gedit_major_version,  2)
 m4_define(gedit_minor_version, 22)
-m4_define(gedit_micro_version,  1)
+m4_define(gedit_micro_version,  2)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT(gedit, gedit_version, http://bugzilla.gnome.org/enter_bug.cgi?product=gedit)
@@ -138,8 +138,6 @@ AC_SUBST(SPELL_PLUGIN_DIR)
 dnl ================================================================
 dnl libattr checks
 dnl ================================================================
-
-AC_CHECK_LIB(attr, attr_copy_fd)
 
 AC_MSG_CHECKING([whether libattr support is requested])
 AC_ARG_ENABLE([attr],

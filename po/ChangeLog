@@ -1,3 +1,6 @@
+
+=== gedit 2.22.2 ===
+
 2008-05-25  Luca Ferretti  <elle.uca@libero.it>
 
 	* it.po: Updated Italian translation.
@@ -32,8 +35,7 @@
 	* bg.po: Updated Bulgarian translation by
 	Yavor Doganov <yavor@gnu.org>
 
-
-=== gedit 2.22.0 ===
+=== gedit 2.22.1 ===
 
 2008-04-07  Priit Laes  <plaes at svn dot gnome dot org>
 
