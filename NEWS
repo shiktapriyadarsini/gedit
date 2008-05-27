@@ -1,4 +1,14 @@
 ============
+gedit 2.22.3
+============
+
+New Features and Fixes
+======================
+- Revert unstable changes to the filebrowser plugin that slipped
+  into 2.22.2 by mistake
+
+
+============
 gedit 2.22.2
 ============
 

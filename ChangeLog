@@ -1,4 +1,19 @@
 
+=== gedit 2.22.3 ===
+
+2008-05-27  Paolo Borelli  <pborelli@katamail.com>
+
+	* configure.ac:
+	* README:
+	* NEWS:
+
+	gedit 2.23.3 released
+
+2008-05-27  Paolo Borelli  <pborelli@katamail.com>
+
+	* plugins/filebrowser/*: revert changes that were committed to the
+	stable branch by mistake.
+
 === gedit 2.22.2 ===
 
 2008-05-27  Paolo Borelli  <pborelli@katamail.com>
