@@ -1,3 +1,7 @@
+2008-06-08 Curtis Hovey <sinzui.is@verizon.net>
+
+    * plugins/snippets/snippets/SnippetComplete.py: fix on_get_n_columns.
+    Fixes bug #537248.
 
 === gedit 2.22.3 ===
 
