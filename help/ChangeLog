@@ -1,3 +1,8 @@
+2008-09-16  Kenneth Nielsen  <k.nielsen81@gmail.com>
+
+	* da: Adding directory for Danish translation
+	* da/da: Backwards integrating Danish translation from trunk
+	* Makefile.am: Adding da to list of languages
 
 === gedit 2.22.3 ===
 
