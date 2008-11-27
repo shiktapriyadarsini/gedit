@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"POT-Creation-Date: 2008-05-12 19:08+0000\n"
-"PO-Revision-Date: 2008-07-22 11:13+0100\n"
+"POT-Creation-Date: 2008-11-25 15:17+0000\n"
+"PO-Revision-Date: 2008-11-27 17:43+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -293,8 +293,8 @@ msgid "Feedback"
 msgstr "Återkoppling"
 
 #: C/gedit.xml:208(para)
-msgid "To report a bug or make a suggestion regarding the <application>gedit</application> application or this manual, follow the directions in the <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME Feedback Page</ulink>."
-msgstr "För att rapportera ett fel eller komma med ett förslag angående programmet <application>gedit</application> eller denna handbok, följ instruktionerna på <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME:s återkopplingssida</ulink>."
+msgid "To report a bug or make a suggestion regarding the <application>gedit</application> application or this manual, follow the directions in the <ulink url=\"ghelp:user-guide?feedback-bugs\" type=\"help\">GNOME Feedback Page</ulink>."
+msgstr "För att rapportera ett fel eller komma med ett förslag angående programmet <application>gedit</application> eller denna handbok, följ instruktionerna på <ulink url=\"ghelp:user-guide?feedback-bugs\" type=\"help\">GNOME:s återkopplingssida</ulink>."
 
 #: C/gedit.xml:213(para)
 msgid "gedit is a text editor for the GNOME Desktop featuring basic yet robust capabilities such as printing, spell checking, find and replace, and syntax highlighting. More advanced features are available as plugins."
@@ -1251,13 +1251,16 @@ msgid "Command"
 msgstr "Kommando"
 
 #: C/gedit.xml:877(para)
-#: C/gedit.xml:881(para)
-msgid "Ctrl + Alt + PageDown"
-msgstr "Ctrl + Alt + PageDown"
+msgid "Ctrl + Alt + PageUp"
+msgstr "Ctrl + Alt + PageUp"
 
 #: C/gedit.xml:878(para)
 msgid "Switches to the next tab to the left."
 msgstr "Växlar till nästa flik åt vänster."
+
+#: C/gedit.xml:881(para)
+msgid "Ctrl + Alt + PageDown"
+msgstr "Ctrl + Alt + PageDown"
 
 #: C/gedit.xml:882(para)
 msgid "Switches to the next tab to the right."
