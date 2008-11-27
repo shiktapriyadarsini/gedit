@@ -1,3 +1,17 @@
+2008-11-27  Jesse van den Kieboom  <jesse@icecrew.nl>
+
+	* configure.ac:
+	* gedit/Makefile.am:
+	* gedit/gedit.c:
+	* gedit/smclient/eggsmclient-win32.c:
+	* gedit/smclient/eggsmclient-osx.c:
+	* gedit/smclient/Makefile.am:
+
+	Merged revision 6625:6627 from trunk:
+	Fixed some small things to make gedit compile on OS X. Use 
+	GDK_WINDOWING_X11 instead of PLATFORM_OSX to check for including 
+	gdkx.h.
+	
 === gedit 2.24.2 ===
 
 2008-11-23  Paolo Borelli  <pborelli@katamail.com>
