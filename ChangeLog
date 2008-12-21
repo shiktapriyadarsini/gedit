@@ -1,5 +1,13 @@
 2008-12-21  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/gedit-document-loader.c:
+	* gedit/gedit-document-saver.c:
+	* gedit/Makefile.am:
+	Use always the gio loader and the gio saver in
+	case we are in windows.
+
+2008-12-21  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit.c:
 	* gedit/gedit-app.c:
 	* gedit/Makefile.am:

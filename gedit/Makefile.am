@@ -107,9 +107,19 @@ headerdir = $(prefix)/include/gedit-@GEDIT_API_VERSION@/gedit
 header_DATA = 				\
 	$(INST_H_FILES)	
 
+if !PLATFORM_WIN32
+LOADER_SOURCES = 			\
+	gedit-mmap-document-loader.c	\
+	gedit-local-document-saver.c	
+else
+LOADER_SOURCES =
+endif
+
+
 libgedit_la_SOURCES = 			\
 	$(BUILT_SOURCES)		\
 	$(BACON_FILES)			\
+	$(LOADER_SOURCES)		\
 	gedit-app.c			\
 	gedit-commands-documents.c	\
 	gedit-commands-edit.c		\
@@ -122,10 +132,8 @@ libgedit_la_SOURCES = 			\
 	gedit-debug.c			\
 	gedit-document.c 		\
 	gedit-document-loader.c		\
-	gedit-mmap-document-loader.c	\
 	gedit-gio-document-loader.c	\
 	gedit-document-saver.c		\
-	gedit-local-document-saver.c	\
 	gedit-gio-document-saver.c	\
 	gedit-documents-panel.c		\
 	gedit-encodings.c		\
