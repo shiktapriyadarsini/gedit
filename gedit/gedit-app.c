@@ -441,6 +441,7 @@ gen_role (void)
 
 	t = time (NULL);
 
+#ifndef G_OS_WIN32
 	return g_strdup_printf ("gedit-window-%d-%d-%d-%ld-%d@%s",
 				getpid (),
 				getgid (),
@@ -448,6 +449,12 @@ gen_role (void)
 				(long) t,
 				serial++,
 				g_get_host_name ());
+#else
+	return g_strdup_printf ("gedit-window-%ld-%d@%s",
+				(long) t,
+				serial++,
+				g_get_host_name ());
+#endif
 }
 	     
 static GeditWindow *

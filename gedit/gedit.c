@@ -56,12 +56,16 @@
 #include "gedit-utils.h"
 #include "gedit-window.h"
 
-#include "bacon-message-connection.h"
 #include "eggsmclient.h"
 #include "eggdesktopfile.h"
 
 static guint32 startup_timestamp = 0;
+
+#ifndef G_OS_WIN32
+#include "bacon-message-connection.h"
+
 static BaconMessageConnection *connection;
+#endif
 
 static void
 show_version_and_quit (void)
@@ -207,6 +211,7 @@ display_open_if_needed (const gchar *name)
 }
 
 /* serverside */
+#ifndef G_OS_WIN32
 static void
 on_message_received (const char *message,
 		     gpointer    data)
@@ -456,6 +461,7 @@ send_bacon_message (void)
 
 	g_string_free (command, TRUE);
 }
+#endif /* G_OS_WIN32 */
 
 int
 main (int argc, char *argv[])
@@ -500,6 +506,7 @@ main (int argc, char *argv[])
 
 	g_option_context_free (context);
 
+#ifndef G_OS_WIN32
 	gedit_debug_message (DEBUG_APP, "Create bacon connection");
 
 	connection = bacon_message_connection_new ("gedit");
@@ -536,6 +543,7 @@ main (int argc, char *argv[])
 	{
 		g_warning ("Cannot create the 'gedit' connection.");
 	}
+#endif
 
 	gedit_debug_message (DEBUG_APP, "Set icon");
 	
@@ -543,7 +551,7 @@ main (int argc, char *argv[])
 					   GEDIT_ICONDIR);
 
 	/* Set the associated .desktop file */
-#ifndef PLATFORM_OSX
+#if !defined PLATFORM_OSX && !defined PLATFORM_WIN32
 	egg_set_desktop_file (DATADIR "/applications/gedit.desktop");
 #endif
 
@@ -607,7 +615,9 @@ main (int argc, char *argv[])
 	gedit_debug_message (DEBUG_APP, "Start gtk-main");		
 	gtk_main();
 
+#ifndef G_OS_WIN32
 	bacon_message_connection_free (connection);
+#endif
 
 	/* We kept the original engine reference here. So let's unref it to
 	 * finalize it properly. 

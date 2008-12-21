@@ -1,3 +1,11 @@
+2008-12-21  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* gedit/gedit.c:
+	* gedit/gedit-app.c:
+	* gedit/Makefile.am:
+	* configure.ac:
+	Add some ifdefs to not build bacon on windows.
+
 2008-12-20  Paolo Borelli  <pborelli@katamail.com>
 
 	* plugins/spell/gedit-spell-plugin.c:

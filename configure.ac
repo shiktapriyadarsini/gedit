@@ -205,7 +205,8 @@ GEDIT_LIBS="${GEDIT_LIBS}"
 AC_SUBST(GEDIT_LIBS)
 AC_SUBST(GEDIT_CFLAGS)
 
-if test "$platform_osx" = "no"; then
+if test "$platform_osx" = "no" &&
+   test "$platform_win32" = no; then
 	PKG_CHECK_MODULES(EGG_SMCLIENT, [
 		sm >= 1.0.0
 	])

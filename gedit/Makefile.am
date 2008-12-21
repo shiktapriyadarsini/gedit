@@ -194,15 +194,20 @@ dist-hook:
 	cd $(distdir); rm -f $(BUILT_SOURCES)
 
 install-exec-hook:
-	rm -f $(DESTDIR)$(bindir)/gnome-text-editor
-	ln -s gedit $(DESTDIR)$(bindir)/gnome-text-editor
 if PLATFORM_WIN32
 	$(mkinstalldirs) "$(DESTDIR)$(libdir)"
 	$(INSTALL_DATA) libgedit-$(GEDIT_API_VERSION).a "$(DESTDIR)$(libdir)"
+else
+	rm -f $(DESTDIR)$(bindir)/gnome-text-editor
+	ln -s gedit $(DESTDIR)$(bindir)/gnome-text-editor
 endif
 
+if !PLATFORM_WIN32
 BACON_DIR=$(srcdir)/../../libbacon/src/
 BACON_FILES=bacon-message-connection.h bacon-message-connection.c
 
 regenerate-built-sources:
 	BACONFILES="$(BACON_FILES)" BACONDIR="$(BACON_DIR)" $(top_srcdir)/gedit/update-from-bacon.sh
+else
+BACON_DIR=
+endif
