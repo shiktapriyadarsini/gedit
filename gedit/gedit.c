@@ -551,7 +551,7 @@ main (int argc, char *argv[])
 					   GEDIT_ICONDIR);
 
 	/* Set the associated .desktop file */
-#if !defined PLATFORM_OSX && !defined PLATFORM_WIN32
+#if !defined PLATFORM_OSX && !defined G_OS_WIN32
 	egg_set_desktop_file (DATADIR "/applications/gedit.desktop");
 #endif
 
