@@ -367,14 +367,14 @@ fi
 if test "$platform_win32" = yes; then
 	GEDIT_IMPLIB="-lgedit-$GEDIT_API_VERSION"
 	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
+	LOADER_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
 else
 	GEDIT_IMPLIB=""
 	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version"
+	LOADER_LIBTOOL_FLAGS="-module -avoid-version"
 fi
 AC_SUBST(GEDIT_IMPLIB)
 AC_SUBST(PLUGIN_LIBTOOL_FLAGS)
-
-LOADER_LIBTOOL_FLAGS="-module -avoid-version"
 AC_SUBST(LOADER_LIBTOOL_FLAGS)
 
 AC_CONFIG_FILES([

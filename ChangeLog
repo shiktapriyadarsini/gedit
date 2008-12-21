@@ -1,5 +1,10 @@
 2008-12-21  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* configure.ac:
+	Use the right flags for plugin loaders.
+
+2008-12-21  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit.c:
 	Changed define.
 
