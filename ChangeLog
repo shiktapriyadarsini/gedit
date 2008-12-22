@@ -1,5 +1,11 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* win32/build-installer:
+	* win32/gedit.iss.in:
+	Fix a few paths and comment python files for now.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* win32/querymodules.bat:
 	* win32/Makefile.am:
 	* win32/build-installer:

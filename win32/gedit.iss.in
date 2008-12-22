@@ -41,7 +41,7 @@ Source: "bin\libpng12-0.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\jpeg62.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libtiff3.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libxml2.dll"; DestDir: "{app}\bin"; Components: gtk
-Source: "bin\libxslt-1.dll"; DestDir: "{app}\bin"; Components: gtk
+;Source: "bin\libxslt-1.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libglib-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libgobject-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libgio-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
@@ -67,14 +67,14 @@ Source: "bin\libgettextpo-0.dll"; DestDir: "{app}\bin"; Components: main
 Source: "bin\libgtksourceview-2.0-0.dll"; DestDir: "{app}\bin"; Components: main
 
 ; Python modules
-Source: "bin\python25.dll"; DestDir: "{app}\bin"; Components: python
+;Source: "bin\python25.dll"; DestDir: "{app}\bin"; Components: python
 ; TODO: I would like to install these into python/ instead of /bin, but I
 ; could not get python to locate them there (setting PYTHONPATH with setenv()
 ; in Glom's main() does not work).
 ; TODO: Change component of gda.pyd and glom.pyd to main instead of python
 ; since we also need these when the user installed python and pygtk on its own.
-Source: "python/*.py"; DestDir: "{app}\bin"; Components: python; Flags: recursesubdirs
-Source: "python/*.pyd"; DestDir: "{app}\bin"; Components: python; Flags: recursesubdirs
+;Source: "python/*.py"; DestDir: "{app}\bin"; Components: python; Flags: recursesubdirs
+;Source: "python/*.pyd"; DestDir: "{app}\bin"; Components: python; Flags: recursesubdirs
 
 ; gedit executables
 Source: "bin\gedit.exe"; DestDir: "{app}\bin"; Components: main
@@ -97,29 +97,23 @@ Source: "share/themes/MS-Windows/*"; DestDir: "{app}/share/themes/MS-Windows"; F
 Source: "etc/gtk-2.0/gtkrc"; DestDir: "{app}/etc/gtk-2.0"; Components: gtk
 ;Source: "querymodules.bat"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
 
-;Source: "lib/gnome-vfs-2.0/modules/*.dll"; DestDir: "{app}/lib/gnome-vfs-2.0/modules"; Components: main;
-;Source: "etc/gnome-vfs-2.0/modules/default-modules.conf"; DestDir: "{app}/etc/gnome-vfs-2.0/modules"; Components: main;
-
 ; GtkSourceView
 Source: "share/gtksourceview-2.0/language-specs/*"; DestDir: "{app}/share/gtksourceview-2.0/language-specs"; Components: main
 Source: "share/gtksourceview-2.0/styles/*"; DestDir: "{app}/share/gtksourceview-2.0/styles"; Components: main
 
 ; Icons
-Source: "share/icons/hicolor/48x48/apps/gedit.png"; DestDir: "{app}/share/icons/hicolor/48x48/apps"; Components: main
-Source: "share/pixmaps/gedit.png"; DestDir: "{app}/share/pixmaps"; Components: main
+;Source: "share/icons/hicolor/48x48/apps/gedit.png"; DestDir: "{app}/share/icons/hicolor/48x48/apps"; Components: main
+;Source: "share/pixmaps/gedit.png"; DestDir: "{app}/share/pixmaps"; Components: main
 
 ; Other shared gedit files
 Source: "share/gedit-2/ui/*"; DestDir: "{app}/share/gedit-2/ui"; Components: main
 Source: "share/gedit-2/icons/gedit-plugin.png"; DestDir: "{app}/share/gedit-2/icons"; Components: main
 Source: "share/gedit-2/taglist/*"; DestDir: "{app}/share/gedit-2/taglist"; Components: main; Flags: recursesubdirs
 Source: "share/gedit-2/plugins/*"; DestDir: "{app}/share/gedit-2/plugins"; Components: main; Flags: recursesubdirs
-;Source: "share/glom/doc/*"; Destdir: "{app}/share/glom/doc/"; Components: main; Flags: recursesubdirs
 Source: "share/gedit-2/logo/gedit-logo.png"; Destdir: "{app}/share/gedit-2/logo/"; Components: main; Flags: recursesubdirs
 
-;Source: "share/themes/MS-Windows/*"; DestDir: "{app}/share/themes/MS-Windows"; Flags: recursesubdirs; Components: gtk
-
 ; Locales
-Source: "lib\locale\*"; DestDir: "{app}\lib\locale\"; Flags: recursesubdirs; Components: locale
+;Source: "lib\locale\*"; DestDir: "{app}\lib\locale\"; Flags: recursesubdirs; Components: locale
 Source: "share\locale\*"; DestDir: "{app}\share\locale\"; Flags: recursesubdirs; Components: locale
 
 ; Register .glom file type if we install for all users. Is there a possibility
