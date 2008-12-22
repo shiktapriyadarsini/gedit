@@ -1,5 +1,10 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/Makefile.am:
+	Change LOADER_SOURCES name to POSIXIO_FILES.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit-metadata-manager.c:
 	Changed to use the cache dir.
 

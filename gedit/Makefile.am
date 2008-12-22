@@ -108,18 +108,18 @@ header_DATA = 				\
 	$(INST_H_FILES)	
 
 if !PLATFORM_WIN32
-LOADER_SOURCES = 			\
+POSIXIO_FILES = 			\
 	gedit-mmap-document-loader.c	\
 	gedit-local-document-saver.c	
 else
-LOADER_SOURCES =
+POSIXIO_FILES =
 endif
 
 
 libgedit_la_SOURCES = 			\
 	$(BUILT_SOURCES)		\
 	$(BACON_FILES)			\
-	$(LOADER_SOURCES)		\
+	$(POSIXIO_FILES)		\
 	gedit-app.c			\
 	gedit-commands-documents.c	\
 	gedit-commands-edit.c		\
