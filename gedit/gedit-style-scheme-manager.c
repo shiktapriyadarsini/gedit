@@ -132,7 +132,6 @@ _gedit_style_scheme_manager_scheme_is_gedit_user_scheme (GtkSourceStyleSchemeMan
 {
 	GtkSourceStyleScheme *scheme;
 	const gchar *filename;
-	const gchar *home;
 	gchar *dir;
 	gboolean res = FALSE;
 

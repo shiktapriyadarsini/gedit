@@ -1,5 +1,17 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/dialogs/gedit-open-location-dialog.c:
+	* gedit/dialogs/gedit-encodings-dialog.c:
+	* gedit/dialogs/gedit-preferences-dialog.c:
+	* gedit/dialogs/gedit-style-scheme-dialog.c:
+	* gedit/dialogs/gedit-search-dialog.c:
+	* gedit/gedit-print-job.c:
+	* gedit/gedit-window.c:
+	* gedit/gedit-style-scheme-manager.c:
+	Use the dir functions.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit-utils.c:
 	* gedit/gedit-utils.h:
 	* gedit/gedit-app.c:
