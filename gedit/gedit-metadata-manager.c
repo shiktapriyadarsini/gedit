@@ -221,19 +221,15 @@ parseItem (xmlDocPtr doc, xmlNodePtr cur)
 static gchar *
 get_metadata_filename (void)
 {
-	gchar *config_dir;
-	gchar *metadata = NULL;
+	const gchar *cache_dir;
+	gchar *metadata;
 	
-	config_dir = gedit_utils_get_config_dir ();
+	cache_dir = g_get_user_cache_dir ();
 	
-	if (config_dir != NULL)
-	{
-		metadata = g_build_filename (config_dir,
-					     "gedit",
-					     METADATA_FILE,
-					     NULL);
-		g_free (config_dir);
-	}
+	metadata = g_build_filename (cache_dir,
+				     "gedit",
+				     METADATA_FILE,
+				     NULL);
 
 	return metadata;
 }

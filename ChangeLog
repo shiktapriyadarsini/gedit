@@ -1,5 +1,10 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/gedit-metadata-manager.c:
+	Changed to use the cache dir.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit-plugins-engine.c:
 	Include gedit-utils.h
 
