@@ -550,6 +550,7 @@ gedit_metadata_manager_save (gpointer data)
 			xmlSaveFormatFile (file_name, doc, 1);
 		}
 
+		g_free (cache_dir);
 		g_free (file_name);
 	}
 
