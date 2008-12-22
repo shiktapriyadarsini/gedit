@@ -1,3 +1,9 @@
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* gedit/gedit-utils.c:
+	* gedit/gedit-utils.h:
+	Removed get_stdin function.
+
 2008-12-21  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
 	* configure.ac:
