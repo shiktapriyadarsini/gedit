@@ -1,5 +1,16 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* win32/querymodules.bat:
+	* win32/Makefile.am:
+	* win32/build-installer:
+	* win32/README:
+	* win32/gedit.iss.in:
+	* configure.ac:
+	* Makefile.am:
+	Added win32 installer scripts based on glom ones.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/Makefile.am:
 	Change LOADER_SOURCES name to POSIXIO_FILES.
 

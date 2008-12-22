@@ -417,7 +417,9 @@ plugins/sort/Makefile
 plugins/spell/Makefile
 plugins/taglist/Makefile
 plugins/time/Makefile
-po/Makefile.in])
+po/Makefile.in
+win32/gedit.iss
+win32/Makefile])
 
 AC_OUTPUT
 

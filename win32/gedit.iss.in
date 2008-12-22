@@ -1,0 +1,167 @@
+[Setup]
+AppName=gedit
+AppVerName=gedit @VERSION@
+DefaultDirName={pf}\gedit
+DefaultGroupName=gedit
+UninstallDisplayIcon={app}\gedit.exe
+Uninstallable=yes
+AppPublisher=GNOME
+AppPublisherURL=http://www.gedit.org/
+AppVersion=@VERSION@
+OutputBaseFilename=gedit-setup-@VERSION@-INSTALLERREVISION
+
+[Components]
+Name: "gtk"; Description: "GTK+ runtime environment"; Types: full compact custom; Flags: fixed
+Name: "python"; Description: "Python runtime and modules"; Types: full compact custom; Flags: fixed
+Name: "main"; Description: "Glom"; Types: full compact custom; Flags: fixed
+Name: "locale"; Description: "Translations"; Types: full compact custom; Flags: fixed
+
+; TODO: Enable languages separately
+
+[Tasks]
+Name: common; Description: "For all users"; Components: main; Flags: exclusive
+Name: user; Description: "For the current user only"; Components: main; Flags: exclusive unchecked
+
+[Icons]
+; Common task icons
+Name: "{commonprograms}\{groupname}\gedit"; Filename: "{app}\bin\gedit.exe"; Tasks: common
+Name: "{commonprograms}\{groupname}\Uninstall gedit"; Filename: "{uninstallexe}"; Tasks: common
+
+; User task icons
+Name: "{userprograms}\{groupname}\gedit"; Filename: "{app}\bin\gedit.exe"; Tasks: user
+Name: "{userprograms}\{groupname}\Uninstall gedit"; Filename: "{uninstallexe}"; Tasks: user
+
+[Files]
+
+; GTK+
+Source: "bin\intl.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\iconv.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\zlib1.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libpng12-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\jpeg62.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libtiff3.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libxml2.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libxslt-1.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libglib-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgobject-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgio-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgmodule-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgthread-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\gspawn-win32-helper.exe"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\gspawn-win32-helper-console.exe"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libatk-1.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libpango-1.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libpangocairo-1.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libpangowin32-1.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libcairo-2.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgdk-win32-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgdk_pixbuf-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgtk-win32-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+
+; Other glom dependency DLLs
+Source: "bin\libORBit-2-0.dll"; DestDir: "{app}\bin"; Components: main
+Source: "bin\libORBit-imodule-2-0.dll"; DestDir: "{app}\bin"; Components: main
+Source: "bin\libORBitCosNaming-2-0.dll"; DestDir: "{app}\bin"; Components: main
+Source: "bin\libgconf-2-4.dll"; DestDir: "{app}\bin"; Components: main
+Source: "bin\libgettextpo-0.dll"; DestDir: "{app}\bin"; Components: main
+Source: "bin\libgtksourceview-2.0-0.dll"; DestDir: "{app}\bin"; Components: main
+
+; Python modules
+Source: "bin\python25.dll"; DestDir: "{app}\bin"; Components: python
+; TODO: I would like to install these into python/ instead of /bin, but I
+; could not get python to locate them there (setting PYTHONPATH with setenv()
+; in Glom's main() does not work).
+; TODO: Change component of gda.pyd and glom.pyd to main instead of python
+; since we also need these when the user installed python and pygtk on its own.
+Source: "python/*.py"; DestDir: "{app}\bin"; Components: python; Flags: recursesubdirs
+Source: "python/*.pyd"; DestDir: "{app}\bin"; Components: python; Flags: recursesubdirs
+
+; gedit executables
+Source: "bin\gedit.exe"; DestDir: "{app}\bin"; Components: main
+
+; Modules
+;Source: "lib/gtk-2.0/2.10.0/immodules/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/immodules"; Components: gtk
+;Source: "gtk-query-immodules-2.0.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
+Source: "etc/gtk-2.0/gdk-pixbuf.loaders"; DestDir: "{app}\etc\gtk-2.0"; Components: gtk;
+
+Source: "lib/gtk-2.0/2.10.0/engines/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/engines"; Components: gtk
+
+;Source: "lib/gtk-2.0/2.10.0/loaders/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/loaders"; Components: gtk
+;Source: "gdk-pixbuf-query-loaders.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
+Source: "etc/gtk-2.0/gdk-pixbuf.loaders"; DestDir: "{app}\etc\gtk-2.0"; Components: gtk;
+
+;Source: "lib/pango/1.6.0/modules/*"; DestDir: "{app}/lib/pango/1.6.0/modules"; Components: gtk;
+;Source: "pango-querymodules.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
+
+Source: "share/themes/MS-Windows/*"; DestDir: "{app}/share/themes/MS-Windows"; Flags: recursesubdirs; Components: gtk
+Source: "etc/gtk-2.0/gtkrc"; DestDir: "{app}/etc/gtk-2.0"; Components: gtk
+;Source: "querymodules.bat"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
+
+;Source: "lib/gnome-vfs-2.0/modules/*.dll"; DestDir: "{app}/lib/gnome-vfs-2.0/modules"; Components: main;
+;Source: "etc/gnome-vfs-2.0/modules/default-modules.conf"; DestDir: "{app}/etc/gnome-vfs-2.0/modules"; Components: main;
+
+; GtkSourceView
+Source: "share/gtksourceview-2.0/language-specs/*"; DestDir: "{app}/share/gtksourceview-2.0/language-specs"; Components: main
+Source: "share/gtksourceview-2.0/styles/*"; DestDir: "{app}/share/gtksourceview-2.0/styles"; Components: main
+
+; Icons
+Source: "share/icons/hicolor/48x48/apps/gedit.png"; DestDir: "{app}/share/icons/hicolor/48x48/apps"; Components: main
+Source: "share/pixmaps/gedit.png"; DestDir: "{app}/share/pixmaps"; Components: main
+
+; Other shared gedit files
+Source: "share/gedit-2/ui/*"; DestDir: "{app}/share/gedit-2/ui"; Components: main
+Source: "share/gedit-2/icons/gedit-plugin.png"; DestDir: "{app}/share/gedit-2/icons"; Components: main
+Source: "share/gedit-2/taglist/*"; DestDir: "{app}/share/gedit-2/taglist"; Components: main; Flags: recursesubdirs
+Source: "share/gedit-2/plugins/*"; DestDir: "{app}/share/gedit-2/plugins"; Components: main; Flags: recursesubdirs
+;Source: "share/glom/doc/*"; Destdir: "{app}/share/glom/doc/"; Components: main; Flags: recursesubdirs
+Source: "share/gedit-2/logo/gedit-logo.png"; Destdir: "{app}/share/gedit-2/logo/"; Components: main; Flags: recursesubdirs
+
+;Source: "share/themes/MS-Windows/*"; DestDir: "{app}/share/themes/MS-Windows"; Flags: recursesubdirs; Components: gtk
+
+; Locales
+Source: "lib\locale\*"; DestDir: "{app}\lib\locale\"; Flags: recursesubdirs; Components: locale
+Source: "share\locale\*"; DestDir: "{app}\share\locale\"; Flags: recursesubdirs; Components: locale
+
+; Register .glom file type if we install for all users. Is there a possibility
+; to register a type just for a single user?
+;[Registry]
+;Root: HKCR; Subkey: ".txt"; ValueType: string; ValueData: "geditfile"; Flags: deletevalue uninsdeletekeyifempty uninsdeletevalue; Tasks: common
+;Root: HKCR; Subkey: ".txt"; ValueType: string; ValueName: "Content Type"; ValueData: "application/x-glom"; Flags: deletevalue uninsdeletekeyifempty uninsdeletevalue; Tasks: common
+
+[Dirs]
+;Name: "{app}\etc\pango";
+;Name: "{app}\etc\gtk-2.0";
+
+[Run]
+Filename: "{app}\bin\querymodules.bat"; StatusMsg: "Querying modules..."; Flags: runhidden
+
+[Code]
+{ Remove generated files not generated by the installer }
+
+//procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+//begin
+//	if CurUninstallStep = usUninstall then
+//	begin
+//		DeleteFile(ExpandConstant('{app}') + '\etc\gtk-2.0\gtk.immodules');
+//		DeleteFile(ExpandConstant('{app}') + '\etc\gtk-2.0\gdk-pixbuf.loaders');
+//		DeleteFile(ExpandConstant('{app}') + '\etc\pango\pango.modules');
+//	end;
+//end;
+
+//procedure DeinitializeUninstall();
+//begin
+//	{ Remove main dir and etc/ which are not removed automatically,
+//          probably because of the querymodule files not installed by the
+//          installer }
+//	DelTree(ExpandConstant('{app}') + '\etc', TRUE, TRUE, TRUE);
+//	DelTree(ExpandConstant('{app}'), TRUE, FALSE, FALSE);
+//end;
+
+// Skip Components selection, all components are required anyway
+function ShouldSkipPage(CurPageID: Integer): Boolean;
+begin
+	if CurPageID = wpSelectComponents then
+		Result := True
+	else
+		Result := False;
+end;
