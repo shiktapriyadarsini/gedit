@@ -179,6 +179,10 @@ cp /local/share/gedit-2/taglist/* installer/share/gedit-2/taglist || exit
 mkdir -p installer/share/gedit-2/plugins || exit
 cp -R /local/share/gedit-2/plugins/* installer/share/gedit-2/plugins || exit
 
+#GConf schemas
+mkdir -p installer/etc/gconf/schemas || exit
+cp /local/etc/gconf/schemas/gedit* installer/etc/gconf/schemas || exit
+
 #mkdir -p installer/share/icons/hicolor/48x48/apps || exit
 #cp /local/share/icons/hicolor/48x48/apps/gedit.png installer/share/icons/hicolor/48x48/apps || exit
 

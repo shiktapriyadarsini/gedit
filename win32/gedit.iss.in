@@ -112,6 +112,9 @@ Source: "share/gedit-2/taglist/*"; DestDir: "{app}/share/gedit-2/taglist"; Compo
 Source: "share/gedit-2/plugins/*"; DestDir: "{app}/share/gedit-2/plugins"; Components: main; Flags: recursesubdirs
 Source: "share/gedit-2/logo/gedit-logo.png"; Destdir: "{app}/share/gedit-2/logo/"; Components: main; Flags: recursesubdirs
 
+; GConf schemas
+Source: "etc/gconf/schemas/*"; DestDir: "{app}/etc/gconf/schemas"; Components: main; Flags: recursesubdirs
+
 ; Locales
 ;Source: "lib\locale\*"; DestDir: "{app}\lib\locale\"; Flags: recursesubdirs; Components: locale
 Source: "share\locale\*"; DestDir: "{app}\share\locale\"; Flags: recursesubdirs; Components: locale

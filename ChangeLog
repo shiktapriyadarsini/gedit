@@ -1,5 +1,11 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* win32/build-installer:
+	* win32/gedit.iss.in:
+	Add gconf schemas.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/dialogs/gedit-open-location-dialog.c:
 	* gedit/dialogs/gedit-encodings-dialog.c:
 	* gedit/dialogs/gedit-preferences-dialog.c:
