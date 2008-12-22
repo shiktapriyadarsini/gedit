@@ -13,6 +13,7 @@ INCLUDES =								\
 	$(WARN_CFLAGS)							\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DDATADIR=\""$(datadir)"\"					\
+	-DLIBDIR=\""$(libdir)"\"					\
 	-DGEDIT_DATADIR=\""$(datadir)/gedit-2"\"			\
 	-DGEDIT_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"		\
 	-DGEDIT_UIDIR=\""$(datadir)/gedit-2/ui/"\"			\
@@ -76,7 +77,8 @@ NOINST_H_FILES =			\
 	gedit-prefs-manager-private.h	\
 	sexy-icon-entry.h		\
 	gedittextregion.h		\
-	gedit-session.h
+	gedit-session.h			\
+	gedit-dirs.h
 
 INST_H_FILES =				\
 	gedit-app.h			\
@@ -130,6 +132,7 @@ libgedit_la_SOURCES = 			\
 	gedit-commands-view.c		\
 	gedit-convert.c			\
 	gedit-debug.c			\
+	gedit-dirs.c			\
 	gedit-document.c 		\
 	gedit-document-loader.c		\
 	gedit-gio-document-loader.c	\

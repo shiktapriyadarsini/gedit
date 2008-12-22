@@ -44,7 +44,7 @@
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-style-scheme-manager.h"
-#include "gedit-utils.h"
+#include "gedit-dirs.h"
 
 static void gedit_prefs_manager_editor_font_changed	(GConfClient *client,
 							 guint        cnxn_id,
@@ -176,7 +176,7 @@ get_gedit_state_file ()
 
 		state_file = g_key_file_new ();
 	
-		config_dir = gedit_utils_get_config_dir ();
+		config_dir = gedit_dirs_get_config_dir ();
 	
 		if (config_dir == NULL)
 		{
@@ -279,7 +279,7 @@ gedit_state_file_sync ()
 	state_file = get_gedit_state_file ();
 	g_return_val_if_fail (state_file != NULL, FALSE);
 
-	config_dir = gedit_utils_get_config_dir ();
+	config_dir = gedit_dirs_get_config_dir ();
 
 	if (config_dir == NULL)
 	{

@@ -36,7 +36,7 @@
 
 #include "gedit-style-scheme-manager.h"
 #include "gedit-prefs-manager.h"
-#include "gedit-utils.h"
+#include "gedit-dirs.h"
 
 static GtkSourceStyleSchemeManager *style_scheme_manager = NULL;
 
@@ -46,7 +46,7 @@ get_gedit_styles_path (void)
 	gchar *config_dir;
 	gchar *dir = NULL;
 	
-	config_dir = gedit_utils_get_config_dir ();
+	config_dir = gedit_dirs_get_config_dir ();
 	
 	if (config_dir != NULL)
 	{

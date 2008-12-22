@@ -1,5 +1,18 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/gedit-utils.c:
+	* gedit/gedit-utils.h:
+	* gedit/gedit-app.c:
+	* gedit/gedit-dirs.c:
+	* gedit/gedit-prefs-manager-app.c:
+	* gedit/gedit-dirs.h:
+	* gedit/gedit-style-scheme-manager.c:
+	* gedit/gedit-plugins-engine.c:
+	* gedit/Makefile.am:
+	Added gedit-dirs.[ch] to manage the dir cross platform funcs.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* win32/build-installer:
 	* win32/gedit.iss.in:
 	Fix a few paths and comment python files for now.

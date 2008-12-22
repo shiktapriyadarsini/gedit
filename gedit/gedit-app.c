@@ -44,6 +44,7 @@
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-enum-types.h"
+#include "gedit-dirs.h"
 
 
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
@@ -132,7 +133,7 @@ get_accel_file (void)
 	gchar *config_dir;
 	gchar *accel_file = NULL;
 	
-	config_dir = gedit_utils_get_config_dir ();
+	config_dir = gedit_dirs_get_config_dir ();
 	
 	if (config_dir != NULL)
 	{
@@ -180,7 +181,7 @@ get_page_setup_file (void)
 	gchar *config_dir;
 	gchar *setup = NULL;
 	
-	config_dir = gedit_utils_get_config_dir ();
+	config_dir = gedit_dirs_get_config_dir ();
 	
 	if (config_dir != NULL)
 	{
@@ -254,7 +255,7 @@ get_print_settings_file (void)
 	gchar *config_dir;
 	gchar *settings = NULL;
 	
-	config_dir = gedit_utils_get_config_dir ();
+	config_dir = gedit_dirs_get_config_dir ();
 	
 	if (config_dir != NULL)
 	{
