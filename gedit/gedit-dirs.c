@@ -54,7 +54,7 @@ gedit_dirs_get_gedit_data_dir (void)
 #else
 	gchar *win32_dir;
 	
-	win32_dir = g_win32_get_package_installation_directory_of_module (NULL)
+	win32_dir = g_win32_get_package_installation_directory_of_module (NULL);
 
 	data_dir = g_build_filename (win32_dir,
 				     "share",
@@ -79,7 +79,7 @@ gedit_dirs_get_gedit_lib_dir (void)
 #else
 	gchar *win32_dir;
 	
-	win32_dir = g_win32_get_package_installation_directory_of_module (NULL)
+	win32_dir = g_win32_get_package_installation_directory_of_module (NULL);
 
 	lib_dir = g_build_filename (win32_dir,
 				    "lib",
