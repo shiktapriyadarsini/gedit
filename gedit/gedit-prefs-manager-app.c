@@ -44,6 +44,7 @@
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-style-scheme-manager.h"
+#include "gedit-utils.h"
 
 static void gedit_prefs_manager_editor_font_changed	(GConfClient *client,
 							 guint        cnxn_id,
@@ -139,7 +140,7 @@ static void gedit_prefs_manager_lockdown_changed	(GConfClient *client,
 #define GEDIT_STATE_DEFAULT_SIDE_PANEL_SIZE	200
 #define GEDIT_STATE_DEFAULT_BOTTOM_PANEL_SIZE	140
 
-#define GEDIT_STATE_FILE_LOCATION ".gnome2/gedit-2"
+#define GEDIT_STATE_FILE_LOCATION "gedit-2"
 
 #define GEDIT_STATE_WINDOW_GROUP "window"
 #define GEDIT_STATE_WINDOW_STATE "state"
@@ -169,22 +170,24 @@ get_gedit_state_file ()
 
 	if (state_file == NULL)
 	{
-		const gchar *home;
+		gchar *config_dir;
 		gchar *path;
 		GError *err = NULL;
 
 		state_file = g_key_file_new ();
-
-		home = g_get_home_dir ();
-		if (home == NULL)
+	
+		config_dir = gedit_utils_get_config_dir ();
+	
+		if (config_dir == NULL)
 		{
-			g_warning ("Could not get HOME directory\n");
+			g_warning ("Could not get CONFIG directory\n");
 			goto out;
 		}
-
-		path = g_build_filename (home,
+		
+		path = g_build_filename (config_dir,
 					 GEDIT_STATE_FILE_LOCATION,
 					 NULL);
+		g_free (config_dir);
 
 		if (!g_key_file_load_from_file (state_file,
 						path,
@@ -266,7 +269,7 @@ static gboolean
 gedit_state_file_sync ()
 {
 	GKeyFile *state_file;
-	const gchar *home;
+	gchar *config_dir;
 	gchar *path;
 	gchar *content;
 	gsize length;
@@ -276,16 +279,18 @@ gedit_state_file_sync ()
 	state_file = get_gedit_state_file ();
 	g_return_val_if_fail (state_file != NULL, FALSE);
 
-	home = g_get_home_dir ();
-	if (home == NULL)
+	config_dir = gedit_utils_get_config_dir ();
+
+	if (config_dir == NULL)
 	{
-		g_warning ("Could not get HOME directory\n");
+		g_warning ("Could not get CONFIG directory\n");
 		return ret;
 	}
-
-	path = g_build_filename (home,
+		
+	path = g_build_filename (config_dir,
 				 GEDIT_STATE_FILE_LOCATION,
 				 NULL);
+	g_free (config_dir);
 
 	content = g_key_file_to_data (state_file,
 				      &length,

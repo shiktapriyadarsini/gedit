@@ -1,5 +1,16 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/gedit-metadata-manager.c:
+	* gedit/gedit-utils.c:
+	* gedit/gedit-utils.h:
+	* gedit/gedit-app.c:
+	* gedit/gedit-prefs-manager-app.c:
+	* gedit/gedit-style-scheme-manager.c:
+	* gedit/gedit-plugins-engine.c:
+	Use gedit_utils_get_config_dir instead of hardcoding to .gnome2.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit-app.c:
 	Use a standard rol for all platforms.
 

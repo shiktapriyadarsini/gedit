@@ -129,20 +129,21 @@ gedit_app_class_init (GeditAppClass *klass)
 static gchar *
 get_accel_file (void)
 {
-	const gchar *home;
-
-	home = g_get_home_dir();
-
-	if (home != NULL)
+	gchar *config_dir;
+	gchar *accel_file = NULL;
+	
+	config_dir = gedit_utils_get_config_dir ();
+	
+	if (config_dir != NULL)
 	{
-		return g_build_filename (home,
-					 ".gnome2",
-					 "accels"
-					 "gedit",
-					 NULL);
+		accel_file = g_build_filename (config_dir,
+					       "accels",
+					       "gedit",
+					       NULL);
+		g_free (config_dir);
 	}
 
-	return NULL;
+	return accel_file;
 }
 
 static void
@@ -176,19 +177,21 @@ save_accels (void)
 static gchar *
 get_page_setup_file (void)
 {
-	const gchar *home;
-
-	home = g_get_home_dir ();
-	if (home != NULL)
+	gchar *config_dir;
+	gchar *setup = NULL;
+	
+	config_dir = gedit_utils_get_config_dir ();
+	
+	if (config_dir != NULL)
 	{
-		return g_build_filename (home,
-					 ".gnome2",
-					 "gedit",
-					 GEDIT_PAGE_SETUP_FILE,
-					 NULL);
+		setup = g_build_filename (config_dir,
+					  "gedit",
+					  GEDIT_PAGE_SETUP_FILE,
+					  NULL);
+		g_free (config_dir);
 	}
 
-	return NULL;
+	return setup;
 }
 
 static void
@@ -248,19 +251,21 @@ save_page_setup (GeditApp *app)
 static gchar *
 get_print_settings_file (void)
 {
-	const gchar *home;
-
-	home = g_get_home_dir ();
-	if (home != NULL)
+	gchar *config_dir;
+	gchar *settings = NULL;
+	
+	config_dir = gedit_utils_get_config_dir ();
+	
+	if (config_dir != NULL)
 	{
-		return g_build_filename (home,
-					 ".gnome2",
-					 "gedit",
-					 GEDIT_PRINT_SETTINGS_FILE,
-					 NULL);
+		settings = g_build_filename (config_dir,
+					     "gedit",
+					     GEDIT_PRINT_SETTINGS_FILE,
+					     NULL);
+		g_free (config_dir);
 	}
 
-	return NULL;
+	return settings;
 }
 
 static void
@@ -441,7 +446,7 @@ gen_role (void)
 	
 	g_get_current_time (&result);
 
-	return g_strdup_printf ("gedit-window-%ld-%ld-%d@%s",
+	return g_strdup_printf ("gedit-window-%ld-%ld-%d-%s",
 				result.tv_sec,
 				result.tv_usec,
 				serial++,

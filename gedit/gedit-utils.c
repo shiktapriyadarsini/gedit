@@ -1428,3 +1428,23 @@ gedit_utils_decode_uri (const gchar *uri,
 	
 	return TRUE;
 }
+
+gchar *
+gedit_utils_get_config_dir ()
+{
+#ifndef G_OS_WIN32
+	const gchar *home;
+	
+	home = g_get_home_dir ();
+	
+	if (home != NULL)
+	{
+		return g_build_filename (home,
+					 ".gnome2",
+					 NULL);
+	}
+#else
+	return g_strdup (g_get_user_config_dir ());
+#endif
+	return NULL;
+}

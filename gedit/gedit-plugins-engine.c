@@ -45,8 +45,6 @@
 #include "gedit-plugin-loader.h"
 #include "gedit-object-module.h"
 
-#define USER_GEDIT_LOCATION ".gnome2/gedit/"
-
 #define GEDIT_PLUGINS_ENGINE_BASE_KEY "/apps/gedit-2/plugins"
 #define GEDIT_PLUGINS_ENGINE_KEY GEDIT_PLUGINS_ENGINE_BASE_KEY "/active-plugins"
 
@@ -178,27 +176,24 @@ load_all_real (GeditPluginsEngine *engine,
 	       LoadDirCallback     callback,
 	       gpointer            userdata)
 {
-	const gchar *home;
+	gchar *config_dir;
 	const gchar *pdirs_env = NULL;
 	gchar **pdirs;
 	int i;
 
 	/* load user's plugins */
-	home = g_get_home_dir ();
-
-	if (home == NULL)
-	{
-		g_warning ("Could not get HOME directory\n");
-	}
-	else
+	config_dir = gedit_utils_get_config_dir ();
+	
+	if (config_dir != NULL)
 	{
 		gchar *pdir;
 		gboolean ret = TRUE;
 
-		pdir = g_build_filename (home,
-					 USER_GEDIT_LOCATION,
+		pdir = g_build_filename (config_dir,
+					 "gedit",
 					 dir,
 					 NULL);
+		g_free (config_dir);
 
 		if (g_file_test (pdir, G_FILE_TEST_IS_DIR))
 			ret = load_dir_real (engine, pdir, suffix, callback, userdata);

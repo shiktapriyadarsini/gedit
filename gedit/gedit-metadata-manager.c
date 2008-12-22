@@ -36,6 +36,7 @@
 #include <libxml/xmlreader.h>
 #include "gedit-metadata-manager.h"
 #include "gedit-debug.h"
+#include "gedit-utils.h"
 
 /*
 #define GEDIT_METADATA_VERBOSE_DEBUG	1
@@ -220,16 +221,21 @@ parseItem (xmlDocPtr doc, xmlNodePtr cur)
 static gchar *
 get_metadata_filename (void)
 {
-	const gchar *home;
-
-	home = g_get_home_dir ();
-	if (home == NULL)
+	gchar *config_dir;
+	gchar *metadata = NULL;
+	
+	config_dir = gedit_utils_get_config_dir ();
+	
+	if (config_dir != NULL)
 	{
-		g_warning ("Could not get home directory\n");
-		return NULL;
+		metadata = g_build_filename (config_dir,
+					     "gedit",
+					     METADATA_FILE,
+					     NULL);
+		g_free (config_dir);
 	}
 
-	return g_build_filename (home, ".gnome2", METADATA_FILE, NULL);
+	return metadata;
 }
 
 static gboolean
