@@ -36,7 +36,7 @@
 #include <libxml/xmlreader.h>
 #include "gedit-metadata-manager.h"
 #include "gedit-debug.h"
-#include "gedit-utils.h"
+#include "gedit-dirs.h"
 
 /*
 #define GEDIT_METADATA_VERBOSE_DEBUG	1
@@ -221,15 +221,16 @@ parseItem (xmlDocPtr doc, xmlNodePtr cur)
 static gchar *
 get_metadata_filename (void)
 {
-	const gchar *cache_dir;
+	gchar *cache_dir;
 	gchar *metadata;
-	
-	cache_dir = g_get_user_cache_dir ();
-	
+
+	cache_dir = gedit_dirs_get_cache_dir ();
+
 	metadata = g_build_filename (cache_dir,
-				     "gedit",
 				     METADATA_FILE,
 				     NULL);
+
+	g_free (cache_dir);
 
 	return metadata;
 }
@@ -538,7 +539,17 @@ gedit_metadata_manager_save (gpointer data)
 	file_name = get_metadata_filename ();
 	if (file_name != NULL)
 	{
-		xmlSaveFormatFile (file_name, doc, 1);
+		gchar *cache_dir;
+		int res;
+
+		/* make sure the cache dir exists */
+		cache_dir = gedit_dirs_get_cache_dir ();
+		res = g_mkdir_with_parents (cache_dir, 0777);
+		if (res != -1)
+		{
+			xmlSaveFormatFile (file_name, doc, 1);
+		}
+
 		g_free (file_name);
 	}
 

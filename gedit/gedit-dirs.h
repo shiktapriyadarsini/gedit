@@ -30,6 +30,8 @@ G_BEGIN_DECLS
 
 gchar		*gedit_dirs_get_config_dir		(void);
 
+gchar		*gedit_dirs_get_cache_dir		(void);
+
 gchar		*gedit_dirs_get_gedit_data_dir		(void);
 
 gchar		*gedit_dirs_get_gedit_lib_dir		(void);

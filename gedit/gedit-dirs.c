@@ -25,6 +25,8 @@
 gchar *
 gedit_dirs_get_config_dir ()
 {
+	gchar *config_dir = NULL;
+
 #ifndef G_OS_WIN32
 	const gchar *home;
 	
@@ -32,14 +34,27 @@ gedit_dirs_get_config_dir ()
 	
 	if (home != NULL)
 	{
-		return g_build_filename (home,
-					 ".gnome2",
-					 NULL);
+		config_dir = g_build_filename (home,
+					       ".gnome2",
+					       NULL);
 	}
 #else
-	return g_strdup (g_get_user_config_dir ());
+	config_dir = g_strdup (g_get_user_config_dir ());
 #endif
-	return NULL;
+
+	return config_dir;
+}
+
+gchar *
+gedit_dirs_get_cache_dir ()
+{
+	const gchar *cache_dir;
+
+	cache_dir = g_get_user_cache_dir ();
+
+	return g_build_filename (cache_dir,
+				 "gedit",
+				 NULL);
 }
 
 gchar *
