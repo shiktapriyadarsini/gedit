@@ -436,25 +436,16 @@ window_destroy (GeditWindow *window,
 static gchar *
 gen_role (void)
 {
-	time_t t;
+	GTimeVal result;
 	static gint serial;
+	
+	g_get_current_time (&result);
 
-	t = time (NULL);
-
-#ifndef G_OS_WIN32
-	return g_strdup_printf ("gedit-window-%d-%d-%d-%ld-%d@%s",
-				getpid (),
-				getgid (),
-				getppid (),
-				(long) t,
+	return g_strdup_printf ("gedit-window-%ld-%ld-%d@%s",
+				result.tv_sec,
+				result.tv_usec,
 				serial++,
 				g_get_host_name ());
-#else
-	return g_strdup_printf ("gedit-window-%ld-%d@%s",
-				(long) t,
-				serial++,
-				g_get_host_name ());
-#endif
 }
 	     
 static GeditWindow *
