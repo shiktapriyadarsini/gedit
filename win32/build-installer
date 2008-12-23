@@ -114,10 +114,10 @@ echo "Copying modules..."
 #cp $PYTHONDIR/Lib/site-packages/gtk-2.0/gda.pyd installer/bin || exit
 #strip installer/bin/*.pyd || exit
 
-#mkdir -p installer/lib/gtk-2.0/2.10.0/immodules || exit
-#cp /lib/gtk-2.0/2.10.0/immodules/*.dll installer/lib/gtk-2.0/2.10.0/immodules || exit
-#strip installer/lib/gtk-2.0/2.10.0/immodules/*.dll || exit
-#cp /bin/gtk-query-immodules-2.0.exe installer || exit
+mkdir -p installer/lib/gtk-2.0/2.10.0/immodules || exit
+cp /lib/gtk-2.0/2.10.0/immodules/*.dll installer/lib/gtk-2.0/2.10.0/immodules || exit
+strip installer/lib/gtk-2.0/2.10.0/immodules/*.dll || exit
+cp /bin/gtk-query-immodules-2.0.exe installer/bin || exit
 
 mkdir -p installer/lib/gtk-2.0/2.10.0/engines || exit
 cp /lib/gtk-2.0/2.10.0/engines/libwimp.dll installer/lib/gtk-2.0/2.10.0/engines || exit

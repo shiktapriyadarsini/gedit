@@ -80,8 +80,8 @@ Source: "bin\libgtksourceview-2.0-0.dll"; DestDir: "{app}\bin"; Components: main
 Source: "bin\gedit.exe"; DestDir: "{app}\bin"; Components: main
 
 ; Modules
-;Source: "lib/gtk-2.0/2.10.0/immodules/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/immodules"; Components: gtk
-;Source: "gtk-query-immodules-2.0.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
+Source: "lib/gtk-2.0/2.10.0/immodules/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/immodules"; Components: gtk
+Source: "bin/gtk-query-immodules-2.0.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
 Source: "etc/gtk-2.0/gdk-pixbuf.loaders"; DestDir: "{app}\etc\gtk-2.0"; Components: gtk;
 
 Source: "lib/gtk-2.0/2.10.0/engines/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/engines"; Components: gtk

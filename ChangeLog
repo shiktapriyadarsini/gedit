@@ -2,6 +2,12 @@
 
 	* win32/build-installer:
 	* win32/gedit.iss.in:
+	Include the immodules too.
+
+2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* win32/build-installer:
+	* win32/gedit.iss.in:
 	Add pixbuf loaders.
 
 2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
