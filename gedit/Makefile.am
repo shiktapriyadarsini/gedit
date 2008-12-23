@@ -14,7 +14,6 @@ INCLUDES =								\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DDATADIR=\""$(datadir)"\"					\
 	-DLIBDIR=\""$(libdir)"\"					\
-	-DGEDIT_DATADIR=\""$(datadir)/gedit-2"\"			\
 	-DGEDIT_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"		\
 	-DGEDIT_ICONDIR=\""$(datadir)/gedit-2/icons"\"
 
