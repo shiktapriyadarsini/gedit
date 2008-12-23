@@ -65,6 +65,7 @@ Source: "bin\libORBitCosNaming-2-0.dll"; DestDir: "{app}\bin"; Components: main
 Source: "bin\libgconf-2-4.dll"; DestDir: "{app}\bin"; Components: main
 Source: "bin\libgettextpo-0.dll"; DestDir: "{app}\bin"; Components: main
 Source: "bin\libgtksourceview-2.0-0.dll"; DestDir: "{app}\bin"; Components: main
+Source: "lib\GConf\2\*.dll"; DestDir: "{app}\lib\GConf\2"; Components: main
 
 ; Python modules
 ;Source: "bin\python25.dll"; DestDir: "{app}\bin"; Components: python
@@ -115,8 +116,9 @@ Source: "share/gedit-2/logo/gedit-logo.png"; Destdir: "{app}/share/gedit-2/logo/
 Source: "share/gedit-2/plugins/*"; DestDir: "{app}/share/gedit-2/plugins"; Components: main; Flags: recursesubdirs
 Source: "lib/gedit-2/plugins/*"; DestDir: "{app}/lib/gedit-2/plugins"; Components: main; Flags: recursesubdirs
 
-; GConf schemas
+; GConf
 Source: "etc/gconf/schemas/*"; DestDir: "{app}/etc/gconf/schemas"; Components: main; Flags: recursesubdirs
+Source: "libexec\gconfd-2.exe"; DestDir: "{app}\libexec"; Components: main
 
 ; Locales
 ;Source: "lib\locale\*"; DestDir: "{app}\lib\locale\"; Flags: recursesubdirs; Components: locale

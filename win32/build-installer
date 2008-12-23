@@ -181,9 +181,14 @@ cp -R /local/share/gedit-2/plugins/* installer/share/gedit-2/plugins || exit
 mkdir -p installer/lib/gedit-2/plugins || exit
 cp -R /local/lib/gedit-2/plugins/* installer/lib/gedit-2/plugins || exit
 
-#GConf schemas
+#GConf
 mkdir -p installer/etc/gconf/schemas || exit
 cp /local/etc/gconf/schemas/gedit* installer/etc/gconf/schemas || exit
+mkdir -p installer/lib/GConf/2 || exit
+cp /lib/GConf/2/* installer/lib/GConf/2 || exit
+strip installer/lib/GConf/2/*.dll || exit
+mkdir -p installer/libexec || exit
+cp /libexec/gconfd-2.exe installer/libexec || exit
 
 #mkdir -p installer/share/icons/hicolor/48x48/apps || exit
 #cp /local/share/icons/hicolor/48x48/apps/gedit.png installer/share/icons/hicolor/48x48/apps || exit
