@@ -175,9 +175,11 @@ cp /local/share/gedit-2/logo/gedit-logo.png installer/share/gedit-2/logo || exit
 mkdir -p installer/share/gedit-2/taglist || exit
 cp /local/share/gedit-2/taglist/* installer/share/gedit-2/taglist || exit
 
-#Plugins FIXME: This can be improved
+#Plugins
 mkdir -p installer/share/gedit-2/plugins || exit
 cp -R /local/share/gedit-2/plugins/* installer/share/gedit-2/plugins || exit
+mkdir -p installer/lib/gedit-2/plugins || exit
+cp -R /local/lib/gedit-2/plugins/* installer/lib/gedit-2/plugins || exit
 
 #GConf schemas
 mkdir -p installer/etc/gconf/schemas || exit

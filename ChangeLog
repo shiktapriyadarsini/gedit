@@ -1,5 +1,11 @@
 2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* win32/build-installer:
+	* win32/gedit.iss.in:
+	Add plugin files.
+
+2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit.c:
 	* gedit/Makefile.am:
 	* gedit/gedit-dirs.c:
