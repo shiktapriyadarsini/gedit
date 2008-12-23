@@ -1,5 +1,11 @@
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* win32/build-installer:
+	* win32/gedit.iss.in:
+	Fix path.
+
+2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit-dirs.c:
 	Fixed bug in win32 part.
 

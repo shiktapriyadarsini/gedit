@@ -53,7 +53,7 @@ cp /bin/libgdk-win32-2.0-0.dll installer/bin || exit
 cp /bin/libgdk_pixbuf-2.0-0.dll installer/bin || exit
 
 cp /bin/libgtk-win32-2.0-0.dll installer/bin || exit
-cp /gtksourceview/bin/libgtksourceview-2.0-0.dll installer/bin || exit
+cp /local/bin/libgtksourceview-2.0-0.dll installer/bin || exit
 
 cp /bin/libORBit-2-0.dll installer/bin || exit
 cp /bin/libORBitCosNaming-2-0.dll installer/bin || exit

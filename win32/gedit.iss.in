@@ -13,7 +13,7 @@ OutputBaseFilename=gedit-setup-@VERSION@-INSTALLERREVISION
 [Components]
 Name: "gtk"; Description: "GTK+ runtime environment"; Types: full compact custom; Flags: fixed
 Name: "python"; Description: "Python runtime and modules"; Types: full compact custom; Flags: fixed
-Name: "main"; Description: "Glom"; Types: full compact custom; Flags: fixed
+Name: "main"; Description: "Gedit"; Types: full compact custom; Flags: fixed
 Name: "locale"; Description: "Translations"; Types: full compact custom; Flags: fixed
 
 ; TODO: Enable languages separately
@@ -58,7 +58,7 @@ Source: "bin\libgdk-win32-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libgdk_pixbuf-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libgtk-win32-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
 
-; Other glom dependency DLLs
+; Other gedit dependency DLLs
 Source: "bin\libORBit-2-0.dll"; DestDir: "{app}\bin"; Components: main
 Source: "bin\libORBit-imodule-2-0.dll"; DestDir: "{app}\bin"; Components: main
 Source: "bin\libORBitCosNaming-2-0.dll"; DestDir: "{app}\bin"; Components: main
@@ -119,7 +119,7 @@ Source: "etc/gconf/schemas/*"; DestDir: "{app}/etc/gconf/schemas"; Components: m
 ;Source: "lib\locale\*"; DestDir: "{app}\lib\locale\"; Flags: recursesubdirs; Components: locale
 Source: "share\locale\*"; DestDir: "{app}\share\locale\"; Flags: recursesubdirs; Components: locale
 
-; Register .glom file type if we install for all users. Is there a possibility
+; Register .gedit file type if we install for all users. Is there a possibility
 ; to register a type just for a single user?
 ;[Registry]
 ;Root: HKCR; Subkey: ".txt"; ValueType: string; ValueData: "geditfile"; Flags: deletevalue uninsdeletekeyifempty uninsdeletevalue; Tasks: common
