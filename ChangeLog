@@ -1,5 +1,11 @@
 2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/gedit.c:
+	* gedit/Makefile.am:
+	Use dir functions to manage the icons path.
+
+2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit-commands-help.c:
 	* gedit/Makefile.am:
 	Manage the logo with the dir funcs.

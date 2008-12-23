@@ -14,8 +14,7 @@ INCLUDES =								\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DDATADIR=\""$(datadir)"\"					\
 	-DLIBDIR=\""$(libdir)"\"					\
-	-DGEDIT_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"		\
-	-DGEDIT_ICONDIR=\""$(datadir)/gedit-2/icons"\"
+	-DGEDIT_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	
 
 gedit_SOURCES = \
 	gedit.c

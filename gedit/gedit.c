@@ -48,6 +48,7 @@
 #include "gedit-app.h"
 #include "gedit-commands.h"
 #include "gedit-debug.h"
+#include "gedit-dirs.h"
 #include "gedit-encodings.h"
 #include "gedit-metadata-manager.h"
 #include "gedit-plugins-engine.h"
@@ -472,6 +473,8 @@ main (int argc, char *argv[])
 	GeditApp *app;
 	gboolean restored = FALSE;
 	GError *error = NULL;
+	gchar *data_dir;
+	gchar *icon_dir;
 
 	/* Init glib threads asap */
 	g_thread_init (NULL);
@@ -547,8 +550,15 @@ main (int argc, char *argv[])
 
 	gedit_debug_message (DEBUG_APP, "Set icon");
 	
+	data_dir = gedit_dirs_get_gedit_data_dir ();
+	icon_dir = g_build_filename (data_dir,
+				     "icons",
+				     NULL);
+	g_free (data_dir);
+	
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
-					   GEDIT_ICONDIR);
+					   icon_dir);
+	g_free (icon_dir);
 
 	/* Set the associated .desktop file */
 #if !defined PLATFORM_OSX && !defined G_OS_WIN32
