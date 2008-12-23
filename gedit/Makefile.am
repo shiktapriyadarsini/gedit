@@ -16,9 +16,6 @@ INCLUDES =								\
 	-DLIBDIR=\""$(libdir)"\"					\
 	-DGEDIT_DATADIR=\""$(datadir)/gedit-2"\"			\
 	-DGEDIT_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"		\
-	-DGEDIT_UIDIR=\""$(datadir)/gedit-2/ui/"\"			\
-	-DGEDIT_PLUGINDIR=\""$(libdir)/gedit-2/plugins"\"		\
-	-DGEDIT_LOADERDIR=\""$(libdir)/gedit-2/plugin-loaders"\"	\
 	-DGEDIT_ICONDIR=\""$(datadir)/gedit-2/icons"\"
 
 gedit_SOURCES = \

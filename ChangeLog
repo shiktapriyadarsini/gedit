@@ -1,3 +1,11 @@
+2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* gedit/gedit-dirs.c:
+	* gedit/gedit-dirs.h:
+	* gedit/gedit-plugins-engine.c:
+	* gedit/Makefile.am:
+	Use dir functions to manage the loaders and plugins.
+
 2008-12-22  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
 	* win32/build-installer:

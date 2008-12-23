@@ -36,6 +36,10 @@ gchar		*gedit_dirs_get_gedit_data_dir		(void);
 
 gchar		*gedit_dirs_get_gedit_lib_dir		(void);
 
+gchar		*gedit_dirs_get_gedit_plugin_dir	(void);
+
+gchar		*gedit_dirs_get_gedit_loader_dir	(void);
+
 gchar		*gedit_dirs_get_ui_file			(const gchar *file);
 
 G_END_DECLS

@@ -226,13 +226,18 @@ load_all_real (GeditPluginsEngine *engine,
 static void
 load_all_plugins (GeditPluginsEngine *engine)
 {
+	gchar *plugin_dir;
+
+	plugin_dir = gedit_dirs_get_gedit_plugin_dir ();
+
 	load_all_real (engine, 
 		       "plugins", 
 		       "GEDIT_PLUGINS_PATH", 
-		       GEDIT_PLUGINDIR,
+		       plugin_dir,
 		       PLUGIN_EXT,
 		       load_plugin_info,
 		       NULL);
+	g_free (plugin_dir);
 }
 
 static guint
@@ -482,15 +487,20 @@ get_plugin_loader (GeditPluginsEngine *engine, GeditPluginInfo *info)
 
 	if (loader_info == NULL)
 	{
+		gchar *loader_dir;
+		
+		loader_dir = gedit_dirs_get_gedit_loader_dir ();
+		
 		/* loader could not be found in the hash, try to find it by 
 		   scanning */
 		load_all_real (engine, 
 			       "plugin-loaders", 
 			       NULL, 
-			       GEDIT_LOADERDIR,
+			       loader_dir,
 			       LOADER_EXT,
 			       (LoadDirCallback)load_loader,
 			       NULL);
+		g_free (loader_dir);
 		
 		loader_info = (LoaderInfo *)g_hash_table_lookup (
 				engine->priv->loaders, 
