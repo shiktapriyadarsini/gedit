@@ -562,9 +562,13 @@ main (int argc, char *argv[])
 					   icon_dir);
 	g_free (icon_dir);
 
-	/* Set the associated .desktop file */
 #if !defined PLATFORM_OSX && !defined G_OS_WIN32
+	/* Set the associated .desktop file */
 	egg_set_desktop_file (DATADIR "/applications/gedit.desktop");
+#else
+	/* manually set name and icon */
+	g_set_application_name("gedit");
+	gtk_window_set_default_icon_name ("accessories-text-editor");
 #endif
 
 	/* Load user preferences */
