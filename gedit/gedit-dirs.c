@@ -83,6 +83,31 @@ gedit_dirs_get_gedit_data_dir (void)
 }
 
 gchar *
+gedit_dirs_get_gedit_locale_dir (void)
+{
+	gchar *locale_dir;
+
+#ifndef G_OS_WIN32
+	locale_dir = g_build_filename (DATADIR,
+				       "locale",
+				       NULL);
+#else
+	gchar *win32_dir;
+	
+	win32_dir = g_win32_get_package_installation_directory_of_module (NULL);
+
+	locale_dir = g_build_filename (win32_dir,
+				       "share",
+				       "locale",
+				       NULL);
+	
+	g_free (win32_dir);
+#endif
+
+	return locale_dir;
+}
+
+gchar *
 gedit_dirs_get_gedit_lib_dir (void)
 {
 	gchar *lib_dir;

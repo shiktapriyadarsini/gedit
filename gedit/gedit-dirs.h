@@ -34,6 +34,8 @@ gchar		*gedit_dirs_get_cache_dir		(void);
 
 gchar		*gedit_dirs_get_gedit_data_dir		(void);
 
+gchar		*gedit_dirs_get_gedit_locale_dir	(void);
+
 gchar		*gedit_dirs_get_gedit_lib_dir		(void);
 
 gchar		*gedit_dirs_get_gedit_plugin_dir	(void);

@@ -2,6 +2,14 @@
 
 	* gedit/gedit.c:
 	* gedit/Makefile.am:
+	* gedit/gedit-dirs.c:
+	* gedit/gedit-dirs.h:
+	Use dir func to manage the locale dir.
+
+2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* gedit/gedit.c:
+	* gedit/Makefile.am:
 	Use dir functions to manage the icons path.
 
 2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>

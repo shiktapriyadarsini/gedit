@@ -473,7 +473,7 @@ main (int argc, char *argv[])
 	GeditApp *app;
 	gboolean restored = FALSE;
 	GError *error = NULL;
-	gchar *data_dir;
+	gchar *dir;
 	gchar *icon_dir;
 
 	/* Init glib threads asap */
@@ -485,7 +485,9 @@ main (int argc, char *argv[])
 	
 	setlocale (LC_ALL, "");
 
-	bindtextdomain (GETTEXT_PACKAGE, GEDIT_LOCALEDIR);
+	dir = gedit_dirs_get_gedit_locale_dir ();
+	bindtextdomain (GETTEXT_PACKAGE, dir);
+	g_free (dir);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
@@ -550,11 +552,11 @@ main (int argc, char *argv[])
 
 	gedit_debug_message (DEBUG_APP, "Set icon");
 	
-	data_dir = gedit_dirs_get_gedit_data_dir ();
-	icon_dir = g_build_filename (data_dir,
+	dir = gedit_dirs_get_gedit_data_dir ();
+	icon_dir = g_build_filename (dir,
 				     "icons",
 				     NULL);
-	g_free (data_dir);
+	g_free (dir);
 	
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
 					   icon_dir);

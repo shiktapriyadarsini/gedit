@@ -13,8 +13,7 @@ INCLUDES =								\
 	$(WARN_CFLAGS)							\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DDATADIR=\""$(datadir)"\"					\
-	-DLIBDIR=\""$(libdir)"\"					\
-	-DGEDIT_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	
+	-DLIBDIR=\""$(libdir)"\"					
 
 gedit_SOURCES = \
 	gedit.c
