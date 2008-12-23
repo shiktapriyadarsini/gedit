@@ -58,6 +58,44 @@ gedit_dirs_get_cache_dir ()
 }
 
 gchar *
+gedit_dirs_get_accels_file ()
+{
+	gchar *accels = NULL;
+
+#ifndef G_OS_WIN32
+	const gchar *home;
+	
+	home = g_get_home_dir ();
+
+	if (home != NULL)
+	{
+		/* on linux accels are stored in .gnome2/accels
+		 * for historic reasons (backward compat with the
+		 * old libgnome that took care of saving them */
+		accels = g_build_filename (home,
+					   ".gnome2",
+					   "accels",
+					   "gedit",
+					   NULL);
+	}
+#else
+	{
+		gchar *config_dir = NULL;
+
+		config_dir = gedit_dirs_get_config_dir ();
+		accels = g_build_filename (config_dir,
+					   "accels",
+					   "gedit",
+					   NULL);
+
+		g_free (config_dir);
+	}
+#endif
+
+	return accels;
+}
+
+gchar *
 gedit_dirs_get_gedit_data_dir (void)
 {
 	gchar *data_dir;

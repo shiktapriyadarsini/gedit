@@ -127,32 +127,12 @@ gedit_app_class_init (GeditAppClass *klass)
 	g_type_class_add_private (object_class, sizeof(GeditAppPrivate));
 }
 
-static gchar *
-get_accel_file (void)
-{
-	gchar *config_dir;
-	gchar *accel_file = NULL;
-	
-	config_dir = gedit_dirs_get_config_dir ();
-	
-	if (config_dir != NULL)
-	{
-		accel_file = g_build_filename (config_dir,
-					       "accels",
-					       "gedit",
-					       NULL);
-		g_free (config_dir);
-	}
-
-	return accel_file;
-}
-
 static void
 load_accels (void)
 {
 	gchar *filename;
 
-	filename = get_accel_file ();
+	filename = gedit_dirs_get_accels_file ();
 	if (filename != NULL)
 	{
 		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);		
@@ -166,7 +146,7 @@ save_accels (void)
 {
 	gchar *filename;
 
-	filename = get_accel_file ();
+	filename = gedit_dirs_get_accels_file ();
 	if (filename != NULL)
 	{
 		gedit_debug_message (DEBUG_APP, "Saving keybindings in %s\n", filename);		
