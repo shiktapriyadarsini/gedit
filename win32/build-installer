@@ -123,10 +123,10 @@ mkdir -p installer/lib/gtk-2.0/2.10.0/engines || exit
 cp /lib/gtk-2.0/2.10.0/engines/libwimp.dll installer/lib/gtk-2.0/2.10.0/engines || exit
 strip installer/lib/gtk-2.0/2.10.0/engines/libwimp.dll || exit
 
-#mkdir -p installer/lib/gtk-2.0/2.10.0/loaders || exit
-#cp /lib/gtk-2.0/2.10.0/loaders/*.dll installer/lib/gtk-2.0/2.10.0/loaders || exit
-#strip installer/lib/gtk-2.0/2.10.0/loaders/*.dll || exit
-#cp /bin/gdk-pixbuf-query-loaders.exe installer || exit
+mkdir -p installer/lib/gtk-2.0/2.10.0/loaders || exit
+cp /lib/gtk-2.0/2.10.0/loaders/*.dll installer/lib/gtk-2.0/2.10.0/loaders || exit
+strip installer/lib/gtk-2.0/2.10.0/loaders/*.dll || exit
+cp /bin/gdk-pixbuf-query-loaders.exe installer/bin || exit
 
 # TODO: Can we omit this?
 mkdir -p installer/etc/gtk-2.0

@@ -86,8 +86,8 @@ Source: "etc/gtk-2.0/gdk-pixbuf.loaders"; DestDir: "{app}\etc\gtk-2.0"; Componen
 
 Source: "lib/gtk-2.0/2.10.0/engines/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/engines"; Components: gtk
 
-;Source: "lib/gtk-2.0/2.10.0/loaders/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/loaders"; Components: gtk
-;Source: "gdk-pixbuf-query-loaders.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
+Source: "lib/gtk-2.0/2.10.0/loaders/*"; DestDir: "{app}/lib/gtk-2.0/2.10.0/loaders"; Components: gtk
+Source: "bin/gdk-pixbuf-query-loaders.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
 Source: "etc/gtk-2.0/gdk-pixbuf.loaders"; DestDir: "{app}\etc\gtk-2.0"; Components: gtk;
 
 ;Source: "lib/pango/1.6.0/modules/*"; DestDir: "{app}/lib/pango/1.6.0/modules"; Components: gtk;
