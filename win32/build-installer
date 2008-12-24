@@ -205,8 +205,9 @@ strip installer/lib/GConf/2/*.dll || exit
 mkdir -p installer/libexec || exit
 cp /libexec/gconfd-2.exe installer/libexec || exit
 
-#mkdir -p installer/share/icons/hicolor/48x48/apps || exit
-#cp /local/share/icons/hicolor/48x48/apps/gedit.png installer/share/icons/hicolor/48x48/apps || exit
+#Icons
+mkdir -p installer/share/icons || exit
+cp -R /share/icons/* installer/share/icons || exit
 
 # This is used for the glom icon in the initial dialog. I'm not sure why GTK
 # does not already get it from the icons/ directory, but it took me already

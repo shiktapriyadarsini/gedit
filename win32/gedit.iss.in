@@ -106,8 +106,7 @@ Source: "share\gtksourceview-2.0\language-specs\*"; DestDir: "{app}\share\gtksou
 Source: "share\gtksourceview-2.0\styles\*"; DestDir: "{app}\share\gtksourceview-2.0\styles"; Components: main
 
 ; Icons
-;Source: "share\icons\hicolor\48x48\apps\gedit.png"; DestDir: "{app}\share\icons\hicolor\48x48\apps"; Components: main
-;Source: "share\pixmaps\gedit.png"; DestDir: "{app}\share\pixmaps"; Components: main
+Source: "share\icons"; DestDir: "{app}\share\icons"; Components: main; Flags: recursesubdirs
 
 ; Other shared gedit files
 Source: "share\gedit-2\ui\*"; DestDir: "{app}\share\gedit-2\ui"; Components: main
@@ -127,12 +126,6 @@ Source: "libexec\gconfd-2.exe"; DestDir: "{app}\libexec"; Components: main
 ; Locales
 ;Source: "lib\locale\*"; DestDir: "{app}\lib\locale\"; Flags: recursesubdirs; Components: locale
 Source: "share\locale\*"; DestDir: "{app}\share\locale\"; Flags: recursesubdirs; Components: locale
-
-; Register .gedit file type if we install for all users. Is there a possibility
-; to register a type just for a single user?
-;[Registry]
-;Root: HKCR; Subkey: ".txt"; ValueType: string; ValueData: "geditfile"; Flags: deletevalue uninsdeletekeyifempty uninsdeletevalue; Tasks: common
-;Root: HKCR; Subkey: ".txt"; ValueType: string; ValueName: "Content Type"; ValueData: "application\x-glom"; Flags: deletevalue uninsdeletekeyifempty uninsdeletevalue; Tasks: common
 
 [Dirs]
 ;Name: "{app}\etc\pango";
