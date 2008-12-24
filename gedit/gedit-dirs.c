@@ -85,7 +85,7 @@ gedit_dirs_get_user_accels_file ()
 	{
 		gchar *config_dir = NULL;
 
-		config_dir = gedit_dirs_get_config_dir ();
+		config_dir = gedit_dirs_get_user_config_dir ();
 		accels = g_build_filename (config_dir,
 					   "accels",
 					   "gedit",
