@@ -43,6 +43,7 @@
 #include "gedit-view.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
+#include "gedit-plugins-engine.h"
 #include "gedit-style-scheme-manager.h"
 #include "gedit-dirs.h"
 
@@ -125,6 +126,11 @@ static void gedit_prefs_manager_max_recents_changed	(GConfClient *client,
 static void gedit_prefs_manager_auto_save_changed	(GConfClient *client,
 							 guint        cnxn_id,
 							 GConfEntry  *entry,
+							 gpointer     user_data);
+
+static void gedit_prefs_manager_active_plugins_changed	(GConfClient *client,
+							 guint        cnxn_id, 
+							 GConfEntry  *entry, 
 							 gpointer     user_data);
 
 static void gedit_prefs_manager_lockdown_changed	(GConfClient *client,
@@ -627,6 +633,11 @@ gedit_prefs_manager_app_init (void)
 				GPM_PREFS_DIR,
 				GCONF_CLIENT_PRELOAD_RECURSIVE,
 				NULL);
+
+		gconf_client_add_dir (gedit_prefs_manager->gconf_client,
+				GPM_PLUGINS_DIR,
+				GCONF_CLIENT_PRELOAD_RECURSIVE,
+				NULL);
 		
 		gconf_client_add_dir (gedit_prefs_manager->gconf_client,
 				GPM_LOCKDOWN_DIR,
@@ -712,7 +723,12 @@ gedit_prefs_manager_app_init (void)
 				GPM_SAVE_DIR,
 				gedit_prefs_manager_auto_save_changed,
 				NULL, NULL, NULL);
-		
+
+		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
+				GPM_ACTIVE_PLUGINS,
+				gedit_prefs_manager_active_plugins_changed,
+				NULL, NULL, NULL);
+
 		gconf_client_notify_add (gedit_prefs_manager->gconf_client,
 				GPM_LOCKDOWN_DIR,
 				gedit_prefs_manager_lockdown_changed,
@@ -1535,6 +1551,31 @@ gedit_prefs_manager_auto_save_changed (GConfClient *client,
 		}
 
 		g_list_free (docs);
+	}
+}
+
+static void 
+gedit_prefs_manager_active_plugins_changed (GConfClient *client,
+					    guint        cnxn_id,
+					    GConfEntry  *entry,
+					    gpointer     user_data)
+{
+	gedit_debug (DEBUG_PREFS);
+
+	g_return_if_fail (entry->key != NULL);
+	g_return_if_fail (entry->value != NULL);
+
+	if (strcmp (entry->key, GPM_ACTIVE_PLUGINS) == 0)
+	{
+		if ((entry->value->type == GCONF_VALUE_LIST) && 
+		    (gconf_value_get_list_type (entry->value) == GCONF_VALUE_STRING))
+		{
+			GeditPluginsEngine *engine;
+
+			engine = gedit_plugins_engine_get_default ();
+
+			gedit_plugins_engine_active_plugins_changed (engine);
+		}
 	}
 }
 

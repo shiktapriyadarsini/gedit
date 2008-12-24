@@ -1,7 +1,14 @@
 2008-12-24  Paolo Borelli  <pborelli@katamail.com>
 
-	* gedit-language-manager.[ch]:
-	* gedit-documemt.c:
+	* gedit/gedit-plugins-engine.[ch]:
+	* gedit/gedit-prefs-manager.[ch]:
+	* gedit/gedit-prefs-manager.[ch]:
+	Centralize all gconf related code in the prefs manager.
+
+2008-12-24  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-language-manager.[ch]:
+	* gedit/gedit-documemt.c:
 	Use gtk_source_language_manager_guess_language instead of
 	scanning mime types manually.
 
