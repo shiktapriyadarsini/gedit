@@ -132,7 +132,7 @@ load_accels (void)
 {
 	gchar *filename;
 
-	filename = gedit_dirs_get_accels_file ();
+	filename = gedit_dirs_get_user_accels_file ();
 	if (filename != NULL)
 	{
 		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);		
@@ -146,7 +146,7 @@ save_accels (void)
 {
 	gchar *filename;
 
-	filename = gedit_dirs_get_accels_file ();
+	filename = gedit_dirs_get_user_accels_file ();
 	if (filename != NULL)
 	{
 		gedit_debug_message (DEBUG_APP, "Saving keybindings in %s\n", filename);		
@@ -160,13 +160,12 @@ get_page_setup_file (void)
 {
 	gchar *config_dir;
 	gchar *setup = NULL;
-	
-	config_dir = gedit_dirs_get_config_dir ();
+
+	config_dir = gedit_dirs_get_user_config_dir ();
 	
 	if (config_dir != NULL)
 	{
 		setup = g_build_filename (config_dir,
-					  "gedit",
 					  GEDIT_PAGE_SETUP_FILE,
 					  NULL);
 		g_free (config_dir);
@@ -234,13 +233,12 @@ get_print_settings_file (void)
 {
 	gchar *config_dir;
 	gchar *settings = NULL;
-	
-	config_dir = gedit_dirs_get_config_dir ();
-	
+
+	config_dir = gedit_dirs_get_user_config_dir ();
+
 	if (config_dir != NULL)
 	{
 		settings = g_build_filename (config_dir,
-					     "gedit",
 					     GEDIT_PRINT_SETTINGS_FILE,
 					     NULL);
 		g_free (config_dir);

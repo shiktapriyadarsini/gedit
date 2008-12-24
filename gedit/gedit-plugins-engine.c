@@ -183,7 +183,7 @@ load_all_real (GeditPluginsEngine *engine,
 	int i;
 
 	/* load user's plugins */
-	config_dir = gedit_dirs_get_config_dir ();
+	config_dir = gedit_dirs_get_user_config_dir ();
 	
 	if (config_dir != NULL)
 	{
@@ -191,7 +191,6 @@ load_all_real (GeditPluginsEngine *engine,
 		gboolean ret = TRUE;
 
 		pdir = g_build_filename (config_dir,
-					 "gedit",
 					 dir,
 					 NULL);
 		g_free (config_dir);
@@ -228,7 +227,7 @@ load_all_plugins (GeditPluginsEngine *engine)
 {
 	gchar *plugin_dir;
 
-	plugin_dir = gedit_dirs_get_gedit_plugin_dir ();
+	plugin_dir = gedit_dirs_get_gedit_plugins_dir ();
 
 	load_all_real (engine, 
 		       "plugins", 
@@ -488,9 +487,9 @@ get_plugin_loader (GeditPluginsEngine *engine, GeditPluginInfo *info)
 	if (loader_info == NULL)
 	{
 		gchar *loader_dir;
-		
-		loader_dir = gedit_dirs_get_gedit_loader_dir ();
-		
+
+		loader_dir = gedit_dirs_get_gedit_plugin_loaders_dir ();
+
 		/* loader could not be found in the hash, try to find it by 
 		   scanning */
 		load_all_real (engine, 

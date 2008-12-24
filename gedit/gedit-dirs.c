@@ -23,7 +23,7 @@
 #include "gedit-dirs.h"
 
 gchar *
-gedit_dirs_get_config_dir ()
+gedit_dirs_get_user_config_dir ()
 {
 	gchar *config_dir = NULL;
 
@@ -31,22 +31,25 @@ gedit_dirs_get_config_dir ()
 	const gchar *home;
 	
 	home = g_get_home_dir ();
-	
+
 	if (home != NULL)
 	{
 		config_dir = g_build_filename (home,
 					       ".gnome2",
+					       "gedit",
 					       NULL);
 	}
 #else
-	config_dir = g_strdup (g_get_user_config_dir ());
+	config_dir = g_build_filename (g_get_user_config_dir (),
+				       "gedit",
+				       NULL);
 #endif
 
 	return config_dir;
 }
 
 gchar *
-gedit_dirs_get_cache_dir ()
+gedit_dirs_get_user_cache_dir ()
 {
 	const gchar *cache_dir;
 
@@ -58,7 +61,7 @@ gedit_dirs_get_cache_dir ()
 }
 
 gchar *
-gedit_dirs_get_accels_file ()
+gedit_dirs_get_user_accels_file ()
 {
 	gchar *accels = NULL;
 
@@ -171,7 +174,7 @@ gedit_dirs_get_gedit_lib_dir (void)
 }
 
 gchar *
-gedit_dirs_get_gedit_plugin_dir (void)
+gedit_dirs_get_gedit_plugins_dir (void)
 {
 	gchar *lib_dir;
 	gchar *plugin_dir;
@@ -187,7 +190,7 @@ gedit_dirs_get_gedit_plugin_dir (void)
 }
 
 gchar *
-gedit_dirs_get_gedit_loader_dir (void)
+gedit_dirs_get_gedit_plugin_loaders_dir (void)
 {
 	gchar *lib_dir;
 	gchar *loader_dir;

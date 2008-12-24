@@ -45,13 +45,12 @@ get_gedit_styles_path (void)
 {
 	gchar *config_dir;
 	gchar *dir = NULL;
-	
-	config_dir = gedit_dirs_get_config_dir ();
-	
+
+	config_dir = gedit_dirs_get_user_config_dir ();
+
 	if (config_dir != NULL)
 	{
 		dir = g_build_filename (config_dir,
-					"gedit",
 					"styles",
 					NULL);
 		g_free (config_dir);

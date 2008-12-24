@@ -224,7 +224,7 @@ get_metadata_filename (void)
 	gchar *cache_dir;
 	gchar *metadata;
 
-	cache_dir = gedit_dirs_get_cache_dir ();
+	cache_dir = gedit_dirs_get_user_cache_dir ();
 
 	metadata = g_build_filename (cache_dir,
 				     METADATA_FILE,
@@ -543,8 +543,8 @@ gedit_metadata_manager_save (gpointer data)
 		int res;
 
 		/* make sure the cache dir exists */
-		cache_dir = gedit_dirs_get_cache_dir ();
-		res = g_mkdir_with_parents (cache_dir, 0777);
+		cache_dir = gedit_dirs_get_user_cache_dir ();
+		res = g_mkdir_with_parents (cache_dir, 0755);
 		if (res != -1)
 		{
 			xmlSaveFormatFile (file_name, doc, 1);

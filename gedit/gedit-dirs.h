@@ -28,11 +28,11 @@
 
 G_BEGIN_DECLS
 
-gchar		*gedit_dirs_get_config_dir		(void);
+gchar		*gedit_dirs_get_user_config_dir		(void);
 
-gchar		*gedit_dirs_get_cache_dir		(void);
+gchar		*gedit_dirs_get_user_cache_dir		(void);
 
-gchar		*gedit_dirs_get_accels_file		(void);
+gchar		*gedit_dirs_get_user_accels_file	(void);
 
 gchar		*gedit_dirs_get_gedit_data_dir		(void);
 
@@ -40,9 +40,10 @@ gchar		*gedit_dirs_get_gedit_locale_dir	(void);
 
 gchar		*gedit_dirs_get_gedit_lib_dir		(void);
 
-gchar		*gedit_dirs_get_gedit_plugin_dir	(void);
+gchar		*gedit_dirs_get_gedit_plugins_dir	(void);
 
-gchar		*gedit_dirs_get_gedit_loader_dir	(void);
+gchar		*gedit_dirs_get_gedit_plugin_loaders_dir
+							(void);
 
 gchar		*gedit_dirs_get_ui_file			(const gchar *file);
 

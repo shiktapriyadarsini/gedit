@@ -163,6 +163,26 @@ static gint side_panel_active_page = 0;
 static gint bottom_panel_active_page = 0;
 static gint active_file_filter = -1;
 
+
+static gchar *
+get_state_filename (void)
+{
+	gchar *config_dir;
+	gchar *filename = NULL;
+
+	config_dir = gedit_dirs_get_user_config_dir ();
+
+	if (config_dir != NULL)
+	{
+		filename = g_build_filename (config_dir,
+					     GEDIT_STATE_FILE_LOCATION,
+					     NULL);
+		g_free (config_dir);
+	}
+
+	return filename;
+}
+
 static GKeyFile *
 get_gedit_state_file ()
 {
@@ -170,27 +190,15 @@ get_gedit_state_file ()
 
 	if (state_file == NULL)
 	{
-		gchar *config_dir;
-		gchar *path;
+		gchar *filename;
 		GError *err = NULL;
 
 		state_file = g_key_file_new ();
-	
-		config_dir = gedit_dirs_get_config_dir ();
-	
-		if (config_dir == NULL)
-		{
-			g_warning ("Could not get CONFIG directory\n");
-			goto out;
-		}
-		
-		path = g_build_filename (config_dir,
-					 GEDIT_STATE_FILE_LOCATION,
-					 NULL);
-		g_free (config_dir);
+
+		filename = get_state_filename ();
 
 		if (!g_key_file_load_from_file (state_file,
-						path,
+						filename,
 						G_KEY_FILE_NONE,
 						&err))
 		{
@@ -204,11 +212,9 @@ get_gedit_state_file ()
 			g_error_free (err);
 		}
 
-		g_free (path);
+		g_free (filename);
 	}
 
- out:
-	g_return_val_if_fail (state_file != NULL, NULL);
 	return state_file;
 }
 
@@ -270,27 +276,29 @@ gedit_state_file_sync ()
 {
 	GKeyFile *state_file;
 	gchar *config_dir;
-	gchar *path;
-	gchar *content;
+	gchar *filename = NULL;
+	gchar *content = NULL;
 	gsize length;
+	gint res;
 	GError *err = NULL;
 	gboolean ret = FALSE;
 
 	state_file = get_gedit_state_file ();
 	g_return_val_if_fail (state_file != NULL, FALSE);
 
-	config_dir = gedit_dirs_get_config_dir ();
-
+	config_dir = gedit_dirs_get_user_config_dir ();
 	if (config_dir == NULL)
 	{
-		g_warning ("Could not get CONFIG directory\n");
+		g_warning ("Could not get config directory\n");
 		return ret;
 	}
-		
-	path = g_build_filename (config_dir,
-				 GEDIT_STATE_FILE_LOCATION,
-				 NULL);
-	g_free (config_dir);
+
+	res = g_mkdir_with_parents (config_dir, 0755);
+	if (res < 0)
+	{
+		g_warning ("Could not create config directory\n");
+		goto out;
+	}
 
 	content = g_key_file_to_data (state_file,
 				      &length,
@@ -303,15 +311,18 @@ gedit_state_file_sync ()
 		goto out;
 	}
 
-	if ((content != NULL) &&
-	    (!g_file_set_contents (path,
-				   content,
-				   length,
-				   &err)))
+	if (content != NULL)
 	{
-		g_warning ("Could not write gedit state file: %s\n",
-			   err->message);
-		goto out;
+		filename = get_state_filename ();
+		if (!g_file_set_contents (filename,
+					  content,
+					  length,
+					  &err))
+		{
+			g_warning ("Could not write gedit state file: %s\n",
+				   err->message);
+			goto out;
+		}
 	}
 
 	ret = TRUE;
@@ -320,10 +331,11 @@ gedit_state_file_sync ()
 	if (err != NULL)
 		g_error_free (err);
 
+	g_free (config_dir);
+	g_free (filename);
 	g_free (content);
-	g_free (path);
 
-	return TRUE;
+	return ret;
 }
 
 /* Window state */
