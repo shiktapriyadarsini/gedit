@@ -739,6 +739,54 @@ gedit_document_new (void)
 	return GEDIT_DOCUMENT (g_object_new (GEDIT_TYPE_DOCUMENT, NULL));
 }
 
+static GtkSourceLanguage *
+guess_language (const gchar *uri,
+		const gchar *mime_type)
+
+{
+	gchar *data;
+	GtkSourceLanguage *language = NULL;
+
+	data = gedit_metadata_manager_get (uri, "language");
+
+	if (data != NULL)
+	{
+		gedit_debug_message (DEBUG_DOCUMENT, "Language from metadata: %s", data);
+
+		if (strcmp (data, "_NORMAL_") != 0)
+		{
+			language = gtk_source_language_manager_get_language (
+						gedit_get_language_manager (),
+						data);
+		}
+
+		g_free (data);
+	}
+	else
+	{
+		gedit_debug_message (DEBUG_DOCUMENT, "Sniffing Language");
+
+		if (strcmp (mime_type, "text/plain") != 0)
+		{
+			GFile *file;
+			gchar *basename;
+
+			file = g_file_new_for_uri (uri);
+			basename = g_file_get_basename (file);
+
+			language = gtk_source_language_manager_guess_language (
+						gedit_get_language_manager (),
+						basename,
+						mime_type);
+
+			g_free (basename);
+			g_object_unref (file);
+		}
+	}
+
+	return language;
+}
+
 /* If mime type is null, we guess from the filename */
 /* If uri is null, we only set the mime-type */
 static void
@@ -796,35 +844,12 @@ set_uri (GeditDocument *doc,
 
 	if (!doc->priv->language_set_by_user)
 	{
-		gchar *data;
-		GtkSourceLanguage *language = NULL;
+		GtkSourceLanguage *language;
 
-		data = gedit_metadata_manager_get (doc->priv->uri, "language");
+		language = guess_language (doc->priv->uri, doc->priv->mime_type);
 
-		if (data != NULL)
-		{
-			gedit_debug_message (DEBUG_DOCUMENT, "Language: %s", data);
-
-			if (strcmp (data, "_NORMAL_") != 0)
-			{
-				language = gtk_source_language_manager_get_language (
-							gedit_get_language_manager (),
-							data);
-			}
-
-			g_free (data);
-		}
-		else
-		{
-			gedit_debug_message (DEBUG_DOCUMENT, "Language Normal");
-
-			if (strcmp (doc->priv->mime_type, "text/plain") != 0)
-			{
-				language = gedit_language_manager_get_language_from_mime_type (
-							gedit_get_language_manager (),
-							doc->priv->mime_type);
-			}
-		}
+		gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
+				     language != NULL ? gtk_source_language_get_name (language) : "None");
 
 		set_language (doc, language, FALSE);
 	}
@@ -1226,7 +1251,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 		size = gedit_document_saver_get_file_size (saver);
 		written = gedit_document_saver_get_bytes_written (saver);
 
-		gedit_debug_message (DEBUG_DOCUMENT, "save progress: %Lu of %Lu", written, size);
+		gedit_debug_message (DEBUG_DOCUMENT, "save progress: %" G_GINT64_FORMAT " of %" G_GINT64_FORMAT, written, size);
 
 		g_signal_emit (doc,
 			       document_signals[SAVING],

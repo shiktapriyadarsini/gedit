@@ -1,3 +1,10 @@
+2008-12-24  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit-language-manager.[ch]:
+	* gedit-documemt.c:
+	Use gtk_source_language_manager_guess_language instead of
+	scanning mime types manually.
+
 2008-12-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
 	* win32/build-installer:

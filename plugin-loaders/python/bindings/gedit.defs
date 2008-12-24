@@ -988,15 +988,6 @@
   )
 )
 
-(define-function language_manager_get_language_from_mime_type
-  (c-name "gedit_language_manager_get_language_from_mime_type")
-  (return-type "GtkSourceLanguage*")
-  (parameters
-    '("GtkSourceLanguageManager*" "lm")
-    '("const-gchar*" "mime_type")
-  )
-)
-
 ;; From ../../gedit/gedit-debug.h
 
 (define-function debug

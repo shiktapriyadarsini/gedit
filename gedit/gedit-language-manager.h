@@ -42,10 +42,6 @@ GSList				*gedit_language_manager_list_languages_sorted
 								(GtkSourceLanguageManager	*lm,
 								 gboolean			 include_hidden);
 
-GtkSourceLanguage		*gedit_language_manager_get_language_from_mime_type 
-								(GtkSourceLanguageManager	*lm,
-								 const gchar			*mime_type);
-
 G_END_DECLS
 
 #endif /* __GEDIT_LANGUAGES_MANAGER_H__ */
