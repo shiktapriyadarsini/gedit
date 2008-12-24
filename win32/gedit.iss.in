@@ -57,6 +57,7 @@ Source: "bin\libcairo-2.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libgdk-win32-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libgdk_pixbuf-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
 Source: "bin\libgtk-win32-2.0-0.dll"; DestDir: "{app}\bin"; Components: gtk
+Source: "bin\libgailutil-18.dll"; DestDir: "{app}\bin"; Components: gtk
 
 ; Other gedit dependency DLLs
 Source: "bin\libORBit-2-0.dll"; DestDir: "{app}\bin"; Components: main
@@ -90,6 +91,8 @@ Source: "lib\gtk-2.0\2.10.0\engines\*"; DestDir: "{app}\lib\gtk-2.0\2.10.0\engin
 Source: "lib\gtk-2.0\2.10.0\loaders\*"; DestDir: "{app}\lib\gtk-2.0\2.10.0\loaders"; Components: gtk
 Source: "bin\gdk-pixbuf-query-loaders.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;
 Source: "etc\gtk-2.0\gdk-pixbuf.loaders"; DestDir: "{app}\etc\gtk-2.0"; Components: gtk;
+
+Source: "lib\gtk-2.0\modules\*"; DestDir: "{app}\lib\gtk-2.0\modules"; Components: gtk
 
 ;Source: "lib\pango\1.6.0\modules\*"; DestDir: "{app}\lib\pango\1.6.0\modules"; Components: gtk;
 ;Source: "pango-querymodules.exe"; DestDir: "{app}\bin"; Components: gtk; Flags: deleteafterinstall;

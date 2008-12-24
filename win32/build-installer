@@ -61,6 +61,8 @@ cp /bin/libORBit-imodule-2-0.dll installer/bin || exit
 
 cp /bin/libgconf-2-4.dll installer/bin || exit
 
+cp /bin/libgailutil-18.dll installer/bin || exit
+
 echo "Stripping DLL files..."
 strip installer/bin/*.dll || exit
 strip installer/bin/*.exe || exit
@@ -127,6 +129,11 @@ mkdir -p installer/lib/gtk-2.0/2.10.0/loaders || exit
 cp /lib/gtk-2.0/2.10.0/loaders/*.dll installer/lib/gtk-2.0/2.10.0/loaders || exit
 strip installer/lib/gtk-2.0/2.10.0/loaders/*.dll || exit
 cp /bin/gdk-pixbuf-query-loaders.exe installer/bin || exit
+
+# Gail
+mkdir -p installer/lib/gtk-2.0/modules || exit
+cp /lib/gtk-2.0/modules/libgail.dll installer/lib/gtk-2.0/modules || exit
+strip installer/lib/gtk-2.0/modules/libgail.dll
 
 # TODO: Can we omit this?
 mkdir -p installer/etc/gtk-2.0
