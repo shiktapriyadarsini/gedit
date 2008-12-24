@@ -180,6 +180,8 @@ mkdir -p installer/share/gedit-2/plugins || exit
 cp -R /local/share/gedit-2/plugins/* installer/share/gedit-2/plugins || exit
 mkdir -p installer/lib/gedit-2/plugins || exit
 cp -R /local/lib/gedit-2/plugins/* installer/lib/gedit-2/plugins || exit
+mkdir -p installer/lib/gedit-2/plugin-loaders || exit
+cp -R /local/lib/gedit-2/plugin-loaders/* installer/lib/gedit-2/plugin-loaders || exit
 
 #GConf
 mkdir -p installer/etc/gconf/schemas || exit

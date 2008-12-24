@@ -115,6 +115,7 @@ Source: "share\gedit-2\logo\gedit-logo.png"; Destdir: "{app}\share\gedit-2\logo\
 ; Plugins
 Source: "share\gedit-2\plugins\*"; DestDir: "{app}\share\gedit-2\plugins"; Components: main; Flags: recursesubdirs
 Source: "lib\gedit-2\plugins\*"; DestDir: "{app}\lib\gedit-2\plugins"; Components: main; Flags: recursesubdirs
+Source: "lib\gedit-2\plugin-loaders\*"; DestDir: "{app}\lib\gedit-2\plugin-loaders"; Components: main; Flags: recursesubdirs
 
 ; GConf
 Source: "etc\gconf\*"; DestDir: "{app}\etc\gconf"; Components: main; Flags: recursesubdirs
