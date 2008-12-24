@@ -106,7 +106,7 @@ Source: "share\gtksourceview-2.0\language-specs\*"; DestDir: "{app}\share\gtksou
 Source: "share\gtksourceview-2.0\styles\*"; DestDir: "{app}\share\gtksourceview-2.0\styles"; Components: main
 
 ; Icons
-Source: "share\icons"; DestDir: "{app}\share\icons"; Components: main; Flags: recursesubdirs
+;Source: "share\icons\*"; DestDir: "{app}\share\icons"; Components: main; Flags: recursesubdirs
 
 ; Other shared gedit files
 Source: "share\gedit-2\ui\*"; DestDir: "{app}\share\gedit-2\ui"; Components: main
