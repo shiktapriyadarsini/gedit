@@ -118,6 +118,9 @@ Source: "lib/gedit-2/plugins/*"; DestDir: "{app}/lib/gedit-2/plugins"; Component
 
 ; GConf
 Source: "etc/gconf/schemas/*"; DestDir: "{app}/etc/gconf/schemas"; Components: main; Flags: recursesubdirs
+Source: "etc/gconf/2/*"; DestDir: "{app}/etc/gconf/2"; Components: main; Flags: recursesubdirs
+Source: "etc/gconf/gconf.xml.defaults/*"; DestDir: "{app}/etc/gconf/gconf.xml.defaults"; Components: main; Flags: recursesubdirs
+Source: "etc/gconf/gconf.xml.mandatory/*"; DestDir: "{app}/etc/gconf/gconf.xml.mandatory"; Components: main; Flags: recursesubdirs
 Source: "libexec\gconfd-2.exe"; DestDir: "{app}\libexec"; Components: main
 
 ; Locales

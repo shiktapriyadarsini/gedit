@@ -184,6 +184,12 @@ cp -R /local/lib/gedit-2/plugins/* installer/lib/gedit-2/plugins || exit
 #GConf
 mkdir -p installer/etc/gconf/schemas || exit
 cp /local/etc/gconf/schemas/gedit* installer/etc/gconf/schemas || exit
+mkdir -p installer/etc/gconf/2 || exit
+cp /etc/gconf/2/* installer/etc/gconf/2 || exit
+mkdir -p installer/etc/gconf/gconf.xml.defaults || exit
+cp -R /etc/gconf/gconf.xml.defaults/* installer/etc/gconf/gconf.xml.defaults || exit
+mkdir -p installer/etc/gconf/gconf.xml.mandatory || exit
+cp -R /etc/gconf/gconf.xml.mandatory/* installer/etc/gconf/gconf.xml.mandatory || exit
 mkdir -p installer/lib/GConf/2 || exit
 cp /lib/GConf/2/* installer/lib/GConf/2 || exit
 strip installer/lib/GConf/2/*.dll || exit
