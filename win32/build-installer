@@ -189,7 +189,7 @@ cp /etc/gconf/2/* installer/etc/gconf/2 || exit
 mkdir -p installer/etc/gconf/gconf.xml.defaults || exit
 cp -R /etc/gconf/gconf.xml.defaults/* installer/etc/gconf/gconf.xml.defaults || exit
 mkdir -p installer/etc/gconf/gconf.xml.mandatory || exit
-cp -R /etc/gconf/gconf.xml.mandatory/* installer/etc/gconf/gconf.xml.mandatory || exit
+cp -R /etc/gconf/gconf.xml.mandatory/ installer/etc/gconf/ || exit
 mkdir -p installer/lib/GConf/2 || exit
 cp /lib/GConf/2/* installer/lib/GConf/2 || exit
 strip installer/lib/GConf/2/*.dll || exit
