@@ -63,6 +63,8 @@ cp /bin/libgconf-2-4.dll installer/bin || exit
 
 cp /bin/libgailutil-18.dll installer/bin || exit
 
+cp /bin/libenchant.dll installer/bin || exit
+
 echo "Stripping DLL files..."
 strip installer/bin/*.dll || exit
 strip installer/bin/*.exe || exit
@@ -144,6 +146,13 @@ mkdir -p installer/share/themes || exit
 cp -R /share/themes/MS-Windows installer/share/themes || exit
 mkdir -p installer/etc/gtk-2.0 || exit
 echo "gtk-theme-name = \"MS-Windows\"" > installer/etc/gtk-2.0/gtkrc || exit
+
+# Enchant
+mkdir -p installer/lib/enchant || exit
+cp /lib/enchant/* installer/lib/enchant || exit
+strip installer/lib/enchant/*.dll || exit
+mkdir -p installer/share/enchant || exit
+cp /share/enchant/* installer/share/enchant || exit
 
 echo "Copying locales..."
 
