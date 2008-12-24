@@ -154,6 +154,12 @@ strip installer/lib/enchant/*.dll || exit
 mkdir -p installer/share/enchant || exit
 cp /share/enchant/* installer/share/enchant || exit
 
+# Iso codes
+mkdir -p installer/share/iso-codes || exit
+cp /share/iso-codes/* installer/share/iso-codes || exit
+mkdir -p installer/share/xml/iso-codes || exit
+cp /share/xml/iso-codes/* installer/share/xml/iso-codes || exit
+
 echo "Copying locales..."
 
 # We need to keep the locale files from share/locale in share/locale and those
@@ -163,7 +169,7 @@ cp /local/share/locale installer/share -R || exit
 #cp /lib/locale installer/lib -R || exit
 #cp /gtksourceview/lib/locale installer/lib -R || exit
 
-find installer/share/locale/ -type f | grep -v atk10.mo | grep -v gtk20.mo | grep -v GConf2.mo | grep -v glib20.mo | grep -v gedit.mo | grep -v gtk20.mo | grep -v gtk20-properties.mo | grep -v gtksourceview-2.0.mo | xargs rm
+find installer/share/locale/ -type f | grep -v atk10.mo | grep -v gtk20.mo | grep -v GConf2.mo | grep -v glib20.mo | grep -v gedit.mo | grep -v gtk20.mo | grep -v gtk20-properties.mo | grep -v gtksourceview-2.0.mo | grep -v iso_*.mo | xargs rm
 find installer/share/locale -type d | xargs rmdir -p --ignore-fail-on-non-empty
 
 echo "Copying executable..."

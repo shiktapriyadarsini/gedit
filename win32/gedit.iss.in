@@ -106,6 +106,10 @@ Source: "etc\gtk-2.0\gtkrc"; DestDir: "{app}\etc\gtk-2.0"; Components: gtk
 Source: "lib\enchant\*"; DestDir: "{app}\lib\enchant"; Components: main
 Source: "share\enchant\*"; DestDir: "{app}\share\enchant"; Components: main
 
+; Iso codes
+Source: "share\iso-codes\*"; DestDir: "{app}\share\iso-codes"; Components: main
+Source: "share\xml\iso-codes\*"; DestDir: "{app}\share\xml\iso-codes"; Components: main
+
 ; GtkSourceView
 Source: "share\gtksourceview-2.0\language-specs\*"; DestDir: "{app}\share\gtksourceview-2.0\language-specs"; Components: main
 Source: "share\gtksourceview-2.0\styles\*"; DestDir: "{app}\share\gtksourceview-2.0\styles"; Components: main
