@@ -21,7 +21,7 @@ gedit_SOURCES = \
 gedit_LDADD = libgedit.la $(GEDIT_LIBS) $(EGG_SMCLIENT_LIBS)
  
 if PLATFORM_WIN32
-gedit_LDFLAGS = -Wl,--export-all-symbols -Wl,-mwindows -Wl,--out-implib,libgedit-$(GEDIT_API_VERSION).a
+gedit_LDFLAGS = -Wl,--export-all-symbols -mwindows -Wl,--out-implib,libgedit-$(GEDIT_API_VERSION).a
 else
 gedit_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
 endif
