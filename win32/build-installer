@@ -20,8 +20,11 @@ fi
 
 mkdir -p installer || exit
 
-echo "Copying the license..."
-cp ../COPYING installer || exit
+echo "Copying the docs..."
+mkdir -p installer/share/doc || exit
+cp ../COPYING installer/share/doc || exit
+cp ../AUTHORS installer/share/doc || exit
+cp ../README installer/share/doc || exit
 
 echo "Copying DLL files..."
 
