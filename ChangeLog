@@ -1,5 +1,11 @@
 2008-12-25  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
+	* gedit/Makefile.am:
+	* configure.ac:
+	Add the -mwindows flag.
+
+2008-12-25  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
 	* gedit/gedit.c:
 	Set the path at runtime.
 

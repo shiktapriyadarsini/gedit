@@ -366,8 +366,8 @@ fi
 # so we create a lib
 if test "$platform_win32" = yes; then
 	GEDIT_IMPLIB="-lgedit-$GEDIT_API_VERSION"
-	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
-	LOADER_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
+	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -mwindows -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
+	LOADER_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -mwindows -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
 else
 	GEDIT_IMPLIB=""
 	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version"
