@@ -244,6 +244,12 @@
   (return-type "gchar*")
 )
 
+(define-method get_content_type
+  (of-object "GeditDocument")
+  (c-name "gedit_document_get_content_type")
+  (return-type "gchar*")
+)
+
 (define-method get_mime_type
   (of-object "GeditDocument")
   (c-name "gedit_document_get_mime_type")

@@ -1,3 +1,9 @@
+2008-12-25  Paolo Borelli  <pborelli@katamail.com>
+
+	* gedit/gedit-document.[ch]:
+	* gedit/gedit-tab.c:
+	Use content type instead of mime type where possible.
+
 2008-12-24  Paolo Borelli  <pborelli@katamail.com>
 
 	* gedit/gedit-plugins-engine.[ch]:
