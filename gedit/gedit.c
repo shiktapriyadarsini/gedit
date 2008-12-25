@@ -60,6 +60,10 @@
 #include "eggsmclient.h"
 #include "eggdesktopfile.h"
 
+#ifdef G_OS_WIN32
+#include <windows.h>
+#endif
+
 static guint32 startup_timestamp = 0;
 
 #ifndef G_OS_WIN32
@@ -464,6 +468,36 @@ send_bacon_message (void)
 }
 #endif /* G_OS_WIN32 */
 
+#ifdef G_OS_WIN32
+static void
+setup_path (void)
+{
+	/* Set PATH to include the gedit executable's folder */
+	wchar_t exe_filename[MAX_PATH];
+	wchar_t *p;
+	gchar *exe_folder_utf8;
+	gchar *path;
+	
+	GetModuleFileNameW (NULL, exe_filename, G_N_ELEMENTS (exe_filename)); 
+	
+	p = wcsrchr (exe_filename, L'\\');
+	g_assert (p != NULL);
+	
+	*p = L'\0';
+	exe_folder_utf8 = g_utf16_to_utf8 (exe_filename, -1, NULL, NULL, NULL);
+	
+	path = g_build_path (";",
+			     exe_folder_utf8,
+			     g_getenv ("PATH");
+			     NULL);
+	if (!g_setenv ("PATH", path, TRUE))
+		g_warning ("Could not set PATH for gedit");
+	
+	g_free (exe_folder_utf8);
+	g_free (path);
+}
+#endif
+
 int
 main (int argc, char *argv[])
 {
@@ -498,6 +532,10 @@ main (int argc, char *argv[])
 	g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
 	g_option_context_add_group (context, gtk_get_option_group (FALSE));
 	g_option_context_add_group (context, egg_sm_client_get_option_group ());
+
+#ifdef G_OS_WIN32
+	setup_path ();
+#endif
 
 	gtk_init (&argc, &argv);
 
