@@ -9,6 +9,7 @@ AppPublisher=GNOME
 AppPublisherURL=http:\\www.gedit.org\
 AppVersion=@VERSION@
 OutputBaseFilename=gedit-setup-@VERSION@-INSTALLERREVISION
+LicenseFile=COPYING
 
 [Components]
 Name: "gtk"; Description: "GTK+ runtime environment"; Types: full compact custom; Flags: fixed
@@ -32,6 +33,9 @@ Name: "{userprograms}\{groupname}\gedit"; Filename: "{app}\bin\gedit.exe"; Tasks
 Name: "{userprograms}\{groupname}\Uninstall gedit"; Filename: "{uninstallexe}"; Tasks: user
 
 [Files]
+
+; License
+Source: "COPYING"; DestDir: "{app}"; Components: main
 
 ; GTK+
 Source: "bin\intl.dll"; DestDir: "{app}\bin"; Components: gtk

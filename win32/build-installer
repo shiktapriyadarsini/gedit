@@ -20,6 +20,9 @@ fi
 
 mkdir -p installer || exit
 
+echo "Copying the license..."
+cp ../COPYING installer || exit
+
 echo "Copying DLL files..."
 
 mkdir -p installer/bin
