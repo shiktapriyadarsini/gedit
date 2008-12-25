@@ -61,7 +61,11 @@
 #include "eggdesktopfile.h"
 
 #ifdef G_OS_WIN32
+#define SAVE_DATADIR DATADIR
+#undef DATADIR
 #include <windows.h>
+#define DATADIR SAVE_DATADIR
+#undef SAVE_DATADIR
 #endif
 
 static guint32 startup_timestamp = 0;
@@ -488,7 +492,7 @@ setup_path (void)
 	
 	path = g_build_path (";",
 			     exe_folder_utf8,
-			     g_getenv ("PATH");
+			     g_getenv ("PATH"),
 			     NULL);
 	if (!g_setenv ("PATH", path, TRUE))
 		g_warning ("Could not set PATH for gedit");
