@@ -1,14 +1,14 @@
-# translation of gedit.HEAD.kn.po to Kannada
+# translation of kn.po to Kannada
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Shankar Prasad <svenkate@redhat.com>, 2007, 2008.
+# Shankar Prasad <svenkate@redhat.com>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.HEAD.kn\n"
+"Project-Id-Version: kn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-19 13:02+0000\n"
-"PO-Revision-Date: 2008-08-25 10:18+0530\n"
+"PO-Revision-Date: 2009-01-06 16:43+0530\n"
 "Last-Translator: Shankar Prasad <svenkate@redhat.com>\n"
 "Language-Team: Kannada <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.h:2 ../gedit/gedit-plugin-manager.c:795
 msgid "Active plugins"
-msgstr "ಸಕ್ರಿಯ ಪ್ಲಗ್ಗಿನ್ನುಗಳು"
+msgstr "ಸಕ್ರಿಯ ಪ್ಲಗ್‌ಇನ್‌ಗಳು"
 
 #: ../data/gedit.schemas.in.h:3
 msgid "Auto Detected Encodings"
@@ -148,8 +148,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"ಸಕ್ರಿಯ ಪ್ಲಗ್ಇನ್‍ಗಳ ಪಟ್ಟಿ. ಇದು ಸಕ್ರಿಯ ಪ್ಲಗ್ಇನ್‍ಗಳು ಇರುವ \"ತಾಣ\"ವನ್ನು ಹೊಂದಿರುತ್ತದೆ. "
-"ಒದಗಿಸಲಾದ ಪ್ಲಗ್ಇನ್‍ನ \"ತಾಣ\"ವನ್ನು ತಿಳಿಯಲು .gedit-plugin ಕಡತವನ್ನು ನೋಡಿ."
+"ಸಕ್ರಿಯ ಪ್ಲಗ್ಇನ್‌ಗಳ ಪಟ್ಟಿ. ಇದು ಸಕ್ರಿಯ ಪ್ಲಗ್ಇನ್‌ಗಳು ಇರುವ \"ತಾಣ\"ವನ್ನು ಹೊಂದಿರುತ್ತದೆ. "
+"ಒದಗಿಸಲಾದ ಪ್ಲಗ್ಇನ್‌ \"ತಾಣ\"ವನ್ನು ತಿಳಿಯಲು .gedit-plugin ಕಡತವನ್ನು ನೋಡಿ."
 
 #: ../data/gedit.schemas.in.h:27
 msgid ""
@@ -806,7 +806,7 @@ msgstr "ಸಂಪಾದಕ ಅಕ್ಷರ ಶೈಲಿಯನ್ನು ಅಯ್
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:23
 msgid "Plugins"
-msgstr "ಪ್ಲಗ್-ಇನ್‍ಗಳು(plugins)"
+msgstr "ಪ್ಲಗ್ಇನ್‌ಗಳು"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:24
 msgid "Preferences"
@@ -1553,7 +1553,7 @@ msgstr "ಫಲಕವನ್ನು ಅಡಗಿಸು"
 
 #: ../gedit/gedit-plugin-manager.c:54
 msgid "Plugin"
-msgstr "ಪ್ಲಗ್-ಇನ್"
+msgstr "ಪ್ಲಗ್ಇನ್"
 
 #: ../gedit/gedit-plugin-manager.c:55
 msgid "Enabled"
@@ -1581,11 +1581,11 @@ msgstr "ಎಲ್ಲವನ್ನೂ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸ�
 
 #: ../gedit/gedit-plugin-manager.c:824
 msgid "_About Plugin"
-msgstr "ಪ್ಲಗ್ಿನ್‍ನ ಬಗ್ಗೆ(_A)"
+msgstr "ಪ್ಲಗ್ಇನ್ ಬಗ್ಗೆ(_A)"
 
 #: ../gedit/gedit-plugin-manager.c:828
 msgid "C_onfigure Plugin"
-msgstr "ಪ್ಲಗ್ಿನ್‍ನ್ನು ಸಂರಚಿಸು(_o)"
+msgstr "ಪ್ಲಗ್ಇನ್‌ ಅನ್ನು ಸಂರಚಿಸು(_o)"
 
 #: ../gedit/gedit-prefs-manager.c:170
 msgid "Cannot initialize preferences manager."
@@ -4945,7 +4945,7 @@ msgstr "ಲಭ್ಯ ನಮೂನೆಗಳು"
 
 #: ../plugins/time/gedit-time-plugin.c:759
 msgid "Configure insert date/time plugin..."
-msgstr "ದಿನಾಂಕ/ಸಮಯ ಪ್ಲಗ್-ಇನ್ ಸೇರಿಸುವಿಕೆಯನ್ನು ಸಂರಚಿಸು..."
+msgstr "ದಿನಾಂಕ/ಸಮಯ ಪ್ಲಗ್ಇನ್ ಸೇರಿಸುವಿಕೆಯನ್ನು ಸಂರಚಿಸು..."
 
 #: ../plugins/time/time.gedit-plugin.desktop.in.h:1
 msgid "Insert Date/Time"
@@ -4965,7 +4965,7 @@ msgstr "<span weight=\"bold\"> ದಿನಾಂಕ/ಸಮಯವನ್ನು ಸ�
 
 #: ../plugins/time/time.ui.h:5
 msgid "Configure date/time plugin"
-msgstr "ದಿನಾಂಕ/ಸಮಯ ಪ್ಲಗ್-ಇನ್ ಅನ್ನು ಸಂರಚಿಸು"
+msgstr "ದಿನಾಂಕ/ಸಮಯ ಪ್ಲಗ್ಇನ್ ಅನ್ನು ಸಂರಚಿಸು"
 
 #: ../plugins/time/time.ui.h:6
 msgid "Insert Date and Time"
