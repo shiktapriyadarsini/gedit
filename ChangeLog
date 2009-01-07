@@ -1,4 +1,8 @@
-2008-12-28  Jesse van den Kieboom  <jesse@icecrew.nl>
+2009-01-07  Jesse van den Kieboom  <jesse@icecrew.nl>
+
+	* plugins/externaltools/tools: backport a couple of bugfixes.
+
+2008-11-23  Paolo Borelli  <pborelli@katamail.com>
 
 	* plugins/filebrowser/gedit-file-browser-store.c: Merged revision 6735
 	from trunk (fixes #556410)
