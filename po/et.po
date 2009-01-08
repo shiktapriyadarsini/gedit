@@ -5,17 +5,18 @@
 # Copyright (C) 2007, 2008 The GNOME Project.
 # This file is distributed under the same license as the gedit package.
 #
-# Ilmar Kerm <ikerm@hot.ee>, 2002.
-# Tõivo Leedjärv <toivo@linux.ee>, 2002, 2003.
-# Priit Laes <amd@store20.com>, 2005.
-# Ivar Smolin <okul@linux.ee>, 2005-2008.
+# Ilmar Kerm <ikerm hot ee>, 2002.
+# Tõivo Leedjärv <toivo linux ee>, 2002, 2003.
+# Priit Laes <amd store20 com>, 2005, 2009.
+# Ivar Smolin <okul linux ee>, 2005-2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit2 HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-19 13:02+0000\n"
-"PO-Revision-Date: 2008-09-22 08:06+0300\n"
-"Last-Translator: Ivar Smolin <okul@linux.ee>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&amp;component=general\n"
+"POT-Creation-Date: 2008-11-25 15:16+0000\n"
+"PO-Revision-Date: 2009-01-08 13:41+0300\n"
+"Last-Translator: Priit Laes <plaes plaes org>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +27,7 @@ msgstr ""
 msgid "Edit text files"
 msgstr "Tekstifailide redigeerimine"
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:755
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:751
 msgid "Text Editor"
 msgstr "Tekstiredaktor"
 
@@ -881,7 +882,7 @@ msgid "Replace _All"
 msgstr "Asenda _kõik"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:409
-#: ../gedit/gedit-commands-file.c:661
+#: ../gedit/gedit-commands-file.c:657
 msgid "_Replace"
 msgstr "_Asenda"
 
@@ -913,44 +914,44 @@ msgstr "_Otsitav tekst:"
 msgid "_Wrap around"
 msgstr "_Lõppu (või algusese) jõudmisel otsingut ei katkestata"
 
-#: ../gedit/gedit.c:73
+#: ../gedit/gedit.c:74
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "Käsurealt avatavate failidele kooditabeli seadmine"
 
-#: ../gedit/gedit.c:73
+#: ../gedit/gedit.c:74
 msgid "ENCODING"
 msgstr "KOODITABEL"
 
-#: ../gedit/gedit.c:76
+#: ../gedit/gedit.c:77
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "Ülemise taseme akna loomine olemasolevale gedit'i instantsile"
 
-#: ../gedit/gedit.c:79
+#: ../gedit/gedit.c:80
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Uue dokumendi loomine olemasolevas gedit'i instantsis"
 
-#: ../gedit/gedit.c:82
+#: ../gedit/gedit.c:83
 msgid "[FILE...]"
 msgstr "[FAIL...]"
 
-#: ../gedit/gedit.c:114
+#: ../gedit/gedit.c:115
 #, c-format
 msgid "%s: malformed file name or URI.\n"
 msgstr "%s: vigaselt vormindatud failinimi või URI.\n"
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:127
 #, c-format
 msgid "%s: invalid encoding.\n"
 msgstr "%s: vigane kodeering.\n"
 
 #. Setup command line options
-#: ../gedit/gedit.c:468
+#: ../gedit/gedit.c:469
 msgid "- Edit text files"
 msgstr "- Tekstifailide redigeerimine"
 
-#: ../gedit/gedit.c:477
+#: ../gedit/gedit.c:478
 #, c-format
 msgid ""
 "%s\n"
@@ -976,35 +977,35 @@ msgstr[1] "%d faili laadimine…"
 msgid "Open Files"
 msgstr "Failide avamine"
 
-#: ../gedit/gedit-commands-file.c:641
+#: ../gedit/gedit-commands-file.c:644
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Fail \"%s\" on kirjutuskaitsega."
 
-#: ../gedit/gedit-commands-file.c:652
+#: ../gedit/gedit-commands-file.c:649
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Kas tahad üritada seda salvestatava failiga asendada?"
 
-#: ../gedit/gedit-commands-file.c:719 ../gedit/gedit-commands-file.c:925
+#: ../gedit/gedit-commands-file.c:715 ../gedit/gedit-commands-file.c:921
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Faili '%s' salvestamine…"
 
-#: ../gedit/gedit-commands-file.c:823
+#: ../gedit/gedit-commands-file.c:819
 msgid "Save As…"
 msgstr "Salvesta kui…"
 
-#: ../gedit/gedit-commands-file.c:1104
+#: ../gedit/gedit-commands-file.c:1100
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Dokumendi '%s' taastamine…"
 
-#: ../gedit/gedit-commands-file.c:1149
+#: ../gedit/gedit-commands-file.c:1145
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Kas taastada dokumendi salvestamata muudatused '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1158
+#: ../gedit/gedit-commands-file.c:1154
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -1018,14 +1019,14 @@ msgstr[1] ""
 "Dokumendile viimase %ld sekundi jooksul tehtud muudatused lähevad jäädavalt "
 "kaotsi."
 
-#: ../gedit/gedit-commands-file.c:1167
+#: ../gedit/gedit-commands-file.c:1163
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Dokumendile viimase minuti jooksul tehtud muudatused lähevad jäädavalt "
 "kaotsi."
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1169
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1040,7 +1041,7 @@ msgstr[1] ""
 "Dokumendile viimase minuti ja %ld sekundi jooksul tehtud muudatused lähevad "
 "jäädavalt kaotsi."
 
-#: ../gedit/gedit-commands-file.c:1183
+#: ../gedit/gedit-commands-file.c:1179
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -1054,12 +1055,12 @@ msgstr[1] ""
 "Dokumendile viimase %ld minuti jooksul tehtud muudatused lähevad jäädavalt "
 "kaotsi."
 
-#: ../gedit/gedit-commands-file.c:1198
+#: ../gedit/gedit-commands-file.c:1194
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Dokumendile viimase tunni jooksul tehtud muudatused lähevad jäädavalt kaotsi."
 
-#: ../gedit/gedit-commands-file.c:1204
+#: ../gedit/gedit-commands-file.c:1200
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1074,7 +1075,7 @@ msgstr[1] ""
 "Dokumendile viimase tunni ja %d minuti jooksul tehtud muudatused lähevad "
 "jäädavalt kaotsi."
 
-#: ../gedit/gedit-commands-file.c:1219
+#: ../gedit/gedit-commands-file.c:1215
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -1086,7 +1087,7 @@ msgstr[1] ""
 "Dokumendile viimase %d tunni jooksul tehtud muudatused lähevad jäädavalt "
 "kaotsi."
 
-#: ../gedit/gedit-commands-file.c:1245
+#: ../gedit/gedit-commands-file.c:1241
 msgid "_Revert"
 msgstr "_Pööra tagasi"
 
@@ -1099,7 +1100,7 @@ msgid "translator-credits"
 msgstr ""
 "Ilmar Kerm <ikerm@hot.ee>, 2002.\n"
 "Tõivo Leedjärv <toivo@linux.ee>, 2002, 2003.\n"
-"Priit Laes <amd@store20.com>, 2005.\n"
+"Priit Laes <plaes@plaes.org>, 2005, 2009\n"
 "Ivar Smolin <okul@linux.ee>, 2005-2008."
 
 #: ../gedit/gedit-commands-search.c:165
@@ -1349,70 +1350,70 @@ msgstr "Fail on liiga suur."
 msgid "Unexpected error: %s"
 msgstr "Ootamatu viga: %s"
 
-#: ../gedit/gedit-io-error-message-area.c:368
+#: ../gedit/gedit-io-error-message-area.c:369
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
 
-#: ../gedit/gedit-io-error-message-area.c:372
+#: ../gedit/gedit-io-error-message-area.c:373
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Sul pole piisavalt õiguseid selle faili avamiseks."
 
-#: ../gedit/gedit-io-error-message-area.c:380
-#: ../gedit/gedit-io-error-message-area.c:600
+#: ../gedit/gedit-io-error-message-area.c:381
+#: ../gedit/gedit-io-error-message-area.c:602
 #, c-format
 msgid "Could not open the file %s."
 msgstr "Faili %s pole võimalik avada."
 
-#: ../gedit/gedit-io-error-message-area.c:389
-#: ../gedit/gedit-io-error-message-area.c:507
+#: ../gedit/gedit-io-error-message-area.c:390
+#: ../gedit/gedit-io-error-message-area.c:509
 msgid "_Retry"
 msgstr "_Proovi uuesti"
 
-#: ../gedit/gedit-io-error-message-area.c:431
+#: ../gedit/gedit-io-error-message-area.c:433
 msgid "gedit cannot find the file. Perhaps it has recently been deleted."
 msgstr ""
 "gedit'il pole võimalik faili leida. Võib-olla on see fail hiljuti kustutatud."
 
-#: ../gedit/gedit-io-error-message-area.c:440
+#: ../gedit/gedit-io-error-message-area.c:442
 #, c-format
 msgid "Could not revert the file %s."
 msgstr "Faili %s pole võimalik taastada."
 
-#: ../gedit/gedit-io-error-message-area.c:464
+#: ../gedit/gedit-io-error-message-area.c:466
 msgid "Ch_aracter Coding:"
 msgstr "_Kooditabel:"
 
-#: ../gedit/gedit-io-error-message-area.c:602
+#: ../gedit/gedit-io-error-message-area.c:604
 msgid "gedit has not been able to detect the character coding."
 msgstr "gedit ei suuda märkide kooditabelit tuvastada."
 
-#: ../gedit/gedit-io-error-message-area.c:604
-#: ../gedit/gedit-io-error-message-area.c:613
+#: ../gedit/gedit-io-error-message-area.c:606
+#: ../gedit/gedit-io-error-message-area.c:615
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Palun kontrolli, ega sa ei proovi binaarfaili avada."
 
-#: ../gedit/gedit-io-error-message-area.c:605
+#: ../gedit/gedit-io-error-message-area.c:607
 msgid "Select a character coding from the menu and try again."
 msgstr "Vali menüüst kooditabel ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:610
+#: ../gedit/gedit-io-error-message-area.c:612
 #, c-format
 msgid "Could not open the file %s using the %s character coding."
 msgstr "Faili %s pole võimalik kooditabelit %s kasutades avada."
 
-#: ../gedit/gedit-io-error-message-area.c:614
-#: ../gedit/gedit-io-error-message-area.c:666
+#: ../gedit/gedit-io-error-message-area.c:616
+#: ../gedit/gedit-io-error-message-area.c:668
 msgid "Select a different character coding from the menu and try again."
 msgstr "Vali menüüst teine kooditabel ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:661
+#: ../gedit/gedit-io-error-message-area.c:663
 #, c-format
 msgid "Could not save the file %s using the %s character coding."
 msgstr "Faili %s pole võimalik kooditabelit %s kasutades salvestada."
 
-#: ../gedit/gedit-io-error-message-area.c:664
+#: ../gedit/gedit-io-error-message-area.c:666
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character coding."
@@ -1420,20 +1421,20 @@ msgstr ""
 "Dokument sisaldab ühe või mitu sümbolit, mida pole võimalik määratud "
 "kooditabeliga kodeerida."
 
-#: ../gedit/gedit-io-error-message-area.c:727
+#: ../gedit/gedit-io-error-message-area.c:729
 msgid "_Edit Anyway"
 msgstr "_Redigeeri ikka"
 
-#: ../gedit/gedit-io-error-message-area.c:730
+#: ../gedit/gedit-io-error-message-area.c:732
 msgid "_Don't Edit"
 msgstr "Ära r_edigeeri"
 
-#: ../gedit/gedit-io-error-message-area.c:745
+#: ../gedit/gedit-io-error-message-area.c:747
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "See fail (%s) on juba ühes gedit'i aknas avatud."
 
-#: ../gedit/gedit-io-error-message-area.c:760
+#: ../gedit/gedit-io-error-message-area.c:762
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1441,41 +1442,41 @@ msgstr ""
 "gedit avas selle instantsi mittemuudetaval moel. Kas Sa soovid seda ikkagi "
 "redigeerida?"
 
-#: ../gedit/gedit-io-error-message-area.c:818
-#: ../gedit/gedit-io-error-message-area.c:913
+#: ../gedit/gedit-io-error-message-area.c:820
+#: ../gedit/gedit-io-error-message-area.c:915
 msgid "S_ave Anyway"
 msgstr "_Salvesta ikkagi"
 
-#: ../gedit/gedit-io-error-message-area.c:822
-#: ../gedit/gedit-io-error-message-area.c:917
+#: ../gedit/gedit-io-error-message-area.c:824
+#: ../gedit/gedit-io-error-message-area.c:919
 msgid "D_on't Save"
 msgstr "Ä_ra salvesta"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. could be interpreted as the changes he made in the document. beside "reading" is
 #. not accurate (since last load/save)
-#: ../gedit/gedit-io-error-message-area.c:840
+#: ../gedit/gedit-io-error-message-area.c:842
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Faili %s on lugemise ajal muudetud."
 
-#: ../gedit/gedit-io-error-message-area.c:856
+#: ../gedit/gedit-io-error-message-area.c:858
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Kui sa selle salvestad, siis lähevad kõik välised muudatused kaotsi. Kas "
 "salvestada ikkagi?"
 
-#: ../gedit/gedit-io-error-message-area.c:935
+#: ../gedit/gedit-io-error-message-area.c:937
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "%s salvestamisel pole võimalik tagavarakoopia faili luua"
 
-#: ../gedit/gedit-io-error-message-area.c:938
+#: ../gedit/gedit-io-error-message-area.c:940
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "%s salvestamisel pole ajutist tagavarakoopiafaili võimalik luua"
 
-#: ../gedit/gedit-io-error-message-area.c:955
+#: ../gedit/gedit-io-error-message-area.c:957
 msgid ""
 "gedit could not backup the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1486,7 +1487,7 @@ msgstr ""
 "korral läheb vana koopia kaotsi. Kas salvestada siiski?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-message-area.c:1015
+#: ../gedit/gedit-io-error-message-area.c:1018
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1495,7 +1496,7 @@ msgstr ""
 "gedit ei saa %s asukohti kirjutamiseks kasutada. Palun kontrolli, kas "
 "sisestasid asukoha õigesti ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:1023
+#: ../gedit/gedit-io-error-message-area.c:1026
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1503,7 +1504,7 @@ msgstr ""
 "gedit ei suuda seda asukohta kirjutamiseks kasutada. Palun kontrolli, kas "
 "sisestasid faili asukoha õigesti ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:1032
+#: ../gedit/gedit-io-error-message-area.c:1035
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1512,7 +1513,7 @@ msgstr ""
 "%s pole korrektne asukoht. Palun kontrolli, kas Sa sisestasid faili asukoha "
 "õigesti ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:1038
+#: ../gedit/gedit-io-error-message-area.c:1041
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1520,7 +1521,7 @@ msgstr ""
 "Sul pole faili salvestamiseks piisaval õiguseid. Palun kontrolli, kas Sa "
 "sisestasid faili asukoha õigesti ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:1044
+#: ../gedit/gedit-io-error-message-area.c:1047
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1528,7 +1529,7 @@ msgstr ""
 "Faili salvestamiseks pole piisavalt kettaruumi. Palun vabasta natuke "
 "kettaruumi ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:1049
+#: ../gedit/gedit-io-error-message-area.c:1052
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1536,11 +1537,11 @@ msgstr ""
 "Sa proovid faili salvestada kirjutuskaitsega kettale. Palun veendu, et sa "
 "sisestasid asukoha õigesti ja proovi uuesti."
 
-#: ../gedit/gedit-io-error-message-area.c:1055
+#: ../gedit/gedit-io-error-message-area.c:1058
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Sama nimega fail on juba olemas. Palun kasuta mõnda teist nime."
 
-#: ../gedit/gedit-io-error-message-area.c:1060
+#: ../gedit/gedit-io-error-message-area.c:1063
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1548,7 +1549,7 @@ msgstr ""
 "Sa proovid faili salvestada kettale, mis piirab failinime pikkust. Palun "
 "kasuta lühemat nime."
 
-#: ../gedit/gedit-io-error-message-area.c:1067
+#: ../gedit/gedit-io-error-message-area.c:1070
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes.  Please try saving a smaller file or saving it to a disk that does "
@@ -1558,7 +1559,7 @@ msgstr ""
 "suurust.  Proovi salvestada väiksemat faili või salvesta kettale, millel "
 "sellist piirangut pole."
 
-#: ../gedit/gedit-io-error-message-area.c:1082
+#: ../gedit/gedit-io-error-message-area.c:1085
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Faili %s pole võimalik salvestada."
@@ -1566,22 +1567,22 @@ msgstr "Faili %s pole võimalik salvestada."
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. could be interpreted as the changes he made in the document. beside "reading" is
 #. not accurate (since last load/save)
-#: ../gedit/gedit-io-error-message-area.c:1124
+#: ../gedit/gedit-io-error-message-area.c:1127
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "Faili %s on kettal muudetud."
 
-#: ../gedit/gedit-io-error-message-area.c:1129
+#: ../gedit/gedit-io-error-message-area.c:1132
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Kas soovid tühistada oma muudatused ja faili uuesti laadida?"
 
-#: ../gedit/gedit-io-error-message-area.c:1131
+#: ../gedit/gedit-io-error-message-area.c:1134
 msgid "Do you want to reload the file?"
 msgstr "Kas soovid faili uuesti laadida?"
 
-#: ../gedit/gedit-io-error-message-area.c:1141
+#: ../gedit/gedit-io-error-message-area.c:1144
 msgid "_Reload"
-msgstr "_Laadi uuesti"
+msgstr "Laa_di uuesti"
 
 #. bad bad luck...
 #: ../gedit/gedit-local-document-saver.c:360
@@ -1645,16 +1646,16 @@ msgstr "Eelistuste haldurit pole võimalik lähtestada."
 msgid "Expected `%s' got `%s' for key %s"
 msgstr "Võtmele %s oodatava `%s' asemel saadi `%s'"
 
-#: ../gedit/gedit-print-job.c:538
+#: ../gedit/gedit-print-job.c:537
 #, c-format
 msgid "File: %s"
 msgstr "Fail: %s"
 
-#: ../gedit/gedit-print-job.c:547
+#: ../gedit/gedit-print-job.c:546
 msgid "Page %N of %Q"
 msgstr "Lehekülg %N/%Q"
 
-#: ../gedit/gedit-print-job.c:805
+#: ../gedit/gedit-print-job.c:801
 msgid "Preparing..."
 msgstr "Ettevalmistused..."
 
@@ -1837,38 +1838,38 @@ msgid "Saving %s"
 msgstr "%s salvestamine"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1657
+#: ../gedit/gedit-tab.c:1658
 msgid "RO"
 msgstr ""
 
-#: ../gedit/gedit-tab.c:1703
+#: ../gedit/gedit-tab.c:1704
 #, c-format
 msgid "Error opening file %s"
 msgstr "Viga faili %s avamisel"
 
-#: ../gedit/gedit-tab.c:1708
+#: ../gedit/gedit-tab.c:1709
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Viga faili %s taastamisel"
 
-#: ../gedit/gedit-tab.c:1713
+#: ../gedit/gedit-tab.c:1714
 #, c-format
 msgid "Error saving file %s"
 msgstr "Viga faili %s salvestamisel"
 
-#: ../gedit/gedit-tab.c:1732
+#: ../gedit/gedit-tab.c:1733
 msgid "Unicode (UTF-8)"
 msgstr "Unikood (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1739
+#: ../gedit/gedit-tab.c:1740
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ../gedit/gedit-tab.c:1740
+#: ../gedit/gedit-tab.c:1741
 msgid "MIME Type:"
 msgstr "MIME tüüp:"
 
-#: ../gedit/gedit-tab.c:1741
+#: ../gedit/gedit-tab.c:1742
 msgid "Encoding:"
 msgstr "Kodeering:"
 
@@ -2193,11 +2194,11 @@ msgstr ""
 msgid "_Match Case"
 msgstr "Tõst_utundlik"
 
-#: ../gedit/gedit-view.c:1322
+#: ../gedit/gedit-view.c:1334
 msgid "String you want to search for"
 msgstr "String, mida Sa tahad otsida"
 
-#: ../gedit/gedit-view.c:1330
+#: ../gedit/gedit-view.c:1342
 msgid "Line you want to move the cursor to"
 msgstr "Rida, millele Sa tahad kursorit viia"
 
@@ -2338,11 +2339,11 @@ msgstr "Sõnu"
 msgid "_Update"
 msgstr "_Uuenda"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:411
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:413
 msgid "_Document Statistics"
 msgstr "_Dokumendi statistika"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:413
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:415
 msgid "Get statistic info on current document"
 msgstr "Käesoleva dokumendi kohta statistiliste andmete hankimine"
 
@@ -2558,7 +2559,7 @@ msgstr "Külgpaani kaudu hõlbus ligipääs failidele"
 msgid "File Browser Pane"
 msgstr "Failisirvimispaan"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:228
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:230
 msgid "File System"
 msgstr "Failisüsteem"
 
@@ -2672,39 +2673,39 @@ msgstr "Terminali avamine käesolevaga avatud kataloogis"
 msgid "File Browser"
 msgstr "Failisirvija"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:867
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:864
 msgid "An error occurred while creating a new directory"
 msgstr "Uue kataloogi loomisel tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:870
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:867
 msgid "An error occurred while creating a new file"
 msgstr "Uue faili loomisel tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:875
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:872
 msgid "An error occurred while renaming a file or directory"
 msgstr "Faili või kataloogi nime muutmisel tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:880
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:877
 msgid "An error occurred while deleting a file or directory"
 msgstr "Faili või kataloogi kustutamisel tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:885
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:882
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Faili või kataloogi avamisel failihalduris tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:889
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:886
 msgid "An error occurred while setting a root directory"
 msgstr "Juurkataloogi seadmisel tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:893
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:890
 msgid "An error occurred while loading a directory"
 msgstr "Kataloogi laadimisel tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:896
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:893
 msgid "An error occurred"
 msgstr "Tekkis viga"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1187
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1188
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2712,33 +2713,33 @@ msgstr ""
 "Faili pole võimalik prügikasti tõsta.\n"
 "Kas selle faili võib lihtsalt ära kustutada?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1191
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1192
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Faili \"%s\" pole võimalik prügikasti tõsta."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1194
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1195
 msgid "The selected files cannot be moved to the trash."
 msgstr "Valitud faile pole võimalik prügikasti tõsta."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1227
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1228
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Kas soovid \"%s\" jäädavalt kustutada?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1230
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1231
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Kas soovid valitud faile jäädavalt kustutada?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1233
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1234
 msgid "If you delete an item, it is permanently lost."
 msgstr "Kui sa selle kirje kustutad, siis läheb see jäädavalt kaotsi."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1626
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1639
 msgid "(Empty)"
 msgstr "(Tühi)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3122
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3252
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2746,11 +2747,11 @@ msgstr ""
 "Ümber nimetatud fail on hetkel välja filtreeritud. Selle nähtavaletoomiseks "
 "pead sa filtri sätteid muutma"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3360
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3490
 msgid "file"
 msgstr "fail"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3384
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3514
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2758,11 +2759,11 @@ msgstr ""
 "Uus fail on hetkel välja filtreeritud. Selle nähtavaletoomiseks pead sa "
 "filtri sätteid muutma"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3412
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3542
 msgid "directory"
 msgstr "kataloog"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3432
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3562
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
