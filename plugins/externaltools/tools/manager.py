@@ -167,7 +167,11 @@ class Manager(Singleton):
     def clear_fields(self):
         self['description'].set_text('')
         self['accelerator'].set_text('')
-        self['commands'].get_buffer().set_text('')
+
+	buf = self['commands'].get_buffer()
+	buf.begin_not_undoable_action()
+	buf.set_text('')
+	buf.end_not_undoable_action()
 
         for nm in ('input', 'output', 'applicability'):
             self[nm].set_active(0)
@@ -181,7 +185,11 @@ class Manager(Singleton):
 
         buf = self['commands'].get_buffer()
         script = default(''.join(node.get_script()), '')
-        buf.set_text(script)
+
+	buf.begin_not_undoable_action()
+	buf.set_text(script)
+	buf.end_not_undoable_action()
+
         self.script_hash = self.compute_hash(script)
         contenttype = gio.content_type_guess(data=script)
         lmanager = gedit.get_language_manager()
