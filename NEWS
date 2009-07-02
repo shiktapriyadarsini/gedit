@@ -1,4 +1,18 @@
 ============
+gedit 2.26.3
+============
+
+New Features and Fixes
+======================
+- Avoid sync stat for icon of remote bookmarks
+- Hide fullscreen control when minimizing gedit
+- Only apply modelines when strictly necessary
+
+New and updated translations
+============================
+- cs (Marek Cernocky)
+
+============
 gedit 2.26.2
 ============
 
