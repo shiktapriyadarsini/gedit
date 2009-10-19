@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-19 06:16-0500\n"
-"PO-Revision-Date: 2009-10-19 07:03-0500\n"
+"PO-Revision-Date: 2009-10-19 07:48-0500\n"
 "Last-Translator: Reşat SABIQ <tilde.birlik@gmail.com>\n"
 "Language-Team: Qırımtatarca (Qırım Türkçesi) <tilde-birlik-tercime@lists."
 "sourceforge.net>\n"
@@ -2930,7 +2930,7 @@ msgstr "Çöpke Avuş_tır"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:788
 msgid "Move selected file or folder to trash"
-msgstr "Saylanğan dosyeni yaki fihristni çöpke avuştır"
+msgstr "Saylanğan dosyeni yaki cilbentni çöpke avuştır"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:790
 msgid "_Delete"
@@ -2938,7 +2938,7 @@ msgstr "_Sil"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:791
 msgid "Delete selected file or folder"
-msgstr "Saylanğan dosyeni ya da fihristni sil"
+msgstr "Saylanğan dosyeni ya da cilbentni sil"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:797
 msgid "Up"
@@ -2947,15 +2947,15 @@ msgstr "Yuqarı"
 # tüklü
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:798
 msgid "Open the parent folder"
-msgstr "Baba fihristni aç"
+msgstr "Baba cilbentni aç"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:803
 msgid "_New Folder"
-msgstr "_Yañı Fihrist"
+msgstr "_Yañı Cilbent"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:804
 msgid "Add new empty folder"
-msgstr "Yañı boş fihrist ekle"
+msgstr "Yañı boş cilbent ekle"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:806
 msgid "New F_ile"
@@ -2971,7 +2971,7 @@ msgstr "_Kene Adlandır"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:813
 msgid "Rename selected file or folder"
-msgstr "Saylanğan dosyeni ya da fihristni kene adlandır"
+msgstr "Saylanğan dosyeni ya da cilbentni kene adlandır"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:819
 msgid "_Previous Location"
@@ -3000,12 +3000,12 @@ msgstr "Bu körünimni tazert"
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:827
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:845
 msgid "_View Folder"
-msgstr "_Fihristni Köster"
+msgstr "_Cilbentni Köster"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:828
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:846
 msgid "View folder in file manager"
-msgstr "Fihristni dosye idarecisinde kör"
+msgstr "Cilbentni dosye idarecisinde kör"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:835
 msgid "Show _Hidden"
@@ -3013,7 +3013,7 @@ msgstr "_Gizlilerni Köster"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:836
 msgid "Show hidden files and folders"
-msgstr "Gizli dosyelerni ve fihristlerni köster"
+msgstr "Gizli dosyelerni ve cilbentlerni köster"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:838
 msgid "Show _Binary"
