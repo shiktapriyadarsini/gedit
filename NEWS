@@ -1,4 +1,26 @@
 ============
+gedit 2.28.1
+============
+
+New Features and Fixes
+======================
+- Fix regressions in the External Tools plugin (Jesse van den Kieboom)
+- Better OSX integration (Jesse van den Kieboom)
+- Misc bugfixes
+
+New and updated translations
+============================
+- ca (Gil Forcada)
+- crh (Reşat SABIQ)
+- lv (Rūdolfs Mazurs)
+- ro (Adi Roiban)
+- ru (Alexander Saprykin)
+- sl (Matej Urbančič)
+- th (อาคม โชติพันธวานนท์)
+- th (Theppitak Karoonboonyanan)
+
+
+============
 gedit 2.28.0
 ============
 
