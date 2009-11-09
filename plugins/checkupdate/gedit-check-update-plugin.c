@@ -37,12 +37,16 @@
 
 #define VERSION_PLACE "<a href=\"[0-9]\\.[0-9]+/\">"
 
-#ifndef G_OS_WIN32
+#ifdef G_OS_WIN32
 #define GEDIT_URL "http://ftp.acc.umu.se/pub/gnome/binaries/win32/gedit/"
 #define FILE_REGEX "gedit\\-setup\\-[0-9]+\\.[0-9]+\\.[0-9]+(\\-[0-9]+)?\\.exe"
 #else
 #define GEDIT_URL "http://ftp.acc.umu.se/pub/gnome/binaries/mac/gedit/"
 #define FILE_REGEX "gedit\\-[0-9]+\\.[0-9]+\\.[0-9]+(\\-[0-9]+)?\\.dmg"
+#endif
+
+#ifdef OS_OSX
+#include "gedit/osx/gedit-osx.h"
 #endif
 
 #define GEDIT_CHECK_UPDATE_PLUGIN_GET_PRIVATE(object) \
@@ -175,12 +179,15 @@ on_response_cb (GtkWidget   *infobar,
 		gchar *url;
 		
 		url = g_object_get_data (G_OBJECT (window), WINDOW_DATA_KEY);
-	
+
+#ifdef OS_OSX
+		gedit_osx_show_url (url);
+#else
 		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (window)),
 			      url, 
 			      GDK_CURRENT_TIME,
 			      &error);
-
+#endif
 		if (error != NULL)
 		{
 			GtkWidget *dialog;
@@ -211,9 +218,11 @@ on_response_cb (GtkWidget   *infobar,
 }
 
 static GtkWidget *
-create_infobar (GeditWindow *window)
+create_infobar (GeditWindow *window,
+                const gchar *version)
 {
 	GtkWidget *infobar;
+	gchar *message;
 
 #if !GTK_CHECK_VERSION (2, 17, 1)
 	infobar = gedit_message_area_new ();
@@ -245,11 +254,14 @@ create_infobar (GeditWindow *window)
 				       GTK_MESSAGE_INFO);
 #endif
 
+	message = g_strdup_printf ("%s (%s)", _("There is a new version of gedit"), version);
 	set_message_area_text_and_icon (infobar,
 					"gtk-dialog-info",
-					_("There is a new version of gedit"),
+					message,
 					_("You can download the new version of gedit"
 					  " by pressing on the download button"));
+
+	g_free (message);
 
 	g_signal_connect (infobar, "response",
 			  G_CALLBACK (on_response_cb),
@@ -402,7 +414,7 @@ parse_page_file (SoupSession *session,
 						file_url,
 						g_free);
 		
-			infobar = create_infobar (window);
+			infobar = create_infobar (window, file_version);
 			pack_infobar (GTK_WIDGET (window), infobar);
 			gtk_widget_show (infobar);
 		}
