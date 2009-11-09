@@ -1,3 +1,4 @@
+gedit/gedit-app.c
 data/gedit.desktop.in
 data/gedit.schemas.in
 gedit/dialogs/gedit-style-scheme-dialog.c
