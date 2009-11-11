@@ -1,4 +1,13 @@
 ============
+gedit 2.28.2
+============
+
+New Features and Fixes
+======================
+- Fix regressions/warnings due to mistakes in OS X integration
+
+
+============
 gedit 2.28.1
 ============
 
