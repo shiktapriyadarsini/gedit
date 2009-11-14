@@ -336,13 +336,13 @@ class Manager:
         if not shortcut:
             shortcut = item.shortcut
 
-        if not item.shortcut in self.accelerators:
+        if not shortcut in self.accelerators:
             return
-        
-        self.accelerators[item.shortcut].remove(item)
-        
-        if not self.accelerators[item.shortcut]:
-            del self.accelerators[item.shortcut]
+
+        self.accelerators[shortcut].remove(item)
+
+        if not self.accelerators[shortcut]:
+            del self.accelerators[shortcut]
 
     def add_tool_to_language(self, tool, language):
         if isinstance(language, gsv.Language):
@@ -648,6 +648,8 @@ class Manager:
         if refresh and tool == self.current_node:
             self.fill_fields()
 
+        self.update_remove_revert()
+
     def on_remove_tool_button_clicked(self, button):
         piter, node = self.get_selected_tool()
 
@@ -744,6 +746,7 @@ class Manager:
 
         if name == '':
             self.current_node.shorcut = None
+            self.save_current_tool()
             return True
             
         col = self.accelerator_collision(name, self.current_node)
@@ -763,6 +766,7 @@ class Manager:
 
         self.current_node.shortcut = name
         self.add_accelerator(self.current_node)
+        self.save_current_tool()
 
         return True
 
@@ -776,6 +780,7 @@ class Manager:
         elif event.keyval == gtk.keysyms.Delete \
           or event.keyval == gtk.keysyms.BackSpace:
             entry.set_text('')
+            self.remove_accelerator(self.current_node)
             self.current_node.shortcut = None
             self['commands'].grab_focus()
             return True
