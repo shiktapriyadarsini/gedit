@@ -486,7 +486,7 @@ msgstr[3] "V kolikor ne shranite, bodo spremembe zadnjih %ld minut trajno izgubl
 #, c-format
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] "V kolikor ne shranite, bodo spremembe zadnje ure trajno izgubljene."
+msgstr[0] "V kolikor ne shranite, bodo spremembe zadnje %d ure trajno izgubljene."
 msgstr[1] "V kolikor ne shranite, bodo spremembe zadnjih %d ur trajno izgubljene."
 msgstr[2] "V kolikor ne shranite, bodo spremembe zadnjih %d ur trajno izgubljene."
 msgstr[3] "V kolikor ne shranite, bodo spremembe zadnjih %d ur trajno izgubljene."
