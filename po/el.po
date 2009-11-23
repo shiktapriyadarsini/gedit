@@ -33,7 +33,7 @@ msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&component=general\n"
-"POT-Creation-Date: 2009-11-15 14:12+0000\n"
+"POT-Creation-Date: 2009-11-15 17:53+0000\n"
 "PO-Revision-Date: 2009-04-01 22:00+0200\n"
 "Last-Translator: Thanos Lefteris <alefteris@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
@@ -796,100 +796,120 @@ msgid "    "
 msgstr "    "
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:2
-msgid "<b>Automatic Indentation</b>"
+#, fuzzy
+#| msgid "<b>Automatic Indentation</b>"
+msgid "Automatic Indentation"
 msgstr "<b>Αυτόματη εσοχή</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:3
-msgid "<b>Bracket Matching</b>"
+#, fuzzy
+#| msgid "<b>Bracket Matching</b>"
+msgid "Bracket Matching"
 msgstr "<b>Ταίριασμα αγκυλών</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:4
-msgid "<b>Current Line</b>"
-msgstr "<b>Τρέχουσα γραμμή</b>"
+#, fuzzy
+#| msgid "Color Scheme Files"
+msgid "Color Scheme"
+msgstr "Αρχεία σχήματος χρώματος"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:5
-msgid "<b>File Saving</b>"
-msgstr "<b>Αποθήκευση αρχείου</b>"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:6
-msgid "<b>Font</b>"
-msgstr "<b>Γραμματοσειρά</b>"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:7
-#: ../gedit/gedit-print-preferences.ui.h:2
-msgid "<b>Line Numbers</b>"
-msgstr "<b>Αριθμοί γραμμής</b>"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:8
-msgid "<b>Right Margin</b>"
-msgstr "<b>Δεξιό περιθώριο</b>"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:9
-msgid "<b>Tab Stops</b>"
-msgstr "<b>Η στήλη σταματάει</b>"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:10
-#: ../gedit/gedit-print-preferences.ui.h:5
-msgid "<b>Text Wrapping</b>"
-msgstr "<b>Αναδίπλωση κειμένου</b>"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:11
-msgid "<span weight=\"bold\">Color Scheme</span>"
-msgstr "<span weight=\"bold\">Σχήμα χρώματος</span>"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:12
 msgid "Create a _backup copy of files before saving"
 msgstr "Δημιουργία α_ντιγράφου ασφαλείας πριν την αποθήκευση"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:13
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:6
+#, fuzzy
+#| msgid "Current line"
+msgid "Current Line"
+msgstr "Τρέχουσα γραμμή"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:7
 msgid "Display right _margin"
 msgstr "Προ_βολή δεξιού περιθωρίου"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:14
-#: ../gedit/gedit-print-preferences.ui.h:6
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:8
+#: ../gedit/gedit-print-preferences.ui.h:1
 msgid "Do not _split words over two lines"
 msgstr "Να μην _χωρίζονται λέξεις σε πάνω από δύο γραμμές"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:15
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:9
 msgid "Editor"
 msgstr "Επεξεργαστής"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:16
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:10
 msgid "Editor _font: "
 msgstr "Γ_ραμματοσειρά επεξεργαστή: "
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
-#: ../gedit/gedit-print-preferences.ui.h:7
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:11
+#: ../gedit/gedit-print-preferences.ui.h:2
 msgid "Enable text _wrapping"
 msgstr "Ενεργοποίηση ανα_δίπλωσης κειμένου"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:12
+#, fuzzy
+#| msgid "<b>File Saving</b>"
+msgid "File Saving"
+msgstr "<b>Αποθήκευση αρχείου</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:13
+#, fuzzy
+#| msgid "Footnote"
+msgid "Font"
+msgstr "Υποσημείωση"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:14
 msgid "Font & Colors"
 msgstr "Γραμματοσειρές & Χρώματα"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:19
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:15
 msgid "Highlight current _line"
 msgstr "Επι_σήμανση τρέχουσας γραμμής"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:20
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:16
 msgid "Highlight matching _bracket"
 msgstr "Επισήμανση παρέν_θεσης που ταιριάζει"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:21
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
 msgid "Insert _spaces instead of tabs"
 msgstr "Εισαγωγή _διαστημάτων αντί για στηλοθέτες"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:22
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
+#: ../gedit/gedit-print-preferences.ui.h:5
+#, fuzzy
+#| msgid "_Line numbers:"
+msgid "Line Numbers"
+msgstr "Αρι_θμοί γραμμής:"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:19
 msgid "Pick the editor font"
 msgstr "Επιλογή γραμματοσειράς επεξεργαστή"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:23
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:20
 msgid "Plugins"
 msgstr "Πρόσθετες λειτουργίες"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:24
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:21
 msgid "Preferences"
 msgstr "Προτιμήσεις"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:22
+#, fuzzy
+#| msgid "<b>Right Margin</b>"
+msgid "Right Margin"
+msgstr "<b>Δεξιό περιθώριο</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:23
+#, fuzzy
+#| msgid "<b>Tab Stops</b>"
+msgid "Tab Stops"
+msgstr "<b>Η στήλη σταματάει</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:24
+#: ../gedit/gedit-print-preferences.ui.h:11
+#, fuzzy
+#| msgid "<b>Text Wrapping</b>"
+msgid "Text Wrapping"
+msgstr "<b>Αναδίπλωση κειμένου</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:25
 msgid "View"
@@ -1021,6 +1041,12 @@ msgstr ""
 "%s\n"
 "Εκτελέστε '%s --help' για να δείτε μια πλήρη λίστα των διαθέσιμων επιλογών "
 "γραμμής εντολών.\n"
+
+#: ../gedit/gedit-app.c:404
+#, fuzzy
+#| msgid "_About Plugin"
+msgid "About gedit"
+msgstr "_Περί πρόσθετης λειτουργίας"
 
 #: ../gedit/gedit-commands-file.c:255
 #, c-format
@@ -1700,7 +1726,7 @@ msgstr "_Επαναφόρτωση"
 msgid "Could not obtain backup filename"
 msgstr "Αδυναμία λήψης αντιγράφου ασφαλείας"
 
-#: ../gedit/gedit-notebook.c:903
+#: ../gedit/gedit-notebook.c:914
 msgid "Close document"
 msgstr "Κλείσιμο εγγράφου"
 
@@ -1776,33 +1802,39 @@ msgstr "Σελίδα %N από %Q"
 msgid "Preparing..."
 msgstr "Προετοιμασία..."
 
-#: ../gedit/gedit-print-preferences.ui.h:1
-msgid "<b>Fonts</b>"
-msgstr "<b>Γραμματοσειρές</b>"
-
 #: ../gedit/gedit-print-preferences.ui.h:3
-msgid "<b>Page header</b>"
-msgstr "<b>Κεφαλίδα σελίδας</b>"
+#, fuzzy
+#| msgid "Footnote"
+msgid "Fonts"
+msgstr "Υποσημείωση"
 
 #: ../gedit/gedit-print-preferences.ui.h:4
-msgid "<b>Syntax Highlighting</b>"
-msgstr "<b>Επισήμανση σύνταξης</b>"
-
-#: ../gedit/gedit-print-preferences.ui.h:8
 msgid "He_aders and footers:"
 msgstr "Κεφα_λίδες και υποσέλιδα:"
 
-#: ../gedit/gedit-print-preferences.ui.h:9
+#: ../gedit/gedit-print-preferences.ui.h:6
+#, fuzzy
+#| msgid "Table header"
+msgid "Page header"
+msgstr "Κεφαλίδα πίνακα"
+
+#: ../gedit/gedit-print-preferences.ui.h:7
 msgid "Print line nu_mbers"
 msgstr "Εκτύπωση αρι_θμών γραμμής"
 
-#: ../gedit/gedit-print-preferences.ui.h:10
+#: ../gedit/gedit-print-preferences.ui.h:8
 msgid "Print page _headers"
 msgstr "Εκτύπωση _κεφαλίδων σελίδας"
 
-#: ../gedit/gedit-print-preferences.ui.h:11
+#: ../gedit/gedit-print-preferences.ui.h:9
 msgid "Print synta_x highlighting"
 msgstr "Εκτύπωση επισήμανσης _σύνταξης"
+
+#: ../gedit/gedit-print-preferences.ui.h:10
+#, fuzzy
+#| msgid "Print Syntax Highlighting"
+msgid "Syntax Highlighting"
+msgstr "Εκτύπωση επισήμανσης σύνταξης"
 
 #: ../gedit/gedit-print-preferences.ui.h:12
 msgid "_Body:"
@@ -2331,7 +2363,7 @@ msgstr "Χρήση %s λειτουργίας επισήμανσης"
 #: ../plugins/externaltools/tools/manager.py:121
 #: ../plugins/externaltools/tools/manager.py:423
 #: ../plugins/externaltools/tools/manager.py:533
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Plain Text"
 msgstr "Απλό κείμενο"
 
@@ -2581,7 +2613,7 @@ msgstr "Γλώσσες"
 
 #: ../plugins/externaltools/tools/manager.py:522
 #: ../plugins/externaltools/tools/manager.py:526
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 #: ../plugins/externaltools/tools/tools.ui.h:2
 #, fuzzy
 #| msgid "Languages"
@@ -2592,16 +2624,16 @@ msgstr "Γλώσσες"
 msgid "New tool"
 msgstr "Νέο εργαλείο"
 
-#: ../plugins/externaltools/tools/manager.py:760
+#: ../plugins/externaltools/tools/manager.py:763
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Αυτή η συντόμευση είναι ήδη αντιστοιχισμένη με %s"
 
-#: ../plugins/externaltools/tools/manager.py:809
+#: ../plugins/externaltools/tools/manager.py:814
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Πληκτρολογήστε μια νέα συντόμευση, ή πατήστε Backspace για εκκαθάριση"
 
-#: ../plugins/externaltools/tools/manager.py:811
+#: ../plugins/externaltools/tools/manager.py:816
 msgid "Type a new accelerator"
 msgstr "Πληκτρολογήστε μια νέα συντόμευση"
 
@@ -3116,30 +3148,7 @@ msgstr "Αδυναμία ανοίγματος μέσου: %s"
 msgid "Could not mount volume: %s"
 msgstr "Αδυναμία προσάρτησης ενότητας: %s"
 
-#: ../plugins/indent/gedit-indent-plugin.c:56
-msgid "_Indent"
-msgstr "_Εσοχή"
-
-#: ../plugins/indent/gedit-indent-plugin.c:58
-msgid "Indent selected lines"
-msgstr "Εσοχή σε επιλεγμένες γραμμές"
-
-#: ../plugins/indent/gedit-indent-plugin.c:63
-msgid "U_nindent"
-msgstr "Α_ποεσοχή"
-
-#: ../plugins/indent/gedit-indent-plugin.c:65
-msgid "Unindent selected lines"
-msgstr "Αποεσοχή σε επιλεγμένες γραμμές"
-
-#: ../plugins/indent/indent.gedit-plugin.desktop.in.h:1
-msgid "Indent Lines"
-msgstr "Εσοχή γραμμών"
-
-#: ../plugins/indent/indent.gedit-plugin.desktop.in.h:2
-msgid "Indents or un-indents selected lines."
-msgstr "Εσοχή ή αποεσοχή σε επιλεγμένες γραμμές."
-
+#. ex:ts=8:noet:
 #: ../plugins/modelines/modelines.gedit-plugin.desktop.in.h:1
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Υποστήριξη για το gedit Emacs, Kate και Vim-style modelines"
@@ -3193,6 +3202,7 @@ msgid "Insert often used pieces of text in a fast way"
 msgstr "Εισάγετε συχνά χρησιμοποιούμενα κομμάτια κειμένου με ένα γρήγορο τρόπο"
 
 #: ../plugins/snippets/snippets.gedit-plugin.desktop.in.h:2
+#: ../plugins/snippets/snippets/Document.py:58
 msgid "Snippets"
 msgstr "Snippets"
 
@@ -3205,7 +3215,7 @@ msgid "Create new snippet"
 msgstr "Δημιουργία νέου snippet"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:4
-#: ../plugins/snippets/snippets/Manager.py:420
+#: ../plugins/snippets/snippets/Manager.py:409
 msgid "Delete selected snippet"
 msgstr "Διαγραφή επιλεγμένου snippet"
 
@@ -3214,7 +3224,7 @@ msgid "Export selected snippets"
 msgstr "Εξαγωγή επιλεγμένων snippets"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:6
-#: ../plugins/snippets/snippets/Manager.py:808
+#: ../plugins/snippets/snippets/Manager.py:797
 msgid "Import snippets"
 msgstr "Εισαγωγή snippets"
 
@@ -3228,7 +3238,7 @@ msgstr "Πλήκτρο συντόμευσης για την ενεργοποίη
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/snippets.ui.h:9
-#: ../plugins/snippets/snippets/Manager.py:697
+#: ../plugins/snippets/snippets/Manager.py:686
 msgid "Single word with which the snippet is activated after pressing tab"
 msgstr ""
 "Μονή λέξη για την ενεργοποίηση του snippet μετά το πάτημα του πλήκτρου tab"
@@ -3249,32 +3259,32 @@ msgstr "_Snippets:"
 msgid "_Tab trigger:"
 msgstr "_Tab trigger:"
 
-#: ../plugins/snippets/snippets/WindowHelper.py:74
+#: ../plugins/snippets/snippets/WindowHelper.py:130
 msgid "Manage _Snippets..."
 msgstr "Διαχείριση _Snippets..."
 
-#: ../plugins/snippets/snippets/WindowHelper.py:75
+#: ../plugins/snippets/snippets/WindowHelper.py:131
 msgid "Manage snippets"
 msgstr "Διαχείριση snippets"
 
-#: ../plugins/snippets/snippets/Manager.py:45
+#: ../plugins/snippets/snippets/Manager.py:46
 msgid "Snippets archive"
 msgstr "Αρχειοθήκη Snippets"
 
-#: ../plugins/snippets/snippets/Manager.py:70
+#: ../plugins/snippets/snippets/Manager.py:71
 msgid "Add a new snippet..."
 msgstr "Προσθήκη νέου snippet..."
 
-#: ../plugins/snippets/snippets/Manager.py:120
+#: ../plugins/snippets/snippets/Manager.py:121
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/Manager.py:417
+#: ../plugins/snippets/snippets/Manager.py:406
 msgid "Revert selected snippet"
 msgstr "Επαναφορά επιλεγμένου snippet"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/Manager.py:690
+#: ../plugins/snippets/snippets/Manager.py:679
 msgid ""
 "This is not a valid tab trigger. Triggers can either contain letters or a "
 "single, non alphanumeric, character like {, [, etcetera."
@@ -3283,75 +3293,75 @@ msgstr ""
 "μπορούν να περιέχουν είτε ένα μοναδικό, μη αλφαριθμητικό χαρακτήρα όπως {, "
 "[, etcetera."
 
-#: ../plugins/snippets/snippets/Manager.py:787
+#: ../plugins/snippets/snippets/Manager.py:776
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Συνέβηκε το ακόλουθο σφάλμα κατά την εισαγωγή: %s"
 
-#: ../plugins/snippets/snippets/Manager.py:794
+#: ../plugins/snippets/snippets/Manager.py:783
 msgid "Import successfully completed"
 msgstr "Η εισαγωγή ολοκληρώθηκε με επιτυχία"
 
-#: ../plugins/snippets/snippets/Manager.py:813
-#: ../plugins/snippets/snippets/Manager.py:899
-#: ../plugins/snippets/snippets/Manager.py:962
+#: ../plugins/snippets/snippets/Manager.py:802
+#: ../plugins/snippets/snippets/Manager.py:888
+#: ../plugins/snippets/snippets/Manager.py:951
 msgid "All supported archives"
 msgstr "Όλα τα υποστηριζόμενα αρχεία"
 
-#: ../plugins/snippets/snippets/Manager.py:814
-#: ../plugins/snippets/snippets/Manager.py:900
-#: ../plugins/snippets/snippets/Manager.py:963
+#: ../plugins/snippets/snippets/Manager.py:803
+#: ../plugins/snippets/snippets/Manager.py:889
+#: ../plugins/snippets/snippets/Manager.py:952
 msgid "Gzip compressed archive"
 msgstr "Συμπιεσμένο αρχείο Gzip"
 
-#: ../plugins/snippets/snippets/Manager.py:815
-#: ../plugins/snippets/snippets/Manager.py:901
-#: ../plugins/snippets/snippets/Manager.py:964
+#: ../plugins/snippets/snippets/Manager.py:804
+#: ../plugins/snippets/snippets/Manager.py:890
+#: ../plugins/snippets/snippets/Manager.py:953
 msgid "Bzip2 compressed archive"
 msgstr "Συμπιεσμένο αρχείο Bzip2"
 
-#: ../plugins/snippets/snippets/Manager.py:816
+#: ../plugins/snippets/snippets/Manager.py:805
 msgid "Single snippets file"
 msgstr "Μονό αρχείο snippets"
 
-#: ../plugins/snippets/snippets/Manager.py:817
-#: ../plugins/snippets/snippets/Manager.py:903
-#: ../plugins/snippets/snippets/Manager.py:966
+#: ../plugins/snippets/snippets/Manager.py:806
+#: ../plugins/snippets/snippets/Manager.py:892
+#: ../plugins/snippets/snippets/Manager.py:955
 msgid "All files"
 msgstr "Όλα τα αρχεία"
 
-#: ../plugins/snippets/snippets/Manager.py:829
+#: ../plugins/snippets/snippets/Manager.py:818
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Σφάλμα κατά την εξαγωγή : %s"
 
-#: ../plugins/snippets/snippets/Manager.py:833
+#: ../plugins/snippets/snippets/Manager.py:822
 msgid "Export successfully completed"
 msgstr "Η εξαγωγή ολοκληρώθηκε με επιτυχία"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/Manager.py:873
-#: ../plugins/snippets/snippets/Manager.py:940
+#: ../plugins/snippets/snippets/Manager.py:862
+#: ../plugins/snippets/snippets/Manager.py:929
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Θέλετε να περιληφθούν τα επιλεγμένα snippets <b>συστήματος</b> στην εξαγωγή "
 "σας;"
 
-#: ../plugins/snippets/snippets/Manager.py:888
-#: ../plugins/snippets/snippets/Manager.py:958
+#: ../plugins/snippets/snippets/Manager.py:877
+#: ../plugins/snippets/snippets/Manager.py:947
 msgid "There are no snippets selected to be exported"
 msgstr "Δεν υπάρχουν επιλεγμένα snippets για εξαγωγή"
 
-#: ../plugins/snippets/snippets/Manager.py:893
-#: ../plugins/snippets/snippets/Manager.py:931
+#: ../plugins/snippets/snippets/Manager.py:882
+#: ../plugins/snippets/snippets/Manager.py:920
 msgid "Export snippets"
 msgstr "Εξαγωγή snippets"
 
-#: ../plugins/snippets/snippets/Manager.py:1070
+#: ../plugins/snippets/snippets/Manager.py:1059
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Πληκτρολογήστε μια νέα συντόμευση, ή πατήστε Backspace για εκκαθάριση"
 
-#: ../plugins/snippets/snippets/Manager.py:1072
+#: ../plugins/snippets/snippets/Manager.py:1061
 msgid "Type a new shortcut"
 msgstr "Πληκτρολογήστε μια νέα συντόμευση"
 
@@ -3402,7 +3412,7 @@ msgstr "Δεν είναι δυνατή η εισαγωγή των παρακάτ
 msgid "File `%s` is not a valid snippets archive"
 msgstr "Το αρχείο `%s` δεν είναι μια έγκυρη αρχειοθήκη snippets"
 
-#: ../plugins/snippets/snippets/Placeholder.py:571
+#: ../plugins/snippets/snippets/Placeholder.py:580
 #, python-format
 msgid ""
 "Execution of the python command (%s) exceeds the maximum time, execution "
@@ -3411,7 +3421,7 @@ msgstr ""
 "Η εκτέλεση της εντολής python (%s) υπερβαίνει το μέγιστο χρόνο, ακύρωση "
 "εκτέλεσης."
 
-#: ../plugins/snippets/snippets/Placeholder.py:579
+#: ../plugins/snippets/snippets/Placeholder.py:588
 #, python-format
 msgid "Execution of the python command (%s) failed: %s"
 msgstr "Η εκτέλεση της εντολής python (%s) απέτυχε: %s"
@@ -5265,6 +5275,27 @@ msgstr "_Ερώτηση για τύπο"
 #~ msgid "Enter the _location (URI) of the file you would like to open:"
 #~ msgstr "Εισάγετε την _τοποθεσία (URI) του αρχείου που θέλετε να ανοίξετε:"
 
+#~ msgid "<b>Current Line</b>"
+#~ msgstr "<b>Τρέχουσα γραμμή</b>"
+
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Γραμματοσειρά</b>"
+
+#~ msgid "<b>Line Numbers</b>"
+#~ msgstr "<b>Αριθμοί γραμμής</b>"
+
+#~ msgid "<span weight=\"bold\">Color Scheme</span>"
+#~ msgstr "<span weight=\"bold\">Σχήμα χρώματος</span>"
+
+#~ msgid "<b>Fonts</b>"
+#~ msgstr "<b>Γραμματοσειρές</b>"
+
+#~ msgid "<b>Page header</b>"
+#~ msgstr "<b>Κεφαλίδα σελίδας</b>"
+
+#~ msgid "<b>Syntax Highlighting</b>"
+#~ msgstr "<b>Επισήμανση σύνταξης</b>"
+
 #~ msgid "Open _Location..."
 #~ msgstr "Άνοιγμα _τοποθεσίας..."
 
@@ -5285,6 +5316,24 @@ msgstr "_Ερώτηση για τύπο"
 
 #~ msgid "_Description:"
 #~ msgstr "_Περιγραφή:"
+
+#~ msgid "_Indent"
+#~ msgstr "_Εσοχή"
+
+#~ msgid "Indent selected lines"
+#~ msgstr "Εσοχή σε επιλεγμένες γραμμές"
+
+#~ msgid "U_nindent"
+#~ msgstr "Α_ποεσοχή"
+
+#~ msgid "Unindent selected lines"
+#~ msgstr "Αποεσοχή σε επιλεγμένες γραμμές"
+
+#~ msgid "Indent Lines"
+#~ msgstr "Εσοχή γραμμών"
+
+#~ msgid "Indents or un-indents selected lines."
+#~ msgstr "Εσοχή ή αποεσοχή σε επιλεγμένες γραμμές."
 
 #~ msgid "Insert User Na_me"
 #~ msgstr "Εισαγωγή Ο_νόματος Χρήστη"
