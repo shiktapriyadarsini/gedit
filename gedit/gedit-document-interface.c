@@ -223,10 +223,10 @@ gedit_document_get_metadata_default (GeditDocument *doc,
 	g_return_val_if_reached (NULL);
 }
 
-void
-gedit_document_set_metadata_default (GeditDocument *doc,
-				     const gchar   *first_key,
-				     ...)
+static void
+gedit_document_set_metadata_va_list_default (GeditDocument *doc,
+					     const gchar   *first_key,
+					     va_list        var_args)
 {
 	g_return_if_reached ();
 }
@@ -265,7 +265,7 @@ gedit_document_init (GeditDocumentIface *iface)
 	iface->get_modified = gedit_document_get_modified_default;
 	iface->get_has_selection = gedit_document_get_has_selection_default;
 	iface->get_metadata = gedit_document_get_metadata_default;
-	iface->set_metadata = gedit_document_set_metadata_default;
+	iface->set_metadata_va_list = gedit_document_set_metadata_va_list_default;
 	
 	if (!initialized)
 	{
@@ -750,19 +750,57 @@ gedit_document_get_has_selection (GeditDocument *doc)
 	return GEDIT_DOCUMENT_GET_INTERFACE (doc)->get_has_selection (doc);
 }
 
+/**
+ * gedit_document_get_metadata:
+ * @doc: a #GeditDocument
+ * @key: name of the key
+ *
+ * Gets the metadata assigned to @key.
+ *
+ * Returns: the value assigned to @key.
+ */
 gchar *
 gedit_document_get_metadata (GeditDocument *doc,
 			     const gchar   *key)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
+	g_return_val_if_fail (key != NULL, NULL);
 	return GEDIT_DOCUMENT_GET_INTERFACE (doc)->get_metadata (doc, key);
 }
 
+void
+gedit_document_set_metadata_va_list (GeditDocument *doc,
+				     const gchar   *first_key,
+				     va_list        var_args)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	g_return_if_fail (first_key != NULL);
+	GEDIT_DOCUMENT_GET_INTERFACE (doc)->set_metadata_va_list (doc, first_key,
+								  var_args);
+}
+
+/**
+ * gedit_document_set_metadata:
+ * @doc: a #GeditDocument
+ * @first_key: name of the first key to set
+ * @...: value for the first key, followed optionally by more key/value pairs,
+ * followed by %NULL.
+ *
+ * Sets metadata on a document.
+ */
 void
 gedit_document_set_metadata (GeditDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
+	va_list var_args;
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	GEDIT_DOCUMENT_GET_INTERFACE (doc)->set_metadata (doc, first_key, ...);
+	g_return_if_fail (first_key != NULL);
+
+	va_start (var_args, first_key);
+
+	gedit_document_set_metadata_va_list (doc, first_key, var_args);
+
+	va_end (var_args);
 }

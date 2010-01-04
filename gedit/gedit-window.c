@@ -3520,7 +3520,6 @@ notebook_page_removed (GeditNotebook *notebook,
 		       GeditPage     *page,
 		       GeditWindow   *window)
 {
-	GtkAction     *action;
 	GeditViewContainer *container;
 	GList *containers, *l;
 	GeditDocument *doc;

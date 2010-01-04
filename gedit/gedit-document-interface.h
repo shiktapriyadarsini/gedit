@@ -181,6 +181,13 @@ struct _GeditDocumentIface
 	gboolean (* get_modified)	(GeditDocument       *doc);
 	
 	gboolean (* get_has_selection)	(GeditDocument       *doc);
+
+	gchar * (* get_metadata)	(GeditDocument       *doc,
+					 const gchar         *key);
+
+	void (* set_metadata_va_list)	(GeditDocument       *doc,
+					 const gchar         *first_key,
+					 va_list              var_args);
 };
 
 #define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()
@@ -280,6 +287,11 @@ gboolean	 gedit_document_get_has_selection(GeditDocument      *doc);
 
 gchar		*gedit_document_get_metadata	(GeditDocument *doc,
 						 const gchar   *key);
+
+void		 gedit_document_set_metadata_va_list
+						(GeditDocument *doc,
+						 const gchar   *first_key,
+						 va_list        var_args);
 
 void		 gedit_document_set_metadata	(GeditDocument *doc,
 						 const gchar   *first_key,

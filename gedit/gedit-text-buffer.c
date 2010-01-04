@@ -229,7 +229,7 @@ gedit_text_buffer_dispose (GObject *object)
 		{
 			GtkSourceLanguage *lang;
 
-			lang = gedit_document_get_language (doc);
+			lang = gedit_text_buffer_get_language (doc);
 
 			if (lang == NULL)
 				language = "_NORMAL_";
@@ -246,10 +246,12 @@ gedit_text_buffer_dispose (GObject *object)
 					    gtk_text_iter_get_offset (&iter));
 
 		if (language == NULL)
-			gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION,
+			gedit_document_set_metadata (GEDIT_DOCUMENT (doc),
+						     GEDIT_METADATA_ATTRIBUTE_POSITION,
 						     position, NULL);
 		else
-			gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION,
+			gedit_document_set_metadata (GEDIT_DOCUMENT (doc),
+						     GEDIT_METADATA_ATTRIBUTE_POSITION,
 						     position, GEDIT_METADATA_ATTRIBUTE_LANGUAGE,
 						     language, NULL);
 		g_free (position);
@@ -502,7 +504,7 @@ set_language (GeditTextBuffer   *doc,
 
 	if (set_by_user && (doc->priv->uri != NULL))
 	{
-		gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_LANGUAGE,
+		gedit_document_set_metadata (GEDIT_DOCUMENT (doc), GEDIT_METADATA_ATTRIBUTE_LANGUAGE,
 			(lang == NULL) ? "_NORMAL_" : gtk_source_language_get_id (lang),
 			NULL);
 	}
@@ -511,7 +513,7 @@ set_language (GeditTextBuffer   *doc,
 }
 
 static void
-set_encoding (GeditDocument       *doc, 
+set_encoding (GeditTextBuffer     *doc, 
 	      const GeditEncoding *encoding,
 	      gboolean             set_by_user)
 {
@@ -530,7 +532,8 @@ set_encoding (GeditDocument       *doc,
 
 		charset = gedit_encoding_get_charset (encoding);
 
-		gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_ENCODING,
+		gedit_document_set_metadata (GEDIT_DOCUMENT (doc),
+					     GEDIT_METADATA_ATTRIBUTE_ENCODING,
 					     charset, NULL);
 	}
 
@@ -566,13 +569,14 @@ get_default_style_scheme (void)
 }
 
 static GtkSourceLanguage *
-guess_language (GeditDocument *doc,
-		const gchar   *content_type)
+guess_language (GeditTextBuffer *doc,
+		const gchar     *content_type)
 {
 	gchar *data;
 	GtkSourceLanguage *language = NULL;
 
-	data = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_LANGUAGE);
+	data = gedit_document_get_metadata (GEDIT_DOCUMENT (doc),
+					    GEDIT_METADATA_ATTRIBUTE_LANGUAGE);
 
 	if (data != NULL)
 	{
@@ -592,7 +596,7 @@ guess_language (GeditDocument *doc,
 		GFile *file;
 		gchar *basename;
 
-		file = gedit_document_get_location (doc);
+		file = gedit_document_get_location (GEDIT_DOCUMENT (doc));
 
 		if (file)
 		{
@@ -614,96 +618,8 @@ guess_language (GeditDocument *doc,
 }
 
 static void
-on_content_type_changed (GeditDocument *doc,
-			 GParamSpec    *pspec,
-			 gpointer       useless)
-{
-	if (!doc->priv->language_set_by_user)
-	{
-		GtkSourceLanguage *language;
-
-		language = guess_language (doc, doc->priv->content_type);
-
-		gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
-				     language != NULL ? gtk_source_language_get_name (language) : "None");
-
-		set_language (doc, language, FALSE);
-	}
-}
-
-static void
-gedit_document_init (GeditDocument *doc)
-{
-	GtkSourceStyleScheme *style_scheme;
-
-	gedit_debug (DEBUG_DOCUMENT);
-
-	doc->priv = GEDIT_DOCUMENT_GET_PRIVATE (doc);
-
-	doc->priv->uri = NULL;
-	doc->priv->untitled_number = get_untitled_number ();
-
-	doc->priv->metadata_info = NULL;
-
-	doc->priv->content_type = g_content_type_from_mime_type ("text/plain");
-
-	doc->priv->readonly = FALSE;
-
-	doc->priv->stop_cursor_moved_emission = FALSE;
-
-	doc->priv->last_save_was_manually = TRUE;
-	doc->priv->language_set_by_user = FALSE;
-
-	doc->priv->dispose_has_run = FALSE;
-
-	doc->priv->mtime.tv_sec = 0;
-	doc->priv->mtime.tv_usec = 0;
-
-	g_get_current_time (&doc->priv->time_of_last_save_or_load);
-
-	doc->priv->encoding = gedit_encoding_get_utf8 ();
-
-	gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (doc), 
-					       gedit_prefs_manager_get_undo_actions_limit ());
-
-	gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (doc), 
-							   gedit_prefs_manager_get_bracket_matching ());
-
-	gedit_document_set_enable_search_highlighting (doc,
-						       gedit_prefs_manager_get_enable_search_highlighting ());
-
-	style_scheme = get_default_style_scheme ();
-	if (style_scheme != NULL)
-		gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (doc),
-						    style_scheme);
-
-	g_signal_connect_after (doc, 
-			  	"insert-text",
-			  	G_CALLBACK (insert_text_cb),
-			  	NULL);
-
-	g_signal_connect_after (doc, 
-			  	"delete-range",
-			  	G_CALLBACK (delete_range_cb),
-			  	NULL);
-
-	g_signal_connect (doc,
-			  "notify::content-type",
-			  G_CALLBACK (on_content_type_changed),
-			  NULL);
-}
-
-GeditDocument *
-gedit_document_new (void)
-{
-	gedit_debug (DEBUG_DOCUMENT);
-
-	return GEDIT_DOCUMENT (g_object_new (GEDIT_TYPE_DOCUMENT, NULL));
-}
-
-static void
-set_content_type (GeditDocument *doc,
-		  const gchar   *content_type)
+set_content_type (GeditTextBuffer *doc,
+		  const gchar     *content_type)
 {
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -719,7 +635,7 @@ set_content_type (GeditDocument *doc,
 		gchar *guessed_type = NULL;
 
 		/* If content type is null, we guess from the filename */
-		file = gedit_document_get_location (doc);
+		file = gedit_document_get_location (GEDIT_DOCUMENT (doc));
 		if (file != NULL)
 		{
 			gchar *basename;
@@ -743,11 +659,29 @@ set_content_type (GeditDocument *doc,
 	g_object_notify (G_OBJECT (doc), "content-type");
 }
 
+static void
+on_content_type_changed (GeditTextBuffer *doc,
+			 GParamSpec      *pspec,
+			 gpointer         useless)
+{
+	if (!doc->priv->language_set_by_user)
+	{
+		GtkSourceLanguage *language;
+
+		language = guess_language (doc, doc->priv->content_type);
+
+		gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
+				     language != NULL ? gtk_source_language_get_name (language) : "None");
+
+		set_language (doc, language, FALSE);
+	}
+}
+
 #ifndef G_OS_WIN32
 static void
-query_info_cb (GFile         *source,
-	       GAsyncResult  *res,
-	       GeditDocument *doc)
+query_info_cb (GFile           *source,
+	       GAsyncResult    *res,
+	       GeditTextBuffer *doc)
 {
 	GError *error = NULL;
 
@@ -770,8 +704,8 @@ query_info_cb (GFile         *source,
 #endif
 
 static void
-set_uri (GeditDocument *doc,
-	 const gchar   *uri)
+set_uri (GeditTextBuffer *doc,
+	 const gchar     *uri)
 {
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -796,7 +730,7 @@ set_uri (GeditDocument *doc,
 	GFile *location;
 
 	/* Get the GFileInfo async so we can set the language from the metadata */
-	location = gedit_document_get_location (doc);
+	location = gedit_document_get_location (GEDIT_DOCUMENT (doc));
 	
 	if (location != NULL)
 	{
@@ -841,7 +775,8 @@ gedit_text_buffer_set_uri_impl (GeditDocument *doc,
 {
 	GeditTextBuffer *buf = GEDIT_TEXT_BUFFER (doc);
 
-	set_uri (buf, uri, buf->priv->content_type);
+	set_uri (buf, uri);
+	set_content_type (buf, NULL);
 }
 
 /* Never returns NULL */
@@ -1132,6 +1067,127 @@ gedit_text_buffer_get_has_selection_impl (GeditDocument *doc)
 	return gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc));
 }
 
+#ifdef G_OS_WIN32
+static gchar *
+gedit_text_buffer_get_metadata_impl (GeditDocument *doc,
+				     const gchar   *key)
+{
+	gchar *value = NULL;
+
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
+	g_return_val_if_fail (key != NULL, NULL);
+
+	if (doc->priv->uri != NULL)
+		value = gedit_metadata_manager_get (doc->priv->uri, key);
+
+	return value;
+}
+
+static void
+gedit_text_buffer_set_metadata_impl (GeditDocument *doc,
+				     const gchar   *first_key,
+				     va_list        var_args)
+{
+	const gchar *key;
+	const gchar *value;
+
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	g_return_if_fail (first_key != NULL);
+
+	for (key = first_key; key; key = va_arg (var_args, const gchar *))
+	{
+		value = va_arg (var_args, const gchar *);
+		
+		gedit_metadata_manager_set (doc->priv->uri,
+					    key,
+					    value);
+	}
+}
+
+#else
+
+static gchar *
+gedit_text_buffer_get_metadata_impl (GeditDocument *doc,
+				     const gchar   *key)
+{
+	GeditTextBuffer *buf = GEDIT_TEXT_BUFFER (doc);
+	gchar *value = NULL;
+
+	if (buf->priv->metadata_info && g_file_info_has_attribute (buf->priv->metadata_info,
+								   key))
+	{
+		value = g_strdup (g_file_info_get_attribute_string (buf->priv->metadata_info,
+								    key));
+	}
+
+	return value;
+}
+
+static void
+set_attributes_cb (GObject      *source,
+		   GAsyncResult *res,
+		   gpointer      useless)
+{
+	g_file_set_attributes_finish (G_FILE (source),
+				      res,
+				      NULL,
+				      NULL);
+}
+
+
+static void
+gedit_text_buffer_set_metadata_va_list_impl (GeditDocument *doc,
+					     const gchar   *first_key,
+					     va_list        var_args)
+{
+	GeditTextBuffer *buf = GEDIT_TEXT_BUFFER (doc);
+	const gchar *key;
+	const gchar *value;
+	GFileInfo *info;
+	GFile *location;
+
+	info = g_file_info_new ();
+
+	for (key = first_key; key; key = va_arg (var_args, const gchar *))
+	{
+		value = va_arg (var_args, const gchar *);
+		
+		if (value != NULL)
+		{
+			g_file_info_set_attribute_string (info,
+							  key, value);
+		}
+		else
+		{
+			/* Unset the key */
+			g_file_info_set_attribute (info, key,
+						   G_FILE_ATTRIBUTE_TYPE_INVALID,
+						   NULL);
+		}
+	}
+
+	if (buf->priv->metadata_info != NULL)
+		g_file_info_copy_into (info, buf->priv->metadata_info);
+
+	location = gedit_document_get_location (doc);
+
+	if (location != NULL)
+	{
+		g_file_set_attributes_async (location,
+					     info,
+					     G_FILE_QUERY_INFO_NONE,
+					     G_PRIORITY_DEFAULT,
+					     NULL,
+					     set_attributes_cb,
+					     NULL);
+
+		g_object_unref (location);
+	}
+	
+	g_object_unref (info);
+}
+#endif
+
 static void
 gedit_text_buffer_iface_init (GeditDocumentIface  *iface)
 {
@@ -1163,66 +1219,12 @@ gedit_text_buffer_iface_init (GeditDocumentIface  *iface)
 	iface->set_modified = gedit_text_buffer_set_modified_impl;
 	iface->get_modified = gedit_text_buffer_get_modified_impl;
 	iface->get_has_selection = gedit_text_buffer_get_has_selection_impl;
+	iface->get_metadata = gedit_text_buffer_get_metadata_impl;
+	iface->set_metadata_va_list = gedit_text_buffer_set_metadata_va_list_impl;
 	
 	/* signals */
 	iface->load = gedit_text_buffer_load_real;
 	iface->save = gedit_text_buffer_save_real;
-}
-
-static void
-set_encoding (GeditTextBuffer     *doc, 
-	      const GeditEncoding *encoding,
-	      gboolean             set_by_user)
-{
-	g_return_if_fail (encoding != NULL);
-
-	gedit_debug (DEBUG_DOCUMENT);
-
-	if (doc->priv->encoding == encoding)
-		return;
-
-	doc->priv->encoding = encoding;
-
-	if (set_by_user)
-	{
-		const gchar *charset;
-
-		charset = gedit_encoding_get_charset (encoding);
-
-		gedit_metadata_manager_set (doc->priv->uri,
-					    "encoding",
-					    charset);
-	}
-
-	g_object_notify (G_OBJECT (doc), "encoding");
-}
-
-static GtkSourceStyleScheme *
-get_default_style_scheme (void)
-{
-	gchar *scheme_id;
-	GtkSourceStyleScheme *def_style;
-	GtkSourceStyleSchemeManager *manager;
-
-	manager = gedit_get_style_scheme_manager ();
-	scheme_id = gedit_prefs_manager_get_source_style_scheme ();
-	def_style = gtk_source_style_scheme_manager_get_scheme (manager,
-								scheme_id);
-
-	if (def_style == NULL)
-	{
-		g_warning ("Default style scheme '%s' cannot be found, falling back to 'classic' style scheme ", scheme_id);
-
-		def_style = gtk_source_style_scheme_manager_get_scheme (manager, "classic");
-		if (def_style == NULL) 
-		{
-			g_warning ("Style scheme 'classic' cannot be found, check your GtkSourceView installation.");
-		}
-	}
-
-	g_free (scheme_id);
-
-	return def_style;
 }
 
 static void
@@ -1237,6 +1239,8 @@ gedit_text_buffer_init (GeditTextBuffer *doc)
 	doc->priv->uri = NULL;
 	doc->priv->untitled_number = get_untitled_number ();
 
+	doc->priv->metadata_info = NULL;
+
 	doc->priv->content_type = g_content_type_from_mime_type ("text/plain");
 
 	doc->priv->readonly = FALSE;
@@ -1248,7 +1252,8 @@ gedit_text_buffer_init (GeditTextBuffer *doc)
 
 	doc->priv->dispose_has_run = FALSE;
 
-	doc->priv->mtime = 0;
+	doc->priv->mtime.tv_sec = 0;
+	doc->priv->mtime.tv_usec = 0;
 
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
@@ -1276,7 +1281,12 @@ gedit_text_buffer_init (GeditTextBuffer *doc)
 	g_signal_connect_after (doc, 
 			  	"delete-range",
 			  	G_CALLBACK (delete_range_cb),
-			  	NULL);		
+			  	NULL);
+
+	g_signal_connect (doc,
+			  "notify::content-type",
+			  G_CALLBACK (on_content_type_changed),
+			  NULL);
 }
 
 GeditDocument *
@@ -1382,7 +1392,8 @@ document_loader_loaded (GeditDocumentLoader *loader,
 			gchar *pos;
 			gint offset;
 
-			pos = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION);
+			pos = gedit_document_get_metadata (GEDIT_DOCUMENT (doc),
+							   GEDIT_METADATA_ATTRIBUTE_POSITION);
 
 			offset = pos ? atoi (pos) : 0;
 			g_free (pos);
@@ -1587,7 +1598,7 @@ gedit_text_buffer_save_real (GeditDocument          *doc,
 	buf->priv->requested_encoding = encoding;
 
 	gedit_document_saver_save (buf->priv->saver,
-				   buf->priv->mtime);
+				   &buf->priv->mtime);
 }
 
 static gint
@@ -2427,155 +2438,3 @@ gedit_text_buffer_get_cursor_position (GeditTextBuffer *buffer,
 		gtk_text_iter_forward_char (&start);
 	}
 }
-
-#ifdef G_OS_WIN32
-gchar *
-gedit_document_get_metadata (GeditDocument *doc,
-			     const gchar   *key)
-{
-	gchar *value = NULL;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-	g_return_val_if_fail (key != NULL, NULL);
-
-	if (doc->priv->uri != NULL)
-		value = gedit_metadata_manager_get (doc->priv->uri, key);
-
-	return value;
-}
-
-void
-gedit_document_set_metadata (GeditDocument *doc,
-			     const gchar   *first_key,
-			     ...)
-{
-	const gchar *key;
-	const gchar *value;
-	va_list var_args;
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (first_key != NULL);
-
-	va_start (var_args, first_key);
-
-	for (key = first_key; key; key = va_arg (var_args, const gchar *))
-	{
-		value = va_arg (var_args, const gchar *);
-		
-		gedit_metadata_manager_set (doc->priv->uri,
-					    key,
-					    value);
-	}
-
-	va_end (var_args);
-}
-
-#else
-
-/**
- * gedit_document_get_metadata:
- * @doc: a #GeditDocument
- * @key: name of the key
- *
- * Gets the metadata assigned to @key.
- *
- * Returns: the value assigned to @key.
- */
-gchar *
-gedit_document_get_metadata (GeditDocument *doc,
-			     const gchar   *key)
-{
-	gchar *value = NULL;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-	g_return_val_if_fail (key != NULL, NULL);
-
-	if (doc->priv->metadata_info && g_file_info_has_attribute (doc->priv->metadata_info,
-								   key))
-	{
-		value = g_strdup (g_file_info_get_attribute_string (doc->priv->metadata_info,
-								    key));
-	}
-
-	return value;
-}
-
-static void
-set_attributes_cb (GObject      *source,
-		   GAsyncResult *res,
-		   gpointer      useless)
-{
-	g_file_set_attributes_finish (G_FILE (source),
-				      res,
-				      NULL,
-				      NULL);
-}
-
-/**
- * gedit_document_set_metadata:
- * @doc: a #GeditDocument
- * @first_key: name of the first key to set
- * @...: value for the first key, followed optionally by more key/value pairs,
- * followed by %NULL.
- *
- * Sets metadata on a document.
- */
-void
-gedit_document_set_metadata (GeditDocument *doc,
-			     const gchar   *first_key,
-			     ...)
-{
-	const gchar *key;
-	const gchar *value;
-	va_list var_args;
-	GFileInfo *info;
-	GFile *location;
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (first_key != NULL);
-
-	info = g_file_info_new ();
-
-	va_start (var_args, first_key);
-
-	for (key = first_key; key; key = va_arg (var_args, const gchar *))
-	{
-		value = va_arg (var_args, const gchar *);
-		
-		if (value != NULL)
-		{
-			g_file_info_set_attribute_string (info,
-							  key, value);
-		}
-		else
-		{
-			/* Unset the key */
-			g_file_info_set_attribute (info, key,
-						   G_FILE_ATTRIBUTE_TYPE_INVALID,
-						   NULL);
-		}
-	}
-
-	va_end (var_args);
-
-	if (doc->priv->metadata_info != NULL)
-		g_file_info_copy_into (info, doc->priv->metadata_info);
-
-	location = gedit_document_get_location (doc);
-
-	if (location != NULL)
-	{
-		g_file_set_attributes_async (location,
-					     info,
-					     G_FILE_QUERY_INFO_NONE,
-					     G_PRIORITY_DEFAULT,
-					     NULL,
-					     set_attributes_cb,
-					     NULL);
-
-		g_object_unref (location);
-	}
-	
-	g_object_unref (info);
-}
-#endif
