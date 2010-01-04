@@ -35,6 +35,10 @@
 #include "gedit-prefs-manager.h"
 #include "gedit-message-bus.h"
 
+#ifdef OS_OSX
+#include <ige-mac-integration.h>
+#endif
+
 G_BEGIN_DECLS
 
 /* WindowPrivate is in a separate .h so that we can access it from gedit-commands */
@@ -71,6 +75,7 @@ struct _GeditWindowPrivate
 	GtkUIManager   *manager;
 	GtkActionGroup *action_group;
 	GtkActionGroup *always_sensitive_action_group;
+	GtkActionGroup *close_action_group;
 	GtkActionGroup *quit_action_group;
 	GtkActionGroup *panes_action_group;
 	GtkActionGroup *languages_action_group;
@@ -78,6 +83,7 @@ struct _GeditWindowPrivate
 	guint           documents_list_menu_ui_id;
 	GtkWidget      *toolbar;
 	GtkWidget      *toolbar_recent_menu;
+	GtkWidget      *menubar;
 	GeditToolbarSetting toolbar_style;
 
 	/* recent files */
@@ -108,6 +114,10 @@ struct _GeditWindowPrivate
 
 	gboolean        removing_pages : 1;
 	gboolean        dispose_has_run : 1;
+
+#ifdef OS_OSX
+	IgeMacMenuGroup *mac_menu_group;
+#endif
 };
 
 G_END_DECLS

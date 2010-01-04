@@ -4,11 +4,12 @@ plugindir = $(GEDIT_PLUGINS_LIBS_DIR)/externaltools
 plugin_PYTHON =		\
 	__init__.py	\
 	capture.py	\
-	ElementTree.py	\
 	library.py	\
 	functions.py	\
 	manager.py	\
-	outputpanel.py
+	outputpanel.py	\
+	filelookup.py	\
+	linkparsing.py
 
 uidir = $(GEDIT_PLUGINS_DATA_DIR)/externaltools/ui
 ui_DATA = tools.ui \

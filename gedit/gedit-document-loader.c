@@ -126,7 +126,24 @@ gedit_document_loader_finalize (GObject *object)
 
 	g_free (loader->uri);
 
+	if (loader->info)
+		g_object_unref (loader->info);
+
 	G_OBJECT_CLASS (gedit_document_loader_parent_class)->finalize (object);
+}
+
+static void
+gedit_document_loader_dispose (GObject *object)
+{
+	GeditDocumentLoader *loader = GEDIT_DOCUMENT_LOADER (object);
+
+	if (loader->info != NULL)
+	{
+		g_object_unref (loader->info);
+		loader->info = NULL;
+	}
+
+	G_OBJECT_CLASS (gedit_document_loader_parent_class)->dispose (object);
 }
 
 static void
@@ -135,6 +152,7 @@ gedit_document_loader_class_init (GeditDocumentLoaderClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->finalize = gedit_document_loader_finalize;
+	object_class->dispose = gedit_document_loader_dispose;
 	object_class->get_property = gedit_document_loader_get_property;
 	object_class->set_property = gedit_document_loader_set_property;
 
@@ -210,6 +228,48 @@ insert_text_in_document (GeditDocumentLoader *loader,
 	gedit_document_end_not_undoable_action (doc);
 }
 
+static const GeditEncoding *
+get_metadata_encoding (GeditDocumentLoader *loader)
+{
+	const GeditEncoding *enc = NULL;
+
+#ifdef G_OS_WIN32
+	gchar *charset;
+	const gchar *uri;
+
+	uri = gedit_document_loader_get_uri (loader);
+
+	charset = gedit_metadata_manager_get (uri, "encoding");
+
+	if (charset == NULL)
+		return NULL;
+
+	enc = gedit_encoding_get_from_charset (charset);
+
+	g_free (charset);
+#else
+	GFileInfo *info;
+
+	info = gedit_document_loader_get_info (loader);
+
+	/* check if the encoding was set in the metadata */
+	if (g_file_info_has_attribute (info, GEDIT_METADATA_ATTRIBUTE_ENCODING))
+	{
+		const gchar *charset;
+
+		charset = g_file_info_get_attribute_string (info,
+							    GEDIT_METADATA_ATTRIBUTE_ENCODING);
+
+		if (charset == NULL)
+			return NULL;
+		
+		enc = gedit_encoding_get_from_charset (charset);
+	}
+#endif
+
+	return enc;
+}
+
 /* This function is only meant to be called by child classes */
 gboolean
 gedit_document_loader_update_document_contents (GeditDocumentLoader  *loader,
@@ -255,22 +315,25 @@ gedit_document_loader_update_document_contents (GeditDocumentLoader  *loader,
 		gchar *converted_text = NULL;
 		gsize new_len = file_size;
 
+		/* Autodetecting the encoding */
 		if (loader->encoding == NULL)
 		{
-			/* Autodetecting the encoding: first try with the encoding
-			stored in the metadata, if any */
+			const GeditEncoding *metadata_encoding;
 
-			if (loader->metadata_encoding != NULL)
+			/* first try with the encoding stored in the metadata, if any */
+			metadata_encoding = get_metadata_encoding (loader);
+
+			if (metadata_encoding != NULL)
 			{
 				converted_text = gedit_convert_to_utf8 (
 								file_contents,
 								file_size,
-								&loader->metadata_encoding,
+								&metadata_encoding,
 								&new_len,
 								NULL);
 
 				if (converted_text != NULL)
-					loader->auto_detected_encoding = loader->metadata_encoding;
+					loader->auto_detected_encoding = metadata_encoding;
 			}
 		}
 
@@ -335,24 +398,6 @@ gedit_document_loader_loading (GeditDocumentLoader *loader,
 	}
 }
 
-static const GeditEncoding *
-get_metadata_encoding (const gchar *uri)
-{
-	const GeditEncoding *enc;
-	gchar *charset;
-
-	charset = gedit_metadata_manager_get (uri, "encoding");
-
-	if (charset == NULL)
-		return NULL;
-
-	enc = gedit_encoding_get_from_charset (charset);
-
-	g_free (charset);
-
-	return enc;
-}
-
 /* This is a factory method that returns an appopriate loader
  * for the given uri.
  */
@@ -392,9 +437,6 @@ gedit_document_loader_load (GeditDocumentLoader *loader)
 	g_return_if_fail (loader->used == FALSE);
 	loader->used = TRUE;
 
-	if (loader->encoding == NULL)
-		loader->metadata_encoding = get_metadata_encoding (loader->uri);
-
 	GEDIT_DOCUMENT_LOADER_GET_CLASS (loader)->load (loader);
 }
 
@@ -425,54 +467,12 @@ gedit_document_loader_get_uri (GeditDocumentLoader *loader)
 	return loader->uri;
 }
 
-/* it may return NULL, it's up to gedit-document handle it */
-const gchar *
-gedit_document_loader_get_content_type (GeditDocumentLoader *loader)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
-
-	return GEDIT_DOCUMENT_LOADER_GET_CLASS (loader)->get_content_type (loader);
-}
-
-time_t
-gedit_document_loader_get_mtime (GeditDocumentLoader *loader)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
-
-	return GEDIT_DOCUMENT_LOADER_GET_CLASS (loader)->get_mtime (loader);
-}
-
-/* Returns 0 if file size is unknown */
-goffset
-gedit_document_loader_get_file_size (GeditDocumentLoader *loader)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
-
-	return GEDIT_DOCUMENT_LOADER_GET_CLASS (loader)->get_file_size (loader);
-}
-
 goffset
 gedit_document_loader_get_bytes_read (GeditDocumentLoader *loader)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), 0);
 
 	return GEDIT_DOCUMENT_LOADER_GET_CLASS (loader)->get_bytes_read (loader);
-}
-
-/* In the case the loader does not know if the file is readonly, for example 
-   for most remote files, the function returns FALSE, so that we can try writing
-   and if needed handle the error. */
-gboolean
-gedit_document_loader_get_readonly (GeditDocumentLoader *loader)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
-
-	/* if configuration says the scheme is not writable, do not query the
-	   actual loader object, and return TRUE */
-	if (!gedit_utils_uri_has_writable_scheme (loader->uri))
-		return TRUE;
-
-	return GEDIT_DOCUMENT_LOADER_GET_CLASS (loader)->get_readonly (loader);
 }
 
 const GeditEncoding *
@@ -487,4 +487,12 @@ gedit_document_loader_get_encoding (GeditDocumentLoader *loader)
 			      gedit_encoding_get_current ());
 
 	return loader->auto_detected_encoding;
+}
+
+GFileInfo *
+gedit_document_loader_get_info (GeditDocumentLoader *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), NULL);
+
+	return loader->info;
 }

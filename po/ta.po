@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-01 19:55+0530\n"
-"PO-Revision-Date: 2009-11-02 12:04+0530\n"
+"POT-Creation-Date: 2009-11-11 22:14+0530\n"
+"PO-Revision-Date: 2009-11-12 21:04+0530\n"
 "Last-Translator: Dr,T,Vasudevan <agnihot3@gmail.com>\n"
 "Language-Team: American English <Ubuntu-l10n-tam@lists.ubuntu.com>>\n"
 "MIME-Version: 1.0\n"
@@ -862,11 +862,11 @@ msgid "_minutes"
 msgstr "_ந நிமிடங்கள்"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:300
-#: ../gedit/dialogs/gedit-search-dialog.ui.h:2 ../gedit/gedit-window.c:1457
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:2 ../gedit/gedit-window.c:1460
 msgid "Replace"
 msgstr "இடமாற்று"
 
-#: ../gedit/dialogs/gedit-search-dialog.c:311 ../gedit/gedit-window.c:1455
+#: ../gedit/dialogs/gedit-search-dialog.c:311 ../gedit/gedit-window.c:1458
 msgid "Find"
 msgstr "தேடு"
 
@@ -907,47 +907,47 @@ msgstr "_த தேடு: "
 msgid "_Wrap around"
 msgstr "_மடிந்து வருதல்"
 
-#: ../gedit/gedit.c:117
+#: ../gedit/gedit.c:122
 msgid "Show the application's version"
 msgstr "இப்பயன்பாட்டின் பதிப்பைக் காட்டு"
 
-#: ../gedit/gedit.c:120
+#: ../gedit/gedit.c:125
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "கட்டளைவரியில் பட்டியலிட்ட கோப்புகளை திறக்க குறிமுறை அமைக்கவும்"
 
-#: ../gedit/gedit.c:120
+#: ../gedit/gedit.c:125
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit.c:123
+#: ../gedit/gedit.c:128
 msgid "Display list of possible values for the encoding option"
 msgstr "குறியாக்கதேர்வுக்கு வாய்ப்புள்ள மதிப்புகள் பட்டியலை காட்டுக"
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:131
 msgid "Create a new toplevel window in an existing instance of gedit"
 msgstr "தற்பொழுது இருக்கும் கெடிட் இல் புதிய உயர்நிலைச் சாளரத்தை உருவாக்குக"
 
-#: ../gedit/gedit.c:129
+#: ../gedit/gedit.c:134
 msgid "Create a new document in an existing instance of gedit"
 msgstr "தற்பொழுது இருக்கும் கெடிட் இல் புதிய ஆவணத்தை உருவாக்குக"
 
-#: ../gedit/gedit.c:132
+#: ../gedit/gedit.c:137
 msgid "[FILE...]"
 msgstr "[FILE...]"
 
-#: ../gedit/gedit.c:187
+#: ../gedit/gedit.c:192
 #, c-format
 msgid "%s: invalid encoding.\n"
 msgstr "%s: தவறான குறிமுறை.\n"
 
 #. Setup command line options
-#: ../gedit/gedit.c:569
+#: ../gedit/gedit.c:577
 msgid "- Edit text files"
 msgstr "- உரை கோப்புகளை தொகு"
 
-#: ../gedit/gedit.c:605
+#: ../gedit/gedit.c:613
 #, c-format
 msgid ""
 "%s\n"
@@ -955,6 +955,10 @@ msgid ""
 msgstr ""
 "%s\n"
 "'%s --help' ஐ இயக்கி இருக்கும் அனைத்து கட்டளைவரி விருப்பங்களின் பட்டியலை காணலாம்.\n"
+
+#: ../gedit/gedit-app.c:404
+msgid "About gedit"
+msgstr "கெடிட் பற்றி"
 
 #: ../gedit/gedit-commands-file.c:255
 #, c-format
@@ -1098,11 +1102,11 @@ msgid "Unsaved Document %d"
 msgstr "சேமிக்கப்படாத ஆவணம் %d"
 
 #: ../gedit/gedit-documents-panel.c:89 ../gedit/gedit-documents-panel.c:103
-#: ../gedit/gedit-window.c:2191 ../gedit/gedit-window.c:2196
+#: ../gedit/gedit-window.c:2198 ../gedit/gedit-window.c:2203
 msgid "Read Only"
 msgstr "வாசிக்க மட்டும்"
 
-#: ../gedit/gedit-documents-panel.c:771 ../gedit/gedit-window.c:3556
+#: ../gedit/gedit-documents-panel.c:771 ../gedit/gedit-window.c:3565
 msgid "Documents"
 msgstr "ஆவணங்கள்"
 
@@ -1245,7 +1249,7 @@ msgstr "அனைத்து உரை கோப்புகளும்"
 msgid "C_haracter Coding:"
 msgstr "_க குறிமுறை எழுத்து:"
 
-#: ../gedit/gedit-help.c:89
+#: ../gedit/gedit-help.c:104
 msgid "There was an error displaying help."
 msgstr "உதவியை காட்டுவதில் பிழை."
 
@@ -1893,252 +1897,252 @@ msgstr "புதிய ஆவணத்தை உருவாக்கு"
 msgid "_Open..."
 msgstr "_திறக்க..."
 
-#: ../gedit/gedit-ui.h:59 ../gedit/gedit-window.c:1385
+#: ../gedit/gedit-ui.h:59 ../gedit/gedit-window.c:1389
 msgid "Open a file"
 msgstr "கோப்பை திறக்கவும்"
 
+#: ../gedit/gedit-ui.h:63 ../gedit/gedit-ui.h:101
+msgid "Close the current file"
+msgstr "தற்போதைய கோப்பை மூடுக"
+
 #. Edit menu
-#: ../gedit/gedit-ui.h:62
+#: ../gedit/gedit-ui.h:67
 msgid "Pr_eferences"
 msgstr "_வ விருப்பங்கள்"
 
-#: ../gedit/gedit-ui.h:63
+#: ../gedit/gedit-ui.h:68
 msgid "Configure the application"
 msgstr "இப்பயன்பாட்டை அமைக்கவும்"
 
 #. Help menu
-#: ../gedit/gedit-ui.h:66
+#: ../gedit/gedit-ui.h:71
 msgid "_Contents"
 msgstr "_ள உள்ளடக்கங்கள்"
 
-#: ../gedit/gedit-ui.h:67
+#: ../gedit/gedit-ui.h:72
 msgid "Open the gedit manual"
 msgstr "கெடிட் கையேட்டை திறக்கவும்"
 
-#: ../gedit/gedit-ui.h:69
+#: ../gedit/gedit-ui.h:74
 msgid "About this application"
 msgstr "இந்த நிரலைப் பற்றி"
 
-#: ../gedit/gedit-ui.h:73
+#: ../gedit/gedit-ui.h:78
 msgid "Leave fullscreen mode"
 msgstr "முழு திரை முறைமையில் விடவும்"
 
-#: ../gedit/gedit-ui.h:81
+#: ../gedit/gedit-ui.h:86
 msgid "Save the current file"
 msgstr "தற்போதைய ஆவணத்தை சேமிக்க"
 
-#: ../gedit/gedit-ui.h:82
+#: ../gedit/gedit-ui.h:87
 msgid "Save _As..."
 msgstr "_இப்படி சேமிக்க"
 
-#: ../gedit/gedit-ui.h:83
+#: ../gedit/gedit-ui.h:88
 msgid "Save the current file with a different name"
 msgstr "தற்போதைய கோப்பை வேறு பெயரில் சேமிக்கவும்"
 
-#: ../gedit/gedit-ui.h:85
+#: ../gedit/gedit-ui.h:90
 msgid "Revert to a saved version of the file"
 msgstr "சேமிக்கப்பட்ட கோப்பின் முந்தைய பதிப்புக்கு செல்க"
 
-#: ../gedit/gedit-ui.h:87
+#: ../gedit/gedit-ui.h:92
 msgid "Page Set_up..."
 msgstr "_பக்க அமைப்பு... "
 
-#: ../gedit/gedit-ui.h:88
+#: ../gedit/gedit-ui.h:93
 msgid "Setup the page settings"
 msgstr "பக்க அமைப்புகளை நிறுவுக"
 
-#: ../gedit/gedit-ui.h:90
+#: ../gedit/gedit-ui.h:95
 msgid "Print Previe_w"
 msgstr "_ம அச்சு முன்பார்வை "
 
-#: ../gedit/gedit-ui.h:91
+#: ../gedit/gedit-ui.h:96
 msgid "Print preview"
 msgstr "அச்சு முன்னோட்டம்"
 
-#: ../gedit/gedit-ui.h:92
+#: ../gedit/gedit-ui.h:97
 msgid "_Print..."
 msgstr "_அச்சிடுக..."
 
-#: ../gedit/gedit-ui.h:93
+#: ../gedit/gedit-ui.h:98
 msgid "Print the current page"
 msgstr "இந்தப்பக்கத்தை அச்சிடவும்"
 
-#: ../gedit/gedit-ui.h:95
-msgid "Close the current file"
-msgstr "தற்போதைய கோப்பை மூடுக"
-
-#: ../gedit/gedit-ui.h:99
+#: ../gedit/gedit-ui.h:105
 msgid "Undo the last action"
 msgstr "கடைசி செயலை ரத்து செய்க"
 
-#: ../gedit/gedit-ui.h:101
+#: ../gedit/gedit-ui.h:107
 msgid "Redo the last undone action"
 msgstr "கடைசியாக ரத்து செய்த செயலை திரும்ப செய்க"
 
-#: ../gedit/gedit-ui.h:103
+#: ../gedit/gedit-ui.h:109
 msgid "Cut the selection"
 msgstr "தேர்வை வெட்டுக"
 
-#: ../gedit/gedit-ui.h:105
+#: ../gedit/gedit-ui.h:111
 msgid "Copy the selection"
 msgstr "தேர்வை நகல் எடுக்கவும்"
 
-#: ../gedit/gedit-ui.h:107
+#: ../gedit/gedit-ui.h:113
 msgid "Paste the clipboard"
 msgstr "ஒட்டுப் பலகையிலிருந்து ஒட்டுக"
 
-#: ../gedit/gedit-ui.h:109
+#: ../gedit/gedit-ui.h:115
 msgid "Delete the selected text"
 msgstr "தேர்வு செய்த உரையை நீக்குக"
 
-#: ../gedit/gedit-ui.h:110
+#: ../gedit/gedit-ui.h:116
 msgid "Select _All"
 msgstr "_அனைத்தையும் தேர்வு செய்க"
 
-#: ../gedit/gedit-ui.h:111
+#: ../gedit/gedit-ui.h:117
 msgid "Select the entire document"
 msgstr "முழு ஆவணத்தையும் தேர்வு செய்க"
 
 #. View menu
-#: ../gedit/gedit-ui.h:114
+#: ../gedit/gedit-ui.h:120
 msgid "_Highlight Mode"
 msgstr "_ச சிறப்புச்சுட்டுதல் வகை"
 
 #. Search menu
-#: ../gedit/gedit-ui.h:117
+#: ../gedit/gedit-ui.h:123
 msgid "_Find..."
 msgstr "_த கண்டுபிடி..."
 
-#: ../gedit/gedit-ui.h:118
+#: ../gedit/gedit-ui.h:124
 msgid "Search for text"
 msgstr "உரைக்காக தேடுக"
 
-#: ../gedit/gedit-ui.h:119
+#: ../gedit/gedit-ui.h:125
 msgid "Find Ne_xt"
 msgstr "_அடுத்ததை தேடுக"
 
-#: ../gedit/gedit-ui.h:120
+#: ../gedit/gedit-ui.h:126
 msgid "Search forwards for the same text"
 msgstr "அதே உரையை அடுத்து தேடுக"
 
-#: ../gedit/gedit-ui.h:121
+#: ../gedit/gedit-ui.h:127
 msgid "Find Pre_vious"
 msgstr "_ம முந்தையதை தேடுக"
 
-#: ../gedit/gedit-ui.h:122
+#: ../gedit/gedit-ui.h:128
 msgid "Search backwards for the same text"
 msgstr "அதே உரையைப் பின்னே தேடுக"
 
-#: ../gedit/gedit-ui.h:123
+#: ../gedit/gedit-ui.h:130 ../gedit/gedit-ui.h:133
 msgid "_Replace..."
 msgstr "_மாற்றுக..."
 
-#: ../gedit/gedit-ui.h:124
+#: ../gedit/gedit-ui.h:131 ../gedit/gedit-ui.h:134
 msgid "Search for and replace text"
 msgstr "உரையைத் தேடி மாற்றுக"
 
-#: ../gedit/gedit-ui.h:125
+#: ../gedit/gedit-ui.h:136
 msgid "_Clear Highlight"
 msgstr "_த சிறப்புச் சுட்டுதலை துடைக்கவும்"
 
-#: ../gedit/gedit-ui.h:126
+#: ../gedit/gedit-ui.h:137
 msgid "Clear highlighting of search matches"
 msgstr "தேடல் பொருத்தங்களின் சிறப்புச் சுட்டுதலை துடைக்கவும்"
 
-#: ../gedit/gedit-ui.h:127
+#: ../gedit/gedit-ui.h:138
 msgid "Go to _Line..."
 msgstr "_வ இந்த வரிசைக்குப் போகவும்..."
 
-#: ../gedit/gedit-ui.h:128
+#: ../gedit/gedit-ui.h:139
 msgid "Go to a specific line"
 msgstr "குறிப்பிட்ட வரிசைக்குப் போகவும்"
 
-#: ../gedit/gedit-ui.h:129
+#: ../gedit/gedit-ui.h:140
 msgid "_Incremental Search..."
 msgstr "_அதிகரிப்பு தேடல்..."
 
-#: ../gedit/gedit-ui.h:130
+#: ../gedit/gedit-ui.h:141
 msgid "Incrementally search for text"
 msgstr "இடைசெயலாக உரை தேடப்படுகிறது"
 
 #. Documents menu
-#: ../gedit/gedit-ui.h:133
+#: ../gedit/gedit-ui.h:144
 msgid "_Save All"
 msgstr "_அனைத்தையும் சேமிக்கவும்"
 
-#: ../gedit/gedit-ui.h:134
+#: ../gedit/gedit-ui.h:145
 msgid "Save all open files"
 msgstr "திறந்திருக்கும் அனைத்து கோப்புகளையும் சேமிக்கவும்"
 
-#: ../gedit/gedit-ui.h:135
+#: ../gedit/gedit-ui.h:146
 msgid "_Close All"
 msgstr "_ம அனைத்தையும் மூடுக"
 
-#: ../gedit/gedit-ui.h:136
+#: ../gedit/gedit-ui.h:147
 msgid "Close all open files"
 msgstr "திறந்திருக்கும் அனைத்துக் கோப்புகளையும் மூடுக"
 
-#: ../gedit/gedit-ui.h:137
+#: ../gedit/gedit-ui.h:148
 msgid "_Previous Document"
 msgstr "_ம முந்தைய ஆவணம் "
 
-#: ../gedit/gedit-ui.h:138
+#: ../gedit/gedit-ui.h:149
 msgid "Activate previous document"
 msgstr "முந்தைய ஆவணத்தை செயல்படுத்து"
 
-#: ../gedit/gedit-ui.h:139
+#: ../gedit/gedit-ui.h:150
 msgid "_Next Document"
 msgstr "_அடுத்த ஆவணம் "
 
-#: ../gedit/gedit-ui.h:140
+#: ../gedit/gedit-ui.h:151
 msgid "Activate next document"
 msgstr "அடுத்த ஆவணத்தை செயல்படுத்தவும்"
 
-#: ../gedit/gedit-ui.h:141
+#: ../gedit/gedit-ui.h:152
 msgid "_Move to New Window"
 msgstr "_ப புதிய சாளரத்திற்கு செல்க"
 
-#: ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-ui.h:153
 msgid "Move the current document to a new window"
 msgstr "இந்த ஆவணத்தை புதிய சாளரத்திற்கு நகர்த்து"
 
-#: ../gedit/gedit-ui.h:149
+#: ../gedit/gedit-ui.h:160
 msgid "Quit the program"
 msgstr "நிரலிலிருந்து வெளியேறு"
 
-#: ../gedit/gedit-ui.h:154
+#: ../gedit/gedit-ui.h:165
 msgid "_Toolbar"
 msgstr "_கருவிப்பட்டை"
 
-#: ../gedit/gedit-ui.h:155
+#: ../gedit/gedit-ui.h:166
 msgid "Show or hide the toolbar in the current window"
 msgstr "நடப்பு சாளரத்தின் கருவிப்பட்டையை காட்டு அல்லது மறை"
 
-#: ../gedit/gedit-ui.h:157
+#: ../gedit/gedit-ui.h:168
 msgid "_Statusbar"
 msgstr "_ந நிலைப்பட்டை"
 
-#: ../gedit/gedit-ui.h:158
+#: ../gedit/gedit-ui.h:169
 msgid "Show or hide the statusbar in the current window"
 msgstr "நடப்பு சாளரத்தின் நிலைப்பட்டையை காட்டவும் அல்லது மறைக்கவும்"
 
-#: ../gedit/gedit-ui.h:161
+#: ../gedit/gedit-ui.h:172
 msgid "Edit text at fullscreen"
 msgstr "முழுத்திரையில் உரை திருத்து"
 
-#: ../gedit/gedit-ui.h:168
+#: ../gedit/gedit-ui.h:179
 msgid "Side _Pane"
 msgstr "_பக்க பலகம்"
 
-#: ../gedit/gedit-ui.h:169
+#: ../gedit/gedit-ui.h:180
 msgid "Show or hide the side pane in the current window"
 msgstr "நடப்பு சாளரத்தின் பக்கத்தில் உள்ள பலகத்தினை காட்டவும் அல்லது மறைக்கவும்"
 
-#: ../gedit/gedit-ui.h:171
+#: ../gedit/gedit-ui.h:182
 msgid "_Bottom Pane"
 msgstr "_க கீழ் பலகம் "
 
-#: ../gedit/gedit-ui.h:172
+#: ../gedit/gedit-ui.h:183
 msgid "Show or hide the bottom pane in the current window"
 msgstr "நடப்பு சாளரத்தின் கீழே உள்ள பலகத்தினை காட்டவும் அல்லது மறைக்கவும்"
 
@@ -2185,7 +2189,7 @@ msgstr "தேட வேண்டிய சரம்"
 msgid "Line you want to move the cursor to"
 msgstr "நிலைகாட்டியை நகர்த்த வேண்டிய வரி"
 
-#: ../gedit/gedit-window.c:938
+#: ../gedit/gedit-window.c:942
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "%s சிறப்புச் சுட்டு வகையைப் பயன்படுத்துக"
@@ -2193,7 +2197,7 @@ msgstr "%s சிறப்புச் சுட்டு வகையைப் 
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:995 ../gedit/gedit-window.c:1896
+#: ../gedit/gedit-window.c:999 ../gedit/gedit-window.c:1899
 #: ../plugins/externaltools/tools/manager.py:121
 #: ../plugins/externaltools/tools/manager.py:423
 #: ../plugins/externaltools/tools/manager.py:533
@@ -2201,43 +2205,43 @@ msgstr "%s சிறப்புச் சுட்டு வகையைப் 
 msgid "Plain Text"
 msgstr "வெற்று உரை"
 
-#: ../gedit/gedit-window.c:996
+#: ../gedit/gedit-window.c:1000
 msgid "Disable syntax highlighting"
 msgstr "இலக்கண சிறப்புச் சுட்டுதலை செயல்நீக்கு"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1282
+#: ../gedit/gedit-window.c:1286
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' ஐ திற"
 
-#: ../gedit/gedit-window.c:1387
+#: ../gedit/gedit-window.c:1391
 msgid "Open a recently used file"
 msgstr "சமீபத்தில் பயன்படுத்திய கோப்பைத் திறக்கவும்"
 
-#: ../gedit/gedit-window.c:1393
+#: ../gedit/gedit-window.c:1397
 msgid "Open"
 msgstr "திற"
 
-#: ../gedit/gedit-window.c:1451
+#: ../gedit/gedit-window.c:1454
 msgid "Save"
 msgstr "சேமி"
 
-#: ../gedit/gedit-window.c:1453
+#: ../gedit/gedit-window.c:1456
 msgid "Print"
 msgstr "அச்சிடுக..."
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1621
+#: ../gedit/gedit-window.c:1624
 #, c-format
 msgid "Activate '%s'"
 msgstr "%s ஐ தூண்டு செய்க"
 
-#: ../gedit/gedit-window.c:1874
+#: ../gedit/gedit-window.c:1877
 msgid "Use Spaces"
 msgstr "இடைவெளிகளை பயன்படுத்து"
 
-#: ../gedit/gedit-window.c:1945
+#: ../gedit/gedit-window.c:1948
 msgid "Tab Width"
 msgstr "தத்தல் அகலம்"
 
@@ -2293,20 +2297,20 @@ msgstr "கெடிட் இன் புதிய பதிப்புக்
 msgid "Check update"
 msgstr "இற்றைபடுத்தலை சரிபார்"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:192
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:199
 msgid "There was an error displaying the url."
 msgstr "யூஆர்எல்(url) ஐ காட்டுவதில் பிழை."
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:222
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:233
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:231
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:242
 msgid "_Download"
 msgstr "பதிவிறக்கு (_D)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:250
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:257
 msgid "There is a new version of gedit"
 msgstr "கெடிட் இன் புதிய பதிப்பு உள்ளது"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:251
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:261
 msgid "You can download the new version of gedit by pressing on the download button"
 msgstr "கெடிட் இன் புதிய பதிப்பை தரவிறக்கு பொத்தானை அழுத்தி தரவிறக்கலாம்."
 
@@ -2399,24 +2403,24 @@ msgstr "வெளியார்ந்த கருவிகள்"
 msgid "Shell Output"
 msgstr "ஷெல் வெளியீடு"
 
-#: ../plugins/externaltools/tools/capture.py:94
+#: ../plugins/externaltools/tools/capture.py:92
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "கட்டளையை செயலாற்ற முடியவில்லை: %s"
 
-#: ../plugins/externaltools/tools/functions.py:157
+#: ../plugins/externaltools/tools/functions.py:162
 msgid "You must be inside a word to run this command"
 msgstr "சொல்லுக்குள் இருந்து இந்த கட்டளையை இயக்க வேண்டும்"
 
-#: ../plugins/externaltools/tools/functions.py:262
+#: ../plugins/externaltools/tools/functions.py:267
 msgid "Running tool:"
 msgstr "இயங்கும் கருவி:"
 
-#: ../plugins/externaltools/tools/functions.py:287
+#: ../plugins/externaltools/tools/functions.py:292
 msgid "Done."
 msgstr "முடிந்தது."
 
-#: ../plugins/externaltools/tools/functions.py:289
+#: ../plugins/externaltools/tools/functions.py:294
 msgid "Exited"
 msgstr "வெளியேற்றப்பட்டது"
 
@@ -3023,9 +3027,70 @@ msgid "Insert often used pieces of text in a fast way"
 msgstr "அடிக்கடி பயன் படுத்தும் உரைத் துணுக்குகளை வேகமாக உள்ளிட."
 
 #: ../plugins/snippets/snippets.gedit-plugin.desktop.in.h:2
+#: ../plugins/snippets/data/lang/snippets.lang.h:15
 #: ../plugins/snippets/snippets/Document.py:58
 msgid "Snippets"
 msgstr "கத்தரிப்புகள்"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:1
+msgid "Default Value"
+msgstr "முன்னிருப்பு மதிப்பு"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:2
+msgid "Environmental Variable"
+msgstr "சூழ்நிலை மாறி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:3
+msgid "Escape"
+msgstr "விடுபடு"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:4
+msgid "Modifier"
+msgstr "மாற்றி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:5
+msgid "Placeholder Default"
+msgstr "முன்னிருப்பு இடப்பிடிப்பி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:6
+msgid "Placeholder Reference"
+msgstr "இடப்பிடிப்பி  குறிப்பு"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:7
+msgid "Placeholder begin and end"
+msgstr "இடப்பிடிப்பி துவக்கம் மற்றும் முடிவு"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:8
+msgid "Python Placeholder"
+msgstr "பைத்தான் இடப்பிடிப்பி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:9
+msgid "Regular Expression Pattern"
+msgstr "இயல்பான எண்ணுருக்கோவை  தோரணி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:10
+msgid "Regular Expression Placeholder"
+msgstr "வழக்கமான எண்ணுருக்கோவை இடப்பிடிப்பி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:11
+msgid "Regular Expression Replace Pattern"
+msgstr "இயல்பான எண்ணுருக்கோவை மாற்று தோரணி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:12
+msgid "Seperator"
+msgstr "பிரிப்பி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:13
+msgid "Shell Placeholder"
+msgstr "ஷெல் இடப்பிடிப்பி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:14
+msgid "Single Placeholder"
+msgstr "தனி இடப்பிடிப்பி"
+
+#: ../plugins/snippets/data/lang/snippets.lang.h:16
+msgid "Tabstop"
+msgstr "தத்தல் நிறுத்தம்"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:2
 msgid "<b>Activation</b>"

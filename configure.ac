@@ -4,7 +4,7 @@ AC_PREREQ(2.59)
 
 m4_define(gedit_major_version,  2)
 m4_define(gedit_minor_version, 29)
-m4_define(gedit_micro_version,  1)
+m4_define(gedit_micro_version,  3)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT(gedit, gedit_version, http://bugzilla.gnome.org/enter_bug.cgi?product=gedit)
@@ -44,9 +44,13 @@ AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
+# needed on osx
+AC_PROG_OBJC
+
 AC_SYS_LARGEFILE
 
 AC_CHECK_FUNCS(fsync)
+AC_CHECK_FUNC(sigaction)
 
 dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
@@ -57,14 +61,13 @@ AC_SUBST(ACTIVE_PLUGINS)
 
 dnl toolbar style for gedit schemas
 TOOLBAR_STYLE="GEDIT_TOOLBAR_SYSTEM"
+AC_SUBST(TOOLBAR_STYLE)
 
 dnl check for win32 platform
 AC_MSG_CHECKING([for Win32 platform])
 case "$host" in
   *-*-mingw*|*-*-cygwin*)
     platform_win32=yes
-    AC_CHECK_TOOL(WINDRES, windres)
-    ACTIVE_PLUGINS="${ACTIVE_PLUGINS},checkupdate"
     TOOLBAR_STYLE="GEDIT_TOOLBAR_ICONS"
     ;;
   *)
@@ -78,6 +81,8 @@ AC_MSG_CHECKING([for native Win32])
 case "$host" in
   *-*-mingw*)
     os_win32=yes
+    AC_CHECK_TOOL(WINDRES, windres)
+    ACTIVE_PLUGINS="${ACTIVE_PLUGINS},checkupdate"
     ;;
   *)
     os_win32=no
@@ -91,7 +96,6 @@ AC_MSG_CHECKING([for Mac OS X platform])
 case "$host" in
   *-*-darwin*)
     platform_osx=yes
-    ACTIVE_PLUGINS="${ACTIVE_PLUGINS},checkupdate"
     ;;
   *)
     platform_osx=no
@@ -100,8 +104,33 @@ esac
 AC_MSG_RESULT([$platform_osx])
 AM_CONDITIONAL(PLATFORM_OSX, test "$platform_osx" = "yes")
 
+dnl check for native osx
+gdk_windowing=`$PKG_CONFIG --variable=target gdk-2.0`
+
+AC_MSG_CHECKING([for native Mac OS X])
+if test "$gdk_windowing" = "quartz"; then
+	os_osx=yes
+	ACTIVE_PLUGINS="${ACTIVE_PLUGINS},checkupdate"
+else
+	os_osx=no
+fi
+AC_MSG_RESULT([$os_osx])
+AM_CONDITIONAL(OS_OSX, test "$os_osx" = "yes")
+
 if test "$platform_osx" = "yes"; then
 	AC_DEFINE([PLATFORM_OSX],[1],[Defined if platform is Mac OSX])
+fi
+
+AC_SUBST(DEFAULT_FONT)
+AC_SUBST(DEFAULT_PRINT_FONT)
+
+if test "$os_osx" = "yes"; then
+	AC_DEFINE([OS_OSX],[1],[Defined if os is Mac OSX])
+
+	PKG_CHECK_MODULES(IGE_MAC, ige-mac-integration)
+
+	AC_SUBST(IGE_MAC_CFLAGS)
+	AC_SUBST(IGE_MAC_LIBS)
 fi
 
 dnl ===============================================================
@@ -151,9 +180,9 @@ if test "x$enable_updater" != "xno"; then
 		have_libsoup=no)
 	
 	if test "x$have_libsoup" = "xyes"; then
-		if test "x$platform_win32" = "xyes"; then
+		if test "x$os_win32" = "xyes"; then
 			enable_updater=yes
-		elif test "x$platform_osx" = "xyes"; then
+		elif test "x$os_osx" = "xyes"; then
 			enable_updater=yes
 		else
 			enable_updater=no
@@ -247,11 +276,11 @@ dnl ================================================================
 
 PKG_CHECK_MODULES(GEDIT, [
 	libxml-2.0 >= 2.5.0
-	glib-2.0 >= 2.18.0
+	glib-2.0 >= 2.22.0
 	gthread-2.0 >= 2.13.0
-	gio-2.0 >= 2.16.0
+	gio-2.0 >= 2.22.0
 	gtk+-2.0 >= 2.16.0
-	gtksourceview-2.0 >= 2.4.0
+	gtksourceview-2.0 >= 2.8.0
 	gconf-2.0 >= 1.1.11
 	webkit-1.0
 ])
@@ -279,7 +308,7 @@ if test "$gtkatleast" = "no"; then
 	AC_DEFINE([BUILD_SPINNER],[1],[Whether to use GeditSpinner instead of GtkSpinner])
 fi
 
-if test "$platform_osx" = "no" &&
+if test "$os_osx" = "no" &&
    test "$os_win32" = no; then
 	PKG_CHECK_MODULES(EGG_SMCLIENT, [
 		sm >= 1.0.0
@@ -310,7 +339,7 @@ AC_ARG_ENABLE([python],
 AC_MSG_RESULT([$enable_python])
 
 if test "x$have_python" != "xno"; then
-	AM_PATH_PYTHON([2.3],[],[no])
+	AM_PATH_PYTHON([2.5],[],[no])
 	if test "x$PYTHON" = "x:"; then
 		have_python=no
 	fi
@@ -321,16 +350,24 @@ if test "x$have_python" != "xno"; then
 fi
 
 if test "x$have_python" != "xno"; then
-	PY_PREFIX=`$PYTHON -c 'import sys ; print sys.prefix'`
 	PY_EXEC_PREFIX=`$PYTHON -c 'import sys ; print sys.exec_prefix'`
 	PYTHON_LIBS="-lpython$PYTHON_VERSION"
-	PYTHON_LIB_LOC="-L$PY_EXEC_PREFIX/lib/python$PYTHON_VERSION/config"
-	PYTHON_CFLAGS="-I$PY_PREFIX/include/python$PYTHON_VERSION"
-	PYTHON_MAKEFILE="$PY_EXEC_PREFIX/lib/python$PYTHON_VERSION/config/Makefile"
-	PYTHON_LOCALMODLIBS=`sed -n -e 's/^LOCALMODLIBS=\(.*\)/\1/p' $PYTHON_MAKEFILE`
-	PYTHON_BASEMODLIBS=`sed -n -e 's/^BASEMODLIBS=\(.*\)/\1/p' $PYTHON_MAKEFILE`
-	PYTHON_OTHER_LIBS=`sed -n -e 's/^LIBS=\(.*\)/\1/p' $PYTHON_MAKEFILE`
-	PYTHON_EXTRA_LIBS="$PYTHON_LOCALMODLIBS $PYTHON_BASEMODLIBS $PYTHON_OTHER_LIBS"
+
+	if test "$os_win32" = yes; then
+		PYTHON_LIBS=`echo $PYTHON_LIBS | sed 's/\.//g'`
+		PYTHON_LIB_LOC="-I$PY_EXEC_PREFIX/libs"
+		PYTHON_CFLAGS="-I$PY_EXEC_PREFIX/include"
+		PYTHON_EXTRA_LIBS=
+	else
+		PY_PREFIX=`$PYTHON -c 'import sys ; print sys.prefix'`
+		PYTHON_LIB_LOC="-L$PY_EXEC_PREFIX/lib/python$PYTHON_VERSION/config"
+		PYTHON_CFLAGS="-I$PY_PREFIX/include/python$PYTHON_VERSION"
+		PYTHON_MAKEFILE="$PY_EXEC_PREFIX/lib/python$PYTHON_VERSION/config/Makefile"
+		PYTHON_LOCALMODLIBS=`sed -n -e 's/^LOCALMODLIBS=\(.*\)/\1/p' $PYTHON_MAKEFILE`
+		PYTHON_BASEMODLIBS=`sed -n -e 's/^BASEMODLIBS=\(.*\)/\1/p' $PYTHON_MAKEFILE`
+		PYTHON_OTHER_LIBS=`sed -n -e 's/^LIBS=\(.*\)/\1/p' $PYTHON_MAKEFILE`
+		PYTHON_EXTRA_LIBS="$PYTHON_LOCALMODLIBS $PYTHON_BASEMODLIBS $PYTHON_OTHER_LIBS"
+	fi
 	AC_SUBST([PYTHON_LIBS])
 	AC_SUBST([PYTHON_LIB_LOC])
 	AC_SUBST([PYTHON_CFLAGS])
@@ -349,7 +386,7 @@ fi
 if test "x$have_python" != "xno"; then
 	PYGOBJECT_REQUIRED=2.15.4
 	PYGTK_REQUIRED=2.12.0
-	PYGTKSOURCEVIEW_REQUIRED=2.2.0
+	PYGTKSOURCEVIEW_REQUIRED=2.8.0
 
 	PKG_CHECK_MODULES([PYGTK], [
 		pygobject-2.0 >= $PYGOBJECT_REQUIRED
@@ -373,6 +410,10 @@ if test "x$have_python" != "xno"; then
 	PYGTK_DEFSDIR=`$PKG_CONFIG --variable=defsdir pygtk-2.0`
 	AC_MSG_RESULT([$PYGTK_DEFSDIR])
 
+	AC_MSG_CHECKING([for pygobject defs])
+	PYGOBJECT_DEFSDIR=`$PKG_CONFIG --variable=defsdir pygobject-2.0`
+	AC_MSG_RESULT([$PYGOBJECT_DEFSDIR])
+
 	AC_MSG_CHECKING([for pygtk codegen])
 	PYGTK_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygtk-2.0`/codegen.py"
 	AC_MSG_RESULT([$PYGTK_CODEGEN])
@@ -382,6 +423,7 @@ if test "x$have_python" != "xno"; then
 	AC_MSG_RESULT([$PYGTK_H2DEF])
 
 	AC_SUBST([PYGTK_DEFSDIR])
+	AC_SUBST([PYGOBJECT_DEFSDIR])
 	AC_SUBST([PYGTK_CODEGEN])
 	AC_SUBST([PYGTK_H2DEF])
 
@@ -436,8 +478,12 @@ fi
 # so we create a lib
 if test "$platform_win32" = yes; then
 	GEDIT_IMPLIB="-lgedit-$GEDIT_API_VERSION"
-	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -mwindows -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
-	LOADER_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -mwindows -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
+	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
+	LOADER_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -Wl,\$(top_builddir)/gedit/libgedit-\$(GEDIT_API_VERSION).a"
+	if test "$os_win32" = yes; then
+		PLUGIN_LIBTOOL_FLAGS="${PLUGIN_LIBTOOL_FLAGS} -mwindows"
+		LOADER_LIBTOOL_FLAGS="${LOADER_LIBTOOL_FLAGS} -mwindows"
+	fi
 else
 	GEDIT_IMPLIB=""
 	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version"
@@ -464,6 +510,7 @@ docs/Makefile
 docs/reference/Makefile
 gedit/dialogs/Makefile
 gedit/smclient/Makefile
+gedit/osx/Makefile
 gedit/Makefile
 help/Makefile
 pixmaps/Makefile
@@ -480,7 +527,6 @@ plugins/externaltools/Makefile
 plugins/externaltools/scripts/Makefile
 plugins/externaltools/tools/Makefile
 plugins/filebrowser/Makefile
-plugins/indent/Makefile
 plugins/modelines/Makefile
 plugins/pythonconsole/Makefile
 plugins/pythonconsole/pythonconsole/Makefile
@@ -496,7 +542,9 @@ plugins/taglist/Makefile
 plugins/time/Makefile
 po/Makefile.in
 win32/gedit.iss
-win32/Makefile])
+win32/Makefile
+osx/Info.plist
+osx/Makefile])
 
 AC_OUTPUT
 

@@ -59,6 +59,10 @@
 #include "gedit-text-buffer.h"
 #include "gedit-text-view.h"
 
+#ifdef OS_OSX
+#include "osx/gedit-osx.h"
+#endif
+
 #define LANGUAGE_NONE (const gchar *)"LangNone"
 #define GEDIT_UIFILE "gedit-ui.xml"
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
@@ -153,6 +157,58 @@ save_panes_state (GeditWindow *window)
 		gedit_prefs_manager_set_bottom_panel_active_page (pane_page);
 }
 
+#ifdef OS_OSX
+static GtkMenuItem *
+ui_manager_menu_item (GtkUIManager *uimanager,
+                      const gchar  *path)
+{
+	return GTK_MENU_ITEM (gtk_ui_manager_get_widget (uimanager, path));
+}
+
+static void
+add_mac_root_menu (GeditWindow *window)
+{
+	if (window->priv->mac_menu_group != NULL)
+	{
+		return;
+	}
+	
+	window->priv->mac_menu_group = ige_mac_menu_add_app_menu_group ();
+
+	ige_mac_menu_add_app_menu_item (window->priv->mac_menu_group,
+	                                ui_manager_menu_item (window->priv->manager, "/ui/MenuBar/HelpMenu/HelpAboutMenu"),
+	                                NULL);
+}
+
+static void
+remove_mac_root_menu (GeditWindow *window)
+{
+	if (window->priv->mac_menu_group == NULL)
+	{
+		return;
+	}
+	
+	ige_mac_menu_remove_app_menu_group (window->priv->mac_menu_group);
+	window->priv->mac_menu_group = NULL;
+}
+
+static gboolean
+gedit_window_focus_in_event (GtkWidget     *widget,
+                             GdkEventFocus *event)
+{
+	add_mac_root_menu (GEDIT_WINDOW (widget));
+	return GTK_WIDGET_CLASS (gedit_window_parent_class)->focus_in_event (widget, event);
+}
+
+static gboolean
+gedit_window_focus_out_event (GtkWidget     *widget,
+                              GdkEventFocus *event)
+{
+	remove_mac_root_menu (GEDIT_WINDOW (widget));
+	return GTK_WIDGET_CLASS (gedit_window_parent_class)->focus_out_event (widget, event);
+}
+#endif
+
 static void
 gedit_window_dispose (GObject *object)
 {
@@ -233,6 +289,10 @@ gedit_window_dispose (GObject *object)
 	 * force collection again.
 	 */
 	gedit_plugins_engine_garbage_collect (gedit_plugins_engine_get_default ());
+
+#ifdef OS_OSX
+	remove_mac_root_menu (window);
+#endif
 
 	G_OBJECT_CLASS (gedit_window_parent_class)->dispose (object);
 }
@@ -343,6 +403,11 @@ gedit_window_class_init (GeditWindowClass *klass)
 	widget_class->window_state_event = gedit_window_window_state_event;
 	widget_class->configure_event = gedit_window_configure_event;
 	widget_class->key_press_event = gedit_window_key_press_event;
+
+#ifdef OS_OSX
+	widget_class->focus_in_event = gedit_window_focus_in_event;
+	widget_class->focus_out_event = gedit_window_focus_out_event;
+#endif
 
 	signals[PAGE_ADDED] =
 		g_signal_new ("page_added",
@@ -783,7 +848,7 @@ set_sensitivity_according_to_page (GeditWindow *window,
 				  (state == GEDIT_VIEW_CONTAINER_STATE_SHOWING_PRINT_PREVIEW)) &&
 				  !(lockdown & GEDIT_LOCKDOWN_PRINTING));
 				  
-	action = gtk_action_group_get_action (window->priv->action_group,
+	action = gtk_action_group_get_action (window->priv->close_action_group,
 					      "FileClose");
 
 	gtk_action_set_sensitive (action,
@@ -1432,7 +1497,6 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	GtkActionGroup *action_group;
 	GtkAction *action;
 	GtkUIManager *manager;
-	GtkWidget *menubar;
 	GtkRecentManager *recent_manager;
 	GError *error = NULL;
 	gchar *ui_file;
@@ -1496,6 +1560,17 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 	window->priv->quit_action_group = action_group;
+
+	action_group = gtk_action_group_new ("GeditCloseWindowActions");
+	gtk_action_group_set_translation_domain (action_group, NULL);
+	gtk_action_group_add_actions (action_group,
+	                              gedit_close_menu_entries,
+	                              G_N_ELEMENTS (gedit_close_menu_entries),
+	                              window);
+
+	gtk_ui_manager_insert_action_group (manager, action_group, 0);
+	g_object_unref (action_group);
+	window->priv->close_action_group = action_group;
 
 	action_group = gtk_action_group_new ("GeditWindowPanesActions");
 	gtk_action_group_set_translation_domain (action_group, NULL);
@@ -1581,9 +1656,9 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
 
-	menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
+	window->priv->menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
 	gtk_box_pack_start (GTK_BOX (main_box), 
-			    menubar, 
+			    window->priv->menubar,
 			    FALSE, 
 			    FALSE, 
 			    0);
@@ -2134,7 +2209,11 @@ set_title (GeditWindow *window)
 
 	if (window->priv->active_page == NULL)
 	{
+#ifdef OS_OSX
+		gedit_osx_set_window_title (window, "gedit", NULL);
+#else
 		gtk_window_set_title (GTK_WINDOW (window), "gedit");
+#endif
 		return;
 	}
 
@@ -2215,7 +2294,11 @@ set_title (GeditWindow *window)
 						 name);
 	}
 
+#ifdef OS_OSX
+	gedit_osx_set_window_title (window, title, doc);
+#else
 	gtk_window_set_title (GTK_WINDOW (window), title);
+#endif
 
 	g_free (dirname);
 	g_free (name);
@@ -2568,6 +2651,9 @@ set_sensitivity_according_to_window_state (GeditWindow *window)
 		if (gtk_action_group_get_sensitive (window->priv->quit_action_group))
 			gtk_action_group_set_sensitive (window->priv->quit_action_group,
 							FALSE);
+		if (gtk_action_group_get_sensitive (window->priv->close_action_group))
+			gtk_action_group_set_sensitive (window->priv->close_action_group,
+							FALSE);
 	}
 	else
 	{
@@ -2577,6 +2663,17 @@ set_sensitivity_according_to_window_state (GeditWindow *window)
 		if (!gtk_action_group_get_sensitive (window->priv->quit_action_group))
 			gtk_action_group_set_sensitive (window->priv->quit_action_group,
 							window->priv->num_pages > 0);
+		if (!gtk_action_group_get_sensitive (window->priv->close_action_group))
+		{
+#ifdef OS_OSX
+			/* On OS X, File Close is always sensitive */
+			gtk_action_group_set_sensitive (window->priv->close_action_group,
+							TRUE);
+#else
+			gtk_action_group_set_sensitive (window->priv->close_action_group,
+							window->priv->num_pages > 0);
+#endif
+		}
 	}
 }
 
@@ -3185,6 +3282,27 @@ editable_changed (GeditView  *view,
 }
 
 static void
+update_sensitivity_according_to_open_pages (GeditWindow *window)
+{
+	GtkAction *action;
+
+	/* Set sensitivity */
+	gtk_action_group_set_sensitive (window->priv->action_group,
+					window->priv->num_pages != 0);
+
+	action = gtk_action_group_get_action (window->priv->action_group,
+					     "DocumentsMoveToNewWindow");
+	gtk_action_set_sensitive (action,
+				  window->priv->num_pages > 1);
+
+	/* Do not set close action insensitive on OS X */
+#ifndef OS_OSX
+	gtk_action_group_set_sensitive (window->priv->close_action_group,
+	                                window->priv->num_pages != 0);
+#endif
+}
+
+static void
 connect_per_container_signals (GeditWindow        *window,
 			       GeditViewContainer *container)
 {
@@ -3479,27 +3597,12 @@ notebook_page_removed (GeditNotebook *notebook,
 		}
 	}
 
-	/* Set sensitivity */
+	update_sensitivity_according_to_open_pages (window);
+
 	if (window->priv->num_pages == 0)
 	{
-		if (gtk_action_group_get_sensitive (window->priv->action_group))
-			gtk_action_group_set_sensitive (window->priv->action_group,
-							FALSE);
-
-		action = gtk_action_group_get_action (window->priv->action_group,
-						      "ViewHighlightMode");
-		gtk_action_set_sensitive (action, FALSE);
-
 		gedit_plugins_engine_update_plugins_ui (gedit_plugins_engine_get_default (),
 							window);
-	}
-
-	if (window->priv->num_pages <= 1)
-	{
-		action = gtk_action_group_get_action (window->priv->action_group,
-						     "DocumentsMoveToNewWindow");
-		gtk_action_set_sensitive (action,
-					  FALSE);
 	}
 
 	update_window_state (window);
@@ -3935,6 +4038,27 @@ check_window_is_active (GeditWindow *window,
 	}
 }
 
+#ifdef OS_OSX
+static void
+setup_mac_menu (GeditWindow *window)
+{
+	GtkAction *action;
+
+	gtk_widget_hide (window->priv->menubar);
+	action = gtk_ui_manager_get_action (window->priv->manager, "/ui/MenuBar/HelpMenu/HelpAboutMenu");
+
+	gtk_action_set_label (action, _("About gedit"));
+
+	ige_mac_menu_set_menu_bar (GTK_MENU_SHELL (window->priv->menubar));
+	ige_mac_menu_set_quit_menu_item (ui_manager_menu_item (window->priv->manager, "/ui/MenuBar/FileMenu/FileQuitMenu"));
+
+	ige_mac_menu_set_preferences_menu_item (ui_manager_menu_item (window->priv->manager, "/ui/MenuBar/EditMenu/EditPreferencesMenu"));
+	
+	add_mac_root_menu (window);
+	ige_mac_menu_connect_window_key_handler (GTK_WINDOW (window));
+}
+#endif
+
 static void
 gedit_window_init (GeditWindow *window)
 {
@@ -4101,6 +4225,12 @@ gedit_window_init (GeditWindow *window)
 	 * This needs to be done after plugins activatation */
 	init_panels_visibility (window);
 
+	update_sensitivity_according_to_open_pages (window);
+
+#ifdef OS_OSX
+	setup_mac_menu (window);
+#endif
+
 	gedit_debug_message (DEBUG_WINDOW, "END");
 }
 
@@ -4200,6 +4330,11 @@ gedit_window_create_page (GeditWindow *window,
 				 -1,
 				 jump_to);
 
+	if (!GTK_WIDGET_VISIBLE (window))
+	{
+		gtk_window_present (GTK_WINDOW (window));
+	}
+
 	return page;
 }
 
@@ -4247,6 +4382,11 @@ gedit_window_create_page_from_uri (GeditWindow         *window,
 				 GEDIT_PAGE (page),
 				 -1,
 				 jump_to);
+
+	if (!GTK_WIDGET_VISIBLE (window))
+	{
+		gtk_window_present (GTK_WINDOW (window));
+	}
 
 	return GEDIT_PAGE (page);
 }
@@ -4691,8 +4831,7 @@ _gedit_window_fullscreen (GeditWindow *window)
 	g_signal_connect (window->priv->notebook, "notify::show-tabs",
 			  G_CALLBACK (hide_notebook_tabs_on_fullscreen), window);
 	
-	gtk_widget_hide (gtk_ui_manager_get_widget (window->priv->manager,
-			 "/MenuBar"));
+	gtk_widget_hide (window->priv->menubar);
 	
 	g_signal_handlers_block_by_func (window->priv->toolbar,
 					 toolbar_visibility_changed,
@@ -4725,7 +4864,7 @@ _gedit_window_unfullscreen (GeditWindow *window)
 					      hide_notebook_tabs_on_fullscreen,
 					      window);
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->priv->notebook), TRUE);
-	gtk_widget_show (gtk_ui_manager_get_widget (window->priv->manager, "/MenuBar"));
+	gtk_widget_show (window->priv->menubar);
 	
 	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "ViewToolbar");
@@ -4824,4 +4963,3 @@ gedit_window_get_message_bus (GeditWindow *window)
 	
 	return window->priv->message_bus;
 }
-

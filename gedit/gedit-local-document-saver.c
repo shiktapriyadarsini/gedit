@@ -58,23 +58,20 @@
 						       GeditLocalDocumentSaverPrivate))
 
 static void		 gedit_local_document_saver_save		(GeditDocumentSaver *saver,
-									 time_t              old_mtime);
-static const gchar 	*gedit_local_document_saver_get_content_type	(GeditDocumentSaver *saver);
-static time_t		 gedit_local_document_saver_get_mtime		(GeditDocumentSaver *saver);
+									 GTimeVal           *old_mtime);
 static goffset		 gedit_local_document_saver_get_file_size	(GeditDocumentSaver *saver);
 static goffset		 gedit_local_document_saver_get_bytes_written	(GeditDocumentSaver *saver);
 
 
 struct _GeditLocalDocumentSaverPrivate
 {
-	goffset	  size;
 	goffset	  bytes_written;
 
 	/* temp data for local files */
 	gint	  fd;
 	gchar	 *local_path;
 	gchar    *content_type;
-	time_t    doc_mtime;
+	GTimeVal  doc_mtime;
 
 	GError   *error;
 };
@@ -104,8 +101,6 @@ gedit_local_document_saver_class_init (GeditDocumentSaverClass *klass)
 	object_class->finalize = gedit_local_document_saver_finalize;
 
 	saver_class->save = gedit_local_document_saver_save;
-	saver_class->get_content_type = gedit_local_document_saver_get_content_type;
-	saver_class->get_mtime = gedit_local_document_saver_get_mtime;
 	saver_class->get_file_size = gedit_local_document_saver_get_file_size;
 	saver_class->get_bytes_written = gedit_local_document_saver_get_bytes_written;
 
@@ -297,6 +292,26 @@ all_xattrs (const char *xattr G_GNUC_UNUSED,
 }
 #endif
 
+static void
+set_saver_info (GeditLocalDocumentSaver *lsaver)
+{
+	GeditDocumentSaver *saver = GEDIT_DOCUMENT_SAVER (lsaver);
+
+	if (saver->info != NULL)
+		g_object_unref (saver->info);
+
+	saver->info = g_file_info_new ();
+
+	if (lsaver->priv->content_type != NULL)
+	{
+		g_file_info_set_content_type (saver->info,
+					      lsaver->priv->content_type);
+	}
+	
+	g_file_info_set_modification_time (saver->info,
+					   &lsaver->priv->doc_mtime);
+}
+
 static gboolean
 save_existing_local_file (GeditLocalDocumentSaver *lsaver)
 {
@@ -355,8 +370,8 @@ save_existing_local_file (GeditLocalDocumentSaver *lsaver)
 	 * except when "saving as", when saving a new doc (mtime = 0)
 	 * or when the mtime check is explicitely disabled
 	 */
-	if (lsaver->priv->doc_mtime > 0 &&
-	    statbuf.st_mtime != lsaver->priv->doc_mtime &&
+	if (lsaver->priv->doc_mtime.tv_sec > 0 &&
+	    statbuf.st_mtime != lsaver->priv->doc_mtime.tv_sec &&
 	    ((saver->flags & GEDIT_DOCUMENT_SAVE_IGNORE_MTIME) == 0))
 	{
 		g_set_error (&lsaver->priv->error,
@@ -528,7 +543,8 @@ save_existing_local_file (GeditLocalDocumentSaver *lsaver)
 			goto out;
 		}
 
-		lsaver->priv->doc_mtime = new_statbuf.st_mtime;
+		lsaver->priv->doc_mtime.tv_sec = new_statbuf.st_mtime;
+		lsaver->priv->doc_mtime.tv_usec = 0;
 
 		lsaver->priv->content_type = get_slow_content_type (saver->uri);
 
@@ -713,7 +729,8 @@ save_existing_local_file (GeditLocalDocumentSaver *lsaver)
 		goto out;
 	}
 
-	lsaver->priv->doc_mtime = new_statbuf.st_mtime;
+	lsaver->priv->doc_mtime.tv_sec = new_statbuf.st_mtime;
+	lsaver->priv->doc_mtime.tv_usec = 0;
 
 	g_free (lsaver->priv->content_type);
 	lsaver->priv->content_type = get_slow_content_type (saver->uri);
@@ -726,6 +743,8 @@ save_existing_local_file (GeditLocalDocumentSaver *lsaver)
 	lsaver->priv->fd = -1;
 
 	g_free (backup_filename);
+
+	set_saver_info (lsaver);
 
 	gedit_document_saver_saving (saver, TRUE, lsaver->priv->error);
 
@@ -759,7 +778,8 @@ save_new_local_file (GeditLocalDocumentSaver *lsaver)
 		goto out;
 	}
 
-	lsaver->priv->doc_mtime = statbuf.st_mtime;
+	lsaver->priv->doc_mtime.tv_sec = statbuf.st_mtime;
+	lsaver->priv->doc_mtime.tv_usec = 0;
 
 	g_free (lsaver->priv->content_type);
 	lsaver->priv->content_type = get_slow_content_type (GEDIT_DOCUMENT_SAVER (lsaver)->uri);
@@ -771,6 +791,8 @@ save_new_local_file (GeditLocalDocumentSaver *lsaver)
 			   g_strerror (errno));
 
 	lsaver->priv->fd = -1;
+
+	set_saver_info (lsaver);
 
 	gedit_document_saver_saving (GEDIT_DOCUMENT_SAVER (lsaver),
 				     TRUE,
@@ -851,12 +873,12 @@ save_file (GeditLocalDocumentSaver *lsaver)
 
 static void
 gedit_local_document_saver_save (GeditDocumentSaver *saver,
-				 time_t              old_mtime)
+				 GTimeVal           *old_mtime)
 {
 	GeditLocalDocumentSaver *lsaver = GEDIT_LOCAL_DOCUMENT_SAVER (saver);
 	GFile *gfile;
 	
-	lsaver->priv->doc_mtime = old_mtime;
+	lsaver->priv->doc_mtime = *old_mtime;
 
 	gfile = g_file_new_for_uri (saver->uri);
 	lsaver->priv->local_path = g_file_get_path (gfile);
@@ -875,22 +897,10 @@ gedit_local_document_saver_save (GeditDocumentSaver *saver,
 	}
 }
 
-static const gchar *
-gedit_local_document_saver_get_content_type (GeditDocumentSaver *saver)
-{
-	return GEDIT_LOCAL_DOCUMENT_SAVER (saver)->priv->content_type;
-}
-
-static time_t
-gedit_local_document_saver_get_mtime (GeditDocumentSaver *saver)
-{
-	return GEDIT_LOCAL_DOCUMENT_SAVER (saver)->priv->doc_mtime;
-}
-
 static goffset
 gedit_local_document_saver_get_file_size (GeditDocumentSaver *saver)
 {
-	return GEDIT_LOCAL_DOCUMENT_SAVER (saver)->priv->size;
+	return 0;
 }
 
 static goffset

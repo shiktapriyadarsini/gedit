@@ -25,6 +25,7 @@
 #endif
 
 #include "gedit-spell-plugin.h"
+#include "gedit-spell-utils.h"
 
 #include <string.h> /* For strlen */
 
@@ -32,7 +33,6 @@
 #include <gmodule.h>
 
 #include <gedit/gedit-debug.h>
-#include <gedit/gedit-metadata-manager.h>
 #include <gedit/gedit-prefs-manager.h>
 #include <gedit/gedit-statusbar.h>
 
@@ -40,6 +40,15 @@
 #include "gedit-spell-checker-dialog.h"
 #include "gedit-spell-language-dialog.h"
 #include "gedit-automatic-spell-checker.h"
+
+#ifdef G_OS_WIN32
+#include <gedit/gedit-metadata-manager.h>
+#define GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE "spell-language"
+#define GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED  "spell-enabled"
+#else
+#define GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE "metadata::gedit-spell-language"
+#define GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED  "metadata::gedit-spell-enabled"
+#endif
 
 #define WINDOW_DATA_KEY "GeditSpellPluginWindowData"
 #define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_1"
@@ -55,6 +64,8 @@ typedef struct
 	GtkActionGroup *action_group;
 	guint           ui_id;
 	guint           message_cid;
+	gulong          tab_added_id;
+	gulong          tab_removed_id;
 } WindowData;
 
 typedef struct
@@ -134,26 +145,16 @@ set_spell_language_cb (GeditSpellChecker   *spell,
 		       const GeditSpellCheckerLanguage *lang,
 		       GeditDocument 	   *doc)
 {
-	gchar *uri;
+	const gchar *key;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (lang != NULL);
 
-	uri = gedit_document_get_uri (doc);
+	key = gedit_spell_checker_language_to_key (lang);
+	g_return_if_fail (key != NULL);
 
-	if (uri != NULL)
-	{
-		const gchar *key;
-
-		key = gedit_spell_checker_language_to_key (lang);
-		g_return_if_fail (key != NULL);
-
-		gedit_metadata_manager_set (uri, 
-					    "spell-language",
-					    key);
-
-		g_free (uri);
-	}
+	gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
+				     key, NULL);
 }
 
 static GeditSpellChecker *
@@ -170,31 +171,22 @@ get_spell_checker_from_document (GeditDocument *doc)
 
 	if (data == NULL)
 	{
-		gchar *uri;
+		const GeditSpellCheckerLanguage *lang = NULL;
+		gchar *value = NULL;
 
 		spell = gedit_spell_checker_new ();
 
-		uri = gedit_document_get_uri (doc);
+		value = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE);
 
-		if (uri != NULL)
+		if (value != NULL)
 		{
-			gchar *key;
-			const GeditSpellCheckerLanguage *lang = NULL;
+			lang = gedit_spell_checker_language_from_key (value);
+			g_free (value);
+		}
 
-			key = gedit_metadata_manager_get (uri,
-							  "spell-language");
-
-			if (key != NULL)
-			{
-				lang = gedit_spell_checker_language_from_key (key);
-				g_free (key);
-			}
-
-			if (lang != NULL)
-				gedit_spell_checker_set_language (spell,
-								  lang);
-
-			g_free (uri);	
+		if (lang != NULL)
+		{
+			gedit_spell_checker_set_language (spell, lang);
 		}
 
 		g_object_set_qdata_full (G_OBJECT (doc), 
@@ -431,15 +423,13 @@ goto_next_word (GeditDocument *doc)
 					  range->current_mark);
 	gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &end_iter);
 
-	if (gtk_text_iter_compare (&current_iter, &end_iter) >= 0)
-		return FALSE;
-
 	old_current_iter = current_iter;
 
 	gtk_text_iter_forward_word_ends (&current_iter, 2);
 	gtk_text_iter_backward_word_start (&current_iter);
 
-	if ((gtk_text_iter_compare (&old_current_iter, &current_iter) < 0) &&
+	if (gedit_spell_utils_skip_no_spell_check (&current_iter, &end_iter) &&
+	    (gtk_text_iter_compare (&old_current_iter, &current_iter) < 0) &&
 	    (gtk_text_iter_compare (&current_iter, &end_iter) < 0))
 	{
 		update_current (doc, gtk_text_iter_get_offset (&current_iter));
@@ -819,23 +809,12 @@ spell_cb (GtkAction   *action,
 }
 
 static void
-auto_spell_cb (GtkAction   *action,
-	       GeditWindow *window)
+set_auto_spell (GeditWindow   *window,
+		GeditDocument *doc,
+		gboolean       active)
 {
 	GeditAutomaticSpellChecker *autospell;
-	GeditDocument *doc;
 	GeditSpellChecker *spell;
-	gboolean active;
-
-	gedit_debug (DEBUG_PLUGINS);
-
-	active = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
-
-	gedit_debug_message (DEBUG_PLUGINS, active ? "Auto Spell activated" : "Auto Spell deactivated");
-
-	doc = gedit_window_get_active_document (window);
-	if (doc == NULL)
-		return;
 
 	spell = get_spell_checker_from_document (doc);
 	g_return_if_fail (spell != NULL);
@@ -861,6 +840,31 @@ auto_spell_cb (GtkAction   *action,
 		if (autospell != NULL)
 			gedit_automatic_spell_checker_free (autospell);
 	}
+}
+
+static void
+auto_spell_cb (GtkAction   *action,
+	       GeditWindow *window)
+{
+	
+	GeditDocument *doc;
+	gboolean active;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	active = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+	gedit_debug_message (DEBUG_PLUGINS, active ? "Auto Spell activated" : "Auto Spell deactivated");
+
+	doc = gedit_window_get_active_document (window);
+	if (doc == NULL)
+		return;
+
+	gedit_document_set_metadata (doc,
+				     GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
+				     active ? "1" : NULL, NULL);
+
+	set_auto_spell (window, doc, active);
 }
 
 static void
@@ -896,12 +900,119 @@ update_ui_real (GeditWindow *window,
 
 	autospell = (doc != NULL &&
 	             gedit_automatic_spell_checker_get_from_document (doc) != NULL);
-	action = gtk_action_group_get_action (data->action_group, "AutoSpell");
-	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), autospell);
+
+	if (doc != NULL)
+	{
+		GeditTab *tab;
+		GeditTabState state;
+
+		tab = gedit_window_get_active_tab (window);
+		state = gedit_tab_get_state (tab);
+
+		/* If the document is loading we can't get the metadata so we
+		   endup with an useless speller */
+		if (state == GEDIT_TAB_STATE_NORMAL)
+		{
+			action = gtk_action_group_get_action (data->action_group,
+							      "AutoSpell");
+	
+			g_signal_handlers_block_by_func (action, auto_spell_cb,
+							 window);
+			set_auto_spell (window, doc, autospell);
+			gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+						      autospell);
+			g_signal_handlers_unblock_by_func (action, auto_spell_cb,
+							   window);
+		}
+	}
 
 	gtk_action_group_set_sensitive (data->action_group,
 					(view != NULL) &&
 					gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+}
+
+static void
+set_auto_spell_from_metadata (GeditWindow    *window,
+			      GeditDocument  *doc,
+			      GtkActionGroup *action_group)
+{
+	gboolean active = FALSE;
+	gchar *active_str;
+	GeditDocument *active_doc;
+
+	active_str = gedit_document_get_metadata (doc,
+						  GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
+
+	if (active_str)
+	{
+		active = *active_str == '1';
+	
+		g_free (active_str);
+	}
+
+	set_auto_spell (window, doc, active);
+
+	/* In case that the doc is the active one we mark the spell action */
+	active_doc = gedit_window_get_active_document (window);
+
+	if (active_doc == doc && action_group != NULL)
+	{
+		GtkAction *action;
+		
+		action = gtk_action_group_get_action (action_group,
+						      "AutoSpell");
+
+		g_signal_handlers_block_by_func (action, auto_spell_cb,
+						 window);
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+					      active);
+		g_signal_handlers_unblock_by_func (action, auto_spell_cb,
+						   window);
+	}
+}
+
+static void
+on_document_loaded (GeditDocument *doc,
+		    const GError  *error,
+		    GeditWindow   *window)
+{
+	if (error == NULL)
+	{
+		WindowData *data = g_object_get_data (G_OBJECT (window),
+						      WINDOW_DATA_KEY);
+	
+		set_auto_spell_from_metadata (window, doc, data->action_group);
+	}
+}
+
+static void
+tab_added_cb (GeditWindow *window,
+	      GeditTab    *tab,
+	      gpointer     useless)
+{
+	GeditDocument *doc;
+	GeditView *view;
+
+	doc = gedit_tab_get_document (tab);
+	view = gedit_tab_get_view (tab);
+
+	g_signal_connect (doc, "loaded",
+			  G_CALLBACK (on_document_loaded),
+			  window);
+}
+
+static void
+tab_removed_cb (GeditWindow *window,
+		GeditTab    *tab,
+		gpointer     useless)
+{
+	GeditDocument *doc;
+	GeditView *view;
+
+	doc = gedit_tab_get_document (tab);
+	view = gedit_tab_get_view (tab);
+	
+	g_signal_handlers_disconnect_by_func (doc, on_document_loaded, window);
 }
 
 static void
@@ -911,6 +1022,7 @@ impl_activate (GeditPlugin *plugin,
 	GtkUIManager *manager;
 	WindowData *data;
 	ActionData *action_data;
+	GList *docs, *l;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -971,9 +1083,21 @@ impl_activate (GeditPlugin *plugin,
 			       GTK_UI_MANAGER_MENUITEM, 
 			       FALSE);
 
-	
-
 	update_ui_real (window, data);
+
+	docs = gedit_window_get_documents (window);
+	for (l = docs; l != NULL; l = g_list_next (l))
+	{
+		set_auto_spell_from_metadata (window, GEDIT_DOCUMENT (l->data),
+					      data->action_group);
+	}
+
+	data->tab_added_id =
+		g_signal_connect (window, "tab-added",
+				  G_CALLBACK (tab_added_cb), NULL);
+	data->tab_removed_id =
+		g_signal_connect (window, "tab-removed",
+				  G_CALLBACK (tab_removed_cb), NULL);
 }
 
 static void
@@ -992,6 +1116,9 @@ impl_deactivate	(GeditPlugin *plugin,
 
 	gtk_ui_manager_remove_ui (manager, data->ui_id);
 	gtk_ui_manager_remove_action_group (manager, data->action_group);
+
+	g_signal_handler_disconnect (window, data->tab_added_id);
+	g_signal_handler_disconnect (window, data->tab_removed_id);
 
 	g_object_set_data (G_OBJECT (window), WINDOW_DATA_KEY, NULL);
 }

@@ -35,10 +35,10 @@ def current_word(document):
     piter = document.get_iter_at_mark(document.get_insert())
     start = piter.copy()
     
-    if not start.starts_word():
+    if not piter.starts_word() and (piter.inside_word() or piter.ends_word()):
         start.backward_word_start()
     
-    if not piter.ends_word():
+    if not piter.ends_word() and piter.inside_word():
         piter.forward_word_end()
             
     return (start, piter)
@@ -109,7 +109,12 @@ def run_external_tool(window, node):
         capture.set_env(GEDIT_DOCUMENTS_URI  = ' '.join(documents_uri),
                         GEDIT_DOCUMENTS_PATH = ' '.join(documents_path))
 
-    capture.set_flags(capture.CAPTURE_BOTH)
+    flags = capture.CAPTURE_BOTH
+    
+    if not node.has_hash_bang():
+        flags |= capture.CAPTURE_NEEDS_SHELL
+
+    capture.set_flags(flags)
 
     # Get input text
     input_type = node.input

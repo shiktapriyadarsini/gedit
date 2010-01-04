@@ -216,6 +216,21 @@ gedit_document_get_has_selection_default (GeditDocument *doc)
 	g_return_val_if_reached (FALSE);
 }
 
+static gchar *
+gedit_document_get_metadata_default (GeditDocument *doc,
+				     const gchar   *key)
+{
+	g_return_val_if_reached (NULL);
+}
+
+void
+gedit_document_set_metadata_default (GeditDocument *doc,
+				     const gchar   *first_key,
+				     ...)
+{
+	g_return_if_reached ();
+}
+
 static void 
 gedit_document_init (GeditDocumentIface *iface)
 {
@@ -249,6 +264,8 @@ gedit_document_init (GeditDocumentIface *iface)
 	iface->set_modified = gedit_document_set_modified_default;
 	iface->get_modified = gedit_document_get_modified_default;
 	iface->get_has_selection = gedit_document_get_has_selection_default;
+	iface->get_metadata = gedit_document_get_metadata_default;
+	iface->set_metadata = gedit_document_set_metadata_default;
 	
 	if (!initialized)
 	{
@@ -731,4 +748,21 @@ gedit_document_get_has_selection (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	return GEDIT_DOCUMENT_GET_INTERFACE (doc)->get_has_selection (doc);
+}
+
+gchar *
+gedit_document_get_metadata (GeditDocument *doc,
+			     const gchar   *key)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
+	return GEDIT_DOCUMENT_GET_INTERFACE (doc)->get_metadata (doc, key);
+}
+
+void
+gedit_document_set_metadata (GeditDocument *doc,
+			     const gchar   *first_key,
+			     ...)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	GEDIT_DOCUMENT_GET_INTERFACE (doc)->set_metadata (doc, first_key, ...);
 }

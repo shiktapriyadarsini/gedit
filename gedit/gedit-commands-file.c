@@ -57,7 +57,7 @@
 #define GEDIT_IS_CLOSING_ALL            "gedit-is-closing-all"
 #define GEDIT_IS_QUITTING 	        "gedit-is-quitting"
 #define GEDIT_IS_CLOSING_PAGE		"gedit-is-closing-page"
-
+#define GEDIT_IS_QUITTING_ALL		"gedit-is-quitting-all"
 
 static void view_container_state_changed_while_saving (GeditViewContainer *container,
 						       GParamSpec         *pspec,
@@ -1688,6 +1688,12 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 			g_object_set_data (G_OBJECT (window),
 					   GEDIT_IS_QUITTING,
 					   GBOOLEAN_TO_POINTER (FALSE));
+
+#ifdef OS_OSX
+			g_object_set_data (G_OBJECT (window),
+			                   GEDIT_IS_QUITTING_ALL,
+			                   GINT_TO_POINTER (FALSE));
+#endif
 			break;
 	}
 
@@ -1753,6 +1759,10 @@ _gedit_cmd_file_close_page (GeditPage   *page,
 			   GEDIT_IS_QUITTING,
 			   GBOOLEAN_TO_POINTER (FALSE));
 
+	g_object_set_data (G_OBJECT (window), 
+	                   GEDIT_IS_QUITTING_ALL, 
+	                   GINT_TO_POINTER (FALSE));
+
 	if (page_can_close (page, GTK_WINDOW (window)))
 		gedit_window_close_page (window, page);
 }
@@ -1767,7 +1777,13 @@ _gedit_cmd_file_close (GtkAction   *action,
 
 	active_page = gedit_window_get_active_page (window);
 	if (active_page == NULL)
+	{
+#ifdef OS_OSX
+		/* Close the window on OS X */
+		gtk_widget_destroy (GTK_WIDGET (window));
+#endif
 		return;
+	}
 
 	_gedit_cmd_file_close_page (active_page, window);
 }
@@ -1861,11 +1877,49 @@ _gedit_cmd_file_close_all (GtkAction   *action,
 }
 
 /* Quit */
+#ifdef OS_OSX
+static void
+quit_all ()
+{
+	GList *windows;
+	GList *item;
+	GeditApp *app;
+
+	app = gedit_app_get_default ();
+	windows = g_list_copy ((GList *)gedit_app_get_windows (app));
+
+	for (item = windows; item; item = g_list_next (item))
+	{
+		GeditWindow *window = GEDIT_WINDOW (item->data);
+	
+		g_object_set_data (G_OBJECT (window),
+		                   GEDIT_IS_QUITTING_ALL,
+		                   GINT_TO_POINTER (TRUE));
+
+		if (!(gedit_window_get_state (window) &
+		                    (GEDIT_WINDOW_STATE_SAVING |
+		                     GEDIT_WINDOW_STATE_PRINTING |
+		                     GEDIT_WINDOW_STATE_SAVING_SESSION)))
+		{
+			file_close_all (window, TRUE);
+		}
+	}
+}
+#endif
+
 void
 _gedit_cmd_file_quit (GtkAction   *action,
 		      GeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
+
+#ifdef OS_OSX
+	if (action != NULL)
+	{
+		quit_all ();
+		return;
+	}
+#endif
 
 	g_return_if_fail (!(gedit_window_get_state (window) &
 	                    (GEDIT_WINDOW_STATE_SAVING |

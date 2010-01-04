@@ -256,7 +256,6 @@ class Manager:
 
     def __init__(self, datadir):
         self.datadir = datadir
-        self.default_size = None
         self.dialog = None
         self._languages = {}
         self._tool_rows = {}
@@ -280,9 +279,6 @@ class Manager:
         self.ui.add_from_file(os.path.join(self.datadir, 'ui', 'tools.ui'))
         self.ui.connect_signals(callbacks)
         self.dialog = self.ui.get_object('tool-manager-dialog')
-        
-        if self.default_size != None:
-            self.dialog.set_default_size(*self.default_size)
         
         self.view = self.ui.get_object('view')
         
@@ -340,13 +336,13 @@ class Manager:
         if not shortcut:
             shortcut = item.shortcut
 
-        if not item.shortcut in self.accelerators:
+        if not shortcut in self.accelerators:
             return
-        
-        self.accelerators[item.shortcut].remove(item)
-        
-        if not self.accelerators[item.shortcut]:
-            del self.accelerators[item.shortcut]
+
+        self.accelerators[shortcut].remove(item)
+
+        if not self.accelerators[shortcut]:
+            del self.accelerators[shortcut]
 
     def add_tool_to_language(self, tool, language):
         if isinstance(language, gsv.Language):
@@ -652,6 +648,8 @@ class Manager:
         if refresh and tool == self.current_node:
             self.fill_fields()
 
+        self.update_remove_revert()
+
     def on_remove_tool_button_clicked(self, button):
         piter, node = self.get_selected_tool()
 
@@ -748,6 +746,7 @@ class Manager:
 
         if name == '':
             self.current_node.shorcut = None
+            self.save_current_tool()
             return True
             
         col = self.accelerator_collision(name, self.current_node)
@@ -767,6 +766,7 @@ class Manager:
 
         self.current_node.shortcut = name
         self.add_accelerator(self.current_node)
+        self.save_current_tool()
 
         return True
 
@@ -780,6 +780,7 @@ class Manager:
         elif event.keyval == gtk.keysyms.Delete \
           or event.keyval == gtk.keysyms.BackSpace:
             entry.set_text('')
+            self.remove_accelerator(self.current_node)
             self.current_node.shortcut = None
             self['commands'].grab_focus()
             return True
@@ -821,7 +822,6 @@ class Manager:
             return
 
         self.on_tool_manager_dialog_focus_out(dialog, None)
-        self.default_size = [self.dialog.allocation.width, self.dialog.allocation.height]
         
         self.dialog.destroy()
         self.dialog = None

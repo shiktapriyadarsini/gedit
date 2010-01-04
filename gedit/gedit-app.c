@@ -46,6 +46,9 @@
 #include "gedit-enum-types.h"
 #include "gedit-dirs.h"
 
+#ifdef OS_OSX
+#include <ige-mac-integration.h>
+#endif
 
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
 #define GEDIT_PRINT_SETTINGS_FILE	"gedit-print-settings"
@@ -372,6 +375,13 @@ gedit_app_get_default (void)
 	return app;
 }
 
+static void
+set_active_window (GeditApp    *app,
+                   GeditWindow *window)
+{
+	app->priv->active_window = window;
+}
+
 static gboolean
 window_focus_in_event (GeditWindow   *window, 
 		       GdkEventFocus *event, 
@@ -380,7 +390,7 @@ window_focus_in_event (GeditWindow   *window,
 	/* updates active_view and active_child when a new toplevel receives focus */
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), FALSE);
 
-	app->priv->active_window = window;
+	set_active_window (app, window);
 
 	return FALSE;
 }
@@ -415,8 +425,7 @@ window_destroy (GeditWindow *window,
 
 	if (window == app->priv->active_window)
 	{
-		app->priv->active_window = app->priv->windows != NULL ?
-					   app->priv->windows->data : NULL;
+		set_active_window (app, app->priv->windows != NULL ? app->priv->windows->data : NULL);
 	}
 
 /* CHECK: I don't think we have to disconnect this function, since windows
@@ -428,11 +437,18 @@ window_destroy (GeditWindow *window,
 	g_signal_handlers_disconnect_by_func (window, 
 					      G_CALLBACK (window_destroy),
 					      app);
-*/					      
+*/
 	if (app->priv->windows == NULL)
 	{
+#ifdef OS_OSX
+		if (!GPOINTER_TO_INT (g_object_get_data (G_OBJECT (window), "gedit-is-quitting-all")))
+		{
+			/* Create hidden proxy window on OS X to handle the menu */
+			gedit_app_create_window (app, NULL);
+			return;
+		}
+#endif
 		/* Last window is gone... save some settings and exit */
-
 		ensure_user_config_dir ();
 
 		save_accels ();
@@ -458,7 +474,7 @@ gen_role (void)
 				serial++,
 				g_get_host_name ());
 }
-	     
+
 static GeditWindow *
 gedit_app_create_window_real (GeditApp    *app,
 			      gboolean     set_geometry,
@@ -476,8 +492,8 @@ gedit_app_create_window_real (GeditApp    *app,
 	 */
 	if (app->priv->windows == NULL)
 	{
-		app->priv->active_window = window = g_object_new (GEDIT_TYPE_WINDOW,
-								  NULL);
+		window = g_object_new (GEDIT_TYPE_WINDOW, NULL);
+		set_active_window (app, window);
 	}
 	else
 	{

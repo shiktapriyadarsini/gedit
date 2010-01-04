@@ -57,7 +57,7 @@ static const GtkActionEntry gedit_always_sensitive_menu_entries[] =
 	  N_("Create a new document"), G_CALLBACK (_gedit_cmd_file_new) },
 	{ "FileOpen", GTK_STOCK_OPEN, N_("_Open..."), "<control>O",
 	  N_("Open a file"), G_CALLBACK (_gedit_cmd_file_open) },
-	
+
 	/* Edit menu */
 	{ "EditPreferences", GTK_STOCK_PREFERENCES, N_("Pr_eferences"), NULL,
 	  N_("Configure the application"), G_CALLBACK (_gedit_cmd_edit_preferences) },
@@ -91,8 +91,6 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Print preview"), G_CALLBACK (_gedit_cmd_file_print_preview) },
 	 { "FilePrint", GTK_STOCK_PRINT, N_("_Print..."), "<control>P",
 	  N_("Print the current page"), G_CALLBACK (_gedit_cmd_file_print) },
-	{ "FileClose", GTK_STOCK_CLOSE, NULL, "<control>W",
-	  N_("Close the current file"), G_CALLBACK (_gedit_cmd_file_close) },
 
 	/* Edit menu */
 	{ "EditUndo", GTK_STOCK_UNDO, NULL, "<control>Z",
@@ -129,8 +127,13 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Search forwards for the same text"), G_CALLBACK (_gedit_cmd_search_find_next) },
 	{ "SearchFindPrevious", NULL, N_("Find Pre_vious"), "<shift><control>G",
 	  N_("Search backwards for the same text"), G_CALLBACK (_gedit_cmd_search_find_prev) },
+#ifndef OS_OSX
 	{ "SearchReplace", GTK_STOCK_FIND_AND_REPLACE, N_("_Replace..."), "<control>H",
 	  N_("Search for and replace text"), G_CALLBACK (_gedit_cmd_search_replace) },
+#else
+	{ "SearchReplace", GTK_STOCK_FIND_AND_REPLACE, N_("_Replace..."), "<control><alt>F",
+	  N_("Search for and replace text"), G_CALLBACK (_gedit_cmd_search_replace) },
+#endif
 	{ "SearchClearHighlight", NULL, N_("_Clear Highlight"), "<shift><control>K",
 	  N_("Clear highlighting of search matches"), G_CALLBACK (_gedit_cmd_search_clear_highlight) },
 	{ "SearchGoToLine", GTK_STOCK_JUMP_TO, N_("Go to _Line..."), "<control>I",
@@ -149,6 +152,13 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Activate next document"), G_CALLBACK (_gedit_cmd_documents_next_document) },
 	{ "DocumentsMoveToNewWindow", NULL, N_("_Move to New Window"), NULL,
 	  N_("Move the current document to a new window"), G_CALLBACK (_gedit_cmd_documents_move_to_new_window) }
+};
+
+/* separate group, needs to be sensitive on OS X even when there are no tabs */
+static const GtkActionEntry gedit_close_menu_entries[] =
+{
+	{ "FileClose", GTK_STOCK_CLOSE, NULL, "<control>W",
+	  N_("Close the current file"), G_CALLBACK (_gedit_cmd_file_close) }
 };
 
 /* separate group, should be sensitive even when there are no tabs */

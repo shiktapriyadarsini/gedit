@@ -47,6 +47,16 @@ G_BEGIN_DECLS
 typedef struct _GeditDocument		GeditDocument;
 typedef struct _GeditDocumentIface	GeditDocumentIface;
 
+#ifdef G_OS_WIN32
+#define GEDIT_METADATA_ATTRIBUTE_POSITION "position"
+#define GEDIT_METADATA_ATTRIBUTE_ENCODING "encoding"
+#define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "language"
+#else
+#define GEDIT_METADATA_ATTRIBUTE_POSITION "metadata::gedit-position"
+#define GEDIT_METADATA_ATTRIBUTE_ENCODING "metadata::gedit-encoding"
+#define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "metadata::gedit-language"
+#endif
+
 typedef enum
 {
 	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0, 
@@ -267,6 +277,13 @@ void		 gedit_document_set_modified	(GeditDocument       *doc,
 gboolean	 gedit_document_get_modified	(GeditDocument       *doc);
 
 gboolean	 gedit_document_get_has_selection(GeditDocument      *doc);
+
+gchar		*gedit_document_get_metadata	(GeditDocument *doc,
+						 const gchar   *key);
+
+void		 gedit_document_set_metadata	(GeditDocument *doc,
+						 const gchar   *first_key,
+						 ...);
 
 G_END_DECLS
 

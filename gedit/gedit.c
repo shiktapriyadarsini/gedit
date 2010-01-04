@@ -50,7 +50,6 @@
 #include "gedit-debug.h"
 #include "gedit-dirs.h"
 #include "gedit-encodings.h"
-#include "gedit-metadata-manager.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-prefs-manager-app.h"
 #include "gedit-session.h"
@@ -67,8 +66,15 @@
 #include <conio.h>
 #define _WIN32_WINNT 0x0500
 #include <windows.h>
+#include "gedit-metadata-manager.h"
 #define DATADIR SAVE_DATADIR
 #undef SAVE_DATADIR
+#endif
+
+#ifdef OS_OSX
+#include <ige-mac-dock.h>
+#include <ige-mac-integration.h>
+#include "osx/gedit-osx.h"
 #endif
 
 static guint32 startup_timestamp = 0;
@@ -548,6 +554,9 @@ main (int argc, char *argv[])
 	gchar *dir;
 	gchar *icon_dir;
 
+	/* Init type system as soon as possible */
+	g_type_init ();
+
 	/* Init glib threads asap */
 	g_thread_init (NULL);
 
@@ -686,6 +695,10 @@ main (int argc, char *argv[])
 	gedit_debug_message (DEBUG_APP, "Init session manager");		
 	gedit_session_init ();
 
+#ifdef OS_OSX
+	ige_mac_menu_set_global_key_handler_enabled (FALSE);
+#endif
+
 	if (gedit_session_is_restored ())
 		restored = gedit_session_load ();
 
@@ -726,6 +739,11 @@ main (int argc, char *argv[])
 	}
 
 	gedit_debug_message (DEBUG_APP, "Start gtk-main");
+
+#ifdef OS_OSX
+	gedit_osx_init(gedit_app_get_default ());
+#endif
+
 	gtk_main();
 
 #ifndef G_OS_WIN32
@@ -737,7 +755,10 @@ main (int argc, char *argv[])
 	 */
 	g_object_unref (engine);
 	gedit_prefs_manager_app_shutdown ();
+
+#ifdef G_OS_WIN32
 	gedit_metadata_manager_shutdown ();
+#endif
 
 	return 0;
 }

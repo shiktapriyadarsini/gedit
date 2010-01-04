@@ -553,6 +553,19 @@ class Document:
                 else:
                         self.goto_placeholder(self.active_placeholder, sn.placeholders[keys[0]])
 
+                if sn in self.active_snippets:
+                        # Check if we can get end_iter in view without moving the
+                        # current cursor position out of view
+                        cur = buf.get_iter_at_mark(buf.get_insert())
+                        last = sn.end_iter()
+
+                        curloc = self.view.get_iter_location(cur)
+                        lastloc = self.view.get_iter_location(last)
+
+                        if (lastloc.y + lastloc.height) - curloc.y <= \
+                           self.view.get_visible_rect().height:
+                                self.view.scroll_mark_onscreen(sn.end_mark)
+
                 buf.end_user_action()
                 self.view.grab_focus()
 
@@ -802,7 +815,7 @@ class Document:
                 else:
                         return components
         
-        def relative_filename(self, first, second, mime):
+        def relative_path(self, first, second, mime):
                 prot1 = re.match('(^[a-z]+:\/\/|\/)(.*)', first)
                 prot2 = re.match('(^[a-z]+:\/\/|\/)(.*)', second)
                 
@@ -852,11 +865,21 @@ class Document:
                         uri = gfile.get_path()
                 
                 # Set environmental variables
-                filename = self.env_get_filename(self.view.get_buffer())
+                buf = self.view.get_buffer()
+                filename = self.env_get_document_path(buf)
                 
-                os.environ['GEDIT_DROP_FILENAME'] = uri
-                os.environ['GEDIT_DROP_MIME_TYPE'] = mime
-                os.environ['GEDIT_DROP_REL_FILENAME'] = self.relative_filename(filename, uri, mime)
+                variables = {
+                        'GEDIT_DROP_DOCUMENT_URI': self.env_get_document_uri,
+                        'GEDIT_DROP_DOCUMENT_NAME': self.env_get_document_name,
+                        'GEDIT_DROP_DOCUMENT_SCHEME': self.env_get_document_scheme,
+                        'GEDIT_DROP_DOCUMENT_PATH': self.env_get_document_path,
+                        'GEDIT_DROP_DOCUMENT_DIR': self.env_get_document_dir,
+                        'GEDIT_DROP_DOCUMENT_TYPE': self.env_get_document_type}
+                
+                for var in variables:
+                        os.environ[var] = variables[var](buf)
+
+                os.environ['GEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = self.relative_path(filename, uri, mime)
 
                 buf = self.view.get_buffer()
                 mark = buf.get_mark('gtk_drag_target')
@@ -1008,14 +1031,17 @@ class Document:
                 ctx.rel_line_to(extend_width * 2, 0)
                 ctx.stroke()
 
+        def from_color(self, col):
+                return [col.red / 0x10000, col.green / 0x10000, col.blue / 0x10000]
+
         def draw_placeholder(self, ctx, placeholder):
                 if isinstance(placeholder, PlaceholderEnd):
                         return
 
                 buf = self.view.get_buffer()
 
-                col = self.view.get_style().text[gtk.STATE_INSENSITIVE]
-                ctx.set_source_rgba(col.red_float, col.green_float, col.blue_float, 0.5)
+                col = self.from_color(self.view.get_style().text[gtk.STATE_INSENSITIVE])
+                ctx.set_source_rgba(col[0], col[1], col[2], 0.5)
                 
                 if placeholder.tabstop > 0:
                         ctx.set_dash([], 0)

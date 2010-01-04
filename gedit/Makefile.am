@@ -1,6 +1,10 @@
 ## Process this file with automake to produce Makefile.in
 SUBDIRS = dialogs smclient
 
+if OS_OSX
+SUBDIRS += osx
+endif
+
 bin_PROGRAMS = gedit
 
 noinst_LTLIBRARIES = libgedit.la
@@ -10,6 +14,7 @@ INCLUDES =								\
 	-I$(srcdir)							\
 	-I$(srcdir)/smclient						\
 	$(GEDIT_CFLAGS)							\
+	$(IGE_MAC_CFLAGS)							\
 	$(WARN_CFLAGS)							\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DDATADIR=\""$(datadir)"\"					\
@@ -18,16 +23,15 @@ INCLUDES =								\
 gedit_SOURCES = \
 	gedit.c
 
-gedit_LDADD = libgedit.la $(GEDIT_LIBS) $(EGG_SMCLIENT_LIBS)
+gedit_LDADD = libgedit.la $(GEDIT_LIBS) $(IGE_MAC_LIBS) $(EGG_SMCLIENT_LIBS)
  
 if PLATFORM_WIN32
-gedit_LDFLAGS = -Wl,--export-all-symbols -mwindows -Wl,--out-implib,libgedit-$(GEDIT_API_VERSION).a
+gedit_LDFLAGS = -Wl,--export-all-symbols -Wl,--out-implib,libgedit-$(GEDIT_API_VERSION).a
+if OS_WIN32
+gedit_LDFLAGS += -mwindows
+endif
 else
 gedit_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
-endif
-
-if PLATFORM_OSX
-gedit_LDFLAGS += -framework Carbon
 endif
 
 libgedit_la_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
@@ -39,13 +43,19 @@ libgedit_la_LIBADD = \
 # GEDIT_LIBS must be the last to ensure correct order on some platforms
 libgedit_la_LIBADD += $(GEDIT_LIBS)
 
+if OS_OSX
+gedit_LDFLAGS += -framework Carbon
+
+libgedit_la_LIBADD += osx/libosx.la
+endif
+
 BUILT_SOURCES = 			\
 	gedit-enum-types.c		\
 	gedit-enum-types.h		\
 	gedit-marshal.c			\
 	gedit-marshal.h
 
-if PLATFORM_WIN32
+if OS_WIN32
 gedit-res.o: gedit.rc
 	$(WINDRES) -i gedit.rc --input-format=rc -o gedit-res.o -O coff
 
@@ -92,7 +102,6 @@ INST_H_FILES =				\
 	gedit-message-bus.h		\
 	gedit-message-type.h		\
 	gedit-message.h			\
-	gedit-metadata-manager.h	\
 	gedit-notebook.h		\
 	gedit-panel.h			\
 	gedit-plugin.h			\
@@ -110,12 +119,16 @@ INST_H_FILES =				\
 	gedit-page.h			\
 	gedit-window.h
 
+if OS_WIN32
+INST_H_FILES += gedit-metadata-manager.h
+endif
+
 headerdir = $(prefix)/include/gedit-@GEDIT_API_VERSION@/gedit
 
 header_DATA = 				\
 	$(INST_H_FILES)	
 
-if !PLATFORM_WIN32
+if !OS_WIN32
 POSIXIO_FILES = 			\
 	gedit-local-document-saver.c	
 else
@@ -154,7 +167,6 @@ libgedit_la_SOURCES = 			\
 	gedit-message-bus.c		\
 	gedit-message-type.c		\
 	gedit-message.c			\
-	gedit-metadata-manager.c	\
 	gedit-object-module.c		\
 	gedit-notebook.c		\
 	gedit-panel.c			\
@@ -185,6 +197,10 @@ libgedit_la_SOURCES = 			\
 	gedit-data-binding.c		\
 	$(NOINST_H_FILES)		\
 	$(INST_H_FILES)
+
+if OS_WIN32
+libgedit_la_SOURCES += gedit-metadata-manager.c 
+endif
 
 gedit-enum-types.h: gedit-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
 	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template gedit-enum-types.h.template $(INST_H_FILES)) > $@
@@ -225,7 +241,7 @@ else
 	ln -s gedit $(DESTDIR)$(bindir)/gnome-text-editor
 endif
 
-if !PLATFORM_WIN32
+if !OS_WIN32
 BACON_DIR=$(srcdir)/../../libbacon/src/
 BACON_FILES=bacon-message-connection.h bacon-message-connection.c
 
