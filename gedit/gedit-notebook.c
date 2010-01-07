@@ -44,6 +44,8 @@
 #include <gtk/gtk.h>
 
 #include "gedit-notebook.h"
+#include "gedit-page.h"
+#include "gedit-tab-label.h"
 #include "gedit-marshal.h"
 #include "gedit-window.h"
 
@@ -156,18 +158,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      1,
 			      GEDIT_TYPE_PAGE);
 
-	g_type_class_add_private (object_class, sizeof (GeditNotebookPrivate));
-	
-	/* Set up a style for the close button with no focus padding. */
-	gtk_rc_parse_string (
-		"style \"gedit-close-button-style\"\n"
-		"{\n"
-		"  GtkWidget::focus-padding = 0\n"
-		"  GtkWidget::focus-line-width = 0\n"
-		"  xthickness = 0\n"
-		"  ythickness = 0\n"
-		"}\n"
-		"widget \"*.gedit-close-button\" style \"gedit-close-button-style\"");
+	g_type_class_add_private (object_class, sizeof(GeditNotebookPrivate));
 }
 
 static GeditNotebook *
@@ -774,211 +765,57 @@ gedit_notebook_change_current_page (GtkNotebook *notebook,
 }
 
 static void
-sync_name (GeditPage *page,
-	   GeditViewContainer *container,
-	   GtkWidget *hbox)
-{
-	GeditNotebook *nb;
-	GtkWidget *label;
-	GtkWidget *ebox;
-	GtkWidget *button;
-	GtkWidget *spinner;
-	gchar *str;
-	GtkImage *icon;
-	GeditViewContainerState state;
-	
-	label = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label"));
-	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "label-ebox"));
-	icon = GTK_IMAGE (g_object_get_data (G_OBJECT (hbox), "icon"));
-	button = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "close-button"));
-	spinner = GTK_WIDGET (g_object_get_data (G_OBJECT (hbox), "spinner"));
-
-	nb = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (page)));
-	container = gedit_page_get_active_view_container (page);
-
-	g_return_if_fail ((label   != NULL) &&
-			  (ebox    != NULL) &&
-			  (button  != NULL) &&
-			  (icon    != NULL) &&
-			  (spinner != NULL) &&
-			  (nb      != NULL) &&
-			  (page    != NULL));
-
-	str = _gedit_view_container_get_name (container);
-	g_return_if_fail (str != NULL);
-	
-	gtk_label_set_text (GTK_LABEL (label), str);
-	g_free (str);
-	
-	str = _gedit_view_container_get_tooltips (container);
-	g_return_if_fail (str != NULL);
-	
-	gtk_widget_set_tooltip_markup (ebox, str);
-	g_free (str);
-	
-	state = gedit_view_container_get_state (container);
-	
-	gtk_widget_set_sensitive (button,
-				  nb->priv->close_buttons_sensitive &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_CLOSING) &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_SAVING)  &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_SHOWING_PRINT_PREVIEW) &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_SAVING_ERROR));
-				  
-	if ((state == GEDIT_VIEW_CONTAINER_STATE_LOADING)   ||
-	    (state == GEDIT_VIEW_CONTAINER_STATE_SAVING)    ||
-	    (state == GEDIT_VIEW_CONTAINER_STATE_REVERTING))
-	{
-		gtk_widget_hide (GTK_WIDGET (icon));
-		
-		gtk_widget_show (spinner);
-#ifdef BUILD_SPINNER
-		gedit_spinner_start (GEDIT_SPINNER (spinner));
-#else
-		gtk_spinner_start (GTK_SPINNER (spinner));
-#endif
-	}
-	else
-	{
-		GdkPixbuf *pixbuf;
-		
-		pixbuf = _gedit_view_container_get_icon (container);
-		gtk_image_set_from_pixbuf (icon, pixbuf);
-
-		if (pixbuf != NULL)
-			g_object_unref (pixbuf);
-
-		gtk_widget_show (GTK_WIDGET (icon));
-		
-		gtk_widget_hide (spinner);
-#ifdef BUILD_SPINNER
-		gedit_spinner_stop (GEDIT_SPINNER (spinner));
-#else
-		gtk_spinner_stop (GTK_SPINNER (spinner));
-#endif
-	}
-}
-
-static void
-on_notify_name_cb (GeditViewContainer *container,
-		   GParamSpec *pspec,
-		   GtkWidget *hbox)
+close_button_clicked_cb (GeditTabLabel *tab_label,
+			 GeditNotebook *notebook)
 {
 	GeditPage *page;
-	
-	page = gedit_page_get_from_container (container);
 
-	sync_name (page, container, hbox);
-}
-
-static void
-close_button_clicked_cb (GtkWidget *widget,
-			 GtkWidget *page)
-{
-	GeditNotebook *notebook;
-
-	notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (page));
+	page = gedit_tab_label_get_page (tab_label);
 	g_signal_emit (notebook, signals[PAGE_CLOSE_REQUEST], 0, page);
 }
 
-static void
-close_button_style_set_cb (GtkWidget *button,
-			   GtkStyle *previous_style,
-			   gpointer user_data)
+static GtkWidget *
+create_tab_label (GeditNotebook *nb,
+		  GeditPage     *page)
 {
-	gint h, w;
+	GtkWidget *tab_label;
 
-	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (button),
-					   GTK_ICON_SIZE_MENU, &w, &h);
+	tab_label = gedit_tab_label_new (page);
 
-	gtk_widget_set_size_request (button, w + 2, h + 2);
+	g_signal_connect (tab_label,
+			  "close-clicked",
+			  G_CALLBACK (close_button_clicked_cb),
+			  nb);
+
+	g_object_set_data (G_OBJECT (page), "tab-label", tab_label);
+
+	return tab_label;
+}
+
+static void
+remove_tab_label (GeditNotebook *nb,
+		  GeditPage      *page)
+{
+	GtkWidget *tab_label;
+
+	tab_label = gedit_tab_label_new (page);
+
+	g_signal_handlers_disconnect_by_func (tab_label,
+					      G_CALLBACK (close_button_clicked_cb),
+					      nb);
+
+	g_object_set_data (G_OBJECT (page), "tab-label", NULL);
 }
 
 static GtkWidget *
-build_tab_label (GeditNotebook *nb, 
-		 GeditPage     *page)
+get_tab_label (GeditPage *page)
 {
-	GtkWidget *hbox, *label_hbox, *label_ebox;
-	GtkWidget *label, *dummy_label;
-	GtkWidget *close_button;
-	GtkWidget *image;
-	GtkWidget *spinner;
-	GtkWidget *icon;
+	GtkWidget *tab_label;
 
-	hbox = gtk_hbox_new (FALSE, 4);
+	tab_label = GTK_WIDGET (g_object_get_data (G_OBJECT (page), "tab-label"));
+	g_return_val_if_fail (tab_label != NULL, NULL);
 
-	label_ebox = gtk_event_box_new ();
-	gtk_event_box_set_visible_window (GTK_EVENT_BOX (label_ebox), FALSE);
-	gtk_box_pack_start (GTK_BOX (hbox), label_ebox, TRUE, TRUE, 0);
-
-	label_hbox = gtk_hbox_new (FALSE, 4);
-	gtk_container_add (GTK_CONTAINER (label_ebox), label_hbox);
-
-	/* setup close button */
-	close_button = gtk_button_new ();
-	gtk_button_set_relief (GTK_BUTTON (close_button),
-			       GTK_RELIEF_NONE);
-	/* don't allow focus on the close button */
-	gtk_button_set_focus_on_click (GTK_BUTTON (close_button), FALSE);
-
-	/* make it as small as possible */
-	gtk_widget_set_name (close_button, "gedit-close-button");
-
-	image = gtk_image_new_from_stock (GTK_STOCK_CLOSE,
-					  GTK_ICON_SIZE_MENU);
-	gtk_container_add (GTK_CONTAINER (close_button), image);
-	gtk_box_pack_start (GTK_BOX (hbox), close_button, FALSE, FALSE, 0);
-
-	gtk_widget_set_tooltip_text (close_button, _("Close document"));
-
-	g_signal_connect (close_button,
-			  "clicked",
-			  G_CALLBACK (close_button_clicked_cb),
-			  page);
-
-	/* setup spinner */
-#ifdef BUILD_SPINNER
-	spinner = gedit_spinner_new ();
-	gedit_spinner_set_size (GEDIT_SPINNER (spinner), GTK_ICON_SIZE_MENU);
-#else
-	spinner = gtk_spinner_new ();
-#endif
-	gtk_box_pack_start (GTK_BOX (label_hbox), spinner, FALSE, FALSE, 0);
-
-	/* setup site icon, empty by default */
-	icon = gtk_image_new ();
-	gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
-	
-	/* setup label */
-	label = gtk_label_new ("");
-	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-	gtk_misc_set_padding (GTK_MISC (label), 0, 0);
-	gtk_box_pack_start (GTK_BOX (label_hbox), label, FALSE, FALSE, 0);
-
-	dummy_label = gtk_label_new ("");
-	gtk_box_pack_start (GTK_BOX (label_hbox), dummy_label, TRUE, TRUE, 0);
-	
-	/* Set minimal size */
-	g_signal_connect (close_button, "style-set",
-			  G_CALLBACK (close_button_style_set_cb), NULL);
-	
-	gtk_widget_show (hbox);
-	gtk_widget_show (label_ebox);
-	gtk_widget_show (label_hbox);
-	gtk_widget_show (label);
-	gtk_widget_show (dummy_label);
-	gtk_widget_show (image);
-	gtk_widget_show (close_button);
-	gtk_widget_show (icon);
-	
-	g_object_set_data (G_OBJECT (hbox), "label", label);
-	g_object_set_data (G_OBJECT (hbox), "label-ebox", label_ebox);
-	g_object_set_data (G_OBJECT (hbox), "spinner", spinner);
-	g_object_set_data (G_OBJECT (hbox), "icon", icon);
-	g_object_set_data (G_OBJECT (hbox), "close-button", close_button);
-	g_object_set_data (G_OBJECT (page), "close-button", close_button);
-
-	return hbox;
+	return tab_label;
 }
 
 /**
@@ -1014,43 +851,17 @@ gedit_notebook_add_page (GeditNotebook *nb,
 			 gint           position,
 			 gboolean       jump_to)
 {
-	GtkWidget *label;
-	GList *containers, *l;
+	GtkWidget *tab_label;
 
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
 	g_return_if_fail (GEDIT_IS_PAGE (page));
 
-	label = build_tab_label (nb, page);
-
-	update_tabs_visibility (nb, TRUE);
-
+	tab_label = create_tab_label (nb, page);
 	gtk_notebook_insert_page (GTK_NOTEBOOK (nb), 
 				  GTK_WIDGET (page),
-				  label, 
+				  tab_label,
 				  position);
-
-	sync_name (page, NULL, label);
-	
-	containers = gedit_page_get_view_containers (page);
-	for (l = containers; l != NULL; l = g_list_next (l))
-	{
-		g_signal_connect_object (l->data,
-					 "notify::name",
-					 G_CALLBACK (on_notify_name_cb),
-					 label,
-					 0);
-		g_signal_connect_object (l->data,
-					 "notify::state",
-					 G_CALLBACK (on_notify_name_cb),
-					 label,
-					 0);
-	}
-	
-	g_signal_connect_object (page,
-				 "active-container-changed",
-				 G_CALLBACK (sync_name),
-				 label,
-				 0);
+	update_tabs_visibility (nb, TRUE);
 
 	g_signal_emit (G_OBJECT (nb), signals[PAGE_ADDED], 0, page);
 
@@ -1107,25 +918,17 @@ static void
 remove_page (GeditPage     *page,
 	     GeditNotebook *nb)
 {
-	GtkWidget *label, *ebox;
 	gint position;
 
 	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb), GTK_WIDGET (page));
-
-	label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (nb), GTK_WIDGET (page));
-	ebox = GTK_WIDGET (g_object_get_data (G_OBJECT (label), "label-ebox"));
-
-	g_signal_handlers_disconnect_by_func (page,
-					      G_CALLBACK (sync_name),
-					      label);
 
 	/* we ref the page so that it's still alive while the page_removed
 	 * signal is processed.
 	 */
 	g_object_ref (page);
 
+	remove_tab_label (nb, page);
 	gtk_notebook_remove_page (GTK_NOTEBOOK (nb), position);
-
 	update_tabs_visibility (nb, FALSE);
 
 	g_signal_emit (G_OBJECT (nb), signals[PAGE_REMOVED], 0, page);
@@ -1187,25 +990,12 @@ static void
 set_close_buttons_sensitivity (GeditPage     *page,
                                GeditNotebook *nb)
 {
-	GtkWidget *button;
-	GeditViewContainerState state;
-	GeditViewContainer *container;
-	
-	button = GTK_WIDGET (g_object_get_data (G_OBJECT (page),
-						"close-button"));
-	g_return_if_fail (button != NULL);
-	
-	container = gedit_page_get_active_view_container (page);
-	state = gedit_view_container_get_state (container);
-	
-	gtk_widget_set_sensitive (button,
-				  nb->priv->close_buttons_sensitive &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_CLOSING) &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_SAVING)  &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_SHOWING_PRINT_PREVIEW) &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_PRINTING) &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_PRINT_PREVIEWING) &&
-				  (state != GEDIT_VIEW_CONTAINER_STATE_SAVING_ERROR));
+	GtkWidget *tab_label;
+
+	tab_label = get_tab_label (page);
+
+	gedit_tab_label_set_close_button_sensitive (GEDIT_TAB_LABEL (tab_label),
+						    nb->priv->close_buttons_sensitive);
 }
 
 /**
@@ -1220,14 +1010,14 @@ gedit_notebook_set_close_buttons_sensitive (GeditNotebook *nb,
 					    gboolean       sensitive)
 {
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
-	
+
 	sensitive = (sensitive != FALSE);
-	
+
 	if (sensitive == nb->priv->close_buttons_sensitive)
 		return;
-	
+
 	nb->priv->close_buttons_sensitive = sensitive;
-	
+
 	gtk_container_foreach (GTK_CONTAINER (nb),
 			       (GtkCallback)set_close_buttons_sensitivity,
 			       nb);
@@ -1245,7 +1035,7 @@ gboolean
 gedit_notebook_get_close_buttons_sensitive (GeditNotebook *nb)
 {
 	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (nb), TRUE);
-	
+
 	return nb->priv->close_buttons_sensitive;
 }
 

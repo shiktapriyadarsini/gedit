@@ -39,9 +39,8 @@
 #include <glib.h>
 
 #include "gedit-spell-checker.h"
-
-/* FIXME - Rename the marshal file - Paolo */
-#include "gedit-spell-checker-dialog-marshal.h"
+#include "gedit-spell-utils.h"
+#include "gedit-spell-marshal.h"
 
 struct _GeditSpellChecker
 {
@@ -68,46 +67,9 @@ enum {
 	LAST_SIGNAL
 };
 
-static void	gedit_spell_checker_class_init 	(GeditSpellCheckerClass *klass);
-
-static void	gedit_spell_checker_init 	(GeditSpellChecker      *spell_checker);
-static void 	gedit_spell_checker_finalize 	(GObject                *object);
-
-static gboolean is_digit 			(const char             *text,
-						 gssize                  length);
-
-
-static GObjectClass *parent_class = NULL;
-
 static guint signals[LAST_SIGNAL] = { 0 };
 
-GType
-gedit_spell_checker_get_type (void)
-{
-	static GType gedit_spell_checker_type = 0;
-
-	if(!gedit_spell_checker_type)
-	{
-		static const GTypeInfo gedit_spell_checker_info =
-		{
-			sizeof (GeditSpellCheckerClass),
-			NULL, /* base init */
-			NULL, /* base finalize */
-			(GClassInitFunc) gedit_spell_checker_class_init, /* class init */
-			NULL, /* class finalize */
-			NULL, /* class data */
-			sizeof (GeditSpellChecker),
-			0,
-			(GInstanceInitFunc) gedit_spell_checker_init
-		};
-
-		gedit_spell_checker_type = g_type_register_static (G_TYPE_OBJECT,
-							"GeditSpellChecker",
-							&gedit_spell_checker_info, 0);
-	}
-
-	return gedit_spell_checker_type;
-}
+G_DEFINE_TYPE(GeditSpellChecker, gedit_spell_checker, G_TYPE_OBJECT)
 
 static void
 gedit_spell_checker_set_property (GObject *object,
@@ -149,13 +111,29 @@ gedit_spell_checker_get_property (GObject *object,
 }
 
 static void
+gedit_spell_checker_finalize (GObject *object)
+{
+	GeditSpellChecker *spell_checker;
+
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (object));
+
+	spell_checker = GEDIT_SPELL_CHECKER (object);
+
+	if (spell_checker->dict != NULL)
+		enchant_broker_free_dict (spell_checker->broker, spell_checker->dict);
+
+	if (spell_checker->broker != NULL)
+		enchant_broker_free (spell_checker->broker);
+
+	G_OBJECT_CLASS (gedit_spell_checker_parent_class)->finalize (object);
+}
+
+static void
 gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 {
 	GObjectClass *object_class;
 
 	object_class = G_OBJECT_CLASS (klass);
-
-	parent_class = g_type_class_peek_parent (klass);
 
 	object_class->set_property = gedit_spell_checker_set_property;
 	object_class->get_property = gedit_spell_checker_get_property;
@@ -234,24 +212,6 @@ gedit_spell_checker_new	(void)
 	g_return_val_if_fail (spell != NULL, NULL);
 
 	return spell;
-}
-
-static void
-gedit_spell_checker_finalize (GObject *object)
-{
-	GeditSpellChecker *spell_checker;
-
-	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (object));
-
-	spell_checker = GEDIT_SPELL_CHECKER (object);
-
-	if (spell_checker->dict != NULL)
-		enchant_broker_free_dict (spell_checker->broker, spell_checker->dict);
-
-	if (spell_checker->broker != NULL)
-		enchant_broker_free (spell_checker->broker);
-
-	G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
 static gboolean
@@ -382,7 +342,7 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 	if (strcmp (word, "gedit") == 0)
 		return TRUE;
 
-	if (is_digit (word, len))
+	if (gedit_spell_utils_is_digit (word, len))
 		return TRUE;
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
@@ -558,32 +518,3 @@ gedit_spell_checker_set_correction (GeditSpellChecker *spell,
 	return TRUE;
 }
 
-static gboolean
-is_digit (const char *text, gssize length)
-{
-	gunichar c;
-	const gchar *p;
- 	const gchar *end;
-
-	g_return_val_if_fail (text != NULL, FALSE);
-
-	if (length < 0)
-		length = strlen (text);
-
-	p = text;
-	end = text + length;
-
-	while (p != end) {
-		const gchar *next;
-		next = g_utf8_next_char (p);
-
-		c = g_utf8_get_char (p);
-
-		if (!g_unichar_isdigit (c) && c != '.' && c != ',')
-			return FALSE;
-
-		p = next;
-	}
-
-	return TRUE;
-}

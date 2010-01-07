@@ -14,7 +14,7 @@ INCLUDES =								\
 	-I$(srcdir)							\
 	-I$(srcdir)/smclient						\
 	$(GEDIT_CFLAGS)							\
-	$(IGE_MAC_CFLAGS)							\
+	$(IGE_MAC_CFLAGS)						\
 	$(WARN_CFLAGS)							\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DDATADIR=\""$(datadir)"\"					\
@@ -63,31 +63,33 @@ gedit_LDADD += gedit-res.o
 endif
 
 NOINST_H_FILES =			\
+	gedit-close-button.h		\
+	gedit-dirs.h			\
+	gedit-document-loader.h		\
+	gedit-document-saver.h		\
+	gedit-documents-panel.h		\
+	gedit-gio-document-loader.h	\
+	gedit-gio-document-saver.h	\
+	gedit-history-entry.h		\
+	gedit-io-error-message-area.h	\
 	gedit-language-manager.h	\
-	gedit-style-scheme-manager.h	\
+	gedit-local-document-saver.h	\
+	gedit-object-module.h		\
 	gedit-plugin-info.h		\
 	gedit-plugin-info-priv.h	\
 	gedit-plugin-manager.h		\
 	gedit-plugins-engine.h		\
-	gedit-object-module.h		\
-	gedit-ui.h			\
-	gedit-window-private.h		\
-	gedit-documents-panel.h		\
-	gedit-document-loader.h		\
-	gedit-gio-document-loader.h	\
-	gedit-document-saver.h		\
-	gedit-local-document-saver.h	\
-	gedit-gio-document-saver.h	\
-	gedit-history-entry.h		\
+	gedit-prefs-manager-private.h	\
 	gedit-print-job.h		\
 	gedit-print-preview.h		\
-	gedit-io-error-message-area.h	\
-	gedit-prefs-manager-private.h	\
-	gedittextregion.h		\
 	gedit-session.h			\
-	gedit-dirs.h			\
 	gedit-web-view.h		\
-	gedit-data-binding.h
+	gedit-data-binding.h		\
+	gedit-style-scheme-manager.h	\
+	gedit-tab-label.h		\
+	gedittextregion.h		\
+	gedit-ui.h			\
+	gedit-window-private.h
 
 INST_H_FILES =				\
 	gedit-app.h			\
@@ -141,6 +143,7 @@ libgedit_la_SOURCES = 			\
 	$(BACON_FILES)			\
 	$(POSIXIO_FILES)		\
 	gedit-app.c			\
+	gedit-close-button.c		\
 	gedit-commands-documents.c	\
 	gedit-commands-edit.c		\
 	gedit-commands-file.c		\
@@ -169,6 +172,7 @@ libgedit_la_SOURCES = 			\
 	gedit-message.c			\
 	gedit-object-module.c		\
 	gedit-notebook.c		\
+	gedit-page.c			\
 	gedit-panel.c			\
 	gedit-plugin-info.c		\
 	gedit-plugin.c			\
@@ -185,13 +189,13 @@ libgedit_la_SOURCES = 			\
 	gedit-statusbar.c		\
 	gedit-status-combo-box.c	\
 	gedit-style-scheme-manager.c	\
-	gedit-view-container.c 		\
+	gedit-tab-label.c		\
 	gedit-utils.c 			\
 	gedit-view-interface.c 		\
 	gedit-text-view.c 		\
 	gedit-text-buffer.c		\
+	gedit-view-container.c 		\
 	gedit-web-view.c		\
-	gedit-page.c			\
 	gedit-window.c			\
 	gedittextregion.c		\
 	gedit-data-binding.c		\
