@@ -568,78 +568,57 @@ io_loading_error_message_area_response (GtkWidget          *message_area,
 					gint                response_id,
 					GeditViewContainer *container)
 {
-	if (response_id == GTK_RESPONSE_OK)
-	{
-		GeditDocument *doc;
-		gchar *uri;
-
-		doc = gedit_view_container_get_document (container);
-		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-		uri = gedit_document_get_uri (doc);
-		g_return_if_fail (uri != NULL);
-
-		set_message_area (container, NULL);
-		gedit_view_container_set_state (container, GEDIT_VIEW_CONTAINER_STATE_LOADING);
-
-		g_return_if_fail (container->priv->auto_save_timeout <= 0);
-
-		gedit_document_load (doc,
-				     uri,
-				     container->priv->tmp_encoding,
-				     container->priv->tmp_line_pos,
-				     FALSE);
-	}
-	else
-	{
-		remove_container (container);
-	}
-}
-
-static void 
-conversion_loading_error_message_area_response (GtkWidget          *message_area,
-						gint                response_id,
-						GeditViewContainer *container)
-{
 	GeditDocument *doc;
+	GeditView *view;
 	gchar *uri;
+	const GeditEncoding *encoding;
 
 	doc = gedit_view_container_get_document (container);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
+	view = gedit_view_container_get_view (container);
+	g_return_if_fail (GEDIT_IS_VIEW (view));
+
 	uri = gedit_document_get_uri (doc);
 	g_return_if_fail (uri != NULL);
 
-	if (response_id == GTK_RESPONSE_OK)
+	switch (response_id)
 	{
-		const GeditEncoding *encoding;
+		case GTK_RESPONSE_OK:
+			encoding = gedit_conversion_error_message_area_get_encoding (
+					GTK_WIDGET (message_area));
 
-		encoding = gedit_conversion_error_message_area_get_encoding (
-				GTK_WIDGET (message_area));
+			if (encoding != NULL)
+			{
+				container->priv->tmp_encoding = encoding;
+			}
 
-		g_return_if_fail (encoding != NULL);
+			set_message_area (container, NULL);
+			gedit_view_container_set_state (container, GEDIT_VIEW_CONTAINER_STATE_LOADING);
 
-		set_message_area (container, NULL);
-		gedit_view_container_set_state (container, GEDIT_VIEW_CONTAINER_STATE_LOADING);
+			g_return_if_fail (container->priv->auto_save_timeout <= 0);
 
-		container->priv->tmp_encoding = encoding;
+			gedit_document_load (doc,
+					     uri,
+					     container->priv->tmp_encoding,
+					     container->priv->tmp_line_pos,
+					     FALSE);
+			break;
+		case GTK_RESPONSE_YES:
+			/* This means that we want to edit the document anyway */
+			set_message_area (container, NULL);
+			gedit_document_set_readonly (doc, FALSE);
+			break;
+		case GTK_RESPONSE_NO:
+			/* We don't want to edit the document just show it */
+			set_message_area (container, NULL);
+			break;
+		default:
+			_gedit_recent_remove (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (container))), uri);
 
-		g_return_if_fail (container->priv->auto_save_timeout <= 0);
-
-		gedit_document_load (doc,
-				     uri,
-				     encoding,
-				     container->priv->tmp_line_pos,
-				     FALSE);
+			remove_container (container);
+			break;
 	}
-	else
-	{
-		_gedit_recent_remove (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (container))), uri);
-
-		remove_container (container);
-	}
-
-	g_free (uri);
 }
 
 static void 
@@ -1026,7 +1005,8 @@ document_loaded (GeditDocument      *document,
 	location = gedit_document_get_location (document);
 	uri = gedit_document_get_uri (document);
 
-	if (error != NULL)
+	/* if the error is CONVERSION FALLBACK don't treat it as a normal error */
+	if (error != NULL && error->code != GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
 	{
 		if (container->priv->state == GEDIT_VIEW_CONTAINER_STATE_LOADING)
 			gedit_view_container_set_state (container, GEDIT_VIEW_CONTAINER_STATE_LOADING_ERROR);
@@ -1046,14 +1026,14 @@ document_loaded (GeditDocument      *document,
 
 			goto end;
 		}
-		else if (error->domain == G_IO_ERROR || 
-			 error->domain == GEDIT_DOCUMENT_ERROR)
+		else
 		{
 			_gedit_recent_remove (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (container))), uri);
 
 			if (container->priv->state == GEDIT_VIEW_CONTAINER_STATE_LOADING_ERROR)
 			{
-				emsg = gedit_io_loading_error_message_area_new (uri, 
+				emsg = gedit_io_loading_error_message_area_new (uri,
+										container->priv->tmp_encoding,
 										error);
 				g_signal_connect (emsg,
 						  "response",
@@ -1064,7 +1044,7 @@ document_loaded (GeditDocument      *document,
 			{
 				g_return_if_fail (container->priv->state == GEDIT_VIEW_CONTAINER_STATE_REVERTING_ERROR);
 				
-				emsg = gedit_unrecoverable_reverting_error_message_area_new (uri, 
+				emsg = gedit_unrecoverable_reverting_error_message_area_new (uri,
 											     error);
 
 				g_signal_connect (emsg,
@@ -1074,25 +1054,6 @@ document_loaded (GeditDocument      *document,
 			}
 
 			set_message_area (container, emsg);
-		}
-		else
-		{
-			g_return_if_fail ((error->domain == G_CONVERT_ERROR) ||
-			      		  (error->domain == GEDIT_CONVERT_ERROR));
-
-			// TODO: different error messages if container->priv->state == GEDIT_VIEW_CONTAINER_STATE_REVERTING?
-			// note that while reverting encoding should be ok, so this is unlikely to happen
-			emsg = gedit_conversion_error_while_loading_message_area_new (
-									uri,
-									container->priv->tmp_encoding,
-									error);
-
-			set_message_area (container, emsg);
-
-			g_signal_connect (emsg,
-					  "response",
-					  G_CALLBACK (conversion_loading_error_message_area_response),
-					  container);
 		}
 
 #if !GTK_CHECK_VERSION (2, 17, 1)
@@ -1123,7 +1084,35 @@ document_loaded (GeditDocument      *document,
 				   uri,
 				   mime);
 		g_free (mime);
-		
+
+		if (error && error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
+		{
+			GtkWidget *emsg;
+
+			gedit_document_set_readonly (document, TRUE);
+
+			emsg = gedit_io_loading_error_message_area_new (uri,
+									container->priv->tmp_encoding,
+									error);
+
+			set_message_area (container, emsg);
+
+			g_signal_connect (emsg,
+					  "response",
+					  G_CALLBACK (io_loading_error_message_area_response),
+					  container);
+
+#if !GTK_CHECK_VERSION (2, 17, 1)
+			gedit_message_area_set_default_response (GEDIT_MESSAGE_AREA (emsg),
+								 GTK_RESPONSE_CANCEL);
+#else
+			gtk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
+							   GTK_RESPONSE_CANCEL);
+#endif
+
+			gtk_widget_show (emsg);
+		}
+
 		/* Scroll to the cursor when the document is loaded */
 		for (l = container->priv->views; l != NULL; l = g_list_next (l))
 		{
@@ -2397,9 +2386,10 @@ gedit_view_container_auto_save (GeditViewContainer *container)
 }
 
 void
-_gedit_view_container_save_as (GeditViewContainer *container,
-			       const gchar         *uri,
-			       const GeditEncoding *encoding)
+_gedit_view_container_save_as (GeditViewContainer      *container,
+			       const gchar             *uri,
+			       const GeditEncoding     *encoding,
+			       GeditDocumentNewlineType newline_type)
 {
 	GeditDocument *doc;
 	GeditDocumentSaveFlags save_flags;
@@ -2444,6 +2434,11 @@ _gedit_view_container_save_as (GeditViewContainer *container,
 	if (container->priv->auto_save_timeout > 0)
 		remove_auto_save_timeout (container);
 
+	/* FIXME: this should behave the same as encoding, setting it here
+	   makes it persistent (if save fails, it's remembered). It's not
+	   a very big deal, but would be nice to have them follow the
+	   same pattern. This can be changed once we break API for 3.0 */
+	gedit_document_set_newline_type (doc, newline_type);
 	gedit_document_save_as (doc, uri, encoding, container->priv->save_flags);
 }
 

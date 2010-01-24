@@ -613,6 +613,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 	GeditPage *page;
 	gpointer data;
 	GSList *pages_to_save_as;
+	GeditDocumentNewlineType newline_type;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -630,6 +631,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 	g_return_if_fail (file != NULL);
 
 	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
+	newline_type = gedit_file_chooser_dialog_get_newline_type (dialog);
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
@@ -659,7 +661,8 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 		// FIXME: pass the GFile to tab when api is there
 		uri = g_file_get_uri (file);
-		_gedit_view_container_save_as (container, uri, encoding);
+		_gedit_view_container_save_as (container, uri, encoding,
+					       newline_type);
 		g_free (uri);
 	}
 
@@ -753,6 +756,7 @@ file_save_as (GeditPage   *page,
 	gboolean uri_set = FALSE;
 	const GeditEncoding *encoding;
 	GeditViewContainer *container;
+	GeditDocumentNewlineType newline_type;
 
 	g_return_if_fail (GEDIT_IS_PAGE (page));
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
@@ -827,8 +831,13 @@ file_save_as (GeditPage   *page,
 	encoding = gedit_document_get_encoding (doc);
 	g_return_if_fail (encoding != NULL);
 
+	newline_type = gedit_document_get_newline_type (doc);
+
 	gedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
 						encoding);
+
+	gedit_file_chooser_dialog_set_newline_type (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
+	                                            newline_type);
 
 	g_object_set_data (G_OBJECT (save_dialog),
 			   GEDIT_PAGE_TO_SAVE_AS,

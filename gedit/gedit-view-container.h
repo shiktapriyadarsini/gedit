@@ -43,13 +43,13 @@ typedef enum
 	GEDIT_VIEW_CONTAINER_STATE_NORMAL = 0,
 	GEDIT_VIEW_CONTAINER_STATE_LOADING,
 	GEDIT_VIEW_CONTAINER_STATE_REVERTING,
-	GEDIT_VIEW_CONTAINER_STATE_SAVING,	
+	GEDIT_VIEW_CONTAINER_STATE_SAVING,
 	GEDIT_VIEW_CONTAINER_STATE_PRINTING,
 	GEDIT_VIEW_CONTAINER_STATE_PRINT_PREVIEWING,
 	GEDIT_VIEW_CONTAINER_STATE_SHOWING_PRINT_PREVIEW,
 	GEDIT_VIEW_CONTAINER_STATE_GENERIC_NOT_EDITABLE,
 	GEDIT_VIEW_CONTAINER_STATE_LOADING_ERROR,
-	GEDIT_VIEW_CONTAINER_STATE_REVERTING_ERROR,	
+	GEDIT_VIEW_CONTAINER_STATE_REVERTING_ERROR,
 	GEDIT_VIEW_CONTAINER_STATE_SAVING_ERROR,
 	GEDIT_VIEW_CONTAINER_STATE_GENERIC_ERROR,
 	GEDIT_VIEW_CONTAINER_STATE_CLOSING,
@@ -163,7 +163,8 @@ void			 _gedit_view_container_revert		(GeditViewContainer  *container);
 void			 _gedit_view_container_save		(GeditViewContainer  *container);
 void			 _gedit_view_container_save_as		(GeditViewContainer  *container,
 								 const gchar         *uri,
-								 const GeditEncoding *encoding);
+								 const GeditEncoding *encoding,
+								 GeditDocumentNewlineType newline_type);
 
 void			 _gedit_view_container_print		(GeditViewContainer  *container);
 void			 _gedit_view_container_print_preview	(GeditViewContainer  *container);

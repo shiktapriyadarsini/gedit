@@ -20,11 +20,19 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include "gedit-tab-label.h"
 #include "gedit-close-button.h"
 #include "gedit-view-container.h"
+
+#ifdef BUILD_SPINNER
+#include "gedit-spinner.h"
+#endif
 
 #define GEDIT_TAB_LABEL_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_TAB_LABEL, GeditTabLabelPrivate))
 
@@ -86,6 +94,18 @@ close_button_clicked_cb (GtkWidget     *widget,
 }
 
 static void
+sync_tip (GeditViewContainer *container, GeditTabLabel *tab_label)
+{
+	gchar *str;
+
+	str = _gedit_view_container_get_tooltips (container);
+	g_return_if_fail (str != NULL);
+
+	gtk_widget_set_tooltip_markup (tab_label->priv->ebox, str);
+	g_free (str);
+}
+
+static void
 sync_name (GeditPage *page, GParamSpec *pspec, GeditTabLabel *tab_label)
 {
 	GeditViewContainer *container;
@@ -101,11 +121,7 @@ sync_name (GeditPage *page, GParamSpec *pspec, GeditTabLabel *tab_label)
 	gtk_label_set_text (GTK_LABEL (tab_label->priv->label), str);
 	g_free (str);
 
-	str = _gedit_view_container_get_tooltips (container);
-	g_return_if_fail (str != NULL);
-
-	gtk_widget_set_tooltip_markup (tab_label->priv->ebox, str);
-	g_free (str);
+	sync_tip (container, tab_label);
 }
 
 static void
@@ -158,6 +174,9 @@ sync_state (GeditPage *page, GParamSpec *pspec, GeditTabLabel *tab_label)
 		gtk_spinner_stop (GTK_SPINNER (tab_label->priv->spinner));
 #endif
 	}
+
+	/* sync tip since encoding is known only after load/save end */
+	sync_tip (container, tab_label);
 }
 
 static void

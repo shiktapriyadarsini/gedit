@@ -231,6 +231,26 @@ gedit_document_set_metadata_va_list_default (GeditDocument *doc,
 	g_return_if_reached ();
 }
 
+static void
+gedit_document_set_readonly_default (GeditDocument *doc,
+				     gboolean       readonly)
+{
+	g_return_if_reached ();
+}
+
+static void
+gedit_document_set_newline_type_default (GeditDocument           *doc,
+					 GeditDocumentNewlineType newline_type)
+{
+	g_return_if_reached ();
+}
+
+static GeditDocumentNewlineType
+gedit_document_get_newline_type_default (GeditDocument *doc)
+{
+	g_return_val_if_reached (GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+}
+
 static void 
 gedit_document_init (GeditDocumentIface *iface)
 {
@@ -266,6 +286,9 @@ gedit_document_init (GeditDocumentIface *iface)
 	iface->get_has_selection = gedit_document_get_has_selection_default;
 	iface->get_metadata = gedit_document_get_metadata_default;
 	iface->set_metadata_va_list = gedit_document_set_metadata_va_list_default;
+	iface->set_readonly = gedit_document_set_readonly_default;
+	iface->set_newline_type = gedit_document_set_newline_type_default;
+	iface->get_newline_type = gedit_document_get_newline_type_default;
 	
 	if (!initialized)
 	{
@@ -300,7 +323,23 @@ gedit_document_init (GeditDocumentIface *iface)
 									   FALSE,
 									   G_PARAM_READABLE |
 									   G_PARAM_STATIC_STRINGS));
-	
+
+		/**
+		 * GeditDocument:newline-type:
+		 *
+		 * The :newline-type property determines what is considered
+		 * as a line ending when saving the document
+		 */
+		g_object_interface_install_property (iface,
+				                     g_param_spec_enum ("newline-type",
+				                                        "Newline type",
+				                                        "The accepted types of line ending",
+				                                        GEDIT_TYPE_DOCUMENT_NEWLINE_TYPE,
+				                                        GEDIT_DOCUMENT_NEWLINE_TYPE_LF,
+				                                        G_PARAM_READWRITE |
+				                                        G_PARAM_STATIC_NAME |
+				                                        G_PARAM_STATIC_BLURB));
+
 		document_signals[MODIFIED_CHANGED] =
 			g_signal_new ("modified-changed",
 				      G_TYPE_FROM_INTERFACE (iface),
@@ -803,4 +842,34 @@ gedit_document_set_metadata (GeditDocument *doc,
 	gedit_document_set_metadata_va_list (doc, first_key, var_args);
 
 	va_end (var_args);
+}
+
+/**
+ * gedit_document_set_readonly:
+ * @doc: a #GeditDocument
+ * @readonly: %TRUE to se the document as read-only
+ *
+ * If @readonly is %TRUE sets @doc as read-only.
+ */
+void
+gedit_document_set_readonly (GeditDocument *doc,
+			     gboolean       readonly)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	GEDIT_DOCUMENT_GET_INTERFACE (doc)->set_readonly (doc, readonly);
+}
+
+void
+gedit_document_set_newline_type (GeditDocument           *doc,
+				 GeditDocumentNewlineType newline_type)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	GEDIT_DOCUMENT_GET_INTERFACE (doc)->set_newline_type (doc, newline_type);
+}
+
+GeditDocumentNewlineType
+gedit_document_get_newline_type (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+	return GEDIT_DOCUMENT_GET_INTERFACE (doc)->get_newline_type (doc);
 }

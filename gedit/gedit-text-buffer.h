@@ -50,6 +50,12 @@ G_BEGIN_DECLS
 #define GEDIT_IS_TEXT_BUFFER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_TEXT_BUFFER))
 #define GEDIT_TEXT_BUFFER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_TEXT_BUFFER, GeditTextBufferClass))
 
+typedef enum
+{
+	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0, 
+	GEDIT_SEARCH_ENTIRE_WORD	= 1 << 1,
+	GEDIT_SEARCH_CASE_SENSITIVE	= 1 << 2
+} GeditSearchFlags;
 
 /* Private structure type */
 typedef struct _GeditTextBufferPrivate    GeditTextBufferPrivate;

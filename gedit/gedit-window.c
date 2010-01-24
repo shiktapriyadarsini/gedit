@@ -1481,7 +1481,8 @@ setup_toolbar_open_button (GeditWindow *window,
 		      "is_important", TRUE,
 		      "short_label", _("Open"),
 		      NULL);
-	gtk_action_connect_proxy (action, GTK_WIDGET (open_button));
+	gtk_activatable_set_related_action (GTK_ACTIVATABLE (open_button),
+					    action);
 
 	gtk_toolbar_insert (GTK_TOOLBAR (toolbar),
 			    open_button,
@@ -3273,6 +3274,23 @@ sync_languages_menu (GeditDocument *doc,
 }
 
 static void
+readonly_changed (GeditDocument *doc,
+		  GParamSpec    *pspec,
+		  GeditWindow   *window)
+{
+	GeditViewContainer *container;
+
+	set_sensitivity_according_to_page (window, window->priv->active_page);
+
+	container = gedit_window_get_active_view_container (window);
+
+	sync_name (container, NULL, window);
+
+	gedit_plugins_engine_update_plugins_ui (gedit_plugins_engine_get_default (),
+						window);
+}
+
+static void
 editable_changed (GeditView  *view,
                   GParamSpec  *arg1,
                   GeditWindow *window)
@@ -3336,7 +3354,11 @@ connect_per_container_signals (GeditWindow        *window,
 				  G_CALLBACK (can_search_again),
 				  window);
 	}
-	
+
+	g_signal_connect (doc,
+			  "notify::read-only",
+			  G_CALLBACK (readonly_changed),
+			  window);
 	g_signal_connect (doc,
 			  "notify::can-undo",
 			  G_CALLBACK (can_undo),
@@ -3402,10 +3424,13 @@ disconnect_per_container_signals (GeditWindow        *window,
 						      G_CALLBACK (sync_languages_menu),
 						      window);
 	}
-	g_signal_handlers_disconnect_by_func (doc, 
+	g_signal_handlers_disconnect_by_func (doc,
+					      G_CALLBACK (readonly_changed),
+					      window);
+	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (can_undo),
 					      window);
-	g_signal_handlers_disconnect_by_func (doc, 
+	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (can_redo),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,

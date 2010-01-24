@@ -43,6 +43,7 @@
 #include "gedit-prefs-manager-app.h"
 #include "gedit-document-interface.h"
 #include "gedit-text-buffer.h"
+#include "gedit-convert.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-language-manager.h"
@@ -88,10 +89,8 @@ static void	gedit_text_buffer_save_real	(GeditDocument          *doc,
 						 const gchar            *uri,
 						 const GeditEncoding    *encoding,
 						 GeditDocumentSaveFlags  flags);
-static void	gedit_text_buffer_set_readonly	(GeditTextBuffer *doc,
-						 gboolean       readonly);
 static void	to_search_region_range 		(GeditTextBuffer *doc,
-						 GtkTextIter     *start, 
+						 GtkTextIter     *start,
 						 GtkTextIter   *end);
 static void 	insert_text_cb		 	(GeditTextBuffer *doc, 
 						 GtkTextIter     *pos,
@@ -121,6 +120,8 @@ struct _GeditTextBufferPrivate
 	guint        search_flags;
 	gchar       *search_text;
 	gint	     num_of_lines_search_text;
+
+	GeditDocumentNewlineType newline_type;
 
 	/* Temp data while loading */
 	GeditDocumentLoader *loader;
@@ -156,7 +157,8 @@ enum {
 	PROP_READ_ONLY,
 	PROP_ENCODING,
 	PROP_CAN_SEARCH_AGAIN,
-	PROP_ENABLE_SEARCH_HIGHLIGHTING
+	PROP_ENABLE_SEARCH_HIGHLIGHTING,
+	PROP_NEWLINE_TYPE
 };
 
 enum {
@@ -332,6 +334,9 @@ gedit_text_buffer_get_property (GObject    *object,
 		case PROP_ENABLE_SEARCH_HIGHLIGHTING:
 			g_value_set_boolean (value, gedit_text_buffer_get_enable_search_highlighting (buf));
 			break;
+		case PROP_NEWLINE_TYPE:
+			g_value_set_enum (value, buf->priv->newline_type);
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -351,6 +356,11 @@ gedit_text_buffer_set_property (GObject      *object,
 		case PROP_ENABLE_SEARCH_HIGHLIGHTING:
 			gedit_text_buffer_set_enable_search_highlighting (doc,
 									  g_value_get_boolean (value));
+			break;
+		case PROP_NEWLINE_TYPE:
+			gedit_document_set_newline_type (GEDIT_DOCUMENT (doc),
+							 g_value_get_enum (value));
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -423,6 +433,10 @@ gedit_text_buffer_class_init (GeditTextBufferClass *klass)
 	g_object_class_override_property (object_class,
 					  PROP_READ_ONLY,
 					  "read-only");
+
+	g_object_class_override_property (object_class,
+					  PROP_NEWLINE_TYPE,
+					  "newline-type");
 
 	g_object_class_install_property (object_class, PROP_ENCODING,
 					 g_param_spec_boxed ("encoding",
@@ -1188,6 +1202,56 @@ gedit_text_buffer_set_metadata_va_list_impl (GeditDocument *doc,
 }
 #endif
 
+/* Note: do not emit the notify::read-only signal */
+static void
+set_readonly (GeditTextBuffer *doc,
+	      gboolean         readonly)
+{
+	gedit_debug (DEBUG_DOCUMENT);
+	
+	readonly = (readonly != FALSE);
+
+	if (doc->priv->readonly == readonly) 
+		return;
+
+	doc->priv->readonly = readonly;
+}
+
+static void
+gedit_text_buffer_set_readonly_impl (GeditDocument *doc,
+				     gboolean       readonly)
+{
+	GeditTextBuffer *buf = GEDIT_TEXT_BUFFER (doc);
+
+	gedit_debug (DEBUG_DOCUMENT);
+
+	set_readonly (buf, readonly);
+
+	g_object_notify (G_OBJECT (buf), "read-only");
+}
+
+static void
+gedit_text_buffer_set_newline_type_impl (GeditDocument *doc,
+					 GeditDocumentNewlineType newline_type)
+{
+	GeditTextBuffer *buf = GEDIT_TEXT_BUFFER (doc);
+
+	if (buf->priv->newline_type != newline_type)
+	{
+		buf->priv->newline_type = newline_type;
+
+		g_object_notify (G_OBJECT (buf), "newline-type");
+	}
+}
+
+static GeditDocumentNewlineType
+gedit_text_buffer_get_newline_type_impl (GeditDocument *doc)
+{
+	GeditTextBuffer *buf = GEDIT_TEXT_BUFFER (doc);
+
+	return buf->priv->newline_type;
+}
+
 static void
 gedit_text_buffer_iface_init (GeditDocumentIface  *iface)
 {
@@ -1221,6 +1285,9 @@ gedit_text_buffer_iface_init (GeditDocumentIface  *iface)
 	iface->get_has_selection = gedit_text_buffer_get_has_selection_impl;
 	iface->get_metadata = gedit_text_buffer_get_metadata_impl;
 	iface->set_metadata_va_list = gedit_text_buffer_set_metadata_va_list_impl;
+	iface->set_readonly = gedit_text_buffer_set_readonly_impl;
+	iface->set_newline_type = gedit_text_buffer_set_newline_type_impl;
+	iface->get_newline_type = gedit_text_buffer_get_newline_type_impl;
 	
 	/* signals */
 	iface->load = gedit_text_buffer_load_real;
@@ -1258,6 +1325,8 @@ gedit_text_buffer_init (GeditTextBuffer *doc)
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->encoding = gedit_encoding_get_utf8 ();
+
+	doc->priv->newline_type = GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 
 	gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (doc), 
 					       gedit_prefs_manager_get_undo_actions_limit ());
@@ -1297,34 +1366,6 @@ gedit_text_buffer_new (void)
 	return GEDIT_DOCUMENT (g_object_new (GEDIT_TYPE_TEXT_BUFFER, NULL));
 }
 
-/* Note: do not emit the notify::read-only signal */
-static void
-set_readonly (GeditTextBuffer *doc,
-	      gboolean         readonly)
-{
-	gedit_debug (DEBUG_DOCUMENT);
-	
-	readonly = (readonly != FALSE);
-
-	if (doc->priv->readonly == readonly) 
-		return;
-
-	doc->priv->readonly = readonly;
-}
-
-static void
-gedit_text_buffer_set_readonly (GeditTextBuffer *doc,
-				gboolean       readonly)
-{
-	gedit_debug (DEBUG_DOCUMENT);
-
-	g_return_if_fail (GEDIT_IS_TEXT_BUFFER (doc));
-
-	set_readonly (doc, readonly);
-
-	g_object_notify (G_OBJECT (doc), "read-only");
-}
-
 static void
 reset_temp_loading_data (GeditTextBuffer *doc)
 {
@@ -1342,7 +1383,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 			GeditTextBuffer     *doc)
 {
 	/* load was successful */
-	if (error == NULL)
+	if (error == NULL || error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
 	{
 		GtkTextIter iter;
 		GFileInfo *info;
@@ -1375,8 +1416,12 @@ document_loader_loaded (GeditDocumentLoader *loader,
 		set_encoding (doc, 
 			      gedit_document_loader_get_encoding (loader),
 			      (doc->priv->requested_encoding != NULL));
-		
+
+
 		set_content_type (doc, content_type);
+
+		gedit_document_set_newline_type (GEDIT_DOCUMENT (doc),
+		                                 gedit_document_loader_get_newline_type (loader));
 
 		/* move the cursor at the requested line if any */
 		if (doc->priv->requested_line_pos > 0)
@@ -1542,7 +1587,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 
 			g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-			gedit_text_buffer_set_readonly (doc, FALSE);
+			gedit_document_set_readonly (GEDIT_DOCUMENT (doc), FALSE);
 
 			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
 						      FALSE);
@@ -1588,7 +1633,9 @@ gedit_text_buffer_save_real (GeditDocument          *doc,
 	g_return_if_fail (buf->priv->saver == NULL);
 
 	/* create a saver, it will be destroyed once saving is complete */
-	buf->priv->saver = gedit_document_saver_new (doc, uri, encoding, flags);
+	buf->priv->saver = gedit_document_saver_new (doc, uri, encoding,
+						     buf->priv->newline_type,
+						     flags);
 
 	g_signal_connect (buf->priv->saver,
 			  "saving",

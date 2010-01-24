@@ -41,6 +41,7 @@
 #include "gedit-utils.h"
 #include "gedit-convert.h"
 #include "gedit-marshal.h"
+#include "gedit-enum-types.h"
 
 /* Those are for the the gedit_document_loader_new() factory */
 #include "gedit-gio-document-loader.h"
@@ -64,6 +65,7 @@ enum
 	PROP_DOCUMENT,
 	PROP_URI,
 	PROP_ENCODING,
+	PROP_NEWLINE_TYPE
 };
 
 static void
@@ -87,6 +89,9 @@ gedit_document_loader_set_property (GObject      *object,
 		case PROP_ENCODING:
 			g_return_if_fail (loader->encoding == NULL);
 			loader->encoding = g_value_get_boxed (value);
+			break;
+		case PROP_NEWLINE_TYPE:
+			loader->auto_detected_newline_type = g_value_get_enum (value);
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -112,6 +117,9 @@ gedit_document_loader_get_property (GObject    *object,
 			break;
 		case PROP_ENCODING:
 			g_value_set_boxed (value, gedit_document_loader_get_encoding (loader));
+			break;
+		case PROP_NEWLINE_TYPE:
+			g_value_set_enum (value, loader->auto_detected_newline_type);
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -185,6 +193,16 @@ gedit_document_loader_class_init (GeditDocumentLoaderClass *klass)
 							     G_PARAM_CONSTRUCT_ONLY |
 							     G_PARAM_STATIC_STRINGS));
 
+	g_object_class_install_property (object_class, PROP_NEWLINE_TYPE,
+	                                 g_param_spec_enum ("newline-type",
+	                                                    "Newline type",
+	                                                    "The accepted types of line ending",
+	                                                    GEDIT_TYPE_DOCUMENT_NEWLINE_TYPE,
+	                                                    GEDIT_DOCUMENT_NEWLINE_TYPE_LF,
+	                                                    G_PARAM_READWRITE |
+	                                                    G_PARAM_STATIC_NAME |
+	                                                    G_PARAM_STATIC_BLURB));
+
 	signals[LOADING] =
 		g_signal_new ("loading",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -202,174 +220,7 @@ static void
 gedit_document_loader_init (GeditDocumentLoader *loader)
 {
 	loader->used = FALSE;
-}
-
-static void
-insert_text_in_document (GeditDocumentLoader *loader,
-			 const gchar         *text,
-			 gint                 len)
-{
-	GeditDocument *doc = loader->document;
-
-	g_return_if_fail (text != NULL);
-
-	gedit_document_begin_not_undoable_action (doc);
-
-	/* If the last char is a newline, don't add it to the buffer (otherwise
-	   GtkTextView shows it as an empty line). See bug #324942. */
-	if ((len > 0) && (text[len-1] == '\n'))
-		len--;
-
-	/* Insert text in the buffer */
-	gedit_document_set_text (doc, text, len);
-
-	gedit_document_set_modified (doc, FALSE);
-
-	gedit_document_end_not_undoable_action (doc);
-}
-
-static const GeditEncoding *
-get_metadata_encoding (GeditDocumentLoader *loader)
-{
-	const GeditEncoding *enc = NULL;
-
-#ifdef G_OS_WIN32
-	gchar *charset;
-	const gchar *uri;
-
-	uri = gedit_document_loader_get_uri (loader);
-
-	charset = gedit_metadata_manager_get (uri, "encoding");
-
-	if (charset == NULL)
-		return NULL;
-
-	enc = gedit_encoding_get_from_charset (charset);
-
-	g_free (charset);
-#else
-	GFileInfo *info;
-
-	info = gedit_document_loader_get_info (loader);
-
-	/* check if the encoding was set in the metadata */
-	if (g_file_info_has_attribute (info, GEDIT_METADATA_ATTRIBUTE_ENCODING))
-	{
-		const gchar *charset;
-
-		charset = g_file_info_get_attribute_string (info,
-							    GEDIT_METADATA_ATTRIBUTE_ENCODING);
-
-		if (charset == NULL)
-			return NULL;
-		
-		enc = gedit_encoding_get_from_charset (charset);
-	}
-#endif
-
-	return enc;
-}
-
-/* This function is only meant to be called by child classes */
-gboolean
-gedit_document_loader_update_document_contents (GeditDocumentLoader  *loader,
-					        const gchar          *file_contents,
-					        gint                  file_size,
-					        GError              **error)
-{
-	gedit_debug (DEBUG_LOADER);
-
-	g_return_val_if_fail (file_size >= 0, FALSE);
-	g_return_val_if_fail (file_contents != NULL, FALSE);
-
-	/* short-circuit the case where the file is empty */
-	if (file_size == 0)
-	{
-		if (loader->encoding == NULL)
-			loader->auto_detected_encoding = gedit_encoding_get_current ();
-		insert_text_in_document (loader, "", 0);
-		return TRUE;
-	}
-
-	if (loader->encoding == gedit_encoding_get_utf8 ())
-	{
-		if (g_utf8_validate (file_contents, file_size, NULL))
-		{
-			insert_text_in_document (loader,
-						 file_contents,
-						 file_size);
-			return TRUE;
-		}
-		else
-		{
-			g_set_error (error,
-				     G_CONVERT_ERROR,
-				     G_CONVERT_ERROR_ILLEGAL_SEQUENCE,
-				     "The file you are trying to open contains an invalid byte sequence.");
-			return FALSE;
-		}
-	}
-	else
-	{
-		GError *conv_error = NULL;
-		gchar *converted_text = NULL;
-		gsize new_len = file_size;
-
-		/* Autodetecting the encoding */
-		if (loader->encoding == NULL)
-		{
-			const GeditEncoding *metadata_encoding;
-
-			/* first try with the encoding stored in the metadata, if any */
-			metadata_encoding = get_metadata_encoding (loader);
-
-			if (metadata_encoding != NULL)
-			{
-				converted_text = gedit_convert_to_utf8 (
-								file_contents,
-								file_size,
-								&metadata_encoding,
-								&new_len,
-								NULL);
-
-				if (converted_text != NULL)
-					loader->auto_detected_encoding = metadata_encoding;
-			}
-		}
-
-		if (converted_text == NULL)
-		{
-			loader->auto_detected_encoding = loader->encoding;
-
-			converted_text = gedit_convert_to_utf8 (
-							file_contents,
-							file_size,
-							&loader->auto_detected_encoding,
-							&new_len,
-							&conv_error);
-		}
-
-		if (converted_text == NULL)
-		{
-			g_return_val_if_fail (conv_error != NULL, FALSE);
-
-			g_propagate_error (error, conv_error);
-
-			return FALSE;
-		}
-		else
-		{
-			insert_text_in_document (loader,
-						 converted_text,
-						 new_len);
-
-			g_free (converted_text);
-
-			return TRUE;
-		}
-	}
-
-	g_return_val_if_reached (FALSE);
+	loader->auto_detected_newline_type = GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT;
 }
 
 void
@@ -487,6 +338,15 @@ gedit_document_loader_get_encoding (GeditDocumentLoader *loader)
 			      gedit_encoding_get_current ());
 
 	return loader->auto_detected_encoding;
+}
+
+GeditDocumentNewlineType
+gedit_document_loader_get_newline_type (GeditDocumentLoader *loader)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader),
+			      GEDIT_DOCUMENT_NEWLINE_TYPE_LF);
+
+	return loader->auto_detected_newline_type;
 }
 
 GFileInfo *

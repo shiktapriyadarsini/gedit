@@ -59,11 +59,16 @@ typedef struct _GeditDocumentIface	GeditDocumentIface;
 
 typedef enum
 {
-	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0, 
-	GEDIT_SEARCH_ENTIRE_WORD	= 1 << 1,
-	GEDIT_SEARCH_CASE_SENSITIVE	= 1 << 2
+	GEDIT_DOCUMENT_NEWLINE_TYPE_LF,
+	GEDIT_DOCUMENT_NEWLINE_TYPE_CR,
+	GEDIT_DOCUMENT_NEWLINE_TYPE_CR_LF
+} GeditDocumentNewlineType;
 
-} GeditSearchFlags;
+#ifdef G_OS_WIN32
+#define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_CR_LF
+#else
+#define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_LF
+#endif
 
 /**
  * GeditDocumentSaveFlags:
@@ -188,6 +193,14 @@ struct _GeditDocumentIface
 	void (* set_metadata_va_list)	(GeditDocument       *doc,
 					 const gchar         *first_key,
 					 va_list              var_args);
+
+	void (* set_readonly)		(GeditDocument       *doc,
+					 gboolean             readonly);
+
+	void (* set_newline_type)	(GeditDocument       *doc,
+					 GeditDocumentNewlineType newline_type);
+	GeditDocumentNewlineType (* get_newline_type)
+					(GeditDocument       *doc);
 };
 
 #define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()
@@ -197,6 +210,7 @@ enum
 	GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
 	GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP,
 	GEDIT_DOCUMENT_ERROR_TOO_BIG,
+	GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK,
 	GEDIT_DOCUMENT_NUM_ERRORS 
 };
 
@@ -296,6 +310,14 @@ void		 gedit_document_set_metadata_va_list
 void		 gedit_document_set_metadata	(GeditDocument *doc,
 						 const gchar   *first_key,
 						 ...);
+
+void		 gedit_document_set_readonly 	(GeditDocument       *doc,
+						 gboolean             readonly);
+
+void		 gedit_document_set_newline_type(GeditDocument       *doc,
+						 GeditDocumentNewlineType newline_type);
+GeditDocumentNewlineType
+		 gedit_document_get_newline_type(GeditDocument       *doc);
 
 G_END_DECLS
 

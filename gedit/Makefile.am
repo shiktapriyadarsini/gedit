@@ -64,7 +64,9 @@ endif
 
 NOINST_H_FILES =			\
 	gedit-close-button.h		\
+	gedit-data-binding.h		\
 	gedit-dirs.h			\
+	gedit-document-input-stream.h	\
 	gedit-document-loader.h		\
 	gedit-document-saver.h		\
 	gedit-documents-panel.h		\
@@ -83,12 +85,12 @@ NOINST_H_FILES =			\
 	gedit-print-job.h		\
 	gedit-print-preview.h		\
 	gedit-session.h			\
-	gedit-web-view.h		\
-	gedit-data-binding.h		\
+	gedit-smart-charset-converter.h	\
 	gedit-style-scheme-manager.h	\
 	gedit-tab-label.h		\
 	gedittextregion.h		\
 	gedit-ui.h			\
+	gedit-web-view.h		\
 	gedit-window-private.h
 
 INST_H_FILES =				\
@@ -98,7 +100,7 @@ INST_H_FILES =				\
 	gedit-debug.h			\
 	gedit-document-interface.h	\
 	gedit-encodings.h		\
-	gedit-encodings-option-menu.h	\
+	gedit-encodings-combo-box.h	\
 	gedit-file-chooser-dialog.h	\
 	gedit-help.h 			\
 	gedit-message-bus.h		\
@@ -155,13 +157,14 @@ libgedit_la_SOURCES = 			\
 	gedit-debug.c			\
 	gedit-dirs.c			\
 	gedit-document-interface.c	\
+	gedit-document-input-stream.c	\
 	gedit-document-loader.c		\
 	gedit-gio-document-loader.c	\
 	gedit-document-saver.c		\
 	gedit-gio-document-saver.c	\
 	gedit-documents-panel.c		\
 	gedit-encodings.c		\
-	gedit-encodings-option-menu.c	\
+	gedit-encodings-combo-box.c	\
 	gedit-file-chooser-dialog.c	\
 	gedit-help.c			\
 	gedit-history-entry.c		\
@@ -186,6 +189,7 @@ libgedit_la_SOURCES = 			\
 	gedit-print-preview.c		\
 	gedit-progress-message-area.c	\
 	gedit-session.c			\
+	gedit-smart-charset-converter.c	\
 	gedit-statusbar.c		\
 	gedit-status-combo-box.c	\
 	gedit-style-scheme-manager.c	\

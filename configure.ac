@@ -4,7 +4,7 @@ AC_PREREQ(2.59)
 
 m4_define(gedit_major_version,  2)
 m4_define(gedit_minor_version, 29)
-m4_define(gedit_micro_version,  3)
+m4_define(gedit_micro_version,  4)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT(gedit, gedit_version, http://bugzilla.gnome.org/enter_bug.cgi?product=gedit)
@@ -278,9 +278,9 @@ PKG_CHECK_MODULES(GEDIT, [
 	libxml-2.0 >= 2.5.0
 	glib-2.0 >= 2.22.0
 	gthread-2.0 >= 2.13.0
-	gio-2.0 >= 2.22.0
+	gio-2.0 >= 2.23.1
 	gtk+-2.0 >= 2.16.0
-	gtksourceview-2.0 >= 2.8.0
+	gtksourceview-2.0 >= 2.9.4
 	gconf-2.0 >= 1.1.11
 	webkit-1.0
 ])
@@ -541,6 +541,7 @@ plugins/spell/Makefile
 plugins/taglist/Makefile
 plugins/time/Makefile
 po/Makefile.in
+tests/Makefile
 win32/gedit.iss
 win32/Makefile
 osx/Info.plist
