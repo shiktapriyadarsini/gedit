@@ -691,6 +691,7 @@ static void
 gedit_page_init (GeditPage *page)
 {
 	page->priv = GEDIT_PAGE_GET_PRIVATE (page);
+	page->priv->containers = NULL;
 }
 
 /**

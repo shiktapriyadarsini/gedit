@@ -40,6 +40,7 @@
 #include "gedit-debug.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
+#include "gedit-tab-manager.h"
 
 
 void
@@ -151,6 +152,31 @@ _gedit_cmd_view_leave_fullscreen_mode (GtkAction *action,
 	g_signal_handlers_unblock_by_func
 		(view_action, G_CALLBACK (_gedit_cmd_view_toggle_fullscreen_mode),
 		 window);
+}
+
+void
+_gedit_cmd_view_split_notebook (GtkAction *action,
+				GeditWindow *window)
+{
+	GeditNotebook *notebook;
+	GeditPage *page;
+
+	notebook = gedit_tab_manager_split (GEDIT_TAB_MANAGER (window->priv->tab_manager));
+
+	page = GEDIT_PAGE (_gedit_page_new (NULL));
+	gtk_widget_show (GTK_WIDGET (page));
+
+	gedit_notebook_add_page (notebook,
+				 page,
+				 -1,
+				 FALSE);
+}
+
+void
+_gedit_cmd_view_unsplit_notebook (GtkAction *action,
+				  GeditWindow *window)
+{
+	
 }
 
 void

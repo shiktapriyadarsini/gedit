@@ -88,6 +88,7 @@ NOINST_H_FILES =			\
 	gedit-smart-charset-converter.h	\
 	gedit-style-scheme-manager.h	\
 	gedit-tab-label.h		\
+	gedit-tab-manager.h		\
 	gedittextregion.h		\
 	gedit-ui.h			\
 	gedit-web-view.h		\
@@ -196,6 +197,7 @@ libgedit_la_SOURCES = 			\
 	gedit-tab-label.c		\
 	gedit-utils.c 			\
 	gedit-view-interface.c 		\
+	gedit-tab-manager.c		\
 	gedit-text-view.c 		\
 	gedit-text-buffer.c		\
 	gedit-view-container.c 		\

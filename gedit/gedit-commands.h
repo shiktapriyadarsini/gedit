@@ -120,6 +120,10 @@ void		_gedit_cmd_view_toggle_fullscreen_mode	(GtkAction   *action,
 							 GeditWindow *window);
 void		_gedit_cmd_view_leave_fullscreen_mode	(GtkAction   *action,
 							 GeditWindow *window);
+void		_gedit_cmd_view_split_notebook		(GtkAction *action,
+							 GeditWindow *window);
+void		_gedit_cmd_view_unsplit_notebook	(GtkAction *action,
+							 GeditWindow *window);
 void		_gedit_cmd_view_split_horizontally	(GtkAction *action,
 							 GeditWindow *window);
 void		_gedit_cmd_view_split_vertically	(GtkAction *action,

@@ -84,6 +84,9 @@
       <menuitem name="ViewFullscreenMenu" action="ViewFullscreen"/>
       <separator/>
       <menu name="ViewSplitMenu" action="ViewSplit">
+        <menuitem name="ViewSplitNotebookMenu" action="ViewSplitNotebook"/>
+        <menuitem name="ViewUnsplitNotebookMenu" action="ViewUnsplitNotebook"/>
+        <separator/>
         <menuitem name="ViewSplitVerticalMenu" action="ViewSplitVertical"/>
         <menuitem name="ViewSplitHorizontalMenu" action="ViewSplitHorizontal"/>
         <separator/>

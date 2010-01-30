@@ -45,7 +45,8 @@ G_BEGIN_DECLS
 
 struct _GeditWindowPrivate
 {
-	GtkWidget      *notebook;
+	GtkWidget      *tab_manager;
+	GtkWidget      *active_notebook;
 
 	GtkWidget      *side_panel;
 	GtkWidget      *bottom_panel;

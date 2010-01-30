@@ -111,6 +111,10 @@ static const GtkActionEntry gedit_menu_entries[] =
 	/* View menu */
 	{ "ViewHighlightMode", NULL, N_("_Highlight Mode") },
 	{ "ViewSplit", NULL, N_("S_plit") },
+	{ "ViewSplitNotebook", NULL, N_("Split _Notebook"), NULL,
+	  N_("Split Notebook"), G_CALLBACK (_gedit_cmd_view_split_notebook) },
+	{ "ViewUnsplitNotebook", NULL, N_("Unsplit _Notebook"), NULL,
+	  N_("Unsplit Notebook"), G_CALLBACK (_gedit_cmd_view_unsplit_notebook) },
 	{ "ViewSplitHorizontal", NULL, N_("Split _Horizontally"), NULL,
 	  N_("Split Horizontally"), G_CALLBACK (_gedit_cmd_view_split_horizontally) },
 	{ "ViewSplitVertical", NULL, N_("Split _Vertically"), NULL,
