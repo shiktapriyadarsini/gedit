@@ -4,7 +4,7 @@ AC_PREREQ(2.59)
 
 m4_define(gedit_major_version,  2)
 m4_define(gedit_minor_version, 28)
-m4_define(gedit_micro_version,  3)
+m4_define(gedit_micro_version,  4)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT(gedit, gedit_version, http://bugzilla.gnome.org/enter_bug.cgi?product=gedit)
@@ -50,6 +50,7 @@ AC_PROG_OBJC
 AC_SYS_LARGEFILE
 
 AC_CHECK_FUNCS(fsync)
+AC_CHECK_LIB(m, floor)
 
 dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
 AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
@@ -283,6 +284,22 @@ PKG_CHECK_MODULES(GEDIT, [
 	gtksourceview-2.0 >= 2.4.0
 	gconf-2.0 >= 1.1.11
 ])
+
+if test "$os_osx" = "no" &&
+   test "$os_win32" = "no"; then
+	PKG_CHECK_MODULES(X11, [
+		x11
+	])
+else
+	X11_CFLAGS=
+	X11_LIBS=
+fi
+
+GEDIT_CFLAGS="$GEDIT_CFLAGS $X11_CFLAGS"
+GEDIT_LIBS="$GEDIT_LIBS $X11_LIBS"
+
+AC_SUBST(GEDIT_CFLAGS)
+AC_SUBST(GEDIT_LIBS)
 
 dnl FIXME: Remove this when removing gedit-message-area
 
