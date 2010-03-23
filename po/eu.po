@@ -1,15 +1,15 @@
 # translation of eu.po to Basque
-# Copyright (C) 2001, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
+# Copyright (C) 2001, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 #
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2005, 2006, 2007, 2008, 2009.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&component=general\n"
 "POT-Creation-Date: 2009-09-03 22:29+0000\n"
-"PO-Revision-Date: 2009-09-07 11:14+0200\n"
+"PO-Revision-Date: 2010-03-23 10:58+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.in.h:2
 msgid "Active plugins"
-msgstr "Aktibatu plugin-ak"
+msgstr "Aktibatu pluginak"
 
 #: ../data/gedit.schemas.in.in.h:3
 msgid "Auto Detected Encodings"
@@ -159,7 +159,7 @@ msgid ""
 "writable by default."
 msgstr ""
 "Gedit-ek idazteko moduan onartzen dituen VFS eskemen zerrenda. 'fitxategia' "
-"eskema idazkorra da lehenetsi gisa."
+"eskema idazgarria da lehenetsi gisa."
 
 #: ../data/gedit.schemas.in.in.h:26
 msgid ""
@@ -289,13 +289,13 @@ msgid ""
 "the text instead of the start/end of the line."
 msgstr ""
 "Kurtsorea nola mugitzen den zehazten du HASIERA eta AMAIERA teklak sakatzen "
-"direnean. Erabili \"DESGAITUTA\" beti lerroaren hasierara/amierara "
+"direnean. Erabili \"DESGAITUTA\" beti lerroaren hasierara/amaierara "
 "mugitzeko. \"ONDOREN\"  lerroaren hasierara/amaierara mugitzeko teklak "
 "aurreneko aldiz sakatzen direnean eta testuaren hasierara/amaierara "
 "(zuriuneei ez ikusi eginez) mugitzeko teklak bigarren aldiz sakatzean. "
 "\"AURRETIK\" testuaren hasierara/amaierara mugitzeko lerroaren hasierara/"
-"amaierara mugitu aurretik. Edo erabili \"BETI\" testuarean hasierara/"
-"amaierara beti mugitzeko, leroaren hasierara/amaierara mugitu ordez."
+"amaierara mugitu aurretik. Edo erabili \"BETI\" testuaren hasierara/"
+"amaierara beti mugitzeko, lerroaren hasierara/amaierara mugitu ordez."
 
 #: ../data/gedit.schemas.in.in.h:55
 msgid ""
@@ -521,7 +521,7 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.in.h:90
 msgid "Writable VFS schemes"
-msgstr "VFS eskema idazkorrak"
+msgstr "VFS eskema idazgarriak"
 
 #. Translators: This is the list of encodings shown by default in the Character Coding
 #. menu in open/save file selector. Only recognized encodings are displayed.
@@ -782,7 +782,7 @@ msgstr "<b>Tabulazioak</b>"
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:10
 #: ../gedit/gedit-print-preferences.ui.h:5
 msgid "<b>Text Wrapping</b>"
-msgstr "<b>Testu-itzulbiratzea</b>"
+msgstr "<b>Testua itzulbiratzea</b>"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:11
 msgid "<span weight=\"bold\">Color Scheme</span>"
@@ -815,7 +815,7 @@ msgstr "Editorearen _letra-tipoa: "
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
 #: ../gedit/gedit-print-preferences.ui.h:7
 msgid "Enable text _wrapping"
-msgstr "Gaitu t_estu-itzulbiratzea"
+msgstr "Gaitu t_estua itzulbiratzea"
 
 #
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
@@ -842,7 +842,7 @@ msgstr "Aukeratu editorearen letra-tipoa"
 #
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:23
 msgid "Plugins"
-msgstr "Plugin-ak"
+msgstr "Pluginak"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:24
 msgid "Preferences"
@@ -1570,7 +1570,7 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-message-area.c:1173
 msgid "A file with the same name already exists. Please use a different name."
-msgstr "Izen berdineko fitxategia badago lehenedik ere. Erabili beste izen bat."
+msgstr "Izen berdineko fitxategia badago lehendik ere. Erabili beste izen bat."
 
 #: ../gedit/gedit-io-error-message-area.c:1178
 msgid ""
@@ -1638,7 +1638,7 @@ msgstr "Ezkutatu panela"
 #
 #: ../gedit/gedit-plugin-manager.c:54
 msgid "Plugin"
-msgstr "Plugin-a"
+msgstr "Plugina"
 
 #: ../gedit/gedit-plugin-manager.c:55
 msgid "Enabled"
@@ -1674,12 +1674,12 @@ msgstr "_Plugin aktiboak:"
 #
 #: ../gedit/gedit-plugin-manager.c:825
 msgid "_About Plugin"
-msgstr "_Plugin-ari buruz"
+msgstr "_Pluginari buruz"
 
 #
 #: ../gedit/gedit-plugin-manager.c:829
 msgid "C_onfigure Plugin"
-msgstr "K_onfiguratu plugin-a"
+msgstr "K_onfiguratu plugina"
 
 #
 #: ../gedit/gedit-prefs-manager.c:170
@@ -2135,7 +2135,7 @@ msgstr "_Garbitu nabarmentzea"
 
 #: ../gedit/gedit-ui.h:126
 msgid "Clear highlighting of search matches"
-msgstr "Kendu narbarmentzea bilaketan bat datozenei"
+msgstr "Kendu nabarmentzea bilaketan bat datozenei"
 
 #
 #: ../gedit/gedit-ui.h:127
@@ -2356,7 +2356,7 @@ msgstr "Hautatutako testuaren Maiuskulak/Minuskulak aldatzen ditu."
 #
 #: ../plugins/changecase/gedit-changecase-plugin.c:222
 msgid "C_hange Case"
-msgstr "Alda_tu Maiusula/Minuskula"
+msgstr "Alda_tu Maiuskula/Minuskula"
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:223
 msgid "All _Upper Case"
@@ -2794,7 +2794,7 @@ msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
 msgstr ""
-"Iragazki-eredua fitxategi-arakatzaielarekin iragazteko. Iragazki honek "
+"Iragazki-eredua fitxategi-arakatzailearekin iragazteko. Iragazki honek "
 "iragazki-moduaren gainean funtzionatzen du."
 
 #: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:14
@@ -3197,7 +3197,7 @@ msgstr "Laster-tekla mozkina aktibatzeko"
 #: ../plugins/snippets/snippets/snippets.ui.h:9
 #: ../plugins/snippets/snippets/Manager.py:697
 msgid "Single word with which the snippet is activated after pressing tab"
-msgstr "Hitz bakuna mozkina aktibatzeko tabulatzailea sakatu ondoren"
+msgstr "Hitz bakuna mozkina aktibatzeko tabuladorea sakatu ondoren"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:10
 msgid "Snippets Manager"
@@ -3690,13 +3690,13 @@ msgstr "Ainguratu URIa"
 #
 #: ../plugins/taglist/HTML.tags.xml.in.h:11
 msgid "Applet class file code"
-msgstr "Applet-aren klase-fitxategiaren kodea"
+msgstr "Miniaplikazioaren klase-fitxategiaren kodea"
 
 #
 #. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
 #: ../plugins/taglist/HTML.tags.xml.in.h:13
 msgid "Applet class file code (deprecated)"
-msgstr "Applet-aren klase-fitxategiaren kodea (zaharkitua)"
+msgstr "Miniaplikazioaren klase-fitxategiaren kodea (zaharkitua)"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:14
 msgid "Array"
@@ -4003,7 +4003,7 @@ msgstr "Inprimaki-ekintzaren kudeatzailea"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:95
 msgid "Form control group"
-msgstr "Imprimakiaren kontrol-taldea"
+msgstr "Inprimakiaren kontrol-taldea"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:96
 msgid "Form field label text"
@@ -4069,7 +4069,7 @@ msgstr "Objektu kapsulatu generikoa"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:111
 msgid "Generic metainformation"
-msgstr "Metadatu generikoa"
+msgstr "Metadatu generikoak"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:112
 msgid "Generic span"
@@ -4200,12 +4200,12 @@ msgstr "Testu etzana"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:144
 msgid "Java applet"
-msgstr "Java applet-a"
+msgstr "Java miniaplikazioa"
 
 #. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
 #: ../plugins/taglist/HTML.tags.xml.in.h:146
 msgid "Java applet (deprecated)"
-msgstr "Java applet-a (zaharkitua)"
+msgstr "Java miniaplikazioa (zaharkitua)"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:147
 msgid "Label"
@@ -4381,12 +4381,12 @@ msgstr "Oharra"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:195
 msgid "Object applet file"
-msgstr "Applet-aren objektu-fitxategia"
+msgstr "Miniaplikazioaren objektu-fitxategia"
 
 #. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
 #: ../plugins/taglist/HTML.tags.xml.in.h:197
 msgid "Object applet file (deprecated)"
-msgstr "Applet-aren objektu-fitxategia (zaharkitua)"
+msgstr "Miniaplikazioaren objektu-fitxategia (zaharkitua)"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:198
 msgid "Object data reference"
@@ -4394,7 +4394,7 @@ msgstr "Objektuaren datuen erreferentzia"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:199
 msgid "Offset for alignment character"
-msgstr "Desplazamendua karaketerea lerrokatzeko"
+msgstr "Desplazamendua karakterea lerrokatzeko"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:200
 msgid "OnBlur event"
@@ -4560,7 +4560,7 @@ msgstr "Erregelak errenkaden eta zutabeen artean"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:240
 msgid "Sample program output, scripts"
-msgstr "Irteerako programen adibideak, scriptak"
+msgstr "Irteerako programen adibideak, script-ak"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:241
 msgid "Scope covered by header cells"
@@ -4657,7 +4657,7 @@ msgstr "Erro karratua"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:265
 msgid "Standby load msg"
-msgstr "Zai-mezua mezua kargatzean"
+msgstr "Mezua kargatu bitartean"
 
 #
 #: ../plugins/taglist/HTML.tags.xml.in.h:266
@@ -5220,7 +5220,7 @@ msgstr "hurrengoa-senidea"
 #
 #: ../plugins/taglist/XSLT.tags.xml.in.h:12
 msgid "namespace"
-msgstr "izenlekua"
+msgstr "izen-lekua"
 
 #: ../plugins/taglist/XSLT.tags.xml.in.h:13
 msgid "parent"
@@ -5258,7 +5258,7 @@ msgstr "Erabil daitezkeen formatuak"
 
 #: ../plugins/time/gedit-time-plugin.c:763
 msgid "Configure insert date/time plugin..."
-msgstr "Konfiguratu data/ordua txertatzeko plugin-a..."
+msgstr "Konfiguratu data/ordua txertatzeko plugina..."
 
 #
 #: ../plugins/time/time.gedit-plugin.desktop.in.h:1
@@ -5303,7 +5303,7 @@ msgstr "<span weight=\"bold\"> Data/ordua sartzean...</span>"
 #
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:5
 msgid "Configure date/time plugin"
-msgstr "Konfiguratu dataren/orduaren plugin-a"
+msgstr "Konfiguratu dataren/orduaren plugina"
 
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:7
 msgid "_Prompt for a format"
