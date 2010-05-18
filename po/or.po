@@ -1749,7 +1749,7 @@ msgstr "  Ln %d, Col %d"
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
 msgstr[0] "ଏଠାରେ ଏକ ତ୍ରୁଟିଯୁକ୍ତ ଟ୍ୟାବ ଅଛି"
-msgstr[1] "ଏଠାରେ ଏକ ତ୍ରୁଟିଯୁକ୍ତ ଟ୍ୟାବ ଅଛି"
+msgstr[1] "ଏଠାରେ %d ତ୍ରୁଟିଯୁକ୍ତ ଟ୍ୟାବ ଅଛି"
 
 #: ../gedit/gedit-style-scheme-manager.c:207
 #, c-format
