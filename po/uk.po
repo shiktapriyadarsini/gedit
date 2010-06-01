@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 12:00+0200\n"
+"POT-Creation-Date: 2010-06-01 10:48+0300\n"
 "PO-Revision-Date: 2010-01-30 21:08+0300\n"
 "Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
-"Language-Team: ukrainian <Ukrainian <uk@li.org>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"Content-Transfer-Encoding: 8bit\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../data/gedit.desktop.in.in.h:1
@@ -465,8 +465,7 @@ msgstr ""
 
 #: ../data/gedit.schemas.in.in.h:84
 msgid "Whether the side pane at the left of editing windows should be visible."
-msgstr ""
-"Чи показувати бічну панель, що розташована ліворуч вікна редагування."
+msgstr "Чи показувати бічну панель, що розташована ліворуч вікна редагування."
 
 #: ../data/gedit.schemas.in.in.h:85
 msgid ""
@@ -882,7 +881,7 @@ msgid "Replace _All"
 msgstr "Замінити _все"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:416
-#: ../gedit/gedit-commands-file.c:582
+#: ../gedit/gedit-commands-file.c:577
 msgid "_Replace"
 msgstr "За_мінити"
 
@@ -914,49 +913,49 @@ msgstr "Знай_ти:"
 msgid "_Wrap around"
 msgstr "_Досягнувши кінця, починати спочатку"
 
-#: ../gedit/gedit.c:123
+#: ../gedit/gedit.c:126
 msgid "Show the application's version"
 msgstr "Показати версію програми"
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:129
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
 "Кодування символів для відкривання файлів перелічених у командному рядку."
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:129
 msgid "ENCODING"
 msgstr "КОДУВАННЯ"
 
-#: ../gedit/gedit.c:129
+#: ../gedit/gedit.c:132
 msgid "Display list of possible values for the encoding option"
 msgstr "Показати перелік можливих значень параметрів кодування"
 
-#: ../gedit/gedit.c:132
+#: ../gedit/gedit.c:135
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Створити нове головне вікно в поточному екземплярі gedit"
 
-#: ../gedit/gedit.c:135
+#: ../gedit/gedit.c:138
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Створити новий документ в поточному екземплярі gedit"
 
-#: ../gedit/gedit.c:138
+#: ../gedit/gedit.c:141
 msgid "[FILE...]"
 msgstr "[ФАЙЛ...]"
 
-#: ../gedit/gedit.c:193
+#: ../gedit/gedit.c:196
 #, c-format
 msgid "%s: invalid encoding.\n"
 msgstr "%s: неправильне кодування.\n"
 
 #
 #. Setup command line options
-#: ../gedit/gedit.c:576
+#: ../gedit/gedit.c:579
 msgid "- Edit text files"
 msgstr "- Редактор текстових файлів"
 
-#: ../gedit/gedit.c:612
+#: ../gedit/gedit.c:615
 #, c-format
 msgid ""
 "%s\n"
@@ -965,12 +964,12 @@ msgstr ""
 "%s\n"
 "Запустіть «%s --help» для отримання повного списку підтримуваних ключів.\n"
 
-#: ../gedit/gedit-commands-file.c:255
+#: ../gedit/gedit-commands-file.c:250
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Завантажується файл \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:264
+#: ../gedit/gedit-commands-file.c:259
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -979,39 +978,39 @@ msgstr[1] "Завантажуються %d файли..."
 msgstr[2] "Завантажуються %d файлів..."
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:458
+#: ../gedit/gedit-commands-file.c:453
 msgid "Open Files"
 msgstr "Відкрити файли"
 
-#: ../gedit/gedit-commands-file.c:569
+#: ../gedit/gedit-commands-file.c:564
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Файл \"%s\" лише для читання."
 
-#: ../gedit/gedit-commands-file.c:574
+#: ../gedit/gedit-commands-file.c:569
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Спробувати замінити його файлом, що ви записуєте?"
 
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:866
+#: ../gedit/gedit-commands-file.c:638 ../gedit/gedit-commands-file.c:861
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Зберігається файл \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:751
+#: ../gedit/gedit-commands-file.c:746
 msgid "Save As…"
 msgstr "Зберегти як..."
 
-#: ../gedit/gedit-commands-file.c:1080
+#: ../gedit/gedit-commands-file.c:1075
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Відновлення документу \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:1125
+#: ../gedit/gedit-commands-file.c:1120
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Відновити незбережені зміни в документі \"%s\"?"
 
-#: ../gedit/gedit-commands-file.c:1134
+#: ../gedit/gedit-commands-file.c:1129
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -1025,13 +1024,13 @@ msgstr[1] ""
 msgstr[2] ""
 "Зміни, внесені в документ за останні %ld секунд, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1143
+#: ../gedit/gedit-commands-file.c:1138
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Зміни, внесені в документ за останню хвилину, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1149
+#: ../gedit/gedit-commands-file.c:1144
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1049,7 +1048,7 @@ msgstr[2] ""
 "Зміни, внесені в документ за останню хвилину та %ld секунд, будуть остаточно "
 "втрачені."
 
-#: ../gedit/gedit-commands-file.c:1159
+#: ../gedit/gedit-commands-file.c:1154
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -1063,12 +1062,12 @@ msgstr[1] ""
 msgstr[2] ""
 "Зміни, внесені в документ за останні %ld хвилини, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1174
+#: ../gedit/gedit-commands-file.c:1169
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Зміни, внесені в документ за останню годину, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1180
+#: ../gedit/gedit-commands-file.c:1175
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1086,7 +1085,7 @@ msgstr[2] ""
 "Зміни, внесені в документ за останню годину та %d хвилин, будуть остаточно "
 "втрачені."
 
-#: ../gedit/gedit-commands-file.c:1195
+#: ../gedit/gedit-commands-file.c:1190
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -1099,7 +1098,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Зміни, внесені в документ за останні %d годин, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1221
+#: ../gedit/gedit-commands-file.c:1216
 msgid "_Revert"
 msgstr "Від_новити"
 
@@ -1114,7 +1113,7 @@ msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Wanderlust <wanderlust@ukr.net>"
 
-#: ../gedit/gedit-commands-search.c:114
+#: ../gedit/gedit-commands-search.c:111
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
@@ -1122,13 +1121,13 @@ msgstr[0] "Знайдено та замінено %d випадок."
 msgstr[1] "Знайдено та замінено %d випадків."
 msgstr[2] "Знайдено та замінено %d випадки."
 
-#: ../gedit/gedit-commands-search.c:124
+#: ../gedit/gedit-commands-search.c:121
 msgid "Found and replaced one occurrence"
 msgstr "Знайдено та замінено один випадок"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:145
+#: ../gedit/gedit-commands-search.c:142
 #, c-format
 msgid "\"%s\" not found"
 msgstr "Фрази \"%s\" не існує"
@@ -1263,17 +1262,17 @@ msgstr "Таїландське"
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: ../gedit/gedit-encodings-combo-box.c:272
+#: ../gedit/gedit-encodings-combo-box.c:276
 msgid "Automatically Detected"
 msgstr "Автовизначення"
 
-#: ../gedit/gedit-encodings-combo-box.c:288
-#: ../gedit/gedit-encodings-combo-box.c:303
+#: ../gedit/gedit-encodings-combo-box.c:292
+#: ../gedit/gedit-encodings-combo-box.c:307
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Поточна локалізація (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:353
+#: ../gedit/gedit-encodings-combo-box.c:357
 msgid "Add or Remove..."
 msgstr "Додати або видалити..."
 
@@ -1285,19 +1284,19 @@ msgstr "Всі текстові файли"
 msgid "C_haracter Encoding:"
 msgstr "_Кодування символів:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:141
+#: ../gedit/gedit-file-chooser-dialog.c:146
 msgid "L_ine Ending:"
 msgstr "Ко_дування рядка"
 
-#: ../gedit/gedit-file-chooser-dialog.c:160
+#: ../gedit/gedit-file-chooser-dialog.c:165
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-file-chooser-dialog.c:166
+#: ../gedit/gedit-file-chooser-dialog.c:171
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: ../gedit/gedit-file-chooser-dialog.c:172
+#: ../gedit/gedit-file-chooser-dialog.c:177
 msgid "Windows"
 msgstr "ОС Windows"
 
@@ -1305,55 +1304,55 @@ msgstr "ОС Windows"
 msgid "There was an error displaying the help."
 msgstr "Помилка при показі довідки."
 
-#: ../gedit/gedit-io-error-message-area.c:198
-#: ../gedit/gedit-io-error-message-area.c:203
-#: ../gedit/gedit-io-error-message-area.c:507
-#: ../gedit/gedit-io-error-message-area.c:530
+#: ../gedit/gedit-io-error-message-area.c:196
+#: ../gedit/gedit-io-error-message-area.c:201
+#: ../gedit/gedit-io-error-message-area.c:505
+#: ../gedit/gedit-io-error-message-area.c:528
 msgid "_Retry"
 msgstr "_Повтор"
 
-#: ../gedit/gedit-io-error-message-area.c:225
+#: ../gedit/gedit-io-error-message-area.c:223
 #, c-format
 msgid "Could not find the file %s."
 msgstr "Не вдається знайти файл %s."
 
-#: ../gedit/gedit-io-error-message-area.c:227
-#: ../gedit/gedit-io-error-message-area.c:266
-#: ../gedit/gedit-io-error-message-area.c:273
+#: ../gedit/gedit-io-error-message-area.c:225
+#: ../gedit/gedit-io-error-message-area.c:264
+#: ../gedit/gedit-io-error-message-area.c:271
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Переконайтеся, що ви ввели правильну адресу та спробуйте знову."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-message-area.c:242
+#: ../gedit/gedit-io-error-message-area.c:240
 #, c-format
 msgid "gedit cannot handle %s locations."
 msgstr "gedit не підтримує адреси %s."
 
-#: ../gedit/gedit-io-error-message-area.c:248
+#: ../gedit/gedit-io-error-message-area.c:246
 msgid "gedit cannot handle this location."
 msgstr "gedit не може обробити цей запит."
 
-#: ../gedit/gedit-io-error-message-area.c:256
+#: ../gedit/gedit-io-error-message-area.c:254
 msgid "The location of the file cannot be mounted."
 msgstr "Не вдається підключити файлову систему для файлу."
 
-#: ../gedit/gedit-io-error-message-area.c:260
+#: ../gedit/gedit-io-error-message-area.c:258
 msgid "The location of the file cannot be accessed because it is not mounted."
 msgstr ""
 "Не вдається отримати доступ до файлу, оскільки неможливо підключити його "
 "файлову систему."
 
-#: ../gedit/gedit-io-error-message-area.c:264
+#: ../gedit/gedit-io-error-message-area.c:262
 #, c-format
 msgid "%s is a directory."
 msgstr "\"%s\" є каталогом."
 
-#: ../gedit/gedit-io-error-message-area.c:271
+#: ../gedit/gedit-io-error-message-area.c:269
 #, c-format
 msgid "%s is not a valid location."
 msgstr "\"%s\" не є правильною адресою."
 
-#: ../gedit/gedit-io-error-message-area.c:301
+#: ../gedit/gedit-io-error-message-area.c:299
 #, c-format
 msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
@@ -1362,7 +1361,7 @@ msgstr ""
 "Не вдається знайти вузол \"%s\". Переконайтесь, що параметри проксі вказано "
 "правильно та спробуйте ще раз."
 
-#: ../gedit/gedit-io-error-message-area.c:314
+#: ../gedit/gedit-io-error-message-area.c:312
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1371,56 +1370,56 @@ msgstr ""
 "Неправильна назва вузла. Переконайтесь, що адресу введено правильно та "
 "спробуйте знову."
 
-#: ../gedit/gedit-io-error-message-area.c:322
+#: ../gedit/gedit-io-error-message-area.c:320
 #, c-format
 msgid "%s is not a regular file."
 msgstr "%s не є звичайним файлом."
 
-#: ../gedit/gedit-io-error-message-area.c:327
+#: ../gedit/gedit-io-error-message-area.c:325
 msgid "Connection timed out. Please try again."
 msgstr "Вийшов час очікування з'єднання. Спробуйте ще раз."
 
-#: ../gedit/gedit-io-error-message-area.c:350
+#: ../gedit/gedit-io-error-message-area.c:348
 msgid "The file is too big."
 msgstr "Файл занадто великий."
 
-#: ../gedit/gedit-io-error-message-area.c:391
+#: ../gedit/gedit-io-error-message-area.c:389
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Неочікувана помилка: %s"
 
-#: ../gedit/gedit-io-error-message-area.c:427
+#: ../gedit/gedit-io-error-message-area.c:425
 msgid "gedit cannot find the file. Perhaps it has recently been deleted."
 msgstr "Не вдається знайти файл. Напевно, він нещодавно був видалений."
 
-#: ../gedit/gedit-io-error-message-area.c:437
+#: ../gedit/gedit-io-error-message-area.c:435
 #, c-format
 msgid "Could not revert the file %s."
 msgstr "Не вдається відновити файл \"%s\"."
 
-#: ../gedit/gedit-io-error-message-area.c:463
+#: ../gedit/gedit-io-error-message-area.c:461
 msgid "Ch_aracter Encoding:"
 msgstr "_Кодування символів:"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-message-area.c:514
-#: ../gedit/gedit-io-error-message-area.c:539
-#: ../gedit/gedit-io-error-message-area.c:816
-#: ../gedit/gedit-io-error-message-area.c:826
+#: ../gedit/gedit-io-error-message-area.c:512
+#: ../gedit/gedit-io-error-message-area.c:537
+#: ../gedit/gedit-io-error-message-area.c:815
+#: ../gedit/gedit-io-error-message-area.c:825
 msgid "Edit Any_way"
 msgstr "_Редгувати попри все"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-message-area.c:517
-#: ../gedit/gedit-io-error-message-area.c:544
-#: ../gedit/gedit-io-error-message-area.c:819
-#: ../gedit/gedit-io-error-message-area.c:831
+#: ../gedit/gedit-io-error-message-area.c:515
+#: ../gedit/gedit-io-error-message-area.c:542
+#: ../gedit/gedit-io-error-message-area.c:818
+#: ../gedit/gedit-io-error-message-area.c:830
 msgid "D_on't Edit"
 msgstr "_Не редагувати"
 
-#: ../gedit/gedit-io-error-message-area.c:640
+#: ../gedit/gedit-io-error-message-area.c:638
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1428,29 +1427,29 @@ msgstr ""
 "Вичерпано допустиме число переходів за посиланнями, а файл так і не було "
 "знайдено."
 
-#: ../gedit/gedit-io-error-message-area.c:644
+#: ../gedit/gedit-io-error-message-area.c:642
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Недостатньо прав для відкривання файлу."
 
-#: ../gedit/gedit-io-error-message-area.c:650
+#: ../gedit/gedit-io-error-message-area.c:648
 msgid "gedit has not been able to detect the character encoding."
 msgstr "Не вдається визначити кодування символів."
 
-#: ../gedit/gedit-io-error-message-area.c:652
-#: ../gedit/gedit-io-error-message-area.c:674
+#: ../gedit/gedit-io-error-message-area.c:650
+#: ../gedit/gedit-io-error-message-area.c:672
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Напевно, ви намагаєтесь відкрити файл з двійковими даними."
 
-#: ../gedit/gedit-io-error-message-area.c:653
+#: ../gedit/gedit-io-error-message-area.c:651
 msgid "Select a character encoding from the menu and try again."
 msgstr "Виберіть кодування символів з меню та спробуйте це раз."
 
-#: ../gedit/gedit-io-error-message-area.c:659
+#: ../gedit/gedit-io-error-message-area.c:657
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "Помилка при відкриванні файлу %s."
 
-#: ../gedit/gedit-io-error-message-area.c:661
+#: ../gedit/gedit-io-error-message-area.c:659
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could make this document useless."
@@ -1458,31 +1457,31 @@ msgstr ""
 "Файл, який ви відкрили має деякі неприпустимі символи, якщо ви продовжите "
 "редагування цього файлу ви можете зробити цей документ зіпсованим."
 
-#: ../gedit/gedit-io-error-message-area.c:664
+#: ../gedit/gedit-io-error-message-area.c:662
 msgid "You can also choose another character encoding and try again."
 msgstr "Виберіть кодування символів з меню та спробуйте це раз."
 
-#: ../gedit/gedit-io-error-message-area.c:671
+#: ../gedit/gedit-io-error-message-area.c:669
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr "Не вдається відкрити файл \"%s\" використовуючи кодування %s."
 
-#: ../gedit/gedit-io-error-message-area.c:675
-#: ../gedit/gedit-io-error-message-area.c:749
+#: ../gedit/gedit-io-error-message-area.c:673
+#: ../gedit/gedit-io-error-message-area.c:748
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Виберіть інше кодування символів з меню та спробуйте ще раз."
 
-#: ../gedit/gedit-io-error-message-area.c:685
+#: ../gedit/gedit-io-error-message-area.c:683
 #, c-format
 msgid "Could not open the file %s."
 msgstr "Не вдається відкрити файл \"%s\"."
 
-#: ../gedit/gedit-io-error-message-area.c:744
+#: ../gedit/gedit-io-error-message-area.c:743
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "Не вдається зберегти файл \"%s\" використовуючи кодування %s."
 
-#: ../gedit/gedit-io-error-message-area.c:747
+#: ../gedit/gedit-io-error-message-area.c:746
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1490,12 +1489,12 @@ msgstr ""
 "Документ містить один або більше символів, які не мають представлення у "
 "вказаному кодуванні символів."
 
-#: ../gedit/gedit-io-error-message-area.c:846
+#: ../gedit/gedit-io-error-message-area.c:845
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "Файл \"%s\" вже відкритий у іншому вікні gedit."
 
-#: ../gedit/gedit-io-error-message-area.c:860
+#: ../gedit/gedit-io-error-message-area.c:859
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1503,45 +1502,45 @@ msgstr ""
 "gedit відкрив цей файл режимі \"лише читання\". Ви дійсно бажаєте редагувати "
 "його?"
 
-#: ../gedit/gedit-io-error-message-area.c:919
-#: ../gedit/gedit-io-error-message-area.c:929
-#: ../gedit/gedit-io-error-message-area.c:1025
-#: ../gedit/gedit-io-error-message-area.c:1035
+#: ../gedit/gedit-io-error-message-area.c:918
+#: ../gedit/gedit-io-error-message-area.c:928
+#: ../gedit/gedit-io-error-message-area.c:1024
+#: ../gedit/gedit-io-error-message-area.c:1034
 msgid "S_ave Anyway"
 msgstr "З_берегти попри все"
 
-#: ../gedit/gedit-io-error-message-area.c:923
-#: ../gedit/gedit-io-error-message-area.c:933
-#: ../gedit/gedit-io-error-message-area.c:1029
-#: ../gedit/gedit-io-error-message-area.c:1039
+#: ../gedit/gedit-io-error-message-area.c:922
+#: ../gedit/gedit-io-error-message-area.c:932
+#: ../gedit/gedit-io-error-message-area.c:1028
+#: ../gedit/gedit-io-error-message-area.c:1038
 msgid "D_on't Save"
 msgstr "_Не зберігати"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. could be interpreted as the changes he made in the document. beside "reading" is
 #. not accurate (since last load/save)
-#: ../gedit/gedit-io-error-message-area.c:951
+#: ../gedit/gedit-io-error-message-area.c:950
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Файл %s змінено під час читання."
 
-#: ../gedit/gedit-io-error-message-area.c:966
+#: ../gedit/gedit-io-error-message-area.c:965
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Якщо ви збережете його, усі зовнішні зміни будуть втрачені. Зберегти все "
 "одно?"
 
-#: ../gedit/gedit-io-error-message-area.c:1057
+#: ../gedit/gedit-io-error-message-area.c:1056
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "Не вдається створити резервну копію файлу при збереженні %s."
 
-#: ../gedit/gedit-io-error-message-area.c:1060
+#: ../gedit/gedit-io-error-message-area.c:1059
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "Не вдається створити тимчасовий резервний файлу при збереженні %s."
 
-#: ../gedit/gedit-io-error-message-area.c:1076
+#: ../gedit/gedit-io-error-message-area.c:1075
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1553,7 +1552,7 @@ msgstr ""
 "Зберегти попри все?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-message-area.c:1136
+#: ../gedit/gedit-io-error-message-area.c:1135
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1562,7 +1561,7 @@ msgstr ""
 "gedit не може відкрити адресу %s в режимі запису. Переконайтесь, що адресу "
 "введено правильно та спробуйте знову."
 
-#: ../gedit/gedit-io-error-message-area.c:1144
+#: ../gedit/gedit-io-error-message-area.c:1143
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1570,7 +1569,7 @@ msgstr ""
 "gedit не може відкрити цю адресу в режимі запису. Переконайтесь, що адресу "
 "введено правильно та спробуйте ще раз."
 
-#: ../gedit/gedit-io-error-message-area.c:1153
+#: ../gedit/gedit-io-error-message-area.c:1152
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1579,7 +1578,7 @@ msgstr ""
 "%s не є правильною адресою. Переконайтесь, що адресу введено правильно та "
 "спробуйте знову."
 
-#: ../gedit/gedit-io-error-message-area.c:1159
+#: ../gedit/gedit-io-error-message-area.c:1158
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1587,7 +1586,7 @@ msgstr ""
 "Немає прав для запису файлу. Переконайтесь, що адресу введено правильно та "
 "спробуйте ще раз."
 
-#: ../gedit/gedit-io-error-message-area.c:1165
+#: ../gedit/gedit-io-error-message-area.c:1164
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1595,7 +1594,7 @@ msgstr ""
 "Недостатньо дискового простору для збереження файлу. Звільніть, місце на "
 "диску та спробуйте знову."
 
-#: ../gedit/gedit-io-error-message-area.c:1170
+#: ../gedit/gedit-io-error-message-area.c:1169
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1603,11 +1602,11 @@ msgstr ""
 "Ви намагаєтесь зберегти файл на диск доступний лише для читання. "
 "Переконайтесь, що адресу введено правильно і спробуйте знову."
 
-#: ../gedit/gedit-io-error-message-area.c:1176
+#: ../gedit/gedit-io-error-message-area.c:1175
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Файл з такою назвою вже існує. Вкажіть іншу назву."
 
-#: ../gedit/gedit-io-error-message-area.c:1181
+#: ../gedit/gedit-io-error-message-area.c:1180
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1615,7 +1614,7 @@ msgstr ""
 "Диск, на якому ви намагаєтеся зберегти файл має обмеження на розмір файла. "
 "Використовуйте коротшу назву."
 
-#: ../gedit/gedit-io-error-message-area.c:1188
+#: ../gedit/gedit-io-error-message-area.c:1187
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1625,7 +1624,7 @@ msgstr ""
 "Спробуйте зберегти файл меншого розміру, чи скористуйтесь диском, що не має "
 "такого обмеження."
 
-#: ../gedit/gedit-io-error-message-area.c:1204
+#: ../gedit/gedit-io-error-message-area.c:1203
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Не вдається зберегти файл \"%s\"."
@@ -1633,29 +1632,29 @@ msgstr "Не вдається зберегти файл \"%s\"."
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. could be interpreted as the changes he made in the document. beside "reading" is
 #. not accurate (since last load/save)
-#: ../gedit/gedit-io-error-message-area.c:1248
+#: ../gedit/gedit-io-error-message-area.c:1247
 #, c-format
 msgid "The file %s changed on disk."
-msgstr "Файл %s на диску занадто великий."
+msgstr "Файл %s був змінений на диску."
 
-#: ../gedit/gedit-io-error-message-area.c:1253
+#: ../gedit/gedit-io-error-message-area.c:1252
 msgid "Do you want to drop your changes and reload the file?"
-msgstr "Ви хочете відмовитись від змін та перезавантажити файл?"
+msgstr "Ви хочете відмовитись від ваших змін та перезавантажити файл?"
 
-#: ../gedit/gedit-io-error-message-area.c:1255
+#: ../gedit/gedit-io-error-message-area.c:1254
 msgid "Do you want to reload the file?"
 msgstr "Перезавантажити файл?"
 
-#: ../gedit/gedit-io-error-message-area.c:1261
-#: ../gedit/gedit-io-error-message-area.c:1272
+#: ../gedit/gedit-io-error-message-area.c:1260
+#: ../gedit/gedit-io-error-message-area.c:1271
 msgid "_Reload"
 msgstr "Пере_завантажити"
 
-#: ../gedit/gedit-panel.c:356 ../gedit/gedit-panel.c:528
+#: ../gedit/gedit-panel.c:360 ../gedit/gedit-panel.c:532
 msgid "Empty"
 msgstr "Немає вмісту"
 
-#: ../gedit/gedit-panel.c:418
+#: ../gedit/gedit-panel.c:422
 msgid "Hide panel"
 msgstr "Сховати панель"
 
@@ -1837,7 +1836,7 @@ msgstr "Попередній перегляд"
 msgid "The preview of a page in the document to be printed"
 msgstr "Попередній перегляд сторінки, яку буде надруковано"
 
-#: ../gedit/gedit-smart-charset-converter.c:308
+#: ../gedit/gedit-smart-charset-converter.c:319
 msgid "It is not possible to detect the encoding automatically"
 msgstr "Показати перелік можливих значень параметрів кодування"
 
@@ -1907,42 +1906,42 @@ msgid "Saving %s"
 msgstr "Зберігається \"%s\""
 
 #. Read only
-#: ../gedit/gedit-tab.c:1670
+#: ../gedit/gedit-tab.c:1673
 msgid "RO"
 msgstr "ЛЧ"
 
-#: ../gedit/gedit-tab.c:1717
+#: ../gedit/gedit-tab.c:1720
 #, c-format
 msgid "Error opening file %s"
 msgstr "Помилка відкривання файлу \"%s\""
 
-#: ../gedit/gedit-tab.c:1722
+#: ../gedit/gedit-tab.c:1725
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Помилка відновлення файлу \"%s\""
 
-#: ../gedit/gedit-tab.c:1727
+#: ../gedit/gedit-tab.c:1730
 #, c-format
 msgid "Error saving file %s"
 msgstr "Помилка збереження файлу \"%s\""
 
-#: ../gedit/gedit-tab.c:1748
+#: ../gedit/gedit-tab.c:1751
 msgid "Unicode (UTF-8)"
 msgstr "Юнікод (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1755
+#: ../gedit/gedit-tab.c:1758
 msgid "Name:"
 msgstr "Назва:"
 
-#: ../gedit/gedit-tab.c:1756
+#: ../gedit/gedit-tab.c:1759
 msgid "MIME Type:"
 msgstr "MIME тип:"
 
-#: ../gedit/gedit-tab.c:1757
+#: ../gedit/gedit-tab.c:1760
 msgid "Encoding:"
 msgstr "Кодування:"
 
-#: ../gedit/gedit-tab-label.c:200
+#: ../gedit/gedit-tab-label.c:285
 msgid "Close document"
 msgstr "Закрити документ"
 
@@ -2410,7 +2409,8 @@ msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
-"Ви можете завантажити нову версію gedit, натиснувши на кнопці завантаження або ігнорувати цю версію доки не вийде ще новіша"
+"Ви можете завантажити нову версію gedit, натиснувши на кнопці завантаження "
+"або ігнорувати цю версію доки не вийде ще новіша"
 
 #: ../plugins/checkupdate/gedit-check-update.schemas.in.h:1
 msgid "Version to ignore until the next version is released"
@@ -2511,7 +2511,7 @@ msgstr "Зовнішні інструменти"
 msgid "Shell Output"
 msgstr "Вікно оболонки"
 
-#: ../plugins/externaltools/tools/capture.py:92
+#: ../plugins/externaltools/tools/capture.py:93
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Неможливо виконати команду: \"%s\""
@@ -3126,7 +3126,7 @@ msgid "Create new snippet"
 msgstr "Створити новий фрагмент тексту"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:4
-#: ../plugins/snippets/snippets/Manager.py:409
+#: ../plugins/snippets/snippets/Manager.py:412
 msgid "Delete selected snippet"
 msgstr "Видалити виділений фрагмент тексту"
 
@@ -3135,7 +3135,7 @@ msgid "Export selected snippets"
 msgstr "Експортувати виділені фрагменти тексту"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:6
-#: ../plugins/snippets/snippets/Manager.py:797
+#: ../plugins/snippets/snippets/Manager.py:800
 msgid "Import snippets"
 msgstr "Імпортувати фрагменти тексту"
 
@@ -3149,7 +3149,7 @@ msgstr "Комбінація клавіш, якою активується фр�
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/snippets.ui.h:9
-#: ../plugins/snippets/snippets/Manager.py:686
+#: ../plugins/snippets/snippets/Manager.py:689
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Слово, яким активується фрагмент тексту після натискання Tab"
 
@@ -3189,87 +3189,87 @@ msgstr "додати новий фрагмент..."
 msgid "Global"
 msgstr "Глобальний"
 
-#: ../plugins/snippets/snippets/Manager.py:406
+#: ../plugins/snippets/snippets/Manager.py:409
 msgid "Revert selected snippet"
 msgstr "Повернути виділений фрагмент тексту"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/Manager.py:679
+#: ../plugins/snippets/snippets/Manager.py:682
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
 msgstr ""
-"Значення не є правильним Tab-тригером. Тригери можуть або містити літери "
-"або один не алфавітно-цифровий символ, такий як {, [, тощо."
+"Значення не є правильним Tab-тригером. Тригери можуть або містити літери або "
+"один не алфавітно-цифровий символ, такий як {, [, тощо."
 
-#: ../plugins/snippets/snippets/Manager.py:776
+#: ../plugins/snippets/snippets/Manager.py:779
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Помилка при імпорті: %s"
 
-#: ../plugins/snippets/snippets/Manager.py:783
+#: ../plugins/snippets/snippets/Manager.py:786
 msgid "Import successfully completed"
 msgstr "Імпортування успішно завершено"
 
-#: ../plugins/snippets/snippets/Manager.py:802
-#: ../plugins/snippets/snippets/Manager.py:888
-#: ../plugins/snippets/snippets/Manager.py:951
+#: ../plugins/snippets/snippets/Manager.py:805
+#: ../plugins/snippets/snippets/Manager.py:891
+#: ../plugins/snippets/snippets/Manager.py:954
 msgid "All supported archives"
 msgstr "Усі підтримувані архіви"
-
-#: ../plugins/snippets/snippets/Manager.py:803
-#: ../plugins/snippets/snippets/Manager.py:889
-#: ../plugins/snippets/snippets/Manager.py:952
-msgid "Gzip compressed archive"
-msgstr "Архів стиснений Gzip"
-
-#: ../plugins/snippets/snippets/Manager.py:804
-#: ../plugins/snippets/snippets/Manager.py:890
-#: ../plugins/snippets/snippets/Manager.py:953
-msgid "Bzip2 compressed archive"
-msgstr "Архів стиснений Bzip2"
-
-#: ../plugins/snippets/snippets/Manager.py:805
-msgid "Single snippets file"
-msgstr "Один файл з фрагментами"
 
 #: ../plugins/snippets/snippets/Manager.py:806
 #: ../plugins/snippets/snippets/Manager.py:892
 #: ../plugins/snippets/snippets/Manager.py:955
+msgid "Gzip compressed archive"
+msgstr "Архів стиснений Gzip"
+
+#: ../plugins/snippets/snippets/Manager.py:807
+#: ../plugins/snippets/snippets/Manager.py:893
+#: ../plugins/snippets/snippets/Manager.py:956
+msgid "Bzip2 compressed archive"
+msgstr "Архів стиснений Bzip2"
+
+#: ../plugins/snippets/snippets/Manager.py:808
+msgid "Single snippets file"
+msgstr "Один файл з фрагментами"
+
+#: ../plugins/snippets/snippets/Manager.py:809
+#: ../plugins/snippets/snippets/Manager.py:895
+#: ../plugins/snippets/snippets/Manager.py:958
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../plugins/snippets/snippets/Manager.py:818
+#: ../plugins/snippets/snippets/Manager.py:821
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Помилка при експорті: %s"
 
-#: ../plugins/snippets/snippets/Manager.py:822
+#: ../plugins/snippets/snippets/Manager.py:825
 msgid "Export successfully completed"
 msgstr "Експортування успішно завершено"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/Manager.py:862
-#: ../plugins/snippets/snippets/Manager.py:929
+#: ../plugins/snippets/snippets/Manager.py:865
+#: ../plugins/snippets/snippets/Manager.py:932
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Включити виділені <b>системні</b> фрагменти у експорт?"
 
-#: ../plugins/snippets/snippets/Manager.py:877
-#: ../plugins/snippets/snippets/Manager.py:947
+#: ../plugins/snippets/snippets/Manager.py:880
+#: ../plugins/snippets/snippets/Manager.py:950
 msgid "There are no snippets selected to be exported"
 msgstr "Не виділені фрагмент и тексту для експорту"
 
-#: ../plugins/snippets/snippets/Manager.py:882
-#: ../plugins/snippets/snippets/Manager.py:920
+#: ../plugins/snippets/snippets/Manager.py:885
+#: ../plugins/snippets/snippets/Manager.py:923
 msgid "Export snippets"
 msgstr "Експорт фрагментів тексту"
 
-#: ../plugins/snippets/snippets/Manager.py:1059
+#: ../plugins/snippets/snippets/Manager.py:1062
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Введіть нову комбінацію клавіш, або натисніть Backspace, щоб очистити її"
 
-#: ../plugins/snippets/snippets/Manager.py:1061
+#: ../plugins/snippets/snippets/Manager.py:1064
 msgid "Type a new shortcut"
 msgstr "Натисніть нову комбінацію клавіш"
 
@@ -3334,11 +3334,11 @@ msgstr ""
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Не вдається виконати команду Python (%s): %s"
 
-#: ../plugins/sort/gedit-sort-plugin.c:86
+#: ../plugins/sort/gedit-sort-plugin.c:88
 msgid "S_ort..."
 msgstr "C_ортувати..."
 
-#: ../plugins/sort/gedit-sort-plugin.c:88
+#: ../plugins/sort/gedit-sort-plugin.c:90
 msgid "Sort the current document or selection"
 msgstr "Відсортувати поточний документ чи виділену частину"
 
@@ -3479,11 +3479,11 @@ msgstr "_Автоматична перевірка орфографії"
 msgid "Automatically spell-check the current document"
 msgstr "Автоматично перевіряти орфографію документа"
 
-#: ../plugins/spell/gedit-spell-plugin.c:743
+#: ../plugins/spell/gedit-spell-plugin.c:752
 msgid "The document is empty."
 msgstr "Документ порожній."
 
-#: ../plugins/spell/gedit-spell-plugin.c:773
+#: ../plugins/spell/gedit-spell-plugin.c:782
 msgid "No misspelled words"
 msgstr "Немає слів з помилками"
 
@@ -5183,5 +5183,3 @@ msgstr "Налаштовування модуля вставлення дати 
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:10
 msgid "_Prompt for a format"
 msgstr "За_питувати формат"
-
-
