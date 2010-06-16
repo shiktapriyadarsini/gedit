@@ -531,7 +531,12 @@ get_from_bookmark_file (GeditFileBrowserWidget * obj, GFile * file,
 	item = (NameIcon *)data;
 
 	*name = g_strdup (item->name);
-	*icon = g_object_ref (item->icon);
+	*icon = item->icon;
+
+	if (item->icon != NULL)
+	{
+		g_object_ref (item->icon);
+	}
 
 	return TRUE;
 }
