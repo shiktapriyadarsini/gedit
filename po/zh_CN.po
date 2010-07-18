@@ -7,15 +7,16 @@
 # 甘露(Gan Lu) <rhythm.gan@gmail.com>, 2009
 # Richard Ma <richard.ma.19850509@gmail.com>, 2009
 # 樊栖江(Fan Qijiang) <fqj1994@gmail.com>, 2009.
+# du baodao <centerpoint@139.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&component=general\n"
-"POT-Creation-Date: 2010-03-18 14:30+0000\n"
-"PO-Revision-Date: 2010-03-24 15:57+0800\n"
-"Last-Translator: Eleanor Chen <chenyueg@gmail.com>\n"
-"Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
+"POT-Creation-Date: 2010-06-28 18:59+0000\n"
+"PO-Revision-Date: 2010-07-18 11:28+0800\n"
+"Last-Translator: du baodao <centerpoint@139.com>\n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -401,10 +402,8 @@ msgid ""
 msgstr "gedit 是否应该突出显示被搜索文本的全部出现。"
 
 #: ../data/gedit.schemas.in.in.h:77
-#, fuzzy
-#| msgid "Whether gedit should highlight the current line."
 msgid "Whether gedit should highlight the bracket matching the selected one."
-msgstr "gedit 是否应该突出显示当前行。"
+msgstr "gedit 是否应该突出显示和选择的括号所匹配的括号。"
 
 #: ../data/gedit.schemas.in.in.h:78
 msgid "Whether gedit should highlight the current line."
@@ -810,7 +809,7 @@ msgid "Replace _All"
 msgstr "全部替换(_A)"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:416
-#: ../gedit/gedit-commands-file.c:582
+#: ../gedit/gedit-commands-file.c:577
 msgid "_Replace"
 msgstr "替换(_R)"
 
@@ -842,47 +841,47 @@ msgstr "搜索(_S)："
 msgid "_Wrap around"
 msgstr "回到文档头部继续搜索(_W)"
 
-#: ../gedit/gedit.c:123
+#: ../gedit/gedit.c:126
 msgid "Show the application's version"
 msgstr "显示应用程序版本"
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:129
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "设置打开在命令行中列出的文件时所用的字符编码"
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:129
 msgid "ENCODING"
 msgstr "编码"
 
-#: ../gedit/gedit.c:129
+#: ../gedit/gedit.c:132
 msgid "Display list of possible values for the encoding option"
 msgstr "显示可使用的编码选项列表"
 
-#: ../gedit/gedit.c:132
+#: ../gedit/gedit.c:135
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "在已存在的 gedit 实例中创建一个最上层窗口"
 
-#: ../gedit/gedit.c:135
+#: ../gedit/gedit.c:138
 msgid "Create a new document in an existing instance of gedit"
 msgstr "在已存在的 gedit 实例中创建一个新文档"
 
-#: ../gedit/gedit.c:138
+#: ../gedit/gedit.c:141
 msgid "[FILE...]"
 msgstr "[文件...]"
 
-#: ../gedit/gedit.c:193
+#: ../gedit/gedit.c:196
 #, c-format
 msgid "%s: invalid encoding.\n"
 msgstr "%s：无效的编码。\n"
 
 #. Setup command line options
-#: ../gedit/gedit.c:576
+#: ../gedit/gedit.c:579
 msgid "- Edit text files"
 msgstr "- 编辑文本文件"
 
-#: ../gedit/gedit.c:612
+#: ../gedit/gedit.c:615
 #, c-format
 msgid ""
 "%s\n"
@@ -891,51 +890,51 @@ msgstr ""
 "%s\n"
 "运行“%s --help”可查看可用的命令行选项的完整列表。\n"
 
-#: ../gedit/gedit-commands-file.c:255
+#: ../gedit/gedit-commands-file.c:250
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "正在载入文件“%s”..."
 
-#: ../gedit/gedit-commands-file.c:264
+#: ../gedit/gedit-commands-file.c:259
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
 msgstr[0] "正在载入 %d 个文件..."
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:458
+#: ../gedit/gedit-commands-file.c:453
 msgid "Open Files"
 msgstr "打开文件"
 
-#: ../gedit/gedit-commands-file.c:569
+#: ../gedit/gedit-commands-file.c:564
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "文件“%s”为只读。"
 
-#: ../gedit/gedit-commands-file.c:574
+#: ../gedit/gedit-commands-file.c:569
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "您想要试着将其替换为您正在保存的文件吗？"
 
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:866
+#: ../gedit/gedit-commands-file.c:638 ../gedit/gedit-commands-file.c:861
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "正在保存文件“%s”..."
 
-#: ../gedit/gedit-commands-file.c:751
+#: ../gedit/gedit-commands-file.c:746
 msgid "Save As…"
 msgstr "另存为..."
 
-#: ../gedit/gedit-commands-file.c:1080
+#: ../gedit/gedit-commands-file.c:1075
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "正在还原文档“%s”..."
 
-#: ../gedit/gedit-commands-file.c:1125
+#: ../gedit/gedit-commands-file.c:1120
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "还原对文档“%s”未保存的更改吗？"
 
-#: ../gedit/gedit-commands-file.c:1134
+#: ../gedit/gedit-commands-file.c:1129
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -944,12 +943,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "前 %ld 秒内对文档所做的更改将永久丢失。"
 
-#: ../gedit/gedit-commands-file.c:1143
+#: ../gedit/gedit-commands-file.c:1138
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "上一分钟内对文档所做的更改将永久丢失。"
 
-#: ../gedit/gedit-commands-file.c:1149
+#: ../gedit/gedit-commands-file.c:1144
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -959,7 +958,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "上一分钟零 %ld 秒内对文档所做的更改将永久丢失。"
 
-#: ../gedit/gedit-commands-file.c:1159
+#: ../gedit/gedit-commands-file.c:1154
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -968,11 +967,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "前 %ld 分钟内对文档所做的更改将永久丢失。"
 
-#: ../gedit/gedit-commands-file.c:1174
+#: ../gedit/gedit-commands-file.c:1169
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "上 %d 小时内对文档所做的更改将永久丢失。"
 
-#: ../gedit/gedit-commands-file.c:1180
+#: ../gedit/gedit-commands-file.c:1175
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -982,7 +981,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "上一小时零 %d 分钟内对文档所做的更改将永久丢失。"
 
-#: ../gedit/gedit-commands-file.c:1195
+#: ../gedit/gedit-commands-file.c:1190
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -990,7 +989,7 @@ msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "上 %d 小时内对文档所做的更改将永久丢失。"
 
-#: ../gedit/gedit-commands-file.c:1221
+#: ../gedit/gedit-commands-file.c:1216
 msgid "_Revert"
 msgstr "还原(_R)"
 
@@ -1157,17 +1156,17 @@ msgstr "泰语"
 msgid "Unknown"
 msgstr "未知"
 
-#: ../gedit/gedit-encodings-combo-box.c:272
+#: ../gedit/gedit-encodings-combo-box.c:276
 msgid "Automatically Detected"
 msgstr "自动检测"
 
-#: ../gedit/gedit-encodings-combo-box.c:288
-#: ../gedit/gedit-encodings-combo-box.c:303
+#: ../gedit/gedit-encodings-combo-box.c:292
+#: ../gedit/gedit-encodings-combo-box.c:307
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "当前语系(%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:353
+#: ../gedit/gedit-encodings-combo-box.c:357
 msgid "Add or Remove..."
 msgstr "添加或删除..."
 
@@ -1179,21 +1178,21 @@ msgstr "全部文本文件"
 msgid "C_haracter Encoding:"
 msgstr "字符编码(_H)："
 
-#: ../gedit/gedit-file-chooser-dialog.c:141
+#: ../gedit/gedit-file-chooser-dialog.c:146
 msgid "L_ine Ending:"
 msgstr "行尾(_I)"
 
-#: ../gedit/gedit-file-chooser-dialog.c:160
+#: ../gedit/gedit-file-chooser-dialog.c:165
 msgid "Unix/Linux"
-msgstr ""
+msgstr "Unix/Linux"
 
-#: ../gedit/gedit-file-chooser-dialog.c:166
+#: ../gedit/gedit-file-chooser-dialog.c:171
 msgid "Mac OS Classic"
-msgstr ""
+msgstr "Mac 操作系统风格"
 
-#: ../gedit/gedit-file-chooser-dialog.c:172
+#: ../gedit/gedit-file-chooser-dialog.c:177
 msgid "Windows"
-msgstr ""
+msgstr "Windows"
 
 #: ../gedit/gedit-help.c:104
 msgid "There was an error displaying the help."
@@ -1294,8 +1293,8 @@ msgstr "字符编码(_A)："
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-message-area.c:512
 #: ../gedit/gedit-io-error-message-area.c:537
-#: ../gedit/gedit-io-error-message-area.c:814
-#: ../gedit/gedit-io-error-message-area.c:824
+#: ../gedit/gedit-io-error-message-area.c:815
+#: ../gedit/gedit-io-error-message-area.c:825
 msgid "Edit Any_way"
 msgstr "仍然编辑(_W)"
 
@@ -1303,8 +1302,8 @@ msgstr "仍然编辑(_W)"
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-message-area.c:515
 #: ../gedit/gedit-io-error-message-area.c:542
-#: ../gedit/gedit-io-error-message-area.c:817
-#: ../gedit/gedit-io-error-message-area.c:829
+#: ../gedit/gedit-io-error-message-area.c:818
+#: ../gedit/gedit-io-error-message-area.c:830
 msgid "D_on't Edit"
 msgstr "放弃编辑(_O)"
 
@@ -1353,7 +1352,7 @@ msgid "Could not open the file %s using the %s character encoding."
 msgstr "无法使用编码 %2$s 编码打开文件 %1$s。"
 
 #: ../gedit/gedit-io-error-message-area.c:673
-#: ../gedit/gedit-io-error-message-area.c:747
+#: ../gedit/gedit-io-error-message-area.c:748
 msgid "Select a different character encoding from the menu and try again."
 msgstr "从菜单中选择一种不同的字符编码，然后再试一次。"
 
@@ -1362,65 +1361,65 @@ msgstr "从菜单中选择一种不同的字符编码，然后再试一次。"
 msgid "Could not open the file %s."
 msgstr "无法打开文件 %s。"
 
-#: ../gedit/gedit-io-error-message-area.c:742
+#: ../gedit/gedit-io-error-message-area.c:743
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "无法使用 %2$s 字符编码保存文件 %1$s。"
 
-#: ../gedit/gedit-io-error-message-area.c:745
+#: ../gedit/gedit-io-error-message-area.c:746
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr "文档包含无法使用指定字符编码表示的一个或多个字符。"
 
-#: ../gedit/gedit-io-error-message-area.c:844
+#: ../gedit/gedit-io-error-message-area.c:845
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "此文件(%s)已经在另外的 gedit 窗口中打开。"
 
-#: ../gedit/gedit-io-error-message-area.c:858
+#: ../gedit/gedit-io-error-message-area.c:859
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
 msgstr "gedit 已经在非编辑方式中打开了此文件的其它实例。您是否想要仍然编辑？"
 
-#: ../gedit/gedit-io-error-message-area.c:917
-#: ../gedit/gedit-io-error-message-area.c:927
-#: ../gedit/gedit-io-error-message-area.c:1023
-#: ../gedit/gedit-io-error-message-area.c:1033
+#: ../gedit/gedit-io-error-message-area.c:918
+#: ../gedit/gedit-io-error-message-area.c:928
+#: ../gedit/gedit-io-error-message-area.c:1024
+#: ../gedit/gedit-io-error-message-area.c:1034
 msgid "S_ave Anyway"
 msgstr "仍然保存(_A)"
 
-#: ../gedit/gedit-io-error-message-area.c:921
-#: ../gedit/gedit-io-error-message-area.c:931
-#: ../gedit/gedit-io-error-message-area.c:1027
-#: ../gedit/gedit-io-error-message-area.c:1037
+#: ../gedit/gedit-io-error-message-area.c:922
+#: ../gedit/gedit-io-error-message-area.c:932
+#: ../gedit/gedit-io-error-message-area.c:1028
+#: ../gedit/gedit-io-error-message-area.c:1038
 msgid "D_on't Save"
 msgstr "不保存(_O)"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. could be interpreted as the changes he made in the document. beside "reading" is
 #. not accurate (since last load/save)
-#: ../gedit/gedit-io-error-message-area.c:949
+#: ../gedit/gedit-io-error-message-area.c:950
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "文件 %s 自上次读取之后发生了修改。"
 
-#: ../gedit/gedit-io-error-message-area.c:964
+#: ../gedit/gedit-io-error-message-area.c:965
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "如果您保存的话，外部的所有更改都将丢失。仍然保存吗？"
 
-#: ../gedit/gedit-io-error-message-area.c:1055
+#: ../gedit/gedit-io-error-message-area.c:1056
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "保存 %s 时无法创建备份文件"
 
-#: ../gedit/gedit-io-error-message-area.c:1058
+#: ../gedit/gedit-io-error-message-area.c:1059
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "保存 %s 时无法创建临时备份文件"
 
-#: ../gedit/gedit-io-error-message-area.c:1074
+#: ../gedit/gedit-io-error-message-area.c:1075
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1430,55 +1429,55 @@ msgstr ""
 "是如果是在保存中发生了错误，，您可能会丢失文件的旧副本。仍然保存吗？"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-message-area.c:1134
+#: ../gedit/gedit-io-error-message-area.c:1135
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr "gedit 无法以写入模式处理 %s 位置。请检查键入的位置是否正确，然后重试。"
 
-#: ../gedit/gedit-io-error-message-area.c:1142
+#: ../gedit/gedit-io-error-message-area.c:1143
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr "gedit 无法以写入模式处理此位置。请检查键入的位置是否正确，然后重试。"
 
-#: ../gedit/gedit-io-error-message-area.c:1151
+#: ../gedit/gedit-io-error-message-area.c:1152
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr "%s 不是有效的位置。请检查键入的位置是否正确，然后重试。"
 
-#: ../gedit/gedit-io-error-message-area.c:1157
+#: ../gedit/gedit-io-error-message-area.c:1158
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr "您没有权限保存文件。请检查键入的位置是否正确，然后重试。"
 
-#: ../gedit/gedit-io-error-message-area.c:1163
+#: ../gedit/gedit-io-error-message-area.c:1164
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
 msgstr "没有足够的磁盘空间用于保存文件。请释放一些磁盘空间，然后重试。"
 
-#: ../gedit/gedit-io-error-message-area.c:1168
+#: ../gedit/gedit-io-error-message-area.c:1169
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr "您试图将文件保存至只读磁盘。请检查键入的位置是否正确，然后重试。"
 
-#: ../gedit/gedit-io-error-message-area.c:1174
+#: ../gedit/gedit-io-error-message-area.c:1175
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "已经存在同名文件。请使用不同的名称。"
 
-#: ../gedit/gedit-io-error-message-area.c:1179
+#: ../gedit/gedit-io-error-message-area.c:1180
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr "您试图用来保存文件的磁盘有文件名长度的限制。请使用较短的名称。"
 
-#: ../gedit/gedit-io-error-message-area.c:1186
+#: ../gedit/gedit-io-error-message-area.c:1187
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1486,7 +1485,7 @@ msgid ""
 msgstr ""
 "磁盘有文件大小的限制，请保存较小的文件或者将文件保存到没有此限制的磁盘上。"
 
-#: ../gedit/gedit-io-error-message-area.c:1202
+#: ../gedit/gedit-io-error-message-area.c:1203
 #, c-format
 msgid "Could not save the file %s."
 msgstr "无法保存文件 %s。"
@@ -1494,29 +1493,29 @@ msgstr "无法保存文件 %s。"
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. could be interpreted as the changes he made in the document. beside "reading" is
 #. not accurate (since last load/save)
-#: ../gedit/gedit-io-error-message-area.c:1246
+#: ../gedit/gedit-io-error-message-area.c:1247
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "文件 %s 已在磁盘上更改。"
 
-#: ../gedit/gedit-io-error-message-area.c:1251
+#: ../gedit/gedit-io-error-message-area.c:1252
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "您是想要丢弃您的更改还是重新载入文件？"
 
-#: ../gedit/gedit-io-error-message-area.c:1253
+#: ../gedit/gedit-io-error-message-area.c:1254
 msgid "Do you want to reload the file?"
 msgstr "您是否想要重新载入文件？"
 
-#: ../gedit/gedit-io-error-message-area.c:1259
-#: ../gedit/gedit-io-error-message-area.c:1270
+#: ../gedit/gedit-io-error-message-area.c:1260
+#: ../gedit/gedit-io-error-message-area.c:1271
 msgid "_Reload"
 msgstr "重新载入(_R)"
 
-#: ../gedit/gedit-panel.c:356 ../gedit/gedit-panel.c:528
+#: ../gedit/gedit-panel.c:360 ../gedit/gedit-panel.c:532
 msgid "Empty"
 msgstr "空"
 
-#: ../gedit/gedit-panel.c:418
+#: ../gedit/gedit-panel.c:422
 msgid "Hide panel"
 msgstr "隐藏面板"
 
@@ -1565,10 +1564,9 @@ msgid "Cannot initialize preferences manager."
 msgstr "无法初始化首选项管理器。"
 
 #: ../gedit/gedit-prefs-manager.c:1138
-#, fuzzy, c-format
-#| msgid "Expected `%s' got `%s' for key %s"
+#, c-format
 msgid "Expected `%s', got `%s' for key %s"
-msgstr "Gconf 项 %3$s 期望的类型是“%1$s”，得到的类型是“%2$s”"
+msgstr "Gconf 项 %3$s 期望的类型是“%1$s”，得到的类型是“`%2$s'”"
 
 #: ../gedit/gedit-print-job.c:541
 #, c-format
@@ -1699,7 +1697,7 @@ msgstr "页面预览"
 msgid "The preview of a page in the document to be printed"
 msgstr "要打印文档中页面的预览"
 
-#: ../gedit/gedit-smart-charset-converter.c:308
+#: ../gedit/gedit-smart-charset-converter.c:319
 msgid "It is not possible to detect the encoding automatically"
 msgstr "不能自动检测编码"
 
@@ -1766,42 +1764,42 @@ msgid "Saving %s"
 msgstr "保存 %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1670
+#: ../gedit/gedit-tab.c:1673
 msgid "RO"
 msgstr "只读"
 
-#: ../gedit/gedit-tab.c:1717
+#: ../gedit/gedit-tab.c:1720
 #, c-format
 msgid "Error opening file %s"
 msgstr "打开文件 %s 出错"
 
-#: ../gedit/gedit-tab.c:1722
+#: ../gedit/gedit-tab.c:1725
 #, c-format
 msgid "Error reverting file %s"
 msgstr "还原文件 %s 出错"
 
-#: ../gedit/gedit-tab.c:1727
+#: ../gedit/gedit-tab.c:1730
 #, c-format
 msgid "Error saving file %s"
 msgstr "保存文件 %s 出错"
 
-#: ../gedit/gedit-tab.c:1748
+#: ../gedit/gedit-tab.c:1751
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1755
+#: ../gedit/gedit-tab.c:1758
 msgid "Name:"
 msgstr "名称："
 
-#: ../gedit/gedit-tab.c:1756
+#: ../gedit/gedit-tab.c:1759
 msgid "MIME Type:"
 msgstr "MIME 类型："
 
-#: ../gedit/gedit-tab.c:1757
+#: ../gedit/gedit-tab.c:1760
 msgid "Encoding:"
 msgstr "编码："
 
-#: ../gedit/gedit-tab-label.c:200
+#: ../gedit/gedit-tab-label.c:285
 msgid "Close document"
 msgstr "关闭文档"
 
@@ -2272,7 +2270,7 @@ msgstr "点击下载按钮下载最新版本的 Gedit 或者忽略那个版本�
 
 #: ../plugins/checkupdate/gedit-check-update.schemas.in.h:1
 msgid "Version to ignore until the next version is released"
-msgstr ""
+msgstr "在下一个版本发布前忽略的版本"
 
 #: ../plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:1
 msgid ""
@@ -2367,7 +2365,7 @@ msgstr "外部工具"
 msgid "Shell Output"
 msgstr "Shell 输出"
 
-#: ../plugins/externaltools/tools/capture.py:92
+#: ../plugins/externaltools/tools/capture.py:93
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "无法执行：%s"
@@ -2752,154 +2750,154 @@ msgid ""
 "settings to make the directory visible"
 msgstr "新目录现在已被过滤掉。您需要调整您的过滤器设置才能看到文件"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:704
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:709
 msgid "Bookmarks"
 msgstr "书签"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:790
 msgid "_Filter"
 msgstr "过滤器(_F)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:790
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:795
 msgid "_Move to Trash"
 msgstr "移动到回收站(_M)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:791
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:796
 msgid "Move selected file or folder to trash"
 msgstr "将选中文件或文件夹移动到回收站"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:793
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:798
 msgid "_Delete"
 msgstr "删除(_D)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:794
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:799
 msgid "Delete selected file or folder"
 msgstr "删除选中的文件或文件夹"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:801
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:806
 msgid "Open selected file"
 msgstr "打开选中文件"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:807
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:812
 msgid "Up"
 msgstr "向上"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:808
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:813
 msgid "Open the parent folder"
 msgstr "打开父文件夹"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:813
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:818
 msgid "_New Folder"
 msgstr "新建文件夹(_N)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:814
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:819
 msgid "Add new empty folder"
 msgstr "添加新的空文件夹"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:816
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
 msgid "New F_ile"
 msgstr "新建文件(_I)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:817
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:822
 msgid "Add new empty file"
 msgstr "添加新的空文件"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
 msgid "_Rename"
 msgstr "重命名(_R)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:823
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:828
 msgid "Rename selected file or folder"
 msgstr "重命名选中的文件或文件夹"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:829
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:834
 msgid "_Previous Location"
 msgstr "上一个位置(_P)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:831
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:836
 msgid "Go to the previous visited location"
 msgstr "转到浏览的上一个位置"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:833
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
 msgid "_Next Location"
 msgstr "下一个位置(_N)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:834
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:839
 msgid "Go to the next visited location"
 msgstr "转到浏览的下一个位置"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:835
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:840
 msgid "Re_fresh View"
 msgstr "刷新视图(_F)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:836
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:841
 msgid "Refresh the view"
 msgstr "刷新视图"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:837
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:855
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:842
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:860
 msgid "_View Folder"
 msgstr "查看文件夹(_V)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:856
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:843
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:861
 msgid "View folder in file manager"
 msgstr "在文件管理器中查看文件夹"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:845
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
 msgid "Show _Hidden"
 msgstr "显示隐藏文件(_H)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:846
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:851
 msgid "Show hidden files and folders"
 msgstr "显示隐藏的文件和文件夹"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:848
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
 msgid "Show _Binary"
 msgstr "显示二进制(_B)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:849
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:854
 msgid "Show binary files"
 msgstr "显示二进制文件"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:981
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:990
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1011
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:986
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:995
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1016
 msgid "Previous location"
 msgstr "上一个位置"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:983
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:988
 msgid "Go to previous location"
 msgstr "转到上一个位置"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:985
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1006
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:990
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1011
 msgid "Go to a previously opened location"
 msgstr "转到上一个打开的位置"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1002
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1007
 msgid "Next location"
 msgstr "下一个位置"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1004
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1009
 msgid "Go to next location"
 msgstr "转到下一个位置"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1216
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1221
 msgid "_Match Filename"
 msgstr "匹配文件名(_M)"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2118
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2123
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "挂载的卷没有挂载对象：%s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2198
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2203
 #, c-format
 msgid "Could not open media: %s"
 msgstr "无法打开介质：%s。"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2245
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2250
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "无法挂载卷：%s"
@@ -2967,7 +2965,7 @@ msgid "Create new snippet"
 msgstr "创建新片断"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:4
-#: ../plugins/snippets/snippets/Manager.py:409
+#: ../plugins/snippets/snippets/Manager.py:412
 msgid "Delete selected snippet"
 msgstr "删除选中的片断"
 
@@ -2976,7 +2974,7 @@ msgid "Export selected snippets"
 msgstr "导出选中片断"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:6
-#: ../plugins/snippets/snippets/Manager.py:797
+#: ../plugins/snippets/snippets/Manager.py:800
 msgid "Import snippets"
 msgstr "导入片断"
 
@@ -2990,11 +2988,9 @@ msgstr "此片断的快捷键已经激活"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/snippets.ui.h:9
-#: ../plugins/snippets/snippets/Manager.py:686
-#, fuzzy
-#| msgid "Single word with which the snippet is activated after pressing tab"
+#: ../plugins/snippets/snippets/Manager.py:689
 msgid "Single word the snippet is activated with after pressing Tab"
-msgstr "按下 tab 键后激活片断所需的单字"
+msgstr "按下 tab 键后和片断一起激活的单字"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:10
 msgid "Snippets Manager"
@@ -3032,12 +3028,12 @@ msgstr "添加新片断..."
 msgid "Global"
 msgstr "全局"
 
-#: ../plugins/snippets/snippets/Manager.py:406
+#: ../plugins/snippets/snippets/Manager.py:409
 msgid "Revert selected snippet"
 msgstr "还原选中的片断"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/Manager.py:679
+#: ../plugins/snippets/snippets/Manager.py:682
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
@@ -3045,73 +3041,73 @@ msgstr ""
 "这不是有效的跳格触发器。触发器必须是包含包含字母或者单个非字母字符，比如 "
 "{ 或 [ 等等。"
 
-#: ../plugins/snippets/snippets/Manager.py:776
+#: ../plugins/snippets/snippets/Manager.py:779
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "导入时发生了下列错误：%s"
 
-#: ../plugins/snippets/snippets/Manager.py:783
+#: ../plugins/snippets/snippets/Manager.py:786
 msgid "Import successfully completed"
 msgstr "导入成功完成"
 
-#: ../plugins/snippets/snippets/Manager.py:802
-#: ../plugins/snippets/snippets/Manager.py:888
-#: ../plugins/snippets/snippets/Manager.py:951
+#: ../plugins/snippets/snippets/Manager.py:805
+#: ../plugins/snippets/snippets/Manager.py:891
+#: ../plugins/snippets/snippets/Manager.py:954
 msgid "All supported archives"
 msgstr "支持的全部存档"
-
-#: ../plugins/snippets/snippets/Manager.py:803
-#: ../plugins/snippets/snippets/Manager.py:889
-#: ../plugins/snippets/snippets/Manager.py:952
-msgid "Gzip compressed archive"
-msgstr "Gzip 压缩的存档"
-
-#: ../plugins/snippets/snippets/Manager.py:804
-#: ../plugins/snippets/snippets/Manager.py:890
-#: ../plugins/snippets/snippets/Manager.py:953
-msgid "Bzip2 compressed archive"
-msgstr "Bzip2 压缩的存档"
-
-#: ../plugins/snippets/snippets/Manager.py:805
-msgid "Single snippets file"
-msgstr "单个片断文件"
 
 #: ../plugins/snippets/snippets/Manager.py:806
 #: ../plugins/snippets/snippets/Manager.py:892
 #: ../plugins/snippets/snippets/Manager.py:955
+msgid "Gzip compressed archive"
+msgstr "Gzip 压缩的存档"
+
+#: ../plugins/snippets/snippets/Manager.py:807
+#: ../plugins/snippets/snippets/Manager.py:893
+#: ../plugins/snippets/snippets/Manager.py:956
+msgid "Bzip2 compressed archive"
+msgstr "Bzip2 压缩的存档"
+
+#: ../plugins/snippets/snippets/Manager.py:808
+msgid "Single snippets file"
+msgstr "单个片断文件"
+
+#: ../plugins/snippets/snippets/Manager.py:809
+#: ../plugins/snippets/snippets/Manager.py:895
+#: ../plugins/snippets/snippets/Manager.py:958
 msgid "All files"
 msgstr "全部文件"
 
-#: ../plugins/snippets/snippets/Manager.py:818
+#: ../plugins/snippets/snippets/Manager.py:821
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "导出时发生了下列错误：%s"
 
-#: ../plugins/snippets/snippets/Manager.py:822
+#: ../plugins/snippets/snippets/Manager.py:825
 msgid "Export successfully completed"
 msgstr "导出成功完成"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/Manager.py:862
-#: ../plugins/snippets/snippets/Manager.py:929
+#: ../plugins/snippets/snippets/Manager.py:865
+#: ../plugins/snippets/snippets/Manager.py:932
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "您是否想要在导出时包含选中的<b>系统</b>片断？"
 
-#: ../plugins/snippets/snippets/Manager.py:877
-#: ../plugins/snippets/snippets/Manager.py:947
+#: ../plugins/snippets/snippets/Manager.py:880
+#: ../plugins/snippets/snippets/Manager.py:950
 msgid "There are no snippets selected to be exported"
 msgstr "没有选中要导出的片断"
 
-#: ../plugins/snippets/snippets/Manager.py:882
-#: ../plugins/snippets/snippets/Manager.py:920
+#: ../plugins/snippets/snippets/Manager.py:885
+#: ../plugins/snippets/snippets/Manager.py:923
 msgid "Export snippets"
 msgstr "导出片断"
 
-#: ../plugins/snippets/snippets/Manager.py:1059
+#: ../plugins/snippets/snippets/Manager.py:1062
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "输入新快捷键或按 Backspace 清除"
 
-#: ../plugins/snippets/snippets/Manager.py:1061
+#: ../plugins/snippets/snippets/Manager.py:1064
 msgid "Type a new shortcut"
 msgstr "输入新快捷键"
 
@@ -3319,11 +3315,11 @@ msgstr "自动检查拼写(_A)"
 msgid "Automatically spell-check the current document"
 msgstr "自动检查当前文档的拼写"
 
-#: ../plugins/spell/gedit-spell-plugin.c:743
+#: ../plugins/spell/gedit-spell-plugin.c:752
 msgid "The document is empty."
 msgstr "文档为空。"
 
-#: ../plugins/spell/gedit-spell-plugin.c:773
+#: ../plugins/spell/gedit-spell-plugin.c:782
 msgid "No misspelled words"
 msgstr "没有拼错的单词"
 
@@ -3899,10 +3895,8 @@ msgid "Horizontal space (deprecated)"
 msgstr "水平间距(已废弃)"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:134
-#, fuzzy
-#| msgid "I18N BiDi over-ride"
 msgid "I18N BiDi override"
-msgstr "I18N 双向文字"
+msgstr "I18N 双向文字覆盖"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:135
 msgid "Image"
@@ -4628,7 +4622,6 @@ msgid "Footnote"
 msgstr "脚注"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:12
-#, fuzzy
 msgid "Function cosine"
 msgstr "余弦函数"
 
@@ -4987,13 +4980,13 @@ msgstr "在光标处插入当前的日期和时间。"
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:4
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
-msgstr ""
+msgstr "%Y/%m/%d %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
 #: ../plugins/time/gedit-time-dialog.ui.h:4
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:6
 msgid "01/11/2009 17:52:00"
-msgstr ""
+msgstr "2009/01/11 17:52:00"
 
 #: ../plugins/time/gedit-time-dialog.ui.h:5
 msgid "Insert Date and Time"
@@ -5018,7 +5011,6 @@ msgid "Configure date/time plugin"
 msgstr "配置日期/时间插件"
 
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:9
-#, fuzzy
 msgid "When inserting date/time..."
 msgstr "在插入日期/时间时..."
 
