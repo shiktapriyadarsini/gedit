@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: gedit.master.kn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-22 15:02+0530\n"
-"PO-Revision-Date: 2010-04-22 15:00+0530\n"
+"PO-Revision-Date: 2010-07-28 12:22+0530\n"
 "Last-Translator: Shankar Prasad <svenkate@redhat.com>\n"
-"Language-Team: kn-IN <>\n"
+"Language-Team: kn_IN <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -305,8 +305,7 @@ msgstr ""
 "ತೋರಿಸಿದಂತೆಯೆ ನಮೂದಿತಗೊಳ್ಳುವಂತೆ ಎಚ್ಚರಿಕೆವಹಿಸಿ."
 
 #: ../data/gedit.schemas.in.in.h:55
-msgid ""
-"Specifies the font to use for a document's body when printing documents."
+msgid "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "ದಸ್ತಾವೇಜುಗಳನ್ನು ಮುದ್ರಿಸುವಾಗ ದಸ್ತಾವೇಜಿನ ಮುಖ್ಯಭಾಗದಲ್ಲಿ ಬಳಸಬೇಕಿರುವ ಅಕ್ಷರಶೈಲಿಯನ್ನು "
 "ಸೂಚಿಸುತ್ತದೆ."
@@ -428,8 +427,7 @@ msgid "Whether gedit should enable syntax highlighting."
 msgstr "gedit ವಾಕ್ಯ ಹೈಲೈಟಿಂಗ್‍ನ್ನು ಇಂಡೆಂಟೇಶನನ್ನು ಶಕ್ತಗೊಳಿಸಬೇಕೆ."
 
 #: ../data/gedit.schemas.in.in.h:76
-msgid ""
-"Whether gedit should highlight all the occurrences of the searched text."
+msgid "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "gedit ಹುಡುಕಲಾದ ಪಠ್ಯಗಳನ್ನು ಎಲ್ಲಾ ಜಾಗದಲ್ಲೂ ಹೈಲೈಟ್ ಮಾಡಲು ಬಯಸುತ್ತೀರೆ."
 
 #: ../data/gedit.schemas.in.in.h:77
@@ -460,8 +458,7 @@ msgid ""
 msgstr "ಒಂದು ಕಡತವನ್ನು ಲೋಡ್‌ ಮಾಡಿದಾಗ ತೆರೆಸೂಚಕವನ್ನು ಅದರ ಮುಂಚಿನ ಸ್ಥಳಕ್ಕೆ ಮರಳಿಸಬೇಕೆ."
 
 #: ../data/gedit.schemas.in.in.h:83
-msgid ""
-"Whether the bottom panel at the bottom of editing windows should be visible."
+msgid "Whether the bottom panel at the bottom of editing windows should be visible."
 msgstr "ಸಂಪಾದಿಸುವ ವಿಂಡೋದ ಕೆಳಭಾಗದಲ್ಲಿನ ಕೆಳಫಲಕವು ಕಾಣಿಸುತ್ತಿರಬೇಕೆ."
 
 #: ../data/gedit.schemas.in.in.h:84
@@ -469,8 +466,7 @@ msgid "Whether the side pane at the left of editing windows should be visible."
 msgstr "ಸಂಪಾದಿಸುವ ವಿಂಡೋಗಳ ಎಡಭಾಗದಲ್ಲಿನ ಬದಿ ಫಲಕವು ಕಾಣಿಸುತ್ತಿರಬೇಕೆ."
 
 #: ../data/gedit.schemas.in.in.h:85
-msgid ""
-"Whether the status bar at the bottom of editing windows should be visible."
+msgid "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "ಸಂಪಾದಿಸುವ ವಿಂಡೋದ ಕೆಳಭಾಗದಲ್ಲಿನ ಕೆಳಫಲಕವು ಕಾಣಿಸುತ್ತಿರಬೇಕೆ."
 
 #: ../data/gedit.schemas.in.in.h:86
@@ -532,19 +528,15 @@ msgstr "ಸಂದೇಹ"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:412
 #, c-format
-msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+msgid "If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
-msgstr[0] ""
-"ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ಸೆಕೆಂಡಿನ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
-msgstr[1] ""
-"ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ಸೆಕೆಂಡುಗಳ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[0] "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ಸೆಕೆಂಡಿನ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[1] "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ಸೆಕೆಂಡುಗಳ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:421
-msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
+msgid "If you don't save, changes from the last minute will be permanently lost."
 msgstr "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ ನಿಮಿಷದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:427
@@ -564,15 +556,12 @@ msgstr[1] ""
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:437
 #, c-format
-msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+msgid "If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
-msgstr[0] ""
-"ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ನಿಮಿಷದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
-msgstr[1] ""
-"ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ನಿಮಿಷಗಳ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[0] "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ನಿಮಿಷದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[1] "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %ld ನಿಮಿಷಗಳ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:452
 msgid "If you don't save, changes from the last hour will be permanently lost."
@@ -595,14 +584,10 @@ msgstr[1] ""
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:473
 #, c-format
-msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] ""
-"ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %d ಗಂಟೆಯ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
-msgstr[1] ""
-"ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %d ಗಂಟೆಗಳ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgid "If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %d ಗಂಟೆಯ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[1] "ನೀವು ಉಳಿಸದೆ ಹೋದರೆ, ಕೊನೆಯ %d ಗಂಟೆಗಳ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:516
 #, c-format
@@ -629,10 +614,8 @@ msgstr[1] "%d ದಸ್ತಾವೇಜುಗಳ ಬದಲಾವಣೆಗಳು �
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:707
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural ""
-"There are %d documents with unsaved changes. Save changes before closing?"
-msgstr[0] ""
-"%d ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಉಳಿಸದೆ ಇರುವ ಬದಲಾವಣೆಗಳಿವೆ. ಮುಚ್ಚುವ ಮೊದಲು ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಬೇಕೆ?"
+msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] "%d ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಉಳಿಸದೆ ಇರುವ ಬದಲಾವಣೆಗಳಿವೆ. ಮುಚ್ಚುವ ಮೊದಲು ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಬೇಕೆ?"
 msgstr[1] ""
 "%d ದಸ್ತಾವೇಜುಗಳಲ್ಲಿ ಉಳಿಸದೆ ಇರುವ ಬದಲಾವಣೆಗಳಿವೆ. ಮುಚ್ಚುವ ಮೊದಲು ಬದಲಾವಣೆಗಳನ್ನು "
 "ಉಳಿಸಬೇಕೆ?"
@@ -647,8 +630,7 @@ msgstr "ನೀವು ಉಳಿಸಲು ಬಯಸುವ ದಸ್ತಾವೇಜ
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:748
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
-"ನೀವು ಬಳಸಲು ಇಚ್ಚಿಸದೆ ಹೋದರೆ, ನೀವು ಮಾಡಿದ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr "ನೀವು ಬಳಸಲು ಇಚ್ಚಿಸದೆ ಹೋದರೆ, ನೀವು ಮಾಡಿದ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/dialogs/gedit-encodings-dialog.c:321
 #, fuzzy
@@ -733,7 +715,7 @@ msgstr "ಸ್ವಯಂಚಾಲಿತ ಇಂಡೆಂಟೇಶನ್"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:3
 msgid "Bracket Matching"
-msgstr "ಬ್ರಾಕೆಟ್ ಮ್ಯಾಚಿಂಗ್"
+msgstr "ಆವರಣ ಚಿಹ್ನೆ ತಾಳೆಯಾಗುವಿಕೆ"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:4
 msgid "Color Scheme"
@@ -791,7 +773,7 @@ msgstr "ತಾಳೆಯಾಗುವ ಆವರಣ ಚಿಹ್ನೆಯನ್ನ�
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
 msgid "Insert _spaces instead of tabs"
-msgstr "ಟ್ಯಾಬ್‍ಗಳ ಬದಲು ಖಾಲಿಸ್ತಳಗಳನ್ನು ತೂರಿಸು(_s)"
+msgstr "ಟ್ಯಾಬ್‍ಗಳ ಬದಲು ಖಾಲಿಸ್ಥಳಗಳನ್ನು ತೂರಿಸು(_s)"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
 #: ../gedit/gedit-print-preferences.ui.h:5
@@ -998,19 +980,15 @@ msgstr "'%s' ದಸ್ತಾವೇಜನ್ನು ಹಿಂದಿನ ಸ್ಥ�
 
 #: ../gedit/gedit-commands-file.c:1129
 #, c-format
-msgid ""
-"Changes made to the document in the last %ld second will be permanently lost."
+msgid "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
-msgstr[0] ""
-"ದಸ್ತಾವೇಜಿಗೆ ಕೊನೆಯ %ld ಸೆಂಕೆಂಡಿನಲ್ಲಿ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
-msgstr[1] ""
-"ದಸ್ತಾವೇಜಿಗೆ ಕೊನೆಯ %ld ಸೆಂಕೆಂಡುಗಳಲ್ಲಿ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[0] "ದಸ್ತಾವೇಜಿಗೆ ಕೊನೆಯ %ld ಸೆಂಕೆಂಡಿನಲ್ಲಿ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[1] "ದಸ್ತಾವೇಜಿಗೆ ಕೊನೆಯ %ld ಸೆಂಕೆಂಡುಗಳಲ್ಲಿ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/gedit-commands-file.c:1138
-msgid ""
-"Changes made to the document in the last minute will be permanently lost."
+msgid "Changes made to the document in the last minute will be permanently lost."
 msgstr "ಕೊನೆಯ ನಿಮಿಷದಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/gedit-commands-file.c:1144
@@ -1030,15 +1008,12 @@ msgstr[1] ""
 
 #: ../gedit/gedit-commands-file.c:1154
 #, c-format
-msgid ""
-"Changes made to the document in the last %ld minute will be permanently lost."
+msgid "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
-msgstr[0] ""
-"ಕೊನೆಯ %ld ನಿಮಿಷದಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
-msgstr[1] ""
-"ಕೊನೆಯ %ld ನಿಮಿಷಗಳಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[0] "ಕೊನೆಯ %ld ನಿಮಿಷದಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[1] "ಕೊನೆಯ %ld ನಿಮಿಷಗಳಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/gedit-commands-file.c:1169
 msgid "Changes made to the document in the last hour will be permanently lost."
@@ -1061,14 +1036,10 @@ msgstr[1] ""
 
 #: ../gedit/gedit-commands-file.c:1190
 #, c-format
-msgid ""
-"Changes made to the document in the last %d hour will be permanently lost."
-msgid_plural ""
-"Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] ""
-"ಕೊನೆಯ %d ಗಂಟೆಯಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
-msgstr[1] ""
-"ಕೊನೆಯ %d ಗಂಟೆಗಳಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgid "Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] "ಕೊನೆಯ %d ಗಂಟೆಯಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
+msgstr[1] "ಕೊನೆಯ %d ಗಂಟೆಗಳಲ್ಲಿ ದಸ್ತಾವೇಜಿಗೆ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳು ಶಾಶ್ವತವಾಗಿ ಕಾಣೆಯಾಗುತ್ತವೆ."
 
 #: ../gedit/gedit-commands-file.c:1216
 msgid "_Revert"
@@ -1395,8 +1366,7 @@ msgstr "ಸಂಪಾದಿಸಬೇಡ(_o)"
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
-msgstr ""
-"ಅನುಸರಿಸಲಾದ ಕೊಂಡಿಗಳ ಸಂಖ್ಯೆಗೆ ಮಿತಿ ಇದೆ ಹಾಗು ನಿಜವಾದ ಕಡತವು ಈ ಮಿತಿಯಲ್ಲಿ ಕಂಡು ಬಂದಿಲ್ಲ."
+msgstr "ಅನುಸರಿಸಲಾದ ಕೊಂಡಿಗಳ ಸಂಖ್ಯೆಗೆ ಮಿತಿ ಇದೆ ಹಾಗು ನಿಜವಾದ ಕಡತವು ಈ ಮಿತಿಯಲ್ಲಿ ಕಂಡು ಬಂದಿಲ್ಲ."
 
 #: ../gedit/gedit-io-error-message-area.c:642
 msgid "You do not have the permissions necessary to open the file."
@@ -1409,8 +1379,7 @@ msgstr "gedit‍ಗೆ ಕ್ಯಾರೆಕ್ಟರ್ ಎನ್‌ಕೋಡ�
 #: ../gedit/gedit-io-error-message-area.c:650
 #: ../gedit/gedit-io-error-message-area.c:672
 msgid "Please check that you are not trying to open a binary file."
-msgstr ""
-"ದಯವಿಟ್ಟು, ನೀವು ಒಂದು ಬೈನರಿ ಕಡತವನ್ನು ತೆರೆಯಲು ಪ್ರಯತ್ನಿಸುತ್ತಿಲ್ಲ ಎಂದು ಖಚಿತ ಪಡಿಸಿಕೊಳ್ಳಿ."
+msgstr "ದಯವಿಟ್ಟು, ನೀವು ಒಂದು ಬೈನರಿ ಕಡತವನ್ನು ತೆರೆಯಲು ಪ್ರಯತ್ನಿಸುತ್ತಿಲ್ಲ ಎಂದು ಖಚಿತ ಪಡಿಸಿಕೊಳ್ಳಿ."
 
 #: ../gedit/gedit-io-error-message-area.c:651
 msgid "Select a character encoding from the menu and try again."
@@ -2653,8 +2622,7 @@ msgstr "ನಿಮ್ಮ ಕಡತದಲ್ಲಿ ಉಪಯೋಗವಿಲ್ಲ�
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
 msgid "Execute a custom command and put its output in a new document"
-msgstr ""
-"ಒಂದು ಆಜ್ಞೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಿ ನಂತರ ಅದರ ಪ್ರದಾನವನ್ನು ಒಂದು ಹೊಸ ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಇರಿಸು"
+msgstr "ಒಂದು ಆಜ್ಞೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಿ ನಂತರ ಅದರ ಪ್ರದಾನವನ್ನು ಒಂದು ಹೊಸ ದಸ್ತಾವೇಜಿನಲ್ಲಿ ಇರಿಸು"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:2
 msgid "Run command"
