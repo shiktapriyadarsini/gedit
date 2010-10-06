@@ -5,6 +5,7 @@
 # Meir Kriheli <meirkr@mksoft.co.il>, 2003.
 # Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2003.
 # Gil Osher <dolfin@rpg.org.il>, 2004.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
