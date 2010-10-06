@@ -13,10 +13,10 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: "
 "http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&component=general\n"
-"POT-Creation-Date: 2010-04-12 18:49+0000\n"
-"PO-Revision-Date: 2010-04-13 20:58+0200\n"
+"POT-Creation-Date: 2010-10-04 12:00+0000\n"
+"PO-Revision-Date: 2010-10-06 05:24+0200\n"
 "Last-Translator: Xandru Armesto <xandru@softastur.org>\n"
-"Language-Team: Asturian Team alministradores@softastur.org\n"
+"Language-Team: Softastur alministradores@softastur.org\n"
 "Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,7 +47,7 @@ msgid ""
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
 "Una fonte personalizada que va usase pal área d'edición. Esto namái tendrá "
-"efeutu si la opción «Usar fonte predeterminada» s'alcuentra desactivada."
+"efeutu si la opción \"Usar fonte predeterminada» s'alcuentra desactivada."
 
 #: ../data/gedit.schemas.in.in.h:2
 msgid "Active plugins"
@@ -144,7 +144,7 @@ msgid ""
 "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
 "writable by default."
 msgstr ""
-"Llista d'esquemes VFS que soporta gedit en mou escritura. L'esquema «file» "
+"Llista d'esquemes VFS que soporta gedit en mou escritura. L'esquema 'file' "
 "ye escribible por omisión."
 
 #: ../data/gedit.schemas.in.in.h:24
@@ -152,8 +152,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Llista de complementos activos. Contién la «Ubicación» de los complementos "
-"activos. Vea el ficheru .gedit-plugin pa obtener la «Ubicación» d'un "
+"Llista de complementos activos. Contién la \"Ubicación\" de los complementos "
+"activos. Vea el ficheru .gedit-plugin pa obtener la \"Ubicación\" d'un "
 "complementu dau."
 
 #: ../data/gedit.schemas.in.in.h:25
@@ -175,18 +175,18 @@ msgstr "Máximos Ficheros Recientes"
 
 #: ../data/gedit.schemas.in.in.h:28
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" "
+"for unlimited number of actions."
 msgstr ""
-"Cantidá máxima d'aiciones que gedit podrá desfacer o refacer. Use «-1» pa un "
+"Cantidá máxima d'aiciones que gedit podrá desfacer o refacer. Usa \"-1\" pa un "
 "númberu illimitáu d'aiciones."
 
 #: ../data/gedit.schemas.in.in.h:29
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" "
+"for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
-"Cantidá máxima d'aiciones que gedit podrá desfacer o refacer. Use «-1» pa un "
+"Cantidá máxima d'aiciones que gedit podrá desfacer o refacer. Usa \"-1\" pa un "
 "númberu illimitáu d'aiciones. Obsoletu dende 2.12.0"
 
 #. Translators: This is the Editor Font.
@@ -207,7 +207,7 @@ msgid ""
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
 "Númberu de minutos dempués de los que gedit guarda automáticamente los "
-"ficheros modificaos. Esto namái tien efeutu si la opción «Autoguardáu» ta "
+"ficheros modificaos. Esto namái tien efeutu si la opción \"Autoguardáu\" ta "
 "activada."
 
 #: ../data/gedit.schemas.in.in.h:37
@@ -261,26 +261,26 @@ msgid ""
 "recognized encodings are used."
 msgstr ""
 "Llista axeitada de codificaciones qu'usa gedit pa deteutar automáticamente "
-"la codificación d'un ficheru. «CURRENT» (ACTUAL) ye la codificación de la "
+"la codificación d'un ficheru. \"CURRENT\" (ACTUAL) ye la codificación de la "
 "configuración rexonal actual. Namái s'usen les codificaciones reconocíes."
 
 #: ../data/gedit.schemas.in.in.h:52
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
-"to the start/end of the line the first time the keys are pressed and to the "
+"\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move to "
+"the start/end of the line the first time the keys are pressed and to the "
 "start/end of the text ignoring whitespaces the second time the keys are "
-"pressed, \"BEFORE\" to move to the start/end of the text before moving to "
-"the start/end of the line and \"ALWAYS\" to always move to the start/end of "
-"the text instead of the start/end of the line."
+"pressed, \"BEFORE\" to move to the start/end of the text before moving to the "
+"start/end of the line and \"ALWAYS\" to always move to the start/end of the "
+"text instead of the start/end of the line."
 msgstr ""
-"Especifica cómo se mueve'l cursor cuando se calquen les tecles «ENTAMU» y "
-"«FIN». Use «DESACTIVÁU» pa movese siempres al entamu/final de la llinia, "
-"«DEMPUÉS» pa movese al entamu/final de la llinia la primer vegada que se "
+"Especifica cómo se mueve'l cursor cuando se calquen les tecles \"ENTAMU\" y "
+"\"FIN\". Use \"DESACTIVÁU\" pa movese siempre al entamu/final de la llinia, "
+"\"DEMPUÉS\" pa movese al entamu/final de la llinia la primer vegada que se "
 "calquen les tecles y al entamu/final del testu, inorando los espacios en "
-"blancu, la segunda vegada que se calquen, «ENANTES» pa movese al "
+"blancu, la segunda vegada que se calquen, \"ENANTES\" pa movese al "
 "entamu/final del test enantes de movese al entamu/final de la llinia y "
-"«SIEMPRES» pa movese siempres al entamu/final del testu n'arróu del "
+"\"SIEMPRES\" pa movese siempre al entamu/final del testu n'arróu del "
 "entamu/final de la llinia."
 
 #: ../data/gedit.schemas.in.in.h:53
@@ -292,8 +292,8 @@ msgid ""
 "here."
 msgstr ""
 "Especifica cómo tienen d'axustase les llinies abondo llargues al imprentar. "
-"Use «GTK_WRAP_NONE» pa nun axustar les llinies, «GTK_WRAP_WORD» p'axustar al "
-"llargu de la pallabra y «GTK_WRAP_CHAR» p'axustar d'acordies a carauteres "
+"Use \"GTK_WRAP_NONE\" pa nun axustar les llinies, \"GTK_WRAP_WORD\" p'axustar al "
+"llargu de la pallabra y \"GTK_WRAP_CHAR\" p'axustar d'acordies a carauteres "
 "individuales. Decátese que los valores son sensibles a capitalización, poro "
 "tea xuru de qu'apaecen esautamente del mesmu mou nel que son mentaos equí."
 
@@ -306,8 +306,8 @@ msgid ""
 "here."
 msgstr ""
 "Especifica cómo tienen d'axustase les llinies abondo llargues nel área "
-"d'edición. Use «GTK_WRAP_NONE» pa nun axustar les llinies, «GTK_WRAP_WORD» "
-"p'axustar al llargu de la pallabra y «GTK_WRAP_CHAR» p'axustar d'acordies a "
+"d'edición. Use \"GTK_WRAP_NONE\" pa nun axustar les llinies, \"GTK_WRAP_WORD\" "
+"p'axustar al llargu de la pallabra y \"GTK_WRAP_CHAR\" p'axustar d'acordies a "
 "carauteres individuales. Decátese que los valores son sensibles a "
 "capitalización, poro tea xuru de qu'apaecen esautamente del mesmu mou nel "
 "que son mentaos equí."
@@ -325,8 +325,8 @@ msgid ""
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
 "Especifica la tipografía a utilizar pa los númberos de llinies cuando "
-"s'imprenta. Esto namái tendrá efeutu si la opción «Imprentar númberos de "
-"llinia» ye distinta de cero."
+"s'imprenta. Esto namái tendrá efeutu si la opción \"Imprentar númberos de "
+"llinia\" ye distinta de cero."
 
 #: ../data/gedit.schemas.in.in.h:57
 msgid ""
@@ -335,7 +335,7 @@ msgid ""
 msgstr ""
 "Especifica la tipografía a utilizar pa la cabecera de les páxines cuando "
 "s'imprenta un documentu. Esto namái tendrá efeutu cuando la opción "
-"«Imprentar cabecera» tea activada."
+"\"Imprentar cabecera\" tea activada."
 
 #: ../data/gedit.schemas.in.in.h:58
 msgid ""
@@ -343,7 +343,7 @@ msgid ""
 "in the \"Recent Files\" submenu."
 msgstr ""
 "Especifica la máxima cantidá de ficheros recién abiertos que se van amosar "
-"nel submenú «Ficheros recientes»."
+"nel submenú \"Ficheros recientes\"."
 
 #: ../data/gedit.schemas.in.in.h:59
 msgid ""
@@ -367,18 +367,18 @@ msgstr "Estilu"
 
 #: ../data/gedit.schemas.in.in.h:63
 msgid ""
-"Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" "
-"to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons "
+"Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" to "
+"use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons "
 "only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
 "\"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
 "Note that the values are case-sensitive, so make sure they appear exactly as "
 "mentioned here."
 msgstr ""
 "Estilu pa los botones de la barra de ferramientes. Los valores dables son "
-"«GEDIT_TOOLBAR_SYSTEM» pa usar l'estilu predetermináu del sistema. "
-"«GEDIT_TOOLBAR_ICONS» p'amosar namái los iconos, "
-"«GEDIT_TOOLBAR_ICONS_AND_TEXT» p'amosar tantu iconos como testu y "
-"«GEDIT_TOOLBAR_ICONS_BOTH_HORIZ» p'amosar el testu prioritariu a los llaos "
+"\"GEDIT_TOOLBAR_SYSTEM\" pa usar l'estilu predetermináu del sistema. "
+"\"GEDIT_TOOLBAR_ICONS\" p'amosar namái los iconos, "
+"\"GEDIT_TOOLBAR_ICONS_AND_TEXT\" p'amosar tantu iconos como testu y "
+"\"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" p'amosar el testu prioritariu a los llaos "
 "de los iconos. Decátese que los valores son sensibles a capitalización, poro "
 "tea xuru de qu'apaecen esautamente del mesmu mou nel que son mentaos equí."
 
@@ -411,12 +411,11 @@ msgstr "Usar Fonte Predeterminada"
 #: ../data/gedit.schemas.in.in.h:70
 msgid ""
 "Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
+"interval. You can set the time interval with the \"Autosave Interval\" option."
 msgstr ""
 "Indica si gedit tien de guardar automáticamente los ficheros modificaos "
 "dempués d'un intervalu de tiempu. Puedes configurar l'intervalu de tiempu "
-"cola opción «Intervalu d'autoguardáu»."
+"cola opción \"Intervalu d'autoguardáu\"."
 
 #: ../data/gedit.schemas.in.in.h:71
 msgid ""
@@ -425,7 +424,7 @@ msgid ""
 msgstr ""
 "Conseña si gedit tien de facer copies de resguardu de los ficheros "
 "qu'atroxa. Pue configurar el complementu de los ficheros de resguardu cola "
-"opción «Extensión de les copies de resguardu»."
+"opción \"Extensión de les copies de resguardu\"."
 
 #: ../data/gedit.schemas.in.in.h:72
 msgid "Whether gedit should display line numbers in the editing area."
@@ -516,7 +515,7 @@ msgid ""
 msgstr ""
 "Conseña si hai d'usar la tipografía predeterminada del sistema n'arróu de la "
 "tipografía especificada por gedit. Si esta opción se desautiva entós "
-"usaráse la tipografía mentada na opción «Tipografía del editor» n'arróu de "
+"usaráse la tipografía mentada na opción \"Tipografía del editor\" n'arróu de "
 "la tipografía del sistema."
 
 #: ../data/gedit.schemas.in.in.h:88
@@ -563,22 +562,22 @@ msgstr "Entruga"
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:412
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+"If you don't save, changes from the last %ld second will be permanently "
+"lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"Si nun guarda, los cambeos fechos nel caberu %ld segundu perderánse pa "
+"Si nun guardes, los cambeos fechos nel caberu %ld segundu van perdese pa "
 "siempre."
 msgstr[1] ""
-"Si nun guarda, los cambeos fechos nos caberos %ld segundos perderánse pa "
+"Si nun guardes, los cambeos fechos nos caberos %ld segundos van perdese pa "
 "siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:421
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
-msgstr ""
-"Si nun guarda, perderánse permanentemente los cambeos del caberu minutu."
+msgstr "Si nun guardes, los cambeos del caberu minutu van perdese pa siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:427
 #, c-format
@@ -589,30 +588,31 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Si nun guarda, los cambeos fechos nel caberu minutu y %ld segundu perderánse "
-"pa siempre."
+"Si nun guardes, los cambeos fechos nel caberu minutu y %ld segundu van "
+"perdese pa siempre."
 msgstr[1] ""
-"Si nun guarda, los cambeos fechos nel caberu minutu y %ld segundos "
-"perderánse pa siempre."
+"Si nun guardes, los cambeos fechos nel caberu minutu y %ld segundos van "
+"perdese pa siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:437
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+"If you don't save, changes from the last %ld minute will be permanently "
+"lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"Si nun guarda, los cambeos fechos nel caberu %ld minutu perderánse pa "
+"Si nun guardes, los cambeos fechos nel caberu %ld minutu van perdese pa "
 "siempre."
 msgstr[1] ""
-"Si nun guarda, los cambeos fechos nos caberos %ld minutos perderánse pa "
+"Si nun guardes, los cambeos fechos nos caberos %ld minutos van perdese pa "
 "siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:452
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
-"Si nun lu guarda, los cambeos fechos na cabera hora perderánse pa siempres."
+"Si nun lu guardes, los cambeos fechos na cabera hora perderánse pa siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:458
 #, c-format
@@ -623,11 +623,11 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Si nun guarda, los cambeos fechos na cabera hora y %d minutu perderánse pa "
+"Si nun guardes, los cambeos fechos na cabera hora y %d minutu van perdese pa "
 "siempre."
 msgstr[1] ""
-"Si nun guarda, los cambeos fechos na cabera hora y %d minutos perderánse pa "
-"siempre."
+"Si nun guardes, los cambeos fechos na cabera hora y %d minutos van perdese "
+"pa siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:473
 #, c-format
@@ -636,21 +636,20 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
-"Si nun lu guarda, los cambeos fechos na cabera %d hora perderánse pa "
-"siempre."
+"Si nun guardes, los cambeos fechos na cabera %d hora van perdese pa siempre."
 msgstr[1] ""
-"Si nun lu guarda, los cambeos fechos nes caberes %d hores perderánse pa "
+"Si nun guardes, los cambeos fechos nes caberes %d hores van perdese pa "
 "siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:516
 #, c-format
 msgid "Changes to document \"%s\" will be permanently lost."
-msgstr "Los cambeos del documentu «%s» perderánse pa siempres."
+msgstr "Los cambeos del documentu \"%s\" van perdese pa siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:521
 #, c-format
 msgid "Save changes to document \"%s\" before closing?"
-msgstr "¿Guardar los cambeos del documentu «%s» enantes de zarrar?"
+msgstr "¿Guardar los cambeos del documentu \"%s\" enantes de zarrar?"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:535
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:746
@@ -661,8 +660,8 @@ msgstr "El guardáu desautivóse pol alministrador del sistema."
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] "Los cambeos fechos a %d documentu perderánse pa siempre."
-msgstr[1] "Los cambeos fechos a los %d documentos perderánse pa siempre."
+msgstr[0] "Los cambeos fechos a %d documentu van perdese pa siempre."
+msgstr[1] "Los cambeos fechos a los %d documentos van perdese pa siempre."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:707
 #, c-format
@@ -686,7 +685,7 @@ msgstr "S_eleicione los documentos que deseya guardar:"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:748
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Si nun guarda, tolos sos cambeos perderánse ensembre."
+msgstr "Si nun guardes, tolos sos cambeos van perdese pa siempre."
 
 #: ../gedit/dialogs/gedit-encodings-dialog.c:321
 msgid "Character Encodings"
@@ -747,21 +746,11 @@ msgstr "Tolos Ficheros"
 #: ../gedit/dialogs/gedit-preferences-dialog.c:876
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
-msgstr "Nun se pudo quitar l'estilu «%s»."
+msgstr "Nun se pudo quitar l'estilu \"%s\"."
 
 #: ../gedit/dialogs/gedit-preferences-dialog.c:1087
 msgid "gedit Preferences"
 msgstr "Preferencies gedit"
-
-#. ex:ts=4:et:
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:1
-#: ../plugins/docinfo/docinfo.ui.h:1
-#: ../plugins/externaltools/tools/tools.ui.h:1
-#: ../plugins/snippets/snippets/snippets.ui.h:1
-#: ../plugins/time/gedit-time-dialog.ui.h:1
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
-msgid "    "
-msgstr "    "
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:2
 msgid "Automatic Indentation"
@@ -790,7 +779,7 @@ msgstr "Amosar marxe _drechu"
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:8
 #: ../gedit/gedit-print-preferences.ui.h:1
 msgid "Do not _split words over two lines"
-msgstr "Non _xebrar pallabres sobro dos llinies"
+msgstr "Non _xebrar pallabres sobre dos llinies"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:9
 msgid "Editor"
@@ -827,7 +816,7 @@ msgstr "Rescamplar la pareya del _corchete"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
 msgid "Insert _spaces instead of tabs"
-msgstr "Enxertar e_spacios n'arróu de tabuladores"
+msgstr "Inxertar e_spacios en cuenta de tabuladores"
 
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
 #: ../gedit/gedit-print-preferences.ui.h:5
@@ -906,7 +895,7 @@ msgid "Replace _All"
 msgstr "Troc_ar Too"
 
 #: ../gedit/dialogs/gedit-search-dialog.c:416
-#: ../gedit/gedit-commands-file.c:582
+#: ../gedit/gedit-commands-file.c:577
 msgid "_Replace"
 msgstr "_Trocar"
 
@@ -924,7 +913,7 @@ msgstr "Trocar _con: "
 
 #: ../gedit/dialogs/gedit-search-dialog.ui.h:5
 msgid "Search _backwards"
-msgstr "Restolar d'a_trás p'alantre"
+msgstr "Guetar d'a_trás p'alantre"
 
 #: ../gedit/dialogs/gedit-search-dialog.ui.h:6
 msgid "_Match case"
@@ -938,11 +927,11 @@ msgstr "_Atopar: "
 msgid "_Wrap around"
 msgstr "A_xuntar"
 
-#: ../gedit/gedit.c:123
+#: ../gedit/gedit.c:126
 msgid "Show the application's version"
 msgstr "Amosar la versión de l'aplicación"
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:129
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -950,39 +939,39 @@ msgstr ""
 "Afitar la codificación de carauteres a usar al abrir los ficheros llistaos "
 "na llinia de comandos"
 
-#: ../gedit/gedit.c:126
+#: ../gedit/gedit.c:129
 msgid "ENCODING"
 msgstr "CODIFICACIÓN"
 
-#: ../gedit/gedit.c:129
+#: ../gedit/gedit.c:132
 msgid "Display list of possible values for the encoding option"
 msgstr "Amosar una llista de los valores dables pa la opción de codificación"
 
-#: ../gedit/gedit.c:132
+#: ../gedit/gedit.c:135
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 "Crea una ventana nueva nel nivel superior d'una instancia exsistente de "
 "gedit"
 
-#: ../gedit/gedit.c:135
-msgid "Create a new document in an existing instance of gedit"
-msgstr "Cria un documentu nuevu nuna instancia esistente de gedit"
-
 #: ../gedit/gedit.c:138
+msgid "Create a new document in an existing instance of gedit"
+msgstr "Crea un documentu nuevu nuna instancia esistente de gedit"
+
+#: ../gedit/gedit.c:141
 msgid "[FILE...]"
 msgstr "[FICHERU…]"
 
-#: ../gedit/gedit.c:193
+#: ../gedit/gedit.c:196
 #, c-format
 msgid "%s: invalid encoding.\n"
 msgstr "%s: codificación inválida.\n"
 
 #. Setup command line options
-#: ../gedit/gedit.c:576
+#: ../gedit/gedit.c:579
 msgid "- Edit text files"
 msgstr "- Edite ficheros de testu"
 
-#: ../gedit/gedit.c:612
+#: ../gedit/gedit.c:615
 #, c-format
 msgid ""
 "%s\n"
@@ -992,12 +981,12 @@ msgstr ""
 "Execute '%s --help' pa ver una llista completa d'opciones disponibles dende "
 "la llinia de comandos.\n"
 
-#: ../gedit/gedit-commands-file.c:255
+#: ../gedit/gedit-commands-file.c:250
 #, c-format
 msgid "Loading file '%s'…"
-msgstr "Cargando ficheru «%s»…"
+msgstr "Cargando ficheru '%s'…"
 
-#: ../gedit/gedit-commands-file.c:264
+#: ../gedit/gedit-commands-file.c:259
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -1005,39 +994,39 @@ msgstr[0] "Cargando %d ficheru…"
 msgstr[1] "Cargando %d ficheros…"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:458
+#: ../gedit/gedit-commands-file.c:453
 msgid "Open Files"
 msgstr "Ficheros abiertos"
 
-#: ../gedit/gedit-commands-file.c:569
+#: ../gedit/gedit-commands-file.c:564
 #, c-format
 msgid "The file \"%s\" is read-only."
-msgstr "El ficheru «%s» ye de namái llectura."
+msgstr "El ficheru \"%s» ye namái de llectura."
 
-#: ../gedit/gedit-commands-file.c:574
+#: ../gedit/gedit-commands-file.c:569
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "¿Deseya tentar trocalu col que ta guardando agora?"
 
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:866
+#: ../gedit/gedit-commands-file.c:638 ../gedit/gedit-commands-file.c:861
 #, c-format
 msgid "Saving file '%s'…"
-msgstr "Atroxando el ficheru «%s»…"
+msgstr "Guardando'l ficheru '%s'…"
 
-#: ../gedit/gedit-commands-file.c:751
+#: ../gedit/gedit-commands-file.c:746
 msgid "Save As…"
 msgstr "Guardar Como..."
 
-#: ../gedit/gedit-commands-file.c:1080
+#: ../gedit/gedit-commands-file.c:1075
 #, c-format
 msgid "Reverting the document '%s'…"
-msgstr "Revirtiendo'l documentu «%s»…"
+msgstr "Revirtiendo'l documentu '%s'…"
 
-#: ../gedit/gedit-commands-file.c:1125
+#: ../gedit/gedit-commands-file.c:1120
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
-msgstr "¿Recuperar los cambeos non atroxaos nel documentu «%s»?"
+msgstr "¿Recuperar los cambeos non atroxaos nel documentu '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1134
+#: ../gedit/gedit-commands-file.c:1129
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -1051,13 +1040,13 @@ msgstr[1] ""
 "Los cambeos fechos al documentu nos caberos %ld segundos perderánse pa "
 "siempre."
 
-#: ../gedit/gedit-commands-file.c:1143
+#: ../gedit/gedit-commands-file.c:1138
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
-"Los cambeos fechos al documentu nel caberu minutu perderánse pa siempres."
+"Los cambeos fechos al documentu nel caberu minutu perderánse pa siempre."
 
-#: ../gedit/gedit-commands-file.c:1149
+#: ../gedit/gedit-commands-file.c:1144
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1072,7 +1061,7 @@ msgstr[1] ""
 "Los cambeos fechos al documentu nel caberu minutu y %ld segundos perderánse "
 "pa siempre."
 
-#: ../gedit/gedit-commands-file.c:1159
+#: ../gedit/gedit-commands-file.c:1154
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -1080,17 +1069,16 @@ msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"Los cambeos fechos al documentu nel caberu %ld minutu perderánse pa "
-"siempres."
+"Los cambeos fechos al documentu nel caberu %ld minutu perderánse pa siempre."
 msgstr[1] ""
 "Los cambeos fechos al documentu nos caberos %ld minutos perderánse pa "
 "siempre."
 
-#: ../gedit/gedit-commands-file.c:1174
+#: ../gedit/gedit-commands-file.c:1169
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgstr "Los cambeos fechos al documentu na cabera hora perderánse pa siempres."
+msgstr "Los cambeos fechos al documentu na cabera hora perderánse pa siempre."
 
-#: ../gedit/gedit-commands-file.c:1180
+#: ../gedit/gedit-commands-file.c:1175
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1105,7 +1093,7 @@ msgstr[1] ""
 "Los cambeos fechos al documentu na cabera hora y %d minutos perderánse pa "
 "siempre."
 
-#: ../gedit/gedit-commands-file.c:1195
+#: ../gedit/gedit-commands-file.c:1190
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -1116,7 +1104,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Los cambeos fechos al documentu nes caberes %d hores perderánse pa siempre."
 
-#: ../gedit/gedit-commands-file.c:1221
+#: ../gedit/gedit-commands-file.c:1216
 msgid "_Revert"
 msgstr "_Revertir"
 
@@ -1150,7 +1138,7 @@ msgstr "Atopáu y trocáu un resultáu"
 #: ../gedit/gedit-commands-search.c:142
 #, c-format
 msgid "\"%s\" not found"
-msgstr "Nun s'alcontró «%s»"
+msgstr "Nun s'alcontró \"%s\""
 
 #: ../gedit/gedit-document.c:1071 ../gedit/gedit-document.c:1086
 #, c-format
@@ -1304,19 +1292,19 @@ msgstr "Tolos ficheros de testu"
 msgid "C_haracter Encoding:"
 msgstr "Codificación de ca_rauteres:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:141
+#: ../gedit/gedit-file-chooser-dialog.c:146
 msgid "L_ine Ending:"
 msgstr "_Final de llinia:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:160
+#: ../gedit/gedit-file-chooser-dialog.c:165
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-file-chooser-dialog.c:166
+#: ../gedit/gedit-file-chooser-dialog.c:171
 msgid "Mac OS Classic"
 msgstr "Mac OS clásicu"
 
-#: ../gedit/gedit-file-chooser-dialog.c:172
+#: ../gedit/gedit-file-chooser-dialog.c:177
 msgid "Windows"
 msgstr "Ventanes"
 
@@ -1731,7 +1719,7 @@ msgstr "Nun pudo anicializase l'alministrador de preferencies."
 #: ../gedit/gedit-prefs-manager.c:1138
 #, c-format
 msgid "Expected `%s', got `%s' for key %s"
-msgstr "Esperábase «%s» y obtúvose «%s» pa la clave %s"
+msgstr "Esperábase `%s' y obtúvose `%s' pa la clave %s"
 
 #: ../gedit/gedit-print-job.c:541
 #, c-format
@@ -1862,7 +1850,7 @@ msgstr "Entever Páxina"
 msgid "The preview of a page in the document to be printed"
 msgstr "La entevisión d'una páxina del documentu pa imprentase"
 
-#: ../gedit/gedit-smart-charset-converter.c:308
+#: ../gedit/gedit-smart-charset-converter.c:319
 msgid "It is not possible to detect the encoding automatically"
 msgstr "Nun puede deteutase la codificación automáticamente"
 
@@ -1891,7 +1879,7 @@ msgstr[1] "Hai %d llingüetes con errores"
 #: ../gedit/gedit-style-scheme-manager.c:207
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
-msgstr "Nun pudo crease'l direutoriu «%s»: falló g_mkdir_with_parents(): %s"
+msgstr "Nun pudo crease'l direutoriu '%s': falló g_mkdir_with_parents(): %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
@@ -2120,7 +2108,7 @@ msgstr "_Atopar..."
 
 #: ../gedit/gedit-ui.h:116
 msgid "Search for text"
-msgstr "Restolar testu"
+msgstr "Guetar testu"
 
 #: ../gedit/gedit-ui.h:117
 msgid "Find Ne_xt"
@@ -2144,7 +2132,7 @@ msgstr "_Trocar"
 
 #: ../gedit/gedit-ui.h:123 ../gedit/gedit-ui.h:126
 msgid "Search for and replace text"
-msgstr "Restolar y trocar testu"
+msgstr "Guetar y trocar testu"
 
 #: ../gedit/gedit-ui.h:128
 msgid "_Clear Highlight"
@@ -2267,7 +2255,7 @@ msgstr "Nun pudo abrise'l ficheru de IU %s. Fallu: %s"
 #: ../gedit/gedit-utils.c:1160
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
-msgstr "Nun s'alcontró l'oxetu «%s» nel ficheru %s."
+msgstr "Nun s'alcontró l'oxetu '%s' nel ficheru %s."
 
 #. Translators: '/ on <remote-share>'
 #: ../gedit/gedit-utils.c:1320
@@ -2344,7 +2332,7 @@ msgstr "Imprentar"
 #: ../gedit/gedit-window.c:1697
 #, c-format
 msgid "Activate '%s'"
-msgstr "Activar «%s»"
+msgstr "Activar '%s'"
 
 #: ../gedit/gedit-window.c:1950
 msgid "Use Spaces"
@@ -2695,7 +2683,7 @@ msgstr "Construcción"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
 msgid "Run \"make\" in the document directory"
-msgstr "Executar «make» nel direutoriu del documentu"
+msgstr "Executar \"make\" nel direutoriu del documentu"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
 msgid "Remove trailing spaces"
@@ -2890,15 +2878,15 @@ msgstr "Los ficheros seleicionados nun se puen mover a la basoria."
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:1234
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "¿Daveres quies desaniciar pa siempres «%s»?"
+msgstr "¿Daveres quies desaniciar pa siempre \"%s\"?"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:1237
 msgid "Are you sure you want to permanently delete the selected files?"
-msgstr "¿Daveres quies desaniciar pa siempres los ficheros seleicionaos?"
+msgstr "¿Daveres quies desaniciar pa siempre los ficheros seleicionaos?"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:1240
 msgid "If you delete an item, it is permanently lost."
-msgstr "Si desanicies un elementu, piérdese pa siempres."
+msgstr "Si desanicies un elementu, piérdese pa siempre."
 
 #: ../plugins/filebrowser/gedit-file-browser-store.c:1667
 msgid "(Empty)"
@@ -2938,154 +2926,154 @@ msgstr ""
 "El direutoriu nuevu ta anguaño fieltráu. Necesita axustar los fieltros pa "
 "facelu visible."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:704
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:709
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:790
 msgid "_Filter"
 msgstr "_Fieltru"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:790
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:795
 msgid "_Move to Trash"
 msgstr "_Mover a la basoria"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:791
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:796
 msgid "Move selected file or folder to trash"
 msgstr "Mueve'l ficheru o carpeta seleicionáu a la basoria"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:793
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:798
 msgid "_Delete"
 msgstr "_Desaniciar"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:794
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:799
 msgid "Delete selected file or folder"
 msgstr "Desanicia'l ficheru o carpeta seleicionáu"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:801
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:806
 msgid "Open selected file"
 msgstr "Abrir el ficheru seleicionáu"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:807
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:812
 msgid "Up"
 msgstr "Arriba"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:808
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:813
 msgid "Open the parent folder"
 msgstr "Abrir la carpeta contenedora"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:813
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:818
 msgid "_New Folder"
 msgstr "_Nueva carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:814
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:819
 msgid "Add new empty folder"
 msgstr "Amesta una carpeta erma nueva"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:816
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
 msgid "New F_ile"
 msgstr "_Ficheru nuevu"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:817
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:822
 msgid "Add new empty file"
 msgstr "Amesta un ficheru nuevu ermu"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
 msgid "_Rename"
 msgstr "_Renomar"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:823
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:828
 msgid "Rename selected file or folder"
 msgstr "Renoma el ficheru o carpeta seleicionada"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:829
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:834
 msgid "_Previous Location"
 msgstr "Llocalización _anterior"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:831
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:836
 msgid "Go to the previous visited location"
 msgstr "Dir a la llocalización visitada anteriormente"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:833
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
 msgid "_Next Location"
 msgstr "Llocalización _siguiente"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:834
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:839
 msgid "Go to the next visited location"
 msgstr "Dir a la siguiente llocalización visitada"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:835
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:840
 msgid "Re_fresh View"
 msgstr "Re_frescar vista"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:836
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:841
 msgid "Refresh the view"
 msgstr "Refresca la vista"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:837
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:855
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:842
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:860
 msgid "_View Folder"
 msgstr "_Ver carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:856
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:843
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:861
 msgid "View folder in file manager"
 msgstr "Ver la carpeta nel xestor de ficheros"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:845
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
 msgid "Show _Hidden"
 msgstr "Amosar _ocultos"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:846
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:851
 msgid "Show hidden files and folders"
 msgstr "Amuesa ficheros y carpetes anubríos"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:848
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
 msgid "Show _Binary"
 msgstr "Amosar _binarios"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:849
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:854
 msgid "Show binary files"
 msgstr "Amosar ficheros binarios"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:981
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:990
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1011
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:986
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:995
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1016
 msgid "Previous location"
 msgstr "Llocalización anterior"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:983
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:988
 msgid "Go to previous location"
 msgstr "Dir a la llocalización anterior"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:985
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1006
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:990
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1011
 msgid "Go to a previously opened location"
 msgstr "Dir a un llugar anteriormente abiertu"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1002
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1007
 msgid "Next location"
 msgstr "Llocalización siguiente"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1004
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1009
 msgid "Go to next location"
 msgstr "Dir al siguiente llugar"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1216
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1221
 msgid "_Match Filename"
 msgstr "Co_ncasar col nome de ficheru"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2118
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2123
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Nun esiste l'oxetu montáu pal volume montáu: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2198
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2203
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nun pudo abrise'l mediu: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2245
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2250
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nun pudo abrise'l volume: %s"
@@ -3153,7 +3141,7 @@ msgid "Create new snippet"
 msgstr "Criar un recorte nuevu"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:4
-#: ../plugins/snippets/snippets/Manager.py:409
+#: ../plugins/snippets/snippets/Manager.py:412
 msgid "Delete selected snippet"
 msgstr "Desaniciar el recorte seleicionáu"
 
@@ -3162,7 +3150,7 @@ msgid "Export selected snippets"
 msgstr "Exportar el recorte seleicionáu"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:6
-#: ../plugins/snippets/snippets/Manager.py:797
+#: ../plugins/snippets/snippets/Manager.py:800
 msgid "Import snippets"
 msgstr "Importar recortes"
 
@@ -3176,7 +3164,7 @@ msgstr "Atayu de tecláu col que s'activa'l recorte"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/snippets.ui.h:9
-#: ../plugins/snippets/snippets/Manager.py:686
+#: ../plugins/snippets/snippets/Manager.py:689
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Pallabra cola que s'activa'l recorte dempués de calcar el tabulador"
 
@@ -3216,12 +3204,12 @@ msgstr "Amestar un nuevu recorte…"
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/Manager.py:406
+#: ../plugins/snippets/snippets/Manager.py:409
 msgid "Revert selected snippet"
 msgstr "Revertir el recorte seleicionáu"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/Manager.py:679
+#: ../plugins/snippets/snippets/Manager.py:682
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
@@ -3229,113 +3217,113 @@ msgstr ""
 "Esti nun ye un disparador válidu. Los disparadores pueden contener lletres o "
 "un solu caráuter non alfanumbéricu como {,[, etcétera."
 
-#: ../plugins/snippets/snippets/Manager.py:776
+#: ../plugins/snippets/snippets/Manager.py:779
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Hebo un fallu al importar: %s"
 
-#: ../plugins/snippets/snippets/Manager.py:783
+#: ../plugins/snippets/snippets/Manager.py:786
 msgid "Import successfully completed"
 msgstr "Importación completada satisfactoriamente"
 
-#: ../plugins/snippets/snippets/Manager.py:802
-#: ../plugins/snippets/snippets/Manager.py:888
-#: ../plugins/snippets/snippets/Manager.py:951
+#: ../plugins/snippets/snippets/Manager.py:805
+#: ../plugins/snippets/snippets/Manager.py:891
+#: ../plugins/snippets/snippets/Manager.py:954
 msgid "All supported archives"
 msgstr "Tolos archivos soportaos"
-
-#: ../plugins/snippets/snippets/Manager.py:803
-#: ../plugins/snippets/snippets/Manager.py:889
-#: ../plugins/snippets/snippets/Manager.py:952
-msgid "Gzip compressed archive"
-msgstr "Archivu comprimíu con Gzip"
-
-#: ../plugins/snippets/snippets/Manager.py:804
-#: ../plugins/snippets/snippets/Manager.py:890
-#: ../plugins/snippets/snippets/Manager.py:953
-msgid "Bzip2 compressed archive"
-msgstr "Archivador comprimíu con Bzip"
-
-#: ../plugins/snippets/snippets/Manager.py:805
-msgid "Single snippets file"
-msgstr "Ficheru individual de recortes"
 
 #: ../plugins/snippets/snippets/Manager.py:806
 #: ../plugins/snippets/snippets/Manager.py:892
 #: ../plugins/snippets/snippets/Manager.py:955
+msgid "Gzip compressed archive"
+msgstr "Archivu comprimíu con Gzip"
+
+#: ../plugins/snippets/snippets/Manager.py:807
+#: ../plugins/snippets/snippets/Manager.py:893
+#: ../plugins/snippets/snippets/Manager.py:956
+msgid "Bzip2 compressed archive"
+msgstr "Archivador comprimíu con Bzip"
+
+#: ../plugins/snippets/snippets/Manager.py:808
+msgid "Single snippets file"
+msgstr "Ficheru individual de recortes"
+
+#: ../plugins/snippets/snippets/Manager.py:809
+#: ../plugins/snippets/snippets/Manager.py:895
+#: ../plugins/snippets/snippets/Manager.py:958
 msgid "All files"
 msgstr "Tolos ficheros"
 
-#: ../plugins/snippets/snippets/Manager.py:818
+#: ../plugins/snippets/snippets/Manager.py:821
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Hebo un fallu al esportar: %s"
 
-#: ../plugins/snippets/snippets/Manager.py:822
+#: ../plugins/snippets/snippets/Manager.py:825
 msgid "Export successfully completed"
 msgstr "Esportación completada satisfactoriamente"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/Manager.py:862
-#: ../plugins/snippets/snippets/Manager.py:929
+#: ../plugins/snippets/snippets/Manager.py:865
+#: ../plugins/snippets/snippets/Manager.py:932
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "¿Quier incluyir los recortes del <b>sistema</b> seleicionaos na so "
 "exportación?"
 
-#: ../plugins/snippets/snippets/Manager.py:877
-#: ../plugins/snippets/snippets/Manager.py:947
+#: ../plugins/snippets/snippets/Manager.py:880
+#: ../plugins/snippets/snippets/Manager.py:950
 msgid "There are no snippets selected to be exported"
 msgstr "Nun hai recortes seleicionaos pa exportar"
 
-#: ../plugins/snippets/snippets/Manager.py:882
-#: ../plugins/snippets/snippets/Manager.py:920
+#: ../plugins/snippets/snippets/Manager.py:885
+#: ../plugins/snippets/snippets/Manager.py:923
 msgid "Export snippets"
 msgstr "Exportar recortes"
 
-#: ../plugins/snippets/snippets/Manager.py:1059
+#: ../plugins/snippets/snippets/Manager.py:1062
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Teclee un acelerador nuevu o calque Retrocesu pa llimpiar"
 
-#: ../plugins/snippets/snippets/Manager.py:1061
+#: ../plugins/snippets/snippets/Manager.py:1064
 msgid "Type a new shortcut"
 msgstr "Teclee un acelerador nuevu"
 
 #: ../plugins/snippets/snippets/Exporter.py:65
 #, python-format
 msgid "The archive \"%s\" could not be created"
-msgstr "Nun pudo crease l'archivu «%s»"
+msgstr "Nun pudo crease l'archivu \"%s\""
 
 #: ../plugins/snippets/snippets/Exporter.py:82
 #, python-format
 msgid "Target directory \"%s\" does not exist"
-msgstr "El direutoriu de destín «%s» nun esiste"
+msgstr "El direutoriu de destín \"%s\" nun esiste"
 
 #: ../plugins/snippets/snippets/Exporter.py:85
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
-msgstr "El direutoriu de destín «%s» nun ye un direutoriu válidu"
+msgstr "El direutoriu de destín \"%s\" nun ye un direutoriu válidu"
 
 #: ../plugins/snippets/snippets/Importer.py:29
 #: ../plugins/snippets/snippets/Importer.py:83
 #, python-format
 msgid "File \"%s\" does not exist"
-msgstr "El ficheru «%s» nun esiste"
+msgstr "El ficheru \"%s\" nun esiste"
 
 #: ../plugins/snippets/snippets/Importer.py:32
 #, python-format
 msgid "File \"%s\" is not a valid snippets file"
-msgstr "El ficheru «%s» nun ye un ficheru de recortes válidu"
+msgstr "El ficheru \"%s\" nun ye un ficheru de recortes válidu"
 
 #: ../plugins/snippets/snippets/Importer.py:42
 #, python-format
 msgid "Imported file \"%s\" is not a valid snippets file"
-msgstr "El ficheru importáu «%s» nun ye un ficheru de recortes válidu"
+msgstr "El ficheru importáu \"%s\" nun ye un ficheru de recortes válidu"
 
 #: ../plugins/snippets/snippets/Importer.py:52
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
-msgstr "Nun pudo estrayese l'archivu «%s»"
+msgstr "Nun pudo estrayese l'archivu \"%s\""
 
 #: ../plugins/snippets/snippets/Importer.py:70
 #, python-format
@@ -3346,7 +3334,7 @@ msgstr "Nun se pudieron importar los siguientes ficheros: %s"
 #: ../plugins/snippets/snippets/Importer.py:99
 #, python-format
 msgid "File \"%s\" is not a valid snippets archive"
-msgstr "El ficheru «%s» nun ye un archivador de recortes válidu"
+msgstr "El ficheru \"%s\" nun ye un archivador de recortes válidu"
 
 #: ../plugins/snippets/snippets/Placeholder.py:594
 #, python-format
@@ -3508,11 +3496,11 @@ msgstr "_Autocomprobar Ortografía"
 msgid "Automatically spell-check the current document"
 msgstr "Verificar automáticamente la ortografía del documentu actual"
 
-#: ../plugins/spell/gedit-spell-plugin.c:743
+#: ../plugins/spell/gedit-spell-plugin.c:752
 msgid "The document is empty."
 msgstr "El documentu ta ermu."
 
-#: ../plugins/spell/gedit-spell-plugin.c:773
+#: ../plugins/spell/gedit-spell-plugin.c:782
 msgid "No misspelled words"
 msgstr "Nun s'atoparon pallabres con faltes."
 
@@ -4089,7 +4077,7 @@ msgstr "Espaciu horizontal (obsoletu)"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:134
 msgid "I18N BiDi override"
-msgstr "Prevalecer sobro i18n BiDi"
+msgstr "Prevalecer sobre i18n BiDi"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:135
 msgid "Image"
@@ -5040,7 +5028,7 @@ msgstr "Símbolu matemáticu __"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:68
 msgid "Symbol simeq"
-msgstr "Símbolu «simeq»"
+msgstr "Símbolu simeq"
 
 #: ../plugins/taglist/Latex.tags.xml.in.h:69
 msgid "Symbol star"
@@ -5213,7 +5201,9 @@ msgstr "Al inxertar la data/hora…"
 msgid "_Prompt for a format"
 msgstr "_Entrugar por un formatu"
 
-#, c-format
+#~ msgid "    "
+#~ msgstr "    "
+
 #~ msgid "Unable to open ui file %s. Error: %s"
 #~ msgstr "Nun pudo abrise'l ficheru de IU %s. Error: %s"
 
@@ -5235,7 +5225,6 @@ msgstr "_Entrugar por un formatu"
 #~ msgid "Whether gedit should enable auto indentation."
 #~ msgstr "Conseña si gedit tien d'activar la sangría automática."
 
-#, c-format
 #~ msgid ""
 #~ "Host name was invalid. Please check that you typed the location correctly "
 #~ "and try again."
@@ -5255,7 +5244,6 @@ msgstr "_Entrugar por un formatu"
 #~ msgid "<b>Text Wrapping</b>"
 #~ msgstr "<b>Axuste del testu</b>"
 
-#, c-format
 #~ msgid "Expected `%s' got `%s' for key %s"
 #~ msgstr "Esperábase «%s» y túvose «%s» pa la clave %s"
 
@@ -5265,11 +5253,9 @@ msgstr "_Entrugar por un formatu"
 #~ msgid "Ch_aracter Coding:"
 #~ msgstr "Codificación de c_arauteres:"
 
-#, python-format
 #~ msgid "Execution of the python command (%s) failed: %s"
 #~ msgstr "La execución del comandu python (%s) falló: %s"
 
-#, python-format
 #~ msgid "File `%s` is not a valid snippets file"
 #~ msgstr "El ficheru «%s» nun ye un ficheru de recortes válidu"
 
@@ -5280,8 +5266,8 @@ msgstr "_Entrugar por un formatu"
 #~ msgstr "Símbolu guión --"
 
 #~ msgid ""
-#~ "Provides a method to easily insert into a document commonly used "
-#~ "tags/strings without having to type them."
+#~ "Provides a method to easily insert into a document commonly used tags/"
+#~ "strings without having to type them."
 #~ msgstr ""
 #~ "Proporciona un métodu pa enxertar cenciellamente nún documentu les "
 #~ "cadenes/etiquetes más usaes davezu ensin tener qu'escribiles."
@@ -5301,7 +5287,6 @@ msgstr "_Entrugar por un formatu"
 #~ msgid "Auto Save"
 #~ msgstr "Auto Guardar"
 
-#, python-format
 #~ msgid "Imported file `%s` is not a valid snippets file"
 #~ msgstr "El ficheru importáu «%s» nun ye un ficheru de recortes válidu"
 
@@ -5310,12 +5295,13 @@ msgstr "_Entrugar por un formatu"
 
 #~ msgid "Select a different character coding from the menu and try again."
 #~ msgstr ""
-#~ "Seleicione una codificación de carauteres diferente dende'l menú ya téntelo "
-#~ "otra vegada."
+#~ "Seleicione una codificación de carauteres diferente dende'l menú ya "
+#~ "téntelo otra vegada."
 
 #~ msgid "Create a new toplevel window in an existing instance of gedit"
 #~ msgstr ""
-#~ "Criar una ventana nueva nel nivel superior d'una instancia esistente de gedit"
+#~ "Criar una ventana nueva nel nivel superior d'una instancia esistente de "
+#~ "gedit"
 
 #~ msgid "<span weight=\"bold\">Color Scheme</span>"
 #~ msgstr "<span weight=\"bold\">Estilos de colores</span>"
@@ -5350,7 +5336,8 @@ msgstr "_Entrugar por un formatu"
 #~ msgstr "Calque esti botón pa seleicionar la tipografía qu'usará l'editor"
 
 #~ msgid "The id of a GtkSourceView Style Scheme used to color the text."
-#~ msgstr "L'identificador d'un estilu GtkSourceView usáu pa colorear el testu."
+#~ msgstr ""
+#~ "L'identificador d'un estilu GtkSourceView usáu pa colorear el testu."
 
 #~ msgid "Character codings"
 #~ msgstr "Codificación de caracteres"
@@ -5370,14 +5357,12 @@ msgstr "_Entrugar por un formatu"
 #~ msgid "Unindent selected lines"
 #~ msgstr "Quita la sangría a les llinies seleicionaes"
 
-#, python-format
 #~ msgid "File `%s` does not exist"
 #~ msgstr "El ficheru «%s» nun esiste"
 
 #~ msgid "_Move To Trash"
 #~ msgstr "_Mover a la basoria"
 
-#, python-format
 #~ msgid "The archive `%s` could not be created"
 #~ msgstr "Nun se pudo criar l'archivu «%s»"
 
@@ -5399,7 +5384,6 @@ msgstr "_Entrugar por un formatu"
 #~ "Conseña si tien de ser visible el panel llateral de la parte esquierda de "
 #~ "les ventanes d'edición."
 
-#, c-format
 #~ msgid "Could not open the file %s using the %s character coding."
 #~ msgstr ""
 #~ "Nun se pudo abrir el ficheru «%s» usando la codificación de carauteres %s."
@@ -5411,19 +5395,19 @@ msgstr "_Entrugar por un formatu"
 #~ "This is not a valid tab trigger. Triggers can either contain letters or a "
 #~ "single, non alphanumeric, character like {, [, etcetera."
 #~ msgstr ""
-#~ "Esti nun ye un disparador válidu. Los disparadores puen contener lletres o "
-#~ "un solu caráuter alfanumbéricu como {,[, etc."
+#~ "Esti nun ye un disparador válidu. Los disparadores puen contener lletres "
+#~ "o un solu caráuter alfanumbéricu como {,[, etc."
 
 #~ msgid "Interactive python console standing in the bottom panel"
 #~ msgstr "Consola interactiva python nel panel inferior"
 
 #~ msgid ""
-#~ "Extension or suffix to use for backup file names. This will only take effect "
-#~ "if the \"Create Backup Copies\" option is turned on."
+#~ "Extension or suffix to use for backup file names. This will only take "
+#~ "effect if the \"Create Backup Copies\" option is turned on."
 #~ msgstr ""
 #~ "Estensión o sufixu que s'usará pa los nomes de los ficheros de respaldu. "
-#~ "Esto namái tendrá efeutu si la opción «Criar copies de respaldo» s'alcuentra "
-#~ "activada."
+#~ "Esto namái tendrá efeutu si la opción «Criar copies de respaldo» "
+#~ "s'alcuentra activada."
 
 #~ msgid "Auto Save Interval"
 #~ msgstr "Intervalu d'Auto Guardar"
@@ -5435,11 +5419,11 @@ msgstr "_Entrugar por un formatu"
 #~ msgstr "<b>Encabezamientu de páxina</b>"
 
 #~ msgid ""
-#~ "List of encodings shown in Character Coding menu in open/save file selector. "
-#~ "Only recognized encodings are used."
+#~ "List of encodings shown in Character Coding menu in open/save file "
+#~ "selector. Only recognized encodings are used."
 #~ msgstr ""
-#~ "Llista de codificaciones amosaes nel menú de codificación de carauteres nel "
-#~ "seleutor pa atroxar/abrir ficheru. Namái s'usen les codificaciones "
+#~ "Llista de codificaciones amosaes nel menú de codificación de carauteres "
+#~ "nel seleutor pa atroxar/abrir ficheru. Namái s'usen les codificaciones "
 #~ "reconocíes."
 
 #~ msgid "Setup the page settings"
@@ -5460,7 +5444,6 @@ msgstr "_Entrugar por un formatu"
 #~ msgid "Backup Copy Extension"
 #~ msgstr "Extensión de la Copia de Seguridá"
 
-#, python-format
 #~ msgid "Target directory `%s` does not exist"
 #~ msgstr "El direutoriu de destín «%s» nun esiste"
 
@@ -5470,14 +5453,12 @@ msgstr "_Entrugar por un formatu"
 #~ msgid "<b>Bracket Matching</b>"
 #~ msgstr "<b>Aparear Paréntesis</b>"
 
-#, python-format
 #~ msgid "Target directory `%s` is not a valid directory"
 #~ msgstr "El direutoriu de destín «%s» nun ye un direutoriu válidu"
 
 #~ msgid "Insert often used pieces of text in a fast way"
 #~ msgstr "Enxerte los trozos de testu usaos davezu de mena rápida"
 
-#, python-format
 #~ msgid ""
 #~ "Execution of the python command (%s) exceeds the maximum time, execution "
 #~ "aborted."
@@ -5498,8 +5479,8 @@ msgstr "_Entrugar por un formatu"
 #~ "The document contains one or more characters that cannot be encoded using "
 #~ "the specified character coding."
 #~ msgstr ""
-#~ "El documentu contién ún o más carauteres que nun se puen codificar usando'l "
-#~ "códigu de carauteres especificáu."
+#~ "El documentu contién ún o más carauteres que nun se puen codificar "
+#~ "usando'l códigu de carauteres especificáu."
 
 #~ msgid "HttP header name"
 #~ msgstr "Nome de cabecera HTTP"
