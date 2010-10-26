@@ -11,10 +11,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 23:52+0200\n"
+"POT-Creation-Date: 2010-10-26 11:16+0200\n"
 "PO-Revision-Date: 2010-05-26 20:49+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -170,16 +171,16 @@ msgstr "Màxim de fitxers recents"
 
 #: ../data/gedit.schemas.in.in.h:28
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "El nombre màxim d'accions que el gedit podrà desfer o refer. Utilitzeu «-1» "
 "per a un nombre il·limitat d'accions."
 
 #: ../data/gedit.schemas.in.in.h:29
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "El nombre màxim d'accions que el gedit podrà desfer o refer. Utilitzeu «-1» "
 "per a un nombre il·limitat d'accions. A partir de la versió 2.12.0 es "
@@ -274,8 +275,8 @@ msgstr ""
 "Especifica la manera com es mou el cursor quan es premen les tecles d'inici "
 "i de final. Empreu «DISABLED» (inhabilitat) per moure'l sempre al principi o "
 "al final de les línies. Empreu «AFTER» (després) per moure'l a l'inici o al "
-"final de la línia la primera vegada que es prema la tecla, i al principi o "
-"al final del text la segona vegada que es prema. Empreu «BEFORE» (abans) per "
+"final de la línia la primera vegada que es premi la tecla, i al principi o "
+"al final del text la segona vegada que es premi. Empreu «BEFORE» (abans) per "
 "moure el cursor al principi o al final del text abans de moure'l al principi "
 "o al final de la línia. Empreu «ALWAYS» (sempre) per moure el cursor sempre "
 "al principi o al final del text en lloc d'al principi o al final de la línia."
@@ -289,10 +290,10 @@ msgid ""
 "here."
 msgstr ""
 "Especifica com ajustar les línies llargues per imprimir. Utilitzeu "
-"«GTK_WRAP_NONE» per no ajustar, «GTK_WRAP_WORD» per ajustar als límits de les "
-"paraules i «GTK_WRAP_CHAR» per ajustar als límits de caràcters individuals. "
-"Recordeu que els valors són sensibles a majúscules i minúscules, assegureu-"
-"vos que apareixen exactament com es mencionen ací."
+"«GTK_WRAP_NONE» per no ajustar, «GTK_WRAP_WORD» per ajustar als límits de "
+"les paraules i «GTK_WRAP_CHAR» per ajustar als límits de caràcters "
+"individuals. Recordeu que els valors són sensibles a majúscules i "
+"minúscules, assegureu-vos que apareixen exactament com es mencionen ací."
 
 #: ../data/gedit.schemas.in.in.h:54
 msgid ""
@@ -303,10 +304,11 @@ msgid ""
 "here."
 msgstr ""
 "Especifica com ajustar les línies llargues en l'àrea d'edició. Utilitzeu "
-"«GTK_WRAP_NONE» per no ajustar, «GTK_WRAP_WORD» per ajustar als límits de les "
-"paraules i «GTK_WRAP_CHAR» per ajustar als límits de caràcters individuals. "
-"Teniu en compte que els valors són sensibles a majúscules i minúscules, així "
-"doncs assegureu-vos que apareixen exactament com es mencionen ací."
+"«GTK_WRAP_NONE» per no ajustar, «GTK_WRAP_WORD» per ajustar als límits de "
+"les paraules i «GTK_WRAP_CHAR» per ajustar als límits de caràcters "
+"individuals. Teniu en compte que els valors són sensibles a majúscules i "
+"minúscules, així doncs assegureu-vos que apareixen exactament com es "
+"mencionen ací."
 
 #: ../data/gedit.schemas.in.in.h:55
 msgid ""
@@ -371,11 +373,11 @@ msgid ""
 msgstr ""
 "L'estil dels botons de la barra d'eines. Els valors possibles són "
 "«GEDIT_TOOLBAR_SYSTEM» per utilitzar l'estil predeterminat del sistema, "
-"«GEDIT_TOOLBAR_ICONS» per mostrar només icones, «GEDIT_TOOLBAR_ICONS_AND_TEXT» "
-"per mostrar icones i text i «GEDIT_TOOLBAR_ICONS_BOTH_HORIZ» per mostrar el "
-"text prioritari al costat de les icones. Recordeu que els valors són "
-"sensibles a majúscules i minúscules, així doncs assegureu-vos que apareixen "
-"exactament com es mencionen ací."
+"«GEDIT_TOOLBAR_ICONS» per mostrar només icones, "
+"«GEDIT_TOOLBAR_ICONS_AND_TEXT» per mostrar icones i text i "
+"«GEDIT_TOOLBAR_ICONS_BOTH_HORIZ» per mostrar el text prioritari al costat de "
+"les icones. Recordeu que els valors són sensibles a majúscules i minúscules, "
+"així doncs assegureu-vos que apareixen exactament com es mencionen ací."
 
 #: ../data/gedit.schemas.in.in.h:64
 msgid "Tab Size"
@@ -509,8 +511,8 @@ msgid ""
 msgstr ""
 "Si s'ha d'utilitzar el tipus de lletra predeterminat del sistema en el text "
 "d'edició en comptes d'un tipus de lletra específic per al gedit. Si "
-"s'inhabilita, s'utilitzarà el tipus de lletra especificat a l'opció «Tipus de "
-"lletra de l'editor» en comptes del tipus de lletra del sistema."
+"s'inhabilita, s'utilitzarà el tipus de lletra especificat a l'opció «Tipus "
+"de lletra de l'editor» en comptes del tipus de lletra del sistema."
 
 #: ../data/gedit.schemas.in.in.h:88
 msgid "Writable VFS schemes"
@@ -543,7 +545,7 @@ msgstr "Ix se_nse alçar"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:144
 msgid "_Cancel Logout"
-msgstr "_Cancel·la l'eixida"
+msgstr "_Cancel·la la eixida"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:151
 msgid "Close _without Saving"
@@ -613,11 +615,11 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Si no ho alceu, es perdran permanentment els canvis fets la darrera hora i %"
-"d minut."
+"Si no ho alceu, es perdran permanentment els canvis fets la darrera hora i "
+"%d minut."
 msgstr[1] ""
-"Si no ho alceu, es perdran permanentment els canvis fets la darrera hora i %"
-"d minuts."
+"Si no ho alceu, es perdran permanentment els canvis fets la darrera hora i "
+"%d minuts."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:473
 #, c-format
@@ -977,8 +979,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Executeu «%s --help» per veure la llista completa d'opcions disponibles per a "
-"la línia d'ordes.\n"
+"Executeu «%s --help» per veure la llista completa d'opcions disponibles per "
+"a la línia d'ordes.\n"
 
 #: ../gedit/gedit-commands-file.c:250
 #, c-format
@@ -1053,11 +1055,11 @@ msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Es perdran permanentment els canvis fets al document en el darrer minut i %"
-"ld segon."
+"Es perdran permanentment els canvis fets al document en el darrer minut i "
+"%ld segon."
 msgstr[1] ""
-"Es perdran permanentment els canvis fets al document en el darrer minut i %"
-"ld segons."
+"Es perdran permanentment els canvis fets al document en el darrer minut i "
+"%ld segons."
 
 #: ../gedit/gedit-commands-file.c:1154
 #, c-format
@@ -1514,7 +1516,7 @@ msgstr ""
 #: ../gedit/gedit-io-error-message-area.c:1024
 #: ../gedit/gedit-io-error-message-area.c:1034
 msgid "S_ave Anyway"
-msgstr "Al_ça igualment"
+msgstr "De_sa igualment"
 
 #: ../gedit/gedit-io-error-message-area.c:922
 #: ../gedit/gedit-io-error-message-area.c:932
@@ -1844,7 +1846,7 @@ msgstr "Visualització prèvia de la pàgina"
 msgid "The preview of a page in the document to be printed"
 msgstr "La visualització prèvia de la pàgina del document a imprimir"
 
-#: ../gedit/gedit-smart-charset-converter.c:308
+#: ../gedit/gedit-smart-charset-converter.c:319
 msgid "It is not possible to detect the encoding automatically"
 msgstr "No es pot detectar automàticament la codificació"
 
@@ -2157,7 +2159,7 @@ msgstr "Cerca text de manera incremental"
 #. Documents menu
 #: ../gedit/gedit-ui.h:136
 msgid "_Save All"
-msgstr "Al_ça-ho tot"
+msgstr "De_sa-ho tot"
 
 #: ../gedit/gedit-ui.h:137
 msgid "Save all open files"
@@ -2423,7 +2425,7 @@ msgstr ""
 
 #: ../plugins/checkupdate/gedit-check-update.schemas.in.h:1
 msgid "Version to ignore until the next version is released"
-msgstr "Versió a ignorar fins que es publique la propera versió"
+msgstr "Versió a ignorar fins que es publiqui la propera versió"
 
 #: ../plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:1
 msgid ""
@@ -2664,7 +2666,7 @@ msgstr "S_ortida:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:25
 msgid "_Save:"
-msgstr "Al_ça:"
+msgstr "De_sa:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:26
 msgid "_Shortcut Key:"
@@ -2693,7 +2695,8 @@ msgstr "Suprimiu espais innecessaris al final de les línies d'un fitxer"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
 msgid "Execute a custom command and put its output in a new document"
-msgstr "Executeu una orde personalitzada i poseu-ne l'eixida a un document nou"
+msgstr ""
+"Executeu una orde personalitzada i poseu-ne la eixida a un document nou"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:2
 msgid "Run command"
@@ -2924,154 +2927,154 @@ msgstr ""
 "El directori nou està filtrat. Heu de canviar les preferències del filtre "
 "per fer-lo visible"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:704
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:709
 msgid "Bookmarks"
 msgstr "Adreces d'interés"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:790
 msgid "_Filter"
 msgstr "_Filtre"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:790
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:795
 msgid "_Move to Trash"
 msgstr "_Mou a la paperera"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:791
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:796
 msgid "Move selected file or folder to trash"
 msgstr "Mou el fitxer o carpeta seleccionades a la paperera"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:793
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:798
 msgid "_Delete"
 msgstr "_Suprimeix"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:794
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:799
 msgid "Delete selected file or folder"
 msgstr "Suprimeix el fitxer o carpeta seleccionades"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:801
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:806
 msgid "Open selected file"
 msgstr "Obri el fitxer seleccionat"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:807
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:812
 msgid "Up"
 msgstr "Amunt"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:808
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:813
 msgid "Open the parent folder"
 msgstr "Obri la carpeta mare"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:813
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:818
 msgid "_New Folder"
 msgstr "Nova _carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:814
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:819
 msgid "Add new empty folder"
 msgstr "Afig una carpeta buida"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:816
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
 msgid "New F_ile"
 msgstr "F_itxer nou"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:817
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:822
 msgid "Add new empty file"
 msgstr "Afig un fitxer nou buit"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
 msgid "_Rename"
 msgstr "_Canvia el nom"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:823
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:828
 msgid "Rename selected file or folder"
 msgstr "Canvia el nom del fitxer o carpeta seleccionades"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:829
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:834
 msgid "_Previous Location"
 msgstr "Ubicació _anterior"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:831
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:836
 msgid "Go to the previous visited location"
 msgstr "Vés a l'anterior ubicació visitada"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:833
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
 msgid "_Next Location"
 msgstr "Ubicació _següent"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:834
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:839
 msgid "Go to the next visited location"
 msgstr "Vés a la següent ubicació visitada"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:835
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:840
 msgid "Re_fresh View"
 msgstr "Re_fresca la vista"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:836
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:841
 msgid "Refresh the view"
 msgstr "Refresca la vista"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:837
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:855
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:842
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:860
 msgid "_View Folder"
 msgstr "Visualitza la _carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:856
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:843
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:861
 msgid "View folder in file manager"
 msgstr "Visualitza la carpeta al gestor de fitxers"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:845
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
 msgid "Show _Hidden"
 msgstr "Mostra els _ocults"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:846
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:851
 msgid "Show hidden files and folders"
 msgstr "Mostra els fitxers i les carpetes ocultes"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:848
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
 msgid "Show _Binary"
 msgstr "Mostra els _binaris"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:849
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:854
 msgid "Show binary files"
 msgstr "Mostra els fitxers binaris"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:981
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:990
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1011
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:986
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:995
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1016
 msgid "Previous location"
 msgstr "Ubicació anterior"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:983
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:988
 msgid "Go to previous location"
 msgstr "Vés a la ubicació anterior"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:985
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1006
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:990
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1011
 msgid "Go to a previously opened location"
 msgstr "Vés a la ubicació oberta anteriorment"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1002
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1007
 msgid "Next location"
 msgstr "Ubicació següent"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1004
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1009
 msgid "Go to next location"
 msgstr "Vés a la següent ubicació"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1216
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1221
 msgid "_Match Filename"
 msgstr "Coi_ncidència del nom de fitxer"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2118
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2123
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "No hi ha cap objecte de muntatge per al volum muntat: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2198
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2203
 #, c-format
 msgid "Could not open media: %s"
 msgstr "No s'ha pogut obrir el suport: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2245
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2250
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "No s'ha pogut muntar el volum: %s"
@@ -4478,7 +4481,7 @@ msgstr "Fils entre files i columnes"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:241
 msgid "Sample program output, scripts"
-msgstr "Mostra de l'eixida del programa, scripts"
+msgstr "Mostra de la eixida del programa, scripts"
 
 #: ../plugins/taglist/HTML.tags.xml.in.h:242
 msgid "Scope covered by header cells"
@@ -5587,21 +5590,24 @@ msgstr "_Pregunta per un format"
 #~ "take effect if the \"Use Default Colors\" option is turned off."
 #~ msgstr ""
 #~ "Color de fons per al text no seleccionat en l'àrea d'edició. Només "
-#~ "afectarà si l'opció «Utilitza els colors predeterminats» està inhabilitada."
+#~ "afectarà si l'opció «Utilitza els colors predeterminats» està "
+#~ "inhabilitada."
 
 #~ msgid ""
 #~ "Foreground color for selected text in the editing area. This will only "
 #~ "take effect if the \"Use Default Colors\" option is turned off."
 #~ msgstr ""
 #~ "Color en primer pla per al text seleccionat en l'àrea d'edició. Només "
-#~ "afectarà si l'opció «Utilitza els colors predeterminats» està inhabilitada."
+#~ "afectarà si l'opció «Utilitza els colors predeterminats» està "
+#~ "inhabilitada."
 
 #~ msgid ""
 #~ "Foreground color for the unselected text in the editing area. This will "
 #~ "only take effect if the \"Use Default Colors\" option is turned off."
 #~ msgstr ""
 #~ "Color en primer pla per al text no seleccionat en l'àrea d'edició. Només "
-#~ "afectarà si l'opció «Utilitza els colors predeterminats» està inhabilitada."
+#~ "afectarà si l'opció «Utilitza els colors predeterminats» està "
+#~ "inhabilitada."
 
 #~ msgid "Selected Text Color"
 #~ msgstr "Color del text seleccionat"
@@ -5972,8 +5978,8 @@ msgstr "_Pregunta per un format"
 #~ "\n"
 #~ "Please, check your installation."
 #~ msgstr ""
-#~ "<span size=\"large\" weight=\"bold\">No s'ha pogut trobar el fitxer <i>%"
-#~ "s</i>.</span>\n"
+#~ "<span size=\"large\" weight=\"bold\">No s'ha pogut trobar el fitxer <i>"
+#~ "%s</i>.</span>\n"
 #~ "\n"
 #~ "Comproveu la instal·lació."
 
