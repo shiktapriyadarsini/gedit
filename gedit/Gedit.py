@@ -32,4 +32,14 @@ class MessageBus(Gedit.MessageBus):
 MessageBus = override(MessageBus)
 __all__.append('MessageBus')
 
+class Message(Gedit.Message):
+    def __getattribute__(self, name):
+        try:
+            return Gedit.Message.__getattribute__(self, name)
+        except:
+            return getattr(self.props, name)
+
+Message = override(Message)
+__all__.append('Message')
+
 # vi:ex:ts=4:et
