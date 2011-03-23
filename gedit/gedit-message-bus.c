@@ -1123,13 +1123,6 @@ gedit_message_bus_send_message (GeditMessageBus *bus,
 	send_message_real (bus, message);
 }
 
-static void
-send_message_sync_real (GeditMessageBus *bus,
-                        GeditMessage    *message)
-{
-	dispatch_message (bus, message);
-}
-
 /**
  * gedit_message_bus_send_message_sync:
  * @bus: a #GeditMessageBus
@@ -1148,7 +1141,7 @@ gedit_message_bus_send_message_sync (GeditMessageBus *bus,
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
 	g_return_if_fail (GEDIT_IS_MESSAGE (message));
 
-	send_message_sync_real (bus, message);
+	dispatch_message (bus, message);
 }
 
 static GeditMessage *
@@ -1268,7 +1261,7 @@ gedit_message_bus_send_sync (GeditMessageBus *bus,
 
 	if (message)
 	{
-		send_message_sync_real (bus, message);
+		dispatch_message (bus, message);
 	}
 
 	va_end (var_args);
