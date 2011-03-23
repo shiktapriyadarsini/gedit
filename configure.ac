@@ -294,6 +294,19 @@ fi
 
 AM_CONDITIONAL(ENABLE_ZEITGEIST, test x"$enable_zeitgeist" = "xyes")
 
+PYGOBJECT_REQUIRED=2.28
+
+PKG_CHECK_EXISTS([pygobject-2.0 >= $PYGOBJECT_REQUIRED],
+                 [have_pygobject=yes],[have_pygobject=no])
+
+if test "x$have_pygobject" = "xyes";
+then
+	pyoverridesdir=`$PKG_CONFIG --variable=overridesdir pygobject-2.0`
+	AC_SUBST(pyoverridesdir)
+fi
+
+AM_CONDITIONAL(HAVE_PYGOBJECT, test x"$have_pygobject" = "xyes")
+
 dnl ================================================================
 dnl Start of pkg-config checks
 dnl ================================================================
