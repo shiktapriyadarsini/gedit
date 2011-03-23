@@ -27,7 +27,8 @@ from library import Library
 
 class Activate(Gedit.Message):
         view = GObject.property(type=Gedit.View)
-        iter = GObject.property(type=Gtk.TextIter)
+# FIXME: fix as soon as fix lands in pygobject
+#        iter = GObject.property(type=Gtk.TextIter)
         trigger = GObject.property(type=str)
 
 class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
@@ -107,10 +108,11 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
                 if not self.has_controller(view):
                         return
 
-                iter = message.props.iter
+                # TODO: fix me as soon as the property fix lands in pygobject
+                #iter = message.props.iter
 
-                if not iter:
-                        iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
+                #if not iter:
+                iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
 
                 controller = view._snippet_controller
                 controller.run_snippet_trigger(message.props.trigger, (iter, iter))
