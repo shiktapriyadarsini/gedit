@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: gedit gnome-2-30\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&component=general\n"
-"POT-Creation-Date: 2010-10-03 12:00+0000\n"
-"PO-Revision-Date: 2010-10-04 20:46+0900\n"
-"Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
+"POT-Creation-Date: 2011-02-15 17:10+0000\n"
+"PO-Revision-Date: 2011-02-14 15:37+0900\n"
+"Last-Translator: Nobuto MURATA <nobuto@nobuto-murata.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -499,7 +499,7 @@ msgstr "書き込み可能な VFS スキーム"
 #. menu in open/save file selector. Only recognized encodings are displayed.
 #: ../data/gedit.schemas.in.in.h:91
 msgid "[ISO-8859-15]"
-msgstr "[ISO-8859-15]"
+msgstr "[ISO-2022-JP,CP932,EUC-JP-MS]"
 
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
@@ -514,7 +514,7 @@ msgstr "[ISO-8859-15]"
 #. a list of supported encodings
 #: ../data/gedit.schemas.in.in.h:103
 msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-msgstr "[UTF-8,CURRENT,ISO-2022-JP,SHIFT_JIS,EUC-JP]"
+msgstr "[UTF-8,CURRENT,ISO-2022-JP,CP932,EUC-JP-MS]"
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:140
 msgid "Log Out _without Saving"
