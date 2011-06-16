@@ -1,4 +1,18 @@
 ===========
+gedit 3.0.5
+===========
+
+New Features and Fixes
+======================
+- Fix single instance logic (Paolo Borelli)
+- Misc bugfixes
+
+New and updated translations
+============================
+- el (Kostas Papadimas)
+- fr (Bruno Brouard)
+
+===========
 gedit 3.0.4
 ===========
 
