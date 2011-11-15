@@ -1,4 +1,18 @@
 ===========
+gedit 3.2.3
+===========
+
+New Features and Fixes
+======================
+- Fix crash when dropping file in gedit with snippets plugin active (Paolo Borelli)
+- Misc bugfixes
+
+New and updated translations
+============================
+- de (Mario Blättermann)
+- my (phonemyintkhaing)
+
+===========
 gedit 3.2.2
 ===========
 
