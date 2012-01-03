@@ -1,4 +1,14 @@
 ===========
+gedit 3.2.6
+===========
+
+New Features and Fixes
+======================
+- Avoid crash with GTK+-3.3.* (Paolo Borelli)
+- External Tools plugin bugfixes (Ignacio Casal Quintero) 
+- Misc bugfixes
+
+===========
 gedit 3.2.5
 ===========
 
