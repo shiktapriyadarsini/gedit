@@ -1090,8 +1090,10 @@ gedit_app_process_window_event (GeditApp    *app,
 
 	if (GEDIT_APP_GET_CLASS (app)->process_window_event)
 	{
-		GEDIT_APP_GET_CLASS (app)->process_window_event (app, window, event);
+		return GEDIT_APP_GET_CLASS (app)->process_window_event (app, window, event);
 	}
+
+    return FALSE;
 }
 
 static void
