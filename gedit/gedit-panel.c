@@ -742,7 +742,6 @@ gedit_panel_add_item (GeditPanel  *panel,
 {
 	GeditPanelItem *data;
 	GtkWidget *tab_label;
-	GtkWidget *menu_label;
 	GtkStyleContext *context;
 	gint w, h;
 
@@ -782,9 +781,6 @@ gedit_panel_add_item (GeditPanel  *panel,
 
 	tab_label = build_tab_label (panel, item, data->display_name, data->icon);
 
-	menu_label = gtk_label_new (display_name);
-	gtk_widget_set_halign (menu_label, GTK_ALIGN_START);
-
 	if (!gtk_widget_get_visible (item))
 	{
 		gtk_widget_show (item);
@@ -797,10 +793,9 @@ gedit_panel_add_item (GeditPanel  *panel,
 		gtk_style_context_add_class (context, GTK_STYLE_CLASS_SIDEBAR);
 	}
 
-	gtk_notebook_append_page_menu (GTK_NOTEBOOK (panel->priv->notebook),
-				       item,
-				       tab_label,
-				       menu_label);
+	gtk_notebook_append_page (GTK_NOTEBOOK (panel->priv->notebook),
+	                          item,
+	                          tab_label);
 
 	g_signal_emit (G_OBJECT (panel), signals[ITEM_ADDED], 0, item);
 
