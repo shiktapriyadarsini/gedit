@@ -488,11 +488,7 @@ build_notebook_for_panel (GeditPanel *panel)
 	/* Create the panel notebook */
 	panel->priv->notebook = gtk_notebook_new ();
 
-	gtk_notebook_set_tab_pos (GTK_NOTEBOOK (panel->priv->notebook),
-				  GTK_POS_BOTTOM);
-	gtk_notebook_set_scrollable (GTK_NOTEBOOK (panel->priv->notebook),
-				     TRUE);
-	gtk_notebook_popup_enable (GTK_NOTEBOOK (panel->priv->notebook));
+	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (panel->priv->notebook), FALSE);
 
 	gtk_widget_show (GTK_WIDGET (panel->priv->notebook));
 
