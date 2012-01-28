@@ -459,30 +459,6 @@ gedit_panel_init (GeditPanel *panel)
 }
 
 static void
-close_button_clicked_cb (GtkWidget *widget,
-			 GtkWidget *panel)
-{
-	gtk_widget_hide (panel);
-}
-
-static GtkWidget *
-create_close_button (GeditPanel *panel)
-{
-	GtkWidget *button;
-
-	button = gedit_close_button_new ();
-
-	gtk_widget_set_tooltip_text (button, _("Hide panel"));
-
-	g_signal_connect (button,
-			  "clicked",
-			  G_CALLBACK (close_button_clicked_cb),
-			  panel);
-
-	return button;
-}
-
-static void
 build_notebook_for_panel (GeditPanel *panel)
 {
 	/* Create the panel notebook */
@@ -503,7 +479,6 @@ build_horizontal_panel (GeditPanel *panel)
 {
 	GtkWidget *box;
 	GtkWidget *sidebar;
-	GtkWidget *close_button;
 
 	box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
@@ -523,14 +498,6 @@ build_horizontal_panel (GeditPanel *panel)
 			    FALSE,
 			    0);
 
-	close_button = create_close_button (panel);
-
-	gtk_box_pack_start (GTK_BOX (sidebar),
-			    close_button,
-			    FALSE,
-			    FALSE,
-			    0);
-
 	gtk_widget_show_all (box);
 
 	gtk_box_pack_start (GTK_BOX (panel->priv->main_box),
@@ -543,7 +510,6 @@ build_horizontal_panel (GeditPanel *panel)
 static void
 build_vertical_panel (GeditPanel *panel)
 {
-	GtkWidget *close_button;
 	GtkWidget *title_hbox;
 	GtkWidget *icon_name_hbox;
 	GtkWidget *dummy_label;
@@ -586,14 +552,6 @@ build_vertical_panel (GeditPanel *panel)
 			    panel->priv->title_label,
 			    TRUE,
 			    TRUE,
-			    0);
-
-	close_button = create_close_button (panel);
-
-	gtk_box_pack_start (GTK_BOX (title_hbox),
-			    close_button,
-			    FALSE,
-			    FALSE,
 			    0);
 
 	gtk_widget_show_all (title_hbox);
