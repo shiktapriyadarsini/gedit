@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-17 20:00+0200\n"
-"PO-Revision-Date: 2011-10-17 20:01+0200\n"
+"POT-Creation-Date: 2012-02-25 23:30+0100\n"
+"PO-Revision-Date: 2012-02-25 23:31+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Edit text files"
 msgstr "Edytor plików tekstowych"
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:805
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:810
 msgid "Text Editor"
 msgstr "Edytor tekstu"
 
@@ -667,33 +667,33 @@ msgstr "Kliknięcie tego przycisku umożliwia wybór czcionki edytora"
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Systemowa o stałej szerokości (%s)"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:634
+#: ../gedit/dialogs/gedit-preferences-dialog.c:638
 msgid "The selected color scheme cannot be installed."
 msgstr "Wybrany schemat kolorów nie mógł zostać zainstalowany."
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:661
+#: ../gedit/dialogs/gedit-preferences-dialog.c:665
 msgid "Add Scheme"
 msgstr "Dodaj schemat"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:668
+#: ../gedit/dialogs/gedit-preferences-dialog.c:672
 msgid "A_dd Scheme"
 msgstr "_Dodaj schemat"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:676
+#: ../gedit/dialogs/gedit-preferences-dialog.c:680
 msgid "Color Scheme Files"
 msgstr "Pliki schematów kolorów"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:683
+#: ../gedit/dialogs/gedit-preferences-dialog.c:687
 #: ../gedit/gedit-file-chooser-dialog.c:52
 msgid "All Files"
 msgstr "Wszystkie pliki"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:728
+#: ../gedit/dialogs/gedit-preferences-dialog.c:732
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nie można usunąć schematu kolorów \"%s\"."
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:947
+#: ../gedit/dialogs/gedit-preferences-dialog.c:951
 msgid "gedit Preferences"
 msgstr "Preferencje programu gedit"
 
@@ -809,7 +809,7 @@ msgid "_minutes"
 msgstr "mi_nut"
 
 #: ../gedit/dialogs/gedit-replace-dialog.c:209
-#: ../gedit/dialogs/gedit-replace-dialog.ui.h:2 ../gedit/gedit-window.c:1626
+#: ../gedit/dialogs/gedit-replace-dialog.ui.h:2 ../gedit/gedit-window.c:1576
 msgid "Replace"
 msgstr "Zmień"
 
@@ -851,9 +851,13 @@ msgstr "_Tekst: "
 msgid "_Wrap around"
 msgstr "_Automatyczny powrót do początku"
 
-#: ../gedit/gedit-app.c:235
+#: ../gedit/gedit-app.c:236
 msgid "There was an error displaying the help."
 msgstr "Wystąpił błąd podczas wyświetlania pomocy."
+
+#: ../gedit/gedit-app-osx.c:274
+msgid "About gedit"
+msgstr "O programie gedit"
 
 #: ../gedit/gedit-command-line.c:232
 #, c-format
@@ -988,26 +992,26 @@ msgstr ""
 msgid "_Save As Plain Text"
 msgstr "Zapi_sz jako zwykły tekst"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:961
+#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Zapisywanie pliku \"%s\"…"
 
-#: ../gedit/gedit-commands-file.c:847
+#: ../gedit/gedit-commands-file.c:846
 msgid "Save As"
 msgstr "Zapisz jako"
 
-#: ../gedit/gedit-commands-file.c:1175
+#: ../gedit/gedit-commands-file.c:1173
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Przywracanie dokumentu \"%s\"…"
 
-#: ../gedit/gedit-commands-file.c:1220
+#: ../gedit/gedit-commands-file.c:1218
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Cofnąć niezapisane zmiany w dokumencie \"%s\"?"
 
-#: ../gedit/gedit-commands-file.c:1229
+#: ../gedit/gedit-commands-file.c:1227
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -1022,13 +1026,13 @@ msgstr[1] ""
 msgstr[2] ""
 "Zmiany naniesione w ciągu ostatnich %ld sekund zostaną bezpowrotnie utracone."
 
-#: ../gedit/gedit-commands-file.c:1238
+#: ../gedit/gedit-commands-file.c:1236
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Zmiany naniesione w ciągu ostatniej minuty zostaną bezpowrotnie utracone."
 
-#: ../gedit/gedit-commands-file.c:1244
+#: ../gedit/gedit-commands-file.c:1242
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1046,7 +1050,7 @@ msgstr[2] ""
 "Zmiany naniesione w ciągu ostatniej minuty i %ld sekund zostaną bezpowrotnie "
 "utracone."
 
-#: ../gedit/gedit-commands-file.c:1254
+#: ../gedit/gedit-commands-file.c:1252
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -1060,12 +1064,12 @@ msgstr[1] ""
 msgstr[2] ""
 "Zmiany naniesione w ciągu ostatnich %ld minut zostaną bezpowrotnie utracone."
 
-#: ../gedit/gedit-commands-file.c:1269
+#: ../gedit/gedit-commands-file.c:1267
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Zmiany naniesione w ciągu ostatniej godziny zostaną bezpowrotnie utracone."
 
-#: ../gedit/gedit-commands-file.c:1275
+#: ../gedit/gedit-commands-file.c:1273
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1083,7 +1087,7 @@ msgstr[2] ""
 "Zmiany naniesione w ciągu ostatniej godziny i %d minut zostaną bezpowrotnie "
 "utracone."
 
-#: ../gedit/gedit-commands-file.c:1290
+#: ../gedit/gedit-commands-file.c:1288
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -1096,7 +1100,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Zmiany naniesione w ciągu ostatnich %d godzin zostaną bezpowrotnie utracone."
 
-#: ../gedit/gedit-commands-file.c:1316
+#: ../gedit/gedit-commands-file.c:1314
 msgid "_Revert"
 msgstr "_Przywróć"
 
@@ -1106,7 +1110,7 @@ msgstr "gedit to niewielki i szybki edytor tekstu dla środowiska GNOME"
 
 #: ../gedit/gedit-commands-help.c:113
 msgid "translator-credits"
-msgstr "Aviary.pl <gnomepl@aviary.pl>, 2008, 2009, 2010, 2011"
+msgstr "Aviary.pl <gnomepl@aviary.pl>, 2008, 2009, 2010, 2011, 2012"
 
 #: ../gedit/gedit-commands-search.c:112
 #, c-format
@@ -1127,17 +1131,17 @@ msgstr "Odnaleziono i zmieniono jedno wystąpienie"
 msgid "\"%s\" not found"
 msgstr "Wyrażenie \"%s\" nie zostało odnalezione"
 
-#: ../gedit/gedit-document.c:1241 ../gedit/gedit-document.c:1267
+#: ../gedit/gedit-document.c:1243 ../gedit/gedit-document.c:1269
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Niezapisany dokument %d"
 
-#: ../gedit/gedit-documents-panel.c:121 ../gedit/gedit-documents-panel.c:135
-#: ../gedit/gedit-window.c:2459 ../gedit/gedit-window.c:2466
+#: ../gedit/gedit-documents-panel.c:122 ../gedit/gedit-documents-panel.c:136
+#: ../gedit/gedit-window.c:2416 ../gedit/gedit-window.c:2423
 msgid "Read-Only"
 msgstr "Tylko do odczytu"
 
-#: ../gedit/gedit-documents-panel.c:1143 ../gedit/gedit-window.c:3907
+#: ../gedit/gedit-documents-panel.c:1148 ../gedit/gedit-window.c:3864
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1657,16 +1661,16 @@ msgstr "Pusty"
 msgid "Hide panel"
 msgstr "Ukrywa panel"
 
-#: ../gedit/gedit-print-job.c:586
+#: ../gedit/gedit-print-job.c:591
 #, c-format
 msgid "File: %s"
 msgstr "Plik: %s"
 
-#: ../gedit/gedit-print-job.c:595
+#: ../gedit/gedit-print-job.c:600
 msgid "Page %N of %Q"
 msgstr "Strona %N z %Q"
 
-#: ../gedit/gedit-print-job.c:857
+#: ../gedit/gedit-print-job.c:862
 msgid "Preparing..."
 msgstr "Przygotowywanie..."
 
@@ -1814,7 +1818,7 @@ msgstr[0] "Jedna z otwartych kart zawiera błędy"
 msgstr[1] "%d otwarte karty zawierają błędy"
 msgstr[2] "%d otwartych kart zawiera błędy"
 
-#: ../gedit/gedit-style-scheme-manager.c:210
+#: ../gedit/gedit-style-scheme-manager.c:226
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
@@ -1934,7 +1938,7 @@ msgstr "Tworzy nowy dokument"
 msgid "_Open..."
 msgstr "_Otwórz..."
 
-#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1554
+#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1504
 msgid "Open a file"
 msgstr "Otwiera plik"
 
@@ -2234,7 +2238,7 @@ msgstr "Poszukiwane wyrażenie"
 msgid "Line you want to move the cursor to"
 msgstr "Numer wiersza, do którego ma zostać przeniesiony kursor"
 
-#: ../gedit/gedit-window.c:1040
+#: ../gedit/gedit-window.c:989
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "Używa trybu wyróżniania elementów składni %s"
@@ -2242,74 +2246,70 @@ msgstr "Używa trybu wyróżniania elementów składni %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1107 ../gedit/gedit-window.c:2156
+#: ../gedit/gedit-window.c:1056 ../gedit/gedit-window.c:2113
 #: ../plugins/externaltools/tools/manager.py:138
-#: ../plugins/externaltools/tools/manager.py:441
-#: ../plugins/externaltools/tools/manager.py:552
-#: ../plugins/externaltools/tools/manager.py:868
+#: ../plugins/externaltools/tools/manager.py:442
+#: ../plugins/externaltools/tools/manager.py:553
+#: ../plugins/externaltools/tools/manager.py:874
 msgid "Plain Text"
 msgstr "Zwykły tekst"
 
-#: ../gedit/gedit-window.c:1108
+#: ../gedit/gedit-window.c:1057
 msgid "Disable syntax highlighting"
 msgstr "Wyłącza wyróżnianie elementów składni"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1433
+#: ../gedit/gedit-window.c:1382
 #, c-format
 msgid "Open '%s'"
 msgstr "Otwórz \"%s\""
 
-#: ../gedit/gedit-window.c:1556
+#: ../gedit/gedit-window.c:1506
 msgid "Open a recently used file"
 msgstr "Otwiera ostatnio używany plik"
 
-#: ../gedit/gedit-window.c:1562
+#: ../gedit/gedit-window.c:1512
 msgid "Open"
 msgstr "Otwórz"
 
-#: ../gedit/gedit-window.c:1620
+#: ../gedit/gedit-window.c:1570
 msgid "Save"
 msgstr "Zapisz"
 
-#: ../gedit/gedit-window.c:1622
+#: ../gedit/gedit-window.c:1572
 msgid "Print"
 msgstr "Wydrukuj"
 
-#: ../gedit/gedit-window.c:1624
+#: ../gedit/gedit-window.c:1574
 msgid "Find"
 msgstr "Znajdź"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1784
+#: ../gedit/gedit-window.c:1734
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktywuje \"%s\""
 
-#: ../gedit/gedit-window.c:2134
+#: ../gedit/gedit-window.c:2091
 msgid "Use Spaces"
 msgstr "Spacje zamiast Tab"
 
-#: ../gedit/gedit-window.c:2207
+#: ../gedit/gedit-window.c:2164
 msgid "Tab Width"
 msgstr "Szerokość tabulacji"
 
-#: ../gedit/gedit-window.c:2316
+#: ../gedit/gedit-window.c:2273
 msgid "Bracket match is out of range"
 msgstr "Parowanie nawiasów jest poza zakresem"
 
-#: ../gedit/gedit-window.c:2321
+#: ../gedit/gedit-window.c:2278
 msgid "Bracket match not found"
 msgstr "Nie odnaleziono pasującego nawiasu"
 
-#: ../gedit/gedit-window.c:2326
+#: ../gedit/gedit-window.c:2283
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odnaleziono pasujący nawias w wierszu: %d"
-
-#: ../gedit/gedit-window.c:4113
-msgid "About gedit"
-msgstr "O programie gedit"
 
 #. ex:set ts=8 noet:
 #: ../plugins/changecase/changecase.plugin.desktop.in.h:1
@@ -2365,23 +2365,23 @@ msgstr "Sprawdza, czy dostępna jest nowsza wersja programu gedit"
 msgid "Check update"
 msgstr "Sprawdzanie aktualizacji"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:270
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:271
 msgid "There was an error displaying the URI."
 msgstr "Wystąpił błąd podczas wyświetlania adresu URL."
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:307
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:308
 msgid "_Download"
 msgstr "_Pobierz"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:315
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:316
 msgid "_Ignore Version"
 msgstr "_Pomiń tę wersję"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:330
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:331
 msgid "There is a new version of gedit"
 msgstr "Dostępna jest nowa wersja programu gedit"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:334
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:335
 msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
@@ -2531,18 +2531,18 @@ msgstr "Zakończono"
 msgid "All languages"
 msgstr "Wszystkie języki"
 
-#: ../plugins/externaltools/tools/manager.py:541
-#: ../plugins/externaltools/tools/manager.py:545
-#: ../plugins/externaltools/tools/manager.py:866
+#: ../plugins/externaltools/tools/manager.py:542
+#: ../plugins/externaltools/tools/manager.py:546
+#: ../plugins/externaltools/tools/manager.py:872
 #: ../plugins/externaltools/tools/tools.ui.h:4
 msgid "All Languages"
 msgstr "Wszystkie języki"
 
-#: ../plugins/externaltools/tools/manager.py:652
+#: ../plugins/externaltools/tools/manager.py:659
 msgid "New tool"
 msgstr "Nowe narzędzie"
 
-#: ../plugins/externaltools/tools/manager.py:783
+#: ../plugins/externaltools/tools/manager.py:790
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Ten skrót jest już przypisany do %s"
@@ -3155,9 +3155,17 @@ msgstr "K_olor polecenia:"
 msgid "_Error color:"
 msgstr "Kolor _błędu:"
 
+#: ../plugins/quickopen/quickopen/__init__.py:71
+msgid "Quick open"
+msgstr "Szybkie otwarcie"
+
+#: ../plugins/quickopen/quickopen/__init__.py:72
+msgid "Quickly open documents"
+msgstr "Szybko otwiera dokumenty"
+
 #. ex:ts=4:et:
-#: ../plugins/quickopen/quickopen/popup.py:31
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
+#: ../plugins/quickopen/quickopen/popup.py:31
 msgid "Quick Open"
 msgstr "Szybkie otwarcie"
 
@@ -3165,6 +3173,7 @@ msgstr "Szybkie otwarcie"
 msgid "Quickly open files"
 msgstr "Szybko otwiera pliki"
 
+#. ex:ts=4:et:
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Insert often-used pieces of text in a fast way"
 msgstr ""
@@ -3499,8 +3508,8 @@ msgstr "Sprawdzanie ukończone"
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:373
-#: ../plugins/spell/gedit-spell-checker-language.c:379
+#: ../plugins/spell/gedit-spell-checker-language.c:378
+#: ../plugins/spell/gedit-spell-checker-language.c:384
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3509,7 +3518,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:388
+#: ../plugins/spell/gedit-spell-checker-language.c:393
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3518,7 +3527,7 @@ msgstr "Nieznany (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:494
+#: ../plugins/spell/gedit-spell-checker-language.c:499
 msgctxt "language"
 msgid "Default"
 msgstr "Domyślny"
