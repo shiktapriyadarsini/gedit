@@ -22,16 +22,16 @@
 # Henrique P. Machado <hpmachado@gnome.org>, 2010.
 # Gabriel F. Vilar <cogumm@gmail.com>, 2011.
 # Thiago Branco Meurer <thiago@thiagopriest.net>
-#
+# Adorilson Bezerra <adorilson@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.24\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-07-27 18:31+0000\n"
-"PO-Revision-Date: 2011-07-28 13:27-0300\n"
-"Last-Translator: Thiago Branco Meurer <thiago@thiagopriest.net>\n"
-"Language-Team: Português Brasileiro <gnome-pt_br-list@gnome.org>\n"
+"POT-Creation-Date: 2012-03-15 11:52+0000\n"
+"PO-Revision-Date: 2012-03-28 23:27-0300\n"
+"Last-Translator: Adorilson Bezerra <adorilson@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,31 +39,43 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Virtaal 0.5.2\n"
 
-#: ../data/gedit.desktop.in.in.h:1 ../gedit/gedit-ui.h:53
-msgid "Create a new document"
-msgstr "Cria um novo documento"
-
-#: ../data/gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Edite arquivos de texto"
-
-#: ../data/gedit.desktop.in.in.h:3
-msgid "Open a new window"
-msgstr "Abrir uma nova janela"
-
-#: ../data/gedit.desktop.in.in.h:4 ../gedit/gedit-print-job.c:805
-msgid "Text Editor"
-msgstr "Editor de texto"
-
-#: ../data/gedit.desktop.in.in.h:5
+#: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:810
+msgid "Text Editor"
+msgstr "Editor de texto"
+
+#: ../data/gedit.desktop.in.in.h:3
+msgid "Edit text files"
+msgstr "Edite arquivos de texto"
+
+#: ../data/gedit.desktop.in.in.h:4
 msgid "gedit Text Editor"
 msgstr "Editor de texto gedit"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+msgid "Use Default Font"
+msgstr "Usar fonte padrão"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+msgid ""
+"Whether to use the system's default fixed width font for editing text "
+"instead of a font specific to gedit. If this option is turned off, then the "
+"font named in the \"Editor Font\" option will be used instead of the system "
+"font."
+msgstr ""
+"Usar a fonte de largura fixa padronizada no sistema para editar texto ao "
+"invés da fonte especificada para o gedit. Se esta opção estiver desligada, "
+"então a fonte indicada na opção \"Fonte do editor\" será usada no lugar da "
+"fonte do sistema."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+msgid "Editor Font"
+msgstr "Fonte do editor"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -71,139 +83,45 @@ msgstr ""
 "Fonte personalizada a ser usada na área de edição, caso a opção \"Usar fonte "
 "padrão\" seja desligada."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
-msgid "Active plugins"
-msgstr "Ativar plug-ins"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
-msgid "Automatic indent"
-msgstr "Recuo automático"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
-msgid "Automatically Detected Encodings"
-msgstr "Codificações detectadas automaticamente"
-
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
-msgid "Autosave"
-msgstr "Salvar automaticamente"
+msgid "Style Scheme"
+msgstr "Esquema de estilo"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
-msgid "Autosave Interval"
-msgstr "Intervalo para salvar automaticamente"
+msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgstr "O ID de um esquema de estilo GtkSourceView usado para colorir o texto."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
-msgid "Body Font for Printing"
-msgstr "Fonte do corpo para impressão"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
 msgid "Create Backup Copies"
 msgstr "Criar cópias de backup"
 
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+"Criar cópias de backup dos arquivos que salvar. Você pode definir a extensão "
+"do arquivo de backup na opção \"Extensão da cópia de backup\"."
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
-msgid "Display Line Numbers"
-msgstr "Mostrar números de linha"
+msgid "Autosave"
+msgstr "Salvar automaticamente"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
-msgid "Display Right Margin"
-msgstr "Mostrar margem direita"
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Autosave Interval\" "
+"option."
+msgstr ""
+"Salvar automaticamente arquivos modificados depois de um intervalo de tempo. "
+"Você pode definir o intervalo de tempo com a opção \"Intervalo para salvar "
+"automaticamente\"."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
-msgid "Editor Font"
-msgstr "Fonte do editor"
+msgid "Autosave Interval"
+msgstr "Intervalo para salvar automaticamente"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
-msgid "Enable Search Highlighting"
-msgstr "Habilitar destaque de pesquisa"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
-msgid "Enable Syntax Highlighting"
-msgstr "Habilitar destaque de sintaxe"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
-msgid "Encodings shown in menu"
-msgstr "Codificações mostradas no menu"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
-msgid "Header Font for Printing"
-msgstr "Fonte do cabeçalho para impressão"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
-msgid "Highlight Current Line"
-msgstr "Destacar linha atual"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
-msgid "Highlight Matching Brackets"
-msgstr "Destacar parênteses correspondentes"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
-msgid ""
-"If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
-"lines."
-msgstr ""
-"Se esse valor for 0 não serão inseridos números de linha quando um documento "
-"for impresso. Do contrário, o gedit vai imprimir números de linha a cada "
-"número especificado de linhas."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
-msgid "Insert spaces"
-msgstr "Inserir espaços"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
-msgid "Line Number Font for Printing"
-msgstr "Fonte do número de linha para impressão"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
-msgid "Line Wrapping Mode"
-msgstr "Modo de quebra de linhas"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
-msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
-msgstr ""
-"Lista dos plug-ins ativos. Ela contém a \"Localização\" dos plug-ins ativos. "
-"Veja o arquivo .gedit-plug-in para obter a \"Localização\" de um dado plug-"
-"in."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
-msgid ""
-"List of encodings shown in the Character Encoding menu in open/save file "
-"selector. Only recognized encodings are used."
-msgstr ""
-"Lista de codificações mostradas no menu de Codificação de Caracteres no "
-"seletor de arquivos abrir/salvar. Somente codificações reconhecidas são "
-"usadas."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
-msgid "Maximum Number of Undo Actions"
-msgstr "Número máximo de ações do desfazer"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
-msgid "Maximum Recent Files"
-msgstr "Máximo de arquivos recentes"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
-msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
-msgstr ""
-"Número máximo de ações que o gedit poderá desfazer ou refazer. Use \"-1\" "
-"para um número ilimitado de ações."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
-msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
-msgstr ""
-"Número máximo de ações que o gedit poderá desfazer ou refazer. Use \"-1\" "
-"para um número ilimitado de ações. Obsoleto desde 2.12.0"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
-msgid "Notebook Show Tabs Mode"
-msgstr "Visualizar modo de abas"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -212,53 +130,123 @@ msgstr ""
 "modificados. Só terá efeito se a opção \"Salvar automaticamente\" estiver "
 "ligada."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+msgid "Undo Actions Limit (DEPRECATED)"
+msgstr "Limite de ações do desfazer (OBSOLETO)"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
+"\" for unlimited number of actions. Deprecated since 2.12.0"
+msgstr ""
+"Número máximo de ações que o gedit poderá desfazer ou refazer. Use \"-1\" "
+"para um número ilimitado de ações. Obsoleto desde 2.12.0"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+msgid "Maximum Number of Undo Actions"
+msgstr "Número máximo de ações do desfazer"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
+"\" for unlimited number of actions."
+msgstr ""
+"Número máximo de ações que o gedit poderá desfazer ou refazer. Use \"-1\" "
+"para um número ilimitado de ações."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+msgid "Line Wrapping Mode"
+msgstr "Modo de quebra de linhas"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+"wrapping at individual character boundaries. Note that the values are case-"
+"sensitive, so make sure they appear exactly as mentioned here."
+msgstr ""
+"Especifique como quebrar as linhas longas na área de edição. Use \"nenhum\" "
+"para nem uma quebra, \"termo\" para quebra de limites de palavras, e "
+"\"caracter\" para quebra de limite de caracter individual. Observe que os "
+"valores são case-sensitive, por isso certifique-se que eles aparecem "
+"exatamente como mencionado aqui."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+msgid "Tab Size"
+msgstr "Tamanho da tabulação"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
+msgstr ""
+"Número de espaços a serem exibidos no lugar dos caracteres de tabulação."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+msgid "Insert spaces"
+msgstr "Inserir espaços"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr "Inserir espaços em vez de tabulações."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+msgid "Automatic indent"
+msgstr "Recuo automático"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+msgid "Whether gedit should enable automatic indentation."
+msgstr "Habilitar recuo automático."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+msgid "Display Line Numbers"
+msgstr "Mostrar números de linha"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr "Exibir números de linha na área de edição."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+msgid "Highlight Current Line"
+msgstr "Destacar linha atual"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+msgid "Whether gedit should highlight the current line."
+msgstr "Destacar a linha atual."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+msgid "Highlight Matching Brackets"
+msgstr "Destacar parênteses correspondentes"
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
-msgid "Print Header"
-msgstr "Imprimir cabeçalho"
+msgid "Whether gedit should highlight matching brackets."
+msgstr "Se o gedit deve destacar correspondência entre parênteses."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
-msgid "Print Line Numbers"
-msgstr "Imprimir números de linha"
+msgid "Display Right Margin"
+msgstr "Mostrar margem direita"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
-msgid "Print Syntax Highlighting"
-msgstr "Imprimir destaque de sintaxe"
+msgid "Whether gedit should display the right margin in the editing area."
+msgstr "Exibir a margem direita na área de edição."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
-msgid "Printing Line Wrapping Mode"
-msgstr "Modo de quebra de linha na impressão"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
-msgid "Restore Previous Cursor Position"
-msgstr "Restaurar posição anterior do cursor"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
 msgid "Right Margin Position"
 msgstr "Posição da margem direita"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
-msgid "Side panel is Visible"
-msgstr "Painel lateral está visível"
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+msgid "Specifies the position of the right margin."
+msgstr "Posição da margem direita."
 
 # Antes: "Home end inteligente"
 # -------
 # Dei uma pesquisada e a galera do KDE utiliza bastante esses termos
 # Usando "Início e fim inteligentes"
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
 msgid "Smart Home End"
 msgstr "Início e fim inteligentes"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
-msgid ""
-"Sorted list of encodings used by gedit for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
-"recognized encodings are used."
-msgstr ""
-"Lista ordenada de codificações usadas pelo gedit para detectar "
-"automaticamente a codificação de um arquivo. \"ATUAL\" é a codificação da "
-"localização atual. Somente codificações reconhecidas são usadas."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -277,73 +265,46 @@ msgstr ""
 "\"sempre\" sempre ir para o início/fim do texto em vez de o início/fim da "
 "linha."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+msgid "Restore Previous Cursor Position"
+msgstr "Restaurar posição anterior do cursor"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
-"individual character boundaries. Note that the values are case-sensitive, so "
-"make sure they appear exactly as mentioned here."
-msgstr ""
-"Especifica como quebrar linhas longas para impressão. Use \"nenhum\" sem "
-"envolvimento, \"termo\" para envolver os limites de palavras, e \"caracter\" "
-"para envolvimento em limites de caracteres individuais. Observe que os "
-"valores são case-sensitive, por isso certifique-se que eles aparecem "
-"exatamente como mencionado aqui."
+"Whether gedit should restore the previous cursor position when a file is "
+"loaded."
+msgstr "Restaurar a posição anterior do cursor quando um arquivo é carregado."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+msgid "Enable Syntax Highlighting"
+msgstr "Habilitar destaque de sintaxe"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+msgid "Whether gedit should enable syntax highlighting."
+msgstr "Habilitar destaque de sintaxe."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
-msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
-msgstr ""
-"Especifique como quebrar as linhas longas na área de edição. Use \"nenhum\" "
-"para nem uma quebra, \"termo\" para quebra de limites de palavras, e "
-"\"caracter\" para quebra de limite de caracter individual. Observe que os "
-"valores são case-sensitive, por isso certifique-se que eles aparecem "
-"exatamente como mencionado aqui."
+msgid "Enable Search Highlighting"
+msgstr "Habilitar destaque de pesquisa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
 msgid ""
-"Specifies the font to use for a document's body when printing documents."
-msgstr "Fonte a ser usada para o corpo de um documento ao imprimir."
+"Whether gedit should highlight all the occurrences of the searched text."
+msgstr "Destacar todas as ocorrências do texto pesquisado."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
-msgid ""
-"Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
-msgstr ""
-"Fonte a ser usada para imprimir números de linha, caso a opção \"Imprimir "
-"números de linha\" seja diferente de zero."
+msgid "Toolbar is Visible"
+msgstr "Barra de ferramentas visível"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
-msgid ""
-"Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
-msgstr ""
-"Fonte a ser usada para cabeçalhos de páginas ao imprimir um documento, caso "
-"a opção \"Imprimir cabeçalho\" esteja ativada."
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr "Exibir a barra de ferramentas em janelas de edição."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
-msgid ""
-"Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
-msgstr ""
-"Número máximo de arquivos abertos recentemente a serem exibidos no submenu "
-"\"Arquivos recentes\"."
+msgid "Notebook Show Tabs Mode"
+msgstr "Visualizar modo de abas"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
-msgid ""
-"Specifies the number of spaces that should be displayed instead of Tab "
-"characters."
-msgstr ""
-"Número de espaços a serem exibidos no lugar dos caracteres de tabulação."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
-msgid "Specifies the position of the right margin."
-msgstr "Posição da margem direita."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -356,124 +317,155 @@ msgstr ""
 "valores são case-sensitive, por isso certifique-se que eles aparecem "
 "exatamente como mencionado aqui."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
 msgid "Status Bar is Visible"
 msgstr "Barra de status visível"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
-msgid "Style Scheme"
-msgstr "Esquema de estilo"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
-msgid "Tab Size"
-msgstr "Tamanho da tabulação"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
-msgstr "O ID de um esquema de estilo GtkSourceView usado para colorir o texto."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
-msgid "Toolbar is Visible"
-msgstr "Barra de ferramentas visível"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
-msgid "Undo Actions Limit (DEPRECATED)"
-msgstr "Limite de ações do desfazer (OBSOLETO)"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
-msgid "Use Default Font"
-msgstr "Usar fonte padrão"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
-msgid ""
-"Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
-msgstr ""
-"Salvar automaticamente arquivos modificados depois de um intervalo de tempo. "
-"Você pode definir o intervalo de tempo com a opção \"Intervalo para salvar "
-"automaticamente\"."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
-msgid ""
-"Whether gedit should create backup copies for the files it saves. You can "
-"set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr ""
-"Criar cópias de backup dos arquivos que salvar. Você pode definir a extensão "
-"do arquivo de backup na opção \"Extensão da cópia de backup\"."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
-msgid "Whether gedit should display line numbers in the editing area."
-msgstr "Exibir números de linha na área de edição."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
-msgid "Whether gedit should display the right margin in the editing area."
-msgstr "Exibir a margem direita na área de edição."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
-msgid "Whether gedit should enable automatic indentation."
-msgstr "Habilitar recuo automático."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
-msgid "Whether gedit should enable syntax highlighting."
-msgstr "Habilitar destaque de sintaxe."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
-msgid ""
-"Whether gedit should highlight all the occurrences of the searched text."
-msgstr "Destacar todas as ocorrências do texto pesquisado."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
-msgid "Whether gedit should highlight matching brackets."
-msgstr "Se o gedit deve destacar correspondência entre parênteses."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
-msgid "Whether gedit should highlight the current line."
-msgstr "Destacar a linha atual."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
-msgid "Whether gedit should include a document header when printing documents."
-msgstr "Incluir um cabeçalho de documento ao imprimir documentos."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Inserir espaços em vez de tabulações."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
-msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "Imprimir o destaque de sintaxe ao imprimir documentos."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
-msgid ""
-"Whether gedit should restore the previous cursor position when a file is "
-"loaded."
-msgstr "Restaurar a posição anterior do cursor quando um arquivo é carregado."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
-msgid ""
-"Whether the side panel at the left of editing windows should be visible."
-msgstr "Se o painel lateral a esquerda das janelas de edição deve ser visível."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Exibir a barra de status na parte de baixo da janela de edição."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+msgid "Side panel is Visible"
+msgstr "Painel lateral está visível"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+msgid ""
+"Whether the side panel at the left of editing windows should be visible."
+msgstr "Se o painel lateral à esquerda das janelas de edição deve ser visível."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+msgid "Maximum Recent Files"
+msgstr "Máximo de arquivos recentes"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"Número máximo de arquivos abertos recentemente a serem exibidos no submenu "
+"\"Arquivos recentes\"."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+msgid "Print Syntax Highlighting"
+msgstr "Imprimir destaque de sintaxe"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+msgid "Whether gedit should print syntax highlighting when printing documents."
+msgstr "Imprimir o destaque de sintaxe ao imprimir documentos."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+msgid "Print Header"
+msgstr "Imprimir cabeçalho"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+msgid "Whether gedit should include a document header when printing documents."
+msgstr "Incluir um cabeçalho de documento ao imprimir documentos."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+msgid "Printing Line Wrapping Mode"
+msgstr "Modo de quebra de linha na impressão"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
+"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+"Especifica como quebrar linhas longas para impressão. Use \"nenhum\" sem "
+"envolvimento, \"termo\" para envolver os limites de palavras, e \"caracter\" "
+"para envolvimento em limites de caracteres individuais. Observe que os "
+"valores são case-sensitive, por isso certifique-se que eles aparecem "
+"exatamente como mencionado aqui."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+msgid "Print Line Numbers"
+msgstr "Imprimir números de linha"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+"Se esse valor for 0 não serão inseridos números de linha quando um documento "
+"for impresso. Do contrário, o gedit vai imprimir números de linha a cada "
+"número especificado de linhas."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+msgid "Body Font for Printing"
+msgstr "Fonte do corpo para impressão"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
+msgstr "Fonte a ser usada para o corpo de um documento ao imprimir."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+msgid "Header Font for Printing"
+msgstr "Fonte do cabeçalho para impressão"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+"Fonte a ser usada para cabeçalhos de páginas ao imprimir um documento, caso "
+"a opção \"Imprimir cabeçalho\" esteja ativada."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+msgid "Line Number Font for Printing"
+msgstr "Fonte do número de linha para impressão"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+msgid ""
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr ""
+"Fonte a ser usada para imprimir números de linha, caso a opção \"Imprimir "
+"números de linha\" seja diferente de zero."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+msgid "Automatically Detected Encodings"
+msgstr "Codificações detectadas automaticamente"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+msgid ""
+"Sorted list of encodings used by gedit for automatically detecting the "
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
+msgstr ""
+"Lista ordenada de codificações usadas pelo gedit para detectar "
+"automaticamente a codificação de um arquivo. \"ATUAL\" é a codificação da "
+"localização atual. Somente codificações reconhecidas são usadas."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+msgid "Encodings shown in menu"
+msgstr "Codificações mostradas no menu"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+msgid ""
+"List of encodings shown in the Character Encoding menu in open/save file "
+"selector. Only recognized encodings are used."
+msgstr ""
+"Lista de codificações mostradas no menu de Codificação de Caracteres no "
+"seletor de arquivos abrir/salvar. Somente codificações reconhecidas são "
+"usadas."
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
-msgid "Whether the toolbar should be visible in editing windows."
-msgstr "Exibir a barra de ferramentas em janelas de edição."
+msgid "Active plugins"
+msgstr "Ativar plug-ins"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
 msgid ""
-"Whether to use the system's default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
-"font."
+"List of active plugins. It contains the \"Location\" of the active plugins. "
+"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Usar a fonte de largura fixa padronizada no sistema para editar texto ao "
-"invés da fonte especificada para o gedit. Se esta opção estiver desligada, "
-"então a fonte indicada na opção \"Fonte do editor\" será usada no lugar da "
-"fonte do sistema."
+"Lista dos plug-ins ativos. Ela contém a \"Localização\" dos plug-ins ativos. "
+"Veja o arquivo .gedit-plug-in para obter a \"Localização\" de um dado plug-"
+"in."
 
 #: ../gedit/dialogs/gedit-close-confirmation-dialog.c:141
 msgid "Log Out _without Saving"
@@ -638,12 +630,12 @@ msgstr "Co_dificação"
 
 #. ex:set ts=8 noet:
 #: ../gedit/dialogs/gedit-encodings-dialog.ui.h:1
-msgid "A_vailable encodings:"
-msgstr "Codificações dispo_níveis:"
-
-#: ../gedit/dialogs/gedit-encodings-dialog.ui.h:2
 msgid "Character encodings"
 msgstr "Codificações de caracteres"
+
+#: ../gedit/dialogs/gedit-encodings-dialog.ui.h:2
+msgid "A_vailable encodings:"
+msgstr "Codificações dispo_níveis:"
 
 #: ../gedit/dialogs/gedit-encodings-dialog.ui.h:3
 msgid "E_ncodings shown in menu:"
@@ -658,193 +650,196 @@ msgstr "Pressionar esse botão para selecionar a fonte a ser usada pelo editor"
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Usar a fonte de largura fixa padrão (%s)"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:634
+#: ../gedit/dialogs/gedit-preferences-dialog.c:638
 msgid "The selected color scheme cannot be installed."
 msgstr "O esquema de cores selecionado não pode ser instalado."
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:661
+#: ../gedit/dialogs/gedit-preferences-dialog.c:665
 msgid "Add Scheme"
 msgstr "Adicionar esquema"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:668
+#: ../gedit/dialogs/gedit-preferences-dialog.c:672
 msgid "A_dd Scheme"
 msgstr "A_dicionar esquema"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:676
+#: ../gedit/dialogs/gedit-preferences-dialog.c:680
 msgid "Color Scheme Files"
 msgstr "Arquivos de esquema de cores"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:683
+#: ../gedit/dialogs/gedit-preferences-dialog.c:687
 #: ../gedit/gedit-file-chooser-dialog.c:52
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:728
+#: ../gedit/dialogs/gedit-preferences-dialog.c:732
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Não foi possível remover o esquema de cores \"%s\"."
 
-#: ../gedit/dialogs/gedit-preferences-dialog.c:947
+#: ../gedit/dialogs/gedit-preferences-dialog.c:951
 msgid "gedit Preferences"
 msgstr "Preferências do gedit"
 
 #. ex:set ts=8 noet:
 #: ../gedit/dialogs/gedit-preferences-dialog.ui.h:1
-msgid "Color Scheme"
-msgstr "Esquema de cores"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:2
-msgid "Create a _backup copy of files before saving"
-msgstr "Criar uma cópia de _backup dos arquivos antes de salvar"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:3
-msgid "Display right _margin at column:"
-msgstr "Mostrar a margem_direita da coluna:"
-
-#. ex:set ts=8 noet:
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:4
-#: ../gedit/gedit-print-preferences.ui.h:1
-msgid "Do not _split words over two lines"
-msgstr "Não _dividir uma palavra em duas linhas"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:5
-msgid "Editor"
-msgstr "Editor"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:6
-msgid "Editor _font: "
-msgstr "_Fonte do editor: "
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:7
-#: ../gedit/gedit-print-preferences.ui.h:2
-msgid "Enable text _wrapping"
-msgstr "Habilitar _quebra de texto"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:8
-msgid "File Saving"
-msgstr "Gravação de arquivos"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:9
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
-msgid "Font"
-msgstr "Fonte"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:10
-msgid "Font & Colors"
-msgstr "Fontes e cores"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:11
-msgid "Highlight current _line"
-msgstr "Destacar _linha atual"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:12
-msgid "Highlight matching _brackets"
-msgstr "Destacar parênteses _correspondentes"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:13
-msgid "Highlighting"
-msgstr "Destaque"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:14
-msgid "Insert _spaces instead of tabs"
-msgstr "Inserir _espaços em vez de tabulações"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:15
-msgid "Pick the editor font"
-msgstr "Selecione a fonte do editor"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:16
-msgid "Plugins"
-msgstr "Plug-ins"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
 msgid "Preferences"
 msgstr "Preferências"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
-msgid "Tab Stops"
-msgstr "Paradas de tabulação"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:19
-#: ../gedit/gedit-print-preferences.ui.h:11
-msgid "Text Wrapping"
-msgstr "Quebra de texto"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:20
-msgid "View"
-msgstr "Visão"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:21
-msgid "_Add..."
-msgstr "_Adicionar..."
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:22
-msgid "_Autosave files every"
-msgstr "_Salvar arquivos automaticamente a cada"
-
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:23 ../gedit/gedit-view.c:561
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:561
 msgid "_Display line numbers"
 msgstr "Exi_bir números de linha"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:24
-msgid "_Enable automatic indentation"
-msgstr "Habilitar recuo _automático"
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:3
+msgid "Display right _margin at column:"
+msgstr "Mostrar a margem _direita da coluna:"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:25
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:4
+#: ../gedit/gedit-print-preferences.ui.h:9
+msgid "Text Wrapping"
+msgstr "Quebra de texto"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-print-preferences.ui.h:10
+msgid "Enable text _wrapping"
+msgstr "Habilitar _quebra de texto"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-print-preferences.ui.h:11
+msgid "Do not _split words over two lines"
+msgstr "Não _dividir uma palavra em duas linhas"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:7
+msgid "Highlighting"
+msgstr "Destaque"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:8
+msgid "Highlight current _line"
+msgstr "Destacar _linha atual"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:9
+msgid "Highlight matching _brackets"
+msgstr "Destacar parênteses _correspondentes"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:10
+msgid "View"
+msgstr "Visão"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:11
+msgid "Tab Stops"
+msgstr "Paradas de tabulação"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:12
 msgid "_Tab width:"
 msgstr "Largura das _tabulações:"
 
-#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:26
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:13
+msgid "Insert _spaces instead of tabs"
+msgstr "Inserir _espaços em vez de tabulações"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:14
+msgid "_Enable automatic indentation"
+msgstr "Habilitar recuo _automático"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:15
+msgid "File Saving"
+msgstr "Gravação de arquivos"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:16
+msgid "Create a _backup copy of files before saving"
+msgstr "Criar uma cópia de _backup dos arquivos antes de salvar"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
+msgid "_Autosave files every"
+msgstr "_Salvar arquivos automaticamente a cada"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
 msgid "_minutes"
 msgstr "_minutos"
 
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:19
+msgid "Editor"
+msgstr "Editor"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:20
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+msgid "Font"
+msgstr "Fonte"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:21
+msgid "Editor _font: "
+msgstr "_Fonte do editor: "
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:22
+msgid "Pick the editor font"
+msgstr "Selecione a fonte do editor"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:23
+msgid "Color Scheme"
+msgstr "Esquema de cores"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:24
+msgid "_Add..."
+msgstr "_Adicionar..."
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:25
+msgid "Font & Colors"
+msgstr "Fontes e cores"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:26
+msgid "Plugins"
+msgstr "Plug-ins"
+
+#. ex:set ts=8 noet:
 #: ../gedit/dialogs/gedit-replace-dialog.c:209
-#: ../gedit/dialogs/gedit-replace-dialog.ui.h:2 ../gedit/gedit-window.c:1609
+#: ../gedit/dialogs/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1576
 msgid "Replace"
 msgstr "Substituir"
 
-#: ../gedit/dialogs/gedit-replace-dialog.c:291
+#: ../gedit/dialogs/gedit-replace-dialog.c:287
 msgid "Replace _All"
 msgstr "Substituir t_odas"
 
-#: ../gedit/dialogs/gedit-replace-dialog.c:292
+#: ../gedit/dialogs/gedit-replace-dialog.c:288
 #: ../gedit/gedit-commands-file.c:572
 msgid "_Replace"
 msgstr "_Substituir"
 
-#. ex:set ts=8 noet:
-#: ../gedit/dialogs/gedit-replace-dialog.ui.h:1
-msgid "Match _entire word only"
-msgstr "_Coincidir apenas com palavra completa"
-
-#: ../gedit/dialogs/gedit-replace-dialog.ui.h:3
+#: ../gedit/dialogs/gedit-replace-dialog.ui.h:2
 msgid "Replace All"
 msgstr "Substituir todas"
+
+#: ../gedit/dialogs/gedit-replace-dialog.ui.h:3
+msgid "_Search for: "
+msgstr "_Pesquisar por: "
 
 #: ../gedit/dialogs/gedit-replace-dialog.ui.h:4
 msgid "Replace _with: "
 msgstr "_Substituir por: "
 
 #: ../gedit/dialogs/gedit-replace-dialog.ui.h:5
-msgid "Search _backwards"
-msgstr "Pesquisar para _trás"
-
-#: ../gedit/dialogs/gedit-replace-dialog.ui.h:6
 msgid "_Match case"
 msgstr "_Diferenciar maiúsculas/minúsculas"
 
+#: ../gedit/dialogs/gedit-replace-dialog.ui.h:6
+msgid "Match _entire word only"
+msgstr "_Coincidir apenas com palavra completa"
+
 #: ../gedit/dialogs/gedit-replace-dialog.ui.h:7
-msgid "_Search for: "
-msgstr "_Pesquisar por: "
+msgid "Search _backwards"
+msgstr "Pesquisar para _trás"
 
 #: ../gedit/dialogs/gedit-replace-dialog.ui.h:8
 msgid "_Wrap around"
 msgstr "_Voltar ao início"
 
-#: ../gedit/gedit-app.c:235
+#: ../gedit/gedit-app.c:236
 msgid "There was an error displaying the help."
 msgstr "Houve um erro ao exibir a ajuda."
+
+#: ../gedit/gedit-app-osx.c:274
+msgid "About gedit"
+msgstr "Sobre o gedit"
 
 #: ../gedit/gedit-command-line.c:232
 #, c-format
@@ -986,26 +981,26 @@ msgstr ""
 msgid "_Save As Plain Text"
 msgstr "_Salvar em texto simples?"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:961
+#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Salvando o arquivo \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:847
+#: ../gedit/gedit-commands-file.c:846
 msgid "Save As"
 msgstr "Salvar como..."
 
-#: ../gedit/gedit-commands-file.c:1175
+#: ../gedit/gedit-commands-file.c:1173
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Revertendo o documento \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:1220
+#: ../gedit/gedit-commands-file.c:1218
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Reverter as alterações não salvas para o documento \"%s\"?"
 
-#: ../gedit/gedit-commands-file.c:1229
+#: ../gedit/gedit-commands-file.c:1227
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -1019,14 +1014,14 @@ msgstr[1] ""
 "As alterações feitas no documento nos últimos %ld segundos serão "
 "permanentemente perdidas."
 
-#: ../gedit/gedit-commands-file.c:1238
+#: ../gedit/gedit-commands-file.c:1236
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "As alterações feitas no documento no último minuto serão permanentemente "
 "perdidas."
 
-#: ../gedit/gedit-commands-file.c:1244
+#: ../gedit/gedit-commands-file.c:1242
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -1041,7 +1036,7 @@ msgstr[1] ""
 "As alterações feitas no documento no último minuto e %ld segundos serão "
 "permanentemente perdidas."
 
-#: ../gedit/gedit-commands-file.c:1254
+#: ../gedit/gedit-commands-file.c:1252
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -1055,13 +1050,13 @@ msgstr[1] ""
 "As alterações feitas no documento nos últimos %ld minutos serão "
 "permanentemente perdidas."
 
-#: ../gedit/gedit-commands-file.c:1269
+#: ../gedit/gedit-commands-file.c:1267
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "As alterações feitas no documento na última hora serão permanentemente "
 "perdidas."
 
-#: ../gedit/gedit-commands-file.c:1275
+#: ../gedit/gedit-commands-file.c:1273
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1076,7 +1071,7 @@ msgstr[1] ""
 "As alterações feitas no documento na última hora e %d minutos serão "
 "permanentemente perdidas."
 
-#: ../gedit/gedit-commands-file.c:1290
+#: ../gedit/gedit-commands-file.c:1288
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -1089,7 +1084,7 @@ msgstr[1] ""
 "As alterações feitas no documento nas últimas %d horas serão permanentemente "
 "perdidas."
 
-#: ../gedit/gedit-commands-file.c:1316
+#: ../gedit/gedit-commands-file.c:1314
 msgid "_Revert"
 msgstr "_Reverter"
 
@@ -1114,7 +1109,7 @@ msgstr ""
 "Jonh Wendell <wendell@bani.com.br>\n"
 "Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
 "César Veiga <tombs@linuxmail.org>\n"
-"André Gondim <andregondim@ubuntu.com>\n"
+"André Gondim <In Memorian>\n"
 "Henrique P. Machado <hpmachado@gnome.org>\n"
 "Gabriel F. Vilar <cogumm@gmail.com>\n"
 "Thiago Branco Meurer <thiago@thiagopriest.net>"
@@ -1137,17 +1132,17 @@ msgstr "Uma ocorrência localizada e substituída"
 msgid "\"%s\" not found"
 msgstr "\"%s\" não localizado"
 
-#: ../gedit/gedit-document.c:1241 ../gedit/gedit-document.c:1267
+#: ../gedit/gedit-document.c:1243 ../gedit/gedit-document.c:1269
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento não-salvo %d"
 
-#: ../gedit/gedit-documents-panel.c:121 ../gedit/gedit-documents-panel.c:135
-#: ../gedit/gedit-window.c:2442 ../gedit/gedit-window.c:2449
+#: ../gedit/gedit-documents-panel.c:122 ../gedit/gedit-documents-panel.c:136
+#: ../gedit/gedit-window.c:2416 ../gedit/gedit-window.c:2423
 msgid "Read-Only"
 msgstr "Somente leitura"
 
-#: ../gedit/gedit-documents-panel.c:1142 ../gedit/gedit-window.c:3890
+#: ../gedit/gedit-documents-panel.c:1148 ../gedit/gedit-window.c:3864
 msgid "Documents"
 msgstr "Documentos"
 
@@ -1430,7 +1425,7 @@ msgstr "O gedit não conseguiu detectar a codificação de caracteres."
 #: ../gedit/gedit-io-error-info-bar.c:642
 msgid "Please check that you are not trying to open a binary file."
 msgstr ""
-"Por favor, verifique que você não está tentando abrir um arquivo binário."
+"Por favor, verifique se você não está tentando abrir um arquivo binário."
 
 #: ../gedit/gedit-io-error-info-bar.c:621
 msgid "Select a character encoding from the menu and try again."
@@ -1674,72 +1669,73 @@ msgstr "Vazio"
 msgid "Hide panel"
 msgstr "Ocultar painel"
 
-#: ../gedit/gedit-print-job.c:586
+#: ../gedit/gedit-print-job.c:591
 #, c-format
 msgid "File: %s"
 msgstr "Arquivo: %s"
 
-#: ../gedit/gedit-print-job.c:595
+#: ../gedit/gedit-print-job.c:600
 msgid "Page %N of %Q"
 msgstr "Página %N de %Q"
 
-#: ../gedit/gedit-print-job.c:857
+#: ../gedit/gedit-print-job.c:862
 msgid "Preparing..."
 msgstr "Preparando..."
 
-#: ../gedit/gedit-print-preferences.ui.h:3
-msgid "Fonts"
-msgstr "Fontes"
-
-#: ../gedit/gedit-print-preferences.ui.h:4
-msgid "He_aders and footers:"
-msgstr "_Cabeçalhos e rodapés:"
-
-#: ../gedit/gedit-print-preferences.ui.h:5
-msgid "Line Numbers"
-msgstr "Números de linha"
-
-#: ../gedit/gedit-print-preferences.ui.h:6
-msgid "Page header"
-msgstr "Cabeçalho da página"
-
-#: ../gedit/gedit-print-preferences.ui.h:7
-msgid "Print line nu_mbers"
-msgstr "Imprimir nú_meros das linhas"
-
-#: ../gedit/gedit-print-preferences.ui.h:8
-msgid "Print page _headers"
-msgstr "Imprimir cabeçal_hos da página"
-
-#: ../gedit/gedit-print-preferences.ui.h:9
-msgid "Print synta_x highlighting"
-msgstr "Imprimir destaque de _sintaxe"
-
-#: ../gedit/gedit-print-preferences.ui.h:10
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preferences.ui.h:1
 msgid "Syntax Highlighting"
 msgstr "Destaque de sintaxe"
 
-#: ../gedit/gedit-print-preferences.ui.h:12
-msgid "_Body:"
-msgstr "C_orpo:"
+#: ../gedit/gedit-print-preferences.ui.h:2
+msgid "Print synta_x highlighting"
+msgstr "Imprimir destaque de _sintaxe"
 
-#: ../gedit/gedit-print-preferences.ui.h:13
-msgid "_Line numbers:"
-msgstr "Números de _linha:"
+#: ../gedit/gedit-print-preferences.ui.h:3
+msgid "Line Numbers"
+msgstr "Números de linha"
+
+#: ../gedit/gedit-print-preferences.ui.h:4
+msgid "Print line nu_mbers"
+msgstr "Imprimir nú_meros das linhas"
 
 #. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/gedit-print-preferences.ui.h:15
+#: ../gedit/gedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "E_numerar a cada"
 
-#: ../gedit/gedit-print-preferences.ui.h:16
-msgid "_Restore Default Fonts"
-msgstr "_Restaurar fontes padrão"
-
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/gedit-print-preferences.ui.h:18
+#: ../gedit/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "linhas"
+
+#: ../gedit/gedit-print-preferences.ui.h:12
+msgid "Page header"
+msgstr "Cabeçalho da página"
+
+#: ../gedit/gedit-print-preferences.ui.h:13
+msgid "Print page _headers"
+msgstr "Imprimir cabeçal_hos da página"
+
+#: ../gedit/gedit-print-preferences.ui.h:14
+msgid "Fonts"
+msgstr "Fontes"
+
+#: ../gedit/gedit-print-preferences.ui.h:15
+msgid "_Body:"
+msgstr "C_orpo:"
+
+#: ../gedit/gedit-print-preferences.ui.h:16
+msgid "_Line numbers:"
+msgstr "Números de _linha:"
+
+#: ../gedit/gedit-print-preferences.ui.h:17
+msgid "He_aders and footers:"
+msgstr "_Cabeçalhos e rodapés:"
+
+#: ../gedit/gedit-print-preferences.ui.h:18
+msgid "_Restore Default Fonts"
+msgstr "_Restaurar fontes padrão"
 
 #: ../gedit/gedit-print-preview.c:582
 msgid "Show the previous page"
@@ -1830,7 +1826,7 @@ msgid_plural "There are %d tabs with errors"
 msgstr[0] "Há uma aba com erros"
 msgstr[1] "Há %d abas com erros"
 
-#: ../gedit/gedit-style-scheme-manager.c:210
+#: ../gedit/gedit-style-scheme-manager.c:226
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
@@ -1839,73 +1835,73 @@ msgstr ""
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:744
+#: ../gedit/gedit-tab.c:743
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Revertendo %s a partir de %s"
 
-#: ../gedit/gedit-tab.c:751
+#: ../gedit/gedit-tab.c:750
 #, c-format
 msgid "Reverting %s"
 msgstr "Revertendo %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:767
+#: ../gedit/gedit-tab.c:766
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Carregando %s a partir de %s"
 
-#: ../gedit/gedit-tab.c:774
+#: ../gedit/gedit-tab.c:773
 #, c-format
 msgid "Loading %s"
 msgstr "Carregando %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:855
+#: ../gedit/gedit-tab.c:854
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Salvando %s em %s"
 
-#: ../gedit/gedit-tab.c:862
+#: ../gedit/gedit-tab.c:861
 #, c-format
 msgid "Saving %s"
 msgstr "Salvando %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1835
+#: ../gedit/gedit-tab.c:1844
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1882
+#: ../gedit/gedit-tab.c:1891
 #, c-format
 msgid "Error opening file %s"
 msgstr "Erro ao abrir o arquivo %s"
 
-#: ../gedit/gedit-tab.c:1887
+#: ../gedit/gedit-tab.c:1896
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Erro ao reverter o arquivo %s"
 
-#: ../gedit/gedit-tab.c:1892
+#: ../gedit/gedit-tab.c:1901
 #, c-format
 msgid "Error saving file %s"
 msgstr "Erro ao salvar o arquivo %s"
 
-#: ../gedit/gedit-tab.c:1913
+#: ../gedit/gedit-tab.c:1922
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1920
+#: ../gedit/gedit-tab.c:1929
 msgid "Name:"
 msgstr "Nome:"
 
-#: ../gedit/gedit-tab.c:1921
+#: ../gedit/gedit-tab.c:1930
 msgid "MIME Type:"
 msgstr "Tipo MIME:"
 
-#: ../gedit/gedit-tab.c:1922
+#: ../gedit/gedit-tab.c:1931
 msgid "Encoding:"
 msgstr "Codificação:"
 
@@ -1942,11 +1938,15 @@ msgstr "_Documentos"
 msgid "_Help"
 msgstr "Aj_uda"
 
+#: ../gedit/gedit-ui.h:53
+msgid "Create a new document"
+msgstr "Cria um novo documento"
+
 #: ../gedit/gedit-ui.h:54
 msgid "_Open..."
 msgstr "_Abrir..."
 
-#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1537
+#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1504
 msgid "Open a file"
 msgstr "Abre um arquivo"
 
@@ -2207,46 +2207,46 @@ msgstr "Mostrar ou ocultar o painel inferior da janela atual"
 msgid "Please check your installation."
 msgstr "Favor verificar sua instalação."
 
-#: ../gedit/gedit-utils.c:1087
+#: ../gedit/gedit-utils.c:1075
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Não foi possível abrir o arquivo de interface de usuário %s. Erro: %s"
 
-#: ../gedit/gedit-utils.c:1107
+#: ../gedit/gedit-utils.c:1094
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Não foi possível localizar o objeto \\\"%s\\\" dentro do arquivo %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1252
+#: ../gedit/gedit-utils.c:1316
 #, c-format
 msgid "/ on %s"
 msgstr "/ em %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:624
+#: ../gedit/gedit-view-frame.c:554
 msgid "_Wrap Around"
 msgstr "_Voltar ao início"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:634
+#: ../gedit/gedit-view-frame.c:564
 msgid "Match _Entire Word Only"
 msgstr "Coincidir ap_enas com palavra completa"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:644
+#: ../gedit/gedit-view-frame.c:574
 msgid "_Match Case"
 msgstr "Diferenciar _maiúsculas/minúsculas"
 
-#: ../gedit/gedit-view-frame.c:903
+#: ../gedit/gedit-view-frame.c:775
 msgid "String you want to search for"
 msgstr "Expressão que você deseja pesquisar"
 
-#: ../gedit/gedit-view-frame.c:912
+#: ../gedit/gedit-view-frame.c:782
 msgid "Line you want to move the cursor to"
 msgstr "Linha para a qual que você deseja mover o cursor"
 
-#: ../gedit/gedit-window.c:1040
+#: ../gedit/gedit-window.c:989
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "Usa modo de destaque %s"
@@ -2254,74 +2254,70 @@ msgstr "Usa modo de destaque %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1107 ../gedit/gedit-window.c:2139
+#: ../gedit/gedit-window.c:1056 ../gedit/gedit-window.c:2113
 #: ../plugins/externaltools/tools/manager.py:138
-#: ../plugins/externaltools/tools/manager.py:435
-#: ../plugins/externaltools/tools/manager.py:546
-#: ../plugins/externaltools/tools/manager.py:865
+#: ../plugins/externaltools/tools/manager.py:442
+#: ../plugins/externaltools/tools/manager.py:553
+#: ../plugins/externaltools/tools/manager.py:874
 msgid "Plain Text"
 msgstr "Texto sem formatação"
 
-#: ../gedit/gedit-window.c:1108
+#: ../gedit/gedit-window.c:1057
 msgid "Disable syntax highlighting"
 msgstr "Desabilita destaque de sintaxe"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1430
+#: ../gedit/gedit-window.c:1382
 #, c-format
 msgid "Open '%s'"
 msgstr "Abrir \\\"%s\\\""
 
-#: ../gedit/gedit-window.c:1539
+#: ../gedit/gedit-window.c:1506
 msgid "Open a recently used file"
 msgstr "Abre um arquivo recentemente usado"
 
-#: ../gedit/gedit-window.c:1545
+#: ../gedit/gedit-window.c:1512
 msgid "Open"
 msgstr "Abrir"
 
-#: ../gedit/gedit-window.c:1603
+#: ../gedit/gedit-window.c:1570
 msgid "Save"
 msgstr "Salvar"
 
-#: ../gedit/gedit-window.c:1605
+#: ../gedit/gedit-window.c:1572
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../gedit/gedit-window.c:1607
+#: ../gedit/gedit-window.c:1574
 msgid "Find"
 msgstr "Localizar"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1767
+#: ../gedit/gedit-window.c:1734
 #, c-format
 msgid "Activate '%s'"
 msgstr "Ativar \\\"%s\\\""
 
-#: ../gedit/gedit-window.c:2117
+#: ../gedit/gedit-window.c:2091
 msgid "Use Spaces"
 msgstr "Usar espaços"
 
-#: ../gedit/gedit-window.c:2190
+#: ../gedit/gedit-window.c:2164
 msgid "Tab Width"
 msgstr "Largura das tabulações"
 
-#: ../gedit/gedit-window.c:2299
+#: ../gedit/gedit-window.c:2273
 msgid "Bracket match is out of range"
 msgstr "Parênteses nos resultados que estão fora da faixa"
 
-#: ../gedit/gedit-window.c:2304
+#: ../gedit/gedit-window.c:2278
 msgid "Bracket match not found"
 msgstr "Parênteses no resultado não encontrado"
 
-#: ../gedit/gedit-window.c:2309
+#: ../gedit/gedit-window.c:2283
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Parênteses do resultado encontrado na linha: %d"
-
-#: ../gedit/gedit-window.c:4096
-msgid "About gedit"
-msgstr "Sobre o gedit"
 
 #. ex:set ts=8 noet:
 #: ../plugins/changecase/changecase.plugin.desktop.in.h:1
@@ -2370,30 +2366,30 @@ msgstr "Converte em maiúscula a primeira letra de cada palavra selecionada"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
-msgid "Check for latest version of gedit"
-msgstr "Verificar pela última versão do gedit"
-
-#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
 msgid "Check update"
 msgstr "Verificar por atualização"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:270
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
+msgid "Check for latest version of gedit"
+msgstr "Verificar pela última versão do gedit"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:271
 msgid "There was an error displaying the URI."
 msgstr "Houve um erro ao exibir a URI."
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:307
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:308
 msgid "_Download"
 msgstr "_Baixar"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:315
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:316
 msgid "_Ignore Version"
 msgstr "_Ignorar versão"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:330
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:331
 msgid "There is a new version of gedit"
 msgstr "Existe uma nova versão do gedit"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:334
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:335
 msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
@@ -2412,6 +2408,11 @@ msgid "Version to ignore until a newer version is released."
 msgstr "Versão para ser ignorada até que uma nova versão for lançada."
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
+msgid "Document Statistics"
+msgstr "Estatísticas do documento"
+
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
@@ -2419,54 +2420,48 @@ msgstr ""
 "Analisa o documento atual e relata o número de palavras, linhas, caracteres, "
 "e caracteres que não espaço."
 
-#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
-msgid "Document Statistics"
-msgstr "Estatísticas do documento"
-
-#. ex:ts=4:et:
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
-#: ../plugins/externaltools/tools/tools.ui.h:1
-#: ../plugins/snippets/snippets/snippets.ui.h:1
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
-msgid "    "
-msgstr "    "
-
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
-msgid "Bytes"
-msgstr "Bytes"
+msgid "_Update"
+msgstr "_Atualizar"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
-msgid "Characters (no spaces)"
-msgstr "Caracteres (sem espaços)"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
-msgid "Characters (with spaces)"
-msgstr "Caracteres (com espaços)"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
-msgid "Document"
-msgstr "Documento"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
 msgid "File Name"
 msgstr "Nome do arquivo"
 
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
+#: ../plugins/externaltools/tools/tools.ui.h:27
+#: ../plugins/snippets/snippets/snippets.ui.h:13
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
+msgid "    "
+msgstr "    "
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
+msgid "Bytes"
+msgstr "Bytes"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
+msgid "Characters (no spaces)"
+msgstr "Caracteres (sem espaços)"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
+msgid "Characters (with spaces)"
+msgstr "Caracteres (com espaços)"
+
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
-msgid "Lines"
-msgstr "Linhas"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
-msgid "Selection"
-msgstr "Seleção"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
 msgid "Words"
 msgstr "Palavras"
 
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
+msgid "Lines"
+msgstr "Linhas"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
+msgid "Document"
+msgstr "Documento"
+
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:11
-msgid "_Update"
-msgstr "_Atualizar"
+msgid "Selection"
+msgstr "Seleção"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:451
 msgid "_Document Statistics"
@@ -2479,29 +2474,28 @@ msgstr "Obtém informações estatísticas sobre o documento atual"
 #. ex:set ts=8 noet:
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
-msgid "Open a terminal in the document location"
-msgstr "Abre um terminal no mesmo local do documento"
-
-#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
-#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
 msgid "Open terminal here"
 msgstr "Abrir terminal aqui"
 
-#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
-msgid "Execute external commands and shell scripts."
-msgstr "Executa comandos externos e shell scripts."
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
+msgid "Open a terminal in the document location"
+msgstr "Abre um terminal no mesmo local do documento"
 
-#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
 msgstr "Ferramentas externas"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
-msgstr ""
-"Um nome da fonte Pango. Os exemplos são \"Sans 12\" ou \"Monospace Bold 14\"."
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+msgid "Execute external commands and shell scripts."
+msgstr "Executa comandos externos e shell scripts."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+msgid "Whether to use the system font"
+msgstr "Utilizar a fonte do sistema"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2511,8 +2505,9 @@ msgstr ""
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
-msgid "Whether to use the system font"
-msgstr "Utilizar a fonte do sistema"
+msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgstr ""
+"Um nome da fonte Pango. Os exemplos são \"Sans 12\" ou \"Monospace Bold 14\"."
 
 #: ../plugins/externaltools/tools/capture.py:92
 #, python-format
@@ -2539,27 +2534,27 @@ msgstr "Saiu"
 msgid "All languages"
 msgstr "Todos os idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:535
-#: ../plugins/externaltools/tools/manager.py:539
-#: ../plugins/externaltools/tools/manager.py:863
-#: ../plugins/externaltools/tools/tools.ui.h:4
+#: ../plugins/externaltools/tools/manager.py:542
+#: ../plugins/externaltools/tools/manager.py:546
+#: ../plugins/externaltools/tools/manager.py:872
+#: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Todos os idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:646
+#: ../plugins/externaltools/tools/manager.py:659
 msgid "New tool"
 msgstr "Nova ferramenta"
 
-#: ../plugins/externaltools/tools/manager.py:777
+#: ../plugins/externaltools/tools/manager.py:790
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Este acelerador já está associado a %s"
 
-#: ../plugins/externaltools/tools/manager.py:828
+#: ../plugins/externaltools/tools/manager.py:834
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Digite um novo acelerador ou pressione Backspace para limpar"
 
-#: ../plugins/externaltools/tools/manager.py:830
+#: ../plugins/externaltools/tools/manager.py:836
 msgid "Type a new accelerator"
 msgstr "Digite um novo acelerador"
 
@@ -2567,148 +2562,149 @@ msgstr "Digite um novo acelerador"
 msgid "Stopped."
 msgstr "Parado."
 
-#: ../plugins/externaltools/tools/tools.ui.h:2
-msgid "Add Tool"
-msgstr "Adicionar ferramenta"
-
-#: ../plugins/externaltools/tools/tools.ui.h:3
-msgid "Add a new tool"
-msgstr "Adicionar uma nova ferramenta"
-
-#: ../plugins/externaltools/tools/tools.ui.h:5
+#. ex:ts=4:et:
+#: ../plugins/externaltools/tools/tools.ui.h:1
 msgid "All documents"
 msgstr "Todos os documentos"
 
-#: ../plugins/externaltools/tools/tools.ui.h:6
+#: ../plugins/externaltools/tools/tools.ui.h:2
 msgid "All documents except untitled ones"
 msgstr "Todos os documentos exceto os não salvos"
 
+#: ../plugins/externaltools/tools/tools.ui.h:3
+msgid "Local files only"
+msgstr "Arquivos locais apenas"
+
+#: ../plugins/externaltools/tools/tools.ui.h:4
+msgid "Remote files only"
+msgstr "Arquivos remotos apenas"
+
+#: ../plugins/externaltools/tools/tools.ui.h:5
+msgid "Untitled documents only"
+msgstr "Documentos não salvos apenas"
+
+#: ../plugins/externaltools/tools/tools.ui.h:6
+msgid "Nothing"
+msgstr "Nada"
+
 #: ../plugins/externaltools/tools/tools.ui.h:7
-msgid "Append to current document"
-msgstr "Anexar ao documento atual"
-
-#: ../plugins/externaltools/tools/tools.ui.h:8
-msgid "Create new document"
-msgstr "Criar novo documento"
-
-#: ../plugins/externaltools/tools/tools.ui.h:9
 msgid "Current document"
 msgstr "Documento atual"
+
+#: ../plugins/externaltools/tools/tools.ui.h:8
+msgid "Current selection"
+msgstr "Seleção atual"
+
+#: ../plugins/externaltools/tools/tools.ui.h:9
+msgid "Current selection (default to document)"
+msgstr "Seleção atual (padrão para documento)"
 
 #: ../plugins/externaltools/tools/tools.ui.h:10
 msgid "Current line"
 msgstr "Linha atual"
 
 #: ../plugins/externaltools/tools/tools.ui.h:11
-msgid "Current selection"
-msgstr "Seleção atual"
-
-#: ../plugins/externaltools/tools/tools.ui.h:12
-msgid "Current selection (default to document)"
-msgstr "Seleção atual (padrão para documento)"
-
-#: ../plugins/externaltools/tools/tools.ui.h:13
 msgid "Current word"
 msgstr "Palavra atual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:14
+#: ../plugins/externaltools/tools/tools.ui.h:12
 msgid "Display in bottom pane"
 msgstr "Mostrar no painel inferior"
 
+#: ../plugins/externaltools/tools/tools.ui.h:13
+msgid "Create new document"
+msgstr "Criar novo documento"
+
+#: ../plugins/externaltools/tools/tools.ui.h:14
+msgid "Append to current document"
+msgstr "Anexar ao documento atual"
+
 #: ../plugins/externaltools/tools/tools.ui.h:15
-msgid "Insert at cursor position"
-msgstr "Inserir na posição do cursor"
-
-#: ../plugins/externaltools/tools/tools.ui.h:16
-msgid "Local files only"
-msgstr "Arquivos locais apenas"
-
-#: ../plugins/externaltools/tools/tools.ui.h:17
-msgid "Manage External Tools"
-msgstr "Gerenciar ferramentas externas"
-
-#: ../plugins/externaltools/tools/tools.ui.h:18
-msgid "Nothing"
-msgstr "Nada"
-
-#: ../plugins/externaltools/tools/tools.ui.h:19
-msgid "Remote files only"
-msgstr "Arquivos remotos apenas"
-
-#: ../plugins/externaltools/tools/tools.ui.h:20
-msgid "Remove Tool"
-msgstr "Remover ferramenta"
-
-#: ../plugins/externaltools/tools/tools.ui.h:21
-msgid "Remove selected tool"
-msgstr "Reverte o trecho selecionado"
-
-#: ../plugins/externaltools/tools/tools.ui.h:22
 msgid "Replace current document"
 msgstr "Substituir documento atual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:23
+#: ../plugins/externaltools/tools/tools.ui.h:16
 msgid "Replace current selection"
 msgstr "Substituir seleção atual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:24
-msgid "Revert Tool"
-msgstr "Reverter ferramenta"
+#: ../plugins/externaltools/tools/tools.ui.h:17
+msgid "Insert at cursor position"
+msgstr "Inserir na posição do cursor"
 
-#: ../plugins/externaltools/tools/tools.ui.h:25
+#: ../plugins/externaltools/tools/tools.ui.h:18
+msgid "Manage External Tools"
+msgstr "Gerenciar ferramentas externas"
+
+#: ../plugins/externaltools/tools/tools.ui.h:19
+msgid "_Tools:"
+msgstr "_Ferramentas:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:20
+msgid "Add a new tool"
+msgstr "Adicionar uma nova ferramenta"
+
+#: ../plugins/externaltools/tools/tools.ui.h:21
+msgid "Add Tool"
+msgstr "Adicionar ferramenta"
+
+#: ../plugins/externaltools/tools/tools.ui.h:22
+msgid "Remove selected tool"
+msgstr "Reverte o trecho selecionado"
+
+#: ../plugins/externaltools/tools/tools.ui.h:23
+msgid "Remove Tool"
+msgstr "Remover ferramenta"
+
+#: ../plugins/externaltools/tools/tools.ui.h:24
 msgid "Revert tool"
 msgstr "Reverter ferramenta"
 
+#: ../plugins/externaltools/tools/tools.ui.h:25
+msgid "Revert Tool"
+msgstr "Reverter ferramenta"
+
 #: ../plugins/externaltools/tools/tools.ui.h:26
-msgid "Untitled documents only"
-msgstr "Documentos não salvos apenas"
-
-#: ../plugins/externaltools/tools/tools.ui.h:27
-msgid "_Applicability:"
-msgstr "_Aplicabilidade:"
-
-#: ../plugins/externaltools/tools/tools.ui.h:28
-#: ../plugins/snippets/snippets/snippets.ui.h:16
+#: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "_Edit:"
 msgstr "_Editar:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:29
-msgid "_Input:"
-msgstr "_Entrada:"
+msgid "_Applicability:"
+msgstr "_Aplicabilidade:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:30
 msgid "_Output:"
 msgstr "_Saída:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:31
+msgid "_Input:"
+msgstr "_Entrada:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:32
 msgid "_Save:"
 msgstr "_Salvar:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:32
+#: ../plugins/externaltools/tools/tools.ui.h:33
 msgid "_Shortcut Key:"
 msgstr "_Tecla de atalho:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:33
-msgid "_Tools:"
-msgstr "_Ferramentas:"
-
-#: ../plugins/externaltools/tools/windowactivatable.py:176
+#: ../plugins/externaltools/tools/windowactivatable.py:179
 msgid "Manage _External Tools..."
 msgstr "Gerenciar ferramentas e_xternas..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:177
+#: ../plugins/externaltools/tools/windowactivatable.py:180
 msgid "Opens the External Tools Manager"
 msgstr "Abre o gerenciador de ferramentas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:183
 msgid "External _Tools"
 msgstr "Ferramentas e_xternas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:181
+#: ../plugins/externaltools/tools/windowactivatable.py:184
 msgid "External tools"
 msgstr "Ferramentas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:215
+#: ../plugins/externaltools/tools/windowactivatable.py:218
 msgid "Shell Output"
 msgstr "Saída para o shell"
 
@@ -2730,21 +2726,21 @@ msgid "Remove useless trailing spaces in your file"
 msgstr "Remove espaços inúteis no final das linhas de seu arquivo"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
+msgid "Run command"
+msgstr "Executar comando"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:2
 msgid "Execute a custom command and put its output in a new document"
 msgstr ""
 "Executa um comando personalizado e direcione a saída para um novo documento"
 
-#: ../plugins/externaltools/data/run-command.desktop.in.h:2
-msgid "Run command"
-msgstr "Executar comando"
-
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
-msgid "Easy file access from the side panel"
-msgstr "Fácil acesso ao arquivo a partir do painel lateral"
-
-#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
 msgid "File Browser Panel"
 msgstr "Arquivo Navegador Painel"
+
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
+msgid "Easy file access from the side panel"
+msgstr "Fácil acesso ao arquivo a partir do painel lateral"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:243
 msgid "File System"
@@ -3026,26 +3022,56 @@ msgstr "Não foi possível abrir o volume: %s"
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
-msgid "Enable Restore of Remote Locations"
-msgstr "Habilitar restauração de localizações remotas"
+msgid "Open With Tree View"
+msgstr "Abrir com visão em árvore"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
-msgid "File Browser Filter Mode"
-msgstr "Modo do filtro do navegador de arquivos"
+msgid ""
+"Open the tree view when the file browser plugin gets loaded instead of the "
+"bookmarks view"
+msgstr ""
+"Usar a visão em árvore ao carregar o navegador de arquivos, em vez da visão "
+"em marcadores"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
-msgid "File Browser Filter Pattern"
-msgstr "Padrão do filtro do navegador de arquivos"
-
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
 msgid "File Browser Root Directory"
 msgstr "Diretório raiz do navegador de arquivos"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+msgid ""
+"The file browser root directory to use when loading the file browser plugin "
+"and onload/tree_view is TRUE."
+msgstr ""
+"Diretório raiz usado ao carregar o navegador de arquivos, se a chave onload/"
+"tree_view tiver valor VERDADEIRO."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Diretório raiz virtual do navegador de arquivos"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+msgid ""
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
+msgstr ""
+"O diretório raiz virtual usado ao carregar o navegador de arquivos, se a "
+"chave onload/tree_view tiver valor VERDADEIRO. O diretório raiz virtual deve "
+"sempre estar dentro do verdadeiro."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+msgid "Enable Restore of Remote Locations"
+msgstr "Habilitar restauração de localizações remotas"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+msgid "Sets whether to enable restoring of remote locations."
+msgstr "Define se habilita ou não a restauração de localizações remotas."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+msgid "Set Location to First Document"
+msgstr "Definir localização para primeiro documento"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -3057,53 +3083,11 @@ msgstr ""
 "sido usado. (O que geralmente se aplica ao abrir um documento a partir da "
 "linha de comando ou com o Nautilus etc.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
-msgid "Open With Tree View"
-msgstr "Abrir com visão em árvore"
-
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
-msgid ""
-"Open the tree view when the file browser plugin gets loaded instead of the "
-"bookmarks view"
-msgstr ""
-"Usar a visão em árvore ao carregar o navegador de arquivos, em vez da visão "
-"em marcadores"
-
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
-msgid "Set Location to First Document"
-msgstr "Definir localização para primeiro documento"
-
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
-msgid "Sets whether to enable restoring of remote locations."
-msgstr "Define se habilita ou não a restauração de localizações remotas."
-
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
-msgid ""
-"The file browser root directory to use when loading the file browser plugin "
-"and onload/tree_view is TRUE."
-msgstr ""
-"Diretório raiz usado ao carregar o navegador de arquivos, se a chave onload/"
-"tree_view tiver valor VERDADEIRO."
+msgid "File Browser Filter Mode"
+msgstr "Modo do filtro do navegador de arquivos"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
-msgid ""
-"The file browser virtual root directory to use when loading the file browser "
-"plugin when onload/tree_view is TRUE. The virtual root must always be below "
-"the actual root."
-msgstr ""
-"O diretório raiz virtual usado ao carregar o navegador de arquivos, se a "
-"chave onload/tree_view tiver valor VERDADEIRO. O diretório raiz virtual deve "
-"sempre estar dentro do verdadeiro."
-
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
-msgid ""
-"The filter pattern to filter the file browser with. This filter works on top "
-"of the filter_mode."
-msgstr ""
-"O padrão com o qual filtrar o navegador de arquivos. Esse filtro funciona "
-"sobre o definido por filter_mode."
-
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3114,23 +3098,43 @@ msgstr ""
 "esconder-oculto (filtrar arquivos ocultos) e esconder-binário (filtrar "
 "arquivos binários)."
 
-#: ../plugins/modelines/modelines.plugin.desktop.in.h:1
-msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "Suporte para modelines tipo Emacs, Kate e Vim."
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+msgid "File Browser Filter Pattern"
+msgstr "Padrão do filtro do navegador de arquivos"
 
-#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+msgid ""
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
+msgstr ""
+"O padrão com o qual filtrar o navegador de arquivos. Esse filtro funciona "
+"sobre o definido por filter_mode."
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
 msgstr "Modelines"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr "Suporte para modelines tipo Emacs, Kate e Vim."
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
 msgstr "Cor do texto do comando"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+msgid "The command color text"
+msgstr "A cor do texto de comando"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
 msgid "Error Color Text"
 msgstr "Erro na cor do texto"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+msgid "The error color text"
+msgstr "Cor do texto de erro"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3138,22 +3142,14 @@ msgstr ""
 "Se verdadeiro, o terminal irá usar a fonte padrão do ambiente se ela for "
 "monoespaçada (e mais semelhante a fonte que pode chegar a outra)."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
-msgid "The command color text"
-msgstr "A cor do texto de comando"
-
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
-msgid "The error color text"
-msgstr "Cor do texto de erro"
-
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
-msgid "Interactive Python console standing in the bottom panel"
-msgstr "Console python interativo situado no painel inferior"
-
-#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 #: ../plugins/pythonconsole/pythonconsole/__init__.py:52
 msgid "Python Console"
 msgstr "Console Python"
+
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
+msgid "Interactive Python console standing in the bottom panel"
+msgstr "Console python interativo situado no painel inferior"
 
 #. ex:et:ts=4:
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
@@ -3164,9 +3160,17 @@ msgstr "C_or do comando:"
 msgid "_Error color:"
 msgstr "Cor de _erro:"
 
+#: ../plugins/quickopen/quickopen/__init__.py:71
+msgid "Quick open"
+msgstr "Abertura rápida"
+
+#: ../plugins/quickopen/quickopen/__init__.py:72
+msgid "Quickly open documents"
+msgstr "Abre arquivos rapidamente"
+
 #. ex:ts=4:et:
-#: ../plugins/quickopen/quickopen/popup.py:31
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
+#: ../plugins/quickopen/quickopen/popup.py:31
 msgid "Quick Open"
 msgstr "Abertura rápida"
 
@@ -3174,89 +3178,90 @@ msgstr "Abertura rápida"
 msgid "Quickly open files"
 msgstr "Abre arquivos rapidamente"
 
+#. ex:ts=4:et:
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
-msgid "Insert often-used pieces of text in a fast way"
-msgstr "Insere pedaços de texto frequentemente usados de um jeito rápido"
-
-#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 #: ../plugins/snippets/snippets/document.py:56
 msgid "Snippets"
 msgstr "Trechos"
 
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
+msgid "Insert often-used pieces of text in a fast way"
+msgstr "Insere pedaços de texto frequentemente usados de um jeito rápido"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:1
+msgid "Manage Snippets"
+msgstr "Gerenciar trechos"
+
 #: ../plugins/snippets/snippets/snippets.ui.h:2
-msgid "Activation"
-msgstr "Ativação"
+msgid "_Snippets:"
+msgstr "_Trechos:"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:3
-msgid "Add Snippet"
-msgstr "Adicionar trecho"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Create new snippet"
 msgstr "Cria um novo trecho"
 
+#: ../plugins/snippets/snippets/snippets.ui.h:4
+msgid "Add Snippet"
+msgstr "Adicionar trecho"
+
 #: ../plugins/snippets/snippets/snippets.ui.h:5
-#: ../plugins/snippets/snippets/manager.py:393
+#: ../plugins/snippets/snippets/manager.py:399
 msgid "Delete selected snippet"
 msgstr "Exclui o trecho selecionado"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:6
-msgid "Export Snippets"
-msgstr "Exporta trechos"
+msgid "Remove Snippet"
+msgstr "Remover este trecho"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:7
-msgid "Export selected snippets"
-msgstr "Exporta os trechos selecionados"
+#: ../plugins/snippets/snippets/manager.py:776
+msgid "Import snippets"
+msgstr "Importa trechos"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:8
 msgid "Import Snippets"
 msgstr "Importa trechos"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:9
-#: ../plugins/snippets/snippets/manager.py:770
-msgid "Import snippets"
-msgstr "Importa trechos"
+msgid "Export selected snippets"
+msgstr "Exporta os trechos selecionados"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:10
-msgid "Manage Snippets"
-msgstr "Gerenciar trechos"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:11
-msgid "Remove Snippet"
-msgstr "Remover este trecho"
+msgid "Export Snippets"
+msgstr "Exporta trechos"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:12
-msgid "S_hortcut key:"
-msgstr "_Tecla de atalho:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:13
-msgid "Shortcut key with which the snippet is activated"
-msgstr "Tecla de atalho com a qual o trecho é ativado"
-
-#. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/snippets.ui.h:14
-#: ../plugins/snippets/snippets/manager.py:660
-msgid "Single word the snippet is activated with after pressing Tab"
-msgstr "Uma palavra com a qual o trecho é ativado após pressionar tab"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:15
-msgid "_Drop targets:"
-msgstr "Alvos _destino:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:17
-msgid "_Snippets:"
-msgstr "_Trechos:"
+msgid "Activation"
+msgstr "Ativação"
 
 #. "tab" here means the tab key, not the notebook tab!
-#: ../plugins/snippets/snippets/snippets.ui.h:19
+#: ../plugins/snippets/snippets/snippets.ui.h:15
 msgid "_Tab trigger:"
 msgstr "_Disparador:"
 
-#: ../plugins/snippets/snippets/windowactivatable.py:143
+#. self['hbox_tab_trigger'].set_spacing(0)
+#: ../plugins/snippets/snippets/snippets.ui.h:16
+#: ../plugins/snippets/snippets/manager.py:666
+msgid "Single word the snippet is activated with after pressing Tab"
+msgstr "Uma palavra com a qual o trecho é ativado após pressionar tab"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:17
+msgid "Shortcut key with which the snippet is activated"
+msgstr "Tecla de atalho com a qual o trecho é ativado"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:18
+msgid "S_hortcut key:"
+msgstr "_Tecla de atalho:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:19
+msgid "_Drop targets:"
+msgstr "Alvos _destino:"
+
+#: ../plugins/snippets/snippets/windowactivatable.py:145
 msgid "Manage _Snippets..."
 msgstr "Gerenciar _trechos..."
 
-#: ../plugins/snippets/snippets/windowactivatable.py:144
+#: ../plugins/snippets/snippets/windowactivatable.py:146
 msgid "Manage snippets"
 msgstr "Gerenciar trechos"
 
@@ -3272,12 +3277,12 @@ msgstr "Adicionar um novo trecho..."
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/manager.py:390
+#: ../plugins/snippets/snippets/manager.py:396
 msgid "Revert selected snippet"
 msgstr "Reverte o trecho selecionado"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:653
+#: ../plugins/snippets/snippets/manager.py:659
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain letters or a "
 "single (non-alphanumeric) character like: {, [, etc."
@@ -3285,75 +3290,75 @@ msgstr ""
 "Esse disparador não é válido. Disparadores podem conter tanto letras quando "
 "um único caractere não alfanumérico como {, [, etc."
 
-#: ../plugins/snippets/snippets/manager.py:749
+#: ../plugins/snippets/snippets/manager.py:755
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Ocorreu o seguinte erro ao importar: %s"
 
-#: ../plugins/snippets/snippets/manager.py:756
+#: ../plugins/snippets/snippets/manager.py:762
 msgid "Import successfully completed"
 msgstr "Importação concluída com sucesso"
 
-#: ../plugins/snippets/snippets/manager.py:775
-#: ../plugins/snippets/snippets/manager.py:861
-#: ../plugins/snippets/snippets/manager.py:924
+#: ../plugins/snippets/snippets/manager.py:781
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:930
 msgid "All supported archives"
 msgstr "Todos os pacotes com suporte"
 
-#: ../plugins/snippets/snippets/manager.py:776
-#: ../plugins/snippets/snippets/manager.py:862
-#: ../plugins/snippets/snippets/manager.py:925
+#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/snippets/snippets/manager.py:868
+#: ../plugins/snippets/snippets/manager.py:931
 msgid "Gzip compressed archive"
 msgstr "Pacote compactado gzip"
 
-#: ../plugins/snippets/snippets/manager.py:777
-#: ../plugins/snippets/snippets/manager.py:863
-#: ../plugins/snippets/snippets/manager.py:926
+#: ../plugins/snippets/snippets/manager.py:783
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:932
 msgid "Bzip2 compressed archive"
 msgstr "Pacote compactado bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:778
+#: ../plugins/snippets/snippets/manager.py:784
 msgid "Single snippets file"
 msgstr "Arquivo simples de trechos"
 
-#: ../plugins/snippets/snippets/manager.py:779
-#: ../plugins/snippets/snippets/manager.py:865
-#: ../plugins/snippets/snippets/manager.py:928
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:934
 msgid "All files"
 msgstr "Todos os arquivos"
 
-#: ../plugins/snippets/snippets/manager.py:791
+#: ../plugins/snippets/snippets/manager.py:797
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Ocorreu o seguinte erro ao exportar: %s"
 
-#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:801
 msgid "Export successfully completed"
 msgstr "Exportação concluída com sucesso"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:835
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:841
+#: ../plugins/snippets/snippets/manager.py:908
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Você deseja incluir os trechos do <b>sistema</b> selecionados em sua "
 "exportação?"
 
-#: ../plugins/snippets/snippets/manager.py:850
-#: ../plugins/snippets/snippets/manager.py:920
+#: ../plugins/snippets/snippets/manager.py:856
+#: ../plugins/snippets/snippets/manager.py:926
 msgid "There are no snippets selected to be exported"
 msgstr "Nenhum trecho selecionado para exportação"
 
-#: ../plugins/snippets/snippets/manager.py:855
-#: ../plugins/snippets/snippets/manager.py:893
+#: ../plugins/snippets/snippets/manager.py:861
+#: ../plugins/snippets/snippets/manager.py:899
 msgid "Export snippets"
 msgstr "Exporta trechos"
 
-#: ../plugins/snippets/snippets/manager.py:1034
+#: ../plugins/snippets/snippets/manager.py:1040
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Digite um novo atalho, ou pressione Backspace para limpar"
 
-#: ../plugins/snippets/snippets/manager.py:1036
+#: ../plugins/snippets/snippets/manager.py:1042
 msgid "Type a new shortcut"
 msgstr "Digite um novo atalho"
 
@@ -3426,33 +3431,33 @@ msgstr "Ordena o documento atual ou seleção"
 
 #. ex:ts=8:noet:
 #: ../plugins/sort/gedit-sort-plugin.ui.h:1
-msgid "R_emove duplicates"
-msgstr "R_emover duplicadas"
-
-#: ../plugins/sort/gedit-sort-plugin.ui.h:2
-msgid "S_tart at column:"
-msgstr "_Iniciar na coluna:"
-
-#: ../plugins/sort/gedit-sort-plugin.ui.h:3
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
 msgstr "Ordenar"
 
+#: ../plugins/sort/gedit-sort-plugin.ui.h:2
+msgid "_Sort"
+msgstr "_Ordenar"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:3
+msgid "_Reverse order"
+msgstr "Inve_rter ordem"
+
 #: ../plugins/sort/gedit-sort-plugin.ui.h:4
-msgid "You cannot undo a sort operation"
-msgstr "Você não pode desfazer uma operação de ordenação"
+msgid "R_emove duplicates"
+msgstr "R_emover duplicadas"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:5
 msgid "_Ignore case"
 msgstr "_Ignorar maiúsculas/minúsculas"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:6
-msgid "_Reverse order"
-msgstr "Inve_rter ordem"
+msgid "S_tart at column:"
+msgstr "_Iniciar na coluna:"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:7
-msgid "_Sort"
-msgstr "_Ordenar"
+msgid "You cannot undo a sort operation"
+msgstr "Você não pode desfazer uma operação de ordenação"
 
 #: ../plugins/sort/sort.plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
@@ -3505,8 +3510,8 @@ msgstr "Verificação de ortografia completada"
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:373
-#: ../plugins/spell/gedit-spell-checker-language.c:379
+#: ../plugins/spell/gedit-spell-checker-language.c:378
+#: ../plugins/spell/gedit-spell-checker-language.c:384
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3515,7 +3520,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:388
+#: ../plugins/spell/gedit-spell-checker-language.c:393
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3524,13 +3529,14 @@ msgstr "Desconhecido (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:494
+#: ../plugins/spell/gedit-spell-checker-language.c:499
 msgctxt "language"
 msgid "Default"
 msgstr "Padrão"
 
+#. ex:ts=8:noet:
 #: ../plugins/spell/gedit-spell-language-dialog.c:142
-#: ../plugins/spell/languages-dialog.ui.h:2
+#: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set language"
 msgstr "Definir idioma"
 
@@ -3570,22 +3576,21 @@ msgstr "O documento está vazio."
 msgid "No misspelled words"
 msgstr "Nenhuma palavra incorreta"
 
-#. ex:ts=8:noet:
-#: ../plugins/spell/languages-dialog.ui.h:1
+#: ../plugins/spell/languages-dialog.ui.h:2
 msgid "Select the _language of the current document."
 msgstr "Selecionar o _idioma do documento atual."
 
 #: ../plugins/spell/spell-checker.ui.h:1
-msgid "Add w_ord"
-msgstr "Adicionar _palavra"
+msgid "Check spelling"
+msgstr "Verificar ortografia"
 
 #: ../plugins/spell/spell-checker.ui.h:2
-msgid "Cha_nge"
-msgstr "A_lterar"
+msgid "Misspelled word:"
+msgstr "Palavra incorreta:"
 
 #: ../plugins/spell/spell-checker.ui.h:3
-msgid "Change A_ll"
-msgstr "Alterar to_dos"
+msgid "word"
+msgstr "palavra"
 
 #: ../plugins/spell/spell-checker.ui.h:4
 msgid "Change _to:"
@@ -3596,48 +3601,48 @@ msgid "Check _Word"
 msgstr "Verificar pala_vra"
 
 #: ../plugins/spell/spell-checker.ui.h:6
-msgid "Check spelling"
-msgstr "Verificar ortografia"
+msgid "_Suggestions:"
+msgstr "_Sugestões:"
 
 #: ../plugins/spell/spell-checker.ui.h:7
+msgid "_Ignore"
+msgstr "_Ignorar"
+
+#: ../plugins/spell/spell-checker.ui.h:8
+msgid "Cha_nge"
+msgstr "A_lterar"
+
+#: ../plugins/spell/spell-checker.ui.h:9
 msgid "Ignore _All"
 msgstr "Ignor_ar todos"
 
-#: ../plugins/spell/spell-checker.ui.h:8
-msgid "Language"
-msgstr "Idioma"
-
-#: ../plugins/spell/spell-checker.ui.h:9
-msgid "Language:"
-msgstr "Idioma:"
-
 #: ../plugins/spell/spell-checker.ui.h:10
-msgid "Misspelled word:"
-msgstr "Palavra incorreta:"
+msgid "Change A_ll"
+msgstr "Alterar to_dos"
 
 #: ../plugins/spell/spell-checker.ui.h:11
 msgid "User dictionary:"
 msgstr "Dicionário do usuário:"
 
 #: ../plugins/spell/spell-checker.ui.h:12
-msgid "_Ignore"
-msgstr "_Ignorar"
+msgid "Add w_ord"
+msgstr "Adicionar _palavra"
 
 #: ../plugins/spell/spell-checker.ui.h:13
-msgid "_Suggestions:"
-msgstr "_Sugestões:"
+msgid "Language:"
+msgstr "Idioma:"
 
 #: ../plugins/spell/spell-checker.ui.h:14
-msgid "word"
-msgstr "palavra"
+msgid "Language"
+msgstr "Idioma"
 
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
-msgid "Checks the spelling of the current document."
-msgstr "Verifica a ortografia do documento atual."
-
-#: ../plugins/spell/spell.plugin.desktop.in.h:2
 msgid "Spell Checker"
 msgstr "Verificador ortográfico"
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:2
+msgid "Checks the spelling of the current document."
+msgstr "Verifica a ortografia do documento atual."
 
 #: ../plugins/time/gedit-time-plugin.c:188
 msgid "In_sert Date and Time..."
@@ -3661,8 +3666,8 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Insere a data e hora atuais na posição do cursor."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
-msgid "Custom Format"
-msgstr "Personalizar formato"
+msgid "Prompt Type"
+msgstr "Tipo Prompt"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
 msgid ""
@@ -3673,72 +3678,75 @@ msgstr ""
 "ou personalizado deve ser utilizado."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
-msgid "Prompt Type"
-msgstr "Tipo Prompt"
-
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
 msgid "Selected Format"
 msgstr "Selecionar formato"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
-msgid "The custom format used when inserting the date/time."
-msgstr "O formato personalizado utilizado quando inserir a data/hora."
-
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "O formato selecionado utilizado quando inserir a data/hora."
 
-#. Translators: Use the more common date format in your locale
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+msgid "Custom Format"
+msgstr "Personalizar formato"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+msgid "The custom format used when inserting the date/time."
+msgstr "O formato personalizado utilizado quando inserir a data/hora."
+
+#: ../plugins/time/gedit-time-dialog.ui.h:1
+msgid "Insert Date and Time"
+msgstr "Inserir Data e Hora"
+
 #: ../plugins/time/gedit-time-dialog.ui.h:2
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+msgid "_Insert"
+msgstr "_Inserir"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+msgid "Use the _selected format"
+msgstr "Usar o formato _selecionado"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:4
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
+msgid "_Use custom format"
+msgstr "_Usar formato personalizado"
+
+#. Translators: Use the more common date format in your locale
+#: ../plugins/time/gedit-time-dialog.ui.h:6
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:9
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: ../plugins/time/gedit-time-dialog.ui.h:3
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
+#: ../plugins/time/gedit-time-dialog.ui.h:7
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:11
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2009 17:52:00"
 
-#: ../plugins/time/gedit-time-dialog.ui.h:4
-msgid "Insert Date and Time"
-msgstr "Inserir Data e Hora"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:5
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
-msgid "Use the _selected format"
-msgstr "Usar o formato _selecionado"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:6
-msgid "_Insert"
-msgstr "_Inserir"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:7
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:11
-msgid "_Use custom format"
-msgstr "_Usar formato personalizado"
-
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:7
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
 msgstr "Configurar o plug-in de inserção de data/hora"
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:9
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "When inserting date/time..."
 msgstr "Quando inserindo data/horário..."
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
 msgstr "_Perguntar por um formato"
 
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:1
+msgid "Zeitgeist dataprovider"
+msgstr "Provedor de dados Zeitgeist"
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Registrar acesso e abandonar os eventos para os documentos usados ​​com gedit"
 
-#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
-msgid "Zeitgeist dataprovider"
-msgstr "Provedor de dados Zeitgeist"
+#~ msgid "Open a new window"
+#~ msgstr "Abrir uma nova janela"
 
 #~ msgid "External Tools Manager"
 #~ msgstr "Gerenciador de ferramentas externas"
