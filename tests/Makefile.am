@@ -23,6 +23,10 @@ TEST_GTK_PROGS			= test-overlay
 test_overlay_SOURCES		= test-overlay.c
 test_overlay_LDADD		= $(progs_ldadd)
 
+TEST_GTK_PROGS			+= test-occurrence
+test_occurrence_SOURCES		= test-occurrence.c
+test_occurrence_LDADD		= $(progs_ldadd)
+
 TESTS = $(TEST_PROGS)
 
 EXTRA_DIST = setup-document-saver.sh
