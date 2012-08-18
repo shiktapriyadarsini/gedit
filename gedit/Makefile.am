@@ -116,6 +116,7 @@ NOINST_H_FILES =			\
 	gedit-encodings-dialog.h	\
 	gedit-file-chooser-dialog.h	\
 	gedit-floating-slider.h		\
+	gedit-floating-occurrence.h	\
 	gedit-history-entry.h		\
 	gedit-io-error-info-bar.h	\
 	gedit-multi-notebook.h		\
@@ -202,6 +203,7 @@ libgedit_c_files =			\
 	gedit-encodings-dialog.c	\
 	gedit-file-chooser-dialog.c	\
 	gedit-floating-slider.c		\
+	gedit-floating-occurrence.c	\
 	gedit-history-entry.c		\
 	gedit-io-error-info-bar.c	\
 	gedit-message-bus.c		\
