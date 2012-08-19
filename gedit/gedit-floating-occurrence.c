@@ -23,6 +23,8 @@
 #include "gedit-floating-occurrence.h"
 #include "gedit-animatable.h"
 
+#define ANIMATED_BORDER 3
+
 struct _GeditFloatingOccurrencePrivate
 {
 	GtkWidget *label;
@@ -122,7 +124,7 @@ gedit_floating_occurrence_set_property (GObject      *object,
 
 			if (priv->percent >= 0)
 			{
-				gtk_container_set_border_width (GTK_CONTAINER (object), (gint)(100 * priv->percent));
+				gtk_container_set_border_width (GTK_CONTAINER (object), (gint)(ANIMATED_BORDER * priv->percent));
 			}
 
 			gtk_widget_queue_resize_no_redraw (GTK_WIDGET (object));
