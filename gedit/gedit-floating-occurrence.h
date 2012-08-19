@@ -56,9 +56,12 @@ struct _GeditFloatingOccurrenceClass
 	GeditFloatingOccurrenceClassPrivate *priv;
 };
 
-GType		 gedit_floating_occurrence_get_type	(void) G_GNUC_CONST;
+GType            gedit_floating_occurrence_get_type     (void) G_GNUC_CONST;
 
-GtkWidget	*gedit_floating_occurrence_new		(void);
+GtkWidget       *gedit_floating_occurrence_new          (void);
+
+void             gedit_floating_occurrence_set_text     (GeditFloatingOccurrence *occurrence,
+                                                         const gchar             *text);
 
 G_END_DECLS
 

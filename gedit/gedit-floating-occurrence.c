@@ -296,7 +296,7 @@ gedit_floating_occurrence_init (GeditFloatingOccurrence *occurrence)
 	                                GTK_STYLE_PROVIDER (GEDIT_FLOATING_OCCURRENCE_GET_CLASS (occurrence)->priv->css),
 	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-	occurrence->priv->label = gtk_label_new ("Hello");
+	occurrence->priv->label = gtk_label_new ("");
 	gtk_widget_show (occurrence->priv->label);
 	gtk_container_add (GTK_CONTAINER (occurrence), occurrence->priv->label);
 }
@@ -305,6 +305,15 @@ GtkWidget *
 gedit_floating_occurrence_new (void)
 {
 	return g_object_new (GEDIT_TYPE_FLOATING_OCCURRENCE, NULL);
+}
+
+void
+gedit_floating_occurrence_set_text (GeditFloatingOccurrence *occurrence,
+                                    const gchar             *text)
+{
+	g_return_if_fail (GEDIT_IS_FLOATING_OCCURRENCE (occurrence));
+
+	gtk_label_set_text (GTK_LABEL (occurrence->priv->label), text);
 }
 
 /* ex:set ts=8 noet: */

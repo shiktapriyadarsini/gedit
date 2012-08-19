@@ -30,6 +30,7 @@
 #include "gedit-utils.h"
 #include "gedit-animated-overlay.h"
 #include "gedit-floating-slider.h"
+#include "gedit-floating-occurrence.h"
 
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
@@ -73,6 +74,8 @@ struct _GeditViewFramePrivate
 	GtkWidget   *search_entry;
 	GtkWidget   *go_up_button;
 	GtkWidget   *go_down_button;
+
+	GtkWidget   *search_occurrence;
 
 	guint        typeselect_flush_timeout;
 	glong        view_scroll_event_id;
@@ -326,6 +329,12 @@ run_search (GeditViewFrame   *frame,
 
 		gtk_text_buffer_move_mark_by_name (GTK_TEXT_BUFFER (doc),
 		                                   "selection_bound", &match_end);
+		gtk_widget_show (frame->priv->search_occurrence);
+		gedit_floating_occurrence_set_text (GEDIT_FLOATING_OCCURRENCE (frame->priv->search_occurrence),
+		                                    entry_text);
+		g_object_set (G_OBJECT (frame->priv->search_occurrence),
+		              "animation-state", GEDIT_THEATRICS_ANIMATION_STATE_COMING,
+		              NULL);
 	}
 	else if (typing)
 	{
@@ -1234,6 +1243,43 @@ view_frame_mount_operation_factory (GeditDocument   *doc,
 	return gtk_mount_operation_new (GTK_WINDOW (window));
 }
 
+static gboolean
+on_get_child_position (GtkOverlay     *overlay,
+                       GtkWidget      *widget,
+                       GdkRectangle   *allocation,
+                       GeditViewFrame *frame)
+{
+	if (widget == frame->priv->search_occurrence)
+	{
+		GtkTextBuffer *buf;
+		GtkTextIter start, end;
+		GdkRectangle location;
+		gint x, y;
+		gint width, height;
+
+		buf = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+		gtk_text_buffer_get_selection_bounds (buf, &start, &end);
+		gtk_text_view_get_iter_location (GTK_TEXT_VIEW (frame->priv->view),
+		                                 &start, &location);
+		gtk_text_view_buffer_to_window_coords (GTK_TEXT_VIEW (frame->priv->view),
+		                                       GTK_TEXT_WINDOW_TEXT,
+		                                       location.x,
+		                                       location.y,
+		                                       &x, &y);
+
+		gtk_widget_get_preferred_width (widget, NULL, &width);
+		gtk_widget_get_preferred_height (widget, NULL, &height);
+
+		allocation->x = x;
+		allocation->y = y;
+		allocation->width = width;
+		allocation->height = height;
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 static void
 gedit_view_frame_init (GeditViewFrame *frame)
 {
@@ -1277,6 +1323,9 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	gtk_widget_override_background_color (frame->priv->overlay, 0, &transparent);
 	gtk_widget_show (frame->priv->overlay);
 
+	g_signal_connect (frame->priv->overlay, "get-child-position",
+	                  G_CALLBACK (on_get_child_position), frame);
+
 	gtk_box_pack_start (GTK_BOX (frame), frame->priv->overlay, TRUE, TRUE, 0);
 
 	/* Add slider */
@@ -1302,6 +1351,16 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	gedit_animated_overlay_add_animated_overlay (GEDIT_ANIMATED_OVERLAY (frame->priv->overlay),
 	                                             GEDIT_ANIMATABLE (frame->priv->slider));
+
+	/* Add search occurrence */
+	frame->priv->search_occurrence = gedit_floating_occurrence_new ();
+	g_object_set (G_OBJECT (frame->priv->search_occurrence),
+	              "easing", GEDIT_THEATRICS_CHOREOGRAPHER_EASING_EXPONENTIAL_IN_OUT,
+	              "blocking", GEDIT_THEATRICS_CHOREOGRAPHER_BLOCKING_DOWNSTAGE,
+	              NULL);
+
+	gedit_animated_overlay_add_animated_overlay (GEDIT_ANIMATED_OVERLAY (frame->priv->overlay),
+	                                             GEDIT_ANIMATABLE (frame->priv->search_occurrence));
 }
 
 GeditViewFrame *
