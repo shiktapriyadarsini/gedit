@@ -23,13 +23,14 @@
 # Gabriel F. Vilar <cogumm@gmail.com>, 2011.
 # Thiago Branco Meurer <thiago@thiagopriest.net>
 # Adorilson Bezerra <adorilson@gmail.com>, 2012.
+# Rafael Fontenelle <rafael.f.f1@gmail.com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 2.24\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-11-12 22:30+0000\n"
-"PO-Revision-Date: 2012-11-21 04:50-0300\n"
+"POT-Creation-Date: 2013-01-04 10:52+0000\n"
+"PO-Revision-Date: 2013-02-07 01:47-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -37,7 +38,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.5.2\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -78,10 +79,10 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"Usar a fonte de largura fixa padronizada no sistema para editar texto ao "
-"invés da fonte especificada para o gedit. Se esta opção estiver desligada, "
-"então a fonte indicada na opção \"Fonte do editor\" será usada no lugar da "
-"fonte do sistema."
+"Se o gedit deve usar a fonte de largura fixa padronizada no sistema para "
+"editar texto ao invés da fonte especificada para o gedit. Se esta opção "
+"estiver desligada, então a fonte indicada na opção \"Fonte do editor\" será "
+"usada no lugar da fonte do sistema."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
 msgid "Editor Font"
@@ -125,9 +126,9 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"Salvar automaticamente arquivos modificados depois de um intervalo de tempo. "
-"Você pode definir o intervalo de tempo com a opção \"Intervalo para salvar "
-"automaticamente\"."
+"Se o gedit deve salvar automaticamente arquivos modificados depois de um "
+"intervalo de tempo. Você pode definir o intervalo de tempo com a opção "
+"\"Intervalo para salvar automaticamente\"."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
 msgid "Autosave Interval"
@@ -177,11 +178,11 @@ msgid ""
 "wrapping at individual character boundaries. Note that the values are case-"
 "sensitive, so make sure they appear exactly as mentioned here."
 msgstr ""
-"Especifique como quebrar as linhas longas na área de edição. Use \"nenhum\" "
+"Especifica como quebrar as linhas longas na área de edição. Use \"nenhum\" "
 "para nem uma quebra, \"termo\" para quebra de limites de palavras, e "
-"\"caracter\" para quebra de limite de caracter individual. Observe que os "
-"valores são case-sensitive, por isso certifique-se que eles aparecem "
-"exatamente como mencionado aqui."
+"\"caractere\" para quebra de limite de caractere individual. Observe que os "
+"valores diferenciam maiúsculas de minúsculas, por isso certifique-se que "
+"eles aparecem exatamente como mencionado aqui."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
 msgid "Tab Size"
@@ -192,7 +193,8 @@ msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr ""
-"Número de espaços a serem exibidos no lugar dos caracteres de tabulação."
+"Especifica o número de espaços a serem exibidos no lugar dos caracteres de "
+"tabulação."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
 msgid "Insert spaces"
@@ -200,7 +202,7 @@ msgstr "Inserir espaços"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
 msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Inserir espaços em vez de tabulações."
+msgstr "Se o gedit deve inserir espaços em vez de tabulações."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
 msgid "Automatic indent"
@@ -208,7 +210,7 @@ msgstr "Recuo automático"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
 msgid "Whether gedit should enable automatic indentation."
-msgstr "Habilitar recuo automático."
+msgstr "Se o gedit deve habilitar recuo automático."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
 msgid "Display Line Numbers"
@@ -216,7 +218,7 @@ msgstr "Mostrar números de linha"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
 msgid "Whether gedit should display line numbers in the editing area."
-msgstr "Exibir números de linha na área de edição."
+msgstr "Se o gedit deve exibir números de linha na área de edição."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
 msgid "Highlight Current Line"
@@ -224,7 +226,7 @@ msgstr "Destacar linha atual"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
 msgid "Whether gedit should highlight the current line."
-msgstr "Destacar a linha atual."
+msgstr "Se o gedit deve destacar a linha atual."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
 msgid "Highlight Matching Brackets"
@@ -321,7 +323,7 @@ msgstr "Barra de ferramentas visível"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
 msgid "Whether the toolbar should be visible in editing windows."
-msgstr "Exibir a barra de ferramentas em janelas de edição."
+msgstr "Exibe a barra de ferramentas em janelas de edição."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
 msgid "Notebook Show Tabs Mode"
@@ -356,7 +358,7 @@ msgstr "Painel lateral está visível"
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
-msgstr "Se o painel lateral à esquerda das janelas de edição deve ser visível"
+msgstr "Se o painel lateral à esquerda das janelas de edição deve ser visível."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
 msgid "Maximum Recent Files"
@@ -808,7 +810,7 @@ msgstr ""
 
 #: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
-msgstr "_Salvar em texto simples?"
+msgstr "_Salvar em texto simples"
 
 #: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
@@ -817,7 +819,7 @@ msgstr "Salvando o arquivo \"%s\"..."
 
 #: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
-msgstr "Salvar como..."
+msgstr "Salvar como"
 
 #: ../gedit/gedit-commands-file.c:1167
 #, c-format
@@ -1698,7 +1700,7 @@ msgstr "Desinstalar esquema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Font & Colors"
-msgstr "Fontes e cores"
+msgstr "Fontes & cores"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Plugins"
@@ -2239,27 +2241,27 @@ msgstr "Mostra ou oculta a barra de status na janela atual"
 
 #: ../gedit/gedit-ui.h:167
 msgid "Edit text in fullscreen"
-msgstr "Editar texto em tela cheia"
+msgstr "Edita texto em tela cheia"
 
 #: ../gedit/gedit-ui.h:174
 msgid "Side _Panel"
-msgstr "Painel _Lateral"
+msgstr "Painel _lateral"
 
 #: ../gedit/gedit-ui.h:175
 msgid "Show or hide the side panel in the current window"
-msgstr "Mostrar ou ocultar o painel lateral da janela atual"
+msgstr "Mostra ou oculta o painel lateral da janela atual"
 
 #: ../gedit/gedit-ui.h:177
 msgid "_Bottom Panel"
-msgstr "_Painel Inferior"
+msgstr "_Painel inferior"
 
 #: ../gedit/gedit-ui.h:178
 msgid "Show or hide the bottom panel in the current window"
-msgstr "Mostrar ou ocultar o painel inferior da janela atual"
+msgstr "Mostra ou oculta o painel inferior da janela atual"
 
 #: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
-msgstr "Favor verificar sua instalação."
+msgstr "Por favor, verifique a sua instalação."
 
 #: ../gedit/gedit-utils.c:1091
 #, c-format
@@ -2789,11 +2791,11 @@ msgstr "Saída para o shell"
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
 msgid "File Browser Panel"
-msgstr "Arquivo Navegador Painel"
+msgstr "Painel de navegação de arquivos"
 
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
 msgid "Easy file access from the side panel"
-msgstr "Fácil acesso ao arquivo a partir do painel lateral"
+msgstr "Fácil acesso a arquivos a partir do painel lateral"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
@@ -3184,7 +3186,7 @@ msgstr "Cor de _erro:"
 #: ../plugins/pythonconsole/pythonconsole/__init__.py:52
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
-msgstr "Console Python"
+msgstr "Console python"
 
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 msgid "Interactive Python console standing in the bottom panel"
@@ -3682,7 +3684,7 @@ msgstr "Verifica a ortografia do documento atual."
 
 #: ../plugins/time/gedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
-msgstr "Inserir Data e Hora"
+msgstr "Inserir data e hora"
 
 #: ../plugins/time/gedit-time-dialog.ui.h:2
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:4
@@ -3766,7 +3768,7 @@ msgstr "O formato personalizado utilizado quando inserir a data/hora."
 
 #: ../plugins/time/time.plugin.desktop.in.h:1
 msgid "Insert Date/Time"
-msgstr "Inserir Data/Hora"
+msgstr "Inserir data/hora"
 
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
@@ -3780,6 +3782,33 @@ msgstr "Provedor de dados Zeitgeist"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Registrar acesso e abandonar os eventos para os documentos usados ​​com gedit"
+
+#~| msgid "Text Editor"
+#~ msgid "Text;Editor;"
+#~ msgstr "Texto;Editor;"
+
+# gedit --help
+#~| msgid "Show the application's version"
+#~ msgid "Show the application's help"
+#~ msgstr "Mostra a ajuda do aplicativo"
+
+#~| msgid "_Move to New Window"
+#~ msgid "_New Window"
+#~ msgstr "Nova _janela"
+
+#~| msgid "Preferences"
+#~ msgid "_Preferences"
+#~ msgstr "_Preferências"
+
+#~ msgid "_About"
+#~ msgstr "_Sobre"
+
+#~ msgid "_Quit"
+#~ msgstr "Sai_r"
+
+#~| msgid "Create new document"
+#~ msgid "There are unsaved documents"
+#~ msgstr "Há documentos não salvos"
 
 #, fuzzy
 #~ msgid "toolbutton1"
