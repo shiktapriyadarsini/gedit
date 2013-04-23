@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-02-09 02:33+0000\n"
-"PO-Revision-Date: 2013-02-18 11:15+0200\n"
+"POT-Creation-Date: 2013-04-21 14:08+0000\n"
+"PO-Revision-Date: 2013-04-23 09:15+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -40,7 +40,6 @@ msgid "gedit Text Editor"
 msgstr "Вилењакова бележница — уређивач текста"
 
 #: ../data/gedit.desktop.in.in.h:5
-#| msgid "Text Editor"
 msgid "Text;Editor;"
 msgstr "уређивач;текст;"
 
@@ -555,11 +554,11 @@ msgstr "[ДАТОТЕКА...] [+РЕД[:КОЛОНА]]"
 msgid "There was an error displaying the help."
 msgstr "Дошло је до грешке при приказивању помоћи."
 
-#: ../gedit/gedit-app.c:708
+#: ../gedit/gedit-app.c:704
 msgid "- Edit text files"
 msgstr "— Уредите текстуалне документе"
 
-#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:906
+#: ../gedit/gedit-app.c:813 ../gedit/gedit-app.c:903
 #, c-format
 msgid ""
 "%s\n"
@@ -569,7 +568,7 @@ msgstr ""
 "Покрените „%s --help“ да ​​видите потпун списак доступних опција линије "
 "наредби.\n"
 
-#: ../gedit/gedit-app.c:838
+#: ../gedit/gedit-app.c:834
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: неисправан кодни запис."
@@ -955,17 +954,17 @@ msgstr "Пронашао сам и заменио једну појаву"
 msgid "\"%s\" not found"
 msgstr "Нисам пронашао „%s“"
 
-#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
+#: ../gedit/gedit-document.c:1224 ../gedit/gedit-document.c:1250
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Несачуван документ „%d“"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
+#: ../gedit/gedit-window.c:2387 ../gedit/gedit-window.c:2394
 msgid "Read-Only"
 msgstr "Само читање"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3825
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3834
 msgid "Documents"
 msgstr "Документи"
 
@@ -1125,7 +1124,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "_Кодирања приказана у изборнику:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:909
+#: ../gedit/gedit-preferences-dialog.c:911
 msgid "All Files"
 msgstr "Све датотеке"
 
@@ -1249,7 +1248,7 @@ msgstr "Кодирање _знака:"
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:782
+#: ../gedit/gedit-io-error-info-bar.c:784
 msgid "Edit Any_way"
 msgstr "_Ипак промени"
 
@@ -1324,16 +1323,16 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:787
+#: ../gedit/gedit-io-error-info-bar.c:789
 msgid "D_on't Edit"
 msgstr "_Не мењај"
 
-#: ../gedit/gedit-io-error-info-bar.c:801
+#: ../gedit/gedit-io-error-info-bar.c:803
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "Ова датотека (%s) је већ отворена у другом прозору."
 
-#: ../gedit/gedit-io-error-info-bar.c:815
+#: ../gedit/gedit-io-error-info-bar.c:817
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1341,15 +1340,15 @@ msgstr ""
 "Програм је отворио овај примерак документа тако да мењање садржаја није "
 "могуће. Да ли и поред тога желите да мењате садржај?"
 
-#: ../gedit/gedit-io-error-info-bar.c:873
-#: ../gedit/gedit-io-error-info-bar.c:971
-#: ../gedit/gedit-io-error-info-bar.c:1260
+#: ../gedit/gedit-io-error-info-bar.c:875
+#: ../gedit/gedit-io-error-info-bar.c:973
+#: ../gedit/gedit-io-error-info-bar.c:1262
 msgid "S_ave Anyway"
 msgstr "С_ачувај и поред тога"
 
-#: ../gedit/gedit-io-error-info-bar.c:877
-#: ../gedit/gedit-io-error-info-bar.c:975
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:977
+#: ../gedit/gedit-io-error-info-bar.c:1266
 msgid "D_on't Save"
 msgstr "_Немој сачувати"
 
@@ -1357,30 +1356,30 @@ msgstr "_Немој сачувати"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:895
+#: ../gedit/gedit-io-error-info-bar.c:897
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Датотека „%s“ је измењена након што сте је учитали."
 
-#: ../gedit/gedit-io-error-info-bar.c:910
+#: ../gedit/gedit-io-error-info-bar.c:912
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Ако је сачувате, све спољне измене могу бити изгубљене. Сачуваћете је и "
 "поред тога?"
 
-#: ../gedit/gedit-io-error-info-bar.c:998
+#: ../gedit/gedit-io-error-info-bar.c:1000
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "Нисам могао направити резервни примерак након чувања документа „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:1003
+#: ../gedit/gedit-io-error-info-bar.c:1005
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr ""
 "Нисам могао да направим привремени резервни примерак датотеке приликом "
 "чувања документа „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:1020
+#: ../gedit/gedit-io-error-info-bar.c:1022
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1392,7 +1391,7 @@ msgstr ""
 "изгубите стари примерак документа. Сачуваћете документ и поред тога?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1080
+#: ../gedit/gedit-io-error-info-bar.c:1082
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1401,7 +1400,7 @@ msgstr ""
 "Програм не може да рукује „%s“ местима у режиму уписа. Проверите да ли сте "
 "унели исправну путању и покушајте поново."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1090
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1409,7 +1408,7 @@ msgstr ""
 "Програм не може да ради са овим путањама у режиму уписа. Проверите да ли сте "
 "унели исправну путању и покушајте поново."
 
-#: ../gedit/gedit-io-error-info-bar.c:1097
+#: ../gedit/gedit-io-error-info-bar.c:1099
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1418,7 +1417,7 @@ msgstr ""
 "„%s“ није исправно место. Проверите да ли сте унели исправну адресу и "
 "покушајте поново."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1106
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1426,7 +1425,7 @@ msgstr ""
 "Немате неопходне дозволе да сачувате датотеку. Проверите да ли сте унели "
 "исправну путању и покушајте поново."
 
-#: ../gedit/gedit-io-error-info-bar.c:1110
+#: ../gedit/gedit-io-error-info-bar.c:1112
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1434,7 +1433,7 @@ msgstr ""
 "Нема довољно простора на диску да сачувате датотеку. Ослободите простор на "
 "диску и покушајте поново."
 
-#: ../gedit/gedit-io-error-info-bar.c:1115
+#: ../gedit/gedit-io-error-info-bar.c:1117
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1442,12 +1441,12 @@ msgstr ""
 "Покушавате да сачувате датотеку на диску на којем упис није дозвољен. "
 "Проверите да ли сте путању укуцали исправно и покушајте поново."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1123
 msgid "A file with the same name already exists. Please use a different name."
 msgstr ""
 "Постоји још једна датотека са истим називом. Користите неки други назив."
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1128
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1455,7 +1454,7 @@ msgstr ""
 "Диск на који покушавате да сачувате датотеку има ограничење на дужину назива "
 "датотека. Употребите краћи назив."
 
-#: ../gedit/gedit-io-error-info-bar.c:1133
+#: ../gedit/gedit-io-error-info-bar.c:1135
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1465,7 +1464,7 @@ msgstr ""
 "датотеке. Сачувајте мању датотеку или је сачувате на неки други диск који "
 "нема ово ограничење."
 
-#: ../gedit/gedit-io-error-info-bar.c:1149
+#: ../gedit/gedit-io-error-info-bar.c:1151
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Не могу да сачувам датотеку „%s“."
@@ -1474,29 +1473,29 @@ msgstr "Не могу да сачувам датотеку „%s“."
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1194
+#: ../gedit/gedit-io-error-info-bar.c:1196
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "Садржај датотеке „%s“ се променио мимо програма."
 
-#: ../gedit/gedit-io-error-info-bar.c:1199
+#: ../gedit/gedit-io-error-info-bar.c:1201
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Да ли желите да одбаците измене и да поново учитате датотеку?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1201
+#: ../gedit/gedit-io-error-info-bar.c:1203
 msgid "Do you want to reload the file?"
 msgstr "Да ли желите поново да учитате датотеку?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1206
+#: ../gedit/gedit-io-error-info-bar.c:1208
 msgid "_Reload"
 msgstr "_Поново учитај"
 
-#: ../gedit/gedit-io-error-info-bar.c:1278
+#: ../gedit/gedit-io-error-info-bar.c:1280
 #, c-format
 msgid "Some invalid chars have been detected while saving %s"
 msgstr "Неки неисправни знакови су откривени приликом чувања „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:1294
+#: ../gedit/gedit-io-error-info-bar.c:1296
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1553,46 +1552,46 @@ msgstr "Празно"
 msgid "Hide panel"
 msgstr "Сакриј панел"
 
-#: ../gedit/gedit-preferences-dialog.c:423
+#: ../gedit/gedit-preferences-dialog.c:425
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Кликните на ово дугме да изаберете словни лик који ће бити коришћен у "
 "уређивачу"
 
-#: ../gedit/gedit-preferences-dialog.c:438
+#: ../gedit/gedit-preferences-dialog.c:440
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Користи словни лик система сталне ширине (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:676
+#: ../gedit/gedit-preferences-dialog.c:678
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Не могу да направим фасциклу „%s“: „g_mkdir_with_parents()“ позив није "
 "успео: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:860
+#: ../gedit/gedit-preferences-dialog.c:862
 msgid "The selected color scheme cannot be installed."
 msgstr "Одабрана поставка боја не може бити постављена."
 
-#: ../gedit/gedit-preferences-dialog.c:887
+#: ../gedit/gedit-preferences-dialog.c:889
 msgid "Add Scheme"
 msgstr "Додајте поставку боја"
 
-#: ../gedit/gedit-preferences-dialog.c:894
+#: ../gedit/gedit-preferences-dialog.c:896
 msgid "A_dd Scheme"
 msgstr "_Додај поставку боја"
 
-#: ../gedit/gedit-preferences-dialog.c:902
+#: ../gedit/gedit-preferences-dialog.c:904
 msgid "Color Scheme Files"
 msgstr "Датотеке са поставкама боја"
 
-#: ../gedit/gedit-preferences-dialog.c:954
+#: ../gedit/gedit-preferences-dialog.c:956
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Не могу да уклоним поставку боја „%s“."
 
-#: ../gedit/gedit-preferences-dialog.c:1177
+#: ../gedit/gedit-preferences-dialog.c:1158
 msgid "gedit Preferences"
 msgstr "Поставке Вилењакове бележнице"
 
@@ -1601,7 +1600,7 @@ msgstr "Поставке Вилењакове бележнице"
 msgid "Preferences"
 msgstr "Поставке"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
 msgstr "Прикажи бројеве ре_дова"
 
@@ -1696,26 +1695,30 @@ msgid "Color Scheme"
 msgstr "Шема боја"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "column"
+msgstr "колона"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "Инсталирајте шему"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "Инсталирај шему"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "Уклоните шему"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "Уклони шему"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "Словни лик и боје"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "Прикључци"
 
@@ -1856,7 +1859,7 @@ msgstr "Прегледајте страну документа коју жели
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-window.c:1532
 msgid "Replace"
 msgstr "Замени"
 
@@ -1919,73 +1922,73 @@ msgstr[3] "Постоје грешке у једном листу"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:750
+#: ../gedit/gedit-tab.c:771
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Враћам документ „%s“ из фасцикле „%s“"
 
-#: ../gedit/gedit-tab.c:757
+#: ../gedit/gedit-tab.c:778
 #, c-format
 msgid "Reverting %s"
 msgstr "Враћам документ „%s“"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:773
+#: ../gedit/gedit-tab.c:794
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Учитавам документ „%s“ из фасцикле „%s“"
 
-#: ../gedit/gedit-tab.c:780
+#: ../gedit/gedit-tab.c:801
 #, c-format
 msgid "Loading %s"
 msgstr "Учитавам „%s“"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:861
+#: ../gedit/gedit-tab.c:882
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Чувам документ „%s“ у фацикли „%s“"
 
-#: ../gedit/gedit-tab.c:868
+#: ../gedit/gedit-tab.c:889
 #, c-format
 msgid "Saving %s"
 msgstr "Чувам „%s“"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1853
+#: ../gedit/gedit-tab.c:1874
 msgid "RO"
 msgstr "СЧ"
 
-#: ../gedit/gedit-tab.c:1900
+#: ../gedit/gedit-tab.c:1921
 #, c-format
 msgid "Error opening file %s"
 msgstr "Грешка при отварању датотеке „%s“"
 
-#: ../gedit/gedit-tab.c:1905
+#: ../gedit/gedit-tab.c:1926
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Не могу да повратим документ „%s“"
 
-#: ../gedit/gedit-tab.c:1910
+#: ../gedit/gedit-tab.c:1931
 #, c-format
 msgid "Error saving file %s"
 msgstr "Грешка приликом чувања датотеке „%s“"
 
-#: ../gedit/gedit-tab.c:1931
+#: ../gedit/gedit-tab.c:1952
 msgid "Unicode (UTF-8)"
 msgstr "Уникод (УТФ-8)"
 
-#: ../gedit/gedit-tab.c:1938
+#: ../gedit/gedit-tab.c:1959
 msgid "Name:"
 msgstr "Назив:"
 
-#: ../gedit/gedit-tab.c:1939
+#: ../gedit/gedit-tab.c:1960
 msgid "MIME Type:"
 msgstr "МИМЕ врста:"
 
-#: ../gedit/gedit-tab.c:1940
+#: ../gedit/gedit-tab.c:1961
 msgid "Encoding:"
 msgstr "Кодирање:"
 
@@ -2267,46 +2270,46 @@ msgstr "_Доња површ"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Прикажите или сакријте доњу површ у тренутном прозору"
 
-#: ../gedit/gedit-utils.c:1023
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Проверите вашу инсталацију."
 
-#: ../gedit/gedit-utils.c:1081
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Не могу да отворим датотеку сучеља „%s“. Грешка: %s"
 
-#: ../gedit/gedit-utils.c:1100
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Не могу да пронађем објекат „%s“ унутар датотеке %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1323
+#: ../gedit/gedit-utils.c:1333
 #, c-format
 msgid "/ on %s"
 msgstr "/ на „%s“"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:542
+#: ../gedit/gedit-view-frame.c:538
 msgid "_Wrap Around"
 msgstr "Преламај _около"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:552
+#: ../gedit/gedit-view-frame.c:548
 msgid "Match _Entire Word Only"
 msgstr "Упореди само целе _речи"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:562
+#: ../gedit/gedit-view-frame.c:558
 msgid "_Match Case"
 msgstr "Упореди _величину слова"
 
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:755
 msgid "String you want to search for"
 msgstr "Ниска коју желите да потражите"
 
-#: ../gedit/gedit-view-frame.c:769
+#: ../gedit/gedit-view-frame.c:765
 msgid "Line you want to move the cursor to"
 msgstr "Ред на који желите да поставите курсор"
 
@@ -2318,68 +2321,68 @@ msgstr "Користи „%s“ режим истицања"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
+#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2078
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:890
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
 msgid "Plain Text"
 msgstr "Обичан текст"
 
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1052
 msgid "Disable syntax highlighting"
 msgstr "Искључите истицање синтаксе"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1365
+#: ../gedit/gedit-window.c:1369
 #, c-format
 msgid "Open '%s'"
 msgstr "Отвори „%s“"
 
-#: ../gedit/gedit-window.c:1467
+#: ../gedit/gedit-window.c:1471
 msgid "Open"
 msgstr "Отвори"
 
-#: ../gedit/gedit-window.c:1522
+#: ../gedit/gedit-window.c:1526
 msgid "Save"
 msgstr "Сачувај"
 
-#: ../gedit/gedit-window.c:1524
+#: ../gedit/gedit-window.c:1528
 msgid "Print"
 msgstr "Штампај"
 
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1530
 msgid "Find"
 msgstr "Пронађи"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1698
+#: ../gedit/gedit-window.c:1702
 #, c-format
 msgid "Activate '%s'"
 msgstr "Активирај „%s“"
 
-#: ../gedit/gedit-window.c:2055
+#: ../gedit/gedit-window.c:2059
 msgid "Use Spaces"
 msgstr "Користи размаке"
 
-#: ../gedit/gedit-window.c:2128
+#: ../gedit/gedit-window.c:2135
 msgid "Tab Width"
 msgstr "Ширина табулатора"
 
-#: ../gedit/gedit-window.c:2237
+#: ../gedit/gedit-window.c:2244
 msgid "Bracket match is out of range"
 msgstr "Поклапање заграда је изван опсега"
 
-#: ../gedit/gedit-window.c:2242
+#: ../gedit/gedit-window.c:2249
 msgid "Bracket match not found"
 msgstr "Нисам пронашао поклапање заграда"
 
-#: ../gedit/gedit-window.c:2247
+#: ../gedit/gedit-window.c:2254
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Поклапање заграда се налазе у реду: %d"
 
-#: ../gedit/gedit-window.c:2852
+#: ../gedit/gedit-window.c:2859
 msgid "There are unsaved documents"
 msgstr "Имате несачуваних докумената"
 
@@ -2595,7 +2598,7 @@ msgstr ""
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Назив Панго писма. Примери су „Sans 12“ или „Monospace Bold 14“."
 
-#: ../plugins/externaltools/tools/capture.py:92
+#: ../plugins/externaltools/tools/capture.py:95
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Не могу да извршим наредбу: %s"
@@ -2620,27 +2623,27 @@ msgstr "Изашао"
 msgid "All languages"
 msgstr "Сви језици"
 
-#: ../plugins/externaltools/tools/manager.py:560
-#: ../plugins/externaltools/tools/manager.py:564
-#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/manager.py:567
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:900
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Сви језици"
 
-#: ../plugins/externaltools/tools/manager.py:677
+#: ../plugins/externaltools/tools/manager.py:684
 msgid "New tool"
 msgstr "Нови алат"
 
-#: ../plugins/externaltools/tools/manager.py:808
+#: ../plugins/externaltools/tools/manager.py:815
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Ова пречица је већ везана за „%s“"
 
-#: ../plugins/externaltools/tools/manager.py:852
+#: ../plugins/externaltools/tools/manager.py:859
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Упишите нову пречицу или очистите тастером за брисање"
 
-#: ../plugins/externaltools/tools/manager.py:854
+#: ../plugins/externaltools/tools/manager.py:861
 msgid "Type a new accelerator"
 msgstr "Унесите нову пречицу"
 
@@ -3214,7 +3217,7 @@ msgstr "Брзо отвори"
 msgid "Quickly open files"
 msgstr "Брзо отворите датотеке"
 
-#: ../plugins/quickopen/quickopen/popup.py:73
+#: ../plugins/quickopen/quickopen/popup.py:77
 msgid "Type to search..."
 msgstr "Упишите да потражите..."
 
@@ -3275,25 +3278,25 @@ msgstr "Датотека „%s“ није исправна датотека с�
 msgid "Snippets archive"
 msgstr "Архива исечака"
 
-#: ../plugins/snippets/snippets/manager.py:63
+#: ../plugins/snippets/snippets/manager.py:67
 msgid "Add a new snippet..."
 msgstr "Додај нови исечак..."
 
-#: ../plugins/snippets/snippets/manager.py:115
+#: ../plugins/snippets/snippets/manager.py:119
 msgid "Global"
 msgstr "Опште"
 
-#: ../plugins/snippets/snippets/manager.py:399
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "Поврати означени исечак"
 
-#: ../plugins/snippets/snippets/manager.py:402
+#: ../plugins/snippets/snippets/manager.py:413
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "Обришите одабрани исечак"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:661
+#: ../plugins/snippets/snippets/manager.py:672
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3304,83 +3307,83 @@ msgstr ""
 "попут {, [, итд."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:668
+#: ../plugins/snippets/snippets/manager.py:679
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Реч на коју се активира исечак након притиска на тастер табулатора"
 
-#: ../plugins/snippets/snippets/manager.py:757
+#: ../plugins/snippets/snippets/manager.py:768
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Дошло је до грешке при увозу: %s"
 
-#: ../plugins/snippets/snippets/manager.py:764
+#: ../plugins/snippets/snippets/manager.py:775
 msgid "Import successfully completed"
 msgstr "Увоз је успешно завршен"
 
-#: ../plugins/snippets/snippets/manager.py:778
+#: ../plugins/snippets/snippets/manager.py:789
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "Увезите исечке"
 
-#: ../plugins/snippets/snippets/manager.py:783
-#: ../plugins/snippets/snippets/manager.py:869
-#: ../plugins/snippets/snippets/manager.py:932
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "All supported archives"
 msgstr "Све подржане архиве"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:881
+#: ../plugins/snippets/snippets/manager.py:944
 msgid "Gzip compressed archive"
 msgstr "Архива сажета Гзипом"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "Bzip2 compressed archive"
 msgstr "Архива сажета Бзипом 2"
 
-#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:797
 msgid "Single snippets file"
 msgstr "Јединствена датотека са исечцима"
 
-#: ../plugins/snippets/snippets/manager.py:787
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:936
+#: ../plugins/snippets/snippets/manager.py:798
+#: ../plugins/snippets/snippets/manager.py:884
+#: ../plugins/snippets/snippets/manager.py:947
 msgid "All files"
 msgstr "Све датотеке"
 
-#: ../plugins/snippets/snippets/manager.py:799
+#: ../plugins/snippets/snippets/manager.py:810
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Дошло је до грешке при извозу: %s"
 
-#: ../plugins/snippets/snippets/manager.py:803
+#: ../plugins/snippets/snippets/manager.py:814
 msgid "Export successfully completed"
 msgstr "Извоз је успешно завршен"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:843
-#: ../plugins/snippets/snippets/manager.py:910
+#: ../plugins/snippets/snippets/manager.py:854
+#: ../plugins/snippets/snippets/manager.py:921
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Да ли желите да укључите означене <b>системске</b> исечке при извозу?"
 
-#: ../plugins/snippets/snippets/manager.py:858
-#: ../plugins/snippets/snippets/manager.py:928
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "There are no snippets selected to be exported"
 msgstr "Нема одабраних исечака за извоз"
 
-#: ../plugins/snippets/snippets/manager.py:863
-#: ../plugins/snippets/snippets/manager.py:901
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 msgid "Export snippets"
 msgstr "Извезите исечке"
 
-#: ../plugins/snippets/snippets/manager.py:1042
+#: ../plugins/snippets/snippets/manager.py:1053
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Унесите нову пречицу, или је уклоните тастером за брисање уназад"
 
-#: ../plugins/snippets/snippets/manager.py:1044
+#: ../plugins/snippets/snippets/manager.py:1055
 msgid "Type a new shortcut"
 msgstr "Укуцајте нову пречицу"
 
