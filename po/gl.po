@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-21 23:25+0200\n"
-"PO-Revision-Date: 2013-04-21 23:25+0200\n"
+"POT-Creation-Date: 2013-04-24 08:44+0200\n"
+"PO-Revision-Date: 2013-04-24 08:44+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -1676,7 +1676,6 @@ msgid "Color Scheme"
 msgstr "Esquema de cor"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
-#, fuzzy
 msgid "column"
 msgstr "columna"
 
