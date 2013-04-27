@@ -130,6 +130,7 @@ INST_H_FILES =				\
 	gedit-app.h			\
 	gedit-app-activatable.h		\
 	gedit-commands.h		\
+	gedit-configurable.h		\
 	gedit-debug.h			\
 	gedit-document.h 		\
 	gedit-encodings.h		\
@@ -160,6 +161,7 @@ BUILT_SOURCES_PRIVATE = \
 
 libgedit_private_la_SOURCES =		\
 	gedit-app-activatable.c		\
+	gedit-configurable.c		\
 	gedit-view-activatable.c	\
 	gedit-window-activatable.c	\
 	gedit-resources.c
@@ -276,7 +278,7 @@ INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) --warn-all
 Gedit_3_0_gir_NAMESPACE = Gedit
 Gedit_3_0_gir_VERSION = 3.0
 Gedit_3_0_gir_PROGRAM = $(builddir)/gedit
-Gedit_3_0_gir_FILES = $(INST_H_FILES) $(libgedit_c_files) $(BUILT_SOURCES)
+Gedit_3_0_gir_FILES = $(INST_H_FILES) $(libgedit_private_la_SOURCES) $(libgedit_c_files) $(BUILT_SOURCES)
 Gedit_3_0_gir_INCLUDES = Gtk-3.0 GtkSource-3.0
 
 girdir = $(datadir)/gedit/gir-1.0
