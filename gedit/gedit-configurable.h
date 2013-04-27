@@ -51,12 +51,14 @@ struct _GeditConfigurableInterface
 {
 	GTypeInterface g_iface;
 
+	const gchar *(*get_page_id)		 (GeditConfigurable  *configurable);
 	const gchar *(*get_page_name)		 (GeditConfigurable  *configurable);
 	GtkWidget   *(*create_configure_widget)  (GeditConfigurable  *configurable);
 };
 
 GType       gedit_configurable_get_type                 (void)  G_GNUC_CONST;
 
+const gchar *gedit_configurable_get_page_id             (GeditConfigurable  *configurable);
 const gchar *gedit_configurable_get_page_name           (GeditConfigurable  *configurable);
 GtkWidget   *gedit_configurable_create_configure_widget (GeditConfigurable  *configurable);
 

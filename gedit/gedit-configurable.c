@@ -42,6 +42,30 @@ gedit_configurable_default_init (GeditConfigurableInterface *iface)
 }
 
 /**
+ * gedit_configurable_get_page_id:
+ * @configurable: A #GeditConfigurable.
+ *
+ * Returns: (transfer none):
+ */
+const gchar *
+gedit_configurable_get_page_id (GeditConfigurable *configurable)
+{
+	GeditConfigurableInterface *iface;
+
+	g_return_val_if_fail (GEDIT_IS_CONFIGURABLE (configurable), NULL);
+
+	iface = GEDIT_CONFIGURABLE_GET_IFACE (configurable);
+
+	if (G_LIKELY (iface->get_page_id != NULL))
+	{
+		return iface->get_page_id (configurable);
+	}
+
+	/* Default implementation */
+	return NULL;
+}
+
+/**
  * gedit_configurable_get_page_name:
  * @configurable: A #GeditConfigurable.
  *
