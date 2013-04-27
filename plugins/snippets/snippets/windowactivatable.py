@@ -48,7 +48,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
                 self.current_language_accel_group = None
 
         def do_activate(self):
-                self.insert_menu()
                 self.register_messages()
 
                 library = Library()
@@ -73,7 +72,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
 
                 self.accel_group = None
 
-                self.remove_menu()
                 self.unregister_messages()
 
                 library = Library()
@@ -145,27 +143,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
 
                 controller.parse_and_run_snippet(message.props.snippet, iter)
 
-        def insert_menu(self):
-                manager = self.window.get_ui_manager()
-
-                self.action_group = Gtk.ActionGroup("GeditSnippetPluginActions")
-                self.action_group.set_translation_domain('gedit')
-                self.action_group.add_actions([('ManageSnippets', None,
-                                _('Manage _Snippets...'), \
-                                None, _('Manage snippets'), \
-                                self.on_action_snippets_activate)])
-
-                self.merge_id = manager.new_merge_id()
-                manager.insert_action_group(self.action_group, -1)
-                manager.add_ui(self.merge_id, '/MenuBar/ToolsMenu/ToolsOps_5', \
-                                'ManageSnippets', 'ManageSnippets', Gtk.UIManagerItemType.MENUITEM, False)
-
-        def remove_menu(self):
-                manager = self.window.get_ui_manager()
-                manager.remove_ui(self.merge_id)
-                manager.remove_action_group(self.action_group)
-                self.action_group = None
-
         def find_snippet(self, snippets, tag):
                 result = []
 
@@ -202,12 +179,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
                 self.update_language(SharedData().get_controller(tab.get_view()))
 
         # Callbacks
-        def create_configure_dialog(self):
-                SharedData().show_manager(self.window, self.plugin_info.get_data_dir())
-
-        def on_action_snippets_activate(self, action):
-                self.create_configure_dialog()
-
         def accelerator_activated(self, group, obj, keyval, mod):
                 if obj == self.window:
                         controller = SharedData().get_active_controller(self.window)

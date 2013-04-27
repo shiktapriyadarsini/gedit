@@ -4,6 +4,7 @@ plugindir = $(GEDIT_PLUGINS_LIBS_DIR)/snippets
 plugin_PYTHON = \
 	__init__.py \
 	appactivatable.py \
+	configurable.py \
 	windowactivatable.py \
 	document.py \
 	library.py \
