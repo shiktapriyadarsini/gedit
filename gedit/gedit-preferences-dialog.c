@@ -40,6 +40,7 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <libpeas-gtk/peas-gtk-plugin-manager.h>
+#include <libpeas/peas-extension-set.h>
 #include <gtksourceview/gtksource.h>
 
 #include "gedit-preferences-dialog.h"
@@ -49,6 +50,8 @@
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
 #include "gedit-utils.h"
+#include "gedit-plugins-engine.h"
+#include "gedit-configurable.h"
 
 /*
  * gedit-preferences dialog is a singleton since we don't
@@ -75,9 +78,18 @@ enum
 						     GEDIT_TYPE_PREFERENCES_DIALOG, \
 						     GeditPreferencesDialogPrivate))
 
+typedef struct
+{
+	GtkWidget *grid;
+	GList *widgets;
+} Page;
+
 struct _GeditPreferencesDialogPrivate
 {
 	GSettings	*editor;
+
+	PeasExtensionSet *extensions;
+	GHashTable       *pages_table;
 
 	GtkWidget	*notebook;
 
@@ -138,6 +150,12 @@ gedit_preferences_dialog_dispose (GObject *object)
 	GeditPreferencesDialog *dlg = GEDIT_PREFERENCES_DIALOG (object);
 
 	g_clear_object (&dlg->priv->editor);
+
+	if (dlg->priv->pages_table != NULL)
+	{
+		g_hash_table_unref (dlg->priv->pages_table);
+		dlg->priv->pages_table = NULL;
+	}
 
 	G_OBJECT_CLASS (gedit_preferences_dialog_parent_class)->dispose (object);
 }
@@ -1135,12 +1153,77 @@ setup_plugins_page (GeditPreferencesDialog *dlg)
 }
 
 static void
+extension_added (PeasExtensionSet       *extensions,
+                 PeasPluginInfo         *info,
+                 PeasExtension          *exten,
+                 GeditPreferencesDialog *dlg)
+{
+	GeditPreferencesDialogPrivate *priv = dlg->priv;
+	const gchar *page_id;
+	GtkWidget *label;
+	GtkWidget *widget;
+	const gchar *page_name;
+	gint n_pages;
+
+	page_id = gedit_configurable_get_page_id (GEDIT_CONFIGURABLE (exten));
+	widget = GTK_WIDGET (g_hash_table_lookup (priv->pages_table, page_id));
+	if (widget != NULL)
+	{
+		g_warning ("Cannot add more than one widget per page");
+		return;
+	}
+
+	page_name = gedit_configurable_get_page_name (GEDIT_CONFIGURABLE (exten));
+	label = gtk_label_new (page_name);
+
+	n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (priv->notebook));
+
+	widget = gedit_configurable_create_configure_widget (GEDIT_CONFIGURABLE (exten));
+
+	// lave the plugins page at the end
+	gtk_notebook_insert_page (GTK_NOTEBOOK (priv->notebook),
+	                          widget,
+	                          label,
+	                          n_pages - 1);
+
+	g_hash_table_insert (priv->pages_table, g_strdup (page_id), widget);
+}
+
+static void
+extension_removed (PeasExtensionSet       *extensions,
+                   PeasPluginInfo         *info,
+                   PeasExtension          *exten,
+                   GeditPreferencesDialog *dlg)
+{
+	GeditPreferencesDialogPrivate *priv = dlg->priv;
+	const gchar *page_id;
+	gint page_num;
+	GtkWidget *widget;
+
+	page_id = gedit_configurable_get_page_id (GEDIT_CONFIGURABLE (exten));
+	widget = GTK_WIDGET (g_hash_table_lookup (priv->pages_table, page_id));
+	if (widget == NULL)
+	{
+		g_warning ("No widget for page: %s", page_id);
+		return;
+	}
+
+	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (priv->notebook), widget);
+	gtk_notebook_remove_page (GTK_NOTEBOOK (priv->notebook), page_num);
+	g_hash_table_remove (priv->pages_table, page_id);
+}
+
+static void
 gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 {
 	gedit_debug (DEBUG_PREFS);
 
 	dlg->priv = GEDIT_PREFERENCES_DIALOG_GET_PRIVATE (dlg);
 	dlg->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
+	dlg->priv->pages_table = g_hash_table_new_full (g_str_hash,
+	                                                g_direct_equal,
+	                                                g_free,
+	                                                NULL);
 
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 
@@ -1148,6 +1231,22 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 	setup_view_page (dlg);
 	setup_font_colors_page (dlg);
 	setup_plugins_page (dlg);
+
+	dlg->priv->extensions = peas_extension_set_new (PEAS_ENGINE (gedit_plugins_engine_get_default ()),
+	                                                GEDIT_TYPE_CONFIGURABLE,
+	                                                NULL);
+
+	g_signal_connect (dlg->priv->extensions,
+	                  "extension-added",
+	                  G_CALLBACK (extension_added),
+	                  dlg);
+	g_signal_connect (dlg->priv->extensions,
+	                  "extension-removed",
+	                  G_CALLBACK (extension_removed),
+	                  dlg);
+	peas_extension_set_foreach (dlg->priv->extensions,
+	                            (PeasExtensionSetForeachFunc)extension_added,
+	                            dlg);
 }
 
 void
