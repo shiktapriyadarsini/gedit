@@ -23,8 +23,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.gnome-2-16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-17 14:50+0100\n"
-"PO-Revision-Date: 2013-03-16 18:01+0100\n"
+"POT-Creation-Date: 2013-05-10 17:28+0200\n"
+"PO-Revision-Date: 2013-05-10 12:51+0200\n"
 "Last-Translator: Kenneth Nielsen <k.nielsen81@gmail.com>\n"
 "Language-Team: Dansk <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -553,11 +553,11 @@ msgstr "[FIL...] [+LINJE[:KOLONNE]]"
 msgid "There was an error displaying the help."
 msgstr "Der opstod en fejl ved visning af hjælp."
 
-#: ../gedit/gedit-app.c:708
+#: ../gedit/gedit-app.c:704
 msgid "- Edit text files"
 msgstr "- Redigér tekstfiler"
 
-#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:907
+#: ../gedit/gedit-app.c:813 ../gedit/gedit-app.c:903
 #, c-format
 msgid ""
 "%s\n"
@@ -567,7 +567,7 @@ msgstr ""
 "Kør \"%s --help\" for at se den fulde liste over tilgængelige "
 "kommandolinjetilvalg.\n"
 
-#: ../gedit/gedit-app.c:838
+#: ../gedit/gedit-app.c:834
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ugyldig kodning."
@@ -902,17 +902,17 @@ msgstr "Fandt og erstattede én forekomst"
 msgid "\"%s\" not found"
 msgstr "\"%s\" ikke fundet"
 
-#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
+#: ../gedit/gedit-document.c:1224 ../gedit/gedit-document.c:1250
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Ugemt dokument %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
+#: ../gedit/gedit-window.c:2387 ../gedit/gedit-window.c:2394
 msgid "Read-Only"
 msgstr "Skrivebeskyttet"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3827
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3834
 msgid "Documents"
 msgstr "Dokumenter"
 
@@ -1072,7 +1072,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "_Kodninger der vises i menu:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:909
+#: ../gedit/gedit-preferences-dialog.c:911
 msgid "All Files"
 msgstr "Alle filer"
 
@@ -1499,43 +1499,43 @@ msgstr "Tom"
 msgid "Hide panel"
 msgstr "Skjul panel"
 
-#: ../gedit/gedit-preferences-dialog.c:423
+#: ../gedit/gedit-preferences-dialog.c:425
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Klik på denne knap for at vælge redigeringsprogrammets skrifttype"
 
-#: ../gedit/gedit-preferences-dialog.c:438
+#: ../gedit/gedit-preferences-dialog.c:440
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Br_ug systemets fastbredde-skrifttype (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:676
+#: ../gedit/gedit-preferences-dialog.c:678
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Mappen \"%s\" kunne ikke blive oprettet: g_mkdir_with_parents() fejlede: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:860
+#: ../gedit/gedit-preferences-dialog.c:862
 msgid "The selected color scheme cannot be installed."
 msgstr "Det valgte farveskema kan ikke installeres."
 
-#: ../gedit/gedit-preferences-dialog.c:887
+#: ../gedit/gedit-preferences-dialog.c:889
 msgid "Add Scheme"
 msgstr "Tilføj skema"
 
-#: ../gedit/gedit-preferences-dialog.c:894
+#: ../gedit/gedit-preferences-dialog.c:896
 msgid "A_dd Scheme"
 msgstr "_Tilføj skema"
 
-#: ../gedit/gedit-preferences-dialog.c:902
+#: ../gedit/gedit-preferences-dialog.c:904
 msgid "Color Scheme Files"
 msgstr "Farveskemafiler"
 
-#: ../gedit/gedit-preferences-dialog.c:954
+#: ../gedit/gedit-preferences-dialog.c:956
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Kunne ikke fjerne farveskemaet \"%s\"."
 
-#: ../gedit/gedit-preferences-dialog.c:1177
+#: ../gedit/gedit-preferences-dialog.c:1157
 msgid "gedit Preferences"
 msgstr "Indstillinger for gedit"
 
@@ -1544,7 +1544,7 @@ msgstr "Indstillinger for gedit"
 msgid "Preferences"
 msgstr "Indstillinger"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
 msgstr "Vis linje_numre"
 
@@ -1638,26 +1638,30 @@ msgid "Color Scheme"
 msgstr "Farveskema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "column"
+msgstr "kolonne"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "Installer skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "Installer skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "Afinstaller skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "Afinstaller skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "Skrifttyper og farver"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "Udvidelsesmoduler"
 
@@ -1797,7 +1801,7 @@ msgstr "Forhåndsvisningen af en side dokumentet der skal udskrives"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-window.c:1532
 msgid "Replace"
 msgstr "Erstat"
 
@@ -1858,74 +1862,74 @@ msgstr[1] "Der er %d faneblade med fejl"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:769
+#: ../gedit/gedit-tab.c:771
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Forkaster %s fra %s"
 
-#: ../gedit/gedit-tab.c:776
+#: ../gedit/gedit-tab.c:778
 #, c-format
 msgid "Reverting %s"
 msgstr "Forkaster %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:792
+#: ../gedit/gedit-tab.c:794
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Indlæser %s fra %s"
 
-#: ../gedit/gedit-tab.c:799
+#: ../gedit/gedit-tab.c:801
 #, c-format
 msgid "Loading %s"
 msgstr "Indlæser %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:880
+#: ../gedit/gedit-tab.c:882
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Gemmer %s i %s"
 
-#: ../gedit/gedit-tab.c:887
+#: ../gedit/gedit-tab.c:889
 #, c-format
 msgid "Saving %s"
 msgstr "Gemmer %s"
 
 # skrivebeskyttet
 #. Read only
-#: ../gedit/gedit-tab.c:1872
+#: ../gedit/gedit-tab.c:1874
 msgid "RO"
 msgstr "SB"
 
-#: ../gedit/gedit-tab.c:1919
+#: ../gedit/gedit-tab.c:1921
 #, c-format
 msgid "Error opening file %s"
 msgstr "Fejl ved åbning af filen \"%s\""
 
-#: ../gedit/gedit-tab.c:1924
+#: ../gedit/gedit-tab.c:1926
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Fejl ved forkastning af filen \"%s\""
 
-#: ../gedit/gedit-tab.c:1929
+#: ../gedit/gedit-tab.c:1931
 #, c-format
 msgid "Error saving file %s"
 msgstr "Fejl ved gemning af filen \"%s\""
 
-#: ../gedit/gedit-tab.c:1950
+#: ../gedit/gedit-tab.c:1952
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1957
+#: ../gedit/gedit-tab.c:1959
 msgid "Name:"
 msgstr "Navn:"
 
-#: ../gedit/gedit-tab.c:1958
+#: ../gedit/gedit-tab.c:1960
 msgid "MIME Type:"
 msgstr "MIME-type:"
 
-#: ../gedit/gedit-tab.c:1959
+#: ../gedit/gedit-tab.c:1961
 msgid "Encoding:"
 msgstr "Kodning:"
 
@@ -2207,22 +2211,22 @@ msgstr "_Bundpanel"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Vis eller skjul bundpanelet i det aktuelle vindue"
 
-#: ../gedit/gedit-utils.c:1026
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Kontrollér din installation."
 
-#: ../gedit/gedit-utils.c:1084
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Kunne ikke åbne grænsefladefil %s. Fejl: %s"
 
-#: ../gedit/gedit-utils.c:1103
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Kan ikke finde objektet \"%s\" inden i filen %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1326
+#: ../gedit/gedit-utils.c:1333
 #, c-format
 msgid "/ on %s"
 msgstr "/ på %s"
@@ -2258,68 +2262,68 @@ msgstr "Benyt fremhævningstilstanden %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
+#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2078
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:890
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
 msgid "Plain Text"
 msgstr "Almindelig tekst"
 
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1052
 msgid "Disable syntax highlighting"
 msgstr "Deaktivér syntaksfremhævning"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1365
+#: ../gedit/gedit-window.c:1369
 #, c-format
 msgid "Open '%s'"
 msgstr "Åbn \"%s\""
 
-#: ../gedit/gedit-window.c:1467
+#: ../gedit/gedit-window.c:1471
 msgid "Open"
 msgstr "Åbn"
 
-#: ../gedit/gedit-window.c:1522
+#: ../gedit/gedit-window.c:1526
 msgid "Save"
 msgstr "Gem"
 
-#: ../gedit/gedit-window.c:1524
+#: ../gedit/gedit-window.c:1528
 msgid "Print"
 msgstr "Udskriv"
 
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1530
 msgid "Find"
 msgstr "Find"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1698
+#: ../gedit/gedit-window.c:1702
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktivér \"%s\""
 
-#: ../gedit/gedit-window.c:2055
+#: ../gedit/gedit-window.c:2059
 msgid "Use Spaces"
 msgstr "Brug mellemrum"
 
-#: ../gedit/gedit-window.c:2128
+#: ../gedit/gedit-window.c:2135
 msgid "Tab Width"
 msgstr "Tabulatorbredde"
 
-#: ../gedit/gedit-window.c:2237
+#: ../gedit/gedit-window.c:2244
 msgid "Bracket match is out of range"
 msgstr "Parentesmodpart uden for gyldigt interval"
 
-#: ../gedit/gedit-window.c:2242
+#: ../gedit/gedit-window.c:2249
 msgid "Bracket match not found"
 msgstr "Parentesmodpart ikke fundet"
 
-#: ../gedit/gedit-window.c:2247
+#: ../gedit/gedit-window.c:2254
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Parentesmodpart fundet på linje %d"
 
-#: ../gedit/gedit-window.c:2852
+#: ../gedit/gedit-window.c:2859
 msgid "There are unsaved documents"
 msgstr "Der er ugemte dokumenter"
 
@@ -2538,7 +2542,7 @@ msgstr ""
 "Navnet på en Pango-skrifttype. Eksempler: \"Sans 12\" eller \"Monospace Bold "
 "14\"."
 
-#: ../plugins/externaltools/tools/capture.py:92
+#: ../plugins/externaltools/tools/capture.py:95
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Kunne ikke køre kommando: %s"
@@ -2563,28 +2567,28 @@ msgstr "Afsluttet"
 msgid "All languages"
 msgstr "Alle sprog"
 
-#: ../plugins/externaltools/tools/manager.py:560
-#: ../plugins/externaltools/tools/manager.py:564
-#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/manager.py:567
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:900
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Alle sprog"
 
-#: ../plugins/externaltools/tools/manager.py:677
+#: ../plugins/externaltools/tools/manager.py:684
 msgid "New tool"
 msgstr "Nyt værktøj"
 
-#: ../plugins/externaltools/tools/manager.py:808
+#: ../plugins/externaltools/tools/manager.py:815
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Denne genvej er allerede bundet til %s"
 
-#: ../plugins/externaltools/tools/manager.py:852
+#: ../plugins/externaltools/tools/manager.py:859
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr ""
 "Indtast en ny genvej eller tryk på \"slet tilbage\"-knappen for at rydde"
 
-#: ../plugins/externaltools/tools/manager.py:854
+#: ../plugins/externaltools/tools/manager.py:861
 msgid "Type a new accelerator"
 msgstr "Indtast en ny genvej"
 
@@ -3158,7 +3162,7 @@ msgstr "Hurtig åbning"
 msgid "Quickly open files"
 msgstr "Åbn filer hurtigt"
 
-#: ../plugins/quickopen/quickopen/popup.py:73
+#: ../plugins/quickopen/quickopen/popup.py:77
 msgid "Type to search..."
 msgstr "Skriv for at søge..."
 
@@ -3219,25 +3223,25 @@ msgstr "Filen \"%s\" er ikke et gyldigt tekststump-arkiv"
 msgid "Snippets archive"
 msgstr "Tekststump-arkiv"
 
-#: ../plugins/snippets/snippets/manager.py:63
+#: ../plugins/snippets/snippets/manager.py:67
 msgid "Add a new snippet..."
 msgstr "Tilføj en ny tekststump..."
 
-#: ../plugins/snippets/snippets/manager.py:115
+#: ../plugins/snippets/snippets/manager.py:119
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/manager.py:399
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "Gendan den markerede tekststump"
 
-#: ../plugins/snippets/snippets/manager.py:402
+#: ../plugins/snippets/snippets/manager.py:413
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "Slet den markerede tekststump"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:661
+#: ../plugins/snippets/snippets/manager.py:672
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3248,85 +3252,85 @@ msgstr ""
 "tegn såsom: {, [ osv."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:668
+#: ../plugins/snippets/snippets/manager.py:679
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Et enkelt ord hvormed tekststumpen aktiveres, når der trykkes tab"
 
-#: ../plugins/snippets/snippets/manager.py:757
+#: ../plugins/snippets/snippets/manager.py:768
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Den følgende fejl opstod under import: %s"
 
-#: ../plugins/snippets/snippets/manager.py:764
+#: ../plugins/snippets/snippets/manager.py:775
 msgid "Import successfully completed"
 msgstr "Importering fuldført problemfrit"
 
-#: ../plugins/snippets/snippets/manager.py:778
+#: ../plugins/snippets/snippets/manager.py:789
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "Importér tekststumper"
 
-#: ../plugins/snippets/snippets/manager.py:783
-#: ../plugins/snippets/snippets/manager.py:869
-#: ../plugins/snippets/snippets/manager.py:932
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "All supported archives"
 msgstr "Alle understøttede arkiver"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:881
+#: ../plugins/snippets/snippets/manager.py:944
 msgid "Gzip compressed archive"
 msgstr "Gzip-komprimeret arkiv"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2-komprimeret arkiv"
 
-#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:797
 msgid "Single snippets file"
 msgstr "Enkelt tekststumpfil"
 
-#: ../plugins/snippets/snippets/manager.py:787
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:936
+#: ../plugins/snippets/snippets/manager.py:798
+#: ../plugins/snippets/snippets/manager.py:884
+#: ../plugins/snippets/snippets/manager.py:947
 msgid "All files"
 msgstr "Alle filer"
 
-#: ../plugins/snippets/snippets/manager.py:799
+#: ../plugins/snippets/snippets/manager.py:810
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Følgende fejl opstod under eksport: %s"
 
-#: ../plugins/snippets/snippets/manager.py:803
+#: ../plugins/snippets/snippets/manager.py:814
 msgid "Export successfully completed"
 msgstr "Eksportering fuldført problemfrit"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:843
-#: ../plugins/snippets/snippets/manager.py:910
+#: ../plugins/snippets/snippets/manager.py:854
+#: ../plugins/snippets/snippets/manager.py:921
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Ønsker du at inkludere markerede <b>system</b>-tekststumper i din eksport?"
 
-#: ../plugins/snippets/snippets/manager.py:858
-#: ../plugins/snippets/snippets/manager.py:928
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "There are no snippets selected to be exported"
 msgstr "Ingen tekststumper er markeret til eksport"
 
-#: ../plugins/snippets/snippets/manager.py:863
-#: ../plugins/snippets/snippets/manager.py:901
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 msgid "Export snippets"
 msgstr "Eksportér tekststumper"
 
-#: ../plugins/snippets/snippets/manager.py:1042
+#: ../plugins/snippets/snippets/manager.py:1053
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Indtast en ny genvej eller tryk på \"slet tilbage\"-knappen for at rydde"
 
-#: ../plugins/snippets/snippets/manager.py:1044
+#: ../plugins/snippets/snippets/manager.py:1055
 msgid "Type a new shortcut"
 msgstr "Indtast en ny genvej"
 
@@ -4029,9 +4033,6 @@ msgstr ""
 
 #~ msgid "Column span"
 #~ msgstr "Kolonnespænd"
-
-#~ msgid "Columns"
-#~ msgstr "Kolonner"
 
 #~ msgid "Comment"
 #~ msgstr "Kommentar"
