@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gedit.master.or\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-21 07:47+0000\n"
-"PO-Revision-Date: 2013-03-22 19:17+0530\n"
+"POT-Creation-Date: 2013-04-21 14:08+0000\n"
+"PO-Revision-Date: 2013-05-10 12:10+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
 "Language-Team: Oriya <oriya-it@googlegroups.com>\n"
 "Language: or\n"
@@ -45,7 +45,6 @@ msgid "gedit Text Editor"
 msgstr "gedit ପାଠ୍ଯ ସମ୍ପାଦକ"
 
 #: ../data/gedit.desktop.in.in.h:5
-#| msgid "Text Editor"
 msgid "Text;Editor;"
 msgstr "ପାଠ୍ଯ;ସମ୍ପାଦକ;"
 
@@ -459,7 +458,7 @@ msgstr ""
 #. encodings that are common in your country, for instance the GB18030 encoding
 #. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
 #. (covering English and most Western European languages) if you think people
-#. in you country will rarely use it.
+#. in your country will rarely use it.
 #. "CURRENT" is a magic value used by gedit and it represents the encoding
 #. for the current locale, so please don't translate the "CURRENT" term.
 #. Only recognized encodings are used.
@@ -518,7 +517,6 @@ msgstr ""
 "ପ୍ଲଗଇନର \"ସ୍ଥାନ\"କୁ ପାଇବା ପାଇଁ .gedit-plugin ଫାଇଲକୁ ଦେଖନ୍ତୁ."
 
 #: ../gedit/gedit-app.c:115
-#| msgid "Show the application's version"
 msgid "Show the application's help"
 msgstr "ପ୍ରୟୋଗର ସହାୟତାକୁ ଦର୍ଶାନ୍ତୁ"
 
@@ -576,11 +574,11 @@ msgstr "[FILE...] [+LINE[:COLUMN]]"
 msgid "There was an error displaying the help."
 msgstr "ସହାୟତାକୁ ପ୍ରଦର୍ଶନ କରିବା ସମୟରେ ଗୋଟିଏ ତ୍ରୁଟି ପରିଲିଖିତ ହେଲା।"
 
-#: ../gedit/gedit-app.c:708
+#: ../gedit/gedit-app.c:704
 msgid "- Edit text files"
 msgstr "- ପାଠ୍ୟ ଫାଇଲଗୁଡ଼ିକୁ ସମ୍ପାଦନ କରନ୍ତୁ"
 
-#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:906
+#: ../gedit/gedit-app.c:813 ../gedit/gedit-app.c:903
 #, c-format
 msgid ""
 "%s\n"
@@ -590,9 +588,8 @@ msgstr ""
 "ଉପଲବ୍ଧ ନିର୍ଦ୍ଦେଶନାମା ବିକଳ୍ପଗୁଡ଼ିକର ସମ୍ପୂର୍ଣ୍ଣ ତାଲିକା ଦେଖିବା ପାଇଁ'%s --help' "
 "କୁ ଚଲାନ୍ତୁ.\n"
 
-#: ../gedit/gedit-app.c:838
+#: ../gedit/gedit-app.c:834
 #, c-format
-#| msgid "%s: invalid encoding.\n"
 msgid "%s: invalid encoding."
 msgstr "%s: ଅବୈଧ ସାଙ୍କେତିକରଣ।"
 
@@ -922,17 +919,17 @@ msgstr "ସ୍ଥାନରେ ଖୋଜି ବଦଳାଯାଇଛି."
 msgid "\"%s\" not found"
 msgstr "\"%s\" ମିଳିଲା ନାହିଁ"
 
-#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
+#: ../gedit/gedit-document.c:1224 ../gedit/gedit-document.c:1250
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "ଅସଂରକ୍ଷିତ ଦଲିଲ %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
+#: ../gedit/gedit-window.c:2387 ../gedit/gedit-window.c:2394
 msgid "Read-Only"
 msgstr "କେବଳ-ପଠନୀୟ"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3825
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3834
 msgid "Documents"
 msgstr "ଦଲିଲ"
 
@@ -1092,7 +1089,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "ମେନୁରେ ପ୍ରଦର୍ଶିତ ସଙ୍କେତାବଳୀ: (_E)"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:909
+#: ../gedit/gedit-preferences-dialog.c:911
 msgid "All Files"
 msgstr "ସବୁ ଫାଇଲଗୁଡ଼ିକ"
 
@@ -1220,7 +1217,7 @@ msgstr "ଅକ୍ଷର ସାଙ୍କେତିକରଣ (_a):"
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:782
+#: ../gedit/gedit-io-error-info-bar.c:784
 msgid "Edit Any_way"
 msgstr "ଯେକୌଣସି ପ୍ରକାରେ ସମ୍ପାଦନ କରନ୍ତୁ (_w)"
 
@@ -1300,16 +1297,16 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:787
+#: ../gedit/gedit-io-error-info-bar.c:789
 msgid "D_on't Edit"
 msgstr "ସମ୍ପାଦନ କରନ୍ତୁ ନାହିଁ (_o)"
 
-#: ../gedit/gedit-io-error-info-bar.c:801
+#: ../gedit/gedit-io-error-info-bar.c:803
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "ଫାଇଲ (%s) ଟି ଅନ୍ୟଏକ gedit ୱିଣ୍ଡୋରେ ପୂର୍ବରୁ ଖୋଲାଅଛି."
 
-#: ../gedit/gedit-io-error-info-bar.c:815
+#: ../gedit/gedit-io-error-info-bar.c:817
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1318,15 +1315,15 @@ msgstr ""
 "ଯେକୌଣସି "
 "ଉପାୟରେ ସମ୍ପାଦନ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../gedit/gedit-io-error-info-bar.c:873
-#: ../gedit/gedit-io-error-info-bar.c:971
-#: ../gedit/gedit-io-error-info-bar.c:1260
+#: ../gedit/gedit-io-error-info-bar.c:875
+#: ../gedit/gedit-io-error-info-bar.c:973
+#: ../gedit/gedit-io-error-info-bar.c:1262
 msgid "S_ave Anyway"
 msgstr "ଯେକୌଣସି ପ୍ରକାରେ ସଂରକ୍ଷଣ କରନ୍ତୁ (_a)"
 
-#: ../gedit/gedit-io-error-info-bar.c:877
-#: ../gedit/gedit-io-error-info-bar.c:975
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:977
+#: ../gedit/gedit-io-error-info-bar.c:1266
 msgid "D_on't Save"
 msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ ନାହିଁ (_o)"
 
@@ -1334,29 +1331,29 @@ msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ ନାହିଁ (_o)"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:895
+#: ../gedit/gedit-io-error-info-bar.c:897
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "ଫାଇଲ %sକୁ ପଢ଼ିସାରିବା ପରଠୁଁ ପରିବର୍ତ୍ତନ କରାସରିଛି."
 
-#: ../gedit/gedit-io-error-info-bar.c:910
+#: ../gedit/gedit-io-error-info-bar.c:912
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "ଯଦି ଆପଣ ଏହାକୁ ସଂରକ୍ଷଣ କରନ୍ତି, ସମସ୍ତ ବାହ୍ୟ ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ନଷ୍ଟ ହୋଇଯାଇପାରେ. "
 "ଯେକୌଣସି ପ୍ରକାରେ "
 "ଏହାକୁ ସଂରକ୍ଷଣ କରିବେ କି?"
 
-#: ../gedit/gedit-io-error-info-bar.c:998
+#: ../gedit/gedit-io-error-info-bar.c:1000
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "%sକୁ ସଂରକ୍ଷଣ କରିବା ସମୟରେ ନକଲ ସଂରକ୍ଷଣ ଫାଇଲ ସୃଷ୍ଟିକରିପାରିବେନାହିଁ"
 
-#: ../gedit/gedit-io-error-info-bar.c:1003
+#: ../gedit/gedit-io-error-info-bar.c:1005
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "%sକୁ ସଂରକ୍ଷଣ କରିବା ସମୟରେ ଅସ୍ଥାୟୀ ନକଲ ସଂରକ୍ଷଣ ଫାଇଲ ସୃଷ୍ଟିକରିପାରିବେନାହିଁ"
 
-#: ../gedit/gedit-io-error-info-bar.c:1020
+#: ../gedit/gedit-io-error-info-bar.c:1022
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1371,7 +1368,7 @@ msgstr ""
 "କରନ୍ତୁ?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1080
+#: ../gedit/gedit-io-error-info-bar.c:1082
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1381,7 +1378,7 @@ msgstr ""
 "ସଠିକ ଭାବରେ "
 "ଟାଇପ କରିଛନ୍ତି ବୋଲି ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ପ୍ରଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1090
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1390,7 +1387,7 @@ msgstr ""
 "ଅବସ୍ଥାନ ସଠିକ ଭାବରେ "
 "ଟାଇପ କରିଛନ୍ତି ବୋଲି ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ପ୍ରଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1097
+#: ../gedit/gedit-io-error-info-bar.c:1099
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1400,7 +1397,7 @@ msgstr ""
 "ଯାଞ୍ଚ କରନ୍ତୁ "
 "ଏବଂ ପୁନର୍ବାର ପ୍ରଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1106
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1409,7 +1406,7 @@ msgstr ""
 "ଭାବରେ ଟାଇପ "
 "କରିଛନ୍ତି ବୋଲି ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ପ୍ରଚେଷ୍ଟା କରନ୍ତୁ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1110
+#: ../gedit/gedit-io-error-info-bar.c:1112
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1418,7 +1415,7 @@ msgstr ""
 "ସ୍ଥାନ ଖାଲିକରି ପୁଣି "
 "ଚେଷ୍ଟାକରନ୍ତୁ."
 
-#: ../gedit/gedit-io-error-info-bar.c:1115
+#: ../gedit/gedit-io-error-info-bar.c:1117
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1428,12 +1425,12 @@ msgstr ""
 "ଅବସ୍ଥାନ ସଠିକ ଭାବରେ ଟାଇପ କରିଛନ୍ତି ବୋଲି ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ପ୍ରଚେଷ୍ଟା "
 "କରନ୍ତୁ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1123
 msgid "A file with the same name already exists. Please use a different name."
 msgstr ""
 "ସମାନ ନାମ ବିଶିଷ୍ଟ ଆଉଏକ ଫାଇଲ ପୂର୍ବରୁ ଅବସ୍ଥିତ. ଦୟାକରି ଭିନ୍ନ ନାମ ବ୍ୟବହାର କରନ୍ତୁ."
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1128
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1442,7 +1439,7 @@ msgstr ""
 "ଅଛି। ଦୟାକରି "
 "ଗୋଟିଏ ଛୋଟ ନାମ ବ୍ଯବହାର କରନ୍ତୁ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1133
+#: ../gedit/gedit-io-error-info-bar.c:1135
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1453,7 +1450,7 @@ msgstr ""
 "ଏକ ଛୋଟ ଫାଇଲ ସଂରକ୍ଷଣ କରନ୍ତୁ ବା ଏହି ଅକ୍ଷମତା ନଥିବା ଗୋଟିଏ ଅଲଗା ଡିସ୍କରେ ସଂରକ୍ଷଣ "
 "କରନ୍ତୁ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1149
+#: ../gedit/gedit-io-error-info-bar.c:1151
 #, c-format
 msgid "Could not save the file %s."
 msgstr "%s ଫାଇଲକୁ ସଂରକ୍ଷଣ କରିପାରିବେ ନାହିଁ."
@@ -1462,31 +1459,31 @@ msgstr "%s ଫାଇଲକୁ ସଂରକ୍ଷଣ କରିପାରିବେ 
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1194
+#: ../gedit/gedit-io-error-info-bar.c:1196
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "%s ଫାଇଲକୁ ଡିସ୍କରେ ପରିବର୍ତ୍ତନ କରାଯାଇଛି।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1199
+#: ../gedit/gedit-io-error-info-bar.c:1201
 msgid "Do you want to drop your changes and reload the file?"
 msgstr ""
 "ଆପଣ ଆପଣଙ୍କର ପରିବର୍ତ୍ତନଗୁଡ଼ିକୁ କାଢ଼ି ସେହି ଫାଇଲକୁ ପୁନର୍ଧାରଣ କରିବାକୁ ଚାହୁଁଛନ୍ତି "
 "କି?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1201
+#: ../gedit/gedit-io-error-info-bar.c:1203
 msgid "Do you want to reload the file?"
 msgstr "ଆପଣ ଏହି ଫାଇଲକୁ ପୁନର୍ଧାରଣ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1206
+#: ../gedit/gedit-io-error-info-bar.c:1208
 msgid "_Reload"
 msgstr "ପୁନର୍ଧାରଣ କରନ୍ତୁ (_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1278
+#: ../gedit/gedit-io-error-info-bar.c:1280
 #, c-format
 msgid "Some invalid chars have been detected while saving %s"
 msgstr "%s କୁ ସଂରକ୍ଷଣ କରିବା ସମୟରେ କିଛି ଅବୈଧ ଅକ୍ଷର ଧରାପଡ଼ିଛି"
 
-#: ../gedit/gedit-io-error-info-bar.c:1294
+#: ../gedit/gedit-io-error-info-bar.c:1296
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1496,12 +1493,10 @@ msgstr ""
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-menu.ui.h:1
-#| msgid "_Move to New Window"
 msgid "_New Window"
 msgstr "ନୂଆ ୱିଣ୍ଡୋ (_N)"
 
 #: ../gedit/gedit-menu.ui.h:2
-#| msgid "Preferences"
 msgid "_Preferences"
 msgstr "ପସନ୍ଦ (_P)"
 
@@ -1546,44 +1541,44 @@ msgstr "ଖାଲି"
 msgid "Hide panel"
 msgstr "ପଟ୍ଟିକାକୁ ଲୁଚାନ୍ତୁ"
 
-#: ../gedit/gedit-preferences-dialog.c:423
+#: ../gedit/gedit-preferences-dialog.c:425
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "ସମ୍ପାଦକ ବ୍ଯବହାର କରିବା ନିମନ୍ତେ ଅକ୍ଷରରୂପ ବାଛିବା ପାଇଁ ଏହି ଚାବି ଦବାନ୍ତୁ"
 
-#: ../gedit/gedit-preferences-dialog.c:438
+#: ../gedit/gedit-preferences-dialog.c:440
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "ତନ୍ତ୍ରର ସ୍ଥିର ଓସାର ଅକ୍ଷରରୂପ (%s)କୁ ବ୍ୟବହାର କରନ୍ତୁ (_U)"
 
-#: ../gedit/gedit-preferences-dialog.c:676
+#: ../gedit/gedit-preferences-dialog.c:678
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "ଡ଼ିରେକ୍ଟୋରୀ '%s' ନିର୍ମାଣ କରାଯାଇପାରିବନାହିଁ: g_mkdir_with_parents() ବିଫଳ ହୋଇଛି: "
 "%s"
 
-#: ../gedit/gedit-preferences-dialog.c:860
+#: ../gedit/gedit-preferences-dialog.c:862
 msgid "The selected color scheme cannot be installed."
 msgstr "ବଚ୍ଛିତ ରଙ୍ଗ ଯୋଜନାକୁ ସ୍ଥାପନ କରାଯାଇପାରିବ ନାହିଁ."
 
-#: ../gedit/gedit-preferences-dialog.c:887
+#: ../gedit/gedit-preferences-dialog.c:889
 msgid "Add Scheme"
 msgstr "ଯୋଜନା ଯୋଗକରନ୍ତୁ"
 
-#: ../gedit/gedit-preferences-dialog.c:894
+#: ../gedit/gedit-preferences-dialog.c:896
 msgid "A_dd Scheme"
 msgstr "ଯୋଜନା ଯୋଗକରନ୍ତୁ (_d)"
 
-#: ../gedit/gedit-preferences-dialog.c:902
+#: ../gedit/gedit-preferences-dialog.c:904
 msgid "Color Scheme Files"
 msgstr "ରଙ୍ଗ ଯୋଜନା ଫାଇଲଗୁଡ଼ିକ"
 
-#: ../gedit/gedit-preferences-dialog.c:954
+#: ../gedit/gedit-preferences-dialog.c:956
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "ରଙ୍ଗ ଯୋଜନା \"%s\"କୁ କଢ଼ାଯାଇପାରିବ ନାହିଁ."
 
-#: ../gedit/gedit-preferences-dialog.c:1177
+#: ../gedit/gedit-preferences-dialog.c:1158
 msgid "gedit Preferences"
 msgstr "gedit ପସନ୍ଦ"
 
@@ -1592,7 +1587,7 @@ msgstr "gedit ପସନ୍ଦ"
 msgid "Preferences"
 msgstr "ପସନ୍ଦ"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
 msgstr "ଧାଡ଼ି ସଂଖ୍ଯା ପ୍ରଦର୍ଶିତ କରନ୍ତୁ (_D)"
 
@@ -1686,26 +1681,31 @@ msgid "Color Scheme"
 msgstr "ରଙ୍ଗ ଯୋଜନା"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
+#| msgid "Columns"
+msgid "column"
+msgstr "ସ୍ତମ୍ଭ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "ସ୍ଥାପନ ଯୋଜନା"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "ସ୍ଥାପନ ଯୋଜନା"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "ବିସ୍ଥାପନ ଯୋଜନା"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "ବିସ୍ଥାପନ ଯୋଜନା"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "ଅକ୍ଷରରୂପ ଓ ରଙ୍ଗ"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "ପ୍ଲଗ୍ଇନଗୁଡ଼ିକ"
 
@@ -1845,7 +1845,7 @@ msgstr "ମୂଦ୍ରିତ କରାଯିବା ଦଲିଲର ଗୋଟି
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-window.c:1532
 msgid "Replace"
 msgstr "ବଦଳାନ୍ତୁ"
 
@@ -1906,73 +1906,73 @@ msgstr[1] "ଏଠାରେ ତ୍ରୁଟିଯୁକ୍ତ %dଟି ଟ୍ୟ�
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:750
+#: ../gedit/gedit-tab.c:771
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "%sରୁ %sକୁ ପ୍ରତ୍ୟାବୃତ କରାଯାଉଛି"
 
-#: ../gedit/gedit-tab.c:757
+#: ../gedit/gedit-tab.c:778
 #, c-format
 msgid "Reverting %s"
 msgstr "%sକୁ ପ୍ରତ୍ୟାବୃତ କରାଯାଉଛି"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:773
+#: ../gedit/gedit-tab.c:794
 #, c-format
 msgid "Loading %s from %s"
 msgstr "%sରୁ %sକୁ ଧାରଣ କରାଯାଉଛି"
 
-#: ../gedit/gedit-tab.c:780
+#: ../gedit/gedit-tab.c:801
 #, c-format
 msgid "Loading %s"
 msgstr "%sକୁ ଧାରଣ କରାଯାଉଛି"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:861
+#: ../gedit/gedit-tab.c:882
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%sକୁ %sରେ ସଂରକ୍ଷଣ କରାଯାଉଛି"
 
-#: ../gedit/gedit-tab.c:868
+#: ../gedit/gedit-tab.c:889
 #, c-format
 msgid "Saving %s"
 msgstr "%sକୁ ସଂରକ୍ଷଣ କରାଯାଉଛି"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1853
+#: ../gedit/gedit-tab.c:1874
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1900
+#: ../gedit/gedit-tab.c:1921
 #, c-format
 msgid "Error opening file %s"
 msgstr "ଫାଇଲ %sକୁ ଖୋଲିବା ସମୟରେ ତ୍ରୁଟି"
 
-#: ../gedit/gedit-tab.c:1905
+#: ../gedit/gedit-tab.c:1926
 #, c-format
 msgid "Error reverting file %s"
 msgstr "ଫାଇଲ %sକୁ ପ୍ରତ୍ଯାବୃତ କରିବା ସମୟରେ ତ୍ରୁଟି"
 
-#: ../gedit/gedit-tab.c:1910
+#: ../gedit/gedit-tab.c:1931
 #, c-format
 msgid "Error saving file %s"
 msgstr "ଫାଇଲ %sକୁ ସଂରକ୍ଷଣ କରିବା ସମୟରେ ତ୍ରୁଟି"
 
-#: ../gedit/gedit-tab.c:1931
+#: ../gedit/gedit-tab.c:1952
 msgid "Unicode (UTF-8)"
 msgstr "ୟୁନିକୋଡ (ୟୁ.ଟି.ଏଫ.-୮)"
 
-#: ../gedit/gedit-tab.c:1938
+#: ../gedit/gedit-tab.c:1959
 msgid "Name:"
 msgstr "ନାମ"
 
-#: ../gedit/gedit-tab.c:1939
+#: ../gedit/gedit-tab.c:1960
 msgid "MIME Type:"
 msgstr "ମାଇମ ପ୍ରକାର"
 
-#: ../gedit/gedit-tab.c:1940
+#: ../gedit/gedit-tab.c:1961
 msgid "Encoding:"
 msgstr "ସଙ୍କେତ:"
 
@@ -2254,46 +2254,46 @@ msgstr "ତଳ ଫଳକ (_B)"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "ପ୍ରଚଳିତ ୱିଣ୍ଡୋରେ ତଳ ପଟ୍ଟିକାକୁ ଦର୍ଶାନ୍ତୁ କିମ୍ବା ଲୁଚାନ୍ତୁ"
 
-#: ../gedit/gedit-utils.c:1023
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "ଦୟାକରି ଆପଣଙ୍କର ସ୍ଥାପନକୁ ଯାଞ୍ଚକରନ୍ତୁ."
 
-#: ../gedit/gedit-utils.c:1081
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI ଫାଇଲ %s କୁ ଖୋଲିବାରେ ଅସମର୍ଥ। ତ୍ରୁଟି: %s"
 
-#: ../gedit/gedit-utils.c:1100
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "ଫାଇଲ %s ମଧ୍ଯରେ ବସ୍ତୁ '%s'କୁ ଖୋଜିବାରେ ଅସମର୍ଥ."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1323
+#: ../gedit/gedit-utils.c:1333
 #, c-format
 msgid "/ on %s"
 msgstr "%sରେ /"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:542
+#: ../gedit/gedit-view-frame.c:538
 msgid "_Wrap Around"
 msgstr "ପରିବେଷ୍ଟନ କରନ୍ତୁ (_W)"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:552
+#: ../gedit/gedit-view-frame.c:548
 msgid "Match _Entire Word Only"
 msgstr "କେବଳ ସମ୍ପୂର୍ଣ୍ଣ ଶବ୍ଦକୁ ମେଳକରନ୍ତୁ (_E)"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:562
+#: ../gedit/gedit-view-frame.c:558
 msgid "_Match Case"
 msgstr "ଅକ୍ଷର ପ୍ରକାରକୁ ମେଳାନ୍ତୁ (_M)"
 
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:755
 msgid "String you want to search for"
 msgstr "ଆପଣ ଖୋଜିବାକୁ ଚାହୁଁଥିବା ବାକ୍ୟଖଣ୍ଡ"
 
-#: ../gedit/gedit-view-frame.c:769
+#: ../gedit/gedit-view-frame.c:765
 msgid "Line you want to move the cursor to"
 msgstr "ଆପଣ ସୂଚକକୁ ପଠାଇବାକୁ ଚାହୁଁଥିବା ଧାଡ଼ି"
 
@@ -2305,69 +2305,68 @@ msgstr "%s ବିଶେଷଦର୍ଶନ ଧାରା ବ୍ଯବହାର କ
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
+#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2078
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:890
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
 msgid "Plain Text"
 msgstr "ସାଧାରଣ ପାଠ୍ୟ"
 
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1052
 msgid "Disable syntax highlighting"
 msgstr "ବାକ୍ୟ ବିନ୍ୟାସ ବିଶେଷ ଦର୍ଶନକୁ ନିଷ୍କ୍ରିୟକରନ୍ତୁ"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1365
+#: ../gedit/gedit-window.c:1369
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' ଖୋଲନ୍ତୁ"
 
-#: ../gedit/gedit-window.c:1467
+#: ../gedit/gedit-window.c:1471
 msgid "Open"
 msgstr "ଖୋଲନ୍ତୁ"
 
-#: ../gedit/gedit-window.c:1522
+#: ../gedit/gedit-window.c:1526
 msgid "Save"
 msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ"
 
-#: ../gedit/gedit-window.c:1524
+#: ../gedit/gedit-window.c:1528
 msgid "Print"
 msgstr "ମୁଦ୍ରଣ କରନ୍ତୁ"
 
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1530
 msgid "Find"
 msgstr "ଖୋଜନ୍ତୁ"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1698
+#: ../gedit/gedit-window.c:1702
 #, c-format
 msgid "Activate '%s'"
 msgstr "'%s' କୁ ସକ୍ରିୟଣ କରନ୍ତୁ"
 
-#: ../gedit/gedit-window.c:2055
+#: ../gedit/gedit-window.c:2059
 msgid "Use Spaces"
 msgstr "ଖାଲି ସ୍ଥାନଗୁଡ଼ିକୁ ବ୍ୟବହାର କରନ୍ତୁ"
 
-#: ../gedit/gedit-window.c:2128
+#: ../gedit/gedit-window.c:2135
 msgid "Tab Width"
 msgstr "ଟ୍ୟାବ ଓସାର"
 
-#: ../gedit/gedit-window.c:2237
+#: ../gedit/gedit-window.c:2244
 msgid "Bracket match is out of range"
 msgstr "ଅନଲାଇନରେ ବନ୍ଧନୀ ମେଳ ସୀମା ବାହାରେ"
 
-#: ../gedit/gedit-window.c:2242
+#: ../gedit/gedit-window.c:2249
 msgid "Bracket match not found"
 msgstr "ଅନଲାଇନରେ ବନ୍ଧନୀ ମେଳ ମିଳିଲା ନାହିଁ"
 
-#: ../gedit/gedit-window.c:2247
+#: ../gedit/gedit-window.c:2254
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "ଅନଲାଇନରେ ବନ୍ଧନୀ ମେଳ ମିଳିଛି: %d"
 
-#: ../gedit/gedit-window.c:2852
-#| msgid "Create new document"
+#: ../gedit/gedit-window.c:2859
 msgid "There are unsaved documents"
 msgstr "ସେଠାରେ କିଛି ଅସଂରକ୍ଷିତ ଦଲିଲ ଅଛି"
 
@@ -2588,7 +2587,7 @@ msgstr ""
 "ଗୋଟିଏ ପାଙ୍ଗୋ ଫଣ୍ଟ ନାମ। ଉଦାହରଣଗୁଡିକ ହେଉଛି \"Sans 12\" କିମ୍ବା \"Monospace Bold "
 "14\"."
 
-#: ../plugins/externaltools/tools/capture.py:92
+#: ../plugins/externaltools/tools/capture.py:95
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "ନିର୍ଦ୍ଦେଶକୁ ନିଷ୍ପାଦନ କରିପାରିଲା ନାହିଁ: %s"
@@ -2613,27 +2612,27 @@ msgstr "ପ୍ରସ୍ଥାନ କରିସାରିଛି"
 msgid "All languages"
 msgstr "ସମସ୍ତ ଭାଷାଗୁଡ଼ିକ"
 
-#: ../plugins/externaltools/tools/manager.py:560
-#: ../plugins/externaltools/tools/manager.py:564
-#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/manager.py:567
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:900
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "ସମସ୍ତ ଭାଷାଗୁଡ଼ିକ"
 
-#: ../plugins/externaltools/tools/manager.py:677
+#: ../plugins/externaltools/tools/manager.py:684
 msgid "New tool"
 msgstr "ନୂତନ ସାଧନ"
 
-#: ../plugins/externaltools/tools/manager.py:808
+#: ../plugins/externaltools/tools/manager.py:815
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "ଏହି ତ୍ୱରକଟି ପୂର୍ବରୁ %s ସହିତ ବନ୍ଧାହୋଇଛି"
 
-#: ../plugins/externaltools/tools/manager.py:852
+#: ../plugins/externaltools/tools/manager.py:859
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "ଗୋଟିଏ ନୂତନ ତ୍ୱରକ ଟାଇପକରନ୍ତୁ, କିମ୍ବା ସଫାକରିବା ପାଇଁ Backspace ଦବାନ୍ତୁ"
 
-#: ../plugins/externaltools/tools/manager.py:854
+#: ../plugins/externaltools/tools/manager.py:861
 msgid "Type a new accelerator"
 msgstr "ଗୋଟିଏ ନୂତନ ତ୍ୱରକ ଟାଇପକରନ୍ତୁ"
 
@@ -3217,7 +3216,7 @@ msgstr "ଶିଘ୍ର ଖୋଲିବା"
 msgid "Quickly open files"
 msgstr "ଫାଇଲଗୁଡ଼ିକୁ ଶିଘ୍ର ଖୋଲନ୍ତୁ"
 
-#: ../plugins/quickopen/quickopen/popup.py:73
+#: ../plugins/quickopen/quickopen/popup.py:77
 msgid "Type to search..."
 msgstr "ସନ୍ଧାନ କରିବା ପାଇଁ ଲେଖନ୍ତୁ ..."
 
@@ -3278,25 +3277,25 @@ msgstr "ଫାଇଲ \"%s\" ଟି ଗୋଟିଏ ବୈଧ ସୂଚନା ଅ
 msgid "Snippets archive"
 msgstr "ସୂଚନାଗୁଡ଼ିକର ଅଭିଲେଖନ"
 
-#: ../plugins/snippets/snippets/manager.py:63
+#: ../plugins/snippets/snippets/manager.py:67
 msgid "Add a new snippet..."
 msgstr "ଗୋଟିଏ ନୂତନ ସୂଚନା ଯୋଗକରନ୍ତୁ..."
 
-#: ../plugins/snippets/snippets/manager.py:115
+#: ../plugins/snippets/snippets/manager.py:119
 msgid "Global"
 msgstr "ଜାଗତିକ"
 
-#: ../plugins/snippets/snippets/manager.py:399
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "ବଚ୍ଛିତ ସୂଚନାକୁ ପ୍ରତ୍ଯାବୃତ କରନ୍ତୁ"
 
-#: ../plugins/snippets/snippets/manager.py:402
+#: ../plugins/snippets/snippets/manager.py:413
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "ବଚ୍ଛିତ ସୂଚନାକୁ ଲିଭାନ୍ତୁ"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:661
+#: ../plugins/snippets/snippets/manager.py:672
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3307,86 +3306,86 @@ msgstr ""
 "(ଅକ୍ଷରାଙ୍କ ହୋଇନଥିବା) ବର୍ଣ୍ଣ ଯେପରିକି: {, [, ଇତ୍ୟାଦି।"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:668
+#: ../plugins/snippets/snippets/manager.py:679
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "ଏକ ଶବ୍ଦ ଯାହା ସହିତ ସୂଚନାଟି ଟ୍ୟାବ ଦବାଇବା ପରେ ସକ୍ରିୟହୋଇଥାଏ"
 
-#: ../plugins/snippets/snippets/manager.py:757
+#: ../plugins/snippets/snippets/manager.py:768
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "ଆମଦାନୀ କରିବା ସମୟରେ ନିମ୍ନଲିଖିତ ତ୍ରୁଟି ଘଟିଲା: %s"
 
-#: ../plugins/snippets/snippets/manager.py:764
+#: ../plugins/snippets/snippets/manager.py:775
 msgid "Import successfully completed"
 msgstr "ଆମଦାନୀ ସଫଳତାର ସହିତ ସମ୍ପୂର୍ଣ୍ଣହେଲା"
 
-#: ../plugins/snippets/snippets/manager.py:778
+#: ../plugins/snippets/snippets/manager.py:789
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "ସୂଚନାଗୁଡ଼ିକୁ ଆମଦାନୀ କରନ୍ତୁ"
 
-#: ../plugins/snippets/snippets/manager.py:783
-#: ../plugins/snippets/snippets/manager.py:869
-#: ../plugins/snippets/snippets/manager.py:932
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "All supported archives"
 msgstr "ସମସ୍ତ ସମର୍ଥିତ ଅଭିଲେଖନଗୁଡ଼ିକ"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:881
+#: ../plugins/snippets/snippets/manager.py:944
 msgid "Gzip compressed archive"
 msgstr "Gzip ସଙ୍କୁଚିତ ଅଭିଲେଖନ"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2 ସଙ୍କୁଚିତ ଅଭିଲେଖନ"
 
-#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:797
 msgid "Single snippets file"
 msgstr "ଗୋଟିଏ ସୂଚନା ଫାଇଲ"
 
-#: ../plugins/snippets/snippets/manager.py:787
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:936
+#: ../plugins/snippets/snippets/manager.py:798
+#: ../plugins/snippets/snippets/manager.py:884
+#: ../plugins/snippets/snippets/manager.py:947
 msgid "All files"
 msgstr "ସମସ୍ତ ଫାଇଲଗୁଡ଼ିକ"
 
-#: ../plugins/snippets/snippets/manager.py:799
+#: ../plugins/snippets/snippets/manager.py:810
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "ରପ୍ତାନୀ କରିବା ସମୟରେ ନିମ୍ନଲିଖିତ ତ୍ରୁଟି ଘଟିଲା: %s"
 
-#: ../plugins/snippets/snippets/manager.py:803
+#: ../plugins/snippets/snippets/manager.py:814
 msgid "Export successfully completed"
 msgstr "ରପ୍ତାନୀ ସଫଳତାର ସହିତ ସମ୍ପୂର୍ଣ୍ଣ ହେଲା"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:843
-#: ../plugins/snippets/snippets/manager.py:910
+#: ../plugins/snippets/snippets/manager.py:854
+#: ../plugins/snippets/snippets/manager.py:921
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "କଣ ଆପଣ ବଚ୍ଛିତ <b>ତନ୍ତ୍ର</b> ସୂଚନାକୁ ଆପଣଙ୍କର ରପ୍ତାନିରେ ଅନ୍ତର୍ଭୁକ୍ତ କରିବାକୁ "
 "ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../plugins/snippets/snippets/manager.py:858
-#: ../plugins/snippets/snippets/manager.py:928
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "There are no snippets selected to be exported"
 msgstr "ରପ୍ତାନି କରିବା ପାଇଁ କୌଣସି ସୂଚନା ବଛାହୋଇନାହିଁ"
 
-#: ../plugins/snippets/snippets/manager.py:863
-#: ../plugins/snippets/snippets/manager.py:901
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 msgid "Export snippets"
 msgstr "ସୂଚନାଗୁଡ଼ିକୁ ରପ୍ତାନି କରନ୍ତୁ"
 
-#: ../plugins/snippets/snippets/manager.py:1042
+#: ../plugins/snippets/snippets/manager.py:1053
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "ଗୋଟିଏ ନୂତନ ସଂକ୍ଷିପ୍ତ ପଥ ଟାଇପ କରନ୍ତୁ, କିମ୍ବା ସଫାକରିବା ପାଇଁ Backspace ଦବାନ୍ତୁ"
 
-#: ../plugins/snippets/snippets/manager.py:1044
+#: ../plugins/snippets/snippets/manager.py:1055
 msgid "Type a new shortcut"
 msgstr "ଗୋଟିଏ ନୂତନ ସଂକ୍ଷିପ୍ତ ପଥ ଟାଇପ କରନ୍ତୁ"
 
@@ -4144,9 +4143,6 @@ msgstr ""
 
 #~ msgid "Column span"
 #~ msgstr "ସ୍ତମ୍ଭ ବିସ୍ତାର"
-
-#~ msgid "Columns"
-#~ msgstr "ସ୍ତମ୍ଭ"
 
 #~ msgid "Comment"
 #~ msgstr "ଟିପ୍ପଣୀ"
