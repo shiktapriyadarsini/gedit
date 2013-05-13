@@ -2672,6 +2672,7 @@ fullscreen_controls_show (GeditWindow *window)
 									   gtk_widget_get_window (GTK_WIDGET (window))),
 					 &fs_rect);
 
+	gtk_widget_show_all (window->priv->fullscreen_controls);
 	gtk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
 
 	gtk_window_resize (GTK_WINDOW (window->priv->fullscreen_controls),
@@ -2679,8 +2680,6 @@ fullscreen_controls_show (GeditWindow *window)
 
 	gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
 			 fs_rect.x, fs_rect.y - h + 1);
-
-	gtk_widget_show_all (window->priv->fullscreen_controls);
 }
 
 static gboolean
