@@ -1,4 +1,46 @@
 ===========
+gedit 3.8.2
+===========
+
+New Features and Fixes
+======================
+- Many bugfixes to the external tools, snippets and
+  quickopen plugins (Ignacio Casal Quintero)
+- Make preferences dialog resizable (Ignacio Casal Quintero)
+- Rework how some settings are applied to documents (Ignacio Casal Quintero)
+- Use GtkRGBA for text tags (Sébastien Wilmet)
+- Misc Bugfixes
+
+New and updated translations
+============================
+- as (Nilamdyuti Goswami)
+- ca (Gil Forcada)
+- cs (Marek Černocký)
+- da (Kenneth Nielsen)
+- de (Christian Kirbach)
+- el (Dimitris Spingos (Δημήτρης Σπίγγος))
+- es (Daniel Mustieles)
+- gl (Fran Dieguez)
+- gu ("Last-Translator: \n")
+- hi (Rajesh Ranjan)
+- hu (Gabor Kelemen)
+- id (Andika Triwidada)
+- it (Milo Casagrande)
+- ja (OKANO Takayoshi)
+- lt (Aurimas Černius)
+- nb (Kjartan Maraas)
+- or (Manoj Kumar Giri)
+- pa (A S Alam)
+- pl (Piotr Drąg)
+- pt_BR (Rafael Ferreira)
+- ru (Dmitriy S. Seregin)
+- sl (Matej Urbančič)
+- sr@latin (Miroslav Nikolić)
+- sr (Мирослав Николић)
+- ta (Shantha kumar)
+- te (Krishnababu Krothapalli)
+
+===========
 gedit 3.8.1
 ===========
 
