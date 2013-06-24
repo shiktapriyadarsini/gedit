@@ -50,6 +50,7 @@
 #include "gedit-enum-types.h"
 #include "gedit-settings.h"
 #include "gedit-marshal.h"
+#include "gedit-utils.h"
 
 #define GEDIT_NOTEBOOK_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_NOTEBOOK, GeditNotebookPrivate))
 
@@ -58,6 +59,9 @@
 struct _GeditNotebookPrivate
 {
 	GSettings     *ui_settings;
+
+	GtkWidget     *documents_button;
+	GMenu         *documents_menu;
 
 	GList         *focused_pages;
 
@@ -81,6 +85,7 @@ enum
 {
 	TAB_CLOSE_REQUEST,
 	SHOW_POPUP_MENU,
+	CHANGE_TO_PAGE,
 	LAST_SIGNAL
 };
 
@@ -161,9 +166,10 @@ gedit_notebook_set_property (GObject      *object,
 static void
 gedit_notebook_dispose (GObject *object)
 {
-	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
+	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (object)->priv;
 
-	g_clear_object (&notebook->priv->ui_settings);
+	g_clear_object (&priv->ui_settings);
+	g_clear_object (&priv->documents_menu);
 
 	G_OBJECT_CLASS (gedit_notebook_parent_class)->dispose (object);
 }
@@ -427,10 +433,16 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 
 	num_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (nb));
 
-	/* If there is no tabs, calling this is pointless */
 	if (num_pages > 0)
 	{
+		/* If there is no tabs, calling this is pointless */
 		update_tabs_visibility (nb, FALSE);
+	}
+	else
+	{
+		/* Unset the menu model from the button to make it insensitive */
+		gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (nb->priv->documents_button),
+		                                NULL);
 	}
 }
 
@@ -455,6 +467,12 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 	                  nb);
 
 	update_tabs_visibility (GEDIT_NOTEBOOK (notebook), FALSE);
+
+	if (!gtk_menu_button_get_menu_model (GTK_MENU_BUTTON (nb->priv->documents_button)))
+	{
+		gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (nb->priv->documents_button),
+		                                G_MENU_MODEL (nb->priv->documents_menu));
+	}
 }
 
 static void
@@ -477,21 +495,42 @@ gedit_notebook_remove (GtkContainer *container,
 	nb->priv->ignore_focused_page_update = FALSE;
 }
 
+static gboolean
+gedit_notebook_change_to_page (GeditNotebook *notebook,
+                               gint           page_num)
+{
+	gint n_pages;
+
+	n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
+
+	if (page_num > n_pages - 1)
+	{
+		return FALSE;
+	}
+
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
+	                               page_num);
+
+	return TRUE;
+}
+
 static void
 gedit_notebook_class_init (GeditNotebookClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *gtkwidget_class = GTK_WIDGET_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkNotebookClass *notebook_class = GTK_NOTEBOOK_CLASS (klass);
 	GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+	GtkBindingSet *binding_set;
+	gint i;
 
 	object_class->dispose = gedit_notebook_dispose;
 	object_class->finalize = gedit_notebook_finalize;
 	object_class->get_property = gedit_notebook_get_property;
 	object_class->set_property = gedit_notebook_set_property;
 
-	gtkwidget_class->grab_focus = gedit_notebook_grab_focus;
-	gtkwidget_class->button_press_event = gedit_notebook_button_press;
+	widget_class->grab_focus = gedit_notebook_grab_focus;
+	widget_class->button_press_event = gedit_notebook_button_press;
 
 	notebook_class->change_current_page = gedit_notebook_change_current_page;
 	notebook_class->switch_page = gedit_notebook_switch_page;
@@ -499,6 +538,8 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 	notebook_class->page_added = gedit_notebook_page_added;
 
 	container_class->remove = gedit_notebook_remove;
+
+	klass->change_to_page = gedit_notebook_change_to_page;
 
 	g_object_class_install_property (object_class, PROP_SHOW_TABS_MODE,
 					 g_param_spec_enum ("show-tabs-mode",
@@ -530,6 +571,29 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GEDIT_TYPE_TAB);
+	signals[CHANGE_TO_PAGE] =
+		g_signal_new ("change-to-page",
+		              G_TYPE_FROM_CLASS (object_class),
+		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+		              G_STRUCT_OFFSET (GeditNotebookClass, change_to_page),
+		              NULL, NULL,
+		              gedit_marshal_BOOLEAN__INT,
+		              G_TYPE_BOOLEAN, 1,
+		              G_TYPE_INT);
+
+	binding_set = gtk_binding_set_by_class (klass);
+	for (i = 1; i < 10; i++)
+	{
+		gtk_binding_entry_add_signal (binding_set,
+		                              GDK_KEY_0 + i, GDK_MOD1_MASK,
+		                              "change-to-page", 1,
+		                              G_TYPE_INT, i - 1);
+	}
+
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-notebook.ui");
+	gtk_widget_class_bind_child (widget_class, GeditNotebookPrivate, documents_button);
 
 	g_type_class_add_private (object_class, sizeof (GeditNotebookPrivate));
 }
@@ -547,15 +611,82 @@ gedit_notebook_new (void)
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_NOTEBOOK, NULL));
 }
 
+static gboolean
+populate_menu (GeditNotebook *notebook)
+{
+	GeditNotebookPrivate *priv = notebook->priv;
+	GList *l, *children;
+	gint i;
+
+	children = gtk_container_get_children (GTK_CONTAINER (notebook));
+	for (l = children, i = 0; l != NULL; l = g_list_next (l), i++)
+	{
+		GeditTab *tab = GEDIT_TAB (l->data);
+		GMenuItem *item;
+		gchar *tab_name;
+		gchar *name;
+
+		tab_name = _gedit_tab_get_name (GEDIT_TAB (tab));
+		name = gedit_utils_escape_underscores (tab_name, -1);
+		g_free (tab_name);
+
+		item = g_menu_item_new (name, NULL);
+		g_free (name);
+
+		g_menu_item_set_action_and_target (item, "notebook.page", "i", i);
+
+		if (i < 9)
+		{
+			g_menu_item_set_attribute_value (item, "accel", g_variant_new_printf ("<Alt>%d", i + 1));
+		}
+
+		g_menu_append_item (priv->documents_menu, item);
+	}
+
+	g_list_free (children);
+
+	return G_SOURCE_REMOVE;
+}
+
+static void
+on_documents_button_toggled (GtkToggleButton *button,
+                             GeditNotebook   *notebook)
+{
+	g_idle_add ((GSourceFunc)populate_menu, notebook);
+}
+
+static void
+on_documents_button_toggled_after (GtkToggleButton *button,
+                                   GeditNotebook   *notebook)
+{
+	GeditNotebookPrivate *priv = notebook->priv;
+
+	g_menu_remove_all (priv->documents_menu);
+}
+
 static void
 gedit_notebook_init (GeditNotebook *notebook)
 {
 	GeditNotebookPrivate *priv;
+	GSimpleActionGroup *action_group;
+	GPropertyAction *action;
 
 	notebook->priv = GEDIT_NOTEBOOK_GET_PRIVATE (notebook);
 	priv = notebook->priv;
 
+	gtk_widget_init_template (GTK_WIDGET (notebook));
+
 	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+
+	priv->documents_menu = g_menu_new ();
+	action_group = g_simple_action_group_new ();
+	action = g_property_action_new ("page", notebook, "page");
+	g_simple_action_group_insert (action_group, G_ACTION (action));
+	gtk_widget_insert_action_group (GTK_WIDGET (notebook),
+	                                "notebook",
+	                                G_ACTION_GROUP (action_group));
+	g_object_unref (action);
+	g_object_unref (action_group);
 
 	priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
 	priv->close_buttons_sensitive = TRUE;
@@ -572,6 +703,11 @@ gedit_notebook_init (GeditNotebook *notebook)
 			 notebook,
 			 "show-tabs-mode",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+
+	g_signal_connect (priv->documents_button, "toggled",
+	                  G_CALLBACK (on_documents_button_toggled), notebook);
+	g_signal_connect_after (priv->documents_button, "toggled",
+	                        G_CALLBACK (on_documents_button_toggled_after), notebook);
 }
 
 static GtkWidget *

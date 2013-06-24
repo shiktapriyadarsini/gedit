@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GeditNotebook" parent="GtkNotebook">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="has_focus">False</property>
+    <property name="is_focus">False</property>
+    <child type="action-end">
+      <object class="GtkMenuButton" id="documents_button">
+        <property name="visible">True</property>
+        <property name="relief">none</property>
+        <child>
+          <object class="GtkImage" id="documents_image">
+            <property name="visible">True</property>
+            <property name="icon_size">1</property>
+            <property name="icon_name">view-more-symbolic</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

@@ -88,8 +88,6 @@ struct _GeditWindowPrivate
 	GtkActionGroup *close_action_group;
 	GtkActionGroup *quit_action_group;
 	GtkActionGroup *panels_action_group;
-	GtkActionGroup *documents_list_action_group;
-	guint           documents_list_menu_ui_id;
 	GtkWidget      *toolbar;
 	GtkWidget      *menubar;
 
@@ -97,8 +95,6 @@ struct _GeditWindowPrivate
 	GtkActionGroup *recents_action_group;
 	guint           recents_menu_ui_id;
 	gulong          recents_handler_id;
-
-	guint           update_documents_list_menu_id;
 
 	gint            num_tabs_with_error;
 
