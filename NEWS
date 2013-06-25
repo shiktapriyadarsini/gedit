@@ -1,4 +1,23 @@
 ===========
+gedit 3.8.3
+===========
+
+New Features and Fixes
+======================
+- Multiple bugfixes to the external tools plugin (Garrett Regier)
+- Fix filtering duplicate files in quickopen plugin (Garrett Regier)
+- Do no include non-text files in quickopen plugin (Garrett Regier)
+- Only check for python when python is enabled (Garrett Regier)
+- Misc Bugfixes
+
+New and updated translations
+============================
+- de (Christian Kirbach)
+- kn (Shankar Prasad)
+- mr (Sandeep Shedmake)
+- ru (Yuri Myasoedov)
+
+===========
 gedit 3.8.2
 ===========
 
