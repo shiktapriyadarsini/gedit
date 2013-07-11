@@ -618,6 +618,13 @@ populate_menu (GeditNotebook *notebook)
 	GList *l, *children;
 	gint i;
 
+	g_menu_remove_all (priv->documents_menu);
+
+	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->documents_button)))
+	{
+		return G_SOURCE_REMOVE;
+	}
+
 	children = gtk_container_get_children (GTK_CONTAINER (notebook));
 	for (l = children, i = 0; l != NULL; l = g_list_next (l), i++)
 	{
@@ -641,6 +648,7 @@ populate_menu (GeditNotebook *notebook)
 		}
 
 		g_menu_append_item (priv->documents_menu, item);
+		g_object_unref (item);
 	}
 
 	g_list_free (children);
@@ -653,15 +661,6 @@ on_documents_button_toggled (GtkToggleButton *button,
                              GeditNotebook   *notebook)
 {
 	g_idle_add ((GSourceFunc)populate_menu, notebook);
-}
-
-static void
-on_documents_button_toggled_after (GtkToggleButton *button,
-                                   GeditNotebook   *notebook)
-{
-	GeditNotebookPrivate *priv = notebook->priv;
-
-	g_menu_remove_all (priv->documents_menu);
 }
 
 static void
@@ -706,8 +705,6 @@ gedit_notebook_init (GeditNotebook *notebook)
 
 	g_signal_connect (priv->documents_button, "toggled",
 	                  G_CALLBACK (on_documents_button_toggled), notebook);
-	g_signal_connect_after (priv->documents_button, "toggled",
-	                        G_CALLBACK (on_documents_button_toggled_after), notebook);
 }
 
 static GtkWidget *
