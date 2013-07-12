@@ -589,6 +589,10 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 		                              GDK_KEY_0 + i, GDK_MOD1_MASK,
 		                              "change-to-page", 1,
 		                              G_TYPE_INT, i - 1);
+		gtk_binding_entry_add_signal (binding_set,
+		                              GDK_KEY_KP_0 + i, GDK_MOD1_MASK,
+		                              "change-to-page", 1,
+		                              G_TYPE_INT, i - 1);
 	}
 
 	/* Bind class to template */
