@@ -404,6 +404,7 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
                              guint        page_num)
 {
 	GeditNotebook *nb = GEDIT_NOTEBOOK (notebook);
+	GeditNotebookPrivate *priv = nb->priv;
 	gint num_pages;
 	gint curr;
 	GtkWidget *tab_label;
@@ -421,8 +422,8 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 	}
 
 	/* Remove the page from the focused pages list */
-	nb->priv->focused_pages =  g_list_remove (nb->priv->focused_pages,
-	                                          page);
+	priv->focused_pages =  g_list_remove (priv->focused_pages,
+	                                      page);
 
 	curr = gtk_notebook_get_current_page (notebook);
 
@@ -438,10 +439,10 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 		/* If there is no tabs, calling this is pointless */
 		update_tabs_visibility (nb, FALSE);
 	}
-	else
+	else if (priv->documents_button)
 	{
 		/* Unset the menu model from the button to make it insensitive */
-		gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (nb->priv->documents_button),
+		gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (priv->documents_button),
 		                                NULL);
 	}
 }
