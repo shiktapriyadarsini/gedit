@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit help\n"
-"POT-Creation-Date: 2013-04-24 06:45+0000\n"
-"PO-Revision-Date: 2013-04-24 20:59+0200\n"
+"POT-Creation-Date: 2013-06-25 07:18+0000\n"
+"PO-Revision-Date: 2013-07-29 21:46+0100\n"
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -26,7 +26,7 @@ msgid "translator-credits"
 msgstr ""
 "Jan Arne Petersen <jap@gnome.org>, 2007\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2013\n"
-"Christian Kirbach <Christian.Kirbach@gmail.com>, 2011, 2012, 2013"
+"Christian Kirbach <christian.kirbach@gmail.com>, 2011, 2012, 2013"
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
@@ -2675,6 +2675,9 @@ msgid ""
 "term for the <gui style=\"input\">Tab trigger:</gui> textarea. You will be "
 "using this term to insert your snippet."
 msgstr ""
+"Sie müssen im Abschnitt <gui style=\"group\">Aktivierung</gui> einen Begriff "
+"für den Textbereich <gui style=\"input\">Tab-Auslöser:</gui> eingeben. "
+"Verwenden Sie dann diesen Begriff, um Ihren Schnipsel einzufügen."
 
 #: C/gedit-plugins-snippets.page:141(note/p)
 msgid ""
@@ -2695,6 +2698,10 @@ msgid ""
 "where <em>n</em> is replaced with a number that represents the numerical "
 "order of variables included."
 msgstr ""
+"Geben Sie den für den Schnipsel gewünschten Text im Textbereich unter <gui "
+"style=\"input\">Bearbeiten:</gui> ein. Verwenden Sie <code>${n}</code>, um "
+"Variaben zu definieren, wobei <em>n</em> durch eine Zahl ersetzt wird, "
+"welche die numerische Reihenfolge der enthaltenen Variablen darstellt."
 
 #: C/gedit-plugins-snippets.page:158(section/title)
 msgid "New Snippet Example"
@@ -2707,7 +2714,7 @@ msgid ""
 "gui> textarea contains:"
 msgstr ""
 "Angenommen Sie haben einen Schnipsel mit dem Begriff <var>Grüße</var> in "
-"<gui style=\"input\">Tab trigger: ???</gui> erstellt. Das Texteingabefeld "
+"<gui style=\"input\">Tabulatorauslösung:</gui> erstellt. Das Texteingabefeld "
 "<gui style=\"input\">Bearbeiten:</gui> enthält:"
 
 #: C/gedit-plugins-snippets.page:164(section/code)
@@ -3387,6 +3394,11 @@ msgid ""
 "programs, please consult <link href=\"help:gnome-help/printing#paper"
 "\">Layout and Paper options</link> help."
 msgstr ""
+"Zusätzlich können Sie im Reiter <gui style=\"tab\">Seite einrichten</gui>: "
+"<gui style=\"group\">Layout</gui> und <gui style=\"group\">Papier</gui> "
+"wählen. Diese Einstellungen sind in allen <app>GNOME</app>-Anwendungen "
+"verfügbar. Bitte lesen Sie dazu auch <link href=\"help:gnome-help/"
+"printing#paper\">Optionen für Layout und Papier</link>."
 
 #: C/gedit-printing.page:83(section/title)
 msgid "Print Multiple Copies And Between Specified Ranges"
@@ -4283,6 +4295,10 @@ msgid ""
 "displayed in bold style next to <gui>Misspelled word:</gui>. You can choose "
 "from the following corrective actions:"
 msgstr ""
+"Sie können die korrekte Ersetzung für falsch geschriebene Wörter im Dialog "
+"»Rechtschreibung« prüfen wählen. Das falsch geschriebene Wort in Prüfung "
+"wird in fetter Schrift neben <gui>Falsch geschriebenes Wort:</gui> "
+"angezeigt. Sie können eine der folgenden korrigierenden Aktionen wählen:"
 
 #: C/gedit-spellcheck.page:76(item/p)
 msgid ""
@@ -4324,6 +4340,9 @@ msgid ""
 "word with <em>a</em> chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Ändern</gui> ersetzt das falsch geschriebene oder "
+"unbekannte Wort mit <em>einem</em> gewählten Ersatz aus der Liste der <gui "
+"style=\"menuitem\">Vorschläge:</gui> ."
 
 #: C/gedit-spellcheck.page:98(item/p)
 msgid ""
@@ -4331,6 +4350,9 @@ msgid ""
 "unrecognized words with the chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Alle ändern</gui> ersetzt <em>alle</em> falsch "
+"geschriebenen oder unbekannten Wörter mit dem gewählten Ersatz aus der Liste "
+"der <gui style=\"menuitem\">Vorschläge:</gui>."
 
 #: C/gedit-spellcheck.page:103(item/p)
 msgid ""
