@@ -1,24 +1,27 @@
 # Hungarian translation of gedit help
 # Mate Ory <orymate at gmail dot com>, 2007, 2008.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011.
+# Balázs Úr <urbalazs at gmail dot com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit_help master\n"
-"POT-Creation-Date: 2011-04-19 21:51+0000\n"
-"PO-Revision-Date: 2011-04-21 22:40+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2012-01-06 18:44+0000\n"
+"PO-Revision-Date: 2013-09-26 21:38+0200\n"
+"Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Language: hu\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/index.page:22(None)
 msgid "@@image: 'figures/gedit-icon.png'; md5=a7174de2671462e1ac4f80a82ad09184"
-msgstr "@@image: 'figures/gedit-icon.png'; md5=a7174de2671462e1ac4f80a82ad09184"
+msgstr ""
+"@@image: 'figures/gedit-icon.png'; md5=a7174de2671462e1ac4f80a82ad09184"
 
 #: C/index.page:7(title) C/index.page:8(title)
 msgid "gedit Text Editor"
@@ -129,8 +132,10 @@ msgstr "Nyomtatás a gedittel"
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gedit-view-open-files-in-sidepane.page:25(None)
 #: C/gedit-open-files-from-sidepane.page:51(None)
-msgid "@@image: 'figures/gedit-side-pane2.png'; md5=e7a12a43adc9c9cb8c992ad22a815a57"
-msgstr "@@image: 'figures/gedit-side-pane2.png'; md5=e7a12a43adc9c9cb8c992ad22a815a57"
+msgid ""
+"@@image: 'figures/gedit-side-pane2.png'; md5=e7a12a43adc9c9cb8c992ad22a815a57"
+msgstr ""
+"@@image: 'figures/gedit-side-pane2.png'; md5=e7a12a43adc9c9cb8c992ad22a815a57"
 
 #: C/gedit-view-open-files-in-sidepane.page:14(name)
 #: C/gedit-undo-recent-action.page:14(name) C/gedit-tabs.page:15(name)
@@ -811,7 +816,8 @@ msgstr "Szöveg keresése"
 msgid ""
 "The Find tool can help you find specific sequences of text within in your "
 "file."
-msgstr "A Keresés eszköz segítségével megadott szövegdarabokat kereshet a fájlban."
+msgstr ""
+"A Keresés eszköz segítségével megadott szövegdarabokat kereshet a fájlban."
 
 #: C/gedit-search.page:23(title)
 msgid "Finding text"
@@ -829,11 +835,11 @@ msgstr ""
 "nyomja meg a <keyseq><key>Ctrl</key><key>F</key></keyseq> kombinációt. Ez a "
 "kurzort a <gui>keresés ablak</gui> elejére viszi."
 
-#: C/gedit-search.page:25(p)
+#: C/gedit-search.page:27(p)
 msgid "Type the text you wish to search for in the <gui>search window</gui>."
 msgstr "Írja be a keresendő szöveget a <gui>keresés ablakba</gui>."
 
-#: C/gedit-search.page:26(p)
+#: C/gedit-search.page:28(p)
 msgid ""
 "As you type, <app>gedit</app> will begin highlighting the portions of text "
 "that match what you have entered."
@@ -841,23 +847,41 @@ msgstr ""
 "Gépelés közben a <app>gedit</app> megkezdi a beírt szövegre illeszkedő "
 "szövegdarabok kiemelését."
 
-#: C/gedit-search.page:27(p)
-msgid ""
-"Use the <gui>up</gui> or <gui>down</gui> facing arrows next to the "
-"<gui>search window</gui> (or <keyseq><key>Ctrl</key><key>G</key></keyseq> or "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>) to scroll up "
-"or down through the highlighted text."
-msgstr ""
-"Használja a <gui>keresés ablak</gui> melletti <gui>fel</gui> vagy <gui>le</"
-"gui> mutató nyilakat (vagy a <keyseq><key>Ctrl</key><key>G</key></keyseq> és "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq> kombinációkat) "
-"a kiemelt szövegben való fel vagy le mozgáshoz."
-
 #: C/gedit-search.page:30(p)
-msgid "To close the <gui>search window</gui>, press <key>Esc</key>."
-msgstr "A <gui>keresőablak</gui> bezárásához nyomja meg az <key>Esc</key> billentyűt."
+msgid "To scroll through the search results, do any of the following:"
+msgstr "A találatok közti lépkedéshez tegye a következők egyikét:"
+
+#: C/gedit-search.page:31(p)
+msgid ""
+"Click on the <gui>up</gui> or <gui>down</gui> facing arrows next to the "
+"<gui>search window</gui>"
+msgstr ""
+"Kattintson a <gui>keresőablak</gui> mellett <gui>fel</gui> vagy <gui>le</"
+"gui> mutató nyilakra."
 
 #: C/gedit-search.page:33(p)
+msgid ""
+"Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard"
+msgstr "Nyomja meg a <key>fel nyíl</key> vagy <key>le nyíl</key> billentyűt"
+
+#: C/gedit-search.page:34(p)
+#| msgid ""
+#| "To switch between open tabs while in fullscreen mode, press either "
+#| "<keyseq><key>Ctrl</key><key>Alt</key><key>PgUp</key></keyseq> or "
+#| "<keyseq><key>Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
+msgid ""
+"Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
+"key><key> Shift</key><key>G</key></keyseq>."
+msgstr ""
+"Nyomja meg a <keyseq><key>Ctrl</key><key>G</key></keyseq> vagy a <keyseq><key>"
+"Ctrl</key><key> Shift</key><key>G</key></keyseq> kombinációt."
+
+#: C/gedit-search.page:38(p)
+msgid "To close the <gui>search window</gui>, press <key>Esc</key>."
+msgstr ""
+"A <gui>keresőablak</gui> bezárásához nyomja meg az <key>Esc</key> billentyűt."
+
+#: C/gedit-search.page:41(p)
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click "
@@ -1166,11 +1190,14 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gedit-plugins-tag-list.page:33(None)
-msgid "@@image: 'figures/gedit-side-pane3.png'; md5=4b800d370193ac0ed8db9eb33b86e11c"
-msgstr "@@image: 'figures/gedit-side-pane3.png'; md5=4b800d370193ac0ed8db9eb33b86e11c"
+msgid ""
+"@@image: 'figures/gedit-side-pane3.png'; md5=4b800d370193ac0ed8db9eb33b86e11c"
+msgstr ""
+"@@image: 'figures/gedit-side-pane3.png'; md5=4b800d370193ac0ed8db9eb33b86e11c"
 
 #: C/gedit-plugins-tag-list.page:18(title)
-msgid "Automatically insert tags, strings and special characters into a document"
+msgid ""
+"Automatically insert tags, strings and special characters into a document"
 msgstr ""
 "Címkék, karakterláncok és speciális karakterek automatikus beszúrása a "
 "dokumentumba"
@@ -1255,7 +1282,8 @@ msgstr ""
 msgid ""
 "Select the desired tag type from the drop-down menu at the top of the side "
 "pane."
-msgstr "Válassza ki a kívánt címketípust a legördülő menüből az oldalsáv tetején."
+msgstr ""
+"Válassza ki a kívánt címketípust a legördülő menüből az oldalsáv tetején."
 
 #: C/gedit-plugins-tag-list.page:46(p)
 msgid "Scroll through the list to find the desired tag or character."
@@ -1269,7 +1297,8 @@ msgstr "Kattintson duplán a címkén az elemlistában."
 msgid ""
 "The tag or special character you've chosen will then be displayed in your "
 "document."
-msgstr "A kiválasztott címke vagy speciális karakter megjelenik a dokumentumban."
+msgstr ""
+"A kiválasztott címke vagy speciális karakter megjelenik a dokumentumban."
 
 #: C/gedit-plugins-tag-list.page:54(title)
 msgid "Tag List Tips"
@@ -1309,7 +1338,8 @@ msgid "Sort text into alphabetical order"
 msgstr "Szöveg betűrendbe rendezése"
 
 #: C/gedit-plugins-sort.page:20(p)
-msgid "The Sort plugin arranges selected lines of text into alphabetical order."
+msgid ""
+"The Sort plugin arranges selected lines of text into alphabetical order."
 msgstr "A Rendezés bővítmény a kijelölt sorokat betűrendbe teszi."
 
 #: C/gedit-plugins-sort.page:22(p)
@@ -1353,7 +1383,8 @@ msgstr ""
 "kiválasztását."
 
 #: C/gedit-plugins-sort.page:30(p)
-msgid "<em>Reverse order</em> will arrange the text in reverse alphabetical order."
+msgid ""
+"<em>Reverse order</em> will arrange the text in reverse alphabetical order."
 msgstr ""
 "A <em>Fordított sorrend</em> beállítás a szöveget fordított betűrendbe "
 "rendezi."
@@ -1386,7 +1417,8 @@ msgstr "A rendezés végrehajtásához nyomja meg a <gui>Rendezés</gui> gombot.
 
 #: C/gedit-plugins-snippets.page:15(title)
 msgid "Use snippets to quickly insert often-used pieces of text"
-msgstr "Töredékek használata gyakran használt szövegdarabok gyakori beszúrására"
+msgstr ""
+"Töredékek használata gyakran használt szövegdarabok gyakori beszúrására"
 
 #. TODO: write documentation for gedit snippets
 #: C/gedit-plugins-snippets.page:19(p)
@@ -1752,8 +1784,10 @@ msgstr ""
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gedit-plugins-file-browser.page:31(None)
 #: C/gedit-open-files-from-sidepane.page:36(None)
-msgid "@@image: 'figures/gedit-side-pane1.png'; md5=ac9c80cb0552d63b593c71f23be69b53"
-msgstr "@@image: 'figures/gedit-side-pane1.png'; md5=ac9c80cb0552d63b593c71f23be69b53"
+msgid ""
+"@@image: 'figures/gedit-side-pane1.png'; md5=ac9c80cb0552d63b593c71f23be69b53"
+msgstr ""
+"@@image: 'figures/gedit-side-pane1.png'; md5=ac9c80cb0552d63b593c71f23be69b53"
 
 #: C/gedit-plugins-file-browser.page:18(title)
 msgid "Use the side pane to browse and open files"
@@ -2046,11 +2080,14 @@ msgstr ""
 "hozzáférést. A legutóbb használt fájlok eléréséhez:"
 
 #: C/gedit-open-recent.page:18(p)
-msgid "Click the downward-facing arrow to the right of the <gui>Open</gui> button."
-msgstr "Kattintson a lefelé mutató nyílra a <gui>Megnyitás</gui> gomb jobb oldalán."
+msgid ""
+"Click the downward-facing arrow to the right of the <gui>Open</gui> button."
+msgstr ""
+"Kattintson a lefelé mutató nyílra a <gui>Megnyitás</gui> gomb jobb oldalán."
 
 #: C/gedit-open-recent.page:19(p)
-msgid "<app>gedit</app> will display a list of the five most-recently used files."
+msgid ""
+"<app>gedit</app> will display a list of the five most-recently used files."
 msgstr "A <app>gedit</app> megjeleníti a legutóbb használt öt fájlt."
 
 #: C/gedit-open-recent.page:20(p)
@@ -2436,8 +2473,10 @@ msgid "su -"
 msgstr "su -"
 
 #: C/gedit-edit-as-root.page:24(p)
-msgid "You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command."
-msgstr "Ezután a <app>gedit</app> a <cmd>gedit</cmd> parancs kiadásával indítható el."
+msgid ""
+"You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command."
+msgstr ""
+"Ezután a <app>gedit</app> a <cmd>gedit</cmd> parancs kiadásával indítható el."
 
 #: C/gedit-edit-as-root.page:26(p)
 msgid ""
@@ -2562,3 +2601,13 @@ msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>, 2007., 2008.\n"
 "Őry Máté <orymate at gmail dot com>, 2007., 2008."
 
+#~ msgid ""
+#~ "Use the <gui>up</gui> or <gui>down</gui> facing arrows next to the "
+#~ "<gui>search window</gui> (or <keyseq><key>Ctrl</key><key>G</key></keyseq> "
+#~ "or <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>) to "
+#~ "scroll up or down through the highlighted text."
+#~ msgstr ""
+#~ "Használja a <gui>keresés ablak</gui> melletti <gui>fel</gui> vagy "
+#~ "<gui>le</gui> mutató nyilakat (vagy a <keyseq><key>Ctrl</key><key>G</"
+#~ "key></keyseq> és <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></"
+#~ "keyseq> kombinációkat) a kiemelt szövegben való fel vagy le mozgáshoz."
