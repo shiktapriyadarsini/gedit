@@ -1,17 +1,19 @@
 # Hungarian translation of gedit help
 # Mate Ory <orymate at gmail dot com>, 2007, 2008.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011.
+# Balázs Úr <urbalazs at gmail dot com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit_help master\n"
-"POT-Creation-Date: 2011-09-24 20:53+0000\n"
-"PO-Revision-Date: 2011-09-26 12:51+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
-"Language-Team: Magyar <gnome-hu-list at gnome dot org>\n"
+"POT-Creation-Date: 2012-12-27 20:30+0000\n"
+"PO-Revision-Date: 2013-09-26 21:40+0200\n"
+"Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
@@ -892,7 +894,6 @@ msgstr ""
 "pozícióba."
 
 #: C/gedit-search.page:53(title)
-#| msgid "Search for text"
 msgid "Search tips"
 msgstr "Keresési tippek"
 
@@ -902,8 +903,8 @@ msgid ""
 "<keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted "
 "will appear in the search window."
 msgstr ""
-"Ha kijelöl egy szövegrészt az egérrel, majd megnyomja a <keyseq><key>Ctrl<"
-"/key><key>F</key></keyseq> kombinációt, akkor a kijelölt szöveg megjelenik a "
+"Ha kijelöl egy szövegrészt az egérrel, majd megnyomja a <keyseq><key>Ctrl</"
+"key><key>F</key></keyseq> kombinációt, akkor a kijelölt szöveg megjelenik a "
 "keresési ablakban."
 
 #: C/gedit-search.page:57(p)
@@ -1089,12 +1090,15 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: C/gedit-quickstart.page:19(None)
+#| msgid ""
+#| "@@image: 'figures/gedit3-screenshot.png'; "
+#| "md5=174aac884967f8e4226ab33d9498c60b"
 msgid ""
 "@@image: 'figures/gedit3-screenshot.png'; "
-"md5=174aac884967f8e4226ab33d9498c60b"
+"md5=3f101415d3b97ca8b0e81dc3cc1a6bd7"
 msgstr ""
 "@@image: 'figures/gedit3-screenshot.png'; "
-"md5=174aac884967f8e4226ab33d9498c60b"
+"md5=3f101415d3b97ca8b0e81dc3cc1a6bd7"
 
 #: C/gedit-quickstart.page:16(title)
 msgid "Get started with gedit"
@@ -1973,7 +1977,6 @@ msgid "View document statistics"
 msgstr "Dokumentumstatisztika megjelenítése"
 
 #: C/gedit-plugins-doc-stats.page:19(title)
-#| msgid "Document statistiscs"
 msgid "Document statistics"
 msgstr "Dokumentumstatisztika"
 
@@ -2198,8 +2201,9 @@ msgstr ""
 
 #: C/gedit-open-recent.page:25(p)
 msgid ""
-"Launch <app>gconf-editor</app> and select <guiseq><gui>apps</gui><gui>gedit-"
-"2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui></guiseq>."
+"Launch <app>gconf-editor</app> and select <guiseq><gui>apps</"
+"gui><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui></"
+"guiseq>."
 msgstr ""
 "Indítsa el a <app>gconf-editor</app> alkalmazást, és válassza az "
 "<guiseq><gui>apps</gui><gui>gedit-2</gui><gui>preferences</gui><gui>ui</"
