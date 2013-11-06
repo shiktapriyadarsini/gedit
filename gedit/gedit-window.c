@@ -430,7 +430,6 @@ gedit_window_class_init (GeditWindowClass *klass)
 	                                             "/org/gnome/gedit/ui/gedit-window.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_menu);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, close_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, vpaned);
@@ -3181,21 +3180,6 @@ static GActionEntry win_entries[] = {
 };
 
 static void
-on_window_close_button_clicked (GtkButton *button,
-                                GtkWidget *window)
-{
-	GdkEvent *event;
-
-	event = gdk_event_new (GDK_DELETE);
-
-	event->any.window = g_object_ref (gtk_widget_get_window (window));
-	event->any.send_event = TRUE;
-
-	gtk_main_do_event (event);
-	gdk_event_free (event);
-}
-
-static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkTargetList *tl;
@@ -3236,9 +3220,6 @@ gedit_window_init (GeditWindow *window)
 	create_menu_bar_and_toolbar (window);
 
 	setup_headerbar_open_button (window);
-
-	g_signal_connect (window->priv->close_button, "clicked",
-	                  G_CALLBACK (on_window_close_button_clicked), window);
 
 	/* Setup status bar */
 	setup_statusbar (window);
