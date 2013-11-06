@@ -1386,6 +1386,10 @@ set_title (GeditWindow *window)
 		gedit_app_set_window_title (GEDIT_APP (g_application_get_default ()),
 		                            window,
 		                            "gedit");
+		gtk_header_bar_set_title (GTK_HEADER_BAR (window->priv->headerbar),
+		                          "gedit");
+		gtk_header_bar_set_subtitle (GTK_HEADER_BAR (window->priv->headerbar),
+		                             NULL);
 		return;
 	}
 
