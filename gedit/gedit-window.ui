@@ -153,6 +153,15 @@
             <child>
               <object class="GtkStack" id="side_panel">
                 <property name="visible">False</property>
+                <child>
+                  <object class="GeditDocumentsPanel" id="documents_panel">
+                    <property name="visible">True</property>
+                  </object>
+                  <packing>
+                    <property name="name">GeditDocumentsPanel</property>
+                    <property name="title" translatable="yes">Documents</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="resize">False</property>

@@ -66,9 +66,12 @@ struct _GeditDocumentsPanelClass
 /*
  * Public methods
  */
-GType 		 gedit_documents_panel_get_type	(void) G_GNUC_CONST;
+GType 		 gedit_documents_panel_get_type		(void) G_GNUC_CONST;
 
-GtkWidget	*gedit_documents_panel_new 	(GeditWindow *window);
+GtkWidget	*gedit_documents_panel_new	 	(void);
+
+void		 gedit_documents_panel_set_window	(GeditDocumentsPanel *panel,
+                                                         GeditWindow         *window);
 
 G_END_DECLS
 

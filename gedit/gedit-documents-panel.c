@@ -864,7 +864,6 @@ gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 	                                                      "The GeditWindow this GeditDocumentsPanel is associated with",
 	                                                      GEDIT_TYPE_WINDOW,
 	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT_ONLY |
 	                                                      G_PARAM_STATIC_STRINGS));
 }
 
@@ -914,13 +913,19 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 }
 
 GtkWidget *
-gedit_documents_panel_new (GeditWindow *window)
+gedit_documents_panel_new (void)
 {
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	return g_object_new (GEDIT_TYPE_DOCUMENTS_PANEL, NULL);
+}
 
-	return g_object_new (GEDIT_TYPE_DOCUMENTS_PANEL,
-	                     "window", window,
-	                     NULL);
+void
+gedit_documents_panel_set_window (GeditDocumentsPanel *panel,
+                                  GeditWindow         *window)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENTS_PANEL (panel));
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+
+	set_window (panel, window);
 }
 
 static gchar *

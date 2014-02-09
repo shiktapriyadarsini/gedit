@@ -419,6 +419,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, documents_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, vpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, multi_notebook);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel_box);
@@ -2659,8 +2660,6 @@ side_panel_visibility_changed (GtkWidget   *panel,
 static void
 setup_side_panel (GeditWindow *window)
 {
-	GtkWidget *documents_panel;
-
 	gedit_debug (DEBUG_WINDOW);
 
 	g_signal_connect_after (window->priv->side_panel,
@@ -2668,12 +2667,8 @@ setup_side_panel (GeditWindow *window)
 	                        G_CALLBACK (side_panel_visibility_changed),
 	                        window);
 
-	documents_panel = gedit_documents_panel_new (window);
-	gtk_widget_show_all (documents_panel);
-	gtk_stack_add_titled (GTK_STACK (window->priv->side_panel),
-	                      documents_panel,
-	                      "GeditWindowDocumentsPanel",
-	                      _("Documents"));
+	gedit_documents_panel_set_window (GEDIT_DOCUMENTS_PANEL (window->priv->documents_panel),
+	                                  window);
 }
 
 static void

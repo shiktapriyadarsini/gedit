@@ -45,6 +45,7 @@ struct _GeditWindowPrivate
 	GeditMultiNotebook *multi_notebook;
 
 	GtkWidget      *side_panel;
+	GtkWidget      *documents_panel;
 	GtkWidget      *bottom_panel_box;
 	GtkWidget      *bottom_panel;
 
