@@ -818,6 +818,7 @@ static void
 create_tab_width_combo (GeditWindow *window)
 {
 	window->priv->tab_width_combo = gedit_status_menu_button_new ();
+	gtk_menu_button_set_use_popover (GTK_MENU_BUTTON (window->priv->tab_width_combo), TRUE);
 	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_combo),
 	                                _gedit_app_get_tab_width_menu (GEDIT_APP (g_application_get_default ())));
 	gtk_widget_show (window->priv->tab_width_combo);
