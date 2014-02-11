@@ -815,21 +815,6 @@ setup_headerbar_open_button (GeditWindow *window)
 }
 
 static void
-create_tab_width_combo (GeditWindow *window)
-{
-	window->priv->tab_width_combo = gedit_status_menu_button_new ();
-	gtk_menu_button_set_use_popover (GTK_MENU_BUTTON (window->priv->tab_width_combo), TRUE);
-	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_combo),
-	                                _gedit_app_get_tab_width_menu (GEDIT_APP (g_application_get_default ())));
-	gtk_widget_show (window->priv->tab_width_combo);
-	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
-			  window->priv->tab_width_combo,
-			  FALSE,
-			  TRUE,
-			  0);
-}
-
-static void
 on_language_button_clicked (GtkButton   *button,
                             GeditWindow *window)
 {
@@ -879,7 +864,17 @@ setup_statusbar (GeditWindow *window)
 	window->priv->bracket_match_message_cid = gtk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "bracket_match_message");
 
-	create_tab_width_combo (window);
+	window->priv->tab_width_combo = gedit_status_menu_button_new ();
+	gtk_menu_button_set_use_popover (GTK_MENU_BUTTON (window->priv->tab_width_combo), TRUE);
+	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_combo),
+	                                _gedit_app_get_tab_width_menu (GEDIT_APP (g_application_get_default ())));
+	gtk_widget_show (window->priv->tab_width_combo);
+	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
+			  window->priv->tab_width_combo,
+			  FALSE,
+			  TRUE,
+			  0);
+
 	create_language_button (window);
 
 	g_settings_bind (window->priv->ui_settings,
