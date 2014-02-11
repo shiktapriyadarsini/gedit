@@ -1213,6 +1213,7 @@ update_statusbar (GeditWindow *window,
 
 		g_action_map_remove_action (G_ACTION_MAP (window), "tab-width");
 		g_action_map_remove_action (G_ACTION_MAP (window), "use-spaces");
+		g_action_map_remove_action (G_ACTION_MAP (window), "auto-indent");
 	}
 
 	if (new_view == NULL)
@@ -1235,6 +1236,10 @@ update_statusbar (GeditWindow *window,
 	g_object_unref (action);
 
 	action = g_property_action_new ("use-spaces", new_view, "insert-spaces-instead-of-tabs");
+	g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
+	g_object_unref (action);
+
+	action = g_property_action_new ("auto-indent", new_view, "auto-indent");
 	g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
 	g_object_unref (action);
 

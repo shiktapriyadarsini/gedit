@@ -273,6 +273,10 @@
         <attribute name="label" translatable="yes">Use Spaces</attribute>
         <attribute name="action">win.use-spaces</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">Automatic Indentation</attribute>
+        <attribute name="action">win.auto-indent</attribute>
+      </item>
     </section>
   </menu>
 </interface>
