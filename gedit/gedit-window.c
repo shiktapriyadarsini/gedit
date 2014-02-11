@@ -53,6 +53,7 @@
 #include "gedit-document.h"
 #include "gedit-small-button.h"
 #include "gedit-menu-stack-switcher.h"
+#include "gedit-highlight-mode-widget.h"
 
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
 #define FULLSCREEN_ANIMATION_SPEED 4
@@ -815,10 +816,47 @@ setup_headerbar_open_button (GeditWindow *window)
 }
 
 static void
+on_language_selected (GeditHighlightModeWidget *dlg,
+                      GtkSourceLanguage        *language,
+                      GeditWindow              *window)
+{
+	GeditDocument *doc;
+
+	doc = gedit_window_get_active_document (window);
+
+	if (!doc)
+		return;
+
+	gedit_document_set_language (doc, language);
+}
+
+static void
 on_language_button_clicked (GtkButton   *button,
                             GeditWindow *window)
 {
-	_gedit_cmd_view_highlight_mode (NULL, NULL, window);
+	GtkWidget *widget;
+	GeditDocument *doc;
+	GtkWidget *popover;
+
+	widget = gedit_highlight_mode_widget_new ();
+
+	doc = gedit_window_get_active_document (window);
+	if (doc)
+	{
+		gedit_highlight_mode_widget_select_language (GEDIT_HIGHLIGHT_MODE_WIDGET (widget),
+		                                             gedit_document_get_language (doc));
+	}
+
+	g_signal_connect (widget, "language-selected",
+	                  G_CALLBACK (on_language_selected), window);
+
+	popover = gtk_popover_new (GTK_WIDGET (button));
+	gtk_popover_set_modal (GTK_POPOVER (popover), TRUE);
+	gtk_popover_set_position (GTK_POPOVER (popover), GTK_POS_TOP);
+	g_signal_connect (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_destroy), NULL);
+
+	gtk_container_add (GTK_CONTAINER (popover), widget);
+	gtk_widget_show_all (popover);
 }
 
 static void
