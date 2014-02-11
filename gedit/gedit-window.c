@@ -816,6 +816,20 @@ setup_headerbar_open_button (GeditWindow *window)
 }
 
 static void
+on_language_widget_shown (GeditHighlightModeWidget *hmwidget,
+                          GeditWindow              *window)
+{
+	GeditDocument *doc;
+
+	doc = gedit_window_get_active_document (window);
+	if (doc)
+	{
+		gedit_highlight_mode_widget_select_language (hmwidget,
+		                                             gedit_document_get_language (doc));
+	}
+}
+
+static void
 on_language_selected (GeditHighlightModeWidget *dlg,
                       GtkSourceLanguage        *language,
                       GeditWindow              *window)
@@ -831,41 +845,14 @@ on_language_selected (GeditHighlightModeWidget *dlg,
 }
 
 static void
-on_language_button_clicked (GtkButton   *button,
-                            GeditWindow *window)
-{
-	GtkWidget *widget;
-	GeditDocument *doc;
-	GtkWidget *popover;
-
-	widget = gedit_highlight_mode_widget_new ();
-
-	doc = gedit_window_get_active_document (window);
-	if (doc)
-	{
-		gedit_highlight_mode_widget_select_language (GEDIT_HIGHLIGHT_MODE_WIDGET (widget),
-		                                             gedit_document_get_language (doc));
-	}
-
-	g_signal_connect (widget, "language-selected",
-	                  G_CALLBACK (on_language_selected), window);
-
-	popover = gtk_popover_new (GTK_WIDGET (button));
-	gtk_popover_set_modal (GTK_POPOVER (popover), TRUE);
-	gtk_popover_set_position (GTK_POPOVER (popover), GTK_POS_TOP);
-	g_signal_connect (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_destroy), NULL);
-
-	gtk_container_add (GTK_CONTAINER (popover), widget);
-	gtk_widget_show_all (popover);
-}
-
-static void
 create_language_button (GeditWindow *window)
 {
-	GtkWidget *box;
-	GtkWidget *arrow;
+	GtkWidget *widget;
 
-	window->priv->language_button = gedit_small_button_new ();
+	window->priv->language_button = gedit_status_menu_button_new ();
+	window->priv->language_popover = gtk_popover_new (window->priv->language_button);
+	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->language_button),
+	                             window->priv->language_popover);
 	gtk_widget_show (window->priv->language_button);
 	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
 			  window->priv->language_button,
@@ -873,21 +860,13 @@ create_language_button (GeditWindow *window)
 			  TRUE,
 			  0);
 
-	box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
-	gtk_widget_show (box);
-	gtk_container_add (GTK_CONTAINER (window->priv->language_button), box);
-
-	window->priv->language_button_label = gtk_label_new (NULL);
-	gtk_widget_show (window->priv->language_button_label);
-	gtk_box_pack_start (GTK_BOX (box), window->priv->language_button_label,
-	                    FALSE, TRUE, 0);
-
-	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
-	gtk_widget_show (arrow);
-	gtk_box_pack_start (GTK_BOX (box), arrow, FALSE, FALSE, 0);
-
-	g_signal_connect (window->priv->language_button, "clicked",
-	                  G_CALLBACK (on_language_button_clicked), window);
+	widget = gedit_highlight_mode_widget_new ();
+	g_signal_connect (widget, "show",
+	                  G_CALLBACK (on_language_widget_shown), window);
+	g_signal_connect (widget, "language-selected",
+	                  G_CALLBACK (on_language_selected), window);
+	gtk_container_add (GTK_CONTAINER (window->priv->language_popover), widget);
+	gtk_widget_show (widget);
 }
 
 static void
@@ -1216,7 +1195,7 @@ language_changed (GObject     *object,
 	else
 		label = _("Plain Text");
 
-	gtk_label_set_text (GTK_LABEL (window->priv->language_button_label), label);
+	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->language_button), label);
 
 	peas_extension_set_foreach (window->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_update_state,
