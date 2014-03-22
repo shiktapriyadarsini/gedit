@@ -21,7 +21,6 @@ gedit_SOURCES = \
 	gedit.c
 
 gedit_LDADD =			\
-	libgedit.la		\
 	libgedit-private.la	\
 	$(GEDIT_LIBS)		\
 	$(GTK_MAC_LIBS)		\
