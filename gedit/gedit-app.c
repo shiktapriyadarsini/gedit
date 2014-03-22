@@ -95,7 +95,7 @@ static gchar *encoding_charset = NULL;
 static gboolean new_window = FALSE;
 static gboolean new_document = FALSE;
 static gchar *geometry = NULL;
-static gboolean wait = FALSE;
+static gboolean owait = FALSE;
 static gboolean standalone = FALSE;
 static gchar **remaining_args = NULL;
 static const GeditEncoding *encoding = NULL;
@@ -161,7 +161,7 @@ static const GOptionEntry options[] =
 	/* Wait for closing documents */
 	{
 		"wait", 'w', 0, G_OPTION_ARG_NONE,
-		&wait,
+		&owait,
 		N_("Open files and block process until files are closed"),
 		NULL
 	},
@@ -753,7 +753,7 @@ clear_options (void)
 	new_window = FALSE;
 	new_document = FALSE;
 	geometry = NULL;
-	wait = FALSE;
+	owait = FALSE;
 	standalone = FALSE;
 	remaining_args = NULL;
 	encoding = NULL;
@@ -816,7 +816,7 @@ gedit_app_command_line (GApplication            *application,
 	}
 	else
 	{
-		if (wait)
+		if (owait)
 		{
 			command_line = cl;
 		}
