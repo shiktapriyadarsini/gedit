@@ -120,7 +120,7 @@ struct _GeditWindowPrivate
 	GFile          *default_location;
 
 #ifdef OS_OSX
-	GtkOSXApplicationMenuGroup *mac_menu_group;
+	GtkosxApplicationMenuGroup *mac_menu_group;
 #endif
 
 	gboolean        removing_tabs : 1;
