@@ -241,11 +241,10 @@ setup_mac_menu (GeditWindow *window)
 
 	osxapp = g_object_new (GTKOSX_TYPE_APPLICATION, NULL);
 
-	action = gtk_ui_manager_get_action (manager, "/ui/MenuBar/HelpMenu/HelpAboutMenu");
-	gtk_action_set_label (action, _("About gedit"));
+	action = gtk_ui_manager_get_action (manager, "/ui/MenuBar/HelpMenu/HelpHolder/HelpAboutMenu");
 
 	gtk_widget_hide (GTK_WIDGET (ui_manager_menu_item (manager,
-	                             "/ui/MenuBar/FileMenu/FileQuitMenu")));
+	                             "/ui/MenuBar/FileMenu/FileQuitMenuHolder/FileQuitMenu")));
 
 	gtkosx_application_set_menu_bar (osxapp,
 	                                 GTK_MENU_SHELL (menu));
@@ -258,7 +257,7 @@ setup_mac_menu (GeditWindow *window)
 
 	gtkosx_application_insert_app_menu_item (osxapp,
 	                                         GTK_WIDGET (ui_manager_menu_item (manager,
-	                                                                           "/ui/MenuBar/HelpMenu/HelpAboutMenu")),
+	                                                                           "/ui/MenuBar/HelpMenu/HelpHolder/HelpAboutMenu")),
 	                                         0);
 
 	gtkosx_application_insert_app_menu_item (osxapp,
@@ -267,7 +266,7 @@ setup_mac_menu (GeditWindow *window)
 
 	gtkosx_application_insert_app_menu_item (osxapp,
 	                                         GTK_WIDGET (ui_manager_menu_item (manager,
-	                                                                           "/ui/MenuBar/EditMenu/EditPreferencesMenu")),
+	                                                                           "/ui/MenuBar/EditMenu/EditPreferencesMenuHolder/EditPreferencesMenu")),
 	                                         2);
 
 	/* We remove the accel group of the uimanager from the window */
