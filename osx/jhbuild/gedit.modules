@@ -139,6 +139,7 @@
       <dep package="gnome-icon-theme-symbolic"/>
       <dep package="iso-codes"/>
       <dep package="yelp-tools"/>
+      <dep package="share-mime-info"/>
     </dependencies>
   </metamodule>
 
