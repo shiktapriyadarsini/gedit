@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 01:05+0200\n"
-"PO-Revision-Date: 2014-03-02 18:05+0100\n"
+"POT-Creation-Date: 2014-05-18 16:33+0200\n"
+"PO-Revision-Date: 2014-05-18 16:33+0200\n"
 "Last-Translator: Pau Iranzo <paugnu@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca-XV\n"
@@ -2220,6 +2220,10 @@ msgid "Save"
 msgstr "Guarda"
 
 #: ../gedit/gedit-window.ui.h:11
+msgid "Hide panel"
+msgstr "Amaga el quadre"
+
+#: ../gedit/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "Ix del mode de pantalla completa"
 
