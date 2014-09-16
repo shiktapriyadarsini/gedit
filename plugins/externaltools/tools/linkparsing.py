@@ -162,9 +162,11 @@ class RegexpLinkParser(AbstractLinkParser):
 # javac 'Test.java:13: ...'
 # ruby 'test.rb:5: ...'
 # scalac 'Test.scala:5: ...'
+# sbt (scala) '[error] test.scala:4: ...'
 # 6g (go) 'test.go:9: ...'
 REGEXP_STANDARD = r"""
 ^
+(?:\[(?:error|warn)\]\ )?
 (?P<lnk>
     (?P<pth> [^ \:\n]* )
     \:
