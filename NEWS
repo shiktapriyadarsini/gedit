@@ -1,4 +1,19 @@
 ============
+gedit 3.14.2
+============
+
+New Features and Fixes
+======================
+- External tools plugin: fix document saving
+- Various other bug fixes
+
+New and updated translations
+============================
+- ja (Hajime Taira)
+- nb (Kjartan Maraas)
+- vi (Trần Ngọc Quân)
+
+============
 gedit 3.14.1
 ============
 
