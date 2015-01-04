@@ -87,13 +87,11 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
         else:
             return None
 
-    def do_get_start_iter(self, context, proposal, iter):
+    def do_get_start_iter(self, context, proposal):
         if not self.mark or self.mark.get_deleted():
-            return False
+            return (False, None)
 
-        iter.assign(self.mark.get_buffer().get_iter_at_mark(self.mark))
-
-        return True
+        return (True, self.mark.get_buffer().get_iter_at_mark(self.mark))
 
     def do_match(self, context):
         return True
