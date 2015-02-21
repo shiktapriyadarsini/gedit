@@ -24,6 +24,7 @@
 
 #include "gedit-app.h"
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 #include "gedit-multi-notebook.h"
 
 struct _GeditNotebookPopupMenuPrivate
