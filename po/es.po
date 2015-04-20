@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-23 06:02+0000\n"
-"PO-Revision-Date: 2015-02-23 18:57+0100\n"
+"POT-Creation-Date: 2015-04-20 07:33+0000\n"
+"PO-Revision-Date: 2015-04-20 11:23+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
-msgstr "«Monospace 12»"
+msgstr "'Monospace 12'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
@@ -456,7 +456,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "'Monospace 9'"
-msgstr "«Monospace 9»"
+msgstr "'Monospace 9'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
@@ -471,7 +471,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "'Sans 11'"
-msgstr "«Sans 11»"
+msgstr "'Sans 11'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
@@ -488,7 +488,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Sans 8'"
-msgstr "«Sans 8»"
+msgstr "'Sans 8'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
@@ -565,16 +565,16 @@ msgstr ""
 "activos. Vea el archivo .gedit-plugin para obtener la «Ubicación» de un "
 "complemento dado."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:107
 msgid "Show the application's version"
 msgstr "Mostrar la versión de la aplicación"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:113
 msgid "Display list of possible values for the encoding option"
 msgstr ""
 "Mostrar una lista de los valores posibles para la opción de codificación"
 
-#: ../gedit/gedit-app.c:118
+#: ../gedit/gedit-app.c:120
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -582,46 +582,46 @@ msgstr ""
 "Establecer la codificación de caracteres que usar al abrir los archivos "
 "listados en la línea de comandos"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "ENCODING"
 msgstr "CODIFICACIÓN"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 "Crea una ventana nueva en el nivel superior de una instancia existente de "
 "gedit"
 
-#: ../gedit/gedit-app.c:132
+#: ../gedit/gedit-app.c:134
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Crea un documento nuevo en una instancia existente de gedit"
 
-#: ../gedit/gedit-app.c:139
+#: ../gedit/gedit-app.c:141
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Establecer el tamaño y la posición de la ventana (ANCHURAxALTURA+X+Y)"
 
-#: ../gedit/gedit-app.c:140
+#: ../gedit/gedit-app.c:142
 msgid "GEOMETRY"
 msgstr "GEOMETRÍA"
 
-#: ../gedit/gedit-app.c:146
+#: ../gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr ""
 "Abrir los archivos y bloquear los procesos hasta que se cierren los archivos"
 
-#: ../gedit/gedit-app.c:153
+#: ../gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "Ejecutar gedit en modo independiente"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:162
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[ARCHIVO...] [+LÍNEA[:COLUMNA]]"
 
-#: ../gedit/gedit-app.c:265
+#: ../gedit/gedit-app.c:274
 msgid "There was an error displaying the help."
 msgstr "Hubo un error al mostrar la ayuda."
 
-#: ../gedit/gedit-app.c:919
+#: ../gedit/gedit-app.c:935
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codificación no válida."
@@ -825,7 +825,7 @@ msgstr "El archivo «%s» es de sólo lectura."
 
 #: ../gedit/gedit-commands-file.c:589
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr "¿Desea intentar reemplazarlo por el que está guardando ahora?"
+msgstr "¿Quiere intentar reemplazarlo por el que está guardando ahora?"
 
 #: ../gedit/gedit-commands-file.c:594
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
@@ -980,7 +980,7 @@ msgstr "gedit es un editor de texto pequeño y ligero para el Escritorio GNOME"
 #: ../gedit/gedit-commands-help.c:105
 msgid "translator-credits"
 msgstr ""
-"Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2013\n"
+"Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2015\n"
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2010\n"
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2004-2007\n"
 "Lucas 'Basurero' Vieites <basurero@jazzfree.com>, 2002-2003\n"
@@ -1005,7 +1005,7 @@ msgstr "Se encontró y reemplazó una aparición"
 msgid "\"%s\" not found"
 msgstr "No se encontró «%s»"
 
-#: ../gedit/gedit-document.c:956 ../gedit/gedit-document.c:986
+#: ../gedit/gedit-document.c:986 ../gedit/gedit-document.c:1016
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento no guardado %d"
@@ -1473,7 +1473,6 @@ msgstr "Página %N de %Q"
 
 #: ../gedit/gedit-print-job.c:619
 #, c-format
-#| msgid "Page %d of %d"
 msgid "Rendering page %d of %d..."
 msgstr "Renderizando página %d de %d…"
 
@@ -1545,34 +1544,34 @@ msgid "Saving %s"
 msgstr "Guardando %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "SL"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "Error al abrir el archivo %s"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Error al revertir el archivo %s"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "Error al guardar el archivo %s"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "Nombre:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "Tipo MIME:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "Codificación:"
 
@@ -1608,7 +1607,7 @@ msgstr "Mac OS clásico"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:511
+#: ../gedit/gedit-view.c:510
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "_Mostrar números de línea"
@@ -1617,36 +1616,36 @@ msgstr "_Mostrar números de línea"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:736
+#: ../gedit/gedit-view-frame.c:691
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:828
+#: ../gedit/gedit-view-frame.c:783
 msgid "_Wrap Around"
 msgstr "_Volver al principio"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:838
+#: ../gedit/gedit-view-frame.c:793
 msgid "Match as _Regular Expression"
 msgstr "Coincidir como expresión _regular"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:852
+#: ../gedit/gedit-view-frame.c:807
 msgid "Match _Entire Word Only"
 msgstr "Coincidir sólo con palabras compl_etas"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:866
+#: ../gedit/gedit-view-frame.c:821
 msgid "_Match Case"
 msgstr "Coi_ncidir con capitalización"
 
-#: ../gedit/gedit-view-frame.c:1041
+#: ../gedit/gedit-view-frame.c:1038
 msgid "String you want to search for"
 msgstr "La cadena que quiere buscar"
 
-#: ../gedit/gedit-view-frame.c:1053
+#: ../gedit/gedit-view-frame.c:1050
 msgid "Line you want to move the cursor to"
 msgstr "Línea a la que quiere mover el cursor"
 
@@ -1891,8 +1890,8 @@ msgid "_Paste"
 msgstr "_Pegar"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:19
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Eliminar"
@@ -2093,8 +2092,8 @@ msgid "Editor"
 msgstr "Editor"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Tipografía"
 
@@ -2116,7 +2115,7 @@ msgstr "Instalar esquema"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
-msgstr "<b>Esquema</b>"
+msgstr "Instalar esquema"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
@@ -2356,12 +2355,12 @@ msgstr ""
 "ignorar la versión y esperar a que salga una nueva"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Versión para ignorar"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Versión para ignorar hasta que se publique la próxima versión."
 
@@ -2460,12 +2459,12 @@ msgstr "Herramientas externas"
 msgid "Execute external commands and shell scripts."
 msgstr "Ejecutar comandos externos y scripts de shell."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Indica si se debe usar la tipografía del sistema"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2474,8 +2473,8 @@ msgstr ""
 "del escritorio si es monoespacio (y si no, la tipografía más parecida a "
 "esta)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr ""
 "Un nombre de tipografía Pango. Por ejemplo «Sans 12» o «Monospace Bold 14»."
@@ -2683,43 +2682,43 @@ msgstr "Carpeta personal"
 msgid "File System"
 msgstr "Sistema de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Examinador de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Ocurrió un error al crear la carpeta nueva"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Ocurrió un error al crear un archivo nuevo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Ocurrió un error al renombrar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:683
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Ocurrió un error al eliminar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:686
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Ocurrió un error al abrir una carpeta en el gestor de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:689
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Ocurrió un error al establecer la carpeta raíz"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:692
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Ocurrió un error al cargar una carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Ocurrió un error"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:913
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2728,26 +2727,26 @@ msgstr ""
 "a la papelera, ¿quiere eliminarlo\n"
 "permanentemente?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:918
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "El archivo %s no se puede mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
 msgid "The selected files cannot be moved to the trash."
 msgstr "Los archivos seleccionados no se pueden mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "¿Seguro que quiere eliminar permanentemente «%s»?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:959
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "¿Seguro que quiere eliminar permanentemente los archivos seleccionados?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
 msgid "If you delete an item, it is permanently lost."
 msgstr "Si elimina un elemento, se pierde permanentemente."
 
@@ -2789,36 +2788,36 @@ msgstr ""
 "La carpeta nuevo esta actualmente filtrada. Necesita ajustar los filtros "
 "para hacerlo visible."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:792
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:774
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2048
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2015
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "No existe el objeto montado para el volumen montado: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2125
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2092
 #, c-format
 msgid "Could not open media: %s"
 msgstr "No se pudo abrir el soporte: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2172
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2139
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "No se pudo abrir el volumen: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2789
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Error al cargar una carpeta «%s»: no existe la carpeta"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Abrir con vista de árbol"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2826,11 +2825,11 @@ msgstr ""
 "Abrir la vista de árbol cuando el complemento del examinador de archivos se "
 "carga en vez de la vista de marcadores"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Carpeta raíz del examinador de archivos"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2838,11 +2837,11 @@ msgstr ""
 "La carpeta raíz del examinador de archivos que usar al cargar el complemento "
 "de examinador de archivos y cuando onload/tree_view es TRUE."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Carpeta raíz virtual del examinador de archivos"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2852,19 +2851,19 @@ msgstr ""
 "complemento del examinador de archivos cuando onload/tree_view es TRUE. La "
 "carpeta virtual debe ser la raíz actual."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Activar la restauración de lugares remotos"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Establece si se debe activar la restauración desde lugares remotos."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Establecer la ubicación para el primer documento"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2876,11 +2875,11 @@ msgstr ""
 "aún. (Entonces esto generalmente se aplica a abrir un documento desde la "
 "línea de comandos o abriéndolo con Nautilus, etc.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Modo de filtro del examinador de archivos"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2890,11 +2889,11 @@ msgstr ""
 "valores válidos son: «none» (no filtrar), «hide-hidden» (filtrar archivos "
 "ocultos) y «hide-binary» (filtrar archivos binarios)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Patrón de filtro del examinador de archivos"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2902,11 +2901,11 @@ msgstr ""
 "El patrón de filtros con el que filtrar el examinador de archivos. Este "
 "filtro funciona por encima del filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Patrones binarios del examinador de archivos"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Los patrones adicionales que usar al filtrar archivos binarios."
 
@@ -2974,23 +2973,23 @@ msgstr "Modos de líneas"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Soporte para los modos de línea Emacs, Kate y Vim para gedit."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Color del texto del comando"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "El color del texto del comando"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Color del texto de error"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "El color del texto de error"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3479,11 +3478,11 @@ msgid "Available formats"
 msgstr "Formatos disponibles"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Tipo de mensaje en pantalla"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3491,19 +3490,19 @@ msgstr ""
 "Indica si se debería preguntar al usuario el formato o si se debería usar el "
 "formato seleccionado o personalizado."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Formato seleccionado"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "El formato seleccionado usado al insertar la fecha/hora."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Formato personalizado"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "El formato predeterminado usado al insertar la fecha/hora."
 
