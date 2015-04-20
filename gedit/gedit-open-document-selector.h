@@ -60,8 +60,6 @@ struct _GeditOpenDocumentSelectorClass
 	/* Signals */
 	void (* selector_file_activated)	(GeditOpenDocumentSelector *selector,
 	                                         gchar                     *uri);
-
-	GeditOpenDocumentSelectorClassPrivate *priv;
 };
 
 GType				 gedit_open_document_selector_get_type		(void) G_GNUC_CONST;

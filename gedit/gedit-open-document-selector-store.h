@@ -43,14 +43,14 @@ typedef struct _GeditOpenDocumentSelectorStorePrivate		GeditOpenDocumentSelector
 
 struct _GeditOpenDocumentSelectorStore
 {
-	GtkBox parent;
+	GObject parent;
 
 	GeditOpenDocumentSelectorStorePrivate *priv;
 };
 
 struct _GeditOpenDocumentSelectorStoreClass
 {
-	GtkBoxClass  parent_class;
+	GObjectClass  parent_class;
 };
 
 #define GEDIT_OPEN_DOCUMENT_SELECTOR_STORE_ERROR gedit_open_document_selector_store_error_quark ()
