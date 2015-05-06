@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-28 11:59+0200\n"
-"PO-Revision-Date: 2015-03-28 11:58+0200\n"
+"POT-Creation-Date: 2015-05-06 23:20+0200\n"
+"PO-Revision-Date: 2015-05-06 23:20+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -94,7 +94,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
-msgstr ""
+msgstr "'Monospace 12'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
@@ -121,9 +121,8 @@ msgid "Create Backup Copies"
 msgstr "أنشئ نسخ احتياطية"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
-#, fuzzy
 msgid "Whether gedit should create backup copies for the files it saves."
-msgstr "فيما إذا وجب لمحرر النصوص استعاذة موضع المؤشّر السابق عند تحميل ملف."
+msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
@@ -412,7 +411,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "'Monospace 9'"
-msgstr ""
+msgstr "'Monospace 9'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
@@ -425,7 +424,7 @@ msgstr "يحدّد الخط الذي سيستعمل في متن المستند �
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "'Sans 11'"
-msgstr ""
+msgstr "'Sans 11'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
@@ -441,7 +440,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Sans 8'"
-msgstr ""
+msgstr "'Sans 8'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
@@ -695,12 +694,12 @@ msgstr[5] "ستضيع تغييرات ال%Id ساعة الأخيرة نهائي�
 #: ../gedit/gedit-close-confirmation-dialog.c:473
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
-msgstr "ستضيع التّغييرات المحدثة على المستند \"%s\" نهائيًا."
+msgstr "ستضيع التّغييرات المحدثة على المستند ”%s“ نهائيًا."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:478
 #, c-format
 msgid "Save changes to document “%s” before closing?"
-msgstr "أأحفظ التّغييرات في المستند \"%s\" قبل غلقه؟"
+msgstr "أأحفظ التّغييرات في المستند ”%s“ قبل غلقه؟"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:493
 #: ../gedit/gedit-close-confirmation-dialog.c:654
@@ -982,7 +981,7 @@ msgstr "تمّ إيجاد واستبدال حدوث واحد"
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" غير موجود"
 
-#: ../gedit/gedit-document.c:956 ../gedit/gedit-document.c:986
+#: ../gedit/gedit-document.c:986 ../gedit/gedit-document.c:1016
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "مستند غير محفوظ %Id"
@@ -1031,7 +1030,7 @@ msgstr "_نهايات السطور:"
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
-msgstr "ترميز المحارف:"
+msgstr "ترميز النص:"
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
@@ -1053,7 +1052,7 @@ msgstr "أ_عد المحاولة"
 #: ../gedit/gedit-io-error-info-bar.c:168
 #, c-format
 msgid "Could not find the file “%s”."
-msgstr "تعذّر العثور على الملف “%s”."
+msgstr "تعذّر العثور على الملف ”%s“."
 
 #: ../gedit/gedit-io-error-info-bar.c:170
 #: ../gedit/gedit-io-error-info-bar.c:210
@@ -1065,7 +1064,7 @@ msgstr "تأكد من كتابة الموقع بشكل صحيح ثم حاول م
 #: ../gedit/gedit-io-error-info-bar.c:189
 #, c-format
 msgid "Unable to handle “%s:” locations."
-msgstr "تعذّر على محرر النصوص معالجة المواقع “%s:”."
+msgstr "تعذّر على محرر النصوص معالجة المواقع ”%s:“."
 
 #: ../gedit/gedit-io-error-info-bar.c:195
 msgid "Unable to handle this location."
@@ -1078,12 +1077,12 @@ msgstr "تعذّر الوصول إلى موقع الملف."
 #: ../gedit/gedit-io-error-info-bar.c:208
 #, c-format
 msgid "“%s” is a directory."
-msgstr "“%s” هي دليل."
+msgstr "‏‏”%s“ مجلد."
 
 #: ../gedit/gedit-io-error-info-bar.c:215
 #, c-format
 msgid "“%s” is not a valid location."
-msgstr "“%s” ليس موقعًا سليمًا."
+msgstr "‏‏‏”%s“ ليس موقعًا سليمًا."
 
 #: ../gedit/gedit-io-error-info-bar.c:251
 #, c-format
@@ -1091,7 +1090,7 @@ msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr ""
-"تعذّر العثور على المستضيف “%s”. تأكد من صحّة إعدادات الوسيط (بروكسي) وحاول "
+"تعذّر العثور على المستضيف ”%s“. تأكد من صحّة إعدادات الوسيط (بروكسي) و حاول "
 "مجددا."
 
 #: ../gedit/gedit-io-error-info-bar.c:266
@@ -1104,7 +1103,7 @@ msgstr "اسم المستضيف غير صحيح. تأكد من صحة الموق
 #: ../gedit/gedit-io-error-info-bar.c:274
 #, c-format
 msgid "“%s” is not a regular file."
-msgstr "“%s” ليس ملفا عاديا."
+msgstr "‏‏‏‏”%s“ ليس ملفا عاديا."
 
 #: ../gedit/gedit-io-error-info-bar.c:279
 msgid "Connection timed out. Please try again."
@@ -1122,7 +1121,7 @@ msgstr "تعذّر إيجاد الملف المطلوب. ربما يكون قد 
 #: ../gedit/gedit-io-error-info-bar.c:358
 #, c-format
 msgid "Could not revert the file “%s”."
-msgstr "تعذّر استعادة الملف “%s”."
+msgstr "تعذّر استعادة الملف ”%s“."
 
 #: ../gedit/gedit-io-error-info-bar.c:385
 msgid "Ch_aracter Encoding:"
@@ -1131,7 +1130,7 @@ msgstr "ترميز الم_حارف:"
 #: ../gedit/gedit-io-error-info-bar.c:446
 #, c-format
 msgid "The location “%s” is not currently reachable."
-msgstr "يتعذّر الوصول إلى الموقع “%s” حاليًا."
+msgstr "يتعذّر الوصول إلى الموقع ”%s“ حاليًا."
 
 #: ../gedit/gedit-io-error-info-bar.c:461
 msgid "Your system is offline. Check your network."
@@ -1158,7 +1157,7 @@ msgstr "لا تملك الصلاحيات المطلوبة لفتح هذا الم
 
 #: ../gedit/gedit-io-error-info-bar.c:606
 msgid "Unable to detect the character encoding."
-msgstr "تعذّر كشف وتحديد ترميز المحارف."
+msgstr "تعذّر كشف و تحديد ترميز النص."
 
 #: ../gedit/gedit-io-error-info-bar.c:607
 #: ../gedit/gedit-io-error-info-bar.c:631
@@ -1167,12 +1166,12 @@ msgstr "رجاء تأكد من أنك لا تحاول فتح ملف ثنائي."
 
 #: ../gedit/gedit-io-error-info-bar.c:608
 msgid "Select a character encoding from the menu and try again."
-msgstr "اختر ترميز محارف من القائمة وحاول مجددا."
+msgstr "اختر ترميز نص من القائمة و حاول مجددا."
 
 #: ../gedit/gedit-io-error-info-bar.c:614
 #, c-format
 msgid "There was a problem opening the file “%s”."
-msgstr "حدثت مشكلة في فتح الملف “%s”."
+msgstr "حدثت مشكلة في فتح الملف ”%s“."
 
 #: ../gedit/gedit-io-error-info-bar.c:616
 msgid ""
@@ -1184,33 +1183,33 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:619
 msgid "You can also choose another character encoding and try again."
-msgstr "يمكنك أيضا اختيار ترميز محارف آخر ثم إعادة المحاولة"
+msgstr "يمكنك أيضا اختيار ترميز نص آخر ثم إعادة المحاولة"
 
 #: ../gedit/gedit-io-error-info-bar.c:628
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
-msgstr "لا يمكن فتح الملف “%s” بترميز المحارف “%s”."
+msgstr "لا يمكن فتح الملف ”%s“ بترميز النص ”%s“."
 
 #: ../gedit/gedit-io-error-info-bar.c:632
 #: ../gedit/gedit-io-error-info-bar.c:707
 msgid "Select a different character encoding from the menu and try again."
-msgstr "اختر ترميز محارف مختلف من القائمة وحاول مجددا."
+msgstr "اختر ترميز نص مختلف من القائمة و حاول مجددا."
 
 #: ../gedit/gedit-io-error-info-bar.c:644
 #, c-format
 msgid "Could not open the file “%s”."
-msgstr "تعذّر فتح الملف “%s”."
+msgstr "تعذّر فتح الملف ”%s“."
 
 #: ../gedit/gedit-io-error-info-bar.c:702
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
-msgstr "تعذّر حفظ الملف “%s” بترميز المحارف “%s”."
+msgstr "تعذّر حفظ الملف ”%s“ بترميز النص ”%s“."
 
 #: ../gedit/gedit-io-error-info-bar.c:705
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
-msgstr "يحوي المستند محرفًا أو محارف لا يمكن ترميزها بترميز المحارف المحدد."
+msgstr "يحوي المستند محرفًا أو محارف لا يمكن ترميزها بترميز النص المحدد."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
@@ -1221,7 +1220,7 @@ msgstr "لا _تحرّر"
 #: ../gedit/gedit-io-error-info-bar.c:788
 #, c-format
 msgid "This file “%s” is already open in another window."
-msgstr "هذا الملف “%s” مفتوح مسبقا في نافذة أخرى."
+msgstr "هذا الملف ”%s“ مفتوح مسبقا في نافذة أخرى."
 
 #: ../gedit/gedit-io-error-info-bar.c:802
 msgid "Do you want to edit it anyway?"
@@ -1246,7 +1245,7 @@ msgstr "لا تحفظ"
 #: ../gedit/gedit-io-error-info-bar.c:875
 #, c-format
 msgid "The file “%s” has been modified since reading it."
-msgstr "تم تعديل الملف “%s” منذ قراءته."
+msgstr "تم تعديل الملف ”%s“ منذ قراءته."
 
 #: ../gedit/gedit-io-error-info-bar.c:890
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
@@ -1255,12 +1254,12 @@ msgstr "إذا حفظت، ستضيع كل التغييرات الخارجية. �
 #: ../gedit/gedit-io-error-info-bar.c:970
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
-msgstr "تعذّر إنشاء ملف احتياطي عند حفظ “%s”"
+msgstr "تعذّر إنشاء ملف احتياطي عند حفظ ”%s“"
 
 #: ../gedit/gedit-io-error-info-bar.c:975
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
-msgstr "تعذّر إنشاء ملف احتياطي مؤقت عند حفظ “%s”"
+msgstr "تعذّر إنشاء ملف احتياطي مؤقت عند حفظ ”%s“"
 
 #: ../gedit/gedit-io-error-info-bar.c:992
 msgid ""
@@ -1279,8 +1278,8 @@ msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"يتعذّر التعامل مع مواقع ”%s:“ في نمط الكتابة. تأكد من صحة كتابتك الموقع وحاول "
-"مجددا."
+"يتعذّر التعامل مع مواقع ”%s:“ في نمط الكتابة. تأكد من صحة كتابتك الموقع "
+"و حاول مجددا."
 
 #: ../gedit/gedit-io-error-info-bar.c:1060
 msgid ""
@@ -1295,7 +1294,7 @@ msgstr ""
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
-msgstr "‏“%s” موقع غير سليم. تأكد من صحة كتابتك للموقع وحاول مجددا."
+msgstr "‏”%s“ موقع غير سليم. تأكد من صحة كتابتك للموقع و حاول مجددا."
 
 #: ../gedit/gedit-io-error-info-bar.c:1076
 msgid ""
@@ -1498,34 +1497,34 @@ msgid "Saving %s"
 msgstr "يحفظ %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "قراءة فقط"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "خطأ أثناء فتح الملف %s"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "خطأ أثناء استرجاع الملف %s"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "خطأ أثناء حفظ الملف %s"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "الاسم:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "نوع MIME:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "الترميز:"
 
@@ -1922,7 +1921,7 @@ msgstr "_موافق"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
 msgid "A_vailable encodings:"
-msgstr "الترميزات ال_متوفرة:"
+msgstr "الترميزات ال_متاحة:"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
 msgid "_Description"
@@ -2046,8 +2045,8 @@ msgid "Editor"
 msgstr "المحرر"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "الخط"
 
@@ -2309,12 +2308,12 @@ msgstr ""
 "هذه الإصدارة وانتظار واحدة جديدة"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "الإصدارة التي ستتجاهل"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "الإصدارة التي ستتجاهل حتى صدور إصدارة جديدة."
 
@@ -2326,7 +2325,7 @@ msgstr "إحصائيات المستند"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
 msgid "Report the number of words, lines and characters in a document."
-msgstr "يحلّل المستند الحالي ويبلّغ بعدد الكلمات والأسطر والمحارف."
+msgstr "يحلّل المستند الحالي و يبلّغ بعدد الكلمات و الأسطر و المحارف."
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
@@ -2410,12 +2409,12 @@ msgstr "الأدوات الخارجية"
 msgid "Execute external commands and shell scripts."
 msgstr "نفّذ أوامر خارجية ومخطوطات صدفة."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "فيما إذا كان سيستعمل خط النظام"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2423,8 +2422,8 @@ msgstr ""
 "إذا ضبط لصحيح، فستستعمل الأدوات الخارجية خط المكتب العام القياسي إذا كان "
 "ثابت العرض (وأقرب خط يمكن أن تأتي به في أي حالة أخرى)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "اسم خط بانجو. \"Sans 12\" أو \"Monospace Bold 14\" مثلا."
 
@@ -2758,21 +2757,21 @@ msgid "Error when loading '%s': No such directory"
 msgstr "حدث خطأ أثناء تحميل '%s': لا مجلد بهذا الاسم"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "افتح بنمط عرض الشجرة"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr "افتح مظهر الشجرة عند تحميل ملحق متصفح الملفات عوضا عن مظهر العلامات"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "الدليل الجذري لمتصفح الملفات "
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2780,11 +2779,11 @@ msgstr ""
 "دليل الجذر لمتصفح الملفات المستعمل عند تحميل ملحق متصفح الملفات و onload/"
 "tree_view محدد بـ TRUE."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "دليل الجذر المبدئي لمتصفح الملفات"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2794,19 +2793,19 @@ msgstr ""
 "onload/tree_view محدد بـ TRUE. يجب أن يكون الجذر الافتراضي دائما تحت الجذر "
 "الحقيقي."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "فعّل استرجاع الأمكنة البعيدة"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "يحدّد ما إذا يتم تفعيل استعادة الأماكن البعيدة."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "حدّد مكان المستند الأول"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2817,11 +2816,11 @@ msgstr ""
 "من عدم استعمال متصفح الملفات مسبقا. (لذا فإن هذا ينطبق غالبا على فتح مستند "
 "من سطر الأوامر أو باستخدام ناوتلس، إلخ.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "نمط الترشيح لمتصفح الملفات "
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2830,21 +2829,21 @@ msgstr ""
 "تحدد هذه القيمة الملفات التي يتم ترشيحها من متصفح الملفات. القيم الشرعية هي: "
 "none (لا شيء)، hide-hidden (الملفات المخفية)، hide-binary (الملفات الثنائية)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "نموذج الترشيح لمتصفح الملفات "
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
 msgstr "نموذج المرشّح لترشيح متصفح الملفات. يعمل هذا الملف فوق filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr ""
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr ""
 
@@ -2912,23 +2911,23 @@ msgstr "أسطر نمطية"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "دعم الأسطر النمطية من نوع Vim و Kate و Emacs لمحرر النصوص"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "لون نص الأمر"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "نص لون الأمر"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "لون نص الخطأ"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "نص لون الخطأ"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3411,11 +3410,11 @@ msgid "Available formats"
 msgstr "التنسيقات المتوفّرة"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "نوع السؤال"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3423,19 +3422,19 @@ msgstr ""
 "إذا كان ينبغي على المُستخدم أن يُسأل عن التنسيق أو يتم استخدام التنسيق المُختار "
 "أو المُخصّص مباشرة."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "التنسيق المختار"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "التنسيق المختار المستخدم عند إدراج التاريخ/الوقت."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "تنسيق مخصّص"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "التنسيق المخصّص المستخدم عند إدراج التاريخ/الوقت."
 
@@ -3489,6 +3488,39 @@ msgstr "أدرج التاريخ/الوقت"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "لإدراج التاريخ والوقت الحاليين عند موقع المؤشر."
+
+#~ msgid "Candidate Encodings"
+#~ msgstr "الترميزات المُرشَّحة"
+
+#~ msgid "%s (Current Locale)"
+#~ msgstr "‏%s (المحلّية الحالية)"
+
+#~ msgid "Do you really want to reset the character encodings' preferences?"
+#~ msgstr "أتريد فعلًا إعادة تفضيلات ترميزات النصوص إلى أصلها؟"
+
+#~ msgid "_Reset"
+#~ msgstr "_صفِّر"
+
+#~ msgid "Add"
+#~ msgstr "أضف"
+
+#~ msgid "Move to a higher priority"
+#~ msgstr "انقل إلى أولوية أعلى"
+
+#~ msgid "Move to a lower priority"
+#~ msgstr "انقل إلى أولوية أدنى"
+
+#~ msgid "Character Encodings"
+#~ msgstr "ترميزات النصوص"
+
+#~ msgid "_Apply"
+#~ msgstr "_طبّق"
+
+#~ msgid "Cho_sen Encodings"
+#~ msgstr "الترميزات الم_ختارة"
+
+#~ msgid "Display _grid pattern"
+#~ msgstr "اعرض _شبكة"
 
 #~ msgid ""
 #~ "Whether gedit should create backup copies for the files it saves. You can "
@@ -3627,9 +3659,6 @@ msgstr "لإدراج التاريخ والوقت الحاليين عند موق�
 
 #~ msgid "Open Files"
 #~ msgstr "افتح الملفّات"
-
-#~ msgid "Character Encodings"
-#~ msgstr "ترميزات المحارف"
 
 #~ msgid ""
 #~ "The location of the file cannot be accessed because it is not mounted."
