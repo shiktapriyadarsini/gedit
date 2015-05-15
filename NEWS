@@ -1,4 +1,20 @@
 ============
+gedit 3.16.2
+============
+
+New Features and Fixes
+======================
+- Fix gedit --wait when listing multiple files
+- Various other bug fixes
+
+New and updated translations
+============================
+- ar (Khaled Hosny)
+- es (Daniel Mustieles)
+- is (Sveinn í Felli)
+- uk (Назарій Ріттер)
+
+============
 gedit 3.16.1
 ============
 
