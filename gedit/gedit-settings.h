@@ -108,6 +108,10 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO		"print-font-numbers-pango"
 #define GEDIT_SETTINGS_ENCODING_AUTO_DETECTED		"auto-detected"
 #define GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU		"shown-in-menu"
+#define GEDIT_SETTINGS_PRINT_MARGIN_LEFT		"margin-left"
+#define GEDIT_SETTINGS_PRINT_MARGIN_TOP			"margin-top"
+#define GEDIT_SETTINGS_PRINT_MARGIN_RIGHT		"margin-right"
+#define GEDIT_SETTINGS_PRINT_MARGIN_BOTTOM		"margin-bottom"
 #define GEDIT_SETTINGS_ACTIVE_PLUGINS			"active-plugins"
 #define GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE		"ensure-trailing-newline"
 

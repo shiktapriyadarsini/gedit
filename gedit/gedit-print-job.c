@@ -507,6 +507,7 @@ create_compositor (GeditPrintJob *job)
 	GtkWrapMode wrap_mode;
 	guint print_line_numbers;
 	gboolean print_header;
+	gdouble margin;
 
 	/* Create and initialize print compositor */
 	print_font_body = g_settings_get_string (job->priv->print_settings,
@@ -540,9 +541,17 @@ create_compositor (GeditPrintJob *job)
 						     "header-font-name", print_font_header,
 						     NULL));
 
-	g_free (print_font_body);
-	g_free (print_font_header);
-	g_free (print_font_numbers);
+	margin = g_settings_get_double (job->priv->print_settings, GEDIT_SETTINGS_PRINT_MARGIN_LEFT);
+	gtk_source_print_compositor_set_left_margin (job->priv->compositor, margin, GTK_UNIT_MM);
+
+	margin = g_settings_get_double (job->priv->print_settings, GEDIT_SETTINGS_PRINT_MARGIN_TOP);
+	gtk_source_print_compositor_set_top_margin (job->priv->compositor, margin, GTK_UNIT_MM);
+
+	margin = g_settings_get_double (job->priv->print_settings, GEDIT_SETTINGS_PRINT_MARGIN_RIGHT);
+	gtk_source_print_compositor_set_right_margin (job->priv->compositor, margin, GTK_UNIT_MM);
+
+	margin = g_settings_get_double (job->priv->print_settings, GEDIT_SETTINGS_PRINT_MARGIN_BOTTOM);
+	gtk_source_print_compositor_set_bottom_margin (job->priv->compositor, margin, GTK_UNIT_MM);
 
 	if (print_header)
 	{
@@ -568,6 +577,10 @@ create_compositor (GeditPrintJob *job)
 		g_free (name_to_display);
 		g_free (left);
 	}
+
+	g_free (print_font_body);
+	g_free (print_font_header);
+	g_free (print_font_numbers);
 }
 
 static void
