@@ -1692,11 +1692,17 @@ gedit_document_set_metadata (GeditDocument *doc,
 		else
 		{
 			/* Unset the key */
-			g_file_info_remove_attribute (info, key);
+			g_file_info_set_attribute (info,
+						   key,
+						   G_FILE_ATTRIBUTE_TYPE_INVALID,
+						   NULL);
 
 			if (doc->priv->metadata_info != NULL)
 			{
-				g_file_info_remove_attribute (doc->priv->metadata_info, key);
+				g_file_info_set_attribute (doc->priv->metadata_info,
+							   key,
+							   G_FILE_ATTRIBUTE_TYPE_INVALID,
+							   NULL);
 			}
 		}
 	}
