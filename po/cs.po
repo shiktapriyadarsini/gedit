@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-02 18:06+0000\n"
-"PO-Revision-Date: 2015-03-02 21:44+0100\n"
+"POT-Creation-Date: 2015-06-18 05:16+0000\n"
+"PO-Revision-Date: 2015-06-18 11:27+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:737
 msgid "Text Editor"
 msgstr "Textový editor"
 
@@ -480,6 +480,38 @@ msgstr ""
 "Udává písmo, které bude použito pro čísla řádků při tisku. Toto nastavení "
 "bude mít vliv pouze v případě, že hodnota „Tisknout čísla řádků“ je nenulová."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+msgid "Margin Left"
+msgstr "Levý okraj"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+msgid "The left margin, in millimeters."
+msgstr "Okraj vlevo, v milimetrech."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+msgid "Margin Top"
+msgstr "Horní okraj"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+msgid "The top margin, in millimeters."
+msgstr "Okraj nahoře, v milimetrech."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Right"
+msgstr "Pravý okraj"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The right margin, in millimeters."
+msgstr "Okraj vpravo, v milimetrech."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Bottom"
+msgstr "Dolní okraj"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The bottom margin, in millimeters."
+msgstr "Okraj dole, v milimetrech."
+
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
 #. encodings that are common in your country, for instance the GB18030 encoding
@@ -491,15 +523,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-2', 'WINDOWS-1250', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid "Automatically Detected Encodings"
 msgstr "Automaticky zjistit kódování"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:94
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -511,15 +543,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:97
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-2', 'WINDOWS-1250']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#: ../data/org.gnome.gedit.gschema.xml.in.h:98
 msgid "Encodings shown in menu"
 msgstr "Kódování zobrazovaná v nabídce"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
+#: ../data/org.gnome.gedit.gschema.xml.in.h:99
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -527,11 +559,11 @@ msgstr ""
 "Seznam kódování zobrazených v nabídce Kódování znaků v dialogovém okně "
 "výběru otvíraných/ukládaných souborů. Používají se jen rozpoznaná kódování."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/org.gnome.gedit.gschema.xml.in.h:100
 msgid "Active plugins"
 msgstr "Aktivní zásuvné moduly"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:93
+#: ../data/org.gnome.gedit.gschema.xml.in.h:101
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -539,15 +571,15 @@ msgstr ""
 "Seznam aktivních zásuvných modulů. Obsahuje „Umístění“ aktivních modulů. Pro "
 "získání „Umístění“ daného modulu viz soubor .gedit-plugin."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:107
 msgid "Show the application's version"
 msgstr "Zobrazit verzi aplikace"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:113
 msgid "Display list of possible values for the encoding option"
 msgstr "Zobrazit seznam možných hodnot pro volbu kódování"
 
-#: ../gedit/gedit-app.c:118
+#: ../gedit/gedit-app.c:120
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -555,44 +587,44 @@ msgstr ""
 "Nastavit kódování znaků, které bude používáno pro otevření souborů vypsaných "
 "na příkazovém řádku"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "ENCODING"
 msgstr "KÓDOVÁNÍ"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 "Vytvořit nové okno nejvyšší úrovně v existující instanci aplikace gedit"
 
-#: ../gedit/gedit-app.c:132
+#: ../gedit/gedit-app.c:134
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Vytvořit nový dokument v existující instanci aplikace gedit"
 
-#: ../gedit/gedit-app.c:139
+#: ../gedit/gedit-app.c:141
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Nastavit velikost a polohu okna (ŠÍŘKAxVÝŠKA+X+Y)"
 
-#: ../gedit/gedit-app.c:140
+#: ../gedit/gedit-app.c:142
 msgid "GEOMETRY"
 msgstr "GEOMETRIE"
 
-#: ../gedit/gedit-app.c:146
+#: ../gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "Otevřít soubory a blokovat zpracování, dokud nejsou zavřeny"
 
-#: ../gedit/gedit-app.c:153
+#: ../gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "Spustit gedit v samostatném režimu"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:162
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[SOUBOR…] [+ŘÁDEK[:SLOUPEC]]"
 
-#: ../gedit/gedit-app.c:265
+#: ../gedit/gedit-app.c:274
 msgid "There was an error displaying the help."
 msgstr "Při zobrazování nápovědy došlo k chybě."
 
-#: ../gedit/gedit-app.c:919
+#: ../gedit/gedit-app.c:944
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neplatné kódování."
@@ -1001,7 +1033,7 @@ msgstr "Nalezen a nahrazen jeden výskyt"
 msgid "\"%s\" not found"
 msgstr "„%s“ nenalezeno"
 
-#: ../gedit/gedit-document.c:956 ../gedit/gedit-document.c:986
+#: ../gedit/gedit-document.c:986 ../gedit/gedit-document.c:1016
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Neuložený dokument %d"
@@ -1011,8 +1043,8 @@ msgstr "Neuložený dokument %d"
 msgid "Tab Group %i"
 msgstr "Skupina karet %i"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
-#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1142
+#: ../gedit/gedit-window.c:1148 ../gedit/gedit-window.c:1156
 msgid "Read-Only"
 msgstr "Pouze ke čtení"
 
@@ -1056,7 +1088,7 @@ msgstr "Kódování znaků:"
 msgid "Line Ending:"
 msgstr "Zakončení řádku:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1226
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1449,16 +1481,16 @@ msgstr "Nelze odstranit schéma barev „%s“."
 msgid "Preparing..."
 msgstr "Připravuje se tisk…"
 
-#: ../gedit/gedit-print-job.c:536
+#: ../gedit/gedit-print-job.c:545
 #, c-format
 msgid "File: %s"
 msgstr "Soubor: %s"
 
-#: ../gedit/gedit-print-job.c:545
+#: ../gedit/gedit-print-job.c:554
 msgid "Page %N of %Q"
 msgstr "Stránka %N z %Q"
 
-#: ../gedit/gedit-print-job.c:619
+#: ../gedit/gedit-print-job.c:632
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "Vykresluje se stránka %d z %d…"
@@ -1532,34 +1564,34 @@ msgid "Saving %s"
 msgstr "Ukládá se %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "Chyba při otevírání souboru %s"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Chyba při vrácení souboru %s do původního stavu"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "Chyba při ukládání souboru %s"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "Název:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "Typ MIME:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "Kódování:"
 
@@ -1595,7 +1627,7 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:511
+#: ../gedit/gedit-view.c:510
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Zobrazovat čísla řá_dků"
@@ -1604,73 +1636,73 @@ msgstr "Zobrazovat čísla řá_dků"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:736
+#: ../gedit/gedit-view-frame.c:691
 #, c-format
 msgid "%d of %d"
 msgstr "%d z %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:828
+#: ../gedit/gedit-view-frame.c:783
 msgid "_Wrap Around"
 msgstr "Přecházet přes _okraj"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:838
+#: ../gedit/gedit-view-frame.c:793
 msgid "Match as _Regular Expression"
 msgstr "Hledat jako _regulární výraz"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:852
+#: ../gedit/gedit-view-frame.c:807
 msgid "Match _Entire Word Only"
 msgstr "Hledat pouze _celá slova"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:866
+#: ../gedit/gedit-view-frame.c:821
 msgid "_Match Case"
 msgstr "_Rozlišovat velikost písmen"
 
-#: ../gedit/gedit-view-frame.c:1041
+#: ../gedit/gedit-view-frame.c:1038
 msgid "String you want to search for"
 msgstr "Řetězec, který chcete hledat"
 
-#: ../gedit/gedit-view-frame.c:1053
+#: ../gedit/gedit-view-frame.c:1050
 msgid "Line you want to move the cursor to"
 msgstr "Řádek, na který chcete přesunout kurzor"
 
-#: ../gedit/gedit-window.c:973
+#: ../gedit/gedit-window.c:981
 msgid "Bracket match is out of range"
 msgstr "Odpovídající závorka je mimo rozsah"
 
-#: ../gedit/gedit-window.c:978
+#: ../gedit/gedit-window.c:986
 msgid "Bracket match not found"
 msgstr "Odpovídající závorka nenalezena"
 
-#: ../gedit/gedit-window.c:983
+#: ../gedit/gedit-window.c:991
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odpovídající závorka nalezena na řádku: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1018
+#: ../gedit/gedit-window.c:1026
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  ř %d, sl %d"
 
-#: ../gedit/gedit-window.c:1200
+#: ../gedit/gedit-window.c:1208
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Šířka tabulátoru: %u"
 
-#: ../gedit/gedit-window.c:1570
+#: ../gedit/gedit-window.c:1578
 msgid "There are unsaved documents"
 msgstr "Některé dokumenty nejsou uložené"
 
-#: ../gedit/gedit-window.c:2419
+#: ../gedit/gedit-window.c:2427
 msgid "Change side panel page"
 msgstr "Změnit stránku postranního panelu"
 
-#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2447 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenty"
@@ -1878,8 +1910,8 @@ msgid "_Paste"
 msgstr "V_ložit"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:19
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Smazat"
@@ -2080,8 +2112,8 @@ msgid "Editor"
 msgstr "Editor"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Písmo"
 
@@ -2343,12 +2375,12 @@ msgstr ""
 "Stáhnout, a nebo můžete tuto verzi ignorovat a počkat na nějakou další"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Ignorovat verzi"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Verze, která má být do vydání novější verze ignorována"
 
@@ -2444,12 +2476,12 @@ msgstr "Externí nástroje"
 msgid "Execute external commands and shell scripts."
 msgstr "Spouští externí příkazy a skripty shellu."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Zda používat systémové písmo"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2458,8 +2490,8 @@ msgstr ""
 "z pracovního prostředí za předpokladu, že se jedná o monospace (a v opačném "
 "případě nastoupí většinou podobná písma)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr ""
 "Název písma v systému Pango. Například „Sans 12“ nebo „Monospace Bold 14“."
@@ -2668,43 +2700,43 @@ msgstr "Domů"
 msgid "File System"
 msgstr "Systém souborů"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Prohlížeč souborů"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Během vytváření nové složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Během vytváření nového souboru došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Během přejmenovávání souboru či složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:683
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Během mazání souboru či složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:686
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Během otevírání složky ve správci souborů došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:689
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Během nastavování kořenové složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:692
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Během načítání složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Vyskytla se chyba"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:913
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2712,25 +2744,25 @@ msgstr ""
 "Soubor nelze přesunout do koše,\n"
 "chcete ho trvale smazat?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:918
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Soubor „%s“ nelze přesunout do koše."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
 msgid "The selected files cannot be moved to the trash."
 msgstr "Vybrané soubory nelze přesunout do koše."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Opravdu chcete trvale smazat „%s“?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:959
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Opravdu chcete trvale smazat vybrané soubory?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
 msgid "If you delete an item, it is permanently lost."
 msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
@@ -2772,36 +2804,36 @@ msgstr ""
 "Nová složka je nyní odfiltrována. Aby byla viditelná, musíte upravit své "
 "nastavení filtrování."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:792
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:774
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2048
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2015
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Žádný připojovací objekt pro připojený svazek: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2125
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2092
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nelze otevřít médium: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2172
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2139
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nelze připojit svazek: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2789
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Chyba při načítání „%s“: Taková složka neexistuje"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Otevřít ve stromovém pohledu"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2809,11 +2841,11 @@ msgstr ""
 "Otevřít stromové zobrazení, když se zásuvný modul prohlížeče souborů načte "
 "místo zobrazení záložek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Kořenová složka prohlížeče souborů"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2821,11 +2853,11 @@ msgstr ""
 "Kořenová složka prohlížeče souborů, která bude použita, když se načítá "
 "zásuvný modulu prohlížeče souborů a onload/tree_view je ZAPNUTO."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Virtuální kořenová složka prohlížeče souborů"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2835,19 +2867,19 @@ msgstr ""
 "načítá zásuvný modul prohlížeče souborů a onload/tree_view je ZAPNUTO. "
 "Virtuální kořen musí být vždy pod skutečným kořenem."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Povolit obnovu vzdálených umístění"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Nastavuje, zda je povolena obnova vzdálených umístění."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Nastavit umístění na první dokument"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2858,11 +2890,11 @@ msgstr ""
 "souborů složku prvního otevřeného dokumentu. (Takto to obecně platí pro "
 "otevírání dokumentů z příkazové řádky nebo aplikace Nautilus apod.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Filtrační režim prohlížeče souborů"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2872,11 +2904,11 @@ msgstr ""
 "Platné hodnoty jsou: none (nic nevyfiltruje), hide-hidden (vyfiltruje skryté "
 "soubory), hide-binary (vyfiltruje binární soubory)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Filtrační vzor pro prohlížeč souborů"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2884,11 +2916,11 @@ msgstr ""
 "Filtrační vzor, který se používá pro filtrování v prohlížeči souborů. Tento "
 "filtr pracuje nad filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Binární vzor pro prohlížeč souborů"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Dodatečné vzory, které se použijí při filtrování binárních souborů."
 
@@ -2956,23 +2988,23 @@ msgstr "Řádky s režimem"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Podpora řádku s režimem ve stylu Emacs, Kate a Vim pro gedit."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Barva textu příkazu"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "Barva textu příkazu"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Barva textu chyby"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "Barva textu chyby"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3460,11 +3492,11 @@ msgid "Available formats"
 msgstr "Dostupné formáty"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Typ výzvy"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3472,19 +3504,19 @@ msgstr ""
 "Zda by měl být uživatel dotázán na formát nebo zda by měl být použit vybraný "
 "nebo vlastní formát."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Vybraný formát"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Vybraný formát použitý při vkládání data/času."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Vlastní formát"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Vlastní formát použitý při vkládání data/času."
 
