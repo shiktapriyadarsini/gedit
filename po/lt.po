@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-08 06:05+0000\n"
-"PO-Revision-Date: 2015-03-08 19:24+0200\n"
+"POT-Creation-Date: 2015-07-09 17:18+0000\n"
+"PO-Revision-Date: 2015-07-10 00:14+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -60,7 +60,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:737
 msgid "Text Editor"
 msgstr "Tekstų redaktorius"
 
@@ -471,6 +471,39 @@ msgstr ""
 "Šriftas, kuriuo bus spausdinami eilučių numeriai. Jis galios tik tada, jei "
 "parametras „Spausdinti eilučių numerius“ yra ne nulinis."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+msgid "Margin Left"
+msgstr "Kairė paraštė"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+msgid "The left margin, in millimeters."
+msgstr "Kairė paraštė milimetrais."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+msgid "Margin Top"
+msgstr "Viršutinė paraštė"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+msgid "The top margin, in millimeters."
+msgstr "Viršutinė paraštė milimetrais."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+#| msgid "Move _Right"
+msgid "Margin Right"
+msgstr "Dešinė paraštė"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The right margin, in millimeters."
+msgstr "Dešinė paraštė milimetrais."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Bottom"
+msgstr "Apatinė paraštė"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The bottom margin, in millimeters."
+msgstr "Apatinė paraštė milimetrais."
+
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
 #. encodings that are common in your country, for instance the GB18030 encoding
@@ -482,15 +515,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-13', 'ISO-8859-15', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid "Automatically Detected Encodings"
 msgstr "Automatiškai nustatytos koduotės"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:94
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -502,15 +535,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:97
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-13', 'ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#: ../data/org.gnome.gedit.gschema.xml.in.h:98
 msgid "Encodings shown in menu"
 msgstr "Koduotės rodomos meniu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
+#: ../data/org.gnome.gedit.gschema.xml.in.h:99
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -518,11 +551,11 @@ msgstr ""
 "Sąrašas koduočių, rodomų failų pasirinkimo lango koduočių meniu. Naudojamos "
 "tik atpažįstamos koduotės."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/org.gnome.gedit.gschema.xml.in.h:100
 msgid "Active plugins"
 msgstr "Aktyvūs įskiepiai"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:93
+#: ../data/org.gnome.gedit.gschema.xml.in.h:101
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -530,15 +563,15 @@ msgstr ""
 "Aktyvių įskiepių sąrašas. Jame yra aktyvių įskiepių „Vietos“. Žr. .gedit-"
 "plugin failą norėdami rasti nurodyto įskiepio „vietą“."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:107
 msgid "Show the application's version"
 msgstr "Rodyti programos versiją"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:113
 msgid "Display list of possible values for the encoding option"
 msgstr "Parodyti koduotės parinkties galimų reikšmių sąrašą"
 
-#: ../gedit/gedit-app.c:118
+#: ../gedit/gedit-app.c:120
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -546,43 +579,43 @@ msgstr ""
 "Nurodykite simbolių koduotę, naudojamą atveriant failus, nurodytus komandų "
 "eilutėje"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "ENCODING"
 msgstr "KODUOTĖ"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Sukurti naują viršutinį langą esamoje gedit programoje"
 
-#: ../gedit/gedit-app.c:132
+#: ../gedit/gedit-app.c:134
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Sukurti naują dokumentą esamoje gedit programoje"
 
-#: ../gedit/gedit-app.c:139
+#: ../gedit/gedit-app.c:141
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Nustatyti lango dydį ir padėtį (WIDTHxHEIGHT+X+Y)"
 
-#: ../gedit/gedit-app.c:140
+#: ../gedit/gedit-app.c:142
 msgid "GEOMETRY"
 msgstr "GEOMETRIJA"
 
-#: ../gedit/gedit-app.c:146
+#: ../gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "Atverti failus ir blokuoti procesą iki jų užvėrimo"
 
-#: ../gedit/gedit-app.c:153
+#: ../gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "Paleisti gedit vienetinėje veiksenoje"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:162
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FAILAS...] [+EILUTĖ[:STULPELIS]]"
 
-#: ../gedit/gedit-app.c:265
+#: ../gedit/gedit-app.c:274
 msgid "There was an error displaying the help."
 msgstr "Įvyko klaida rodant žinyną."
 
-#: ../gedit/gedit-app.c:919
+#: ../gedit/gedit-app.c:944
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: netinkama koduotė."
@@ -978,7 +1011,7 @@ msgstr "Rastas ir pakeistas vienas pasitaikymas"
 msgid "\"%s\" not found"
 msgstr "„%s“ nerasta"
 
-#: ../gedit/gedit-document.c:956 ../gedit/gedit-document.c:986
+#: ../gedit/gedit-document.c:986 ../gedit/gedit-document.c:1016
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Neįrašytas dokumentas %d"
@@ -988,8 +1021,8 @@ msgstr "Neįrašytas dokumentas %d"
 msgid "Tab Group %i"
 msgstr "Kortelių grupę %i"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
-#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1142
+#: ../gedit/gedit-window.c:1148 ../gedit/gedit-window.c:1156
 msgid "Read-Only"
 msgstr "Tik skaitymui"
 
@@ -1033,7 +1066,7 @@ msgstr "Simbolių koduotė:"
 msgid "Line Ending:"
 msgstr "Eilučių pabaigos:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1226
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1425,18 +1458,17 @@ msgstr "Nepavyko pašalinti spalvų schemos „%s“."
 msgid "Preparing..."
 msgstr "Ruošiama..."
 
-#: ../gedit/gedit-print-job.c:536
+#: ../gedit/gedit-print-job.c:545
 #, c-format
 msgid "File: %s"
 msgstr "Failas: %s"
 
-#: ../gedit/gedit-print-job.c:545
+#: ../gedit/gedit-print-job.c:554
 msgid "Page %N of %Q"
 msgstr "%N puslapis iš %Q"
 
-#: ../gedit/gedit-print-job.c:619
+#: ../gedit/gedit-print-job.c:632
 #, c-format
-#| msgid "Page %d of %d"
 msgid "Rendering page %d of %d..."
 msgstr "Piešiamas puslapis %d iš %d..."
 
@@ -1509,34 +1541,34 @@ msgid "Saving %s"
 msgstr "Įrašoma %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "Klaida atveriant failą %s"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Klaida atstatant failą %s"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "Klaida įrašant failą %s"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "Vardas:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "MIME tipas:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "Koduotė:"
 
@@ -1581,73 +1613,73 @@ msgstr "_Rodyti eilučių numerius"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:736
+#: ../gedit/gedit-view-frame.c:691
 #, c-format
 msgid "%d of %d"
 msgstr "%d iš %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:828
+#: ../gedit/gedit-view-frame.c:783
 msgid "_Wrap Around"
 msgstr "_Apvesti"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:838
+#: ../gedit/gedit-view-frame.c:793
 msgid "Match as _Regular Expression"
 msgstr "Tenkina kaip _reguliari išraiška"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:852
+#: ../gedit/gedit-view-frame.c:807
 msgid "Match _Entire Word Only"
 msgstr "Tenkina tik _visas žodis"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:866
+#: ../gedit/gedit-view-frame.c:821
 msgid "_Match Case"
 msgstr "Skirti raidžių _dydį"
 
-#: ../gedit/gedit-view-frame.c:1041
+#: ../gedit/gedit-view-frame.c:1038
 msgid "String you want to search for"
 msgstr "Jūsų norimas rasti užrašas"
 
-#: ../gedit/gedit-view-frame.c:1053
+#: ../gedit/gedit-view-frame.c:1050
 msgid "Line you want to move the cursor to"
 msgstr "Eilutė į kurią norite perkelti žymeklį"
 
-#: ../gedit/gedit-window.c:973
+#: ../gedit/gedit-window.c:981
 msgid "Bracket match is out of range"
 msgstr "Porinis skliaustas yra už ribų"
 
-#: ../gedit/gedit-window.c:978
+#: ../gedit/gedit-window.c:986
 msgid "Bracket match not found"
 msgstr "Porinis skliaustas nerastas"
 
-#: ../gedit/gedit-window.c:983
+#: ../gedit/gedit-window.c:991
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Porinis skliaustas rastas eilutėje: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1018
+#: ../gedit/gedit-window.c:1026
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr " Eil %d, Stl %d"
 
-#: ../gedit/gedit-window.c:1200
+#: ../gedit/gedit-window.c:1208
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tabuliacijos plotis: %u"
 
-#: ../gedit/gedit-window.c:1570
+#: ../gedit/gedit-window.c:1578
 msgid "There are unsaved documents"
 msgstr "Yra neįrašytų dokumentų"
 
-#: ../gedit/gedit-window.c:2419
+#: ../gedit/gedit-window.c:2427
 msgid "Change side panel page"
 msgstr "Pakeisti šoninio skydelio puslapį"
 
-#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2447 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentai"
@@ -2057,8 +2089,8 @@ msgid "Editor"
 msgstr "Redaktorius"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Šriftas"
 
@@ -2218,13 +2250,11 @@ msgid "Replace _All"
 msgstr "Pakeisti _visus"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
-#| msgid "_Find"
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Rasti"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-#| msgid "F_ind "
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "Rast_i "
@@ -2322,12 +2352,12 @@ msgstr ""
 "nekreipti dėmesio į tą versiją ir laukti naujesnės"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Ignoruojama versija"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Nepaisoma versija iki kitos versijos išleidimo"
 
@@ -2423,12 +2453,12 @@ msgstr "Išoriniai įrankiai"
 msgid "Execute external commands and shell scripts."
 msgstr "Vykdyti išorines komandas ir shell scenarijus."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Ar naudoti sistemos šriftą"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2436,8 +2466,8 @@ msgstr ""
 "Jei teigiama, išoriniai įrankiai naudot desktop-global standartinį šriftą, "
 "jei jis vienodo pločio (ir panašiausią įmanomą šriftą priešingu atveju)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Pango šrifto vardas. Pavyzdžiai: „Sans 12“ arba „Monospace Bold 14“."
 
@@ -2774,11 +2804,11 @@ msgid "Error when loading '%s': No such directory"
 msgstr "Klaida įkeliant „%s“: nėra tokio aplanko"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Atverti su medžio vaizdu"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2786,11 +2816,11 @@ msgstr ""
 "Atverti medžio rodinį, vietoje žymelių rodinio, kai įkeliamas failų "
 "naršyklės įskiepis"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Failų naršyklės šakninis aplankas"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2798,11 +2828,11 @@ msgstr ""
 "failų naršyklės šakninis aplankas naudojamas įkeliant failų naršyklės "
 "įskiepį ir esant onload/tree_view TEIGIAMOMS reikšmėms."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Failų naršyklės virtualus šakninis aplankas"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2812,19 +2842,19 @@ msgstr ""
 "naršyklės įskiepį ir esant onload/tree_view TEIGIAMOMS reikšmėms. Virtualus "
 "šakninis aplankas visada turi būti žemiau tikrojo šakninio."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Įjungti nutolusių vietų atstatymą"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Nurodo ar įjungti nutolusių vietų atstatymą."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Nustatyti vietą į pirmą dokumentą"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2836,11 +2866,11 @@ msgstr ""
 "taikoma dokumento atvėrimui iš komandų eilutės arba atveriant jį su "
 "nautilus, ir t.t.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Failų naršyklės filtravimo režimas"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2850,11 +2880,11 @@ msgstr ""
 "reikšmės yra: none (nieko nefiltruoti), hide-hidden (filtruoti paslėptus "
 "failus) ir hide-binary (filtruoti dvejetainius failus)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Failų naršyklės filtravimo šablonas"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2862,11 +2892,11 @@ msgstr ""
 "Filtravimo šablonas, kuriuo filtruoti failų naršyklę. Šis filtras veikia ant "
 "filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Failų naršyklės dvejetainiai šablonai"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Papildomi šablonai, naudojami filtruojant dvejetainius failus."
 
@@ -2934,23 +2964,23 @@ msgstr "Veiksenų eilutės"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Emacs, Kate ir Vim stiliaus veiksenų eilučių palaikymas."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Komandos teksto spalva"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "Komandos teksto spalva"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Klaidos teksto spalva"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "_Klaidos spalva:Klaidos teksto spalva"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3436,11 +3466,11 @@ msgid "Available formats"
 msgstr "Galimi formatai"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Klausti tipo"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3448,19 +3478,19 @@ msgstr ""
 "Ar naudotojo paklausti formato, ar turėtų būti naudojamas pažymėtas arba "
 "pasirinktinis formatas."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Pažymėtas formatas"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Pasirinktas formatas, naudojamas įterpiant datą ir laiką."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Pasirinktinis formatas"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Pasirinktinis formatas, naudojamas įterpiant datą ir laiką."
 
