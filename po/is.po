@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2015-03-25 06:18+0000\n"
-"PO-Revision-Date: 2015-04-28 10:52+0000\n"
+"PO-Revision-Date: 2015-07-17 18:58+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -2300,7 +2300,7 @@ msgstr "Byggingarútgáfa"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
 msgid "Run \"make\" in the document directory"
-msgstr ""
+msgstr "Keyra \"make\" í möppu skjalsins"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
@@ -2676,12 +2676,12 @@ msgstr ""
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2092
 #, c-format
 msgid "Could not open media: %s"
-msgstr ""
+msgstr "Gat ekki opnað miðil: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2139
 #, c-format
 msgid "Could not mount volume: %s"
-msgstr ""
+msgstr "Gat ekki tengt gagnamiðilinn: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2789
 #, c-format
@@ -2701,7 +2701,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
 msgid "File Browser Root Directory"
-msgstr ""
+msgstr "Grunnappa (rót) skráavafra"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
 msgid ""
@@ -2711,7 +2711,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
 msgid "File Browser Virtual Root Directory"
-msgstr ""
+msgstr "Sýndargrunnappa (sýndarrót) skráavafra"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
 msgid ""
@@ -2771,7 +2771,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
 msgid "_Set Root to Active Document"
-msgstr ""
+msgstr "_Setja rót við vikt skjal"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:3
 msgid "_New Folder"
@@ -2827,11 +2827,12 @@ msgstr "Opna ferilsvalmyndina"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
-msgstr ""
+msgstr "Upplýsingalínur (modelines)"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:2
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr ""
+"Stuðningur gedit við upplýsingalínur (modelines) eins og í Emacs, Kate og Vim."
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
@@ -2874,7 +2875,7 @@ msgstr "Python stjórnskjár"
 
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 msgid "Interactive Python console standing in the bottom panel"
-msgstr ""
+msgstr "Gagnvirkur Python stjórnskjár á botnstiku"
 
 #: ../plugins/quickopen/quickopen/__init__.py:35
 msgid "Quick Open..."
@@ -2910,17 +2911,17 @@ msgstr "Úrklippur"
 #: ../plugins/snippets/snippets/exporter.py:80
 #, python-format
 msgid "The archive \"%s\" could not be created"
-msgstr ""
+msgstr "Ekki var hægt að búa til úttaksmöppuna \"%s\""
 
 #: ../plugins/snippets/snippets/exporter.py:97
 #, python-format
 msgid "Target directory \"%s\" does not exist"
-msgstr ""
+msgstr "Úttaksmappan \"%s\" er ekki til"
 
 #: ../plugins/snippets/snippets/exporter.py:100
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
-msgstr ""
+msgstr "Úttaksmappan \"%s\" er ekki gild mappa"
 
 #: ../plugins/snippets/snippets/importer.py:47
 #: ../plugins/snippets/snippets/importer.py:108
@@ -2941,12 +2942,12 @@ msgstr ""
 #: ../plugins/snippets/snippets/importer.py:77
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
-msgstr ""
+msgstr "Ekki var hægt að afþjappa \"%s\" safnskrána"
 
 #: ../plugins/snippets/snippets/importer.py:95
 #, python-format
 msgid "The following files could not be imported: %s"
-msgstr ""
+msgstr "Ekki var hægt að flytja inn eftirtaldar skrár: %s"
 
 #: ../plugins/snippets/snippets/importer.py:111
 #: ../plugins/snippets/snippets/importer.py:124
@@ -3074,7 +3075,7 @@ msgstr ""
 #: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
-msgstr ""
+msgstr "Keyrsla Python skipunarinnar (%s) mistókst: %s"
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
