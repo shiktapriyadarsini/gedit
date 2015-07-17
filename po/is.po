@@ -1,23 +1,22 @@
-# translation of gedit.gnome-3-14.is.po to
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Sveinn í Felli <sv1@fellsnet.is>, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.gnome-3-14.is\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
-"keywords=I18N+L10N&component=general\n"
+"Project-Id-Version: gedit\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2014-11-29 16:59+0000\n"
-"PO-Revision-Date: 2015-04-28 10:53+0000\n"
+"PO-Revision-Date: 2015-07-17 16:11+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -53,7 +52,7 @@ msgstr "gedit"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:775
 msgid "Text Editor"
-msgstr "Textaritill"
+msgstr "Texta Ritill"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "Edit text files"
@@ -80,7 +79,7 @@ msgstr "Opna nýtt skjal"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
-msgstr "Nota sjálfgefið letur"
+msgstr "Nota sjálfgefna leturgerð"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
@@ -125,7 +124,7 @@ msgstr "Hvort gedit eigi að gera öryggisafrit af skjölum sem eru vistuð."
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 #| msgid "Auto Save"
 msgid "Autosave"
-msgstr "Sjálfvirk vistun"
+msgstr "Vista sjálfkrafa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
@@ -146,8 +145,8 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Mínútur þar til gedit vistar sjálfvirkt breytt skjöl. Þetta hefur "
-"einungis áhrif ef \"Vista sjálfvirkt\" er valið."
+"Mínútur þar til gedit vistar sjálfvirkt breytt skjöl. Þetta hefur einungis "
+"áhrif ef \"Vista sjálfvirkt\" er valið."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
@@ -337,12 +336,12 @@ msgstr "Hvort stöðustikan eigi að vera sýnileg."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Side panel is Visible"
-msgstr "Hliðarspjald er sýnilegt"
+msgstr "Hliðarstika er sýnileg"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
-msgstr "Hvort vinstri hliðarspjald eigi að vera sýnilet."
+msgstr "Hvort vinstri hliðarstika eigi að vera sýnileg."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Maximum Recent Files"
@@ -384,9 +383,9 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "Tilgreinir hvernig brjóta eigi langar línur í prentun. Notaðu \"none\"\" ef "
-"ekki á að brjóta línur, \"word\"\" ef brjóta á línu á milli orða og "
-"\"char\"\" ef brjóta á línu á milli stafa. Athugaðu að gildin eru "
-"hástafsnæm, þannig að þau verða að vera nákvæmlega eins og hér er sýnt."
+"ekki á að brjóta línur, \"word\"\" ef brjóta á línu á milli orða og \"char"
+"\"\" ef brjóta á línu á milli stafa. Athugaðu að gildin eru hástafsnæm, "
+"þannig að þau verða að vera nákvæmlega eins og hér er sýnt."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Line Numbers"
@@ -819,7 +818,8 @@ msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"Breytingar sem gerðar hafa verið á skjalinu síðustu %ld sekúnduna munu tapast."
+"Breytingar sem gerðar hafa verið á skjalinu síðustu %ld sekúnduna munu "
+"tapast."
 msgstr[1] ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu %ld sekúndurnar munu "
 "tapast."
@@ -839,8 +839,8 @@ msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Breytingar sem gerðar hafa verið á skjalinu síðustu mínútuna og %ld sekúnduna "
-"munu tapast."
+"Breytingar sem gerðar hafa verið á skjalinu síðustu mínútuna og %ld "
+"sekúnduna munu tapast."
 msgstr[1] ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu mínútuna og %ld "
 "sekúndurnar munu tapast."
@@ -894,7 +894,7 @@ msgstr[1] ""
 
 #: ../gedit/gedit-commands-file.c:1580
 msgid "_Revert"
-msgstr "F_rumstilla"
+msgstr "Aftu_rkalla"
 
 #: ../gedit/gedit-commands-help.c:80
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
@@ -1219,8 +1219,7 @@ msgid ""
 "location correctly and try again."
 msgstr ""
 "Get ekki meðhöndlað \"%s:\" staðsetningar í skrifham. Athugaðu hvort þú "
-"skrifaðir staðsetninguna rétt og "
-"prófaðu svo aftur."
+"skrifaðir staðsetninguna rétt og prófaðu svo aftur."
 
 #: ../gedit/gedit-io-error-info-bar.c:1060
 msgid ""
@@ -1228,8 +1227,7 @@ msgid ""
 "location correctly and try again."
 msgstr ""
 "Get ekki meðhöndlað þessa staðsetningu í skrifham. Athugaðu hvort þú "
-"skrifaðir staðsetninguna rétt og "
-"prófaðu svo aftur."
+"skrifaðir staðsetninguna rétt og prófaðu svo aftur."
 
 #: ../gedit/gedit-io-error-info-bar.c:1069
 #, c-format
@@ -1646,7 +1644,7 @@ msgstr "_Hjálp"
 #: ../gedit/resources/gtk/menus-default.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:17
 msgid "_About"
-msgstr "_Um hugbúnaðinn"
+msgstr "_Um"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:5
 #: ../gedit/resources/gtk/menus-traditional.ui.h:20
@@ -1707,7 +1705,7 @@ msgstr "Skoða"
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
 #: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
-msgstr "_Hliðarspjald"
+msgstr "_Hliðarstika"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
@@ -1866,7 +1864,7 @@ msgstr "Í _lagi"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
 msgid "A_vailable encodings:"
-msgstr "Kóðanir í _boði:"
+msgstr "_Tiltækar stafatöflur:"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
 msgid "_Description"
@@ -1881,7 +1879,7 @@ msgstr "_Kóðun"
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:8
 #: ../plugins/spell/gedit-automatic-spell-checker.c:506
 msgid "_Add"
-msgstr "_Bæta við"
+msgstr "Bæt_a við"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:9
 msgid "_Remove"
@@ -1889,7 +1887,7 @@ msgstr "Fja_rlægja"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:10
 msgid "E_ncodings shown in menu:"
-msgstr "_Kóðanir sýndar í valmynd:"
+msgstr "Stafatöflur sý_ndar í valmynd:"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
 msgid "Highlight Mode"
@@ -2069,7 +2067,7 @@ msgstr "Prenta síðu_hausa"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
 msgid "Fonts"
-msgstr "Leturgerðir"
+msgstr "Letur"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
 msgid "_Body:"
@@ -2101,7 +2099,7 @@ msgstr "Sýna næstu síðu"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:4
 msgid "_Next Page"
-msgstr "_Næsta síða"
+msgstr "Næs_ta síða"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:5
 msgid "Current page (Alt+P)"
@@ -2175,11 +2173,11 @@ msgstr "_Finna"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
 msgid "_Search for: "
-msgstr "_Leita að: "
+msgstr "_Leita eftir:"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
 msgid "Replace _with: "
-msgstr "Skipta út _fyrir: "
+msgstr "Ski_pta út með: "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
 msgid "_Match case"
@@ -2227,7 +2225,7 @@ msgstr "Vista"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:10
 msgid "Hide panel"
-msgstr "Fela spjald"
+msgstr "Fela stiku"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:11
 #| msgid "Open a file"
@@ -2367,7 +2365,7 @@ msgstr "Senda til fpaste"
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
 msgid "Paste selected text or current document to fpaste"
-msgstr "Límaa valinn texta eða allt skjalið í fpaste"
+msgstr "Líma valinn texta eða allt skjalið í fpaste"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
@@ -2881,7 +2879,7 @@ msgstr ""
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
-msgstr "Textalitur skipunar"
+msgstr "Litur skipunartexta"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
 msgid "The command color text"
@@ -3187,21 +3185,21 @@ msgstr ""
 
 #: ../plugins/sort/gedit-sort-plugin.c:431
 msgid "S_ort..."
-msgstr "_Raða..."
+msgstr "F_lokka..."
 
 #. ex:set ts=8 noet:
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
-msgstr "Raða"
+msgstr "Flokka"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
 msgid "_Sort"
-msgstr "R_aða"
+msgstr "_Flokka"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
 msgid "_Reverse order"
-msgstr "_Öfug röð"
+msgstr "Öfug_ri röð"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 msgid "R_emove duplicates"
@@ -3470,4 +3468,578 @@ msgstr "Setja inn dagsetningu/tíma"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Setur inn dagsetningu og tíma við núverandi bendilstöðu."
 
+#~ msgid "Background Color"
+#~ msgstr "Bakgrunnslitur"
 
+#~ msgid "Text Color"
+#~ msgstr "Texta Litur"
+
+#~ msgid "Enabled"
+#~ msgstr "Virkur"
+
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Letur</b>"
+
+#~ msgid "Bold"
+#~ msgstr "Feitletrað"
+
+#~ msgid "Italic"
+#~ msgstr "Skáletrað"
+
+#~ msgid "Pick a color"
+#~ msgstr "Veldu lit"
+
+#~ msgid "Strikethrough"
+#~ msgstr "Yfirstrikun"
+
+#~ msgid "_Background:"
+#~ msgstr "_Bakgrunnur"
+
+#  gnome_print_font_picker_update_font_info
+#~ msgid "Goto Line"
+#~ msgstr "Fara í Línu"
+
+#~ msgid "General"
+#~ msgstr "Almennt"
+
+#~ msgid "label"
+#~ msgstr "merki"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "Find Next"
+#~ msgstr "Finna Næsta"
+
+#~ msgid "Replace All"
+#~ msgstr "Útskipta Öllu"
+
+#~ msgid "Unicode"
+#~ msgstr "Unicode (UTF-8)"
+
+#~ msgid "Arabic"
+#~ msgstr "Arabíska"
+
+#~ msgid "Greek"
+#~ msgstr "Gríska"
+
+#~ msgid "Hebrew"
+#~ msgstr "Hebreska"
+
+#~ msgid "Armenian"
+#~ msgstr "Armenskt"
+
+#~ msgid "Japanese"
+#~ msgstr "Japanska"
+
+#~ msgid "Korean"
+#~ msgstr "Kóreiska"
+
+#~ msgid "Vietnamese"
+#~ msgstr "Víetnamska"
+
+#~ msgid "Thai"
+#~ msgstr "Taílenska"
+
+#~ msgid "Open File..."
+#~ msgstr "Opna Skrá..."
+
+#~ msgid "Save as..."
+#~ msgstr "Vista sem..."
+
+#~ msgid "Unicode (UTF-8)"
+#~ msgstr "Unicode (UTF-8)"
+
+#  Translators: %s is a URI
+#~ msgid "Open '%s'"
+#~ msgstr "Opna '%s'"
+
+#~ msgid "Normal"
+#~ msgstr "Venjulegt"
+
+#~ msgid "About this application"
+#~ msgstr "Um þetta forrit"
+
+#~ msgid "Close"
+#~ msgstr "Loka"
+
+#~ msgid "Close all open files"
+#~ msgstr "Loka öll opin skjöl"
+
+#~ msgid "Close the current file"
+#~ msgstr "Loka núverandi skrá"
+
+#~ msgid "Copy"
+#~ msgstr "Afrita"
+
+#~ msgid "Cu_t"
+#~ msgstr "_Klippa"
+
+#~ msgid "Cut"
+#~ msgstr "Klippa"
+
+#~ msgid "Delete"
+#~ msgstr "Eyða"
+
+#~ msgid "Main toolbar"
+#~ msgstr "Sýna aðal tólstiku"
+
+#~ msgid "Page Set_up"
+#~ msgstr "Prentar_uppsetning"
+
+#~ msgid "Paste"
+#~ msgstr "Líma"
+
+#~ msgid "Paste the clipboard"
+#~ msgstr "Líma frá úrklippuborði"
+
+#~ msgid "Print Previe_w..."
+#~ msgstr "Pren_taraforsýn..."
+
+#~ msgid "Print the current file"
+#~ msgstr "Prenta núverandi skrá"
+
+#~ msgid "Quit"
+#~ msgstr "Hætta"
+
+#~ msgid "Quit the program"
+#~ msgstr "Hætta í forritinu"
+
+#~ msgid "Redo"
+#~ msgstr "Endurgera"
+
+#~ msgid "Redo the undone action"
+#~ msgstr "Endurkalla afturkallaða aðgerð"
+
+#~ msgid "Save _As..."
+#~ msgstr "Vist_a sem..."
+
+#~ msgid "Save the current file with a different name"
+#~ msgstr "Vista núverandi skrá undir öðru nafni"
+
+#~ msgid "Search for text"
+#~ msgstr "Leita að texta"
+
+#~ msgid "Select All"
+#~ msgstr "Velja Allt"
+
+#~ msgid "Undo"
+#~ msgstr "Afturkalla"
+
+#~ msgid "Undo the last action"
+#~ msgstr "Hætta við síðustu aðgerð"
+
+#~ msgid "_Contents"
+#~ msgstr "_Innihald"
+
+#~ msgid "_Find..."
+#~ msgstr "_Finna..."
+
+#~ msgid "_Print..."
+#~ msgstr "_Prenta..."
+
+#~ msgid "_View"
+#~ msgstr "_Birta"
+
+#, fuzzy
+#~ msgid "C_hange Case"
+#~ msgstr "Bre_yta"
+
+#, fuzzy
+#~ msgid "_Invert Case"
+#~ msgstr "_Innsetja"
+
+#, fuzzy
+#~ msgid "Change selected text to lower case"
+#~ msgstr "Afrita valdan texta á úrklippuborð"
+
+#, fuzzy
+#~ msgid "Change Case"
+#~ msgstr "Bre_yta"
+
+#~ msgid "_Update"
+#~ msgstr "_Uppfæra"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "Update"
+#~ msgstr "Uppfæra"
+
+#~ msgid "User name"
+#~ msgstr "Notendanafn"
+
+#, fuzzy
+#~ msgid "Sa_ve Copy..."
+#~ msgstr "_Afrita"
+
+#, fuzzy
+#~ msgid "Save Copy..."
+#~ msgstr "Vista _Ekkert"
+
+#, fuzzy
+#~ msgid "Save a Copy"
+#~ msgstr "Vista öll opin skjöl"
+
+#~ msgid "Run Command"
+#~ msgstr "Keyra tiltekna skipun"
+
+#~ msgid "_Run"
+#~ msgstr "_Keyra"
+
+#~ msgid "Failed"
+#~ msgstr "Villa"
+
+#, fuzzy
+#~ msgid "Amharic"
+#~ msgstr "Arabíska"
+
+#~ msgid "Czech"
+#~ msgstr "Tékknenska"
+
+#~ msgid "Danish"
+#~ msgstr "Danska"
+
+#, fuzzy
+#~ msgid "German (Austria)"
+#~ msgstr "Þýska (Þýskalandi)"
+
+#~ msgid "German (Germany)"
+#~ msgstr "Þýska (Þýskalandi)"
+
+#~ msgid "German (Swiss)"
+#~ msgstr "Þýska (Sviss)"
+
+#~ msgid "English (American)"
+#~ msgstr "Enska (Ameríka)"
+
+#~ msgid "English (British)"
+#~ msgstr "Enska (Breska)"
+
+#~ msgid "English (Canadian)"
+#~ msgstr "Enska (Kanada)"
+
+#~ msgid "Spanish"
+#~ msgstr "Spænska"
+
+#, fuzzy
+#~ msgid "Persian"
+#~ msgstr "Prenta"
+
+#, fuzzy
+#~ msgid "Finnish"
+#~ msgstr "Danska"
+
+#~ msgid "Faroese"
+#~ msgstr "Færeyska"
+
+#~ msgid "French (France)"
+#~ msgstr "Franska (Frakklandi)"
+
+#~ msgid "French (Swiss)"
+#~ msgstr "Franska (Sviss)"
+
+#, fuzzy
+#~ msgid "Hindi"
+#~ msgstr "Leita"
+
+#~ msgid "Italian"
+#~ msgstr "Ítalska"
+
+#, fuzzy
+#~ msgid "Macedonian"
+#~ msgstr "gedit"
+
+#, fuzzy
+#~ msgid "Norwegian Bokmal"
+#~ msgstr "Norska"
+
+#~ msgid "Dutch"
+#~ msgstr "Hollenska"
+
+#, fuzzy
+#~ msgid "Norwegian Nynorsk"
+#~ msgstr "Norska"
+
+#~ msgid "Norwegian"
+#~ msgstr "Norska"
+
+#~ msgid "Polish"
+#~ msgstr "Pólska"
+
+#~ msgid "Russian"
+#~ msgstr "Rússnenska"
+
+#, fuzzy
+#~ msgid "Sardinian"
+#~ msgstr "Úkraínska"
+
+#~ msgid "Swedish"
+#~ msgstr "Sænska"
+
+#, fuzzy
+#~ msgid "Tamil"
+#~ msgstr "Taílenska"
+
+#~ msgid "Ukrainian"
+#~ msgstr "Úkraínska"
+
+#~ msgid "<b>Language</b>"
+#~ msgstr "<b>Tungumál</b>"
+
+#~ msgid "<b>word</b>"
+#~ msgstr "<b>orð</b>"
+
+#~ msgid "Language:"
+#~ msgstr "Tungumál:"
+
+#, fuzzy
+#~ msgid "Background color"
+#~ msgstr "Bakgrunnslitur"
+
+#, fuzzy
+#~ msgid "Background texture tile"
+#~ msgstr "Bakgrunnslitur"
+
+#, fuzzy
+#~ msgid "Base font"
+#~ msgstr "Nota letur á miða"
+
+#, fuzzy
+#~ msgid "Border"
+#~ msgstr "Feitletrað"
+
+#, fuzzy
+#~ msgid "Center"
+#~ msgstr "Almennt"
+
+#, fuzzy
+#~ msgid "Comment"
+#~ msgstr "_Innihald"
+
+#, fuzzy
+#~ msgid "Content type"
+#~ msgstr "_Innihald"
+
+#, fuzzy
+#~ msgid "Coordinates"
+#~ msgstr "_Innihald"
+
+#, fuzzy
+#~ msgid "Definition description"
+#~ msgstr "_Lýsing"
+
+#, fuzzy
+#~ msgid "Deleted text"
+#~ msgstr "Eyða"
+
+#, fuzzy
+#~ msgid "Direction"
+#~ msgstr "_Lýsing"
+
+#, fuzzy
+#~ msgid "Disabled"
+#~ msgstr "Virkur"
+
+#, fuzzy
+#~ msgid "Document base"
+#~ msgstr "_Skjöl"
+
+#, fuzzy
+#~ msgid "Document body"
+#~ msgstr "_Skjöl"
+
+#, fuzzy
+#~ msgid "Document head"
+#~ msgstr "_Skjöl"
+
+#, fuzzy
+#~ msgid "Document title"
+#~ msgstr "_Skjöl"
+
+#, fuzzy
+#~ msgid "Document type"
+#~ msgstr "_Skjöl"
+
+#, fuzzy
+#~ msgid "Element ID"
+#~ msgstr "_Skjöl"
+
+#, fuzzy
+#~ msgid "Font face"
+#~ msgstr "Heiti leturs"
+
+#, fuzzy
+#~ msgid "For label"
+#~ msgstr "merki"
+
+#, fuzzy
+#~ msgid "Form"
+#~ msgstr "Venjulegt"
+
+#, fuzzy
+#~ msgid "Frame"
+#~ msgstr "Nafn:"
+
+#, fuzzy
+#~ msgid "Frameset"
+#~ msgstr "Færeyska"
+
+#, fuzzy
+#~ msgid "Generic span"
+#~ msgstr "Almennt"
+
+#, fuzzy
+#~ msgid "Inserted text"
+#~ msgstr "Stillingar dags/tíma"
+
+#, fuzzy
+#~ msgid "Italic text"
+#~ msgstr "Skáletrað"
+
+#, fuzzy
+#~ msgid "Label"
+#~ msgstr "merki"
+
+#, fuzzy
+#~ msgid "Language code"
+#~ msgstr "Tungumál"
+
+#, fuzzy
+#~ msgid "Link color"
+#~ msgstr "Veldu lit"
+
+#, fuzzy
+#~ msgid "Long description link"
+#~ msgstr "_Lýsing"
+
+#, fuzzy
+#~ msgid "Name"
+#~ msgstr "Nafn:"
+
+#, fuzzy
+#~ msgid "Object applet file"
+#~ msgstr "Opna skrá"
+
+#, fuzzy
+#~ msgid "OnChange event"
+#~ msgstr "Bre_yta"
+
+#, fuzzy
+#~ msgid "Option selector"
+#~ msgstr "Leturval"
+
+#, fuzzy
+#~ msgid "Preformatted text"
+#~ msgstr "Forsýna texta"
+
+#, fuzzy
+#~ msgid "Quote"
+#~ msgstr "Hætta"
+
+#, fuzzy
+#~ msgid "Range"
+#~ msgstr "Bre_yta"
+
+#, fuzzy
+#~ msgid "Reverse link"
+#~ msgstr "_Öfugri röð"
+
+#, fuzzy
+#~ msgid "Shape"
+#~ msgstr "Vista"
+
+#, fuzzy
+#~ msgid "Size"
+#~ msgstr "Sýna stærð"
+
+#, fuzzy
+#~ msgid "Small text style"
+#~ msgstr "Allar Texta Skrár"
+
+#, fuzzy
+#~ msgid "Spacer"
+#~ msgstr "Útskipta"
+
+#, fuzzy
+#~ msgid "Span"
+#~ msgstr "Spænska"
+
+#, fuzzy
+#~ msgid "Starting sequence number"
+#~ msgstr "Sýna &línu númer"
+
+#, fuzzy
+#~ msgid "Strike-through text"
+#~ msgstr "Yfirstrikun"
+
+#, fuzzy
+#~ msgid "Strike-through text style"
+#~ msgstr "Yfirstrikun"
+
+#, fuzzy
+#~ msgid "Superscript"
+#~ msgstr "_Lýsing"
+
+#, fuzzy
+#~ msgid "Table"
+#~ msgstr "Virkur"
+
+#, fuzzy
+#~ msgid "Text color"
+#~ msgstr "Texta Litur"
+
+#~ msgid "Title"
+#~ msgstr "Titill"
+
+#, fuzzy
+#~ msgid "Underlined text style"
+#~ msgstr "Undirstrikun"
+
+#, fuzzy
+#~ msgid "Unordered list"
+#~ msgstr "Undirstrikun"
+
+#, fuzzy
+#~ msgid "Footnote"
+#~ msgstr "Letur"
+
+#, fuzzy
+#~ msgid "Greek alpha"
+#~ msgstr "Gríska"
+
+#, fuzzy
+#~ msgid "Greek beta"
+#~ msgstr "Gríska"
+
+#, fuzzy
+#~ msgid "Greek gamma"
+#~ msgstr "Gríska"
+
+#, fuzzy
+#~ msgid "Greek rho"
+#~ msgstr "Gríska"
+
+#, fuzzy
+#~ msgid "Greek tau"
+#~ msgstr "Gríska"
+
+#, fuzzy
+#~ msgid "List description"
+#~ msgstr "_Lýsing"
+
+#, fuzzy
+#~ msgid "Reference label"
+#~ msgstr "Eiginleikar"
+
+#, fuzzy
+#~ msgid "Reference ref"
+#~ msgstr "Eiginleikar"
+
+#, fuzzy
+#~ msgid "namespace"
+#~ msgstr "Víetnamska"
+
+#, fuzzy
+#~ msgid "parent"
+#~ msgstr "Opna"
