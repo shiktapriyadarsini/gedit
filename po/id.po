@@ -9,11 +9,11 @@
 # Andika Triwidada <andika@gmail.com>, 2011-2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit master\n"
+"Project-Id-Version: gedit gnome-3-16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-04-09 05:20+0000\n"
-"PO-Revision-Date: 2015-04-09 16:24+0700\n"
+"POT-Creation-Date: 2015-08-01 17:17+0000\n"
+"PO-Revision-Date: 2015-08-02 12:12+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -22,12 +22,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
-"gedit is the official text editor of the GNOME desktop environment. While aiming "
-"at simplicity and ease of use, gedit is a powerful general purpose text editor."
+"gedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"text editor."
 msgstr ""
 "gedit adalah penyunting teks lingkungan desktop GNOME yang resmi. Walaupun "
 "mengejar kesederhanaan dan kemudahan pemakaian, gedit adalah penyunting teks "
@@ -36,26 +37,26 @@ msgstr ""
 #: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
-"application, or simply taking some quick notes, gedit will be a reliable tool to "
-"accomplish your task."
+"application, or simply taking some quick notes, gedit will be a reliable "
+"tool to accomplish your task."
 msgstr ""
-"Apakah Anda sedang menulis buku terlaris berikutnya, memrogram suatu aplikasi "
-"inovatif, atau sekedar hanya menulis cepat catatan, gedit adalah alat yang dapat "
-"diandalkan untuk menyelesaikan tugas Anda."
+"Apakah Anda sedang menulis buku terlaris berikutnya, memrogram suatu "
+"aplikasi inovatif, atau sekedar hanya menulis cepat catatan, gedit adalah "
+"alat yang dapat diandalkan untuk menyelesaikan tugas Anda."
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
-"Its flexible plugin system allows you to tailor the application to your needs and "
-"adapt it to your workflow."
+"Its flexible plugin system allows you to tailor the application to your "
+"needs and adapt it to your workflow."
 msgstr ""
-"Sistem pengayanya yang luwes memungkinkan Anda menata aplikasi ke keperluan Anda "
-"dan menyesuaikannya ke alur kerja Anda."
+"Sistem pengayanya yang luwes memungkinkan Anda menata aplikasi ke keperluan "
+"Anda dan menyesuaikannya ke alur kerja Anda."
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:1
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:737
 msgid "Text Editor"
 msgstr "Penyunting Teks"
 
@@ -85,13 +86,15 @@ msgstr "Gunakan Huruf Standar"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
-"Whether to use the system's default fixed width font for editing text instead of "
-"a font specific to gedit. If this option is turned off, then the font named in "
-"the \"Editor Font\" option will be used instead of the system font."
+"Whether to use the system's default fixed width font for editing text "
+"instead of a font specific to gedit. If this option is turned off, then the "
+"font named in the \"Editor Font\" option will be used instead of the system "
+"font."
 msgstr ""
-"Apakah menggunakan fonta lebar tetap bawaan sistem untuk menyunting teks daripada "
-"fonta yang ditentukan gedit. Jika pilihan ini dimatikan, maka fonta yang dinamai "
-"dalam pilihan \"Fonta Penyunting\", akan digunakan daripada fonta system."
+"Apakah menggunakan fonta lebar tetap bawaan sistem untuk menyunting teks "
+"daripada fonta yang ditentukan gedit. Jika pilihan ini dimatikan, maka fonta "
+"yang dinamai dalam pilihan \"Fonta Penyunting\", akan digunakan daripada "
+"fonta system."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
@@ -103,8 +106,8 @@ msgstr "Pengedit Huruf"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
-"A custom font that will be used for the editing area. This will only take effect "
-"if the \"Use Default Font\" option is turned off."
+"A custom font that will be used for the editing area. This will only take "
+"effect if the \"Use Default Font\" option is turned off."
 msgstr ""
 "Sebuah font yang akan dipergunakan untuk daerah penyuntingan. Ini hanya akan "
 "berakibat jika pilihan \"Gunakan Huruf Standar\" dimatikan."
@@ -124,7 +127,8 @@ msgstr "Buat Salinan Cadangan"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr ""
-"Apakah gedit harus membuat salinan cadangan bagi berkas-berkas yang disimpannya."
+"Apakah gedit harus membuat salinan cadangan bagi berkas-berkas yang "
+"disimpannya."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
@@ -132,8 +136,9 @@ msgstr "Menyimpan otomatis"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
-"Whether gedit should automatically save modified files after a time interval. You "
-"can set the time interval with the \"Autosave Interval\" option."
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Autosave Interval\" "
+"option."
 msgstr ""
 "Apakah gedit harus secara otomatis menyimpan berkas yang telah dimodifikasi "
 "setelah waktu tertentu. Anda dapat menentukan jarak waktu dengan pilihan "
@@ -145,8 +150,8 @@ msgstr "Selang Waktu Simpan Otomatis"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
-"Number of minutes after which gedit will automatically save modified files. This "
-"will only take effect if the \"Autosave\" option is turned on."
+"Number of minutes after which gedit will automatically save modified files. "
+"This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
 "Jumlah menit setelah gedit secara otomatis menyimpan berkas yang telah "
 "dimodifikasi. Hal ini hanya akan berakibat jika pilihan \"Simpan Auto\" "
@@ -158,11 +163,11 @@ msgstr "Maksimal Aksi \"Tak Jadi\" (Undo)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for "
-"unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
-"Jumlah aksi maksimal yang dapat di undo ataupun di redo oleh gedit. Isi dengan "
-"\"-1\" untuk tidak terbatas."
+"Jumlah aksi maksimal yang dapat di undo ataupun di redo oleh gedit. Isi "
+"dengan \"-1\" untuk tidak terbatas."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Line Wrapping Mode"
@@ -171,14 +176,15 @@ msgstr "Mode baris wraping"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
-"individual character boundaries. Note that the values are case-sensitive, so make "
-"sure they appear exactly as mentioned here."
+"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+"wrapping at individual character boundaries. Note that the values are case-"
+"sensitive, so make sure they appear exactly as mentioned here."
 msgstr ""
 "Menyatakan bagaimana melipat baris yang panjang dalam daerah penyuntingan. "
-"Gunakan \"none\" untuk tidak melipat, \"word\" untuk melipat pada batasan kata, "
-"dan \"char\" untuk melipat ada batasan karakter. Catat bahwa nilai ini case "
-"sensitive, jadi pastikan mereka kelihatan pas seperti yang disebutkan di sini."
+"Gunakan \"none\" untuk tidak melipat, \"word\" untuk melipat pada batasan "
+"kata, dan \"char\" untuk melipat ada batasan karakter. Catat bahwa nilai ini "
+"case sensitive, jadi pastikan mereka kelihatan pas seperti yang disebutkan "
+"di sini."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Last split mode choice for line wrapping mode"
@@ -186,14 +192,15 @@ msgstr "Mode pembagian terakhir bagi mode pelipatan baris"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
-"Specifies the last split mode used with line wrapping mode, so that when wrapping "
-"mode is off we still remember the split mode choice. Use \"word\" for wrapping at "
-"word boundaries, and \"char\" for wrapping at individual character boundaries."
+"Specifies the last split mode used with line wrapping mode, so that when "
+"wrapping mode is off we still remember the split mode choice. Use \"word\" "
+"for wrapping at word boundaries, and \"char\" for wrapping at individual "
+"character boundaries."
 msgstr ""
 "Menentukan mode pelipatan terakhir kali yang digunakan untuk mode pelipatan "
-"baris, sehingga saat mode pelipatan tidak aktif, aplikasi masih bisa mengingat  "
-"mode pelipatan yang dipilih. Gunakan nilai \"word\" untuk pelipatan kata, dan "
-"\"char\" untuk pelipatan karakter."
+"baris, sehingga saat mode pelipatan tidak aktif, aplikasi masih bisa "
+"mengingat  mode pelipatan yang dipilih. Gunakan nilai \"word\" untuk "
+"pelipatan kata, dan \"char\" untuk pelipatan karakter."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
@@ -201,7 +208,8 @@ msgstr "Ukuran Tab"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid ""
-"Specifies the number of spaces that should be displayed instead of Tab characters."
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
 msgstr "Tentukan jumlah spasi yang harus ditampilkan dari pada karakter tab."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:22
@@ -226,7 +234,8 @@ msgstr "Tampilkan Nomor Baris"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Whether gedit should display line numbers in the editing area."
-msgstr "Apakah gedit harus menampilkan nomor baris di dalam daerah penyuntingan."
+msgstr ""
+"Apakah gedit harus menampilkan nomor baris di dalam daerah penyuntingan."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Highlight Current Line"
@@ -267,19 +276,20 @@ msgstr "Home End Cerdas"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"disabled\" to always move at the start/end of the line, \"after\" to move to "
-"the start/end of the line the first time the keys are pressed and to the start/"
-"end of the text ignoring whitespaces the second time the keys are pressed, "
-"\"before\" to move to the start/end of the text before moving to the start/end of "
-"the line and \"always\" to always move to the start/end of the text instead of "
-"the start/end of the line."
+"\"disabled\" to always move at the start/end of the line, \"after\" to move "
+"to the start/end of the line the first time the keys are pressed and to the "
+"start/end of the text ignoring whitespaces the second time the keys are "
+"pressed, \"before\" to move to the start/end of the text before moving to "
+"the start/end of the line and \"always\" to always move to the start/end of "
+"the text instead of the start/end of the line."
 msgstr ""
-"Menyatakan bagaimana kursor berpindah ketika tombol HOME dan END ditekan. Gunakan "
-"\"disabled\" untuk selalu pindah ke awal/akhir baris, \"after\" untuk pindah ke "
-"awal/akhir baris pertama kali tombol ditekan dan ke awal/akhir teks dengan "
-"mengabaikan whitespace saat kedua kali tombol ditekan, \"before\" untuk pindah ke "
-"awal/akhir teks sebelum pindah ke awal/akhir baris, dan \"always\" untuk selalu "
-"pindah ke awal/akhir teks alih-alih awal/akhir baris."
+"Menyatakan bagaimana kursor berpindah ketika tombol HOME dan END ditekan. "
+"Gunakan \"disabled\" untuk selalu pindah ke awal/akhir baris, \"after\" "
+"untuk pindah ke awal/akhir baris pertama kali tombol ditekan dan ke awal/"
+"akhir teks dengan mengabaikan whitespace saat kedua kali tombol ditekan, "
+"\"before\" untuk pindah ke awal/akhir teks sebelum pindah ke awal/akhir "
+"baris, dan \"always\" untuk selalu pindah ke awal/akhir teks alih-alih awal/"
+"akhir baris."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Restore Previous Cursor Position"
@@ -287,9 +297,11 @@ msgstr "Kembalikan Posisi Kursor Pada Keadaan Sebelumnya"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid ""
-"Whether gedit should restore the previous cursor position when a file is loaded."
+"Whether gedit should restore the previous cursor position when a file is "
+"loaded."
 msgstr ""
-"Apakah gedit harus mengembalikan posisi kursor ketika sebuah berkas telah dibaca."
+"Apakah gedit harus mengembalikan posisi kursor ketika sebuah berkas telah "
+"dibaca."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Enable Syntax Highlighting"
@@ -304,7 +316,8 @@ msgid "Enable Search Highlighting"
 msgstr "Fungsikan Penyorotan Pencarian"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:43
-msgid "Whether gedit should highlight all the occurrences of the searched text."
+msgid ""
+"Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Apakah gedit harus menandai baris ini dari teks yang telah dicari."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:44
@@ -312,9 +325,11 @@ msgid "Ensure Trailing Newline"
 msgstr "Pastikan Baris Baru Mengikuti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:45
-msgid "Whether gedit will ensure that documents always end with a trailing newline."
+msgid ""
+"Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
-"Apakah gedit harus memastikan bahwa dokumen selalu diakhiri dengan baris baru."
+"Apakah gedit harus memastikan bahwa dokumen selalu diakhiri dengan baris "
+"baru."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Toolbar is Visible"
@@ -330,30 +345,34 @@ msgstr "Notebook Menampilkan Mode Tab"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
-"Specifies when to show the notebook tabs. Use \"never\" to never show the tabs, "
-"\"always\" to always show the tabs, and \"auto\" to show the tabs only when there "
-"is more than one tab. Note that the values are case-sensitive, so make sure they "
-"appear exactly as mentioned here."
+"Specifies when to show the notebook tabs. Use \"never\" to never show the "
+"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"when there is more than one tab. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
-"Menyatkan kapan menampilkan tab notebook. Gunakan \"never\" untuk tidak pernah "
-"menampilkan tab, \"always\" untuk selalu menampilkan tab, dan \"auto\" untuk "
-"menampilkan tab hanya ketika ada lebih dari satu tab. Catat bahwa nilai ini case "
-"sensitive, jadi pastikan mereka kelihatan pas seperti yang disebutkan di sini."
+"Menyatkan kapan menampilkan tab notebook. Gunakan \"never\" untuk tidak "
+"pernah menampilkan tab, \"always\" untuk selalu menampilkan tab, dan \"auto"
+"\" untuk menampilkan tab hanya ketika ada lebih dari satu tab. Catat bahwa "
+"nilai ini case sensitive, jadi pastikan mereka kelihatan pas seperti yang "
+"disebutkan di sini."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Status Bar is Visible"
 msgstr "Batang status terlihat"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:51
-msgid "Whether the status bar at the bottom of editing windows should be visible."
-msgstr "Apakah batang status pada bagian bawah jendela penyuntingan harus terlihat."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
+msgstr ""
+"Apakah batang status pada bagian bawah jendela penyuntingan harus terlihat."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Side panel is Visible"
 msgstr "Panel sisi Terlihat"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
-msgid "Whether the side panel at the left of editing windows should be visible."
+msgid ""
+"Whether the side panel at the left of editing windows should be visible."
 msgstr "Menentukan panel sisi di kiri jendela sunting untuk terlihat."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:54
@@ -362,11 +381,11 @@ msgstr "Berkas Terkini Maksimum"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
-"Specifies the maximum number of recently opened files that will be displayed in "
-"the \"Recent Files\" submenu."
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
 msgstr ""
-"Tentukan jumlah maksimal dari berkas yang pernah terbuka yang akan ditampilkan "
-"pada menu \"Berkas Sekarang\"."
+"Tentukan jumlah maksimal dari berkas yang pernah terbuka yang akan "
+"ditampilkan pada menu \"Berkas Sekarang\"."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Print Syntax Highlighting"
@@ -392,14 +411,15 @@ msgstr "Pencetakan dengan Model Baris Wraping"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual "
-"character boundaries. Note that the values are case-sensitive, so make sure they "
-"appear exactly as mentioned here."
+"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
-"Jelaskan bagaimana melipat baris yang panjang untuk pencetakan. Gunakan \"none\" "
-"untuk tidak melipat, \"word\" untuk melipat pada batasan kata, dan \"char\" untuk "
-"melipat ada batasan karakter. Catat bahwa nilai ini case sensitive, jadi pastikan "
-"mereka kelihatan pas seperti yang disebutkan di sini."
+"Jelaskan bagaimana melipat baris yang panjang untuk pencetakan. Gunakan "
+"\"none\" untuk tidak melipat, \"word\" untuk melipat pada batasan kata, dan "
+"\"char\" untuk melipat ada batasan karakter. Catat bahwa nilai ini case "
+"sensitive, jadi pastikan mereka kelihatan pas seperti yang disebutkan di "
+"sini."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Line Numbers"
@@ -408,10 +428,12 @@ msgstr "Cetak Nomor Baris"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of lines."
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
 msgstr ""
-"Jika nilainya 0, maka tidak ada nomor baris yang akan dimasukkan ketika mencetak "
-"sebuah dokumen. Selain itu, gedit akan mencetak nomor baris setiap nomor baris."
+"Jika nilainya 0, maka tidak ada nomor baris yang akan dimasukkan ketika "
+"mencetak sebuah dokumen. Selain itu, gedit akan mencetak nomor baris setiap "
+"nomor baris."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "'Monospace 9'"
@@ -422,9 +444,11 @@ msgid "Body Font for Printing"
 msgstr "Tubuh huruf untuk Pencetakan"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:66
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Tentukan huruf yang akan digunakan untuk tubuh dokumen ketika mencetak dokumen."
+"Tentukan huruf yang akan digunakan untuk tubuh dokumen ketika mencetak "
+"dokumen."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "'Sans 11'"
@@ -436,11 +460,12 @@ msgstr "Huruf kepala untuk Pencetakan"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid ""
-"Specifies the font to use for page headers when printing a document. This will "
-"only take effect if the \"Print Header\" option is turned on."
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
 "Tentukan huruf yang digunakan untuk kepala halaman ketika mencetak sebuah "
-"dokumen. Hal ini hanya akan berakibat jika pilihan \"Cetak Kepala\" dihidupkan."
+"dokumen. Hal ini hanya akan berakibat jika pilihan \"Cetak Kepala\" "
+"dihidupkan."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Sans 8'"
@@ -452,11 +477,43 @@ msgstr "Huruf Nomor baris untuk Pencetakan"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid ""
-"Specifies the font to use for line numbers when printing. This will only take "
-"effect if the \"Print Line Numbers\" option is non-zero."
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Tentukan huruf yang digunakan untuk nomor baris ketika mencetak. Hal ini hanya "
-"akan berakibat jika pilihan \"Cetak Nomor Baris\" tidak nol."
+"Tentukan huruf yang digunakan untuk nomor baris ketika mencetak. Hal ini "
+"hanya akan berakibat jika pilihan \"Cetak Nomor Baris\" tidak nol."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+msgid "Margin Left"
+msgstr "Marjin Kiri"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+msgid "The left margin, in millimeters."
+msgstr "Marjin kiri, dalam milimeter."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+msgid "Margin Top"
+msgstr "Marjin Atas"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+msgid "The top margin, in millimeters."
+msgstr "Marjin atas, dalam milimeter."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Right"
+msgstr "Marjin Kanan"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The right margin, in millimeters."
+msgstr "Marjin kanan, dalam milimeter."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Bottom"
+msgstr "Marjin Bawah"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The bottom margin, in millimeters."
+msgstr "Marjin bawah, dalam milimeter."
 
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
@@ -469,35 +526,35 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid "Automatically Detected Encodings"
 msgstr "Encoding Yang Terdeteksi Secara Otomatis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:94
 msgid ""
-"Sorted list of encodings used by gedit for automatically detecting the encoding "
-"of a file. \"CURRENT\" represents the current locale encoding. Only recognized "
-"encodings are used."
+"Sorted list of encodings used by gedit for automatically detecting the "
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
 msgstr ""
-"Daftar encoding yang telah diurutkan dan dipergunakan oleh gedit untuk mendeteksi "
-"encoding berkas secara otomatis. \"CURRENT\" adalah lokal encoding yang terpakai. "
-"Hanya encoding yang dikenali yang akan dipergunakan."
+"Daftar encoding yang telah diurutkan dan dipergunakan oleh gedit untuk "
+"mendeteksi encoding berkas secara otomatis. \"CURRENT\" adalah lokal "
+"encoding yang terpakai. Hanya encoding yang dikenali yang akan dipergunakan."
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:97
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#: ../data/org.gnome.gedit.gschema.xml.in.h:98
 msgid "Encodings shown in menu"
 msgstr "Encoding terlihat di menu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
+#: ../data/org.gnome.gedit.gschema.xml.in.h:99
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -505,18 +562,18 @@ msgstr ""
 "Daftar dari encoding yang diperlihatkan dalam menu Pengkodean Karakter pada "
 "pemilih buka/simpan berkas. Hanya pengkodean yang dikenali yang dipergunakan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/org.gnome.gedit.gschema.xml.in.h:100
 msgid "Active plugins"
 msgstr "Pengaya aktif"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:93
+#: ../data/org.gnome.gedit.gschema.xml.in.h:101
 msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. See "
-"the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"List of active plugins. It contains the \"Location\" of the active plugins. "
+"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Daftar pengaya yang aktif. Berisi \"Lokasi\" dari pengaya yang aktif tersebut. "
-"Lihat berkas .gedit-plugin untuk mendapatkan \"Lokasi\" dari pengaya yang "
-"diberikan."
+"Daftar pengaya yang aktif. Berisi \"Lokasi\" dari pengaya yang aktif "
+"tersebut. Lihat berkas .gedit-plugin untuk mendapatkan \"Lokasi\" dari "
+"pengaya yang diberikan."
 
 #: ../gedit/gedit-app.c:107
 msgid "Show the application's version"
@@ -528,10 +585,11 @@ msgstr "Tampilkan daftar nilai yang mungkin bagi pilihan encoding"
 
 #: ../gedit/gedit-app.c:120
 msgid ""
-"Set the character encoding to be used to open the files listed on the command line"
+"Set the character encoding to be used to open the files listed on the "
+"command line"
 msgstr ""
-"Pilih pengkodean karakter yang digunakan untuk membuka berkas yang terdapat pada "
-"baris perintah"
+"Pilih pengkodean karakter yang digunakan untuk membuka berkas yang terdapat "
+"pada baris perintah"
 
 #: ../gedit/gedit-app.c:121
 msgid "ENCODING"
@@ -569,7 +627,7 @@ msgstr "[BERKAS...][+BARIS[:KOLOM]]"
 msgid "There was an error displaying the help."
 msgstr "Ada galat saat menampilkan bantuan."
 
-#: ../gedit/gedit-app.c:935
+#: ../gedit/gedit-app.c:944
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: salah pengkodean."
@@ -586,7 +644,8 @@ msgstr "Tutup dan Jangan Di_simpan"
 #: ../gedit/gedit-commands-file.c:459 ../gedit/gedit-commands-file.c:593
 #: ../gedit/gedit-commands-file.c:669 ../gedit/gedit-commands-file.c:868
 #: ../gedit/gedit-commands-file.c:1580 ../gedit/gedit-io-error-info-bar.c:135
-#: ../gedit/gedit-io-error-info-bar.c:516 ../gedit/gedit-preferences-dialog.c:790
+#: ../gedit/gedit-io-error-info-bar.c:516
+#: ../gedit/gedit-preferences-dialog.c:790
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -621,11 +680,13 @@ msgstr "_Simpan"
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently lost."
+"If you don't save, changes from the last %ld seconds will be permanently "
+"lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %ld detik terakhir akan hilang."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:377
-msgid "If you don't save, changes from the last minute will be permanently lost."
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
 msgstr "Jika tidak disimpan, perubahan dari menit terakhir akan hilang."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:383
@@ -644,7 +705,8 @@ msgstr[0] ""
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently lost."
+"If you don't save, changes from the last %ld minutes will be permanently "
+"lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %ld menit terakhir akan hilang."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:408
@@ -654,17 +716,18 @@ msgstr "Jika tidak disimpan, perubahan dari jam terakhir akan hilang."
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
-"If you don't save, changes from the last hour and %d minute will be permanently "
-"lost."
+"If you don't save, changes from the last hour and %d minute will be "
+"permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be permanently "
-"lost."
+"If you don't save, changes from the last hour and %d minutes will be "
+"permanently lost."
 msgstr[0] ""
 "Jika tidak disimpan, perubahan dari satu jam %d menit terakhir akan hilang."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:429
 #, c-format
-msgid "If you don't save, changes from the last %d hour will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %d jam terakhir akan hilang."
@@ -696,8 +759,8 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
-"Ada %d dokumen dengan perubahan yang belum disimpan. Simpan perubahan sebelum "
-"ditutup?"
+"Ada %d dokumen dengan perubahan yang belum disimpan. Simpan perubahan "
+"sebelum ditutup?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:630
 msgid "Docum_ents with unsaved changes:"
@@ -723,7 +786,8 @@ msgid_plural "Loading %d files…"
 msgstr[0] "Memuat %d berkas…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:453 ../gedit/resources/ui/gedit-window.ui.h:4
+#: ../gedit/gedit-commands-file.c:453
+#: ../gedit/resources/ui/gedit-window.ui.h:4
 msgid "Open"
 msgstr "Buka"
 
@@ -760,8 +824,8 @@ msgstr "Simpan sebagai teks biasa?"
 #: ../gedit/gedit-commands-file.c:651
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved as plain text and will now be saved using "
-"compression."
+"The file \"%s\" was previously saved as plain text and will now be saved "
+"using compression."
 msgstr ""
 "Berkas \"%s\" sebelumnya disimpan sebagai teks biasa dan kini akan disimpan "
 "dengan kompresi."
@@ -773,11 +837,11 @@ msgstr "_Simpan Dengan Kompresi"
 #: ../gedit/gedit-commands-file.c:660
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved using compression and will now be saved as "
-"plain text."
+"The file \"%s\" was previously saved using compression and will now be saved "
+"as plain text."
 msgstr ""
-"Berkas \"%s\" sebelumnya disimpan dengan kompresi dan kini aka disimpan sebagai "
-"teks biasa."
+"Berkas \"%s\" sebelumnya disimpan dengan kompresi dan kini aka disimpan "
+"sebagai teks biasa."
 
 #: ../gedit/gedit-commands-file.c:663
 msgid "_Save As Plain Text"
@@ -807,12 +871,14 @@ msgstr "Kembalikan perubahan yang belum tersimpan ke dokumen \"%s\"?"
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
-"Changes made to the document in the last %ld seconds will be permanently lost."
+"Changes made to the document in the last %ld seconds will be permanently "
+"lost."
 msgstr[0] ""
 "Perubahan di dokumen dalam %ld detik terakhir akan hilang secara permanen."
 
 #: ../gedit/gedit-commands-file.c:1506
-msgid "Changes made to the document in the last minute will be permanently lost."
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
 msgstr "Perubahan di dokumen pada menit terakhir akan hilang."
 
 #: ../gedit/gedit-commands-file.c:1512
@@ -832,7 +898,8 @@ msgstr[0] ""
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
-"Changes made to the document in the last %ld minutes will be permanently lost."
+"Changes made to the document in the last %ld minutes will be permanently "
+"lost."
 msgstr[0] ""
 "Perubahan di dokumen dalam %ld menit terakhir akan hilang secara permanen."
 
@@ -843,20 +910,23 @@ msgstr "Perubahan di dokumen dalam jam terakhir akan hilang secara permanen."
 #: ../gedit/gedit-commands-file.c:1543
 #, c-format
 msgid ""
-"Changes made to the document in the last hour and %d minute will be permanently "
-"lost."
+"Changes made to the document in the last hour and %d minute will be "
+"permanently lost."
 msgid_plural ""
-"Changes made to the document in the last hour and %d minutes will be permanently "
-"lost."
+"Changes made to the document in the last hour and %d minutes will be "
+"permanently lost."
 msgstr[0] ""
-"Perubahan di dokumen dalam jam dan %d menit terakhir akan hilang secara permanen."
+"Perubahan di dokumen dalam jam dan %d menit terakhir akan hilang secara "
+"permanen."
 
 #: ../gedit/gedit-commands-file.c:1558
 #, c-format
-msgid "Changes made to the document in the last %d hour will be permanently lost."
+msgid ""
+"Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "Perubahan di dokumen dalam %d jam terakhir akan hilang secara permanen."
+msgstr[0] ""
+"Perubahan di dokumen dalam %d jam terakhir akan hilang secara permanen."
 
 #: ../gedit/gedit-commands-file.c:1581
 msgid "_Revert"
@@ -902,8 +972,8 @@ msgstr "Dokumen Belum Disimpan %d"
 msgid "Tab Group %i"
 msgstr "Grup Tab %i"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
-#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1142
+#: ../gedit/gedit-window.c:1148 ../gedit/gedit-window.c:1156
 msgid "Read-Only"
 msgstr "Hanya-Baca"
 
@@ -947,7 +1017,7 @@ msgstr "Pengkodean Karakter:"
 msgid "Line Ending:"
 msgstr "Akhiran Baris:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1226
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -955,7 +1025,8 @@ msgstr "Akhiran Baris:"
 msgid "Plain Text"
 msgstr "Teks Biasa"
 
-#: ../gedit/gedit-io-error-info-bar.c:148 ../gedit/gedit-io-error-info-bar.c:496
+#: ../gedit/gedit-io-error-info-bar.c:148
+#: ../gedit/gedit-io-error-info-bar.c:496
 msgid "_Retry"
 msgstr "_Coba"
 
@@ -964,7 +1035,8 @@ msgstr "_Coba"
 msgid "Could not find the file “%s”."
 msgstr "Tak bisa temukan berkas \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:170 ../gedit/gedit-io-error-info-bar.c:210
+#: ../gedit/gedit-io-error-info-bar.c:170
+#: ../gedit/gedit-io-error-info-bar.c:210
 #: ../gedit/gedit-io-error-info-bar.c:217
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Silakan periksa apakah lokasi yang Anda ketikkan benar dan coba lagi."
@@ -996,18 +1068,19 @@ msgstr "\"%s\" bukan lokasi yang sah."
 #: ../gedit/gedit-io-error-info-bar.c:251
 #, c-format
 msgid ""
-"Host “%s” could not be found. Please check that your proxy settings are correct "
-"and try again."
+"Host “%s” could not be found. Please check that your proxy settings are "
+"correct and try again."
 msgstr ""
-"Host \"%s\" tidak dapat ditemukan. Silakan periksa apakah tatanan proksi Anda "
-"sudah benar dan coba lagi."
+"Host \"%s\" tidak dapat ditemukan. Silakan periksa apakah tatanan proksi "
+"Anda sudah benar dan coba lagi."
 
 #: ../gedit/gedit-io-error-info-bar.c:266
 #, c-format
 msgid ""
-"Hostname was invalid. Please check that you typed the location correctly and try "
-"again."
-msgstr "Nama host tidak valid. Silakan periksa lokasi yg Anda tik dan coba lagi."
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr ""
+"Nama host tidak valid. Silakan periksa lokasi yg Anda tik dan coba lagi."
 
 #: ../gedit/gedit-io-error-info-bar.c:274
 #, c-format
@@ -1047,14 +1120,15 @@ msgstr "Sistem Anda sedang luring. Periksa jaringan Anda."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:504 ../gedit/gedit-io-error-info-bar.c:773
+#: ../gedit/gedit-io-error-info-bar.c:504
+#: ../gedit/gedit-io-error-info-bar.c:773
 msgid "Edit Any_way"
 msgstr "Sunt_ing Saja"
 
 #: ../gedit/gedit-io-error-info-bar.c:596
 msgid ""
-"The number of followed links is limited and the actual file could not be found "
-"within this limit."
+"The number of followed links is limited and the actual file could not be "
+"found within this limit."
 msgstr ""
 "Cacah taut yang diikuti terbatas dan berkas sesungguhnya tak ditemukan dalam "
 "batas ini."
@@ -1067,7 +1141,8 @@ msgstr "Anda tidak memiliki izin yang diperlukan untuk membuka berkas."
 msgid "Unable to detect the character encoding."
 msgstr "Tak bisa mengenali pengkodean karakter."
 
-#: ../gedit/gedit-io-error-info-bar.c:607 ../gedit/gedit-io-error-info-bar.c:631
+#: ../gedit/gedit-io-error-info-bar.c:607
+#: ../gedit/gedit-io-error-info-bar.c:631
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Coba periksa apakah Anda tidak sedang membuka suatu berkas biner."
 
@@ -1082,8 +1157,8 @@ msgstr "Ada masalah ketika membuka berkas \"%s\"."
 
 #: ../gedit/gedit-io-error-info-bar.c:616
 msgid ""
-"The file you opened has some invalid characters. If you continue editing this "
-"file you could corrupt this document."
+"The file you opened has some invalid characters. If you continue editing "
+"this file you could corrupt this document."
 msgstr ""
 "Berkas yang Anda buka memiliki karakter yang tidak sah. Berkas ini bisa saja "
 "cacat jika Anda melanjutkan untuk menyuntingnya."
@@ -1095,9 +1170,11 @@ msgstr "Anda juga dapat memilih pengkodean karakter lain dan coba lagi."
 #: ../gedit/gedit-io-error-info-bar.c:628
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
-msgstr "Tak dapat membuka berkas \"%s\" menggunakan pengkodean karakter \"%s\"."
+msgstr ""
+"Tak dapat membuka berkas \"%s\" menggunakan pengkodean karakter \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:632 ../gedit/gedit-io-error-info-bar.c:707
+#: ../gedit/gedit-io-error-info-bar.c:632
+#: ../gedit/gedit-io-error-info-bar.c:707
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Pilih pengkodean karakter lain dari menu dan coba lagi."
 
@@ -1109,12 +1186,13 @@ msgstr "Berkas \"%s\" tidak dapat dibuka."
 #: ../gedit/gedit-io-error-info-bar.c:702
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
-msgstr "Tak dapat menyimpan berkas \"%s\" menggunakan pengkodean karakter \"%s\"."
+msgstr ""
+"Tak dapat menyimpan berkas \"%s\" menggunakan pengkodean karakter \"%s\"."
 
 #: ../gedit/gedit-io-error-info-bar.c:705
 msgid ""
-"The document contains one or more characters that cannot be encoded using the "
-"specified character encoding."
+"The document contains one or more characters that cannot be encoded using "
+"the specified character encoding."
 msgstr ""
 "Dokumen ini mengandung satu atau lebih karakter yang tidak dapat diuraikan "
 "memakai pengkodean karakter yang telah ditentukan."
@@ -1134,12 +1212,14 @@ msgstr "Berkas \"%s\" sudah dibuka pada jendela lain."
 msgid "Do you want to edit it anyway?"
 msgstr "Apakah Anda ingin tetap menyuntingnya?"
 
-#: ../gedit/gedit-io-error-info-bar.c:858 ../gedit/gedit-io-error-info-bar.c:948
+#: ../gedit/gedit-io-error-info-bar.c:858
+#: ../gedit/gedit-io-error-info-bar.c:948
 #: ../gedit/gedit-io-error-info-bar.c:1240
 msgid "S_ave Anyway"
 msgstr "_Simpan Saja"
 
-#: ../gedit/gedit-io-error-info-bar.c:861 ../gedit/gedit-io-error-info-bar.c:951
+#: ../gedit/gedit-io-error-info-bar.c:861
+#: ../gedit/gedit-io-error-info-bar.c:951
 #: ../gedit/gedit-io-error-info-bar.c:1243
 msgid "D_on't Save"
 msgstr "_Jangan Simpan"
@@ -1155,7 +1235,8 @@ msgstr "Berkas \"%s\" telah berubah semenjak ketika membacanya."
 
 #: ../gedit/gedit-io-error-info-bar.c:890
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
-msgstr "Jika Anda menyimpannya, seluruh perubahan di luar akan hilang. Simpan saja?"
+msgstr ""
+"Jika Anda menyimpannya, seluruh perubahan di luar akan hilang. Simpan saja?"
 
 #: ../gedit/gedit-io-error-info-bar.c:970
 #, c-format
@@ -1169,13 +1250,14 @@ msgstr "Tak dapat membuat berkas backup sementara ketika menyimpan \"%s\""
 
 #: ../gedit/gedit-io-error-info-bar.c:992
 msgid ""
-"Could not back up the old copy of the file before saving the new one. You can "
-"ignore this warning and save the file anyway, but if an error occurs while "
-"saving, you could lose the old copy of the file. Save anyway?"
+"Could not back up the old copy of the file before saving the new one. You "
+"can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"Tak dapat membuat salinan yang lama sebelum menyimpan yang baru. Anda dapat saja "
-"mengabaikan peringatan ini dan menyimpan berkasnya, tapi kalau terjadi kesalahan "
-"ketika menyimpan, Anda akan kehilangan salinan yang lama. Simpan saja?"
+"Tak dapat membuat salinan yang lama sebelum menyimpan yang baru. Anda dapat "
+"saja mengabaikan peringatan ini dan menyimpan berkasnya, tapi kalau terjadi "
+"kesalahan ketika menyimpan, Anda akan kehilangan salinan yang lama. Simpan "
+"saja?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1052
@@ -1184,71 +1266,72 @@ msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"Tak dapat menangani lokasi \"%s:\" dalam mode menulis. Tolong periksa apakah Anda "
-"telah mengetik lokasinya dengan benar, kemudian silakan coba kembali."
+"Tak dapat menangani lokasi \"%s:\" dalam mode menulis. Tolong periksa apakah "
+"Anda telah mengetik lokasinya dengan benar, kemudian silakan coba kembali."
 
 #: ../gedit/gedit-io-error-info-bar.c:1060
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"Tak dapat menangani lokasi ini dalam mode menulis. Tolong periksa apakah Anda "
-"telah mengetik lokasinya dengan benar, kemudian silakan coba kembali."
+"Tak dapat menangani lokasi ini dalam mode menulis. Tolong periksa apakah "
+"Anda telah mengetik lokasinya dengan benar, kemudian silakan coba kembali."
 
 #: ../gedit/gedit-io-error-info-bar.c:1069
 #, c-format
 msgid ""
-"“%s” is not a valid location. Please check that you typed the location correctly "
-"and try again."
+"“%s” is not a valid location. Please check that you typed the location "
+"correctly and try again."
 msgstr ""
-"\"%s\" bukanlah lokasi yang valid. Silakan periksa apakah Anda mengetikkan lokasi "
-"dengan benar dan coba lagi."
+"\"%s\" bukanlah lokasi yang valid. Silakan periksa apakah Anda mengetikkan "
+"lokasi dengan benar dan coba lagi."
 
 #: ../gedit/gedit-io-error-info-bar.c:1076
 msgid ""
-"You do not have the permissions necessary to save the file. Please check that you "
-"typed the location correctly and try again."
+"You do not have the permissions necessary to save the file. Please check "
+"that you typed the location correctly and try again."
 msgstr ""
-"Anda tidak memiliki hak yang diperlukan untuk menyimpan berkas. Silakan periksa "
-"apakah Anda telah mengetikkan lokasi dengan benar dan coba lagi."
+"Anda tidak memiliki hak yang diperlukan untuk menyimpan berkas. Silakan "
+"periksa apakah Anda telah mengetikkan lokasi dengan benar dan coba lagi."
 
 #: ../gedit/gedit-io-error-info-bar.c:1082
 msgid ""
-"There is not enough disk space to save the file. Please free some disk space and "
-"try again."
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
 msgstr ""
-"Tak cukup ruang untuk menyimpan berkas. Silakan kosongkan sebagian ruang dan coba "
-"lagi."
+"Tak cukup ruang untuk menyimpan berkas. Silakan kosongkan sebagian ruang dan "
+"coba lagi."
 
 #: ../gedit/gedit-io-error-info-bar.c:1087
 msgid ""
-"You are trying to save the file on a read-only disk. Please check that you typed "
-"the location correctly and try again."
+"You are trying to save the file on a read-only disk. Please check that you "
+"typed the location correctly and try again."
 msgstr ""
-"Anda mencoba untuk menyimpan berkas pada cakram yang hanya dapat dibaca. Silakan "
-"periksa apakah lokasi yang Anda ketikkan benar dan coba lagi."
+"Anda mencoba untuk menyimpan berkas pada cakram yang hanya dapat dibaca. "
+"Silakan periksa apakah lokasi yang Anda ketikkan benar dan coba lagi."
 
 #: ../gedit/gedit-io-error-info-bar.c:1093
 msgid "A file with the same name already exists. Please use a different name."
-msgstr "Sebuah berkas dengan nama yang sama sudah ada. Coba gunakan nama yang lain."
+msgstr ""
+"Sebuah berkas dengan nama yang sama sudah ada. Coba gunakan nama yang lain."
 
 #: ../gedit/gedit-io-error-info-bar.c:1098
 msgid ""
-"The disk where you are trying to save the file has a limitation on length of the "
-"file names. Please use a shorter name."
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
 msgstr ""
 "Diska yang dipakai untuk menyimpan memiliki batas untuk panjang nama berkas. "
 "Cobalah nama lain yang lebih pendek."
 
 #: ../gedit/gedit-io-error-info-bar.c:1109
 msgid ""
-"The disk where you are trying to save the file has a limitation on file sizes. "
-"Please try saving a smaller file or saving it to a disk that does not have this "
-"limitation."
+"The disk where you are trying to save the file has a limitation on file "
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
 msgstr ""
-"Diska yang dipakai untuk menyimpan memiliki batas untuk ukuran berkas. Cobalah "
-"menyimpan dengan ukuran yang lebih kecil atau simpan pada diska yang tidak "
-"memiliki batasan."
+"Diska yang dipakai untuk menyimpan memiliki batas untuk ukuran berkas. "
+"Cobalah menyimpan dengan ukuran yang lebih kecil atau simpan pada diska yang "
+"tidak memiliki batasan."
 
 #: ../gedit/gedit-io-error-info-bar.c:1126
 #, c-format
@@ -1282,12 +1365,14 @@ msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Sejumlah karakter tidak sah terdeteksi saat menyimpan \"%s\""
 
 #: ../gedit/gedit-io-error-info-bar.c:1269
-msgid "If you continue saving this file you can corrupt the document.  Save anyway?"
+msgid ""
+"If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "Berkas ini bisa saja cacat jika Anda menyimpannya. Tetap simpan?"
 
 #: ../gedit/gedit-preferences-dialog.c:413
 msgid "Click on this button to select the font to be used by the editor"
-msgstr "Klik tombol ini untuk memilih fonta yang akan digunakan oleh penyunting"
+msgstr ""
+"Klik tombol ini untuk memilih fonta yang akan digunakan oleh penyunting"
 
 #: ../gedit/gedit-preferences-dialog.c:426
 #, c-format
@@ -1324,16 +1409,16 @@ msgstr "Tak dapat menghapus skema warna \"%s\"."
 msgid "Preparing..."
 msgstr "Mempersiapkan..."
 
-#: ../gedit/gedit-print-job.c:536
+#: ../gedit/gedit-print-job.c:545
 #, c-format
 msgid "File: %s"
 msgstr "Berkas: %s"
 
-#: ../gedit/gedit-print-job.c:545
+#: ../gedit/gedit-print-job.c:554
 msgid "Page %N of %Q"
 msgstr "Halaman %N dari %Q"
 
-#: ../gedit/gedit-print-job.c:619
+#: ../gedit/gedit-print-job.c:632
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "Merender halaman %d dari %d..."
@@ -1343,7 +1428,8 @@ msgstr "Merender halaman %d dari %d..."
 msgid "Page %d of %d"
 msgstr "Halaman %d dari %d"
 
-#: ../gedit/gedit-replace-dialog.c:686 ../plugins/externaltools/tools/tools.ui.h:7
+#: ../gedit/gedit-replace-dialog.c:686
+#: ../plugins/externaltools/tools/tools.ui.h:7
 msgid "Nothing"
 msgstr "Tiada"
 
@@ -1404,34 +1490,34 @@ msgid "Saving %s"
 msgstr "Menyimpan %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "Gagal saat membuka berkas %s"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Gagal saat mengulang berkas %s"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "Gagal saat menyimpan berkas %s"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "Nama:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "Jenis MIME:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "Enkoding:"
 
@@ -1467,7 +1553,8 @@ msgstr "Mac OS Klasik"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:510 ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
+#: ../gedit/gedit-view.c:510
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Tampilkan _nomor baris"
 
@@ -1508,40 +1595,40 @@ msgstr "Kata untuk dicari"
 msgid "Line you want to move the cursor to"
 msgstr "Pindahkan kursor ke baris"
 
-#: ../gedit/gedit-window.c:973
+#: ../gedit/gedit-window.c:981
 msgid "Bracket match is out of range"
 msgstr "Pencocokan tanda kurung di luar jangkauan"
 
-#: ../gedit/gedit-window.c:978
+#: ../gedit/gedit-window.c:986
 msgid "Bracket match not found"
 msgstr "Pasangan tanda kurung tidak ketemua"
 
-#: ../gedit/gedit-window.c:983
+#: ../gedit/gedit-window.c:991
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Kurung kurawal yang cocok ditemukan pada baris: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1018
+#: ../gedit/gedit-window.c:1026
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Brs %d, Kol %d"
 
-#: ../gedit/gedit-window.c:1200
+#: ../gedit/gedit-window.c:1208
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Lebar Tab: %u"
 
-#: ../gedit/gedit-window.c:1570
+#: ../gedit/gedit-window.c:1578
 msgid "There are unsaved documents"
 msgstr "Ada dokumen yang belum disimpan"
 
-#: ../gedit/gedit-window.c:2419
+#: ../gedit/gedit-window.c:2427
 msgid "Change side panel page"
 msgstr "Ubah halaman panel sisi"
 
-#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2447 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumen"
@@ -2207,8 +2294,8 @@ msgstr "Ada gedit versi baru"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:291
 msgid ""
-"You can download the new version of gedit by clicking on the download button or "
-"ignore that version and wait for a new one"
+"You can download the new version of gedit by clicking on the download button "
+"or ignore that version and wait for a new one"
 msgstr ""
 "Anda dapat mengunduh versi baru gedit dengan mengklik tombol unduh atau "
 "mengabaikan versi tersebut dan menunggu yang baru"
@@ -2322,17 +2409,18 @@ msgstr "Menentukan memakai fonta sistem"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
-"If true, the external tools will use the desktop-global standard font if it's "
-"monospace (and the most similar font it can come up with otherwise)."
+"If true, the external tools will use the desktop-global standard font if "
+"it's monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"Jika bernilai \"true\", maka perkakas luar akan memakai fonta yang diterapkan "
-"oleh desktop secara global jika berjenis monospace (dan fonta lainnya yang "
-"sejenis)."
+"Jika bernilai \"true\", maka perkakas luar akan memakai fonta yang "
+"diterapkan oleh desktop secara global jika berjenis monospace (dan fonta "
+"lainnya yang sejenis)."
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
-msgstr "Nama fonta Pango. Sebagai contoh \"Sans 12\" atau \"Monospace Bold 14\"."
+msgstr ""
+"Nama fonta Pango. Sebagai contoh \"Sans 12\" atau \"Monospace Bold 14\"."
 
 #: ../plugins/externaltools/tools/appactivatable.py:126
 msgid "Manage _External Tools..."
@@ -2612,8 +2700,8 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"Berkas yang dinamai ulang sedang tersaring. Anda perlu menyesuaikan saringan Anda "
-"supaya berkasnya nampak"
+"Berkas yang dinamai ulang sedang tersaring. Anda perlu menyesuaikan saringan "
+"Anda supaya berkasnya nampak"
 
 #. Translators: This is the default name of new files created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3785
@@ -2622,11 +2710,11 @@ msgstr "Berkas Tanpa Nama"
 
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3813
 msgid ""
-"The new file is currently filtered out. You need to adjust your filter settings "
-"to make the file visible"
+"The new file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
 msgstr ""
-"Berkas baru sedang disaring. Anda perlu menentukan setingan saringan Anda supaya "
-"berkasnya kelihatan"
+"Berkas baru sedang disaring. Anda perlu menentukan setingan saringan Anda "
+"supaya berkasnya kelihatan"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3844
@@ -2638,8 +2726,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"Direktori baru kini sedang tersaring. Anda perlu mengubah tatanan saringan agar "
-"direktori nampak"
+"Direktori baru kini sedang tersaring. Anda perlu mengubah tatanan saringan "
+"agar direktori nampak"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:774
 msgid "Bookmarks"
@@ -2675,7 +2763,8 @@ msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
-"Buka tampilan pohon ketika pengaya penjelajah berkas terbaca dari tampilan penanda"
+"Buka tampilan pohon ketika pengaya penjelajah berkas terbaca dari tampilan "
+"penanda"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
@@ -2683,8 +2772,8 @@ msgstr "Akar Direktori Penjelajah Berkas"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
-"The file browser root directory to use when loading the file browser plugin and "
-"onload/tree_view is TRUE."
+"The file browser root directory to use when loading the file browser plugin "
+"and onload/tree_view is TRUE."
 msgstr ""
 "Akar direktori penjelajah berkas yang dipergunakan ketika membaca pengaya "
 "penjelajah berkas dan onload/tree_view adalah BENAR."
@@ -2696,8 +2785,8 @@ msgstr "Akar Virtual Direktori Penjelajah Berkas"
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
-"plugin when onload/tree_view is TRUE. The virtual root must always be below the "
-"actual root."
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
 "Akar virtual direktori penjelajah berkas untuk dipergunakan ketika membaca "
 "pengaya penjelajah berkas ketika onload/tree_view adalah BENAR. Akar virtual "
@@ -2718,14 +2807,14 @@ msgstr "Tata Lokasi Ke Dokumen Pertama"
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this generally "
-"applies to opening a document from the command line or opening it with Nautilus, "
-"etc.)"
+"document given that the file browser hasn't been used yet. (Thus this "
+"generally applies to opening a document from the command line or opening it "
+"with Nautilus, etc.)"
 msgstr ""
-"Jika BENAR pengaya penjelajah berkas akan menampilkan direktori dari dokumen yang "
-"pertama kali dibuka yang belum dipergunakan oleh penjelajah berkas. (Hal ini "
-"secara umum diterapkan pada pembukaan dokumen dari baris perintah atau membukanya "
-"dari Nautilus dll)"
+"Jika BENAR pengaya penjelajah berkas akan menampilkan direktori dari dokumen "
+"yang pertama kali dibuka yang belum dipergunakan oleh penjelajah berkas. "
+"(Hal ini secara umum diterapkan pada pembukaan dokumen dari baris perintah "
+"atau membukanya dari Nautilus dll)"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
@@ -2733,13 +2822,13 @@ msgstr "Mode Saringan Penjelah Berkas"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
-"This value determines what files get filtered from the file browser. Valid values "
-"are: none (filter nothing), hide-hidden (filter hidden files) and hide-binary "
-"(filter binary files)."
+"This value determines what files get filtered from the file browser. Valid "
+"values are: none (filter nothing), hide-hidden (filter hidden files) and "
+"hide-binary (filter binary files)."
 msgstr ""
-"Nilai ini menentukan berkas apa yang disaring peramban berkas. Nilai yang valid "
-"adalah: none (tanpa saringan), hide-hidden (saring berkas tersembunyi), dan hide-"
-"binary (saring berkas biner)."
+"Nilai ini menentukan berkas apa yang disaring peramban berkas. Nilai yang "
+"valid adalah: none (tanpa saringan), hide-hidden (saring berkas "
+"tersembunyi), dan hide-binary (saring berkas biner)."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
@@ -2747,11 +2836,11 @@ msgstr "Bentuk Saringan Penjelajah Berkas"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
-"The filter pattern to filter the file browser with. This filter works on top of "
-"the filter_mode."
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
 msgstr ""
-"Pola saringan untuk menyaring penjelajah berkas. Saringan ini bekerja di atas "
-"filter_mode."
+"Pola saringan untuk menyaring penjelajah berkas. Saringan ini bekerja di "
+"atas filter_mode."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
@@ -2843,11 +2932,12 @@ msgstr "Warna teks galat"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
-"If true, the terminal will use the desktop-global standard font if it's monospace "
-"(and the most similar font it can come up with otherwise)."
+"If true, the terminal will use the desktop-global standard font if it's "
+"monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"Jika bernilai \"true\", maka terminal akan memakai fonta yang diterapkan oleh "
-"desktop secara global jika berjenis monospace (dan fonta lainnya yang sejenis)."
+"Jika bernilai \"true\", maka terminal akan memakai fonta yang diterapkan "
+"oleh desktop secara global jika berjenis monospace (dan fonta lainnya yang "
+"sejenis)."
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
 msgid "C_ommand color:"
@@ -2970,11 +3060,11 @@ msgstr "Hapus snippet terpilih"
 #: ../plugins/snippets/snippets/manager.py:662
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
-"characters (or _, : and .) or a single (non-alphanumeric) character like: {, [, "
-"etc."
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"Ini bukan pemicu tab yang valid. Pemicu bisa berisi huruf alfanumerik (atau _, : "
-"dan .) atau karakter tunggal bukan alfanumerik, seperti {, [, dll."
+"Ini bukan pemicu tab yang valid. Pemicu bisa berisi huruf alfanumerik (atau "
+"_, : dan .) atau karakter tunggal bukan alfanumerik, seperti {, [, dll."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:669
@@ -3037,7 +3127,8 @@ msgstr "Ekspor sukses diselesaikan"
 #: ../plugins/snippets/snippets/manager.py:844
 #: ../plugins/snippets/snippets/manager.py:911
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
-msgstr "Anda ingin menyertakan snippet <b>sistem</b> yang dipilih pada ekspor Anda?"
+msgstr ""
+"Anda ingin menyertakan snippet <b>sistem</b> yang dipilih pada ekspor Anda?"
 
 #: ../plugins/snippets/snippets/manager.py:859
 #: ../plugins/snippets/snippets/manager.py:929
@@ -3060,7 +3151,8 @@ msgstr "Ketikkan kunci pintas baru"
 #: ../plugins/snippets/snippets/placeholder.py:597
 #, python-format
 msgid ""
-"Execution of the Python command (%s) exceeds the maximum time, execution aborted."
+"Execution of the Python command (%s) exceeds the maximum time, execution "
+"aborted."
 msgstr ""
 "Eksekusi perintah Python (%s) melampaui waktu maksimum, eksekusi digugurkan."
 
@@ -3330,11 +3422,11 @@ msgstr "Jenis Prompt"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
-"If the user should be prompted for a format or if the selected or custom format "
-"should be used."
+"If the user should be prompted for a format or if the selected or custom "
+"format should be used."
 msgstr ""
-"Bila pengguna mesti disapa untuk suatu format atau bila format yang dipilih atau "
-"gubahan mesti dipakai."
+"Bila pengguna mesti disapa untuk suatu format atau bila format yang dipilih "
+"atau gubahan mesti dipakai."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
