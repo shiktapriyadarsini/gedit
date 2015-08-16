@@ -1035,21 +1035,24 @@ name_renderer_datafunc (GtkTreeViewColumn         *column,
 {
 	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkStyleContext *context;
+	GtkStateFlags state;
 	GdkRGBA label_color;
 	gdouble font_size;
 
 	context = gtk_widget_get_style_context (priv->treeview);
+	state = gtk_style_context_get_state (context);
 
 	/* Name label foreground and font size styling */
+	gtk_style_context_save (context);
 	gtk_style_context_add_class (context, "open-document-selector-name-label");
 
-	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &label_color);
+	gtk_style_context_get_color (context, state, &label_color);
 	g_object_set (priv->name_renderer, "foreground-rgba", &label_color, NULL);
 
-	gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, "font-size", &font_size, NULL);
+	gtk_style_context_get (context, state, "font-size", &font_size, NULL);
 	g_object_set (priv->name_renderer, "size-points", font_size, NULL);
 
-	gtk_style_context_remove_class (context, "open-document-selector-name-label");
+	gtk_style_context_restore (context);
 }
 
 static void
@@ -1061,21 +1064,24 @@ path_renderer_datafunc (GtkTreeViewColumn         *column,
 {
 	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkStyleContext *context;
+	GtkStateFlags state;
 	GdkRGBA label_color;
 	gdouble font_size;
 
 	context = gtk_widget_get_style_context (priv->treeview);
+	state = gtk_style_context_get_state (context);
 
 	/* Path label foreground and font size styling */
+	gtk_style_context_save (context);
 	gtk_style_context_add_class (context, "open-document-selector-path-label");
 
-	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &label_color);
+	gtk_style_context_get_color (context, state, &label_color);
 	g_object_set (priv->path_renderer, "foreground-rgba", &label_color, NULL);
 
-	gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, "font-size", &font_size, NULL);
+	gtk_style_context_get (context, state, "font-size", &font_size, NULL);
 	g_object_set (priv->path_renderer, "size-points", font_size, NULL);
 
-	gtk_style_context_remove_class (context, "open-document-selector-path-label");
+	gtk_style_context_restore (context);
 }
 
 static void
