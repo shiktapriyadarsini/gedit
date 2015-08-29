@@ -522,8 +522,6 @@ update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
 	switch (type)
 	{
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_RECENT_FILES_LIST:
-			G_LOCK (store_recent_items_lock);
-
 			gedit_open_document_selector_free_file_items_list (selector_store->priv->recent_items);
 			selector_store->priv->recent_items = list;
 
@@ -599,8 +597,8 @@ static GList * (*list_func [])(GeditOpenDocumentSelectorStore *selector_store,
 static gboolean
 update_recent_list (gpointer user_data)
 {
-	GeditOpenDocumentSelectorStorePrivate *priv = selector_store->priv;
 	GeditOpenDocumentSelectorStore *selector_store;
+	GeditOpenDocumentSelectorStorePrivate *priv;
 	GeditOpenDocumentSelector *selector;
 	PushMessage *message;
 	ListType type;
@@ -608,6 +606,7 @@ update_recent_list (gpointer user_data)
 	GTask *task = G_TASK(user_data);
 
 	selector_store = g_task_get_source_object (task);
+	priv = selector_store->priv;
 	message = g_task_get_task_data (task);
 	selector = message->selector;
 	type = message->type;
