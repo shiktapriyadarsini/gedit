@@ -65,14 +65,15 @@
 
 struct _GeditOpenDocumentSelectorStorePrivate
 {
-	GeditRecentConfiguration recent_config;
-	GList *recent_items;
-	gint recent_config_limit;
-	gboolean recent_items_need_update;
+	GSource                  *recent_source;
+
+	GeditRecentConfiguration  recent_config;
+	GList                    *recent_items;
+	gint                      recent_config_limit;
+	gboolean                  recent_items_need_update;
 };
 
 G_LOCK_DEFINE_STATIC (recent_files_filter_lock);
-G_LOCK_DEFINE_STATIC (store_recent_items_lock);
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditOpenDocumentSelectorStore, gedit_open_document_selector_store, G_TYPE_OBJECT)
 
@@ -526,10 +527,9 @@ update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
 			gedit_open_document_selector_free_file_items_list (selector_store->priv->recent_items);
 			selector_store->priv->recent_items = list;
 
-			DEBUG_SELECTOR (g_print ("\tStore(%p): update_list_cb: Thread:%p, type:%s, length:%i\n",
-			                         selector_store, g_thread_self (), list_type_string[type], g_list_length (list)););
+			DEBUG_SELECTOR (g_print ("\tStore(%p): update_list_cb: type:%s, length:%i\n",
+			                         selector_store, list_type_string[type], g_list_length (list)););
 
-			G_UNLOCK (store_recent_items_lock);
 			break;
 		default:
 			break;
@@ -558,6 +558,11 @@ gedit_open_document_selector_store_dispose (GObject *object)
 	GeditOpenDocumentSelectorStorePrivate *priv = selector_store->priv;
 
 	gedit_recent_configuration_destroy (&priv->recent_config);
+
+	if (priv->recent_source != NULL)
+	{
+		g_clear_pointer (&priv->recent_source, g_source_destroy);
+	}
 
 	if (priv->recent_items)
 	{
@@ -591,6 +596,59 @@ static GList * (*list_func [])(GeditOpenDocumentSelectorStore *selector_store,
 	get_current_docs_list
 };
 
+static gboolean
+update_recent_list (gpointer user_data)
+{
+	GeditOpenDocumentSelectorStorePrivate *priv = selector_store->priv;
+	GeditOpenDocumentSelectorStore *selector_store;
+	GeditOpenDocumentSelector *selector;
+	PushMessage *message;
+	ListType type;
+	GList *file_items_list;
+	GTask *task = G_TASK(user_data);
+
+	selector_store = g_task_get_source_object (task);
+	message = g_task_get_task_data (task);
+	selector = message->selector;
+	type = message->type;
+
+	DEBUG_SELECTOR_TIMER_DECL
+	DEBUG_SELECTOR_TIMER_NEW
+	DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: type:%s\n",
+	                         selector, list_type_string[type]););
+
+	/* Update the recent list only when it changes, copy otherwise but keep it the first time */
+	if (priv->recent_items != NULL && priv->recent_items_need_update == FALSE)
+	{
+		file_items_list = gedit_open_document_selector_copy_file_items_list (priv->recent_items);
+
+		DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: recent list copy\n", selector););
+	}
+	else
+	{
+		priv->recent_items_need_update = FALSE;
+		file_items_list = get_recent_files_list (selector_store, selector);
+
+		DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: recent list compute\n", selector););
+
+		if (priv->recent_items == NULL)
+		{
+			priv->recent_items = gedit_open_document_selector_copy_file_items_list (file_items_list);
+		}
+	}
+
+	g_task_return_pointer (task,
+	                       file_items_list,
+	                       (GDestroyNotify)gedit_open_document_selector_free_file_items_list);
+
+	DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: type:%s, time:%lf\n",
+	                         selector, list_type_string[type], DEBUG_SELECTOR_TIMER_GET););
+	DEBUG_SELECTOR_TIMER_DESTROY
+
+	priv->recent_source = NULL;
+	return G_SOURCE_REMOVE;
+}
+
 static void
 update_list_dispatcher (GTask        *task,
                         gpointer      source_object,
@@ -598,7 +656,6 @@ update_list_dispatcher (GTask        *task,
                         GCancellable *cancellable)
 {
 	GeditOpenDocumentSelectorStore *selector_store = source_object;
-	GeditOpenDocumentSelectorStorePrivate *priv = selector_store->priv;
 	GeditOpenDocumentSelector *selector;
 	PushMessage *message;
 	ListType type;
@@ -612,43 +669,6 @@ update_list_dispatcher (GTask        *task,
 	DEBUG_SELECTOR_TIMER_NEW
 	DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: Thread:%p, type:%s\n",
 	                         selector, g_thread_self (), list_type_string[type]););
-
-	/* Update the recent list only when it changes, copy otherwise but keep it the first time */
-	if (type == GEDIT_OPEN_DOCUMENT_SELECTOR_RECENT_FILES_LIST)
-	{
-		G_LOCK (store_recent_items_lock);
-
-		if (priv->recent_items != NULL && priv->recent_items_need_update == FALSE)
-		{
-			file_items_list = gedit_open_document_selector_copy_file_items_list (priv->recent_items);
-
-			DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: recent list copy\n", selector););
-		}
-		else
-		{
-			priv->recent_items_need_update = FALSE;
-			file_items_list = get_recent_files_list (selector_store, selector);
-
-			DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: recent list compute\n", selector););
-
-			if (priv->recent_items == NULL)
-			{
-				priv->recent_items = gedit_open_document_selector_copy_file_items_list (file_items_list);
-			}
-		}
-
-		G_UNLOCK (store_recent_items_lock);
-
-		g_task_return_pointer (task,
-		                       file_items_list,
-		                       (GDestroyNotify)gedit_open_document_selector_free_file_items_list);
-
-		DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: Thread:%p, type:%s, time:%lf\n",
-		                         selector, g_thread_self (), list_type_string[type], DEBUG_SELECTOR_TIMER_GET););
-		DEBUG_SELECTOR_TIMER_DESTROY
-
-		return;
-	}
 
 	if (type >= GEDIT_OPEN_DOCUMENT_SELECTOR_LIST_TYPE_NUM_OF_LISTS)
 	{
@@ -690,6 +710,7 @@ gedit_open_document_selector_store_update_list_async (GeditOpenDocumentSelectorS
                                                       ListType                        type,
                                                       gpointer                        user_data)
 {
+	GeditOpenDocumentSelectorStorePrivate *priv;
 	GTask *task;
 	PushMessage *message;
 
@@ -699,13 +720,24 @@ gedit_open_document_selector_store_update_list_async (GeditOpenDocumentSelectorS
 	message = g_new (PushMessage, 1);
 	message->selector = selector;
 	message->type = type;
+	priv = selector_store->priv;
 
 	task = g_task_new (selector_store, cancellable, callback, user_data);
 	g_task_set_source_tag (task, gedit_open_document_selector_store_update_list_async);
 	g_task_set_priority (task, G_PRIORITY_DEFAULT);
 	g_task_set_task_data (task, message, (GDestroyNotify)g_free);
 
-	g_task_run_in_thread (task, update_list_dispatcher);
+	if (type == GEDIT_OPEN_DOCUMENT_SELECTOR_RECENT_FILES_LIST &&
+	    priv->recent_source == NULL)
+	{
+		priv->recent_source = g_idle_source_new ();
+		g_task_attach_source (task, priv->recent_source, update_recent_list);
+	}
+	else
+	{
+		g_task_run_in_thread (task, update_list_dispatcher);
+	}
+
 	g_object_unref (task);
 }
 
