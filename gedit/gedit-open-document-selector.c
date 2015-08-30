@@ -487,7 +487,7 @@ real_populate_liststore (gpointer data)
 
 	gtk_list_store_clear (priv->liststore);
 
-	filter = gedit_open_document_selector_store_get_recent_filter (selector_store);
+	filter = gedit_open_document_selector_store_get_filter (selector_store);
 	if (filter && *filter != '\0')
 	{
 		DEBUG_SELECTOR (g_print ("Selector(%p): populate liststore: all lists\n", selector););
@@ -621,8 +621,8 @@ on_entry_changed (GtkEntry                  *entry,
 	const gchar *entry_text;
 
 	entry_text = gtk_entry_get_text (entry);
-	gedit_open_document_selector_store_set_recent_filter (priv->selector_store,
-	                                                      g_utf8_strdown (entry_text, -1));
+	gedit_open_document_selector_store_set_filter (priv->selector_store,
+	                                               g_utf8_strdown (entry_text, -1));
 
 	if (gtk_widget_get_mapped ( GTK_WIDGET (selector)))
 	{
