@@ -1,4 +1,17 @@
 ============
+gedit 3.16.4
+============
+
+Fixes
+=====
+- Fix crash in the open document selector
+- Various bug fixes
+
+New and updated translations
+============================
+- nl (Hannie Dumoleyn)
+
+============
 gedit 3.16.3
 ============
 
