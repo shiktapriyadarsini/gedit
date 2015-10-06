@@ -600,7 +600,8 @@ update_recent_list (gpointer user_data)
 	GeditOpenDocumentSelectorStorePrivate *priv;
 	GeditOpenDocumentSelector *selector;
 	PushMessage *message;
-	ListType type;
+	/* The type variable is only used when debug code activated */
+	G_GNUC_UNUSED ListType type;
 	GList *file_items_list;
 	GTask *task = G_TASK(user_data);
 
