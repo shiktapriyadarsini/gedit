@@ -1,4 +1,20 @@
 ============
+gedit 3.18.2
+============
+
+New Features and Fixes
+======================
+- Fix performance problem with remote files in the open file selector
+- Various minor code improvements and bug fixes
+
+New and updated translations
+============================
+- eu (Iñaki Larrañaga Murgoitio)
+- is (Sveinn í Felli)
+- ro (Daniel Șerbănescu)
+- th (Akom Chotiphantawanon)
+
+============
 gedit 3.18.1
 ============
 
