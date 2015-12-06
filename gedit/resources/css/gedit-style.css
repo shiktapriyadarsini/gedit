@@ -58,3 +58,11 @@ GeditFileBrowserWidget .small-button {
   padding: 2px 4px;
 }
 
+@binding-set TabSwitching {
+  unbind "<Control>Page_Up";
+  unbind "<Control>Page_Down";
+}
+
+GeditView, GeditNotebook GtkScrolledWindow {
+  gtk-key-bindings: TabSwitching;
+}
