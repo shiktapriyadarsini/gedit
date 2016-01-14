@@ -4,7 +4,7 @@ AC_PREREQ(2.63.2)
 
 m4_define(gedit_major_version, 3)
 m4_define(gedit_minor_version, 18)
-m4_define(gedit_micro_version, 2)
+m4_define(gedit_micro_version, 3)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT([gedit],
@@ -19,7 +19,7 @@ AC_SUBST(GEDIT_API_VERSION)
 # Dependencies
 GLIB_REQUIRED=2.44
 GTK_REQUIRED=3.16
-GTKSOURCEVIEW_REQUIRED=3.17.3
+GTKSOURCEVIEW_REQUIRED=3.18
 LIBPEAS_REQUIRED=1.14.1
 LIBXML_REQUIRED=2.5.0
 ENCHANT_REQUIRED=1.2.0
