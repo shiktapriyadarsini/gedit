@@ -13,14 +13,15 @@ description: |
   Its flexible plugin system allows you to tailor the application to your
   needs and adapt it to your workflow.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
+grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
+base: core18
 
 plugs:
-  gnome-3-26-1604:
+  gnome-3-28-1804:
     interface: content
     target: $SNAP/gnome-platform
-    default-provider: gnome-3-26-1604
+    default-provider: gnome-3-28-1804
   gtk-3-themes:
     interface: content
     target: $SNAP/data-dir/themes
@@ -41,6 +42,11 @@ slots:
     bus: session
     name: org.gnome.gedit
 
+passthrough:
+  layout:
+    /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0:
+      symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0
+
 apps:
   gedit:
     command: desktop-launch gedit
@@ -53,6 +59,7 @@ apps:
       - home
       - network
       - mount-observe
+      - removable-media
       - unity7
       - wayland
     desktop: usr/share/applications/org.gnome.gedit.desktop
@@ -61,9 +68,22 @@ apps:
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/gedit
 
 parts:
+  desktop-gnome-platform:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk3"]
+    build-packages:
+      - build-essential
+      - libgtk-3-dev
+    override-build: |
+      snapcraftctl build
+      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
+
   gedit:
     after: [desktop-gnome-platform]
-    source: .
+    source: https://gitlab.gnome.org/GNOME/gedit.git
+    source-type: git
     plugin: autotools
     configflags: [--prefix=/snap/gedit/current/usr]
     override-build: |
@@ -74,7 +94,6 @@ parts:
       cp data/org.gnome.gedit.desktop $SNAPCRAFT_PART_INSTALL/meta/gui/
     organize:
       snap/gedit/current/usr: usr
-    build-attributes: [no-system-libraries]
     build-packages:
       - desktop-file-utils
       - gettext
@@ -96,3 +115,60 @@ parts:
       - gobject-introspection
       - libgirepository1.0-dev
       - valac
+    stage-packages:
+      - gir1.2-ggit-1.0
+      - gir1.2-gucharmap-2.90
+      - gir1.2-glib-2.0
+      - gir1.2-pango-1.0
+      - gir1.2-peas-1.0
+      - gir1.2-vte-2.91
+      - iso-codes
+      - libgtksourceview-3.0-1
+      - libgspell-1-1
+      - libpeas-1.0-0
+      - python3-dbus
+      - python3-gi
+      - python3-gi-cairo
+
+  gedit-plugins:
+    after: [gedit]
+    source: https://gitlab.gnome.org/GNOME/gedit-plugins.git
+    source-type: git
+    source-tag: 3.30.1
+    plugin: autotools
+    configflags: [--prefix=/usr]
+    organize:
+      snap/gedit-plugins/current/usr: usr
+    build-environment:
+      - C_INCLUDE_PATH: $SNAPCRAFT_STAGE/usr/include/gedit-3.14/
+    build-packages:
+      - build-essential
+      - gettext
+      - gnome-common
+      - intltool
+      - libgit2-glib-1.0-dev
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - libgtksourceview-3.0-dev
+      - libgucharmap-2-90-dev
+      - libvte-2.91-dev
+      - python3
+      - python3-dbus
+      - python-dbus-dev
+      - python-gi-dev
+      - yelp-tools
+# Overriding VAPIDIR in build-environment doesn't seem to work
+    override-build: |
+      sed -i.bak -e 's|--pkg\ config|--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi\ --pkg\ config|g' plugins/findinfiles/Makefile.am
+      sed -i.bak -e 's|--pkg\ config|--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi\ --pkg\ config|g' plugins/findinfiles/Makefile.am
+      snapcraftctl build
+# Zeitgeist plugin isn't as useful in a Snap. Dashboard plugin is broken and was removed from 3.32. Remove.
+    stage:
+      - -usr/lib/gedit/plugins/libzeitgeist.so
+      - -usr/lib/gedit/plugins/zeitgeist.plugin
+      - -usr/share/help/*/gedit/zeitgeist-dataprovider.page
+      - -usr/share/metainfo/gedit-zeitgeist.metainfo.xml
+      - -usr/lib/gedit/plugins/dashboard*
+      - -usr/share/help/*/gedit/dashboard.page
+      - -usr/share/metainfo/gedit-dashboard.metainfo.xml
+      - -usr/share/python3/runtime.d/gedit-plugin-dashboard.rtupdate
