@@ -82,7 +82,7 @@ parts:
 
   gedit:
     after: [desktop-gnome-platform]
-    source: https://gitlab.gnome.org/GNOME/gedit.git
+    source: .
     source-type: git
     plugin: autotools
     configflags: [--prefix=/snap/gedit/current/usr]
