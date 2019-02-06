@@ -45,7 +45,11 @@ slots:
 passthrough:
   layout:
     /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0:
-      symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0
+      symlink: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0
+    /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit:
+      symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit
+    /usr/share/gedit:
+      symlink: $SNAP/usr/share/gedit
 
 apps:
   gedit:
@@ -126,7 +130,9 @@ parts:
     organize:
       snap/gedit-plugins/current/usr: usr
     build-environment:
-      - C_INCLUDE_PATH: $SNAPCRAFT_STAGE/usr/include/gedit-3.14/
+      - C_INCLUDE_PATH: $SNAPCRAFT_STAGE/usr/include:$SNAPCRAFT_STAGE/usr/include/gedit-3.14
+      - LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAPCRAFT_STAGE/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit
+      - PKG_CONFIG_PATH: $PKG_CONFIG_PATH:$SNAPCRAFT_STAGE/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pkgconfig
     build-packages:
       - build-essential
       - gettext
