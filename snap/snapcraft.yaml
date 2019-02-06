@@ -115,26 +115,12 @@ parts:
       - gobject-introspection
       - libgirepository1.0-dev
       - valac
-    stage-packages:
-      - gir1.2-ggit-1.0
-      - gir1.2-gucharmap-2.90
-      - gir1.2-glib-2.0
-      - gir1.2-pango-1.0
-      - gir1.2-peas-1.0
-      - gir1.2-vte-2.91
-      - iso-codes
-      - libgtksourceview-3.0-1
-      - libgspell-1-1
-      - libpeas-1.0-0
-      - python3-dbus
-      - python3-gi
-      - python3-gi-cairo
 
   gedit-plugins:
     after: [gedit]
     source: https://gitlab.gnome.org/GNOME/gedit-plugins.git
     source-type: git
-    source-tag: 3.30.1
+    source-branch: gnome-3-30
     plugin: autotools
     configflags: [--prefix=/usr]
     organize:
