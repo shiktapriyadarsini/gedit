@@ -1,5 +1,6 @@
 # Hungarian translation of gedit.
 # Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gedit package.
 #
 # Szabolcs Ban <shooby at gnome dot hu>, 2000.
 # Emese Kovacs <emese at gnome dot hu>, 2000, 2001.
@@ -13,9 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-28 18:15+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2019-02-06 21:01+0000\n"
 "PO-Revision-Date: 2014-02-28 22:12+0100\n"
 "Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
@@ -567,11 +567,11 @@ msgstr "A gedit futtatása önálló módban"
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FÁJL…] [+SOR[:OSZLOP]]"
 
-#: ../gedit/gedit-app.c:260
+#: ../gedit/gedit-app.c:262
 msgid "There was an error displaying the help."
 msgstr "Hiba történt a súgó megjelenítése közben."
 
-#: ../gedit/gedit-app.c:838
+#: ../gedit/gedit-app.c:861
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: érvénytelen kódolás."
@@ -596,13 +596,13 @@ msgstr "Bezárás mentés _nélkül"
 #: ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:546
 #: ../gedit/gedit-io-error-info-bar.c:1222
-#: ../gedit/gedit-preferences-dialog.c:830
+#: ../gedit/gedit-preferences-dialog.c:829
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:36
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:908
+#: ../plugins/quickopen/quickopen/popup.py:37
+#: ../plugins/snippets/snippets/manager.py:781
+#: ../plugins/snippets/snippets/manager.py:866
+#: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/gedit-sort-plugin.ui.h:2
 #: ../plugins/spell/gedit-spell-language-dialog.c:124
 #: ../plugins/spell/languages-dialog.ui.h:3
@@ -616,8 +616,8 @@ msgstr "M_entés másként…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:335
 #: ../gedit/gedit-commands-file.c:850
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:909
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "M_entés"
 
@@ -704,29 +704,29 @@ msgstr[1] ""
 "Ha nem menti, akkor az elmúlt %d órában történt változások véglegesen "
 "elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:457
+#: ../gedit/gedit-close-confirmation-dialog.c:459
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "A(z) „%s” dokumentum változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:462
+#: ../gedit/gedit-close-confirmation-dialog.c:464
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Menti a változásokat a(z) „%s” dokumentumba, mielőtt bezárja?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:477
-#: ../gedit/gedit-close-confirmation-dialog.c:693
+#: ../gedit/gedit-close-confirmation-dialog.c:479
+#: ../gedit/gedit-close-confirmation-dialog.c:701
 msgid "Saving has been disabled by the system administrator."
 msgstr "A rendszergazda letiltotta a mentést."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:642
+#: ../gedit/gedit-close-confirmation-dialog.c:649
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "%d dokumentum változásai véglegesen elvesznek."
 msgstr[1] "%d dokumentum változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:650
+#: ../gedit/gedit-close-confirmation-dialog.c:657
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -734,15 +734,15 @@ msgid_plural ""
 msgstr[0] "%d mentetlen dokumentum van. Menti a változásokat, mielőtt bezárja?"
 msgstr[1] "%d mentetlen dokumentum van. Menti a változásokat, mielőtt bezárja?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:670
+#: ../gedit/gedit-close-confirmation-dialog.c:677
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_entumok mentetlen módosításokkal:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:674
+#: ../gedit/gedit-close-confirmation-dialog.c:681
 msgid "S_elect the documents you want to save:"
 msgstr "_Válassza ki a menteni kívánt dokumentumokat:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:697
+#: ../gedit/gedit-close-confirmation-dialog.c:705
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Ha nem menti, akkor az összes változás véglegesen elveszik."
 
@@ -766,8 +766,8 @@ msgstr "Megnyitás"
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-commands-file.c:443
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:37
-#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "_Megnyitás"
 
@@ -955,13 +955,13 @@ msgstr "„%s” nem található"
 msgid "Unsaved Document %d"
 msgstr "Mentetlen dokumentum %d"
 
-#: ../gedit/gedit-documents-panel.c:406
+#: ../gedit/gedit-documents-panel.c:427
 #, c-format
 msgid "Tab Group %i"
 msgstr "%i. lapcsoport"
 
-#: ../gedit/gedit-documents-panel.c:560 ../gedit/gedit-window.c:1111
-#: ../gedit/gedit-window.c:1117 ../gedit/gedit-window.c:1125
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1035
+#: ../gedit/gedit-window.c:1041 ../gedit/gedit-window.c:1049
 msgid "Read-Only"
 msgstr "Csak olvasható"
 
@@ -1141,7 +1141,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "A kódolás jele_njen meg a menüben:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:40
-#: ../gedit/gedit-preferences-dialog.c:845
+#: ../gedit/gedit-preferences-dialog.c:844
 msgid "All Files"
 msgstr "Minden fájl"
 
@@ -1178,11 +1178,11 @@ msgstr "Kiemelési üzemmód"
 msgid "_Select"
 msgstr "_Kijelölés"
 
-#: ../gedit/gedit-highlight-mode-selector.c:247 ../gedit/gedit-window.c:1195
-#: ../plugins/externaltools/tools/manager.py:107
-#: ../plugins/externaltools/tools/manager.py:315
-#: ../plugins/externaltools/tools/manager.py:431
-#: ../plugins/externaltools/tools/manager.py:759
+#: ../gedit/gedit-highlight-mode-selector.c:247 ../gedit/gedit-window.c:1119
+#: ../plugins/externaltools/tools/manager.py:108
+#: ../plugins/externaltools/tools/manager.py:317
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:767
 msgid "Plain Text"
 msgstr "Egyszerű szöveg"
 
@@ -1623,40 +1623,40 @@ msgstr "Automatikus behúzás"
 msgid "Use Spaces"
 msgstr "Szóközök használata"
 
-#: ../gedit/gedit-preferences-dialog.c:371
+#: ../gedit/gedit-preferences-dialog.c:370
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Nyomja meg ezt a gombot a szerkesztőben használt betűkészlet kiválasztásához"
 
-#: ../gedit/gedit-preferences-dialog.c:384
+#: ../gedit/gedit-preferences-dialog.c:383
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "A _rendszer rögzített szélességű betűkészletének használata (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:616
+#: ../gedit/gedit-preferences-dialog.c:615
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "A(z) „%s” könyvtár nem hozható létre: a g_mkdir_with_parents() hívás "
 "meghiúsult: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:800
+#: ../gedit/gedit-preferences-dialog.c:799
 msgid "The selected color scheme cannot be installed."
 msgstr "A kijelölt színséma nem telepíthető."
 
-#: ../gedit/gedit-preferences-dialog.c:827
+#: ../gedit/gedit-preferences-dialog.c:826
 msgid "Add Scheme"
 msgstr "Séma hozzáadása"
 
-#: ../gedit/gedit-preferences-dialog.c:831
+#: ../gedit/gedit-preferences-dialog.c:830
 msgid "A_dd Scheme"
 msgstr "Séma h_ozzáadása"
 
-#: ../gedit/gedit-preferences-dialog.c:838
+#: ../gedit/gedit-preferences-dialog.c:837
 msgid "Color Scheme Files"
 msgstr "Színsémafájlok"
 
-#: ../gedit/gedit-preferences-dialog.c:890
+#: ../gedit/gedit-preferences-dialog.c:889
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nem távolítható el a(z) „%s” színséma."
@@ -1666,7 +1666,7 @@ msgstr "Nem távolítható el a(z) „%s” színséma."
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:525
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:526
 msgid "_Display line numbers"
 msgstr "Sorok számának _megjelenítése"
 
@@ -1817,12 +1817,12 @@ msgstr "Sorszámok"
 msgid "Print line nu_mbers"
 msgstr "_Sorszámok nyomtatása"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/gedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "S_orszám"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "soronként"
@@ -1987,7 +1987,7 @@ msgstr "BESZ"
 msgid "  Ln %d, Col %d"
 msgstr " %d. sor, %d. oszlop"
 
-#: ../gedit/gedit-statusbar.c:269
+#: ../gedit/gedit-statusbar.c:271
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1996,73 +1996,73 @@ msgstr[1] "%d lapon vannak hibák"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:762
+#: ../gedit/gedit-tab.c:773
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "%s visszaállítása innen: %s"
 
-#: ../gedit/gedit-tab.c:769
+#: ../gedit/gedit-tab.c:780
 #, c-format
 msgid "Reverting %s"
 msgstr "%s visszaállítása"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:785
+#: ../gedit/gedit-tab.c:796
 #, c-format
 msgid "Loading %s from %s"
 msgstr "%s fájl betöltése innen: %s"
 
-#: ../gedit/gedit-tab.c:792
+#: ../gedit/gedit-tab.c:803
 #, c-format
 msgid "Loading %s"
 msgstr "%s fájl betöltése"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:871
+#: ../gedit/gedit-tab.c:881
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%s mentése ide: %s"
 
-#: ../gedit/gedit-tab.c:878
+#: ../gedit/gedit-tab.c:888
 #, c-format
 msgid "Saving %s"
 msgstr "%s mentése"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1891
+#: ../gedit/gedit-tab.c:1871
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1938
+#: ../gedit/gedit-tab.c:1918
 #, c-format
 msgid "Error opening file %s"
 msgstr "Hiba a(z) „%s” fájl megnyitása közben"
 
-#: ../gedit/gedit-tab.c:1943
+#: ../gedit/gedit-tab.c:1923
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Hiba a(z) „%s” fájl visszaállítása közben"
 
-#: ../gedit/gedit-tab.c:1948
+#: ../gedit/gedit-tab.c:1928
 #, c-format
 msgid "Error saving file %s"
 msgstr "Hiba a(z) „%s” fájl mentése közben"
 
-#: ../gedit/gedit-tab.c:1969
+#: ../gedit/gedit-tab.c:1949
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1976
+#: ../gedit/gedit-tab.c:1956
 msgid "Name:"
 msgstr "Név:"
 
-#: ../gedit/gedit-tab.c:1977
+#: ../gedit/gedit-tab.c:1957
 msgid "MIME Type:"
 msgstr "MIME-típus:"
 
-#: ../gedit/gedit-tab.c:1978
+#: ../gedit/gedit-tab.c:1958
 msgid "Encoding:"
 msgstr "Kódolás:"
 
@@ -2071,22 +2071,22 @@ msgstr "Kódolás:"
 msgid "Close Document"
 msgstr "Dokumentum bezárása"
 
-#: ../gedit/gedit-utils.c:840
+#: ../gedit/gedit-utils.c:846
 msgid "Please check your installation."
 msgstr "Ellenőrizze a telepítést."
 
-#: ../gedit/gedit-utils.c:898
+#: ../gedit/gedit-utils.c:904
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nem nyitható meg a(z) „%s” felületfájl. Hiba: %s"
 
-#: ../gedit/gedit-utils.c:917
+#: ../gedit/gedit-utils.c:923
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Az objektum („%s”) nem található meg a(z) %s fájlban."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1140
+#: ../gedit/gedit-utils.c:1146
 #, c-format
 msgid "/ on %s"
 msgstr "/ ezen: %s"
@@ -2128,34 +2128,34 @@ msgstr "A keresendő karaktersorozat"
 msgid "Line you want to move the cursor to"
 msgstr "A kurzor mozgatása a megadott sor elejére"
 
-#: ../gedit/gedit-window.c:961
+#: ../gedit/gedit-window.c:885
 msgid "Bracket match is out of range"
 msgstr "A zárójel párja kívül esik a tartományon"
 
-#: ../gedit/gedit-window.c:966
+#: ../gedit/gedit-window.c:890
 msgid "Bracket match not found"
 msgstr "Nem található a zárójel párja"
 
-#: ../gedit/gedit-window.c:971
+#: ../gedit/gedit-window.c:895
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "A zárójel párja a(z) %d. sorban megtalálva"
 
-#: ../gedit/gedit-window.c:1177
+#: ../gedit/gedit-window.c:1101
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tabulátorszélesség: %u"
 
-#: ../gedit/gedit-window.c:1549
+#: ../gedit/gedit-window.c:1481
 msgid "There are unsaved documents"
 msgstr "Mentetlen dokumentumok találhatók"
 
-#: ../gedit/gedit-window.c:2501
+#: ../gedit/gedit-window.c:2456
 msgid "Change side panel page"
 msgstr "Oldalpanel oldal megváltoztatása"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-window.c:2521 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2476 ../gedit/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentumok"
 
@@ -2168,7 +2168,6 @@ msgid "Open a recently used file"
 msgstr "Nemrég használt fájl megnyitása"
 
 #: ../gedit/gedit-window.ui.h:5
-#| msgid "Maximum Recent Files"
 msgid "Recent files"
 msgstr "Legutóbbi fájlok"
 
@@ -2176,19 +2175,24 @@ msgstr "Legutóbbi fájlok"
 msgid "Create a new document"
 msgstr "Új dokumentum létrehozása"
 
-#: ../gedit/gedit-window.ui.h:7
+#. "New" is for creating a new document.
+#: ../gedit/gedit-window.ui.h:8
 msgid "New"
 msgstr "Új"
 
-#: ../gedit/gedit-window.ui.h:8
+#: ../gedit/gedit-window.ui.h:9
 msgid "Save the current file"
 msgstr "A jelenlegi fájl mentése"
 
-#: ../gedit/gedit-window.ui.h:9
+#: ../gedit/gedit-window.ui.h:10
 msgid "Save"
 msgstr "Mentés"
 
-#: ../gedit/gedit-window.ui.h:10
+#: ../gedit/gedit-window.ui.h:11
+msgid "Hide panel"
+msgstr "Panel elrejtése"
+
+#: ../gedit/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "Teljes képernyő elhagyása"
 
@@ -2348,64 +2352,64 @@ msgstr ""
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Egy Pango betűkészletnév. Például: „Sans 12” vagy „Monospace Bold 14”."
 
-#: ../plugins/externaltools/tools/appactivatable.py:117
+#: ../plugins/externaltools/tools/appactivatable.py:126
 msgid "Manage _External Tools..."
 msgstr "_Külső eszközök kezelése…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:122
+#: ../plugins/externaltools/tools/appactivatable.py:131
 msgid "External _Tools"
 msgstr "Külső _eszközök"
 
-#: ../plugins/externaltools/tools/capture.py:95
+#: ../plugins/externaltools/tools/capture.py:99
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "A parancs nem hajtható végre: %s"
 
-#: ../plugins/externaltools/tools/functions.py:178
+#: ../plugins/externaltools/tools/functions.py:182
 msgid "You must be inside a word to run this command"
 msgstr " A kurzornak egy szó belsejében kell lennie a parancs futtatásához"
 
-#: ../plugins/externaltools/tools/functions.py:308
+#: ../plugins/externaltools/tools/functions.py:316
 msgid "Running tool:"
 msgstr "Eszköz futtatása:"
 
-#: ../plugins/externaltools/tools/functions.py:338
+#: ../plugins/externaltools/tools/functions.py:347
 msgid "Done."
 msgstr "Kész."
 
-#: ../plugins/externaltools/tools/functions.py:340
+#: ../plugins/externaltools/tools/functions.py:349
 msgid "Exited"
 msgstr "Kilépett"
 
-#: ../plugins/externaltools/tools/manager.py:105
+#: ../plugins/externaltools/tools/manager.py:106
 msgid "All languages"
 msgstr "Minden nyelv"
 
-#: ../plugins/externaltools/tools/manager.py:420
-#: ../plugins/externaltools/tools/manager.py:424
-#: ../plugins/externaltools/tools/manager.py:757
+#: ../plugins/externaltools/tools/manager.py:422
+#: ../plugins/externaltools/tools/manager.py:426
+#: ../plugins/externaltools/tools/manager.py:765
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Minden nyelv"
 
-#: ../plugins/externaltools/tools/manager.py:537
+#: ../plugins/externaltools/tools/manager.py:539
 msgid "New tool"
 msgstr "Új eszköz"
 
-#: ../plugins/externaltools/tools/manager.py:668
+#: ../plugins/externaltools/tools/manager.py:676
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Ez a gyorsbillentyű már hozzá van rendelve a következőhöz: %s"
 
-#: ../plugins/externaltools/tools/manager.py:712
+#: ../plugins/externaltools/tools/manager.py:720
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Üsse le az új gyorsbillentyűt vagy nyomjon Backspace-t a törléshez"
 
-#: ../plugins/externaltools/tools/manager.py:714
+#: ../plugins/externaltools/tools/manager.py:722
 msgid "Type a new accelerator"
 msgstr "Üsse le az új gyorsbillentyűt"
 
-#: ../plugins/externaltools/tools/outputpanel.py:120
+#: ../plugins/externaltools/tools/outputpanel.py:122
 msgid "Stopped."
 msgstr "Leállítva."
 
@@ -2534,7 +2538,7 @@ msgstr "_Kimenet:"
 msgid "_Applicability:"
 msgstr "_Alkalmazhatóság:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:124
+#: ../plugins/externaltools/tools/windowactivatable.py:118
 msgid "Tool Output"
 msgstr "Eszköz kimenete"
 
@@ -2732,7 +2736,7 @@ msgstr "Az adathordozó nem nyitható meg: %s"
 msgid "Could not mount volume: %s"
 msgstr "A kötet nem csatolható: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2762
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2788
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Hiba történt „%s” betöltésekor: Nincs ilyen könyvtár"
@@ -2884,13 +2888,13 @@ msgstr "Python konzol"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktív Python konzol az alsó panelen"
 
-#: ../plugins/quickopen/quickopen/__init__.py:34
+#: ../plugins/quickopen/quickopen/__init__.py:35
 msgid "Quick Open..."
 msgstr "Gyors megnyitás…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:31
+#: ../plugins/quickopen/quickopen/popup.py:32
 msgid "Quick Open"
 msgstr "Gyors megnyitás"
 
@@ -2898,31 +2902,34 @@ msgstr "Gyors megnyitás"
 msgid "Quickly open files"
 msgstr "Fájlok gyors megnyitása"
 
-#: ../plugins/quickopen/quickopen/popup.py:77
+#: ../plugins/quickopen/quickopen/popup.py:82
 msgid "Type to search..."
 msgstr "Gépeljen a kereséshez…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:86
+#: ../plugins/snippets/snippets/appactivatable.py:82
 msgid "Manage _Snippets..."
 msgstr "_Töredékek kezelése…"
 
-#. ex:ts=8:et:
+#. Do the fancy completion dialog
+#. ex:ts=4:et:
 #: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:145
+#: ../plugins/snippets/snippets/document.py:659
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Töredékek"
 
-#: ../plugins/snippets/snippets/exporter.py:82
+#: ../plugins/snippets/snippets/exporter.py:80
 #, python-format
 msgid "The archive \"%s\" could not be created"
 msgstr "A(z) „%s” archívum nem hozható létre"
 
-#: ../plugins/snippets/snippets/exporter.py:99
+#: ../plugins/snippets/snippets/exporter.py:97
 #, python-format
 msgid "Target directory \"%s\" does not exist"
 msgstr "A(z) „%s” célkönyvtár nem létezik"
 
-#: ../plugins/snippets/snippets/exporter.py:102
+#: ../plugins/snippets/snippets/exporter.py:100
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
 msgstr "A(z) „%s” célkönyvtár nem egy érvényes könyvtár"
@@ -2959,29 +2966,29 @@ msgstr "A következő fájlok nem importálhatók: %s"
 msgid "File \"%s\" is not a valid snippets archive"
 msgstr "A(z) „%s” fájl nem egy érvényes töredékarchívum"
 
-#: ../plugins/snippets/snippets/manager.py:43
+#: ../plugins/snippets/snippets/manager.py:42
 msgid "Snippets archive"
 msgstr "Töredékgyűjtemény"
 
-#: ../plugins/snippets/snippets/manager.py:67
+#: ../plugins/snippets/snippets/manager.py:66
 msgid "Add a new snippet..."
 msgstr "Új töredék felvétele…"
 
-#: ../plugins/snippets/snippets/manager.py:119
+#: ../plugins/snippets/snippets/manager.py:116
 msgid "Global"
 msgstr "Globális"
 
-#: ../plugins/snippets/snippets/manager.py:410
+#: ../plugins/snippets/snippets/manager.py:406
 msgid "Revert selected snippet"
 msgstr "A kijelölt töredék visszaállítása"
 
-#: ../plugins/snippets/snippets/manager.py:413
+#: ../plugins/snippets/snippets/manager.py:409
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "A kijelölt töredék törlése"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:666
+#: ../plugins/snippets/snippets/manager.py:662
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -2992,89 +2999,89 @@ msgstr ""
 "[ stb. tartalmazhatnak."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:673
+#: ../plugins/snippets/snippets/manager.py:669
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Az a szó, amely után a Tab billentyűt lenyomva a töredék aktiválásra kerül"
 
-#: ../plugins/snippets/snippets/manager.py:762
+#: ../plugins/snippets/snippets/manager.py:758
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "A következő hiba történt az importáláskor: %s"
 
-#: ../plugins/snippets/snippets/manager.py:769
+#: ../plugins/snippets/snippets/manager.py:765
 msgid "Import successfully completed"
 msgstr "Az importálás sikeresen befejeződött"
 
-#: ../plugins/snippets/snippets/manager.py:783
+#: ../plugins/snippets/snippets/manager.py:779
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Töredékek importálása"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:784
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:933
 msgid "All supported archives"
 msgstr "Minden támogatott archívum"
 
-#: ../plugins/snippets/snippets/manager.py:789
-#: ../plugins/snippets/snippets/manager.py:875
-#: ../plugins/snippets/snippets/manager.py:938
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:934
 msgid "Gzip compressed archive"
 msgstr "Gzip-pel tömörített archívum"
 
-#: ../plugins/snippets/snippets/manager.py:790
-#: ../plugins/snippets/snippets/manager.py:876
-#: ../plugins/snippets/snippets/manager.py:939
+#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:935
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2-vel tömörített archívum"
 
-#: ../plugins/snippets/snippets/manager.py:791
+#: ../plugins/snippets/snippets/manager.py:787
 msgid "Single snippets file"
 msgstr "Egyetlen töredékfájl"
 
-#: ../plugins/snippets/snippets/manager.py:792
-#: ../plugins/snippets/snippets/manager.py:878
-#: ../plugins/snippets/snippets/manager.py:941
+#: ../plugins/snippets/snippets/manager.py:788
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "All files"
 msgstr "Minden fájl"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:800
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "A következő hiba történt az exportáláskor: %s"
 
-#: ../plugins/snippets/snippets/manager.py:808
+#: ../plugins/snippets/snippets/manager.py:804
 msgid "Export successfully completed"
 msgstr "Az exportálás sikeresen befejeződött"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:848
-#: ../plugins/snippets/snippets/manager.py:915
+#: ../plugins/snippets/snippets/manager.py:844
+#: ../plugins/snippets/snippets/manager.py:911
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Fel kívánja venni a kiválasztott <b>rendszertöredékeket</b> az exportálásba?"
 
-#: ../plugins/snippets/snippets/manager.py:863
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:859
+#: ../plugins/snippets/snippets/manager.py:929
 msgid "There are no snippets selected to be exported"
 msgstr "Nincsenek exportálható töredékek kiválasztva"
 
-#: ../plugins/snippets/snippets/manager.py:868
-#: ../plugins/snippets/snippets/manager.py:906
+#: ../plugins/snippets/snippets/manager.py:864
+#: ../plugins/snippets/snippets/manager.py:902
 msgid "Export snippets"
 msgstr "Töredékek exportálása"
 
-#: ../plugins/snippets/snippets/manager.py:1047
+#: ../plugins/snippets/snippets/manager.py:1041
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Üsse le az új gyorsbillentyűt vagy a Backspace-t a törléshez"
 
-#: ../plugins/snippets/snippets/manager.py:1049
+#: ../plugins/snippets/snippets/manager.py:1043
 msgid "Type a new shortcut"
 msgstr "Üsse le az új gyorsbillentyűt"
 
-#: ../plugins/snippets/snippets/placeholder.py:601
+#: ../plugins/snippets/snippets/placeholder.py:597
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3083,7 +3090,7 @@ msgstr ""
 "A Python parancs (%s) végrehajtása túllépi a maximálisan engedélyezett időt, "
 "a végrehajtás megszakítva."
 
-#: ../plugins/snippets/snippets/placeholder.py:609
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "A Python parancs (%s) végrehajtása meghiúsult: %s"
@@ -3434,433 +3441,3 @@ msgstr "Zeitgeist adatszolgáltató"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Hozzáférés naplózása, és esemény hagyása a geditben használt dokumentumokhoz"
-
-#~ msgid "Undo Actions Limit (DEPRECATED)"
-#~ msgstr "Visszavonási műveletek korlátja (ELAVULT)"
-
-#~ msgid ""
-#~ "Maximum number of actions that gedit will be able to undo or redo. Use "
-#~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-#~ msgstr ""
-#~ "A gedit által visszavonható/mégis elvégezhető műveletek maximális száma. "
-#~ "Végtelen műveletszám engedélyezéséhez használja a „-1” értéket. A 2.12. "
-#~ "óta elavult."
-
-#~ msgid "Show the application's help"
-#~ msgstr "Az alkalmazás súgójának megjelenítése"
-
-#~ msgid "- Edit text files"
-#~ msgstr "– Szövegfájlok szerkesztése"
-
-#~ msgid ""
-#~ "%s\n"
-#~ "Run '%s --help' to see a full list of available command line options.\n"
-#~ msgstr ""
-#~ "%s\n"
-#~ "Adja ki a(z) „%s --help” parancsot az elérhető parancssori kapcsolók "
-#~ "teljes listájáért.\n"
-
-#~ msgid "Save _As..."
-#~ msgstr "Men_tés másként…"
-
-#~ msgid "_Print..."
-#~ msgstr "_Nyomtatás…"
-
-#~ msgid "Empty"
-#~ msgstr "Üres"
-
-#~ msgid "Hide panel"
-#~ msgstr "Panel elrejtése"
-
-#~ msgid "gedit Preferences"
-#~ msgstr "A gedit beállításai"
-
-#~ msgid "column"
-#~ msgstr "oszlop"
-
-#~ msgid "_File"
-#~ msgstr "_Fájl"
-
-#~ msgid "_Edit"
-#~ msgstr "S_zerkesztés"
-
-#~ msgid "_View"
-#~ msgstr "_Nézet"
-
-#~ msgid "_Search"
-#~ msgstr "_Keresés"
-
-#~ msgid "_Tools"
-#~ msgstr "_Eszközök"
-
-#~ msgid "_Documents"
-#~ msgstr "_Dokumentumok"
-
-#~ msgid "_Open..."
-#~ msgstr "_Megnyitás…"
-
-#~ msgid "Pr_eferences"
-#~ msgstr "_Beállítások"
-
-#~ msgid "Configure the application"
-#~ msgstr "Az alkalmazás beállítása"
-
-#~ msgid "_Contents"
-#~ msgstr "_Tartalom"
-
-#~ msgid "Open the gedit manual"
-#~ msgstr "A gedit felhasználói kézikönyvének megnyitása"
-
-#~ msgid "About this application"
-#~ msgstr "Az alkalmazás névjegye"
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "A jelenlegi fájl mentése más néven"
-
-#~ msgid "Revert to a saved version of the file"
-#~ msgstr "Visszatérés a fájl egy korábban mentett változatához"
-
-#~ msgid "Print Previe_w"
-#~ msgstr "Nyomtatási _kép"
-
-#~ msgid "Print preview"
-#~ msgstr "Nyomtatási kép"
-
-#~ msgid "Print the current page"
-#~ msgstr "A jelenlegi oldal nyomtatása"
-
-#~ msgid "Undo the last action"
-#~ msgstr "Az utolsó művelet visszavonása"
-
-#~ msgid "Redo the last undone action"
-#~ msgstr "A visszavont művelet végrehajtása mégis"
-
-#~ msgid "Cut the selection"
-#~ msgstr "A kijelölés kivágása"
-
-#~ msgid "Copy the selection"
-#~ msgstr "A kijelölés másolása"
-
-#~ msgid "Paste the clipboard"
-#~ msgstr "A vágólap tartalmának beillesztése"
-
-#~ msgid "Delete the selected text"
-#~ msgstr "A kijelölt szöveg törlése"
-
-#~ msgid "Select _All"
-#~ msgstr "Ö_sszes kijelölése"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Teljes dokumentum kijelölése"
-
-#~ msgid "_Highlight Mode..."
-#~ msgstr "Kiemelési ü_zemmód…"
-
-#~ msgid "Changes the highlight mode of the active document"
-#~ msgstr "A jelenlegi dokumentum kiemelési módjának módosítása"
-
-#~ msgid "_Find..."
-#~ msgstr "_Keresés…"
-
-#~ msgid "Search for text"
-#~ msgstr "Szöveg keresése"
-
-#~ msgid "Find Ne_xt"
-#~ msgstr "Kö_vetkező találat"
-
-#~ msgid "Search forwards for the same text"
-#~ msgstr "Keresés előre ugyanarra a szövegre"
-
-#~ msgid "Find Pre_vious"
-#~ msgstr "Elő_ző találat"
-
-#~ msgid "Search backwards for the same text"
-#~ msgstr "Keresés visszafelé ugyanarra a szövegre"
-
-#~ msgid "_Replace..."
-#~ msgstr "_Csere…"
-
-#~ msgid "Search for and replace text"
-#~ msgstr "Szöveg keresése és cseréje"
-
-#~ msgid "Clear highlighting of search matches"
-#~ msgstr "A keresési eredmények kijelölésének törlése"
-
-#~ msgid "Go to a specific line"
-#~ msgstr "Ugrás a megadott sorra"
-
-#~ msgid "Save all open files"
-#~ msgstr "Minden megnyitott fájl mentése"
-
-#~ msgid "Close all open files"
-#~ msgstr "Minden megnyitott fájl bezárása"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Új lapcsoport létrehozása"
-
-#~ msgid "P_revious Tab Group"
-#~ msgstr "_Előző lapcsoport"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Váltás az előző lapcsoportra"
-
-#~ msgid "Nex_t Tab Group"
-#~ msgstr "_Következő lapcsoport"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Váltás a következő lapcsoportra"
-
-#~ msgid "_Previous Document"
-#~ msgstr "_Előző dokumentum"
-
-#~ msgid "Activate previous document"
-#~ msgstr "Előző dokumentum aktiválása"
-
-#~ msgid "N_ext Document"
-#~ msgstr "Kö_vetkező dokumentum"
-
-#~ msgid "Activate next document"
-#~ msgstr "Következő dokumentum aktiválása"
-
-#~ msgid "Move the current document to a new window"
-#~ msgstr "A jelenlegi dokumentum áthelyezése egy másik ablakba"
-
-#~ msgid "Close the current file"
-#~ msgstr "A jelenlegi fájl bezárása"
-
-#~ msgid "Quit the program"
-#~ msgstr "Kilépés a programból"
-
-#~ msgid "_Toolbar"
-#~ msgstr "_Eszköztár"
-
-#~ msgid "Show or hide the toolbar in the current window"
-#~ msgstr "Eszköztár megjelenítése vagy rejtése a jelenlegi ablakban"
-
-#~ msgid "Show or hide the statusbar in the current window"
-#~ msgstr "Állapotsor megjelenítése vagy rejtése a jelenlegi ablakban"
-
-#~ msgid "Edit text in fullscreen"
-#~ msgstr "Szövegszerkesztés teljes képernyőn"
-
-#~ msgid "Show or hide the side panel in the current window"
-#~ msgstr "Oldalpanel megjelenítése vagy rejtése a jelenlegi ablakban"
-
-#~ msgid "Show or hide the bottom panel in the current window"
-#~ msgstr "Alsó panel megjelenítése vagy rejtése a jelenlegi ablakban"
-
-#~ msgid "Open '%s'"
-#~ msgstr "„%s” megnyitása"
-
-#~ msgid "Activate '%s'"
-#~ msgstr "„%s” aktiválása"
-
-#~ msgid "Change Case"
-#~ msgstr "Kis- és nagybetű módosítása"
-
-#~ msgid "Changes the case of selected text."
-#~ msgstr "A kijelölt szöveg kis- és nagybetűinek módosítása"
-
-#~ msgid "C_hange Case"
-#~ msgstr "Kis- és nagybetű mó_dosítása"
-
-#~ msgid "All _Upper Case"
-#~ msgstr "Mind _nagybetűs"
-
-#~ msgid "All _Lower Case"
-#~ msgstr "Mind _kisbetűs"
-
-#~ msgid "Change selected text to lower case"
-#~ msgstr "A kijelölt szöveg kisbetűssé alakítása"
-
-#~ msgid "_Invert Case"
-#~ msgstr "Kis- és nagybetű _invertálása"
-
-#~ msgid "Invert the case of selected text"
-#~ msgstr "A kijelölt szöveg kis- és nagybetűinek invertálása"
-
-#~ msgid "_Title Case"
-#~ msgstr "Szó_kezdő"
-
-#~ msgid "Capitalize the first letter of each selected word"
-#~ msgstr "A kijelölt szavak első betűjének nagybetűsre alakítása"
-
-#~ msgid "Get statistical information on the current document"
-#~ msgstr "Statisztikai adatok az aktuális dokumentumról"
-
-#~ msgid "_Update"
-#~ msgstr "_Frissítés"
-
-#~ msgid "File Name"
-#~ msgstr "Fájlnév"
-
-#~ msgid "_Tools:"
-#~ msgstr "_Eszközök:"
-
-#~ msgid "_Edit:"
-#~ msgstr "S_zerkesztés:"
-
-#~ msgid "Opens the External Tools Manager"
-#~ msgstr "Megnyitja a külső eszközök kezelése ablakot"
-
-#~ msgid "External tools"
-#~ msgstr "Külső eszközök"
-
-#~ msgid "Quickly open documents"
-#~ msgstr "Dokumentumok gyors megnyitása"
-
-#~ msgid "_Snippets:"
-#~ msgstr "_Töredékek:"
-
-#~ msgid "Manage snippets"
-#~ msgstr "Töredékek kezelése"
-
-#~ msgid "Sort the current document or selection"
-#~ msgstr "A jelenlegi dokumentum vagy kijelölés rendezése"
-
-#~ msgid "Check Spelling"
-#~ msgstr "Helyesírás-ellenőrzés"
-
-#~ msgid "Check the current document for incorrect spelling"
-#~ msgstr "A jelenlegi dokumentum helyesírásának ellenőrzése"
-
-#~ msgid "Set the language of the current document"
-#~ msgstr "A jelenlegi dokumentum nyelvének megadása"
-
-#~ msgid "Automatically spell-check the current document"
-#~ msgstr "A jelenlegi dokumentum automatikus helyesírás-ellenőrzése"
-
-#~ msgid "Language:"
-#~ msgstr "Nyelv:"
-
-#~ msgid "Language"
-#~ msgstr "Nyelv"
-
-#~ msgid "Insert current date and time at the cursor position"
-#~ msgstr "Beszúrja a jelenlegi időt és dátumot"
-
-#~ msgid "Open Files"
-#~ msgstr "Fájlok megnyitása…"
-
-#~ msgid "Character Encodings"
-#~ msgstr "Karakterkódolások"
-
-#, fuzzy
-#~ msgid "gedit cannot handle %s locations."
-#~ msgstr "Ez a hely nem kezelhető."
-
-#, fuzzy
-#~ msgid "gedit cannot handle this location."
-#~ msgstr "Ez a hely nem kezelhető."
-
-#~ msgid ""
-#~ "The location of the file cannot be accessed because it is not mounted."
-#~ msgstr "A fájl helye nem érhető el, mivel nincs csatolva."
-
-#~ msgid ""
-#~ "gedit opened this instance of the file in a non-editable way. Do you want "
-#~ "to edit it anyway?"
-#~ msgstr ""
-#~ "A gedit ezt a fájlt csak olvasható módban nyitotta meg. Mindenképpen "
-#~ "szerkeszti?"
-
-#, fuzzy
-#~ msgid ""
-#~ "gedit cannot handle %s locations in write mode. Please check that you "
-#~ "typed the location correctly and try again."
-#~ msgstr ""
-#~ "Nem lehet ezt a helyet írás módban kezelni. Ellenőrizze, hogy pontosan "
-#~ "írta-e be a helyet, és próbálja újra."
-
-#~ msgid "Do you want to drop your changes and reload the file?"
-#~ msgstr "El kívánja vetni a módosításait és újratölti a fájlt?"
-
-#, fuzzy
-#~ msgid "Do you want to reload the file?"
-#~ msgstr "El kívánja vetni a módosításait és újratölti a fájlt?"
-
-#~ msgid "Replace All"
-#~ msgstr "Összes cseréje"
-
-#, fuzzy
-#~ msgid "Use %s highlight mode"
-#~ msgstr "Kiemelési üzemmód keresése…"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "Nyelvtani kiemelések tiltása"
-
-#~ msgid "Set the root to the active document location"
-#~ msgstr "A gyökér beállítása az aktív dokumentum helyére"
-
-#, fuzzy
-#~ msgid "_Open terminal here"
-#~ msgstr "Terminál megnyitása itt"
-
-#~ msgid "Open a terminal at the currently opened directory"
-#~ msgstr "Terminál megnyitása a jelenleg megnyitott könyvtárban"
-
-#~ msgid "file"
-#~ msgstr "fájl"
-
-#~ msgid "directory"
-#~ msgstr "könyvtár"
-
-#~ msgid "Move selected file or folder to trash"
-#~ msgstr "A kijelölt fájl vagy mappa áthelyezése a Kukába"
-
-#~ msgid "Delete selected file or folder"
-#~ msgstr "A kijelölt fájl vagy mappa törlése"
-
-#~ msgid "Open selected file"
-#~ msgstr "Kijelölt fájl megnyitása"
-
-#~ msgid "Up"
-#~ msgstr "Fel"
-
-#~ msgid "Open the parent folder"
-#~ msgstr "Szülőmappa megnyitása"
-
-#~ msgid "Add new empty folder"
-#~ msgstr "Új üres mappa hozzáadása"
-
-#~ msgid "Add new empty file"
-#~ msgstr "Új üres fájl hozzáadása"
-
-#~ msgid "Rename selected file or folder"
-#~ msgstr "A kijelölt fájl vagy mappa átnevezése"
-
-#~ msgid "_Previous Location"
-#~ msgstr "_Előző hely"
-
-#~ msgid "Go to the previous visited location"
-#~ msgstr "Ugrás az előző meglátogatott helyre"
-
-#~ msgid "_Next Location"
-#~ msgstr "_Következő hely"
-
-#~ msgid "Go to the next visited location"
-#~ msgstr "Ugrás a következő meglátogatott helyre"
-
-#~ msgid "Refresh the view"
-#~ msgstr "A nézet frissítése"
-
-#~ msgid "View folder in file manager"
-#~ msgstr "A mappa megjelenítése a fájlkezelőben"
-
-#~ msgid "Show hidden files and folders"
-#~ msgstr "Rejtett fájlok és mappák megjelenítése"
-
-#~ msgid "Show binary files"
-#~ msgstr "Bináris fájlok megjelenítése"
-
-#~ msgid "Quick open"
-#~ msgstr "Gyors megnyitás"
-
-#~ msgid "Text;"
-#~ msgstr "Szöveg;"
-
-#~ msgid "Log Out _without Saving"
-#~ msgstr "Kijelentkezés mentés _nélkül"
-
-#~ msgid "Run gedit in the background"
-#~ msgstr "A gedit futtatása a háttérben"
